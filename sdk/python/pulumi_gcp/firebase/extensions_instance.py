@@ -23,7 +23,7 @@ class ExtensionsInstanceArgs:
     def __init__(__self__, *,
                  config: pulumi.Input['ExtensionsInstanceConfigArgs'],
                  instance_id: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExtensionsInstance resource.
 
@@ -67,7 +67,7 @@ class ExtensionsInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -75,26 +75,26 @@ class ExtensionsInstanceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ExtensionsInstanceState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['ExtensionsInstanceConfigArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArgs']]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_operation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_operation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArgs']]]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional['ExtensionsInstanceConfigArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArgs']]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_operation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_operation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_datas: pulumi.Input[Optional[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArgs']]]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExtensionsInstance resources.
 
@@ -151,7 +151,7 @@ class _ExtensionsInstanceState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ExtensionsInstanceConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['ExtensionsInstanceConfigArgs']]:
         """
         The current Config of the Extension Instance.
         Structure is documented below.
@@ -159,24 +159,24 @@ class _ExtensionsInstanceState:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['ExtensionsInstanceConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['ExtensionsInstanceConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the Extension Instance was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="errorStatuses")
-    def error_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArgs']]]]:
+    def error_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArgs']]]]:
         """
         If this Instance has `state: ERRORED`, the error messages
         will be found here.
@@ -185,12 +185,12 @@ class _ExtensionsInstanceState:
         return pulumi.get(self, "error_statuses")
 
     @error_statuses.setter
-    def error_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArgs']]]]):
+    def error_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExtensionsInstanceErrorStatusArgs']]]]):
         pulumi.set(self, "error_statuses", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A weak etag that is computed by the server based on other configuration
         values and may be sent on update and delete requests to ensure the
@@ -199,12 +199,12 @@ class _ExtensionsInstanceState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the Extension Instance, which will become the final
         component of the instance's name.
@@ -212,12 +212,12 @@ class _ExtensionsInstanceState:
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lastOperationName")
-    def last_operation_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_operation_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the last operation that acted on this Extension
         Instance
@@ -225,36 +225,36 @@ class _ExtensionsInstanceState:
         return pulumi.get(self, "last_operation_name")
 
     @last_operation_name.setter
-    def last_operation_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_operation_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_operation_name", value)
 
     @_builtins.property
     @pulumi.getter(name="lastOperationType")
-    def last_operation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_operation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the last operation that acted on the Extension Instance.
         """
         return pulumi.get(self, "last_operation_type")
 
     @last_operation_type.setter
-    def last_operation_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_operation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_operation_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully-qualified resource name of the Extension Instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -262,12 +262,12 @@ class _ExtensionsInstanceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeDatas")
-    def runtime_datas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArgs']]]]:
+    def runtime_datas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArgs']]]]:
         """
         Data set by the extension instance at runtime.
         Structure is documented below.
@@ -275,12 +275,12 @@ class _ExtensionsInstanceState:
         return pulumi.get(self, "runtime_datas")
 
     @runtime_datas.setter
-    def runtime_datas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArgs']]]]):
+    def runtime_datas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArgs']]]]):
         pulumi.set(self, "runtime_datas", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the service account to be used at runtime by compute resources
         created for the operation of the Extension instance.
@@ -288,31 +288,31 @@ class _ExtensionsInstanceState:
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The processing state of the extension instance.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the Extension Instance was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -322,9 +322,9 @@ class ExtensionsInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An Instance is an installation of an Extension into a user's project.
@@ -498,9 +498,9 @@ class ExtensionsInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -537,19 +537,19 @@ class ExtensionsInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExtensionsInstanceErrorStatusArgs', 'ExtensionsInstanceErrorStatusArgsDict']]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            last_operation_name: Optional[pulumi.Input[_builtins.str]] = None,
-            last_operation_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExtensionsInstanceRuntimeDataArgs', 'ExtensionsInstanceRuntimeDataArgsDict']]]]] = None,
-            service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'ExtensionsInstance':
+            config: pulumi.Input[Optional[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            error_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExtensionsInstanceErrorStatusArgs', 'ExtensionsInstanceErrorStatusArgsDict']]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_operation_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_operation_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_datas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExtensionsInstanceRuntimeDataArgs', 'ExtensionsInstanceRuntimeDataArgsDict']]]]] = None,
+            service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'ExtensionsInstance':
         """
         Get an existing ExtensionsInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

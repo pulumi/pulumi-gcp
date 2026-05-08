@@ -22,10 +22,10 @@ __all__ = ['ClientArgs', 'Client']
 class ClientArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 cloud_kms_config: Optional[pulumi.Input['ClientCloudKmsConfigArgs']] = None,
-                 create_sample_integrations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as_service_account: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_kms_config: pulumi.Input[Optional['ClientCloudKmsConfigArgs']] = None,
+                 create_sample_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as_service_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Client resource.
 
@@ -67,7 +67,7 @@ class ClientArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudKmsConfig")
-    def cloud_kms_config(self) -> Optional[pulumi.Input['ClientCloudKmsConfigArgs']]:
+    def cloud_kms_config(self) -> pulumi.Input[Optional['ClientCloudKmsConfigArgs']]:
         """
         Cloud KMS config for AuthModule to encrypt/decrypt credentials.
         Structure is documented below.
@@ -75,24 +75,24 @@ class ClientArgs:
         return pulumi.get(self, "cloud_kms_config")
 
     @cloud_kms_config.setter
-    def cloud_kms_config(self, value: Optional[pulumi.Input['ClientCloudKmsConfigArgs']]):
+    def cloud_kms_config(self, value: pulumi.Input[Optional['ClientCloudKmsConfigArgs']]):
         pulumi.set(self, "cloud_kms_config", value)
 
     @_builtins.property
     @pulumi.getter(name="createSampleIntegrations")
-    def create_sample_integrations(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_sample_integrations(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if sample integrations should be created along with provisioning.
         """
         return pulumi.get(self, "create_sample_integrations")
 
     @create_sample_integrations.setter
-    def create_sample_integrations(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_sample_integrations(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_sample_integrations", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -100,13 +100,13 @@ class ClientArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsServiceAccount")
     @_utilities.deprecated("""`run_as_service_account` is deprecated and will be removed in a future major release.""")
-    def run_as_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_as_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         User input run-as service account, if empty, will bring up a new default service account.
@@ -116,18 +116,18 @@ class ClientArgs:
         return pulumi.get(self, "run_as_service_account")
 
     @run_as_service_account.setter
-    def run_as_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_as_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_as_service_account", value)
 
 
 @pulumi.input_type
 class _ClientState:
     def __init__(__self__, *,
-                 cloud_kms_config: Optional[pulumi.Input['ClientCloudKmsConfigArgs']] = None,
-                 create_sample_integrations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as_service_account: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_kms_config: pulumi.Input[Optional['ClientCloudKmsConfigArgs']] = None,
+                 create_sample_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as_service_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Client resources.
 
@@ -158,7 +158,7 @@ class _ClientState:
 
     @_builtins.property
     @pulumi.getter(name="cloudKmsConfig")
-    def cloud_kms_config(self) -> Optional[pulumi.Input['ClientCloudKmsConfigArgs']]:
+    def cloud_kms_config(self) -> pulumi.Input[Optional['ClientCloudKmsConfigArgs']]:
         """
         Cloud KMS config for AuthModule to encrypt/decrypt credentials.
         Structure is documented below.
@@ -166,36 +166,36 @@ class _ClientState:
         return pulumi.get(self, "cloud_kms_config")
 
     @cloud_kms_config.setter
-    def cloud_kms_config(self, value: Optional[pulumi.Input['ClientCloudKmsConfigArgs']]):
+    def cloud_kms_config(self, value: pulumi.Input[Optional['ClientCloudKmsConfigArgs']]):
         pulumi.set(self, "cloud_kms_config", value)
 
     @_builtins.property
     @pulumi.getter(name="createSampleIntegrations")
-    def create_sample_integrations(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_sample_integrations(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if sample integrations should be created along with provisioning.
         """
         return pulumi.get(self, "create_sample_integrations")
 
     @create_sample_integrations.setter
-    def create_sample_integrations(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_sample_integrations(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_sample_integrations", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location in which client needs to be provisioned.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -203,13 +203,13 @@ class _ClientState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsServiceAccount")
     @_utilities.deprecated("""`run_as_service_account` is deprecated and will be removed in a future major release.""")
-    def run_as_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_as_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         User input run-as service account, if empty, will bring up a new default service account.
@@ -219,7 +219,7 @@ class _ClientState:
         return pulumi.get(self, "run_as_service_account")
 
     @run_as_service_account.setter
-    def run_as_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_as_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_as_service_account", value)
 
 
@@ -229,11 +229,11 @@ class Client(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_kms_config: Optional[pulumi.Input[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']]] = None,
-                 create_sample_integrations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as_service_account: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_kms_config: pulumi.Input[Optional[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']]] = None,
+                 create_sample_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Application Integration Client.
@@ -393,11 +393,11 @@ class Client(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_kms_config: Optional[pulumi.Input[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']]] = None,
-                 create_sample_integrations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as_service_account: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_kms_config: pulumi.Input[Optional[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']]] = None,
+                 create_sample_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -424,11 +424,11 @@ class Client(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cloud_kms_config: Optional[pulumi.Input[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']]] = None,
-            create_sample_integrations: Optional[pulumi.Input[_builtins.bool]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            run_as_service_account: Optional[pulumi.Input[_builtins.str]] = None) -> 'Client':
+            cloud_kms_config: pulumi.Input[Optional[Union['ClientCloudKmsConfigArgs', 'ClientCloudKmsConfigArgsDict']]] = None,
+            create_sample_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            run_as_service_account: pulumi.Input[Optional[_builtins.str]] = None) -> 'Client':
         """
         Get an existing Client resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

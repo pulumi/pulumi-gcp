@@ -523,103 +523,103 @@ export interface ManagedZoneState {
      * Cloud logging configuration
      * Structure is documented below.
      */
-    cloudLoggingConfig?: pulumi.Input<inputs.dns.ManagedZoneCloudLoggingConfig>;
+    cloudLoggingConfig?: pulumi.Input<inputs.dns.ManagedZoneCloudLoggingConfig | undefined>;
     /**
      * The time that this resource was created on the server.
      * This is in RFC3339 text format.
      */
-    creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string | undefined>;
     /**
      * A textual description field. Defaults to 'Managed by Pulumi'.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The DNS name of this managed zone, for instance "example.com.".
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * DNSSEC configuration
      * Structure is documented below.
      */
-    dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig>;
+    dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Set this true to delete all records in the zone.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The presence for this field indicates that outbound forwarding is enabled
      * for this zone. The value of this field contains the set of destinations
      * to forward to.
      * Structure is documented below.
      */
-    forwardingConfig?: pulumi.Input<inputs.dns.ManagedZoneForwardingConfig>;
+    forwardingConfig?: pulumi.Input<inputs.dns.ManagedZoneForwardingConfig | undefined>;
     /**
      * A set of key/value label pairs to assign to this ManagedZone.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Unique identifier for the resource; defined by the server.
      */
-    managedZoneId?: pulumi.Input<string>;
+    managedZoneId?: pulumi.Input<string | undefined>;
     /**
      * User assigned name for this resource.
      * Must be unique within the project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Delegate your managedZone to these virtual name servers;
      * defined by the server
      */
-    nameServers?: pulumi.Input<pulumi.Input<string>[]>;
+    nameServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The presence of this field indicates that DNS Peering is enabled for this
      * zone. The value of this field contains the network to peer with.
      * Structure is documented below.
      */
-    peeringConfig?: pulumi.Input<inputs.dns.ManagedZonePeeringConfig>;
+    peeringConfig?: pulumi.Input<inputs.dns.ManagedZonePeeringConfig | undefined>;
     /**
      * For privately visible zones, the set of Virtual Private Cloud
      * resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
      * Structure is documented below.
      */
-    privateVisibilityConfig?: pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfig>;
+    privateVisibilityConfig?: pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Optional, Beta)
      * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
      * to networks listed under `privateVisibilityConfig`.
      */
-    reverseLookup?: pulumi.Input<boolean>;
+    reverseLookup?: pulumi.Input<boolean | undefined>;
     /**
      * (Optional, Beta)
      * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
      * Structure is documented below.
      */
-    serviceDirectoryConfig?: pulumi.Input<inputs.dns.ManagedZoneServiceDirectoryConfig>;
+    serviceDirectoryConfig?: pulumi.Input<inputs.dns.ManagedZoneServiceDirectoryConfig | undefined>;
     /**
      * The zone's visibility: public zones are exposed to the Internet,
      * while private zones are visible only to Virtual Private Cloud resources.
      * Default value is `public`.
      * Possible values are: `private`, `public`.
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -630,11 +630,11 @@ export interface ManagedZoneArgs {
      * Cloud logging configuration
      * Structure is documented below.
      */
-    cloudLoggingConfig?: pulumi.Input<inputs.dns.ManagedZoneCloudLoggingConfig>;
+    cloudLoggingConfig?: pulumi.Input<inputs.dns.ManagedZoneCloudLoggingConfig | undefined>;
     /**
      * A textual description field. Defaults to 'Managed by Pulumi'.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The DNS name of this managed zone, for instance "example.com.".
      */
@@ -643,65 +643,65 @@ export interface ManagedZoneArgs {
      * DNSSEC configuration
      * Structure is documented below.
      */
-    dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig>;
+    dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig | undefined>;
     /**
      * Set this true to delete all records in the zone.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The presence for this field indicates that outbound forwarding is enabled
      * for this zone. The value of this field contains the set of destinations
      * to forward to.
      * Structure is documented below.
      */
-    forwardingConfig?: pulumi.Input<inputs.dns.ManagedZoneForwardingConfig>;
+    forwardingConfig?: pulumi.Input<inputs.dns.ManagedZoneForwardingConfig | undefined>;
     /**
      * A set of key/value label pairs to assign to this ManagedZone.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * User assigned name for this resource.
      * Must be unique within the project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The presence of this field indicates that DNS Peering is enabled for this
      * zone. The value of this field contains the network to peer with.
      * Structure is documented below.
      */
-    peeringConfig?: pulumi.Input<inputs.dns.ManagedZonePeeringConfig>;
+    peeringConfig?: pulumi.Input<inputs.dns.ManagedZonePeeringConfig | undefined>;
     /**
      * For privately visible zones, the set of Virtual Private Cloud
      * resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
      * Structure is documented below.
      */
-    privateVisibilityConfig?: pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfig>;
+    privateVisibilityConfig?: pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
      * to networks listed under `privateVisibilityConfig`.
      */
-    reverseLookup?: pulumi.Input<boolean>;
+    reverseLookup?: pulumi.Input<boolean | undefined>;
     /**
      * (Optional, Beta)
      * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
      * Structure is documented below.
      */
-    serviceDirectoryConfig?: pulumi.Input<inputs.dns.ManagedZoneServiceDirectoryConfig>;
+    serviceDirectoryConfig?: pulumi.Input<inputs.dns.ManagedZoneServiceDirectoryConfig | undefined>;
     /**
      * The zone's visibility: public zones are exposed to the Internet,
      * while private zones are visible only to Virtual Private Cloud resources.
      * Default value is `public`.
      * Possible values are: `private`, `public`.
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
 }

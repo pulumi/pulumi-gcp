@@ -190,43 +190,43 @@ export interface OauthClientCredentialState {
      * mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Whether the OauthClientCredential is disabled. You cannot use a
      * disabled OauthClientCredential.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * A user-specified display name of the OauthClientCredential.
      * Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Immutable. Identifier. The resource name of the OauthClientCredential.
      * Format:
      * `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Required. The ID to use for the OauthClientCredential, which becomes the
      * final component of the resource name. This value should be 4-32 characters,
      * and may contain the characters [a-z0-9-]. The prefix `gcp-` is
      * reserved for use by Google, and may not be specified.
      */
-    oauthClientCredentialId?: pulumi.Input<string>;
+    oauthClientCredentialId?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    oauthclient?: pulumi.Input<string>;
+    oauthclient?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -237,12 +237,12 @@ export interface OauthClientCredentialArgs {
      * Whether the OauthClientCredential is disabled. You cannot use a
      * disabled OauthClientCredential.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * A user-specified display name of the OauthClientCredential.
      * Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -262,5 +262,5 @@ export interface OauthClientCredentialArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

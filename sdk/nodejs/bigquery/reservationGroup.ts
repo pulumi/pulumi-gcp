@@ -119,16 +119,16 @@ export interface ReservationGroupState {
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the reservation group. This field must only contain alphanumeric characters or dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,14 +139,14 @@ export interface ReservationGroupArgs {
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the reservation group. This field must only contain alphanumeric characters or dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

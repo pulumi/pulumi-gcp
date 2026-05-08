@@ -20,30 +20,30 @@ __all__ = ['FlexTemplateJobArgs', 'FlexTemplateJob']
 class FlexTemplateJobArgs:
     def __init__(__self__, *,
                  container_spec_gcs_path: pulumi.Input[_builtins.str],
-                 additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 additional_pipeline_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 autoscaling_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_streaming_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 launcher_machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 on_delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdk_container_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_wait_on_job_termination: Optional[pulumi.Input[_builtins.bool]] = None,
-                 staging_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 temp_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 additional_experiments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 launcher_machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 on_delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdk_container_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait_on_job_termination: pulumi.Input[Optional[_builtins.bool]] = None,
+                 staging_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 temp_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 transform_name_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FlexTemplateJob resource.
 
@@ -152,79 +152,79 @@ class FlexTemplateJobArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalExperiments")
-    def additional_experiments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_experiments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         """
         return pulumi.get(self, "additional_experiments")
 
     @additional_experiments.setter
-    def additional_experiments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_experiments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_experiments", value)
 
     @_builtins.property
     @pulumi.getter(name="additionalPipelineOptions")
-    def additional_pipeline_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_pipeline_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
         """
         return pulumi.get(self, "additional_pipeline_options")
 
     @additional_pipeline_options.setter
-    def additional_pipeline_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_pipeline_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_pipeline_options", value)
 
     @_builtins.property
     @pulumi.getter(name="autoscalingAlgorithm")
-    def autoscaling_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def autoscaling_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The algorithm to use for autoscaling.
         """
         return pulumi.get(self, "autoscaling_algorithm")
 
     @autoscaling_algorithm.setter
-    def autoscaling_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def autoscaling_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "autoscaling_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStreamingEngine")
-    def enable_streaming_engine(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_streaming_engine(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Immutable. Indicates if the job should use the streaming engine feature.
         """
         return pulumi.get(self, "enable_streaming_engine")
 
     @enable_streaming_engine.setter
-    def enable_streaming_engine(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_streaming_engine(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_streaming_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="ipConfiguration")
-    def ip_configuration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_configuration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         """
         return pulumi.get(self, "ip_configuration")
 
     @ip_configuration.setter
-    def ip_configuration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_configuration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User labels to be specified for the job. Keys and values
         should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
@@ -234,84 +234,84 @@ class FlexTemplateJobArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="launcherMachineType")
-    def launcher_machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launcher_machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The machine type to use for launching the job. The default is n1-standard-1.
         """
         return pulumi.get(self, "launcher_machine_type")
 
     @launcher_machine_type.setter
-    def launcher_machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launcher_machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launcher_machine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The machine type to use for the job.
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="maxWorkers")
-    def max_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
         """
         return pulumi.get(self, "max_workers")
 
     @max_workers.setter
-    def max_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_workers", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. A unique name for the resource, required by Dataflow.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network to which VMs will be assigned. If it is not provided, "default" will be used.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="numWorkers")
-    def num_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Immutable. The initial number of Google Compute Engine instances for the job.
         """
         return pulumi.get(self, "num_workers")
 
     @num_workers.setter
-    def num_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="onDelete")
-    def on_delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_delete(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         One of "drain" or "cancel". Specifies behavior of
         deletion during `pulumi destroy`.  See above note.
@@ -319,12 +319,12 @@ class FlexTemplateJobArgs:
         return pulumi.get(self, "on_delete")
 
     @on_delete.setter
-    def on_delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_delete(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
         case-sensitive based on the language on which the pipeline is coded, mostly Java.
@@ -333,12 +333,12 @@ class FlexTemplateJobArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project in which the resource belongs. If it is not
         provided, the provider project is used.
@@ -346,48 +346,48 @@ class FlexTemplateJobArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The region in which the created job should run.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="sdkContainerImage")
-    def sdk_container_image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdk_container_image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
         """
         return pulumi.get(self, "sdk_container_image")
 
     @sdk_container_image.setter
-    def sdk_container_image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdk_container_image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdk_container_image", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         """
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
     @_builtins.property
     @pulumi.getter(name="skipWaitOnJobTermination")
-    def skip_wait_on_job_termination(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_wait_on_job_termination(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, terraform will
         treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
@@ -396,91 +396,91 @@ class FlexTemplateJobArgs:
         return pulumi.get(self, "skip_wait_on_job_termination")
 
     @skip_wait_on_job_termination.setter
-    def skip_wait_on_job_termination(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_wait_on_job_termination(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_wait_on_job_termination", value)
 
     @_builtins.property
     @pulumi.getter(name="stagingLocation")
-    def staging_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def staging_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         """
         return pulumi.get(self, "staging_location")
 
     @staging_location.setter
-    def staging_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def staging_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "staging_location", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         """
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
     @_builtins.property
     @pulumi.getter(name="tempLocation")
-    def temp_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def temp_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
         """
         return pulumi.get(self, "temp_location")
 
     @temp_location.setter
-    def temp_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def temp_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "temp_location", value)
 
     @_builtins.property
     @pulumi.getter(name="transformNameMapping")
-    def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def transform_name_mapping(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
         """
         return pulumi.get(self, "transform_name_mapping")
 
     @transform_name_mapping.setter
-    def transform_name_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def transform_name_mapping(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "transform_name_mapping", value)
 
 
 @pulumi.input_type
 class _FlexTemplateJobState:
     def __init__(__self__, *,
-                 additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 additional_pipeline_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 autoscaling_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_spec_gcs_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enable_streaming_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 launcher_machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 on_delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdk_container_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_wait_on_job_termination: Optional[pulumi.Input[_builtins.bool]] = None,
-                 staging_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 temp_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 additional_experiments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_spec_gcs_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 launcher_machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 on_delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdk_container_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait_on_job_termination: pulumi.Input[Optional[_builtins.bool]] = None,
+                 staging_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 temp_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 transform_name_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlexTemplateJob resources.
 
@@ -590,43 +590,43 @@ class _FlexTemplateJobState:
 
     @_builtins.property
     @pulumi.getter(name="additionalExperiments")
-    def additional_experiments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_experiments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         """
         return pulumi.get(self, "additional_experiments")
 
     @additional_experiments.setter
-    def additional_experiments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_experiments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_experiments", value)
 
     @_builtins.property
     @pulumi.getter(name="additionalPipelineOptions")
-    def additional_pipeline_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_pipeline_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
         """
         return pulumi.get(self, "additional_pipeline_options")
 
     @additional_pipeline_options.setter
-    def additional_pipeline_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_pipeline_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_pipeline_options", value)
 
     @_builtins.property
     @pulumi.getter(name="autoscalingAlgorithm")
-    def autoscaling_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def autoscaling_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The algorithm to use for autoscaling.
         """
         return pulumi.get(self, "autoscaling_algorithm")
 
     @autoscaling_algorithm.setter
-    def autoscaling_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def autoscaling_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "autoscaling_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="containerSpecGcsPath")
-    def container_spec_gcs_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_spec_gcs_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCS path to the Dataflow job Flex
         Template.
@@ -636,72 +636,72 @@ class _FlexTemplateJobState:
         return pulumi.get(self, "container_spec_gcs_path")
 
     @container_spec_gcs_path.setter
-    def container_spec_gcs_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_spec_gcs_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_spec_gcs_path", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStreamingEngine")
-    def enable_streaming_engine(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_streaming_engine(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Immutable. Indicates if the job should use the streaming engine feature.
         """
         return pulumi.get(self, "enable_streaming_engine")
 
     @enable_streaming_engine.setter
-    def enable_streaming_engine(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_streaming_engine(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_streaming_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="ipConfiguration")
-    def ip_configuration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_configuration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         """
         return pulumi.get(self, "ip_configuration")
 
     @ip_configuration.setter
-    def ip_configuration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_configuration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique ID of this job.
         """
         return pulumi.get(self, "job_id")
 
     @job_id.setter
-    def job_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_id", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User labels to be specified for the job. Keys and values
         should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
@@ -711,84 +711,84 @@ class _FlexTemplateJobState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="launcherMachineType")
-    def launcher_machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launcher_machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The machine type to use for launching the job. The default is n1-standard-1.
         """
         return pulumi.get(self, "launcher_machine_type")
 
     @launcher_machine_type.setter
-    def launcher_machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launcher_machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launcher_machine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The machine type to use for the job.
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="maxWorkers")
-    def max_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
         """
         return pulumi.get(self, "max_workers")
 
     @max_workers.setter
-    def max_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_workers", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. A unique name for the resource, required by Dataflow.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network to which VMs will be assigned. If it is not provided, "default" will be used.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="numWorkers")
-    def num_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Immutable. The initial number of Google Compute Engine instances for the job.
         """
         return pulumi.get(self, "num_workers")
 
     @num_workers.setter
-    def num_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="onDelete")
-    def on_delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_delete(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         One of "drain" or "cancel". Specifies behavior of
         deletion during `pulumi destroy`.  See above note.
@@ -796,12 +796,12 @@ class _FlexTemplateJobState:
         return pulumi.get(self, "on_delete")
 
     @on_delete.setter
-    def on_delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_delete(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
         case-sensitive based on the language on which the pipeline is coded, mostly Java.
@@ -810,12 +810,12 @@ class _FlexTemplateJobState:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project in which the resource belongs. If it is not
         provided, the provider project is used.
@@ -823,60 +823,60 @@ class _FlexTemplateJobState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The region in which the created job should run.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="sdkContainerImage")
-    def sdk_container_image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdk_container_image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
         """
         return pulumi.get(self, "sdk_container_image")
 
     @sdk_container_image.setter
-    def sdk_container_image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdk_container_image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdk_container_image", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
         """
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
     @_builtins.property
     @pulumi.getter(name="skipWaitOnJobTermination")
-    def skip_wait_on_job_termination(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_wait_on_job_termination(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, terraform will
         treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
@@ -885,79 +885,79 @@ class _FlexTemplateJobState:
         return pulumi.get(self, "skip_wait_on_job_termination")
 
     @skip_wait_on_job_termination.setter
-    def skip_wait_on_job_termination(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_wait_on_job_termination(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_wait_on_job_termination", value)
 
     @_builtins.property
     @pulumi.getter(name="stagingLocation")
-    def staging_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def staging_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         """
         return pulumi.get(self, "staging_location")
 
     @staging_location.setter
-    def staging_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def staging_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "staging_location", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         """
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
     @_builtins.property
     @pulumi.getter(name="tempLocation")
-    def temp_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def temp_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
         """
         return pulumi.get(self, "temp_location")
 
     @temp_location.setter
-    def temp_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def temp_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "temp_location", value)
 
     @_builtins.property
     @pulumi.getter(name="transformNameMapping")
-    def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def transform_name_mapping(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
         """
         return pulumi.get(self, "transform_name_mapping")
 
     @transform_name_mapping.setter
-    def transform_name_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def transform_name_mapping(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "transform_name_mapping", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of this job, selected from the JobType enum.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -967,31 +967,31 @@ class FlexTemplateJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 additional_pipeline_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 autoscaling_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_spec_gcs_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_streaming_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 launcher_machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 on_delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdk_container_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_wait_on_job_termination: Optional[pulumi.Input[_builtins.bool]] = None,
-                 staging_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 temp_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 additional_experiments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_spec_gcs_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 launcher_machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 on_delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdk_container_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait_on_job_termination: pulumi.Input[Optional[_builtins.bool]] = None,
+                 staging_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 temp_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 transform_name_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
@@ -1218,31 +1218,31 @@ class FlexTemplateJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 additional_pipeline_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 autoscaling_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_spec_gcs_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_streaming_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 launcher_machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 on_delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdk_container_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_wait_on_job_termination: Optional[pulumi.Input[_builtins.bool]] = None,
-                 staging_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 temp_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 additional_experiments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_spec_gcs_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 launcher_machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 on_delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdk_container_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait_on_job_termination: pulumi.Input[Optional[_builtins.bool]] = None,
+                 staging_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 temp_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 transform_name_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1296,36 +1296,36 @@ class FlexTemplateJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            additional_pipeline_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            autoscaling_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            container_spec_gcs_path: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            enable_streaming_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-            ip_configuration: Optional[pulumi.Input[_builtins.str]] = None,
-            job_id: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            launcher_machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-            machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-            max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            num_workers: Optional[pulumi.Input[_builtins.int]] = None,
-            on_delete: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            sdk_container_image: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_wait_on_job_termination: Optional[pulumi.Input[_builtins.bool]] = None,
-            staging_location: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-            temp_location: Optional[pulumi.Input[_builtins.str]] = None,
-            transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'FlexTemplateJob':
+            additional_experiments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            container_spec_gcs_path: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+            ip_configuration: pulumi.Input[Optional[_builtins.str]] = None,
+            job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            launcher_machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            num_workers: pulumi.Input[Optional[_builtins.int]] = None,
+            on_delete: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            sdk_container_image: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_wait_on_job_termination: pulumi.Input[Optional[_builtins.bool]] = None,
+            staging_location: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+            temp_location: pulumi.Input[Optional[_builtins.str]] = None,
+            transform_name_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'FlexTemplateJob':
         """
         Get an existing FlexTemplateJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

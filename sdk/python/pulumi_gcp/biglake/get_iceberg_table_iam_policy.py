@@ -155,10 +155,10 @@ def get_iceberg_table_iam_policy(catalog: Optional[_builtins.str] = None,
         namespace=pulumi.get(__ret__, 'namespace'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-def get_iceberg_table_iam_policy_output(catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                                        name: Optional[pulumi.Input[_builtins.str]] = None,
-                                        namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_iceberg_table_iam_policy_output(catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                                        name: pulumi.Input[Optional[_builtins.str]] = None,
+                                        namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIcebergTableIamPolicyResult]:
     """
     Retrieves the current IAM policy data for icebergtable

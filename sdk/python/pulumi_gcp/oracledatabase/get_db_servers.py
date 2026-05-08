@@ -165,9 +165,9 @@ def get_db_servers(cloud_exadata_infrastructure: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
         project=pulumi.get(__ret__, 'project'))
-def get_db_servers_output(cloud_exadata_infrastructure: Optional[pulumi.Input[_builtins.str]] = None,
-                          location: Optional[pulumi.Input[_builtins.str]] = None,
-                          project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_db_servers_output(cloud_exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
+                          location: pulumi.Input[Optional[_builtins.str]] = None,
+                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbServersResult]:
     """
     List all DbServers of a Cloud Exdata Infrastructure.

@@ -263,7 +263,7 @@ export interface ProjectsPolicyBindingState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Represents a textual expression in the Common Expression Language
      * (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
@@ -290,67 +290,67 @@ export interface ProjectsPolicyBindingState {
      * additional information.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.iam.ProjectsPolicyBindingCondition>;
+    condition?: pulumi.Input<inputs.iam.ProjectsPolicyBindingCondition | undefined>;
     /**
      * Output only. The time when the policy binding was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. The description of the policy binding. Must be less than or equal to 63 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The location of the Policy Binding
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the policy binding in the format `{binding_parent/locations/{location}/policyBindings/{policy_binding_id}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * The Policy Binding ID.
      */
-    policyBindingId?: pulumi.Input<string>;
+    policyBindingId?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The kind of the policy to attach in this binding. This
      * field must be one of the following:  - Left empty (will be automatically set
      * to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
      */
-    policyKind?: pulumi.Input<string>;
+    policyKind?: pulumi.Input<string | undefined>;
     /**
      * Output only. The globally unique ID of the policy to be bound.
      */
-    policyUid?: pulumi.Input<string>;
+    policyUid?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
      * Structure is documented below.
      */
-    target?: pulumi.Input<inputs.iam.ProjectsPolicyBindingTarget>;
+    target?: pulumi.Input<inputs.iam.ProjectsPolicyBindingTarget | undefined>;
     /**
      * Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time when the policy binding was most recently updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -363,7 +363,7 @@ export interface ProjectsPolicyBindingArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Represents a textual expression in the Common Expression Language
      * (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
@@ -390,11 +390,11 @@ export interface ProjectsPolicyBindingArgs {
      * additional information.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.iam.ProjectsPolicyBindingCondition>;
+    condition?: pulumi.Input<inputs.iam.ProjectsPolicyBindingCondition | undefined>;
     /**
      * Optional. The description of the policy binding. Must be less than or equal to 63 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The location of the Policy Binding
      */
@@ -412,12 +412,12 @@ export interface ProjectsPolicyBindingArgs {
      * field must be one of the following:  - Left empty (will be automatically set
      * to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
      */
-    policyKind?: pulumi.Input<string>;
+    policyKind?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
      * Structure is documented below.

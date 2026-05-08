@@ -203,8 +203,8 @@ def get_ssl_policy(name: Optional[_builtins.str] = None,
         profile=pulumi.get(__ret__, 'profile'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'))
-def get_ssl_policy_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                          project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ssl_policy_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSSLPolicyResult]:
     """
     Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.

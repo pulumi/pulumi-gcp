@@ -26,21 +26,21 @@ class DataConnectorArgs:
                  data_source: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  refresh_interval: pulumi.Input[_builtins.str],
-                 action_config: Optional[pulumi.Input['DataConnectorActionConfigArgs']] = None,
-                 auto_run_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bap_config: Optional[pulumi.Input['DataConnectorBapConfigArgs']] = None,
-                 connector_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 data_source_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorEntityArgs']]]] = None,
-                 incremental_refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 incremental_sync_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 json_params: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sync_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 action_config: pulumi.Input[Optional['DataConnectorActionConfigArgs']] = None,
+                 auto_run_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bap_config: pulumi.Input[Optional['DataConnectorBapConfigArgs']] = None,
+                 connector_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_source_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorEntityArgs']]]] = None,
+                 incremental_refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 incremental_sync_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 json_params: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sync_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataConnector resource.
 
@@ -218,7 +218,7 @@ class DataConnectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="actionConfig")
-    def action_config(self) -> Optional[pulumi.Input['DataConnectorActionConfigArgs']]:
+    def action_config(self) -> pulumi.Input[Optional['DataConnectorActionConfigArgs']]:
         """
         Action configuration for the data connector. Configures action
         capabilities for connectors that support the ACTIONS connector mode.
@@ -227,24 +227,24 @@ class DataConnectorArgs:
         return pulumi.get(self, "action_config")
 
     @action_config.setter
-    def action_config(self, value: Optional[pulumi.Input['DataConnectorActionConfigArgs']]):
+    def action_config(self, value: pulumi.Input[Optional['DataConnectorActionConfigArgs']]):
         pulumi.set(self, "action_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRunDisabled")
-    def auto_run_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_run_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether full syncs are paused for this connector
         """
         return pulumi.get(self, "auto_run_disabled")
 
     @auto_run_disabled.setter
-    def auto_run_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_run_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_run_disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="bapConfig")
-    def bap_config(self) -> Optional[pulumi.Input['DataConnectorBapConfigArgs']]:
+    def bap_config(self) -> pulumi.Input[Optional['DataConnectorBapConfigArgs']]:
         """
         BAP (Business Application Platform) configuration for the data
         connector. Controls which actions are enabled for connectors
@@ -254,12 +254,12 @@ class DataConnectorArgs:
         return pulumi.get(self, "bap_config")
 
     @bap_config.setter
-    def bap_config(self, value: Optional[pulumi.Input['DataConnectorBapConfigArgs']]):
+    def bap_config(self, value: pulumi.Input[Optional['DataConnectorBapConfigArgs']]):
         pulumi.set(self, "bap_config", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorModes")
-    def connector_modes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def connector_modes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The modes enabled for this connector. The possible value can be:
         'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
@@ -268,24 +268,24 @@ class DataConnectorArgs:
         return pulumi.get(self, "connector_modes")
 
     @connector_modes.setter
-    def connector_modes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def connector_modes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "connector_modes", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceVersion")
-    def data_source_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_source_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version of the data source. For example, `3` for Jira v3.
         """
         return pulumi.get(self, "data_source_version")
 
     @data_source_version.setter
-    def data_source_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_source_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_source_version", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationConfigs")
-    def destination_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]]:
+    def destination_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]]:
         """
         Destination connector configurations for the data connector,
         used to configure where data is served.
@@ -294,12 +294,12 @@ class DataConnectorArgs:
         return pulumi.get(self, "destination_configs")
 
     @destination_configs.setter
-    def destination_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]]):
+    def destination_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]]):
         pulumi.set(self, "destination_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorEntityArgs']]]]:
+    def entities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorEntityArgs']]]]:
         """
         List of entities from the connected data source to ingest.
         Structure is documented below.
@@ -307,12 +307,12 @@ class DataConnectorArgs:
         return pulumi.get(self, "entities")
 
     @entities.setter
-    def entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorEntityArgs']]]]):
+    def entities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorEntityArgs']]]]):
         pulumi.set(self, "entities", value)
 
     @_builtins.property
     @pulumi.getter(name="incrementalRefreshInterval")
-    def incremental_refresh_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def incremental_refresh_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The refresh interval specifically for incremental data syncs. If unset,
         incremental syncs will use the default from env, set to 3hrs.
@@ -324,36 +324,36 @@ class DataConnectorArgs:
         return pulumi.get(self, "incremental_refresh_interval")
 
     @incremental_refresh_interval.setter
-    def incremental_refresh_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def incremental_refresh_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "incremental_refresh_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="incrementalSyncDisabled")
-    def incremental_sync_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def incremental_sync_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether incremental syncs are paused for this connector.
         """
         return pulumi.get(self, "incremental_sync_disabled")
 
     @incremental_sync_disabled.setter
-    def incremental_sync_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def incremental_sync_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "incremental_sync_disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonParams")
-    def json_params(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json_params(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Params needed to access the source in the format of json string.
         """
         return pulumi.get(self, "json_params")
 
     @json_params.setter
-    def json_params(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json_params(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json_params", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The KMS key to be used to protect the DataStores managed by this connector.
         Must be set for requests that need to comply with CMEK Org Policy
@@ -364,24 +364,24 @@ class DataConnectorArgs:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def params(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Params needed to access the source in the format of String-to-String (Key, Value) pairs.
         """
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def params(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -389,24 +389,24 @@ class DataConnectorArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="staticIpEnabled")
-    def static_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def static_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether customer has enabled static IP addresses for this connector.
         """
         return pulumi.get(self, "static_ip_enabled")
 
     @static_ip_enabled.setter
-    def static_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def static_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "static_ip_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="syncMode")
-    def sync_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data synchronization mode supported by the data connector. The possible value can be:
         'PERIODIC', 'STREAMING'.
@@ -414,46 +414,46 @@ class DataConnectorArgs:
         return pulumi.get(self, "sync_mode")
 
     @sync_mode.setter
-    def sync_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_mode", value)
 
 
 @pulumi.input_type
 class _DataConnectorState:
     def __init__(__self__, *,
-                 action_config: Optional[pulumi.Input['DataConnectorActionConfigArgs']] = None,
-                 action_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_run_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bap_config: Optional[pulumi.Input['DataConnectorBapConfigArgs']] = None,
-                 blocking_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 collection_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 collection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 connector_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorEntityArgs']]]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorErrorArgs']]]] = None,
-                 incremental_refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 incremental_sync_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 json_params: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_sync_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 latest_pause_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 private_connectivity_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 realtime_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 static_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sync_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 action_config: pulumi.Input[Optional['DataConnectorActionConfigArgs']] = None,
+                 action_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_run_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bap_config: pulumi.Input[Optional['DataConnectorBapConfigArgs']] = None,
+                 blocking_reasons: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 collection_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 connector_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorEntityArgs']]]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorErrorArgs']]]] = None,
+                 incremental_refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 incremental_sync_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 json_params: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_pause_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 private_connectivity_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 realtime_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 static_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sync_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataConnector resources.
 
@@ -620,7 +620,7 @@ class _DataConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="actionConfig")
-    def action_config(self) -> Optional[pulumi.Input['DataConnectorActionConfigArgs']]:
+    def action_config(self) -> pulumi.Input[Optional['DataConnectorActionConfigArgs']]:
         """
         Action configuration for the data connector. Configures action
         capabilities for connectors that support the ACTIONS connector mode.
@@ -629,12 +629,12 @@ class _DataConnectorState:
         return pulumi.get(self, "action_config")
 
     @action_config.setter
-    def action_config(self, value: Optional[pulumi.Input['DataConnectorActionConfigArgs']]):
+    def action_config(self, value: pulumi.Input[Optional['DataConnectorActionConfigArgs']]):
         pulumi.set(self, "action_config", value)
 
     @_builtins.property
     @pulumi.getter(name="actionState")
-    def action_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the action connector. This reflects whether the action connector
         is initializing, active or has encountered errors. The possible value can be:
@@ -644,24 +644,24 @@ class _DataConnectorState:
         return pulumi.get(self, "action_state")
 
     @action_state.setter
-    def action_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action_state", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRunDisabled")
-    def auto_run_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_run_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether full syncs are paused for this connector
         """
         return pulumi.get(self, "auto_run_disabled")
 
     @auto_run_disabled.setter
-    def auto_run_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_run_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_run_disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="bapConfig")
-    def bap_config(self) -> Optional[pulumi.Input['DataConnectorBapConfigArgs']]:
+    def bap_config(self) -> pulumi.Input[Optional['DataConnectorBapConfigArgs']]:
         """
         BAP (Business Application Platform) configuration for the data
         connector. Controls which actions are enabled for connectors
@@ -671,12 +671,12 @@ class _DataConnectorState:
         return pulumi.get(self, "bap_config")
 
     @bap_config.setter
-    def bap_config(self, value: Optional[pulumi.Input['DataConnectorBapConfigArgs']]):
+    def bap_config(self, value: pulumi.Input[Optional['DataConnectorBapConfigArgs']]):
         pulumi.set(self, "bap_config", value)
 
     @_builtins.property
     @pulumi.getter(name="blockingReasons")
-    def blocking_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def blocking_reasons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User actions that must be completed before the connector can start syncing data.
         The possible values can be: 'ALLOWLIST_STATIC_IP', 'ALLOWLIST_IN_SERVICE_ATTACHMENT'.
@@ -684,12 +684,12 @@ class _DataConnectorState:
         return pulumi.get(self, "blocking_reasons")
 
     @blocking_reasons.setter
-    def blocking_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def blocking_reasons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blocking_reasons", value)
 
     @_builtins.property
     @pulumi.getter(name="collectionDisplayName")
-    def collection_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collection_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the Collection.
         Should be human readable, used to display collections in the Console
@@ -698,12 +698,12 @@ class _DataConnectorState:
         return pulumi.get(self, "collection_display_name")
 
     @collection_display_name.setter
-    def collection_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collection_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collection_display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="collectionId")
-    def collection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the Collection, which will become the final component
         of the Collection's resource name. A new Collection is created as
@@ -716,12 +716,12 @@ class _DataConnectorState:
         return pulumi.get(self, "collection_id")
 
     @collection_id.setter
-    def collection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorModes")
-    def connector_modes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def connector_modes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The modes enabled for this connector. The possible value can be:
         'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
@@ -730,12 +730,12 @@ class _DataConnectorState:
         return pulumi.get(self, "connector_modes")
 
     @connector_modes.setter
-    def connector_modes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def connector_modes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "connector_modes", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorType")
-    def connector_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of connector. Each source can only map to one type.
         For example, salesforce, confluence and jira have THIRD_PARTY connector
@@ -747,24 +747,24 @@ class _DataConnectorState:
         return pulumi.get(self, "connector_type")
 
     @connector_type.setter
-    def connector_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the DataConnector was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSource")
-    def data_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for the data source.
         This is a partial list of supported connectors. Please refer to the
@@ -775,24 +775,24 @@ class _DataConnectorState:
         return pulumi.get(self, "data_source")
 
     @data_source.setter
-    def data_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceVersion")
-    def data_source_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_source_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version of the data source. For example, `3` for Jira v3.
         """
         return pulumi.get(self, "data_source_version")
 
     @data_source_version.setter
-    def data_source_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_source_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_source_version", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationConfigs")
-    def destination_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]]:
+    def destination_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]]:
         """
         Destination connector configurations for the data connector,
         used to configure where data is served.
@@ -801,12 +801,12 @@ class _DataConnectorState:
         return pulumi.get(self, "destination_configs")
 
     @destination_configs.setter
-    def destination_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]]):
+    def destination_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorDestinationConfigArgs']]]]):
         pulumi.set(self, "destination_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorEntityArgs']]]]:
+    def entities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorEntityArgs']]]]:
         """
         List of entities from the connected data source to ingest.
         Structure is documented below.
@@ -814,12 +814,12 @@ class _DataConnectorState:
         return pulumi.get(self, "entities")
 
     @entities.setter
-    def entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorEntityArgs']]]]):
+    def entities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorEntityArgs']]]]):
         pulumi.set(self, "entities", value)
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorErrorArgs']]]]:
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorErrorArgs']]]]:
         """
         The errors from initialization or from the latest connector run.
         Structure is documented below.
@@ -827,12 +827,12 @@ class _DataConnectorState:
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataConnectorErrorArgs']]]]):
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorErrorArgs']]]]):
         pulumi.set(self, "errors", value)
 
     @_builtins.property
     @pulumi.getter(name="incrementalRefreshInterval")
-    def incremental_refresh_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def incremental_refresh_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The refresh interval specifically for incremental data syncs. If unset,
         incremental syncs will use the default from env, set to 3hrs.
@@ -844,36 +844,36 @@ class _DataConnectorState:
         return pulumi.get(self, "incremental_refresh_interval")
 
     @incremental_refresh_interval.setter
-    def incremental_refresh_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def incremental_refresh_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "incremental_refresh_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="incrementalSyncDisabled")
-    def incremental_sync_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def incremental_sync_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether incremental syncs are paused for this connector.
         """
         return pulumi.get(self, "incremental_sync_disabled")
 
     @incremental_sync_disabled.setter
-    def incremental_sync_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def incremental_sync_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "incremental_sync_disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonParams")
-    def json_params(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json_params(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Params needed to access the source in the format of json string.
         """
         return pulumi.get(self, "json_params")
 
     @json_params.setter
-    def json_params(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json_params(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json_params", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The KMS key to be used to protect the DataStores managed by this connector.
         Must be set for requests that need to comply with CMEK Org Policy
@@ -884,24 +884,24 @@ class _DataConnectorState:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="lastSyncTime")
-    def last_sync_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_sync_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For periodic connectors only, the last time a data sync was completed.
         """
         return pulumi.get(self, "last_sync_time")
 
     @last_sync_time.setter
-    def last_sync_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_sync_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_sync_time", value)
 
     @_builtins.property
     @pulumi.getter(name="latestPauseTime")
-    def latest_pause_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def latest_pause_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The most recent timestamp when this [DataConnector][] was paused,
         affecting all functionalities such as data synchronization.
@@ -914,12 +914,12 @@ class _DataConnectorState:
         return pulumi.get(self, "latest_pause_time")
 
     @latest_pause_time.setter
-    def latest_pause_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def latest_pause_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "latest_pause_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location where the data store should reside. The value can
         only be one of "global", "us" and "eu".
@@ -927,12 +927,12 @@ class _DataConnectorState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full resource name of the Data Connector.
         Format: `projects/*/locations/*/collections/*/dataConnector`.
@@ -940,24 +940,24 @@ class _DataConnectorState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def params(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Params needed to access the source in the format of String-to-String (Key, Value) pairs.
         """
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def params(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter(name="privateConnectivityProjectId")
-    def private_connectivity_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_connectivity_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tenant project ID associated with private connectivity connectors.
         This project must be allowlisted by in order for the connector to function.
@@ -965,12 +965,12 @@ class _DataConnectorState:
         return pulumi.get(self, "private_connectivity_project_id")
 
     @private_connectivity_project_id.setter
-    def private_connectivity_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_connectivity_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_connectivity_project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -978,12 +978,12 @@ class _DataConnectorState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="realtimeState")
-    def realtime_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def realtime_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The real-time sync state. The possible values can be:
         'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
@@ -992,12 +992,12 @@ class _DataConnectorState:
         return pulumi.get(self, "realtime_state")
 
     @realtime_state.setter
-    def realtime_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def realtime_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "realtime_state", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshInterval")
-    def refresh_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def refresh_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The refresh interval for data sync. If duration is set to 0, the data will
         be synced in real time. The streaming feature is not supported yet. The
@@ -1008,12 +1008,12 @@ class _DataConnectorState:
         return pulumi.get(self, "refresh_interval")
 
     @refresh_interval.setter
-    def refresh_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def refresh_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "refresh_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of connector. The possible value can be:
         'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
@@ -1022,36 +1022,36 @@ class _DataConnectorState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="staticIpAddresses")
-    def static_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def static_ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The static IP addresses used by this connector.
         """
         return pulumi.get(self, "static_ip_addresses")
 
     @static_ip_addresses.setter
-    def static_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def static_ip_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "static_ip_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="staticIpEnabled")
-    def static_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def static_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether customer has enabled static IP addresses for this connector.
         """
         return pulumi.get(self, "static_ip_enabled")
 
     @static_ip_enabled.setter
-    def static_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def static_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "static_ip_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="syncMode")
-    def sync_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data synchronization mode supported by the data connector. The possible value can be:
         'PERIODIC', 'STREAMING'.
@@ -1059,19 +1059,19 @@ class _DataConnectorState:
         return pulumi.get(self, "sync_mode")
 
     @sync_mode.setter
-    def sync_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the DataConnector was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -1081,26 +1081,26 @@ class DataConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_config: Optional[pulumi.Input[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']]] = None,
-                 auto_run_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bap_config: Optional[pulumi.Input[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']]] = None,
-                 collection_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 collection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 data_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
-                 incremental_refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 incremental_sync_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 json_params: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sync_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 action_config: pulumi.Input[Optional[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']]] = None,
+                 auto_run_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bap_config: pulumi.Input[Optional[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']]] = None,
+                 collection_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
+                 incremental_refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 incremental_sync_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 json_params: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sync_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         DataConnector manages the connection to external data sources for all data stores grouped
@@ -1506,26 +1506,26 @@ class DataConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_config: Optional[pulumi.Input[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']]] = None,
-                 auto_run_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bap_config: Optional[pulumi.Input[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']]] = None,
-                 collection_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 collection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 data_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
-                 incremental_refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 incremental_sync_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 json_params: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sync_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 action_config: pulumi.Input[Optional[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']]] = None,
+                 auto_run_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bap_config: pulumi.Input[Optional[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']]] = None,
+                 collection_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
+                 incremental_refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 incremental_sync_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 json_params: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sync_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1588,39 +1588,39 @@ class DataConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action_config: Optional[pulumi.Input[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']]] = None,
-            action_state: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_run_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            bap_config: Optional[pulumi.Input[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']]] = None,
-            blocking_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            collection_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            collection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            connector_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            connector_type: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_version: Optional[pulumi.Input[_builtins.int]] = None,
-            destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
-            entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
-            errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataConnectorErrorArgs', 'DataConnectorErrorArgsDict']]]]] = None,
-            incremental_refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            incremental_sync_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            json_params: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            last_sync_time: Optional[pulumi.Input[_builtins.str]] = None,
-            latest_pause_time: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            private_connectivity_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            realtime_state: Optional[pulumi.Input[_builtins.str]] = None,
-            refresh_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            static_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            static_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            sync_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'DataConnector':
+            action_config: pulumi.Input[Optional[Union['DataConnectorActionConfigArgs', 'DataConnectorActionConfigArgsDict']]] = None,
+            action_state: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_run_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            bap_config: pulumi.Input[Optional[Union['DataConnectorBapConfigArgs', 'DataConnectorBapConfigArgsDict']]] = None,
+            blocking_reasons: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            collection_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            connector_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_version: pulumi.Input[Optional[_builtins.int]] = None,
+            destination_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorDestinationConfigArgs', 'DataConnectorDestinationConfigArgsDict']]]]] = None,
+            entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorEntityArgs', 'DataConnectorEntityArgsDict']]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataConnectorErrorArgs', 'DataConnectorErrorArgsDict']]]]] = None,
+            incremental_refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            incremental_sync_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            json_params: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_pause_time: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            private_connectivity_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            realtime_state: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            static_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            static_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            sync_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'DataConnector':
         """
         Get an existing DataConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

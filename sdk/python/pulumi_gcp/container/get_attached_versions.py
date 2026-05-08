@@ -112,8 +112,8 @@ def get_attached_versions(location: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         project=pulumi.get(__ret__, 'project'),
         valid_versions=pulumi.get(__ret__, 'valid_versions'))
-def get_attached_versions_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                                 project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_attached_versions_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                                 project: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAttachedVersionsResult]:
     """
     Provides access to available platform versions in a location for a given project.

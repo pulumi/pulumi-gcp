@@ -297,46 +297,46 @@ export interface PluginState {
      * The configuration of actions supported by the plugin.
      * Structure is documented below.
      */
-    actionsConfigs?: pulumi.Input<pulumi.Input<inputs.apihub.PluginActionsConfig>[]>;
+    actionsConfigs?: pulumi.Input<pulumi.Input<inputs.apihub.PluginActionsConfig>[] | undefined>;
     /**
      * ConfigTemplate represents the configuration template for a plugin.
      * Structure is documented below.
      */
-    configTemplate?: pulumi.Input<inputs.apihub.PluginConfigTemplate>;
+    configTemplate?: pulumi.Input<inputs.apihub.PluginConfigTemplate | undefined>;
     /**
      * Timestamp indicating when the plugin was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The plugin description. Max length is 2000 characters (Unicode code
      * points).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the plugin. Max length is 50 characters (Unicode code
      * points).
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Documentation details.
      * Structure is documented below.
      */
-    documentation?: pulumi.Input<inputs.apihub.PluginDocumentation>;
+    documentation?: pulumi.Input<inputs.apihub.PluginDocumentation | undefined>;
     /**
      * The information related to the service implemented by the plugin
      * developer, used to invoke the plugin's functionality.
      * Structure is documented below.
      */
-    hostingService?: pulumi.Input<inputs.apihub.PluginHostingService>;
+    hostingService?: pulumi.Input<inputs.apihub.PluginHostingService | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The name of the plugin.
      * Format: `projects/{project}/locations/{location}/plugins/{plugin}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of the plugin, indicating whether it is 'SYSTEM_OWNED' or
      * 'USER_OWNED'.
@@ -345,14 +345,14 @@ export interface PluginState {
      * SYSTEM_OWNED
      * USER_OWNED
      */
-    ownershipType?: pulumi.Input<string>;
+    ownershipType?: pulumi.Input<string | undefined>;
     /**
      * Possible values:
      * PLUGIN_CATEGORY_UNSPECIFIED
      * API_GATEWAY
      * API_PRODUCER
      */
-    pluginCategory?: pulumi.Input<string>;
+    pluginCategory?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the Plugin resource, which will become the final
      * component of the Plugin's resource name. This field is optional.
@@ -366,12 +366,12 @@ export interface PluginState {
      * its length is limited to 1000 characters and valid characters are
      * /a-z[0-9]-_/.
      */
-    pluginId?: pulumi.Input<string>;
+    pluginId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Represents the state of the plugin.
      * Note this field will not be set for plugins developed via plugin
@@ -381,11 +381,11 @@ export interface PluginState {
      * ENABLED
      * DISABLED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Timestamp indicating when the plugin was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -396,17 +396,17 @@ export interface PluginArgs {
      * The configuration of actions supported by the plugin.
      * Structure is documented below.
      */
-    actionsConfigs?: pulumi.Input<pulumi.Input<inputs.apihub.PluginActionsConfig>[]>;
+    actionsConfigs?: pulumi.Input<pulumi.Input<inputs.apihub.PluginActionsConfig>[] | undefined>;
     /**
      * ConfigTemplate represents the configuration template for a plugin.
      * Structure is documented below.
      */
-    configTemplate?: pulumi.Input<inputs.apihub.PluginConfigTemplate>;
+    configTemplate?: pulumi.Input<inputs.apihub.PluginConfigTemplate | undefined>;
     /**
      * The plugin description. Max length is 2000 characters (Unicode code
      * points).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the plugin. Max length is 50 characters (Unicode code
      * points).
@@ -416,13 +416,13 @@ export interface PluginArgs {
      * Documentation details.
      * Structure is documented below.
      */
-    documentation?: pulumi.Input<inputs.apihub.PluginDocumentation>;
+    documentation?: pulumi.Input<inputs.apihub.PluginDocumentation | undefined>;
     /**
      * The information related to the service implemented by the plugin
      * developer, used to invoke the plugin's functionality.
      * Structure is documented below.
      */
-    hostingService?: pulumi.Input<inputs.apihub.PluginHostingService>;
+    hostingService?: pulumi.Input<inputs.apihub.PluginHostingService | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -433,7 +433,7 @@ export interface PluginArgs {
      * API_GATEWAY
      * API_PRODUCER
      */
-    pluginCategory?: pulumi.Input<string>;
+    pluginCategory?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the Plugin resource, which will become the final
      * component of the Plugin's resource name. This field is optional.
@@ -452,5 +452,5 @@ export interface PluginArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

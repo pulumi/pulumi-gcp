@@ -239,19 +239,19 @@ export interface DatastoreState {
     /**
      * Clusters to which the datastore is attached.
      */
-    clusters?: pulumi.Input<pulumi.Input<string>[]>;
+    clusters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Creation time of this resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-provided description for this datastore
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The user-provided identifier of the datastore to be created.
      * This identifier must be unique among each `Datastore` within the parent
@@ -264,17 +264,17 @@ export interface DatastoreState {
      * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
      * (section 3.5)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The NFS datastore configuration.
      * Structure is documented below.
      */
-    nfsDatastore?: pulumi.Input<inputs.vmwareengine.DatastoreNfsDatastore>;
+    nfsDatastore?: pulumi.Input<inputs.vmwareengine.DatastoreNfsDatastore | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The state of the Datastore.
      * Possible values:
@@ -285,15 +285,15 @@ export interface DatastoreState {
      * SOFT_DELETING
      * SOFT_DELETED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * System-generated unique identifier for the resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Last update time of this resource.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -303,7 +303,7 @@ export interface DatastoreArgs {
     /**
      * User-provided description for this datastore
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -320,7 +320,7 @@ export interface DatastoreArgs {
      * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
      * (section 3.5)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The NFS datastore configuration.
      * Structure is documented below.
@@ -330,5 +330,5 @@ export interface DatastoreArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

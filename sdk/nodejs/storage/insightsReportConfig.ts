@@ -211,43 +211,43 @@ export interface InsightsReportConfigState {
      * Options for configuring the format of the inventory report CSV file.
      * Structure is documented below.
      */
-    csvOptions?: pulumi.Input<inputs.storage.InsightsReportConfigCsvOptions>;
+    csvOptions?: pulumi.Input<inputs.storage.InsightsReportConfigCsvOptions | undefined>;
     /**
      * The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * If set, all the inventory report details associated with this report configuration are deleted.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Options for configuring how inventory reports are generated.
      * Structure is documented below.
      */
-    frequencyOptions?: pulumi.Input<inputs.storage.InsightsReportConfigFrequencyOptions>;
+    frequencyOptions?: pulumi.Input<inputs.storage.InsightsReportConfigFrequencyOptions | undefined>;
     /**
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the inventory report configuration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Options for including metadata in an inventory report.
      * Structure is documented below.
      */
-    objectMetadataReportOptions?: pulumi.Input<inputs.storage.InsightsReportConfigObjectMetadataReportOptions>;
+    objectMetadataReportOptions?: pulumi.Input<inputs.storage.InsightsReportConfigObjectMetadataReportOptions | undefined>;
     /**
      * An option for outputting inventory reports as parquet files.
      */
-    parquetOptions?: pulumi.Input<inputs.storage.InsightsReportConfigParquetOptions>;
+    parquetOptions?: pulumi.Input<inputs.storage.InsightsReportConfigParquetOptions | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -258,20 +258,20 @@ export interface InsightsReportConfigArgs {
      * Options for configuring the format of the inventory report CSV file.
      * Structure is documented below.
      */
-    csvOptions?: pulumi.Input<inputs.storage.InsightsReportConfigCsvOptions>;
+    csvOptions?: pulumi.Input<inputs.storage.InsightsReportConfigCsvOptions | undefined>;
     /**
      * The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * If set, all the inventory report details associated with this report configuration are deleted.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Options for configuring how inventory reports are generated.
      * Structure is documented below.
      */
-    frequencyOptions?: pulumi.Input<inputs.storage.InsightsReportConfigFrequencyOptions>;
+    frequencyOptions?: pulumi.Input<inputs.storage.InsightsReportConfigFrequencyOptions | undefined>;
     /**
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
@@ -281,14 +281,14 @@ export interface InsightsReportConfigArgs {
      * Options for including metadata in an inventory report.
      * Structure is documented below.
      */
-    objectMetadataReportOptions?: pulumi.Input<inputs.storage.InsightsReportConfigObjectMetadataReportOptions>;
+    objectMetadataReportOptions?: pulumi.Input<inputs.storage.InsightsReportConfigObjectMetadataReportOptions | undefined>;
     /**
      * An option for outputting inventory reports as parquet files.
      */
-    parquetOptions?: pulumi.Input<inputs.storage.InsightsReportConfigParquetOptions>;
+    parquetOptions?: pulumi.Input<inputs.storage.InsightsReportConfigParquetOptions | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

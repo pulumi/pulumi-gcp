@@ -210,8 +210,8 @@ def get_backend_bucket(name: Optional[_builtins.str] = None,
         params=pulumi.get(__ret__, 'params'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'))
-def get_backend_bucket_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                              project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_backend_bucket_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                              project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackendBucketResult]:
     """
     Get information about a BackendBucket.

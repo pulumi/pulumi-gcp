@@ -172,9 +172,9 @@ def get_environment(name: Optional[_builtins.str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         storage_configs=pulumi.get(__ret__, 'storage_configs'))
-def get_environment_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                           project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_environment_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                           project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentResult]:
     """
     Provides access to Cloud Composer environment configuration in a region for a given project.

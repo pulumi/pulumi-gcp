@@ -204,9 +204,9 @@ def get_app_gateway(name: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'),
         uri=pulumi.get(__ret__, 'uri'))
-def get_app_gateway_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                           project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_app_gateway_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                           project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppGatewayResult]:
     """
     Get information about a Google BeyondCorp App Gateway.

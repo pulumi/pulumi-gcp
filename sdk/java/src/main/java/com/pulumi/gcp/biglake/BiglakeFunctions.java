@@ -35,8 +35,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergCatalogIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -76,8 +76,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergCatalogIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -117,8 +117,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergCatalogIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -158,8 +158,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergCatalogIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -199,8 +199,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergCatalogIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -240,8 +240,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergNamespaceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -282,8 +282,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergNamespaceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -324,8 +324,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergNamespaceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -366,8 +366,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergNamespaceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -408,8 +408,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergNamespaceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -450,8 +450,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -493,8 +493,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -536,8 +536,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -579,8 +579,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -622,8 +622,8 @@ public final class BiglakeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.biglake.BiglakeFunctions;
      * import com.pulumi.gcp.biglake.inputs.GetIcebergTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -142,27 +142,27 @@ export interface PeeredDnsDomainState {
     /**
      * The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
      */
-    dnsSuffix?: pulumi.Input<string>;
+    dnsSuffix?: pulumi.Input<string | undefined>;
     /**
      * Internal name used for the peered DNS domain.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network in the consumer project.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * an identifier for the resource with format `services/{{service}}/projects/{{project}}/global/networks/{{network}}`
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The producer project number. If not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Private service connection between service and consumer network, defaults to `servicenetworking.googleapis.com`
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -176,7 +176,7 @@ export interface PeeredDnsDomainArgs {
     /**
      * Internal name used for the peered DNS domain.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network in the consumer project.
      */
@@ -184,9 +184,9 @@ export interface PeeredDnsDomainArgs {
     /**
      * The producer project number. If not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Private service connection between service and consumer network, defaults to `servicenetworking.googleapis.com`
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
 }

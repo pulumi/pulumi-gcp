@@ -25,10 +25,10 @@ class WorkloadArgs:
                  discovered_workload: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  workload_id: pulumi.Input[_builtins.str],
-                 attributes: Optional[pulumi.Input['WorkloadAttributesArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 attributes: pulumi.Input[Optional['WorkloadAttributesArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Workload resource.
 
@@ -106,7 +106,7 @@ class WorkloadArgs:
 
     @_builtins.property
     @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input['WorkloadAttributesArgs']]:
+    def attributes(self) -> pulumi.Input[Optional['WorkloadAttributesArgs']]:
         """
         Consumer provided attributes.
         Structure is documented below.
@@ -114,36 +114,36 @@ class WorkloadArgs:
         return pulumi.get(self, "attributes")
 
     @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input['WorkloadAttributesArgs']]):
+    def attributes(self, value: pulumi.Input[Optional['WorkloadAttributesArgs']]):
         pulumi.set(self, "attributes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined description of a Workload.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined name for the Workload.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -151,28 +151,28 @@ class WorkloadArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _WorkloadState:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 attributes: Optional[pulumi.Input['WorkloadAttributesArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovered_workload: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_properties: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyArgs']]]] = None,
-                 workload_references: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadReferenceArgs']]]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 attributes: pulumi.Input[Optional['WorkloadAttributesArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovered_workload: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_properties: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadWorkloadPropertyArgs']]]] = None,
+                 workload_references: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadWorkloadReferenceArgs']]]] = None):
         """
         Input properties used for looking up and filtering Workload resources.
 
@@ -229,19 +229,19 @@ class _WorkloadState:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input['WorkloadAttributesArgs']]:
+    def attributes(self) -> pulumi.Input[Optional['WorkloadAttributesArgs']]:
         """
         Consumer provided attributes.
         Structure is documented below.
@@ -249,84 +249,84 @@ class _WorkloadState:
         return pulumi.get(self, "attributes")
 
     @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input['WorkloadAttributesArgs']]):
+    def attributes(self, value: pulumi.Input[Optional['WorkloadAttributesArgs']]):
         pulumi.set(self, "attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Create time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined description of a Workload.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveredWorkload")
-    def discovered_workload(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discovered_workload(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The resource name of the original discovered workload.
         """
         return pulumi.get(self, "discovered_workload")
 
     @discovered_workload.setter
-    def discovered_workload(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discovered_workload(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discovered_workload", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined name for the Workload.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name of the Workload. Format:"projects/{host-project-id}/locations/{location}/applications/{application-id}/workloads/{workload-id}"
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -334,60 +334,60 @@ class _WorkloadState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Workload state. Possible values:  STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. A universally unique identifier (UUID) for the `Workload` in the UUID4 format.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Update time.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadId")
-    def workload_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workload_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Workload identifier.
         """
         return pulumi.get(self, "workload_id")
 
     @workload_id.setter
-    def workload_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workload_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workload_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadProperties")
-    def workload_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyArgs']]]]:
+    def workload_properties(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadWorkloadPropertyArgs']]]]:
         """
         Properties of an underlying compute resource represented by the Workload.
         Structure is documented below.
@@ -395,12 +395,12 @@ class _WorkloadState:
         return pulumi.get(self, "workload_properties")
 
     @workload_properties.setter
-    def workload_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyArgs']]]]):
+    def workload_properties(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadWorkloadPropertyArgs']]]]):
         pulumi.set(self, "workload_properties", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadReferences")
-    def workload_references(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadReferenceArgs']]]]:
+    def workload_references(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadWorkloadReferenceArgs']]]]:
         """
         Reference of an underlying compute resource represented by the Workload.
         Structure is documented below.
@@ -408,7 +408,7 @@ class _WorkloadState:
         return pulumi.get(self, "workload_references")
 
     @workload_references.setter
-    def workload_references(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadReferenceArgs']]]]):
+    def workload_references(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadWorkloadReferenceArgs']]]]):
         pulumi.set(self, "workload_references", value)
 
 
@@ -418,14 +418,14 @@ class Workload(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 attributes: Optional[pulumi.Input[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovered_workload: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 attributes: pulumi.Input[Optional[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovered_workload: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Workload represents a binary deployment (such as Managed Instance Groups (MIGs), GKE deployments, etc.) that performs the smallest logical subset of business functionality. It registers identified workload to the Application.
@@ -505,14 +505,14 @@ class Workload(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 attributes: Optional[pulumi.Input[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovered_workload: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 attributes: pulumi.Input[Optional[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovered_workload: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -555,21 +555,21 @@ class Workload(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_id: Optional[pulumi.Input[_builtins.str]] = None,
-            attributes: Optional[pulumi.Input[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            discovered_workload: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            workload_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workload_properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadWorkloadPropertyArgs', 'WorkloadWorkloadPropertyArgsDict']]]]] = None,
-            workload_references: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadWorkloadReferenceArgs', 'WorkloadWorkloadReferenceArgsDict']]]]] = None) -> 'Workload':
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            attributes: pulumi.Input[Optional[Union['WorkloadAttributesArgs', 'WorkloadAttributesArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            discovered_workload: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadWorkloadPropertyArgs', 'WorkloadWorkloadPropertyArgsDict']]]]] = None,
+            workload_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadWorkloadReferenceArgs', 'WorkloadWorkloadReferenceArgsDict']]]]] = None) -> 'Workload':
         """
         Get an existing Workload resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

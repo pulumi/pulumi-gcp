@@ -20,9 +20,9 @@ __all__ = ['ProjectSettingsArgs', 'ProjectSettings']
 class ProjectSettingsArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 default_storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectSettings resource.
 
@@ -54,31 +54,31 @@ class ProjectSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultStorageLocation")
-    def default_storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_storage_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default storage location for new resources, e.g. buckets. Only valid for global location.
         """
         return pulumi.get(self, "default_storage_location")
 
     @default_storage_location.setter
-    def default_storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_storage_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_storage_location", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default Cloud KMS key to use for new resources. Only valid for regional locations.
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -86,19 +86,19 @@ class ProjectSettingsArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ProjectSettingsState:
     def __init__(__self__, *,
-                 default_storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectSettings resources.
 
@@ -125,55 +125,55 @@ class _ProjectSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="defaultStorageLocation")
-    def default_storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_storage_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default storage location for new resources, e.g. buckets. Only valid for global location.
         """
         return pulumi.get(self, "default_storage_location")
 
     @default_storage_location.setter
-    def default_storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_storage_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_storage_location", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default Cloud KMS key to use for new resources. Only valid for regional locations.
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the settings.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the settings.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -181,19 +181,19 @@ class _ProjectSettingsState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountId")
-    def service_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account used by Cloud Observability for this project.
         """
         return pulumi.get(self, "service_account_id")
 
     @service_account_id.setter
-    def service_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_id", value)
 
 
@@ -203,10 +203,10 @@ class ProjectSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages Cloud Observability settings for a project.
@@ -339,10 +339,10 @@ class ProjectSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -370,12 +370,12 @@ class ProjectSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectSettings':
+            default_storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectSettings':
         """
         Get an existing ProjectSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

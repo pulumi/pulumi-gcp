@@ -24,12 +24,12 @@ class PrivateCloudArgs:
                  location: pulumi.Input[_builtins.str],
                  management_cluster: pulumi.Input['PrivateCloudManagementClusterArgs'],
                  network_config: pulumi.Input['PrivateCloudNetworkConfigArgs'],
-                 deletion_delay_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_deletion_delay_hours_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 deletion_delay_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_deletion_delay_hours_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrivateCloud resource.
 
@@ -103,43 +103,43 @@ class PrivateCloudArgs:
 
     @_builtins.property
     @pulumi.getter(name="deletionDelayHours")
-    def deletion_delay_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deletion_delay_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         """
         return pulumi.get(self, "deletion_delay_hours")
 
     @deletion_delay_hours.setter
-    def deletion_delay_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deletion_delay_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deletion_delay_hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided description for this private cloud.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the PrivateCloud.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -147,24 +147,24 @@ class PrivateCloudArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="sendDeletionDelayHoursIfZero")
-    def send_deletion_delay_hours_if_zero(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_deletion_delay_hours_if_zero(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
         """
         return pulumi.get(self, "send_deletion_delay_hours_if_zero")
 
     @send_deletion_delay_hours_if_zero.setter
-    def send_deletion_delay_hours_if_zero(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_deletion_delay_hours_if_zero(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_deletion_delay_hours_if_zero", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initial type of the private cloud.
         Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
@@ -172,31 +172,31 @@ class PrivateCloudArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _PrivateCloudState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_delay_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 hcxes: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudHcxArgs']]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 management_cluster: Optional[pulumi.Input['PrivateCloudManagementClusterArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input['PrivateCloudNetworkConfigArgs']] = None,
-                 nsxes: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudNsxArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_deletion_delay_hours_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_delay_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 hcxes: pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudHcxArgs']]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 management_cluster: pulumi.Input[Optional['PrivateCloudManagementClusterArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional['PrivateCloudNetworkConfigArgs']] = None,
+                 nsxes: pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudNsxArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_deletion_delay_hours_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vcenters: pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]]] = None):
         """
         Input properties used for looking up and filtering PrivateCloud resources.
 
@@ -274,7 +274,7 @@ class _PrivateCloudState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time of this resource.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -283,12 +283,12 @@ class _PrivateCloudState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time when the resource was scheduled for deletion.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -297,36 +297,36 @@ class _PrivateCloudState:
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionDelayHours")
-    def deletion_delay_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deletion_delay_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         """
         return pulumi.get(self, "deletion_delay_hours")
 
     @deletion_delay_hours.setter
-    def deletion_delay_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deletion_delay_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deletion_delay_hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided description for this private cloud.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time when the resource will be irreversibly deleted.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -335,12 +335,12 @@ class _PrivateCloudState:
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def hcxes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudHcxArgs']]]]:
+    def hcxes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudHcxArgs']]]]:
         """
         Details about a HCX Cloud Manager appliance.
         Structure is documented below.
@@ -348,24 +348,24 @@ class _PrivateCloudState:
         return pulumi.get(self, "hcxes")
 
     @hcxes.setter
-    def hcxes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudHcxArgs']]]]):
+    def hcxes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudHcxArgs']]]]):
         pulumi.set(self, "hcxes", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location where the PrivateCloud should reside.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="managementCluster")
-    def management_cluster(self) -> Optional[pulumi.Input['PrivateCloudManagementClusterArgs']]:
+    def management_cluster(self) -> pulumi.Input[Optional['PrivateCloudManagementClusterArgs']]:
         """
         The management cluster for this private cloud. This used for creating and managing the default cluster.
         Structure is documented below.
@@ -373,24 +373,24 @@ class _PrivateCloudState:
         return pulumi.get(self, "management_cluster")
 
     @management_cluster.setter
-    def management_cluster(self, value: Optional[pulumi.Input['PrivateCloudManagementClusterArgs']]):
+    def management_cluster(self, value: pulumi.Input[Optional['PrivateCloudManagementClusterArgs']]):
         pulumi.set(self, "management_cluster", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the PrivateCloud.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['PrivateCloudNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['PrivateCloudNetworkConfigArgs']]:
         """
         Network configuration in the consumer project with which the peering has to be done.
         Structure is documented below.
@@ -398,12 +398,12 @@ class _PrivateCloudState:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['PrivateCloudNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['PrivateCloudNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def nsxes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudNsxArgs']]]]:
+    def nsxes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudNsxArgs']]]]:
         """
         Details about a NSX Manager appliance.
         Structure is documented below.
@@ -411,12 +411,12 @@ class _PrivateCloudState:
         return pulumi.get(self, "nsxes")
 
     @nsxes.setter
-    def nsxes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudNsxArgs']]]]):
+    def nsxes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudNsxArgs']]]]):
         pulumi.set(self, "nsxes", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -424,24 +424,24 @@ class _PrivateCloudState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="sendDeletionDelayHoursIfZero")
-    def send_deletion_delay_hours_if_zero(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_deletion_delay_hours_if_zero(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
         """
         return pulumi.get(self, "send_deletion_delay_hours_if_zero")
 
     @send_deletion_delay_hours_if_zero.setter
-    def send_deletion_delay_hours_if_zero(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_deletion_delay_hours_if_zero(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_deletion_delay_hours_if_zero", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the appliance.
         Possible values are: `ACTIVE`, `CREATING`.
@@ -449,12 +449,12 @@ class _PrivateCloudState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initial type of the private cloud.
         Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
@@ -462,24 +462,24 @@ class _PrivateCloudState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System-generated unique identifier for the resource.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last update time of this resource.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -488,12 +488,12 @@ class _PrivateCloudState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def vcenters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]]]:
+    def vcenters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]]]:
         """
         Details about a vCenter Server management appliance.
         Structure is documented below.
@@ -501,7 +501,7 @@ class _PrivateCloudState:
         return pulumi.get(self, "vcenters")
 
     @vcenters.setter
-    def vcenters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]]]):
+    def vcenters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]]]):
         pulumi.set(self, "vcenters", value)
 
 
@@ -511,15 +511,15 @@ class PrivateCloud(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_delay_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 management_cluster: Optional[pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_deletion_delay_hours_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_delay_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 management_cluster: pulumi.Input[Optional[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_deletion_delay_hours_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a private cloud resource. Private clouds are zonal resources.
@@ -772,15 +772,15 @@ class PrivateCloud(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_delay_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 management_cluster: Optional[pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_deletion_delay_hours_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_delay_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 management_cluster: pulumi.Input[Optional[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_deletion_delay_hours_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -824,24 +824,24 @@ class PrivateCloud(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_delay_hours: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-            hcxes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict']]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            management_cluster: Optional[pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_config: Optional[pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
-            nsxes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudNsxArgs', 'PrivateCloudNsxArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            send_deletion_delay_hours_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            vcenters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudVcenterArgs', 'PrivateCloudVcenterArgsDict']]]]] = None) -> 'PrivateCloud':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_delay_hours: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            hcxes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            management_cluster: pulumi.Input[Optional[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
+            nsxes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateCloudNsxArgs', 'PrivateCloudNsxArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            send_deletion_delay_hours_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vcenters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateCloudVcenterArgs', 'PrivateCloudVcenterArgsDict']]]]] = None) -> 'PrivateCloud':
         """
         Get an existing PrivateCloud resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -237,15 +237,15 @@ export class TableIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TableIamBinding resources.
  */
 export interface TableIamBindingState {
-    condition?: pulumi.Input<inputs.bigtable.TableIamBindingCondition>;
+    condition?: pulumi.Input<inputs.bigtable.TableIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the tables's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The name or relative resource id of the instance that owns the table.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -256,12 +256,12 @@ export interface TableIamBindingState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The project in which the table belongs. If it
      * is not provided, this provider will use the provider default.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
@@ -269,20 +269,20 @@ export interface TableIamBindingState {
      *
      * `gcp.bigtable.TableIamPolicy` only:
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The name or relative resource id of the table to manage IAM policies for.
      *
      * For `gcp.bigtable.TableIamMember` or `gcp.bigtable.TableIamBinding`:
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a TableIamBinding resource.
  */
 export interface TableIamBindingArgs {
-    condition?: pulumi.Input<inputs.bigtable.TableIamBindingCondition>;
+    condition?: pulumi.Input<inputs.bigtable.TableIamBindingCondition | undefined>;
     /**
      * The name or relative resource id of the instance that owns the table.
      */
@@ -302,7 +302,7 @@ export interface TableIamBindingArgs {
      * The project in which the table belongs. If it
      * is not provided, this provider will use the provider default.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format

@@ -252,62 +252,62 @@ export interface CloudExadataInfrastructureState {
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
      */
-    cloudExadataInfrastructureId?: pulumi.Input<string>;
+    cloudExadataInfrastructureId?: pulumi.Input<string | undefined>;
     /**
      * The date and time that the Exadata Infrastructure was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * User friendly name for this resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Entitlement ID of the private offer against which this infrastructure
      * resource is provisioned.
      */
-    entitlementId?: pulumi.Input<string>;
+    entitlementId?: pulumi.Input<string | undefined>;
     /**
      * GCP location where Oracle Exadata is hosted.
      */
-    gcpOracleZone?: pulumi.Input<string>;
+    gcpOracleZone?: pulumi.Input<string | undefined>;
     /**
      * Labels or tags associated with the resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The name of the Exadata Infrastructure resource with the following format:
      * projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_exadata_infrastructure}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Various properties of Exadata Infrastructure.
      * Structure is documented below.
      */
-    properties?: pulumi.Input<inputs.oracledatabase.CloudExadataInfrastructureProperties>;
+    properties?: pulumi.Input<inputs.oracledatabase.CloudExadataInfrastructureProperties | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -324,21 +324,21 @@ export interface CloudExadataInfrastructureArgs {
     /**
      * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * User friendly name for this resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * GCP location where Oracle Exadata is hosted.
      */
-    gcpOracleZone?: pulumi.Input<string>;
+    gcpOracleZone?: pulumi.Input<string | undefined>;
     /**
      * Labels or tags associated with the resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
      */
@@ -347,10 +347,10 @@ export interface CloudExadataInfrastructureArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Various properties of Exadata Infrastructure.
      * Structure is documented below.
      */
-    properties?: pulumi.Input<inputs.oracledatabase.CloudExadataInfrastructureProperties>;
+    properties?: pulumi.Input<inputs.oracledatabase.CloudExadataInfrastructureProperties | undefined>;
 }

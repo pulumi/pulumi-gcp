@@ -132,27 +132,27 @@ export interface FlowhookState {
     /**
      * Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
      */
-    continueOnError?: pulumi.Input<boolean>;
+    continueOnError?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the flow hook.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the environment.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * Where in the API call flow the flow hook is invoked. Must be one of PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook, or PostTargetFlowHook.
      */
-    flowHookPoint?: pulumi.Input<string>;
+    flowHookPoint?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the environment
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Id of the Sharedflow attaching to a flowhook point.
      */
-    sharedflow?: pulumi.Input<string>;
+    sharedflow?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,11 +162,11 @@ export interface FlowhookArgs {
     /**
      * Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
      */
-    continueOnError?: pulumi.Input<boolean>;
+    continueOnError?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the flow hook.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the environment.
      */

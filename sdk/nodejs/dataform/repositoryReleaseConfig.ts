@@ -258,45 +258,45 @@ export interface RepositoryReleaseConfigState {
      * Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
      * Structure is documented below.
      */
-    codeCompilationConfig?: pulumi.Input<inputs.dataform.RepositoryReleaseConfigCodeCompilationConfig>;
+    codeCompilationConfig?: pulumi.Input<inputs.dataform.RepositoryReleaseConfigCodeCompilationConfig | undefined>;
     /**
      * Optional. Optional schedule (in cron format) for automatic creation of compilation results.
      */
-    cronSchedule?: pulumi.Input<string>;
+    cronSchedule?: pulumi.Input<string | undefined>;
     /**
      * Disables automatic creation of compilation results.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
      */
-    gitCommitish?: pulumi.Input<string>;
+    gitCommitish?: pulumi.Input<string | undefined>;
     /**
      * The release's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Records of the 10 most recent scheduled release attempts, ordered in in descending order of releaseTime. Updated whenever automatic creation of a compilation result is triggered by cronSchedule.
      * Structure is documented below.
      */
-    recentScheduledReleaseRecords?: pulumi.Input<pulumi.Input<inputs.dataform.RepositoryReleaseConfigRecentScheduledReleaseRecord>[]>;
+    recentScheduledReleaseRecords?: pulumi.Input<pulumi.Input<inputs.dataform.RepositoryReleaseConfigRecentScheduledReleaseRecord>[] | undefined>;
     /**
      * A reference to the region
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A reference to the Dataform repository
      */
-    repository?: pulumi.Input<string>;
+    repository?: pulumi.Input<string | undefined>;
     /**
      * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -307,15 +307,15 @@ export interface RepositoryReleaseConfigArgs {
      * Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
      * Structure is documented below.
      */
-    codeCompilationConfig?: pulumi.Input<inputs.dataform.RepositoryReleaseConfigCodeCompilationConfig>;
+    codeCompilationConfig?: pulumi.Input<inputs.dataform.RepositoryReleaseConfigCodeCompilationConfig | undefined>;
     /**
      * Optional. Optional schedule (in cron format) for automatic creation of compilation results.
      */
-    cronSchedule?: pulumi.Input<string>;
+    cronSchedule?: pulumi.Input<string | undefined>;
     /**
      * Disables automatic creation of compilation results.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
      */
@@ -323,22 +323,22 @@ export interface RepositoryReleaseConfigArgs {
     /**
      * The release's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the region
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A reference to the Dataform repository
      */
-    repository?: pulumi.Input<string>;
+    repository?: pulumi.Input<string | undefined>;
     /**
      * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }

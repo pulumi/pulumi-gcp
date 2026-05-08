@@ -27,7 +27,7 @@ class KeystoresAliasesPkcs12Args:
                  filehash: pulumi.Input[_builtins.str],
                  keystore: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
-                 password: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeystoresAliasesPkcs12 resource.
 
@@ -126,29 +126,29 @@ class KeystoresAliasesPkcs12Args:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for the PKCS12 file if it's encrypted
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
 
 @pulumi.input_type
 class _KeystoresAliasesPkcs12State:
     def __init__(__self__, *,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 certs_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArgs']]]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
-                 filehash: Optional[pulumi.Input[_builtins.str]] = None,
-                 keystore: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 certs_infos: pulumi.Input[Optional[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArgs']]]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 filehash: pulumi.Input[Optional[_builtins.str]] = None,
+                 keystore: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeystoresAliasesPkcs12 resources.
 
@@ -186,19 +186,19 @@ class _KeystoresAliasesPkcs12State:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alias Name
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter(name="certsInfos")
-    def certs_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArgs']]]]:
+    def certs_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArgs']]]]:
         """
         Chain of certificates under this alias.
         Structure is documented below.
@@ -206,24 +206,24 @@ class _KeystoresAliasesPkcs12State:
         return pulumi.get(self, "certs_infos")
 
     @certs_infos.setter
-    def certs_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArgs']]]]):
+    def certs_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArgs']]]]):
         pulumi.set(self, "certs_infos", value)
 
     @_builtins.property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Environment associated with the alias
         """
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PKCS12 file content
 
@@ -232,67 +232,67 @@ class _KeystoresAliasesPkcs12State:
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter
-    def filehash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filehash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hash of the pkcs file
         """
         return pulumi.get(self, "filehash")
 
     @filehash.setter
-    def filehash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filehash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filehash", value)
 
     @_builtins.property
     @pulumi.getter
-    def keystore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keystore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Keystore Name
         """
         return pulumi.get(self, "keystore")
 
     @keystore.setter
-    def keystore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keystore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keystore", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization ID associated with the alias, without organization/ prefix
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for the PKCS12 file if it's encrypted
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional.Type of Alias
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -302,13 +302,13 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
-                 filehash: Optional[pulumi.Input[_builtins.str]] = None,
-                 keystore: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 filehash: pulumi.Input[Optional[_builtins.str]] = None,
+                 keystore: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An alias from a pkcs12 file.
@@ -391,13 +391,13 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
-                 filehash: Optional[pulumi.Input[_builtins.str]] = None,
-                 keystore: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 filehash: pulumi.Input[Optional[_builtins.str]] = None,
+                 keystore: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -438,15 +438,15 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alias: Optional[pulumi.Input[_builtins.str]] = None,
-            certs_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KeystoresAliasesPkcs12CertsInfoArgs', 'KeystoresAliasesPkcs12CertsInfoArgsDict']]]]] = None,
-            environment: Optional[pulumi.Input[_builtins.str]] = None,
-            file: Optional[pulumi.Input[_builtins.str]] = None,
-            filehash: Optional[pulumi.Input[_builtins.str]] = None,
-            keystore: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'KeystoresAliasesPkcs12':
+            alias: pulumi.Input[Optional[_builtins.str]] = None,
+            certs_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeystoresAliasesPkcs12CertsInfoArgs', 'KeystoresAliasesPkcs12CertsInfoArgsDict']]]]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            file: pulumi.Input[Optional[_builtins.str]] = None,
+            filehash: pulumi.Input[Optional[_builtins.str]] = None,
+            keystore: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'KeystoresAliasesPkcs12':
         """
         Get an existing KeystoresAliasesPkcs12 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

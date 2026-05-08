@@ -23,9 +23,9 @@ class RegionalSecretVersionArgs:
     def __init__(__self__, *,
                  secret: pulumi.Input[_builtins.str],
                  secret_data: pulumi.Input[_builtins.str],
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_secret_data_base64: Optional[pulumi.Input[_builtins.bool]] = None):
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_secret_data_base64: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RegionalSecretVersion resource.
 
@@ -77,7 +77,7 @@ class RegionalSecretVersionArgs:
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
         to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
@@ -89,48 +89,48 @@ class RegionalSecretVersionArgs:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The current state of the regional secret version.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="isSecretDataBase64")
-    def is_secret_data_base64(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_secret_data_base64(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         """
         return pulumi.get(self, "is_secret_data_base64")
 
     @is_secret_data_base64.setter
-    def is_secret_data_base64(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_secret_data_base64(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_secret_data_base64", value)
 
 
 @pulumi.input_type
 class _RegionalSecretVersionState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_managed_encryptions: Optional[pulumi.Input[Sequence[pulumi.Input['RegionalSecretVersionCustomerManagedEncryptionArgs']]]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 destroy_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_secret_data_base64: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_managed_encryptions: pulumi.Input[Optional[Sequence[pulumi.Input['RegionalSecretVersionCustomerManagedEncryptionArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 destroy_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_secret_data_base64: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionalSecretVersion resources.
 
@@ -179,19 +179,19 @@ class _RegionalSecretVersionState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the regional secret version was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customerManagedEncryptions")
-    def customer_managed_encryptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionalSecretVersionCustomerManagedEncryptionArgs']]]]:
+    def customer_managed_encryptions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionalSecretVersionCustomerManagedEncryptionArgs']]]]:
         """
         The customer-managed encryption configuration of the regional secret.
         Structure is documented below.
@@ -199,12 +199,12 @@ class _RegionalSecretVersionState:
         return pulumi.get(self, "customer_managed_encryptions")
 
     @customer_managed_encryptions.setter
-    def customer_managed_encryptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionalSecretVersionCustomerManagedEncryptionArgs']]]]):
+    def customer_managed_encryptions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionalSecretVersionCustomerManagedEncryptionArgs']]]]):
         pulumi.set(self, "customer_managed_encryptions", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
         to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
@@ -216,60 +216,60 @@ class _RegionalSecretVersionState:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="destroyTime")
-    def destroy_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destroy_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the regional secret version was destroyed. Only present if state is DESTROYED.
         """
         return pulumi.get(self, "destroy_time")
 
     @destroy_time.setter
-    def destroy_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destroy_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destroy_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The current state of the regional secret version.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="isSecretDataBase64")
-    def is_secret_data_base64(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_secret_data_base64(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         """
         return pulumi.get(self, "is_secret_data_base64")
 
     @is_secret_data_base64.setter
-    def is_secret_data_base64(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_secret_data_base64(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_secret_data_base64", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location of Secret Manager regional secret resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the regional secret version. Format:
         `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}`
@@ -277,24 +277,24 @@ class _RegionalSecretVersionState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secret Manager regional secret resource.
         """
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter(name="secretData")
-    def secret_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret data. Must be no larger than 64KiB.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -302,19 +302,19 @@ class _RegionalSecretVersionState:
         return pulumi.get(self, "secret_data")
 
     @secret_data.setter
-    def secret_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_data", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the Regional Secret.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -324,11 +324,11 @@ class RegionalSecretVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_secret_data_base64: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_secret_data_base64: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A regional secret version resource.
@@ -567,11 +567,11 @@ class RegionalSecretVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_secret_data_base64: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_secret_data_base64: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -608,17 +608,17 @@ class RegionalSecretVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            customer_managed_encryptions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionalSecretVersionCustomerManagedEncryptionArgs', 'RegionalSecretVersionCustomerManagedEncryptionArgsDict']]]]] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            destroy_time: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_secret_data_base64: Optional[pulumi.Input[_builtins.bool]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            secret: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_data: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'RegionalSecretVersion':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_managed_encryptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionalSecretVersionCustomerManagedEncryptionArgs', 'RegionalSecretVersionCustomerManagedEncryptionArgsDict']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            destroy_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_secret_data_base64: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_data: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegionalSecretVersion':
         """
         Get an existing RegionalSecretVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

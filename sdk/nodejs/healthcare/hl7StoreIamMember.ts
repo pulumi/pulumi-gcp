@@ -197,18 +197,18 @@ export class Hl7StoreIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Hl7StoreIamMember resources.
  */
 export interface Hl7StoreIamMemberState {
-    condition?: pulumi.Input<inputs.healthcare.Hl7StoreIamMemberCondition>;
+    condition?: pulumi.Input<inputs.healthcare.Hl7StoreIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the HL7v2 store's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The HL7v2 store ID, in the form
      * `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
      * `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
      */
-    hl7V2StoreId?: pulumi.Input<string>;
+    hl7V2StoreId?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -219,20 +219,20 @@ export interface Hl7StoreIamMemberState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    member?: pulumi.Input<string>;
+    member?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Hl7StoreIamMember resource.
  */
 export interface Hl7StoreIamMemberArgs {
-    condition?: pulumi.Input<inputs.healthcare.Hl7StoreIamMemberCondition>;
+    condition?: pulumi.Input<inputs.healthcare.Hl7StoreIamMemberCondition | undefined>;
     /**
      * The HL7v2 store ID, in the form
      * `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or

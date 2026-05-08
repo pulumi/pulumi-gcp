@@ -194,13 +194,13 @@ export interface GetImageOutputArgs {
     /**
      * The family name of the image.
      */
-    family?: pulumi.Input<string>;
-    filter?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * A boolean to indicate either to take to most recent image if your filter
      * returns more than one image.
      */
-    mostRecent?: pulumi.Input<boolean>;
+    mostRecent?: pulumi.Input<boolean | undefined>;
     /**
      * , `family` or `filter` - (Required) The name of a specific image or a family.
      * Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
@@ -211,11 +211,11 @@ export interface GetImageOutputArgs {
      *
      * - - -
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project in which the resource belongs. If it is not
      * provided, the provider project is used. If you are using a
      * [public base image][pubimg], be sure to specify the correct Image Project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

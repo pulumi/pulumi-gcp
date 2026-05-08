@@ -22,10 +22,10 @@ __all__ = ['DicomStoreArgs', 'DicomStore']
 class DicomStoreArgs:
     def __init__(__self__, *,
                  dataset: pulumi.Input[_builtins.str],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional['DicomStoreNotificationConfigArgs']] = None,
+                 stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]] = None):
         """
         The set of arguments for constructing a DicomStore resource.
 
@@ -76,7 +76,7 @@ class DicomStoreArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-supplied key-value pairs used to organize DICOM stores.
         Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -93,12 +93,12 @@ class DicomStoreArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for the DicomStore.
         ** Changing this property may recreate the Dicom store (removing all data) **
@@ -106,12 +106,12 @@ class DicomStoreArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfig")
-    def notification_config(self) -> Optional[pulumi.Input['DicomStoreNotificationConfigArgs']]:
+    def notification_config(self) -> pulumi.Input[Optional['DicomStoreNotificationConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -119,12 +119,12 @@ class DicomStoreArgs:
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']]):
+    def notification_config(self, value: pulumi.Input[Optional['DicomStoreNotificationConfigArgs']]):
         pulumi.set(self, "notification_config", value)
 
     @_builtins.property
     @pulumi.getter(name="streamConfigs")
-    def stream_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]:
+    def stream_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]:
         """
         (Optional, Beta)
         To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
@@ -134,21 +134,21 @@ class DicomStoreArgs:
         return pulumi.get(self, "stream_configs")
 
     @stream_configs.setter
-    def stream_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]):
+    def stream_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]):
         pulumi.set(self, "stream_configs", value)
 
 
 @pulumi.input_type
 class _DicomStoreState:
     def __init__(__self__, *,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]] = None):
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional['DicomStoreNotificationConfigArgs']] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering DicomStore resources.
 
@@ -197,7 +197,7 @@ class _DicomStoreState:
 
     @_builtins.property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -205,24 +205,24 @@ class _DicomStoreState:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-supplied key-value pairs used to organize DICOM stores.
         Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -239,12 +239,12 @@ class _DicomStoreState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for the DicomStore.
         ** Changing this property may recreate the Dicom store (removing all data) **
@@ -252,12 +252,12 @@ class _DicomStoreState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfig")
-    def notification_config(self) -> Optional[pulumi.Input['DicomStoreNotificationConfigArgs']]:
+    def notification_config(self) -> pulumi.Input[Optional['DicomStoreNotificationConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -265,12 +265,12 @@ class _DicomStoreState:
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']]):
+    def notification_config(self, value: pulumi.Input[Optional['DicomStoreNotificationConfigArgs']]):
         pulumi.set(self, "notification_config", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -278,24 +278,24 @@ class _DicomStoreState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified name of this dataset
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="streamConfigs")
-    def stream_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]:
+    def stream_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]:
         """
         (Optional, Beta)
         To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
@@ -305,7 +305,7 @@ class _DicomStoreState:
         return pulumi.get(self, "stream_configs")
 
     @stream_configs.setter
-    def stream_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]):
+    def stream_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]):
         pulumi.set(self, "stream_configs", value)
 
 
@@ -315,11 +315,11 @@ class DicomStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input[Union['DicomStoreNotificationConfigArgs', 'DicomStoreNotificationConfigArgsDict']]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DicomStoreStreamConfigArgs', 'DicomStoreStreamConfigArgsDict']]]]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional[Union['DicomStoreNotificationConfigArgs', 'DicomStoreNotificationConfigArgsDict']]] = None,
+                 stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DicomStoreStreamConfigArgs', 'DicomStoreStreamConfigArgsDict']]]]] = None,
                  __props__=None):
         """
         A DicomStore is a datastore inside a Healthcare dataset that conforms to the DICOM
@@ -544,11 +544,11 @@ class DicomStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input[Union['DicomStoreNotificationConfigArgs', 'DicomStoreNotificationConfigArgsDict']]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DicomStoreStreamConfigArgs', 'DicomStoreStreamConfigArgsDict']]]]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional[Union['DicomStoreNotificationConfigArgs', 'DicomStoreNotificationConfigArgsDict']]] = None,
+                 stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DicomStoreStreamConfigArgs', 'DicomStoreStreamConfigArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -580,14 +580,14 @@ class DicomStore(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dataset: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_config: Optional[pulumi.Input[Union['DicomStoreNotificationConfigArgs', 'DicomStoreNotificationConfigArgsDict']]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DicomStoreStreamConfigArgs', 'DicomStoreStreamConfigArgsDict']]]]] = None) -> 'DicomStore':
+            dataset: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_config: pulumi.Input[Optional[Union['DicomStoreNotificationConfigArgs', 'DicomStoreNotificationConfigArgsDict']]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DicomStoreStreamConfigArgs', 'DicomStoreStreamConfigArgsDict']]]]] = None) -> 'DicomStore':
         """
         Get an existing DicomStore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

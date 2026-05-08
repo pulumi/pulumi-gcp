@@ -340,19 +340,19 @@ export interface CaPoolState {
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Used when customer would like to encrypt data at rest. The customer-provided key will be used
      * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
      * customer data will remain unencrypted.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.certificateauthority.CaPoolEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.certificateauthority.CaPoolEncryptionSpec | undefined>;
     /**
      * The IssuancePolicy to control how Certificates will be issued from this CaPool.
      * Structure is documented below.
      */
-    issuancePolicy?: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicy>;
+    issuancePolicy?: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicy | undefined>;
     /**
      * Labels with user-defined metadata.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
@@ -361,36 +361,36 @@ export interface CaPoolState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location of the CaPool. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name for this CaPool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
      * Structure is documented below.
      */
-    publishingOptions?: pulumi.Input<inputs.certificateauthority.CaPoolPublishingOptions>;
+    publishingOptions?: pulumi.Input<inputs.certificateauthority.CaPoolPublishingOptions | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Tier of this CaPool.
      * Possible values are: `ENTERPRISE`, `DEVOPS`.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -403,12 +403,12 @@ export interface CaPoolArgs {
      * customer data will remain unencrypted.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.certificateauthority.CaPoolEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.certificateauthority.CaPoolEncryptionSpec | undefined>;
     /**
      * The IssuancePolicy to control how Certificates will be issued from this CaPool.
      * Structure is documented below.
      */
-    issuancePolicy?: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicy>;
+    issuancePolicy?: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicy | undefined>;
     /**
      * Labels with user-defined metadata.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
@@ -417,7 +417,7 @@ export interface CaPoolArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location of the CaPool. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
@@ -426,17 +426,17 @@ export interface CaPoolArgs {
     /**
      * The name for this CaPool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
      * Structure is documented below.
      */
-    publishingOptions?: pulumi.Input<inputs.certificateauthority.CaPoolPublishingOptions>;
+    publishingOptions?: pulumi.Input<inputs.certificateauthority.CaPoolPublishingOptions | undefined>;
     /**
      * The Tier of this CaPool.
      * Possible values are: `ENTERPRISE`, `DEVOPS`.

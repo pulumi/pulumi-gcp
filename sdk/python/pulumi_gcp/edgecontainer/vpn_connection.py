@@ -23,14 +23,14 @@ class VpnConnectionArgs:
     def __init__(__self__, *,
                  cluster: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 enable_high_availability: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_project: Optional[pulumi.Input['VpnConnectionVpcProjectArgs']] = None):
+                 enable_high_availability: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_project: pulumi.Input[Optional['VpnConnectionVpcProjectArgs']] = None):
         """
         The set of arguments for constructing a VpnConnection resource.
 
@@ -95,19 +95,19 @@ class VpnConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableHighAvailability")
-    def enable_high_availability(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_high_availability(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
         """
         return pulumi.get(self, "enable_high_availability")
 
     @enable_high_availability.setter
-    def enable_high_availability(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_high_availability(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_high_availability", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels associated with this resource.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -116,24 +116,24 @@ class VpnConnectionArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of VPN connection
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="natGatewayIp")
-    def nat_gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_gateway_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         NAT gateway IP, or WAN IP address. If a customer has multiple NAT IPs, the customer needs to configure NAT such that only one external IP maps to the GMEC Anthos cluster.
         This is empty if NAT is not used.
@@ -141,12 +141,12 @@ class VpnConnectionArgs:
         return pulumi.get(self, "nat_gateway_ip")
 
     @nat_gateway_ip.setter
-    def nat_gateway_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_gateway_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_gateway_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -154,36 +154,36 @@ class VpnConnectionArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def router(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPN connection Cloud Router name.
         """
         return pulumi.get(self, "router")
 
     @router.setter
-    def router(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network ID of VPC to connect to.
         """
         return pulumi.get(self, "vpc")
 
     @vpc.setter
-    def vpc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcProject")
-    def vpc_project(self) -> Optional[pulumi.Input['VpnConnectionVpcProjectArgs']]:
+    def vpc_project(self) -> pulumi.Input[Optional['VpnConnectionVpcProjectArgs']]:
         """
         Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
         Structure is documented below.
@@ -191,28 +191,28 @@ class VpnConnectionArgs:
         return pulumi.get(self, "vpc_project")
 
     @vpc_project.setter
-    def vpc_project(self, value: Optional[pulumi.Input['VpnConnectionVpcProjectArgs']]):
+    def vpc_project(self, value: pulumi.Input[Optional['VpnConnectionVpcProjectArgs']]):
         pulumi.set(self, "vpc_project", value)
 
 
 @pulumi.input_type
 class _VpnConnectionState:
     def __init__(__self__, *,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArgs']]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enable_high_availability: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_project: Optional[pulumi.Input['VpnConnectionVpcProjectArgs']] = None):
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailArgs']]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_high_availability: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_project: pulumi.Input[Optional['VpnConnectionVpcProjectArgs']] = None):
         """
         Input properties used for looking up and filtering VpnConnection resources.
 
@@ -272,31 +272,31 @@ class _VpnConnectionState:
 
     @_builtins.property
     @pulumi.getter
-    def cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
         """
         return pulumi.get(self, "cluster")
 
     @cluster.setter
-    def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the VPN connection was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArgs']]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailArgs']]]]:
         """
         A nested object resource.
         Structure is documented below.
@@ -304,36 +304,36 @@ class _VpnConnectionState:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArgs']]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailArgs']]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="enableHighAvailability")
-    def enable_high_availability(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_high_availability(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
         """
         return pulumi.get(self, "enable_high_availability")
 
     @enable_high_availability.setter
-    def enable_high_availability(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_high_availability(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_high_availability", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels associated with this resource.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -342,36 +342,36 @@ class _VpnConnectionState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Google Cloud Platform location.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of VPN connection
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="natGatewayIp")
-    def nat_gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_gateway_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         NAT gateway IP, or WAN IP address. If a customer has multiple NAT IPs, the customer needs to configure NAT such that only one external IP maps to the GMEC Anthos cluster.
         This is empty if NAT is not used.
@@ -379,12 +379,12 @@ class _VpnConnectionState:
         return pulumi.get(self, "nat_gateway_ip")
 
     @nat_gateway_ip.setter
-    def nat_gateway_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_gateway_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_gateway_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -392,12 +392,12 @@ class _VpnConnectionState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -405,48 +405,48 @@ class _VpnConnectionState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def router(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPN connection Cloud Router name.
         """
         return pulumi.get(self, "router")
 
     @router.setter
-    def router(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the VPN connection was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network ID of VPC to connect to.
         """
         return pulumi.get(self, "vpc")
 
     @vpc.setter
-    def vpc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcProject")
-    def vpc_project(self) -> Optional[pulumi.Input['VpnConnectionVpcProjectArgs']]:
+    def vpc_project(self) -> pulumi.Input[Optional['VpnConnectionVpcProjectArgs']]:
         """
         Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
         Structure is documented below.
@@ -454,7 +454,7 @@ class _VpnConnectionState:
         return pulumi.get(self, "vpc_project")
 
     @vpc_project.setter
-    def vpc_project(self, value: Optional[pulumi.Input['VpnConnectionVpcProjectArgs']]):
+    def vpc_project(self, value: pulumi.Input[Optional['VpnConnectionVpcProjectArgs']]):
         pulumi.set(self, "vpc_project", value)
 
 
@@ -464,16 +464,16 @@ class VpnConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_high_availability: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_project: Optional[pulumi.Input[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict']]] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_high_availability: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_project: pulumi.Input[Optional[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict']]] = None,
                  __props__=None):
         """
         A VPN connection
@@ -654,16 +654,16 @@ class VpnConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_high_availability: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_project: Optional[pulumi.Input[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict']]] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_high_availability: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_project: pulumi.Input[Optional[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -704,21 +704,21 @@ class VpnConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpnConnectionDetailArgs', 'VpnConnectionDetailArgsDict']]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            enable_high_availability: Optional[pulumi.Input[_builtins.bool]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            router: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_project: Optional[pulumi.Input[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict']]] = None) -> 'VpnConnection':
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpnConnectionDetailArgs', 'VpnConnectionDetailArgsDict']]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_high_availability: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            router: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_project: pulumi.Input[Optional[Union['VpnConnectionVpcProjectArgs', 'VpnConnectionVpcProjectArgsDict']]] = None) -> 'VpnConnection':
         """
         Get an existing VpnConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -152,10 +152,10 @@ def get_secret_version_access(is_secret_data_base64: Optional[_builtins.bool] = 
         secret=pulumi.get(__ret__, 'secret'),
         secret_data=pulumi.get(__ret__, 'secret_data'),
         version=pulumi.get(__ret__, 'version'))
-def get_secret_version_access_output(is_secret_data_base64: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                     project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     secret: Optional[pulumi.Input[_builtins.str]] = None,
-                                     version: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_secret_version_access_output(is_secret_data_base64: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                     project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     secret: pulumi.Input[Optional[_builtins.str]] = None,
+                                     version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretVersionAccessResult]:
     """
     Get the value from a Secret Manager secret version. This is similar to the secretmanager.SecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).

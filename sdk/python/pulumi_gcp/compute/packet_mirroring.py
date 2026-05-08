@@ -24,13 +24,13 @@ class PacketMirroringArgs:
                  collector_ilb: pulumi.Input['PacketMirroringCollectorIlbArgs'],
                  mirrored_resources: pulumi.Input['PacketMirroringMirroredResourcesArgs'],
                  network: pulumi.Input['PacketMirroringNetworkArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input['PacketMirroringFilterArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional['PacketMirroringFilterArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PacketMirroring resource.
 
@@ -124,19 +124,19 @@ class PacketMirroringArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
         policy will not be enforced on the network. The default is TRUE.
@@ -145,12 +145,12 @@ class PacketMirroringArgs:
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['PacketMirroringFilterArgs']]:
+    def filter(self) -> pulumi.Input[Optional['PacketMirroringFilterArgs']]:
         """
         A filter for mirrored traffic.  If unset, all traffic is mirrored.
         Structure is documented below.
@@ -158,24 +158,24 @@ class PacketMirroringArgs:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['PacketMirroringFilterArgs']]):
+    def filter(self, value: pulumi.Input[Optional['PacketMirroringFilterArgs']]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the packet mirroring rule
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Since only one rule can be active at a time, priority is
         used to break ties in the case of two rules that apply to
@@ -184,12 +184,12 @@ class PacketMirroringArgs:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -197,12 +197,12 @@ class PacketMirroringArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Region in which the created address should reside.
         If it is not provided, the provider region is used.
@@ -210,23 +210,23 @@ class PacketMirroringArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _PacketMirroringState:
     def __init__(__self__, *,
-                 collector_ilb: Optional[pulumi.Input['PacketMirroringCollectorIlbArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input['PacketMirroringFilterArgs']] = None,
-                 mirrored_resources: Optional[pulumi.Input['PacketMirroringMirroredResourcesArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input['PacketMirroringNetworkArgs']] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 collector_ilb: pulumi.Input[Optional['PacketMirroringCollectorIlbArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional['PacketMirroringFilterArgs']] = None,
+                 mirrored_resources: pulumi.Input[Optional['PacketMirroringMirroredResourcesArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional['PacketMirroringNetworkArgs']] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PacketMirroring resources.
 
@@ -279,7 +279,7 @@ class _PacketMirroringState:
 
     @_builtins.property
     @pulumi.getter(name="collectorIlb")
-    def collector_ilb(self) -> Optional[pulumi.Input['PacketMirroringCollectorIlbArgs']]:
+    def collector_ilb(self) -> pulumi.Input[Optional['PacketMirroringCollectorIlbArgs']]:
         """
         The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
         that will be used as collector for mirrored traffic. The
@@ -290,24 +290,24 @@ class _PacketMirroringState:
         return pulumi.get(self, "collector_ilb")
 
     @collector_ilb.setter
-    def collector_ilb(self, value: Optional[pulumi.Input['PacketMirroringCollectorIlbArgs']]):
+    def collector_ilb(self, value: pulumi.Input[Optional['PacketMirroringCollectorIlbArgs']]):
         pulumi.set(self, "collector_ilb", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
         policy will not be enforced on the network. The default is TRUE.
@@ -316,12 +316,12 @@ class _PacketMirroringState:
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['PacketMirroringFilterArgs']]:
+    def filter(self) -> pulumi.Input[Optional['PacketMirroringFilterArgs']]:
         """
         A filter for mirrored traffic.  If unset, all traffic is mirrored.
         Structure is documented below.
@@ -329,12 +329,12 @@ class _PacketMirroringState:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['PacketMirroringFilterArgs']]):
+    def filter(self, value: pulumi.Input[Optional['PacketMirroringFilterArgs']]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="mirroredResources")
-    def mirrored_resources(self) -> Optional[pulumi.Input['PacketMirroringMirroredResourcesArgs']]:
+    def mirrored_resources(self) -> pulumi.Input[Optional['PacketMirroringMirroredResourcesArgs']]:
         """
         A means of specifying which resources to mirror.
         Structure is documented below.
@@ -342,24 +342,24 @@ class _PacketMirroringState:
         return pulumi.get(self, "mirrored_resources")
 
     @mirrored_resources.setter
-    def mirrored_resources(self, value: Optional[pulumi.Input['PacketMirroringMirroredResourcesArgs']]):
+    def mirrored_resources(self, value: pulumi.Input[Optional['PacketMirroringMirroredResourcesArgs']]):
         pulumi.set(self, "mirrored_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the packet mirroring rule
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input['PacketMirroringNetworkArgs']]:
+    def network(self) -> pulumi.Input[Optional['PacketMirroringNetworkArgs']]:
         """
         Specifies the mirrored VPC network. Only packets in this network
         will be mirrored. All mirrored VMs should have a NIC in the given
@@ -369,12 +369,12 @@ class _PacketMirroringState:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input['PacketMirroringNetworkArgs']]):
+    def network(self, value: pulumi.Input[Optional['PacketMirroringNetworkArgs']]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Since only one rule can be active at a time, priority is
         used to break ties in the case of two rules that apply to
@@ -383,12 +383,12 @@ class _PacketMirroringState:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -396,12 +396,12 @@ class _PacketMirroringState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Region in which the created address should reside.
         If it is not provided, the provider region is used.
@@ -409,7 +409,7 @@ class _PacketMirroringState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -419,16 +419,16 @@ class PacketMirroring(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 collector_ilb: Optional[pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
-                 mirrored_resources: Optional[pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 collector_ilb: pulumi.Input[Optional[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
+                 mirrored_resources: pulumi.Input[Optional[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Packet Mirroring mirrors traffic to and from particular VM instances.
@@ -683,16 +683,16 @@ class PacketMirroring(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 collector_ilb: Optional[pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
-                 mirrored_resources: Optional[pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 collector_ilb: pulumi.Input[Optional[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
+                 mirrored_resources: pulumi.Input[Optional[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -728,16 +728,16 @@ class PacketMirroring(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            collector_ilb: Optional[pulumi.Input[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enable: Optional[pulumi.Input[_builtins.str]] = None,
-            filter: Optional[pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
-            mirrored_resources: Optional[pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'PacketMirroring':
+            collector_ilb: pulumi.Input[Optional[Union['PacketMirroringCollectorIlbArgs', 'PacketMirroringCollectorIlbArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']]] = None,
+            mirrored_resources: pulumi.Input[Optional[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[Union['PacketMirroringNetworkArgs', 'PacketMirroringNetworkArgsDict']]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'PacketMirroring':
         """
         Get an existing PacketMirroring resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

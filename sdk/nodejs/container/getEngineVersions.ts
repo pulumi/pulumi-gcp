@@ -169,12 +169,12 @@ export interface GetEngineVersionsOutputArgs {
      * versions may not be available. If `location`, `region`, and `zone` are not
      * specified, the provider-level zone must be set and is used instead.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
      * Defaults to the project that the provider is authenticated with.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * If provided, the provider will only return versions
      * that match the string prefix. For example, `1.11.` will match all `1.11` series
@@ -183,5 +183,5 @@ export interface GetEngineVersionsOutputArgs {
      * versions like `1.12.5-gke.10` accidentally. See [the docs on versioning schema](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#versioning_scheme)
      * for full details on how version strings are formatted.
      */
-    versionPrefix?: pulumi.Input<string>;
+    versionPrefix?: pulumi.Input<string | undefined>;
 }

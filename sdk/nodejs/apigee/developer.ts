@@ -263,44 +263,44 @@ export interface DeveloperState {
      * Developer attributes (name/value pairs). The custom attribute limit is 18.
      * Structure is documented below.
      */
-    attributes?: pulumi.Input<pulumi.Input<inputs.apigee.DeveloperAttribute>[]>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.apigee.DeveloperAttribute>[] | undefined>;
     /**
      * Time at which the developer was created in milliseconds since epoch.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * First name of the developer.
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * Time at which the developer was last modified in milliseconds since epoch.
      */
-    lastModifiedAt?: pulumi.Input<string>;
+    lastModifiedAt?: pulumi.Input<string | undefined>;
     /**
      * Last name of the developer.
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Name of the Apigee organization in which the developer resides.
      */
-    organizatioName?: pulumi.Input<string>;
+    organizatioName?: pulumi.Input<string | undefined>;
     /**
      * Status of the developer. Valid values are active and inactive.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * User name of the developer. Not used by Apigee hybrid.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -311,7 +311,7 @@ export interface DeveloperArgs {
      * Developer attributes (name/value pairs). The custom attribute limit is 18.
      * Structure is documented below.
      */
-    attributes?: pulumi.Input<pulumi.Input<inputs.apigee.DeveloperAttribute>[]>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.apigee.DeveloperAttribute>[] | undefined>;
     /**
      * Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
      */

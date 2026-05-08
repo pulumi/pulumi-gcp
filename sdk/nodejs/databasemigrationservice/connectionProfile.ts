@@ -636,81 +636,81 @@ export interface ConnectionProfileState {
      * Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
      * Structure is documented below.
      */
-    alloydb?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileAlloydb>;
+    alloydb?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileAlloydb | undefined>;
     /**
      * Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
      * Structure is documented below.
      */
-    cloudsql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileCloudsql>;
+    cloudsql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileCloudsql | undefined>;
     /**
      * The ID of the connection profile.
      */
-    connectionProfileId?: pulumi.Input<string>;
+    connectionProfileId?: pulumi.Input<string | undefined>;
     /**
      * Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The database provider.
      */
-    dbprovider?: pulumi.Input<string>;
+    dbprovider?: pulumi.Input<string | undefined>;
     /**
      * The connection profile display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. The error details in case of state FAILED.
      * Structure is documented below.
      */
-    errors?: pulumi.Input<pulumi.Input<inputs.databasemigrationservice.ConnectionProfileError>[]>;
+    errors?: pulumi.Input<pulumi.Input<inputs.databasemigrationservice.ConnectionProfileError>[] | undefined>;
     /**
      * The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where the connection profile should reside.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Specifies connection parameters required specifically for MySQL databases.
      * Structure is documented below.
      */
-    mysql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileMysql>;
+    mysql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileMysql | undefined>;
     /**
      * The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies connection parameters required specifically for Oracle databases.
      * Structure is documented below.
      */
-    oracle?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileOracle>;
+    oracle?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileOracle | undefined>;
     /**
      * Specifies connection parameters required specifically for PostgreSQL databases.
      * Structure is documented below.
      */
-    postgresql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfilePostgresql>;
+    postgresql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfilePostgresql | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The current connection profile state.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -721,12 +721,12 @@ export interface ConnectionProfileArgs {
      * Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
      * Structure is documented below.
      */
-    alloydb?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileAlloydb>;
+    alloydb?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileAlloydb | undefined>;
     /**
      * Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
      * Structure is documented below.
      */
-    cloudsql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileCloudsql>;
+    cloudsql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileCloudsql | undefined>;
     /**
      * The ID of the connection profile.
      */
@@ -734,36 +734,36 @@ export interface ConnectionProfileArgs {
     /**
      * The connection profile display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where the connection profile should reside.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Specifies connection parameters required specifically for MySQL databases.
      * Structure is documented below.
      */
-    mysql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileMysql>;
+    mysql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileMysql | undefined>;
     /**
      * Specifies connection parameters required specifically for Oracle databases.
      * Structure is documented below.
      */
-    oracle?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileOracle>;
+    oracle?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileOracle | undefined>;
     /**
      * Specifies connection parameters required specifically for PostgreSQL databases.
      * Structure is documented below.
      */
-    postgresql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfilePostgresql>;
+    postgresql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfilePostgresql | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

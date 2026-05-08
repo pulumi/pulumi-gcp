@@ -25,21 +25,21 @@ class ActiveDirectoryArgs:
                  net_bios_prefix: pulumi.Input[_builtins.str],
                  password: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 administrators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 aes_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backup_operators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_dc_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kdc_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 kdc_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ldap_signing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nfs_users_with_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 organizational_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_operators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 site: Optional[pulumi.Input[_builtins.str]] = None):
+                 administrators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aes_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backup_operators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_dc_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kdc_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 kdc_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ldap_signing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_users_with_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 organizational_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_operators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 site: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ActiveDirectory resource.
 
@@ -189,91 +189,91 @@ class ActiveDirectoryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def administrators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def administrators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
         """
         return pulumi.get(self, "administrators")
 
     @administrators.setter
-    def administrators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def administrators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "administrators", value)
 
     @_builtins.property
     @pulumi.getter(name="aesEncryption")
-    def aes_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def aes_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
         """
         return pulumi.get(self, "aes_encryption")
 
     @aes_encryption.setter
-    def aes_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def aes_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "aes_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="backupOperators")
-    def backup_operators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backup_operators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
         """
         return pulumi.get(self, "backup_operators")
 
     @backup_operators.setter
-    def backup_operators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backup_operators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backup_operators", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptDcConnections")
-    def encrypt_dc_connections(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypt_dc_connections(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
         """
         return pulumi.get(self, "encrypt_dc_connections")
 
     @encrypt_dc_connections.setter
-    def encrypt_dc_connections(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypt_dc_connections(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypt_dc_connections", value)
 
     @_builtins.property
     @pulumi.getter(name="kdcHostname")
-    def kdc_hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kdc_hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
         """
         return pulumi.get(self, "kdc_hostname")
 
     @kdc_hostname.setter
-    def kdc_hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kdc_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kdc_hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="kdcIp")
-    def kdc_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kdc_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address of the Active Directory server used as Kerberos Key Distribution Center.
         """
         return pulumi.get(self, "kdc_ip")
 
     @kdc_ip.setter
-    def kdc_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kdc_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kdc_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
 
@@ -283,36 +283,36 @@ class ActiveDirectoryArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapSigning")
-    def ldap_signing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ldap_signing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether or not the LDAP traffic needs to be signed.
         """
         return pulumi.get(self, "ldap_signing")
 
     @ldap_signing.setter
-    def ldap_signing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ldap_signing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ldap_signing", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Active Directory pool. Needs to be unique per location.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nfsUsersWithLdap")
-    def nfs_users_with_ldap(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nfs_users_with_ldap(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Local UNIX users on clients without valid user information in Active Directory are blocked from access to LDAP enabled volumes.
         This option can be used to temporarily switch such volumes to AUTH_SYS authentication (user ID + 1-16 groups).
@@ -320,12 +320,12 @@ class ActiveDirectoryArgs:
         return pulumi.get(self, "nfs_users_with_ldap")
 
     @nfs_users_with_ldap.setter
-    def nfs_users_with_ldap(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nfs_users_with_ldap(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nfs_users_with_ldap", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationalUnit")
-    def organizational_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organizational_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
         Defaults to `CN=Computers` if left empty.
@@ -333,12 +333,12 @@ class ActiveDirectoryArgs:
         return pulumi.get(self, "organizational_unit")
 
     @organizational_unit.setter
-    def organizational_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organizational_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organizational_unit", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -346,24 +346,24 @@ class ActiveDirectoryArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="securityOperators")
-    def security_operators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_operators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Domain accounts that require elevated privileges such as `SeSecurityPrivilege` to manage security logs. Comma-separated list.
         """
         return pulumi.get(self, "security_operators")
 
     @security_operators.setter
-    def security_operators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_operators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_operators", value)
 
     @_builtins.property
     @pulumi.getter
-    def site(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies an Active Directory site to manage domain controller selection.
         Use when Active Directory domain controllers in multiple regions are configured. Defaults to `Default-First-Site-Name` if left empty.
@@ -371,39 +371,39 @@ class ActiveDirectoryArgs:
         return pulumi.get(self, "site")
 
     @site.setter
-    def site(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site", value)
 
 
 @pulumi.input_type
 class _ActiveDirectoryState:
     def __init__(__self__, *,
-                 administrators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 aes_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backup_operators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 encrypt_dc_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kdc_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 kdc_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ldap_signing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_bios_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 nfs_users_with_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 organizational_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 security_operators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 site: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_details: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 administrators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aes_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backup_operators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encrypt_dc_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kdc_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 kdc_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ldap_signing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_bios_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_users_with_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 organizational_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 security_operators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 site: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_details: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ActiveDirectory resources.
 
@@ -500,139 +500,139 @@ class _ActiveDirectoryState:
 
     @_builtins.property
     @pulumi.getter
-    def administrators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def administrators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
         """
         return pulumi.get(self, "administrators")
 
     @administrators.setter
-    def administrators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def administrators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "administrators", value)
 
     @_builtins.property
     @pulumi.getter(name="aesEncryption")
-    def aes_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def aes_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
         """
         return pulumi.get(self, "aes_encryption")
 
     @aes_encryption.setter
-    def aes_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def aes_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "aes_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="backupOperators")
-    def backup_operators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backup_operators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
         """
         return pulumi.get(self, "backup_operators")
 
     @backup_operators.setter
-    def backup_operators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backup_operators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backup_operators", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comma separated list of DNS server IP addresses for the Active Directory domain.
         """
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fully qualified domain name for the Active Directory domain.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptDcConnections")
-    def encrypt_dc_connections(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypt_dc_connections(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
         """
         return pulumi.get(self, "encrypt_dc_connections")
 
     @encrypt_dc_connections.setter
-    def encrypt_dc_connections(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypt_dc_connections(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypt_dc_connections", value)
 
     @_builtins.property
     @pulumi.getter(name="kdcHostname")
-    def kdc_hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kdc_hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
         """
         return pulumi.get(self, "kdc_hostname")
 
     @kdc_hostname.setter
-    def kdc_hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kdc_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kdc_hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="kdcIp")
-    def kdc_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kdc_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address of the Active Directory server used as Kerberos Key Distribution Center.
         """
         return pulumi.get(self, "kdc_ip")
 
     @kdc_ip.setter
-    def kdc_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kdc_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kdc_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
 
@@ -642,48 +642,48 @@ class _ActiveDirectoryState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapSigning")
-    def ldap_signing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ldap_signing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether or not the LDAP traffic needs to be signed.
         """
         return pulumi.get(self, "ldap_signing")
 
     @ldap_signing.setter
-    def ldap_signing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ldap_signing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ldap_signing", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the region for the policy to apply to.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Active Directory pool. Needs to be unique per location.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="netBiosPrefix")
-    def net_bios_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_bios_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         NetBIOS name prefix of the server to be created.
         A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
@@ -692,12 +692,12 @@ class _ActiveDirectoryState:
         return pulumi.get(self, "net_bios_prefix")
 
     @net_bios_prefix.setter
-    def net_bios_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_bios_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_bios_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="nfsUsersWithLdap")
-    def nfs_users_with_ldap(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nfs_users_with_ldap(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Local UNIX users on clients without valid user information in Active Directory are blocked from access to LDAP enabled volumes.
         This option can be used to temporarily switch such volumes to AUTH_SYS authentication (user ID + 1-16 groups).
@@ -705,12 +705,12 @@ class _ActiveDirectoryState:
         return pulumi.get(self, "nfs_users_with_ldap")
 
     @nfs_users_with_ldap.setter
-    def nfs_users_with_ldap(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nfs_users_with_ldap(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nfs_users_with_ldap", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationalUnit")
-    def organizational_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organizational_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
         Defaults to `CN=Computers` if left empty.
@@ -718,12 +718,12 @@ class _ActiveDirectoryState:
         return pulumi.get(self, "organizational_unit")
 
     @organizational_unit.setter
-    def organizational_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organizational_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organizational_unit", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -731,12 +731,12 @@ class _ActiveDirectoryState:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -744,12 +744,12 @@ class _ActiveDirectoryState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -757,24 +757,24 @@ class _ActiveDirectoryState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="securityOperators")
-    def security_operators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_operators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Domain accounts that require elevated privileges such as `SeSecurityPrivilege` to manage security logs. Comma-separated list.
         """
         return pulumi.get(self, "security_operators")
 
     @security_operators.setter
-    def security_operators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_operators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_operators", value)
 
     @_builtins.property
     @pulumi.getter
-    def site(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies an Active Directory site to manage domain controller selection.
         Use when Active Directory domain controllers in multiple regions are configured. Defaults to `Default-First-Site-Name` if left empty.
@@ -782,43 +782,43 @@ class _ActiveDirectoryState:
         return pulumi.get(self, "site")
 
     @site.setter
-    def site(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the Active Directory policy (not the Active Directory itself).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateDetails")
-    def state_details(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state_details(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state details of the Active Directory.
         """
         return pulumi.get(self, "state_details")
 
     @state_details.setter
-    def state_details(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state_details(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username for the Active Directory account with permissions to create the compute account within the specified organizational unit.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -828,27 +828,27 @@ class ActiveDirectory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 administrators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 aes_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backup_operators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_dc_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kdc_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 kdc_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ldap_signing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_bios_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 nfs_users_with_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 organizational_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_operators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 site: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 administrators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aes_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backup_operators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_dc_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kdc_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 kdc_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ldap_signing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_bios_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_users_with_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 organizational_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_operators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 site: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ActiveDirectory is the public representation of the active directory config.
@@ -1041,27 +1041,27 @@ class ActiveDirectory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 administrators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 aes_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backup_operators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_dc_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kdc_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 kdc_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ldap_signing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_bios_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 nfs_users_with_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 organizational_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_operators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 site: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 administrators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aes_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backup_operators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_dc_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kdc_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 kdc_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ldap_signing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_bios_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_users_with_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 organizational_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_operators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 site: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1121,32 +1121,32 @@ class ActiveDirectory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            administrators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            aes_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-            backup_operators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dns: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encrypt_dc_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-            kdc_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            kdc_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ldap_signing: Optional[pulumi.Input[_builtins.bool]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            net_bios_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            nfs_users_with_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-            organizational_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            security_operators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            site: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            state_details: Optional[pulumi.Input[_builtins.str]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'ActiveDirectory':
+            administrators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            aes_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+            backup_operators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dns: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encrypt_dc_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+            kdc_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            kdc_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ldap_signing: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            net_bios_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            nfs_users_with_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+            organizational_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            security_operators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            site: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_details: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'ActiveDirectory':
         """
         Get an existing ActiveDirectory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

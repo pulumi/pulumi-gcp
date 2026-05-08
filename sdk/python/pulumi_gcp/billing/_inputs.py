@@ -40,14 +40,14 @@ __all__ = [
 class AccountIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AccountIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -73,25 +73,25 @@ class AccountIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AccountIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AccountIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -117,44 +117,44 @@ class AccountIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class BudgetAllUpdatesRuleArgsDict(TypedDict):
-    disable_default_iam_recipients: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_default_iam_recipients: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean. When set to true, disables default notifications sent
     when a threshold is exceeded. Default recipients are
     those with Billing Account Administrators and Billing
     Account Users IAM roles for the target account.
     """
-    enable_project_level_recipients: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_project_level_recipients: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When set to true, and when the budget has a single project configured,
     notifications will be sent to project level recipients of that project.
     This field will be ignored if the budget has multiple or no project configured.
     Currently, project level recipients are the users with Owner role on a cloud project.
     """
-    monitoring_notification_channels: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    monitoring_notification_channels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The full resource name of a monitoring notification
     channel in the form
     projects/{project_id}/notificationChannels/{channel_id}.
     A maximum of 5 channels are allowed.
     """
-    pubsub_topic: NotRequired[pulumi.Input[_builtins.str]]
+    pubsub_topic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the Cloud Pub/Sub topic where budget related
     messages will be published, in the form
     projects/{project_id}/topics/{topic_id}. Updates are sent
     at regular intervals to the topic.
     """
-    schema_version: NotRequired[pulumi.Input[_builtins.str]]
+    schema_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The schema version of the notification. Only "1.0" is
     accepted. It represents the JSON schema as defined in
@@ -164,11 +164,11 @@ class BudgetAllUpdatesRuleArgsDict(TypedDict):
 @pulumi.input_type
 class BudgetAllUpdatesRuleArgs:
     def __init__(__self__, *,
-                 disable_default_iam_recipients: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_project_level_recipients: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monitoring_notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 disable_default_iam_recipients: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_project_level_recipients: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monitoring_notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] disable_default_iam_recipients: Boolean. When set to true, disables default notifications sent
                when a threshold is exceeded. Default recipients are
@@ -203,7 +203,7 @@ class BudgetAllUpdatesRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="disableDefaultIamRecipients")
-    def disable_default_iam_recipients(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_default_iam_recipients(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean. When set to true, disables default notifications sent
         when a threshold is exceeded. Default recipients are
@@ -213,12 +213,12 @@ class BudgetAllUpdatesRuleArgs:
         return pulumi.get(self, "disable_default_iam_recipients")
 
     @disable_default_iam_recipients.setter
-    def disable_default_iam_recipients(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_default_iam_recipients(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_default_iam_recipients", value)
 
     @_builtins.property
     @pulumi.getter(name="enableProjectLevelRecipients")
-    def enable_project_level_recipients(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_project_level_recipients(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true, and when the budget has a single project configured,
         notifications will be sent to project level recipients of that project.
@@ -228,12 +228,12 @@ class BudgetAllUpdatesRuleArgs:
         return pulumi.get(self, "enable_project_level_recipients")
 
     @enable_project_level_recipients.setter
-    def enable_project_level_recipients(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_project_level_recipients(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_project_level_recipients", value)
 
     @_builtins.property
     @pulumi.getter(name="monitoringNotificationChannels")
-    def monitoring_notification_channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def monitoring_notification_channels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The full resource name of a monitoring notification
         channel in the form
@@ -243,12 +243,12 @@ class BudgetAllUpdatesRuleArgs:
         return pulumi.get(self, "monitoring_notification_channels")
 
     @monitoring_notification_channels.setter
-    def monitoring_notification_channels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def monitoring_notification_channels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "monitoring_notification_channels", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubTopic")
-    def pubsub_topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pubsub_topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Cloud Pub/Sub topic where budget related
         messages will be published, in the form
@@ -258,12 +258,12 @@ class BudgetAllUpdatesRuleArgs:
         return pulumi.get(self, "pubsub_topic")
 
     @pubsub_topic.setter
-    def pubsub_topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pubsub_topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pubsub_topic", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaVersion")
-    def schema_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schema version of the notification. Only "1.0" is
         accepted. It represents the JSON schema as defined in
@@ -272,19 +272,19 @@ class BudgetAllUpdatesRuleArgs:
         return pulumi.get(self, "schema_version")
 
     @schema_version.setter
-    def schema_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_version", value)
 
 
 class BudgetAmountArgsDict(TypedDict):
-    last_period_amount: NotRequired[pulumi.Input[_builtins.bool]]
+    last_period_amount: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Configures a budget amount that is automatically set to 100% of
     last period's spend.
     Boolean. Set value to true to use. Do not set to false, instead
     use the `specified_amount` block.
     """
-    specified_amount: NotRequired[pulumi.Input['BudgetAmountSpecifiedAmountArgsDict']]
+    specified_amount: NotRequired[pulumi.Input[Optional['BudgetAmountSpecifiedAmountArgs']]]
     """
     A specified amount to use as the budget. currencyCode is
     optional. If specified, it must match the currency of the
@@ -295,8 +295,8 @@ class BudgetAmountArgsDict(TypedDict):
 @pulumi.input_type
 class BudgetAmountArgs:
     def __init__(__self__, *,
-                 last_period_amount: Optional[pulumi.Input[_builtins.bool]] = None,
-                 specified_amount: Optional[pulumi.Input['BudgetAmountSpecifiedAmountArgs']] = None):
+                 last_period_amount: pulumi.Input[Optional[_builtins.bool]] = None,
+                 specified_amount: pulumi.Input[Optional['BudgetAmountSpecifiedAmountArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] last_period_amount: Configures a budget amount that is automatically set to 100% of
                last period's spend.
@@ -314,7 +314,7 @@ class BudgetAmountArgs:
 
     @_builtins.property
     @pulumi.getter(name="lastPeriodAmount")
-    def last_period_amount(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def last_period_amount(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Configures a budget amount that is automatically set to 100% of
         last period's spend.
@@ -324,12 +324,12 @@ class BudgetAmountArgs:
         return pulumi.get(self, "last_period_amount")
 
     @last_period_amount.setter
-    def last_period_amount(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def last_period_amount(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "last_period_amount", value)
 
     @_builtins.property
     @pulumi.getter(name="specifiedAmount")
-    def specified_amount(self) -> Optional[pulumi.Input['BudgetAmountSpecifiedAmountArgs']]:
+    def specified_amount(self) -> pulumi.Input[Optional['BudgetAmountSpecifiedAmountArgs']]:
         """
         A specified amount to use as the budget. currencyCode is
         optional. If specified, it must match the currency of the
@@ -339,16 +339,16 @@ class BudgetAmountArgs:
         return pulumi.get(self, "specified_amount")
 
     @specified_amount.setter
-    def specified_amount(self, value: Optional[pulumi.Input['BudgetAmountSpecifiedAmountArgs']]):
+    def specified_amount(self, value: pulumi.Input[Optional['BudgetAmountSpecifiedAmountArgs']]):
         pulumi.set(self, "specified_amount", value)
 
 
 class BudgetAmountSpecifiedAmountArgsDict(TypedDict):
-    currency_code: NotRequired[pulumi.Input[_builtins.str]]
+    currency_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The 3-letter currency code defined in ISO 4217.
     """
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of nano (10^-9) units of the amount.
     The value must be between -999,999,999 and +999,999,999
@@ -358,7 +358,7 @@ class BudgetAmountSpecifiedAmountArgsDict(TypedDict):
     zero. For example $-1.75 is represented as units=-1 and
     nanos=-750,000,000.
     """
-    units: NotRequired[pulumi.Input[_builtins.str]]
+    units: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The whole units of the amount. For example if currencyCode
     is "USD", then 1 unit is one US dollar.
@@ -367,9 +367,9 @@ class BudgetAmountSpecifiedAmountArgsDict(TypedDict):
 @pulumi.input_type
 class BudgetAmountSpecifiedAmountArgs:
     def __init__(__self__, *,
-                 currency_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 units: Optional[pulumi.Input[_builtins.str]] = None):
+                 currency_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 units: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] currency_code: The 3-letter currency code defined in ISO 4217.
         :param pulumi.Input[_builtins.int] nanos: Number of nano (10^-9) units of the amount.
@@ -391,19 +391,19 @@ class BudgetAmountSpecifiedAmountArgs:
 
     @_builtins.property
     @pulumi.getter(name="currencyCode")
-    def currency_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def currency_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The 3-letter currency code defined in ISO 4217.
         """
         return pulumi.get(self, "currency_code")
 
     @currency_code.setter
-    def currency_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def currency_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "currency_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of nano (10^-9) units of the amount.
         The value must be between -999,999,999 and +999,999,999
@@ -416,12 +416,12 @@ class BudgetAmountSpecifiedAmountArgs:
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def units(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def units(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The whole units of the amount. For example if currencyCode
         is "USD", then 1 unit is one US dollar.
@@ -429,12 +429,12 @@ class BudgetAmountSpecifiedAmountArgs:
         return pulumi.get(self, "units")
 
     @units.setter
-    def units(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def units(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "units", value)
 
 
 class BudgetBudgetFilterArgsDict(TypedDict):
-    calendar_period: NotRequired[pulumi.Input[_builtins.str]]
+    calendar_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A CalendarPeriod represents the abstract concept of a recurring time period that has a
     canonical start. Grammatically, "the start of the current CalendarPeriod".
@@ -442,32 +442,32 @@ class BudgetBudgetFilterArgsDict(TypedDict):
     Exactly one of `calendar_period`, `custom_period` must be provided.
     Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
     """
-    credit_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    credit_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
     this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
     If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
     """
-    credit_types_treatment: NotRequired[pulumi.Input[_builtins.str]]
+    credit_types_treatment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how credits should be treated when determining spend
     for threshold calculations.
     Default value is `INCLUDE_ALL_CREDITS`.
     Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
     """
-    custom_period: NotRequired[pulumi.Input['BudgetBudgetFilterCustomPeriodArgsDict']]
+    custom_period: NotRequired[pulumi.Input[Optional['BudgetBudgetFilterCustomPeriodArgs']]]
     """
     Specifies to track usage from any start date (required) to any end date (optional).
     This time period is static, it does not recur.
     Exactly one of `calendar_period`, `custom_period` must be provided.
     Structure is documented below.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     A single label and value pair specifying that usage from only
     this set of labeled resources should be included in the budget.
     """
-    projects: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    projects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A set of projects of the form projects/{project_number},
     specifying that usage from only this set of projects should be
@@ -475,14 +475,14 @@ class BudgetBudgetFilterArgsDict(TypedDict):
     all usage for the billing account, regardless of which project
     the usage occurred on.
     """
-    resource_ancestors: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resource_ancestors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
     specifying that usage from only this set of folders and organizations should be included in the budget.
     If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
     contains projects that are paid for by a different Cloud Billing account, the budget doesn't apply to those projects.
     """
-    services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A set of services of the form services/{service_id},
     specifying that usage from only this set of services should be
@@ -491,7 +491,7 @@ class BudgetBudgetFilterArgsDict(TypedDict):
     through the Catalog API:
     https://cloud.google.com/billing/v1/how-tos/catalog-api.
     """
-    subaccounts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    subaccounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A set of subaccounts of the form billingAccounts/{account_id},
     specifying that usage from only this set of subaccounts should
@@ -504,15 +504,15 @@ class BudgetBudgetFilterArgsDict(TypedDict):
 @pulumi.input_type
 class BudgetBudgetFilterArgs:
     def __init__(__self__, *,
-                 calendar_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 credit_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 credit_types_treatment: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_period: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_ancestors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subaccounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 calendar_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 credit_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 credit_types_treatment: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_period: pulumi.Input[Optional['BudgetBudgetFilterCustomPeriodArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_ancestors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subaccounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] calendar_period: A CalendarPeriod represents the abstract concept of a recurring time period that has a
                canonical start. Grammatically, "the start of the current CalendarPeriod".
@@ -575,7 +575,7 @@ class BudgetBudgetFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="calendarPeriod")
-    def calendar_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def calendar_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A CalendarPeriod represents the abstract concept of a recurring time period that has a
         canonical start. Grammatically, "the start of the current CalendarPeriod".
@@ -586,12 +586,12 @@ class BudgetBudgetFilterArgs:
         return pulumi.get(self, "calendar_period")
 
     @calendar_period.setter
-    def calendar_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def calendar_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "calendar_period", value)
 
     @_builtins.property
     @pulumi.getter(name="creditTypes")
-    def credit_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def credit_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
         this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
@@ -600,12 +600,12 @@ class BudgetBudgetFilterArgs:
         return pulumi.get(self, "credit_types")
 
     @credit_types.setter
-    def credit_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def credit_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "credit_types", value)
 
     @_builtins.property
     @pulumi.getter(name="creditTypesTreatment")
-    def credit_types_treatment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credit_types_treatment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how credits should be treated when determining spend
         for threshold calculations.
@@ -615,12 +615,12 @@ class BudgetBudgetFilterArgs:
         return pulumi.get(self, "credit_types_treatment")
 
     @credit_types_treatment.setter
-    def credit_types_treatment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credit_types_treatment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credit_types_treatment", value)
 
     @_builtins.property
     @pulumi.getter(name="customPeriod")
-    def custom_period(self) -> Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodArgs']]:
+    def custom_period(self) -> pulumi.Input[Optional['BudgetBudgetFilterCustomPeriodArgs']]:
         """
         Specifies to track usage from any start date (required) to any end date (optional).
         This time period is static, it does not recur.
@@ -630,12 +630,12 @@ class BudgetBudgetFilterArgs:
         return pulumi.get(self, "custom_period")
 
     @custom_period.setter
-    def custom_period(self, value: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodArgs']]):
+    def custom_period(self, value: pulumi.Input[Optional['BudgetBudgetFilterCustomPeriodArgs']]):
         pulumi.set(self, "custom_period", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A single label and value pair specifying that usage from only
         this set of labeled resources should be included in the budget.
@@ -643,12 +643,12 @@ class BudgetBudgetFilterArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def projects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of projects of the form projects/{project_number},
         specifying that usage from only this set of projects should be
@@ -659,12 +659,12 @@ class BudgetBudgetFilterArgs:
         return pulumi.get(self, "projects")
 
     @projects.setter
-    def projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def projects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "projects", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceAncestors")
-    def resource_ancestors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_ancestors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
         specifying that usage from only this set of folders and organizations should be included in the budget.
@@ -674,12 +674,12 @@ class BudgetBudgetFilterArgs:
         return pulumi.get(self, "resource_ancestors")
 
     @resource_ancestors.setter
-    def resource_ancestors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_ancestors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_ancestors", value)
 
     @_builtins.property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of services of the form services/{service_id},
         specifying that usage from only this set of services should be
@@ -691,12 +691,12 @@ class BudgetBudgetFilterArgs:
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "services", value)
 
     @_builtins.property
     @pulumi.getter
-    def subaccounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subaccounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of subaccounts of the form billingAccounts/{account_id},
         specifying that usage from only this set of subaccounts should
@@ -708,7 +708,7 @@ class BudgetBudgetFilterArgs:
         return pulumi.get(self, "subaccounts")
 
     @subaccounts.setter
-    def subaccounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subaccounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subaccounts", value)
 
 
@@ -718,7 +718,7 @@ class BudgetBudgetFilterCustomPeriodArgsDict(TypedDict):
     A start date is required. The start date must be after January 1, 2017.
     Structure is documented below.
     """
-    end_date: NotRequired[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgsDict']]
+    end_date: NotRequired[pulumi.Input[Optional['BudgetBudgetFilterCustomPeriodEndDateArgs']]]
     """
     Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
     If unset, specifies to track all usage incurred since the startDate.
@@ -729,7 +729,7 @@ class BudgetBudgetFilterCustomPeriodArgsDict(TypedDict):
 class BudgetBudgetFilterCustomPeriodArgs:
     def __init__(__self__, *,
                  start_date: pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArgs'],
-                 end_date: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgs']] = None):
+                 end_date: pulumi.Input[Optional['BudgetBudgetFilterCustomPeriodEndDateArgs']] = None):
         """
         :param pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArgs'] start_date: A start date is required. The start date must be after January 1, 2017.
                Structure is documented below.
@@ -756,7 +756,7 @@ class BudgetBudgetFilterCustomPeriodArgs:
 
     @_builtins.property
     @pulumi.getter(name="endDate")
-    def end_date(self) -> Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgs']]:
+    def end_date(self) -> pulumi.Input[Optional['BudgetBudgetFilterCustomPeriodEndDateArgs']]:
         """
         Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
         If unset, specifies to track all usage incurred since the startDate.
@@ -765,7 +765,7 @@ class BudgetBudgetFilterCustomPeriodArgs:
         return pulumi.get(self, "end_date")
 
     @end_date.setter
-    def end_date(self, value: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgs']]):
+    def end_date(self, value: pulumi.Input[Optional['BudgetBudgetFilterCustomPeriodEndDateArgs']]):
         pulumi.set(self, "end_date", value)
 
 
@@ -907,7 +907,7 @@ class BudgetThresholdRuleArgsDict(TypedDict):
     Send an alert when this threshold is exceeded. This is a
     1.0-based percentage, so 0.5 = 50%. Must be >= 0.
     """
-    spend_basis: NotRequired[pulumi.Input[_builtins.str]]
+    spend_basis: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of basis used to determine if spend has passed
     the threshold.
@@ -919,7 +919,7 @@ class BudgetThresholdRuleArgsDict(TypedDict):
 class BudgetThresholdRuleArgs:
     def __init__(__self__, *,
                  threshold_percent: pulumi.Input[_builtins.float],
-                 spend_basis: Optional[pulumi.Input[_builtins.str]] = None):
+                 spend_basis: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.float] threshold_percent: Send an alert when this threshold is exceeded. This is a
                1.0-based percentage, so 0.5 = 50%. Must be >= 0.
@@ -947,7 +947,7 @@ class BudgetThresholdRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="spendBasis")
-    def spend_basis(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spend_basis(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of basis used to determine if spend has passed
         the threshold.
@@ -957,7 +957,7 @@ class BudgetThresholdRuleArgs:
         return pulumi.get(self, "spend_basis")
 
     @spend_basis.setter
-    def spend_basis(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spend_basis(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spend_basis", value)
 
 

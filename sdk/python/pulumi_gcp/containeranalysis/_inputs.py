@@ -117,14 +117,14 @@ class NoteAttestationAuthorityHintArgs:
 class NoteIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class NoteIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -150,25 +150,25 @@ class NoteIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class NoteIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class NoteIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -194,11 +194,11 @@ class NoteIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -207,7 +207,7 @@ class NoteRelatedUrlArgsDict(TypedDict):
     """
     Specific URL associated with the resource.
     """
-    label: NotRequired[pulumi.Input[_builtins.str]]
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Label to describe usage of the URL
     """
@@ -216,7 +216,7 @@ class NoteRelatedUrlArgsDict(TypedDict):
 class NoteRelatedUrlArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[_builtins.str],
-                 label: Optional[pulumi.Input[_builtins.str]] = None):
+                 label: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] url: Specific URL associated with the resource.
         :param pulumi.Input[_builtins.str] label: Label to describe usage of the URL
@@ -239,14 +239,14 @@ class NoteRelatedUrlArgs:
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Label to describe usage of the URL
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
 
@@ -329,7 +329,7 @@ class OccurenceAttestationSignatureArgsDict(TypedDict):
     * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
     * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
     """
-    signature: NotRequired[pulumi.Input[_builtins.str]]
+    signature: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The content of the signature, an opaque bytestring.
     The payload that this signature verifies MUST be
@@ -344,7 +344,7 @@ class OccurenceAttestationSignatureArgsDict(TypedDict):
 class OccurenceAttestationSignatureArgs:
     def __init__(__self__, *,
                  public_key_id: pulumi.Input[_builtins.str],
-                 signature: Optional[pulumi.Input[_builtins.str]] = None):
+                 signature: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] public_key_id: The identifier for the public key that verifies this
                signature. MUST be an RFC3986 conformant
@@ -391,7 +391,7 @@ class OccurenceAttestationSignatureArgs:
 
     @_builtins.property
     @pulumi.getter
-    def signature(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def signature(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the signature, an opaque bytestring.
         The payload that this signature verifies MUST be
@@ -404,7 +404,7 @@ class OccurenceAttestationSignatureArgs:
         return pulumi.get(self, "signature")
 
     @signature.setter
-    def signature(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def signature(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signature", value)
 
 

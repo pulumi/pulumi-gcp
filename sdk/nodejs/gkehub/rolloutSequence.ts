@@ -190,66 +190,66 @@ export interface RolloutSequenceState {
     /**
      * The timestamp at which the Rollout Sequence was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The timestamp at the Rollout Sequence was deleted.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * Human readable display name of the Rollout Sequence.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * etag of the Rollout Sequence.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Selector for clusters to exclude from the Rollout Sequence.
      * Structure is documented below.
      */
-    ignoredClustersSelector?: pulumi.Input<inputs.gkehub.RolloutSequenceIgnoredClustersSelector>;
+    ignoredClustersSelector?: pulumi.Input<inputs.gkehub.RolloutSequenceIgnoredClustersSelector | undefined>;
     /**
      * Labels for this Rollout Sequence.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The full resource name of the RolloutSequence.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The user-provided identifier of the RolloutSequence.
      */
-    rolloutSequenceId?: pulumi.Input<string>;
+    rolloutSequenceId?: pulumi.Input<string | undefined>;
     /**
      * Ordered list of stages that constitute this Rollout Sequence.
      * Structure is documented below.
      */
-    stages?: pulumi.Input<pulumi.Input<inputs.gkehub.RolloutSequenceStage>[]>;
+    stages?: pulumi.Input<pulumi.Input<inputs.gkehub.RolloutSequenceStage>[] | undefined>;
     /**
      * Google-generated UUID for this resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The timestamp at which the Rollout Sequence was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -259,24 +259,24 @@ export interface RolloutSequenceArgs {
     /**
      * Human readable display name of the Rollout Sequence.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Selector for clusters to exclude from the Rollout Sequence.
      * Structure is documented below.
      */
-    ignoredClustersSelector?: pulumi.Input<inputs.gkehub.RolloutSequenceIgnoredClustersSelector>;
+    ignoredClustersSelector?: pulumi.Input<inputs.gkehub.RolloutSequenceIgnoredClustersSelector | undefined>;
     /**
      * Labels for this Rollout Sequence.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The user-provided identifier of the RolloutSequence.
      */

@@ -418,9 +418,9 @@ def get_region_disk(name: Optional[_builtins.str] = None,
         source_snapshot_id=pulumi.get(__ret__, 'source_snapshot_id'),
         type=pulumi.get(__ret__, 'type'),
         users=pulumi.get(__ret__, 'users'))
-def get_region_disk_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                           project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_region_disk_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                           project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionDiskResult]:
     """
     Get information about a Google Compute Regional Persistent disks.

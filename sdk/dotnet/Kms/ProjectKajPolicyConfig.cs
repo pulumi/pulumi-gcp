@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Kms
     ///         },
     ///     });
     /// 
-    ///     var waitEnableServiceApi = new Time.Index.Sleep("wait_enable_service_api", new()
+    ///     var waitEnableServiceApi = new Time.Sleep("wait_enable_service_api", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions

@@ -87,23 +87,23 @@ export class CustomTargetTypeIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CustomTargetTypeIamMember resources.
  */
 export interface CustomTargetTypeIamMemberState {
-    condition?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeIamMemberCondition>;
-    etag?: pulumi.Input<string>;
-    location?: pulumi.Input<string>;
-    member?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeIamMemberCondition | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    location?: pulumi.Input<string | undefined>;
+    member?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a CustomTargetTypeIamMember resource.
  */
 export interface CustomTargetTypeIamMemberArgs {
-    condition?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeIamMemberCondition>;
-    location?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeIamMemberCondition | undefined>;
+    location?: pulumi.Input<string | undefined>;
     member: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
     role: pulumi.Input<string>;
 }

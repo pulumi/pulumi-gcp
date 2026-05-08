@@ -345,39 +345,39 @@ export interface DataTransferConfigState {
      * just [today-1]. Only valid if the data source supports the feature.
      * Set the value to 0 to use the default value.
      */
-    dataRefreshWindowDays?: pulumi.Input<number>;
+    dataRefreshWindowDays?: pulumi.Input<number | undefined>;
     /**
      * The data source id. Cannot be changed once the transfer config is created.
      */
-    dataSourceId?: pulumi.Input<string>;
+    dataSourceId?: pulumi.Input<string | undefined>;
     /**
      * The BigQuery target dataset id.
      */
-    destinationDatasetId?: pulumi.Input<string>;
+    destinationDatasetId?: pulumi.Input<string | undefined>;
     /**
      * When set to true, no runs are scheduled for a given transfer.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The user specified display name for the transfer config.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Email notifications will be sent according to these preferences to the
      * email address of the user who owns this transfer config.
      * Structure is documented below.
      */
-    emailPreferences?: pulumi.Input<inputs.bigquery.DataTransferConfigEmailPreferences>;
+    emailPreferences?: pulumi.Input<inputs.bigquery.DataTransferConfigEmailPreferences | undefined>;
     /**
      * Represents the encryption configuration for a transfer.
      * Structure is documented below.
      */
-    encryptionConfiguration?: pulumi.Input<inputs.bigquery.DataTransferConfigEncryptionConfiguration>;
+    encryptionConfiguration?: pulumi.Input<inputs.bigquery.DataTransferConfigEncryptionConfiguration | undefined>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the transfer config. Transfer config names have the
      * form projects/{projectId}/locations/{location}/transferConfigs/{configId}
@@ -385,24 +385,24 @@ export interface DataTransferConfigState {
      * where configId is usually a uuid, but this is not required.
      * The name is ignored when creating a transfer config.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Pub/Sub topic where notifications will be sent after transfer runs
      * associated with this transfer config finish.
      */
-    notificationPubsubTopic?: pulumi.Input<string>;
+    notificationPubsubTopic?: pulumi.Input<string | undefined>;
     /**
      * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
      * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
      * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
      */
-    params?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    params?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Data transfer schedule. If the data source does not support a custom
      * schedule, this should be empty. If it is empty, the default value for
@@ -414,12 +414,12 @@ export interface DataTransferConfigState {
      * NOTE: The minimum interval time between recurring transfers depends
      * on the data source; refer to the documentation for your data source.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * Options customizing the data transfer schedule.
      * Structure is documented below.
      */
-    scheduleOptions?: pulumi.Input<inputs.bigquery.DataTransferConfigScheduleOptions>;
+    scheduleOptions?: pulumi.Input<inputs.bigquery.DataTransferConfigScheduleOptions | undefined>;
     /**
      * Different parameters are configured primarily using the the `params` field on this
      * resource. This block contains the parameters which contain secrets or passwords so that they can be marked
@@ -429,13 +429,13 @@ export interface DataTransferConfigState {
      * to a different credential configuration in the config will require an apply to update state.
      * Structure is documented below.
      */
-    sensitiveParams?: pulumi.Input<inputs.bigquery.DataTransferConfigSensitiveParams>;
+    sensitiveParams?: pulumi.Input<inputs.bigquery.DataTransferConfigSensitiveParams | undefined>;
     /**
      * Service account email. If this field is set, transfer config will
      * be created with this service account credentials. It requires that
      * requesting user calling this API has permissions to act as this service account.
      */
-    serviceAccountName?: pulumi.Input<string>;
+    serviceAccountName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -449,7 +449,7 @@ export interface DataTransferConfigArgs {
      * just [today-1]. Only valid if the data source supports the feature.
      * Set the value to 0 to use the default value.
      */
-    dataRefreshWindowDays?: pulumi.Input<number>;
+    dataRefreshWindowDays?: pulumi.Input<number | undefined>;
     /**
      * The data source id. Cannot be changed once the transfer config is created.
      */
@@ -457,11 +457,11 @@ export interface DataTransferConfigArgs {
     /**
      * The BigQuery target dataset id.
      */
-    destinationDatasetId?: pulumi.Input<string>;
+    destinationDatasetId?: pulumi.Input<string | undefined>;
     /**
      * When set to true, no runs are scheduled for a given transfer.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The user specified display name for the transfer config.
      */
@@ -471,22 +471,22 @@ export interface DataTransferConfigArgs {
      * email address of the user who owns this transfer config.
      * Structure is documented below.
      */
-    emailPreferences?: pulumi.Input<inputs.bigquery.DataTransferConfigEmailPreferences>;
+    emailPreferences?: pulumi.Input<inputs.bigquery.DataTransferConfigEmailPreferences | undefined>;
     /**
      * Represents the encryption configuration for a transfer.
      * Structure is documented below.
      */
-    encryptionConfiguration?: pulumi.Input<inputs.bigquery.DataTransferConfigEncryptionConfiguration>;
+    encryptionConfiguration?: pulumi.Input<inputs.bigquery.DataTransferConfigEncryptionConfiguration | undefined>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Pub/Sub topic where notifications will be sent after transfer runs
      * associated with this transfer config finish.
      */
-    notificationPubsubTopic?: pulumi.Input<string>;
+    notificationPubsubTopic?: pulumi.Input<string | undefined>;
     /**
      * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
      * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
@@ -498,7 +498,7 @@ export interface DataTransferConfigArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Data transfer schedule. If the data source does not support a custom
      * schedule, this should be empty. If it is empty, the default value for
@@ -510,12 +510,12 @@ export interface DataTransferConfigArgs {
      * NOTE: The minimum interval time between recurring transfers depends
      * on the data source; refer to the documentation for your data source.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * Options customizing the data transfer schedule.
      * Structure is documented below.
      */
-    scheduleOptions?: pulumi.Input<inputs.bigquery.DataTransferConfigScheduleOptions>;
+    scheduleOptions?: pulumi.Input<inputs.bigquery.DataTransferConfigScheduleOptions | undefined>;
     /**
      * Different parameters are configured primarily using the the `params` field on this
      * resource. This block contains the parameters which contain secrets or passwords so that they can be marked
@@ -525,11 +525,11 @@ export interface DataTransferConfigArgs {
      * to a different credential configuration in the config will require an apply to update state.
      * Structure is documented below.
      */
-    sensitiveParams?: pulumi.Input<inputs.bigquery.DataTransferConfigSensitiveParams>;
+    sensitiveParams?: pulumi.Input<inputs.bigquery.DataTransferConfigSensitiveParams | undefined>;
     /**
      * Service account email. If this field is set, transfer config will
      * be created with this service account credentials. It requires that
      * requesting user calling this API has permissions to act as this service account.
      */
-    serviceAccountName?: pulumi.Input<string>;
+    serviceAccountName?: pulumi.Input<string | undefined>;
 }

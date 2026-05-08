@@ -24,27 +24,27 @@ class SQuotaPreferenceQuotaConfigArgsDict(TypedDict):
     """
     The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is "unlimited".
     """
-    annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    annotations: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
     An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
     """
-    granted_value: NotRequired[pulumi.Input[_builtins.str]]
+    granted_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Granted quota value.
     """
-    request_origin: NotRequired[pulumi.Input[_builtins.str]]
+    request_origin: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The origin of the quota preference request.
     """
-    state_detail: NotRequired[pulumi.Input[_builtins.str]]
+    state_detail: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Optional details about the state of this quota preference.
     """
-    trace_id: NotRequired[pulumi.Input[_builtins.str]]
+    trace_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The trace id that the Google Cloud uses to provision the requested quota. This trace id may be used by the client to contact Cloud support to track the state of a quota preference request. The trace id is only produced for increase requests and is unique for each request. The quota decrease requests do not have a trace id.
@@ -54,11 +54,11 @@ class SQuotaPreferenceQuotaConfigArgsDict(TypedDict):
 class SQuotaPreferenceQuotaConfigArgs:
     def __init__(__self__, *,
                  preferred_value: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 granted_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 trace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 granted_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 trace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] preferred_value: The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is "unlimited".
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
@@ -98,7 +98,7 @@ class SQuotaPreferenceQuotaConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
         An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
@@ -106,12 +106,12 @@ class SQuotaPreferenceQuotaConfigArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="grantedValue")
-    def granted_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def granted_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Granted quota value.
@@ -119,12 +119,12 @@ class SQuotaPreferenceQuotaConfigArgs:
         return pulumi.get(self, "granted_value")
 
     @granted_value.setter
-    def granted_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def granted_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "granted_value", value)
 
     @_builtins.property
     @pulumi.getter(name="requestOrigin")
-    def request_origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The origin of the quota preference request.
@@ -132,12 +132,12 @@ class SQuotaPreferenceQuotaConfigArgs:
         return pulumi.get(self, "request_origin")
 
     @request_origin.setter
-    def request_origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_origin", value)
 
     @_builtins.property
     @pulumi.getter(name="stateDetail")
-    def state_detail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state_detail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Optional details about the state of this quota preference.
@@ -145,12 +145,12 @@ class SQuotaPreferenceQuotaConfigArgs:
         return pulumi.get(self, "state_detail")
 
     @state_detail.setter
-    def state_detail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state_detail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state_detail", value)
 
     @_builtins.property
     @pulumi.getter(name="traceId")
-    def trace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The trace id that the Google Cloud uses to provision the requested quota. This trace id may be used by the client to contact Cloud support to track the state of a quota preference request. The trace id is only produced for increase requests and is unique for each request. The quota decrease requests do not have a trace id.
@@ -158,7 +158,7 @@ class SQuotaPreferenceQuotaConfigArgs:
         return pulumi.get(self, "trace_id")
 
     @trace_id.setter
-    def trace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trace_id", value)
 
 

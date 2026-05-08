@@ -586,7 +586,7 @@ import * as utilities from "../utilities";
  *                 cloudStorageSource: {
  *                     bucket: sourcebucket.name,
  *                     object: sourceTar.name,
- *                     generation: sourceTar.generation,
+ *                     generation: sourceTar.generation.apply(x =>String(x)),
  *                 },
  *             },
  *         }],
@@ -997,51 +997,51 @@ export interface ServiceState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Settings for the Binary Authorization feature.
      * Structure is documented below.
      */
-    binaryAuthorization?: pulumi.Input<inputs.cloudrunv2.ServiceBinaryAuthorization>;
+    binaryAuthorization?: pulumi.Input<inputs.cloudrunv2.ServiceBinaryAuthorization | undefined>;
     /**
      * Configuration for building a Cloud Run function.
      * Structure is documented below.
      */
-    buildConfig?: pulumi.Input<inputs.cloudrunv2.ServiceBuildConfig>;
+    buildConfig?: pulumi.Input<inputs.cloudrunv2.ServiceBuildConfig | undefined>;
     /**
      * Arbitrary identifier for the API client.
      */
-    client?: pulumi.Input<string>;
+    client?: pulumi.Input<string | undefined>;
     /**
      * Arbitrary version identifier for the API client.
      */
-    clientVersion?: pulumi.Input<string>;
+    clientVersion?: pulumi.Input<string | undefined>;
     /**
      * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * Structure is documented below.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceCondition>[] | undefined>;
     /**
      * The creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Email address of the authenticated creator.
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
      * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
      */
-    customAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    customAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Disables public resolution of the default URI of this service.
      */
-    defaultUriDisabled?: pulumi.Input<boolean>;
+    defaultUriDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * The deletion time.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the service. Defaults to true.
      * When a`terraform destroy` or `pulumi up` would delete the service,
@@ -1050,44 +1050,44 @@ export interface ServiceState {
      * or `terraform destroy` that would delete the service will fail.
      * When the field is set to false, deleting the service is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * For a deleted resource, the time after which it will be permanently deleted.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      */
-    generation?: pulumi.Input<string>;
+    generation?: pulumi.Input<string | undefined>;
     /**
      * Used to enable/disable IAP for the cloud-run service.
      */
-    iapEnabled?: pulumi.Input<boolean>;
+    iapEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
      * Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
      */
-    ingress?: pulumi.Input<string>;
+    ingress?: pulumi.Input<string | undefined>;
     /**
      * Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
      */
-    invokerIamDisabled?: pulumi.Input<boolean>;
+    invokerIamDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
      * environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -1096,102 +1096,102 @@ export interface ServiceState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Email address of the last authenticated modifier.
      */
-    lastModifier?: pulumi.Input<string>;
+    lastModifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      */
-    latestCreatedRevision?: pulumi.Input<string>;
+    latestCreatedRevision?: pulumi.Input<string | undefined>;
     /**
      * Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      */
-    latestReadyRevision?: pulumi.Input<string>;
+    latestReadyRevision?: pulumi.Input<string | undefined>;
     /**
      * The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
      * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
      * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
      * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      */
-    launchStage?: pulumi.Input<string>;
+    launchStage?: pulumi.Input<string | undefined>;
     /**
      * The location of the cloud run service
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
      * Structure is documented below.
      */
-    multiRegionSettings?: pulumi.Input<inputs.cloudrunv2.ServiceMultiRegionSettings>;
+    multiRegionSettings?: pulumi.Input<inputs.cloudrunv2.ServiceMultiRegionSettings | undefined>;
     /**
      * Name of the Service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      */
-    observedGeneration?: pulumi.Input<string>;
+    observedGeneration?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
      * When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
      * If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
      * If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * Scaling settings that apply to the whole service
      * Structure is documented below.
      */
-    scaling?: pulumi.Input<inputs.cloudrunv2.ServiceScaling>;
+    scaling?: pulumi.Input<inputs.cloudrunv2.ServiceScaling | undefined>;
     /**
      * The template used to create revisions for this Service.
      * Structure is documented below.
      */
-    template?: pulumi.Input<inputs.cloudrunv2.ServiceTemplate>;
+    template?: pulumi.Input<inputs.cloudrunv2.ServiceTemplate | undefined>;
     /**
      * The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * Structure is documented below.
      */
-    terminalConditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTerminalCondition>[]>;
+    terminalConditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTerminalCondition>[] | undefined>;
     /**
      * Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * Structure is documented below.
      */
-    trafficStatuses?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTrafficStatus>[]>;
+    trafficStatuses?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTrafficStatus>[] | undefined>;
     /**
      * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
      * Structure is documented below.
      */
-    traffics?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTraffic>[]>;
+    traffics?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTraffic>[] | undefined>;
     /**
      * Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The last-modified time.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * Displays the target URI.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
     /**
      * All URLs serving traffic for this Service.
      */
-    urls?: pulumi.Input<pulumi.Input<string>[]>;
+    urls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1206,34 +1206,34 @@ export interface ServiceArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Settings for the Binary Authorization feature.
      * Structure is documented below.
      */
-    binaryAuthorization?: pulumi.Input<inputs.cloudrunv2.ServiceBinaryAuthorization>;
+    binaryAuthorization?: pulumi.Input<inputs.cloudrunv2.ServiceBinaryAuthorization | undefined>;
     /**
      * Configuration for building a Cloud Run function.
      * Structure is documented below.
      */
-    buildConfig?: pulumi.Input<inputs.cloudrunv2.ServiceBuildConfig>;
+    buildConfig?: pulumi.Input<inputs.cloudrunv2.ServiceBuildConfig | undefined>;
     /**
      * Arbitrary identifier for the API client.
      */
-    client?: pulumi.Input<string>;
+    client?: pulumi.Input<string | undefined>;
     /**
      * Arbitrary version identifier for the API client.
      */
-    clientVersion?: pulumi.Input<string>;
+    clientVersion?: pulumi.Input<string | undefined>;
     /**
      * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
      * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
      */
-    customAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    customAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Disables public resolution of the default URI of this service.
      */
-    defaultUriDisabled?: pulumi.Input<boolean>;
+    defaultUriDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the service. Defaults to true.
      * When a`terraform destroy` or `pulumi up` would delete the service,
@@ -1242,24 +1242,24 @@ export interface ServiceArgs {
      * or `terraform destroy` that would delete the service will fail.
      * When the field is set to false, deleting the service is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Used to enable/disable IAP for the cloud-run service.
      */
-    iapEnabled?: pulumi.Input<boolean>;
+    iapEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
      * Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
      */
-    ingress?: pulumi.Input<string>;
+    ingress?: pulumi.Input<string | undefined>;
     /**
      * Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
      */
-    invokerIamDisabled?: pulumi.Input<boolean>;
+    invokerIamDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
      * environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -1268,14 +1268,14 @@ export interface ServiceArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
      * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
      * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
      * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      */
-    launchStage?: pulumi.Input<string>;
+    launchStage?: pulumi.Input<string | undefined>;
     /**
      * The location of the cloud run service
      */
@@ -1284,21 +1284,21 @@ export interface ServiceArgs {
      * Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
      * Structure is documented below.
      */
-    multiRegionSettings?: pulumi.Input<inputs.cloudrunv2.ServiceMultiRegionSettings>;
+    multiRegionSettings?: pulumi.Input<inputs.cloudrunv2.ServiceMultiRegionSettings | undefined>;
     /**
      * Name of the Service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Scaling settings that apply to the whole service
      * Structure is documented below.
      */
-    scaling?: pulumi.Input<inputs.cloudrunv2.ServiceScaling>;
+    scaling?: pulumi.Input<inputs.cloudrunv2.ServiceScaling | undefined>;
     /**
      * The template used to create revisions for this Service.
      * Structure is documented below.
@@ -1308,5 +1308,5 @@ export interface ServiceArgs {
      * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
      * Structure is documented below.
      */
-    traffics?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTraffic>[]>;
+    traffics?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTraffic>[] | undefined>;
 }

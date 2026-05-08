@@ -23,30 +23,30 @@ class RouterNatArgs:
     def __init__(__self__, *,
                  router: pulumi.Input[_builtins.str],
                  source_subnetwork_ip_ranges_to_nat: pulumi.Input[_builtins.str],
-                 auto_network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enable_dynamic_port_allocation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_endpoint_independent_mapping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 icmp_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 initial_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_config: Optional[pulumi.Input['RouterNatLogConfigArgs']] = None,
-                 max_ports_per_vm: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ports_per_vm: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat64_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatNat64SubnetworkArgs']]]] = None,
-                 nat_ip_allocate_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]] = None,
-                 source_subnetwork_ip_ranges_to_nat64: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]] = None,
-                 tcp_established_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_time_wait_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 udp_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None):
+                 auto_network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 drain_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enable_dynamic_port_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_endpoint_independent_mapping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 icmp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 initial_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_config: pulumi.Input[Optional['RouterNatLogConfigArgs']] = None,
+                 max_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat64_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatNat64SubnetworkArgs']]]] = None,
+                 nat_ip_allocate_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatRuleArgs']]]] = None,
+                 source_subnetwork_ip_ranges_to_nat64: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]] = None,
+                 tcp_established_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_time_wait_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_transitory_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 udp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a RouterNat resource.
 
@@ -217,7 +217,7 @@ class RouterNatArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoNetworkTier")
-    def auto_network_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_network_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network tier to use when automatically reserving NAT IP addresses.
         Must be one of: PREMIUM, STANDARD. If not specified, then the current
@@ -227,12 +227,12 @@ class RouterNatArgs:
         return pulumi.get(self, "auto_network_tier")
 
     @auto_network_tier.setter
-    def auto_network_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_network_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_network_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="drainNatIps")
-    def drain_nat_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def drain_nat_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of URLs of the IP resources to be drained. These IPs must be
         valid static external IPs that have been assigned to the NAT.
@@ -240,12 +240,12 @@ class RouterNatArgs:
         return pulumi.get(self, "drain_nat_ips")
 
     @drain_nat_ips.setter
-    def drain_nat_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def drain_nat_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "drain_nat_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDynamicPortAllocation")
-    def enable_dynamic_port_allocation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_dynamic_port_allocation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Dynamic Port Allocation.
         If minPortsPerVm is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
@@ -257,12 +257,12 @@ class RouterNatArgs:
         return pulumi.get(self, "enable_dynamic_port_allocation")
 
     @enable_dynamic_port_allocation.setter
-    def enable_dynamic_port_allocation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_dynamic_port_allocation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_dynamic_port_allocation", value)
 
     @_builtins.property
     @pulumi.getter(name="enableEndpointIndependentMapping")
-    def enable_endpoint_independent_mapping(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_endpoint_independent_mapping(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable endpoint independent mapping.
         For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
@@ -270,12 +270,12 @@ class RouterNatArgs:
         return pulumi.get(self, "enable_endpoint_independent_mapping")
 
     @enable_endpoint_independent_mapping.setter
-    def enable_endpoint_independent_mapping(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_endpoint_independent_mapping(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_endpoint_independent_mapping", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointTypes")
-    def endpoint_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def endpoint_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the endpoint Types supported by the NAT Gateway.
         Supported values include:
@@ -285,24 +285,24 @@ class RouterNatArgs:
         return pulumi.get(self, "endpoint_types")
 
     @endpoint_types.setter
-    def endpoint_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def endpoint_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "endpoint_types", value)
 
     @_builtins.property
     @pulumi.getter(name="icmpIdleTimeoutSec")
-    def icmp_idle_timeout_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def icmp_idle_timeout_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         """
         return pulumi.get(self, "icmp_idle_timeout_sec")
 
     @icmp_idle_timeout_sec.setter
-    def icmp_idle_timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def icmp_idle_timeout_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "icmp_idle_timeout_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="initialNatIps")
-    def initial_nat_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def initial_nat_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
         Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
@@ -310,12 +310,12 @@ class RouterNatArgs:
         return pulumi.get(self, "initial_nat_ips")
 
     @initial_nat_ips.setter
-    def initial_nat_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def initial_nat_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "initial_nat_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['RouterNatLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['RouterNatLogConfigArgs']]:
         """
         Configuration for logging on NAT
         Structure is documented below.
@@ -323,12 +323,12 @@ class RouterNatArgs:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['RouterNatLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['RouterNatLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPortsPerVm")
-    def max_ports_per_vm(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_ports_per_vm(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of ports allocated to a VM from this NAT.
         This field can only be set when enableDynamicPortAllocation is enabled.
@@ -336,24 +336,24 @@ class RouterNatArgs:
         return pulumi.get(self, "max_ports_per_vm")
 
     @max_ports_per_vm.setter
-    def max_ports_per_vm(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_ports_per_vm(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_ports_per_vm", value)
 
     @_builtins.property
     @pulumi.getter(name="minPortsPerVm")
-    def min_ports_per_vm(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_ports_per_vm(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
         """
         return pulumi.get(self, "min_ports_per_vm")
 
     @min_ports_per_vm.setter
-    def min_ports_per_vm(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_ports_per_vm(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_ports_per_vm", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the NAT service. The name must be 1-63 characters long and
         comply with RFC1035.
@@ -361,12 +361,12 @@ class RouterNatArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nat64Subnetworks")
-    def nat64_subnetworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatNat64SubnetworkArgs']]]]:
+    def nat64_subnetworks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatNat64SubnetworkArgs']]]]:
         """
         One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
         Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
@@ -375,12 +375,12 @@ class RouterNatArgs:
         return pulumi.get(self, "nat64_subnetworks")
 
     @nat64_subnetworks.setter
-    def nat64_subnetworks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatNat64SubnetworkArgs']]]]):
+    def nat64_subnetworks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatNat64SubnetworkArgs']]]]):
         pulumi.set(self, "nat64_subnetworks", value)
 
     @_builtins.property
     @pulumi.getter(name="natIpAllocateOption")
-    def nat_ip_allocate_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_ip_allocate_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How external IPs should be allocated for this NAT. Valid values are
         `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
@@ -390,12 +390,12 @@ class RouterNatArgs:
         return pulumi.get(self, "nat_ip_allocate_option")
 
     @nat_ip_allocate_option.setter
-    def nat_ip_allocate_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_ip_allocate_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_ip_allocate_option", value)
 
     @_builtins.property
     @pulumi.getter(name="natIps")
-    def nat_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nat_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Self-links of NAT IPs. Only valid if natIpAllocateOption
         is set to MANUAL_ONLY.
@@ -406,12 +406,12 @@ class RouterNatArgs:
         return pulumi.get(self, "nat_ips")
 
     @nat_ips.setter
-    def nat_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nat_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nat_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -419,24 +419,24 @@ class RouterNatArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where the router and NAT reside.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatRuleArgs']]]]:
         """
         A list of rules associated with this NAT.
         Structure is documented below.
@@ -444,12 +444,12 @@ class RouterNatArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSubnetworkIpRangesToNat64")
-    def source_subnetwork_ip_ranges_to_nat64(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_subnetwork_ip_ranges_to_nat64(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the Nat option for NAT64, which can take one of the following values:
         ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.
@@ -461,12 +461,12 @@ class RouterNatArgs:
         return pulumi.get(self, "source_subnetwork_ip_ranges_to_nat64")
 
     @source_subnetwork_ip_ranges_to_nat64.setter
-    def source_subnetwork_ip_ranges_to_nat64(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_subnetwork_ip_ranges_to_nat64(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_subnetwork_ip_ranges_to_nat64", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]]:
+    def subnetworks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]]:
         """
         One or more subnetwork NAT configurations. Only used if
         `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
@@ -475,12 +475,12 @@ class RouterNatArgs:
         return pulumi.get(self, "subnetworks")
 
     @subnetworks.setter
-    def subnetworks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]]):
+    def subnetworks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]]):
         pulumi.set(self, "subnetworks", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpEstablishedIdleTimeoutSec")
-    def tcp_established_idle_timeout_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tcp_established_idle_timeout_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout (in seconds) for TCP established connections.
         Defaults to 1200s if not set.
@@ -488,12 +488,12 @@ class RouterNatArgs:
         return pulumi.get(self, "tcp_established_idle_timeout_sec")
 
     @tcp_established_idle_timeout_sec.setter
-    def tcp_established_idle_timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tcp_established_idle_timeout_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tcp_established_idle_timeout_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpTimeWaitTimeoutSec")
-    def tcp_time_wait_timeout_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tcp_time_wait_timeout_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
         Defaults to 120s if not set.
@@ -501,12 +501,12 @@ class RouterNatArgs:
         return pulumi.get(self, "tcp_time_wait_timeout_sec")
 
     @tcp_time_wait_timeout_sec.setter
-    def tcp_time_wait_timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tcp_time_wait_timeout_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tcp_time_wait_timeout_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpTransitoryIdleTimeoutSec")
-    def tcp_transitory_idle_timeout_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tcp_transitory_idle_timeout_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout (in seconds) for TCP transitory connections.
         Defaults to 30s if not set.
@@ -514,12 +514,12 @@ class RouterNatArgs:
         return pulumi.get(self, "tcp_transitory_idle_timeout_sec")
 
     @tcp_transitory_idle_timeout_sec.setter
-    def tcp_transitory_idle_timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tcp_transitory_idle_timeout_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tcp_transitory_idle_timeout_sec", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether this NAT is used for public or private IP translation.
         If unspecified, it defaults to PUBLIC.
@@ -531,51 +531,51 @@ class RouterNatArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="udpIdleTimeoutSec")
-    def udp_idle_timeout_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def udp_idle_timeout_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
         return pulumi.get(self, "udp_idle_timeout_sec")
 
     @udp_idle_timeout_sec.setter
-    def udp_idle_timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def udp_idle_timeout_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "udp_idle_timeout_sec", value)
 
 
 @pulumi.input_type
 class _RouterNatState:
     def __init__(__self__, *,
-                 auto_network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enable_dynamic_port_allocation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_endpoint_independent_mapping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 icmp_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 initial_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_config: Optional[pulumi.Input['RouterNatLogConfigArgs']] = None,
-                 max_ports_per_vm: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ports_per_vm: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat64_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatNat64SubnetworkArgs']]]] = None,
-                 nat_ip_allocate_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]] = None,
-                 source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_subnetwork_ip_ranges_to_nat64: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]] = None,
-                 tcp_established_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_time_wait_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 udp_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None):
+                 auto_network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 drain_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enable_dynamic_port_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_endpoint_independent_mapping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 icmp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 initial_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_config: pulumi.Input[Optional['RouterNatLogConfigArgs']] = None,
+                 max_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat64_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatNat64SubnetworkArgs']]]] = None,
+                 nat_ip_allocate_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatRuleArgs']]]] = None,
+                 source_subnetwork_ip_ranges_to_nat: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_subnetwork_ip_ranges_to_nat64: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]] = None,
+                 tcp_established_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_time_wait_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_transitory_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 udp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RouterNat resources.
 
@@ -714,7 +714,7 @@ class _RouterNatState:
 
     @_builtins.property
     @pulumi.getter(name="autoNetworkTier")
-    def auto_network_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_network_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network tier to use when automatically reserving NAT IP addresses.
         Must be one of: PREMIUM, STANDARD. If not specified, then the current
@@ -724,12 +724,12 @@ class _RouterNatState:
         return pulumi.get(self, "auto_network_tier")
 
     @auto_network_tier.setter
-    def auto_network_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_network_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_network_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="drainNatIps")
-    def drain_nat_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def drain_nat_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of URLs of the IP resources to be drained. These IPs must be
         valid static external IPs that have been assigned to the NAT.
@@ -737,12 +737,12 @@ class _RouterNatState:
         return pulumi.get(self, "drain_nat_ips")
 
     @drain_nat_ips.setter
-    def drain_nat_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def drain_nat_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "drain_nat_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDynamicPortAllocation")
-    def enable_dynamic_port_allocation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_dynamic_port_allocation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Dynamic Port Allocation.
         If minPortsPerVm is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
@@ -754,12 +754,12 @@ class _RouterNatState:
         return pulumi.get(self, "enable_dynamic_port_allocation")
 
     @enable_dynamic_port_allocation.setter
-    def enable_dynamic_port_allocation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_dynamic_port_allocation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_dynamic_port_allocation", value)
 
     @_builtins.property
     @pulumi.getter(name="enableEndpointIndependentMapping")
-    def enable_endpoint_independent_mapping(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_endpoint_independent_mapping(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable endpoint independent mapping.
         For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
@@ -767,12 +767,12 @@ class _RouterNatState:
         return pulumi.get(self, "enable_endpoint_independent_mapping")
 
     @enable_endpoint_independent_mapping.setter
-    def enable_endpoint_independent_mapping(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_endpoint_independent_mapping(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_endpoint_independent_mapping", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointTypes")
-    def endpoint_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def endpoint_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the endpoint Types supported by the NAT Gateway.
         Supported values include:
@@ -782,24 +782,24 @@ class _RouterNatState:
         return pulumi.get(self, "endpoint_types")
 
     @endpoint_types.setter
-    def endpoint_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def endpoint_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "endpoint_types", value)
 
     @_builtins.property
     @pulumi.getter(name="icmpIdleTimeoutSec")
-    def icmp_idle_timeout_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def icmp_idle_timeout_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         """
         return pulumi.get(self, "icmp_idle_timeout_sec")
 
     @icmp_idle_timeout_sec.setter
-    def icmp_idle_timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def icmp_idle_timeout_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "icmp_idle_timeout_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="initialNatIps")
-    def initial_nat_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def initial_nat_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
         Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
@@ -807,12 +807,12 @@ class _RouterNatState:
         return pulumi.get(self, "initial_nat_ips")
 
     @initial_nat_ips.setter
-    def initial_nat_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def initial_nat_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "initial_nat_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['RouterNatLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['RouterNatLogConfigArgs']]:
         """
         Configuration for logging on NAT
         Structure is documented below.
@@ -820,12 +820,12 @@ class _RouterNatState:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['RouterNatLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['RouterNatLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPortsPerVm")
-    def max_ports_per_vm(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_ports_per_vm(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of ports allocated to a VM from this NAT.
         This field can only be set when enableDynamicPortAllocation is enabled.
@@ -833,24 +833,24 @@ class _RouterNatState:
         return pulumi.get(self, "max_ports_per_vm")
 
     @max_ports_per_vm.setter
-    def max_ports_per_vm(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_ports_per_vm(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_ports_per_vm", value)
 
     @_builtins.property
     @pulumi.getter(name="minPortsPerVm")
-    def min_ports_per_vm(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_ports_per_vm(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
         """
         return pulumi.get(self, "min_ports_per_vm")
 
     @min_ports_per_vm.setter
-    def min_ports_per_vm(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_ports_per_vm(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_ports_per_vm", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the NAT service. The name must be 1-63 characters long and
         comply with RFC1035.
@@ -858,12 +858,12 @@ class _RouterNatState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nat64Subnetworks")
-    def nat64_subnetworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatNat64SubnetworkArgs']]]]:
+    def nat64_subnetworks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatNat64SubnetworkArgs']]]]:
         """
         One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
         Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
@@ -872,12 +872,12 @@ class _RouterNatState:
         return pulumi.get(self, "nat64_subnetworks")
 
     @nat64_subnetworks.setter
-    def nat64_subnetworks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatNat64SubnetworkArgs']]]]):
+    def nat64_subnetworks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatNat64SubnetworkArgs']]]]):
         pulumi.set(self, "nat64_subnetworks", value)
 
     @_builtins.property
     @pulumi.getter(name="natIpAllocateOption")
-    def nat_ip_allocate_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_ip_allocate_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How external IPs should be allocated for this NAT. Valid values are
         `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
@@ -887,12 +887,12 @@ class _RouterNatState:
         return pulumi.get(self, "nat_ip_allocate_option")
 
     @nat_ip_allocate_option.setter
-    def nat_ip_allocate_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_ip_allocate_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_ip_allocate_option", value)
 
     @_builtins.property
     @pulumi.getter(name="natIps")
-    def nat_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nat_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Self-links of NAT IPs. Only valid if natIpAllocateOption
         is set to MANUAL_ONLY.
@@ -903,12 +903,12 @@ class _RouterNatState:
         return pulumi.get(self, "nat_ips")
 
     @nat_ips.setter
-    def nat_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nat_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nat_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -916,36 +916,36 @@ class _RouterNatState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where the router and NAT reside.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def router(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Cloud Router in which this NAT will be configured.
         """
         return pulumi.get(self, "router")
 
     @router.setter
-    def router(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatRuleArgs']]]]:
         """
         A list of rules associated with this NAT.
         Structure is documented below.
@@ -953,12 +953,12 @@ class _RouterNatState:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSubnetworkIpRangesToNat")
-    def source_subnetwork_ip_ranges_to_nat(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_subnetwork_ip_ranges_to_nat(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How NAT should be configured per Subnetwork.
         If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
@@ -975,12 +975,12 @@ class _RouterNatState:
         return pulumi.get(self, "source_subnetwork_ip_ranges_to_nat")
 
     @source_subnetwork_ip_ranges_to_nat.setter
-    def source_subnetwork_ip_ranges_to_nat(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_subnetwork_ip_ranges_to_nat(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_subnetwork_ip_ranges_to_nat", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSubnetworkIpRangesToNat64")
-    def source_subnetwork_ip_ranges_to_nat64(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_subnetwork_ip_ranges_to_nat64(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the Nat option for NAT64, which can take one of the following values:
         ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.
@@ -992,12 +992,12 @@ class _RouterNatState:
         return pulumi.get(self, "source_subnetwork_ip_ranges_to_nat64")
 
     @source_subnetwork_ip_ranges_to_nat64.setter
-    def source_subnetwork_ip_ranges_to_nat64(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_subnetwork_ip_ranges_to_nat64(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_subnetwork_ip_ranges_to_nat64", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]]:
+    def subnetworks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]]:
         """
         One or more subnetwork NAT configurations. Only used if
         `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
@@ -1006,12 +1006,12 @@ class _RouterNatState:
         return pulumi.get(self, "subnetworks")
 
     @subnetworks.setter
-    def subnetworks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]]):
+    def subnetworks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]]):
         pulumi.set(self, "subnetworks", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpEstablishedIdleTimeoutSec")
-    def tcp_established_idle_timeout_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tcp_established_idle_timeout_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout (in seconds) for TCP established connections.
         Defaults to 1200s if not set.
@@ -1019,12 +1019,12 @@ class _RouterNatState:
         return pulumi.get(self, "tcp_established_idle_timeout_sec")
 
     @tcp_established_idle_timeout_sec.setter
-    def tcp_established_idle_timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tcp_established_idle_timeout_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tcp_established_idle_timeout_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpTimeWaitTimeoutSec")
-    def tcp_time_wait_timeout_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tcp_time_wait_timeout_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
         Defaults to 120s if not set.
@@ -1032,12 +1032,12 @@ class _RouterNatState:
         return pulumi.get(self, "tcp_time_wait_timeout_sec")
 
     @tcp_time_wait_timeout_sec.setter
-    def tcp_time_wait_timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tcp_time_wait_timeout_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tcp_time_wait_timeout_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpTransitoryIdleTimeoutSec")
-    def tcp_transitory_idle_timeout_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tcp_transitory_idle_timeout_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout (in seconds) for TCP transitory connections.
         Defaults to 30s if not set.
@@ -1045,12 +1045,12 @@ class _RouterNatState:
         return pulumi.get(self, "tcp_transitory_idle_timeout_sec")
 
     @tcp_transitory_idle_timeout_sec.setter
-    def tcp_transitory_idle_timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tcp_transitory_idle_timeout_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tcp_transitory_idle_timeout_sec", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether this NAT is used for public or private IP translation.
         If unspecified, it defaults to PUBLIC.
@@ -1062,19 +1062,19 @@ class _RouterNatState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="udpIdleTimeoutSec")
-    def udp_idle_timeout_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def udp_idle_timeout_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
         return pulumi.get(self, "udp_idle_timeout_sec")
 
     @udp_idle_timeout_sec.setter
-    def udp_idle_timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def udp_idle_timeout_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "udp_idle_timeout_sec", value)
 
 
@@ -1084,32 +1084,32 @@ class RouterNat(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enable_dynamic_port_allocation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_endpoint_independent_mapping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 icmp_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 initial_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_config: Optional[pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
-                 max_ports_per_vm: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ports_per_vm: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat64_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict']]]]] = None,
-                 nat_ip_allocate_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]]] = None,
-                 source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_subnetwork_ip_ranges_to_nat64: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]]] = None,
-                 tcp_established_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_time_wait_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 udp_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 drain_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enable_dynamic_port_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_endpoint_independent_mapping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 icmp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 initial_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_config: pulumi.Input[Optional[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
+                 max_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat64_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict']]]]] = None,
+                 nat_ip_allocate_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]]] = None,
+                 source_subnetwork_ip_ranges_to_nat: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_subnetwork_ip_ranges_to_nat64: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]]] = None,
+                 tcp_established_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_time_wait_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_transitory_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 udp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         A NAT service created in a router.
@@ -1552,32 +1552,32 @@ class RouterNat(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enable_dynamic_port_allocation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_endpoint_independent_mapping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 icmp_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 initial_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_config: Optional[pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
-                 max_ports_per_vm: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ports_per_vm: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat64_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict']]]]] = None,
-                 nat_ip_allocate_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]]] = None,
-                 source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_subnetwork_ip_ranges_to_nat64: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]]] = None,
-                 tcp_established_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_time_wait_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 udp_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 drain_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enable_dynamic_port_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_endpoint_independent_mapping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 icmp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 initial_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_config: pulumi.Input[Optional[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
+                 max_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat64_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict']]]]] = None,
+                 nat_ip_allocate_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]]] = None,
+                 source_subnetwork_ip_ranges_to_nat: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_subnetwork_ip_ranges_to_nat64: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]]] = None,
+                 tcp_established_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_time_wait_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_transitory_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 udp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1627,32 +1627,32 @@ class RouterNat(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-            drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            enable_dynamic_port_allocation: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_endpoint_independent_mapping: Optional[pulumi.Input[_builtins.bool]] = None,
-            endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            icmp_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-            initial_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            log_config: Optional[pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
-            max_ports_per_vm: Optional[pulumi.Input[_builtins.int]] = None,
-            min_ports_per_vm: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            nat64_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict']]]]] = None,
-            nat_ip_allocate_option: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            router: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]]] = None,
-            source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[_builtins.str]] = None,
-            source_subnetwork_ip_ranges_to_nat64: Optional[pulumi.Input[_builtins.str]] = None,
-            subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]]] = None,
-            tcp_established_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-            tcp_time_wait_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-            tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            udp_idle_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None) -> 'RouterNat':
+            auto_network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+            drain_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enable_dynamic_port_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_endpoint_independent_mapping: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            icmp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            initial_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            log_config: pulumi.Input[Optional[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
+            max_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
+            min_ports_per_vm: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nat64_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatNat64SubnetworkArgs', 'RouterNatNat64SubnetworkArgsDict']]]]] = None,
+            nat_ip_allocate_option: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]]] = None,
+            source_subnetwork_ip_ranges_to_nat: pulumi.Input[Optional[_builtins.str]] = None,
+            source_subnetwork_ip_ranges_to_nat64: pulumi.Input[Optional[_builtins.str]] = None,
+            subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]]] = None,
+            tcp_established_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            tcp_time_wait_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            tcp_transitory_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            udp_idle_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None) -> 'RouterNat':
         """
         Get an existing RouterNat resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

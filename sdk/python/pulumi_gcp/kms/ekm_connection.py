@@ -23,11 +23,11 @@ class EkmConnectionArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  service_resolvers: pulumi.Input[Sequence[pulumi.Input['EkmConnectionServiceResolverArgs']]],
-                 crypto_space_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_management_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 crypto_space_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_management_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EkmConnection resource.
 
@@ -85,31 +85,31 @@ class EkmConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="cryptoSpacePath")
-    def crypto_space_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crypto_space_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
         """
         return pulumi.get(self, "crypto_space_path")
 
     @crypto_space_path.setter
-    def crypto_space_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crypto_space_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crypto_space_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Etag of the currently stored EkmConnection.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="keyManagementMode")
-    def key_management_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_management_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
         Default value is `MANUAL`.
@@ -118,24 +118,24 @@ class EkmConnectionArgs:
         return pulumi.get(self, "key_management_mode")
 
     @key_management_mode.setter
-    def key_management_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_management_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_management_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for the EkmConnection.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -143,21 +143,21 @@ class EkmConnectionArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _EkmConnectionState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 crypto_space_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_management_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input['EkmConnectionServiceResolverArgs']]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 crypto_space_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_management_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_resolvers: pulumi.Input[Optional[Sequence[pulumi.Input['EkmConnectionServiceResolverArgs']]]] = None):
         """
         Input properties used for looking up and filtering EkmConnection resources.
 
@@ -195,7 +195,7 @@ class _EkmConnectionState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time at which the EkmConnection was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -203,36 +203,36 @@ class _EkmConnectionState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="cryptoSpacePath")
-    def crypto_space_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crypto_space_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
         """
         return pulumi.get(self, "crypto_space_path")
 
     @crypto_space_path.setter
-    def crypto_space_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crypto_space_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crypto_space_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Etag of the currently stored EkmConnection.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="keyManagementMode")
-    def key_management_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_management_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
         Default value is `MANUAL`.
@@ -241,12 +241,12 @@ class _EkmConnectionState:
         return pulumi.get(self, "key_management_mode")
 
     @key_management_mode.setter
-    def key_management_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_management_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_management_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the EkmConnection.
         A full list of valid locations can be found by running `gcloud kms locations list`.
@@ -254,24 +254,24 @@ class _EkmConnectionState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for the EkmConnection.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -279,12 +279,12 @@ class _EkmConnectionState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceResolvers")
-    def service_resolvers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EkmConnectionServiceResolverArgs']]]]:
+    def service_resolvers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EkmConnectionServiceResolverArgs']]]]:
         """
         A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
         Structure is documented below.
@@ -292,7 +292,7 @@ class _EkmConnectionState:
         return pulumi.get(self, "service_resolvers")
 
     @service_resolvers.setter
-    def service_resolvers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EkmConnectionServiceResolverArgs']]]]):
+    def service_resolvers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EkmConnectionServiceResolverArgs']]]]):
         pulumi.set(self, "service_resolvers", value)
 
 
@@ -302,13 +302,13 @@ class EkmConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 crypto_space_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_management_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]]] = None,
+                 crypto_space_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_management_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_resolvers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]]] = None,
                  __props__=None):
         """
         `Ekm Connections` are used to control the connection settings for an `EXTERNAL_VPC` CryptoKey.
@@ -446,13 +446,13 @@ class EkmConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 crypto_space_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_management_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]]] = None,
+                 crypto_space_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_management_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_resolvers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -484,14 +484,14 @@ class EkmConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            crypto_space_path: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            key_management_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]]] = None) -> 'EkmConnection':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            crypto_space_path: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            key_management_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_resolvers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]]] = None) -> 'EkmConnection':
         """
         Get an existing EkmConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

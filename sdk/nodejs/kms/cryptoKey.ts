@@ -249,20 +249,20 @@ export interface CryptoKeyState {
      * The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
      * The resource name is in the format "projects/*&#47;locations/*&#47;ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
      */
-    cryptoKeyBackend?: pulumi.Input<string>;
+    cryptoKeyBackend?: pulumi.Input<string | undefined>;
     /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
      * If not specified at creation time, the default duration is 30 days.
      */
-    destroyScheduledDuration?: pulumi.Input<string>;
+    destroyScheduledDuration?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether this key may contain imported versions only.
      */
-    importOnly?: pulumi.Input<boolean>;
+    importOnly?: pulumi.Input<boolean | undefined>;
     /**
      * (Optional, Beta)
      * The policy used for Key Access Justifications Policy Enforcement. If this
@@ -275,60 +275,60 @@ export interface CryptoKeyState {
      * This field is currently in beta and is subject to change.
      * Structure is documented below.
      */
-    keyAccessJustificationsPolicy?: pulumi.Input<inputs.kms.CryptoKeyKeyAccessJustificationsPolicy>;
+    keyAccessJustificationsPolicy?: pulumi.Input<inputs.kms.CryptoKeyKeyAccessJustificationsPolicy | undefined>;
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
      */
-    keyRing?: pulumi.Input<string>;
+    keyRing?: pulumi.Input<string | undefined>;
     /**
      * Labels with user-defined metadata to apply to this resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource name for the CryptoKey.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
      * Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
      * Structure is documented below.
      */
-    primaries?: pulumi.Input<pulumi.Input<inputs.kms.CryptoKeyPrimary>[]>;
+    primaries?: pulumi.Input<pulumi.Input<inputs.kms.CryptoKeyPrimary>[] | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The immutable purpose of this CryptoKey. See the
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
      * for possible inputs.
      * Default value is "ENCRYPT_DECRYPT".
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string | undefined>;
     /**
      * Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
      * The first rotation will take place after the specified period. The rotation period has
      * the format of a decimal number with up to 9 fractional digits, followed by the
      * letter `s` (seconds). It must be greater than a day (ie, 86400).
      */
-    rotationPeriod?: pulumi.Input<string>;
+    rotationPeriod?: pulumi.Input<string | undefined>;
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
      * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
      * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      * This field is only applicable during initial CryptoKey creation.
      */
-    skipInitialVersionCreation?: pulumi.Input<boolean>;
+    skipInitialVersionCreation?: pulumi.Input<boolean | undefined>;
     /**
      * A template describing settings for new crypto key versions.
      * Structure is documented below.
      */
-    versionTemplate?: pulumi.Input<inputs.kms.CryptoKeyVersionTemplate>;
+    versionTemplate?: pulumi.Input<inputs.kms.CryptoKeyVersionTemplate | undefined>;
 }
 
 /**
@@ -339,16 +339,16 @@ export interface CryptoKeyArgs {
      * The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
      * The resource name is in the format "projects/*&#47;locations/*&#47;ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
      */
-    cryptoKeyBackend?: pulumi.Input<string>;
+    cryptoKeyBackend?: pulumi.Input<string | undefined>;
     /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
      * If not specified at creation time, the default duration is 30 days.
      */
-    destroyScheduledDuration?: pulumi.Input<string>;
+    destroyScheduledDuration?: pulumi.Input<string | undefined>;
     /**
      * Whether this key may contain imported versions only.
      */
-    importOnly?: pulumi.Input<boolean>;
+    importOnly?: pulumi.Input<boolean | undefined>;
     /**
      * (Optional, Beta)
      * The policy used for Key Access Justifications Policy Enforcement. If this
@@ -361,7 +361,7 @@ export interface CryptoKeyArgs {
      * This field is currently in beta and is subject to change.
      * Structure is documented below.
      */
-    keyAccessJustificationsPolicy?: pulumi.Input<inputs.kms.CryptoKeyKeyAccessJustificationsPolicy>;
+    keyAccessJustificationsPolicy?: pulumi.Input<inputs.kms.CryptoKeyKeyAccessJustificationsPolicy | undefined>;
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -373,35 +373,35 @@ export interface CryptoKeyArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource name for the CryptoKey.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The immutable purpose of this CryptoKey. See the
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
      * for possible inputs.
      * Default value is "ENCRYPT_DECRYPT".
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string | undefined>;
     /**
      * Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
      * The first rotation will take place after the specified period. The rotation period has
      * the format of a decimal number with up to 9 fractional digits, followed by the
      * letter `s` (seconds). It must be greater than a day (ie, 86400).
      */
-    rotationPeriod?: pulumi.Input<string>;
+    rotationPeriod?: pulumi.Input<string | undefined>;
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
      * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
      * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      * This field is only applicable during initial CryptoKey creation.
      */
-    skipInitialVersionCreation?: pulumi.Input<boolean>;
+    skipInitialVersionCreation?: pulumi.Input<boolean | undefined>;
     /**
      * A template describing settings for new crypto key versions.
      * Structure is documented below.
      */
-    versionTemplate?: pulumi.Input<inputs.kms.CryptoKeyVersionTemplate>;
+    versionTemplate?: pulumi.Input<inputs.kms.CryptoKeyVersionTemplate | undefined>;
 }

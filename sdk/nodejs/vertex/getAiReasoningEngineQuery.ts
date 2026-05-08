@@ -149,15 +149,15 @@ export interface GetAiReasoningEngineQueryOutputArgs {
     /**
      * Class method to be used for the query. It is optional and defaults to "query" if unspecified.
      */
-    classMethod?: pulumi.Input<string>;
+    classMethod?: pulumi.Input<string | undefined>;
     /**
      * Input content provided by users in JSON object format. Examples include text query, function calling parameters, media bytes, etc..
      */
-    input?: pulumi.Input<string>;
+    input?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it is not provided, the provider default project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Vertex AI Reasoning Engine to query.
      *

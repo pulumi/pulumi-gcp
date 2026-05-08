@@ -391,75 +391,75 @@ export interface StoragePoolState {
      * Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
      * The policy needs to be in the same location as the storage pool.
      */
-    activeDirectory?: pulumi.Input<string>;
+    activeDirectory?: pulumi.Input<string | undefined>;
     /**
      * Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
      * Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
      */
-    allowAutoTiering?: pulumi.Input<boolean>;
+    allowAutoTiering?: pulumi.Input<boolean | undefined>;
     /**
      * Available throughput of the storage pool (in MiB/s).
      */
-    availableThroughputMibps?: pulumi.Input<number>;
+    availableThroughputMibps?: pulumi.Input<number | undefined>;
     /**
      * Capacity of the storage pool (in GiB).
      */
-    capacityGib?: pulumi.Input<string>;
+    capacityGib?: pulumi.Input<string | undefined>;
     /**
      * Total cold tier data rounded down to the nearest GiB used by the storage pool.
      */
-    coldTierSizeUsedGib?: pulumi.Input<string>;
+    coldTierSizeUsedGib?: pulumi.Input<string | undefined>;
     /**
      * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
      */
-    customPerformanceEnabled?: pulumi.Input<boolean>;
+    customPerformanceEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
      * The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
      */
-    enableHotTierAutoResize?: pulumi.Input<boolean>;
+    enableHotTierAutoResize?: pulumi.Input<boolean | undefined>;
     /**
      * Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
      */
-    encryptionType?: pulumi.Input<string>;
+    encryptionType?: pulumi.Input<string | undefined>;
     /**
      * Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
      * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
      */
-    hotTierSizeGib?: pulumi.Input<string>;
+    hotTierSizeGib?: pulumi.Input<string | undefined>;
     /**
      * Total hot tier data rounded down to the nearest GiB used by the storage pool.
      */
-    hotTierSizeUsedGib?: pulumi.Input<string>;
+    hotTierSizeUsedGib?: pulumi.Input<string | undefined>;
     /**
      * Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
      * The policy needs to be in the same location as the storage pool.
      */
-    kmsConfig?: pulumi.Input<string>;
+    kmsConfig?: pulumi.Input<string | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
      * using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
      */
-    ldapEnabled?: pulumi.Input<boolean>;
+    ldapEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Mode of the storage pool.
      * The operational mode of the storage pool. ONTAP mode enables operations
@@ -467,36 +467,36 @@ export interface StoragePoolState {
      * If not specified during creation, the mode defaults to DEFAULT.
      * Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the storage pool. Needs to be unique per location/region.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * QoS (Quality of Service) type of the storage pool.
      * Possible values are: AUTO, MANUAL.
      * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
      */
-    qosType?: pulumi.Input<string>;
+    qosType?: pulumi.Input<string | undefined>;
     /**
      * Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      */
-    replicaZone?: pulumi.Input<string>;
+    replicaZone?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta, Deprecated)
      * The effective scale tier of the storage pool. If `scaleTier` is not
@@ -507,46 +507,46 @@ export interface StoragePoolState {
      *
      * @deprecated `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
      */
-    scaleTier?: pulumi.Input<string>;
+    scaleTier?: pulumi.Input<string | undefined>;
     /**
      * The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
      * Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
      */
-    scaleType?: pulumi.Input<string>;
+    scaleType?: pulumi.Input<string | undefined>;
     /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      */
-    serviceLevel?: pulumi.Input<string>;
+    serviceLevel?: pulumi.Input<string | undefined>;
     /**
      * Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
      */
-    totalIops?: pulumi.Input<string>;
+    totalIops?: pulumi.Input<string | undefined>;
     /**
      * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
      */
-    totalThroughputMibps?: pulumi.Input<string>;
+    totalThroughputMibps?: pulumi.Input<string | undefined>;
     /**
      * Type of the storage pool.
      * This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
      * If not specified during creation, it defaults to FILE.
      * Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Size allocated to volumes in the storage pool (in GiB).
      */
-    volumeCapacityGib?: pulumi.Input<string>;
+    volumeCapacityGib?: pulumi.Input<string | undefined>;
     /**
      * Number of volume in the storage pool.
      */
-    volumeCount?: pulumi.Input<number>;
+    volumeCount?: pulumi.Input<number | undefined>;
     /**
      * Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -557,12 +557,12 @@ export interface StoragePoolArgs {
      * Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
      * The policy needs to be in the same location as the storage pool.
      */
-    activeDirectory?: pulumi.Input<string>;
+    activeDirectory?: pulumi.Input<string | undefined>;
     /**
      * Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
      * Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
      */
-    allowAutoTiering?: pulumi.Input<boolean>;
+    allowAutoTiering?: pulumi.Input<boolean | undefined>;
     /**
      * Capacity of the storage pool (in GiB).
      */
@@ -570,38 +570,38 @@ export interface StoragePoolArgs {
     /**
      * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
      */
-    customPerformanceEnabled?: pulumi.Input<boolean>;
+    customPerformanceEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
      * The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
      */
-    enableHotTierAutoResize?: pulumi.Input<boolean>;
+    enableHotTierAutoResize?: pulumi.Input<boolean | undefined>;
     /**
      * Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
      * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
      */
-    hotTierSizeGib?: pulumi.Input<string>;
+    hotTierSizeGib?: pulumi.Input<string | undefined>;
     /**
      * Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
      * The policy needs to be in the same location as the storage pool.
      */
-    kmsConfig?: pulumi.Input<string>;
+    kmsConfig?: pulumi.Input<string | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
      * using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
      */
-    ldapEnabled?: pulumi.Input<boolean>;
+    ldapEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
      */
@@ -613,11 +613,11 @@ export interface StoragePoolArgs {
      * If not specified during creation, the mode defaults to DEFAULT.
      * Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the storage pool. Needs to be unique per location/region.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
      */
@@ -626,18 +626,18 @@ export interface StoragePoolArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * QoS (Quality of Service) type of the storage pool.
      * Possible values are: AUTO, MANUAL.
      * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
      */
-    qosType?: pulumi.Input<string>;
+    qosType?: pulumi.Input<string | undefined>;
     /**
      * Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      */
-    replicaZone?: pulumi.Input<string>;
+    replicaZone?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta, Deprecated)
      * The effective scale tier of the storage pool. If `scaleTier` is not
@@ -648,12 +648,12 @@ export interface StoragePoolArgs {
      *
      * @deprecated `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
      */
-    scaleTier?: pulumi.Input<string>;
+    scaleTier?: pulumi.Input<string | undefined>;
     /**
      * The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
      * Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
      */
-    scaleType?: pulumi.Input<string>;
+    scaleType?: pulumi.Input<string | undefined>;
     /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
@@ -662,22 +662,22 @@ export interface StoragePoolArgs {
     /**
      * Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
      */
-    totalIops?: pulumi.Input<string>;
+    totalIops?: pulumi.Input<string | undefined>;
     /**
      * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
      */
-    totalThroughputMibps?: pulumi.Input<string>;
+    totalThroughputMibps?: pulumi.Input<string | undefined>;
     /**
      * Type of the storage pool.
      * This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
      * If not specified during creation, it defaults to FILE.
      * Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

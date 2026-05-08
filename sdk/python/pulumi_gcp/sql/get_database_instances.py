@@ -159,12 +159,12 @@ def get_database_instances(database_version: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         tier=pulumi.get(__ret__, 'tier'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_database_instances_output(database_version: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  state: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  tier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_database_instances_output(database_version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  state: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  tier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstancesResult]:
     """
     Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.

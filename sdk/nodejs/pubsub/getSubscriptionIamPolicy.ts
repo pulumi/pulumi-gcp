@@ -90,7 +90,7 @@ export interface GetSubscriptionIamPolicyOutputArgs {
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The subscription name or id to bind to attach IAM policy to.
      */

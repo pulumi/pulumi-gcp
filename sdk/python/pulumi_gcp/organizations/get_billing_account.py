@@ -169,10 +169,10 @@ def get_billing_account(billing_account: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         open=pulumi.get(__ret__, 'open'),
         project_ids=pulumi.get(__ret__, 'project_ids'))
-def get_billing_account_output(billing_account: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               display_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               lookup_projects: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                               open: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_billing_account_output(billing_account: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               display_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               lookup_projects: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                               open: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBillingAccountResult]:
     """
     Use this data source to get information about a Google Billing Account.

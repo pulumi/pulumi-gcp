@@ -129,26 +129,26 @@ export interface SharedflowDeploymentState {
     /**
      * The resource ID of the environment.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Sharedflow
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Revision of the Sharedflow to be deployed.
      *
      *
      * - - -
      */
-    revision?: pulumi.Input<string>;
+    revision?: pulumi.Input<string | undefined>;
     /**
      * The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Id of the Sharedflow to be deployed.
      */
-    sharedflowId?: pulumi.Input<string>;
+    sharedflowId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,7 +173,7 @@ export interface SharedflowDeploymentArgs {
     /**
      * The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Id of the Sharedflow to be deployed.
      */

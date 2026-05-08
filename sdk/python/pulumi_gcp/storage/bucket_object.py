@@ -22,26 +22,26 @@ __all__ = ['BucketObjectArgs', 'BucketObject']
 class BucketObjectArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 cache_control: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 contexts: Optional[pulumi.Input['BucketObjectContextsArgs']] = None,
-                 customer_encryption: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_empty_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input['BucketObjectRetentionArgs']] = None,
-                 source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
-                 source_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 temporary_hold: Optional[pulumi.Input[_builtins.bool]] = None):
+                 cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 contexts: pulumi.Input[Optional['BucketObjectContextsArgs']] = None,
+                 customer_encryption: pulumi.Input[Optional['BucketObjectCustomerEncryptionArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_empty_content_type: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional['BucketObjectRetentionArgs']] = None,
+                 source: pulumi.Input[Optional[Union[pulumi.Asset, pulumi.Archive]]] = None,
+                 source_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 temporary_hold: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BucketObject resource.
 
@@ -134,7 +134,7 @@ class BucketObjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="cacheControl")
-    def cache_control(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_control(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
         directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
@@ -142,84 +142,84 @@ class BucketObjectArgs:
         return pulumi.get(self, "cache_control")
 
     @cache_control.setter
-    def cache_control(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_control(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_control", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter(name="contentDisposition")
-    def content_disposition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
         """
         return pulumi.get(self, "content_disposition")
 
     @content_disposition.setter
-    def content_disposition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_disposition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_disposition", value)
 
     @_builtins.property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         """
         return pulumi.get(self, "content_encoding")
 
     @content_encoding.setter
-    def content_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="contentLanguage")
-    def content_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         """
         return pulumi.get(self, "content_language")
 
     @content_language.setter
-    def content_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_language", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def contexts(self) -> Optional[pulumi.Input['BucketObjectContextsArgs']]:
+    def contexts(self) -> pulumi.Input[Optional['BucketObjectContextsArgs']]:
         """
         Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
         """
         return pulumi.get(self, "contexts")
 
     @contexts.setter
-    def contexts(self, value: Optional[pulumi.Input['BucketObjectContextsArgs']]):
+    def contexts(self, value: pulumi.Input[Optional['BucketObjectContextsArgs']]):
         pulumi.set(self, "contexts", value)
 
     @_builtins.property
     @pulumi.getter(name="customerEncryption")
-    def customer_encryption(self) -> Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']]:
+    def customer_encryption(self) -> pulumi.Input[Optional['BucketObjectCustomerEncryptionArgs']]:
         """
         Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
         Structure is documented below.
@@ -227,24 +227,24 @@ class BucketObjectArgs:
         return pulumi.get(self, "customer_encryption")
 
     @customer_encryption.setter
-    def customer_encryption(self, value: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']]):
+    def customer_encryption(self, value: pulumi.Input[Optional['BucketObjectCustomerEncryptionArgs']]):
         pulumi.set(self, "customer_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
         """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
-    def detect_md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detect_md5hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
 
@@ -253,48 +253,48 @@ class BucketObjectArgs:
         return pulumi.get(self, "detect_md5hash")
 
     @detect_md5hash.setter
-    def detect_md5hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detect_md5hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detect_md5hash", value)
 
     @_builtins.property
     @pulumi.getter(name="eventBasedHold")
-    def event_based_hold(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def event_based_hold(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         """
         return pulumi.get(self, "event_based_hold")
 
     @event_based_hold.setter
-    def event_based_hold(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def event_based_hold(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "event_based_hold", value)
 
     @_builtins.property
     @pulumi.getter(name="forceEmptyContentType")
-    def force_empty_content_type(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_empty_content_type(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true, it ensure the object's Content-Type is empty.
         """
         return pulumi.get(self, "force_empty_content_type")
 
     @force_empty_content_type.setter
-    def force_empty_content_type(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_empty_content_type(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_empty_content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-provided metadata, in key/value pairs.
 
@@ -303,36 +303,36 @@ class BucketObjectArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input['BucketObjectRetentionArgs']]:
+    def retention(self) -> pulumi.Input[Optional['BucketObjectRetentionArgs']]:
         """
         The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
         """
         return pulumi.get(self, "retention")
 
     @retention.setter
-    def retention(self, value: Optional[pulumi.Input['BucketObjectRetentionArgs']]):
+    def retention(self, value: pulumi.Input[Optional['BucketObjectRetentionArgs']]):
         pulumi.set(self, "retention", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]:
+    def source(self) -> pulumi.Input[Optional[Union[pulumi.Asset, pulumi.Archive]]]:
         """
         A path to the data you want to upload. Must be defined
         if `content` is not.
@@ -342,24 +342,24 @@ class BucketObjectArgs:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]):
+    def source(self, value: pulumi.Input[Optional[Union[pulumi.Asset, pulumi.Archive]]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceMd5hash")
-    def source_md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_md5hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
         """
         return pulumi.get(self, "source_md5hash")
 
     @source_md5hash.setter
-    def source_md5hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_md5hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_md5hash", value)
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
         Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -368,53 +368,53 @@ class BucketObjectArgs:
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
-    def storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_class", value)
 
     @_builtins.property
     @pulumi.getter(name="temporaryHold")
-    def temporary_hold(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def temporary_hold(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
         """
         return pulumi.get(self, "temporary_hold")
 
     @temporary_hold.setter
-    def temporary_hold(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def temporary_hold(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "temporary_hold", value)
 
 
 @pulumi.input_type
 class _BucketObjectState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_control: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 contexts: Optional[pulumi.Input['BucketObjectContextsArgs']] = None,
-                 crc32c: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_encryption: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_empty_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
-                 generation: Optional[pulumi.Input[_builtins.int]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5hexhash: Optional[pulumi.Input[_builtins.str]] = None,
-                 media_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input['BucketObjectRetentionArgs']] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
-                 source_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 temporary_hold: Optional[pulumi.Input[_builtins.bool]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 contexts: pulumi.Input[Optional['BucketObjectContextsArgs']] = None,
+                 crc32c: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_encryption: pulumi.Input[Optional['BucketObjectCustomerEncryptionArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_empty_content_type: pulumi.Input[Optional[_builtins.bool]] = None,
+                 generation: pulumi.Input[Optional[_builtins.int]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5hexhash: pulumi.Input[Optional[_builtins.str]] = None,
+                 media_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional['BucketObjectRetentionArgs']] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[Union[pulumi.Asset, pulumi.Archive]]] = None,
+                 source_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 temporary_hold: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering BucketObject resources.
 
@@ -518,19 +518,19 @@ class _BucketObjectState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the containing bucket.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheControl")
-    def cache_control(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_control(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
         directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
@@ -538,96 +538,96 @@ class _BucketObjectState:
         return pulumi.get(self, "cache_control")
 
     @cache_control.setter
-    def cache_control(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_control(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_control", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter(name="contentDisposition")
-    def content_disposition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
         """
         return pulumi.get(self, "content_disposition")
 
     @content_disposition.setter
-    def content_disposition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_disposition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_disposition", value)
 
     @_builtins.property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         """
         return pulumi.get(self, "content_encoding")
 
     @content_encoding.setter
-    def content_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="contentLanguage")
-    def content_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         """
         return pulumi.get(self, "content_language")
 
     @content_language.setter
-    def content_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_language", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def contexts(self) -> Optional[pulumi.Input['BucketObjectContextsArgs']]:
+    def contexts(self) -> pulumi.Input[Optional['BucketObjectContextsArgs']]:
         """
         Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
         """
         return pulumi.get(self, "contexts")
 
     @contexts.setter
-    def contexts(self, value: Optional[pulumi.Input['BucketObjectContextsArgs']]):
+    def contexts(self, value: pulumi.Input[Optional['BucketObjectContextsArgs']]):
         pulumi.set(self, "contexts", value)
 
     @_builtins.property
     @pulumi.getter
-    def crc32c(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crc32c(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) Base 64 CRC32 hash of the uploaded data.
         """
         return pulumi.get(self, "crc32c")
 
     @crc32c.setter
-    def crc32c(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crc32c(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crc32c", value)
 
     @_builtins.property
     @pulumi.getter(name="customerEncryption")
-    def customer_encryption(self) -> Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']]:
+    def customer_encryption(self) -> pulumi.Input[Optional['BucketObjectCustomerEncryptionArgs']]:
         """
         Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
         Structure is documented below.
@@ -635,24 +635,24 @@ class _BucketObjectState:
         return pulumi.get(self, "customer_encryption")
 
     @customer_encryption.setter
-    def customer_encryption(self, value: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']]):
+    def customer_encryption(self, value: pulumi.Input[Optional['BucketObjectCustomerEncryptionArgs']]):
         pulumi.set(self, "customer_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When set to ABANDON, the object won't be deleted from storage bucket. Instead, it will only be removed from terraform's state file.
         """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
-    def detect_md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detect_md5hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
 
@@ -661,96 +661,96 @@ class _BucketObjectState:
         return pulumi.get(self, "detect_md5hash")
 
     @detect_md5hash.setter
-    def detect_md5hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detect_md5hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detect_md5hash", value)
 
     @_builtins.property
     @pulumi.getter(name="eventBasedHold")
-    def event_based_hold(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def event_based_hold(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         """
         return pulumi.get(self, "event_based_hold")
 
     @event_based_hold.setter
-    def event_based_hold(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def event_based_hold(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "event_based_hold", value)
 
     @_builtins.property
     @pulumi.getter(name="forceEmptyContentType")
-    def force_empty_content_type(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_empty_content_type(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true, it ensure the object's Content-Type is empty.
         """
         return pulumi.get(self, "force_empty_content_type")
 
     @force_empty_content_type.setter
-    def force_empty_content_type(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_empty_content_type(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_empty_content_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "generation", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def md5hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) Base 64 MD5 hash of the uploaded data.
         """
         return pulumi.get(self, "md5hash")
 
     @md5hash.setter
-    def md5hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def md5hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "md5hash", value)
 
     @_builtins.property
     @pulumi.getter
-    def md5hexhash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def md5hexhash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) Hex value of md5hash`
         """
         return pulumi.get(self, "md5hexhash")
 
     @md5hexhash.setter
-    def md5hexhash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def md5hexhash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "md5hexhash", value)
 
     @_builtins.property
     @pulumi.getter(name="mediaLink")
-    def media_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def media_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) A url reference to download this object.
         """
         return pulumi.get(self, "media_link")
 
     @media_link.setter
-    def media_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def media_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "media_link", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-provided metadata, in key/value pairs.
 
@@ -759,24 +759,24 @@ class _BucketObjectState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="outputName")
-    def output_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
         `storage.ObjectACL` resources when your `storage.BucketObject` is recreated.
@@ -784,36 +784,36 @@ class _BucketObjectState:
         return pulumi.get(self, "output_name")
 
     @output_name.setter
-    def output_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input['BucketObjectRetentionArgs']]:
+    def retention(self) -> pulumi.Input[Optional['BucketObjectRetentionArgs']]:
         """
         The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
         """
         return pulumi.get(self, "retention")
 
     @retention.setter
-    def retention(self, value: Optional[pulumi.Input['BucketObjectRetentionArgs']]):
+    def retention(self, value: pulumi.Input[Optional['BucketObjectRetentionArgs']]):
         pulumi.set(self, "retention", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) A url reference to this object.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]:
+    def source(self) -> pulumi.Input[Optional[Union[pulumi.Asset, pulumi.Archive]]]:
         """
         A path to the data you want to upload. Must be defined
         if `content` is not.
@@ -823,24 +823,24 @@ class _BucketObjectState:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]):
+    def source(self, value: pulumi.Input[Optional[Union[pulumi.Asset, pulumi.Archive]]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceMd5hash")
-    def source_md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_md5hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
         """
         return pulumi.get(self, "source_md5hash")
 
     @source_md5hash.setter
-    def source_md5hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_md5hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_md5hash", value)
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
         Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -849,19 +849,19 @@ class _BucketObjectState:
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
-    def storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_class", value)
 
     @_builtins.property
     @pulumi.getter(name="temporaryHold")
-    def temporary_hold(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def temporary_hold(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
         """
         return pulumi.get(self, "temporary_hold")
 
     @temporary_hold.setter
-    def temporary_hold(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def temporary_hold(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "temporary_hold", value)
 
 
@@ -871,27 +871,27 @@ class BucketObject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_control: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 contexts: Optional[pulumi.Input[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']]] = None,
-                 customer_encryption: Optional[pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_empty_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
-                 source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
-                 source_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 temporary_hold: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 contexts: pulumi.Input[Optional[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']]] = None,
+                 customer_encryption: pulumi.Input[Optional[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_empty_content_type: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union[pulumi.Asset, pulumi.Archive]]] = None,
+                 source_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 temporary_hold: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Creates a new object inside an existing bucket in Google cloud storage service (GCS).
@@ -1083,27 +1083,27 @@ class BucketObject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_control: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 contexts: Optional[pulumi.Input[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']]] = None,
-                 customer_encryption: Optional[pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_empty_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
-                 source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
-                 source_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 temporary_hold: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 contexts: pulumi.Input[Optional[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']]] = None,
+                 customer_encryption: pulumi.Input[Optional[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_empty_content_type: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union[pulumi.Asset, pulumi.Archive]]] = None,
+                 source_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 temporary_hold: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1155,34 +1155,34 @@ class BucketObject(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            cache_control: Optional[pulumi.Input[_builtins.str]] = None,
-            content: Optional[pulumi.Input[_builtins.str]] = None,
-            content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-            content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-            content_language: Optional[pulumi.Input[_builtins.str]] = None,
-            content_type: Optional[pulumi.Input[_builtins.str]] = None,
-            contexts: Optional[pulumi.Input[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']]] = None,
-            crc32c: Optional[pulumi.Input[_builtins.str]] = None,
-            customer_encryption: Optional[pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-            event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
-            force_empty_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
-            generation: Optional[pulumi.Input[_builtins.int]] = None,
-            kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-            md5hexhash: Optional[pulumi.Input[_builtins.str]] = None,
-            media_link: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            output_name: Optional[pulumi.Input[_builtins.str]] = None,
-            retention: Optional[pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
-            source_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-            temporary_hold: Optional[pulumi.Input[_builtins.bool]] = None) -> 'BucketObject':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+            content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            content_language: pulumi.Input[Optional[_builtins.str]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            contexts: pulumi.Input[Optional[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']]] = None,
+            crc32c: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_encryption: pulumi.Input[Optional[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+            event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_empty_content_type: pulumi.Input[Optional[_builtins.bool]] = None,
+            generation: pulumi.Input[Optional[_builtins.int]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+            md5hexhash: pulumi.Input[Optional[_builtins.str]] = None,
+            media_link: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            output_name: pulumi.Input[Optional[_builtins.str]] = None,
+            retention: pulumi.Input[Optional[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[Union[pulumi.Asset, pulumi.Archive]]] = None,
+            source_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+            temporary_hold: pulumi.Input[Optional[_builtins.bool]] = None) -> 'BucketObject':
         """
         Get an existing BucketObject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

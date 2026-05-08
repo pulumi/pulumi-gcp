@@ -309,57 +309,57 @@ export interface AppProfileState {
     /**
      * The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
      */
-    appProfileId?: pulumi.Input<string>;
+    appProfileId?: pulumi.Input<string | undefined>;
     /**
      * Specifies that this app profile is intended for read-only usage via the Data Boost feature.
      * Structure is documented below.
      */
-    dataBoostIsolationReadOnly?: pulumi.Input<inputs.bigquery.AppProfileDataBoostIsolationReadOnly>;
+    dataBoostIsolationReadOnly?: pulumi.Input<inputs.bigquery.AppProfileDataBoostIsolationReadOnly | undefined>;
     /**
      * Long form description of the use case for this app profile.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If true, ignore safety checks when deleting/updating the app profile.
      */
-    ignoreWarnings?: pulumi.Input<boolean>;
+    ignoreWarnings?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the instance to create the app profile within.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
      */
-    multiClusterRoutingClusterIds?: pulumi.Input<pulumi.Input<string>[]>;
+    multiClusterRoutingClusterIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
      * in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
      * consistency to improve availability.
      */
-    multiClusterRoutingUseAny?: pulumi.Input<boolean>;
+    multiClusterRoutingUseAny?: pulumi.Input<boolean | undefined>;
     /**
      * The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
      */
-    rowAffinity?: pulumi.Input<boolean>;
+    rowAffinity?: pulumi.Input<boolean | undefined>;
     /**
      * Use a single-cluster routing policy.
      * Structure is documented below.
      */
-    singleClusterRouting?: pulumi.Input<inputs.bigquery.AppProfileSingleClusterRouting>;
+    singleClusterRouting?: pulumi.Input<inputs.bigquery.AppProfileSingleClusterRouting | undefined>;
     /**
      * The standard options used for isolating this app profile's traffic from other use cases.
      * Structure is documented below.
      */
-    standardIsolation?: pulumi.Input<inputs.bigquery.AppProfileStandardIsolation>;
+    standardIsolation?: pulumi.Input<inputs.bigquery.AppProfileStandardIsolation | undefined>;
 }
 
 /**
@@ -374,46 +374,46 @@ export interface AppProfileArgs {
      * Specifies that this app profile is intended for read-only usage via the Data Boost feature.
      * Structure is documented below.
      */
-    dataBoostIsolationReadOnly?: pulumi.Input<inputs.bigquery.AppProfileDataBoostIsolationReadOnly>;
+    dataBoostIsolationReadOnly?: pulumi.Input<inputs.bigquery.AppProfileDataBoostIsolationReadOnly | undefined>;
     /**
      * Long form description of the use case for this app profile.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If true, ignore safety checks when deleting/updating the app profile.
      */
-    ignoreWarnings?: pulumi.Input<boolean>;
+    ignoreWarnings?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the instance to create the app profile within.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
      */
-    multiClusterRoutingClusterIds?: pulumi.Input<pulumi.Input<string>[]>;
+    multiClusterRoutingClusterIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
      * in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
      * consistency to improve availability.
      */
-    multiClusterRoutingUseAny?: pulumi.Input<boolean>;
+    multiClusterRoutingUseAny?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
      */
-    rowAffinity?: pulumi.Input<boolean>;
+    rowAffinity?: pulumi.Input<boolean | undefined>;
     /**
      * Use a single-cluster routing policy.
      * Structure is documented below.
      */
-    singleClusterRouting?: pulumi.Input<inputs.bigquery.AppProfileSingleClusterRouting>;
+    singleClusterRouting?: pulumi.Input<inputs.bigquery.AppProfileSingleClusterRouting | undefined>;
     /**
      * The standard options used for isolating this app profile's traffic from other use cases.
      * Structure is documented below.
      */
-    standardIsolation?: pulumi.Input<inputs.bigquery.AppProfileStandardIsolation>;
+    standardIsolation?: pulumi.Input<inputs.bigquery.AppProfileStandardIsolation | undefined>;
 }

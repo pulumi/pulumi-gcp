@@ -149,7 +149,7 @@ export interface GetNpmPackageOutputArgs {
     /**
      * The ID of the project that owns the repository. If not provided, the provider-level project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of the repository containing the NPM package.
      */

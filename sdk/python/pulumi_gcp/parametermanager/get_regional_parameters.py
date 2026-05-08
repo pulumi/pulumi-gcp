@@ -126,9 +126,9 @@ def get_regional_parameters(filter: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         parameters=pulumi.get(__ret__, 'parameters'),
         project=pulumi.get(__ret__, 'project'))
-def get_regional_parameters_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   location: Optional[pulumi.Input[_builtins.str]] = None,
-                                   project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_regional_parameters_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   location: pulumi.Input[Optional[_builtins.str]] = None,
+                                   project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionalParametersResult]:
     """
     Use this data source to list the Parameter Manager Regional Parameters.

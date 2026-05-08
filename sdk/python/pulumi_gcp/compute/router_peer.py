@@ -24,31 +24,31 @@ class RouterPeerArgs:
                  interface: pulumi.Input[_builtins.str],
                  peer_asn: pulumi.Input[_builtins.int],
                  router: pulumi.Input[_builtins.str],
-                 advertise_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
-                 advertised_route_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 bfd: Optional[pulumi.Input['RouterPeerBfdArgs']] = None,
-                 custom_learned_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]] = None,
-                 custom_learned_route_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ipv4: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 export_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 import_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5_authentication_key: Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ipv4_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ipv6_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_appliance_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 zero_advertised_route_priority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zero_custom_learned_route_priority: Optional[pulumi.Input[_builtins.bool]] = None):
+                 advertise_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 advertised_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 advertised_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
+                 advertised_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 bfd: pulumi.Input[Optional['RouterPeerBfdArgs']] = None,
+                 custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]] = None,
+                 custom_learned_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 import_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5_authentication_key: pulumi.Input[Optional['RouterPeerMd5AuthenticationKeyArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ipv4_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ipv6_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_appliance_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 zero_advertised_route_priority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zero_custom_learned_route_priority: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RouterPeer resource.
 
@@ -235,7 +235,7 @@ class RouterPeerArgs:
 
     @_builtins.property
     @pulumi.getter(name="advertiseMode")
-    def advertise_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def advertise_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-specified flag to indicate which mode to use for advertisement.
         Valid values of this enum field are: `DEFAULT`, `CUSTOM`
@@ -245,12 +245,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "advertise_mode")
 
     @advertise_mode.setter
-    def advertise_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def advertise_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "advertise_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="advertisedGroups")
-    def advertised_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def advertised_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User-specified list of prefix groups to advertise in custom
         mode, which currently supports the following option:
@@ -266,12 +266,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "advertised_groups")
 
     @advertised_groups.setter
-    def advertised_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def advertised_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "advertised_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="advertisedIpRanges")
-    def advertised_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]]:
+    def advertised_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]]:
         """
         User-specified list of individual IP ranges to advertise in
         custom mode. This field can only be populated if advertiseMode
@@ -283,12 +283,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "advertised_ip_ranges")
 
     @advertised_ip_ranges.setter
-    def advertised_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]]):
+    def advertised_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]]):
         pulumi.set(self, "advertised_ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="advertisedRoutePriority")
-    def advertised_route_priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def advertised_route_priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of routes advertised to this BGP peer.
         Where there is more than one matching route of maximum
@@ -297,12 +297,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "advertised_route_priority")
 
     @advertised_route_priority.setter
-    def advertised_route_priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def advertised_route_priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "advertised_route_priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def bfd(self) -> Optional[pulumi.Input['RouterPeerBfdArgs']]:
+    def bfd(self) -> pulumi.Input[Optional['RouterPeerBfdArgs']]:
         """
         BFD configuration for the BGP peering.
         Structure is documented below.
@@ -310,12 +310,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "bfd")
 
     @bfd.setter
-    def bfd(self, value: Optional[pulumi.Input['RouterPeerBfdArgs']]):
+    def bfd(self, value: pulumi.Input[Optional['RouterPeerBfdArgs']]):
         pulumi.set(self, "bfd", value)
 
     @_builtins.property
     @pulumi.getter(name="customLearnedIpRanges")
-    def custom_learned_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]]:
+    def custom_learned_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]]:
         """
         The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
         If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
@@ -325,12 +325,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "custom_learned_ip_ranges")
 
     @custom_learned_ip_ranges.setter
-    def custom_learned_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]]):
+    def custom_learned_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]]):
         pulumi.set(self, "custom_learned_ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="customLearnedRoutePriority")
-    def custom_learned_route_priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def custom_learned_route_priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The user-defined custom learned route priority for a BGP session.
         This value is applied to all custom learned route ranges for the session.
@@ -340,12 +340,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "custom_learned_route_priority")
 
     @custom_learned_route_priority.setter
-    def custom_learned_route_priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def custom_learned_route_priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "custom_learned_route_priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The status of the BGP peer connection. If set to false, any active session
         with the peer is terminated and all associated routing information is removed.
@@ -355,36 +355,36 @@ class RouterPeerArgs:
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIpv4")
-    def enable_ipv4(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ipv4(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         """
         return pulumi.get(self, "enable_ipv4")
 
     @enable_ipv4.setter
-    def enable_ipv4(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ipv4(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ipv4", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIpv6")
-    def enable_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         """
         return pulumi.get(self, "enable_ipv6")
 
     @enable_ipv6.setter
-    def enable_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="exportPolicies")
-    def export_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def export_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional, Beta)
         routers.list of export policies applied to this peer, in the order they must be evaluated.
@@ -393,12 +393,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "export_policies")
 
     @export_policies.setter
-    def export_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def export_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "export_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="importPolicies")
-    def import_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def import_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional, Beta)
         routers.list of import policies applied to this peer, in the order they must be evaluated.
@@ -407,12 +407,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "import_policies")
 
     @import_policies.setter
-    def import_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def import_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "import_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address of the interface inside Google Cloud Platform.
         Only IPv4 is supported.
@@ -420,24 +420,24 @@ class RouterPeerArgs:
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4NexthopAddress")
-    def ipv4_nexthop_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv4_nexthop_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv4 address of the interface inside Google Cloud Platform.
         """
         return pulumi.get(self, "ipv4_nexthop_address")
 
     @ipv4_nexthop_address.setter
-    def ipv4_nexthop_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv4_nexthop_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv4_nexthop_address", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6NexthopAddress")
-    def ipv6_nexthop_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_nexthop_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 address of the interface inside Google Cloud Platform.
         The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
@@ -447,12 +447,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "ipv6_nexthop_address")
 
     @ipv6_nexthop_address.setter
-    def ipv6_nexthop_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_nexthop_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_nexthop_address", value)
 
     @_builtins.property
     @pulumi.getter(name="md5AuthenticationKey")
-    def md5_authentication_key(self) -> Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']]:
+    def md5_authentication_key(self) -> pulumi.Input[Optional['RouterPeerMd5AuthenticationKeyArgs']]:
         """
         Configuration for MD5 authentication on the BGP session.
         Structure is documented below.
@@ -460,12 +460,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "md5_authentication_key")
 
     @md5_authentication_key.setter
-    def md5_authentication_key(self, value: Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']]):
+    def md5_authentication_key(self, value: pulumi.Input[Optional['RouterPeerMd5AuthenticationKeyArgs']]):
         pulumi.set(self, "md5_authentication_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of this BGP peer. The name must be 1-63 characters long,
         and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -477,12 +477,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIpAddress")
-    def peer_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address of the BGP interface outside Google Cloud Platform.
         Only IPv4 is supported. Required if `ip_address` is set.
@@ -490,24 +490,24 @@ class RouterPeerArgs:
         return pulumi.get(self, "peer_ip_address")
 
     @peer_ip_address.setter
-    def peer_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIpv4NexthopAddress")
-    def peer_ipv4_nexthop_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ipv4_nexthop_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv4 address of the BGP interface outside Google Cloud Platform.
         """
         return pulumi.get(self, "peer_ipv4_nexthop_address")
 
     @peer_ipv4_nexthop_address.setter
-    def peer_ipv4_nexthop_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ipv4_nexthop_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ipv4_nexthop_address", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIpv6NexthopAddress")
-    def peer_ipv6_nexthop_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ipv6_nexthop_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 address of the BGP interface outside Google Cloud Platform.
         The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
@@ -517,12 +517,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "peer_ipv6_nexthop_address")
 
     @peer_ipv6_nexthop_address.setter
-    def peer_ipv6_nexthop_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ipv6_nexthop_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ipv6_nexthop_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -530,12 +530,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where the router and BgpPeer reside.
         If it is not provided, the provider region is used.
@@ -543,12 +543,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="routerApplianceInstance")
-    def router_appliance_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_appliance_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the VM instance that is used as third-party router appliances
         such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
@@ -558,12 +558,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "router_appliance_instance")
 
     @router_appliance_instance.setter
-    def router_appliance_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_appliance_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_appliance_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="zeroAdvertisedRoutePriority")
-    def zero_advertised_route_priority(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def zero_advertised_route_priority(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
         This value has to be set true to force the advertised_route_priority to be 0.
@@ -571,12 +571,12 @@ class RouterPeerArgs:
         return pulumi.get(self, "zero_advertised_route_priority")
 
     @zero_advertised_route_priority.setter
-    def zero_advertised_route_priority(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def zero_advertised_route_priority(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "zero_advertised_route_priority", value)
 
     @_builtins.property
     @pulumi.getter(name="zeroCustomLearnedRoutePriority")
-    def zero_custom_learned_route_priority(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def zero_custom_learned_route_priority(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
         This value has to be set true to force the custom_learned_route_priority to be 0.
@@ -584,44 +584,44 @@ class RouterPeerArgs:
         return pulumi.get(self, "zero_custom_learned_route_priority")
 
     @zero_custom_learned_route_priority.setter
-    def zero_custom_learned_route_priority(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def zero_custom_learned_route_priority(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "zero_custom_learned_route_priority", value)
 
 
 @pulumi.input_type
 class _RouterPeerState:
     def __init__(__self__, *,
-                 advertise_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
-                 advertised_route_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 bfd: Optional[pulumi.Input['RouterPeerBfdArgs']] = None,
-                 custom_learned_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]] = None,
-                 custom_learned_route_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ipv4: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 export_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 import_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_advertised_route_priority_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_custom_learned_priority_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 management_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5_authentication_key: Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ipv4_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ipv6_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_appliance_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 zero_advertised_route_priority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zero_custom_learned_route_priority: Optional[pulumi.Input[_builtins.bool]] = None):
+                 advertise_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 advertised_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 advertised_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
+                 advertised_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 bfd: pulumi.Input[Optional['RouterPeerBfdArgs']] = None,
+                 custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]] = None,
+                 custom_learned_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 import_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_advertised_route_priority_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_custom_learned_priority_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 management_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5_authentication_key: pulumi.Input[Optional['RouterPeerMd5AuthenticationKeyArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ipv4_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ipv6_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_appliance_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 zero_advertised_route_priority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zero_custom_learned_route_priority: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering RouterPeer resources.
 
@@ -788,7 +788,7 @@ class _RouterPeerState:
 
     @_builtins.property
     @pulumi.getter(name="advertiseMode")
-    def advertise_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def advertise_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-specified flag to indicate which mode to use for advertisement.
         Valid values of this enum field are: `DEFAULT`, `CUSTOM`
@@ -798,12 +798,12 @@ class _RouterPeerState:
         return pulumi.get(self, "advertise_mode")
 
     @advertise_mode.setter
-    def advertise_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def advertise_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "advertise_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="advertisedGroups")
-    def advertised_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def advertised_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User-specified list of prefix groups to advertise in custom
         mode, which currently supports the following option:
@@ -819,12 +819,12 @@ class _RouterPeerState:
         return pulumi.get(self, "advertised_groups")
 
     @advertised_groups.setter
-    def advertised_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def advertised_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "advertised_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="advertisedIpRanges")
-    def advertised_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]]:
+    def advertised_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]]:
         """
         User-specified list of individual IP ranges to advertise in
         custom mode. This field can only be populated if advertiseMode
@@ -836,12 +836,12 @@ class _RouterPeerState:
         return pulumi.get(self, "advertised_ip_ranges")
 
     @advertised_ip_ranges.setter
-    def advertised_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]]):
+    def advertised_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]]):
         pulumi.set(self, "advertised_ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="advertisedRoutePriority")
-    def advertised_route_priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def advertised_route_priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of routes advertised to this BGP peer.
         Where there is more than one matching route of maximum
@@ -850,12 +850,12 @@ class _RouterPeerState:
         return pulumi.get(self, "advertised_route_priority")
 
     @advertised_route_priority.setter
-    def advertised_route_priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def advertised_route_priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "advertised_route_priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def bfd(self) -> Optional[pulumi.Input['RouterPeerBfdArgs']]:
+    def bfd(self) -> pulumi.Input[Optional['RouterPeerBfdArgs']]:
         """
         BFD configuration for the BGP peering.
         Structure is documented below.
@@ -863,12 +863,12 @@ class _RouterPeerState:
         return pulumi.get(self, "bfd")
 
     @bfd.setter
-    def bfd(self, value: Optional[pulumi.Input['RouterPeerBfdArgs']]):
+    def bfd(self, value: pulumi.Input[Optional['RouterPeerBfdArgs']]):
         pulumi.set(self, "bfd", value)
 
     @_builtins.property
     @pulumi.getter(name="customLearnedIpRanges")
-    def custom_learned_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]]:
+    def custom_learned_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]]:
         """
         The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
         If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
@@ -878,12 +878,12 @@ class _RouterPeerState:
         return pulumi.get(self, "custom_learned_ip_ranges")
 
     @custom_learned_ip_ranges.setter
-    def custom_learned_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]]):
+    def custom_learned_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterPeerCustomLearnedIpRangeArgs']]]]):
         pulumi.set(self, "custom_learned_ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="customLearnedRoutePriority")
-    def custom_learned_route_priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def custom_learned_route_priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The user-defined custom learned route priority for a BGP session.
         This value is applied to all custom learned route ranges for the session.
@@ -893,12 +893,12 @@ class _RouterPeerState:
         return pulumi.get(self, "custom_learned_route_priority")
 
     @custom_learned_route_priority.setter
-    def custom_learned_route_priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def custom_learned_route_priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "custom_learned_route_priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The status of the BGP peer connection. If set to false, any active session
         with the peer is terminated and all associated routing information is removed.
@@ -908,36 +908,36 @@ class _RouterPeerState:
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIpv4")
-    def enable_ipv4(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ipv4(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         """
         return pulumi.get(self, "enable_ipv4")
 
     @enable_ipv4.setter
-    def enable_ipv4(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ipv4(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ipv4", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIpv6")
-    def enable_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         """
         return pulumi.get(self, "enable_ipv6")
 
     @enable_ipv6.setter
-    def enable_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="exportPolicies")
-    def export_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def export_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional, Beta)
         routers.list of export policies applied to this peer, in the order they must be evaluated.
@@ -946,12 +946,12 @@ class _RouterPeerState:
         return pulumi.get(self, "export_policies")
 
     @export_policies.setter
-    def export_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def export_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "export_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="importPolicies")
-    def import_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def import_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional, Beta)
         routers.list of import policies applied to this peer, in the order they must be evaluated.
@@ -960,24 +960,24 @@ class _RouterPeerState:
         return pulumi.get(self, "import_policies")
 
     @import_policies.setter
-    def import_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def import_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "import_policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the interface the BGP peer is associated with.
         """
         return pulumi.get(self, "interface")
 
     @interface.setter
-    def interface(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address of the interface inside Google Cloud Platform.
         Only IPv4 is supported.
@@ -985,24 +985,24 @@ class _RouterPeerState:
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4NexthopAddress")
-    def ipv4_nexthop_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv4_nexthop_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv4 address of the interface inside Google Cloud Platform.
         """
         return pulumi.get(self, "ipv4_nexthop_address")
 
     @ipv4_nexthop_address.setter
-    def ipv4_nexthop_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv4_nexthop_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv4_nexthop_address", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6NexthopAddress")
-    def ipv6_nexthop_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_nexthop_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 address of the interface inside Google Cloud Platform.
         The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
@@ -1012,36 +1012,36 @@ class _RouterPeerState:
         return pulumi.get(self, "ipv6_nexthop_address")
 
     @ipv6_nexthop_address.setter
-    def ipv6_nexthop_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_nexthop_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_nexthop_address", value)
 
     @_builtins.property
     @pulumi.getter(name="isAdvertisedRoutePrioritySet")
-    def is_advertised_route_priority_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_advertised_route_priority_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         An internal boolean field for provider use for zero_advertised_route_priority.
         """
         return pulumi.get(self, "is_advertised_route_priority_set")
 
     @is_advertised_route_priority_set.setter
-    def is_advertised_route_priority_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_advertised_route_priority_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_advertised_route_priority_set", value)
 
     @_builtins.property
     @pulumi.getter(name="isCustomLearnedPrioritySet")
-    def is_custom_learned_priority_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_custom_learned_priority_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         An internal boolean field for provider use.
         """
         return pulumi.get(self, "is_custom_learned_priority_set")
 
     @is_custom_learned_priority_set.setter
-    def is_custom_learned_priority_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_custom_learned_priority_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_custom_learned_priority_set", value)
 
     @_builtins.property
     @pulumi.getter(name="managementType")
-    def management_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def management_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource that configures and manages this BGP peer.
         * `MANAGED_BY_USER` is the default value and can be managed by
@@ -1056,12 +1056,12 @@ class _RouterPeerState:
         return pulumi.get(self, "management_type")
 
     @management_type.setter
-    def management_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def management_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "management_type", value)
 
     @_builtins.property
     @pulumi.getter(name="md5AuthenticationKey")
-    def md5_authentication_key(self) -> Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']]:
+    def md5_authentication_key(self) -> pulumi.Input[Optional['RouterPeerMd5AuthenticationKeyArgs']]:
         """
         Configuration for MD5 authentication on the BGP session.
         Structure is documented below.
@@ -1069,12 +1069,12 @@ class _RouterPeerState:
         return pulumi.get(self, "md5_authentication_key")
 
     @md5_authentication_key.setter
-    def md5_authentication_key(self, value: Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']]):
+    def md5_authentication_key(self, value: pulumi.Input[Optional['RouterPeerMd5AuthenticationKeyArgs']]):
         pulumi.set(self, "md5_authentication_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of this BGP peer. The name must be 1-63 characters long,
         and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -1086,12 +1086,12 @@ class _RouterPeerState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="peerAsn")
-    def peer_asn(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def peer_asn(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Peer BGP Autonomous System Number (ASN).
         Each BGP interface may use a different value.
@@ -1099,12 +1099,12 @@ class _RouterPeerState:
         return pulumi.get(self, "peer_asn")
 
     @peer_asn.setter
-    def peer_asn(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def peer_asn(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "peer_asn", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIpAddress")
-    def peer_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address of the BGP interface outside Google Cloud Platform.
         Only IPv4 is supported. Required if `ip_address` is set.
@@ -1112,24 +1112,24 @@ class _RouterPeerState:
         return pulumi.get(self, "peer_ip_address")
 
     @peer_ip_address.setter
-    def peer_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIpv4NexthopAddress")
-    def peer_ipv4_nexthop_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ipv4_nexthop_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv4 address of the BGP interface outside Google Cloud Platform.
         """
         return pulumi.get(self, "peer_ipv4_nexthop_address")
 
     @peer_ipv4_nexthop_address.setter
-    def peer_ipv4_nexthop_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ipv4_nexthop_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ipv4_nexthop_address", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIpv6NexthopAddress")
-    def peer_ipv6_nexthop_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ipv6_nexthop_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 address of the BGP interface outside Google Cloud Platform.
         The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
@@ -1139,12 +1139,12 @@ class _RouterPeerState:
         return pulumi.get(self, "peer_ipv6_nexthop_address")
 
     @peer_ipv6_nexthop_address.setter
-    def peer_ipv6_nexthop_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ipv6_nexthop_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ipv6_nexthop_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -1152,12 +1152,12 @@ class _RouterPeerState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where the router and BgpPeer reside.
         If it is not provided, the provider region is used.
@@ -1165,12 +1165,12 @@ class _RouterPeerState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def router(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Cloud Router in which this BgpPeer will be configured.
 
@@ -1180,12 +1180,12 @@ class _RouterPeerState:
         return pulumi.get(self, "router")
 
     @router.setter
-    def router(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router", value)
 
     @_builtins.property
     @pulumi.getter(name="routerApplianceInstance")
-    def router_appliance_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_appliance_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the VM instance that is used as third-party router appliances
         such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
@@ -1195,12 +1195,12 @@ class _RouterPeerState:
         return pulumi.get(self, "router_appliance_instance")
 
     @router_appliance_instance.setter
-    def router_appliance_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_appliance_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_appliance_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="zeroAdvertisedRoutePriority")
-    def zero_advertised_route_priority(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def zero_advertised_route_priority(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
         This value has to be set true to force the advertised_route_priority to be 0.
@@ -1208,12 +1208,12 @@ class _RouterPeerState:
         return pulumi.get(self, "zero_advertised_route_priority")
 
     @zero_advertised_route_priority.setter
-    def zero_advertised_route_priority(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def zero_advertised_route_priority(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "zero_advertised_route_priority", value)
 
     @_builtins.property
     @pulumi.getter(name="zeroCustomLearnedRoutePriority")
-    def zero_custom_learned_route_priority(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def zero_custom_learned_route_priority(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
         This value has to be set true to force the custom_learned_route_priority to be 0.
@@ -1221,7 +1221,7 @@ class _RouterPeerState:
         return pulumi.get(self, "zero_custom_learned_route_priority")
 
     @zero_custom_learned_route_priority.setter
-    def zero_custom_learned_route_priority(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def zero_custom_learned_route_priority(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "zero_custom_learned_route_priority", value)
 
 
@@ -1231,34 +1231,34 @@ class RouterPeer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advertise_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
-                 advertised_route_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 bfd: Optional[pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
-                 custom_learned_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
-                 custom_learned_route_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ipv4: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 export_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 import_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5_authentication_key: Optional[pulumi.Input[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ipv4_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ipv6_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_appliance_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 zero_advertised_route_priority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zero_custom_learned_route_priority: Optional[pulumi.Input[_builtins.bool]] = None,
+                 advertise_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 advertised_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 advertised_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
+                 advertised_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 bfd: pulumi.Input[Optional[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
+                 custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
+                 custom_learned_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 import_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5_authentication_key: pulumi.Input[Optional[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ipv4_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ipv6_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_appliance_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 zero_advertised_route_priority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zero_custom_learned_route_priority: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         BGP information that must be configured into the routing stack to
@@ -2022,34 +2022,34 @@ class RouterPeer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advertise_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
-                 advertised_route_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 bfd: Optional[pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
-                 custom_learned_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
-                 custom_learned_route_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ipv4: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 export_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 import_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5_authentication_key: Optional[pulumi.Input[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ipv4_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ipv6_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_appliance_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 zero_advertised_route_priority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zero_custom_learned_route_priority: Optional[pulumi.Input[_builtins.bool]] = None,
+                 advertise_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 advertised_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 advertised_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
+                 advertised_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 bfd: pulumi.Input[Optional[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
+                 custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
+                 custom_learned_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 import_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5_authentication_key: pulumi.Input[Optional[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ipv4_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ipv6_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_appliance_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 zero_advertised_route_priority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zero_custom_learned_route_priority: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2106,37 +2106,37 @@ class RouterPeer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advertise_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
-            advertised_route_priority: Optional[pulumi.Input[_builtins.int]] = None,
-            bfd: Optional[pulumi.Input[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
-            custom_learned_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
-            custom_learned_route_priority: Optional[pulumi.Input[_builtins.int]] = None,
-            enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_ipv4: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-            export_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            import_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            interface: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv4_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-            is_advertised_route_priority_set: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_custom_learned_priority_set: Optional[pulumi.Input[_builtins.bool]] = None,
-            management_type: Optional[pulumi.Input[_builtins.str]] = None,
-            md5_authentication_key: Optional[pulumi.Input[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_asn: Optional[pulumi.Input[_builtins.int]] = None,
-            peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_ipv4_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_ipv6_nexthop_address: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            router: Optional[pulumi.Input[_builtins.str]] = None,
-            router_appliance_instance: Optional[pulumi.Input[_builtins.str]] = None,
-            zero_advertised_route_priority: Optional[pulumi.Input[_builtins.bool]] = None,
-            zero_custom_learned_route_priority: Optional[pulumi.Input[_builtins.bool]] = None) -> 'RouterPeer':
+            advertise_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            advertised_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            advertised_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerAdvertisedIpRangeArgs', 'RouterPeerAdvertisedIpRangeArgsDict']]]]] = None,
+            advertised_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+            bfd: pulumi.Input[Optional[Union['RouterPeerBfdArgs', 'RouterPeerBfdArgsDict']]] = None,
+            custom_learned_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterPeerCustomLearnedIpRangeArgs', 'RouterPeerCustomLearnedIpRangeArgsDict']]]]] = None,
+            custom_learned_route_priority: pulumi.Input[Optional[_builtins.int]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            export_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            import_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            interface: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+            is_advertised_route_priority_set: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_custom_learned_priority_set: pulumi.Input[Optional[_builtins.bool]] = None,
+            management_type: pulumi.Input[Optional[_builtins.str]] = None,
+            md5_authentication_key: pulumi.Input[Optional[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_asn: pulumi.Input[Optional[_builtins.int]] = None,
+            peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_ipv4_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_ipv6_nexthop_address: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router: pulumi.Input[Optional[_builtins.str]] = None,
+            router_appliance_instance: pulumi.Input[Optional[_builtins.str]] = None,
+            zero_advertised_route_priority: pulumi.Input[Optional[_builtins.bool]] = None,
+            zero_custom_learned_route_priority: pulumi.Input[Optional[_builtins.bool]] = None) -> 'RouterPeer':
         """
         Get an existing RouterPeer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

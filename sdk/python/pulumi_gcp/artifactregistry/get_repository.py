@@ -296,9 +296,9 @@ def get_repository(location: Optional[_builtins.str] = None,
         update_time=pulumi.get(__ret__, 'update_time'),
         virtual_repository_configs=pulumi.get(__ret__, 'virtual_repository_configs'),
         vulnerability_scanning_configs=pulumi.get(__ret__, 'vulnerability_scanning_configs'))
-def get_repository_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                          project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          repository_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_repository_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryResult]:
     """
     Get information about a Google Artifact Registry Repository. For more information see

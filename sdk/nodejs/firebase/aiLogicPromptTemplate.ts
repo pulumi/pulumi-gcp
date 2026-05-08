@@ -208,15 +208,15 @@ export interface AiLogicPromptTemplateState {
     /**
      * Timestamp when the PromptTemplate was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The display name of the PromptTemplate.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the PromptTemplate has been locked for mutations.  It is
      * strongly recommended that PromptTemplates used in production Apps be
@@ -224,39 +224,39 @@ export interface AiLogicPromptTemplateState {
      * To modify a PromptTemplate that has been locked, a call to ModifyLock with
      * lock=false is required first.
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * The model name parsed from the template_string.
      */
-    model?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the PromptTemplate.
      * Format:
      * projects/{project}/locations/{location}/templates/{prompt_template}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the PromptTemplate state was last changed.
      */
-    stateChangeTime?: pulumi.Input<string>;
+    stateChangeTime?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the PromptTemplate, which is the final component of the
      * PromptTemplate's resource name.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * The [Dotprompt](https://google.github.io/dotprompt/getting-started) raw template string.
      */
-    templateString?: pulumi.Input<string>;
+    templateString?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the PromptTemplate was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -266,7 +266,7 @@ export interface AiLogicPromptTemplateArgs {
     /**
      * The display name of the PromptTemplate.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -275,7 +275,7 @@ export interface AiLogicPromptTemplateArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the PromptTemplate, which is the final component of the
      * PromptTemplate's resource name.

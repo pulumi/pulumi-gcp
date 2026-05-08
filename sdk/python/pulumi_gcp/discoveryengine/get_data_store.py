@@ -246,10 +246,10 @@ def get_data_store(data_store_id: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         skip_default_schema_creation=pulumi.get(__ret__, 'skip_default_schema_creation'),
         solution_types=pulumi.get(__ret__, 'solution_types'))
-def get_data_store_output(data_store_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          display_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_data_store_output(data_store_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          display_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataStoreResult]:
     """
     Gets an existing Discovery Engine data store by ID or display name.

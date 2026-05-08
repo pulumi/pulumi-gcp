@@ -515,7 +515,7 @@ export interface WorkloadIdentityPoolProviderState {
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
      */
-    attributeCondition?: pulumi.Input<string>;
+    attributeCondition?: pulumi.Input<string | undefined>;
     /**
      * Maps attributes from authentication credentials issued by an external identity provider
      * to Google Cloud attributes, such as `subject` and `segment`.
@@ -569,45 +569,45 @@ export interface WorkloadIdentityPoolProviderState {
      * {"google.subject": "assertion.sub"}
      * ```
      */
-    attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
      * Structure is documented below.
      */
-    aws?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderAws>;
+    aws?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderAws | undefined>;
     /**
      * A description for the provider. Cannot exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
      * However, existing tokens still grant access.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * A display name for the provider. Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the provider as
      * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
      * Structure is documented below.
      */
-    oidc?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderOidc>;
+    oidc?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderOidc | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
      * Structure is documented below.
      */
-    saml?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderSaml>;
+    saml?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderSaml | undefined>;
     /**
      * The state of the provider.
      * * STATE_UNSPECIFIED: State unspecified.
@@ -617,25 +617,25 @@ export interface WorkloadIdentityPoolProviderState {
      * UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
      * until it is permanently deleted.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The ID used for the pool, which is the final component of the pool resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    workloadIdentityPoolId?: pulumi.Input<string>;
+    workloadIdentityPoolId?: pulumi.Input<string | undefined>;
     /**
      * The ID for the provider, which becomes the final component of the resource name. This
      * value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    workloadIdentityPoolProviderId?: pulumi.Input<string>;
+    workloadIdentityPoolProviderId?: pulumi.Input<string | undefined>;
     /**
      * An X.509-type identity provider represents a CA. It is trusted to assert a
      * client identity if the client has a certificate that chains up to this CA.
      * Structure is documented below.
      */
-    x509?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderX509>;
+    x509?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderX509 | undefined>;
 }
 
 /**
@@ -649,7 +649,7 @@ export interface WorkloadIdentityPoolProviderArgs {
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
      */
-    attributeCondition?: pulumi.Input<string>;
+    attributeCondition?: pulumi.Input<string | undefined>;
     /**
      * Maps attributes from authentication credentials issued by an external identity provider
      * to Google Cloud attributes, such as `subject` and `segment`.
@@ -703,40 +703,40 @@ export interface WorkloadIdentityPoolProviderArgs {
      * {"google.subject": "assertion.sub"}
      * ```
      */
-    attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
      * Structure is documented below.
      */
-    aws?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderAws>;
+    aws?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderAws | undefined>;
     /**
      * A description for the provider. Cannot exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
      * However, existing tokens still grant access.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * A display name for the provider. Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
      * Structure is documented below.
      */
-    oidc?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderOidc>;
+    oidc?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderOidc | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
      * Structure is documented below.
      */
-    saml?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderSaml>;
+    saml?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderSaml | undefined>;
     /**
      * The ID used for the pool, which is the final component of the pool resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
@@ -754,5 +754,5 @@ export interface WorkloadIdentityPoolProviderArgs {
      * client identity if the client has a certificate that chains up to this CA.
      * Structure is documented below.
      */
-    x509?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderX509>;
+    x509?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderX509 | undefined>;
 }

@@ -22,9 +22,9 @@ __all__ = ['PreviewFeatureArgs', 'PreviewFeature']
 class PreviewFeatureArgs:
     def __init__(__self__, *,
                  activation_status: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_operation: Optional[pulumi.Input['PreviewFeatureRolloutOperationArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_operation: pulumi.Input[Optional['PreviewFeatureRolloutOperationArgs']] = None):
         """
         The set of arguments for constructing a PreviewFeature resource.
 
@@ -59,19 +59,19 @@ class PreviewFeatureArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the preview feature.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -79,12 +79,12 @@ class PreviewFeatureArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutOperation")
-    def rollout_operation(self) -> Optional[pulumi.Input['PreviewFeatureRolloutOperationArgs']]:
+    def rollout_operation(self) -> pulumi.Input[Optional['PreviewFeatureRolloutOperationArgs']]:
         """
         The rollout operation of the feature.
         Structure is documented below.
@@ -92,17 +92,17 @@ class PreviewFeatureArgs:
         return pulumi.get(self, "rollout_operation")
 
     @rollout_operation.setter
-    def rollout_operation(self, value: Optional[pulumi.Input['PreviewFeatureRolloutOperationArgs']]):
+    def rollout_operation(self, value: pulumi.Input[Optional['PreviewFeatureRolloutOperationArgs']]):
         pulumi.set(self, "rollout_operation", value)
 
 
 @pulumi.input_type
 class _PreviewFeatureState:
     def __init__(__self__, *,
-                 activation_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_operation: Optional[pulumi.Input['PreviewFeatureRolloutOperationArgs']] = None):
+                 activation_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_operation: pulumi.Input[Optional['PreviewFeatureRolloutOperationArgs']] = None):
         """
         Input properties used for looking up and filtering PreviewFeature resources.
 
@@ -125,7 +125,7 @@ class _PreviewFeatureState:
 
     @_builtins.property
     @pulumi.getter(name="activationStatus")
-    def activation_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def activation_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The activation status of the preview feature.
         Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
@@ -133,24 +133,24 @@ class _PreviewFeatureState:
         return pulumi.get(self, "activation_status")
 
     @activation_status.setter
-    def activation_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def activation_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "activation_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the preview feature.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -158,12 +158,12 @@ class _PreviewFeatureState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutOperation")
-    def rollout_operation(self) -> Optional[pulumi.Input['PreviewFeatureRolloutOperationArgs']]:
+    def rollout_operation(self) -> pulumi.Input[Optional['PreviewFeatureRolloutOperationArgs']]:
         """
         The rollout operation of the feature.
         Structure is documented below.
@@ -171,7 +171,7 @@ class _PreviewFeatureState:
         return pulumi.get(self, "rollout_operation")
 
     @rollout_operation.setter
-    def rollout_operation(self, value: Optional[pulumi.Input['PreviewFeatureRolloutOperationArgs']]):
+    def rollout_operation(self, value: pulumi.Input[Optional['PreviewFeatureRolloutOperationArgs']]):
         pulumi.set(self, "rollout_operation", value)
 
 
@@ -181,10 +181,10 @@ class PreviewFeature(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activation_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_operation: Optional[pulumi.Input[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict']]] = None,
+                 activation_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_operation: pulumi.Input[Optional[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict']]] = None,
                  __props__=None):
         """
         Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or unspecified for a project.
@@ -305,10 +305,10 @@ class PreviewFeature(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activation_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_operation: Optional[pulumi.Input[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict']]] = None,
+                 activation_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_operation: pulumi.Input[Optional[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -334,10 +334,10 @@ class PreviewFeature(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            activation_status: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            rollout_operation: Optional[pulumi.Input[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict']]] = None) -> 'PreviewFeature':
+            activation_status: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rollout_operation: pulumi.Input[Optional[Union['PreviewFeatureRolloutOperationArgs', 'PreviewFeatureRolloutOperationArgsDict']]] = None) -> 'PreviewFeature':
         """
         Get an existing PreviewFeature resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

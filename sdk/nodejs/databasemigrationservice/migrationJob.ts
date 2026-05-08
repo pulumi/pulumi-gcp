@@ -672,115 +672,115 @@ export interface MigrationJobState {
     /**
      * Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
      */
-    destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * The migration job display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The initial dump flags.
      * Structure is documented below.
      */
-    dumpFlags?: pulumi.Input<inputs.databasemigrationservice.MigrationJobDumpFlags>;
+    dumpFlags?: pulumi.Input<inputs.databasemigrationservice.MigrationJobDumpFlags | undefined>;
     /**
      * The path to the dump file in Google Cloud Storage,
      * in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
      * This field and the "dumpFlags" field are mutually exclusive.
      */
-    dumpPath?: pulumi.Input<string>;
+    dumpPath?: pulumi.Input<string | undefined>;
     /**
      * The type of the data dump. Supported for MySQL to CloudSQL for MySQL
      * migrations only.
      * Possible values are: `LOGICAL`, `PHYSICAL`.
      */
-    dumpType?: pulumi.Input<string>;
+    dumpType?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. The error details in case of state FAILED.
      * Structure is documented below.
      */
-    errors?: pulumi.Input<pulumi.Input<inputs.databasemigrationservice.MigrationJobError>[]>;
+    errors?: pulumi.Input<pulumi.Input<inputs.databasemigrationservice.MigrationJobError>[] | undefined>;
     /**
      * The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where the migration job should reside.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the migration job.
      */
-    migrationJobId?: pulumi.Input<string>;
+    migrationJobId?: pulumi.Input<string | undefined>;
     /**
      * The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The objects that need to be migrated. If unset, the default is to migrate
      * all objects available on the source.
      * Structure is documented below.
      */
-    objectsConfig?: pulumi.Input<inputs.databasemigrationservice.MigrationJobObjectsConfig>;
+    objectsConfig?: pulumi.Input<inputs.databasemigrationservice.MigrationJobObjectsConfig | undefined>;
     /**
      * Data dump parallelism settings used by the migration.
      * Structure is documented below.
      */
-    performanceConfig?: pulumi.Input<inputs.databasemigrationservice.MigrationJobPerformanceConfig>;
+    performanceConfig?: pulumi.Input<inputs.databasemigrationservice.MigrationJobPerformanceConfig | undefined>;
     /**
      * The current migration job phase.
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The details of the VPC network that the source database is located in.
      * Structure is documented below.
      */
-    reverseSshConnectivity?: pulumi.Input<inputs.databasemigrationservice.MigrationJobReverseSshConnectivity>;
+    reverseSshConnectivity?: pulumi.Input<inputs.databasemigrationservice.MigrationJobReverseSshConnectivity | undefined>;
     /**
      * The name of the source connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{sourceConnectionProfile}.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * The current migration job state.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * If set to an empty object (`{}`), the source database will allow incoming
      * connections from the public IP of the destination database.
      * You can retrieve the public IP of the Cloud SQL instance from the
      * Cloud SQL console or using Cloud SQL APIs.
      */
-    staticIpConnectivity?: pulumi.Input<inputs.databasemigrationservice.MigrationJobStaticIpConnectivity>;
+    staticIpConnectivity?: pulumi.Input<inputs.databasemigrationservice.MigrationJobStaticIpConnectivity | undefined>;
     /**
      * The type of the migration job.
      * Possible values are: `ONE_TIME`, `CONTINUOUS`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The details of the VPC network that the source database is located in.
      * Structure is documented below.
      */
-    vpcPeeringConnectivity?: pulumi.Input<inputs.databasemigrationservice.MigrationJobVpcPeeringConnectivity>;
+    vpcPeeringConnectivity?: pulumi.Input<inputs.databasemigrationservice.MigrationJobVpcPeeringConnectivity | undefined>;
 }
 
 /**
@@ -794,35 +794,35 @@ export interface MigrationJobArgs {
     /**
      * The migration job display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The initial dump flags.
      * Structure is documented below.
      */
-    dumpFlags?: pulumi.Input<inputs.databasemigrationservice.MigrationJobDumpFlags>;
+    dumpFlags?: pulumi.Input<inputs.databasemigrationservice.MigrationJobDumpFlags | undefined>;
     /**
      * The path to the dump file in Google Cloud Storage,
      * in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
      * This field and the "dumpFlags" field are mutually exclusive.
      */
-    dumpPath?: pulumi.Input<string>;
+    dumpPath?: pulumi.Input<string | undefined>;
     /**
      * The type of the data dump. Supported for MySQL to CloudSQL for MySQL
      * migrations only.
      * Possible values are: `LOGICAL`, `PHYSICAL`.
      */
-    dumpType?: pulumi.Input<string>;
+    dumpType?: pulumi.Input<string | undefined>;
     /**
      * The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where the migration job should reside.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the migration job.
      */
@@ -832,22 +832,22 @@ export interface MigrationJobArgs {
      * all objects available on the source.
      * Structure is documented below.
      */
-    objectsConfig?: pulumi.Input<inputs.databasemigrationservice.MigrationJobObjectsConfig>;
+    objectsConfig?: pulumi.Input<inputs.databasemigrationservice.MigrationJobObjectsConfig | undefined>;
     /**
      * Data dump parallelism settings used by the migration.
      * Structure is documented below.
      */
-    performanceConfig?: pulumi.Input<inputs.databasemigrationservice.MigrationJobPerformanceConfig>;
+    performanceConfig?: pulumi.Input<inputs.databasemigrationservice.MigrationJobPerformanceConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The details of the VPC network that the source database is located in.
      * Structure is documented below.
      */
-    reverseSshConnectivity?: pulumi.Input<inputs.databasemigrationservice.MigrationJobReverseSshConnectivity>;
+    reverseSshConnectivity?: pulumi.Input<inputs.databasemigrationservice.MigrationJobReverseSshConnectivity | undefined>;
     /**
      * The name of the source connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{sourceConnectionProfile}.
      */
@@ -858,7 +858,7 @@ export interface MigrationJobArgs {
      * You can retrieve the public IP of the Cloud SQL instance from the
      * Cloud SQL console or using Cloud SQL APIs.
      */
-    staticIpConnectivity?: pulumi.Input<inputs.databasemigrationservice.MigrationJobStaticIpConnectivity>;
+    staticIpConnectivity?: pulumi.Input<inputs.databasemigrationservice.MigrationJobStaticIpConnectivity | undefined>;
     /**
      * The type of the migration job.
      * Possible values are: `ONE_TIME`, `CONTINUOUS`.
@@ -868,5 +868,5 @@ export interface MigrationJobArgs {
      * The details of the VPC network that the source database is located in.
      * Structure is documented below.
      */
-    vpcPeeringConnectivity?: pulumi.Input<inputs.databasemigrationservice.MigrationJobVpcPeeringConnectivity>;
+    vpcPeeringConnectivity?: pulumi.Input<inputs.databasemigrationservice.MigrationJobVpcPeeringConnectivity | undefined>;
 }

@@ -134,11 +134,11 @@ export interface OrganizationKajPolicyConfigState {
      * policy is not provided in the CreateCryptoKeyRequest.
      * Structure is documented below.
      */
-    defaultKeyAccessJustificationPolicy?: pulumi.Input<inputs.kms.OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy>;
+    defaultKeyAccessJustificationPolicy?: pulumi.Input<inputs.kms.OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy | undefined>;
     /**
      * The organization number for which to retrieve config.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -151,7 +151,7 @@ export interface OrganizationKajPolicyConfigArgs {
      * policy is not provided in the CreateCryptoKeyRequest.
      * Structure is documented below.
      */
-    defaultKeyAccessJustificationPolicy?: pulumi.Input<inputs.kms.OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy>;
+    defaultKeyAccessJustificationPolicy?: pulumi.Input<inputs.kms.OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy | undefined>;
     /**
      * The organization number for which to retrieve config.
      */

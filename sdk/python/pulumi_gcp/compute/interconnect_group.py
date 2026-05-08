@@ -22,10 +22,10 @@ __all__ = ['InterconnectGroupArgs', 'InterconnectGroup']
 class InterconnectGroupArgs:
     def __init__(__self__, *,
                  intent: pulumi.Input['InterconnectGroupIntentArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 interconnects: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 interconnects: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InterconnectGroup resource.
 
@@ -73,19 +73,19 @@ class InterconnectGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def interconnects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]]:
+    def interconnects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]]:
         """
         Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
         strings. Users are encouraged, but not required, to use their preferred
@@ -97,12 +97,12 @@ class InterconnectGroupArgs:
         return pulumi.get(self, "interconnects")
 
     @interconnects.setter
-    def interconnects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]]):
+    def interconnects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]]):
         pulumi.set(self, "interconnects", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be
         1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -113,12 +113,12 @@ class InterconnectGroupArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -126,21 +126,21 @@ class InterconnectGroupArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _InterconnectGroupState:
     def __init__(__self__, *,
-                 configureds: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupConfiguredArgs']]]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 intent: Optional[pulumi.Input['InterconnectGroupIntentArgs']] = None,
-                 interconnects: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 physical_structures: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 configureds: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupConfiguredArgs']]]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 intent: pulumi.Input[Optional['InterconnectGroupIntentArgs']] = None,
+                 interconnects: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 physical_structures: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InterconnectGroup resources.
 
@@ -190,7 +190,7 @@ class _InterconnectGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def configureds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupConfiguredArgs']]]]:
+    def configureds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupConfiguredArgs']]]]:
         """
         The status of the group as configured. This has the same
         structure as the operational field reported by the OperationalStatus
@@ -201,36 +201,36 @@ class _InterconnectGroupState:
         return pulumi.get(self, "configureds")
 
     @configureds.setter
-    def configureds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupConfiguredArgs']]]]):
+    def configureds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupConfiguredArgs']]]]):
         pulumi.set(self, "configureds", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def intent(self) -> Optional[pulumi.Input['InterconnectGroupIntentArgs']]:
+    def intent(self) -> pulumi.Input[Optional['InterconnectGroupIntentArgs']]:
         """
         The user's intent for this group. This is the only required field besides
         the name that must be specified on group creation.
@@ -239,12 +239,12 @@ class _InterconnectGroupState:
         return pulumi.get(self, "intent")
 
     @intent.setter
-    def intent(self, value: Optional[pulumi.Input['InterconnectGroupIntentArgs']]):
+    def intent(self, value: pulumi.Input[Optional['InterconnectGroupIntentArgs']]):
         pulumi.set(self, "intent", value)
 
     @_builtins.property
     @pulumi.getter
-    def interconnects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]]:
+    def interconnects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]]:
         """
         Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
         strings. Users are encouraged, but not required, to use their preferred
@@ -256,12 +256,12 @@ class _InterconnectGroupState:
         return pulumi.get(self, "interconnects")
 
     @interconnects.setter
-    def interconnects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]]):
+    def interconnects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]]):
         pulumi.set(self, "interconnects", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be
         1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -272,12 +272,12 @@ class _InterconnectGroupState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="physicalStructures")
-    def physical_structures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureArgs']]]]:
+    def physical_structures(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureArgs']]]]:
         """
         An analysis of the physical layout of Interconnects in this
         group. Every Interconnect in the group is shown once in this structure.
@@ -286,12 +286,12 @@ class _InterconnectGroupState:
         return pulumi.get(self, "physical_structures")
 
     @physical_structures.setter
-    def physical_structures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureArgs']]]]):
+    def physical_structures(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureArgs']]]]):
         pulumi.set(self, "physical_structures", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -299,7 +299,7 @@ class _InterconnectGroupState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -309,11 +309,11 @@ class InterconnectGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 intent: Optional[pulumi.Input[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']]] = None,
-                 interconnects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 intent: pulumi.Input[Optional[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']]] = None,
+                 interconnects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An interconnect group resource allows customers to create, analyze, and
@@ -440,11 +440,11 @@ class InterconnectGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 intent: Optional[pulumi.Input[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']]] = None,
-                 interconnects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 intent: pulumi.Input[Optional[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']]] = None,
+                 interconnects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -474,14 +474,14 @@ class InterconnectGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configureds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupConfiguredArgs', 'InterconnectGroupConfiguredArgsDict']]]]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            intent: Optional[pulumi.Input[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']]] = None,
-            interconnects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            physical_structures: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupPhysicalStructureArgs', 'InterconnectGroupPhysicalStructureArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'InterconnectGroup':
+            configureds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupConfiguredArgs', 'InterconnectGroupConfiguredArgsDict']]]]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            intent: pulumi.Input[Optional[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']]] = None,
+            interconnects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            physical_structures: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupPhysicalStructureArgs', 'InterconnectGroupPhysicalStructureArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'InterconnectGroup':
         """
         Get an existing InterconnectGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

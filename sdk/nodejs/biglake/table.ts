@@ -223,54 +223,54 @@ export interface TableState {
      * digits. Examples: "2014-10-02T15:01:23Z" and
      * "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The id of the parent database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Output only. The deletion time of the table. Only set after the
      * table is deleted. A timestamp in RFC3339 UTC "Zulu" format, with
      * nanosecond resolution and up to nine fractional digits. Examples:
      * "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * The checksum of a table object computed by the server based on the value
      * of other fields. It may be sent on update requests to ensure the client
      * has an up-to-date value before proceeding. It is only checked for update
      * table operations.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time when this table is considered expired. Only set
      * after the table is deleted. A timestamp in RFC3339 UTC "Zulu" format,
      * with nanosecond resolution and up to nine fractional digits. Examples:
      * "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Options of a Hive table.
      * Structure is documented below.
      */
-    hiveOptions?: pulumi.Input<inputs.biglake.TableHiveOptions>;
+    hiveOptions?: pulumi.Input<inputs.biglake.TableHiveOptions | undefined>;
     /**
      * Output only. The name of the Table. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The database type.
      * Possible values are: `HIVE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Output only. The last modification time of the table. A timestamp in
      * RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and
      * "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -280,20 +280,20 @@ export interface TableArgs {
     /**
      * The id of the parent database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Options of a Hive table.
      * Structure is documented below.
      */
-    hiveOptions?: pulumi.Input<inputs.biglake.TableHiveOptions>;
+    hiveOptions?: pulumi.Input<inputs.biglake.TableHiveOptions | undefined>;
     /**
      * Output only. The name of the Table. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The database type.
      * Possible values are: `HIVE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

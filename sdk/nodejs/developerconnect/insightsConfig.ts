@@ -503,30 +503,30 @@ export interface InsightsConfigState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the App Hub Application.
      * Format:
      * projects/{project}/locations/{location}/applications/{application}
      */
-    appHubApplication?: pulumi.Input<string>;
+    appHubApplication?: pulumi.Input<string | undefined>;
     /**
      * The artifact configurations of the artifacts that are deployed.
      * Structure is documented below.
      */
-    artifactConfigs?: pulumi.Input<pulumi.Input<inputs.developerconnect.InsightsConfigArtifactConfig>[]>;
+    artifactConfigs?: pulumi.Input<pulumi.Input<inputs.developerconnect.InsightsConfigArtifactConfig>[] | undefined>;
     /**
      * [Output only] Create timestamp
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Any errors that occurred while setting up the InsightsConfig.
      * Each error will be in the format: `field_name: errorMessage`, e.g.
@@ -534,37 +534,37 @@ export interface InsightsConfigState {
      * application. Please grant permissions to the P4SA.
      * Structure is documented below.
      */
-    errors?: pulumi.Input<pulumi.Input<inputs.developerconnect.InsightsConfigError>[]>;
+    errors?: pulumi.Input<pulumi.Input<inputs.developerconnect.InsightsConfigError>[] | undefined>;
     /**
      * ID of the requesting InsightsConfig.
      */
-    insightsConfigId?: pulumi.Input<string>;
+    insightsConfigId?: pulumi.Input<string | undefined>;
     /**
      * Set of labels associated with an InsightsConfig.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The name of the InsightsConfig.
      * Format:
      * projects/{project}/locations/{location}/insightsConfigs/{insightsConfig}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Reconciling (https://google.aip.dev/128#reconciliation).
      * Set to true if the current state of InsightsConfig does not match the
@@ -572,12 +572,12 @@ export interface InsightsConfigState {
      * reconcile them. This can happen due to user-triggered updates or
      * system actions like failover or maintenance.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * The runtime configurations where the application is deployed.
      * Structure is documented below.
      */
-    runtimeConfigs?: pulumi.Input<pulumi.Input<inputs.developerconnect.InsightsConfigRuntimeConfig>[]>;
+    runtimeConfigs?: pulumi.Input<pulumi.Input<inputs.developerconnect.InsightsConfigRuntimeConfig>[] | undefined>;
     /**
      * (Output)
      * The state of the Runtime.
@@ -586,16 +586,16 @@ export interface InsightsConfigState {
      * LINKED
      * UNLINKED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The projects to track with the InsightsConfig.
      * Structure is documented below.
      */
-    targetProjects?: pulumi.Input<inputs.developerconnect.InsightsConfigTargetProjects>;
+    targetProjects?: pulumi.Input<inputs.developerconnect.InsightsConfigTargetProjects | undefined>;
     /**
      * [Output only] Update timestamp
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -608,18 +608,18 @@ export interface InsightsConfigArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the App Hub Application.
      * Format:
      * projects/{project}/locations/{location}/applications/{application}
      */
-    appHubApplication?: pulumi.Input<string>;
+    appHubApplication?: pulumi.Input<string | undefined>;
     /**
      * The artifact configurations of the artifacts that are deployed.
      * Structure is documented below.
      */
-    artifactConfigs?: pulumi.Input<pulumi.Input<inputs.developerconnect.InsightsConfigArtifactConfig>[]>;
+    artifactConfigs?: pulumi.Input<pulumi.Input<inputs.developerconnect.InsightsConfigArtifactConfig>[] | undefined>;
     /**
      * ID of the requesting InsightsConfig.
      */
@@ -629,7 +629,7 @@ export interface InsightsConfigArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -638,10 +638,10 @@ export interface InsightsConfigArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The projects to track with the InsightsConfig.
      * Structure is documented below.
      */
-    targetProjects?: pulumi.Input<inputs.developerconnect.InsightsConfigTargetProjects>;
+    targetProjects?: pulumi.Input<inputs.developerconnect.InsightsConfigTargetProjects | undefined>;
 }

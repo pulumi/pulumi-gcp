@@ -155,10 +155,10 @@ def get_repository_group_iam_policy(code_repository_index: Optional[_builtins.st
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         repository_group_id=pulumi.get(__ret__, 'repository_group_id'))
-def get_repository_group_iam_policy_output(code_repository_index: Optional[pulumi.Input[_builtins.str]] = None,
-                                           location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                           project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                           repository_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_repository_group_iam_policy_output(code_repository_index: pulumi.Input[Optional[_builtins.str]] = None,
+                                           location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                           project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                           repository_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryGroupIamPolicyResult]:
     """
     Retrieves the current IAM policy data for repositorygroup

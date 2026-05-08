@@ -34,14 +34,14 @@ __all__ = [
 class ConsumersIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ConsumersIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -67,25 +67,25 @@ class ConsumersIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ConsumersIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ConsumersIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -111,28 +111,28 @@ class ConsumersIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ServiceApiArgsDict(TypedDict):
-    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgsDict']]]]
+    methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceApiMethodArgs']]]]]
     """
     A list of Method objects; structure is documented below.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The simple name of the endpoint as described in the config.
     """
-    syntax: NotRequired[pulumi.Input[_builtins.str]]
+    syntax: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
     """
@@ -140,10 +140,10 @@ class ServiceApiArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceApiArgs:
     def __init__(__self__, *,
-                 methods: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 syntax: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 methods: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceApiMethodArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 syntax: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgs']]] methods: A list of Method objects; structure is documented below.
         :param pulumi.Input[_builtins.str] name: The simple name of the endpoint as described in the config.
@@ -161,67 +161,67 @@ class ServiceApiArgs:
 
     @_builtins.property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgs']]]]:
+    def methods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceApiMethodArgs']]]]:
         """
         A list of Method objects; structure is documented below.
         """
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgs']]]]):
+    def methods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceApiMethodArgs']]]]):
         pulumi.set(self, "methods", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The simple name of the endpoint as described in the config.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def syntax(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def syntax(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
         """
         return pulumi.get(self, "syntax")
 
     @syntax.setter
-    def syntax(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def syntax(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "syntax", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class ServiceApiMethodArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The simple name of the endpoint as described in the config.
     """
-    request_type: NotRequired[pulumi.Input[_builtins.str]]
+    request_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type URL for the request to this API.
     """
-    response_type: NotRequired[pulumi.Input[_builtins.str]]
+    response_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type URL for the response from this API.
     """
-    syntax: NotRequired[pulumi.Input[_builtins.str]]
+    syntax: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
     """
@@ -229,10 +229,10 @@ class ServiceApiMethodArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceApiMethodArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 response_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 syntax: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 response_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 syntax: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The simple name of the endpoint as described in the config.
         :param pulumi.Input[_builtins.str] request_type: The type URL for the request to this API.
@@ -250,59 +250,59 @@ class ServiceApiMethodArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The simple name of the endpoint as described in the config.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="requestType")
-    def request_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type URL for the request to this API.
         """
         return pulumi.get(self, "request_type")
 
     @request_type.setter
-    def request_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_type", value)
 
     @_builtins.property
     @pulumi.getter(name="responseType")
-    def response_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def response_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type URL for the response from this API.
         """
         return pulumi.get(self, "response_type")
 
     @response_type.setter
-    def response_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def response_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "response_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def syntax(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def syntax(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
         """
         return pulumi.get(self, "syntax")
 
     @syntax.setter
-    def syntax(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def syntax(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "syntax", value)
 
 
 class ServiceEndpointArgsDict(TypedDict):
-    address: NotRequired[pulumi.Input[_builtins.str]]
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The FQDN of the endpoint as described in the config.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The simple name of the endpoint as described in the config.
     """
@@ -310,8 +310,8 @@ class ServiceEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceEndpointArgs:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The FQDN of the endpoint as described in the config.
         :param pulumi.Input[_builtins.str] name: The simple name of the endpoint as described in the config.
@@ -323,40 +323,40 @@ class ServiceEndpointArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The FQDN of the endpoint as described in the config.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The simple name of the endpoint as described in the config.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class ServiceIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ServiceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -382,25 +382,25 @@ class ServiceIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ServiceIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ServiceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -426,11 +426,11 @@ class ServiceIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 

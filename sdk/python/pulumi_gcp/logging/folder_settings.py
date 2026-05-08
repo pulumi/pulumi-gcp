@@ -20,9 +20,9 @@ __all__ = ['FolderSettingsArgs', 'FolderSettings']
 class FolderSettingsArgs:
     def __init__(__self__, *,
                  folder: pulumi.Input[_builtins.str],
-                 disable_default_sink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None):
+                 disable_default_sink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FolderSettings resource.
 
@@ -53,51 +53,51 @@ class FolderSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="disableDefaultSink")
-    def disable_default_sink(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_default_sink(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
         """
         return pulumi.get(self, "disable_default_sink")
 
     @disable_default_sink.setter
-    def disable_default_sink(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_default_sink(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_default_sink", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for the configured Cloud KMS key.
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocation")
-    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
         """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
-    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_location", value)
 
 
 @pulumi.input_type
 class _FolderSettingsState:
     def __init__(__self__, *,
-                 disable_default_sink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None):
+                 disable_default_sink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FolderSettings resources.
 
@@ -126,86 +126,86 @@ class _FolderSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="disableDefaultSink")
-    def disable_default_sink(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_default_sink(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
         """
         return pulumi.get(self, "disable_default_sink")
 
     @disable_default_sink.setter
-    def disable_default_sink(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_default_sink(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_default_sink", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The folder for which to retrieve settings.
         """
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for the configured Cloud KMS key.
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsServiceAccountId")
-    def kms_service_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account that will be used by the Log Router to access your Cloud KMS key.
         """
         return pulumi.get(self, "kms_service_account_id")
 
     @kms_service_account_id.setter
-    def kms_service_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_service_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_service_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingServiceAccountId")
-    def logging_service_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logging_service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account for the given container. Sinks use this service account as their writerIdentity if no custom service account is provided.
         """
         return pulumi.get(self, "logging_service_account_id")
 
     @logging_service_account_id.setter
-    def logging_service_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logging_service_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logging_service_account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the settings.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocation")
-    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
         """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
-    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_location", value)
 
 
@@ -215,10 +215,10 @@ class FolderSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_default_sink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_default_sink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Default resource settings control whether CMEK is required for new log buckets. These settings also determine the storage location for the _Default and _Required log buckets, and whether the _Default sink is enabled or disabled.
@@ -346,10 +346,10 @@ class FolderSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_default_sink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_default_sink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -378,13 +378,13 @@ class FolderSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            disable_default_sink: Optional[pulumi.Input[_builtins.bool]] = None,
-            folder: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            logging_service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_location: Optional[pulumi.Input[_builtins.str]] = None) -> 'FolderSettings':
+            disable_default_sink: pulumi.Input[Optional[_builtins.bool]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_location: pulumi.Input[Optional[_builtins.str]] = None) -> 'FolderSettings':
         """
         Get an existing FolderSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

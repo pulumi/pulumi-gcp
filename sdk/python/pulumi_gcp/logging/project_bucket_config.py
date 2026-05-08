@@ -24,12 +24,12 @@ class ProjectBucketConfigArgs:
                  bucket_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
-                 cmek_settings: Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 cmek_settings: pulumi.Input[Optional['ProjectBucketConfigCmekSettingsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ProjectBucketConfig resource.
 
@@ -97,91 +97,91 @@ class ProjectBucketConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="cmekSettings")
-    def cmek_settings(self) -> Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArgs']]:
+    def cmek_settings(self) -> pulumi.Input[Optional['ProjectBucketConfigCmekSettingsArgs']]:
         """
         The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
         """
         return pulumi.get(self, "cmek_settings")
 
     @cmek_settings.setter
-    def cmek_settings(self, value: Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArgs']]):
+    def cmek_settings(self, value: pulumi.Input[Optional['ProjectBucketConfigCmekSettingsArgs']]):
         pulumi.set(self, "cmek_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes this bucket.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAnalytics")
-    def enable_analytics(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_analytics(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
         """
         return pulumi.get(self, "enable_analytics")
 
     @enable_analytics.setter
-    def enable_analytics(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_analytics(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_analytics", value)
 
     @_builtins.property
     @pulumi.getter(name="indexConfigs")
-    def index_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]]:
+    def index_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]]:
         """
         A list of indexed fields and related configuration data. Structure is documented below.
         """
         return pulumi.get(self, "index_configs")
 
     @index_configs.setter
-    def index_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]]):
+    def index_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]]):
         pulumi.set(self, "index_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
         """
         return pulumi.get(self, "locked")
 
     @locked.setter
-    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "locked", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
-    def retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_days", value)
 
 
 @pulumi.input_type
 class _ProjectBucketConfigState:
     def __init__(__self__, *,
-                 bucket_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cmek_settings: Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]] = None,
-                 lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 bucket_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmek_settings: pulumi.Input[Optional['ProjectBucketConfigCmekSettingsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]] = None,
+                 lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectBucketConfig resources.
 
@@ -222,134 +222,134 @@ class _ProjectBucketConfigState:
 
     @_builtins.property
     @pulumi.getter(name="bucketId")
-    def bucket_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
         """
         return pulumi.get(self, "bucket_id")
 
     @bucket_id.setter
-    def bucket_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cmekSettings")
-    def cmek_settings(self) -> Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArgs']]:
+    def cmek_settings(self) -> pulumi.Input[Optional['ProjectBucketConfigCmekSettingsArgs']]:
         """
         The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
         """
         return pulumi.get(self, "cmek_settings")
 
     @cmek_settings.setter
-    def cmek_settings(self, value: Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArgs']]):
+    def cmek_settings(self, value: pulumi.Input[Optional['ProjectBucketConfigCmekSettingsArgs']]):
         pulumi.set(self, "cmek_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes this bucket.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAnalytics")
-    def enable_analytics(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_analytics(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
         """
         return pulumi.get(self, "enable_analytics")
 
     @enable_analytics.setter
-    def enable_analytics(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_analytics(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_analytics", value)
 
     @_builtins.property
     @pulumi.getter(name="indexConfigs")
-    def index_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]]:
+    def index_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]]:
         """
         A list of indexed fields and related configuration data. Structure is documented below.
         """
         return pulumi.get(self, "index_configs")
 
     @index_configs.setter
-    def index_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]]):
+    def index_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectBucketConfigIndexConfigArgs']]]]):
         pulumi.set(self, "index_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleState")
-    def lifecycle_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifecycle_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         """
         return pulumi.get(self, "lifecycle_state")
 
     @lifecycle_state.setter
-    def lifecycle_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifecycle_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifecycle_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the bucket.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
         """
         return pulumi.get(self, "locked")
 
     @locked.setter
-    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "locked", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent resource that contains the logging bucket.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
-    def retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_days", value)
 
 
@@ -359,15 +359,15 @@ class ProjectBucketConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cmek_settings: Optional[pulumi.Input[Union['ProjectBucketConfigCmekSettingsArgs', 'ProjectBucketConfigCmekSettingsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectBucketConfigIndexConfigArgs', 'ProjectBucketConfigIndexConfigArgsDict']]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 bucket_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmek_settings: pulumi.Input[Optional[Union['ProjectBucketConfigCmekSettingsArgs', 'ProjectBucketConfigCmekSettingsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectBucketConfigIndexConfigArgs', 'ProjectBucketConfigIndexConfigArgsDict']]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages a project-level logging bucket config. For more information see
@@ -622,15 +622,15 @@ class ProjectBucketConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cmek_settings: Optional[pulumi.Input[Union['ProjectBucketConfigCmekSettingsArgs', 'ProjectBucketConfigCmekSettingsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectBucketConfigIndexConfigArgs', 'ProjectBucketConfigIndexConfigArgsDict']]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 bucket_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmek_settings: pulumi.Input[Optional[Union['ProjectBucketConfigCmekSettingsArgs', 'ProjectBucketConfigCmekSettingsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectBucketConfigIndexConfigArgs', 'ProjectBucketConfigIndexConfigArgsDict']]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -667,17 +667,17 @@ class ProjectBucketConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cmek_settings: Optional[pulumi.Input[Union['ProjectBucketConfigCmekSettingsArgs', 'ProjectBucketConfigCmekSettingsArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-            index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectBucketConfigIndexConfigArgs', 'ProjectBucketConfigIndexConfigArgsDict']]]]] = None,
-            lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            locked: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            retention_days: Optional[pulumi.Input[_builtins.int]] = None) -> 'ProjectBucketConfig':
+            bucket_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cmek_settings: pulumi.Input[Optional[Union['ProjectBucketConfigCmekSettingsArgs', 'ProjectBucketConfigCmekSettingsArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+            index_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectBucketConfigIndexConfigArgs', 'ProjectBucketConfigIndexConfigArgsDict']]]]] = None,
+            lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_days: pulumi.Input[Optional[_builtins.int]] = None) -> 'ProjectBucketConfig':
         """
         Get an existing ProjectBucketConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

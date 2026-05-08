@@ -22,16 +22,16 @@ __all__ = ['TransferJobArgs', 'TransferJob']
 class TransferJobArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[_builtins.str],
-                 event_stream: Optional[pulumi.Input['TransferJobEventStreamArgs']] = None,
-                 logging_config: Optional[pulumi.Input['TransferJobLoggingConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input['TransferJobNotificationConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_spec: Optional[pulumi.Input['TransferJobReplicationSpecArgs']] = None,
-                 schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None):
+                 event_stream: pulumi.Input[Optional['TransferJobEventStreamArgs']] = None,
+                 logging_config: pulumi.Input[Optional['TransferJobLoggingConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional['TransferJobNotificationConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_spec: pulumi.Input[Optional['TransferJobReplicationSpecArgs']] = None,
+                 schedule: pulumi.Input[Optional['TransferJobScheduleArgs']] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transfer_spec: pulumi.Input[Optional['TransferJobTransferSpecArgs']] = None):
         """
         The set of arguments for constructing a TransferJob resource.
 
@@ -86,55 +86,55 @@ class TransferJobArgs:
 
     @_builtins.property
     @pulumi.getter(name="eventStream")
-    def event_stream(self) -> Optional[pulumi.Input['TransferJobEventStreamArgs']]:
+    def event_stream(self) -> pulumi.Input[Optional['TransferJobEventStreamArgs']]:
         """
         Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
         """
         return pulumi.get(self, "event_stream")
 
     @event_stream.setter
-    def event_stream(self, value: Optional[pulumi.Input['TransferJobEventStreamArgs']]):
+    def event_stream(self, value: pulumi.Input[Optional['TransferJobEventStreamArgs']]):
         pulumi.set(self, "event_stream", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['TransferJobLoggingConfigArgs']]:
+    def logging_config(self) -> pulumi.Input[Optional['TransferJobLoggingConfigArgs']]:
         """
         Logging configuration. Structure documented below.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['TransferJobLoggingConfigArgs']]):
+    def logging_config(self, value: pulumi.Input[Optional['TransferJobLoggingConfigArgs']]):
         pulumi.set(self, "logging_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfig")
-    def notification_config(self) -> Optional[pulumi.Input['TransferJobNotificationConfigArgs']]:
+    def notification_config(self) -> pulumi.Input[Optional['TransferJobNotificationConfigArgs']]:
         """
         Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         """
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['TransferJobNotificationConfigArgs']]):
+    def notification_config(self, value: pulumi.Input[Optional['TransferJobNotificationConfigArgs']]):
         pulumi.set(self, "notification_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -142,12 +142,12 @@ class TransferJobArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationSpec")
-    def replication_spec(self) -> Optional[pulumi.Input['TransferJobReplicationSpecArgs']]:
+    def replication_spec(self) -> pulumi.Input[Optional['TransferJobReplicationSpecArgs']]:
         """
         Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
 
@@ -156,75 +156,75 @@ class TransferJobArgs:
         return pulumi.get(self, "replication_spec")
 
     @replication_spec.setter
-    def replication_spec(self, value: Optional[pulumi.Input['TransferJobReplicationSpecArgs']]):
+    def replication_spec(self, value: pulumi.Input[Optional['TransferJobReplicationSpecArgs']]):
         pulumi.set(self, "replication_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['TransferJobScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['TransferJobScheduleArgs']]:
         """
         Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['TransferJobScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['TransferJobScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="transferSpec")
-    def transfer_spec(self) -> Optional[pulumi.Input['TransferJobTransferSpecArgs']]:
+    def transfer_spec(self) -> pulumi.Input[Optional['TransferJobTransferSpecArgs']]:
         """
         Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
         return pulumi.get(self, "transfer_spec")
 
     @transfer_spec.setter
-    def transfer_spec(self, value: Optional[pulumi.Input['TransferJobTransferSpecArgs']]):
+    def transfer_spec(self, value: pulumi.Input[Optional['TransferJobTransferSpecArgs']]):
         pulumi.set(self, "transfer_spec", value)
 
 
 @pulumi.input_type
 class _TransferJobState:
     def __init__(__self__, *,
-                 creation_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_stream: Optional[pulumi.Input['TransferJobEventStreamArgs']] = None,
-                 last_modification_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_config: Optional[pulumi.Input['TransferJobLoggingConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input['TransferJobNotificationConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_spec: Optional[pulumi.Input['TransferJobReplicationSpecArgs']] = None,
-                 schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None):
+                 creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_stream: pulumi.Input[Optional['TransferJobEventStreamArgs']] = None,
+                 last_modification_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_config: pulumi.Input[Optional['TransferJobLoggingConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional['TransferJobNotificationConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_spec: pulumi.Input[Optional['TransferJobReplicationSpecArgs']] = None,
+                 schedule: pulumi.Input[Optional['TransferJobScheduleArgs']] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transfer_spec: pulumi.Input[Optional['TransferJobTransferSpecArgs']] = None):
         """
         Input properties used for looking up and filtering TransferJob resources.
 
@@ -277,103 +277,103 @@ class _TransferJobState:
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the Transfer Job was created.
         """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionTime")
-    def deletion_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the Transfer Job was deleted.
         """
         return pulumi.get(self, "deletion_time")
 
     @deletion_time.setter
-    def deletion_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique description to identify the Transfer Job.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="eventStream")
-    def event_stream(self) -> Optional[pulumi.Input['TransferJobEventStreamArgs']]:
+    def event_stream(self) -> pulumi.Input[Optional['TransferJobEventStreamArgs']]:
         """
         Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
         """
         return pulumi.get(self, "event_stream")
 
     @event_stream.setter
-    def event_stream(self, value: Optional[pulumi.Input['TransferJobEventStreamArgs']]):
+    def event_stream(self, value: pulumi.Input[Optional['TransferJobEventStreamArgs']]):
         pulumi.set(self, "event_stream", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModificationTime")
-    def last_modification_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modification_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the Transfer Job was last modified.
         """
         return pulumi.get(self, "last_modification_time")
 
     @last_modification_time.setter
-    def last_modification_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modification_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modification_time", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['TransferJobLoggingConfigArgs']]:
+    def logging_config(self) -> pulumi.Input[Optional['TransferJobLoggingConfigArgs']]:
         """
         Logging configuration. Structure documented below.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['TransferJobLoggingConfigArgs']]):
+    def logging_config(self, value: pulumi.Input[Optional['TransferJobLoggingConfigArgs']]):
         pulumi.set(self, "logging_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfig")
-    def notification_config(self) -> Optional[pulumi.Input['TransferJobNotificationConfigArgs']]:
+    def notification_config(self) -> pulumi.Input[Optional['TransferJobNotificationConfigArgs']]:
         """
         Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         """
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['TransferJobNotificationConfigArgs']]):
+    def notification_config(self, value: pulumi.Input[Optional['TransferJobNotificationConfigArgs']]):
         pulumi.set(self, "notification_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -381,12 +381,12 @@ class _TransferJobState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationSpec")
-    def replication_spec(self) -> Optional[pulumi.Input['TransferJobReplicationSpecArgs']]:
+    def replication_spec(self) -> pulumi.Input[Optional['TransferJobReplicationSpecArgs']]:
         """
         Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
 
@@ -395,55 +395,55 @@ class _TransferJobState:
         return pulumi.get(self, "replication_spec")
 
     @replication_spec.setter
-    def replication_spec(self, value: Optional[pulumi.Input['TransferJobReplicationSpecArgs']]):
+    def replication_spec(self, value: pulumi.Input[Optional['TransferJobReplicationSpecArgs']]):
         pulumi.set(self, "replication_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['TransferJobScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['TransferJobScheduleArgs']]:
         """
         Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['TransferJobScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['TransferJobScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="transferSpec")
-    def transfer_spec(self) -> Optional[pulumi.Input['TransferJobTransferSpecArgs']]:
+    def transfer_spec(self) -> pulumi.Input[Optional['TransferJobTransferSpecArgs']]:
         """
         Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
         return pulumi.get(self, "transfer_spec")
 
     @transfer_spec.setter
-    def transfer_spec(self, value: Optional[pulumi.Input['TransferJobTransferSpecArgs']]):
+    def transfer_spec(self, value: pulumi.Input[Optional['TransferJobTransferSpecArgs']]):
         pulumi.set(self, "transfer_spec", value)
 
 
@@ -453,17 +453,17 @@ class TransferJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_stream: Optional[pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
-                 logging_config: Optional[pulumi.Input[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_spec: Optional[pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
-                 schedule: Optional[pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transfer_spec: Optional[pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_stream: pulumi.Input[Optional[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
+                 logging_config: pulumi.Input[Optional[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_spec: pulumi.Input[Optional[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transfer_spec: pulumi.Input[Optional[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new Transfer Job in Google Cloud Storage Transfer.
@@ -729,17 +729,17 @@ class TransferJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_stream: Optional[pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
-                 logging_config: Optional[pulumi.Input[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_spec: Optional[pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
-                 schedule: Optional[pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transfer_spec: Optional[pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_stream: pulumi.Input[Optional[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
+                 logging_config: pulumi.Input[Optional[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_spec: pulumi.Input[Optional[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transfer_spec: pulumi.Input[Optional[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -775,20 +775,20 @@ class TransferJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            creation_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            event_stream: Optional[pulumi.Input[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
-            last_modification_time: Optional[pulumi.Input[_builtins.str]] = None,
-            logging_config: Optional[pulumi.Input[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_config: Optional[pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            replication_spec: Optional[pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
-            schedule: Optional[pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
-            service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            transfer_spec: Optional[pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None) -> 'TransferJob':
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_stream: pulumi.Input[Optional[Union['TransferJobEventStreamArgs', 'TransferJobEventStreamArgsDict']]] = None,
+            last_modification_time: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_config: pulumi.Input[Optional[Union['TransferJobLoggingConfigArgs', 'TransferJobLoggingConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_config: pulumi.Input[Optional[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            replication_spec: pulumi.Input[Optional[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
+            schedule: pulumi.Input[Optional[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transfer_spec: pulumi.Input[Optional[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None) -> 'TransferJob':
         """
         Get an existing TransferJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

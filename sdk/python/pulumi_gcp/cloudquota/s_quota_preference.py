@@ -22,14 +22,14 @@ __all__ = ['SQuotaPreferenceArgs', 'SQuotaPreference']
 class SQuotaPreferenceArgs:
     def __init__(__self__, *,
                  quota_config: pulumi.Input['SQuotaPreferenceQuotaConfigArgs'],
-                 contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ignore_safety_checks: Optional[pulumi.Input[_builtins.str]] = None,
-                 justification: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ignore_safety_checks: pulumi.Input[Optional[_builtins.str]] = None,
+                 justification: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SQuotaPreference resource.
 
@@ -83,7 +83,7 @@ class SQuotaPreferenceArgs:
 
     @_builtins.property
     @pulumi.getter(name="contactEmail")
-    def contact_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contact_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
         The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
@@ -91,12 +91,12 @@ class SQuotaPreferenceArgs:
         return pulumi.get(self, "contact_email")
 
     @contact_email.setter
-    def contact_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contact_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contact_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
         NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
@@ -105,12 +105,12 @@ class SQuotaPreferenceArgs:
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreSafetyChecks")
-    def ignore_safety_checks(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ignore_safety_checks(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of quota safety checks to be ignored.
         Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
@@ -119,48 +119,48 @@ class SQuotaPreferenceArgs:
         return pulumi.get(self, "ignore_safety_checks")
 
     @ignore_safety_checks.setter
-    def ignore_safety_checks(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ignore_safety_checks(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ignore_safety_checks", value)
 
     @_builtins.property
     @pulumi.getter
-    def justification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def justification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason / justification for this quota preference.
         """
         return pulumi.get(self, "justification")
 
     @justification.setter
-    def justification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def justification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "justification", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the quota preference. Required except in the CREATE requests.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaId")
-    def quota_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the quota to which the quota preference is applied. A quota id is unique in the service.
         Example: `CPUS-per-project-region`.
@@ -168,38 +168,38 @@ class SQuotaPreferenceArgs:
         return pulumi.get(self, "quota_id")
 
     @quota_id.setter
-    def quota_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service to which the quota preference is applied.
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
 @pulumi.input_type
 class _SQuotaPreferenceState:
     def __init__(__self__, *,
-                 contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_safety_checks: Optional[pulumi.Input[_builtins.str]] = None,
-                 justification: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_config: Optional[pulumi.Input['SQuotaPreferenceQuotaConfigArgs']] = None,
-                 quota_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_safety_checks: pulumi.Input[Optional[_builtins.str]] = None,
+                 justification: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_config: pulumi.Input[Optional['SQuotaPreferenceQuotaConfigArgs']] = None,
+                 quota_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SQuotaPreference resources.
 
@@ -255,7 +255,7 @@ class _SQuotaPreferenceState:
 
     @_builtins.property
     @pulumi.getter(name="contactEmail")
-    def contact_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contact_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
         The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
@@ -263,12 +263,12 @@ class _SQuotaPreferenceState:
         return pulumi.get(self, "contact_email")
 
     @contact_email.setter
-    def contact_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contact_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contact_email", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create time stamp.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
@@ -276,12 +276,12 @@ class _SQuotaPreferenceState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
         NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
@@ -290,24 +290,24 @@ class _SQuotaPreferenceState:
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreSafetyChecks")
-    def ignore_safety_checks(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ignore_safety_checks(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of quota safety checks to be ignored.
         Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
@@ -316,48 +316,48 @@ class _SQuotaPreferenceState:
         return pulumi.get(self, "ignore_safety_checks")
 
     @ignore_safety_checks.setter
-    def ignore_safety_checks(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ignore_safety_checks(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ignore_safety_checks", value)
 
     @_builtins.property
     @pulumi.getter
-    def justification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def justification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason / justification for this quota preference.
         """
         return pulumi.get(self, "justification")
 
     @justification.setter
-    def justification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def justification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "justification", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the quota preference. Required except in the CREATE requests.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaConfig")
-    def quota_config(self) -> Optional[pulumi.Input['SQuotaPreferenceQuotaConfigArgs']]:
+    def quota_config(self) -> pulumi.Input[Optional['SQuotaPreferenceQuotaConfigArgs']]:
         """
         The preferred quota configuration.
         Structure is documented below.
@@ -365,12 +365,12 @@ class _SQuotaPreferenceState:
         return pulumi.get(self, "quota_config")
 
     @quota_config.setter
-    def quota_config(self, value: Optional[pulumi.Input['SQuotaPreferenceQuotaConfigArgs']]):
+    def quota_config(self, value: pulumi.Input[Optional['SQuotaPreferenceQuotaConfigArgs']]):
         pulumi.set(self, "quota_config", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaId")
-    def quota_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the quota to which the quota preference is applied. A quota id is unique in the service.
         Example: `CPUS-per-project-region`.
@@ -378,36 +378,36 @@ class _SQuotaPreferenceState:
         return pulumi.get(self, "quota_id")
 
     @quota_id.setter
-    def quota_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is the quota preference pending Google Cloud approval and fulfillment.
         """
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service to which the quota preference is applied.
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Update time stamp.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
@@ -415,7 +415,7 @@ class _SQuotaPreferenceState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -425,15 +425,15 @@ class SQuotaPreference(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ignore_safety_checks: Optional[pulumi.Input[_builtins.str]] = None,
-                 justification: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_config: Optional[pulumi.Input[Union['SQuotaPreferenceQuotaConfigArgs', 'SQuotaPreferenceQuotaConfigArgsDict']]] = None,
-                 quota_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
+                 contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ignore_safety_checks: pulumi.Input[Optional[_builtins.str]] = None,
+                 justification: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_config: pulumi.Input[Optional[Union['SQuotaPreferenceQuotaConfigArgs', 'SQuotaPreferenceQuotaConfigArgsDict']]] = None,
+                 quota_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         QuotaPreference represents the preferred quota configuration specified for a project, folder or organization. There is only one QuotaPreference resource for a quota value targeting a unique set of dimensions.
@@ -563,15 +563,15 @@ class SQuotaPreference(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ignore_safety_checks: Optional[pulumi.Input[_builtins.str]] = None,
-                 justification: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_config: Optional[pulumi.Input[Union['SQuotaPreferenceQuotaConfigArgs', 'SQuotaPreferenceQuotaConfigArgsDict']]] = None,
-                 quota_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
+                 contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ignore_safety_checks: pulumi.Input[Optional[_builtins.str]] = None,
+                 justification: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_config: pulumi.Input[Optional[Union['SQuotaPreferenceQuotaConfigArgs', 'SQuotaPreferenceQuotaConfigArgsDict']]] = None,
+                 quota_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -606,19 +606,19 @@ class SQuotaPreference(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            ignore_safety_checks: Optional[pulumi.Input[_builtins.str]] = None,
-            justification: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_config: Optional[pulumi.Input[Union['SQuotaPreferenceQuotaConfigArgs', 'SQuotaPreferenceQuotaConfigArgsDict']]] = None,
-            quota_id: Optional[pulumi.Input[_builtins.str]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            service: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'SQuotaPreference':
+            contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_safety_checks: pulumi.Input[Optional[_builtins.str]] = None,
+            justification: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_config: pulumi.Input[Optional[Union['SQuotaPreferenceQuotaConfigArgs', 'SQuotaPreferenceQuotaConfigArgsDict']]] = None,
+            quota_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'SQuotaPreference':
         """
         Get an existing SQuotaPreference resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

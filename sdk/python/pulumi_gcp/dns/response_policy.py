@@ -22,10 +22,10 @@ __all__ = ['ResponsePolicyArgs', 'ResponsePolicy']
 class ResponsePolicyArgs:
     def __init__(__self__, *,
                  response_policy_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResponsePolicy resource.
 
@@ -62,19 +62,19 @@ class ResponsePolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the response policy, such as `My new response policy`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeClusters")
-    def gke_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]]:
+    def gke_clusters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]]:
         """
         The list of Google Kubernetes Engine clusters that can see this zone.
         Structure is documented below.
@@ -82,12 +82,12 @@ class ResponsePolicyArgs:
         return pulumi.get(self, "gke_clusters")
 
     @gke_clusters.setter
-    def gke_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]]):
+    def gke_clusters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]]):
         pulumi.set(self, "gke_clusters", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]]:
         """
         The list of network names specifying networks to which this policy is applied.
         Structure is documented below.
@@ -95,12 +95,12 @@ class ResponsePolicyArgs:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -108,18 +108,18 @@ class ResponsePolicyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ResponsePolicyState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 response_policy_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 response_policy_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResponsePolicy resources.
 
@@ -145,19 +145,19 @@ class _ResponsePolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the response policy, such as `My new response policy`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeClusters")
-    def gke_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]]:
+    def gke_clusters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]]:
         """
         The list of Google Kubernetes Engine clusters that can see this zone.
         Structure is documented below.
@@ -165,12 +165,12 @@ class _ResponsePolicyState:
         return pulumi.get(self, "gke_clusters")
 
     @gke_clusters.setter
-    def gke_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]]):
+    def gke_clusters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]]):
         pulumi.set(self, "gke_clusters", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]]:
         """
         The list of network names specifying networks to which this policy is applied.
         Structure is documented below.
@@ -178,12 +178,12 @@ class _ResponsePolicyState:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -191,19 +191,19 @@ class _ResponsePolicyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="responsePolicyName")
-    def response_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def response_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user assigned name for this Response Policy, such as `myresponsepolicy`.
         """
         return pulumi.get(self, "response_policy_name")
 
     @response_policy_name.setter
-    def response_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def response_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "response_policy_name", value)
 
 
@@ -213,11 +213,11 @@ class ResponsePolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 response_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 response_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Response Policy is a collection of selectors that apply to queries
@@ -431,11 +431,11 @@ class ResponsePolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 response_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 response_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -462,11 +462,11 @@ class ResponsePolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            response_policy_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ResponsePolicy':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            response_policy_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ResponsePolicy':
         """
         Get an existing ResponsePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

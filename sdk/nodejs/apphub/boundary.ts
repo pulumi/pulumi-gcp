@@ -149,35 +149,35 @@ export interface BoundaryState {
     /**
      * Create time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. The resource name of the CRM node being attached to the
      * boundary.
      * Format: `projects/{project-number}`
      */
-    crmNode?: pulumi.Input<string>;
+    crmNode?: pulumi.Input<string | undefined>;
     /**
      * The location for the Boundary resource. Must be global.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the boundary.
      * Format: "projects/{project}/locations/{{location}}/boundary"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Boundary type.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Update time.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -189,7 +189,7 @@ export interface BoundaryArgs {
      * boundary.
      * Format: `projects/{project-number}`
      */
-    crmNode?: pulumi.Input<string>;
+    crmNode?: pulumi.Input<string | undefined>;
     /**
      * The location for the Boundary resource. Must be global.
      */
@@ -198,5 +198,5 @@ export interface BoundaryArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

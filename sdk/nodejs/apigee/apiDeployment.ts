@@ -126,19 +126,19 @@ export interface ApiDeploymentState {
     /**
      * The Apigee Environment associated with the Apigee API deployment.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee API deployment.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The Apigee API associated with the Apigee API deployment.
      */
-    proxyId?: pulumi.Input<string>;
+    proxyId?: pulumi.Input<string | undefined>;
     /**
      * The revision of the API proxy to be deployed.
      */
-    revision?: pulumi.Input<string>;
+    revision?: pulumi.Input<string | undefined>;
 }
 
 /**

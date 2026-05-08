@@ -157,31 +157,31 @@ export interface RepositoryState {
     /**
      * If set to true, skip repository creation if a repository with the same name already exists.
      */
-    createIgnoreAlreadyExists?: pulumi.Input<boolean>;
+    createIgnoreAlreadyExists?: pulumi.Input<boolean | undefined>;
     /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * How this repository publishes a change in the repository through Cloud Pub/Sub.
      * Keyed by the topic names.
      * Structure is documented below.
      */
-    pubsubConfigs?: pulumi.Input<pulumi.Input<inputs.sourcerepo.RepositoryPubsubConfig>[]>;
+    pubsubConfigs?: pulumi.Input<pulumi.Input<inputs.sourcerepo.RepositoryPubsubConfig>[] | undefined>;
     /**
      * The disk usage of the repo, in bytes.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * URL to clone the repository from Google Cloud Source Repositories.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -191,21 +191,21 @@ export interface RepositoryArgs {
     /**
      * If set to true, skip repository creation if a repository with the same name already exists.
      */
-    createIgnoreAlreadyExists?: pulumi.Input<boolean>;
+    createIgnoreAlreadyExists?: pulumi.Input<boolean | undefined>;
     /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * How this repository publishes a change in the repository through Cloud Pub/Sub.
      * Keyed by the topic names.
      * Structure is documented below.
      */
-    pubsubConfigs?: pulumi.Input<pulumi.Input<inputs.sourcerepo.RepositoryPubsubConfig>[]>;
+    pubsubConfigs?: pulumi.Input<pulumi.Input<inputs.sourcerepo.RepositoryPubsubConfig>[] | undefined>;
 }

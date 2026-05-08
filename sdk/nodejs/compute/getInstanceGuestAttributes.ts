@@ -175,22 +175,22 @@ export interface GetInstanceGuestAttributesOutputArgs {
      * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
      * nor `project` are provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Path to query for the guest attributes. Consists of
      * `namespace` name for the attributes followed with a `/`.
      */
-    queryPath?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    queryPath?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Key of a variable to get the value of. Consists of
      * `namespace` name and `key` name for the variable separated by a `/`.
      */
-    variableKey?: pulumi.Input<string>;
+    variableKey?: pulumi.Input<string | undefined>;
     /**
      * The zone of the instance. If `selfLink` is provided, this
      * value is ignored.  If neither `selfLink` nor `zone` are provided, the
      * provider zone is used.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

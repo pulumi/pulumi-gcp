@@ -23,8 +23,8 @@ class SharedflowArgs:
     def __init__(__self__, *,
                  config_bundle: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
-                 detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Sharedflow resource.
 
@@ -70,40 +70,40 @@ class SharedflowArgs:
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
-    def detect_md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detect_md5hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         """
         return pulumi.get(self, "detect_md5hash")
 
     @detect_md5hash.setter
-    def detect_md5hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detect_md5hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detect_md5hash", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the shared flow.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _SharedflowState:
     def __init__(__self__, *,
-                 config_bundle: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 latest_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta_datas: Optional[pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 revisions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 config_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta_datas: pulumi.Input[Optional[Sequence[pulumi.Input['SharedflowMetaDataArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 revisions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Sharedflow resources.
 
@@ -138,7 +138,7 @@ class _SharedflowState:
 
     @_builtins.property
     @pulumi.getter(name="configBundle")
-    def config_bundle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_bundle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the config zip bundle.
 
@@ -147,48 +147,48 @@ class _SharedflowState:
         return pulumi.get(self, "config_bundle")
 
     @config_bundle.setter
-    def config_bundle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_bundle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_bundle", value)
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
-    def detect_md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detect_md5hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         """
         return pulumi.get(self, "detect_md5hash")
 
     @detect_md5hash.setter
-    def detect_md5hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detect_md5hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detect_md5hash", value)
 
     @_builtins.property
     @pulumi.getter(name="latestRevisionId")
-    def latest_revision_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def latest_revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the most recently created revision for this shared flow.
         """
         return pulumi.get(self, "latest_revision_id")
 
     @latest_revision_id.setter
-    def latest_revision_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def latest_revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "latest_revision_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def md5hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
         """
         return pulumi.get(self, "md5hash")
 
     @md5hash.setter
-    def md5hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def md5hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "md5hash", value)
 
     @_builtins.property
     @pulumi.getter(name="metaDatas")
-    def meta_datas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArgs']]]]:
+    def meta_datas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SharedflowMetaDataArgs']]]]:
         """
         Metadata describing the shared flow.
         Structure is documented below.
@@ -196,43 +196,43 @@ class _SharedflowState:
         return pulumi.get(self, "meta_datas")
 
     @meta_datas.setter
-    def meta_datas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArgs']]]]):
+    def meta_datas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SharedflowMetaDataArgs']]]]):
         pulumi.set(self, "meta_datas", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the shared flow.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Apigee Organization name associated with the Apigee instance.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def revisions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def revisions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of revisions of this shared flow.
         """
         return pulumi.get(self, "revisions")
 
     @revisions.setter
-    def revisions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def revisions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "revisions", value)
 
 
@@ -242,10 +242,10 @@ class Sharedflow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_bundle: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 config_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         You can combine policies and resources into a shared flow that you can consume from multiple API proxies, and even from other shared flows. Although it's like a proxy, a shared flow has no endpoint. It can be used only from an API proxy or shared flow that's in the same organization as the shared flow itself.
@@ -329,10 +329,10 @@ class Sharedflow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_bundle: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 config_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -364,14 +364,14 @@ class Sharedflow(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config_bundle: Optional[pulumi.Input[_builtins.str]] = None,
-            detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-            latest_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-            md5hash: Optional[pulumi.Input[_builtins.str]] = None,
-            meta_datas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SharedflowMetaDataArgs', 'SharedflowMetaDataArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            revisions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Sharedflow':
+            config_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+            detect_md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+            md5hash: pulumi.Input[Optional[_builtins.str]] = None,
+            meta_datas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SharedflowMetaDataArgs', 'SharedflowMetaDataArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            revisions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Sharedflow':
         """
         Get an existing Sharedflow resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

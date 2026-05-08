@@ -25,10 +25,10 @@ class ExampleArgs:
                  display_name: pulumi.Input[_builtins.str],
                  example_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_agent: Optional[pulumi.Input[_builtins.str]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['ExampleMessageArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_agent: pulumi.Input[Optional[_builtins.str]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input['ExampleMessageArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Example resource.
 
@@ -110,19 +110,19 @@ class ExampleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description of the example.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="entryAgent")
-    def entry_agent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_agent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The agent that initially handles the conversation. If not specified, the
         example represents a conversation that is handled by the root agent.
@@ -131,12 +131,12 @@ class ExampleArgs:
         return pulumi.get(self, "entry_agent")
 
     @entry_agent.setter
-    def entry_agent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_agent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_agent", value)
 
     @_builtins.property
     @pulumi.getter
-    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExampleMessageArgs']]]]:
+    def messages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExampleMessageArgs']]]]:
         """
         The collection of messages that make up the conversation.
         Structure is documented below.
@@ -144,12 +144,12 @@ class ExampleArgs:
         return pulumi.get(self, "messages")
 
     @messages.setter
-    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExampleMessageArgs']]]]):
+    def messages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExampleMessageArgs']]]]):
         pulumi.set(self, "messages", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -157,26 +157,26 @@ class ExampleArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ExampleState:
     def __init__(__self__, *,
-                 app: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_agent: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 example_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 invalid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['ExampleMessageArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 app: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_agent: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 example_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 invalid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input['ExampleMessageArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Example resources.
 
@@ -233,55 +233,55 @@ class _ExampleState:
 
     @_builtins.property
     @pulumi.getter
-    def app(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "app")
 
     @app.setter
-    def app(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the example was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description of the example.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name of the example.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="entryAgent")
-    def entry_agent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_agent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The agent that initially handles the conversation. If not specified, the
         example represents a conversation that is handled by the root agent.
@@ -290,12 +290,12 @@ class _ExampleState:
         return pulumi.get(self, "entry_agent")
 
     @entry_agent.setter
-    def entry_agent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_agent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_agent", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Etag used to ensure the object hasn't changed during a read-modify-write
         operation. If the etag is empty, the update will overwrite any concurrent
@@ -304,12 +304,12 @@ class _ExampleState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="exampleId")
-    def example_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def example_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the example, which will become the final component of
         the example's resource name. In Terraform, this field is required.
@@ -317,12 +317,12 @@ class _ExampleState:
         return pulumi.get(self, "example_id")
 
     @example_id.setter
-    def example_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def example_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "example_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def invalid(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def invalid(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The example may become invalid if referencing resources are deleted.
         Invalid examples will not be used as few-shot examples.
@@ -330,24 +330,24 @@ class _ExampleState:
         return pulumi.get(self, "invalid")
 
     @invalid.setter
-    def invalid(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def invalid(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "invalid", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExampleMessageArgs']]]]:
+    def messages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExampleMessageArgs']]]]:
         """
         The collection of messages that make up the conversation.
         Structure is documented below.
@@ -355,12 +355,12 @@ class _ExampleState:
         return pulumi.get(self, "messages")
 
     @messages.setter
-    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExampleMessageArgs']]]]):
+    def messages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExampleMessageArgs']]]]):
         pulumi.set(self, "messages", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The unique identifier of the example.
         Format:
@@ -369,12 +369,12 @@ class _ExampleState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -382,19 +382,19 @@ class _ExampleState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the example was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -404,14 +404,14 @@ class Example(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_agent: Optional[pulumi.Input[_builtins.str]] = None,
-                 example_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 app: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_agent: pulumi.Input[Optional[_builtins.str]] = None,
+                 example_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An example represents a sample conversation between the user and the agent(s).
@@ -860,14 +860,14 @@ class Example(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_agent: Optional[pulumi.Input[_builtins.str]] = None,
-                 example_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 app: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_agent: pulumi.Input[Optional[_builtins.str]] = None,
+                 example_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -908,19 +908,19 @@ class Example(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            entry_agent: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            example_id: Optional[pulumi.Input[_builtins.str]] = None,
-            invalid: Optional[pulumi.Input[_builtins.bool]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Example':
+            app: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_agent: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            example_id: pulumi.Input[Optional[_builtins.str]] = None,
+            invalid: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Example':
         """
         Get an existing Example resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

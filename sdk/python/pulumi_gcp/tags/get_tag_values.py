@@ -97,7 +97,7 @@ def get_tag_values(parent: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         parent=pulumi.get(__ret__, 'parent'),
         values=pulumi.get(__ret__, 'values'))
-def get_tag_values_output(parent: Optional[pulumi.Input[_builtins.str]] = None,
+def get_tag_values_output(parent: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagValuesResult]:
     """
     Get tag values from a `parent` key.

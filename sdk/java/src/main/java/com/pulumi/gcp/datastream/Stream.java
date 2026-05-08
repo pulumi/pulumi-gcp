@@ -77,8 +77,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllMysqlExcludedObjectsArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -305,8 +305,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllPostgresqlExcludedObjectsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -430,8 +430,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllOracleExcludedObjectsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -563,8 +563,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -710,8 +710,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -857,8 +857,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -941,9 +941,9 @@ import javax.annotation.Nullable;
  *                 .sourceConnectionProfile(source.id())
  *                 .mysqlSourceConfig(StreamSourceConfigMysqlSourceConfigArgs.builder()
  *                     .includeObjects(StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs.builder()
- *                         .schemas(List.of(Map.ofEntries(
+ *                         .schemas(Arrays.asList(Map.ofEntries(
  *                             Map.entry("schema", "schema"),
- *                             Map.entry("tables", List.of(Map.of("table", "table")))
+ *                             Map.entry("tables", Arrays.asList(Map.of("table", "table")))
  *                         )))
  *                         .build())
  *                     .gtid(StreamSourceConfigMysqlSourceConfigGtidArgs.builder()
@@ -1003,8 +1003,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
  * import com.pulumi.gcp.sql.Database;
  * import com.pulumi.gcp.sql.DatabaseArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1157,8 +1157,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1324,8 +1324,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1502,8 +1502,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1658,8 +1658,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1826,8 +1826,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterSourceObjectIdentifierArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1940,8 +1940,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1972,9 +1972,9 @@ import javax.annotation.Nullable;
  *                                     .build())
  *                             .build())
  *                         .build())
- *                     .excludeeObjects(List.of(Map.of("databases", List.of(Map.ofEntries(
+ *                     .excludeeObjects(Arrays.asList(Map.of("databases", Arrays.asList(Map.ofEntries(
  *                         Map.entry("database", "mydb"),
- *                         Map.entry("collections", List.of(Map.of("fields", List.of(Map.of("field", "excludedField")))))
+ *                         Map.entry("collections", Arrays.asList(Map.of("fields", Arrays.asList(Map.of("field", "excludedField")))))
  *                     )))))
  *                     .build())
  *                 .build())

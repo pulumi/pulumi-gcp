@@ -198,141 +198,143 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-// Name: pulumi.String("my-router-net"),
-// AutoCreateSubnetworks: pulumi.Bool(false),
-// })
-// if err != nil {
-// return err
-// }
-// subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-// Name: pulumi.String("my-router-sub"),
-// Network: network.SelfLink,
-// IpCidrRange: pulumi.String("10.0.0.0/16"),
-// Region: pulumi.String("us-central1"),
-// })
-// if err != nil {
-// return err
-// }
-// addrIntf, err := compute.NewAddress(ctx, "addr_intf", &compute.AddressArgs{
-// Name: pulumi.String("my-router-addr-intf"),
-// Region: subnetwork.Region,
-// Subnetwork: subnetwork.ID(),
-// AddressType: pulumi.String("INTERNAL"),
-// })
-// if err != nil {
-// return err
-// }
-// addrIntfRedundant, err := compute.NewAddress(ctx, "addr_intf_redundant", &compute.AddressArgs{
-// Name: pulumi.String("my-router-addr-intf-red"),
-// Region: subnetwork.Region,
-// Subnetwork: subnetwork.ID(),
-// AddressType: pulumi.String("INTERNAL"),
-// })
-// if err != nil {
-// return err
-// }
-// addrPeer, err := compute.NewAddress(ctx, "addr_peer", &compute.AddressArgs{
-// Name: pulumi.String("my-router-addr-peer"),
-// Region: subnetwork.Region,
-// Subnetwork: subnetwork.ID(),
-// AddressType: pulumi.String("INTERNAL"),
-// })
-// if err != nil {
-// return err
-// }
-// instance, err := compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
-// Name: pulumi.String("router-appliance"),
-// Zone: pulumi.String("us-central1-a"),
-// MachineType: pulumi.String("e2-medium"),
-// CanIpForward: pulumi.Bool(true),
-// BootDisk: &compute.InstanceBootDiskArgs{
-// InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-// Image: pulumi.String("debian-cloud/debian-11"),
-// },
-// },
-// NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// &compute.InstanceNetworkInterfaceArgs{
-// NetworkIp: addrPeer.Address,
-// Subnetwork: subnetwork.SelfLink,
-// },
-// },
-// })
-// if err != nil {
-// return err
-// }
-// hub, err := networkconnectivity.NewHub(ctx, "hub", &networkconnectivity.HubArgs{
-// Name: pulumi.String("my-router-hub"),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = networkconnectivity.NewSpoke(ctx, "spoke", &networkconnectivity.SpokeArgs{
-// Name: pulumi.String("my-router-spoke"),
-// Location: subnetwork.Region,
-// Hub: hub.ID(),
-// LinkedRouterApplianceInstances: &networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs{
-// Instances: networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArray{
-// &networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs{
-// VirtualMachine: instance.SelfLink,
-// IpAddress: addrPeer.Address,
-// },
-// },
-// SiteToSiteDataTransfer: pulumi.Bool(false),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
-// Name: pulumi.String("my-router-router"),
-// Region: subnetwork.Region,
-// Network: network.SelfLink,
-// Bgp: &compute.RouterBgpArgs{
-// Asn: pulumi.Int(64514),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// interfaceRedundant, err := compute.NewRouterInterface(ctx, "interface_redundant", &compute.RouterInterfaceArgs{
-// Name: pulumi.String("my-router-intf-red"),
-// Region: router.Region,
-// Router: router.Name,
-// Subnetwork: subnetwork.SelfLink,
-// PrivateIpAddress: addrIntfRedundant.Address,
-// })
-// if err != nil {
-// return err
-// }
-// interface, err := compute.NewRouterInterface(ctx, "interface", &compute.RouterInterfaceArgs{
-// Name: pulumi.String("my-router-intf"),
-// Region: router.Region,
-// Router: router.Name,
-// Subnetwork: subnetwork.SelfLink,
-// PrivateIpAddress: addrIntf.Address,
-// RedundantInterface: interfaceRedundant.Name,
-// })
-// if err != nil {
-// return err
-// }
-// _, err = compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
-// Name: pulumi.String("my-router-peer"),
-// Router: router.Name,
-// Region: router.Region,
-// Interface: interface.Name,
-// RouterApplianceInstance: instance.SelfLink,
-// PeerAsn: pulumi.Int(65513),
-// PeerIpAddress: addrPeer.Address,
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-router-net"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-router-sub"),
+//				Network:     network.SelfLink,
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//				Region:      pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			addrIntf, err := compute.NewAddress(ctx, "addr_intf", &compute.AddressArgs{
+//				Name:        pulumi.String("my-router-addr-intf"),
+//				Region:      subnetwork.Region,
+//				Subnetwork:  subnetwork.ID(),
+//				AddressType: pulumi.String("INTERNAL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			addrIntfRedundant, err := compute.NewAddress(ctx, "addr_intf_redundant", &compute.AddressArgs{
+//				Name:        pulumi.String("my-router-addr-intf-red"),
+//				Region:      subnetwork.Region,
+//				Subnetwork:  subnetwork.ID(),
+//				AddressType: pulumi.String("INTERNAL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			addrPeer, err := compute.NewAddress(ctx, "addr_peer", &compute.AddressArgs{
+//				Name:        pulumi.String("my-router-addr-peer"),
+//				Region:      subnetwork.Region,
+//				Subnetwork:  subnetwork.ID(),
+//				AddressType: pulumi.String("INTERNAL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance, err := compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
+//				Name:         pulumi.String("router-appliance"),
+//				Zone:         pulumi.String("us-central1-a"),
+//				MachineType:  pulumi.String("e2-medium"),
+//				CanIpForward: pulumi.Bool(true),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String("debian-cloud/debian-11"),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						NetworkIp:  addrPeer.Address,
+//						Subnetwork: subnetwork.SelfLink,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			hub, err := networkconnectivity.NewHub(ctx, "hub", &networkconnectivity.HubArgs{
+//				Name: pulumi.String("my-router-hub"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkconnectivity.NewSpoke(ctx, "spoke", &networkconnectivity.SpokeArgs{
+//				Name:     pulumi.String("my-router-spoke"),
+//				Location: subnetwork.Region,
+//				Hub:      hub.ID(),
+//				LinkedRouterApplianceInstances: &networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs{
+//					Instances: networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArray{
+//						&networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs{
+//							VirtualMachine: instance.SelfLink,
+//							IpAddress:      addrPeer.Address,
+//						},
+//					},
+//					SiteToSiteDataTransfer: pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+//				Name:    pulumi.String("my-router-router"),
+//				Region:  subnetwork.Region,
+//				Network: network.SelfLink,
+//				Bgp: &compute.RouterBgpArgs{
+//					Asn: pulumi.Int(64514),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			interfaceRedundant, err := compute.NewRouterInterface(ctx, "interface_redundant", &compute.RouterInterfaceArgs{
+//				Name:             pulumi.String("my-router-intf-red"),
+//				Region:           router.Region,
+//				Router:           router.Name,
+//				Subnetwork:       subnetwork.SelfLink,
+//				PrivateIpAddress: addrIntfRedundant.Address,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_interface, err := compute.NewRouterInterface(ctx, "interface", &compute.RouterInterfaceArgs{
+//				Name:               pulumi.String("my-router-intf"),
+//				Region:             router.Region,
+//				Router:             router.Name,
+//				Subnetwork:         subnetwork.SelfLink,
+//				PrivateIpAddress:   addrIntf.Address,
+//				RedundantInterface: interfaceRedundant.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
+//				Name:                    pulumi.String("my-router-peer"),
+//				Router:                  router.Name,
+//				Region:                  router.Region,
+//				Interface:               _interface.Name,
+//				RouterApplianceInstance: instance.SelfLink,
+//				PeerAsn:                 pulumi.Int(65513),
+//				PeerIpAddress:           addrPeer.Address,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ### Router Peer Md5 Authentication Key

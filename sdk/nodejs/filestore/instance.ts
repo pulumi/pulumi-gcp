@@ -383,91 +383,91 @@ export interface InstanceState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the instance is protected against deletion.
      */
-    deletionProtectionEnabled?: pulumi.Input<boolean>;
+    deletionProtectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The reason for enabling deletion protection.
      */
-    deletionProtectionReason?: pulumi.Input<string>;
+    deletionProtectionReason?: pulumi.Input<string | undefined>;
     /**
      * A description of the instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
      */
-    desiredReplicaState?: pulumi.Input<string>;
+    desiredReplicaState?: pulumi.Input<string | undefined>;
     /**
      * Directory Services configuration.
      * Should only be set if protocol is "NFS_V4_1".
      * Structure is documented below.
      */
-    directoryServices?: pulumi.Input<inputs.filestore.InstanceDirectoryServices>;
+    directoryServices?: pulumi.Input<inputs.filestore.InstanceDirectoryServices | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only fields for replication configuration.
      * Structure is documented below.
      */
-    effectiveReplications?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceEffectiveReplication>[]>;
+    effectiveReplications?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceEffectiveReplication>[] | undefined>;
     /**
      * Server-specified ETag for the instance resource to prevent
      * simultaneous updates from overwriting each other.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * File system shares on the instance. For this version, only a
      * single file share is supported.
      * Structure is documented below.
      */
-    fileShares?: pulumi.Input<inputs.filestore.InstanceFileShares>;
+    fileShares?: pulumi.Input<inputs.filestore.InstanceFileShares | undefined>;
     /**
      * Replication configuration, once set, this cannot be updated.
      * Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
      * Structure is documented below.
      */
-    initialReplication?: pulumi.Input<inputs.filestore.InstanceInitialReplication>;
+    initialReplication?: pulumi.Input<inputs.filestore.InstanceInitialReplication | undefined>;
     /**
      * KMS key name used for data encryption.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * VPC networks to which the instance is connected. For this version,
      * only a single network is supported.
      * Structure is documented below.
      */
-    networks?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[] | undefined>;
     /**
      * Performance configuration for the instance. If not provided,
      * the default performance settings will be used.
      * Structure is documented below.
      */
-    performanceConfig?: pulumi.Input<inputs.filestore.InstancePerformanceConfig>;
+    performanceConfig?: pulumi.Input<inputs.filestore.InstancePerformanceConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Either NFSv3, for using NFS version 3 as file sharing protocol,
      * or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
@@ -476,12 +476,12 @@ export interface InstanceState {
      * Default value is `NFS_V3`.
      * Possible values are: `NFS_V3`, `NFS_V4_1`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A map of resource manager tags. Resource manager tag keys
      * and values have the same definition as resource manager
@@ -493,12 +493,12 @@ export interface InstanceState {
      * will trigger recreation. To apply tags to an existing
      * resource, see the `gcp.tags.TagValue` resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The service tier of the instance.
      * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
@@ -507,7 +507,7 @@ export interface InstanceState {
      *
      * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -517,25 +517,25 @@ export interface InstanceArgs {
     /**
      * Indicates whether the instance is protected against deletion.
      */
-    deletionProtectionEnabled?: pulumi.Input<boolean>;
+    deletionProtectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The reason for enabling deletion protection.
      */
-    deletionProtectionReason?: pulumi.Input<string>;
+    deletionProtectionReason?: pulumi.Input<string | undefined>;
     /**
      * A description of the instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
      */
-    desiredReplicaState?: pulumi.Input<string>;
+    desiredReplicaState?: pulumi.Input<string | undefined>;
     /**
      * Directory Services configuration.
      * Should only be set if protocol is "NFS_V4_1".
      * Structure is documented below.
      */
-    directoryServices?: pulumi.Input<inputs.filestore.InstanceDirectoryServices>;
+    directoryServices?: pulumi.Input<inputs.filestore.InstanceDirectoryServices | undefined>;
     /**
      * File system shares on the instance. For this version, only a
      * single file share is supported.
@@ -547,26 +547,26 @@ export interface InstanceArgs {
      * Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
      * Structure is documented below.
      */
-    initialReplication?: pulumi.Input<inputs.filestore.InstanceInitialReplication>;
+    initialReplication?: pulumi.Input<inputs.filestore.InstanceInitialReplication | undefined>;
     /**
      * KMS key name used for data encryption.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * VPC networks to which the instance is connected. For this version,
      * only a single network is supported.
@@ -578,12 +578,12 @@ export interface InstanceArgs {
      * the default performance settings will be used.
      * Structure is documented below.
      */
-    performanceConfig?: pulumi.Input<inputs.filestore.InstancePerformanceConfig>;
+    performanceConfig?: pulumi.Input<inputs.filestore.InstancePerformanceConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Either NFSv3, for using NFS version 3 as file sharing protocol,
      * or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
@@ -592,7 +592,7 @@ export interface InstanceArgs {
      * Default value is `NFS_V3`.
      * Possible values are: `NFS_V3`, `NFS_V4_1`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * A map of resource manager tags. Resource manager tag keys
      * and values have the same definition as resource manager
@@ -604,7 +604,7 @@ export interface InstanceArgs {
      * will trigger recreation. To apply tags to an existing
      * resource, see the `gcp.tags.TagValue` resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The service tier of the instance.
      * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
@@ -618,5 +618,5 @@ export interface InstanceArgs {
      *
      * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

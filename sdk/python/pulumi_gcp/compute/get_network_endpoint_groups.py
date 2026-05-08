@@ -127,9 +127,9 @@ def get_network_endpoint_groups(filter: Optional[_builtins.str] = None,
         network_endpoint_groups=pulumi.get(__ret__, 'network_endpoint_groups'),
         project=pulumi.get(__ret__, 'project'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_network_endpoint_groups_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_network_endpoint_groups_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkEndpointGroupsResult]:
     """
     Use this data source to fetch a list of Network Endpoint Groups available in a

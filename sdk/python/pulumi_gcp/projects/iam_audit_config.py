@@ -77,10 +77,10 @@ class IAMAuditConfigArgs:
 @pulumi.input_type
 class _IAMAuditConfigState:
     def __init__(__self__, *,
-                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 audit_log_configs: pulumi.Input[Optional[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IAMAuditConfig resources.
 
@@ -101,31 +101,31 @@ class _IAMAuditConfigState:
 
     @_builtins.property
     @pulumi.getter(name="auditLogConfigs")
-    def audit_log_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]]]:
+    def audit_log_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]]]:
         """
         The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         """
         return pulumi.get(self, "audit_log_configs")
 
     @audit_log_configs.setter
-    def audit_log_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]]]):
+    def audit_log_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]]]):
         pulumi.set(self, "audit_log_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the project's IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project id of the target project. This is not
         inferred from the provider.
@@ -133,19 +133,19 @@ class _IAMAuditConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
@@ -155,9 +155,9 @@ class IAMAuditConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IAMAuditConfigAuditLogConfigArgs', 'IAMAuditConfigAuditLogConfigArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
+                 audit_log_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IAMAuditConfigAuditLogConfigArgs', 'IAMAuditConfigAuditLogConfigArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Four different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
@@ -719,9 +719,9 @@ class IAMAuditConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IAMAuditConfigAuditLogConfigArgs', 'IAMAuditConfigAuditLogConfigArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
+                 audit_log_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IAMAuditConfigAuditLogConfigArgs', 'IAMAuditConfigAuditLogConfigArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -751,10 +751,10 @@ class IAMAuditConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IAMAuditConfigAuditLogConfigArgs', 'IAMAuditConfigAuditLogConfigArgsDict']]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service: Optional[pulumi.Input[_builtins.str]] = None) -> 'IAMAuditConfig':
+            audit_log_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IAMAuditConfigAuditLogConfigArgs', 'IAMAuditConfigAuditLogConfigArgsDict']]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None) -> 'IAMAuditConfig':
         """
         Get an existing IAMAuditConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

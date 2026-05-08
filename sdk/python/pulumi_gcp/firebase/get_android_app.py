@@ -198,8 +198,8 @@ def get_android_app(app_id: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         sha1_hashes=pulumi.get(__ret__, 'sha1_hashes'),
         sha256_hashes=pulumi.get(__ret__, 'sha256_hashes'))
-def get_android_app_output(app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                           project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_android_app_output(app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                           project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAndroidAppResult]:
     """
     A Google Cloud Firebase Android application instance

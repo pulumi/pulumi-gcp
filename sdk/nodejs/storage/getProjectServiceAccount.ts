@@ -210,10 +210,10 @@ export interface GetProjectServiceAccountOutputArgs {
     /**
      * The project the unique service account was created for. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The project the lookup originates from. This field is used if you are making the request
      * from a different account than the one you are finding the service account for.
      */
-    userProject?: pulumi.Input<string>;
+    userProject?: pulumi.Input<string | undefined>;
 }

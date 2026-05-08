@@ -513,55 +513,55 @@ export interface ConnectionState {
      * Connection properties specific to Amazon Web Services.
      * Structure is documented below.
      */
-    aws?: pulumi.Input<inputs.bigquery.ConnectionAws>;
+    aws?: pulumi.Input<inputs.bigquery.ConnectionAws | undefined>;
     /**
      * Container for connection properties specific to Azure.
      * Structure is documented below.
      */
-    azure?: pulumi.Input<inputs.bigquery.ConnectionAzure>;
+    azure?: pulumi.Input<inputs.bigquery.ConnectionAzure | undefined>;
     /**
      * Container for connection properties for delegation of access to GCP resources.
      * Structure is documented below.
      */
-    cloudResource?: pulumi.Input<inputs.bigquery.ConnectionCloudResource>;
+    cloudResource?: pulumi.Input<inputs.bigquery.ConnectionCloudResource | undefined>;
     /**
      * Connection properties specific to Cloud Spanner
      * Structure is documented below.
      */
-    cloudSpanner?: pulumi.Input<inputs.bigquery.ConnectionCloudSpanner>;
+    cloudSpanner?: pulumi.Input<inputs.bigquery.ConnectionCloudSpanner | undefined>;
     /**
      * Connection properties specific to the Cloud SQL.
      * Structure is documented below.
      */
-    cloudSql?: pulumi.Input<inputs.bigquery.ConnectionCloudSql>;
+    cloudSql?: pulumi.Input<inputs.bigquery.ConnectionCloudSql | undefined>;
     /**
      * Connector configuration. This is a generic configuration that is used to connect to
      * external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
      * Connector framework.
      * Structure is documented below.
      */
-    configuration?: pulumi.Input<inputs.bigquery.ConnectionConfiguration>;
+    configuration?: pulumi.Input<inputs.bigquery.ConnectionConfiguration | undefined>;
     /**
      * Optional connection id that should be assigned to the created connection.
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * A descriptive description for the connection
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A descriptive name for the connection
      */
-    friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string | undefined>;
     /**
      * True if the connection has credential assigned.
      */
-    hasCredential?: pulumi.Input<boolean>;
+    hasCredential?: pulumi.Input<boolean | undefined>;
     /**
      * Optional. The Cloud KMS key that is used for encryption.
      * Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the connection should reside.
      * Cloud SQL instance must be in the same location as the connection
@@ -571,22 +571,22 @@ export interface ConnectionState {
      * AWS allowed regions are aws-us-east-1
      * Azure allowed regions are azure-eastus2
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the connection in the form of:
      * "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Container for connection properties to execute stored procedures for Apache Spark. resources.
      * Structure is documented below.
      */
-    spark?: pulumi.Input<inputs.bigquery.ConnectionSpark>;
+    spark?: pulumi.Input<inputs.bigquery.ConnectionSpark | undefined>;
 }
 
 /**
@@ -597,51 +597,51 @@ export interface ConnectionArgs {
      * Connection properties specific to Amazon Web Services.
      * Structure is documented below.
      */
-    aws?: pulumi.Input<inputs.bigquery.ConnectionAws>;
+    aws?: pulumi.Input<inputs.bigquery.ConnectionAws | undefined>;
     /**
      * Container for connection properties specific to Azure.
      * Structure is documented below.
      */
-    azure?: pulumi.Input<inputs.bigquery.ConnectionAzure>;
+    azure?: pulumi.Input<inputs.bigquery.ConnectionAzure | undefined>;
     /**
      * Container for connection properties for delegation of access to GCP resources.
      * Structure is documented below.
      */
-    cloudResource?: pulumi.Input<inputs.bigquery.ConnectionCloudResource>;
+    cloudResource?: pulumi.Input<inputs.bigquery.ConnectionCloudResource | undefined>;
     /**
      * Connection properties specific to Cloud Spanner
      * Structure is documented below.
      */
-    cloudSpanner?: pulumi.Input<inputs.bigquery.ConnectionCloudSpanner>;
+    cloudSpanner?: pulumi.Input<inputs.bigquery.ConnectionCloudSpanner | undefined>;
     /**
      * Connection properties specific to the Cloud SQL.
      * Structure is documented below.
      */
-    cloudSql?: pulumi.Input<inputs.bigquery.ConnectionCloudSql>;
+    cloudSql?: pulumi.Input<inputs.bigquery.ConnectionCloudSql | undefined>;
     /**
      * Connector configuration. This is a generic configuration that is used to connect to
      * external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
      * Connector framework.
      * Structure is documented below.
      */
-    configuration?: pulumi.Input<inputs.bigquery.ConnectionConfiguration>;
+    configuration?: pulumi.Input<inputs.bigquery.ConnectionConfiguration | undefined>;
     /**
      * Optional connection id that should be assigned to the created connection.
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * A descriptive description for the connection
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A descriptive name for the connection
      */
-    friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string | undefined>;
     /**
      * Optional. The Cloud KMS key that is used for encryption.
      * Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the connection should reside.
      * Cloud SQL instance must be in the same location as the connection
@@ -651,15 +651,15 @@ export interface ConnectionArgs {
      * AWS allowed regions are aws-us-east-1
      * Azure allowed regions are azure-eastus2
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Container for connection properties to execute stored procedures for Apache Spark. resources.
      * Structure is documented below.
      */
-    spark?: pulumi.Input<inputs.bigquery.ConnectionSpark>;
+    spark?: pulumi.Input<inputs.bigquery.ConnectionSpark | undefined>;
 }

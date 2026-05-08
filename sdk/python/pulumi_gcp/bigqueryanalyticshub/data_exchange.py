@@ -24,14 +24,14 @@ class DataExchangeArgs:
                  data_exchange_id: pulumi.Input[_builtins.str],
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 documentation: Optional[pulumi.Input[_builtins.str]] = None,
-                 icon: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_linked_dataset_query_user_email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 primary_contact: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sharing_environment_config: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 documentation: pulumi.Input[Optional[_builtins.str]] = None,
+                 icon: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_linked_dataset_query_user_email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sharing_environment_config: pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigArgs']] = None):
         """
         The set of arguments for constructing a DataExchange resource.
 
@@ -109,19 +109,19 @@ class DataExchangeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the data exchange.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryType")
-    def discovery_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discovery_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
         Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
@@ -129,60 +129,60 @@ class DataExchangeArgs:
         return pulumi.get(self, "discovery_type")
 
     @discovery_type.setter
-    def discovery_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discovery_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discovery_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def documentation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def documentation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Documentation describing the data exchange.
         """
         return pulumi.get(self, "documentation")
 
     @documentation.setter
-    def documentation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def documentation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "documentation", value)
 
     @_builtins.property
     @pulumi.getter
-    def icon(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def icon(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base64 encoded image representing the data exchange.
         """
         return pulumi.get(self, "icon")
 
     @icon.setter
-    def icon(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def icon(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "icon", value)
 
     @_builtins.property
     @pulumi.getter(name="logLinkedDatasetQueryUserEmail")
-    def log_linked_dataset_query_user_email(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_linked_dataset_query_user_email(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
         """
         return pulumi.get(self, "log_linked_dataset_query_user_email")
 
     @log_linked_dataset_query_user_email.setter
-    def log_linked_dataset_query_user_email(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_linked_dataset_query_user_email(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_linked_dataset_query_user_email", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryContact")
-    def primary_contact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_contact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email or URL of the primary point of contact of the data exchange.
         """
         return pulumi.get(self, "primary_contact")
 
     @primary_contact.setter
-    def primary_contact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_contact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_contact", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -190,12 +190,12 @@ class DataExchangeArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="sharingEnvironmentConfig")
-    def sharing_environment_config(self) -> Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']]:
+    def sharing_environment_config(self) -> pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigArgs']]:
         """
         Configurable data sharing environment option for a data exchange.
         This field is required for data clean room exchanges.
@@ -204,26 +204,26 @@ class DataExchangeArgs:
         return pulumi.get(self, "sharing_environment_config")
 
     @sharing_environment_config.setter
-    def sharing_environment_config(self, value: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']]):
+    def sharing_environment_config(self, value: pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigArgs']]):
         pulumi.set(self, "sharing_environment_config", value)
 
 
 @pulumi.input_type
 class _DataExchangeState:
     def __init__(__self__, *,
-                 data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 documentation: Optional[pulumi.Input[_builtins.str]] = None,
-                 icon: Optional[pulumi.Input[_builtins.str]] = None,
-                 listing_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_linked_dataset_query_user_email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_contact: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sharing_environment_config: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']] = None):
+                 data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 documentation: pulumi.Input[Optional[_builtins.str]] = None,
+                 icon: pulumi.Input[Optional[_builtins.str]] = None,
+                 listing_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_linked_dataset_query_user_email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sharing_environment_config: pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigArgs']] = None):
         """
         Input properties used for looking up and filtering DataExchange resources.
 
@@ -275,31 +275,31 @@ class _DataExchangeState:
 
     @_builtins.property
     @pulumi.getter(name="dataExchangeId")
-    def data_exchange_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_exchange_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         """
         return pulumi.get(self, "data_exchange_id")
 
     @data_exchange_id.setter
-    def data_exchange_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_exchange_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_exchange_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the data exchange.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryType")
-    def discovery_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discovery_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
         Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
@@ -307,84 +307,84 @@ class _DataExchangeState:
         return pulumi.get(self, "discovery_type")
 
     @discovery_type.setter
-    def discovery_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discovery_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discovery_type", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def documentation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def documentation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Documentation describing the data exchange.
         """
         return pulumi.get(self, "documentation")
 
     @documentation.setter
-    def documentation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def documentation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "documentation", value)
 
     @_builtins.property
     @pulumi.getter
-    def icon(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def icon(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base64 encoded image representing the data exchange.
         """
         return pulumi.get(self, "icon")
 
     @icon.setter
-    def icon(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def icon(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "icon", value)
 
     @_builtins.property
     @pulumi.getter(name="listingCount")
-    def listing_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def listing_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of listings contained in the data exchange.
         """
         return pulumi.get(self, "listing_count")
 
     @listing_count.setter
-    def listing_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def listing_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "listing_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the location this data exchange.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="logLinkedDatasetQueryUserEmail")
-    def log_linked_dataset_query_user_email(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_linked_dataset_query_user_email(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
         """
         return pulumi.get(self, "log_linked_dataset_query_user_email")
 
     @log_linked_dataset_query_user_email.setter
-    def log_linked_dataset_query_user_email(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_linked_dataset_query_user_email(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_linked_dataset_query_user_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the data exchange, for example:
         "projects/myproject/locations/US/dataExchanges/123"
@@ -392,24 +392,24 @@ class _DataExchangeState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryContact")
-    def primary_contact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_contact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email or URL of the primary point of contact of the data exchange.
         """
         return pulumi.get(self, "primary_contact")
 
     @primary_contact.setter
-    def primary_contact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_contact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_contact", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -417,12 +417,12 @@ class _DataExchangeState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="sharingEnvironmentConfig")
-    def sharing_environment_config(self) -> Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']]:
+    def sharing_environment_config(self) -> pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigArgs']]:
         """
         Configurable data sharing environment option for a data exchange.
         This field is required for data clean room exchanges.
@@ -431,7 +431,7 @@ class _DataExchangeState:
         return pulumi.get(self, "sharing_environment_config")
 
     @sharing_environment_config.setter
-    def sharing_environment_config(self, value: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']]):
+    def sharing_environment_config(self, value: pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigArgs']]):
         pulumi.set(self, "sharing_environment_config", value)
 
 
@@ -441,17 +441,17 @@ class DataExchange(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 documentation: Optional[pulumi.Input[_builtins.str]] = None,
-                 icon: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_linked_dataset_query_user_email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 primary_contact: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sharing_environment_config: Optional[pulumi.Input[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']]] = None,
+                 data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 documentation: pulumi.Input[Optional[_builtins.str]] = None,
+                 icon: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_linked_dataset_query_user_email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sharing_environment_config: pulumi.Input[Optional[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']]] = None,
                  __props__=None):
         """
         A Bigquery Analytics Hub data exchange
@@ -660,17 +660,17 @@ class DataExchange(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 documentation: Optional[pulumi.Input[_builtins.str]] = None,
-                 icon: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_linked_dataset_query_user_email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 primary_contact: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sharing_environment_config: Optional[pulumi.Input[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']]] = None,
+                 data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 documentation: pulumi.Input[Optional[_builtins.str]] = None,
+                 icon: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_linked_dataset_query_user_email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sharing_environment_config: pulumi.Input[Optional[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -709,19 +709,19 @@ class DataExchange(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            documentation: Optional[pulumi.Input[_builtins.str]] = None,
-            icon: Optional[pulumi.Input[_builtins.str]] = None,
-            listing_count: Optional[pulumi.Input[_builtins.int]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            log_linked_dataset_query_user_email: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_contact: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            sharing_environment_config: Optional[pulumi.Input[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']]] = None) -> 'DataExchange':
+            data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            discovery_type: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            documentation: pulumi.Input[Optional[_builtins.str]] = None,
+            icon: pulumi.Input[Optional[_builtins.str]] = None,
+            listing_count: pulumi.Input[Optional[_builtins.int]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            log_linked_dataset_query_user_email: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            sharing_environment_config: pulumi.Input[Optional[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']]] = None) -> 'DataExchange':
         """
         Get an existing DataExchange resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

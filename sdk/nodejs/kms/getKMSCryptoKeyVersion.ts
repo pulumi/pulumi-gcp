@@ -134,5 +134,5 @@ export interface GetKMSCryptoKeyVersionOutputArgs {
     /**
      * The version number for this CryptoKeyVersion. Defaults to `1`.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }

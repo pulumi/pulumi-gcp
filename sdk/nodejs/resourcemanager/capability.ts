@@ -137,15 +137,15 @@ export interface CapabilityState {
     /**
      * Capability name that should be updated on the folder.
      */
-    capabilityName?: pulumi.Input<string>;
+    capabilityName?: pulumi.Input<string | undefined>;
     /**
      * Folder on which Capability needs to be updated in the format folders/folder_id.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Capability Value.
      */
-    value?: pulumi.Input<boolean>;
+    value?: pulumi.Input<boolean | undefined>;
 }
 
 /**

@@ -159,41 +159,41 @@ export interface FleetState {
     /**
      * The time the fleet was created, in RFC3339 text format.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The default cluster configurations to apply across the fleet.
      * Structure is documented below.
      */
-    defaultClusterConfig?: pulumi.Input<inputs.gkehub.FleetDefaultClusterConfig>;
+    defaultClusterConfig?: pulumi.Input<inputs.gkehub.FleetDefaultClusterConfig | undefined>;
     /**
      * The time the fleet was deleted, in RFC3339 text format.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
      * Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The state of the fleet resource.
      * Structure is documented below.
      */
-    states?: pulumi.Input<pulumi.Input<inputs.gkehub.FleetState>[]>;
+    states?: pulumi.Input<pulumi.Input<inputs.gkehub.FleetState>[] | undefined>;
     /**
      * Google-generated UUID for this resource. This is unique across all
      * Fleet resources. If a Fleet resource is deleted and another
      * resource with the same name is created, it gets a different uid.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The time the fleet was last updated, in RFC3339 text format.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -204,15 +204,15 @@ export interface FleetArgs {
      * The default cluster configurations to apply across the fleet.
      * Structure is documented below.
      */
-    defaultClusterConfig?: pulumi.Input<inputs.gkehub.FleetDefaultClusterConfig>;
+    defaultClusterConfig?: pulumi.Input<inputs.gkehub.FleetDefaultClusterConfig | undefined>;
     /**
      * A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
      * Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

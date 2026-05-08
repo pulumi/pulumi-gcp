@@ -20,10 +20,10 @@ __all__ = ['GlobalNetworkEndpointGroupArgs', 'GlobalNetworkEndpointGroup']
 class GlobalNetworkEndpointGroupArgs:
     def __init__(__self__, *,
                  network_endpoint_type: pulumi.Input[_builtins.str],
-                 default_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlobalNetworkEndpointGroup resource.
 
@@ -68,7 +68,7 @@ class GlobalNetworkEndpointGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultPort")
-    def default_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default port used if the port number is not specified in the
         network endpoint.
@@ -76,12 +76,12 @@ class GlobalNetworkEndpointGroupArgs:
         return pulumi.get(self, "default_port")
 
     @default_port.setter
-    def default_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -89,12 +89,12 @@ class GlobalNetworkEndpointGroupArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource; provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -107,12 +107,12 @@ class GlobalNetworkEndpointGroupArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -120,19 +120,19 @@ class GlobalNetworkEndpointGroupArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _GlobalNetworkEndpointGroupState:
     def __init__(__self__, *,
-                 default_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalNetworkEndpointGroup resources.
 
@@ -168,7 +168,7 @@ class _GlobalNetworkEndpointGroupState:
 
     @_builtins.property
     @pulumi.getter(name="defaultPort")
-    def default_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default port used if the port number is not specified in the
         network endpoint.
@@ -176,12 +176,12 @@ class _GlobalNetworkEndpointGroupState:
         return pulumi.get(self, "default_port")
 
     @default_port.setter
-    def default_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -189,12 +189,12 @@ class _GlobalNetworkEndpointGroupState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource; provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -207,12 +207,12 @@ class _GlobalNetworkEndpointGroupState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkEndpointType")
-    def network_endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of network endpoints in this network endpoint group.
         Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
@@ -220,12 +220,12 @@ class _GlobalNetworkEndpointGroupState:
         return pulumi.get(self, "network_endpoint_type")
 
     @network_endpoint_type.setter
-    def network_endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -233,19 +233,19 @@ class _GlobalNetworkEndpointGroupState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
 
@@ -255,11 +255,11 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A global network endpoint group contains endpoints that reside outside of Google Cloud.
@@ -412,11 +412,11 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -444,12 +444,12 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_port: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None) -> 'GlobalNetworkEndpointGroup':
+            default_port: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> 'GlobalNetworkEndpointGroup':
         """
         Get an existing GlobalNetworkEndpointGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

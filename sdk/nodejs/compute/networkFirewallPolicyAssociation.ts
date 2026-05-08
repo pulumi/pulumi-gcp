@@ -146,24 +146,24 @@ export interface NetworkFirewallPolicyAssociationState {
     /**
      * The target that the firewall policy is attached to.
      */
-    attachmentTarget?: pulumi.Input<string>;
+    attachmentTarget?: pulumi.Input<string | undefined>;
     /**
      * The firewall policy of the resource.
      */
-    firewallPolicy?: pulumi.Input<string>;
+    firewallPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name for an association.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The short name of the firewall policy of the association.
      */
-    shortName?: pulumi.Input<string>;
+    shortName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,10 +181,10 @@ export interface NetworkFirewallPolicyAssociationArgs {
     /**
      * The name for an association.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

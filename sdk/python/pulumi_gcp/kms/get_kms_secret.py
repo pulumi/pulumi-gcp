@@ -169,9 +169,9 @@ def get_kms_secret(additional_authenticated_data: Optional[_builtins.str] = None
         crypto_key=pulumi.get(__ret__, 'crypto_key'),
         id=pulumi.get(__ret__, 'id'),
         plaintext=pulumi.get(__ret__, 'plaintext'))
-def get_kms_secret_output(additional_authenticated_data: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          ciphertext: Optional[pulumi.Input[_builtins.str]] = None,
-                          crypto_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_kms_secret_output(additional_authenticated_data: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          ciphertext: pulumi.Input[Optional[_builtins.str]] = None,
+                          crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKMSSecretResult]:
     """
     This data source allows you to use data encrypted with Google Cloud KMS

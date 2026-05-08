@@ -130,10 +130,10 @@ export interface GetClusterOutputArgs {
      * (optional)
      * The canonical id of the location.If it is not provided, the provider project is used. For example: us-east1.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * (optional)
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

@@ -168,29 +168,29 @@ export interface AccessPolicyState {
     /**
      * Time the AccessPolicy was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Resource name of the AccessPolicy. Format: '{{policy_id}}'
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent of this AccessPolicy in the Cloud Resource Hierarchy.
      * Format: 'organizations/{{organization_id}}'
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Folder or project on which this policy is applicable.
      * Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
      */
-    scopes?: pulumi.Input<string>;
+    scopes?: pulumi.Input<string | undefined>;
     /**
      * Human readable title. Does not affect behavior.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * Time the AccessPolicy was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -206,7 +206,7 @@ export interface AccessPolicyArgs {
      * Folder or project on which this policy is applicable.
      * Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
      */
-    scopes?: pulumi.Input<string>;
+    scopes?: pulumi.Input<string | undefined>;
     /**
      * Human readable title. Does not affect behavior.
      */

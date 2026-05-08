@@ -167,9 +167,9 @@ export interface GetBucketObjectOutputArgs {
     /**
      * The name of the containing bucket.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The name of the object.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

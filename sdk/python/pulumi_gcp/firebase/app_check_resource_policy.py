@@ -21,8 +21,8 @@ class AppCheckResourcePolicyArgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[_builtins.str],
                  target_resource: pulumi.Input[_builtins.str],
-                 enforcement_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppCheckResourcePolicy resource.
 
@@ -99,7 +99,7 @@ class AppCheckResourcePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="enforcementMode")
-    def enforcement_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enforcement_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The App Check enforcement mode for a service supported by App Check. This will override the EnforcementMode setting on the service.
         Valid values are:
@@ -132,12 +132,12 @@ class AppCheckResourcePolicyArgs:
         return pulumi.get(self, "enforcement_mode")
 
     @enforcement_mode.setter
-    def enforcement_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enforcement_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enforcement_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -145,20 +145,20 @@ class AppCheckResourcePolicyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _AppCheckResourcePolicyState:
     def __init__(__self__, *,
-                 enforcement_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppCheckResourcePolicy resources.
 
@@ -218,7 +218,7 @@ class _AppCheckResourcePolicyState:
 
     @_builtins.property
     @pulumi.getter(name="enforcementMode")
-    def enforcement_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enforcement_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The App Check enforcement mode for a service supported by App Check. This will override the EnforcementMode setting on the service.
         Valid values are:
@@ -251,24 +251,24 @@ class _AppCheckResourcePolicyState:
         return pulumi.get(self, "enforcement_mode")
 
     @enforcement_mode.setter
-    def enforcement_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enforcement_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enforcement_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -276,24 +276,24 @@ class _AppCheckResourcePolicyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePolicyId")
-    def resource_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The server-generated UID for the Resource Policy.
         """
         return pulumi.get(self, "resource_policy_id")
 
     @resource_policy_id.setter
-    def resource_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the service to configure a Resource Policy for.
         Currently, the following service IDs are supported:
@@ -302,12 +302,12 @@ class _AppCheckResourcePolicyState:
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetResource")
-    def target_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service specific name of the resource object to which this policy applies, in the format:
         * iOS OAuth clients (Google Identity for iOS):
@@ -316,19 +316,19 @@ class _AppCheckResourcePolicyState:
         return pulumi.get(self, "target_resource")
 
     @target_resource.setter
-    def target_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Timestamp when this resource policy configuration object was most recently updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -338,10 +338,10 @@ class AppCheckResourcePolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enforcement_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_resource: Optional[pulumi.Input[_builtins.str]] = None,
+                 enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_resource: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         App Check enforcement policy for a specific resource of a Google service supported by App Check. Note that this policy will override the service-level configuration.
@@ -492,10 +492,10 @@ class AppCheckResourcePolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enforcement_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_resource: Optional[pulumi.Input[_builtins.str]] = None,
+                 enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_resource: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -526,13 +526,13 @@ class AppCheckResourcePolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enforcement_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            target_resource: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AppCheckResourcePolicy':
+            enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AppCheckResourcePolicy':
         """
         Get an existing AppCheckResourcePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

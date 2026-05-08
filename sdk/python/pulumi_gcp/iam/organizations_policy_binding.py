@@ -26,10 +26,10 @@ class OrganizationsPolicyBindingArgs:
                  policy: pulumi.Input[_builtins.str],
                  policy_binding_id: pulumi.Input[_builtins.str],
                  target: pulumi.Input['OrganizationsPolicyBindingTargetArgs'],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 condition: Optional[pulumi.Input['OrganizationsPolicyBindingConditionArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_kind: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 condition: pulumi.Input[Optional['OrganizationsPolicyBindingConditionArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_kind: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrganizationsPolicyBinding resource.
 
@@ -149,7 +149,7 @@ class OrganizationsPolicyBindingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
 
@@ -159,12 +159,12 @@ class OrganizationsPolicyBindingArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['OrganizationsPolicyBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['OrganizationsPolicyBindingConditionArgs']]:
         """
         Represents a textual expression in the Common Expression Language
         (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
@@ -194,24 +194,24 @@ class OrganizationsPolicyBindingArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['OrganizationsPolicyBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['OrganizationsPolicyBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The description of the policy binding. Must be less than or equal to 63 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyKind")
-    def policy_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The kind of the policy to attach in this binding. This
         field must be one of the following:  - Left empty (will be automatically set
@@ -220,29 +220,29 @@ class OrganizationsPolicyBindingArgs:
         return pulumi.get(self, "policy_kind")
 
     @policy_kind.setter
-    def policy_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_kind", value)
 
 
 @pulumi.input_type
 class _OrganizationsPolicyBindingState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 condition: Optional[pulumi.Input['OrganizationsPolicyBindingConditionArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_binding_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input['OrganizationsPolicyBindingTargetArgs']] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 condition: pulumi.Input[Optional['OrganizationsPolicyBindingConditionArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional['OrganizationsPolicyBindingTargetArgs']] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationsPolicyBinding resources.
 
@@ -327,7 +327,7 @@ class _OrganizationsPolicyBindingState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
 
@@ -337,12 +337,12 @@ class _OrganizationsPolicyBindingState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['OrganizationsPolicyBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['OrganizationsPolicyBindingConditionArgs']]:
         """
         Represents a textual expression in the Common Expression Language
         (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
@@ -372,120 +372,120 @@ class _OrganizationsPolicyBindingState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['OrganizationsPolicyBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['OrganizationsPolicyBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time when the policy binding was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The description of the policy binding. Must be less than or equal to 63 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the Policy Binding
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the policy binding in the format `{binding_parent/locations/{location}/policyBindings/{policy_binding_id}`
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent organization of the Policy Binding.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="policyBindingId")
-    def policy_binding_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_binding_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Policy Binding ID.
         """
         return pulumi.get(self, "policy_binding_id")
 
     @policy_binding_id.setter
-    def policy_binding_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_binding_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_binding_id", value)
 
     @_builtins.property
     @pulumi.getter(name="policyKind")
-    def policy_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The kind of the policy to attach in this binding. This
         field must be one of the following:  - Left empty (will be automatically set
@@ -494,24 +494,24 @@ class _OrganizationsPolicyBindingState:
         return pulumi.get(self, "policy_kind")
 
     @policy_kind.setter
-    def policy_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_kind", value)
 
     @_builtins.property
     @pulumi.getter(name="policyUid")
-    def policy_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The globally unique ID of the policy to be bound.
         """
         return pulumi.get(self, "policy_uid")
 
     @policy_uid.setter
-    def policy_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_uid", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input['OrganizationsPolicyBindingTargetArgs']]:
+    def target(self) -> pulumi.Input[Optional['OrganizationsPolicyBindingTargetArgs']]:
         """
         Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
         Structure is documented below.
@@ -519,31 +519,31 @@ class _OrganizationsPolicyBindingState:
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input['OrganizationsPolicyBindingTargetArgs']]):
+    def target(self, value: pulumi.Input[Optional['OrganizationsPolicyBindingTargetArgs']]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time when the policy binding was most recently updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -553,15 +553,15 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 condition: Optional[pulumi.Input[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_binding_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 condition: pulumi.Input[Optional[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict']]] = None,
                  __props__=None):
         """
         A policy binding to an organization. This is a Terraform resource, and maps to a policy binding resource in GCP.
@@ -731,15 +731,15 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 condition: Optional[pulumi.Input[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_binding_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 condition: pulumi.Input[Optional[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -785,22 +785,22 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            condition: Optional[pulumi.Input[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            organization: Optional[pulumi.Input[_builtins.str]] = None,
-            policy: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_binding_id: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_kind: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_uid: Optional[pulumi.Input[_builtins.str]] = None,
-            target: Optional[pulumi.Input[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict']]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationsPolicyBinding':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            condition: pulumi.Input[Optional[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_kind: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            target: pulumi.Input[Optional[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationsPolicyBinding':
         """
         Get an existing OrganizationsPolicyBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

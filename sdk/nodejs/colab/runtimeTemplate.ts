@@ -322,82 +322,82 @@ export interface RuntimeTemplateState {
      * The configuration for the data disk of the runtime.
      * Structure is documented below.
      */
-    dataPersistentDiskSpec?: pulumi.Input<inputs.colab.RuntimeTemplateDataPersistentDiskSpec>;
+    dataPersistentDiskSpec?: pulumi.Input<inputs.colab.RuntimeTemplateDataPersistentDiskSpec | undefined>;
     /**
      * The description of the Runtime Template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Required. The display name of the Runtime Template.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Customer-managed encryption key spec for the notebook runtime.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.colab.RuntimeTemplateEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.colab.RuntimeTemplateEncryptionSpec | undefined>;
     /**
      * EUC configuration of the NotebookRuntimeTemplate.
      * Structure is documented below.
      */
-    eucConfig?: pulumi.Input<inputs.colab.RuntimeTemplateEucConfig>;
+    eucConfig?: pulumi.Input<inputs.colab.RuntimeTemplateEucConfig | undefined>;
     /**
      * Notebook Idle Shutdown configuration for the runtime.
      * Structure is documented below.
      */
-    idleShutdownConfig?: pulumi.Input<inputs.colab.RuntimeTemplateIdleShutdownConfig>;
+    idleShutdownConfig?: pulumi.Input<inputs.colab.RuntimeTemplateIdleShutdownConfig | undefined>;
     /**
      * Labels to identify and group the runtime template.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * 'The machine configuration of the runtime.'
      * Structure is documented below.
      */
-    machineSpec?: pulumi.Input<inputs.colab.RuntimeTemplateMachineSpec>;
+    machineSpec?: pulumi.Input<inputs.colab.RuntimeTemplateMachineSpec | undefined>;
     /**
      * The resource name of the Runtime Template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network configuration for the runtime.
      * Structure is documented below.
      */
-    networkSpec?: pulumi.Input<inputs.colab.RuntimeTemplateNetworkSpec>;
+    networkSpec?: pulumi.Input<inputs.colab.RuntimeTemplateNetworkSpec | undefined>;
     /**
      * Applies the given Compute Engine tags to the runtime.
      */
-    networkTags?: pulumi.Input<pulumi.Input<string>[]>;
+    networkTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Runtime Shielded VM spec.
      * Structure is documented below.
      */
-    shieldedVmConfig?: pulumi.Input<inputs.colab.RuntimeTemplateShieldedVmConfig>;
+    shieldedVmConfig?: pulumi.Input<inputs.colab.RuntimeTemplateShieldedVmConfig | undefined>;
     /**
      * The notebook software configuration of the notebook runtime.
      * Structure is documented below.
      */
-    softwareConfig?: pulumi.Input<inputs.colab.RuntimeTemplateSoftwareConfig>;
+    softwareConfig?: pulumi.Input<inputs.colab.RuntimeTemplateSoftwareConfig | undefined>;
 }
 
 /**
@@ -408,11 +408,11 @@ export interface RuntimeTemplateArgs {
      * The configuration for the data disk of the runtime.
      * Structure is documented below.
      */
-    dataPersistentDiskSpec?: pulumi.Input<inputs.colab.RuntimeTemplateDataPersistentDiskSpec>;
+    dataPersistentDiskSpec?: pulumi.Input<inputs.colab.RuntimeTemplateDataPersistentDiskSpec | undefined>;
     /**
      * The description of the Runtime Template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Required. The display name of the Runtime Template.
      */
@@ -421,23 +421,23 @@ export interface RuntimeTemplateArgs {
      * Customer-managed encryption key spec for the notebook runtime.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.colab.RuntimeTemplateEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.colab.RuntimeTemplateEncryptionSpec | undefined>;
     /**
      * EUC configuration of the NotebookRuntimeTemplate.
      * Structure is documented below.
      */
-    eucConfig?: pulumi.Input<inputs.colab.RuntimeTemplateEucConfig>;
+    eucConfig?: pulumi.Input<inputs.colab.RuntimeTemplateEucConfig | undefined>;
     /**
      * Notebook Idle Shutdown configuration for the runtime.
      * Structure is documented below.
      */
-    idleShutdownConfig?: pulumi.Input<inputs.colab.RuntimeTemplateIdleShutdownConfig>;
+    idleShutdownConfig?: pulumi.Input<inputs.colab.RuntimeTemplateIdleShutdownConfig | undefined>;
     /**
      * Labels to identify and group the runtime template.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
@@ -446,33 +446,33 @@ export interface RuntimeTemplateArgs {
      * 'The machine configuration of the runtime.'
      * Structure is documented below.
      */
-    machineSpec?: pulumi.Input<inputs.colab.RuntimeTemplateMachineSpec>;
+    machineSpec?: pulumi.Input<inputs.colab.RuntimeTemplateMachineSpec | undefined>;
     /**
      * The resource name of the Runtime Template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network configuration for the runtime.
      * Structure is documented below.
      */
-    networkSpec?: pulumi.Input<inputs.colab.RuntimeTemplateNetworkSpec>;
+    networkSpec?: pulumi.Input<inputs.colab.RuntimeTemplateNetworkSpec | undefined>;
     /**
      * Applies the given Compute Engine tags to the runtime.
      */
-    networkTags?: pulumi.Input<pulumi.Input<string>[]>;
+    networkTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Runtime Shielded VM spec.
      * Structure is documented below.
      */
-    shieldedVmConfig?: pulumi.Input<inputs.colab.RuntimeTemplateShieldedVmConfig>;
+    shieldedVmConfig?: pulumi.Input<inputs.colab.RuntimeTemplateShieldedVmConfig | undefined>;
     /**
      * The notebook software configuration of the notebook runtime.
      * Structure is documented below.
      */
-    softwareConfig?: pulumi.Input<inputs.colab.RuntimeTemplateSoftwareConfig>;
+    softwareConfig?: pulumi.Input<inputs.colab.RuntimeTemplateSoftwareConfig | undefined>;
 }

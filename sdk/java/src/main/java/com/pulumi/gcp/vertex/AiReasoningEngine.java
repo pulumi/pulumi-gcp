@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.Filebase64Args;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -102,8 +102,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -161,8 +161,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecImageSpecArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.Filebase64Args;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -223,8 +223,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.std.inputs.JsondecodeArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecContainerSpecArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -327,8 +327,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs;
  * import com.pulumi.asset.FileAsset;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -479,8 +479,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.asset.FileAsset;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -492,13 +492,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var classMethods = List.of(Map.ofEntries(
+ *         final var classMethods = Arrays.asList(Map.ofEntries(
  *             Map.entry("apiMode", "async"),
  *             Map.entry("description", null),
  *             Map.entry("name", "async_query"),
  *             Map.entry("parameters", Map.ofEntries(
  *                 Map.entry("type", "object"),
- *                 Map.entry("required", List.of()),
+ *                 Map.entry("required", Arrays.asList()),
  *                 Map.entry("properties", Map.ofEntries(
  *                 ))
  *             ))
@@ -675,8 +675,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -734,8 +734,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;

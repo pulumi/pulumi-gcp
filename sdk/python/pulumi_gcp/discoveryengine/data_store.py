@@ -25,14 +25,14 @@ class DataStoreArgs:
                  display_name: pulumi.Input[_builtins.str],
                  industry_vertical: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 advanced_site_search_config: Optional[pulumi.Input['DataStoreAdvancedSiteSearchConfigArgs']] = None,
-                 content_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_advanced_site_search: Optional[pulumi.Input[_builtins.bool]] = None,
-                 document_processing_config: Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_default_schema_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 solution_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 advanced_site_search_config: pulumi.Input[Optional['DataStoreAdvancedSiteSearchConfigArgs']] = None,
+                 content_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
+                 document_processing_config: pulumi.Input[Optional['DataStoreDocumentProcessingConfigArgs']] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_default_schema_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 solution_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DataStore resource.
 
@@ -144,7 +144,7 @@ class DataStoreArgs:
 
     @_builtins.property
     @pulumi.getter(name="advancedSiteSearchConfig")
-    def advanced_site_search_config(self) -> Optional[pulumi.Input['DataStoreAdvancedSiteSearchConfigArgs']]:
+    def advanced_site_search_config(self) -> pulumi.Input[Optional['DataStoreAdvancedSiteSearchConfigArgs']]:
         """
         Configuration data for advance site search.
         Structure is documented below.
@@ -152,12 +152,12 @@ class DataStoreArgs:
         return pulumi.get(self, "advanced_site_search_config")
 
     @advanced_site_search_config.setter
-    def advanced_site_search_config(self, value: Optional[pulumi.Input['DataStoreAdvancedSiteSearchConfigArgs']]):
+    def advanced_site_search_config(self, value: pulumi.Input[Optional['DataStoreAdvancedSiteSearchConfigArgs']]):
         pulumi.set(self, "advanced_site_search_config", value)
 
     @_builtins.property
     @pulumi.getter(name="contentConfig")
-    def content_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content config of the data store.
         Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
@@ -165,12 +165,12 @@ class DataStoreArgs:
         return pulumi.get(self, "content_config")
 
     @content_config.setter
-    def content_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_config", value)
 
     @_builtins.property
     @pulumi.getter(name="createAdvancedSiteSearch")
-    def create_advanced_site_search(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_advanced_site_search(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, an advanced data store for site search will be created. If the
         data store is not configured as site search (GENERIC vertical and
@@ -179,12 +179,12 @@ class DataStoreArgs:
         return pulumi.get(self, "create_advanced_site_search")
 
     @create_advanced_site_search.setter
-    def create_advanced_site_search(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_advanced_site_search(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_advanced_site_search", value)
 
     @_builtins.property
     @pulumi.getter(name="documentProcessingConfig")
-    def document_processing_config(self) -> Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']]:
+    def document_processing_config(self) -> pulumi.Input[Optional['DataStoreDocumentProcessingConfigArgs']]:
         """
         Configuration for Document understanding and enrichment.
         Structure is documented below.
@@ -192,12 +192,12 @@ class DataStoreArgs:
         return pulumi.get(self, "document_processing_config")
 
     @document_processing_config.setter
-    def document_processing_config(self, value: Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']]):
+    def document_processing_config(self, value: pulumi.Input[Optional['DataStoreDocumentProcessingConfigArgs']]):
         pulumi.set(self, "document_processing_config", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KMS key resource name which will be used to encrypt resources:
         `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
@@ -209,12 +209,12 @@ class DataStoreArgs:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -222,12 +222,12 @@ class DataStoreArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="skipDefaultSchemaCreation")
-    def skip_default_schema_creation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_default_schema_creation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean flag indicating whether to skip the default schema creation for
         the data store. Only enable this flag if you are certain that the default
@@ -240,12 +240,12 @@ class DataStoreArgs:
         return pulumi.get(self, "skip_default_schema_creation")
 
     @skip_default_schema_creation.setter
-    def skip_default_schema_creation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_default_schema_creation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_default_schema_creation", value)
 
     @_builtins.property
     @pulumi.getter(name="solutionTypes")
-    def solution_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def solution_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The solutions that the data store enrolls.
         Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
@@ -253,28 +253,28 @@ class DataStoreArgs:
         return pulumi.get(self, "solution_types")
 
     @solution_types.setter
-    def solution_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def solution_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "solution_types", value)
 
 
 @pulumi.input_type
 class _DataStoreState:
     def __init__(__self__, *,
-                 advanced_site_search_config: Optional[pulumi.Input['DataStoreAdvancedSiteSearchConfigArgs']] = None,
-                 content_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_advanced_site_search: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_schema_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_processing_config: Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']] = None,
-                 industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_default_schema_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 solution_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 advanced_site_search_config: pulumi.Input[Optional['DataStoreAdvancedSiteSearchConfigArgs']] = None,
+                 content_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_schema_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_processing_config: pulumi.Input[Optional['DataStoreDocumentProcessingConfigArgs']] = None,
+                 industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_default_schema_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 solution_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DataStore resources.
 
@@ -351,7 +351,7 @@ class _DataStoreState:
 
     @_builtins.property
     @pulumi.getter(name="advancedSiteSearchConfig")
-    def advanced_site_search_config(self) -> Optional[pulumi.Input['DataStoreAdvancedSiteSearchConfigArgs']]:
+    def advanced_site_search_config(self) -> pulumi.Input[Optional['DataStoreAdvancedSiteSearchConfigArgs']]:
         """
         Configuration data for advance site search.
         Structure is documented below.
@@ -359,12 +359,12 @@ class _DataStoreState:
         return pulumi.get(self, "advanced_site_search_config")
 
     @advanced_site_search_config.setter
-    def advanced_site_search_config(self, value: Optional[pulumi.Input['DataStoreAdvancedSiteSearchConfigArgs']]):
+    def advanced_site_search_config(self, value: pulumi.Input[Optional['DataStoreAdvancedSiteSearchConfigArgs']]):
         pulumi.set(self, "advanced_site_search_config", value)
 
     @_builtins.property
     @pulumi.getter(name="contentConfig")
-    def content_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content config of the data store.
         Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
@@ -372,12 +372,12 @@ class _DataStoreState:
         return pulumi.get(self, "content_config")
 
     @content_config.setter
-    def content_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_config", value)
 
     @_builtins.property
     @pulumi.getter(name="createAdvancedSiteSearch")
-    def create_advanced_site_search(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_advanced_site_search(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, an advanced data store for site search will be created. If the
         data store is not configured as site search (GENERIC vertical and
@@ -386,48 +386,48 @@ class _DataStoreState:
         return pulumi.get(self, "create_advanced_site_search")
 
     @create_advanced_site_search.setter
-    def create_advanced_site_search(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_advanced_site_search(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_advanced_site_search", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the DataStore was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataStoreId")
-    def data_store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique id of the data store.
         """
         return pulumi.get(self, "data_store_id")
 
     @data_store_id.setter
-    def data_store_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_store_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_store_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSchemaId")
-    def default_schema_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_schema_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the default Schema associated with this data store.
         """
         return pulumi.get(self, "default_schema_id")
 
     @default_schema_id.setter
-    def default_schema_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_schema_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_schema_id", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the data store. This field must be a UTF-8 encoded
         string with a length limit of 128 characters.
@@ -435,12 +435,12 @@ class _DataStoreState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="documentProcessingConfig")
-    def document_processing_config(self) -> Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']]:
+    def document_processing_config(self) -> pulumi.Input[Optional['DataStoreDocumentProcessingConfigArgs']]:
         """
         Configuration for Document understanding and enrichment.
         Structure is documented below.
@@ -448,12 +448,12 @@ class _DataStoreState:
         return pulumi.get(self, "document_processing_config")
 
     @document_processing_config.setter
-    def document_processing_config(self, value: Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']]):
+    def document_processing_config(self, value: pulumi.Input[Optional['DataStoreDocumentProcessingConfigArgs']]):
         pulumi.set(self, "document_processing_config", value)
 
     @_builtins.property
     @pulumi.getter(name="industryVertical")
-    def industry_vertical(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def industry_vertical(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The industry vertical that the data store registers.
         Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -461,12 +461,12 @@ class _DataStoreState:
         return pulumi.get(self, "industry_vertical")
 
     @industry_vertical.setter
-    def industry_vertical(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def industry_vertical(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "industry_vertical", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KMS key resource name which will be used to encrypt resources:
         `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
@@ -478,12 +478,12 @@ class _DataStoreState:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location where the data store should reside. The value can
         only be one of "global", "us" and "eu".
@@ -491,12 +491,12 @@ class _DataStoreState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique full resource name of the data store. Values are of the format
         `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
@@ -506,12 +506,12 @@ class _DataStoreState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -519,12 +519,12 @@ class _DataStoreState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="skipDefaultSchemaCreation")
-    def skip_default_schema_creation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_default_schema_creation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean flag indicating whether to skip the default schema creation for
         the data store. Only enable this flag if you are certain that the default
@@ -537,12 +537,12 @@ class _DataStoreState:
         return pulumi.get(self, "skip_default_schema_creation")
 
     @skip_default_schema_creation.setter
-    def skip_default_schema_creation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_default_schema_creation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_default_schema_creation", value)
 
     @_builtins.property
     @pulumi.getter(name="solutionTypes")
-    def solution_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def solution_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The solutions that the data store enrolls.
         Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
@@ -550,7 +550,7 @@ class _DataStoreState:
         return pulumi.get(self, "solution_types")
 
     @solution_types.setter
-    def solution_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def solution_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "solution_types", value)
 
 
@@ -560,18 +560,18 @@ class DataStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_site_search_config: Optional[pulumi.Input[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']]] = None,
-                 content_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_advanced_site_search: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_processing_config: Optional[pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
-                 industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_default_schema_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 solution_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 advanced_site_search_config: pulumi.Input[Optional[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']]] = None,
+                 content_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_processing_config: pulumi.Input[Optional[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
+                 industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_default_schema_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 solution_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Data store is a collection of websites and documents used to find answers for
@@ -850,18 +850,18 @@ class DataStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_site_search_config: Optional[pulumi.Input[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']]] = None,
-                 content_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_advanced_site_search: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_processing_config: Optional[pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
-                 industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_default_schema_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 solution_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 advanced_site_search_config: pulumi.Input[Optional[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']]] = None,
+                 content_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_processing_config: pulumi.Input[Optional[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
+                 industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_default_schema_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 solution_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -904,21 +904,21 @@ class DataStore(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_site_search_config: Optional[pulumi.Input[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']]] = None,
-            content_config: Optional[pulumi.Input[_builtins.str]] = None,
-            create_advanced_site_search: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-            default_schema_id: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            document_processing_config: Optional[pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
-            industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_default_schema_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-            solution_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DataStore':
+            advanced_site_search_config: pulumi.Input[Optional[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']]] = None,
+            content_config: pulumi.Input[Optional[_builtins.str]] = None,
+            create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_schema_id: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            document_processing_config: pulumi.Input[Optional[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
+            industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_default_schema_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+            solution_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DataStore':
         """
         Get an existing DataStore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

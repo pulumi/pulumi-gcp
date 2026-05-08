@@ -209,42 +209,42 @@ export interface LakeState {
     /**
      * Output only. Aggregated status of the underlying assets of the lake.
      */
-    assetStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.LakeAssetStatus>[]>;
+    assetStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.LakeAssetStatus>[] | undefined>;
     /**
      * Output only. The time when the lake was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. Description of the lake.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Optional. User friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. User-defined labels for the lake.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Optional. Settings to manage lake and Dataproc Metastore service instance association.
      */
-    metastore?: pulumi.Input<inputs.dataplex.LakeMetastore>;
+    metastore?: pulumi.Input<inputs.dataplex.LakeMetastore | undefined>;
     /**
      * Output only. Metastore status of the lake.
      */
-    metastoreStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.LakeMetastoreStatus>[]>;
+    metastoreStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.LakeMetastoreStatus>[] | undefined>;
     /**
      * The name of the lake.
      *
@@ -252,31 +252,31 @@ export interface LakeState {
      *
      * - - -
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time when the lake was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -286,18 +286,18 @@ export interface LakeArgs {
     /**
      * Optional. Description of the lake.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Optional. User friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Optional. User-defined labels for the lake.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
@@ -305,7 +305,7 @@ export interface LakeArgs {
     /**
      * Optional. Settings to manage lake and Dataproc Metastore service instance association.
      */
-    metastore?: pulumi.Input<inputs.dataplex.LakeMetastore>;
+    metastore?: pulumi.Input<inputs.dataplex.LakeMetastore | undefined>;
     /**
      * The name of the lake.
      *
@@ -313,9 +313,9 @@ export interface LakeArgs {
      *
      * - - -
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

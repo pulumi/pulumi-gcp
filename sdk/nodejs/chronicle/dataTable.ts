@@ -309,16 +309,16 @@ export interface DataTableState {
     /**
      * The count of rows in the data table.
      */
-    approximateRowCount?: pulumi.Input<number>;
+    approximateRowCount?: pulumi.Input<number | undefined>;
     /**
      * Details of all the columns in the table
      * Structure is documented below.
      */
-    columnInfos?: pulumi.Input<pulumi.Input<inputs.chronicle.DataTableColumnInfo>[]>;
+    columnInfos?: pulumi.Input<pulumi.Input<inputs.chronicle.DataTableColumnInfo>[] | undefined>;
     /**
      * Table create time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the data table. This is also the display name for
      * the data table. It must satisfy the following requirements:
@@ -326,80 +326,80 @@ export interface DataTableState {
      * - Contains only letters, numbers and underscore.
      * - Must be unique and has length < 256.
      */
-    dataTableId?: pulumi.Input<string>;
+    dataTableId?: pulumi.Input<string | undefined>;
     /**
      * Data table unique id
      */
-    dataTableUuid?: pulumi.Input<string>;
+    dataTableUuid?: pulumi.Input<string | undefined>;
     /**
      * The policy governing the deletion of the data table.
      * If set to `FORCE`, allows the deletion of the data table even if it contains rows.
      * If set to `DEFAULT`,or if the field is omitted, the data table must be empty before it can be deleted.
      * Possible values: DEFAULT, FORCE
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A user-provided description of the data table.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The unique display name of the data table.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the data table
      * Format:
      * "{project}/locations/{region}/instances/{instance}/dataTables/{data_table}"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * User-provided TTL of the data table.
      */
-    rowTimeToLive?: pulumi.Input<string>;
+    rowTimeToLive?: pulumi.Input<string | undefined>;
     /**
      * Last update time of the TTL of the data table.
      */
-    rowTimeToLiveUpdateTime?: pulumi.Input<string>;
+    rowTimeToLiveUpdateTime?: pulumi.Input<string | undefined>;
     /**
      * The count of rules using the data table.
      */
-    ruleAssociationsCount?: pulumi.Input<number>;
+    ruleAssociationsCount?: pulumi.Input<number | undefined>;
     /**
      * The resource names for the associated Rules that use this
      * data table. Format:
      * projects/{project}/locations/{location}/instances/{instance}/rules/{rule}.
      * {rule} here refers to the rule id.
      */
-    rules?: pulumi.Input<pulumi.Input<string>[]>;
+    rules?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * DataTableScopeInfo specifies the scope info of the data table.
      * Structure is documented below.
      */
-    scopeInfo?: pulumi.Input<inputs.chronicle.DataTableScopeInfo>;
+    scopeInfo?: pulumi.Input<inputs.chronicle.DataTableScopeInfo | undefined>;
     /**
      * Possible values:
      * USER
      * RULE
      * SEARCH
      */
-    updateSource?: pulumi.Input<string>;
+    updateSource?: pulumi.Input<string | undefined>;
     /**
      * Table update time
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -410,7 +410,7 @@ export interface DataTableArgs {
      * Details of all the columns in the table
      * Structure is documented below.
      */
-    columnInfos?: pulumi.Input<pulumi.Input<inputs.chronicle.DataTableColumnInfo>[]>;
+    columnInfos?: pulumi.Input<pulumi.Input<inputs.chronicle.DataTableColumnInfo>[] | undefined>;
     /**
      * The ID to use for the data table. This is also the display name for
      * the data table. It must satisfy the following requirements:
@@ -425,7 +425,7 @@ export interface DataTableArgs {
      * If set to `DEFAULT`,or if the field is omitted, the data table must be empty before it can be deleted.
      * Possible values: DEFAULT, FORCE
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A user-provided description of the data table.
      */
@@ -442,14 +442,14 @@ export interface DataTableArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * User-provided TTL of the data table.
      */
-    rowTimeToLive?: pulumi.Input<string>;
+    rowTimeToLive?: pulumi.Input<string | undefined>;
     /**
      * DataTableScopeInfo specifies the scope info of the data table.
      * Structure is documented below.
      */
-    scopeInfo?: pulumi.Input<inputs.chronicle.DataTableScopeInfo>;
+    scopeInfo?: pulumi.Input<inputs.chronicle.DataTableScopeInfo | undefined>;
 }

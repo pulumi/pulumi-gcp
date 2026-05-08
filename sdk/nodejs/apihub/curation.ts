@@ -223,7 +223,7 @@ export interface CurationState {
     /**
      * The time at which the curation was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the curation resource, which will become the final
      * component of the curations's resource name. This field is optional.
@@ -234,15 +234,15 @@ export interface CurationState {
      * This value should be 4-500 characters, and valid characters
      * are /a-z[0-9]-_/.
      */
-    curationId?: pulumi.Input<string>;
+    curationId?: pulumi.Input<string | undefined>;
     /**
      * The description of the curation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the curation.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The endpoint to be triggered for curation.
      * The endpoint will be invoked with a request payload containing
@@ -251,7 +251,7 @@ export interface CurationState {
      * ApiMetadata.
      * Structure is documented below.
      */
-    endpoint?: pulumi.Input<inputs.apihub.CurationEndpoint>;
+    endpoint?: pulumi.Input<inputs.apihub.CurationEndpoint | undefined>;
     /**
      * The error code of the last execution of the curation. The error code is
      * populated only when the last execution state is failed.
@@ -260,12 +260,12 @@ export interface CurationState {
      * INTERNAL_ERROR
      * UNAUTHORIZED
      */
-    lastExecutionErrorCode?: pulumi.Input<string>;
+    lastExecutionErrorCode?: pulumi.Input<string | undefined>;
     /**
      * Error message describing the failure, if any, during the last execution of
      * the curation.
      */
-    lastExecutionErrorMessage?: pulumi.Input<string>;
+    lastExecutionErrorMessage?: pulumi.Input<string | undefined>;
     /**
      * The last execution state of the curation.
      * Possible values:
@@ -273,33 +273,33 @@ export interface CurationState {
      * SUCCEEDED
      * FAILED
      */
-    lastExecutionState?: pulumi.Input<string>;
+    lastExecutionState?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The name of the curation.
      * Format:
      * `projects/{project}/locations/{location}/curations/{curation}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The plugin instances and associated actions that are using the curation.
      * Note: A particular curation could be used by multiple plugin instances or
      * multiple actions in a plugin instance.
      * Structure is documented below.
      */
-    pluginInstanceActions?: pulumi.Input<pulumi.Input<inputs.apihub.CurationPluginInstanceAction>[]>;
+    pluginInstanceActions?: pulumi.Input<pulumi.Input<inputs.apihub.CurationPluginInstanceAction>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The time at which the curation was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -320,7 +320,7 @@ export interface CurationArgs {
     /**
      * The description of the curation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the curation.
      */
@@ -342,5 +342,5 @@ export interface CurationArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

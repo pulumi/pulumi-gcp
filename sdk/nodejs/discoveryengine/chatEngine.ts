@@ -277,63 +277,63 @@ export interface ChatEngineState {
      * Configurations for a chat Engine.
      * Structure is documented below.
      */
-    chatEngineConfig?: pulumi.Input<inputs.discoveryengine.ChatEngineChatEngineConfig>;
+    chatEngineConfig?: pulumi.Input<inputs.discoveryengine.ChatEngineChatEngineConfig | undefined>;
     /**
      * Additional information of the Chat Engine.
      * Structure is documented below.
      */
-    chatEngineMetadatas?: pulumi.Input<pulumi.Input<inputs.discoveryengine.ChatEngineChatEngineMetadata>[]>;
+    chatEngineMetadatas?: pulumi.Input<pulumi.Input<inputs.discoveryengine.ChatEngineChatEngineMetadata>[] | undefined>;
     /**
      * The collection ID.
      */
-    collectionId?: pulumi.Input<string>;
+    collectionId?: pulumi.Input<string | undefined>;
     /**
      * Common config spec that specifies the metadata of the engine.
      * Structure is documented below.
      */
-    commonConfig?: pulumi.Input<inputs.discoveryengine.ChatEngineCommonConfig>;
+    commonConfig?: pulumi.Input<inputs.discoveryengine.ChatEngineCommonConfig | undefined>;
     /**
      * Timestamp the Engine was created at.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
      */
-    dataStoreIds?: pulumi.Input<pulumi.Input<string>[]>;
+    dataStoreIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for chat engine.
      */
-    engineId?: pulumi.Input<string>;
+    engineId?: pulumi.Input<string | undefined>;
     /**
      * The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
      * Default value is `GENERIC`.
      * Possible values are: `GENERIC`.
      */
-    industryVertical?: pulumi.Input<string>;
+    industryVertical?: pulumi.Input<string | undefined>;
     /**
      * Location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique full resource name of the chat engine. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
      * characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Timestamp the Engine was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -353,7 +353,7 @@ export interface ChatEngineArgs {
      * Common config spec that specifies the metadata of the engine.
      * Structure is documented below.
      */
-    commonConfig?: pulumi.Input<inputs.discoveryengine.ChatEngineCommonConfig>;
+    commonConfig?: pulumi.Input<inputs.discoveryengine.ChatEngineCommonConfig | undefined>;
     /**
      * The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
      */
@@ -371,7 +371,7 @@ export interface ChatEngineArgs {
      * Default value is `GENERIC`.
      * Possible values are: `GENERIC`.
      */
-    industryVertical?: pulumi.Input<string>;
+    industryVertical?: pulumi.Input<string | undefined>;
     /**
      * Location.
      */
@@ -380,5 +380,5 @@ export interface ChatEngineArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

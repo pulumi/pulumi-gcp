@@ -215,50 +215,50 @@ export interface AndroidAppState {
      * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      */
-    apiKeyId?: pulumi.Input<string>;
+    apiKeyId?: pulumi.Input<string | undefined>;
     /**
      * The globally unique, Firebase-assigned identifier of the AndroidApp.
      * This identifier should be treated as an opaque token, as the data format is not specified.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
      * rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
      * serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The user-assigned display name of the AndroidApp.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * This checksum is computed by the server based on the value of other fields, and it may be sent
      * with update requests to ensure the client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified resource name of the AndroidApp, for example:
      * projects/projectId/androidApps/appId
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
      */
-    packageName?: pulumi.Input<string>;
+    packageName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The SHA1 certificate hashes for the AndroidApp.
      */
-    sha1Hashes?: pulumi.Input<pulumi.Input<string>[]>;
+    sha1Hashes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The SHA256 certificate hashes for the AndroidApp.
      */
-    sha256Hashes?: pulumi.Input<pulumi.Input<string>[]>;
+    sha256Hashes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -270,13 +270,13 @@ export interface AndroidAppArgs {
      * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      */
-    apiKeyId?: pulumi.Input<string>;
+    apiKeyId?: pulumi.Input<string | undefined>;
     /**
      * (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
      * rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
      * serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The user-assigned display name of the AndroidApp.
      */
@@ -290,13 +290,13 @@ export interface AndroidAppArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The SHA1 certificate hashes for the AndroidApp.
      */
-    sha1Hashes?: pulumi.Input<pulumi.Input<string>[]>;
+    sha1Hashes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The SHA256 certificate hashes for the AndroidApp.
      */
-    sha256Hashes?: pulumi.Input<pulumi.Input<string>[]>;
+    sha256Hashes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

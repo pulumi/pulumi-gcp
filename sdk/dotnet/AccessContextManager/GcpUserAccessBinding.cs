@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     var gcpUserAccessBinding = new Gcp.AccessContextManager.GcpUserAccessBinding("gcp_user_access_binding", new()
     ///     {
     ///         OrganizationId = "123456789",
-    ///         GroupKey = Std.Index.Trimprefix.Invoke(new()
+    ///         GroupKey = Std.Trimprefix.Invoke(new()
     ///         {
     ///             Input = @group.Id,
     ///             Prefix = "groups/",

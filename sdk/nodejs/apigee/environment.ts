@@ -217,12 +217,12 @@ export interface EnvironmentState {
      * the Environment and cannot be changed.
      * Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
      */
-    apiProxyType?: pulumi.Input<string>;
+    apiProxyType?: pulumi.Input<string | undefined>;
     /**
      * The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
      * Structure is documented below.
      */
-    clientIpResolutionConfig?: pulumi.Input<inputs.apigee.EnvironmentClientIpResolutionConfig>;
+    clientIpResolutionConfig?: pulumi.Input<inputs.apigee.EnvironmentClientIpResolutionConfig | undefined>;
     /**
      * Optional. Deployment type supported by the environment. The deployment type can be
      * set when creating the environment and cannot be changed. When you enable archive
@@ -233,38 +233,38 @@ export interface EnvironmentState {
      * Creating, updating, or deleting target servers.
      * Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
      */
-    deploymentType?: pulumi.Input<string>;
+    deploymentType?: pulumi.Input<string | undefined>;
     /**
      * Description of the environment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of the environment.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
      */
-    forwardProxyUri?: pulumi.Input<string>;
+    forwardProxyUri?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the environment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * NodeConfig for setting the min/max number of nodes associated with the environment.
      * Structure is documented below.
      */
-    nodeConfig?: pulumi.Input<inputs.apigee.EnvironmentNodeConfig>;
+    nodeConfig?: pulumi.Input<inputs.apigee.EnvironmentNodeConfig | undefined>;
     /**
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Key-value pairs that may be used for customizing the environment.
      * Structure is documented below.
      */
-    properties?: pulumi.Input<inputs.apigee.EnvironmentProperties>;
+    properties?: pulumi.Input<inputs.apigee.EnvironmentProperties | undefined>;
     /**
      * Types that can be selected for an Environment. Each of the types are
      * limited by capability and capacity. Refer to Apigee's public documentation
@@ -272,7 +272,7 @@ export interface EnvironmentState {
      * An Apigee org can support heterogeneous Environments.
      * Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -284,12 +284,12 @@ export interface EnvironmentArgs {
      * the Environment and cannot be changed.
      * Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
      */
-    apiProxyType?: pulumi.Input<string>;
+    apiProxyType?: pulumi.Input<string | undefined>;
     /**
      * The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
      * Structure is documented below.
      */
-    clientIpResolutionConfig?: pulumi.Input<inputs.apigee.EnvironmentClientIpResolutionConfig>;
+    clientIpResolutionConfig?: pulumi.Input<inputs.apigee.EnvironmentClientIpResolutionConfig | undefined>;
     /**
      * Optional. Deployment type supported by the environment. The deployment type can be
      * set when creating the environment and cannot be changed. When you enable archive
@@ -300,28 +300,28 @@ export interface EnvironmentArgs {
      * Creating, updating, or deleting target servers.
      * Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
      */
-    deploymentType?: pulumi.Input<string>;
+    deploymentType?: pulumi.Input<string | undefined>;
     /**
      * Description of the environment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of the environment.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
      */
-    forwardProxyUri?: pulumi.Input<string>;
+    forwardProxyUri?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the environment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * NodeConfig for setting the min/max number of nodes associated with the environment.
      * Structure is documented below.
      */
-    nodeConfig?: pulumi.Input<inputs.apigee.EnvironmentNodeConfig>;
+    nodeConfig?: pulumi.Input<inputs.apigee.EnvironmentNodeConfig | undefined>;
     /**
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
@@ -331,7 +331,7 @@ export interface EnvironmentArgs {
      * Key-value pairs that may be used for customizing the environment.
      * Structure is documented below.
      */
-    properties?: pulumi.Input<inputs.apigee.EnvironmentProperties>;
+    properties?: pulumi.Input<inputs.apigee.EnvironmentProperties | undefined>;
     /**
      * Types that can be selected for an Environment. Each of the types are
      * limited by capability and capacity. Refer to Apigee's public documentation
@@ -339,5 +339,5 @@ export interface EnvironmentArgs {
      * An Apigee org can support heterogeneous Environments.
      * Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

@@ -26,14 +26,14 @@ __all__ = [
 class RepositoryIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RepositoryIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -59,25 +59,25 @@ class RepositoryIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RepositoryIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RepositoryIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -103,11 +103,11 @@ class RepositoryIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -123,7 +123,7 @@ class RepositoryPubsubConfigArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Email address of the service account used for publishing Cloud Pub/Sub messages.
     This service account needs to be in the same project as the PubsubConfig. When added,
@@ -136,7 +136,7 @@ class RepositoryPubsubConfigArgs:
     def __init__(__self__, *,
                  message_format: pulumi.Input[_builtins.str],
                  topic: pulumi.Input[_builtins.str],
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None):
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] message_format: The format of the Cloud Pub/Sub messages.
                - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
@@ -182,7 +182,7 @@ class RepositoryPubsubConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the service account used for publishing Cloud Pub/Sub messages.
         This service account needs to be in the same project as the PubsubConfig. When added,
@@ -192,7 +192,7 @@ class RepositoryPubsubConfigArgs:
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
 

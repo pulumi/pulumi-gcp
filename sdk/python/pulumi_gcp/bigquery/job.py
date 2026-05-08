@@ -22,15 +22,15 @@ __all__ = ['JobArgs', 'Job']
 class JobArgs:
     def __init__(__self__, *,
                  job_id: pulumi.Input[_builtins.str],
-                 copy: Optional[pulumi.Input['JobCopyArgs']] = None,
-                 extract: Optional[pulumi.Input['JobExtractArgs']] = None,
-                 job_timeout_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load: Optional[pulumi.Input['JobLoadArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 query: Optional[pulumi.Input['JobQueryArgs']] = None,
-                 reservation: Optional[pulumi.Input[_builtins.str]] = None):
+                 copy: pulumi.Input[Optional['JobCopyArgs']] = None,
+                 extract: pulumi.Input[Optional['JobExtractArgs']] = None,
+                 job_timeout_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 load: pulumi.Input[Optional['JobLoadArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 query: pulumi.Input[Optional['JobQueryArgs']] = None,
+                 reservation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Job resource.
 
@@ -89,7 +89,7 @@ class JobArgs:
 
     @_builtins.property
     @pulumi.getter
-    def copy(self) -> Optional[pulumi.Input['JobCopyArgs']]:
+    def copy(self) -> pulumi.Input[Optional['JobCopyArgs']]:
         """
         Copies a table.
         Structure is documented below.
@@ -97,12 +97,12 @@ class JobArgs:
         return pulumi.get(self, "copy")
 
     @copy.setter
-    def copy(self, value: Optional[pulumi.Input['JobCopyArgs']]):
+    def copy(self, value: pulumi.Input[Optional['JobCopyArgs']]):
         pulumi.set(self, "copy", value)
 
     @_builtins.property
     @pulumi.getter
-    def extract(self) -> Optional[pulumi.Input['JobExtractArgs']]:
+    def extract(self) -> pulumi.Input[Optional['JobExtractArgs']]:
         """
         Configures an extract job.
         Structure is documented below.
@@ -110,24 +110,24 @@ class JobArgs:
         return pulumi.get(self, "extract")
 
     @extract.setter
-    def extract(self, value: Optional[pulumi.Input['JobExtractArgs']]):
+    def extract(self, value: pulumi.Input[Optional['JobExtractArgs']]):
         pulumi.set(self, "extract", value)
 
     @_builtins.property
     @pulumi.getter(name="jobTimeoutMs")
-    def job_timeout_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_timeout_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         """
         return pulumi.get(self, "job_timeout_ms")
 
     @job_timeout_ms.setter
-    def job_timeout_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_timeout_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_timeout_ms", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels associated with this job. You can use these to organize and group your jobs.
 
@@ -137,12 +137,12 @@ class JobArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def load(self) -> Optional[pulumi.Input['JobLoadArgs']]:
+    def load(self) -> pulumi.Input[Optional['JobLoadArgs']]:
         """
         Configures a load job.
         Structure is documented below.
@@ -150,24 +150,24 @@ class JobArgs:
         return pulumi.get(self, "load")
 
     @load.setter
-    def load(self, value: Optional[pulumi.Input['JobLoadArgs']]):
+    def load(self, value: pulumi.Input[Optional['JobLoadArgs']]):
         pulumi.set(self, "load", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location of the job. The default value is US.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -175,12 +175,12 @@ class JobArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def query(self) -> Optional[pulumi.Input['JobQueryArgs']]:
+    def query(self) -> pulumi.Input[Optional['JobQueryArgs']]:
         """
         Configures a query job.
         Structure is documented below.
@@ -188,12 +188,12 @@ class JobArgs:
         return pulumi.get(self, "query")
 
     @query.setter
-    def query(self, value: Optional[pulumi.Input['JobQueryArgs']]):
+    def query(self, value: pulumi.Input[Optional['JobQueryArgs']]):
         pulumi.set(self, "query", value)
 
     @_builtins.property
     @pulumi.getter
-    def reservation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta)
         The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
@@ -202,28 +202,28 @@ class JobArgs:
         return pulumi.get(self, "reservation")
 
     @reservation.setter
-    def reservation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation", value)
 
 
 @pulumi.input_type
 class _JobState:
     def __init__(__self__, *,
-                 copy: Optional[pulumi.Input['JobCopyArgs']] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 extract: Optional[pulumi.Input['JobExtractArgs']] = None,
-                 job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_timeout_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load: Optional[pulumi.Input['JobLoadArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 query: Optional[pulumi.Input['JobQueryArgs']] = None,
-                 reservation: Optional[pulumi.Input[_builtins.str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
-                 user_email: Optional[pulumi.Input[_builtins.str]] = None):
+                 copy: pulumi.Input[Optional['JobCopyArgs']] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 extract: pulumi.Input[Optional['JobExtractArgs']] = None,
+                 job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_timeout_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 load: pulumi.Input[Optional['JobLoadArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 query: pulumi.Input[Optional['JobQueryArgs']] = None,
+                 reservation: pulumi.Input[Optional[_builtins.str]] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
+                 user_email: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
 
@@ -290,7 +290,7 @@ class _JobState:
 
     @_builtins.property
     @pulumi.getter
-    def copy(self) -> Optional[pulumi.Input['JobCopyArgs']]:
+    def copy(self) -> pulumi.Input[Optional['JobCopyArgs']]:
         """
         Copies a table.
         Structure is documented below.
@@ -298,12 +298,12 @@ class _JobState:
         return pulumi.get(self, "copy")
 
     @copy.setter
-    def copy(self, value: Optional[pulumi.Input['JobCopyArgs']]):
+    def copy(self, value: pulumi.Input[Optional['JobCopyArgs']]):
         pulumi.set(self, "copy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -311,12 +311,12 @@ class _JobState:
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def extract(self) -> Optional[pulumi.Input['JobExtractArgs']]:
+    def extract(self) -> pulumi.Input[Optional['JobExtractArgs']]:
         """
         Configures an extract job.
         Structure is documented below.
@@ -324,36 +324,36 @@ class _JobState:
         return pulumi.get(self, "extract")
 
     @extract.setter
-    def extract(self, value: Optional[pulumi.Input['JobExtractArgs']]):
+    def extract(self, value: pulumi.Input[Optional['JobExtractArgs']]):
         pulumi.set(self, "extract", value)
 
     @_builtins.property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "job_id")
 
     @job_id.setter
-    def job_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_id", value)
 
     @_builtins.property
     @pulumi.getter(name="jobTimeoutMs")
-    def job_timeout_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_timeout_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         """
         return pulumi.get(self, "job_timeout_ms")
 
     @job_timeout_ms.setter
-    def job_timeout_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_timeout_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_timeout_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="jobType")
-    def job_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The type of the job.
@@ -361,12 +361,12 @@ class _JobState:
         return pulumi.get(self, "job_type")
 
     @job_type.setter
-    def job_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels associated with this job. You can use these to organize and group your jobs.
 
@@ -376,12 +376,12 @@ class _JobState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def load(self) -> Optional[pulumi.Input['JobLoadArgs']]:
+    def load(self) -> pulumi.Input[Optional['JobLoadArgs']]:
         """
         Configures a load job.
         Structure is documented below.
@@ -389,24 +389,24 @@ class _JobState:
         return pulumi.get(self, "load")
 
     @load.setter
-    def load(self, value: Optional[pulumi.Input['JobLoadArgs']]):
+    def load(self, value: pulumi.Input[Optional['JobLoadArgs']]):
         pulumi.set(self, "load", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location of the job. The default value is US.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -414,12 +414,12 @@ class _JobState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -427,12 +427,12 @@ class _JobState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def query(self) -> Optional[pulumi.Input['JobQueryArgs']]:
+    def query(self) -> pulumi.Input[Optional['JobQueryArgs']]:
         """
         Configures a query job.
         Structure is documented below.
@@ -440,12 +440,12 @@ class _JobState:
         return pulumi.get(self, "query")
 
     @query.setter
-    def query(self, value: Optional[pulumi.Input['JobQueryArgs']]):
+    def query(self, value: pulumi.Input[Optional['JobQueryArgs']]):
         pulumi.set(self, "query", value)
 
     @_builtins.property
     @pulumi.getter
-    def reservation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta)
         The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
@@ -454,12 +454,12 @@ class _JobState:
         return pulumi.get(self, "reservation")
 
     @reservation.setter
-    def reservation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusArgs']]]]:
         """
         The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
         Structure is documented below.
@@ -467,19 +467,19 @@ class _JobState:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="userEmail")
-    def user_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the user who ran the job.
         """
         return pulumi.get(self, "user_email")
 
     @user_email.setter
-    def user_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_email", value)
 
 
@@ -489,16 +489,16 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 copy: Optional[pulumi.Input[Union['JobCopyArgs', 'JobCopyArgsDict']]] = None,
-                 extract: Optional[pulumi.Input[Union['JobExtractArgs', 'JobExtractArgsDict']]] = None,
-                 job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_timeout_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load: Optional[pulumi.Input[Union['JobLoadArgs', 'JobLoadArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 query: Optional[pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']]] = None,
-                 reservation: Optional[pulumi.Input[_builtins.str]] = None,
+                 copy: pulumi.Input[Optional[Union['JobCopyArgs', 'JobCopyArgsDict']]] = None,
+                 extract: pulumi.Input[Optional[Union['JobExtractArgs', 'JobExtractArgsDict']]] = None,
+                 job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_timeout_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 load: pulumi.Input[Optional[Union['JobLoadArgs', 'JobLoadArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 query: pulumi.Input[Optional[Union['JobQueryArgs', 'JobQueryArgsDict']]] = None,
+                 reservation: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Jobs are actions that BigQuery runs on your behalf to load data, export data, query data, or copy data.
@@ -722,17 +722,18 @@ class Job(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_gcp as gcp
 
         count = 2
-        source_dataset = []
+        source_dataset: list[Any] = []
         for range in [{"value": i} for i in range(0, count)]:
             source_dataset.append(gcp.bigquery.Dataset(f"source-{range['value']}",
                 dataset_id=f"job_copy_{range['value']}_dataset",
                 friendly_name="test",
                 description="This is a test description",
                 location="US"))
-        source = []
+        source: list[Any] = []
         for range in [{"value": i} for i in range(0, count)]:
             source.append(gcp.bigquery.Table(f"source-{range['value']}",
                 dataset_id=source_dataset[range["value"]].dataset_id,
@@ -1143,17 +1144,18 @@ class Job(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_gcp as gcp
 
         count = 2
-        source_dataset = []
+        source_dataset: list[Any] = []
         for range in [{"value": i} for i in range(0, count)]:
             source_dataset.append(gcp.bigquery.Dataset(f"source-{range['value']}",
                 dataset_id=f"job_copy_{range['value']}_dataset",
                 friendly_name="test",
                 description="This is a test description",
                 location="US"))
-        source = []
+        source: list[Any] = []
         for range in [{"value": i} for i in range(0, count)]:
             source.append(gcp.bigquery.Table(f"source-{range['value']}",
                 dataset_id=source_dataset[range["value"]].dataset_id,
@@ -1328,16 +1330,16 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 copy: Optional[pulumi.Input[Union['JobCopyArgs', 'JobCopyArgsDict']]] = None,
-                 extract: Optional[pulumi.Input[Union['JobExtractArgs', 'JobExtractArgsDict']]] = None,
-                 job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_timeout_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load: Optional[pulumi.Input[Union['JobLoadArgs', 'JobLoadArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 query: Optional[pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']]] = None,
-                 reservation: Optional[pulumi.Input[_builtins.str]] = None,
+                 copy: pulumi.Input[Optional[Union['JobCopyArgs', 'JobCopyArgsDict']]] = None,
+                 extract: pulumi.Input[Optional[Union['JobExtractArgs', 'JobExtractArgsDict']]] = None,
+                 job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_timeout_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 load: pulumi.Input[Optional[Union['JobLoadArgs', 'JobLoadArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 query: pulumi.Input[Optional[Union['JobQueryArgs', 'JobQueryArgsDict']]] = None,
+                 reservation: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1376,21 +1378,21 @@ class Job(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            copy: Optional[pulumi.Input[Union['JobCopyArgs', 'JobCopyArgsDict']]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            extract: Optional[pulumi.Input[Union['JobExtractArgs', 'JobExtractArgsDict']]] = None,
-            job_id: Optional[pulumi.Input[_builtins.str]] = None,
-            job_timeout_ms: Optional[pulumi.Input[_builtins.str]] = None,
-            job_type: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            load: Optional[pulumi.Input[Union['JobLoadArgs', 'JobLoadArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            query: Optional[pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']]] = None,
-            reservation: Optional[pulumi.Input[_builtins.str]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]]]] = None,
-            user_email: Optional[pulumi.Input[_builtins.str]] = None) -> 'Job':
+            copy: pulumi.Input[Optional[Union['JobCopyArgs', 'JobCopyArgsDict']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            extract: pulumi.Input[Optional[Union['JobExtractArgs', 'JobExtractArgsDict']]] = None,
+            job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            job_timeout_ms: pulumi.Input[Optional[_builtins.str]] = None,
+            job_type: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            load: pulumi.Input[Optional[Union['JobLoadArgs', 'JobLoadArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            query: pulumi.Input[Optional[Union['JobQueryArgs', 'JobQueryArgsDict']]] = None,
+            reservation: pulumi.Input[Optional[_builtins.str]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]]]] = None,
+            user_email: pulumi.Input[Optional[_builtins.str]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -159,8 +159,8 @@ def get_kms_secret_ciphertext(crypto_key: Optional[_builtins.str] = None,
         crypto_key=pulumi.get(__ret__, 'crypto_key'),
         id=pulumi.get(__ret__, 'id'),
         plaintext=pulumi.get(__ret__, 'plaintext'))
-def get_kms_secret_ciphertext_output(crypto_key: Optional[pulumi.Input[_builtins.str]] = None,
-                                     plaintext: Optional[pulumi.Input[_builtins.str]] = None,
+def get_kms_secret_ciphertext_output(crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+                                     plaintext: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKMSSecretCiphertextResult]:
     """
     !> **Warning:** This data source is deprecated. Use the `kms.SecretCiphertext` **resource** instead.

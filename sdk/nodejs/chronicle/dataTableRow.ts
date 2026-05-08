@@ -205,47 +205,47 @@ export interface DataTableRowState {
     /**
      * DataTableRow create time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent DataTable.
      */
-    dataTableId?: pulumi.Input<string>;
+    dataTableId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the DataTable Row.
      */
-    dataTableRow?: pulumi.Input<string>;
+    dataTableRow?: pulumi.Input<string | undefined>;
     /**
      * The Chronicle instance ID.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The GCP location of the Chronicle instance.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the data table row.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/dataTables/{data_table_id}/dataTableRows/{data_table_row}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * User-provided TTL of the data table row.
      */
-    rowTimeToLive?: pulumi.Input<string>;
+    rowTimeToLive?: pulumi.Input<string | undefined>;
     /**
      * DataTableRow update time
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * All column values for a single row. The values should be in the same order
      * as the columns of the data tables.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -268,11 +268,11 @@ export interface DataTableRowArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * User-provided TTL of the data table row.
      */
-    rowTimeToLive?: pulumi.Input<string>;
+    rowTimeToLive?: pulumi.Input<string | undefined>;
     /**
      * All column values for a single row. The values should be in the same order
      * as the columns of the data tables.

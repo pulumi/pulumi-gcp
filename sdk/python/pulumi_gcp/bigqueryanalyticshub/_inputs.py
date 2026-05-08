@@ -72,14 +72,14 @@ __all__ = [
 class DataExchangeIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DataExchangeIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -105,25 +105,25 @@ class DataExchangeIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class DataExchangeIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DataExchangeIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -149,20 +149,20 @@ class DataExchangeIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class DataExchangeSharingEnvironmentConfigArgsDict(TypedDict):
-    dcr_exchange_config: NotRequired[pulumi.Input['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgsDict']]
+    dcr_exchange_config: NotRequired[pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs']]]
     """
     Data Clean Room (DCR), used for privacy-safe and secured data sharing.
     """
-    default_exchange_config: NotRequired[pulumi.Input['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgsDict']]
+    default_exchange_config: NotRequired[pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs']]]
     """
     Default Analytics Hub data exchange, used for secured data sharing.
     """
@@ -170,8 +170,8 @@ class DataExchangeSharingEnvironmentConfigArgsDict(TypedDict):
 @pulumi.input_type
 class DataExchangeSharingEnvironmentConfigArgs:
     def __init__(__self__, *,
-                 dcr_exchange_config: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs']] = None,
-                 default_exchange_config: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs']] = None):
+                 dcr_exchange_config: pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs']] = None,
+                 default_exchange_config: pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs']] = None):
         """
         :param pulumi.Input['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs'] dcr_exchange_config: Data Clean Room (DCR), used for privacy-safe and secured data sharing.
         :param pulumi.Input['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs'] default_exchange_config: Default Analytics Hub data exchange, used for secured data sharing.
@@ -183,26 +183,26 @@ class DataExchangeSharingEnvironmentConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dcrExchangeConfig")
-    def dcr_exchange_config(self) -> Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs']]:
+    def dcr_exchange_config(self) -> pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs']]:
         """
         Data Clean Room (DCR), used for privacy-safe and secured data sharing.
         """
         return pulumi.get(self, "dcr_exchange_config")
 
     @dcr_exchange_config.setter
-    def dcr_exchange_config(self, value: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs']]):
+    def dcr_exchange_config(self, value: pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs']]):
         pulumi.set(self, "dcr_exchange_config", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultExchangeConfig")
-    def default_exchange_config(self) -> Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs']]:
+    def default_exchange_config(self) -> pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs']]:
         """
         Default Analytics Hub data exchange, used for secured data sharing.
         """
         return pulumi.get(self, "default_exchange_config")
 
     @default_exchange_config.setter
-    def default_exchange_config(self, value: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs']]):
+    def default_exchange_config(self, value: pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs']]):
         pulumi.set(self, "default_exchange_config", value)
 
 
@@ -235,15 +235,15 @@ class DataExchangeSubscriptionDestinationDatasetArgsDict(TypedDict):
     The geographic location where the dataset should reside.
     See https://cloud.google.com/bigquery/docs/locations for supported locations.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A user-friendly description of the dataset.
     """
-    friendly_name: NotRequired[pulumi.Input[_builtins.str]]
+    friendly_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A descriptive name for the dataset.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The labels associated with this dataset. You can use these to
     organize and group your datasets.
@@ -254,9 +254,9 @@ class DataExchangeSubscriptionDestinationDatasetArgs:
     def __init__(__self__, *,
                  dataset_reference: pulumi.Input['DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs'],
                  location: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs'] dataset_reference: A reference that identifies the destination dataset.
                Structure is documented below.
@@ -304,31 +304,31 @@ class DataExchangeSubscriptionDestinationDatasetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-friendly description of the dataset.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="friendlyName")
-    def friendly_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def friendly_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A descriptive name for the dataset.
         """
         return pulumi.get(self, "friendly_name")
 
     @friendly_name.setter
-    def friendly_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def friendly_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "friendly_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels associated with this dataset. You can use these to
         organize and group your datasets.
@@ -336,7 +336,7 @@ class DataExchangeSubscriptionDestinationDatasetArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
 
@@ -392,17 +392,17 @@ class DataExchangeSubscriptionLinkedDatasetMapArgsDict(TypedDict):
     """
     (Required) The identifier for this object. Format specified above.
     """
-    linked_dataset: NotRequired[pulumi.Input[_builtins.str]]
+    linked_dataset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
     """
-    linked_pubsub_subscription: NotRequired[pulumi.Input[_builtins.str]]
+    linked_pubsub_subscription: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/subscriptions/sub_id
     """
-    listing: NotRequired[pulumi.Input[_builtins.str]]
+    listing: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Listing for which linked resource is created.
@@ -412,9 +412,9 @@ class DataExchangeSubscriptionLinkedDatasetMapArgsDict(TypedDict):
 class DataExchangeSubscriptionLinkedDatasetMapArgs:
     def __init__(__self__, *,
                  resource_name: pulumi.Input[_builtins.str],
-                 linked_dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_pubsub_subscription: Optional[pulumi.Input[_builtins.str]] = None,
-                 listing: Optional[pulumi.Input[_builtins.str]] = None):
+                 linked_dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_pubsub_subscription: pulumi.Input[Optional[_builtins.str]] = None,
+                 listing: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_name: (Required) The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] linked_dataset: (Output)
@@ -446,7 +446,7 @@ class DataExchangeSubscriptionLinkedDatasetMapArgs:
 
     @_builtins.property
     @pulumi.getter(name="linkedDataset")
-    def linked_dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def linked_dataset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
@@ -454,12 +454,12 @@ class DataExchangeSubscriptionLinkedDatasetMapArgs:
         return pulumi.get(self, "linked_dataset")
 
     @linked_dataset.setter
-    def linked_dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def linked_dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "linked_dataset", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedPubsubSubscription")
-    def linked_pubsub_subscription(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def linked_pubsub_subscription(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/subscriptions/sub_id
@@ -467,12 +467,12 @@ class DataExchangeSubscriptionLinkedDatasetMapArgs:
         return pulumi.get(self, "linked_pubsub_subscription")
 
     @linked_pubsub_subscription.setter
-    def linked_pubsub_subscription(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def linked_pubsub_subscription(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "linked_pubsub_subscription", value)
 
     @_builtins.property
     @pulumi.getter
-    def listing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Listing for which linked resource is created.
@@ -480,17 +480,17 @@ class DataExchangeSubscriptionLinkedDatasetMapArgs:
         return pulumi.get(self, "listing")
 
     @listing.setter
-    def listing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listing", value)
 
 
 class DataExchangeSubscriptionLinkedResourceArgsDict(TypedDict):
-    linked_dataset: NotRequired[pulumi.Input[_builtins.str]]
+    linked_dataset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
     """
-    listing: NotRequired[pulumi.Input[_builtins.str]]
+    listing: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Listing for which linked resource is created.
@@ -499,8 +499,8 @@ class DataExchangeSubscriptionLinkedResourceArgsDict(TypedDict):
 @pulumi.input_type
 class DataExchangeSubscriptionLinkedResourceArgs:
     def __init__(__self__, *,
-                 linked_dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 listing: Optional[pulumi.Input[_builtins.str]] = None):
+                 linked_dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 listing: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] linked_dataset: (Output)
                Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
@@ -514,7 +514,7 @@ class DataExchangeSubscriptionLinkedResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="linkedDataset")
-    def linked_dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def linked_dataset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
@@ -522,12 +522,12 @@ class DataExchangeSubscriptionLinkedResourceArgs:
         return pulumi.get(self, "linked_dataset")
 
     @linked_dataset.setter
-    def linked_dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def linked_dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "linked_dataset", value)
 
     @_builtins.property
     @pulumi.getter
-    def listing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Listing for which linked resource is created.
@@ -535,7 +535,7 @@ class DataExchangeSubscriptionLinkedResourceArgs:
         return pulumi.get(self, "listing")
 
     @listing.setter
-    def listing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listing", value)
 
 
@@ -544,18 +544,18 @@ class ListingBigqueryDatasetArgsDict(TypedDict):
     """
     Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
     """
-    effective_replicas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgsDict']]]]
+    effective_replicas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgs']]]]]
     """
     (Output)
     Server owned effective state of replicas. Contains both primary and secondary replicas.
     Each replica includes a system-computed (output-only) state and primary designation.
     Structure is documented below.
     """
-    replica_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    replica_locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of regions where the publisher has created shared dataset replicas.
     """
-    selected_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgsDict']]]]
+    selected_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]]]]
     """
     Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
     Structure is documented below.
@@ -565,9 +565,9 @@ class ListingBigqueryDatasetArgsDict(TypedDict):
 class ListingBigqueryDatasetArgs:
     def __init__(__self__, *,
                  dataset: pulumi.Input[_builtins.str],
-                 effective_replicas: Optional[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgs']]]] = None,
-                 replica_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 selected_resources: Optional[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]]] = None):
+                 effective_replicas: pulumi.Input[Optional[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgs']]]] = None,
+                 replica_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 selected_resources: pulumi.Input[Optional[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] dataset: Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
         :param pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgs']]] effective_replicas: (Output)
@@ -600,7 +600,7 @@ class ListingBigqueryDatasetArgs:
 
     @_builtins.property
     @pulumi.getter(name="effectiveReplicas")
-    def effective_replicas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgs']]]]:
+    def effective_replicas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgs']]]]:
         """
         (Output)
         Server owned effective state of replicas. Contains both primary and secondary replicas.
@@ -610,24 +610,24 @@ class ListingBigqueryDatasetArgs:
         return pulumi.get(self, "effective_replicas")
 
     @effective_replicas.setter
-    def effective_replicas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgs']]]]):
+    def effective_replicas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgs']]]]):
         pulumi.set(self, "effective_replicas", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaLocations")
-    def replica_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def replica_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of regions where the publisher has created shared dataset replicas.
         """
         return pulumi.get(self, "replica_locations")
 
     @replica_locations.setter
-    def replica_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def replica_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "replica_locations", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedResources")
-    def selected_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]]]:
+    def selected_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]]]:
         """
         Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
         Structure is documented below.
@@ -635,21 +635,21 @@ class ListingBigqueryDatasetArgs:
         return pulumi.get(self, "selected_resources")
 
     @selected_resources.setter
-    def selected_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]]]):
+    def selected_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]]]):
         pulumi.set(self, "selected_resources", value)
 
 
 class ListingBigqueryDatasetEffectiveReplicaArgsDict(TypedDict):
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the location this data exchange listing.
     """
-    primary_state: NotRequired[pulumi.Input[_builtins.str]]
+    primary_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output-only. Indicates that this replica is the primary replica.
     Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
     """
-    replica_state: NotRequired[pulumi.Input[_builtins.str]]
+    replica_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
     Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
@@ -658,9 +658,9 @@ class ListingBigqueryDatasetEffectiveReplicaArgsDict(TypedDict):
 @pulumi.input_type
 class ListingBigqueryDatasetEffectiveReplicaArgs:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_state: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: The name of the location this data exchange listing.
         :param pulumi.Input[_builtins.str] primary_state: Output-only. Indicates that this replica is the primary replica.
@@ -677,19 +677,19 @@ class ListingBigqueryDatasetEffectiveReplicaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the location this data exchange listing.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryState")
-    def primary_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output-only. Indicates that this replica is the primary replica.
         Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
@@ -697,12 +697,12 @@ class ListingBigqueryDatasetEffectiveReplicaArgs:
         return pulumi.get(self, "primary_state")
 
     @primary_state.setter
-    def primary_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_state", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaState")
-    def replica_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replica_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
         Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
@@ -710,18 +710,18 @@ class ListingBigqueryDatasetEffectiveReplicaArgs:
         return pulumi.get(self, "replica_state")
 
     @replica_state.setter
-    def replica_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replica_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replica_state", value)
 
 
 class ListingBigqueryDatasetSelectedResourceArgsDict(TypedDict):
-    routine: NotRequired[pulumi.Input[_builtins.str]]
+    routine: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
 
     <a name="nested_bigquery_dataset_effective_replicas"></a>The `effective_replicas` block contains:
     """
-    table: NotRequired[pulumi.Input[_builtins.str]]
+    table: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
     """
@@ -729,8 +729,8 @@ class ListingBigqueryDatasetSelectedResourceArgsDict(TypedDict):
 @pulumi.input_type
 class ListingBigqueryDatasetSelectedResourceArgs:
     def __init__(__self__, *,
-                 routine: Optional[pulumi.Input[_builtins.str]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None):
+                 routine: pulumi.Input[Optional[_builtins.str]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] routine: Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
                
@@ -744,7 +744,7 @@ class ListingBigqueryDatasetSelectedResourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def routine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def routine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
 
@@ -753,24 +753,24 @@ class ListingBigqueryDatasetSelectedResourceArgs:
         return pulumi.get(self, "routine")
 
     @routine.setter
-    def routine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def routine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "routine", value)
 
     @_builtins.property
     @pulumi.getter
-    def table(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
         """
         return pulumi.get(self, "table")
 
     @table.setter
-    def table(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table", value)
 
 
 class ListingCommercialInfoArgsDict(TypedDict):
-    cloud_marketplaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgsDict']]]]
+    cloud_marketplaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgs']]]]]
     """
     (Output)
     Details of the Marketplace Data Product associated with the Listing.
@@ -780,7 +780,7 @@ class ListingCommercialInfoArgsDict(TypedDict):
 @pulumi.input_type
 class ListingCommercialInfoArgs:
     def __init__(__self__, *,
-                 cloud_marketplaces: Optional[pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgs']]]] = None):
+                 cloud_marketplaces: pulumi.Input[Optional[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgs']]] cloud_marketplaces: (Output)
                Details of the Marketplace Data Product associated with the Listing.
@@ -791,7 +791,7 @@ class ListingCommercialInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudMarketplaces")
-    def cloud_marketplaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgs']]]]:
+    def cloud_marketplaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgs']]]]:
         """
         (Output)
         Details of the Marketplace Data Product associated with the Listing.
@@ -800,18 +800,18 @@ class ListingCommercialInfoArgs:
         return pulumi.get(self, "cloud_marketplaces")
 
     @cloud_marketplaces.setter
-    def cloud_marketplaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgs']]]]):
+    def cloud_marketplaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgs']]]]):
         pulumi.set(self, "cloud_marketplaces", value)
 
 
 class ListingCommercialInfoCloudMarketplaceArgsDict(TypedDict):
-    commercial_state: NotRequired[pulumi.Input[_builtins.str]]
+    commercial_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Commercial state of the Marketplace Data Product.
     Possible values: COMMERCIAL_STATE_UNSPECIFIED, ONBOARDING, ACTIVE
     """
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
@@ -820,8 +820,8 @@ class ListingCommercialInfoCloudMarketplaceArgsDict(TypedDict):
 @pulumi.input_type
 class ListingCommercialInfoCloudMarketplaceArgs:
     def __init__(__self__, *,
-                 commercial_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 commercial_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] commercial_state: (Output)
                Commercial state of the Marketplace Data Product.
@@ -836,7 +836,7 @@ class ListingCommercialInfoCloudMarketplaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="commercialState")
-    def commercial_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commercial_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Commercial state of the Marketplace Data Product.
@@ -845,12 +845,12 @@ class ListingCommercialInfoCloudMarketplaceArgs:
         return pulumi.get(self, "commercial_state")
 
     @commercial_state.setter
-    def commercial_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commercial_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commercial_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
@@ -858,7 +858,7 @@ class ListingCommercialInfoCloudMarketplaceArgs:
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
@@ -867,7 +867,7 @@ class ListingDataProviderArgsDict(TypedDict):
     """
     Name of the data provider.
     """
-    primary_contact: NotRequired[pulumi.Input[_builtins.str]]
+    primary_contact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Email or URL of the data provider.
     """
@@ -876,7 +876,7 @@ class ListingDataProviderArgsDict(TypedDict):
 class ListingDataProviderArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 primary_contact: Optional[pulumi.Input[_builtins.str]] = None):
+                 primary_contact: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Name of the data provider.
         :param pulumi.Input[_builtins.str] primary_contact: Email or URL of the data provider.
@@ -899,28 +899,28 @@ class ListingDataProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="primaryContact")
-    def primary_contact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_contact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email or URL of the data provider.
         """
         return pulumi.get(self, "primary_contact")
 
     @primary_contact.setter
-    def primary_contact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_contact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_contact", value)
 
 
 class ListingIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ListingIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -946,25 +946,25 @@ class ListingIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ListingIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ListingIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -990,11 +990,11 @@ class ListingIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -1003,7 +1003,7 @@ class ListingPublisherArgsDict(TypedDict):
     """
     Name of the listing publisher.
     """
-    primary_contact: NotRequired[pulumi.Input[_builtins.str]]
+    primary_contact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Email or URL of the listing publisher.
     """
@@ -1012,7 +1012,7 @@ class ListingPublisherArgsDict(TypedDict):
 class ListingPublisherArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 primary_contact: Optional[pulumi.Input[_builtins.str]] = None):
+                 primary_contact: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Name of the listing publisher.
         :param pulumi.Input[_builtins.str] primary_contact: Email or URL of the listing publisher.
@@ -1035,14 +1035,14 @@ class ListingPublisherArgs:
 
     @_builtins.property
     @pulumi.getter(name="primaryContact")
-    def primary_contact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_contact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email or URL of the listing publisher.
         """
         return pulumi.get(self, "primary_contact")
 
     @primary_contact.setter
-    def primary_contact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_contact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_contact", value)
 
 
@@ -1051,7 +1051,7 @@ class ListingPubsubTopicArgsDict(TypedDict):
     """
     Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
     """
-    data_affinity_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    data_affinity_regions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Region hint on where the data might be published. Data affinity regions are modifiable.
     See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
@@ -1061,7 +1061,7 @@ class ListingPubsubTopicArgsDict(TypedDict):
 class ListingPubsubTopicArgs:
     def __init__(__self__, *,
                  topic: pulumi.Input[_builtins.str],
-                 data_affinity_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 data_affinity_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] topic: Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_affinity_regions: Region hint on where the data might be published. Data affinity regions are modifiable.
@@ -1085,7 +1085,7 @@ class ListingPubsubTopicArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataAffinityRegions")
-    def data_affinity_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def data_affinity_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Region hint on where the data might be published. Data affinity regions are modifiable.
         See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
@@ -1093,21 +1093,21 @@ class ListingPubsubTopicArgs:
         return pulumi.get(self, "data_affinity_regions")
 
     @data_affinity_regions.setter
-    def data_affinity_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def data_affinity_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_affinity_regions", value)
 
 
 class ListingRestrictedExportConfigArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, enable restricted export.
     """
-    restrict_direct_table_access: NotRequired[pulumi.Input[_builtins.bool]]
+    restrict_direct_table_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     If true, restrict direct table access(read api/tabledata.list) on linked table.
     """
-    restrict_query_result: NotRequired[pulumi.Input[_builtins.bool]]
+    restrict_query_result: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, restrict export of query result derived from restricted linked dataset table.
     """
@@ -1115,9 +1115,9 @@ class ListingRestrictedExportConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ListingRestrictedExportConfigArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 restrict_direct_table_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 restrict_query_result: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 restrict_direct_table_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 restrict_query_result: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: If true, enable restricted export.
         :param pulumi.Input[_builtins.bool] restrict_direct_table_access: (Output)
@@ -1133,19 +1133,19 @@ class ListingRestrictedExportConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, enable restricted export.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="restrictDirectTableAccess")
-    def restrict_direct_table_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def restrict_direct_table_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         If true, restrict direct table access(read api/tabledata.list) on linked table.
@@ -1153,24 +1153,24 @@ class ListingRestrictedExportConfigArgs:
         return pulumi.get(self, "restrict_direct_table_access")
 
     @restrict_direct_table_access.setter
-    def restrict_direct_table_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def restrict_direct_table_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "restrict_direct_table_access", value)
 
     @_builtins.property
     @pulumi.getter(name="restrictQueryResult")
-    def restrict_query_result(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def restrict_query_result(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, restrict export of query result derived from restricted linked dataset table.
         """
         return pulumi.get(self, "restrict_query_result")
 
     @restrict_query_result.setter
-    def restrict_query_result(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def restrict_query_result(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "restrict_query_result", value)
 
 
 class ListingSubscriptionCommercialInfoArgsDict(TypedDict):
-    cloud_marketplaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgsDict']]]]
+    cloud_marketplaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgs']]]]]
     """
     (Output)
     Cloud Marketplace commercial metadata for this subscription.
@@ -1180,7 +1180,7 @@ class ListingSubscriptionCommercialInfoArgsDict(TypedDict):
 @pulumi.input_type
 class ListingSubscriptionCommercialInfoArgs:
     def __init__(__self__, *,
-                 cloud_marketplaces: Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgs']]]] = None):
+                 cloud_marketplaces: pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgs']]] cloud_marketplaces: (Output)
                Cloud Marketplace commercial metadata for this subscription.
@@ -1191,7 +1191,7 @@ class ListingSubscriptionCommercialInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudMarketplaces")
-    def cloud_marketplaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgs']]]]:
+    def cloud_marketplaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgs']]]]:
         """
         (Output)
         Cloud Marketplace commercial metadata for this subscription.
@@ -1200,12 +1200,12 @@ class ListingSubscriptionCommercialInfoArgs:
         return pulumi.get(self, "cloud_marketplaces")
 
     @cloud_marketplaces.setter
-    def cloud_marketplaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgs']]]]):
+    def cloud_marketplaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgs']]]]):
         pulumi.set(self, "cloud_marketplaces", value)
 
 
 class ListingSubscriptionCommercialInfoCloudMarketplaceArgsDict(TypedDict):
-    order: NotRequired[pulumi.Input[_builtins.str]]
+    order: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Resource name of the Marketplace Order.
@@ -1214,7 +1214,7 @@ class ListingSubscriptionCommercialInfoCloudMarketplaceArgsDict(TypedDict):
 @pulumi.input_type
 class ListingSubscriptionCommercialInfoCloudMarketplaceArgs:
     def __init__(__self__, *,
-                 order: Optional[pulumi.Input[_builtins.str]] = None):
+                 order: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] order: (Output)
                Resource name of the Marketplace Order.
@@ -1224,7 +1224,7 @@ class ListingSubscriptionCommercialInfoCloudMarketplaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Resource name of the Marketplace Order.
@@ -1232,7 +1232,7 @@ class ListingSubscriptionCommercialInfoCloudMarketplaceArgs:
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order", value)
 
 
@@ -1247,20 +1247,20 @@ class ListingSubscriptionDestinationDatasetArgsDict(TypedDict):
     The geographic location where the dataset should reside.
     See https://cloud.google.com/bigquery/docs/locations for supported locations.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A user-friendly description of the dataset.
     """
-    friendly_name: NotRequired[pulumi.Input[_builtins.str]]
+    friendly_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A descriptive name for the dataset.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The labels associated with this dataset. You can use these to
     organize and group your datasets.
     """
-    replica_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    replica_locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of regions where the subscriber wants dataset replicas.
     """
@@ -1270,10 +1270,10 @@ class ListingSubscriptionDestinationDatasetArgs:
     def __init__(__self__, *,
                  dataset_reference: pulumi.Input['ListingSubscriptionDestinationDatasetDatasetReferenceArgs'],
                  location: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 replica_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 replica_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['ListingSubscriptionDestinationDatasetDatasetReferenceArgs'] dataset_reference: A reference that identifies the destination dataset.
                Structure is documented below.
@@ -1324,31 +1324,31 @@ class ListingSubscriptionDestinationDatasetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-friendly description of the dataset.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="friendlyName")
-    def friendly_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def friendly_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A descriptive name for the dataset.
         """
         return pulumi.get(self, "friendly_name")
 
     @friendly_name.setter
-    def friendly_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def friendly_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "friendly_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels associated with this dataset. You can use these to
         organize and group your datasets.
@@ -1356,19 +1356,19 @@ class ListingSubscriptionDestinationDatasetArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaLocations")
-    def replica_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def replica_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of regions where the subscriber wants dataset replicas.
         """
         return pulumi.get(self, "replica_locations")
 
     @replica_locations.setter
-    def replica_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def replica_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "replica_locations", value)
 
 
@@ -1424,12 +1424,12 @@ class ListingSubscriptionLinkedDatasetMapArgsDict(TypedDict):
     """
     (Required) The identifier for this object. Format specified above.
     """
-    linked_dataset: NotRequired[pulumi.Input[_builtins.str]]
+    linked_dataset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
     """
-    listing: NotRequired[pulumi.Input[_builtins.str]]
+    listing: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Listing for which linked resource is created.
@@ -1439,8 +1439,8 @@ class ListingSubscriptionLinkedDatasetMapArgsDict(TypedDict):
 class ListingSubscriptionLinkedDatasetMapArgs:
     def __init__(__self__, *,
                  resource_name: pulumi.Input[_builtins.str],
-                 linked_dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 listing: Optional[pulumi.Input[_builtins.str]] = None):
+                 linked_dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 listing: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_name: (Required) The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] linked_dataset: (Output)
@@ -1468,7 +1468,7 @@ class ListingSubscriptionLinkedDatasetMapArgs:
 
     @_builtins.property
     @pulumi.getter(name="linkedDataset")
-    def linked_dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def linked_dataset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
@@ -1476,12 +1476,12 @@ class ListingSubscriptionLinkedDatasetMapArgs:
         return pulumi.get(self, "linked_dataset")
 
     @linked_dataset.setter
-    def linked_dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def linked_dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "linked_dataset", value)
 
     @_builtins.property
     @pulumi.getter
-    def listing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Listing for which linked resource is created.
@@ -1489,17 +1489,17 @@ class ListingSubscriptionLinkedDatasetMapArgs:
         return pulumi.get(self, "listing")
 
     @listing.setter
-    def listing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listing", value)
 
 
 class ListingSubscriptionLinkedResourceArgsDict(TypedDict):
-    linked_dataset: NotRequired[pulumi.Input[_builtins.str]]
+    linked_dataset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
     """
-    listing: NotRequired[pulumi.Input[_builtins.str]]
+    listing: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Listing for which linked resource is created.
@@ -1508,8 +1508,8 @@ class ListingSubscriptionLinkedResourceArgsDict(TypedDict):
 @pulumi.input_type
 class ListingSubscriptionLinkedResourceArgs:
     def __init__(__self__, *,
-                 linked_dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 listing: Optional[pulumi.Input[_builtins.str]] = None):
+                 linked_dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 listing: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] linked_dataset: (Output)
                Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
@@ -1523,7 +1523,7 @@ class ListingSubscriptionLinkedResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="linkedDataset")
-    def linked_dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def linked_dataset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
@@ -1531,12 +1531,12 @@ class ListingSubscriptionLinkedResourceArgs:
         return pulumi.get(self, "linked_dataset")
 
     @linked_dataset.setter
-    def linked_dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def linked_dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "linked_dataset", value)
 
     @_builtins.property
     @pulumi.getter
-    def listing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Listing for which linked resource is created.
@@ -1544,7 +1544,7 @@ class ListingSubscriptionLinkedResourceArgs:
         return pulumi.get(self, "listing")
 
     @listing.setter
-    def listing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listing", value)
 
 

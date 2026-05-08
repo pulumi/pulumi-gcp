@@ -167,28 +167,28 @@ export interface LiteSubscriptionState {
      * The settings for this subscription's message delivery.
      * Structure is documented below.
      */
-    deliveryConfig?: pulumi.Input<inputs.pubsub.LiteSubscriptionDeliveryConfig>;
+    deliveryConfig?: pulumi.Input<inputs.pubsub.LiteSubscriptionDeliveryConfig | undefined>;
     /**
      * Name of the subscription.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the pubsub lite topic.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A reference to a Topic resource.
      */
-    topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string | undefined>;
     /**
      * The zone of the pubsub lite topic.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -199,20 +199,20 @@ export interface LiteSubscriptionArgs {
      * The settings for this subscription's message delivery.
      * Structure is documented below.
      */
-    deliveryConfig?: pulumi.Input<inputs.pubsub.LiteSubscriptionDeliveryConfig>;
+    deliveryConfig?: pulumi.Input<inputs.pubsub.LiteSubscriptionDeliveryConfig | undefined>;
     /**
      * Name of the subscription.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the pubsub lite topic.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A reference to a Topic resource.
      */
@@ -220,5 +220,5 @@ export interface LiteSubscriptionArgs {
     /**
      * The zone of the pubsub lite topic.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

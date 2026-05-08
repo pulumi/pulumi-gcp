@@ -219,65 +219,65 @@ export interface FirewallEndpointState {
      * endpoint. A network will only appear in this list after traffic routing is
      * fully configured. Format: projects/{project}/global/networks/{name}.
      */
-    associatedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    associatedNetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Project to bill on endpoint uptime usage.
      */
-    billingProjectId?: pulumi.Input<string>;
+    billingProjectId?: pulumi.Input<string | undefined>;
     /**
      * Time the firewall endpoint was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Settings for the endpoint.
      * Structure is documented below.
      */
-    endpointSettings?: pulumi.Input<inputs.networksecurity.FirewallEndpointEndpointSettings>;
+    endpointSettings?: pulumi.Input<inputs.networksecurity.FirewallEndpointEndpointSettings | undefined>;
     /**
      * A map of key/value label pairs to assign to the resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location (zone) of the firewall endpoint.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the firewall endpoint resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether reconciling is in progress, recommended per https://google.aip.dev/128.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * Server-defined URL of this resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The current state of the endpoint.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Time the firewall endpoint was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -292,14 +292,14 @@ export interface FirewallEndpointArgs {
      * Settings for the endpoint.
      * Structure is documented below.
      */
-    endpointSettings?: pulumi.Input<inputs.networksecurity.FirewallEndpointEndpointSettings>;
+    endpointSettings?: pulumi.Input<inputs.networksecurity.FirewallEndpointEndpointSettings | undefined>;
     /**
      * A map of key/value label pairs to assign to the resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location (zone) of the firewall endpoint.
      */
@@ -307,7 +307,7 @@ export interface FirewallEndpointArgs {
     /**
      * The name of the firewall endpoint resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.

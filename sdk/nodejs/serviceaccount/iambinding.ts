@@ -252,11 +252,11 @@ export interface IAMBindingState {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.serviceaccount.IAMBindingCondition>;
+    condition?: pulumi.Input<inputs.serviceaccount.IAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the service account IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -267,17 +267,17 @@ export interface IAMBindingState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The fully-qualified name of the service account to apply policy to.
      */
-    serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -288,7 +288,7 @@ export interface IAMBindingArgs {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.serviceaccount.IAMBindingCondition>;
+    condition?: pulumi.Input<inputs.serviceaccount.IAMBindingCondition | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:

@@ -214,23 +214,23 @@ export interface RegionHealthSourceState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you
      * create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object.
      * This field is used in optimistic locking.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * URL to the `HealthAggregationPolicy` resource. Must be set. Must
      * be regional and in the same region as the `HealthSource`. Can be
      * mutated.
      */
-    healthAggregationPolicy?: pulumi.Input<string>;
+    healthAggregationPolicy?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created.
      * The name must be 1-63 characters long, and comply with RFC1035.
@@ -240,27 +240,27 @@ export interface RegionHealthSourceState {
      * be a dash, lowercase letter, or digit, except the last character, which
      * cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * URL of the region where the health source resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Server-defined URL with id for the resource.
      */
-    selfLinkWithId?: pulumi.Input<string>;
+    selfLinkWithId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the type of the `HealthSource`. The only allowed value
      * is `BACKEND_SERVICE`. Must be specified when the
      * `HealthSource` is created, and cannot be mutated.
      * Possible values are: `BACKEND_SERVICE`.
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * URLs to the source resources. Must be size 1. Must be a
      * `BackendService` if the `sourceType` is `BACKEND_SERVICE`. The
@@ -273,7 +273,7 @@ export interface RegionHealthSourceState {
      * `BackendService` may not use `haPolicy`. Can be
      * mutated.
      */
-    sources?: pulumi.Input<string>;
+    sources?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -284,13 +284,13 @@ export interface RegionHealthSourceArgs {
      * An optional description of this resource. Provide this property when you
      * create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * URL to the `HealthAggregationPolicy` resource. Must be set. Must
      * be regional and in the same region as the `HealthSource`. Can be
      * mutated.
      */
-    healthAggregationPolicy?: pulumi.Input<string>;
+    healthAggregationPolicy?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created.
      * The name must be 1-63 characters long, and comply with RFC1035.
@@ -300,12 +300,12 @@ export interface RegionHealthSourceArgs {
      * be a dash, lowercase letter, or digit, except the last character, which
      * cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * URL of the region where the health source resides.
      */
@@ -329,5 +329,5 @@ export interface RegionHealthSourceArgs {
      * `BackendService` may not use `haPolicy`. Can be
      * mutated.
      */
-    sources?: pulumi.Input<string>;
+    sources?: pulumi.Input<string | undefined>;
 }

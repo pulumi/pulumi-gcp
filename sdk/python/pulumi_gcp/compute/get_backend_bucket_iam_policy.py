@@ -127,8 +127,8 @@ def get_backend_bucket_iam_policy(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-def get_backend_bucket_iam_policy_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                         project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_backend_bucket_iam_policy_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                         project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackendBucketIamPolicyResult]:
     """
     Retrieves the current IAM policy data for backendbucket

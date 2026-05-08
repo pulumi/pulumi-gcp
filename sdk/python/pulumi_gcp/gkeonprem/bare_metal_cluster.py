@@ -28,19 +28,19 @@ class BareMetalClusterArgs:
                  location: pulumi.Input[_builtins.str],
                  network_config: pulumi.Input['BareMetalClusterNetworkConfigArgs'],
                  storage: pulumi.Input['BareMetalClusterStorageArgs'],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['BareMetalClusterBinaryAuthorizationArgs']] = None,
-                 cluster_operations: Optional[pulumi.Input['BareMetalClusterClusterOperationsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_config: Optional[pulumi.Input['BareMetalClusterMaintenanceConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_access_config: Optional[pulumi.Input['BareMetalClusterNodeAccessConfigArgs']] = None,
-                 node_config: Optional[pulumi.Input['BareMetalClusterNodeConfigArgs']] = None,
-                 os_environment_config: Optional[pulumi.Input['BareMetalClusterOsEnvironmentConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input['BareMetalClusterProxyArgs']] = None,
-                 security_config: Optional[pulumi.Input['BareMetalClusterSecurityConfigArgs']] = None,
-                 upgrade_policy: Optional[pulumi.Input['BareMetalClusterUpgradePolicyArgs']] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional['BareMetalClusterBinaryAuthorizationArgs']] = None,
+                 cluster_operations: pulumi.Input[Optional['BareMetalClusterClusterOperationsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_config: pulumi.Input[Optional['BareMetalClusterMaintenanceConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_access_config: pulumi.Input[Optional['BareMetalClusterNodeAccessConfigArgs']] = None,
+                 node_config: pulumi.Input[Optional['BareMetalClusterNodeConfigArgs']] = None,
+                 os_environment_config: pulumi.Input[Optional['BareMetalClusterOsEnvironmentConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional['BareMetalClusterProxyArgs']] = None,
+                 security_config: pulumi.Input[Optional['BareMetalClusterSecurityConfigArgs']] = None,
+                 upgrade_policy: pulumi.Input[Optional['BareMetalClusterUpgradePolicyArgs']] = None):
         """
         The set of arguments for constructing a BareMetalCluster resource.
 
@@ -215,7 +215,7 @@ class BareMetalClusterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations on the Bare Metal User Cluster.
         This field has the same restrictions as Kubernetes annotations.
@@ -232,12 +232,12 @@ class BareMetalClusterArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['BareMetalClusterBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> pulumi.Input[Optional['BareMetalClusterBinaryAuthorizationArgs']]:
         """
         Binary Authorization related configurations.
         Structure is documented below.
@@ -245,12 +245,12 @@ class BareMetalClusterArgs:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['BareMetalClusterBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: pulumi.Input[Optional['BareMetalClusterBinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterOperations")
-    def cluster_operations(self) -> Optional[pulumi.Input['BareMetalClusterClusterOperationsArgs']]:
+    def cluster_operations(self) -> pulumi.Input[Optional['BareMetalClusterClusterOperationsArgs']]:
         """
         Specifies the User Cluster's observability infrastructure.
         Structure is documented below.
@@ -258,24 +258,24 @@ class BareMetalClusterArgs:
         return pulumi.get(self, "cluster_operations")
 
     @cluster_operations.setter
-    def cluster_operations(self, value: Optional[pulumi.Input['BareMetalClusterClusterOperationsArgs']]):
+    def cluster_operations(self, value: pulumi.Input[Optional['BareMetalClusterClusterOperationsArgs']]):
         pulumi.set(self, "cluster_operations", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human readable description of this Bare Metal User Cluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceConfig")
-    def maintenance_config(self) -> Optional[pulumi.Input['BareMetalClusterMaintenanceConfigArgs']]:
+    def maintenance_config(self) -> pulumi.Input[Optional['BareMetalClusterMaintenanceConfigArgs']]:
         """
         Specifies the workload node configurations.
         Structure is documented below.
@@ -283,24 +283,24 @@ class BareMetalClusterArgs:
         return pulumi.get(self, "maintenance_config")
 
     @maintenance_config.setter
-    def maintenance_config(self, value: Optional[pulumi.Input['BareMetalClusterMaintenanceConfigArgs']]):
+    def maintenance_config(self, value: pulumi.Input[Optional['BareMetalClusterMaintenanceConfigArgs']]):
         pulumi.set(self, "maintenance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bare metal cluster name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeAccessConfig")
-    def node_access_config(self) -> Optional[pulumi.Input['BareMetalClusterNodeAccessConfigArgs']]:
+    def node_access_config(self) -> pulumi.Input[Optional['BareMetalClusterNodeAccessConfigArgs']]:
         """
         Specifies the node access related settings for the bare metal user cluster.
         Structure is documented below.
@@ -308,12 +308,12 @@ class BareMetalClusterArgs:
         return pulumi.get(self, "node_access_config")
 
     @node_access_config.setter
-    def node_access_config(self, value: Optional[pulumi.Input['BareMetalClusterNodeAccessConfigArgs']]):
+    def node_access_config(self, value: pulumi.Input[Optional['BareMetalClusterNodeAccessConfigArgs']]):
         pulumi.set(self, "node_access_config", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['BareMetalClusterNodeConfigArgs']]:
+    def node_config(self) -> pulumi.Input[Optional['BareMetalClusterNodeConfigArgs']]:
         """
         Specifies the workload node configurations.
         Structure is documented below.
@@ -321,12 +321,12 @@ class BareMetalClusterArgs:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['BareMetalClusterNodeConfigArgs']]):
+    def node_config(self, value: pulumi.Input[Optional['BareMetalClusterNodeConfigArgs']]):
         pulumi.set(self, "node_config", value)
 
     @_builtins.property
     @pulumi.getter(name="osEnvironmentConfig")
-    def os_environment_config(self) -> Optional[pulumi.Input['BareMetalClusterOsEnvironmentConfigArgs']]:
+    def os_environment_config(self) -> pulumi.Input[Optional['BareMetalClusterOsEnvironmentConfigArgs']]:
         """
         OS environment related configurations.
         Structure is documented below.
@@ -334,12 +334,12 @@ class BareMetalClusterArgs:
         return pulumi.get(self, "os_environment_config")
 
     @os_environment_config.setter
-    def os_environment_config(self, value: Optional[pulumi.Input['BareMetalClusterOsEnvironmentConfigArgs']]):
+    def os_environment_config(self, value: pulumi.Input[Optional['BareMetalClusterOsEnvironmentConfigArgs']]):
         pulumi.set(self, "os_environment_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -347,12 +347,12 @@ class BareMetalClusterArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxy(self) -> Optional[pulumi.Input['BareMetalClusterProxyArgs']]:
+    def proxy(self) -> pulumi.Input[Optional['BareMetalClusterProxyArgs']]:
         """
         Specifies the cluster proxy configuration.
         Structure is documented below.
@@ -360,12 +360,12 @@ class BareMetalClusterArgs:
         return pulumi.get(self, "proxy")
 
     @proxy.setter
-    def proxy(self, value: Optional[pulumi.Input['BareMetalClusterProxyArgs']]):
+    def proxy(self, value: pulumi.Input[Optional['BareMetalClusterProxyArgs']]):
         pulumi.set(self, "proxy", value)
 
     @_builtins.property
     @pulumi.getter(name="securityConfig")
-    def security_config(self) -> Optional[pulumi.Input['BareMetalClusterSecurityConfigArgs']]:
+    def security_config(self) -> pulumi.Input[Optional['BareMetalClusterSecurityConfigArgs']]:
         """
         Specifies the security related settings for the Bare Metal User Cluster.
         Structure is documented below.
@@ -373,12 +373,12 @@ class BareMetalClusterArgs:
         return pulumi.get(self, "security_config")
 
     @security_config.setter
-    def security_config(self, value: Optional[pulumi.Input['BareMetalClusterSecurityConfigArgs']]):
+    def security_config(self, value: pulumi.Input[Optional['BareMetalClusterSecurityConfigArgs']]):
         pulumi.set(self, "security_config", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradePolicy")
-    def upgrade_policy(self) -> Optional[pulumi.Input['BareMetalClusterUpgradePolicyArgs']]:
+    def upgrade_policy(self) -> pulumi.Input[Optional['BareMetalClusterUpgradePolicyArgs']]:
         """
         The cluster upgrade policy.
         Structure is documented below.
@@ -386,46 +386,46 @@ class BareMetalClusterArgs:
         return pulumi.get(self, "upgrade_policy")
 
     @upgrade_policy.setter
-    def upgrade_policy(self, value: Optional[pulumi.Input['BareMetalClusterUpgradePolicyArgs']]):
+    def upgrade_policy(self, value: pulumi.Input[Optional['BareMetalClusterUpgradePolicyArgs']]):
         pulumi.set(self, "upgrade_policy", value)
 
 
 @pulumi.input_type
 class _BareMetalClusterState:
     def __init__(__self__, *,
-                 admin_cluster_membership: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 bare_metal_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 binary_authorization: Optional[pulumi.Input['BareMetalClusterBinaryAuthorizationArgs']] = None,
-                 cluster_operations: Optional[pulumi.Input['BareMetalClusterClusterOperationsArgs']] = None,
-                 control_plane: Optional[pulumi.Input['BareMetalClusterControlPlaneArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 fleets: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterFleetArgs']]]] = None,
-                 load_balancer: Optional[pulumi.Input['BareMetalClusterLoadBalancerArgs']] = None,
-                 local_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_config: Optional[pulumi.Input['BareMetalClusterMaintenanceConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input['BareMetalClusterNetworkConfigArgs']] = None,
-                 node_access_config: Optional[pulumi.Input['BareMetalClusterNodeAccessConfigArgs']] = None,
-                 node_config: Optional[pulumi.Input['BareMetalClusterNodeConfigArgs']] = None,
-                 os_environment_config: Optional[pulumi.Input['BareMetalClusterOsEnvironmentConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input['BareMetalClusterProxyArgs']] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_config: Optional[pulumi.Input['BareMetalClusterSecurityConfigArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusArgs']]]] = None,
-                 storage: Optional[pulumi.Input['BareMetalClusterStorageArgs']] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_policy: Optional[pulumi.Input['BareMetalClusterUpgradePolicyArgs']] = None,
-                 validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckArgs']]]] = None):
+                 admin_cluster_membership: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 bare_metal_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 binary_authorization: pulumi.Input[Optional['BareMetalClusterBinaryAuthorizationArgs']] = None,
+                 cluster_operations: pulumi.Input[Optional['BareMetalClusterClusterOperationsArgs']] = None,
+                 control_plane: pulumi.Input[Optional['BareMetalClusterControlPlaneArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 fleets: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterFleetArgs']]]] = None,
+                 load_balancer: pulumi.Input[Optional['BareMetalClusterLoadBalancerArgs']] = None,
+                 local_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_config: pulumi.Input[Optional['BareMetalClusterMaintenanceConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional['BareMetalClusterNetworkConfigArgs']] = None,
+                 node_access_config: pulumi.Input[Optional['BareMetalClusterNodeAccessConfigArgs']] = None,
+                 node_config: pulumi.Input[Optional['BareMetalClusterNodeConfigArgs']] = None,
+                 os_environment_config: pulumi.Input[Optional['BareMetalClusterOsEnvironmentConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional['BareMetalClusterProxyArgs']] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_config: pulumi.Input[Optional['BareMetalClusterSecurityConfigArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterStatusArgs']]]] = None,
+                 storage: pulumi.Input[Optional['BareMetalClusterStorageArgs']] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_policy: pulumi.Input[Optional['BareMetalClusterUpgradePolicyArgs']] = None,
+                 validation_checks: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckArgs']]]] = None):
         """
         Input properties used for looking up and filtering BareMetalCluster resources.
 
@@ -580,7 +580,7 @@ class _BareMetalClusterState:
 
     @_builtins.property
     @pulumi.getter(name="adminClusterMembership")
-    def admin_cluster_membership(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admin_cluster_membership(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Admin Cluster this Bare Metal User Cluster belongs to.
         This is the full resource name of the Admin Cluster's hub membership.
@@ -588,12 +588,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "admin_cluster_membership")
 
     @admin_cluster_membership.setter
-    def admin_cluster_membership(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admin_cluster_membership(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admin_cluster_membership", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations on the Bare Metal User Cluster.
         This field has the same restrictions as Kubernetes annotations.
@@ -610,24 +610,24 @@ class _BareMetalClusterState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="bareMetalVersion")
-    def bare_metal_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bare_metal_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human readable description of this Bare Metal User Cluster.
         """
         return pulumi.get(self, "bare_metal_version")
 
     @bare_metal_version.setter
-    def bare_metal_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bare_metal_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bare_metal_version", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['BareMetalClusterBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> pulumi.Input[Optional['BareMetalClusterBinaryAuthorizationArgs']]:
         """
         Binary Authorization related configurations.
         Structure is documented below.
@@ -635,12 +635,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['BareMetalClusterBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: pulumi.Input[Optional['BareMetalClusterBinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterOperations")
-    def cluster_operations(self) -> Optional[pulumi.Input['BareMetalClusterClusterOperationsArgs']]:
+    def cluster_operations(self) -> pulumi.Input[Optional['BareMetalClusterClusterOperationsArgs']]:
         """
         Specifies the User Cluster's observability infrastructure.
         Structure is documented below.
@@ -648,12 +648,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "cluster_operations")
 
     @cluster_operations.setter
-    def cluster_operations(self, value: Optional[pulumi.Input['BareMetalClusterClusterOperationsArgs']]):
+    def cluster_operations(self, value: pulumi.Input[Optional['BareMetalClusterClusterOperationsArgs']]):
         pulumi.set(self, "cluster_operations", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlane")
-    def control_plane(self) -> Optional[pulumi.Input['BareMetalClusterControlPlaneArgs']]:
+    def control_plane(self) -> pulumi.Input[Optional['BareMetalClusterControlPlaneArgs']]:
         """
         Specifies the control plane configuration.
         Structure is documented below.
@@ -661,72 +661,72 @@ class _BareMetalClusterState:
         return pulumi.get(self, "control_plane")
 
     @control_plane.setter
-    def control_plane(self, value: Optional[pulumi.Input['BareMetalClusterControlPlaneArgs']]):
+    def control_plane(self, value: pulumi.Input[Optional['BareMetalClusterControlPlaneArgs']]):
         pulumi.set(self, "control_plane", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the cluster was created, in RFC3339 text format.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the cluster was deleted, in RFC3339 text format.
         """
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human readable description of this Bare Metal User Cluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address name of Bare Metal User Cluster's API server.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This checksum is computed by the server based on the value of other
         fields, and may be sent on update and delete requests to ensure the
@@ -737,12 +737,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def fleets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterFleetArgs']]]]:
+    def fleets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterFleetArgs']]]]:
         """
         Fleet related configuration.
         Fleets are a Google Cloud concept for logically organizing clusters,
@@ -755,12 +755,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "fleets")
 
     @fleets.setter
-    def fleets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterFleetArgs']]]]):
+    def fleets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterFleetArgs']]]]):
         pulumi.set(self, "fleets", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancer")
-    def load_balancer(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerArgs']]:
+    def load_balancer(self) -> pulumi.Input[Optional['BareMetalClusterLoadBalancerArgs']]:
         """
         Specifies the load balancer configuration.
         Structure is documented below.
@@ -768,12 +768,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "load_balancer")
 
     @load_balancer.setter
-    def load_balancer(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerArgs']]):
+    def load_balancer(self, value: pulumi.Input[Optional['BareMetalClusterLoadBalancerArgs']]):
         pulumi.set(self, "load_balancer", value)
 
     @_builtins.property
     @pulumi.getter(name="localName")
-    def local_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object name of the Bare Metal Cluster custom resource on the
         associated admin cluster. This field is used to support conflicting
@@ -789,24 +789,24 @@ class _BareMetalClusterState:
         return pulumi.get(self, "local_name")
 
     @local_name.setter
-    def local_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceConfig")
-    def maintenance_config(self) -> Optional[pulumi.Input['BareMetalClusterMaintenanceConfigArgs']]:
+    def maintenance_config(self) -> pulumi.Input[Optional['BareMetalClusterMaintenanceConfigArgs']]:
         """
         Specifies the workload node configurations.
         Structure is documented below.
@@ -814,24 +814,24 @@ class _BareMetalClusterState:
         return pulumi.get(self, "maintenance_config")
 
     @maintenance_config.setter
-    def maintenance_config(self, value: Optional[pulumi.Input['BareMetalClusterMaintenanceConfigArgs']]):
+    def maintenance_config(self, value: pulumi.Input[Optional['BareMetalClusterMaintenanceConfigArgs']]):
         pulumi.set(self, "maintenance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bare metal cluster name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['BareMetalClusterNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['BareMetalClusterNetworkConfigArgs']]:
         """
         Network configuration.
         Structure is documented below.
@@ -839,12 +839,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['BareMetalClusterNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['BareMetalClusterNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeAccessConfig")
-    def node_access_config(self) -> Optional[pulumi.Input['BareMetalClusterNodeAccessConfigArgs']]:
+    def node_access_config(self) -> pulumi.Input[Optional['BareMetalClusterNodeAccessConfigArgs']]:
         """
         Specifies the node access related settings for the bare metal user cluster.
         Structure is documented below.
@@ -852,12 +852,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "node_access_config")
 
     @node_access_config.setter
-    def node_access_config(self, value: Optional[pulumi.Input['BareMetalClusterNodeAccessConfigArgs']]):
+    def node_access_config(self, value: pulumi.Input[Optional['BareMetalClusterNodeAccessConfigArgs']]):
         pulumi.set(self, "node_access_config", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['BareMetalClusterNodeConfigArgs']]:
+    def node_config(self) -> pulumi.Input[Optional['BareMetalClusterNodeConfigArgs']]:
         """
         Specifies the workload node configurations.
         Structure is documented below.
@@ -865,12 +865,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['BareMetalClusterNodeConfigArgs']]):
+    def node_config(self, value: pulumi.Input[Optional['BareMetalClusterNodeConfigArgs']]):
         pulumi.set(self, "node_config", value)
 
     @_builtins.property
     @pulumi.getter(name="osEnvironmentConfig")
-    def os_environment_config(self) -> Optional[pulumi.Input['BareMetalClusterOsEnvironmentConfigArgs']]:
+    def os_environment_config(self) -> pulumi.Input[Optional['BareMetalClusterOsEnvironmentConfigArgs']]:
         """
         OS environment related configurations.
         Structure is documented below.
@@ -878,12 +878,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "os_environment_config")
 
     @os_environment_config.setter
-    def os_environment_config(self, value: Optional[pulumi.Input['BareMetalClusterOsEnvironmentConfigArgs']]):
+    def os_environment_config(self, value: pulumi.Input[Optional['BareMetalClusterOsEnvironmentConfigArgs']]):
         pulumi.set(self, "os_environment_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -891,12 +891,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxy(self) -> Optional[pulumi.Input['BareMetalClusterProxyArgs']]:
+    def proxy(self) -> pulumi.Input[Optional['BareMetalClusterProxyArgs']]:
         """
         Specifies the cluster proxy configuration.
         Structure is documented below.
@@ -904,24 +904,24 @@ class _BareMetalClusterState:
         return pulumi.get(self, "proxy")
 
     @proxy.setter
-    def proxy(self, value: Optional[pulumi.Input['BareMetalClusterProxyArgs']]):
+    def proxy(self, value: pulumi.Input[Optional['BareMetalClusterProxyArgs']]):
         pulumi.set(self, "proxy", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set, there are currently changes in flight to the Bare Metal User Cluster.
         """
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter(name="securityConfig")
-    def security_config(self) -> Optional[pulumi.Input['BareMetalClusterSecurityConfigArgs']]:
+    def security_config(self) -> pulumi.Input[Optional['BareMetalClusterSecurityConfigArgs']]:
         """
         Specifies the security related settings for the Bare Metal User Cluster.
         Structure is documented below.
@@ -929,12 +929,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "security_config")
 
     @security_config.setter
-    def security_config(self, value: Optional[pulumi.Input['BareMetalClusterSecurityConfigArgs']]):
+    def security_config(self, value: pulumi.Input[Optional['BareMetalClusterSecurityConfigArgs']]):
         pulumi.set(self, "security_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The lifecycle state of the condition.
@@ -942,12 +942,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterStatusArgs']]]]:
         """
         (Output)
         Specifies the detailed validation check status
@@ -956,12 +956,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
     @_builtins.property
     @pulumi.getter
-    def storage(self) -> Optional[pulumi.Input['BareMetalClusterStorageArgs']]:
+    def storage(self) -> pulumi.Input[Optional['BareMetalClusterStorageArgs']]:
         """
         Specifies the cluster storage configuration.
         Structure is documented below.
@@ -969,36 +969,36 @@ class _BareMetalClusterState:
         return pulumi.get(self, "storage")
 
     @storage.setter
-    def storage(self, value: Optional[pulumi.Input['BareMetalClusterStorageArgs']]):
+    def storage(self, value: pulumi.Input[Optional['BareMetalClusterStorageArgs']]):
         pulumi.set(self, "storage", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the Bare Metal User Cluster.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the cluster was last updated, in RFC3339 text format.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradePolicy")
-    def upgrade_policy(self) -> Optional[pulumi.Input['BareMetalClusterUpgradePolicyArgs']]:
+    def upgrade_policy(self) -> pulumi.Input[Optional['BareMetalClusterUpgradePolicyArgs']]:
         """
         The cluster upgrade policy.
         Structure is documented below.
@@ -1006,12 +1006,12 @@ class _BareMetalClusterState:
         return pulumi.get(self, "upgrade_policy")
 
     @upgrade_policy.setter
-    def upgrade_policy(self, value: Optional[pulumi.Input['BareMetalClusterUpgradePolicyArgs']]):
+    def upgrade_policy(self, value: pulumi.Input[Optional['BareMetalClusterUpgradePolicyArgs']]):
         pulumi.set(self, "upgrade_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="validationChecks")
-    def validation_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckArgs']]]]:
+    def validation_checks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckArgs']]]]:
         """
         Specifies the security related settings for the Bare Metal User Cluster.
         Structure is documented below.
@@ -1019,7 +1019,7 @@ class _BareMetalClusterState:
         return pulumi.get(self, "validation_checks")
 
     @validation_checks.setter
-    def validation_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckArgs']]]]):
+    def validation_checks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckArgs']]]]):
         pulumi.set(self, "validation_checks", value)
 
 
@@ -1029,26 +1029,26 @@ class BareMetalCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_cluster_membership: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 bare_metal_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 binary_authorization: Optional[pulumi.Input[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']]] = None,
-                 cluster_operations: Optional[pulumi.Input[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']]] = None,
-                 control_plane: Optional[pulumi.Input[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer: Optional[pulumi.Input[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_config: Optional[pulumi.Input[Union['BareMetalClusterMaintenanceConfigArgs', 'BareMetalClusterMaintenanceConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input[Union['BareMetalClusterNetworkConfigArgs', 'BareMetalClusterNetworkConfigArgsDict']]] = None,
-                 node_access_config: Optional[pulumi.Input[Union['BareMetalClusterNodeAccessConfigArgs', 'BareMetalClusterNodeAccessConfigArgsDict']]] = None,
-                 node_config: Optional[pulumi.Input[Union['BareMetalClusterNodeConfigArgs', 'BareMetalClusterNodeConfigArgsDict']]] = None,
-                 os_environment_config: Optional[pulumi.Input[Union['BareMetalClusterOsEnvironmentConfigArgs', 'BareMetalClusterOsEnvironmentConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input[Union['BareMetalClusterProxyArgs', 'BareMetalClusterProxyArgsDict']]] = None,
-                 security_config: Optional[pulumi.Input[Union['BareMetalClusterSecurityConfigArgs', 'BareMetalClusterSecurityConfigArgsDict']]] = None,
-                 storage: Optional[pulumi.Input[Union['BareMetalClusterStorageArgs', 'BareMetalClusterStorageArgsDict']]] = None,
-                 upgrade_policy: Optional[pulumi.Input[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']]] = None,
+                 admin_cluster_membership: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 bare_metal_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']]] = None,
+                 cluster_operations: pulumi.Input[Optional[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']]] = None,
+                 control_plane: pulumi.Input[Optional[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer: pulumi.Input[Optional[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_config: pulumi.Input[Optional[Union['BareMetalClusterMaintenanceConfigArgs', 'BareMetalClusterMaintenanceConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional[Union['BareMetalClusterNetworkConfigArgs', 'BareMetalClusterNetworkConfigArgsDict']]] = None,
+                 node_access_config: pulumi.Input[Optional[Union['BareMetalClusterNodeAccessConfigArgs', 'BareMetalClusterNodeAccessConfigArgsDict']]] = None,
+                 node_config: pulumi.Input[Optional[Union['BareMetalClusterNodeConfigArgs', 'BareMetalClusterNodeConfigArgsDict']]] = None,
+                 os_environment_config: pulumi.Input[Optional[Union['BareMetalClusterOsEnvironmentConfigArgs', 'BareMetalClusterOsEnvironmentConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional[Union['BareMetalClusterProxyArgs', 'BareMetalClusterProxyArgsDict']]] = None,
+                 security_config: pulumi.Input[Optional[Union['BareMetalClusterSecurityConfigArgs', 'BareMetalClusterSecurityConfigArgsDict']]] = None,
+                 storage: pulumi.Input[Optional[Union['BareMetalClusterStorageArgs', 'BareMetalClusterStorageArgsDict']]] = None,
+                 upgrade_policy: pulumi.Input[Optional[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']]] = None,
                  __props__=None):
         """
         A Google Bare Metal User Cluster.
@@ -1737,26 +1737,26 @@ class BareMetalCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_cluster_membership: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 bare_metal_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 binary_authorization: Optional[pulumi.Input[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']]] = None,
-                 cluster_operations: Optional[pulumi.Input[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']]] = None,
-                 control_plane: Optional[pulumi.Input[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer: Optional[pulumi.Input[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_config: Optional[pulumi.Input[Union['BareMetalClusterMaintenanceConfigArgs', 'BareMetalClusterMaintenanceConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input[Union['BareMetalClusterNetworkConfigArgs', 'BareMetalClusterNetworkConfigArgsDict']]] = None,
-                 node_access_config: Optional[pulumi.Input[Union['BareMetalClusterNodeAccessConfigArgs', 'BareMetalClusterNodeAccessConfigArgsDict']]] = None,
-                 node_config: Optional[pulumi.Input[Union['BareMetalClusterNodeConfigArgs', 'BareMetalClusterNodeConfigArgsDict']]] = None,
-                 os_environment_config: Optional[pulumi.Input[Union['BareMetalClusterOsEnvironmentConfigArgs', 'BareMetalClusterOsEnvironmentConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input[Union['BareMetalClusterProxyArgs', 'BareMetalClusterProxyArgsDict']]] = None,
-                 security_config: Optional[pulumi.Input[Union['BareMetalClusterSecurityConfigArgs', 'BareMetalClusterSecurityConfigArgsDict']]] = None,
-                 storage: Optional[pulumi.Input[Union['BareMetalClusterStorageArgs', 'BareMetalClusterStorageArgsDict']]] = None,
-                 upgrade_policy: Optional[pulumi.Input[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']]] = None,
+                 admin_cluster_membership: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 bare_metal_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']]] = None,
+                 cluster_operations: pulumi.Input[Optional[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']]] = None,
+                 control_plane: pulumi.Input[Optional[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer: pulumi.Input[Optional[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_config: pulumi.Input[Optional[Union['BareMetalClusterMaintenanceConfigArgs', 'BareMetalClusterMaintenanceConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional[Union['BareMetalClusterNetworkConfigArgs', 'BareMetalClusterNetworkConfigArgsDict']]] = None,
+                 node_access_config: pulumi.Input[Optional[Union['BareMetalClusterNodeAccessConfigArgs', 'BareMetalClusterNodeAccessConfigArgsDict']]] = None,
+                 node_config: pulumi.Input[Optional[Union['BareMetalClusterNodeConfigArgs', 'BareMetalClusterNodeConfigArgsDict']]] = None,
+                 os_environment_config: pulumi.Input[Optional[Union['BareMetalClusterOsEnvironmentConfigArgs', 'BareMetalClusterOsEnvironmentConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional[Union['BareMetalClusterProxyArgs', 'BareMetalClusterProxyArgsDict']]] = None,
+                 security_config: pulumi.Input[Optional[Union['BareMetalClusterSecurityConfigArgs', 'BareMetalClusterSecurityConfigArgsDict']]] = None,
+                 storage: pulumi.Input[Optional[Union['BareMetalClusterStorageArgs', 'BareMetalClusterStorageArgsDict']]] = None,
+                 upgrade_policy: pulumi.Input[Optional[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1823,39 +1823,39 @@ class BareMetalCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_cluster_membership: Optional[pulumi.Input[_builtins.str]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            bare_metal_version: Optional[pulumi.Input[_builtins.str]] = None,
-            binary_authorization: Optional[pulumi.Input[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']]] = None,
-            cluster_operations: Optional[pulumi.Input[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']]] = None,
-            control_plane: Optional[pulumi.Input[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            fleets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BareMetalClusterFleetArgs', 'BareMetalClusterFleetArgsDict']]]]] = None,
-            load_balancer: Optional[pulumi.Input[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']]] = None,
-            local_name: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance_config: Optional[pulumi.Input[Union['BareMetalClusterMaintenanceConfigArgs', 'BareMetalClusterMaintenanceConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_config: Optional[pulumi.Input[Union['BareMetalClusterNetworkConfigArgs', 'BareMetalClusterNetworkConfigArgsDict']]] = None,
-            node_access_config: Optional[pulumi.Input[Union['BareMetalClusterNodeAccessConfigArgs', 'BareMetalClusterNodeAccessConfigArgsDict']]] = None,
-            node_config: Optional[pulumi.Input[Union['BareMetalClusterNodeConfigArgs', 'BareMetalClusterNodeConfigArgsDict']]] = None,
-            os_environment_config: Optional[pulumi.Input[Union['BareMetalClusterOsEnvironmentConfigArgs', 'BareMetalClusterOsEnvironmentConfigArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy: Optional[pulumi.Input[Union['BareMetalClusterProxyArgs', 'BareMetalClusterProxyArgsDict']]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            security_config: Optional[pulumi.Input[Union['BareMetalClusterSecurityConfigArgs', 'BareMetalClusterSecurityConfigArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BareMetalClusterStatusArgs', 'BareMetalClusterStatusArgsDict']]]]] = None,
-            storage: Optional[pulumi.Input[Union['BareMetalClusterStorageArgs', 'BareMetalClusterStorageArgsDict']]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            upgrade_policy: Optional[pulumi.Input[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']]] = None,
-            validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BareMetalClusterValidationCheckArgs', 'BareMetalClusterValidationCheckArgsDict']]]]] = None) -> 'BareMetalCluster':
+            admin_cluster_membership: pulumi.Input[Optional[_builtins.str]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            bare_metal_version: pulumi.Input[Optional[_builtins.str]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']]] = None,
+            cluster_operations: pulumi.Input[Optional[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']]] = None,
+            control_plane: pulumi.Input[Optional[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            fleets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BareMetalClusterFleetArgs', 'BareMetalClusterFleetArgsDict']]]]] = None,
+            load_balancer: pulumi.Input[Optional[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']]] = None,
+            local_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_config: pulumi.Input[Optional[Union['BareMetalClusterMaintenanceConfigArgs', 'BareMetalClusterMaintenanceConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['BareMetalClusterNetworkConfigArgs', 'BareMetalClusterNetworkConfigArgsDict']]] = None,
+            node_access_config: pulumi.Input[Optional[Union['BareMetalClusterNodeAccessConfigArgs', 'BareMetalClusterNodeAccessConfigArgsDict']]] = None,
+            node_config: pulumi.Input[Optional[Union['BareMetalClusterNodeConfigArgs', 'BareMetalClusterNodeConfigArgsDict']]] = None,
+            os_environment_config: pulumi.Input[Optional[Union['BareMetalClusterOsEnvironmentConfigArgs', 'BareMetalClusterOsEnvironmentConfigArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy: pulumi.Input[Optional[Union['BareMetalClusterProxyArgs', 'BareMetalClusterProxyArgsDict']]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            security_config: pulumi.Input[Optional[Union['BareMetalClusterSecurityConfigArgs', 'BareMetalClusterSecurityConfigArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BareMetalClusterStatusArgs', 'BareMetalClusterStatusArgsDict']]]]] = None,
+            storage: pulumi.Input[Optional[Union['BareMetalClusterStorageArgs', 'BareMetalClusterStorageArgsDict']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_policy: pulumi.Input[Optional[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']]] = None,
+            validation_checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BareMetalClusterValidationCheckArgs', 'BareMetalClusterValidationCheckArgsDict']]]]] = None) -> 'BareMetalCluster':
         """
         Get an existing BareMetalCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -171,20 +171,20 @@ export interface AppCheckDebugTokenState {
      * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
      * or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The last segment of the resource name of the debug token.
      */
-    debugTokenId?: pulumi.Input<string>;
+    debugTokenId?: pulumi.Input<string | undefined>;
     /**
      * A human readable display name used to identify this debug token.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The secret token itself. Must be provided during creation, and must be a UUID4,
      * case insensitive. You may use a method of your choice such as random/random_uuid
@@ -194,7 +194,7 @@ export interface AppCheckDebugTokenState {
      * For security reasons, this field will never be populated in any response.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -216,7 +216,7 @@ export interface AppCheckDebugTokenArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The secret token itself. Must be provided during creation, and must be a UUID4,
      * case insensitive. You may use a method of your choice such as random/random_uuid

@@ -194,43 +194,43 @@ export interface ExternalAddressState {
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-provided description for this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The external IP address of a workload VM.
      */
-    externalIp?: pulumi.Input<string>;
+    externalIp?: pulumi.Input<string | undefined>;
     /**
      * The internal IP address of a workload VM.
      */
-    internalIp?: pulumi.Input<string>;
+    internalIp?: pulumi.Input<string | undefined>;
     /**
      * The ID of the external IP Address.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the private cloud to create a new external address in.
      * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * State of the resource.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * System-generated unique identifier for the resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Last updated time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -240,7 +240,7 @@ export interface ExternalAddressArgs {
     /**
      * User-provided description for this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The internal IP address of a workload VM.
      */
@@ -248,7 +248,7 @@ export interface ExternalAddressArgs {
     /**
      * The ID of the external IP Address.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the private cloud to create a new external address in.
      * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.

@@ -198,29 +198,29 @@ export interface WorkloadIdentityPoolNamespaceState {
     /**
      * A description of the namespace. Cannot exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the namespace is disabled. If disabled, credentials may no longer be issued for
      * identities within this namespace, however existing credentials will still be accepted until
      * they expire.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name of the namespace as
      * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/namespaces/{workload_identity_pool_namespace_id}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Defines the owner that is allowed to mutate this resource. If present, this resource can only
      * be mutated by the owner.
      * Structure is documented below.
      */
-    ownerServices?: pulumi.Input<pulumi.Input<inputs.iam.WorkloadIdentityPoolNamespaceOwnerService>[]>;
+    ownerServices?: pulumi.Input<pulumi.Input<inputs.iam.WorkloadIdentityPoolNamespaceOwnerService>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The current state of the namespace.
      * * `ACTIVE`: The namespace is active.
@@ -229,13 +229,13 @@ export interface WorkloadIdentityPoolNamespaceState {
      * UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
      * until it is permanently deleted.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    workloadIdentityPoolId?: pulumi.Input<string>;
+    workloadIdentityPoolId?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the namespace. This value must:
      * * contain at most 63 characters
@@ -245,7 +245,7 @@ export interface WorkloadIdentityPoolNamespaceState {
      *
      * The prefix `gcp-` will be reserved for future uses.
      */
-    workloadIdentityPoolNamespaceId?: pulumi.Input<string>;
+    workloadIdentityPoolNamespaceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -255,18 +255,18 @@ export interface WorkloadIdentityPoolNamespaceArgs {
     /**
      * A description of the namespace. Cannot exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the namespace is disabled. If disabled, credentials may no longer be issued for
      * identities within this namespace, however existing credentials will still be accepted until
      * they expire.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix

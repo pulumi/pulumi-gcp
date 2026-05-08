@@ -98,10 +98,11 @@ def get_zones(project: Optional[_builtins.str] = None,
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_gcp as gcp
 
     available = gcp.compute.get_zones()
-    foo = []
+    foo: list[Any] = []
     def create_foo(range_body):
         for range in [{"value": i} for i in range(0, range_body)]:
             foo.append(gcp.compute.InstanceGroupManager(f"foo-{range['value']}",
@@ -133,9 +134,9 @@ def get_zones(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         status=pulumi.get(__ret__, 'status'))
-def get_zones_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zones_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     Provides access to available Google Compute zones in a region for a given project.
@@ -143,10 +144,11 @@ def get_zones_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = 
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_gcp as gcp
 
     available = gcp.compute.get_zones()
-    foo = []
+    foo: list[Any] = []
     def create_foo(range_body):
         for range in [{"value": i} for i in range(0, range_body)]:
             foo.append(gcp.compute.InstanceGroupManager(f"foo-{range['value']}",

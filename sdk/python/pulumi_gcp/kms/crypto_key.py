@@ -22,16 +22,16 @@ __all__ = ['CryptoKeyArgs', 'CryptoKey']
 class CryptoKeyArgs:
     def __init__(__self__, *,
                  key_ring: pulumi.Input[_builtins.str],
-                 crypto_key_backend: Optional[pulumi.Input[_builtins.str]] = None,
-                 destroy_scheduled_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_access_justifications_policy: Optional[pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_initial_version_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
+                 crypto_key_backend: pulumi.Input[Optional[_builtins.str]] = None,
+                 destroy_scheduled_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_access_justifications_policy: pulumi.Input[Optional['CryptoKeyKeyAccessJustificationsPolicyArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_initial_version_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 version_template: pulumi.Input[Optional['CryptoKeyVersionTemplateArgs']] = None):
         """
         The set of arguments for constructing a CryptoKey resource.
 
@@ -109,7 +109,7 @@ class CryptoKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="cryptoKeyBackend")
-    def crypto_key_backend(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crypto_key_backend(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
         The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
@@ -117,12 +117,12 @@ class CryptoKeyArgs:
         return pulumi.get(self, "crypto_key_backend")
 
     @crypto_key_backend.setter
-    def crypto_key_backend(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crypto_key_backend(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crypto_key_backend", value)
 
     @_builtins.property
     @pulumi.getter(name="destroyScheduledDuration")
-    def destroy_scheduled_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destroy_scheduled_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
         If not specified at creation time, the default duration is 30 days.
@@ -130,24 +130,24 @@ class CryptoKeyArgs:
         return pulumi.get(self, "destroy_scheduled_duration")
 
     @destroy_scheduled_duration.setter
-    def destroy_scheduled_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destroy_scheduled_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destroy_scheduled_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="importOnly")
-    def import_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this key may contain imported versions only.
         """
         return pulumi.get(self, "import_only")
 
     @import_only.setter
-    def import_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_only", value)
 
     @_builtins.property
     @pulumi.getter(name="keyAccessJustificationsPolicy")
-    def key_access_justifications_policy(self) -> Optional[pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs']]:
+    def key_access_justifications_policy(self) -> pulumi.Input[Optional['CryptoKeyKeyAccessJustificationsPolicyArgs']]:
         """
         (Optional, Beta)
         The policy used for Key Access Justifications Policy Enforcement. If this
@@ -163,12 +163,12 @@ class CryptoKeyArgs:
         return pulumi.get(self, "key_access_justifications_policy")
 
     @key_access_justifications_policy.setter
-    def key_access_justifications_policy(self, value: Optional[pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs']]):
+    def key_access_justifications_policy(self, value: pulumi.Input[Optional['CryptoKeyKeyAccessJustificationsPolicyArgs']]):
         pulumi.set(self, "key_access_justifications_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels with user-defined metadata to apply to this resource.
 
@@ -178,24 +178,24 @@ class CryptoKeyArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for the CryptoKey.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def purpose(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def purpose(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The immutable purpose of this CryptoKey. See the
         [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
@@ -205,12 +205,12 @@ class CryptoKeyArgs:
         return pulumi.get(self, "purpose")
 
     @purpose.setter
-    def purpose(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def purpose(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "purpose", value)
 
     @_builtins.property
     @pulumi.getter(name="rotationPeriod")
-    def rotation_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rotation_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
         The first rotation will take place after the specified period. The rotation period has
@@ -220,12 +220,12 @@ class CryptoKeyArgs:
         return pulumi.get(self, "rotation_period")
 
     @rotation_period.setter
-    def rotation_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rotation_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rotation_period", value)
 
     @_builtins.property
     @pulumi.getter(name="skipInitialVersionCreation")
-    def skip_initial_version_creation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_initial_version_creation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
         You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
@@ -235,12 +235,12 @@ class CryptoKeyArgs:
         return pulumi.get(self, "skip_initial_version_creation")
 
     @skip_initial_version_creation.setter
-    def skip_initial_version_creation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_initial_version_creation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_initial_version_creation", value)
 
     @_builtins.property
     @pulumi.getter(name="versionTemplate")
-    def version_template(self) -> Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']]:
+    def version_template(self) -> pulumi.Input[Optional['CryptoKeyVersionTemplateArgs']]:
         """
         A template describing settings for new crypto key versions.
         Structure is documented below.
@@ -248,27 +248,27 @@ class CryptoKeyArgs:
         return pulumi.get(self, "version_template")
 
     @version_template.setter
-    def version_template(self, value: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']]):
+    def version_template(self, value: pulumi.Input[Optional['CryptoKeyVersionTemplateArgs']]):
         pulumi.set(self, "version_template", value)
 
 
 @pulumi.input_type
 class _CryptoKeyState:
     def __init__(__self__, *,
-                 crypto_key_backend: Optional[pulumi.Input[_builtins.str]] = None,
-                 destroy_scheduled_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 import_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_access_justifications_policy: Optional[pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs']] = None,
-                 key_ring: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primaries: Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyPrimaryArgs']]]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_initial_version_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
+                 crypto_key_backend: pulumi.Input[Optional[_builtins.str]] = None,
+                 destroy_scheduled_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 import_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_access_justifications_policy: pulumi.Input[Optional['CryptoKeyKeyAccessJustificationsPolicyArgs']] = None,
+                 key_ring: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primaries: pulumi.Input[Optional[Sequence[pulumi.Input['CryptoKeyPrimaryArgs']]]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_initial_version_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 version_template: pulumi.Input[Optional['CryptoKeyVersionTemplateArgs']] = None):
         """
         Input properties used for looking up and filtering CryptoKey resources.
 
@@ -346,7 +346,7 @@ class _CryptoKeyState:
 
     @_builtins.property
     @pulumi.getter(name="cryptoKeyBackend")
-    def crypto_key_backend(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crypto_key_backend(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
         The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
@@ -354,12 +354,12 @@ class _CryptoKeyState:
         return pulumi.get(self, "crypto_key_backend")
 
     @crypto_key_backend.setter
-    def crypto_key_backend(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crypto_key_backend(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crypto_key_backend", value)
 
     @_builtins.property
     @pulumi.getter(name="destroyScheduledDuration")
-    def destroy_scheduled_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destroy_scheduled_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
         If not specified at creation time, the default duration is 30 days.
@@ -367,36 +367,36 @@ class _CryptoKeyState:
         return pulumi.get(self, "destroy_scheduled_duration")
 
     @destroy_scheduled_duration.setter
-    def destroy_scheduled_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destroy_scheduled_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destroy_scheduled_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="importOnly")
-    def import_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this key may contain imported versions only.
         """
         return pulumi.get(self, "import_only")
 
     @import_only.setter
-    def import_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_only", value)
 
     @_builtins.property
     @pulumi.getter(name="keyAccessJustificationsPolicy")
-    def key_access_justifications_policy(self) -> Optional[pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs']]:
+    def key_access_justifications_policy(self) -> pulumi.Input[Optional['CryptoKeyKeyAccessJustificationsPolicyArgs']]:
         """
         (Optional, Beta)
         The policy used for Key Access Justifications Policy Enforcement. If this
@@ -412,12 +412,12 @@ class _CryptoKeyState:
         return pulumi.get(self, "key_access_justifications_policy")
 
     @key_access_justifications_policy.setter
-    def key_access_justifications_policy(self, value: Optional[pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs']]):
+    def key_access_justifications_policy(self, value: pulumi.Input[Optional['CryptoKeyKeyAccessJustificationsPolicyArgs']]):
         pulumi.set(self, "key_access_justifications_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="keyRing")
-    def key_ring(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_ring(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The KeyRing that this key belongs to.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -425,12 +425,12 @@ class _CryptoKeyState:
         return pulumi.get(self, "key_ring")
 
     @key_ring.setter
-    def key_ring(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_ring(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_ring", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels with user-defined metadata to apply to this resource.
 
@@ -440,24 +440,24 @@ class _CryptoKeyState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for the CryptoKey.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def primaries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyPrimaryArgs']]]]:
+    def primaries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CryptoKeyPrimaryArgs']]]]:
         """
         A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
         Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
@@ -466,12 +466,12 @@ class _CryptoKeyState:
         return pulumi.get(self, "primaries")
 
     @primaries.setter
-    def primaries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyPrimaryArgs']]]]):
+    def primaries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CryptoKeyPrimaryArgs']]]]):
         pulumi.set(self, "primaries", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -479,12 +479,12 @@ class _CryptoKeyState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def purpose(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def purpose(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The immutable purpose of this CryptoKey. See the
         [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
@@ -494,12 +494,12 @@ class _CryptoKeyState:
         return pulumi.get(self, "purpose")
 
     @purpose.setter
-    def purpose(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def purpose(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "purpose", value)
 
     @_builtins.property
     @pulumi.getter(name="rotationPeriod")
-    def rotation_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rotation_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
         The first rotation will take place after the specified period. The rotation period has
@@ -509,12 +509,12 @@ class _CryptoKeyState:
         return pulumi.get(self, "rotation_period")
 
     @rotation_period.setter
-    def rotation_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rotation_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rotation_period", value)
 
     @_builtins.property
     @pulumi.getter(name="skipInitialVersionCreation")
-    def skip_initial_version_creation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_initial_version_creation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
         You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
@@ -524,12 +524,12 @@ class _CryptoKeyState:
         return pulumi.get(self, "skip_initial_version_creation")
 
     @skip_initial_version_creation.setter
-    def skip_initial_version_creation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_initial_version_creation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_initial_version_creation", value)
 
     @_builtins.property
     @pulumi.getter(name="versionTemplate")
-    def version_template(self) -> Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']]:
+    def version_template(self) -> pulumi.Input[Optional['CryptoKeyVersionTemplateArgs']]:
         """
         A template describing settings for new crypto key versions.
         Structure is documented below.
@@ -537,7 +537,7 @@ class _CryptoKeyState:
         return pulumi.get(self, "version_template")
 
     @version_template.setter
-    def version_template(self, value: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']]):
+    def version_template(self, value: pulumi.Input[Optional['CryptoKeyVersionTemplateArgs']]):
         pulumi.set(self, "version_template", value)
 
 
@@ -547,17 +547,17 @@ class CryptoKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 crypto_key_backend: Optional[pulumi.Input[_builtins.str]] = None,
-                 destroy_scheduled_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_access_justifications_policy: Optional[pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']]] = None,
-                 key_ring: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_initial_version_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 version_template: Optional[pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']]] = None,
+                 crypto_key_backend: pulumi.Input[Optional[_builtins.str]] = None,
+                 destroy_scheduled_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_access_justifications_policy: pulumi.Input[Optional[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']]] = None,
+                 key_ring: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_initial_version_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 version_template: pulumi.Input[Optional[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']]] = None,
                  __props__=None):
         """
         A `CryptoKey` represents a logical key that can be used for cryptographic operations.
@@ -749,17 +749,17 @@ class CryptoKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 crypto_key_backend: Optional[pulumi.Input[_builtins.str]] = None,
-                 destroy_scheduled_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_access_justifications_policy: Optional[pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']]] = None,
-                 key_ring: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_initial_version_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 version_template: Optional[pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']]] = None,
+                 crypto_key_backend: pulumi.Input[Optional[_builtins.str]] = None,
+                 destroy_scheduled_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_access_justifications_policy: pulumi.Input[Optional[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']]] = None,
+                 key_ring: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_initial_version_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 version_template: pulumi.Input[Optional[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -797,20 +797,20 @@ class CryptoKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            crypto_key_backend: Optional[pulumi.Input[_builtins.str]] = None,
-            destroy_scheduled_duration: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            import_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            key_access_justifications_policy: Optional[pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']]] = None,
-            key_ring: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            primaries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CryptoKeyPrimaryArgs', 'CryptoKeyPrimaryArgsDict']]]]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            purpose: Optional[pulumi.Input[_builtins.str]] = None,
-            rotation_period: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_initial_version_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-            version_template: Optional[pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']]] = None) -> 'CryptoKey':
+            crypto_key_backend: pulumi.Input[Optional[_builtins.str]] = None,
+            destroy_scheduled_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            import_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            key_access_justifications_policy: pulumi.Input[Optional[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']]] = None,
+            key_ring: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            primaries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CryptoKeyPrimaryArgs', 'CryptoKeyPrimaryArgsDict']]]]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            purpose: pulumi.Input[Optional[_builtins.str]] = None,
+            rotation_period: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_initial_version_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+            version_template: pulumi.Input[Optional[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']]] = None) -> 'CryptoKey':
         """
         Get an existing CryptoKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

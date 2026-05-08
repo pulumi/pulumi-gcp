@@ -237,16 +237,16 @@ export interface NetworkEndpointGroupState {
      * The default port used if the port number is not specified in the
      * network endpoint.
      */
-    defaultPort?: pulumi.Input<number>;
+    defaultPort?: pulumi.Input<number | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The uniquely generated identifier for the resource. This identifier is defined by the server.
      */
-    generatedId?: pulumi.Input<number>;
+    generatedId?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -256,12 +256,12 @@ export interface NetworkEndpointGroupState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network to which all network endpoints in the NEG belong.
      * Uses "default" project network if unspecified.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * Type of network endpoints in this network endpoint group.
      * NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
@@ -274,28 +274,28 @@ export interface NetworkEndpointGroupState {
      * Default value is `GCE_VM_IP_PORT`.
      * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      */
-    networkEndpointType?: pulumi.Input<string>;
+    networkEndpointType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Number of network endpoints in the network endpoint group.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * Optional subnetwork to which all network endpoints in the NEG belong.
      */
-    subnetwork?: pulumi.Input<string>;
+    subnetwork?: pulumi.Input<string | undefined>;
     /**
      * Zone where the network endpoint group is located.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -306,12 +306,12 @@ export interface NetworkEndpointGroupArgs {
      * The default port used if the port number is not specified in the
      * network endpoint.
      */
-    defaultPort?: pulumi.Input<number>;
+    defaultPort?: pulumi.Input<number | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -321,7 +321,7 @@ export interface NetworkEndpointGroupArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network to which all network endpoints in the NEG belong.
      * Uses "default" project network if unspecified.
@@ -339,18 +339,18 @@ export interface NetworkEndpointGroupArgs {
      * Default value is `GCE_VM_IP_PORT`.
      * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      */
-    networkEndpointType?: pulumi.Input<string>;
+    networkEndpointType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Optional subnetwork to which all network endpoints in the NEG belong.
      */
-    subnetwork?: pulumi.Input<string>;
+    subnetwork?: pulumi.Input<string | undefined>;
     /**
      * Zone where the network endpoint group is located.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

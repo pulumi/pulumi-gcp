@@ -25,8 +25,8 @@ class V2OrganizationNotificationConfigArgs:
                  organization: pulumi.Input[_builtins.str],
                  pubsub_topic: pulumi.Input[_builtins.str],
                  streaming_config: pulumi.Input['V2OrganizationNotificationConfigStreamingConfigArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2OrganizationNotificationConfig resource.
 
@@ -102,40 +102,40 @@ class V2OrganizationNotificationConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the notification config (max of 1024 characters).
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         location Id is provided by organization. If not provided, Use global as default.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
 
 @pulumi.input_type
 class _V2OrganizationNotificationConfigState:
     def __init__(__self__, *,
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 streaming_config: Optional[pulumi.Input['V2OrganizationNotificationConfigStreamingConfigArgs']] = None):
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 streaming_config: pulumi.Input[Optional['V2OrganizationNotificationConfigStreamingConfigArgs']] = None):
         """
         Input properties used for looking up and filtering V2OrganizationNotificationConfig resources.
 
@@ -172,43 +172,43 @@ class _V2OrganizationNotificationConfigState:
 
     @_builtins.property
     @pulumi.getter(name="configId")
-    def config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This must be unique within the organization.
         """
         return pulumi.get(self, "config_id")
 
     @config_id.setter
-    def config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the notification config (max of 1024 characters).
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         location Id is provided by organization. If not provided, Use global as default.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of this notification config, in the format
         `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
@@ -216,12 +216,12 @@ class _V2OrganizationNotificationConfigState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization whose Cloud Security Command Center the Notification
         Config lives in.
@@ -229,12 +229,12 @@ class _V2OrganizationNotificationConfigState:
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubTopic")
-    def pubsub_topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pubsub_topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Pub/Sub topic to send notifications to. Its format is
         "projects/[project_id]/topics/[topic]".
@@ -242,12 +242,12 @@ class _V2OrganizationNotificationConfigState:
         return pulumi.get(self, "pubsub_topic")
 
     @pubsub_topic.setter
-    def pubsub_topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pubsub_topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pubsub_topic", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account that needs "pubsub.topics.publish" permission to
         publish to the Pub/Sub topic.
@@ -255,12 +255,12 @@ class _V2OrganizationNotificationConfigState:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="streamingConfig")
-    def streaming_config(self) -> Optional[pulumi.Input['V2OrganizationNotificationConfigStreamingConfigArgs']]:
+    def streaming_config(self) -> pulumi.Input[Optional['V2OrganizationNotificationConfigStreamingConfigArgs']]:
         """
         The config for triggering streaming-based notifications.
         Structure is documented below.
@@ -268,7 +268,7 @@ class _V2OrganizationNotificationConfigState:
         return pulumi.get(self, "streaming_config")
 
     @streaming_config.setter
-    def streaming_config(self, value: Optional[pulumi.Input['V2OrganizationNotificationConfigStreamingConfigArgs']]):
+    def streaming_config(self, value: pulumi.Input[Optional['V2OrganizationNotificationConfigStreamingConfigArgs']]):
         pulumi.set(self, "streaming_config", value)
 
 
@@ -278,12 +278,12 @@ class V2OrganizationNotificationConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 streaming_config: Optional[pulumi.Input[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict']]] = None,
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 streaming_config: pulumi.Input[Optional[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict']]] = None,
                  __props__=None):
         """
         This is a continuous export that exports findings to a Pub/Sub topic.
@@ -402,12 +402,12 @@ class V2OrganizationNotificationConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 streaming_config: Optional[pulumi.Input[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict']]] = None,
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 streaming_config: pulumi.Input[Optional[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -443,14 +443,14 @@ class V2OrganizationNotificationConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            organization: Optional[pulumi.Input[_builtins.str]] = None,
-            pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            streaming_config: Optional[pulumi.Input[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict']]] = None) -> 'V2OrganizationNotificationConfig':
+            config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            streaming_config: pulumi.Input[Optional[Union['V2OrganizationNotificationConfigStreamingConfigArgs', 'V2OrganizationNotificationConfigStreamingConfigArgsDict']]] = None) -> 'V2OrganizationNotificationConfig':
         """
         Get an existing V2OrganizationNotificationConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

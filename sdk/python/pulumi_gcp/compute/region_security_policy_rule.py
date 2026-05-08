@@ -25,13 +25,13 @@ class RegionSecurityPolicyRuleInitArgs:
                  priority: pulumi.Input[_builtins.int],
                  region: pulumi.Input[_builtins.str],
                  security_policy: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 match: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']] = None,
-                 network_match: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
-                 preconfigured_waf_config: Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
-                 preview: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_limit_options: Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 match: pulumi.Input[Optional['RegionSecurityPolicyRuleMatchArgs']] = None,
+                 network_match: pulumi.Input[Optional['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
+                 preconfigured_waf_config: pulumi.Input[Optional['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
+                 preview: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_limit_options: pulumi.Input[Optional['RegionSecurityPolicyRuleRateLimitOptionsArgs']] = None):
         """
         The set of arguments for constructing a RegionSecurityPolicyRule resource.
 
@@ -144,19 +144,19 @@ class RegionSecurityPolicyRuleInitArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']]:
+    def match(self) -> pulumi.Input[Optional['RegionSecurityPolicyRuleMatchArgs']]:
         """
         A match condition that incoming traffic is evaluated against.
         If it evaluates to true, the corresponding 'action' is enforced.
@@ -165,12 +165,12 @@ class RegionSecurityPolicyRuleInitArgs:
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']]):
+    def match(self, value: pulumi.Input[Optional['RegionSecurityPolicyRuleMatchArgs']]):
         pulumi.set(self, "match", value)
 
     @_builtins.property
     @pulumi.getter(name="networkMatch")
-    def network_match(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']]:
+    def network_match(self) -> pulumi.Input[Optional['RegionSecurityPolicyRuleNetworkMatchArgs']]:
         """
         A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
         The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
@@ -185,12 +185,12 @@ class RegionSecurityPolicyRuleInitArgs:
         return pulumi.get(self, "network_match")
 
     @network_match.setter
-    def network_match(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']]):
+    def network_match(self, value: pulumi.Input[Optional['RegionSecurityPolicyRuleNetworkMatchArgs']]):
         pulumi.set(self, "network_match", value)
 
     @_builtins.property
     @pulumi.getter(name="preconfiguredWafConfig")
-    def preconfigured_waf_config(self) -> Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]:
+    def preconfigured_waf_config(self) -> pulumi.Input[Optional['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]:
         """
         Preconfigured WAF configuration to be applied for the rule.
         If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
@@ -199,24 +199,24 @@ class RegionSecurityPolicyRuleInitArgs:
         return pulumi.get(self, "preconfigured_waf_config")
 
     @preconfigured_waf_config.setter
-    def preconfigured_waf_config(self, value: Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]):
+    def preconfigured_waf_config(self, value: pulumi.Input[Optional['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]):
         pulumi.set(self, "preconfigured_waf_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def preview(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def preview(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the specified action is not enforced.
         """
         return pulumi.get(self, "preview")
 
     @preview.setter
-    def preview(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def preview(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "preview", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -224,12 +224,12 @@ class RegionSecurityPolicyRuleInitArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="rateLimitOptions")
-    def rate_limit_options(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']]:
+    def rate_limit_options(self) -> pulumi.Input[Optional['RegionSecurityPolicyRuleRateLimitOptionsArgs']]:
         """
         Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
         Structure is documented below.
@@ -237,24 +237,24 @@ class RegionSecurityPolicyRuleInitArgs:
         return pulumi.get(self, "rate_limit_options")
 
     @rate_limit_options.setter
-    def rate_limit_options(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']]):
+    def rate_limit_options(self, value: pulumi.Input[Optional['RegionSecurityPolicyRuleRateLimitOptionsArgs']]):
         pulumi.set(self, "rate_limit_options", value)
 
 
 @pulumi.input_type
 class _RegionSecurityPolicyRuleState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 match: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']] = None,
-                 network_match: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
-                 preconfigured_waf_config: Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
-                 preview: Optional[pulumi.Input[_builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_limit_options: Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 match: pulumi.Input[Optional['RegionSecurityPolicyRuleMatchArgs']] = None,
+                 network_match: pulumi.Input[Optional['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
+                 preconfigured_waf_config: pulumi.Input[Optional['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
+                 preview: pulumi.Input[Optional[_builtins.bool]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_limit_options: pulumi.Input[Optional['RegionSecurityPolicyRuleRateLimitOptionsArgs']] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionSecurityPolicyRule resources.
 
@@ -316,7 +316,7 @@ class _RegionSecurityPolicyRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Action to perform when the rule is matched. The following are the valid actions:
         * allow: allow access to target.
@@ -328,24 +328,24 @@ class _RegionSecurityPolicyRuleState:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']]:
+    def match(self) -> pulumi.Input[Optional['RegionSecurityPolicyRuleMatchArgs']]:
         """
         A match condition that incoming traffic is evaluated against.
         If it evaluates to true, the corresponding 'action' is enforced.
@@ -354,12 +354,12 @@ class _RegionSecurityPolicyRuleState:
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']]):
+    def match(self, value: pulumi.Input[Optional['RegionSecurityPolicyRuleMatchArgs']]):
         pulumi.set(self, "match", value)
 
     @_builtins.property
     @pulumi.getter(name="networkMatch")
-    def network_match(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']]:
+    def network_match(self) -> pulumi.Input[Optional['RegionSecurityPolicyRuleNetworkMatchArgs']]:
         """
         A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
         The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
@@ -374,12 +374,12 @@ class _RegionSecurityPolicyRuleState:
         return pulumi.get(self, "network_match")
 
     @network_match.setter
-    def network_match(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']]):
+    def network_match(self, value: pulumi.Input[Optional['RegionSecurityPolicyRuleNetworkMatchArgs']]):
         pulumi.set(self, "network_match", value)
 
     @_builtins.property
     @pulumi.getter(name="preconfiguredWafConfig")
-    def preconfigured_waf_config(self) -> Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]:
+    def preconfigured_waf_config(self) -> pulumi.Input[Optional['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]:
         """
         Preconfigured WAF configuration to be applied for the rule.
         If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
@@ -388,24 +388,24 @@ class _RegionSecurityPolicyRuleState:
         return pulumi.get(self, "preconfigured_waf_config")
 
     @preconfigured_waf_config.setter
-    def preconfigured_waf_config(self, value: Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]):
+    def preconfigured_waf_config(self, value: pulumi.Input[Optional['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]):
         pulumi.set(self, "preconfigured_waf_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def preview(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def preview(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the specified action is not enforced.
         """
         return pulumi.get(self, "preview")
 
     @preview.setter
-    def preview(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def preview(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "preview", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An integer indicating the priority of a rule in the list.
         The priority must be a positive value between 0 and 2147483647.
@@ -414,12 +414,12 @@ class _RegionSecurityPolicyRuleState:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -427,12 +427,12 @@ class _RegionSecurityPolicyRuleState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="rateLimitOptions")
-    def rate_limit_options(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']]:
+    def rate_limit_options(self) -> pulumi.Input[Optional['RegionSecurityPolicyRuleRateLimitOptionsArgs']]:
         """
         Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
         Structure is documented below.
@@ -440,31 +440,31 @@ class _RegionSecurityPolicyRuleState:
         return pulumi.get(self, "rate_limit_options")
 
     @rate_limit_options.setter
-    def rate_limit_options(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']]):
+    def rate_limit_options(self, value: pulumi.Input[Optional['RegionSecurityPolicyRuleRateLimitOptionsArgs']]):
         pulumi.set(self, "rate_limit_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Region in which the created Region Security Policy rule should reside.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicy")
-    def security_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the security policy this rule belongs to.
         """
         return pulumi.get(self, "security_policy")
 
     @security_policy.setter
-    def security_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy", value)
 
 
@@ -474,17 +474,17 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 match: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
-                 network_match: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
-                 preconfigured_waf_config: Optional[pulumi.Input[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
-                 preview: Optional[pulumi.Input[_builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_limit_options: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
+                 network_match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
+                 preconfigured_waf_config: pulumi.Input[Optional[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+                 preview: pulumi.Input[Optional[_builtins.bool]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_limit_options: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A rule for the RegionSecurityPolicy.
@@ -1022,17 +1022,17 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 match: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
-                 network_match: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
-                 preconfigured_waf_config: Optional[pulumi.Input[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
-                 preview: Optional[pulumi.Input[_builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_limit_options: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
+                 network_match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
+                 preconfigured_waf_config: pulumi.Input[Optional[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+                 preview: pulumi.Input[Optional[_builtins.bool]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_limit_options: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1071,17 +1071,17 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            match: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
-            network_match: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
-            preconfigured_waf_config: Optional[pulumi.Input[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
-            preview: Optional[pulumi.Input[_builtins.bool]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            rate_limit_options: Optional[pulumi.Input[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            security_policy: Optional[pulumi.Input[_builtins.str]] = None) -> 'RegionSecurityPolicyRule':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleMatchArgs', 'RegionSecurityPolicyRuleMatchArgsDict']]] = None,
+            network_match: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleNetworkMatchArgs', 'RegionSecurityPolicyRuleNetworkMatchArgsDict']]] = None,
+            preconfigured_waf_config: pulumi.Input[Optional[Union['RegionSecurityPolicyRulePreconfiguredWafConfigArgs', 'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+            preview: pulumi.Input[Optional[_builtins.bool]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rate_limit_options: pulumi.Input[Optional[Union['RegionSecurityPolicyRuleRateLimitOptionsArgs', 'RegionSecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_policy: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegionSecurityPolicyRule':
         """
         Get an existing RegionSecurityPolicyRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -216,44 +216,44 @@ export interface PluginInstanceState {
      * The action status for the plugin instance.
      * Structure is documented below.
      */
-    actions?: pulumi.Input<pulumi.Input<inputs.apihub.PluginInstanceAction>[]>;
+    actions?: pulumi.Input<pulumi.Input<inputs.apihub.PluginInstanceAction>[] | undefined>;
     /**
      * AuthConfig represents the authentication information.
      * Structure is documented below.
      */
-    authConfig?: pulumi.Input<inputs.apihub.PluginInstanceAuthConfig>;
+    authConfig?: pulumi.Input<inputs.apihub.PluginInstanceAuthConfig | undefined>;
     /**
      * Timestamp indicating when the plugin instance was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The display name for this plugin instance. Max length is 255 characters.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * The display name for this plugin instance. Max length is 255 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Error message describing the failure, if any, during Create, Delete or
      * ApplyConfig operation corresponding to the plugin instance.This field will
      * only be populated if the plugin instance is in the ERROR or FAILED state.
      */
-    errorMessage?: pulumi.Input<string>;
+    errorMessage?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The unique name of the plugin instance resource.
      * Format:
      * `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    plugin?: pulumi.Input<string>;
+    plugin?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the plugin instance, which will become the final
      * component of the plugin instance's resource name. This field is optional.
@@ -264,12 +264,12 @@ export interface PluginInstanceState {
      * This value should be 4-63 characters, and valid characters
      * are /a-z[0-9]-_/.
      */
-    pluginInstanceId?: pulumi.Input<string>;
+    pluginInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The current state of the plugin instance (e.g., enabled, disabled,
      * provisioning).
@@ -282,11 +282,11 @@ export interface PluginInstanceState {
      * FAILED
      * DELETING
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Timestamp indicating when the plugin instance was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -297,16 +297,16 @@ export interface PluginInstanceArgs {
      * The action status for the plugin instance.
      * Structure is documented below.
      */
-    actions?: pulumi.Input<pulumi.Input<inputs.apihub.PluginInstanceAction>[]>;
+    actions?: pulumi.Input<pulumi.Input<inputs.apihub.PluginInstanceAction>[] | undefined>;
     /**
      * AuthConfig represents the authentication information.
      * Structure is documented below.
      */
-    authConfig?: pulumi.Input<inputs.apihub.PluginInstanceAuthConfig>;
+    authConfig?: pulumi.Input<inputs.apihub.PluginInstanceAuthConfig | undefined>;
     /**
      * The display name for this plugin instance. Max length is 255 characters.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * The display name for this plugin instance. Max length is 255 characters.
      */
@@ -334,5 +334,5 @@ export interface PluginInstanceArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

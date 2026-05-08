@@ -25,9 +25,9 @@ class SecurityFeedbackArgs:
                  feedback_id: pulumi.Input[_builtins.str],
                  feedback_type: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityFeedback resource.
 
@@ -107,31 +107,31 @@ class SecurityFeedbackArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional text the user can provide for additional, unstructured context.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the feedback.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason for the feedback.
         Possible values are: `INTERNAL_SYSTEM`, `NON_RISK_CLIENT`, `NAT`, `PENETRATION_TEST`, `OTHER`.
@@ -139,23 +139,23 @@ class SecurityFeedbackArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
 
 @pulumi.input_type
 class _SecurityFeedbackState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 feedback_contexts: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityFeedbackFeedbackContextArgs']]]] = None,
-                 feedback_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 feedback_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 feedback_contexts: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityFeedbackFeedbackContextArgs']]]] = None,
+                 feedback_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 feedback_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityFeedback resources.
 
@@ -198,43 +198,43 @@ class _SecurityFeedbackState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional text the user can provide for additional, unstructured context.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when this specific feedback id was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the feedback.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="feedbackContexts")
-    def feedback_contexts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityFeedbackFeedbackContextArgs']]]]:
+    def feedback_contexts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityFeedbackFeedbackContextArgs']]]]:
         """
         One or more attribute/value pairs for constraining the feedback.
         Structure is documented below.
@@ -242,24 +242,24 @@ class _SecurityFeedbackState:
         return pulumi.get(self, "feedback_contexts")
 
     @feedback_contexts.setter
-    def feedback_contexts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityFeedbackFeedbackContextArgs']]]]):
+    def feedback_contexts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityFeedbackFeedbackContextArgs']]]]):
         pulumi.set(self, "feedback_contexts", value)
 
     @_builtins.property
     @pulumi.getter(name="feedbackId")
-    def feedback_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feedback_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID of the security feedback.
         """
         return pulumi.get(self, "feedback_id")
 
     @feedback_id.setter
-    def feedback_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feedback_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feedback_id", value)
 
     @_builtins.property
     @pulumi.getter(name="feedbackType")
-    def feedback_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feedback_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of feedback being submitted.
         Possible values are: `EXCLUDED_DETECTION`.
@@ -267,12 +267,12 @@ class _SecurityFeedbackState:
         return pulumi.get(self, "feedback_type")
 
     @feedback_type.setter
-    def feedback_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feedback_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feedback_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the security feedback resource,
         in the format `organizations/{{org_name}}/securityFeedback/{{feedback_id}}`.
@@ -280,12 +280,12 @@ class _SecurityFeedbackState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Apigee Organization associated with the Apigee Security Feedback,
         in the format `organizations/{{org_name}}`.
@@ -293,12 +293,12 @@ class _SecurityFeedbackState:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason for the feedback.
         Possible values are: `INTERNAL_SYSTEM`, `NON_RISK_CLIENT`, `NAT`, `PENETRATION_TEST`, `OTHER`.
@@ -306,19 +306,19 @@ class _SecurityFeedbackState:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when this specific feedback id was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -328,13 +328,13 @@ class SecurityFeedback(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 feedback_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]]] = None,
-                 feedback_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 feedback_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 feedback_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]]] = None,
+                 feedback_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 feedback_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a feedback report from an Advanced API Security customer.
@@ -531,13 +531,13 @@ class SecurityFeedback(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 feedback_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]]] = None,
-                 feedback_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 feedback_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 feedback_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]]] = None,
+                 feedback_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 feedback_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -575,16 +575,16 @@ class SecurityFeedback(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            feedback_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]]] = None,
-            feedback_id: Optional[pulumi.Input[_builtins.str]] = None,
-            feedback_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            reason: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecurityFeedback':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            feedback_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]]] = None,
+            feedback_id: pulumi.Input[Optional[_builtins.str]] = None,
+            feedback_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reason: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityFeedback':
         """
         Get an existing SecurityFeedback resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

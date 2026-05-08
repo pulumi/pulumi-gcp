@@ -212,79 +212,79 @@ export interface PostureDeploymentState {
     /**
      * Time the posture deployment was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the posture deployment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
      * It denotes the desired posture to be deployed.
      */
-    desiredPostureId?: pulumi.Input<string>;
+    desiredPostureId?: pulumi.Input<string | undefined>;
     /**
      * This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
      * It denotes the desired posture revisionId to be deployed.
      */
-    desiredPostureRevisionId?: pulumi.Input<string>;
+    desiredPostureRevisionId?: pulumi.Input<string | undefined>;
     /**
      * For Resource freshness validation (https://google.aip.dev/154)
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * This is a output only optional field which will be filled in case where
      * PostureDeployment enters a failure state like UPDATE_FAILED or
      * CREATE_FAILED or DELETE_FAILED. It will have the failure message for posture deployment's
      * CREATE/UPDATE/DELETE methods.
      */
-    failureMessage?: pulumi.Input<string>;
+    failureMessage?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource, eg. global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the posture deployment instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * ID of the posture deployment.
      */
-    postureDeploymentId?: pulumi.Input<string>;
+    postureDeploymentId?: pulumi.Input<string | undefined>;
     /**
      * Relative name of the posture which needs to be deployed. It should be in the format:
      * organizations/{organization_id}/locations/{location}/postures/{posture_id}
      */
-    postureId?: pulumi.Input<string>;
+    postureId?: pulumi.Input<string | undefined>;
     /**
      * Revision_id the posture which needs to be deployed.
      */
-    postureRevisionId?: pulumi.Input<string>;
+    postureRevisionId?: pulumi.Input<string | undefined>;
     /**
      * If set, there are currently changes in flight to the posture deployment.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * State of the posture deployment. A posture deployment can be in the following terminal states:
      * ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The resource on which the posture should be deployed. This can be in one of the following formats:
      * projects/{project_number},
      * folders/{folder_number},
      * organizations/{organization_id}
      */
-    targetResource?: pulumi.Input<string>;
+    targetResource?: pulumi.Input<string | undefined>;
     /**
      * Time the posture deployment was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -294,7 +294,7 @@ export interface PostureDeploymentArgs {
     /**
      * Description of the posture deployment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource, eg. global`.
      */

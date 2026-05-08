@@ -191,53 +191,53 @@ export interface CapacityCommitmentState {
      * cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
      * or merged.
      */
-    capacityCommitmentId?: pulumi.Input<string>;
+    capacityCommitmentId?: pulumi.Input<string | undefined>;
     /**
      * The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
      */
-    commitmentEndTime?: pulumi.Input<string>;
+    commitmentEndTime?: pulumi.Input<string | undefined>;
     /**
      * The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
      */
-    commitmentStartTime?: pulumi.Input<string>;
+    commitmentStartTime?: pulumi.Input<string | undefined>;
     /**
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      */
-    edition?: pulumi.Input<string>;
+    edition?: pulumi.Input<string | undefined>;
     /**
      * If true, fail the request if another project in the organization has a capacity commitment.
      */
-    enforceSingleAdminProjectPerOrg?: pulumi.Input<string>;
+    enforceSingleAdminProjectPerOrg?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
      */
-    plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
      */
-    renewalPlan?: pulumi.Input<string>;
+    renewalPlan?: pulumi.Input<string | undefined>;
     /**
      * Number of slots in this commitment.
      */
-    slotCount?: pulumi.Input<number>;
+    slotCount?: pulumi.Input<number | undefined>;
     /**
      * State of the commitment
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -250,20 +250,20 @@ export interface CapacityCommitmentArgs {
      * cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
      * or merged.
      */
-    capacityCommitmentId?: pulumi.Input<string>;
+    capacityCommitmentId?: pulumi.Input<string | undefined>;
     /**
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      */
-    edition?: pulumi.Input<string>;
+    edition?: pulumi.Input<string | undefined>;
     /**
      * If true, fail the request if another project in the organization has a capacity commitment.
      */
-    enforceSingleAdminProjectPerOrg?: pulumi.Input<string>;
+    enforceSingleAdminProjectPerOrg?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
      */
@@ -272,11 +272,11 @@ export interface CapacityCommitmentArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
      */
-    renewalPlan?: pulumi.Input<string>;
+    renewalPlan?: pulumi.Input<string | undefined>;
     /**
      * Number of slots in this commitment.
      */

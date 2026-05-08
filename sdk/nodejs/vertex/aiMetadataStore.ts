@@ -159,38 +159,38 @@ export interface AiMetadataStoreState {
     /**
      * The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the MetadataStore.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.vertex.AiMetadataStoreEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiMetadataStoreEncryptionSpec | undefined>;
     /**
      * The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the Metadata Store. eg us-central1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * State information of the MetadataStore.
      * Structure is documented below.
      */
-    states?: pulumi.Input<pulumi.Input<inputs.vertex.AiMetadataStoreState>[]>;
+    states?: pulumi.Input<pulumi.Input<inputs.vertex.AiMetadataStoreState>[] | undefined>;
     /**
      * The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,23 +200,23 @@ export interface AiMetadataStoreArgs {
     /**
      * Description of the MetadataStore.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.vertex.AiMetadataStoreEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiMetadataStoreEncryptionSpec | undefined>;
     /**
      * The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the Metadata Store. eg us-central1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

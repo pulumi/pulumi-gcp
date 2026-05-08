@@ -272,83 +272,83 @@ export interface AgentGatewayState {
      * AgentGatewayOutputCard contains informational output-only fields.
      * Structure is documented below.
      */
-    agentGatewayCards?: pulumi.Input<pulumi.Input<inputs.networkservices.AgentGatewayAgentGatewayCard>[]>;
+    agentGatewayCards?: pulumi.Input<pulumi.Input<inputs.networkservices.AgentGatewayAgentGatewayCard>[] | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Etag of the resource.
      * If this is provided, it must match the server's etag. If the provided etag
      * does not match the server's etag, the request will fail with a 409 ABORTED
      * error.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Configuration for Google Managed deployment mode.
      * Proxy is orchestrated and managed by GoogleCloud in a tenant project.
      * Structure is documented below.
      */
-    googleManaged?: pulumi.Input<inputs.networkservices.AgentGatewayGoogleManaged>;
+    googleManaged?: pulumi.Input<inputs.networkservices.AgentGatewayGoogleManaged | undefined>;
     /**
      * Set of label tags associated with the AgentGateway resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the agent gateway.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the AgentGateway resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network configuration for the AgentGateway.
      * Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.networkservices.AgentGatewayNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.networkservices.AgentGatewayNetworkConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * List of protocols supported by an Agent Gateway.
      * Each value may be one of: `MCP`.
      */
-    protocols?: pulumi.Input<pulumi.Input<string>[]>;
+    protocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
      * Note: Currently limited to project-scoped registries Must be of format
      * `//agentregistry.googleapis.com/{version}/projects/{{project}}/locations/{{location}}`
      */
-    registries?: pulumi.Input<pulumi.Input<string>[]>;
+    registries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configuration for Self Managed deployment mode.
      * Attach to existing Application Load Balancers or Secure Web Proxies.
      * Structure is documented below.
      */
-    selfManaged?: pulumi.Input<inputs.networkservices.AgentGatewaySelfManaged>;
+    selfManaged?: pulumi.Input<inputs.networkservices.AgentGatewaySelfManaged | undefined>;
     /**
      * The timestamp when the resource was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -358,20 +358,20 @@ export interface AgentGatewayArgs {
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Configuration for Google Managed deployment mode.
      * Proxy is orchestrated and managed by GoogleCloud in a tenant project.
      * Structure is documented below.
      */
-    googleManaged?: pulumi.Input<inputs.networkservices.AgentGatewayGoogleManaged>;
+    googleManaged?: pulumi.Input<inputs.networkservices.AgentGatewayGoogleManaged | undefined>;
     /**
      * Set of label tags associated with the AgentGateway resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the agent gateway.
      */
@@ -379,17 +379,17 @@ export interface AgentGatewayArgs {
     /**
      * Name of the AgentGateway resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network configuration for the AgentGateway.
      * Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.networkservices.AgentGatewayNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.networkservices.AgentGatewayNetworkConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * List of protocols supported by an Agent Gateway.
      * Each value may be one of: `MCP`.
@@ -400,11 +400,11 @@ export interface AgentGatewayArgs {
      * Note: Currently limited to project-scoped registries Must be of format
      * `//agentregistry.googleapis.com/{version}/projects/{{project}}/locations/{{location}}`
      */
-    registries?: pulumi.Input<pulumi.Input<string>[]>;
+    registries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configuration for Self Managed deployment mode.
      * Attach to existing Application Load Balancers or Secure Web Proxies.
      * Structure is documented below.
      */
-    selfManaged?: pulumi.Input<inputs.networkservices.AgentGatewaySelfManaged>;
+    selfManaged?: pulumi.Input<inputs.networkservices.AgentGatewaySelfManaged | undefined>;
 }

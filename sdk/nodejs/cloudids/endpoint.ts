@@ -192,49 +192,49 @@ export interface EndpointState {
     /**
      * Creation timestamp in RFC 3339 text format.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * An optional description of the endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
      */
-    endpointForwardingRule?: pulumi.Input<string>;
+    endpointForwardingRule?: pulumi.Input<string | undefined>;
     /**
      * Internal IP address of the endpoint's network entry point.
      */
-    endpointIp?: pulumi.Input<string>;
+    endpointIp?: pulumi.Input<string | undefined>;
     /**
      * The location for the endpoint.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the VPC network that is connected to the IDS endpoint. This can either contain the VPC network name itself (like "src-net") or the full URL to the network (like "projects/{project_id}/global/networks/src-net").
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The minimum alert severity level that is reported by the endpoint.
      * Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
      */
-    severity?: pulumi.Input<string>;
+    severity?: pulumi.Input<string | undefined>;
     /**
      * Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
      */
-    threatExceptions?: pulumi.Input<pulumi.Input<string>[]>;
+    threatExceptions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Last update timestamp in RFC 3339 text format.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -244,7 +244,7 @@ export interface EndpointArgs {
     /**
      * An optional description of the endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The location for the endpoint.
      */
@@ -252,7 +252,7 @@ export interface EndpointArgs {
     /**
      * Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the VPC network that is connected to the IDS endpoint. This can either contain the VPC network name itself (like "src-net") or the full URL to the network (like "projects/{project_id}/global/networks/src-net").
      */
@@ -261,7 +261,7 @@ export interface EndpointArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The minimum alert severity level that is reported by the endpoint.
      * Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
@@ -270,5 +270,5 @@ export interface EndpointArgs {
     /**
      * Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
      */
-    threatExceptions?: pulumi.Input<pulumi.Input<string>[]>;
+    threatExceptions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

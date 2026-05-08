@@ -22,7 +22,7 @@ __all__ = ['HostingVersionArgs', 'HostingVersion']
 class HostingVersionArgs:
     def __init__(__self__, *,
                  site_id: pulumi.Input[_builtins.str],
-                 config: Optional[pulumi.Input['HostingVersionConfigArgs']] = None):
+                 config: pulumi.Input[Optional['HostingVersionConfigArgs']] = None):
         """
         The set of arguments for constructing a HostingVersion resource.
 
@@ -48,7 +48,7 @@ class HostingVersionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['HostingVersionConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['HostingVersionConfigArgs']]:
         """
         The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
         Structure is documented below.
@@ -56,17 +56,17 @@ class HostingVersionArgs:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['HostingVersionConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['HostingVersionConfigArgs']]):
         pulumi.set(self, "config", value)
 
 
 @pulumi.input_type
 class _HostingVersionState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['HostingVersionConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional['HostingVersionConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostingVersion resources.
 
@@ -88,7 +88,7 @@ class _HostingVersionState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['HostingVersionConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['HostingVersionConfigArgs']]:
         """
         The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
         Structure is documented below.
@@ -96,12 +96,12 @@ class _HostingVersionState:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['HostingVersionConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['HostingVersionConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully-qualified resource name for the version, in the format:
         sites/SITE_ID/versions/VERSION_ID
@@ -109,31 +109,31 @@ class _HostingVersionState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The ID of the site in which to create this Version.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID for the version as in sites/SITE_ID/versions/VERSION_ID
         """
         return pulumi.get(self, "version_id")
 
     @version_id.setter
-    def version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_id", value)
 
 
@@ -143,8 +143,8 @@ class HostingVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict']]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict']]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A `Version` is a configuration which determine how a site is displayed. Static files are not supported at the moment.
@@ -593,8 +593,8 @@ class HostingVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict']]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict']]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -620,10 +620,10 @@ class HostingVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            version_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'HostingVersion':
+            config: pulumi.Input[Optional[Union['HostingVersionConfigArgs', 'HostingVersionConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'HostingVersion':
         """
         Get an existing HostingVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

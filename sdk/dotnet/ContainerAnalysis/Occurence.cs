@@ -88,7 +88,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     ///         NoteName = note.Id,
     ///         Attestation = new Gcp.ContainerAnalysis.Inputs.OccurenceAttestationArgs
     ///         {
-    ///             SerializedPayload = Std.Index.Filebase64.Invoke(new()
+    ///             SerializedPayload = Std.Filebase64.Invoke(new()
     ///             {
     ///                 Input = "path/to/my/payload.json",
     ///             }).Apply(invoke =&gt; invoke.Result),
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     ///                 new Gcp.ContainerAnalysis.Inputs.OccurenceAttestationSignatureArgs
     ///                 {
     ///                     PublicKeyId = version.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.Id),
-    ///                     SerializedPayload = Std.Index.Filebase64.Invoke(new()
+    ///                     SerializedPayload = Std.Filebase64.Invoke(new()
     ///                     {
     ///                         Input = "path/to/my/payload.json.sig",
     ///                     }).Apply(invoke =&gt; invoke.Result),

@@ -586,7 +586,7 @@ export interface VMwareClusterState {
      * In the future, references to other resource types might be allowed if
      * admin clusters are modeled as their own resources.
      */
-    adminClusterMembership?: pulumi.Input<string>;
+    adminClusterMembership?: pulumi.Input<string | undefined>;
     /**
      * Annotations on the VMware User Cluster.
      * This field has the same restrictions as Kubernetes annotations.
@@ -600,65 +600,65 @@ export interface VMwareClusterState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * AAGConfig specifies whether to spread VMware User Cluster nodes across at
      * least three physical hosts in the datacenter.
      * Structure is documented below.
      */
-    antiAffinityGroups?: pulumi.Input<inputs.gkeonprem.VMwareClusterAntiAffinityGroups>;
+    antiAffinityGroups?: pulumi.Input<inputs.gkeonprem.VMwareClusterAntiAffinityGroups | undefined>;
     /**
      * RBAC policy that will be applied and managed by GKE On-Prem.
      * Structure is documented below.
      */
-    authorization?: pulumi.Input<inputs.gkeonprem.VMwareClusterAuthorization>;
+    authorization?: pulumi.Input<inputs.gkeonprem.VMwareClusterAuthorization | undefined>;
     /**
      * Configuration for auto repairing.
      * Structure is documented below.
      */
-    autoRepairConfig?: pulumi.Input<inputs.gkeonprem.VMwareClusterAutoRepairConfig>;
+    autoRepairConfig?: pulumi.Input<inputs.gkeonprem.VMwareClusterAutoRepairConfig | undefined>;
     /**
      * VMware User Cluster control plane nodes must have either 1 or 3 replicas.
      * Structure is documented below.
      */
-    controlPlaneNode?: pulumi.Input<inputs.gkeonprem.VMwareClusterControlPlaneNode>;
+    controlPlaneNode?: pulumi.Input<inputs.gkeonprem.VMwareClusterControlPlaneNode | undefined>;
     /**
      * The time at which VMware User Cluster was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * VmwareDataplaneV2Config specifies configuration for Dataplane V2.
      * Structure is documented below.
      */
-    dataplaneV2?: pulumi.Input<inputs.gkeonprem.VMwareClusterDataplaneV2>;
+    dataplaneV2?: pulumi.Input<inputs.gkeonprem.VMwareClusterDataplaneV2 | undefined>;
     /**
      * The time at which VMware User Cluster was deleted.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * A human readable description of this VMware User Cluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disable bundled ingress.
      */
-    disableBundledIngress?: pulumi.Input<boolean>;
+    disableBundledIngress?: pulumi.Input<boolean | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Enable advanced cluster. Default to false.
      */
-    enableAdvancedCluster?: pulumi.Input<boolean>;
+    enableAdvancedCluster?: pulumi.Input<boolean | undefined>;
     /**
      * Enable control plane V2. Default to false.
      */
-    enableControlPlaneV2?: pulumi.Input<boolean>;
+    enableControlPlaneV2?: pulumi.Input<boolean | undefined>;
     /**
      * The DNS name of VMware User Cluster's API server.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * This checksum is computed by the server based on the value of other
      * fields, and may be sent on update and delete requests to ensure the
@@ -666,17 +666,17 @@ export interface VMwareClusterState {
      * Allows clients to perform consistent read-modify-writes
      * through optimistic concurrency control.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Fleet configuration for the cluster.
      * Structure is documented below.
      */
-    fleets?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareClusterFleet>[]>;
+    fleets?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareClusterFleet>[] | undefined>;
     /**
      * Load Balancer configuration.
      * Structure is documented below.
      */
-    loadBalancer?: pulumi.Input<inputs.gkeonprem.VMwareClusterLoadBalancer>;
+    loadBalancer?: pulumi.Input<inputs.gkeonprem.VMwareClusterLoadBalancer | undefined>;
     /**
      * The object name of the VMware OnPremUserCluster custom resource on the
      * associated admin cluster. This field is used to support conflicting
@@ -689,82 +689,82 @@ export interface VMwareClusterState {
      * kubectl and should expect to see the local name when viewing admin
      * cluster controller logs.
      */
-    localName?: pulumi.Input<string>;
+    localName?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The VMware cluster name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The VMware User Cluster network configuration.
      * Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.gkeonprem.VMwareClusterNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.gkeonprem.VMwareClusterNetworkConfig | undefined>;
     /**
      * The Anthos clusters on the VMware version for your user cluster.
      */
-    onPremVersion?: pulumi.Input<string>;
+    onPremVersion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * If set, there are currently changes in flight to the VMware User Cluster.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * A list of validations to skip during preflight checks.
      * Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
      */
-    skipValidations?: pulumi.Input<pulumi.Input<string>[]>;
+    skipValidations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Output)
      * The lifecycle state of the condition.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * Specifies the detailed validation check status
      * Structure is documented below.
      */
-    statuses?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareClusterStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareClusterStatus>[] | undefined>;
     /**
      * Storage configuration.
      * Structure is documented below.
      */
-    storage?: pulumi.Input<inputs.gkeonprem.VMwareClusterStorage>;
+    storage?: pulumi.Input<inputs.gkeonprem.VMwareClusterStorage | undefined>;
     /**
      * The unique identifier of the VMware User Cluster.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The time at which VMware User Cluster was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies upgrade policy for the cluster.
      * Structure is documented below.
      */
-    upgradePolicy?: pulumi.Input<inputs.gkeonprem.VMwareClusterUpgradePolicy>;
+    upgradePolicy?: pulumi.Input<inputs.gkeonprem.VMwareClusterUpgradePolicy | undefined>;
     /**
      * ValidationCheck represents the result of the preflight check job.
      * Structure is documented below.
      */
-    validationChecks?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareClusterValidationCheck>[]>;
+    validationChecks?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareClusterValidationCheck>[] | undefined>;
     /**
      * VmwareVCenterConfig specifies vCenter config for the user cluster.
      * Inherited from the admin cluster.
      * Structure is documented below.
      */
-    vcenter?: pulumi.Input<inputs.gkeonprem.VMwareClusterVcenter>;
+    vcenter?: pulumi.Input<inputs.gkeonprem.VMwareClusterVcenter | undefined>;
     /**
      * Enable VM tracking.
      */
-    vmTrackingEnabled?: pulumi.Input<boolean>;
+    vmTrackingEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -791,23 +791,23 @@ export interface VMwareClusterArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * AAGConfig specifies whether to spread VMware User Cluster nodes across at
      * least three physical hosts in the datacenter.
      * Structure is documented below.
      */
-    antiAffinityGroups?: pulumi.Input<inputs.gkeonprem.VMwareClusterAntiAffinityGroups>;
+    antiAffinityGroups?: pulumi.Input<inputs.gkeonprem.VMwareClusterAntiAffinityGroups | undefined>;
     /**
      * RBAC policy that will be applied and managed by GKE On-Prem.
      * Structure is documented below.
      */
-    authorization?: pulumi.Input<inputs.gkeonprem.VMwareClusterAuthorization>;
+    authorization?: pulumi.Input<inputs.gkeonprem.VMwareClusterAuthorization | undefined>;
     /**
      * Configuration for auto repairing.
      * Structure is documented below.
      */
-    autoRepairConfig?: pulumi.Input<inputs.gkeonprem.VMwareClusterAutoRepairConfig>;
+    autoRepairConfig?: pulumi.Input<inputs.gkeonprem.VMwareClusterAutoRepairConfig | undefined>;
     /**
      * VMware User Cluster control plane nodes must have either 1 or 3 replicas.
      * Structure is documented below.
@@ -817,28 +817,28 @@ export interface VMwareClusterArgs {
      * VmwareDataplaneV2Config specifies configuration for Dataplane V2.
      * Structure is documented below.
      */
-    dataplaneV2?: pulumi.Input<inputs.gkeonprem.VMwareClusterDataplaneV2>;
+    dataplaneV2?: pulumi.Input<inputs.gkeonprem.VMwareClusterDataplaneV2 | undefined>;
     /**
      * A human readable description of this VMware User Cluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disable bundled ingress.
      */
-    disableBundledIngress?: pulumi.Input<boolean>;
+    disableBundledIngress?: pulumi.Input<boolean | undefined>;
     /**
      * Enable advanced cluster. Default to false.
      */
-    enableAdvancedCluster?: pulumi.Input<boolean>;
+    enableAdvancedCluster?: pulumi.Input<boolean | undefined>;
     /**
      * Enable control plane V2. Default to false.
      */
-    enableControlPlaneV2?: pulumi.Input<boolean>;
+    enableControlPlaneV2?: pulumi.Input<boolean | undefined>;
     /**
      * Load Balancer configuration.
      * Structure is documented below.
      */
-    loadBalancer?: pulumi.Input<inputs.gkeonprem.VMwareClusterLoadBalancer>;
+    loadBalancer?: pulumi.Input<inputs.gkeonprem.VMwareClusterLoadBalancer | undefined>;
     /**
      * The location of the resource.
      */
@@ -846,12 +846,12 @@ export interface VMwareClusterArgs {
     /**
      * The VMware cluster name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The VMware User Cluster network configuration.
      * Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.gkeonprem.VMwareClusterNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.gkeonprem.VMwareClusterNetworkConfig | undefined>;
     /**
      * The Anthos clusters on the VMware version for your user cluster.
      */
@@ -860,30 +860,30 @@ export interface VMwareClusterArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A list of validations to skip during preflight checks.
      * Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
      */
-    skipValidations?: pulumi.Input<pulumi.Input<string>[]>;
+    skipValidations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Storage configuration.
      * Structure is documented below.
      */
-    storage?: pulumi.Input<inputs.gkeonprem.VMwareClusterStorage>;
+    storage?: pulumi.Input<inputs.gkeonprem.VMwareClusterStorage | undefined>;
     /**
      * Specifies upgrade policy for the cluster.
      * Structure is documented below.
      */
-    upgradePolicy?: pulumi.Input<inputs.gkeonprem.VMwareClusterUpgradePolicy>;
+    upgradePolicy?: pulumi.Input<inputs.gkeonprem.VMwareClusterUpgradePolicy | undefined>;
     /**
      * VmwareVCenterConfig specifies vCenter config for the user cluster.
      * Inherited from the admin cluster.
      * Structure is documented below.
      */
-    vcenter?: pulumi.Input<inputs.gkeonprem.VMwareClusterVcenter>;
+    vcenter?: pulumi.Input<inputs.gkeonprem.VMwareClusterVcenter | undefined>;
     /**
      * Enable VM tracking.
      */
-    vmTrackingEnabled?: pulumi.Input<boolean>;
+    vmTrackingEnabled?: pulumi.Input<boolean | undefined>;
 }

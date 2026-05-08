@@ -23,8 +23,8 @@ class RowAccessPolicyArgs:
                  filter_predicate: pulumi.Input[_builtins.str],
                  policy_id: pulumi.Input[_builtins.str],
                  table_id: pulumi.Input[_builtins.str],
-                 grantees: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RowAccessPolicy resource.
 
@@ -135,7 +135,7 @@ class RowAccessPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def grantees(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def grantees(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Input only. The optional list of iam_member users or groups that specifies the initial
         members that the row-level access policy should be created with.
@@ -162,12 +162,12 @@ class RowAccessPolicyArgs:
         return pulumi.get(self, "grantees")
 
     @grantees.setter
-    def grantees(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def grantees(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "grantees", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -175,21 +175,21 @@ class RowAccessPolicyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _RowAccessPolicyState:
     def __init__(__self__, *,
-                 creation_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_predicate: Optional[pulumi.Input[_builtins.str]] = None,
-                 grantees: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_predicate: pulumi.Input[Optional[_builtins.str]] = None,
+                 grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RowAccessPolicy resources.
 
@@ -254,7 +254,7 @@ class _RowAccessPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when this row access policy was created, in milliseconds since
         the epoch.
@@ -262,24 +262,24 @@ class _RowAccessPolicyState:
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dataset containing this row access policy.
         """
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
 
     @_builtins.property
     @pulumi.getter(name="filterPredicate")
-    def filter_predicate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_predicate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A SQL boolean expression that represents the rows defined by this row
         access policy, similar to the boolean expression in a WHERE clause of a
@@ -294,12 +294,12 @@ class _RowAccessPolicyState:
         return pulumi.get(self, "filter_predicate")
 
     @filter_predicate.setter
-    def filter_predicate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_predicate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_predicate", value)
 
     @_builtins.property
     @pulumi.getter
-    def grantees(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def grantees(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Input only. The optional list of iam_member users or groups that specifies the initial
         members that the row-level access policy should be created with.
@@ -326,12 +326,12 @@ class _RowAccessPolicyState:
         return pulumi.get(self, "grantees")
 
     @grantees.setter
-    def grantees(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def grantees(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "grantees", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when this row access policy was last modified, in milliseconds
         since the epoch.
@@ -339,12 +339,12 @@ class _RowAccessPolicyState:
         return pulumi.get(self, "last_modified_time")
 
     @last_modified_time.setter
-    def last_modified_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified_time", value)
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the row access policy. The ID must contain only
         letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
@@ -353,12 +353,12 @@ class _RowAccessPolicyState:
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
-    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -366,19 +366,19 @@ class _RowAccessPolicyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="tableId")
-    def table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the table containing this row access policy.
         """
         return pulumi.get(self, "table_id")
 
     @table_id.setter
-    def table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_id", value)
 
 
@@ -388,12 +388,12 @@ class RowAccessPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_predicate: Optional[pulumi.Input[_builtins.str]] = None,
-                 grantees: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_predicate: pulumi.Input[Optional[_builtins.str]] = None,
+                 grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents access on a subset of rows on the specified table, defined by its filter predicate. Access to the subset of rows is controlled by its IAM policy.
@@ -556,12 +556,12 @@ class RowAccessPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_predicate: Optional[pulumi.Input[_builtins.str]] = None,
-                 grantees: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_predicate: pulumi.Input[Optional[_builtins.str]] = None,
+                 grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -597,14 +597,14 @@ class RowAccessPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            creation_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-            filter_predicate: Optional[pulumi.Input[_builtins.str]] = None,
-            grantees: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            table_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RowAccessPolicy':
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            filter_predicate: pulumi.Input[Optional[_builtins.str]] = None,
+            grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            table_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RowAccessPolicy':
         """
         Get an existing RowAccessPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

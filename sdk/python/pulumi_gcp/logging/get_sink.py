@@ -186,7 +186,7 @@ def get_sink(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         writer_identity=pulumi.get(__ret__, 'writer_identity'))
-def get_sink_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_sink_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSinkResult]:
     """
     Use this data source to get a project, folder, organization or billing account logging sink details.

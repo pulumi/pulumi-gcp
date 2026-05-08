@@ -60,71 +60,71 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict(TypedDict):
     """
     The name of the metadata property.
     """
-    date_time_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgsDict']]
+    date_time_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs']]]
     """
     Date time property. Not supported by CMEK compliant deployment.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display-name for the property, used for front-end.
     """
-    enum_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgsDict']]
+    enum_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs']]]
     """
     Enum/categorical property.
     Structure is documented below.
     """
-    float_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgsDict']]
+    float_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs']]]
     """
     Float property.
     """
-    integer_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgsDict']]
+    integer_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs']]]
     """
     Integer property.
     """
-    is_filterable: NotRequired[pulumi.Input[_builtins.bool]]
+    is_filterable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
     """
-    is_metadata: NotRequired[pulumi.Input[_builtins.bool]]
+    is_metadata: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the property is user supplied metadata.
     """
-    is_repeatable: NotRequired[pulumi.Input[_builtins.bool]]
+    is_repeatable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the property can have multiple values.
     """
-    is_required: NotRequired[pulumi.Input[_builtins.bool]]
+    is_required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the property is mandatory.
     """
-    is_searchable: NotRequired[pulumi.Input[_builtins.bool]]
+    is_searchable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates that the property should be included in a global search.
     """
-    map_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgsDict']]
+    map_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs']]]
     """
     Map property.
     """
-    property_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgsDict']]
+    property_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs']]]
     """
     Nested structured data property.
     Structure is documented below.
     """
-    retrieval_importance: NotRequired[pulumi.Input[_builtins.str]]
+    retrieval_importance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Stores the retrieval importance.
     Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
     """
-    schema_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgsDict']]]]
+    schema_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs']]]]]
     """
     The schema source information.
     Structure is documented below.
     """
-    text_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgsDict']]
+    text_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs']]]
     """
     Text property.
     """
-    timestamp_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgsDict']]
+    timestamp_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs']]]
     """
     Timestamp property. Not supported by CMEK compliant deployment.
     """
@@ -133,22 +133,22 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict(TypedDict):
 class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 date_time_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enum_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs']] = None,
-                 float_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs']] = None,
-                 integer_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs']] = None,
-                 is_filterable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_metadata: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_repeatable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_searchable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 map_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs']] = None,
-                 property_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs']] = None,
-                 retrieval_importance: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_sources: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs']]]] = None,
-                 text_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs']] = None,
-                 timestamp_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs']] = None):
+                 date_time_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enum_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs']] = None,
+                 float_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs']] = None,
+                 integer_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs']] = None,
+                 is_filterable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_metadata: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_repeatable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_searchable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 map_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs']] = None,
+                 property_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs']] = None,
+                 retrieval_importance: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_sources: pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs']]]] = None,
+                 text_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs']] = None,
+                 timestamp_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the metadata property.
         :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs'] date_time_type_options: Date time property. Not supported by CMEK compliant deployment.
@@ -220,31 +220,31 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
 
     @_builtins.property
     @pulumi.getter(name="dateTimeTypeOptions")
-    def date_time_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs']]:
+    def date_time_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs']]:
         """
         Date time property. Not supported by CMEK compliant deployment.
         """
         return pulumi.get(self, "date_time_type_options")
 
     @date_time_type_options.setter
-    def date_time_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs']]):
+    def date_time_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs']]):
         pulumi.set(self, "date_time_type_options", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display-name for the property, used for front-end.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="enumTypeOptions")
-    def enum_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs']]:
+    def enum_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs']]:
         """
         Enum/categorical property.
         Structure is documented below.
@@ -252,108 +252,108 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
         return pulumi.get(self, "enum_type_options")
 
     @enum_type_options.setter
-    def enum_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs']]):
+    def enum_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs']]):
         pulumi.set(self, "enum_type_options", value)
 
     @_builtins.property
     @pulumi.getter(name="floatTypeOptions")
-    def float_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs']]:
+    def float_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs']]:
         """
         Float property.
         """
         return pulumi.get(self, "float_type_options")
 
     @float_type_options.setter
-    def float_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs']]):
+    def float_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs']]):
         pulumi.set(self, "float_type_options", value)
 
     @_builtins.property
     @pulumi.getter(name="integerTypeOptions")
-    def integer_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs']]:
+    def integer_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs']]:
         """
         Integer property.
         """
         return pulumi.get(self, "integer_type_options")
 
     @integer_type_options.setter
-    def integer_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs']]):
+    def integer_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs']]):
         pulumi.set(self, "integer_type_options", value)
 
     @_builtins.property
     @pulumi.getter(name="isFilterable")
-    def is_filterable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_filterable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
         """
         return pulumi.get(self, "is_filterable")
 
     @is_filterable.setter
-    def is_filterable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_filterable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_filterable", value)
 
     @_builtins.property
     @pulumi.getter(name="isMetadata")
-    def is_metadata(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_metadata(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the property is user supplied metadata.
         """
         return pulumi.get(self, "is_metadata")
 
     @is_metadata.setter
-    def is_metadata(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_metadata(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="isRepeatable")
-    def is_repeatable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_repeatable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the property can have multiple values.
         """
         return pulumi.get(self, "is_repeatable")
 
     @is_repeatable.setter
-    def is_repeatable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_repeatable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_repeatable", value)
 
     @_builtins.property
     @pulumi.getter(name="isRequired")
-    def is_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the property is mandatory.
         """
         return pulumi.get(self, "is_required")
 
     @is_required.setter
-    def is_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_required", value)
 
     @_builtins.property
     @pulumi.getter(name="isSearchable")
-    def is_searchable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_searchable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates that the property should be included in a global search.
         """
         return pulumi.get(self, "is_searchable")
 
     @is_searchable.setter
-    def is_searchable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_searchable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_searchable", value)
 
     @_builtins.property
     @pulumi.getter(name="mapTypeOptions")
-    def map_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs']]:
+    def map_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs']]:
         """
         Map property.
         """
         return pulumi.get(self, "map_type_options")
 
     @map_type_options.setter
-    def map_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs']]):
+    def map_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs']]):
         pulumi.set(self, "map_type_options", value)
 
     @_builtins.property
     @pulumi.getter(name="propertyTypeOptions")
-    def property_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs']]:
+    def property_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs']]:
         """
         Nested structured data property.
         Structure is documented below.
@@ -361,12 +361,12 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
         return pulumi.get(self, "property_type_options")
 
     @property_type_options.setter
-    def property_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs']]):
+    def property_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs']]):
         pulumi.set(self, "property_type_options", value)
 
     @_builtins.property
     @pulumi.getter(name="retrievalImportance")
-    def retrieval_importance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retrieval_importance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Stores the retrieval importance.
         Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
@@ -374,12 +374,12 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
         return pulumi.get(self, "retrieval_importance")
 
     @retrieval_importance.setter
-    def retrieval_importance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retrieval_importance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retrieval_importance", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaSources")
-    def schema_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs']]]]:
+    def schema_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs']]]]:
         """
         The schema source information.
         Structure is documented below.
@@ -387,31 +387,31 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs:
         return pulumi.get(self, "schema_sources")
 
     @schema_sources.setter
-    def schema_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs']]]]):
+    def schema_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs']]]]):
         pulumi.set(self, "schema_sources", value)
 
     @_builtins.property
     @pulumi.getter(name="textTypeOptions")
-    def text_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs']]:
+    def text_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs']]:
         """
         Text property.
         """
         return pulumi.get(self, "text_type_options")
 
     @text_type_options.setter
-    def text_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs']]):
+    def text_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs']]):
         pulumi.set(self, "text_type_options", value)
 
     @_builtins.property
     @pulumi.getter(name="timestampTypeOptions")
-    def timestamp_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs']]:
+    def timestamp_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs']]:
         """
         Timestamp property. Not supported by CMEK compliant deployment.
         """
         return pulumi.get(self, "timestamp_type_options")
 
     @timestamp_type_options.setter
-    def timestamp_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs']]):
+    def timestamp_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs']]):
         pulumi.set(self, "timestamp_type_options", value)
 
 
@@ -429,7 +429,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgsDict
     """
     List of possible enum values.
     """
-    validation_check_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    validation_check_disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
     """
@@ -438,7 +438,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgsDict
 class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs:
     def __init__(__self__, *,
                  possible_values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 validation_check_disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 validation_check_disabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] possible_values: List of possible enum values.
         :param pulumi.Input[_builtins.bool] validation_check_disabled: Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
@@ -461,14 +461,14 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="validationCheckDisabled")
-    def validation_check_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def validation_check_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
         """
         return pulumi.get(self, "validation_check_disabled")
 
     @validation_check_disabled.setter
-    def validation_check_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def validation_check_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "validation_check_disabled", value)
 
 
@@ -535,66 +535,66 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     """
     The name of the metadata property.
     """
-    date_time_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgsDict']]
+    date_time_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs']]]
     """
     Date time property. Not supported by CMEK compliant deployment.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display-name for the property, used for front-end.
     """
-    enum_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgsDict']]
+    enum_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs']]]
     """
     Enum/categorical property.
     Structure is documented below.
     """
-    float_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgsDict']]
+    float_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs']]]
     """
     Float property.
     """
-    integer_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgsDict']]
+    integer_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs']]]
     """
     Integer property.
     """
-    is_filterable: NotRequired[pulumi.Input[_builtins.bool]]
+    is_filterable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
     """
-    is_metadata: NotRequired[pulumi.Input[_builtins.bool]]
+    is_metadata: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the property is user supplied metadata.
     """
-    is_repeatable: NotRequired[pulumi.Input[_builtins.bool]]
+    is_repeatable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the property can have multiple values.
     """
-    is_required: NotRequired[pulumi.Input[_builtins.bool]]
+    is_required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the property is mandatory.
     """
-    is_searchable: NotRequired[pulumi.Input[_builtins.bool]]
+    is_searchable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates that the property should be included in a global search.
     """
-    map_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgsDict']]
+    map_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs']]]
     """
     Map property.
     """
-    retrieval_importance: NotRequired[pulumi.Input[_builtins.str]]
+    retrieval_importance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Stores the retrieval importance.
     Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
     """
-    schema_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgsDict']]]]
+    schema_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs']]]]]
     """
     The schema source information.
     Structure is documented below.
     """
-    text_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgsDict']]
+    text_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs']]]
     """
     Text property.
     """
-    timestamp_type_options: NotRequired[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgsDict']]
+    timestamp_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs']]]
     """
     Timestamp property. Not supported by CMEK compliant deployment.
     """
@@ -603,21 +603,21 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 date_time_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enum_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs']] = None,
-                 float_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs']] = None,
-                 integer_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs']] = None,
-                 is_filterable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_metadata: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_repeatable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_searchable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 map_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs']] = None,
-                 retrieval_importance: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_sources: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs']]]] = None,
-                 text_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs']] = None,
-                 timestamp_type_options: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs']] = None):
+                 date_time_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enum_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs']] = None,
+                 float_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs']] = None,
+                 integer_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs']] = None,
+                 is_filterable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_metadata: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_repeatable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_searchable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 map_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs']] = None,
+                 retrieval_importance: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_sources: pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs']]]] = None,
+                 text_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs']] = None,
+                 timestamp_type_options: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the metadata property.
         :param pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs'] date_time_type_options: Date time property. Not supported by CMEK compliant deployment.
@@ -685,31 +685,31 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
     @_builtins.property
     @pulumi.getter(name="dateTimeTypeOptions")
-    def date_time_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs']]:
+    def date_time_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs']]:
         """
         Date time property. Not supported by CMEK compliant deployment.
         """
         return pulumi.get(self, "date_time_type_options")
 
     @date_time_type_options.setter
-    def date_time_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs']]):
+    def date_time_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs']]):
         pulumi.set(self, "date_time_type_options", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display-name for the property, used for front-end.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="enumTypeOptions")
-    def enum_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs']]:
+    def enum_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs']]:
         """
         Enum/categorical property.
         Structure is documented below.
@@ -717,108 +717,108 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
         return pulumi.get(self, "enum_type_options")
 
     @enum_type_options.setter
-    def enum_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs']]):
+    def enum_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs']]):
         pulumi.set(self, "enum_type_options", value)
 
     @_builtins.property
     @pulumi.getter(name="floatTypeOptions")
-    def float_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs']]:
+    def float_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs']]:
         """
         Float property.
         """
         return pulumi.get(self, "float_type_options")
 
     @float_type_options.setter
-    def float_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs']]):
+    def float_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs']]):
         pulumi.set(self, "float_type_options", value)
 
     @_builtins.property
     @pulumi.getter(name="integerTypeOptions")
-    def integer_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs']]:
+    def integer_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs']]:
         """
         Integer property.
         """
         return pulumi.get(self, "integer_type_options")
 
     @integer_type_options.setter
-    def integer_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs']]):
+    def integer_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs']]):
         pulumi.set(self, "integer_type_options", value)
 
     @_builtins.property
     @pulumi.getter(name="isFilterable")
-    def is_filterable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_filterable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
         """
         return pulumi.get(self, "is_filterable")
 
     @is_filterable.setter
-    def is_filterable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_filterable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_filterable", value)
 
     @_builtins.property
     @pulumi.getter(name="isMetadata")
-    def is_metadata(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_metadata(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the property is user supplied metadata.
         """
         return pulumi.get(self, "is_metadata")
 
     @is_metadata.setter
-    def is_metadata(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_metadata(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="isRepeatable")
-    def is_repeatable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_repeatable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the property can have multiple values.
         """
         return pulumi.get(self, "is_repeatable")
 
     @is_repeatable.setter
-    def is_repeatable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_repeatable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_repeatable", value)
 
     @_builtins.property
     @pulumi.getter(name="isRequired")
-    def is_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the property is mandatory.
         """
         return pulumi.get(self, "is_required")
 
     @is_required.setter
-    def is_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_required", value)
 
     @_builtins.property
     @pulumi.getter(name="isSearchable")
-    def is_searchable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_searchable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates that the property should be included in a global search.
         """
         return pulumi.get(self, "is_searchable")
 
     @is_searchable.setter
-    def is_searchable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_searchable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_searchable", value)
 
     @_builtins.property
     @pulumi.getter(name="mapTypeOptions")
-    def map_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs']]:
+    def map_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs']]:
         """
         Map property.
         """
         return pulumi.get(self, "map_type_options")
 
     @map_type_options.setter
-    def map_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs']]):
+    def map_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs']]):
         pulumi.set(self, "map_type_options", value)
 
     @_builtins.property
     @pulumi.getter(name="retrievalImportance")
-    def retrieval_importance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retrieval_importance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Stores the retrieval importance.
         Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
@@ -826,12 +826,12 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
         return pulumi.get(self, "retrieval_importance")
 
     @retrieval_importance.setter
-    def retrieval_importance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retrieval_importance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retrieval_importance", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaSources")
-    def schema_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs']]]]:
+    def schema_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs']]]]:
         """
         The schema source information.
         Structure is documented below.
@@ -839,31 +839,31 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
         return pulumi.get(self, "schema_sources")
 
     @schema_sources.setter
-    def schema_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs']]]]):
+    def schema_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs']]]]):
         pulumi.set(self, "schema_sources", value)
 
     @_builtins.property
     @pulumi.getter(name="textTypeOptions")
-    def text_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs']]:
+    def text_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs']]:
         """
         Text property.
         """
         return pulumi.get(self, "text_type_options")
 
     @text_type_options.setter
-    def text_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs']]):
+    def text_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs']]):
         pulumi.set(self, "text_type_options", value)
 
     @_builtins.property
     @pulumi.getter(name="timestampTypeOptions")
-    def timestamp_type_options(self) -> Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs']]:
+    def timestamp_type_options(self) -> pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs']]:
         """
         Timestamp property. Not supported by CMEK compliant deployment.
         """
         return pulumi.get(self, "timestamp_type_options")
 
     @timestamp_type_options.setter
-    def timestamp_type_options(self, value: Optional[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs']]):
+    def timestamp_type_options(self, value: pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs']]):
         pulumi.set(self, "timestamp_type_options", value)
 
 
@@ -881,7 +881,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     """
     List of possible enum values.
     """
-    validation_check_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    validation_check_disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
     """
@@ -890,7 +890,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs:
     def __init__(__self__, *,
                  possible_values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 validation_check_disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 validation_check_disabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] possible_values: List of possible enum values.
         :param pulumi.Input[_builtins.bool] validation_check_disabled: Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
@@ -913,14 +913,14 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
     @_builtins.property
     @pulumi.getter(name="validationCheckDisabled")
-    def validation_check_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def validation_check_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
         """
         return pulumi.get(self, "validation_check_disabled")
 
     @validation_check_disabled.setter
-    def validation_check_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def validation_check_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "validation_check_disabled", value)
 
 
@@ -952,11 +952,11 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
 
 class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The schema name in the source.
     """
-    processor_type: NotRequired[pulumi.Input[_builtins.str]]
+    processor_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Doc AI processor type name.
     """
@@ -964,8 +964,8 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 @pulumi.input_type
 class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 processor_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 processor_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The schema name in the source.
         :param pulumi.Input[_builtins.str] processor_type: The Doc AI processor type name.
@@ -977,26 +977,26 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schema name in the source.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="processorType")
-    def processor_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def processor_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Doc AI processor type name.
         """
         return pulumi.get(self, "processor_type")
 
     @processor_type.setter
-    def processor_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def processor_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "processor_type", value)
 
 
@@ -1019,11 +1019,11 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
 
 class DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The schema name in the source.
     """
-    processor_type: NotRequired[pulumi.Input[_builtins.str]]
+    processor_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Doc AI processor type name.
     """
@@ -1031,8 +1031,8 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgsDict(Ty
 @pulumi.input_type
 class DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 processor_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 processor_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The schema name in the source.
         :param pulumi.Input[_builtins.str] processor_type: The Doc AI processor type name.
@@ -1044,26 +1044,26 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schema name in the source.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="processorType")
-    def processor_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def processor_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Doc AI processor type name.
         """
         return pulumi.get(self, "processor_type")
 
     @processor_type.setter
-    def processor_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def processor_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "processor_type", value)
 
 

@@ -95,7 +95,7 @@ export interface GetKeyRingsOutputArgs {
      *
      * [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The location that the underlying key ring resides in. e.g us-west1
      */
@@ -103,5 +103,5 @@ export interface GetKeyRingsOutputArgs {
     /**
      * The Project ID of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

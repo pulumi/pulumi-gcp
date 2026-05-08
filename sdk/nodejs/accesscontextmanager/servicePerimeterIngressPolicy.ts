@@ -132,31 +132,31 @@ export interface ServicePerimeterIngressPolicyState {
     /**
      * The name of the Access Policy this resource belongs to.
      */
-    accessPolicyId?: pulumi.Input<string>;
+    accessPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Defines the conditions on the source of a request causing this `IngressPolicy`
      * to apply.
      * Structure is documented below.
      */
-    ingressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterIngressPolicyIngressFrom>;
+    ingressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterIngressPolicyIngressFrom | undefined>;
     /**
      * Defines the conditions on the `ApiOperation` and request destination that cause
      * this `IngressPolicy` to apply.
      * Structure is documented below.
      */
-    ingressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterIngressPolicyIngressTo>;
+    ingressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterIngressPolicyIngressTo | undefined>;
     /**
      * The name of the Service Perimeter to add this resource to.
      */
-    perimeter?: pulumi.Input<string>;
+    perimeter?: pulumi.Input<string | undefined>;
     /**
      * Human readable title. Must be unique within the perimeter. Does not affect behavior.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -168,13 +168,13 @@ export interface ServicePerimeterIngressPolicyArgs {
      * to apply.
      * Structure is documented below.
      */
-    ingressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterIngressPolicyIngressFrom>;
+    ingressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterIngressPolicyIngressFrom | undefined>;
     /**
      * Defines the conditions on the `ApiOperation` and request destination that cause
      * this `IngressPolicy` to apply.
      * Structure is documented below.
      */
-    ingressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterIngressPolicyIngressTo>;
+    ingressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterIngressPolicyIngressTo | undefined>;
     /**
      * The name of the Service Perimeter to add this resource to.
      */
@@ -182,5 +182,5 @@ export interface ServicePerimeterIngressPolicyArgs {
     /**
      * Human readable title. Must be unique within the perimeter. Does not affect behavior.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }

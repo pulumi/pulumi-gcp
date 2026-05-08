@@ -24,19 +24,19 @@ class GdcSparkApplicationArgs:
                  location: pulumi.Input[_builtins.str],
                  serviceinstance: pulumi.Input[_builtins.str],
                  spark_application_id: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 application_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 dependency_images: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 pyspark_application_config: Optional[pulumi.Input['GdcSparkApplicationPysparkApplicationConfigArgs']] = None,
-                 spark_application_config: Optional[pulumi.Input['GdcSparkApplicationSparkApplicationConfigArgs']] = None,
-                 spark_r_application_config: Optional[pulumi.Input['GdcSparkApplicationSparkRApplicationConfigArgs']] = None,
-                 spark_sql_application_config: Optional[pulumi.Input['GdcSparkApplicationSparkSqlApplicationConfigArgs']] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependency_images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 pyspark_application_config: pulumi.Input[Optional['GdcSparkApplicationPysparkApplicationConfigArgs']] = None,
+                 spark_application_config: pulumi.Input[Optional['GdcSparkApplicationSparkApplicationConfigArgs']] = None,
+                 spark_r_application_config: pulumi.Input[Optional['GdcSparkApplicationSparkRApplicationConfigArgs']] = None,
+                 spark_sql_application_config: pulumi.Input[Optional['GdcSparkApplicationSparkSqlApplicationConfigArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GdcSparkApplication resource.
 
@@ -134,7 +134,7 @@ class GdcSparkApplicationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The annotations to associate with this application. Annotations may be used to store client information, but are not used by the server.
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -143,48 +143,48 @@ class GdcSparkApplicationArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationEnvironment")
-    def application_environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An ApplicationEnvironment from which to inherit configuration properties.
         """
         return pulumi.get(self, "application_environment")
 
     @application_environment.setter
-    def application_environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_environment", value)
 
     @_builtins.property
     @pulumi.getter(name="dependencyImages")
-    def dependency_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dependency_images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
         """
         return pulumi.get(self, "dependency_images")
 
     @dependency_images.setter
-    def dependency_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dependency_images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dependency_images", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided human-readable name to be used in user interfaces.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels to associate with this application. Labels may be used for filtering and billing tracking.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -193,24 +193,24 @@ class GdcSparkApplicationArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kubernetes namespace in which to create the application. This namespace must already exist on the cluster.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -218,24 +218,24 @@ class GdcSparkApplicationArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         application-specific properties.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="pysparkApplicationConfig")
-    def pyspark_application_config(self) -> Optional[pulumi.Input['GdcSparkApplicationPysparkApplicationConfigArgs']]:
+    def pyspark_application_config(self) -> pulumi.Input[Optional['GdcSparkApplicationPysparkApplicationConfigArgs']]:
         """
         Represents the PySparkApplicationConfig.
         Structure is documented below.
@@ -243,12 +243,12 @@ class GdcSparkApplicationArgs:
         return pulumi.get(self, "pyspark_application_config")
 
     @pyspark_application_config.setter
-    def pyspark_application_config(self, value: Optional[pulumi.Input['GdcSparkApplicationPysparkApplicationConfigArgs']]):
+    def pyspark_application_config(self, value: pulumi.Input[Optional['GdcSparkApplicationPysparkApplicationConfigArgs']]):
         pulumi.set(self, "pyspark_application_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkApplicationConfig")
-    def spark_application_config(self) -> Optional[pulumi.Input['GdcSparkApplicationSparkApplicationConfigArgs']]:
+    def spark_application_config(self) -> pulumi.Input[Optional['GdcSparkApplicationSparkApplicationConfigArgs']]:
         """
         Represents the SparkApplicationConfig.
         Structure is documented below.
@@ -256,12 +256,12 @@ class GdcSparkApplicationArgs:
         return pulumi.get(self, "spark_application_config")
 
     @spark_application_config.setter
-    def spark_application_config(self, value: Optional[pulumi.Input['GdcSparkApplicationSparkApplicationConfigArgs']]):
+    def spark_application_config(self, value: pulumi.Input[Optional['GdcSparkApplicationSparkApplicationConfigArgs']]):
         pulumi.set(self, "spark_application_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkRApplicationConfig")
-    def spark_r_application_config(self) -> Optional[pulumi.Input['GdcSparkApplicationSparkRApplicationConfigArgs']]:
+    def spark_r_application_config(self) -> pulumi.Input[Optional['GdcSparkApplicationSparkRApplicationConfigArgs']]:
         """
         Represents the SparkRApplicationConfig.
         Structure is documented below.
@@ -269,12 +269,12 @@ class GdcSparkApplicationArgs:
         return pulumi.get(self, "spark_r_application_config")
 
     @spark_r_application_config.setter
-    def spark_r_application_config(self, value: Optional[pulumi.Input['GdcSparkApplicationSparkRApplicationConfigArgs']]):
+    def spark_r_application_config(self, value: pulumi.Input[Optional['GdcSparkApplicationSparkRApplicationConfigArgs']]):
         pulumi.set(self, "spark_r_application_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkSqlApplicationConfig")
-    def spark_sql_application_config(self) -> Optional[pulumi.Input['GdcSparkApplicationSparkSqlApplicationConfigArgs']]:
+    def spark_sql_application_config(self) -> pulumi.Input[Optional['GdcSparkApplicationSparkSqlApplicationConfigArgs']]:
         """
         Represents the SparkRApplicationConfig.
         Structure is documented below.
@@ -282,53 +282,53 @@ class GdcSparkApplicationArgs:
         return pulumi.get(self, "spark_sql_application_config")
 
     @spark_sql_application_config.setter
-    def spark_sql_application_config(self, value: Optional[pulumi.Input['GdcSparkApplicationSparkSqlApplicationConfigArgs']]):
+    def spark_sql_application_config(self, value: pulumi.Input[Optional['GdcSparkApplicationSparkSqlApplicationConfigArgs']]):
         pulumi.set(self, "spark_sql_application_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Dataproc version of this application.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
 class _GdcSparkApplicationState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 application_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dependency_images: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitoring_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 pyspark_application_config: Optional[pulumi.Input['GdcSparkApplicationPysparkApplicationConfigArgs']] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 serviceinstance: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_application_config: Optional[pulumi.Input['GdcSparkApplicationSparkApplicationConfigArgs']] = None,
-                 spark_application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_r_application_config: Optional[pulumi.Input['GdcSparkApplicationSparkRApplicationConfigArgs']] = None,
-                 spark_sql_application_config: Optional[pulumi.Input['GdcSparkApplicationSparkSqlApplicationConfigArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependency_images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitoring_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 pyspark_application_config: pulumi.Input[Optional['GdcSparkApplicationPysparkApplicationConfigArgs']] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 serviceinstance: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_application_config: pulumi.Input[Optional['GdcSparkApplicationSparkApplicationConfigArgs']] = None,
+                 spark_application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_r_application_config: pulumi.Input[Optional['GdcSparkApplicationSparkRApplicationConfigArgs']] = None,
+                 spark_sql_application_config: pulumi.Input[Optional['GdcSparkApplicationSparkSqlApplicationConfigArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GdcSparkApplication resources.
 
@@ -438,7 +438,7 @@ class _GdcSparkApplicationState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The annotations to associate with this application. Annotations may be used to store client information, but are not used by the server.
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -447,84 +447,84 @@ class _GdcSparkApplicationState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationEnvironment")
-    def application_environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An ApplicationEnvironment from which to inherit configuration properties.
         """
         return pulumi.get(self, "application_environment")
 
     @application_environment.setter
-    def application_environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_environment", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dependencyImages")
-    def dependency_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dependency_images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
         """
         return pulumi.get(self, "dependency_images")
 
     @dependency_images.setter
-    def dependency_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dependency_images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dependency_images", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided human-readable name to be used in user interfaces.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels to associate with this application. Labels may be used for filtering and billing tracking.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -533,72 +533,72 @@ class _GdcSparkApplicationState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the spark application.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="monitoringEndpoint")
-    def monitoring_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitoring_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL for a monitoring UI for this application (for eventual Spark PHS/UI support) Out of scope for private GA
         """
         return pulumi.get(self, "monitoring_endpoint")
 
     @monitoring_endpoint.setter
-    def monitoring_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitoring_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitoring_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The name of the application. Format: projects/{project}/locations/{location}/serviceInstances/{service_instance}/sparkApplications/{application}
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kubernetes namespace in which to create the application. This namespace must already exist on the cluster.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="outputUri")
-    def output_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An HCFS URI pointing to the location of stdout and stdout of the application Mainly useful for Pantheon and gcloud Not in scope for private GA
         """
         return pulumi.get(self, "output_uri")
 
     @output_uri.setter
-    def output_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -606,24 +606,24 @@ class _GdcSparkApplicationState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         application-specific properties.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -631,12 +631,12 @@ class _GdcSparkApplicationState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="pysparkApplicationConfig")
-    def pyspark_application_config(self) -> Optional[pulumi.Input['GdcSparkApplicationPysparkApplicationConfigArgs']]:
+    def pyspark_application_config(self) -> pulumi.Input[Optional['GdcSparkApplicationPysparkApplicationConfigArgs']]:
         """
         Represents the PySparkApplicationConfig.
         Structure is documented below.
@@ -644,36 +644,36 @@ class _GdcSparkApplicationState:
         return pulumi.get(self, "pyspark_application_config")
 
     @pyspark_application_config.setter
-    def pyspark_application_config(self, value: Optional[pulumi.Input['GdcSparkApplicationPysparkApplicationConfigArgs']]):
+    def pyspark_application_config(self, value: pulumi.Input[Optional['GdcSparkApplicationPysparkApplicationConfigArgs']]):
         pulumi.set(self, "pyspark_application_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the application is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
         """
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter
-    def serviceinstance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serviceinstance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the service instance to which this spark application belongs.
         """
         return pulumi.get(self, "serviceinstance")
 
     @serviceinstance.setter
-    def serviceinstance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serviceinstance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serviceinstance", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkApplicationConfig")
-    def spark_application_config(self) -> Optional[pulumi.Input['GdcSparkApplicationSparkApplicationConfigArgs']]:
+    def spark_application_config(self) -> pulumi.Input[Optional['GdcSparkApplicationSparkApplicationConfigArgs']]:
         """
         Represents the SparkApplicationConfig.
         Structure is documented below.
@@ -681,24 +681,24 @@ class _GdcSparkApplicationState:
         return pulumi.get(self, "spark_application_config")
 
     @spark_application_config.setter
-    def spark_application_config(self, value: Optional[pulumi.Input['GdcSparkApplicationSparkApplicationConfigArgs']]):
+    def spark_application_config(self, value: pulumi.Input[Optional['GdcSparkApplicationSparkApplicationConfigArgs']]):
         pulumi.set(self, "spark_application_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkApplicationId")
-    def spark_application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spark_application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the application
         """
         return pulumi.get(self, "spark_application_id")
 
     @spark_application_id.setter
-    def spark_application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spark_application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spark_application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkRApplicationConfig")
-    def spark_r_application_config(self) -> Optional[pulumi.Input['GdcSparkApplicationSparkRApplicationConfigArgs']]:
+    def spark_r_application_config(self) -> pulumi.Input[Optional['GdcSparkApplicationSparkRApplicationConfigArgs']]:
         """
         Represents the SparkRApplicationConfig.
         Structure is documented below.
@@ -706,12 +706,12 @@ class _GdcSparkApplicationState:
         return pulumi.get(self, "spark_r_application_config")
 
     @spark_r_application_config.setter
-    def spark_r_application_config(self, value: Optional[pulumi.Input['GdcSparkApplicationSparkRApplicationConfigArgs']]):
+    def spark_r_application_config(self, value: pulumi.Input[Optional['GdcSparkApplicationSparkRApplicationConfigArgs']]):
         pulumi.set(self, "spark_r_application_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkSqlApplicationConfig")
-    def spark_sql_application_config(self) -> Optional[pulumi.Input['GdcSparkApplicationSparkSqlApplicationConfigArgs']]:
+    def spark_sql_application_config(self) -> pulumi.Input[Optional['GdcSparkApplicationSparkSqlApplicationConfigArgs']]:
         """
         Represents the SparkRApplicationConfig.
         Structure is documented below.
@@ -719,12 +719,12 @@ class _GdcSparkApplicationState:
         return pulumi.get(self, "spark_sql_application_config")
 
     @spark_sql_application_config.setter
-    def spark_sql_application_config(self, value: Optional[pulumi.Input['GdcSparkApplicationSparkSqlApplicationConfigArgs']]):
+    def spark_sql_application_config(self, value: pulumi.Input[Optional['GdcSparkApplicationSparkSqlApplicationConfigArgs']]):
         pulumi.set(self, "spark_sql_application_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state.
         Possible values:
@@ -739,55 +739,55 @@ class _GdcSparkApplicationState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateMessage")
-    def state_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A message explaining the current state.
         """
         return pulumi.get(self, "state_message")
 
     @state_message.setter
-    def state_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state_message", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System generated unique identifier for this application, formatted as UUID4.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was most recently updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Dataproc version of this application.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -797,22 +797,22 @@ class GdcSparkApplication(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 application_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 dependency_images: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 pyspark_application_config: Optional[pulumi.Input[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict']]] = None,
-                 serviceinstance: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_application_config: Optional[pulumi.Input[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict']]] = None,
-                 spark_application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_r_application_config: Optional[pulumi.Input[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict']]] = None,
-                 spark_sql_application_config: Optional[pulumi.Input[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict']]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependency_images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 pyspark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict']]] = None,
+                 serviceinstance: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict']]] = None,
+                 spark_application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_r_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict']]] = None,
+                 spark_sql_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict']]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Spark application is a single Spark workload run on a GDC cluster.
@@ -1203,22 +1203,22 @@ class GdcSparkApplication(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 application_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 dependency_images: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 pyspark_application_config: Optional[pulumi.Input[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict']]] = None,
-                 serviceinstance: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_application_config: Optional[pulumi.Input[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict']]] = None,
-                 spark_application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_r_application_config: Optional[pulumi.Input[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict']]] = None,
-                 spark_sql_application_config: Optional[pulumi.Input[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict']]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependency_images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 pyspark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict']]] = None,
+                 serviceinstance: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict']]] = None,
+                 spark_application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_r_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict']]] = None,
+                 spark_sql_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict']]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1274,34 +1274,34 @@ class GdcSparkApplication(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            application_environment: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dependency_images: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            monitoring_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            output_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            pyspark_application_config: Optional[pulumi.Input[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict']]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            serviceinstance: Optional[pulumi.Input[_builtins.str]] = None,
-            spark_application_config: Optional[pulumi.Input[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict']]] = None,
-            spark_application_id: Optional[pulumi.Input[_builtins.str]] = None,
-            spark_r_application_config: Optional[pulumi.Input[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict']]] = None,
-            spark_sql_application_config: Optional[pulumi.Input[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            state_message: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'GdcSparkApplication':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            application_environment: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dependency_images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            monitoring_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            output_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            pyspark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationPysparkApplicationConfigArgs', 'GdcSparkApplicationPysparkApplicationConfigArgsDict']]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            serviceinstance: pulumi.Input[Optional[_builtins.str]] = None,
+            spark_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict']]] = None,
+            spark_application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spark_r_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict']]] = None,
+            spark_sql_application_config: pulumi.Input[Optional[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_message: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'GdcSparkApplication':
         """
         Get an existing GdcSparkApplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

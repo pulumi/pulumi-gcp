@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     });
     /// 
     ///     // Wait delay after enabling APIs and granting permissions
-    ///     var waitForPropagation = new Time.Index.Sleep("wait_for_propagation", new()
+    ///     var waitForPropagation = new Time.Sleep("wait_for_propagation", new()
     ///     {
     ///         CreateDuration = "120s",
     ///     }, new CustomResourceOptions
@@ -214,7 +214,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///         Project = project.ProjectId,
     ///         Annotations = null,
     ///         Labels = null,
-    ///         AppHubApplication = Std.Index.Format.Invoke(new()
+    ///         AppHubApplication = Std.Format.Invoke(new()
     ///         {
     ///             Input = "//apphub.googleapis.com/projects/%s/locations/%s/applications/%s",
     ///             Args = new[]
@@ -403,7 +403,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     });
     /// 
     ///     // Wait delay after enabling APIs and granting permissions
-    ///     var waitForPropagation = new Time.Index.Sleep("wait_for_propagation", new()
+    ///     var waitForPropagation = new Time.Sleep("wait_for_propagation", new()
     ///     {
     ///         CreateDuration = "120s",
     ///     }, new CustomResourceOptions

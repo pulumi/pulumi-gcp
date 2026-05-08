@@ -407,7 +407,7 @@ import (
 //				return err
 //			}
 //			// this is required to allow the transcoder service identity to access the secret
-//			transcoder, err := projects.NewServiceIdentity(ctx, "transcoder", &projects.ServiceIdentityArgs{
+//			transcoder2, err := projects.NewServiceIdentity(ctx, "transcoder", &projects.ServiceIdentityArgs{
 //				Project: pulumi.String(pulumi.String(project.ProjectId)),
 //				Service: pulumi.String("transcoder.googleapis.com"),
 //			})
@@ -418,7 +418,7 @@ import (
 //				SecretId: encryptionKey.SecretId,
 //				Project:  encryptionKey.Project,
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
-//				Member: transcoder.Email.ApplyT(func(email string) (string, error) {
+//				Member: transcoder2.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
 //			})

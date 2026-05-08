@@ -220,15 +220,15 @@ export interface AccessApprovalSettingsState {
      * The asymmetric crypto key version to use for signing approval requests.
      * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
      */
-    activeKeyVersion?: pulumi.Input<string>;
+    activeKeyVersion?: pulumi.Input<string | undefined>;
     /**
      * This field will always be unset for the organization since organizations do not have ancestors.
      */
-    ancestorHasActiveKeyVersion?: pulumi.Input<boolean>;
+    ancestorHasActiveKeyVersion?: pulumi.Input<boolean | undefined>;
     /**
      * This field will always be unset for the organization since organizations do not have ancestors.
      */
-    enrolledAncestor?: pulumi.Input<boolean>;
+    enrolledAncestor?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Google Cloud Services for which the given resource has Access Approval enrolled.
      * Access requests for the resource given by name against any of these services contained here will be required
@@ -236,27 +236,27 @@ export interface AccessApprovalSettingsState {
      * A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
      * Structure is documented below.
      */
-    enrolledServices?: pulumi.Input<pulumi.Input<inputs.organizations.AccessApprovalSettingsEnrolledService>[]>;
+    enrolledServices?: pulumi.Input<pulumi.Input<inputs.organizations.AccessApprovalSettingsEnrolledService>[] | undefined>;
     /**
      * If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
      * configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
      * correct permissions on it, etc.).
      */
-    invalidKeyVersion?: pulumi.Input<boolean>;
+    invalidKeyVersion?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of email addresses to which notifications relating to approval requests should be sent.
      * Notifications relating to a resource will be sent to all emails in the settings of ancestor
      * resources of that resource. A maximum of 50 email addresses are allowed.
      */
-    notificationEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the organization of the access approval settings.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -267,7 +267,7 @@ export interface AccessApprovalSettingsArgs {
      * The asymmetric crypto key version to use for signing approval requests.
      * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
      */
-    activeKeyVersion?: pulumi.Input<string>;
+    activeKeyVersion?: pulumi.Input<string | undefined>;
     /**
      * A list of Google Cloud Services for which the given resource has Access Approval enrolled.
      * Access requests for the resource given by name against any of these services contained here will be required
@@ -281,7 +281,7 @@ export interface AccessApprovalSettingsArgs {
      * Notifications relating to a resource will be sent to all emails in the settings of ancestor
      * resources of that resource. A maximum of 50 email addresses are allowed.
      */
-    notificationEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the organization of the access approval settings.
      */

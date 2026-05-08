@@ -22,7 +22,7 @@ __all__ = ['AddonsConfigArgs', 'AddonsConfig']
 class AddonsConfigArgs:
     def __init__(__self__, *,
                  org: pulumi.Input[_builtins.str],
-                 addons_config: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']] = None):
+                 addons_config: pulumi.Input[Optional['AddonsConfigAddonsConfigArgs']] = None):
         """
         The set of arguments for constructing a AddonsConfig resource.
 
@@ -48,7 +48,7 @@ class AddonsConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="addonsConfig")
-    def addons_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']]:
+    def addons_config(self) -> pulumi.Input[Optional['AddonsConfigAddonsConfigArgs']]:
         """
         Addon configurations of the Apigee organization.
         Structure is documented below.
@@ -56,15 +56,15 @@ class AddonsConfigArgs:
         return pulumi.get(self, "addons_config")
 
     @addons_config.setter
-    def addons_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']]):
+    def addons_config(self, value: pulumi.Input[Optional['AddonsConfigAddonsConfigArgs']]):
         pulumi.set(self, "addons_config", value)
 
 
 @pulumi.input_type
 class _AddonsConfigState:
     def __init__(__self__, *,
-                 addons_config: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None):
+                 addons_config: pulumi.Input[Optional['AddonsConfigAddonsConfigArgs']] = None,
+                 org: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddonsConfig resources.
 
@@ -79,7 +79,7 @@ class _AddonsConfigState:
 
     @_builtins.property
     @pulumi.getter(name="addonsConfig")
-    def addons_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']]:
+    def addons_config(self) -> pulumi.Input[Optional['AddonsConfigAddonsConfigArgs']]:
         """
         Addon configurations of the Apigee organization.
         Structure is documented below.
@@ -87,19 +87,19 @@ class _AddonsConfigState:
         return pulumi.get(self, "addons_config")
 
     @addons_config.setter
-    def addons_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigArgs']]):
+    def addons_config(self, value: pulumi.Input[Optional['AddonsConfigAddonsConfigArgs']]):
         pulumi.set(self, "addons_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def org(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Apigee organization.
         """
         return pulumi.get(self, "org")
 
     @org.setter
-    def org(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org", value)
 
 
@@ -109,8 +109,8 @@ class AddonsConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons_config: Optional[pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
+                 addons_config: pulumi.Input[Optional[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']]] = None,
+                 org: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Configures the add-ons for the Apigee organization. The existing add-on configuration will be fully replaced.
@@ -347,8 +347,8 @@ class AddonsConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons_config: Optional[pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
+                 addons_config: pulumi.Input[Optional[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']]] = None,
+                 org: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -372,8 +372,8 @@ class AddonsConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addons_config: Optional[pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']]] = None,
-            org: Optional[pulumi.Input[_builtins.str]] = None) -> 'AddonsConfig':
+            addons_config: pulumi.Input[Optional[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']]] = None,
+            org: pulumi.Input[Optional[_builtins.str]] = None) -> 'AddonsConfig':
         """
         Get an existing AddonsConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

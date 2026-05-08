@@ -175,35 +175,35 @@ export interface FolderNotificationConfigState {
     /**
      * This must be unique within the organization.
      */
-    configId?: pulumi.Input<string>;
+    configId?: pulumi.Input<string | undefined>;
     /**
      * The description of the notification config (max of 1024 characters).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Numerical ID of the parent folder.
      */
-    folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string | undefined>;
     /**
      * The resource name of this notification config, in the format
      * `folders/{{folder}}/notificationConfigs/{{config_id}}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Pub/Sub topic to send notifications to. Its format is
      * "projects/[projectId]/topics/[topic]".
      */
-    pubsubTopic?: pulumi.Input<string>;
+    pubsubTopic?: pulumi.Input<string | undefined>;
     /**
      * The service account that needs "pubsub.topics.publish" permission to
      * publish to the Pub/Sub topic.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * The config for triggering streaming-based notifications.
      * Structure is documented below.
      */
-    streamingConfig?: pulumi.Input<inputs.securitycenter.FolderNotificationConfigStreamingConfig>;
+    streamingConfig?: pulumi.Input<inputs.securitycenter.FolderNotificationConfigStreamingConfig | undefined>;
 }
 
 /**
@@ -217,7 +217,7 @@ export interface FolderNotificationConfigArgs {
     /**
      * The description of the notification config (max of 1024 characters).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Numerical ID of the parent folder.
      */

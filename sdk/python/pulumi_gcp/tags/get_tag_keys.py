@@ -103,7 +103,7 @@ def get_tag_keys(parent: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         keys=pulumi.get(__ret__, 'keys'),
         parent=pulumi.get(__ret__, 'parent'))
-def get_tag_keys_output(parent: Optional[pulumi.Input[_builtins.str]] = None,
+def get_tag_keys_output(parent: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagKeysResult]:
     """
     Get tag keys by org or project `parent`.

@@ -232,57 +232,57 @@ export interface TrustConfigState {
      * the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
      * Structure is documented below.
      */
-    allowlistedCertificates?: pulumi.Input<pulumi.Input<inputs.certificatemanager.TrustConfigAllowlistedCertificate>[]>;
+    allowlistedCertificates?: pulumi.Input<pulumi.Input<inputs.certificatemanager.TrustConfigAllowlistedCertificate>[] | undefined>;
     /**
      * The creation timestamp of a TrustConfig.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * One or more paragraphs of text description of a trust config.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Set of label tags associated with the trust config.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The trust config location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * A user-defined name of the trust config. Trust config names must be unique globally.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Set of trust stores to perform validation against.
      * This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
      * Structure is documented below.
      */
-    trustStores?: pulumi.Input<pulumi.Input<inputs.certificatemanager.TrustConfigTrustStore>[]>;
+    trustStores?: pulumi.Input<pulumi.Input<inputs.certificatemanager.TrustConfigTrustStore>[] | undefined>;
     /**
      * The last update timestamp of a TrustConfig.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -294,17 +294,17 @@ export interface TrustConfigArgs {
      * the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
      * Structure is documented below.
      */
-    allowlistedCertificates?: pulumi.Input<pulumi.Input<inputs.certificatemanager.TrustConfigAllowlistedCertificate>[]>;
+    allowlistedCertificates?: pulumi.Input<pulumi.Input<inputs.certificatemanager.TrustConfigAllowlistedCertificate>[] | undefined>;
     /**
      * One or more paragraphs of text description of a trust config.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Set of label tags associated with the trust config.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The trust config location.
      */
@@ -312,16 +312,16 @@ export interface TrustConfigArgs {
     /**
      * A user-defined name of the trust config. Trust config names must be unique globally.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Set of trust stores to perform validation against.
      * This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
      * Structure is documented below.
      */
-    trustStores?: pulumi.Input<pulumi.Input<inputs.certificatemanager.TrustConfigTrustStore>[]>;
+    trustStores?: pulumi.Input<pulumi.Input<inputs.certificatemanager.TrustConfigTrustStore>[] | undefined>;
 }

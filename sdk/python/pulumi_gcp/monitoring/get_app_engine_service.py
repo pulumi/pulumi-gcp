@@ -205,8 +205,8 @@ def get_app_engine_service(module_id: Optional[_builtins.str] = None,
         service_id=pulumi.get(__ret__, 'service_id'),
         telemetries=pulumi.get(__ret__, 'telemetries'),
         user_labels=pulumi.get(__ret__, 'user_labels'))
-def get_app_engine_service_output(module_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                  project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_app_engine_service_output(module_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                  project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppEngineServiceResult]:
     """
     A Monitoring Service is the root resource under which operational aspects of a

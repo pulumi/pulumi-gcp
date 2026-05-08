@@ -271,7 +271,7 @@ export interface ClusterState {
      * ID of the cluster to create. Must start with a lowercase letter,
      * use only lowercase letters and numbers, and be at most 10 characters long.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Compute resources available to the cluster. Keys specify the ID of the
      * compute resource by which it can be referenced elsewhere, and must conform
@@ -279,19 +279,19 @@ export interface ClusterState {
      * alphanumeric, and at most 63 characters).
      * Structure is documented below.
      */
-    computeResources?: pulumi.Input<pulumi.Input<inputs.hypercomputecluster.ClusterComputeResource>[]>;
+    computeResources?: pulumi.Input<pulumi.Input<inputs.hypercomputecluster.ClusterComputeResource>[] | undefined>;
     /**
      * Time that the cluster was originally created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-provided description of the cluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [Labels](https://cloud.google.com/compute/docs/labeling-resources) applied
      * to the cluster. Labels can be used to organize clusters and to filter them
@@ -299,16 +299,16 @@ export interface ClusterState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. [Relative resource name](https://google.aip.dev/122) of the cluster, in the
      * format `projects/{project}/locations/{location}/clusters/{cluster}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network resources available to the cluster. Must contain at most one value.
      * Keys specify the ID of the network resource by which it can be referenced
@@ -317,30 +317,30 @@ export interface ClusterState {
      * alphanumeric, and at most 63 characters).
      * Structure is documented below.
      */
-    networkResources?: pulumi.Input<pulumi.Input<inputs.hypercomputecluster.ClusterNetworkResource>[]>;
+    networkResources?: pulumi.Input<pulumi.Input<inputs.hypercomputecluster.ClusterNetworkResource>[] | undefined>;
     /**
      * The component responsible for scheduling and running workloads on the
      * cluster as well as providing the user interface for interacting with the
      * cluster at runtime.
      * Structure is documented below.
      */
-    orchestrator?: pulumi.Input<inputs.hypercomputecluster.ClusterOrchestrator>;
+    orchestrator?: pulumi.Input<inputs.hypercomputecluster.ClusterOrchestrator | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates whether changes to the cluster are currently in flight. If this
      * is `true`, then the current state might not match the cluster's intended
      * state.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * Storage resources available to the cluster. Keys specify the ID of the
      * storage resource by which it can be referenced elsewhere, and must conform
@@ -348,11 +348,11 @@ export interface ClusterState {
      * alphanumeric, and at most 63 characters).
      * Structure is documented below.
      */
-    storageResources?: pulumi.Input<pulumi.Input<inputs.hypercomputecluster.ClusterStorageResource>[]>;
+    storageResources?: pulumi.Input<pulumi.Input<inputs.hypercomputecluster.ClusterStorageResource>[] | undefined>;
     /**
      * Time that the cluster was most recently updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -371,11 +371,11 @@ export interface ClusterArgs {
      * alphanumeric, and at most 63 characters).
      * Structure is documented below.
      */
-    computeResources?: pulumi.Input<pulumi.Input<inputs.hypercomputecluster.ClusterComputeResource>[]>;
+    computeResources?: pulumi.Input<pulumi.Input<inputs.hypercomputecluster.ClusterComputeResource>[] | undefined>;
     /**
      * User-provided description of the cluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * [Labels](https://cloud.google.com/compute/docs/labeling-resources) applied
      * to the cluster. Labels can be used to organize clusters and to filter them
@@ -383,7 +383,7 @@ export interface ClusterArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -396,19 +396,19 @@ export interface ClusterArgs {
      * alphanumeric, and at most 63 characters).
      * Structure is documented below.
      */
-    networkResources?: pulumi.Input<pulumi.Input<inputs.hypercomputecluster.ClusterNetworkResource>[]>;
+    networkResources?: pulumi.Input<pulumi.Input<inputs.hypercomputecluster.ClusterNetworkResource>[] | undefined>;
     /**
      * The component responsible for scheduling and running workloads on the
      * cluster as well as providing the user interface for interacting with the
      * cluster at runtime.
      * Structure is documented below.
      */
-    orchestrator?: pulumi.Input<inputs.hypercomputecluster.ClusterOrchestrator>;
+    orchestrator?: pulumi.Input<inputs.hypercomputecluster.ClusterOrchestrator | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Storage resources available to the cluster. Keys specify the ID of the
      * storage resource by which it can be referenced elsewhere, and must conform
@@ -416,5 +416,5 @@ export interface ClusterArgs {
      * alphanumeric, and at most 63 characters).
      * Structure is documented below.
      */
-    storageResources?: pulumi.Input<pulumi.Input<inputs.hypercomputecluster.ClusterStorageResource>[]>;
+    storageResources?: pulumi.Input<pulumi.Input<inputs.hypercomputecluster.ClusterStorageResource>[] | undefined>;
 }

@@ -140,10 +140,10 @@ def get_attached_install_manifest(cluster_id: Optional[_builtins.str] = None,
         manifest=pulumi.get(__ret__, 'manifest'),
         platform_version=pulumi.get(__ret__, 'platform_version'),
         project=pulumi.get(__ret__, 'project'))
-def get_attached_install_manifest_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                         location: Optional[pulumi.Input[_builtins.str]] = None,
-                                         platform_version: Optional[pulumi.Input[_builtins.str]] = None,
-                                         project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_attached_install_manifest_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                         location: pulumi.Input[Optional[_builtins.str]] = None,
+                                         platform_version: pulumi.Input[Optional[_builtins.str]] = None,
+                                         project: pulumi.Input[Optional[_builtins.str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAttachedInstallManifestResult]:
     """
     Provides access to available platform versions in a location for a given project.

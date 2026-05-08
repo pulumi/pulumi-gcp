@@ -141,9 +141,9 @@ def get_datapolicyv2_data_policy_iam_policy(data_policy_id: Optional[_builtins.s
         location=pulumi.get(__ret__, 'location'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-def get_datapolicyv2_data_policy_iam_policy_output(data_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                   location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_datapolicyv2_data_policy_iam_policy_output(data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                   location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                   project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatapolicyv2DataPolicyIamPolicyResult]:
     """
     Retrieves the current IAM policy data for datapolicy

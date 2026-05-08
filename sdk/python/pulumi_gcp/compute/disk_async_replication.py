@@ -64,8 +64,8 @@ class DiskAsyncReplicationArgs:
 @pulumi.input_type
 class _DiskAsyncReplicationState:
     def __init__(__self__, *,
-                 primary_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_disk: Optional[pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']] = None):
+                 primary_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_disk: pulumi.Input[Optional['DiskAsyncReplicationSecondaryDiskArgs']] = None):
         """
         Input properties used for looking up and filtering DiskAsyncReplication resources.
 
@@ -81,19 +81,19 @@ class _DiskAsyncReplicationState:
 
     @_builtins.property
     @pulumi.getter(name="primaryDisk")
-    def primary_disk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_disk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The primary disk (source of replication).
         """
         return pulumi.get(self, "primary_disk")
 
     @primary_disk.setter
-    def primary_disk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_disk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryDisk")
-    def secondary_disk(self) -> Optional[pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']]:
+    def secondary_disk(self) -> pulumi.Input[Optional['DiskAsyncReplicationSecondaryDiskArgs']]:
         """
         The secondary disk (target of replication). You can specify only one value. Structure is documented below.
 
@@ -102,7 +102,7 @@ class _DiskAsyncReplicationState:
         return pulumi.get(self, "secondary_disk")
 
     @secondary_disk.setter
-    def secondary_disk(self, value: Optional[pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']]):
+    def secondary_disk(self, value: pulumi.Input[Optional['DiskAsyncReplicationSecondaryDiskArgs']]):
         pulumi.set(self, "secondary_disk", value)
 
 
@@ -112,8 +112,8 @@ class DiskAsyncReplication(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 primary_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_disk: Optional[pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None,
+                 primary_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_disk: pulumi.Input[Optional[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None,
                  __props__=None):
         """
         Starts and stops asynchronous persistent disk replication. For more information
@@ -207,8 +207,8 @@ class DiskAsyncReplication(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 primary_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_disk: Optional[pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None,
+                 primary_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_disk: pulumi.Input[Optional[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -234,8 +234,8 @@ class DiskAsyncReplication(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            primary_disk: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_disk: Optional[pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None) -> 'DiskAsyncReplication':
+            primary_disk: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_disk: pulumi.Input[Optional[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None) -> 'DiskAsyncReplication':
         """
         Get an existing DiskAsyncReplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -22,9 +22,9 @@ __all__ = ['PolicyArgs', 'Policy']
 class PolicyArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
-                 dry_run_spec: Optional[pulumi.Input['PolicyDryRunSpecArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['PolicySpecArgs']] = None):
+                 dry_run_spec: pulumi.Input[Optional['PolicyDryRunSpecArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional['PolicySpecArgs']] = None):
         """
         The set of arguments for constructing a Policy resource.
 
@@ -57,7 +57,7 @@ class PolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRunSpec")
-    def dry_run_spec(self) -> Optional[pulumi.Input['PolicyDryRunSpecArgs']]:
+    def dry_run_spec(self) -> pulumi.Input[Optional['PolicyDryRunSpecArgs']]:
         """
         Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
         Structure is documented below.
@@ -65,24 +65,24 @@ class PolicyArgs:
         return pulumi.get(self, "dry_run_spec")
 
     @dry_run_spec.setter
-    def dry_run_spec(self, value: Optional[pulumi.Input['PolicyDryRunSpecArgs']]):
+    def dry_run_spec(self, value: pulumi.Input[Optional['PolicyDryRunSpecArgs']]):
         pulumi.set(self, "dry_run_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PolicySpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['PolicySpecArgs']]:
         """
         Basic information about the Organization Policy.
         Structure is documented below.
@@ -90,18 +90,18 @@ class PolicyArgs:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PolicySpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['PolicySpecArgs']]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
 class _PolicyState:
     def __init__(__self__, *,
-                 dry_run_spec: Optional[pulumi.Input['PolicyDryRunSpecArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['PolicySpecArgs']] = None):
+                 dry_run_spec: pulumi.Input[Optional['PolicyDryRunSpecArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional['PolicySpecArgs']] = None):
         """
         Input properties used for looking up and filtering Policy resources.
 
@@ -126,7 +126,7 @@ class _PolicyState:
 
     @_builtins.property
     @pulumi.getter(name="dryRunSpec")
-    def dry_run_spec(self) -> Optional[pulumi.Input['PolicyDryRunSpecArgs']]:
+    def dry_run_spec(self) -> pulumi.Input[Optional['PolicyDryRunSpecArgs']]:
         """
         Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
         Structure is documented below.
@@ -134,48 +134,48 @@ class _PolicyState:
         return pulumi.get(self, "dry_run_spec")
 
     @dry_run_spec.setter
-    def dry_run_spec(self, value: Optional[pulumi.Input['PolicyDryRunSpecArgs']]):
+    def dry_run_spec(self, value: pulumi.Input[Optional['PolicyDryRunSpecArgs']]):
         pulumi.set(self, "dry_run_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent of the resource.
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PolicySpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['PolicySpecArgs']]:
         """
         Basic information about the Organization Policy.
         Structure is documented below.
@@ -183,7 +183,7 @@ class _PolicyState:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PolicySpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['PolicySpecArgs']]):
         pulumi.set(self, "spec", value)
 
 
@@ -193,10 +193,10 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run_spec: Optional[pulumi.Input[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']]] = None,
+                 dry_run_spec: pulumi.Input[Optional[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[Union['PolicySpecArgs', 'PolicySpecArgsDict']]] = None,
                  __props__=None):
         """
         Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
@@ -572,10 +572,10 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run_spec: Optional[pulumi.Input[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']]] = None,
+                 dry_run_spec: pulumi.Input[Optional[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[Union['PolicySpecArgs', 'PolicySpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -602,11 +602,11 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dry_run_spec: Optional[pulumi.Input[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            spec: Optional[pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']]] = None) -> 'Policy':
+            dry_run_spec: pulumi.Input[Optional[Union['PolicyDryRunSpecArgs', 'PolicyDryRunSpecArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['PolicySpecArgs', 'PolicySpecArgsDict']]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

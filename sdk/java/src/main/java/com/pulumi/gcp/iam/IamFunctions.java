@@ -42,8 +42,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -81,8 +81,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -120,8 +120,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -159,8 +159,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -198,8 +198,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -241,8 +241,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetTestablePermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -286,8 +286,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetTestablePermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -331,8 +331,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetTestablePermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -376,8 +376,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetTestablePermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -421,8 +421,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetTestablePermissionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -464,8 +464,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkforcePoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -505,8 +505,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkforcePoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -546,8 +546,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkforcePoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -587,8 +587,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkforcePoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -628,8 +628,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkforcePoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -674,8 +674,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -719,8 +719,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -764,8 +764,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -809,8 +809,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -854,8 +854,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -894,8 +894,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -935,8 +935,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -976,8 +976,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1017,8 +1017,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1058,8 +1058,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1102,8 +1102,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1146,8 +1146,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1190,8 +1190,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1234,8 +1234,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1278,8 +1278,8 @@ public final class IamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.iam.IamFunctions;
      * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

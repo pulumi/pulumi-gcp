@@ -25,9 +25,9 @@ class DataAssetArgs:
                  data_product_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  resource: pulumi.Input[_builtins.str],
-                 access_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DataAssetAccessGroupConfigArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DataAssetAccessGroupConfigArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataAsset resource.
 
@@ -104,7 +104,7 @@ class DataAssetArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessGroupConfigs")
-    def access_group_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataAssetAccessGroupConfigArgs']]]]:
+    def access_group_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAssetAccessGroupConfigArgs']]]]:
         """
         Access groups configurations.
         Structure is documented below.
@@ -112,12 +112,12 @@ class DataAssetArgs:
         return pulumi.get(self, "access_group_configs")
 
     @access_group_configs.setter
-    def access_group_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataAssetAccessGroupConfigArgs']]]]):
+    def access_group_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAssetAccessGroupConfigArgs']]]]):
         pulumi.set(self, "access_group_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined labels.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -126,12 +126,12 @@ class DataAssetArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -139,23 +139,23 @@ class DataAssetArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _DataAssetState:
     def __init__(__self__, *,
-                 access_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DataAssetAccessGroupConfigArgs']]]] = None,
-                 data_asset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DataAssetAccessGroupConfigArgs']]]] = None,
+                 data_asset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataAsset resources.
 
@@ -198,7 +198,7 @@ class _DataAssetState:
 
     @_builtins.property
     @pulumi.getter(name="accessGroupConfigs")
-    def access_group_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataAssetAccessGroupConfigArgs']]]]:
+    def access_group_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataAssetAccessGroupConfigArgs']]]]:
         """
         Access groups configurations.
         Structure is documented below.
@@ -206,48 +206,48 @@ class _DataAssetState:
         return pulumi.get(self, "access_group_configs")
 
     @access_group_configs.setter
-    def access_group_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataAssetAccessGroupConfigArgs']]]]):
+    def access_group_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataAssetAccessGroupConfigArgs']]]]):
         pulumi.set(self, "access_group_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="dataAssetId")
-    def data_asset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_asset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the data asset.
         """
         return pulumi.get(self, "data_asset_id")
 
     @data_asset_id.setter
-    def data_asset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_asset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_asset_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dataProductId")
-    def data_product_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_product_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the parent data product.
         """
         return pulumi.get(self, "data_product_id")
 
     @data_product_id.setter
-    def data_product_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_product_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_product_id", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined labels.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -256,24 +256,24 @@ class _DataAssetState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the data asset.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -281,12 +281,12 @@ class _DataAssetState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -294,31 +294,31 @@ class _DataAssetState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full resource name of the cloud resource.
         """
         return pulumi.get(self, "resource")
 
     @resource.setter
-    def resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System generated unique ID.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
@@ -328,13 +328,13 @@ class DataAsset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict']]]]] = None,
-                 data_asset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict']]]]] = None,
+                 data_asset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Warning:** `dataplex.DataAsset` is deprecated and will be removed in a future major release. Please use `dataplex.DataProductDataAsset` resource instead.
@@ -627,13 +627,13 @@ class DataAsset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict']]]]] = None,
-                 data_asset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict']]]]] = None,
+                 data_asset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -673,16 +673,16 @@ class DataAsset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict']]]]] = None,
-            data_asset_id: Optional[pulumi.Input[_builtins.str]] = None,
-            data_product_id: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            resource: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'DataAsset':
+            access_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataAssetAccessGroupConfigArgs', 'DataAssetAccessGroupConfigArgsDict']]]]] = None,
+            data_asset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            resource: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'DataAsset':
         """
         Get an existing DataAsset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -155,9 +155,9 @@ def get_s(prefix: Optional[_builtins.str] = None,
         prefix=pulumi.get(__ret__, 'prefix'),
         project=pulumi.get(__ret__, 'project'),
         regex=pulumi.get(__ret__, 'regex'))
-def get_s_output(prefix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                 project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                 regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_s_output(prefix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                 project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                 regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSResult]:
     """
     Gets a list of all service accounts from a project.

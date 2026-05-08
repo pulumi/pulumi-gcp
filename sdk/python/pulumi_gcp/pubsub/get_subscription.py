@@ -282,8 +282,8 @@ def get_subscription(name: Optional[_builtins.str] = None,
         retry_policies=pulumi.get(__ret__, 'retry_policies'),
         tags=pulumi.get(__ret__, 'tags'),
         topic=pulumi.get(__ret__, 'topic'))
-def get_subscription_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                            project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_subscription_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                            project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubscriptionResult]:
     """
     Get information about a Google Cloud Pub/Sub Subscription. For more information see

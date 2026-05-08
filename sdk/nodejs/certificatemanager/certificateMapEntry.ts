@@ -240,27 +240,27 @@ export interface CertificateMapEntryState {
      * There can be defined up to fifteen certificates in each Certificate Map Entry.
      * Each certificate must match pattern projects/*&#47;locations/*&#47;certificates/*.
      */
-    certificates?: pulumi.Input<pulumi.Input<string>[]>;
+    certificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
      * with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
      * for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
      * selecting a proper certificate.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Set of labels associated with a Certificate Map Entry.
      * An object containing a list of "key": value pairs.
@@ -269,41 +269,41 @@ export interface CertificateMapEntryState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A map entry that is inputted into the certificate map
      */
-    map?: pulumi.Input<string>;
+    map?: pulumi.Input<string | undefined>;
     /**
      * A predefined matcher for particular cases, other than SNI selection
      */
-    matcher?: pulumi.Input<string>;
+    matcher?: pulumi.Input<string | undefined>;
     /**
      * A user-defined name of the Certificate Map Entry. Certificate Map Entry
      * names must be unique globally and match pattern
      * 'projects/*&#47;locations/*&#47;certificateMaps/*&#47;certificateMapEntries/*'
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A serving state of this Certificate Map Entry.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
      * with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -319,13 +319,13 @@ export interface CertificateMapEntryArgs {
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
      * for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
      * selecting a proper certificate.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Set of labels associated with a Certificate Map Entry.
      * An object containing a list of "key": value pairs.
@@ -334,7 +334,7 @@ export interface CertificateMapEntryArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A map entry that is inputted into the certificate map
      */
@@ -342,16 +342,16 @@ export interface CertificateMapEntryArgs {
     /**
      * A predefined matcher for particular cases, other than SNI selection
      */
-    matcher?: pulumi.Input<string>;
+    matcher?: pulumi.Input<string | undefined>;
     /**
      * A user-defined name of the Certificate Map Entry. Certificate Map Entry
      * names must be unique globally and match pattern
      * 'projects/*&#47;locations/*&#47;certificateMaps/*&#47;certificateMapEntries/*'
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

@@ -303,67 +303,67 @@ export interface AuthzExtensionState {
     /**
      * The :authority header in the gRPC request sent from Envoy to the extension service.
      */
-    authority?: pulumi.Input<string>;
+    authority?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Determines how the proxy behaves if the call to the extension fails or times out.
      * When set to TRUE, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to FALSE or the default setting of FALSE is used, one of the following happens:
      * * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
      * * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
      */
-    failOpen?: pulumi.Input<boolean>;
+    failOpen?: pulumi.Input<boolean | undefined>;
     /**
      * List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
      */
-    forwardHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    forwardHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of labels associated with the AuthzExtension resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Required when the service points to a backend service. All backend services and forwarding rules referenced by
      * this extension must share the same load balancing scheme. For more information, refer to
      * [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
-    loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The metadata provided here is included as part of the metadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
      * {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Identifier. Name of the AuthzExtension resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The service that runs the extension.
      * The following values and formats are accepted:
@@ -372,15 +372,15 @@ export interface AuthzExtensionState {
      * * A fully qualified domain name that can be resolved by the dataplane
      * * Backend service resource URI of the form `https://www.googleapis.com/compute/v1/projects/{{project}}/regions/{{region}}/backendServices/{{name}}` or `https://www.googleapis.com/compute/v1/projects/{{project}}/global/backendServices/{{name}}}}`
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The format of communication supported by the callout extension. Applicable only when the policyProfile is REQUEST_AUTHZ.
      * This field is supported only for regional AuthzExtension resources. If not specified, the default value
@@ -400,7 +400,7 @@ export interface AuthzExtensionState {
      * This option is only supported for regional AuthzExtension resources.
      * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
      */
-    wireFormat?: pulumi.Input<string>;
+    wireFormat?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -410,36 +410,36 @@ export interface AuthzExtensionArgs {
     /**
      * The :authority header in the gRPC request sent from Envoy to the extension service.
      */
-    authority?: pulumi.Input<string>;
+    authority?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Determines how the proxy behaves if the call to the extension fails or times out.
      * When set to TRUE, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to FALSE or the default setting of FALSE is used, one of the following happens:
      * * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
      * * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
      */
-    failOpen?: pulumi.Input<boolean>;
+    failOpen?: pulumi.Input<boolean | undefined>;
     /**
      * List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
      */
-    forwardHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    forwardHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of labels associated with the AuthzExtension resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Required when the service points to a backend service. All backend services and forwarding rules referenced by
      * this extension must share the same load balancing scheme. For more information, refer to
      * [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
-    loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource.
      */
@@ -448,16 +448,16 @@ export interface AuthzExtensionArgs {
      * The metadata provided here is included as part of the metadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
      * {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Identifier. Name of the AuthzExtension resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The service that runs the extension.
      * The following values and formats are accepted:
@@ -490,5 +490,5 @@ export interface AuthzExtensionArgs {
      * This option is only supported for regional AuthzExtension resources.
      * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
      */
-    wireFormat?: pulumi.Input<string>;
+    wireFormat?: pulumi.Input<string | undefined>;
 }

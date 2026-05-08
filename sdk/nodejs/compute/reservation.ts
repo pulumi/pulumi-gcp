@@ -397,43 +397,43 @@ export interface ReservationState {
     /**
      * List of all reservation block names in the parent reservation.
      */
-    blockNames?: pulumi.Input<pulumi.Input<string>[]>;
+    blockNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Full or partial URL to a parent commitment. This field displays for
      * reservations that are tied to a commitment.
      */
-    commitment?: pulumi.Input<string>;
+    commitment?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
      * Structure is documented below.
      */
-    deleteAfterDuration?: pulumi.Input<inputs.compute.ReservationDeleteAfterDuration>;
+    deleteAfterDuration?: pulumi.Input<inputs.compute.ReservationDeleteAfterDuration | undefined>;
     /**
      * Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
      * Cannot be used with delete_after_duration.
      */
-    deleteAtTime?: pulumi.Input<string>;
+    deleteAtTime?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Indicates if this group of VMs have emergent maintenance enabled.
      */
-    enableEmergentMaintenance?: pulumi.Input<boolean>;
+    enableEmergentMaintenance?: pulumi.Input<boolean | undefined>;
     /**
      * Type of the resource. Always compute#reservations for reservations.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
      */
-    linkedCommitments?: pulumi.Input<pulumi.Input<string>[]>;
+    linkedCommitments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -443,59 +443,59 @@ export interface ReservationState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * The number of reservation blocks associated with this reservation.
      */
-    reservationBlockCount?: pulumi.Input<number>;
+    reservationBlockCount?: pulumi.Input<number | undefined>;
     /**
      * Sharing policy for reservations with Google Cloud managed services.
      * Structure is documented below.
      */
-    reservationSharingPolicy?: pulumi.Input<inputs.compute.ReservationReservationSharingPolicy>;
+    reservationSharingPolicy?: pulumi.Input<inputs.compute.ReservationReservationSharingPolicy | undefined>;
     /**
      * Status information for Reservation resource.
      * Structure is documented below.
      */
-    resourceStatuses?: pulumi.Input<pulumi.Input<inputs.compute.ReservationResourceStatus>[]>;
+    resourceStatuses?: pulumi.Input<pulumi.Input<inputs.compute.ReservationResourceStatus>[] | undefined>;
     /**
      * Reserved for future use.
      */
-    satisfiesPzs?: pulumi.Input<boolean>;
+    satisfiesPzs?: pulumi.Input<boolean | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The share setting for reservations.
      * Structure is documented below.
      */
-    shareSettings?: pulumi.Input<inputs.compute.ReservationShareSettings>;
+    shareSettings?: pulumi.Input<inputs.compute.ReservationShareSettings | undefined>;
     /**
      * Reservation for instances with specific machine shapes.
      * Structure is documented below.
      */
-    specificReservation?: pulumi.Input<inputs.compute.ReservationSpecificReservation>;
+    specificReservation?: pulumi.Input<inputs.compute.ReservationSpecificReservation | undefined>;
     /**
      * When set to true, only VMs that target this reservation by name can
      * consume this reservation. Otherwise, it can be consumed by VMs with
      * affinity for any reservation. Defaults to false.
      */
-    specificReservationRequired?: pulumi.Input<boolean>;
+    specificReservationRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the reservation.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The zone where the reservation is made.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -506,21 +506,21 @@ export interface ReservationArgs {
      * Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
      * Structure is documented below.
      */
-    deleteAfterDuration?: pulumi.Input<inputs.compute.ReservationDeleteAfterDuration>;
+    deleteAfterDuration?: pulumi.Input<inputs.compute.ReservationDeleteAfterDuration | undefined>;
     /**
      * Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
      * Cannot be used with delete_after_duration.
      */
-    deleteAtTime?: pulumi.Input<string>;
+    deleteAtTime?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Indicates if this group of VMs have emergent maintenance enabled.
      */
-    enableEmergentMaintenance?: pulumi.Input<boolean>;
+    enableEmergentMaintenance?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -530,22 +530,22 @@ export interface ReservationArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Sharing policy for reservations with Google Cloud managed services.
      * Structure is documented below.
      */
-    reservationSharingPolicy?: pulumi.Input<inputs.compute.ReservationReservationSharingPolicy>;
+    reservationSharingPolicy?: pulumi.Input<inputs.compute.ReservationReservationSharingPolicy | undefined>;
     /**
      * The share setting for reservations.
      * Structure is documented below.
      */
-    shareSettings?: pulumi.Input<inputs.compute.ReservationShareSettings>;
+    shareSettings?: pulumi.Input<inputs.compute.ReservationShareSettings | undefined>;
     /**
      * Reservation for instances with specific machine shapes.
      * Structure is documented below.
@@ -556,7 +556,7 @@ export interface ReservationArgs {
      * consume this reservation. Otherwise, it can be consumed by VMs with
      * affinity for any reservation. Defaults to false.
      */
-    specificReservationRequired?: pulumi.Input<boolean>;
+    specificReservationRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The zone where the reservation is made.
      */

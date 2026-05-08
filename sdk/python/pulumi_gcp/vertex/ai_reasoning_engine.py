@@ -22,14 +22,14 @@ __all__ = ['AiReasoningEngineArgs', 'AiReasoningEngine']
 class AiReasoningEngineArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
-                 context_spec: Optional[pulumi.Input['AiReasoningEngineContextSpecArgs']] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiReasoningEngineEncryptionSpecArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['AiReasoningEngineSpecArgs']] = None):
+                 context_spec: pulumi.Input[Optional['AiReasoningEngineContextSpecArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiReasoningEngineEncryptionSpecArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional['AiReasoningEngineSpecArgs']] = None):
         """
         The set of arguments for constructing a AiReasoningEngine resource.
 
@@ -86,7 +86,7 @@ class AiReasoningEngineArgs:
 
     @_builtins.property
     @pulumi.getter(name="contextSpec")
-    def context_spec(self) -> Optional[pulumi.Input['AiReasoningEngineContextSpecArgs']]:
+    def context_spec(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecArgs']]:
         """
         (Optional, Beta)
         Optional. Configuration for how Agent Engine sub-resources should manage context.
@@ -95,36 +95,36 @@ class AiReasoningEngineArgs:
         return pulumi.get(self, "context_spec")
 
     @context_spec.setter
-    def context_spec(self, value: Optional[pulumi.Input['AiReasoningEngineContextSpecArgs']]):
+    def context_spec(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecArgs']]):
         pulumi.set(self, "context_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
         """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the ReasoningEngine.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiReasoningEngineEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['AiReasoningEngineEncryptionSpecArgs']]:
         """
         Optional. Customer-managed encryption key spec for a ReasoningEngine.
         If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
@@ -134,12 +134,12 @@ class AiReasoningEngineArgs:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiReasoningEngineEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['AiReasoningEngineEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels associated with this ReasoningEngine. You can use these to
         organize and group your ReasoningEngines.
@@ -150,12 +150,12 @@ class AiReasoningEngineArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -163,24 +163,24 @@ class AiReasoningEngineArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the reasoning engine. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['AiReasoningEngineSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['AiReasoningEngineSpecArgs']]:
         """
         Optional. Configurations of the ReasoningEngine.
         Structure is documented below.
@@ -188,27 +188,27 @@ class AiReasoningEngineArgs:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['AiReasoningEngineSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['AiReasoningEngineSpecArgs']]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
 class _AiReasoningEngineState:
     def __init__(__self__, *,
-                 context_spec: Optional[pulumi.Input['AiReasoningEngineContextSpecArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiReasoningEngineEncryptionSpecArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['AiReasoningEngineSpecArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 context_spec: pulumi.Input[Optional['AiReasoningEngineContextSpecArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiReasoningEngineEncryptionSpecArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional['AiReasoningEngineSpecArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiReasoningEngine resources.
 
@@ -273,7 +273,7 @@ class _AiReasoningEngineState:
 
     @_builtins.property
     @pulumi.getter(name="contextSpec")
-    def context_spec(self) -> Optional[pulumi.Input['AiReasoningEngineContextSpecArgs']]:
+    def context_spec(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecArgs']]:
         """
         (Optional, Beta)
         Optional. Configuration for how Agent Engine sub-resources should manage context.
@@ -282,12 +282,12 @@ class _AiReasoningEngineState:
         return pulumi.get(self, "context_spec")
 
     @context_spec.setter
-    def context_spec(self, value: Optional[pulumi.Input['AiReasoningEngineContextSpecArgs']]):
+    def context_spec(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecArgs']]):
         pulumi.set(self, "context_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
         with nanosecond resolution and up to nine fractional digits.
@@ -295,60 +295,60 @@ class _AiReasoningEngineState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
         """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the ReasoningEngine.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the ReasoningEngine.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiReasoningEngineEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['AiReasoningEngineEncryptionSpecArgs']]:
         """
         Optional. Customer-managed encryption key spec for a ReasoningEngine.
         If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
@@ -358,12 +358,12 @@ class _AiReasoningEngineState:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiReasoningEngineEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['AiReasoningEngineEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels associated with this ReasoningEngine. You can use these to
         organize and group your ReasoningEngines.
@@ -374,12 +374,12 @@ class _AiReasoningEngineState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The generated name of the ReasoningEngine, in the format
         projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
@@ -387,12 +387,12 @@ class _AiReasoningEngineState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -400,12 +400,12 @@ class _AiReasoningEngineState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -413,24 +413,24 @@ class _AiReasoningEngineState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the reasoning engine. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['AiReasoningEngineSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['AiReasoningEngineSpecArgs']]:
         """
         Optional. Configurations of the ReasoningEngine.
         Structure is documented below.
@@ -438,12 +438,12 @@ class _AiReasoningEngineState:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['AiReasoningEngineSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['AiReasoningEngineSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
         format, with nanosecond resolution and up to nine fractional digits.
@@ -451,7 +451,7 @@ class _AiReasoningEngineState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -461,15 +461,15 @@ class AiReasoningEngine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 context_spec: Optional[pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
+                 context_spec: pulumi.Input[Optional[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
                  __props__=None):
         """
         ReasoningEngine provides a customizable runtime for models to determine which actions to take and in which order.
@@ -1371,15 +1371,15 @@ class AiReasoningEngine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 context_spec: Optional[pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
+                 context_spec: pulumi.Input[Optional[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1417,20 +1417,20 @@ class AiReasoningEngine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            context_spec: Optional[pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: Optional[pulumi.Input[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            spec: Optional[pulumi.Input[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiReasoningEngine':
+            context_spec: pulumi.Input[Optional[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiReasoningEngine':
         """
         Get an existing AiReasoningEngine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

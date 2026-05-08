@@ -242,60 +242,60 @@ export interface DataExchangeState {
     /**
      * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      */
-    dataExchangeId?: pulumi.Input<string>;
+    dataExchangeId?: pulumi.Input<string | undefined>;
     /**
      * Description of the data exchange.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
      * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
      */
-    discoveryType?: pulumi.Input<string>;
+    discoveryType?: pulumi.Input<string | undefined>;
     /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Documentation describing the data exchange.
      */
-    documentation?: pulumi.Input<string>;
+    documentation?: pulumi.Input<string | undefined>;
     /**
      * Base64 encoded image representing the data exchange.
      */
-    icon?: pulumi.Input<string>;
+    icon?: pulumi.Input<string | undefined>;
     /**
      * Number of listings contained in the data exchange.
      */
-    listingCount?: pulumi.Input<number>;
+    listingCount?: pulumi.Input<number | undefined>;
     /**
      * The name of the location this data exchange.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
      */
-    logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean>;
+    logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name of the data exchange, for example:
      * "projects/myproject/locations/US/dataExchanges/123"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Email or URL of the primary point of contact of the data exchange.
      */
-    primaryContact?: pulumi.Input<string>;
+    primaryContact?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configurable data sharing environment option for a data exchange.
      * This field is required for data clean room exchanges.
      * Structure is documented below.
      */
-    sharingEnvironmentConfig?: pulumi.Input<inputs.bigqueryanalyticshub.DataExchangeSharingEnvironmentConfig>;
+    sharingEnvironmentConfig?: pulumi.Input<inputs.bigqueryanalyticshub.DataExchangeSharingEnvironmentConfig | undefined>;
 }
 
 /**
@@ -309,12 +309,12 @@ export interface DataExchangeArgs {
     /**
      * Description of the data exchange.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
      * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
      */
-    discoveryType?: pulumi.Input<string>;
+    discoveryType?: pulumi.Input<string | undefined>;
     /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
      */
@@ -322,11 +322,11 @@ export interface DataExchangeArgs {
     /**
      * Documentation describing the data exchange.
      */
-    documentation?: pulumi.Input<string>;
+    documentation?: pulumi.Input<string | undefined>;
     /**
      * Base64 encoded image representing the data exchange.
      */
-    icon?: pulumi.Input<string>;
+    icon?: pulumi.Input<string | undefined>;
     /**
      * The name of the location this data exchange.
      */
@@ -334,20 +334,20 @@ export interface DataExchangeArgs {
     /**
      * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
      */
-    logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean>;
+    logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean | undefined>;
     /**
      * Email or URL of the primary point of contact of the data exchange.
      */
-    primaryContact?: pulumi.Input<string>;
+    primaryContact?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configurable data sharing environment option for a data exchange.
      * This field is required for data clean room exchanges.
      * Structure is documented below.
      */
-    sharingEnvironmentConfig?: pulumi.Input<inputs.bigqueryanalyticshub.DataExchangeSharingEnvironmentConfig>;
+    sharingEnvironmentConfig?: pulumi.Input<inputs.bigqueryanalyticshub.DataExchangeSharingEnvironmentConfig | undefined>;
 }

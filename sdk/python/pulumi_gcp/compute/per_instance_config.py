@@ -22,14 +22,14 @@ __all__ = ['PerInstanceConfigArgs', 'PerInstanceConfig']
 class PerInstanceConfigArgs:
     def __init__(__self__, *,
                  instance_group_manager: pulumi.Input[_builtins.str],
-                 minimal_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 most_disruptive_allowed_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 preserved_state: Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_instance_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remove_instance_state_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 preserved_state: pulumi.Input[Optional['PerInstanceConfigPreservedStateArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_instance_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remove_instance_state_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PerInstanceConfig resource.
 
@@ -90,7 +90,7 @@ class PerInstanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="minimalAction")
-    def minimal_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimal_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimal action to perform on the instance during an update.
         Default is `NONE`. Possible values are:
@@ -102,12 +102,12 @@ class PerInstanceConfigArgs:
         return pulumi.get(self, "minimal_action")
 
     @minimal_action.setter
-    def minimal_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimal_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimal_action", value)
 
     @_builtins.property
     @pulumi.getter(name="mostDisruptiveAllowedAction")
-    def most_disruptive_allowed_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def most_disruptive_allowed_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The most disruptive action to perform on the instance during an update.
         Default is `REPLACE`. Possible values are:
@@ -119,24 +119,24 @@ class PerInstanceConfigArgs:
         return pulumi.get(self, "most_disruptive_allowed_action")
 
     @most_disruptive_allowed_action.setter
-    def most_disruptive_allowed_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def most_disruptive_allowed_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "most_disruptive_allowed_action", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for this per-instance config and its corresponding instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="preservedState")
-    def preserved_state(self) -> Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']]:
+    def preserved_state(self) -> pulumi.Input[Optional['PerInstanceConfigPreservedStateArgs']]:
         """
         The preserved state for this instance.
         Structure is documented below.
@@ -144,12 +144,12 @@ class PerInstanceConfigArgs:
         return pulumi.get(self, "preserved_state")
 
     @preserved_state.setter
-    def preserved_state(self, value: Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']]):
+    def preserved_state(self, value: pulumi.Input[Optional['PerInstanceConfigPreservedStateArgs']]):
         pulumi.set(self, "preserved_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -157,12 +157,12 @@ class PerInstanceConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="removeInstanceOnDestroy")
-    def remove_instance_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remove_instance_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, deleting this config will immediately remove the underlying instance.
         When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
@@ -170,12 +170,12 @@ class PerInstanceConfigArgs:
         return pulumi.get(self, "remove_instance_on_destroy")
 
     @remove_instance_on_destroy.setter
-    def remove_instance_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remove_instance_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remove_instance_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="removeInstanceStateOnDestroy")
-    def remove_instance_state_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remove_instance_state_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, deleting this config will immediately remove any specified state from the underlying instance.
         When false, deleting this config will *not* immediately remove any state from the underlying instance.
@@ -184,34 +184,34 @@ class PerInstanceConfigArgs:
         return pulumi.get(self, "remove_instance_state_on_destroy")
 
     @remove_instance_state_on_destroy.setter
-    def remove_instance_state_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remove_instance_state_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remove_instance_state_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone where the containing instance group manager is located
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
 class _PerInstanceConfigState:
     def __init__(__self__, *,
-                 instance_group_manager: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimal_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 most_disruptive_allowed_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 preserved_state: Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_instance_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remove_instance_state_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 preserved_state: pulumi.Input[Optional['PerInstanceConfigPreservedStateArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_instance_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remove_instance_state_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PerInstanceConfig resources.
 
@@ -261,19 +261,19 @@ class _PerInstanceConfigState:
 
     @_builtins.property
     @pulumi.getter(name="instanceGroupManager")
-    def instance_group_manager(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_group_manager(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance group manager this instance config is part of.
         """
         return pulumi.get(self, "instance_group_manager")
 
     @instance_group_manager.setter
-    def instance_group_manager(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_group_manager(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_group_manager", value)
 
     @_builtins.property
     @pulumi.getter(name="minimalAction")
-    def minimal_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimal_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimal action to perform on the instance during an update.
         Default is `NONE`. Possible values are:
@@ -285,12 +285,12 @@ class _PerInstanceConfigState:
         return pulumi.get(self, "minimal_action")
 
     @minimal_action.setter
-    def minimal_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimal_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimal_action", value)
 
     @_builtins.property
     @pulumi.getter(name="mostDisruptiveAllowedAction")
-    def most_disruptive_allowed_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def most_disruptive_allowed_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The most disruptive action to perform on the instance during an update.
         Default is `REPLACE`. Possible values are:
@@ -302,24 +302,24 @@ class _PerInstanceConfigState:
         return pulumi.get(self, "most_disruptive_allowed_action")
 
     @most_disruptive_allowed_action.setter
-    def most_disruptive_allowed_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def most_disruptive_allowed_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "most_disruptive_allowed_action", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for this per-instance config and its corresponding instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="preservedState")
-    def preserved_state(self) -> Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']]:
+    def preserved_state(self) -> pulumi.Input[Optional['PerInstanceConfigPreservedStateArgs']]:
         """
         The preserved state for this instance.
         Structure is documented below.
@@ -327,12 +327,12 @@ class _PerInstanceConfigState:
         return pulumi.get(self, "preserved_state")
 
     @preserved_state.setter
-    def preserved_state(self, value: Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']]):
+    def preserved_state(self, value: pulumi.Input[Optional['PerInstanceConfigPreservedStateArgs']]):
         pulumi.set(self, "preserved_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -340,12 +340,12 @@ class _PerInstanceConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="removeInstanceOnDestroy")
-    def remove_instance_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remove_instance_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, deleting this config will immediately remove the underlying instance.
         When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
@@ -353,12 +353,12 @@ class _PerInstanceConfigState:
         return pulumi.get(self, "remove_instance_on_destroy")
 
     @remove_instance_on_destroy.setter
-    def remove_instance_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remove_instance_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remove_instance_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="removeInstanceStateOnDestroy")
-    def remove_instance_state_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remove_instance_state_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, deleting this config will immediately remove any specified state from the underlying instance.
         When false, deleting this config will *not* immediately remove any state from the underlying instance.
@@ -367,19 +367,19 @@ class _PerInstanceConfigState:
         return pulumi.get(self, "remove_instance_state_on_destroy")
 
     @remove_instance_state_on_destroy.setter
-    def remove_instance_state_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remove_instance_state_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remove_instance_state_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone where the containing instance group manager is located
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -389,15 +389,15 @@ class PerInstanceConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_group_manager: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimal_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 most_disruptive_allowed_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 preserved_state: Optional[pulumi.Input[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_instance_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remove_instance_state_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 preserved_state: pulumi.Input[Optional[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_instance_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remove_instance_state_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A config defined for a single managed instance that belongs to an instance group manager. It preserves the instance name
@@ -637,15 +637,15 @@ class PerInstanceConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_group_manager: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimal_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 most_disruptive_allowed_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 preserved_state: Optional[pulumi.Input[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_instance_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remove_instance_state_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 preserved_state: pulumi.Input[Optional[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_instance_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remove_instance_state_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -676,15 +676,15 @@ class PerInstanceConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance_group_manager: Optional[pulumi.Input[_builtins.str]] = None,
-            minimal_action: Optional[pulumi.Input[_builtins.str]] = None,
-            most_disruptive_allowed_action: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            preserved_state: Optional[pulumi.Input[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            remove_instance_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            remove_instance_state_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'PerInstanceConfig':
+            instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
+            minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
+            most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            preserved_state: pulumi.Input[Optional[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            remove_instance_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            remove_instance_state_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'PerInstanceConfig':
         """
         Get an existing PerInstanceConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

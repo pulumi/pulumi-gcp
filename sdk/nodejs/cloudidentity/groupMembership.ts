@@ -225,44 +225,44 @@ export interface GroupMembershipState {
     /**
      * If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
      */
-    createIgnoreAlreadyExists?: pulumi.Input<boolean>;
+    createIgnoreAlreadyExists?: pulumi.Input<boolean | undefined>;
     /**
      * The time when the Membership was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the Group to create this membership in.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * EntityKey of the member.
      * Structure is documented below.
      */
-    memberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipMemberKey>;
+    memberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipMemberKey | undefined>;
     /**
      * The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * EntityKey of the member.
      * Structure is documented below.
      */
-    preferredMemberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipPreferredMemberKey>;
+    preferredMemberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipPreferredMemberKey | undefined>;
     /**
      * The MembershipRoles that apply to the Membership.
      * Must not contain duplicate MembershipRoles with the same name.
      * Structure is documented below.
      */
-    roles?: pulumi.Input<pulumi.Input<inputs.cloudidentity.GroupMembershipRole>[]>;
+    roles?: pulumi.Input<pulumi.Input<inputs.cloudidentity.GroupMembershipRole>[] | undefined>;
     /**
      * The type of the membership.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The time when the Membership was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -272,7 +272,7 @@ export interface GroupMembershipArgs {
     /**
      * If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
      */
-    createIgnoreAlreadyExists?: pulumi.Input<boolean>;
+    createIgnoreAlreadyExists?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Group to create this membership in.
      */
@@ -282,12 +282,12 @@ export interface GroupMembershipArgs {
      * EntityKey of the member.
      * Structure is documented below.
      */
-    memberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipMemberKey>;
+    memberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipMemberKey | undefined>;
     /**
      * EntityKey of the member.
      * Structure is documented below.
      */
-    preferredMemberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipPreferredMemberKey>;
+    preferredMemberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipPreferredMemberKey | undefined>;
     /**
      * The MembershipRoles that apply to the Membership.
      * Must not contain duplicate MembershipRoles with the same name.

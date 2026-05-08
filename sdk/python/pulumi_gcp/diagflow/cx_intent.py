@@ -22,16 +22,16 @@ __all__ = ['CxIntentArgs', 'CxIntent']
 class CxIntentArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default_negative_intent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_default_welcome_intent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 language_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentParameterArgs']]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default_negative_intent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_default_welcome_intent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 language_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['CxIntentParameterArgs']]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 training_phrases: pulumi.Input[Optional[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]] = None):
         """
         The set of arguments for constructing a CxIntent resource.
 
@@ -103,19 +103,19 @@ class CxIntentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefaultNegativeIntent")
-    def is_default_negative_intent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default_negative_intent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
         The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
@@ -125,12 +125,12 @@ class CxIntentArgs:
         return pulumi.get(self, "is_default_negative_intent")
 
     @is_default_negative_intent.setter
-    def is_default_negative_intent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default_negative_intent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default_negative_intent", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefaultWelcomeIntent")
-    def is_default_welcome_intent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default_welcome_intent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
         The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
@@ -140,12 +140,12 @@ class CxIntentArgs:
         return pulumi.get(self, "is_default_welcome_intent")
 
     @is_default_welcome_intent.setter
-    def is_default_welcome_intent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default_welcome_intent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default_welcome_intent", value)
 
     @_builtins.property
     @pulumi.getter(name="isFallback")
-    def is_fallback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_fallback(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
         Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
@@ -154,12 +154,12 @@ class CxIntentArgs:
         return pulumi.get(self, "is_fallback")
 
     @is_fallback.setter
-    def is_fallback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_fallback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_fallback", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
         Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
@@ -171,12 +171,12 @@ class CxIntentArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="languageCode")
-    def language_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the following fields in intent:
         Intent.training_phrases.parts.text
@@ -185,12 +185,12 @@ class CxIntentArgs:
         return pulumi.get(self, "language_code")
 
     @language_code.setter
-    def language_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CxIntentParameterArgs']]]]:
         """
         The collection of parameters associated with the intent.
         Structure is documented below.
@@ -198,12 +198,12 @@ class CxIntentArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CxIntentParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The agent to create an intent for.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -211,12 +211,12 @@ class CxIntentArgs:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of this intent. Higher numbers represent higher priorities.
         If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the Normal priority in the console.
@@ -225,12 +225,12 @@ class CxIntentArgs:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="trainingPhrases")
-    def training_phrases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]]:
+    def training_phrases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]]:
         """
         The collection of training phrases the agent is trained on to identify the intent.
         Structure is documented below.
@@ -238,27 +238,27 @@ class CxIntentArgs:
         return pulumi.get(self, "training_phrases")
 
     @training_phrases.setter
-    def training_phrases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]]):
+    def training_phrases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]]):
         pulumi.set(self, "training_phrases", value)
 
 
 @pulumi.input_type
 class _CxIntentState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 is_default_negative_intent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_default_welcome_intent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 language_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentParameterArgs']]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 is_default_negative_intent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_default_welcome_intent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 language_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['CxIntentParameterArgs']]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 training_phrases: pulumi.Input[Optional[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]] = None):
         """
         Input properties used for looking up and filtering CxIntent resources.
 
@@ -330,43 +330,43 @@ class _CxIntentState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable name of the intent, unique within the agent.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefaultNegativeIntent")
-    def is_default_negative_intent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default_negative_intent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
         The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
@@ -376,12 +376,12 @@ class _CxIntentState:
         return pulumi.get(self, "is_default_negative_intent")
 
     @is_default_negative_intent.setter
-    def is_default_negative_intent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default_negative_intent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default_negative_intent", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefaultWelcomeIntent")
-    def is_default_welcome_intent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default_welcome_intent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
         The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
@@ -391,12 +391,12 @@ class _CxIntentState:
         return pulumi.get(self, "is_default_welcome_intent")
 
     @is_default_welcome_intent.setter
-    def is_default_welcome_intent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default_welcome_intent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default_welcome_intent", value)
 
     @_builtins.property
     @pulumi.getter(name="isFallback")
-    def is_fallback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_fallback(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
         Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
@@ -405,12 +405,12 @@ class _CxIntentState:
         return pulumi.get(self, "is_fallback")
 
     @is_fallback.setter
-    def is_fallback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_fallback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_fallback", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
         Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
@@ -422,12 +422,12 @@ class _CxIntentState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="languageCode")
-    def language_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the following fields in intent:
         Intent.training_phrases.parts.text
@@ -436,12 +436,12 @@ class _CxIntentState:
         return pulumi.get(self, "language_code")
 
     @language_code.setter
-    def language_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the intent.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
@@ -449,12 +449,12 @@ class _CxIntentState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CxIntentParameterArgs']]]]:
         """
         The collection of parameters associated with the intent.
         Structure is documented below.
@@ -462,12 +462,12 @@ class _CxIntentState:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CxIntentParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The agent to create an intent for.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -475,12 +475,12 @@ class _CxIntentState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of this intent. Higher numbers represent higher priorities.
         If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the Normal priority in the console.
@@ -489,12 +489,12 @@ class _CxIntentState:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -502,12 +502,12 @@ class _CxIntentState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="trainingPhrases")
-    def training_phrases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]]:
+    def training_phrases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]]:
         """
         The collection of training phrases the agent is trained on to identify the intent.
         Structure is documented below.
@@ -515,7 +515,7 @@ class _CxIntentState:
         return pulumi.get(self, "training_phrases")
 
     @training_phrases.setter
-    def training_phrases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]]):
+    def training_phrases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CxIntentTrainingPhraseArgs']]]]):
         pulumi.set(self, "training_phrases", value)
 
 
@@ -525,17 +525,17 @@ class CxIntent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default_negative_intent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_default_welcome_intent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 language_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxIntentParameterArgs', 'CxIntentParameterArgsDict']]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxIntentTrainingPhraseArgs', 'CxIntentTrainingPhraseArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default_negative_intent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_default_welcome_intent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 language_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxIntentParameterArgs', 'CxIntentParameterArgsDict']]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 training_phrases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxIntentTrainingPhraseArgs', 'CxIntentTrainingPhraseArgsDict']]]]] = None,
                  __props__=None):
         """
         An intent represents a user's intent to interact with a conversational agent.
@@ -748,17 +748,17 @@ class CxIntent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default_negative_intent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_default_welcome_intent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 language_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxIntentParameterArgs', 'CxIntentParameterArgsDict']]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxIntentTrainingPhraseArgs', 'CxIntentTrainingPhraseArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default_negative_intent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_default_welcome_intent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 language_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxIntentParameterArgs', 'CxIntentParameterArgsDict']]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 training_phrases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxIntentTrainingPhraseArgs', 'CxIntentTrainingPhraseArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -796,20 +796,20 @@ class CxIntent(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            is_default_negative_intent: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_default_welcome_intent: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            language_code: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxIntentParameterArgs', 'CxIntentParameterArgsDict']]]]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxIntentTrainingPhraseArgs', 'CxIntentTrainingPhraseArgsDict']]]]] = None) -> 'CxIntent':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            is_default_negative_intent: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_default_welcome_intent: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            language_code: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxIntentParameterArgs', 'CxIntentParameterArgsDict']]]]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            training_phrases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxIntentTrainingPhraseArgs', 'CxIntentTrainingPhraseArgsDict']]]]] = None) -> 'CxIntent':
         """
         Get an existing CxIntent resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

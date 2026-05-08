@@ -390,192 +390,192 @@ export interface InstanceFromMachineImageState {
     /**
      * Controls for advanced machine-related behavior features.
      */
-    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceFromMachineImageAdvancedMachineFeatures>;
+    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceFromMachineImageAdvancedMachineFeatures | undefined>;
     /**
      * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      */
-    allowStoppingForUpdate?: pulumi.Input<boolean>;
+    allowStoppingForUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * List of disks attached to the instance
      */
-    attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageAttachedDisk>[]>;
+    attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageAttachedDisk>[] | undefined>;
     /**
      * The boot disk for the instance.
      */
-    bootDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageBootDisk>[]>;
+    bootDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageBootDisk>[] | undefined>;
     /**
      * Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
      */
-    canIpForward?: pulumi.Input<boolean>;
+    canIpForward?: pulumi.Input<boolean | undefined>;
     /**
      * The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
      */
-    confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageConfidentialInstanceConfig>;
+    confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageConfidentialInstanceConfig | undefined>;
     /**
      * The CPU platform used by this instance.
      */
-    cpuPlatform?: pulumi.Input<string>;
+    cpuPlatform?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * Current status of the instance.
      * 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
      * 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      */
-    currentStatus?: pulumi.Input<string>;
+    currentStatus?: pulumi.Input<string | undefined>;
     /**
      * Whether deletion protection is enabled on this instance.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * A brief description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
      */
-    desiredStatus?: pulumi.Input<string>;
+    desiredStatus?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether the instance has virtual displays enabled.
      */
-    enableDisplay?: pulumi.Input<boolean>;
+    enableDisplay?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
      */
-    eraseWindowsVssSignature?: pulumi.Input<boolean>;
+    eraseWindowsVssSignature?: pulumi.Input<boolean | undefined>;
     /**
      * List of the type and count of accelerator cards attached to the instance.
      */
-    guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageGuestAccelerator>[]>;
+    guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageGuestAccelerator>[] | undefined>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Encryption key used to provide data encryption on the given instance.
      */
-    instanceEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageInstanceEncryptionKey>;
+    instanceEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageInstanceEncryptionKey | undefined>;
     /**
      * The server-assigned unique identifier of this instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
      */
-    keyRevocationActionType?: pulumi.Input<string>;
+    keyRevocationActionType?: pulumi.Input<string | undefined>;
     /**
      * The unique fingerprint of the labels.
      */
-    labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs assigned to the instance.
      *
      * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The machine type to create.
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * Metadata key/value pairs made available within the instance.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The unique fingerprint of the metadata.
      */
-    metadataFingerprint?: pulumi.Input<string>;
+    metadataFingerprint?: pulumi.Input<string | undefined>;
     /**
      * Metadata startup scripts made available within the instance.
      */
-    metadataStartupScript?: pulumi.Input<string>;
+    metadataStartupScript?: pulumi.Input<string | undefined>;
     /**
      * The minimum CPU platform specified for the VM instance.
      */
-    minCpuPlatform?: pulumi.Input<string>;
+    minCpuPlatform?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The networks attached to the instance.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterface>[] | undefined>;
     /**
      * Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
      */
-    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkPerformanceConfig>;
+    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkPerformanceConfig | undefined>;
     /**
      * Stores additional params passed with the request, but not persisted as part of resource payload.
      */
-    params?: pulumi.Input<inputs.compute.InstanceFromMachineImageParams>;
+    params?: pulumi.Input<inputs.compute.InstanceFromMachineImageParams | undefined>;
     /**
      * Partner Metadata Map made available within the instance.
      */
-    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies the reservations that this instance can consume from.
      */
-    reservationAffinity?: pulumi.Input<inputs.compute.InstanceFromMachineImageReservationAffinity>;
+    reservationAffinity?: pulumi.Input<inputs.compute.InstanceFromMachineImageReservationAffinity | undefined>;
     /**
      * A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      */
-    resourcePolicies?: pulumi.Input<string>;
+    resourcePolicies?: pulumi.Input<string | undefined>;
     /**
      * The scheduling strategy being used by the instance.
      */
-    scheduling?: pulumi.Input<inputs.compute.InstanceFromMachineImageScheduling>;
+    scheduling?: pulumi.Input<inputs.compute.InstanceFromMachineImageScheduling | undefined>;
     /**
      * The scratch disks attached to the instance.
      */
-    scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageScratchDisk>[]>;
+    scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageScratchDisk>[] | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The service account to attach to the instance.
      */
-    serviceAccount?: pulumi.Input<inputs.compute.InstanceFromMachineImageServiceAccount>;
+    serviceAccount?: pulumi.Input<inputs.compute.InstanceFromMachineImageServiceAccount | undefined>;
     /**
      * The shielded vm config being used by the instance.
      */
-    shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageShieldedInstanceConfig | undefined>;
     /**
      * Name or self link of a machine
      * image to create the instance based on.
      *
      * - - -
      */
-    sourceMachineImage?: pulumi.Input<string>;
+    sourceMachineImage?: pulumi.Input<string | undefined>;
     /**
      * Encryption key for the source machine image.
      */
-    sourceMachineImageEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageSourceMachineImageEncryptionKey>;
+    sourceMachineImageEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageSourceMachineImageEncryptionKey | undefined>;
     /**
      * The list of tags attached to the instance.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique fingerprint of the tags.
      */
-    tagsFingerprint?: pulumi.Input<string>;
+    tagsFingerprint?: pulumi.Input<string | undefined>;
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
@@ -586,7 +586,7 @@ export interface InstanceFromMachineImageState {
      *
      * > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -596,123 +596,123 @@ export interface InstanceFromMachineImageArgs {
     /**
      * Controls for advanced machine-related behavior features.
      */
-    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceFromMachineImageAdvancedMachineFeatures>;
+    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceFromMachineImageAdvancedMachineFeatures | undefined>;
     /**
      * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      */
-    allowStoppingForUpdate?: pulumi.Input<boolean>;
+    allowStoppingForUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
      */
-    canIpForward?: pulumi.Input<boolean>;
+    canIpForward?: pulumi.Input<boolean | undefined>;
     /**
      * The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
      */
-    confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageConfidentialInstanceConfig>;
+    confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageConfidentialInstanceConfig | undefined>;
     /**
      * Whether deletion protection is enabled on this instance.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * A brief description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
      */
-    desiredStatus?: pulumi.Input<string>;
+    desiredStatus?: pulumi.Input<string | undefined>;
     /**
      * Whether the instance has virtual displays enabled.
      */
-    enableDisplay?: pulumi.Input<boolean>;
+    enableDisplay?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
      */
-    eraseWindowsVssSignature?: pulumi.Input<boolean>;
+    eraseWindowsVssSignature?: pulumi.Input<boolean | undefined>;
     /**
      * List of the type and count of accelerator cards attached to the instance.
      */
-    guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageGuestAccelerator>[]>;
+    guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageGuestAccelerator>[] | undefined>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Encryption key used to provide data encryption on the given instance.
      */
-    instanceEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageInstanceEncryptionKey>;
+    instanceEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageInstanceEncryptionKey | undefined>;
     /**
      * Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
      */
-    keyRevocationActionType?: pulumi.Input<string>;
+    keyRevocationActionType?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs assigned to the instance.
      *
      * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The machine type to create.
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * Metadata key/value pairs made available within the instance.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Metadata startup scripts made available within the instance.
      */
-    metadataStartupScript?: pulumi.Input<string>;
+    metadataStartupScript?: pulumi.Input<string | undefined>;
     /**
      * The minimum CPU platform specified for the VM instance.
      */
-    minCpuPlatform?: pulumi.Input<string>;
+    minCpuPlatform?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The networks attached to the instance.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterface>[] | undefined>;
     /**
      * Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
      */
-    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkPerformanceConfig>;
+    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkPerformanceConfig | undefined>;
     /**
      * Stores additional params passed with the request, but not persisted as part of resource payload.
      */
-    params?: pulumi.Input<inputs.compute.InstanceFromMachineImageParams>;
+    params?: pulumi.Input<inputs.compute.InstanceFromMachineImageParams | undefined>;
     /**
      * Partner Metadata Map made available within the instance.
      */
-    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies the reservations that this instance can consume from.
      */
-    reservationAffinity?: pulumi.Input<inputs.compute.InstanceFromMachineImageReservationAffinity>;
+    reservationAffinity?: pulumi.Input<inputs.compute.InstanceFromMachineImageReservationAffinity | undefined>;
     /**
      * A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      */
-    resourcePolicies?: pulumi.Input<string>;
+    resourcePolicies?: pulumi.Input<string | undefined>;
     /**
      * The scheduling strategy being used by the instance.
      */
-    scheduling?: pulumi.Input<inputs.compute.InstanceFromMachineImageScheduling>;
+    scheduling?: pulumi.Input<inputs.compute.InstanceFromMachineImageScheduling | undefined>;
     /**
      * The service account to attach to the instance.
      */
-    serviceAccount?: pulumi.Input<inputs.compute.InstanceFromMachineImageServiceAccount>;
+    serviceAccount?: pulumi.Input<inputs.compute.InstanceFromMachineImageServiceAccount | undefined>;
     /**
      * The shielded vm config being used by the instance.
      */
-    shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageShieldedInstanceConfig | undefined>;
     /**
      * Name or self link of a machine
      * image to create the instance based on.
@@ -723,11 +723,11 @@ export interface InstanceFromMachineImageArgs {
     /**
      * Encryption key for the source machine image.
      */
-    sourceMachineImageEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageSourceMachineImageEncryptionKey>;
+    sourceMachineImageEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageSourceMachineImageEncryptionKey | undefined>;
     /**
      * The list of tags attached to the instance.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
@@ -738,5 +738,5 @@ export interface InstanceFromMachineImageArgs {
      *
      * > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

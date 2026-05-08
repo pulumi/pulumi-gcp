@@ -259,7 +259,7 @@ class AppProfileSingleClusterRoutingArgsDict(TypedDict):
     """
     The cluster to which read/write requests should be routed.
     """
-    allow_transactional_writes: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_transactional_writes: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
     It is unsafe to send these requests to the same table/row/column in multiple clusters.
@@ -269,7 +269,7 @@ class AppProfileSingleClusterRoutingArgsDict(TypedDict):
 class AppProfileSingleClusterRoutingArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 allow_transactional_writes: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allow_transactional_writes: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster_id: The cluster to which read/write requests should be routed.
         :param pulumi.Input[_builtins.bool] allow_transactional_writes: If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
@@ -293,7 +293,7 @@ class AppProfileSingleClusterRoutingArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowTransactionalWrites")
-    def allow_transactional_writes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_transactional_writes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
         It is unsafe to send these requests to the same table/row/column in multiple clusters.
@@ -301,7 +301,7 @@ class AppProfileSingleClusterRoutingArgs:
         return pulumi.get(self, "allow_transactional_writes")
 
     @allow_transactional_writes.setter
-    def allow_transactional_writes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_transactional_writes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_transactional_writes", value)
 
 
@@ -337,15 +337,15 @@ class AppProfileStandardIsolationArgs:
 
 
 class BiReservationPreferredTableArgsDict(TypedDict):
-    dataset_id: NotRequired[pulumi.Input[_builtins.str]]
+    dataset_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the dataset in the above project.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The assigned project ID of the project.
     """
-    table_id: NotRequired[pulumi.Input[_builtins.str]]
+    table_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the table in the above dataset.
     """
@@ -353,9 +353,9 @@ class BiReservationPreferredTableArgsDict(TypedDict):
 @pulumi.input_type
 class BiReservationPreferredTableArgs:
     def __init__(__self__, *,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] dataset_id: The ID of the dataset in the above project.
         :param pulumi.Input[_builtins.str] project_id: The assigned project ID of the project.
@@ -370,38 +370,38 @@ class BiReservationPreferredTableArgs:
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dataset in the above project.
         """
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The assigned project ID of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tableId")
-    def table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the table in the above dataset.
         """
         return pulumi.get(self, "table_id")
 
     @table_id.setter
-    def table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_id", value)
 
 
@@ -441,7 +441,7 @@ class ConnectionAwsAccessRoleArgsDict(TypedDict):
     """
     The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
     """
-    identity: NotRequired[pulumi.Input[_builtins.str]]
+    identity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
@@ -451,7 +451,7 @@ class ConnectionAwsAccessRoleArgsDict(TypedDict):
 class ConnectionAwsAccessRoleArgs:
     def __init__(__self__, *,
                  iam_role_id: pulumi.Input[_builtins.str],
-                 identity: Optional[pulumi.Input[_builtins.str]] = None):
+                 identity: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] iam_role_id: The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
         :param pulumi.Input[_builtins.str] identity: (Output)
@@ -475,7 +475,7 @@ class ConnectionAwsAccessRoleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
@@ -483,7 +483,7 @@ class ConnectionAwsAccessRoleArgs:
         return pulumi.get(self, "identity")
 
     @identity.setter
-    def identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identity", value)
 
 
@@ -492,31 +492,31 @@ class ConnectionAzureArgsDict(TypedDict):
     """
     The id of customer's directory that host the data.
     """
-    application: NotRequired[pulumi.Input[_builtins.str]]
+    application: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The name of the Azure Active Directory Application.
     """
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The client id of the Azure Active Directory Application.
     """
-    federated_application_client_id: NotRequired[pulumi.Input[_builtins.str]]
+    federated_application_client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Azure Application (client) ID where the federated credentials will be hosted.
     """
-    identity: NotRequired[pulumi.Input[_builtins.str]]
+    identity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
     """
-    object_id: NotRequired[pulumi.Input[_builtins.str]]
+    object_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The object id of the Azure Active Directory Application.
     """
-    redirect_uri: NotRequired[pulumi.Input[_builtins.str]]
+    redirect_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The URL user will be redirected to after granting consent during connection setup.
@@ -526,12 +526,12 @@ class ConnectionAzureArgsDict(TypedDict):
 class ConnectionAzureArgs:
     def __init__(__self__, *,
                  customer_tenant_id: pulumi.Input[_builtins.str],
-                 application: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 federated_application_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 application: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 federated_application_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] customer_tenant_id: The id of customer's directory that host the data.
         :param pulumi.Input[_builtins.str] application: (Output)
@@ -574,7 +574,7 @@ class ConnectionAzureArgs:
 
     @_builtins.property
     @pulumi.getter
-    def application(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the Azure Active Directory Application.
@@ -582,12 +582,12 @@ class ConnectionAzureArgs:
         return pulumi.get(self, "application")
 
     @application.setter
-    def application(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application", value)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The client id of the Azure Active Directory Application.
@@ -595,24 +595,24 @@ class ConnectionAzureArgs:
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="federatedApplicationClientId")
-    def federated_application_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def federated_application_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Azure Application (client) ID where the federated credentials will be hosted.
         """
         return pulumi.get(self, "federated_application_client_id")
 
     @federated_application_client_id.setter
-    def federated_application_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def federated_application_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "federated_application_client_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
@@ -620,12 +620,12 @@ class ConnectionAzureArgs:
         return pulumi.get(self, "identity")
 
     @identity.setter
-    def identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identity", value)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The object id of the Azure Active Directory Application.
@@ -633,12 +633,12 @@ class ConnectionAzureArgs:
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectUri")
-    def redirect_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redirect_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The URL user will be redirected to after granting consent during connection setup.
@@ -646,12 +646,12 @@ class ConnectionAzureArgs:
         return pulumi.get(self, "redirect_uri")
 
     @redirect_uri.setter
-    def redirect_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redirect_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redirect_uri", value)
 
 
 class ConnectionCloudResourceArgsDict(TypedDict):
-    service_account_id: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The account ID of the service created for the purpose of this connection.
@@ -660,7 +660,7 @@ class ConnectionCloudResourceArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionCloudResourceArgs:
     def __init__(__self__, *,
-                 service_account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 service_account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] service_account_id: (Output)
                The account ID of the service created for the purpose of this connection.
@@ -670,7 +670,7 @@ class ConnectionCloudResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountId")
-    def service_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The account ID of the service created for the purpose of this connection.
@@ -678,7 +678,7 @@ class ConnectionCloudResourceArgs:
         return pulumi.get(self, "service_account_id")
 
     @service_account_id.setter
-    def service_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_id", value)
 
 
@@ -687,23 +687,23 @@ class ConnectionCloudSpannerArgsDict(TypedDict):
     """
     Cloud Spanner database in the form `project/instance/database'.
     """
-    database_role: NotRequired[pulumi.Input[_builtins.str]]
+    database_role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
     """
-    max_parallelism: NotRequired[pulumi.Input[_builtins.int]]
+    max_parallelism: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
     """
-    use_data_boost: NotRequired[pulumi.Input[_builtins.bool]]
+    use_data_boost: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
     """
-    use_parallelism: NotRequired[pulumi.Input[_builtins.bool]]
+    use_parallelism: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If parallelism should be used when reading from Cloud Spanner.
     """
-    use_serverless_analytics: NotRequired[pulumi.Input[_builtins.bool]]
+    use_serverless_analytics: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional, Deprecated)
     If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
@@ -715,11 +715,11 @@ class ConnectionCloudSpannerArgsDict(TypedDict):
 class ConnectionCloudSpannerArgs:
     def __init__(__self__, *,
                  database: pulumi.Input[_builtins.str],
-                 database_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_parallelism: Optional[pulumi.Input[_builtins.int]] = None,
-                 use_data_boost: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_parallelism: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_serverless_analytics: Optional[pulumi.Input[_builtins.bool]] = None):
+                 database_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_parallelism: pulumi.Input[Optional[_builtins.int]] = None,
+                 use_data_boost: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_parallelism: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_serverless_analytics: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] database: Cloud Spanner database in the form `project/instance/database'.
         :param pulumi.Input[_builtins.str] database_role: Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
@@ -760,56 +760,56 @@ class ConnectionCloudSpannerArgs:
 
     @_builtins.property
     @pulumi.getter(name="databaseRole")
-    def database_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
         """
         return pulumi.get(self, "database_role")
 
     @database_role.setter
-    def database_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_role", value)
 
     @_builtins.property
     @pulumi.getter(name="maxParallelism")
-    def max_parallelism(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_parallelism(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
         """
         return pulumi.get(self, "max_parallelism")
 
     @max_parallelism.setter
-    def max_parallelism(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_parallelism(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_parallelism", value)
 
     @_builtins.property
     @pulumi.getter(name="useDataBoost")
-    def use_data_boost(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_data_boost(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
         """
         return pulumi.get(self, "use_data_boost")
 
     @use_data_boost.setter
-    def use_data_boost(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_data_boost(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_data_boost", value)
 
     @_builtins.property
     @pulumi.getter(name="useParallelism")
-    def use_parallelism(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_parallelism(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If parallelism should be used when reading from Cloud Spanner.
         """
         return pulumi.get(self, "use_parallelism")
 
     @use_parallelism.setter
-    def use_parallelism(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_parallelism(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_parallelism", value)
 
     @_builtins.property
     @pulumi.getter(name="useServerlessAnalytics")
     @_utilities.deprecated("""`useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.""")
-    def use_serverless_analytics(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_serverless_analytics(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Deprecated)
         If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
@@ -819,7 +819,7 @@ class ConnectionCloudSpannerArgs:
         return pulumi.get(self, "use_serverless_analytics")
 
     @use_serverless_analytics.setter
-    def use_serverless_analytics(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_serverless_analytics(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_serverless_analytics", value)
 
 
@@ -842,7 +842,7 @@ class ConnectionCloudSqlArgsDict(TypedDict):
     Type of the Cloud SQL database.
     Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
     """
-    service_account_id: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
@@ -855,7 +855,7 @@ class ConnectionCloudSqlArgs:
                  database: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 service_account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 service_account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['ConnectionCloudSqlCredentialArgs'] credential: Cloud SQL properties.
                Structure is documented below.
@@ -925,7 +925,7 @@ class ConnectionCloudSqlArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountId")
-    def service_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
@@ -933,7 +933,7 @@ class ConnectionCloudSqlArgs:
         return pulumi.get(self, "service_account_id")
 
     @service_account_id.setter
-    def service_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_id", value)
 
 
@@ -998,17 +998,17 @@ class ConnectionConfigurationArgsDict(TypedDict):
     The ID of the connector. Possible values include `google-alloydb`, `google-cloudsql-mysql`,
     `google-cloudsql-postgres`, and other connector IDs supported by the BigQuery Connector framework.
     """
-    authentication: NotRequired[pulumi.Input['ConnectionConfigurationAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['ConnectionConfigurationAuthenticationArgs']]]
     """
     Authentication configuration for the connector.
     Structure is documented below.
     """
-    endpoint: NotRequired[pulumi.Input['ConnectionConfigurationEndpointArgsDict']]
+    endpoint: NotRequired[pulumi.Input[Optional['ConnectionConfigurationEndpointArgs']]]
     """
     Endpoint configuration for the connector.
     Structure is documented below.
     """
-    network: NotRequired[pulumi.Input['ConnectionConfigurationNetworkArgsDict']]
+    network: NotRequired[pulumi.Input[Optional['ConnectionConfigurationNetworkArgs']]]
     """
     Network configuration for the connector.
     Structure is documented below.
@@ -1019,9 +1019,9 @@ class ConnectionConfigurationArgs:
     def __init__(__self__, *,
                  asset: pulumi.Input['ConnectionConfigurationAssetArgs'],
                  connector_id: pulumi.Input[_builtins.str],
-                 authentication: Optional[pulumi.Input['ConnectionConfigurationAuthenticationArgs']] = None,
-                 endpoint: Optional[pulumi.Input['ConnectionConfigurationEndpointArgs']] = None,
-                 network: Optional[pulumi.Input['ConnectionConfigurationNetworkArgs']] = None):
+                 authentication: pulumi.Input[Optional['ConnectionConfigurationAuthenticationArgs']] = None,
+                 endpoint: pulumi.Input[Optional['ConnectionConfigurationEndpointArgs']] = None,
+                 network: pulumi.Input[Optional['ConnectionConfigurationNetworkArgs']] = None):
         """
         :param pulumi.Input['ConnectionConfigurationAssetArgs'] asset: Asset configuration for the connector.
                Structure is documented below.
@@ -1071,7 +1071,7 @@ class ConnectionConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['ConnectionConfigurationAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['ConnectionConfigurationAuthenticationArgs']]:
         """
         Authentication configuration for the connector.
         Structure is documented below.
@@ -1079,12 +1079,12 @@ class ConnectionConfigurationArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['ConnectionConfigurationAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['ConnectionConfigurationAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input['ConnectionConfigurationEndpointArgs']]:
+    def endpoint(self) -> pulumi.Input[Optional['ConnectionConfigurationEndpointArgs']]:
         """
         Endpoint configuration for the connector.
         Structure is documented below.
@@ -1092,12 +1092,12 @@ class ConnectionConfigurationArgs:
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input['ConnectionConfigurationEndpointArgs']]):
+    def endpoint(self, value: pulumi.Input[Optional['ConnectionConfigurationEndpointArgs']]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input['ConnectionConfigurationNetworkArgs']]:
+    def network(self) -> pulumi.Input[Optional['ConnectionConfigurationNetworkArgs']]:
         """
         Network configuration for the connector.
         Structure is documented below.
@@ -1105,16 +1105,16 @@ class ConnectionConfigurationArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input['ConnectionConfigurationNetworkArgs']]):
+    def network(self, value: pulumi.Input[Optional['ConnectionConfigurationNetworkArgs']]):
         pulumi.set(self, "network", value)
 
 
 class ConnectionConfigurationAssetArgsDict(TypedDict):
-    database: NotRequired[pulumi.Input[_builtins.str]]
+    database: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the database.
     """
-    google_cloud_resource: NotRequired[pulumi.Input[_builtins.str]]
+    google_cloud_resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The full resource name of the Google Cloud resource.
     For AlloyDB, this is in the format of
@@ -1124,8 +1124,8 @@ class ConnectionConfigurationAssetArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionConfigurationAssetArgs:
     def __init__(__self__, *,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_cloud_resource: Optional[pulumi.Input[_builtins.str]] = None):
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_cloud_resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] database: The name of the database.
         :param pulumi.Input[_builtins.str] google_cloud_resource: The full resource name of the Google Cloud resource.
@@ -1139,19 +1139,19 @@ class ConnectionConfigurationAssetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="googleCloudResource")
-    def google_cloud_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def google_cloud_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full resource name of the Google Cloud resource.
         For AlloyDB, this is in the format of
@@ -1160,17 +1160,17 @@ class ConnectionConfigurationAssetArgs:
         return pulumi.get(self, "google_cloud_resource")
 
     @google_cloud_resource.setter
-    def google_cloud_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def google_cloud_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "google_cloud_resource", value)
 
 
 class ConnectionConfigurationAuthenticationArgsDict(TypedDict):
-    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The service account used for authenticating with the connector.
     """
-    username_password: NotRequired[pulumi.Input['ConnectionConfigurationAuthenticationUsernamePasswordArgsDict']]
+    username_password: NotRequired[pulumi.Input[Optional['ConnectionConfigurationAuthenticationUsernamePasswordArgs']]]
     """
     Username/password authentication configuration.
     Structure is documented below.
@@ -1179,8 +1179,8 @@ class ConnectionConfigurationAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionConfigurationAuthenticationArgs:
     def __init__(__self__, *,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_password: Optional[pulumi.Input['ConnectionConfigurationAuthenticationUsernamePasswordArgs']] = None):
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_password: pulumi.Input[Optional['ConnectionConfigurationAuthenticationUsernamePasswordArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] service_account: (Output)
                Output only. The service account used for authenticating with the connector.
@@ -1194,7 +1194,7 @@ class ConnectionConfigurationAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The service account used for authenticating with the connector.
@@ -1202,12 +1202,12 @@ class ConnectionConfigurationAuthenticationArgs:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="usernamePassword")
-    def username_password(self) -> Optional[pulumi.Input['ConnectionConfigurationAuthenticationUsernamePasswordArgs']]:
+    def username_password(self) -> pulumi.Input[Optional['ConnectionConfigurationAuthenticationUsernamePasswordArgs']]:
         """
         Username/password authentication configuration.
         Structure is documented below.
@@ -1215,7 +1215,7 @@ class ConnectionConfigurationAuthenticationArgs:
         return pulumi.get(self, "username_password")
 
     @username_password.setter
-    def username_password(self, value: Optional[pulumi.Input['ConnectionConfigurationAuthenticationUsernamePasswordArgs']]):
+    def username_password(self, value: pulumi.Input[Optional['ConnectionConfigurationAuthenticationUsernamePasswordArgs']]):
         pulumi.set(self, "username_password", value)
 
 
@@ -1275,7 +1275,7 @@ class ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgsDict(Type
     The plaintext password.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    secret_type: NotRequired[pulumi.Input[_builtins.str]]
+    secret_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The type of the secret.
@@ -1285,7 +1285,7 @@ class ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgsDict(Type
 class ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs:
     def __init__(__self__, *,
                  plaintext: pulumi.Input[_builtins.str],
-                 secret_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] plaintext: The plaintext password.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1311,7 +1311,7 @@ class ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs:
 
     @_builtins.property
     @pulumi.getter(name="secretType")
-    def secret_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The type of the secret.
@@ -1319,12 +1319,12 @@ class ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs:
         return pulumi.get(self, "secret_type")
 
     @secret_type.setter
-    def secret_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_type", value)
 
 
 class ConnectionConfigurationEndpointArgsDict(TypedDict):
-    host_port: NotRequired[pulumi.Input[_builtins.str]]
+    host_port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host and port in the format of `host:port` for the connector endpoint.
     """
@@ -1332,7 +1332,7 @@ class ConnectionConfigurationEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionConfigurationEndpointArgs:
     def __init__(__self__, *,
-                 host_port: Optional[pulumi.Input[_builtins.str]] = None):
+                 host_port: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host_port: Host and port in the format of `host:port` for the connector endpoint.
         """
@@ -1341,19 +1341,19 @@ class ConnectionConfigurationEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="hostPort")
-    def host_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host and port in the format of `host:port` for the connector endpoint.
         """
         return pulumi.get(self, "host_port")
 
     @host_port.setter
-    def host_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_port", value)
 
 
 class ConnectionConfigurationNetworkArgsDict(TypedDict):
-    private_service_connect: NotRequired[pulumi.Input['ConnectionConfigurationNetworkPrivateServiceConnectArgsDict']]
+    private_service_connect: NotRequired[pulumi.Input[Optional['ConnectionConfigurationNetworkPrivateServiceConnectArgs']]]
     """
     Private Service Connect configuration for the connector.
     Structure is documented below.
@@ -1362,7 +1362,7 @@ class ConnectionConfigurationNetworkArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionConfigurationNetworkArgs:
     def __init__(__self__, *,
-                 private_service_connect: Optional[pulumi.Input['ConnectionConfigurationNetworkPrivateServiceConnectArgs']] = None):
+                 private_service_connect: pulumi.Input[Optional['ConnectionConfigurationNetworkPrivateServiceConnectArgs']] = None):
         """
         :param pulumi.Input['ConnectionConfigurationNetworkPrivateServiceConnectArgs'] private_service_connect: Private Service Connect configuration for the connector.
                Structure is documented below.
@@ -1372,7 +1372,7 @@ class ConnectionConfigurationNetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="privateServiceConnect")
-    def private_service_connect(self) -> Optional[pulumi.Input['ConnectionConfigurationNetworkPrivateServiceConnectArgs']]:
+    def private_service_connect(self) -> pulumi.Input[Optional['ConnectionConfigurationNetworkPrivateServiceConnectArgs']]:
         """
         Private Service Connect configuration for the connector.
         Structure is documented below.
@@ -1380,7 +1380,7 @@ class ConnectionConfigurationNetworkArgs:
         return pulumi.get(self, "private_service_connect")
 
     @private_service_connect.setter
-    def private_service_connect(self, value: Optional[pulumi.Input['ConnectionConfigurationNetworkPrivateServiceConnectArgs']]):
+    def private_service_connect(self, value: pulumi.Input[Optional['ConnectionConfigurationNetworkPrivateServiceConnectArgs']]):
         pulumi.set(self, "private_service_connect", value)
 
 
@@ -1418,14 +1418,14 @@ class ConnectionConfigurationNetworkPrivateServiceConnectArgs:
 class ConnectionIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ConnectionIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1451,25 +1451,25 @@ class ConnectionIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ConnectionIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ConnectionIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1495,26 +1495,26 @@ class ConnectionIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ConnectionSparkArgsDict(TypedDict):
-    metastore_service_config: NotRequired[pulumi.Input['ConnectionSparkMetastoreServiceConfigArgsDict']]
+    metastore_service_config: NotRequired[pulumi.Input[Optional['ConnectionSparkMetastoreServiceConfigArgs']]]
     """
     Dataproc Metastore Service configuration for the connection.
     Structure is documented below.
     """
-    service_account_id: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The account ID of the service created for the purpose of this connection.
     """
-    spark_history_server_config: NotRequired[pulumi.Input['ConnectionSparkSparkHistoryServerConfigArgsDict']]
+    spark_history_server_config: NotRequired[pulumi.Input[Optional['ConnectionSparkSparkHistoryServerConfigArgs']]]
     """
     Spark History Server configuration for the connection.
     Structure is documented below.
@@ -1523,9 +1523,9 @@ class ConnectionSparkArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionSparkArgs:
     def __init__(__self__, *,
-                 metastore_service_config: Optional[pulumi.Input['ConnectionSparkMetastoreServiceConfigArgs']] = None,
-                 service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_history_server_config: Optional[pulumi.Input['ConnectionSparkSparkHistoryServerConfigArgs']] = None):
+                 metastore_service_config: pulumi.Input[Optional['ConnectionSparkMetastoreServiceConfigArgs']] = None,
+                 service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_history_server_config: pulumi.Input[Optional['ConnectionSparkSparkHistoryServerConfigArgs']] = None):
         """
         :param pulumi.Input['ConnectionSparkMetastoreServiceConfigArgs'] metastore_service_config: Dataproc Metastore Service configuration for the connection.
                Structure is documented below.
@@ -1543,7 +1543,7 @@ class ConnectionSparkArgs:
 
     @_builtins.property
     @pulumi.getter(name="metastoreServiceConfig")
-    def metastore_service_config(self) -> Optional[pulumi.Input['ConnectionSparkMetastoreServiceConfigArgs']]:
+    def metastore_service_config(self) -> pulumi.Input[Optional['ConnectionSparkMetastoreServiceConfigArgs']]:
         """
         Dataproc Metastore Service configuration for the connection.
         Structure is documented below.
@@ -1551,12 +1551,12 @@ class ConnectionSparkArgs:
         return pulumi.get(self, "metastore_service_config")
 
     @metastore_service_config.setter
-    def metastore_service_config(self, value: Optional[pulumi.Input['ConnectionSparkMetastoreServiceConfigArgs']]):
+    def metastore_service_config(self, value: pulumi.Input[Optional['ConnectionSparkMetastoreServiceConfigArgs']]):
         pulumi.set(self, "metastore_service_config", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountId")
-    def service_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The account ID of the service created for the purpose of this connection.
@@ -1564,12 +1564,12 @@ class ConnectionSparkArgs:
         return pulumi.get(self, "service_account_id")
 
     @service_account_id.setter
-    def service_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkHistoryServerConfig")
-    def spark_history_server_config(self) -> Optional[pulumi.Input['ConnectionSparkSparkHistoryServerConfigArgs']]:
+    def spark_history_server_config(self) -> pulumi.Input[Optional['ConnectionSparkSparkHistoryServerConfigArgs']]:
         """
         Spark History Server configuration for the connection.
         Structure is documented below.
@@ -1577,12 +1577,12 @@ class ConnectionSparkArgs:
         return pulumi.get(self, "spark_history_server_config")
 
     @spark_history_server_config.setter
-    def spark_history_server_config(self, value: Optional[pulumi.Input['ConnectionSparkSparkHistoryServerConfigArgs']]):
+    def spark_history_server_config(self, value: pulumi.Input[Optional['ConnectionSparkSparkHistoryServerConfigArgs']]):
         pulumi.set(self, "spark_history_server_config", value)
 
 
 class ConnectionSparkMetastoreServiceConfigArgsDict(TypedDict):
-    metastore_service: NotRequired[pulumi.Input[_builtins.str]]
+    metastore_service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].
     """
@@ -1590,7 +1590,7 @@ class ConnectionSparkMetastoreServiceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionSparkMetastoreServiceConfigArgs:
     def __init__(__self__, *,
-                 metastore_service: Optional[pulumi.Input[_builtins.str]] = None):
+                 metastore_service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] metastore_service: Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].
         """
@@ -1599,19 +1599,19 @@ class ConnectionSparkMetastoreServiceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="metastoreService")
-    def metastore_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metastore_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].
         """
         return pulumi.get(self, "metastore_service")
 
     @metastore_service.setter
-    def metastore_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metastore_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metastore_service", value)
 
 
 class ConnectionSparkSparkHistoryServerConfigArgsDict(TypedDict):
-    dataproc_cluster: NotRequired[pulumi.Input[_builtins.str]]
+    dataproc_cluster: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
     """
@@ -1619,7 +1619,7 @@ class ConnectionSparkSparkHistoryServerConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionSparkSparkHistoryServerConfigArgs:
     def __init__(__self__, *,
-                 dataproc_cluster: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataproc_cluster: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] dataproc_cluster: Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
         """
@@ -1628,14 +1628,14 @@ class ConnectionSparkSparkHistoryServerConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataprocCluster")
-    def dataproc_cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataproc_cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
         """
         return pulumi.get(self, "dataproc_cluster")
 
     @dataproc_cluster.setter
-    def dataproc_cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataproc_cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataproc_cluster", value)
 
 
@@ -1696,7 +1696,7 @@ class DataTransferConfigEncryptionConfigurationArgs:
 
 
 class DataTransferConfigScheduleOptionsArgsDict(TypedDict):
-    disable_auto_scheduling: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_auto_scheduling: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, automatic scheduling of data transfer runs for this
     configuration will be disabled. The runs can be started on ad-hoc
@@ -1704,14 +1704,14 @@ class DataTransferConfigScheduleOptionsArgsDict(TypedDict):
     scheduling is disabled, the TransferConfig.schedule field will
     be ignored.
     """
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Defines time to stop scheduling transfer runs. A transfer run cannot be
     scheduled at or after the end time. The end time can be changed at any
     moment. The time when a data transfer can be triggered manually is not
     limited by this option.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies time to start scheduling transfer runs. The first run will be
     scheduled at or after the start time according to a recurrence pattern
@@ -1723,9 +1723,9 @@ class DataTransferConfigScheduleOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class DataTransferConfigScheduleOptionsArgs:
     def __init__(__self__, *,
-                 disable_auto_scheduling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 disable_auto_scheduling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] disable_auto_scheduling: If true, automatic scheduling of data transfer runs for this
                configuration will be disabled. The runs can be started on ad-hoc
@@ -1751,7 +1751,7 @@ class DataTransferConfigScheduleOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="disableAutoScheduling")
-    def disable_auto_scheduling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_auto_scheduling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, automatic scheduling of data transfer runs for this
         configuration will be disabled. The runs can be started on ad-hoc
@@ -1762,12 +1762,12 @@ class DataTransferConfigScheduleOptionsArgs:
         return pulumi.get(self, "disable_auto_scheduling")
 
     @disable_auto_scheduling.setter
-    def disable_auto_scheduling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_auto_scheduling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_auto_scheduling", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines time to stop scheduling transfer runs. A transfer run cannot be
         scheduled at or after the end time. The end time can be changed at any
@@ -1777,12 +1777,12 @@ class DataTransferConfigScheduleOptionsArgs:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies time to start scheduling transfer runs. The first run will be
         scheduled at or after the start time according to a recurrence pattern
@@ -1793,17 +1793,17 @@ class DataTransferConfigScheduleOptionsArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
 class DataTransferConfigSensitiveParamsArgsDict(TypedDict):
-    secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    secret_access_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Secret Access Key of the AWS account transferring data from.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    secret_access_key_wo: NotRequired[pulumi.Input[_builtins.str]]
+    secret_access_key_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
     (Optional, Write-Only)
@@ -1812,7 +1812,7 @@ class DataTransferConfigSensitiveParamsArgsDict(TypedDict):
 
     > **Note:** One of `secret_access_key` or `secret_access_key_wo` can only be set.
     """
-    secret_access_key_wo_version: NotRequired[pulumi.Input[_builtins.int]]
+    secret_access_key_wo_version: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
     """
@@ -1820,9 +1820,9 @@ class DataTransferConfigSensitiveParamsArgsDict(TypedDict):
 @pulumi.input_type
 class DataTransferConfigSensitiveParamsArgs:
     def __init__(__self__, *,
-                 secret_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_access_key_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_access_key_wo_version: Optional[pulumi.Input[_builtins.int]] = None):
+                 secret_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_access_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_access_key_wo_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] secret_access_key: The Secret Access Key of the AWS account transferring data from.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1843,7 +1843,7 @@ class DataTransferConfigSensitiveParamsArgs:
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKey")
-    def secret_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Secret Access Key of the AWS account transferring data from.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1851,12 +1851,12 @@ class DataTransferConfigSensitiveParamsArgs:
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
-    def secret_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKeyWo")
-    def secret_access_key_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_access_key_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         (Optional, Write-Only)
@@ -1868,24 +1868,24 @@ class DataTransferConfigSensitiveParamsArgs:
         return pulumi.get(self, "secret_access_key_wo")
 
     @secret_access_key_wo.setter
-    def secret_access_key_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_access_key_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_access_key_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKeyWoVersion")
-    def secret_access_key_wo_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secret_access_key_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "secret_access_key_wo_version")
 
     @secret_access_key_wo_version.setter
-    def secret_access_key_wo_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secret_access_key_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secret_access_key_wo_version", value)
 
 
 class Datapolicyv2DataPolicyDataMaskingPolicyArgsDict(TypedDict):
-    predefined_expression: NotRequired[pulumi.Input[_builtins.str]]
+    predefined_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A predefined masking expression.
     Possible values:
@@ -1898,7 +1898,7 @@ class Datapolicyv2DataPolicyDataMaskingPolicyArgsDict(TypedDict):
     DATE_YEAR_MASK
     RANDOM_HASH
     """
-    routine: NotRequired[pulumi.Input[_builtins.str]]
+    routine: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the BigQuery routine that contains the custom masking
     routine, in the format of
@@ -1908,8 +1908,8 @@ class Datapolicyv2DataPolicyDataMaskingPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class Datapolicyv2DataPolicyDataMaskingPolicyArgs:
     def __init__(__self__, *,
-                 predefined_expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 routine: Optional[pulumi.Input[_builtins.str]] = None):
+                 predefined_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 routine: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] predefined_expression: A predefined masking expression.
                Possible values:
@@ -1932,7 +1932,7 @@ class Datapolicyv2DataPolicyDataMaskingPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="predefinedExpression")
-    def predefined_expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def predefined_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A predefined masking expression.
         Possible values:
@@ -1948,12 +1948,12 @@ class Datapolicyv2DataPolicyDataMaskingPolicyArgs:
         return pulumi.get(self, "predefined_expression")
 
     @predefined_expression.setter
-    def predefined_expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def predefined_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "predefined_expression", value)
 
     @_builtins.property
     @pulumi.getter
-    def routine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def routine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the BigQuery routine that contains the custom masking
         routine, in the format of
@@ -1962,21 +1962,21 @@ class Datapolicyv2DataPolicyDataMaskingPolicyArgs:
         return pulumi.get(self, "routine")
 
     @routine.setter
-    def routine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def routine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "routine", value)
 
 
 class Datapolicyv2DataPolicyIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class Datapolicyv2DataPolicyIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -2002,25 +2002,25 @@ class Datapolicyv2DataPolicyIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class Datapolicyv2DataPolicyIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class Datapolicyv2DataPolicyIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -2046,41 +2046,41 @@ class Datapolicyv2DataPolicyIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class DatasetAccessArgsDict(TypedDict):
-    condition: NotRequired[pulumi.Input['DatasetAccessConditionArgsDict']]
+    condition: NotRequired[pulumi.Input[Optional['DatasetAccessConditionArgs']]]
     """
     Condition for the binding. If CEL expression in this field is true, this
     access binding will be considered.
     Structure is documented below.
     """
-    dataset: NotRequired[pulumi.Input['DatasetAccessDatasetArgsDict']]
+    dataset: NotRequired[pulumi.Input[Optional['DatasetAccessDatasetArgs']]]
     """
     Grants all resources of particular types in a particular dataset read access to the current dataset.
     Structure is documented below.
     """
-    domain: NotRequired[pulumi.Input[_builtins.str]]
+    domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A domain to grant access to. Any users signed in with the
     domain specified will be granted the specified access
     """
-    group_by_email: NotRequired[pulumi.Input[_builtins.str]]
+    group_by_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An email address of a Google Group to grant access to.
     """
-    iam_member: NotRequired[pulumi.Input[_builtins.str]]
+    iam_member: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Some other type of member that appears in the IAM Policy but isn't a user,
     group, domain, or special group. For example: `allUsers`
     """
-    role: NotRequired[pulumi.Input[_builtins.str]]
+    role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Describes the rights granted to the user specified by the other
     member of the access object. Basic, predefined, and custom roles
@@ -2088,7 +2088,7 @@ class DatasetAccessArgsDict(TypedDict):
     are swapped by the API to their basic counterparts. See
     [official docs](https://cloud.google.com/bigquery/docs/access-control).
     """
-    routine: NotRequired[pulumi.Input['DatasetAccessRoutineArgsDict']]
+    routine: NotRequired[pulumi.Input[Optional['DatasetAccessRoutineArgs']]]
     """
     A routine from a different dataset to grant access to. Queries
     executed against that routine will have read access to tables in
@@ -2097,7 +2097,7 @@ class DatasetAccessArgsDict(TypedDict):
     needs to be granted again via an update operation.
     Structure is documented below.
     """
-    special_group: NotRequired[pulumi.Input[_builtins.str]]
+    special_group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A special group to grant access to. Possible values include:
     * `projectOwners`: Owners of the enclosing project.
@@ -2105,12 +2105,12 @@ class DatasetAccessArgsDict(TypedDict):
     * `projectWriters`: Writers of the enclosing project.
     * `allAuthenticatedUsers`: All authenticated BigQuery users.
     """
-    user_by_email: NotRequired[pulumi.Input[_builtins.str]]
+    user_by_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An email address of a user to grant access to. For example:
     fred@example.com
     """
-    view: NotRequired[pulumi.Input['DatasetAccessViewArgsDict']]
+    view: NotRequired[pulumi.Input[Optional['DatasetAccessViewArgs']]]
     """
     A view from a different dataset to grant access to. Queries
     executed against that view will have read access to tables in
@@ -2123,16 +2123,16 @@ class DatasetAccessArgsDict(TypedDict):
 @pulumi.input_type
 class DatasetAccessArgs:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['DatasetAccessConditionArgs']] = None,
-                 dataset: Optional[pulumi.Input['DatasetAccessDatasetArgs']] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_by_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_member: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 routine: Optional[pulumi.Input['DatasetAccessRoutineArgs']] = None,
-                 special_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_by_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None):
+                 condition: pulumi.Input[Optional['DatasetAccessConditionArgs']] = None,
+                 dataset: pulumi.Input[Optional['DatasetAccessDatasetArgs']] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_by_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_member: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 routine: pulumi.Input[Optional['DatasetAccessRoutineArgs']] = None,
+                 special_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_by_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 view: pulumi.Input[Optional['DatasetAccessViewArgs']] = None):
         """
         :param pulumi.Input['DatasetAccessConditionArgs'] condition: Condition for the binding. If CEL expression in this field is true, this
                access binding will be considered.
@@ -2192,7 +2192,7 @@ class DatasetAccessArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DatasetAccessConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['DatasetAccessConditionArgs']]:
         """
         Condition for the binding. If CEL expression in this field is true, this
         access binding will be considered.
@@ -2201,12 +2201,12 @@ class DatasetAccessArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DatasetAccessConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['DatasetAccessConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input['DatasetAccessDatasetArgs']]:
+    def dataset(self) -> pulumi.Input[Optional['DatasetAccessDatasetArgs']]:
         """
         Grants all resources of particular types in a particular dataset read access to the current dataset.
         Structure is documented below.
@@ -2214,12 +2214,12 @@ class DatasetAccessArgs:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input['DatasetAccessDatasetArgs']]):
+    def dataset(self, value: pulumi.Input[Optional['DatasetAccessDatasetArgs']]):
         pulumi.set(self, "dataset", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A domain to grant access to. Any users signed in with the
         domain specified will be granted the specified access
@@ -2227,24 +2227,24 @@ class DatasetAccessArgs:
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="groupByEmail")
-    def group_by_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_by_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An email address of a Google Group to grant access to.
         """
         return pulumi.get(self, "group_by_email")
 
     @group_by_email.setter
-    def group_by_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_by_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_by_email", value)
 
     @_builtins.property
     @pulumi.getter(name="iamMember")
-    def iam_member(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam_member(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Some other type of member that appears in the IAM Policy but isn't a user,
         group, domain, or special group. For example: `allUsers`
@@ -2252,12 +2252,12 @@ class DatasetAccessArgs:
         return pulumi.get(self, "iam_member")
 
     @iam_member.setter
-    def iam_member(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam_member(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam_member", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes the rights granted to the user specified by the other
         member of the access object. Basic, predefined, and custom roles
@@ -2268,12 +2268,12 @@ class DatasetAccessArgs:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter
-    def routine(self) -> Optional[pulumi.Input['DatasetAccessRoutineArgs']]:
+    def routine(self) -> pulumi.Input[Optional['DatasetAccessRoutineArgs']]:
         """
         A routine from a different dataset to grant access to. Queries
         executed against that routine will have read access to tables in
@@ -2285,12 +2285,12 @@ class DatasetAccessArgs:
         return pulumi.get(self, "routine")
 
     @routine.setter
-    def routine(self, value: Optional[pulumi.Input['DatasetAccessRoutineArgs']]):
+    def routine(self, value: pulumi.Input[Optional['DatasetAccessRoutineArgs']]):
         pulumi.set(self, "routine", value)
 
     @_builtins.property
     @pulumi.getter(name="specialGroup")
-    def special_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def special_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A special group to grant access to. Possible values include:
         * `projectOwners`: Owners of the enclosing project.
@@ -2301,12 +2301,12 @@ class DatasetAccessArgs:
         return pulumi.get(self, "special_group")
 
     @special_group.setter
-    def special_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def special_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "special_group", value)
 
     @_builtins.property
     @pulumi.getter(name="userByEmail")
-    def user_by_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_by_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An email address of a user to grant access to. For example:
         fred@example.com
@@ -2314,12 +2314,12 @@ class DatasetAccessArgs:
         return pulumi.get(self, "user_by_email")
 
     @user_by_email.setter
-    def user_by_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_by_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_by_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def view(self) -> Optional[pulumi.Input['DatasetAccessViewArgs']]:
+    def view(self) -> pulumi.Input[Optional['DatasetAccessViewArgs']]:
         """
         A view from a different dataset to grant access to. Queries
         executed against that view will have read access to tables in
@@ -2331,7 +2331,7 @@ class DatasetAccessArgs:
         return pulumi.get(self, "view")
 
     @view.setter
-    def view(self, value: Optional[pulumi.Input['DatasetAccessViewArgs']]):
+    def view(self, value: pulumi.Input[Optional['DatasetAccessViewArgs']]):
         pulumi.set(self, "view", value)
 
 
@@ -2440,17 +2440,17 @@ class DatasetAccessConditionArgsDict(TypedDict):
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the expression. This is a longer text which describes the expression,
     e.g. when hovered over it in a UI.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String indicating the location of the expression for error reporting, e.g. a file
     name and a position in the file.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Title for the expression, i.e. a short string describing its purpose.
     This can be used e.g. in UIs which allow to enter the expression.
@@ -2460,9 +2460,9 @@ class DatasetAccessConditionArgsDict(TypedDict):
 class DatasetAccessConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] description: Description of the expression. This is a longer text which describes the expression,
@@ -2494,7 +2494,7 @@ class DatasetAccessConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the expression. This is a longer text which describes the expression,
         e.g. when hovered over it in a UI.
@@ -2502,12 +2502,12 @@ class DatasetAccessConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String indicating the location of the expression for error reporting, e.g. a file
         name and a position in the file.
@@ -2515,12 +2515,12 @@ class DatasetAccessConditionArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Title for the expression, i.e. a short string describing its purpose.
         This can be used e.g. in UIs which allow to enter the expression.
@@ -2528,7 +2528,7 @@ class DatasetAccessConditionArgs:
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
@@ -2811,12 +2811,12 @@ class DatasetDefaultEncryptionConfigurationArgs:
 
 
 class DatasetExternalCatalogDatasetOptionsArgsDict(TypedDict):
-    default_storage_location_uri: NotRequired[pulumi.Input[_builtins.str]]
+    default_storage_location_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The storage location URI for all tables in the dataset. Equivalent to hive metastore's
     database locationUri. Maximum length of 1024 characters.
     """
-    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    parameters: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     A map of key value pairs defining the parameters and properties of the open source schema.
     Maximum size of 2Mib.
@@ -2825,8 +2825,8 @@ class DatasetExternalCatalogDatasetOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class DatasetExternalCatalogDatasetOptionsArgs:
     def __init__(__self__, *,
-                 default_storage_location_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 default_storage_location_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] default_storage_location_uri: The storage location URI for all tables in the dataset. Equivalent to hive metastore's
                database locationUri. Maximum length of 1024 characters.
@@ -2840,7 +2840,7 @@ class DatasetExternalCatalogDatasetOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultStorageLocationUri")
-    def default_storage_location_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_storage_location_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage location URI for all tables in the dataset. Equivalent to hive metastore's
         database locationUri. Maximum length of 1024 characters.
@@ -2848,12 +2848,12 @@ class DatasetExternalCatalogDatasetOptionsArgs:
         return pulumi.get(self, "default_storage_location_uri")
 
     @default_storage_location_uri.setter
-    def default_storage_location_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_storage_location_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_storage_location_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key value pairs defining the parameters and properties of the open source schema.
         Maximum size of 2Mib.
@@ -2861,7 +2861,7 @@ class DatasetExternalCatalogDatasetOptionsArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
 
@@ -2924,7 +2924,7 @@ class DatasetIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2938,7 +2938,7 @@ class DatasetIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2979,7 +2979,7 @@ class DatasetIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2990,7 +2990,7 @@ class DatasetIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -3003,7 +3003,7 @@ class DatasetIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -3017,7 +3017,7 @@ class DatasetIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -3058,7 +3058,7 @@ class DatasetIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -3069,21 +3069,21 @@ class DatasetIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class IamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class IamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -3109,25 +3109,25 @@ class IamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class IamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class IamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -3153,11 +3153,11 @@ class IamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -3167,7 +3167,7 @@ class JobCopyArgsDict(TypedDict):
     Source tables to copy.
     Structure is documented below.
     """
-    create_disposition: NotRequired[pulumi.Input[_builtins.str]]
+    create_disposition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies whether the job is allowed to create new tables. The following values are supported:
     CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -3176,17 +3176,17 @@ class JobCopyArgsDict(TypedDict):
     Default value is `CREATE_IF_NEEDED`.
     Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
     """
-    destination_encryption_configuration: NotRequired[pulumi.Input['JobCopyDestinationEncryptionConfigurationArgsDict']]
+    destination_encryption_configuration: NotRequired[pulumi.Input[Optional['JobCopyDestinationEncryptionConfigurationArgs']]]
     """
     Custom encryption configuration (e.g., Cloud KMS keys)
     Structure is documented below.
     """
-    destination_table: NotRequired[pulumi.Input['JobCopyDestinationTableArgsDict']]
+    destination_table: NotRequired[pulumi.Input[Optional['JobCopyDestinationTableArgs']]]
     """
     The destination table.
     Structure is documented below.
     """
-    write_disposition: NotRequired[pulumi.Input[_builtins.str]]
+    write_disposition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the action that occurs if the destination table already exists. The following values are supported:
     WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -3202,10 +3202,10 @@ class JobCopyArgsDict(TypedDict):
 class JobCopyArgs:
     def __init__(__self__, *,
                  source_tables: pulumi.Input[Sequence[pulumi.Input['JobCopySourceTableArgs']]],
-                 create_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_encryption_configuration: Optional[pulumi.Input['JobCopyDestinationEncryptionConfigurationArgs']] = None,
-                 destination_table: Optional[pulumi.Input['JobCopyDestinationTableArgs']] = None,
-                 write_disposition: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_encryption_configuration: pulumi.Input[Optional['JobCopyDestinationEncryptionConfigurationArgs']] = None,
+                 destination_table: pulumi.Input[Optional['JobCopyDestinationTableArgs']] = None,
+                 write_disposition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobCopySourceTableArgs']]] source_tables: Source tables to copy.
                Structure is documented below.
@@ -3253,7 +3253,7 @@ class JobCopyArgs:
 
     @_builtins.property
     @pulumi.getter(name="createDisposition")
-    def create_disposition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether the job is allowed to create new tables. The following values are supported:
         CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -3265,12 +3265,12 @@ class JobCopyArgs:
         return pulumi.get(self, "create_disposition")
 
     @create_disposition.setter
-    def create_disposition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_disposition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_disposition", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEncryptionConfiguration")
-    def destination_encryption_configuration(self) -> Optional[pulumi.Input['JobCopyDestinationEncryptionConfigurationArgs']]:
+    def destination_encryption_configuration(self) -> pulumi.Input[Optional['JobCopyDestinationEncryptionConfigurationArgs']]:
         """
         Custom encryption configuration (e.g., Cloud KMS keys)
         Structure is documented below.
@@ -3278,12 +3278,12 @@ class JobCopyArgs:
         return pulumi.get(self, "destination_encryption_configuration")
 
     @destination_encryption_configuration.setter
-    def destination_encryption_configuration(self, value: Optional[pulumi.Input['JobCopyDestinationEncryptionConfigurationArgs']]):
+    def destination_encryption_configuration(self, value: pulumi.Input[Optional['JobCopyDestinationEncryptionConfigurationArgs']]):
         pulumi.set(self, "destination_encryption_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationTable")
-    def destination_table(self) -> Optional[pulumi.Input['JobCopyDestinationTableArgs']]:
+    def destination_table(self) -> pulumi.Input[Optional['JobCopyDestinationTableArgs']]:
         """
         The destination table.
         Structure is documented below.
@@ -3291,12 +3291,12 @@ class JobCopyArgs:
         return pulumi.get(self, "destination_table")
 
     @destination_table.setter
-    def destination_table(self, value: Optional[pulumi.Input['JobCopyDestinationTableArgs']]):
+    def destination_table(self, value: pulumi.Input[Optional['JobCopyDestinationTableArgs']]):
         pulumi.set(self, "destination_table", value)
 
     @_builtins.property
     @pulumi.getter(name="writeDisposition")
-    def write_disposition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def write_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the action that occurs if the destination table already exists. The following values are supported:
         WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -3310,7 +3310,7 @@ class JobCopyArgs:
         return pulumi.get(self, "write_disposition")
 
     @write_disposition.setter
-    def write_disposition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def write_disposition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "write_disposition", value)
 
 
@@ -3320,7 +3320,7 @@ class JobCopyDestinationEncryptionConfigurationArgsDict(TypedDict):
     Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
     The BigQuery Service Account associated with your project requires access to this encryption key.
     """
-    kms_key_version: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
@@ -3330,7 +3330,7 @@ class JobCopyDestinationEncryptionConfigurationArgsDict(TypedDict):
 class JobCopyDestinationEncryptionConfigurationArgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[_builtins.str],
-                 kms_key_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
@@ -3356,7 +3356,7 @@ class JobCopyDestinationEncryptionConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyVersion")
-    def kms_key_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
@@ -3364,7 +3364,7 @@ class JobCopyDestinationEncryptionConfigurationArgs:
         return pulumi.get(self, "kms_key_version")
 
     @kms_key_version.setter
-    def kms_key_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_version", value)
 
 
@@ -3374,11 +3374,11 @@ class JobCopyDestinationTableArgsDict(TypedDict):
     The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
     or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
     """
-    dataset_id: NotRequired[pulumi.Input[_builtins.str]]
+    dataset_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the dataset containing this table.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the project containing this table.
     """
@@ -3387,8 +3387,8 @@ class JobCopyDestinationTableArgsDict(TypedDict):
 class JobCopyDestinationTableArgs:
     def __init__(__self__, *,
                  table_id: pulumi.Input[_builtins.str],
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] table_id: The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
                or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -3416,26 +3416,26 @@ class JobCopyDestinationTableArgs:
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dataset containing this table.
         """
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project containing this table.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
@@ -3445,11 +3445,11 @@ class JobCopySourceTableArgsDict(TypedDict):
     The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
     or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
     """
-    dataset_id: NotRequired[pulumi.Input[_builtins.str]]
+    dataset_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the dataset containing this table.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the project containing this table.
     """
@@ -3458,8 +3458,8 @@ class JobCopySourceTableArgsDict(TypedDict):
 class JobCopySourceTableArgs:
     def __init__(__self__, *,
                  table_id: pulumi.Input[_builtins.str],
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] table_id: The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
                or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -3487,26 +3487,26 @@ class JobCopySourceTableArgs:
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dataset containing this table.
         """
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project containing this table.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
@@ -3515,37 +3515,37 @@ class JobExtractArgsDict(TypedDict):
     """
     A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
     """
-    compression: NotRequired[pulumi.Input[_builtins.str]]
+    compression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
     The default value is NONE. DEFLATE and SNAPPY are only supported for Avro.
     """
-    destination_format: NotRequired[pulumi.Input[_builtins.str]]
+    destination_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON and AVRO for tables and SAVED_MODEL for models.
     The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV.
     The default value for models is SAVED_MODEL.
     """
-    field_delimiter: NotRequired[pulumi.Input[_builtins.str]]
+    field_delimiter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
     Default is ','
     """
-    print_header: NotRequired[pulumi.Input[_builtins.bool]]
+    print_header: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to print out a header row in the results. Default is true.
     """
-    source_model: NotRequired[pulumi.Input['JobExtractSourceModelArgsDict']]
+    source_model: NotRequired[pulumi.Input[Optional['JobExtractSourceModelArgs']]]
     """
     A reference to the model being exported.
     Structure is documented below.
     """
-    source_table: NotRequired[pulumi.Input['JobExtractSourceTableArgsDict']]
+    source_table: NotRequired[pulumi.Input[Optional['JobExtractSourceTableArgs']]]
     """
     A reference to the table being exported.
     Structure is documented below.
     """
-    use_avro_logical_types: NotRequired[pulumi.Input[_builtins.bool]]
+    use_avro_logical_types: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to use logical types when extracting to AVRO format.
     """
@@ -3554,13 +3554,13 @@ class JobExtractArgsDict(TypedDict):
 class JobExtractArgs:
     def __init__(__self__, *,
                  destination_uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 compression: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 field_delimiter: Optional[pulumi.Input[_builtins.str]] = None,
-                 print_header: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_model: Optional[pulumi.Input['JobExtractSourceModelArgs']] = None,
-                 source_table: Optional[pulumi.Input['JobExtractSourceTableArgs']] = None,
-                 use_avro_logical_types: Optional[pulumi.Input[_builtins.bool]] = None):
+                 compression: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_delimiter: pulumi.Input[Optional[_builtins.str]] = None,
+                 print_header: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_model: pulumi.Input[Optional['JobExtractSourceModelArgs']] = None,
+                 source_table: pulumi.Input[Optional['JobExtractSourceTableArgs']] = None,
+                 use_avro_logical_types: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] destination_uris: A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
         :param pulumi.Input[_builtins.str] compression: The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
@@ -3607,7 +3607,7 @@ class JobExtractArgs:
 
     @_builtins.property
     @pulumi.getter
-    def compression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
         The default value is NONE. DEFLATE and SNAPPY are only supported for Avro.
@@ -3615,12 +3615,12 @@ class JobExtractArgs:
         return pulumi.get(self, "compression")
 
     @compression.setter
-    def compression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compression", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationFormat")
-    def destination_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON and AVRO for tables and SAVED_MODEL for models.
         The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV.
@@ -3629,12 +3629,12 @@ class JobExtractArgs:
         return pulumi.get(self, "destination_format")
 
     @destination_format.setter
-    def destination_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_format", value)
 
     @_builtins.property
     @pulumi.getter(name="fieldDelimiter")
-    def field_delimiter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_delimiter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
         Default is ','
@@ -3642,24 +3642,24 @@ class JobExtractArgs:
         return pulumi.get(self, "field_delimiter")
 
     @field_delimiter.setter
-    def field_delimiter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_delimiter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_delimiter", value)
 
     @_builtins.property
     @pulumi.getter(name="printHeader")
-    def print_header(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def print_header(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to print out a header row in the results. Default is true.
         """
         return pulumi.get(self, "print_header")
 
     @print_header.setter
-    def print_header(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def print_header(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "print_header", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceModel")
-    def source_model(self) -> Optional[pulumi.Input['JobExtractSourceModelArgs']]:
+    def source_model(self) -> pulumi.Input[Optional['JobExtractSourceModelArgs']]:
         """
         A reference to the model being exported.
         Structure is documented below.
@@ -3667,12 +3667,12 @@ class JobExtractArgs:
         return pulumi.get(self, "source_model")
 
     @source_model.setter
-    def source_model(self, value: Optional[pulumi.Input['JobExtractSourceModelArgs']]):
+    def source_model(self, value: pulumi.Input[Optional['JobExtractSourceModelArgs']]):
         pulumi.set(self, "source_model", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceTable")
-    def source_table(self) -> Optional[pulumi.Input['JobExtractSourceTableArgs']]:
+    def source_table(self) -> pulumi.Input[Optional['JobExtractSourceTableArgs']]:
         """
         A reference to the table being exported.
         Structure is documented below.
@@ -3680,19 +3680,19 @@ class JobExtractArgs:
         return pulumi.get(self, "source_table")
 
     @source_table.setter
-    def source_table(self, value: Optional[pulumi.Input['JobExtractSourceTableArgs']]):
+    def source_table(self, value: pulumi.Input[Optional['JobExtractSourceTableArgs']]):
         pulumi.set(self, "source_table", value)
 
     @_builtins.property
     @pulumi.getter(name="useAvroLogicalTypes")
-    def use_avro_logical_types(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_avro_logical_types(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use logical types when extracting to AVRO format.
         """
         return pulumi.get(self, "use_avro_logical_types")
 
     @use_avro_logical_types.setter
-    def use_avro_logical_types(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_avro_logical_types(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_avro_logical_types", value)
 
 
@@ -3768,11 +3768,11 @@ class JobExtractSourceTableArgsDict(TypedDict):
     The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
     or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
     """
-    dataset_id: NotRequired[pulumi.Input[_builtins.str]]
+    dataset_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the dataset containing this table.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the project containing this table.
     """
@@ -3781,8 +3781,8 @@ class JobExtractSourceTableArgsDict(TypedDict):
 class JobExtractSourceTableArgs:
     def __init__(__self__, *,
                  table_id: pulumi.Input[_builtins.str],
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] table_id: The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
                or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -3810,26 +3810,26 @@ class JobExtractSourceTableArgs:
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dataset containing this table.
         """
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project containing this table.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
@@ -3848,22 +3848,22 @@ class JobLoadArgsDict(TypedDict):
     specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
     For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '\\*' wildcard character is not allowed.
     """
-    allow_jagged_rows: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_jagged_rows: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Accept rows that are missing trailing optional columns. The missing values are treated as nulls.
     If false, records with missing trailing columns are treated as bad records, and if there are too many bad records,
     an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
     """
-    allow_quoted_newlines: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_quoted_newlines: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file.
     The default value is false.
     """
-    autodetect: NotRequired[pulumi.Input[_builtins.bool]]
+    autodetect: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates if we should automatically infer the options and schema for CSV and JSON sources.
     """
-    create_disposition: NotRequired[pulumi.Input[_builtins.str]]
+    create_disposition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies whether the job is allowed to create new tables. The following values are supported:
     CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -3872,18 +3872,18 @@ class JobLoadArgsDict(TypedDict):
     Default value is `CREATE_IF_NEEDED`.
     Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
     """
-    destination_encryption_configuration: NotRequired[pulumi.Input['JobLoadDestinationEncryptionConfigurationArgsDict']]
+    destination_encryption_configuration: NotRequired[pulumi.Input[Optional['JobLoadDestinationEncryptionConfigurationArgs']]]
     """
     Custom encryption configuration (e.g., Cloud KMS keys)
     Structure is documented below.
     """
-    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    encoding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
     The default value is UTF-8. BigQuery decodes the data after the raw, binary data
     has been split using the values of the quote and fieldDelimiter properties.
     """
-    field_delimiter: NotRequired[pulumi.Input[_builtins.str]]
+    field_delimiter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
     To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
@@ -3891,7 +3891,7 @@ class JobLoadArgsDict(TypedDict):
     data in its raw, binary state. BigQuery also supports the escape sequence "\\t" to specify a tab separator.
     The default value is a comma (',').
     """
-    ignore_unknown_values: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_unknown_values: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates if BigQuery should allow extra values that are not represented in the table schema.
     If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
@@ -3900,43 +3900,43 @@ class JobLoadArgsDict(TypedDict):
     CSV: Trailing columns
     JSON: Named values that don't match any column names
     """
-    json_extension: NotRequired[pulumi.Input[_builtins.str]]
+    json_extension: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
     For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
     GeoJSON: set to GEOJSON.
     """
-    max_bad_records: NotRequired[pulumi.Input[_builtins.int]]
+    max_bad_records: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
     an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
     """
-    null_marker: NotRequired[pulumi.Input[_builtins.str]]
+    null_marker: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
     property to a custom value, BigQuery throws an error if an
     empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
     an empty value.
     """
-    parquet_options: NotRequired[pulumi.Input['JobLoadParquetOptionsArgsDict']]
+    parquet_options: NotRequired[pulumi.Input[Optional['JobLoadParquetOptionsArgs']]]
     """
     Parquet Options for load and make external tables.
     Structure is documented below.
     """
-    projection_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    projection_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
     Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
     If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
     """
-    quote: NotRequired[pulumi.Input[_builtins.str]]
+    quote: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,
     and then uses the first byte of the encoded string to split the data in its raw, binary state.
     The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string.
     If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
     """
-    schema_update_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    schema_update_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
     supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
@@ -3945,7 +3945,7 @@ class JobLoadArgsDict(TypedDict):
     ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
     ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
     """
-    skip_leading_rows: NotRequired[pulumi.Input[_builtins.int]]
+    skip_leading_rows: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of rows at the top of a CSV file that BigQuery will skip when loading the data.
     The default value is 0. This property is useful if you have header rows in the file that should be skipped.
@@ -3956,19 +3956,19 @@ class JobLoadArgsDict(TypedDict):
     skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected,
     row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
     """
-    source_format: NotRequired[pulumi.Input[_builtins.str]]
+    source_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
     For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
     For orc, specify "ORC". [Beta] For Bigtable, specify "BIGTABLE".
     The default value is CSV.
     """
-    time_partitioning: NotRequired[pulumi.Input['JobLoadTimePartitioningArgsDict']]
+    time_partitioning: NotRequired[pulumi.Input[Optional['JobLoadTimePartitioningArgs']]]
     """
     Time-based partitioning specification for the destination table.
     Structure is documented below.
     """
-    write_disposition: NotRequired[pulumi.Input[_builtins.str]]
+    write_disposition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the action that occurs if the destination table already exists. The following values are supported:
     WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -3985,25 +3985,25 @@ class JobLoadArgs:
     def __init__(__self__, *,
                  destination_table: pulumi.Input['JobLoadDestinationTableArgs'],
                  source_uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 allow_jagged_rows: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_quoted_newlines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 autodetect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_encryption_configuration: Optional[pulumi.Input['JobLoadDestinationEncryptionConfigurationArgs']] = None,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 field_delimiter: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_unknown_values: Optional[pulumi.Input[_builtins.bool]] = None,
-                 json_extension: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_bad_records: Optional[pulumi.Input[_builtins.int]] = None,
-                 null_marker: Optional[pulumi.Input[_builtins.str]] = None,
-                 parquet_options: Optional[pulumi.Input['JobLoadParquetOptionsArgs']] = None,
-                 projection_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 quote: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_update_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 skip_leading_rows: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_partitioning: Optional[pulumi.Input['JobLoadTimePartitioningArgs']] = None,
-                 write_disposition: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_jagged_rows: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_quoted_newlines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autodetect: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_encryption_configuration: pulumi.Input[Optional['JobLoadDestinationEncryptionConfigurationArgs']] = None,
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_delimiter: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_unknown_values: pulumi.Input[Optional[_builtins.bool]] = None,
+                 json_extension: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_bad_records: pulumi.Input[Optional[_builtins.int]] = None,
+                 null_marker: pulumi.Input[Optional[_builtins.str]] = None,
+                 parquet_options: pulumi.Input[Optional['JobLoadParquetOptionsArgs']] = None,
+                 projection_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 quote: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_update_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 skip_leading_rows: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_partitioning: pulumi.Input[Optional['JobLoadTimePartitioningArgs']] = None,
+                 write_disposition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['JobLoadDestinationTableArgs'] destination_table: The destination table to load the data into.
                Structure is documented below.
@@ -4161,7 +4161,7 @@ class JobLoadArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowJaggedRows")
-    def allow_jagged_rows(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_jagged_rows(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Accept rows that are missing trailing optional columns. The missing values are treated as nulls.
         If false, records with missing trailing columns are treated as bad records, and if there are too many bad records,
@@ -4170,12 +4170,12 @@ class JobLoadArgs:
         return pulumi.get(self, "allow_jagged_rows")
 
     @allow_jagged_rows.setter
-    def allow_jagged_rows(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_jagged_rows(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_jagged_rows", value)
 
     @_builtins.property
     @pulumi.getter(name="allowQuotedNewlines")
-    def allow_quoted_newlines(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_quoted_newlines(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file.
         The default value is false.
@@ -4183,24 +4183,24 @@ class JobLoadArgs:
         return pulumi.get(self, "allow_quoted_newlines")
 
     @allow_quoted_newlines.setter
-    def allow_quoted_newlines(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_quoted_newlines(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_quoted_newlines", value)
 
     @_builtins.property
     @pulumi.getter
-    def autodetect(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def autodetect(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if we should automatically infer the options and schema for CSV and JSON sources.
         """
         return pulumi.get(self, "autodetect")
 
     @autodetect.setter
-    def autodetect(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def autodetect(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autodetect", value)
 
     @_builtins.property
     @pulumi.getter(name="createDisposition")
-    def create_disposition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether the job is allowed to create new tables. The following values are supported:
         CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -4212,12 +4212,12 @@ class JobLoadArgs:
         return pulumi.get(self, "create_disposition")
 
     @create_disposition.setter
-    def create_disposition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_disposition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_disposition", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEncryptionConfiguration")
-    def destination_encryption_configuration(self) -> Optional[pulumi.Input['JobLoadDestinationEncryptionConfigurationArgs']]:
+    def destination_encryption_configuration(self) -> pulumi.Input[Optional['JobLoadDestinationEncryptionConfigurationArgs']]:
         """
         Custom encryption configuration (e.g., Cloud KMS keys)
         Structure is documented below.
@@ -4225,12 +4225,12 @@ class JobLoadArgs:
         return pulumi.get(self, "destination_encryption_configuration")
 
     @destination_encryption_configuration.setter
-    def destination_encryption_configuration(self, value: Optional[pulumi.Input['JobLoadDestinationEncryptionConfigurationArgs']]):
+    def destination_encryption_configuration(self, value: pulumi.Input[Optional['JobLoadDestinationEncryptionConfigurationArgs']]):
         pulumi.set(self, "destination_encryption_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
         The default value is UTF-8. BigQuery decodes the data after the raw, binary data
@@ -4239,12 +4239,12 @@ class JobLoadArgs:
         return pulumi.get(self, "encoding")
 
     @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="fieldDelimiter")
-    def field_delimiter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_delimiter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
         To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
@@ -4255,12 +4255,12 @@ class JobLoadArgs:
         return pulumi.get(self, "field_delimiter")
 
     @field_delimiter.setter
-    def field_delimiter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_delimiter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_delimiter", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreUnknownValues")
-    def ignore_unknown_values(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_unknown_values(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if BigQuery should allow extra values that are not represented in the table schema.
         If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
@@ -4272,12 +4272,12 @@ class JobLoadArgs:
         return pulumi.get(self, "ignore_unknown_values")
 
     @ignore_unknown_values.setter
-    def ignore_unknown_values(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_unknown_values(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_unknown_values", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonExtension")
-    def json_extension(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json_extension(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
         For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
@@ -4286,12 +4286,12 @@ class JobLoadArgs:
         return pulumi.get(self, "json_extension")
 
     @json_extension.setter
-    def json_extension(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json_extension(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json_extension", value)
 
     @_builtins.property
     @pulumi.getter(name="maxBadRecords")
-    def max_bad_records(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_bad_records(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
         an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
@@ -4299,12 +4299,12 @@ class JobLoadArgs:
         return pulumi.get(self, "max_bad_records")
 
     @max_bad_records.setter
-    def max_bad_records(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_bad_records(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_bad_records", value)
 
     @_builtins.property
     @pulumi.getter(name="nullMarker")
-    def null_marker(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def null_marker(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
         property to a custom value, BigQuery throws an error if an
@@ -4314,12 +4314,12 @@ class JobLoadArgs:
         return pulumi.get(self, "null_marker")
 
     @null_marker.setter
-    def null_marker(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def null_marker(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "null_marker", value)
 
     @_builtins.property
     @pulumi.getter(name="parquetOptions")
-    def parquet_options(self) -> Optional[pulumi.Input['JobLoadParquetOptionsArgs']]:
+    def parquet_options(self) -> pulumi.Input[Optional['JobLoadParquetOptionsArgs']]:
         """
         Parquet Options for load and make external tables.
         Structure is documented below.
@@ -4327,12 +4327,12 @@ class JobLoadArgs:
         return pulumi.get(self, "parquet_options")
 
     @parquet_options.setter
-    def parquet_options(self, value: Optional[pulumi.Input['JobLoadParquetOptionsArgs']]):
+    def parquet_options(self, value: pulumi.Input[Optional['JobLoadParquetOptionsArgs']]):
         pulumi.set(self, "parquet_options", value)
 
     @_builtins.property
     @pulumi.getter(name="projectionFields")
-    def projection_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def projection_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
         Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
@@ -4341,12 +4341,12 @@ class JobLoadArgs:
         return pulumi.get(self, "projection_fields")
 
     @projection_fields.setter
-    def projection_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def projection_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "projection_fields", value)
 
     @_builtins.property
     @pulumi.getter
-    def quote(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quote(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,
         and then uses the first byte of the encoded string to split the data in its raw, binary state.
@@ -4356,12 +4356,12 @@ class JobLoadArgs:
         return pulumi.get(self, "quote")
 
     @quote.setter
-    def quote(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quote(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quote", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaUpdateOptions")
-    def schema_update_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def schema_update_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
         supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
@@ -4373,12 +4373,12 @@ class JobLoadArgs:
         return pulumi.get(self, "schema_update_options")
 
     @schema_update_options.setter
-    def schema_update_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def schema_update_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "schema_update_options", value)
 
     @_builtins.property
     @pulumi.getter(name="skipLeadingRows")
-    def skip_leading_rows(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def skip_leading_rows(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of rows at the top of a CSV file that BigQuery will skip when loading the data.
         The default value is 0. This property is useful if you have header rows in the file that should be skipped.
@@ -4392,12 +4392,12 @@ class JobLoadArgs:
         return pulumi.get(self, "skip_leading_rows")
 
     @skip_leading_rows.setter
-    def skip_leading_rows(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def skip_leading_rows(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "skip_leading_rows", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceFormat")
-    def source_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
         For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
@@ -4407,12 +4407,12 @@ class JobLoadArgs:
         return pulumi.get(self, "source_format")
 
     @source_format.setter
-    def source_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_format", value)
 
     @_builtins.property
     @pulumi.getter(name="timePartitioning")
-    def time_partitioning(self) -> Optional[pulumi.Input['JobLoadTimePartitioningArgs']]:
+    def time_partitioning(self) -> pulumi.Input[Optional['JobLoadTimePartitioningArgs']]:
         """
         Time-based partitioning specification for the destination table.
         Structure is documented below.
@@ -4420,12 +4420,12 @@ class JobLoadArgs:
         return pulumi.get(self, "time_partitioning")
 
     @time_partitioning.setter
-    def time_partitioning(self, value: Optional[pulumi.Input['JobLoadTimePartitioningArgs']]):
+    def time_partitioning(self, value: pulumi.Input[Optional['JobLoadTimePartitioningArgs']]):
         pulumi.set(self, "time_partitioning", value)
 
     @_builtins.property
     @pulumi.getter(name="writeDisposition")
-    def write_disposition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def write_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the action that occurs if the destination table already exists. The following values are supported:
         WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -4439,7 +4439,7 @@ class JobLoadArgs:
         return pulumi.get(self, "write_disposition")
 
     @write_disposition.setter
-    def write_disposition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def write_disposition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "write_disposition", value)
 
 
@@ -4449,7 +4449,7 @@ class JobLoadDestinationEncryptionConfigurationArgsDict(TypedDict):
     Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
     The BigQuery Service Account associated with your project requires access to this encryption key.
     """
-    kms_key_version: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
@@ -4459,7 +4459,7 @@ class JobLoadDestinationEncryptionConfigurationArgsDict(TypedDict):
 class JobLoadDestinationEncryptionConfigurationArgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[_builtins.str],
-                 kms_key_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
@@ -4485,7 +4485,7 @@ class JobLoadDestinationEncryptionConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyVersion")
-    def kms_key_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
@@ -4493,7 +4493,7 @@ class JobLoadDestinationEncryptionConfigurationArgs:
         return pulumi.get(self, "kms_key_version")
 
     @kms_key_version.setter
-    def kms_key_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_version", value)
 
 
@@ -4503,11 +4503,11 @@ class JobLoadDestinationTableArgsDict(TypedDict):
     The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
     or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
     """
-    dataset_id: NotRequired[pulumi.Input[_builtins.str]]
+    dataset_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the dataset containing this table.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the project containing this table.
     """
@@ -4516,8 +4516,8 @@ class JobLoadDestinationTableArgsDict(TypedDict):
 class JobLoadDestinationTableArgs:
     def __init__(__self__, *,
                  table_id: pulumi.Input[_builtins.str],
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] table_id: The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
                or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -4545,35 +4545,35 @@ class JobLoadDestinationTableArgs:
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dataset containing this table.
         """
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project containing this table.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
 class JobLoadParquetOptionsArgsDict(TypedDict):
-    enable_list_inference: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_list_inference: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.
     """
-    enum_as_string: NotRequired[pulumi.Input[_builtins.bool]]
+    enum_as_string: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If sourceFormat is set to PARQUET, indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
     """
@@ -4581,8 +4581,8 @@ class JobLoadParquetOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class JobLoadParquetOptionsArgs:
     def __init__(__self__, *,
-                 enable_list_inference: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enum_as_string: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_list_inference: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enum_as_string: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_list_inference: If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.
         :param pulumi.Input[_builtins.bool] enum_as_string: If sourceFormat is set to PARQUET, indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
@@ -4594,26 +4594,26 @@ class JobLoadParquetOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableListInference")
-    def enable_list_inference(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_list_inference(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.
         """
         return pulumi.get(self, "enable_list_inference")
 
     @enable_list_inference.setter
-    def enable_list_inference(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_list_inference(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_list_inference", value)
 
     @_builtins.property
     @pulumi.getter(name="enumAsString")
-    def enum_as_string(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enum_as_string(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If sourceFormat is set to PARQUET, indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
         """
         return pulumi.get(self, "enum_as_string")
 
     @enum_as_string.setter
-    def enum_as_string(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enum_as_string(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enum_as_string", value)
 
 
@@ -4623,11 +4623,11 @@ class JobLoadTimePartitioningArgsDict(TypedDict):
     The only type supported is DAY, which will generate one partition per day. Providing an empty string used to cause an error,
     but in OnePlatform the field will be treated as unset.
     """
-    expiration_ms: NotRequired[pulumi.Input[_builtins.str]]
+    expiration_ms: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
     """
-    field: NotRequired[pulumi.Input[_builtins.str]]
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if set, the table is partitioned by this field.
     The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
@@ -4638,8 +4638,8 @@ class JobLoadTimePartitioningArgsDict(TypedDict):
 class JobLoadTimePartitioningArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 expiration_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 field: Optional[pulumi.Input[_builtins.str]] = None):
+                 expiration_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 field: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: The only type supported is DAY, which will generate one partition per day. Providing an empty string used to cause an error,
                but in OnePlatform the field will be treated as unset.
@@ -4669,19 +4669,19 @@ class JobLoadTimePartitioningArgs:
 
     @_builtins.property
     @pulumi.getter(name="expirationMs")
-    def expiration_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
         """
         return pulumi.get(self, "expiration_ms")
 
     @expiration_ms.setter
-    def expiration_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_ms", value)
 
     @_builtins.property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if set, the table is partitioned by this field.
         The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
@@ -4690,7 +4690,7 @@ class JobLoadTimePartitioningArgs:
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field", value)
 
 
@@ -4701,25 +4701,25 @@ class JobQueryArgsDict(TypedDict):
     *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
     (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
     """
-    allow_large_results: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_large_results: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
     Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
     However, you must still set destinationTable when result size exceeds the allowed maximum response size.
     """
-    connection_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobQueryConnectionPropertyArgsDict']]]]
+    connection_properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobQueryConnectionPropertyArgs']]]]]
     """
     Connection properties to customize query behavior. Under JDBC, these correspond
     directly to connection properties passed to the DriverManager. Under ODBC, these
     correspond to properties in the connection string.
     Structure is documented below.
     """
-    continuous: NotRequired[pulumi.Input[_builtins.bool]]
+    continuous: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional, Beta)
     Whether to run the query as continuous or a regular query.
     """
-    create_disposition: NotRequired[pulumi.Input[_builtins.str]]
+    create_disposition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies whether the job is allowed to create new tables. The following values are supported:
     CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -4728,49 +4728,49 @@ class JobQueryArgsDict(TypedDict):
     Default value is `CREATE_IF_NEEDED`.
     Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
     """
-    default_dataset: NotRequired[pulumi.Input['JobQueryDefaultDatasetArgsDict']]
+    default_dataset: NotRequired[pulumi.Input[Optional['JobQueryDefaultDatasetArgs']]]
     """
     Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
     Structure is documented below.
     """
-    destination_encryption_configuration: NotRequired[pulumi.Input['JobQueryDestinationEncryptionConfigurationArgsDict']]
+    destination_encryption_configuration: NotRequired[pulumi.Input[Optional['JobQueryDestinationEncryptionConfigurationArgs']]]
     """
     Custom encryption configuration (e.g., Cloud KMS keys)
     Structure is documented below.
     """
-    destination_table: NotRequired[pulumi.Input['JobQueryDestinationTableArgsDict']]
+    destination_table: NotRequired[pulumi.Input[Optional['JobQueryDestinationTableArgs']]]
     """
     Describes the table where the query results should be stored.
     This property must be set for large results that exceed the maximum response size.
     For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
     Structure is documented below.
     """
-    flatten_results: NotRequired[pulumi.Input[_builtins.bool]]
+    flatten_results: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
     allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
     """
-    maximum_billing_tier: NotRequired[pulumi.Input[_builtins.int]]
+    maximum_billing_tier: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge).
     If unspecified, this will be set to your project default.
     """
-    maximum_bytes_billed: NotRequired[pulumi.Input[_builtins.str]]
+    maximum_bytes_billed: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
     If unspecified, this will be set to your project default.
     """
-    parameter_mode: NotRequired[pulumi.Input[_builtins.str]]
+    parameter_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
     """
-    priority: NotRequired[pulumi.Input[_builtins.str]]
+    priority: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies a priority for the query.
     Default value is `INTERACTIVE`.
     Possible values are: `INTERACTIVE`, `BATCH`.
     """
-    schema_update_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    schema_update_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allows the schema of the destination table to be updated as a side effect of the query job.
     Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
@@ -4780,28 +4780,28 @@ class JobQueryArgsDict(TypedDict):
     ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
     ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
     """
-    script_options: NotRequired[pulumi.Input['JobQueryScriptOptionsArgsDict']]
+    script_options: NotRequired[pulumi.Input[Optional['JobQueryScriptOptionsArgs']]]
     """
     Options controlling the execution of scripts.
     Structure is documented below.
     """
-    use_legacy_sql: NotRequired[pulumi.Input[_builtins.bool]]
+    use_legacy_sql: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
     If set to false, the query will use BigQuery's standard SQL.
     """
-    use_query_cache: NotRequired[pulumi.Input[_builtins.bool]]
+    use_query_cache: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
     tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
     The default value is true.
     """
-    user_defined_function_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgsDict']]]]
+    user_defined_function_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgs']]]]]
     """
     Describes user-defined function resources used in the query.
     Structure is documented below.
     """
-    write_disposition: NotRequired[pulumi.Input[_builtins.str]]
+    write_disposition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the action that occurs if the destination table already exists. The following values are supported:
     WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -4817,24 +4817,24 @@ class JobQueryArgsDict(TypedDict):
 class JobQueryArgs:
     def __init__(__self__, *,
                  query: pulumi.Input[_builtins.str],
-                 allow_large_results: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_properties: Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryConnectionPropertyArgs']]]] = None,
-                 continuous: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_dataset: Optional[pulumi.Input['JobQueryDefaultDatasetArgs']] = None,
-                 destination_encryption_configuration: Optional[pulumi.Input['JobQueryDestinationEncryptionConfigurationArgs']] = None,
-                 destination_table: Optional[pulumi.Input['JobQueryDestinationTableArgs']] = None,
-                 flatten_results: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maximum_billing_tier: Optional[pulumi.Input[_builtins.int]] = None,
-                 maximum_bytes_billed: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_update_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 script_options: Optional[pulumi.Input['JobQueryScriptOptionsArgs']] = None,
-                 use_legacy_sql: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_query_cache: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_defined_function_resources: Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgs']]]] = None,
-                 write_disposition: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_large_results: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_properties: pulumi.Input[Optional[Sequence[pulumi.Input['JobQueryConnectionPropertyArgs']]]] = None,
+                 continuous: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_dataset: pulumi.Input[Optional['JobQueryDefaultDatasetArgs']] = None,
+                 destination_encryption_configuration: pulumi.Input[Optional['JobQueryDestinationEncryptionConfigurationArgs']] = None,
+                 destination_table: pulumi.Input[Optional['JobQueryDestinationTableArgs']] = None,
+                 flatten_results: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maximum_billing_tier: pulumi.Input[Optional[_builtins.int]] = None,
+                 maximum_bytes_billed: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_update_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 script_options: pulumi.Input[Optional['JobQueryScriptOptionsArgs']] = None,
+                 use_legacy_sql: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_query_cache: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_defined_function_resources: pulumi.Input[Optional[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgs']]]] = None,
+                 write_disposition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
                *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
@@ -4951,7 +4951,7 @@ class JobQueryArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowLargeResults")
-    def allow_large_results(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_large_results(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
         Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
@@ -4960,12 +4960,12 @@ class JobQueryArgs:
         return pulumi.get(self, "allow_large_results")
 
     @allow_large_results.setter
-    def allow_large_results(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_large_results(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_large_results", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionProperties")
-    def connection_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryConnectionPropertyArgs']]]]:
+    def connection_properties(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobQueryConnectionPropertyArgs']]]]:
         """
         Connection properties to customize query behavior. Under JDBC, these correspond
         directly to connection properties passed to the DriverManager. Under ODBC, these
@@ -4975,12 +4975,12 @@ class JobQueryArgs:
         return pulumi.get(self, "connection_properties")
 
     @connection_properties.setter
-    def connection_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryConnectionPropertyArgs']]]]):
+    def connection_properties(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobQueryConnectionPropertyArgs']]]]):
         pulumi.set(self, "connection_properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def continuous(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def continuous(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         Whether to run the query as continuous or a regular query.
@@ -4988,12 +4988,12 @@ class JobQueryArgs:
         return pulumi.get(self, "continuous")
 
     @continuous.setter
-    def continuous(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def continuous(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "continuous", value)
 
     @_builtins.property
     @pulumi.getter(name="createDisposition")
-    def create_disposition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether the job is allowed to create new tables. The following values are supported:
         CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -5005,12 +5005,12 @@ class JobQueryArgs:
         return pulumi.get(self, "create_disposition")
 
     @create_disposition.setter
-    def create_disposition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_disposition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_disposition", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultDataset")
-    def default_dataset(self) -> Optional[pulumi.Input['JobQueryDefaultDatasetArgs']]:
+    def default_dataset(self) -> pulumi.Input[Optional['JobQueryDefaultDatasetArgs']]:
         """
         Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
         Structure is documented below.
@@ -5018,12 +5018,12 @@ class JobQueryArgs:
         return pulumi.get(self, "default_dataset")
 
     @default_dataset.setter
-    def default_dataset(self, value: Optional[pulumi.Input['JobQueryDefaultDatasetArgs']]):
+    def default_dataset(self, value: pulumi.Input[Optional['JobQueryDefaultDatasetArgs']]):
         pulumi.set(self, "default_dataset", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEncryptionConfiguration")
-    def destination_encryption_configuration(self) -> Optional[pulumi.Input['JobQueryDestinationEncryptionConfigurationArgs']]:
+    def destination_encryption_configuration(self) -> pulumi.Input[Optional['JobQueryDestinationEncryptionConfigurationArgs']]:
         """
         Custom encryption configuration (e.g., Cloud KMS keys)
         Structure is documented below.
@@ -5031,12 +5031,12 @@ class JobQueryArgs:
         return pulumi.get(self, "destination_encryption_configuration")
 
     @destination_encryption_configuration.setter
-    def destination_encryption_configuration(self, value: Optional[pulumi.Input['JobQueryDestinationEncryptionConfigurationArgs']]):
+    def destination_encryption_configuration(self, value: pulumi.Input[Optional['JobQueryDestinationEncryptionConfigurationArgs']]):
         pulumi.set(self, "destination_encryption_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationTable")
-    def destination_table(self) -> Optional[pulumi.Input['JobQueryDestinationTableArgs']]:
+    def destination_table(self) -> pulumi.Input[Optional['JobQueryDestinationTableArgs']]:
         """
         Describes the table where the query results should be stored.
         This property must be set for large results that exceed the maximum response size.
@@ -5046,12 +5046,12 @@ class JobQueryArgs:
         return pulumi.get(self, "destination_table")
 
     @destination_table.setter
-    def destination_table(self, value: Optional[pulumi.Input['JobQueryDestinationTableArgs']]):
+    def destination_table(self, value: pulumi.Input[Optional['JobQueryDestinationTableArgs']]):
         pulumi.set(self, "destination_table", value)
 
     @_builtins.property
     @pulumi.getter(name="flattenResults")
-    def flatten_results(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def flatten_results(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
         allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
@@ -5059,12 +5059,12 @@ class JobQueryArgs:
         return pulumi.get(self, "flatten_results")
 
     @flatten_results.setter
-    def flatten_results(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def flatten_results(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "flatten_results", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumBillingTier")
-    def maximum_billing_tier(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_billing_tier(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge).
         If unspecified, this will be set to your project default.
@@ -5072,12 +5072,12 @@ class JobQueryArgs:
         return pulumi.get(self, "maximum_billing_tier")
 
     @maximum_billing_tier.setter
-    def maximum_billing_tier(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_billing_tier(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_billing_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumBytesBilled")
-    def maximum_bytes_billed(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maximum_bytes_billed(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
         If unspecified, this will be set to your project default.
@@ -5085,24 +5085,24 @@ class JobQueryArgs:
         return pulumi.get(self, "maximum_bytes_billed")
 
     @maximum_bytes_billed.setter
-    def maximum_bytes_billed(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maximum_bytes_billed(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maximum_bytes_billed", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterMode")
-    def parameter_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
         """
         return pulumi.get(self, "parameter_mode")
 
     @parameter_mode.setter
-    def parameter_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a priority for the query.
         Default value is `INTERACTIVE`.
@@ -5111,12 +5111,12 @@ class JobQueryArgs:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaUpdateOptions")
-    def schema_update_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def schema_update_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allows the schema of the destination table to be updated as a side effect of the query job.
         Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
@@ -5129,12 +5129,12 @@ class JobQueryArgs:
         return pulumi.get(self, "schema_update_options")
 
     @schema_update_options.setter
-    def schema_update_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def schema_update_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "schema_update_options", value)
 
     @_builtins.property
     @pulumi.getter(name="scriptOptions")
-    def script_options(self) -> Optional[pulumi.Input['JobQueryScriptOptionsArgs']]:
+    def script_options(self) -> pulumi.Input[Optional['JobQueryScriptOptionsArgs']]:
         """
         Options controlling the execution of scripts.
         Structure is documented below.
@@ -5142,12 +5142,12 @@ class JobQueryArgs:
         return pulumi.get(self, "script_options")
 
     @script_options.setter
-    def script_options(self, value: Optional[pulumi.Input['JobQueryScriptOptionsArgs']]):
+    def script_options(self, value: pulumi.Input[Optional['JobQueryScriptOptionsArgs']]):
         pulumi.set(self, "script_options", value)
 
     @_builtins.property
     @pulumi.getter(name="useLegacySql")
-    def use_legacy_sql(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_legacy_sql(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
         If set to false, the query will use BigQuery's standard SQL.
@@ -5155,12 +5155,12 @@ class JobQueryArgs:
         return pulumi.get(self, "use_legacy_sql")
 
     @use_legacy_sql.setter
-    def use_legacy_sql(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_legacy_sql(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_legacy_sql", value)
 
     @_builtins.property
     @pulumi.getter(name="useQueryCache")
-    def use_query_cache(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_query_cache(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
         tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
@@ -5169,12 +5169,12 @@ class JobQueryArgs:
         return pulumi.get(self, "use_query_cache")
 
     @use_query_cache.setter
-    def use_query_cache(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_query_cache(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_query_cache", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefinedFunctionResources")
-    def user_defined_function_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgs']]]]:
+    def user_defined_function_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgs']]]]:
         """
         Describes user-defined function resources used in the query.
         Structure is documented below.
@@ -5182,12 +5182,12 @@ class JobQueryArgs:
         return pulumi.get(self, "user_defined_function_resources")
 
     @user_defined_function_resources.setter
-    def user_defined_function_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgs']]]]):
+    def user_defined_function_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgs']]]]):
         pulumi.set(self, "user_defined_function_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="writeDisposition")
-    def write_disposition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def write_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the action that occurs if the destination table already exists. The following values are supported:
         WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -5201,7 +5201,7 @@ class JobQueryArgs:
         return pulumi.get(self, "write_disposition")
 
     @write_disposition.setter
-    def write_disposition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def write_disposition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "write_disposition", value)
 
 
@@ -5258,7 +5258,7 @@ class JobQueryDefaultDatasetArgsDict(TypedDict):
     The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
     or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the project containing this table.
     """
@@ -5267,7 +5267,7 @@ class JobQueryDefaultDatasetArgsDict(TypedDict):
 class JobQueryDefaultDatasetArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[_builtins.str],
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] dataset_id: The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
                or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
@@ -5292,14 +5292,14 @@ class JobQueryDefaultDatasetArgs:
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project containing this table.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
@@ -5309,7 +5309,7 @@ class JobQueryDestinationEncryptionConfigurationArgsDict(TypedDict):
     Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
     The BigQuery Service Account associated with your project requires access to this encryption key.
     """
-    kms_key_version: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
@@ -5319,7 +5319,7 @@ class JobQueryDestinationEncryptionConfigurationArgsDict(TypedDict):
 class JobQueryDestinationEncryptionConfigurationArgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[_builtins.str],
-                 kms_key_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
@@ -5345,7 +5345,7 @@ class JobQueryDestinationEncryptionConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyVersion")
-    def kms_key_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
@@ -5353,7 +5353,7 @@ class JobQueryDestinationEncryptionConfigurationArgs:
         return pulumi.get(self, "kms_key_version")
 
     @kms_key_version.setter
-    def kms_key_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_version", value)
 
 
@@ -5363,11 +5363,11 @@ class JobQueryDestinationTableArgsDict(TypedDict):
     The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
     or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
     """
-    dataset_id: NotRequired[pulumi.Input[_builtins.str]]
+    dataset_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the dataset containing this table.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the project containing this table.
     """
@@ -5376,8 +5376,8 @@ class JobQueryDestinationTableArgsDict(TypedDict):
 class JobQueryDestinationTableArgs:
     def __init__(__self__, *,
                  table_id: pulumi.Input[_builtins.str],
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] table_id: The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
                or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -5405,41 +5405,41 @@ class JobQueryDestinationTableArgs:
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dataset containing this table.
         """
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project containing this table.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
 class JobQueryScriptOptionsArgsDict(TypedDict):
-    key_result_statement: NotRequired[pulumi.Input[_builtins.str]]
+    key_result_statement: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Determines which statement in the script represents the "key result",
     used to populate the schema and query results of the script job.
     Possible values are: `LAST`, `FIRST_SELECT`.
     """
-    statement_byte_budget: NotRequired[pulumi.Input[_builtins.str]]
+    statement_byte_budget: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
     """
-    statement_timeout_ms: NotRequired[pulumi.Input[_builtins.str]]
+    statement_timeout_ms: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Timeout period for each statement in a script.
     """
@@ -5447,9 +5447,9 @@ class JobQueryScriptOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class JobQueryScriptOptionsArgs:
     def __init__(__self__, *,
-                 key_result_statement: Optional[pulumi.Input[_builtins.str]] = None,
-                 statement_byte_budget: Optional[pulumi.Input[_builtins.str]] = None,
-                 statement_timeout_ms: Optional[pulumi.Input[_builtins.str]] = None):
+                 key_result_statement: pulumi.Input[Optional[_builtins.str]] = None,
+                 statement_byte_budget: pulumi.Input[Optional[_builtins.str]] = None,
+                 statement_timeout_ms: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key_result_statement: Determines which statement in the script represents the "key result",
                used to populate the schema and query results of the script job.
@@ -5466,7 +5466,7 @@ class JobQueryScriptOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="keyResultStatement")
-    def key_result_statement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_result_statement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines which statement in the script represents the "key result",
         used to populate the schema and query results of the script job.
@@ -5475,41 +5475,41 @@ class JobQueryScriptOptionsArgs:
         return pulumi.get(self, "key_result_statement")
 
     @key_result_statement.setter
-    def key_result_statement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_result_statement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_result_statement", value)
 
     @_builtins.property
     @pulumi.getter(name="statementByteBudget")
-    def statement_byte_budget(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statement_byte_budget(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
         """
         return pulumi.get(self, "statement_byte_budget")
 
     @statement_byte_budget.setter
-    def statement_byte_budget(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statement_byte_budget(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statement_byte_budget", value)
 
     @_builtins.property
     @pulumi.getter(name="statementTimeoutMs")
-    def statement_timeout_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statement_timeout_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timeout period for each statement in a script.
         """
         return pulumi.get(self, "statement_timeout_ms")
 
     @statement_timeout_ms.setter
-    def statement_timeout_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statement_timeout_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statement_timeout_ms", value)
 
 
 class JobQueryUserDefinedFunctionResourceArgsDict(TypedDict):
-    inline_code: NotRequired[pulumi.Input[_builtins.str]]
+    inline_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An inline resource that contains code for a user-defined function (UDF).
     Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
     """
-    resource_uri: NotRequired[pulumi.Input[_builtins.str]]
+    resource_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
     """
@@ -5517,8 +5517,8 @@ class JobQueryUserDefinedFunctionResourceArgsDict(TypedDict):
 @pulumi.input_type
 class JobQueryUserDefinedFunctionResourceArgs:
     def __init__(__self__, *,
-                 inline_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 inline_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] inline_code: An inline resource that contains code for a user-defined function (UDF).
                Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
@@ -5531,7 +5531,7 @@ class JobQueryUserDefinedFunctionResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="inlineCode")
-    def inline_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inline_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An inline resource that contains code for a user-defined function (UDF).
         Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
@@ -5539,30 +5539,30 @@ class JobQueryUserDefinedFunctionResourceArgs:
         return pulumi.get(self, "inline_code")
 
     @inline_code.setter
-    def inline_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inline_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inline_code", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceUri")
-    def resource_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
         """
         return pulumi.get(self, "resource_uri")
 
     @resource_uri.setter
-    def resource_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_uri", value)
 
 
 class JobStatusArgsDict(TypedDict):
-    error_results: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArgsDict']]]]
+    error_results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusErrorResultArgs']]]]]
     """
     (Output)
     Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
     Structure is documented below.
     """
-    errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArgsDict']]]]
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusErrorArgs']]]]]
     """
     (Output)
     The first errors encountered during the running of the job. The final message
@@ -5570,7 +5570,7 @@ class JobStatusArgsDict(TypedDict):
     not necessarily mean that the job has not completed or was unsuccessful.
     Structure is documented below.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
@@ -5579,9 +5579,9 @@ class JobStatusArgsDict(TypedDict):
 @pulumi.input_type
 class JobStatusArgs:
     def __init__(__self__, *,
-                 error_results: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArgs']]]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArgs']]]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 error_results: pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusErrorResultArgs']]]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusErrorArgs']]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArgs']]] error_results: (Output)
                Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
@@ -5603,7 +5603,7 @@ class JobStatusArgs:
 
     @_builtins.property
     @pulumi.getter(name="errorResults")
-    def error_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArgs']]]]:
+    def error_results(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusErrorResultArgs']]]]:
         """
         (Output)
         Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
@@ -5612,12 +5612,12 @@ class JobStatusArgs:
         return pulumi.get(self, "error_results")
 
     @error_results.setter
-    def error_results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArgs']]]]):
+    def error_results(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusErrorResultArgs']]]]):
         pulumi.set(self, "error_results", value)
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArgs']]]]:
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusErrorArgs']]]]:
         """
         (Output)
         The first errors encountered during the running of the job. The final message
@@ -5628,12 +5628,12 @@ class JobStatusArgs:
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArgs']]]]):
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusErrorArgs']]]]):
         pulumi.set(self, "errors", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
@@ -5641,20 +5641,20 @@ class JobStatusArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class JobStatusErrorArgsDict(TypedDict):
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The geographic location of the job. The default value is US.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A human-readable description of the error.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A short error code that summarizes the error.
     """
@@ -5662,9 +5662,9 @@ class JobStatusErrorArgsDict(TypedDict):
 @pulumi.input_type
 class JobStatusErrorArgs:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[_builtins.str] message: A human-readable description of the error.
@@ -5679,51 +5679,51 @@ class JobStatusErrorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location of the job. The default value is US.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the error.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A short error code that summarizes the error.
         """
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
 
 class JobStatusErrorResultArgsDict(TypedDict):
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The geographic location of the job. The default value is US.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A human-readable description of the error.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A short error code that summarizes the error.
     """
@@ -5731,9 +5731,9 @@ class JobStatusErrorResultArgsDict(TypedDict):
 @pulumi.input_type
 class JobStatusErrorResultArgs:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[_builtins.str] message: A human-readable description of the error.
@@ -5748,48 +5748,48 @@ class JobStatusErrorResultArgs:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location of the job. The default value is US.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the error.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A short error code that summarizes the error.
         """
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
 
 class ReservationAutoscaleArgsDict(TypedDict):
-    current_slots: NotRequired[pulumi.Input[_builtins.int]]
+    current_slots: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
     """
-    max_slots: NotRequired[pulumi.Input[_builtins.int]]
+    max_slots: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of slots to be scaled when needed.
     """
@@ -5797,8 +5797,8 @@ class ReservationAutoscaleArgsDict(TypedDict):
 @pulumi.input_type
 class ReservationAutoscaleArgs:
     def __init__(__self__, *,
-                 current_slots: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_slots: Optional[pulumi.Input[_builtins.int]] = None):
+                 current_slots: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_slots: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] current_slots: (Output)
                The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
@@ -5811,7 +5811,7 @@ class ReservationAutoscaleArgs:
 
     @_builtins.property
     @pulumi.getter(name="currentSlots")
-    def current_slots(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def current_slots(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
@@ -5819,38 +5819,38 @@ class ReservationAutoscaleArgs:
         return pulumi.get(self, "current_slots")
 
     @current_slots.setter
-    def current_slots(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def current_slots(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "current_slots", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSlots")
-    def max_slots(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_slots(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of slots to be scaled when needed.
         """
         return pulumi.get(self, "max_slots")
 
     @max_slots.setter
-    def max_slots(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_slots(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_slots", value)
 
 
 class ReservationReplicationStatusArgsDict(TypedDict):
-    errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusErrorArgsDict']]]]
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReservationReplicationStatusErrorArgs']]]]]
     """
     (Output)
     The last error encountered while trying to replicate changes from the primary to the
     secondary. This field is only available if the replication has not succeeded since.
     Structure is documented below.
     """
-    last_error_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_error_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time at which the last error was encountered while trying to replicate changes from
     the primary to the secondary. This field is only available if the replication has not
     succeeded since.
     """
-    last_replication_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_replication_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A timestamp corresponding to the last change on the primary that was successfully
@@ -5860,9 +5860,9 @@ class ReservationReplicationStatusArgsDict(TypedDict):
 @pulumi.input_type
 class ReservationReplicationStatusArgs:
     def __init__(__self__, *,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusErrorArgs']]]] = None,
-                 last_error_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_replication_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['ReservationReplicationStatusErrorArgs']]]] = None,
+                 last_error_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_replication_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusErrorArgs']]] errors: (Output)
                The last error encountered while trying to replicate changes from the primary to the
@@ -5885,7 +5885,7 @@ class ReservationReplicationStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusErrorArgs']]]]:
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReservationReplicationStatusErrorArgs']]]]:
         """
         (Output)
         The last error encountered while trying to replicate changes from the primary to the
@@ -5895,12 +5895,12 @@ class ReservationReplicationStatusArgs:
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusErrorArgs']]]]):
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReservationReplicationStatusErrorArgs']]]]):
         pulumi.set(self, "errors", value)
 
     @_builtins.property
     @pulumi.getter(name="lastErrorTime")
-    def last_error_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_error_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time at which the last error was encountered while trying to replicate changes from
@@ -5910,12 +5910,12 @@ class ReservationReplicationStatusArgs:
         return pulumi.get(self, "last_error_time")
 
     @last_error_time.setter
-    def last_error_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_error_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_error_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lastReplicationTime")
-    def last_replication_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_replication_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A timestamp corresponding to the last change on the primary that was successfully
@@ -5924,17 +5924,17 @@ class ReservationReplicationStatusArgs:
         return pulumi.get(self, "last_replication_time")
 
     @last_replication_time.setter
-    def last_replication_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_replication_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_replication_time", value)
 
 
 class ReservationReplicationStatusErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The status code, which should be an enum value of [google.rpc.Code](https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.rpc#google.rpc.Code).
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A developer-facing error message, which should be in English.
@@ -5943,8 +5943,8 @@ class ReservationReplicationStatusErrorArgsDict(TypedDict):
 @pulumi.input_type
 class ReservationReplicationStatusErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of [google.rpc.Code](https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.rpc#google.rpc.Code).
@@ -5958,7 +5958,7 @@ class ReservationReplicationStatusErrorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The status code, which should be an enum value of [google.rpc.Code](https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.rpc#google.rpc.Code).
@@ -5966,12 +5966,12 @@ class ReservationReplicationStatusErrorArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A developer-facing error message, which should be in English.
@@ -5979,18 +5979,18 @@ class ReservationReplicationStatusErrorArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class RoutineArgumentArgsDict(TypedDict):
-    argument_kind: NotRequired[pulumi.Input[_builtins.str]]
+    argument_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Defaults to FIXED_TYPE.
     Default value is `FIXED_TYPE`.
     Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
     ~>**NOTE**: Because this field expects a JSON string, any changes to the string
@@ -6000,12 +6000,12 @@ class RoutineArgumentArgsDict(TypedDict):
     suppress the recurring diff this causes. As a workaround, we recommend using
     the schema as returned by the API.
     """
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies whether the argument is input or output. Can be set for procedures only.
     Possible values are: `IN`, `OUT`, `INOUT`.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of this argument. Can be absent for function return argument.
     """
@@ -6013,10 +6013,10 @@ class RoutineArgumentArgsDict(TypedDict):
 @pulumi.input_type
 class RoutineArgumentArgs:
     def __init__(__self__, *,
-                 argument_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 argument_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] argument_kind: Defaults to FIXED_TYPE.
                Default value is `FIXED_TYPE`.
@@ -6043,7 +6043,7 @@ class RoutineArgumentArgs:
 
     @_builtins.property
     @pulumi.getter(name="argumentKind")
-    def argument_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def argument_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defaults to FIXED_TYPE.
         Default value is `FIXED_TYPE`.
@@ -6052,12 +6052,12 @@ class RoutineArgumentArgs:
         return pulumi.get(self, "argument_kind")
 
     @argument_kind.setter
-    def argument_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def argument_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "argument_kind", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
         ~>**NOTE**: Because this field expects a JSON string, any changes to the string
@@ -6070,12 +6070,12 @@ class RoutineArgumentArgs:
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether the argument is input or output. Can be set for procedures only.
         Possible values are: `IN`, `OUT`, `INOUT`.
@@ -6083,30 +6083,30 @@ class RoutineArgumentArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this argument. Can be absent for function return argument.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class RoutineExternalRuntimeOptionsArgsDict(TypedDict):
-    container_cpu: NotRequired[pulumi.Input[_builtins.float]]
+    container_cpu: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Amount of CPU provisioned for a Python UDF container instance. For more
     information, see [Configure container limits for Python
     UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
     """
-    container_memory: NotRequired[pulumi.Input[_builtins.str]]
+    container_memory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Amount of memory provisioned for a Python UDF container instance. Format:
     {number}{unit} where unit is one of "M", "G", "Mi" and "Gi" (e.g. 1G,
@@ -6114,18 +6114,18 @@ class RoutineExternalRuntimeOptionsArgsDict(TypedDict):
     see [Configure container limits for Python
     UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
     """
-    max_batching_rows: NotRequired[pulumi.Input[_builtins.str]]
+    max_batching_rows: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Maximum number of rows in each batch sent to the external runtime. If
     absent or if 0, BigQuery dynamically decides the number of rows in a batch.
     """
-    runtime_connection: NotRequired[pulumi.Input[_builtins.str]]
+    runtime_connection: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fully qualified name of the connection whose service account will be used
     to execute the code in the container. Format:
     `"projects/{project_id}/locations/{location_id}/connections/{connection_id}"`
     """
-    runtime_version: NotRequired[pulumi.Input[_builtins.str]]
+    runtime_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Language runtime version. Example: `python-3.11`.
     """
@@ -6133,11 +6133,11 @@ class RoutineExternalRuntimeOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class RoutineExternalRuntimeOptionsArgs:
     def __init__(__self__, *,
-                 container_cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 container_memory: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_batching_rows: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_connection: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 container_cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 container_memory: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_batching_rows: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_connection: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.float] container_cpu: Amount of CPU provisioned for a Python UDF container instance. For more
                information, see [Configure container limits for Python
@@ -6167,7 +6167,7 @@ class RoutineExternalRuntimeOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="containerCpu")
-    def container_cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def container_cpu(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Amount of CPU provisioned for a Python UDF container instance. For more
         information, see [Configure container limits for Python
@@ -6176,12 +6176,12 @@ class RoutineExternalRuntimeOptionsArgs:
         return pulumi.get(self, "container_cpu")
 
     @container_cpu.setter
-    def container_cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def container_cpu(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "container_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="containerMemory")
-    def container_memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_memory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Amount of memory provisioned for a Python UDF container instance. Format:
         {number}{unit} where unit is one of "M", "G", "Mi" and "Gi" (e.g. 1G,
@@ -6192,12 +6192,12 @@ class RoutineExternalRuntimeOptionsArgs:
         return pulumi.get(self, "container_memory")
 
     @container_memory.setter
-    def container_memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_memory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_memory", value)
 
     @_builtins.property
     @pulumi.getter(name="maxBatchingRows")
-    def max_batching_rows(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_batching_rows(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maximum number of rows in each batch sent to the external runtime. If
         absent or if 0, BigQuery dynamically decides the number of rows in a batch.
@@ -6205,12 +6205,12 @@ class RoutineExternalRuntimeOptionsArgs:
         return pulumi.get(self, "max_batching_rows")
 
     @max_batching_rows.setter
-    def max_batching_rows(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_batching_rows(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_batching_rows", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeConnection")
-    def runtime_connection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_connection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fully qualified name of the connection whose service account will be used
         to execute the code in the container. Format:
@@ -6219,19 +6219,19 @@ class RoutineExternalRuntimeOptionsArgs:
         return pulumi.get(self, "runtime_connection")
 
     @runtime_connection.setter
-    def runtime_connection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_connection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_connection", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeVersion")
-    def runtime_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Language runtime version. Example: `python-3.11`.
         """
         return pulumi.get(self, "runtime_version")
 
     @runtime_version.setter
-    def runtime_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_version", value)
 
 
@@ -6241,7 +6241,7 @@ class RoutinePythonOptionsArgsDict(TypedDict):
     The name of the function defined in Python code as the entry point when the
     Python UDF is invoked.
     """
-    packages: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    packages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of Python package names along with versions to be installed.
     Example: ["pandas>=2.1", "google-cloud-translate==3.11"]. For more
@@ -6253,7 +6253,7 @@ class RoutinePythonOptionsArgsDict(TypedDict):
 class RoutinePythonOptionsArgs:
     def __init__(__self__, *,
                  entry_point: pulumi.Input[_builtins.str],
-                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 packages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] entry_point: The name of the function defined in Python code as the entry point when the
                Python UDF is invoked.
@@ -6281,7 +6281,7 @@ class RoutinePythonOptionsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def packages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Python package names along with versions to be installed.
         Example: ["pandas>=2.1", "google-cloud-translate==3.11"]. For more
@@ -6291,28 +6291,28 @@ class RoutinePythonOptionsArgs:
         return pulumi.get(self, "packages")
 
     @packages.setter
-    def packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def packages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "packages", value)
 
 
 class RoutineRemoteFunctionOptionsArgsDict(TypedDict):
-    connection: NotRequired[pulumi.Input[_builtins.str]]
+    connection: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fully qualified name of the user-provided connection object which holds
     the authentication information to send requests to the remote service.
     Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
     """
-    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Endpoint of the user-provided remote service, e.g.
     `https://us-east1-my_gcf_project.cloudfunctions.net/remote_add`
     """
-    max_batching_rows: NotRequired[pulumi.Input[_builtins.str]]
+    max_batching_rows: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Max number of rows in each batch sent to the remote service. If absent or if 0,
     BigQuery dynamically decides the number of rows in a batch.
     """
-    user_defined_context: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    user_defined_context: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     User-defined context as a set of key/value pairs, which will be sent as function
     invocation context together with batched arguments in the requests to the remote
@@ -6324,10 +6324,10 @@ class RoutineRemoteFunctionOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class RoutineRemoteFunctionOptionsArgs:
     def __init__(__self__, *,
-                 connection: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_batching_rows: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_defined_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 connection: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_batching_rows: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_defined_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] connection: Fully qualified name of the user-provided connection object which holds
                the authentication information to send requests to the remote service.
@@ -6353,7 +6353,7 @@ class RoutineRemoteFunctionOptionsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def connection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fully qualified name of the user-provided connection object which holds
         the authentication information to send requests to the remote service.
@@ -6362,12 +6362,12 @@ class RoutineRemoteFunctionOptionsArgs:
         return pulumi.get(self, "connection")
 
     @connection.setter
-    def connection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Endpoint of the user-provided remote service, e.g.
         `https://us-east1-my_gcf_project.cloudfunctions.net/remote_add`
@@ -6375,12 +6375,12 @@ class RoutineRemoteFunctionOptionsArgs:
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="maxBatchingRows")
-    def max_batching_rows(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_batching_rows(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Max number of rows in each batch sent to the remote service. If absent or if 0,
         BigQuery dynamically decides the number of rows in a batch.
@@ -6388,12 +6388,12 @@ class RoutineRemoteFunctionOptionsArgs:
         return pulumi.get(self, "max_batching_rows")
 
     @max_batching_rows.setter
-    def max_batching_rows(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_batching_rows(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_batching_rows", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefinedContext")
-    def user_defined_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def user_defined_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined context as a set of key/value pairs, which will be sent as function
         invocation context together with batched arguments in the requests to the remote
@@ -6404,54 +6404,54 @@ class RoutineRemoteFunctionOptionsArgs:
         return pulumi.get(self, "user_defined_context")
 
     @user_defined_context.setter
-    def user_defined_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def user_defined_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_defined_context", value)
 
 
 class RoutineSparkOptionsArgsDict(TypedDict):
-    archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    archive_uris: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see Apache Spark.
     """
-    connection: NotRequired[pulumi.Input[_builtins.str]]
+    connection: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fully qualified name of the user-provided Spark connection object.
     Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
     """
-    container_image: NotRequired[pulumi.Input[_builtins.str]]
+    container_image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Custom container image for the runtime environment.
     """
-    file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    file_uris: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Files to be placed in the working directory of each executor. For more information about Apache Spark, see Apache Spark.
     """
-    jar_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    jar_uris: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see Apache Spark.
     """
-    main_class: NotRequired[pulumi.Input[_builtins.str]]
+    main_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The fully qualified name of a class in jarUris, for example, com.example.wordcount.
     Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
     """
-    main_file_uri: NotRequired[pulumi.Input[_builtins.str]]
+    main_file_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The main file/jar URI of the Spark application.
     Exactly one of the definitionBody field and the mainFileUri field must be set for Python.
     Exactly one of mainClass and mainFileUri field should be set for Java/Scala language type.
     """
-    properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    properties: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Configuration properties as a set of key/value pairs, which will be passed on to the Spark application.
     For more information, see Apache Spark and the procedure option list.
     An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    py_file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    py_file_uris: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: .py, .egg, and .zip. For more information about Apache Spark, see Apache Spark.
     """
-    runtime_version: NotRequired[pulumi.Input[_builtins.str]]
+    runtime_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Runtime version. If not specified, the default runtime version is used.
     """
@@ -6459,16 +6459,16 @@ class RoutineSparkOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class RoutineSparkOptionsArgs:
     def __init__(__self__, *,
-                 archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 connection: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 jar_uris: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 main_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 main_file_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 py_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 runtime_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 archive_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 connection: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 jar_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 main_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 main_file_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 py_file_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 runtime_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] archive_uris: Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see Apache Spark.
         :param pulumi.Input[_builtins.str] connection: Fully qualified name of the user-provided Spark connection object.
@@ -6510,19 +6510,19 @@ class RoutineSparkOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="archiveUris")
-    def archive_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def archive_uris(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see Apache Spark.
         """
         return pulumi.get(self, "archive_uris")
 
     @archive_uris.setter
-    def archive_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def archive_uris(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "archive_uris", value)
 
     @_builtins.property
     @pulumi.getter
-    def connection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fully qualified name of the user-provided Spark connection object.
         Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
@@ -6530,48 +6530,48 @@ class RoutineSparkOptionsArgs:
         return pulumi.get(self, "connection")
 
     @connection.setter
-    def connection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection", value)
 
     @_builtins.property
     @pulumi.getter(name="containerImage")
-    def container_image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom container image for the runtime environment.
         """
         return pulumi.get(self, "container_image")
 
     @container_image.setter
-    def container_image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_image", value)
 
     @_builtins.property
     @pulumi.getter(name="fileUris")
-    def file_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def file_uris(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Files to be placed in the working directory of each executor. For more information about Apache Spark, see Apache Spark.
         """
         return pulumi.get(self, "file_uris")
 
     @file_uris.setter
-    def file_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def file_uris(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "file_uris", value)
 
     @_builtins.property
     @pulumi.getter(name="jarUris")
-    def jar_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def jar_uris(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see Apache Spark.
         """
         return pulumi.get(self, "jar_uris")
 
     @jar_uris.setter
-    def jar_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def jar_uris(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "jar_uris", value)
 
     @_builtins.property
     @pulumi.getter(name="mainClass")
-    def main_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def main_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified name of a class in jarUris, for example, com.example.wordcount.
         Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
@@ -6579,12 +6579,12 @@ class RoutineSparkOptionsArgs:
         return pulumi.get(self, "main_class")
 
     @main_class.setter
-    def main_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def main_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "main_class", value)
 
     @_builtins.property
     @pulumi.getter(name="mainFileUri")
-    def main_file_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def main_file_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The main file/jar URI of the Spark application.
         Exactly one of the definitionBody field and the mainFileUri field must be set for Python.
@@ -6593,12 +6593,12 @@ class RoutineSparkOptionsArgs:
         return pulumi.get(self, "main_file_uri")
 
     @main_file_uri.setter
-    def main_file_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def main_file_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "main_file_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Configuration properties as a set of key/value pairs, which will be passed on to the Spark application.
         For more information, see Apache Spark and the procedure option list.
@@ -6607,31 +6607,31 @@ class RoutineSparkOptionsArgs:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="pyFileUris")
-    def py_file_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def py_file_uris(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: .py, .egg, and .zip. For more information about Apache Spark, see Apache Spark.
         """
         return pulumi.get(self, "py_file_uris")
 
     @py_file_uris.setter
-    def py_file_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def py_file_uris(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "py_file_uris", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeVersion")
-    def runtime_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Runtime version. If not specified, the default runtime version is used.
         """
         return pulumi.get(self, "runtime_version")
 
     @runtime_version.setter
-    def runtime_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_version", value)
 
 
@@ -6741,7 +6741,7 @@ class TableEncryptionConfigurationArgsDict(TypedDict):
     `bigquery_get_default_service_account` datasource and the
     `kms.CryptoKeyIAMBinding` resource.
     """
-    kms_key_version: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The self link or full name of the kms key version used to encrypt this table.
     """
@@ -6750,7 +6750,7 @@ class TableEncryptionConfigurationArgsDict(TypedDict):
 class TableEncryptionConfigurationArgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[_builtins.str],
-                 kms_key_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: The self link or full name of a key which should be used to
                encrypt this table.  Note that the default bigquery service account will need to have
@@ -6781,19 +6781,19 @@ class TableEncryptionConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyVersion")
-    def kms_key_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The self link or full name of the kms key version used to encrypt this table.
         """
         return pulumi.get(self, "kms_key_version")
 
     @kms_key_version.setter
-    def kms_key_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_version", value)
 
 
 class TableExternalCatalogTableOptionsArgsDict(TypedDict):
-    connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    connection_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection specifying the credentials to be
     used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
@@ -6801,13 +6801,13 @@ class TableExternalCatalogTableOptionsArgsDict(TypedDict):
     connection_id can have the form `<project_id>.<location_id>.<connection_id>`
     or `projects/<project_id>/locations/<location_id>/connections/<connection_id>`.
     """
-    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    parameters: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     A map of key value pairs defining the parameters and
     properties of the open source table. Corresponds with hive meta store table
     parameters. Maximum size of 4Mib.
     """
-    storage_descriptor: NotRequired[pulumi.Input['TableExternalCatalogTableOptionsStorageDescriptorArgsDict']]
+    storage_descriptor: NotRequired[pulumi.Input[Optional['TableExternalCatalogTableOptionsStorageDescriptorArgs']]]
     """
     A storage descriptor containing information
     about the physical storage of this table. Structure is documented below.
@@ -6816,9 +6816,9 @@ class TableExternalCatalogTableOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class TableExternalCatalogTableOptionsArgs:
     def __init__(__self__, *,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 storage_descriptor: Optional[pulumi.Input['TableExternalCatalogTableOptionsStorageDescriptorArgs']] = None):
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 storage_descriptor: pulumi.Input[Optional['TableExternalCatalogTableOptionsStorageDescriptorArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] connection_id: The connection specifying the credentials to be
                used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
@@ -6840,7 +6840,7 @@ class TableExternalCatalogTableOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
-    def connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection specifying the credentials to be
         used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
@@ -6851,12 +6851,12 @@ class TableExternalCatalogTableOptionsArgs:
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
-    def connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key value pairs defining the parameters and
         properties of the open source table. Corresponds with hive meta store table
@@ -6865,12 +6865,12 @@ class TableExternalCatalogTableOptionsArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="storageDescriptor")
-    def storage_descriptor(self) -> Optional[pulumi.Input['TableExternalCatalogTableOptionsStorageDescriptorArgs']]:
+    def storage_descriptor(self) -> pulumi.Input[Optional['TableExternalCatalogTableOptionsStorageDescriptorArgs']]:
         """
         A storage descriptor containing information
         about the physical storage of this table. Structure is documented below.
@@ -6878,30 +6878,30 @@ class TableExternalCatalogTableOptionsArgs:
         return pulumi.get(self, "storage_descriptor")
 
     @storage_descriptor.setter
-    def storage_descriptor(self, value: Optional[pulumi.Input['TableExternalCatalogTableOptionsStorageDescriptorArgs']]):
+    def storage_descriptor(self, value: pulumi.Input[Optional['TableExternalCatalogTableOptionsStorageDescriptorArgs']]):
         pulumi.set(self, "storage_descriptor", value)
 
 
 class TableExternalCatalogTableOptionsStorageDescriptorArgsDict(TypedDict):
-    input_format: NotRequired[pulumi.Input[_builtins.str]]
+    input_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the fully qualified class name of the
     InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The
     maximum length is 128 characters.
     """
-    location_uri: NotRequired[pulumi.Input[_builtins.str]]
+    location_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The physical location of the table (e.g.
     'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
     'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
     """
-    output_format: NotRequired[pulumi.Input[_builtins.str]]
+    output_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the fully qualified class name of the
     OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The
     maximum length is 128 characters.
     """
-    serde_info: NotRequired[pulumi.Input['TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgsDict']]
+    serde_info: NotRequired[pulumi.Input[Optional['TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs']]]
     """
     Serializer and deserializer information. Structure
     is documented below.
@@ -6910,10 +6910,10 @@ class TableExternalCatalogTableOptionsStorageDescriptorArgsDict(TypedDict):
 @pulumi.input_type
 class TableExternalCatalogTableOptionsStorageDescriptorArgs:
     def __init__(__self__, *,
-                 input_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 location_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 serde_info: Optional[pulumi.Input['TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs']] = None):
+                 input_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 location_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 serde_info: pulumi.Input[Optional['TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] input_format: Specifies the fully qualified class name of the
                InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The
@@ -6938,7 +6938,7 @@ class TableExternalCatalogTableOptionsStorageDescriptorArgs:
 
     @_builtins.property
     @pulumi.getter(name="inputFormat")
-    def input_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the fully qualified class name of the
         InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The
@@ -6947,12 +6947,12 @@ class TableExternalCatalogTableOptionsStorageDescriptorArgs:
         return pulumi.get(self, "input_format")
 
     @input_format.setter
-    def input_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input_format", value)
 
     @_builtins.property
     @pulumi.getter(name="locationUri")
-    def location_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The physical location of the table (e.g.
         'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
@@ -6961,12 +6961,12 @@ class TableExternalCatalogTableOptionsStorageDescriptorArgs:
         return pulumi.get(self, "location_uri")
 
     @location_uri.setter
-    def location_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="outputFormat")
-    def output_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the fully qualified class name of the
         OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The
@@ -6975,12 +6975,12 @@ class TableExternalCatalogTableOptionsStorageDescriptorArgs:
         return pulumi.get(self, "output_format")
 
     @output_format.setter
-    def output_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_format", value)
 
     @_builtins.property
     @pulumi.getter(name="serdeInfo")
-    def serde_info(self) -> Optional[pulumi.Input['TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs']]:
+    def serde_info(self) -> pulumi.Input[Optional['TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs']]:
         """
         Serializer and deserializer information. Structure
         is documented below.
@@ -6988,7 +6988,7 @@ class TableExternalCatalogTableOptionsStorageDescriptorArgs:
         return pulumi.get(self, "serde_info")
 
     @serde_info.setter
-    def serde_info(self, value: Optional[pulumi.Input['TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs']]):
+    def serde_info(self, value: pulumi.Input[Optional['TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs']]):
         pulumi.set(self, "serde_info", value)
 
 
@@ -7000,11 +7000,11 @@ class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgsDict(TypedDi
     between table representation and the underlying low-level input and output
     format structures. The maximum length is 256 characters.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the SerDe. The maximum length is 256 characters.
     """
-    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    parameters: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Key-value pairs that define the initialization
     parameters for the serialization library. Maximum size 10 Kib.
@@ -7014,8 +7014,8 @@ class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgsDict(TypedDi
 class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs:
     def __init__(__self__, *,
                  serialization_library: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] serialization_library: Specifies a fully-qualified class name of
                the serialization library that is responsible for the translation of data
@@ -7048,19 +7048,19 @@ class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the SerDe. The maximum length is 256 characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Key-value pairs that define the initialization
         parameters for the serialization library. Maximum size 10 Kib.
@@ -7068,7 +7068,7 @@ class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
 
@@ -7083,22 +7083,22 @@ class TableExternalDataConfigurationArgsDict(TypedDict):
     A list of the fully-qualified URIs that point to
     your data in Google Cloud.
     """
-    avro_options: NotRequired[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgsDict']]
+    avro_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationAvroOptionsArgs']]]
     """
     Additional options if `source_format` is set to
     "AVRO".  Structure is documented below.
     """
-    bigtable_options: NotRequired[pulumi.Input['TableExternalDataConfigurationBigtableOptionsArgsDict']]
+    bigtable_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationBigtableOptionsArgs']]]
     """
     Additional properties to set if
     `source_format` is set to "BIGTABLE". Structure is documented below.
     """
-    compression: NotRequired[pulumi.Input[_builtins.str]]
+    compression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The compression type of the data source.
     Valid values are "NONE" or "GZIP".
     """
-    connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    connection_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection specifying the credentials to be used to read
     external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
@@ -7109,12 +7109,12 @@ class TableExternalDataConfigurationArgsDict(TypedDict):
     table schema must be specified using the top-level `schema` field
     documented above.
     """
-    csv_options: NotRequired[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgsDict']]
+    csv_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationCsvOptionsArgs']]]
     """
     Additional properties to set if
     `source_format` is set to "CSV". Structure is documented below.
     """
-    decimal_target_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    decimal_target_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
 
@@ -7130,26 +7130,26 @@ class TableExternalDataConfigurationArgsDict(TypedDict):
 
     Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
     """
-    file_set_spec_type: NotRequired[pulumi.Input[_builtins.str]]
+    file_set_spec_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how source URIs are interpreted for constructing the file set to load.
     By default source URIs are expanded against the underlying storage.
     Other options include specifying manifest files. Only applicable to object storage systems. Docs
     """
-    google_sheets_options: NotRequired[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgsDict']]
+    google_sheets_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationGoogleSheetsOptionsArgs']]]
     """
     Additional options if
     `source_format` is set to "GOOGLE_SHEETS". Structure is
     documented below.
     """
-    hive_partitioning_options: NotRequired[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArgsDict']]
+    hive_partitioning_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationHivePartitioningOptionsArgs']]]
     """
     When set, configures hive partitioning
     support. Not all storage formats support hive partitioning -- requesting hive
     partitioning on an unsupported format will lead to an error, as will providing
     an invalid specification. Structure is documented below.
     """
-    ignore_unknown_values: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_unknown_values: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates if BigQuery should
     allow extra values that are not represented in the table schema.
@@ -7158,38 +7158,38 @@ class TableExternalDataConfigurationArgsDict(TypedDict):
     many bad records, an invalid error is returned in the job result.
     The default value is false.
     """
-    json_extension: NotRequired[pulumi.Input[_builtins.str]]
+    json_extension: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
     """
-    json_options: NotRequired[pulumi.Input['TableExternalDataConfigurationJsonOptionsArgsDict']]
+    json_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationJsonOptionsArgs']]]
     """
     Additional properties to set if
     `source_format` is set to "JSON". Structure is documented below.
     """
-    max_bad_records: NotRequired[pulumi.Input[_builtins.int]]
+    max_bad_records: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of bad records that
     BigQuery can ignore when reading data.
     """
-    metadata_cache_mode: NotRequired[pulumi.Input[_builtins.str]]
+    metadata_cache_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
     """
-    object_metadata: NotRequired[pulumi.Input[_builtins.str]]
+    object_metadata: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
     """
-    parquet_options: NotRequired[pulumi.Input['TableExternalDataConfigurationParquetOptionsArgsDict']]
+    parquet_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationParquetOptionsArgs']]]
     """
     Additional properties to set if
     `source_format` is set to "PARQUET". Structure is documented below.
     """
-    reference_file_schema_uri: NotRequired[pulumi.Input[_builtins.str]]
+    reference_file_schema_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
     """
-    schema: NotRequired[pulumi.Input[_builtins.str]]
+    schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A JSON schema for the external table. Schema is required
     for CSV and JSON formats if autodetect is not on. Schema is disallowed
@@ -7207,7 +7207,7 @@ class TableExternalDataConfigurationArgsDict(TypedDict):
     table schema must be specified using the top-level `schema` field
     documented above.
     """
-    source_format: NotRequired[pulumi.Input[_builtins.str]]
+    source_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The data format. Please see sourceFormat under
     [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
@@ -7220,25 +7220,25 @@ class TableExternalDataConfigurationArgs:
     def __init__(__self__, *,
                  autodetect: pulumi.Input[_builtins.bool],
                  source_uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 avro_options: Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs']] = None,
-                 bigtable_options: Optional[pulumi.Input['TableExternalDataConfigurationBigtableOptionsArgs']] = None,
-                 compression: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_options: Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs']] = None,
-                 decimal_target_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 file_set_spec_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_sheets_options: Optional[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgs']] = None,
-                 hive_partitioning_options: Optional[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArgs']] = None,
-                 ignore_unknown_values: Optional[pulumi.Input[_builtins.bool]] = None,
-                 json_extension: Optional[pulumi.Input[_builtins.str]] = None,
-                 json_options: Optional[pulumi.Input['TableExternalDataConfigurationJsonOptionsArgs']] = None,
-                 max_bad_records: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadata_cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-                 parquet_options: Optional[pulumi.Input['TableExternalDataConfigurationParquetOptionsArgs']] = None,
-                 reference_file_schema_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_format: Optional[pulumi.Input[_builtins.str]] = None):
+                 avro_options: pulumi.Input[Optional['TableExternalDataConfigurationAvroOptionsArgs']] = None,
+                 bigtable_options: pulumi.Input[Optional['TableExternalDataConfigurationBigtableOptionsArgs']] = None,
+                 compression: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_options: pulumi.Input[Optional['TableExternalDataConfigurationCsvOptionsArgs']] = None,
+                 decimal_target_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 file_set_spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_sheets_options: pulumi.Input[Optional['TableExternalDataConfigurationGoogleSheetsOptionsArgs']] = None,
+                 hive_partitioning_options: pulumi.Input[Optional['TableExternalDataConfigurationHivePartitioningOptionsArgs']] = None,
+                 ignore_unknown_values: pulumi.Input[Optional[_builtins.bool]] = None,
+                 json_extension: pulumi.Input[Optional[_builtins.str]] = None,
+                 json_options: pulumi.Input[Optional['TableExternalDataConfigurationJsonOptionsArgs']] = None,
+                 max_bad_records: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadata_cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 parquet_options: pulumi.Input[Optional['TableExternalDataConfigurationParquetOptionsArgs']] = None,
+                 reference_file_schema_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_format: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] autodetect: Let BigQuery try to autodetect the schema
                and format of the table.
@@ -7388,7 +7388,7 @@ class TableExternalDataConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="avroOptions")
-    def avro_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs']]:
+    def avro_options(self) -> pulumi.Input[Optional['TableExternalDataConfigurationAvroOptionsArgs']]:
         """
         Additional options if `source_format` is set to
         "AVRO".  Structure is documented below.
@@ -7396,12 +7396,12 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "avro_options")
 
     @avro_options.setter
-    def avro_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs']]):
+    def avro_options(self, value: pulumi.Input[Optional['TableExternalDataConfigurationAvroOptionsArgs']]):
         pulumi.set(self, "avro_options", value)
 
     @_builtins.property
     @pulumi.getter(name="bigtableOptions")
-    def bigtable_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationBigtableOptionsArgs']]:
+    def bigtable_options(self) -> pulumi.Input[Optional['TableExternalDataConfigurationBigtableOptionsArgs']]:
         """
         Additional properties to set if
         `source_format` is set to "BIGTABLE". Structure is documented below.
@@ -7409,12 +7409,12 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "bigtable_options")
 
     @bigtable_options.setter
-    def bigtable_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationBigtableOptionsArgs']]):
+    def bigtable_options(self, value: pulumi.Input[Optional['TableExternalDataConfigurationBigtableOptionsArgs']]):
         pulumi.set(self, "bigtable_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def compression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The compression type of the data source.
         Valid values are "NONE" or "GZIP".
@@ -7422,12 +7422,12 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "compression")
 
     @compression.setter
-    def compression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compression", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
-    def connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection specifying the credentials to be used to read
         external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
@@ -7441,12 +7441,12 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
-    def connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="csvOptions")
-    def csv_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs']]:
+    def csv_options(self) -> pulumi.Input[Optional['TableExternalDataConfigurationCsvOptionsArgs']]:
         """
         Additional properties to set if
         `source_format` is set to "CSV". Structure is documented below.
@@ -7454,12 +7454,12 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "csv_options")
 
     @csv_options.setter
-    def csv_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs']]):
+    def csv_options(self, value: pulumi.Input[Optional['TableExternalDataConfigurationCsvOptionsArgs']]):
         pulumi.set(self, "csv_options", value)
 
     @_builtins.property
     @pulumi.getter(name="decimalTargetTypes")
-    def decimal_target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def decimal_target_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
 
@@ -7478,12 +7478,12 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "decimal_target_types")
 
     @decimal_target_types.setter
-    def decimal_target_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def decimal_target_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "decimal_target_types", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSetSpecType")
-    def file_set_spec_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_set_spec_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how source URIs are interpreted for constructing the file set to load.
         By default source URIs are expanded against the underlying storage.
@@ -7492,12 +7492,12 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "file_set_spec_type")
 
     @file_set_spec_type.setter
-    def file_set_spec_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_set_spec_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_set_spec_type", value)
 
     @_builtins.property
     @pulumi.getter(name="googleSheetsOptions")
-    def google_sheets_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgs']]:
+    def google_sheets_options(self) -> pulumi.Input[Optional['TableExternalDataConfigurationGoogleSheetsOptionsArgs']]:
         """
         Additional options if
         `source_format` is set to "GOOGLE_SHEETS". Structure is
@@ -7506,12 +7506,12 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "google_sheets_options")
 
     @google_sheets_options.setter
-    def google_sheets_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgs']]):
+    def google_sheets_options(self, value: pulumi.Input[Optional['TableExternalDataConfigurationGoogleSheetsOptionsArgs']]):
         pulumi.set(self, "google_sheets_options", value)
 
     @_builtins.property
     @pulumi.getter(name="hivePartitioningOptions")
-    def hive_partitioning_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArgs']]:
+    def hive_partitioning_options(self) -> pulumi.Input[Optional['TableExternalDataConfigurationHivePartitioningOptionsArgs']]:
         """
         When set, configures hive partitioning
         support. Not all storage formats support hive partitioning -- requesting hive
@@ -7521,12 +7521,12 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "hive_partitioning_options")
 
     @hive_partitioning_options.setter
-    def hive_partitioning_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArgs']]):
+    def hive_partitioning_options(self, value: pulumi.Input[Optional['TableExternalDataConfigurationHivePartitioningOptionsArgs']]):
         pulumi.set(self, "hive_partitioning_options", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreUnknownValues")
-    def ignore_unknown_values(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_unknown_values(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if BigQuery should
         allow extra values that are not represented in the table schema.
@@ -7538,24 +7538,24 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "ignore_unknown_values")
 
     @ignore_unknown_values.setter
-    def ignore_unknown_values(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_unknown_values(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_unknown_values", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonExtension")
-    def json_extension(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json_extension(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
         """
         return pulumi.get(self, "json_extension")
 
     @json_extension.setter
-    def json_extension(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json_extension(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json_extension", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonOptions")
-    def json_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationJsonOptionsArgs']]:
+    def json_options(self) -> pulumi.Input[Optional['TableExternalDataConfigurationJsonOptionsArgs']]:
         """
         Additional properties to set if
         `source_format` is set to "JSON". Structure is documented below.
@@ -7563,12 +7563,12 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "json_options")
 
     @json_options.setter
-    def json_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationJsonOptionsArgs']]):
+    def json_options(self, value: pulumi.Input[Optional['TableExternalDataConfigurationJsonOptionsArgs']]):
         pulumi.set(self, "json_options", value)
 
     @_builtins.property
     @pulumi.getter(name="maxBadRecords")
-    def max_bad_records(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_bad_records(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of bad records that
         BigQuery can ignore when reading data.
@@ -7576,36 +7576,36 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "max_bad_records")
 
     @max_bad_records.setter
-    def max_bad_records(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_bad_records(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_bad_records", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataCacheMode")
-    def metadata_cache_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metadata_cache_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
         """
         return pulumi.get(self, "metadata_cache_mode")
 
     @metadata_cache_mode.setter
-    def metadata_cache_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metadata_cache_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metadata_cache_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="objectMetadata")
-    def object_metadata(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_metadata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
         """
         return pulumi.get(self, "object_metadata")
 
     @object_metadata.setter
-    def object_metadata(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_metadata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="parquetOptions")
-    def parquet_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationParquetOptionsArgs']]:
+    def parquet_options(self) -> pulumi.Input[Optional['TableExternalDataConfigurationParquetOptionsArgs']]:
         """
         Additional properties to set if
         `source_format` is set to "PARQUET". Structure is documented below.
@@ -7613,24 +7613,24 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "parquet_options")
 
     @parquet_options.setter
-    def parquet_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationParquetOptionsArgs']]):
+    def parquet_options(self, value: pulumi.Input[Optional['TableExternalDataConfigurationParquetOptionsArgs']]):
         pulumi.set(self, "parquet_options", value)
 
     @_builtins.property
     @pulumi.getter(name="referenceFileSchemaUri")
-    def reference_file_schema_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reference_file_schema_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
         """
         return pulumi.get(self, "reference_file_schema_uri")
 
     @reference_file_schema_uri.setter
-    def reference_file_schema_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reference_file_schema_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reference_file_schema_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON schema for the external table. Schema is required
         for CSV and JSON formats if autodetect is not on. Schema is disallowed
@@ -7651,12 +7651,12 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceFormat")
-    def source_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data format. Please see sourceFormat under
         [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
@@ -7666,7 +7666,7 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "source_format")
 
     @source_format.setter
-    def source_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_format", value)
 
 
@@ -7705,19 +7705,19 @@ class TableExternalDataConfigurationAvroOptionsArgs:
 
 
 class TableExternalDataConfigurationBigtableOptionsArgsDict(TypedDict):
-    column_families: NotRequired[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgsDict']]]]
+    column_families: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs']]]]]
     """
     A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.  Structure is documented below.
     """
-    ignore_unspecified_column_families: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_unspecified_column_families: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
     """
-    output_column_families_as_json: NotRequired[pulumi.Input[_builtins.bool]]
+    output_column_families_as_json: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
     """
-    read_rowkey_as_string: NotRequired[pulumi.Input[_builtins.bool]]
+    read_rowkey_as_string: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
     """
@@ -7725,10 +7725,10 @@ class TableExternalDataConfigurationBigtableOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class TableExternalDataConfigurationBigtableOptionsArgs:
     def __init__(__self__, *,
-                 column_families: Optional[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs']]]] = None,
-                 ignore_unspecified_column_families: Optional[pulumi.Input[_builtins.bool]] = None,
-                 output_column_families_as_json: Optional[pulumi.Input[_builtins.bool]] = None,
-                 read_rowkey_as_string: Optional[pulumi.Input[_builtins.bool]] = None):
+                 column_families: pulumi.Input[Optional[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs']]]] = None,
+                 ignore_unspecified_column_families: pulumi.Input[Optional[_builtins.bool]] = None,
+                 output_column_families_as_json: pulumi.Input[Optional[_builtins.bool]] = None,
+                 read_rowkey_as_string: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs']]] column_families: A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.  Structure is documented below.
         :param pulumi.Input[_builtins.bool] ignore_unspecified_column_families: If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
@@ -7746,71 +7746,71 @@ class TableExternalDataConfigurationBigtableOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="columnFamilies")
-    def column_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs']]]]:
+    def column_families(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs']]]]:
         """
         A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.  Structure is documented below.
         """
         return pulumi.get(self, "column_families")
 
     @column_families.setter
-    def column_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs']]]]):
+    def column_families(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs']]]]):
         pulumi.set(self, "column_families", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreUnspecifiedColumnFamilies")
-    def ignore_unspecified_column_families(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_unspecified_column_families(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
         """
         return pulumi.get(self, "ignore_unspecified_column_families")
 
     @ignore_unspecified_column_families.setter
-    def ignore_unspecified_column_families(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_unspecified_column_families(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_unspecified_column_families", value)
 
     @_builtins.property
     @pulumi.getter(name="outputColumnFamiliesAsJson")
-    def output_column_families_as_json(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def output_column_families_as_json(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
         """
         return pulumi.get(self, "output_column_families_as_json")
 
     @output_column_families_as_json.setter
-    def output_column_families_as_json(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def output_column_families_as_json(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "output_column_families_as_json", value)
 
     @_builtins.property
     @pulumi.getter(name="readRowkeyAsString")
-    def read_rowkey_as_string(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_rowkey_as_string(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
         """
         return pulumi.get(self, "read_rowkey_as_string")
 
     @read_rowkey_as_string.setter
-    def read_rowkey_as_string(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_rowkey_as_string(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_rowkey_as_string", value)
 
 
 class TableExternalDataConfigurationBigtableOptionsColumnFamilyArgsDict(TypedDict):
-    columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgsDict']]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs']]]]]
     """
     A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field.  Structure is documented below.
     """
-    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    encoding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
     """
-    family_id: NotRequired[pulumi.Input[_builtins.str]]
+    family_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Identifier of the column family.
     """
-    only_read_latest: NotRequired[pulumi.Input[_builtins.bool]]
+    only_read_latest: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON". Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
     """
@@ -7818,11 +7818,11 @@ class TableExternalDataConfigurationBigtableOptionsColumnFamilyArgsDict(TypedDic
 @pulumi.input_type
 class TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs:
     def __init__(__self__, *,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs']]]] = None,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 family_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 only_read_latest: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs']]]] = None,
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 family_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 only_read_latest: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs']]] columns: A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field.  Structure is documented below.
         :param pulumi.Input[_builtins.str] encoding: The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
@@ -7843,87 +7843,87 @@ class TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs']]]]:
+    def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs']]]]:
         """
         A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field.  Structure is documented below.
         """
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs']]]]):
+    def columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
     @_builtins.property
     @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
         """
         return pulumi.get(self, "encoding")
 
     @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="familyId")
-    def family_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def family_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the column family.
         """
         return pulumi.get(self, "family_id")
 
     @family_id.setter
-    def family_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def family_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "family_id", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyReadLatest")
-    def only_read_latest(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_read_latest(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
         """
         return pulumi.get(self, "only_read_latest")
 
     @only_read_latest.setter
-    def only_read_latest(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_read_latest(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_read_latest", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON". Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgsDict(TypedDict):
-    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    encoding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
     """
-    field_name: NotRequired[pulumi.Input[_builtins.str]]
+    field_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
     """
-    only_read_latest: NotRequired[pulumi.Input[_builtins.bool]]
+    only_read_latest: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
     """
-    qualifier_encoded: NotRequired[pulumi.Input[_builtins.str]]
+    qualifier_encoded: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
     """
-    qualifier_string: NotRequired[pulumi.Input[_builtins.str]]
+    qualifier_string: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Qualifier string.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
     """
@@ -7931,12 +7931,12 @@ class TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgsDict(Ty
 @pulumi.input_type
 class TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs:
     def __init__(__self__, *,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 field_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 only_read_latest: Optional[pulumi.Input[_builtins.bool]] = None,
-                 qualifier_encoded: Optional[pulumi.Input[_builtins.str]] = None,
-                 qualifier_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 only_read_latest: pulumi.Input[Optional[_builtins.bool]] = None,
+                 qualifier_encoded: pulumi.Input[Optional[_builtins.str]] = None,
+                 qualifier_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] encoding: The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
         :param pulumi.Input[_builtins.str] field_name: If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
@@ -7960,74 +7960,74 @@ class TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs:
 
     @_builtins.property
     @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
         """
         return pulumi.get(self, "encoding")
 
     @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="fieldName")
-    def field_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
         """
         return pulumi.get(self, "field_name")
 
     @field_name.setter
-    def field_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_name", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyReadLatest")
-    def only_read_latest(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_read_latest(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
         """
         return pulumi.get(self, "only_read_latest")
 
     @only_read_latest.setter
-    def only_read_latest(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_read_latest(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_read_latest", value)
 
     @_builtins.property
     @pulumi.getter(name="qualifierEncoded")
-    def qualifier_encoded(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qualifier_encoded(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
         """
         return pulumi.get(self, "qualifier_encoded")
 
     @qualifier_encoded.setter
-    def qualifier_encoded(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qualifier_encoded(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qualifier_encoded", value)
 
     @_builtins.property
     @pulumi.getter(name="qualifierString")
-    def qualifier_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qualifier_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Qualifier string.
         """
         return pulumi.get(self, "qualifier_string")
 
     @qualifier_string.setter
-    def qualifier_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qualifier_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qualifier_string", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -8042,32 +8042,32 @@ class TableExternalDataConfigurationCsvOptionsArgsDict(TypedDict):
     limitations with default values, this value is required to be
     explicitly set.
     """
-    allow_jagged_rows: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_jagged_rows: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates if BigQuery should accept rows
     that are missing trailing optional columns.
     """
-    allow_quoted_newlines: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_quoted_newlines: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates if BigQuery should allow
     quoted data sections that contain newline characters in a CSV file.
     The default value is false.
     """
-    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    encoding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The character encoding of the data. The supported
     values are UTF-8 or ISO-8859-1.
     """
-    field_delimiter: NotRequired[pulumi.Input[_builtins.str]]
+    field_delimiter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The separator for fields in a CSV file.
     """
-    skip_leading_rows: NotRequired[pulumi.Input[_builtins.int]]
+    skip_leading_rows: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of rows at the top of a CSV
     file that BigQuery will skip when reading the data.
     """
-    source_column_match: NotRequired[pulumi.Input[_builtins.str]]
+    source_column_match: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how source columns are matched
     to the table schema. Valid values are `POSITION` (columns matched by position,
@@ -8081,12 +8081,12 @@ class TableExternalDataConfigurationCsvOptionsArgsDict(TypedDict):
 class TableExternalDataConfigurationCsvOptionsArgs:
     def __init__(__self__, *,
                  quote: pulumi.Input[_builtins.str],
-                 allow_jagged_rows: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_quoted_newlines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 field_delimiter: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_leading_rows: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_column_match: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_jagged_rows: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_quoted_newlines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_delimiter: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_leading_rows: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_column_match: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] quote: The value that is used to quote data sections in a
                CSV file. If your data does not contain quoted sections, set the
@@ -8146,7 +8146,7 @@ class TableExternalDataConfigurationCsvOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowJaggedRows")
-    def allow_jagged_rows(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_jagged_rows(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if BigQuery should accept rows
         that are missing trailing optional columns.
@@ -8154,12 +8154,12 @@ class TableExternalDataConfigurationCsvOptionsArgs:
         return pulumi.get(self, "allow_jagged_rows")
 
     @allow_jagged_rows.setter
-    def allow_jagged_rows(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_jagged_rows(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_jagged_rows", value)
 
     @_builtins.property
     @pulumi.getter(name="allowQuotedNewlines")
-    def allow_quoted_newlines(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_quoted_newlines(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if BigQuery should allow
         quoted data sections that contain newline characters in a CSV file.
@@ -8168,12 +8168,12 @@ class TableExternalDataConfigurationCsvOptionsArgs:
         return pulumi.get(self, "allow_quoted_newlines")
 
     @allow_quoted_newlines.setter
-    def allow_quoted_newlines(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_quoted_newlines(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_quoted_newlines", value)
 
     @_builtins.property
     @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The character encoding of the data. The supported
         values are UTF-8 or ISO-8859-1.
@@ -8181,24 +8181,24 @@ class TableExternalDataConfigurationCsvOptionsArgs:
         return pulumi.get(self, "encoding")
 
     @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="fieldDelimiter")
-    def field_delimiter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_delimiter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The separator for fields in a CSV file.
         """
         return pulumi.get(self, "field_delimiter")
 
     @field_delimiter.setter
-    def field_delimiter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_delimiter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_delimiter", value)
 
     @_builtins.property
     @pulumi.getter(name="skipLeadingRows")
-    def skip_leading_rows(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def skip_leading_rows(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of rows at the top of a CSV
         file that BigQuery will skip when reading the data.
@@ -8206,12 +8206,12 @@ class TableExternalDataConfigurationCsvOptionsArgs:
         return pulumi.get(self, "skip_leading_rows")
 
     @skip_leading_rows.setter
-    def skip_leading_rows(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def skip_leading_rows(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "skip_leading_rows", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceColumnMatch")
-    def source_column_match(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_column_match(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how source columns are matched
         to the table schema. Valid values are `POSITION` (columns matched by position,
@@ -8223,19 +8223,19 @@ class TableExternalDataConfigurationCsvOptionsArgs:
         return pulumi.get(self, "source_column_match")
 
     @source_column_match.setter
-    def source_column_match(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_column_match(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_column_match", value)
 
 
 class TableExternalDataConfigurationGoogleSheetsOptionsArgsDict(TypedDict):
-    range: NotRequired[pulumi.Input[_builtins.str]]
+    range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Range of a sheet to query from. Only used when
     non-empty. At least one of `range` or `skip_leading_rows` must be set.
     Typical format: "sheet_name!top_left_cell_id:bottom_right_cell_id"
     For example: "sheet1!A1:B20"
     """
-    skip_leading_rows: NotRequired[pulumi.Input[_builtins.int]]
+    skip_leading_rows: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of rows at the top of the sheet
     that BigQuery will skip when reading the data. At least one of `range` or
@@ -8245,8 +8245,8 @@ class TableExternalDataConfigurationGoogleSheetsOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class TableExternalDataConfigurationGoogleSheetsOptionsArgs:
     def __init__(__self__, *,
-                 range: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_leading_rows: Optional[pulumi.Input[_builtins.int]] = None):
+                 range: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_leading_rows: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] range: Range of a sheet to query from. Only used when
                non-empty. At least one of `range` or `skip_leading_rows` must be set.
@@ -8263,7 +8263,7 @@ class TableExternalDataConfigurationGoogleSheetsOptionsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Range of a sheet to query from. Only used when
         non-empty. At least one of `range` or `skip_leading_rows` must be set.
@@ -8273,12 +8273,12 @@ class TableExternalDataConfigurationGoogleSheetsOptionsArgs:
         return pulumi.get(self, "range")
 
     @range.setter
-    def range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "range", value)
 
     @_builtins.property
     @pulumi.getter(name="skipLeadingRows")
-    def skip_leading_rows(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def skip_leading_rows(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of rows at the top of the sheet
         that BigQuery will skip when reading the data. At least one of `range` or
@@ -8287,12 +8287,12 @@ class TableExternalDataConfigurationGoogleSheetsOptionsArgs:
         return pulumi.get(self, "skip_leading_rows")
 
     @skip_leading_rows.setter
-    def skip_leading_rows(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def skip_leading_rows(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "skip_leading_rows", value)
 
 
 class TableExternalDataConfigurationHivePartitioningOptionsArgsDict(TypedDict):
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     When set, what mode of hive partitioning to use when
     reading data. The following modes are supported.
@@ -8303,13 +8303,13 @@ class TableExternalDataConfigurationHivePartitioningOptionsArgsDict(TypedDict):
     Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
     * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
     """
-    require_partition_filter: NotRequired[pulumi.Input[_builtins.bool]]
+    require_partition_filter: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to true, queries over this table
     require a partition filter that can be used for partition elimination to be
     specified.
     """
-    source_uri_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    source_uri_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     When hive partition detection is requested,
     a common for all source uris must be required. The prefix must end immediately
@@ -8324,9 +8324,9 @@ class TableExternalDataConfigurationHivePartitioningOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class TableExternalDataConfigurationHivePartitioningOptionsArgs:
     def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_partition_filter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_uri_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_partition_filter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_uri_prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mode: When set, what mode of hive partitioning to use when
                reading data. The following modes are supported.
@@ -8357,7 +8357,7 @@ class TableExternalDataConfigurationHivePartitioningOptionsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When set, what mode of hive partitioning to use when
         reading data. The following modes are supported.
@@ -8371,12 +8371,12 @@ class TableExternalDataConfigurationHivePartitioningOptionsArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter(name="requirePartitionFilter")
-    def require_partition_filter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_partition_filter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, queries over this table
         require a partition filter that can be used for partition elimination to be
@@ -8385,12 +8385,12 @@ class TableExternalDataConfigurationHivePartitioningOptionsArgs:
         return pulumi.get(self, "require_partition_filter")
 
     @require_partition_filter.setter
-    def require_partition_filter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_partition_filter(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_partition_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceUriPrefix")
-    def source_uri_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_uri_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When hive partition detection is requested,
         a common for all source uris must be required. The prefix must end immediately
@@ -8404,12 +8404,12 @@ class TableExternalDataConfigurationHivePartitioningOptionsArgs:
         return pulumi.get(self, "source_uri_prefix")
 
     @source_uri_prefix.setter
-    def source_uri_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_uri_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_uri_prefix", value)
 
 
 class TableExternalDataConfigurationJsonOptionsArgsDict(TypedDict):
-    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    encoding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
     """
@@ -8417,7 +8417,7 @@ class TableExternalDataConfigurationJsonOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class TableExternalDataConfigurationJsonOptionsArgs:
     def __init__(__self__, *,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None):
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] encoding: The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
         """
@@ -8426,23 +8426,23 @@ class TableExternalDataConfigurationJsonOptionsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
         """
         return pulumi.get(self, "encoding")
 
     @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoding", value)
 
 
 class TableExternalDataConfigurationParquetOptionsArgsDict(TypedDict):
-    enable_list_inference: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_list_inference: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates whether to use schema inference specifically for Parquet LIST logical type.
     """
-    enum_as_string: NotRequired[pulumi.Input[_builtins.bool]]
+    enum_as_string: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
     """
@@ -8450,8 +8450,8 @@ class TableExternalDataConfigurationParquetOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class TableExternalDataConfigurationParquetOptionsArgs:
     def __init__(__self__, *,
-                 enable_list_inference: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enum_as_string: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_list_inference: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enum_as_string: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_list_inference: Indicates whether to use schema inference specifically for Parquet LIST logical type.
         :param pulumi.Input[_builtins.bool] enum_as_string: Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
@@ -8463,26 +8463,26 @@ class TableExternalDataConfigurationParquetOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableListInference")
-    def enable_list_inference(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_list_inference(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to use schema inference specifically for Parquet LIST logical type.
         """
         return pulumi.get(self, "enable_list_inference")
 
     @enable_list_inference.setter
-    def enable_list_inference(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_list_inference(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_list_inference", value)
 
     @_builtins.property
     @pulumi.getter(name="enumAsString")
-    def enum_as_string(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enum_as_string(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
         """
         return pulumi.get(self, "enum_as_string")
 
     @enum_as_string.setter
-    def enum_as_string(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enum_as_string(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enum_as_string", value)
 
 
@@ -8491,17 +8491,17 @@ class TableMaterializedViewArgsDict(TypedDict):
     """
     A query whose result is persisted.
     """
-    allow_non_incremental_definition: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_non_incremental_definition: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Allow non incremental materialized view definition.
     The default value is false.
     """
-    enable_refresh: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_refresh: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
     The default value is true.
     """
-    refresh_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
+    refresh_interval_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum frequency at which this materialized view will be refreshed.
     The default value is 1800000
@@ -8511,9 +8511,9 @@ class TableMaterializedViewArgsDict(TypedDict):
 class TableMaterializedViewArgs:
     def __init__(__self__, *,
                  query: pulumi.Input[_builtins.str],
-                 allow_non_incremental_definition: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_refresh: Optional[pulumi.Input[_builtins.bool]] = None,
-                 refresh_interval_ms: Optional[pulumi.Input[_builtins.int]] = None):
+                 allow_non_incremental_definition: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_refresh: pulumi.Input[Optional[_builtins.bool]] = None,
+                 refresh_interval_ms: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] query: A query whose result is persisted.
         :param pulumi.Input[_builtins.bool] allow_non_incremental_definition: Allow non incremental materialized view definition.
@@ -8545,7 +8545,7 @@ class TableMaterializedViewArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowNonIncrementalDefinition")
-    def allow_non_incremental_definition(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_non_incremental_definition(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow non incremental materialized view definition.
         The default value is false.
@@ -8553,12 +8553,12 @@ class TableMaterializedViewArgs:
         return pulumi.get(self, "allow_non_incremental_definition")
 
     @allow_non_incremental_definition.setter
-    def allow_non_incremental_definition(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_non_incremental_definition(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_non_incremental_definition", value)
 
     @_builtins.property
     @pulumi.getter(name="enableRefresh")
-    def enable_refresh(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_refresh(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
         The default value is true.
@@ -8566,12 +8566,12 @@ class TableMaterializedViewArgs:
         return pulumi.get(self, "enable_refresh")
 
     @enable_refresh.setter
-    def enable_refresh(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_refresh(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_refresh", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshIntervalMs")
-    def refresh_interval_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def refresh_interval_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum frequency at which this materialized view will be refreshed.
         The default value is 1800000
@@ -8579,7 +8579,7 @@ class TableMaterializedViewArgs:
         return pulumi.get(self, "refresh_interval_ms")
 
     @refresh_interval_ms.setter
-    def refresh_interval_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def refresh_interval_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "refresh_interval_ms", value)
 
 
@@ -8734,13 +8734,13 @@ class TableSchemaForeignTypeInfoArgs:
 
 
 class TableTableConstraintsArgsDict(TypedDict):
-    foreign_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgsDict']]]]
+    foreign_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]]]]
     """
     Present only if the table has a foreign key.
     The foreign key is not enforced.
     Structure is documented below.
     """
-    primary_key: NotRequired[pulumi.Input['TableTableConstraintsPrimaryKeyArgsDict']]
+    primary_key: NotRequired[pulumi.Input[Optional['TableTableConstraintsPrimaryKeyArgs']]]
     """
     Represents the primary key constraint
     on a table's columns. Present only if the table has a primary key.
@@ -8751,8 +8751,8 @@ class TableTableConstraintsArgsDict(TypedDict):
 @pulumi.input_type
 class TableTableConstraintsArgs:
     def __init__(__self__, *,
-                 foreign_keys: Optional[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]]] = None,
-                 primary_key: Optional[pulumi.Input['TableTableConstraintsPrimaryKeyArgs']] = None):
+                 foreign_keys: pulumi.Input[Optional[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]]] = None,
+                 primary_key: pulumi.Input[Optional['TableTableConstraintsPrimaryKeyArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]] foreign_keys: Present only if the table has a foreign key.
                The foreign key is not enforced.
@@ -8769,7 +8769,7 @@ class TableTableConstraintsArgs:
 
     @_builtins.property
     @pulumi.getter(name="foreignKeys")
-    def foreign_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]]]:
+    def foreign_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]]]:
         """
         Present only if the table has a foreign key.
         The foreign key is not enforced.
@@ -8778,12 +8778,12 @@ class TableTableConstraintsArgs:
         return pulumi.get(self, "foreign_keys")
 
     @foreign_keys.setter
-    def foreign_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]]]):
+    def foreign_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]]]):
         pulumi.set(self, "foreign_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKey")
-    def primary_key(self) -> Optional[pulumi.Input['TableTableConstraintsPrimaryKeyArgs']]:
+    def primary_key(self) -> pulumi.Input[Optional['TableTableConstraintsPrimaryKeyArgs']]:
         """
         Represents the primary key constraint
         on a table's columns. Present only if the table has a primary key.
@@ -8793,7 +8793,7 @@ class TableTableConstraintsArgs:
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
-    def primary_key(self, value: Optional[pulumi.Input['TableTableConstraintsPrimaryKeyArgs']]):
+    def primary_key(self, value: pulumi.Input[Optional['TableTableConstraintsPrimaryKeyArgs']]):
         pulumi.set(self, "primary_key", value)
 
 
@@ -8809,7 +8809,7 @@ class TableTableConstraintsForeignKeyArgsDict(TypedDict):
     and is referenced by this foreign key.
     Structure is documented below.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Set only if the foreign key constraint is named.
     """
@@ -8819,7 +8819,7 @@ class TableTableConstraintsForeignKeyArgs:
     def __init__(__self__, *,
                  column_references: pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArgs'],
                  referenced_table: pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArgs'],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArgs'] column_references: The pair of the foreign key column and primary key column.
                Structure is documented below.
@@ -8862,14 +8862,14 @@ class TableTableConstraintsForeignKeyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set only if the foreign key constraint is named.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -9042,7 +9042,7 @@ class TableTableReplicationInfoArgsDict(TypedDict):
     """
     The ID of the source materialized view.
     """
-    replication_interval_ms: NotRequired[pulumi.Input[_builtins.int]]
+    replication_interval_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The interval at which the source
     materialized view is polled for updates. The default is 300000.
@@ -9054,7 +9054,7 @@ class TableTableReplicationInfoArgs:
                  source_dataset_id: pulumi.Input[_builtins.str],
                  source_project_id: pulumi.Input[_builtins.str],
                  source_table_id: pulumi.Input[_builtins.str],
-                 replication_interval_ms: Optional[pulumi.Input[_builtins.int]] = None):
+                 replication_interval_ms: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] source_dataset_id: The ID of the source dataset.
         :param pulumi.Input[_builtins.str] source_project_id: The ID of the source project.
@@ -9106,7 +9106,7 @@ class TableTableReplicationInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="replicationIntervalMs")
-    def replication_interval_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replication_interval_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval at which the source
         materialized view is polled for updates. The default is 300000.
@@ -9114,7 +9114,7 @@ class TableTableReplicationInfoArgs:
         return pulumi.get(self, "replication_interval_ms")
 
     @replication_interval_ms.setter
-    def replication_interval_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replication_interval_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replication_interval_ms", value)
 
 
@@ -9124,18 +9124,18 @@ class TableTimePartitioningArgsDict(TypedDict):
     The supported types are DAY, HOUR, MONTH, and YEAR,
     which will generate one partition per day, hour, month, and year, respectively.
     """
-    expiration_ms: NotRequired[pulumi.Input[_builtins.int]]
+    expiration_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of milliseconds for which to keep the
     storage for a partition.
     """
-    field: NotRequired[pulumi.Input[_builtins.str]]
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The field used to determine how to create a time-based
     partition. If time-based partitioning is enabled without this value, the
     table is partitioned based on the load time.
     """
-    require_partition_filter: NotRequired[pulumi.Input[_builtins.bool]]
+    require_partition_filter: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to true, queries over this table
     require a partition filter that can be used for partition elimination to be
@@ -9147,9 +9147,9 @@ class TableTimePartitioningArgsDict(TypedDict):
 class TableTimePartitioningArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 expiration_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 field: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_partition_filter: Optional[pulumi.Input[_builtins.bool]] = None):
+                 expiration_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_partition_filter: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] type: The supported types are DAY, HOUR, MONTH, and YEAR,
                which will generate one partition per day, hour, month, and year, respectively.
@@ -9189,7 +9189,7 @@ class TableTimePartitioningArgs:
 
     @_builtins.property
     @pulumi.getter(name="expirationMs")
-    def expiration_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiration_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of milliseconds for which to keep the
         storage for a partition.
@@ -9197,12 +9197,12 @@ class TableTimePartitioningArgs:
         return pulumi.get(self, "expiration_ms")
 
     @expiration_ms.setter
-    def expiration_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiration_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiration_ms", value)
 
     @_builtins.property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The field used to determine how to create a time-based
         partition. If time-based partitioning is enabled without this value, the
@@ -9211,13 +9211,13 @@ class TableTimePartitioningArgs:
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field", value)
 
     @_builtins.property
     @pulumi.getter(name="requirePartitionFilter")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.""")
-    def require_partition_filter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_partition_filter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, queries over this table
         require a partition filter that can be used for partition elimination to be
@@ -9227,7 +9227,7 @@ class TableTimePartitioningArgs:
         return pulumi.get(self, "require_partition_filter")
 
     @require_partition_filter.setter
-    def require_partition_filter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_partition_filter(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_partition_filter", value)
 
 
@@ -9236,7 +9236,7 @@ class TableViewArgsDict(TypedDict):
     """
     A query that BigQuery executes when the view is referenced.
     """
-    use_legacy_sql: NotRequired[pulumi.Input[_builtins.bool]]
+    use_legacy_sql: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to use BigQuery's legacy SQL for this view.
     If set to `false`, the view will use BigQuery's standard SQL. If set to
@@ -9251,7 +9251,7 @@ class TableViewArgsDict(TypedDict):
 class TableViewArgs:
     def __init__(__self__, *,
                  query: pulumi.Input[_builtins.str],
-                 use_legacy_sql: Optional[pulumi.Input[_builtins.bool]] = None):
+                 use_legacy_sql: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] query: A query that BigQuery executes when the view is referenced.
         :param pulumi.Input[_builtins.bool] use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view.
@@ -9280,7 +9280,7 @@ class TableViewArgs:
 
     @_builtins.property
     @pulumi.getter(name="useLegacySql")
-    def use_legacy_sql(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_legacy_sql(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use BigQuery's legacy SQL for this view.
         If set to `false`, the view will use BigQuery's standard SQL. If set to
@@ -9293,7 +9293,7 @@ class TableViewArgs:
         return pulumi.get(self, "use_legacy_sql")
 
     @use_legacy_sql.setter
-    def use_legacy_sql(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_legacy_sql(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_legacy_sql", value)
 
 

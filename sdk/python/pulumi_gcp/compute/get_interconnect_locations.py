@@ -100,7 +100,7 @@ def get_interconnect_locations(project: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         locations=pulumi.get(__ret__, 'locations'),
         project=pulumi.get(__ret__, 'project'))
-def get_interconnect_locations_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_interconnect_locations_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInterconnectLocationsResult]:
     """
     Get a list of interconnect locations. For more information see

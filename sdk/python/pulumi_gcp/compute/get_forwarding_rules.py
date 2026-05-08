@@ -119,8 +119,8 @@ def get_forwarding_rules(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         rules=pulumi.get(__ret__, 'rules'))
-def get_forwarding_rules_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_forwarding_rules_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetForwardingRulesResult]:
     """
     List all networks in a specified Google Cloud project.

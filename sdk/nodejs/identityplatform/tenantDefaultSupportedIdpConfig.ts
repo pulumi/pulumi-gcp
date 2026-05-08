@@ -167,15 +167,15 @@ export interface TenantDefaultSupportedIdpConfigState {
     /**
      * OAuth client ID
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * OAuth client secret
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * If this IDP allows the user to sign in
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the IDP. Possible values include:
      * * `apple.com`
@@ -189,20 +189,20 @@ export interface TenantDefaultSupportedIdpConfigState {
      * * `twitter.com`
      * * `yahoo.com`
      */
-    idpId?: pulumi.Input<string>;
+    idpId?: pulumi.Input<string | undefined>;
     /**
      * The name of the default supported IDP config resource
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the tenant where this DefaultSupportedIdpConfig resource exists
      */
-    tenant?: pulumi.Input<string>;
+    tenant?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -220,7 +220,7 @@ export interface TenantDefaultSupportedIdpConfigArgs {
     /**
      * If this IDP allows the user to sign in
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the IDP. Possible values include:
      * * `apple.com`
@@ -239,7 +239,7 @@ export interface TenantDefaultSupportedIdpConfigArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the tenant where this DefaultSupportedIdpConfig resource exists
      */

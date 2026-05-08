@@ -255,68 +255,68 @@ export interface BranchRuleState {
     /**
      * Determines if allow stale reviews or approvals before merging to the branch.
      */
-    allowStaleReviews?: pulumi.Input<boolean>;
+    allowStaleReviews?: pulumi.Input<boolean | undefined>;
     /**
      * The ID for the BranchRule.
      */
-    branchRuleId?: pulumi.Input<string>;
+    branchRuleId?: pulumi.Input<string | undefined>;
     /**
      * Time the BranchRule was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Determines if the branch rule is disabled or not.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
      */
-    includePattern?: pulumi.Input<string>;
+    includePattern?: pulumi.Input<string | undefined>;
     /**
      * The location for the Repository.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The minimum number of approvals required for the branch rule to be matched.
      */
-    minimumApprovalsCount?: pulumi.Input<number>;
+    minimumApprovalsCount?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of reviews required for the branch rule to be matched.
      */
-    minimumReviewsCount?: pulumi.Input<number>;
+    minimumReviewsCount?: pulumi.Input<number | undefined>;
     /**
      * The resource name for the BranchRule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID for the Repository.
      */
-    repositoryId?: pulumi.Input<string>;
+    repositoryId?: pulumi.Input<string | undefined>;
     /**
      * Determines if require comments resolved before merging to the branch.
      */
-    requireCommentsResolved?: pulumi.Input<boolean>;
+    requireCommentsResolved?: pulumi.Input<boolean | undefined>;
     /**
      * Determines if require linear history before merging to the branch.
      */
-    requireLinearHistory?: pulumi.Input<boolean>;
+    requireLinearHistory?: pulumi.Input<boolean | undefined>;
     /**
      * Determines if the branch rule requires a pull request or not.
      */
-    requirePullRequest?: pulumi.Input<boolean>;
+    requirePullRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the BranchRule.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Time the BranchRule was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -326,7 +326,7 @@ export interface BranchRuleArgs {
     /**
      * Determines if allow stale reviews or approvals before merging to the branch.
      */
-    allowStaleReviews?: pulumi.Input<boolean>;
+    allowStaleReviews?: pulumi.Input<boolean | undefined>;
     /**
      * The ID for the BranchRule.
      */
@@ -334,7 +334,7 @@ export interface BranchRuleArgs {
     /**
      * Determines if the branch rule is disabled or not.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
      */
@@ -346,16 +346,16 @@ export interface BranchRuleArgs {
     /**
      * The minimum number of approvals required for the branch rule to be matched.
      */
-    minimumApprovalsCount?: pulumi.Input<number>;
+    minimumApprovalsCount?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of reviews required for the branch rule to be matched.
      */
-    minimumReviewsCount?: pulumi.Input<number>;
+    minimumReviewsCount?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID for the Repository.
      */
@@ -363,13 +363,13 @@ export interface BranchRuleArgs {
     /**
      * Determines if require comments resolved before merging to the branch.
      */
-    requireCommentsResolved?: pulumi.Input<boolean>;
+    requireCommentsResolved?: pulumi.Input<boolean | undefined>;
     /**
      * Determines if require linear history before merging to the branch.
      */
-    requireLinearHistory?: pulumi.Input<boolean>;
+    requireLinearHistory?: pulumi.Input<boolean | undefined>;
     /**
      * Determines if the branch rule requires a pull request or not.
      */
-    requirePullRequest?: pulumi.Input<boolean>;
+    requirePullRequest?: pulumi.Input<boolean | undefined>;
 }

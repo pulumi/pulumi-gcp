@@ -22,21 +22,21 @@ __all__ = ['FhirStoreArgs', 'FhirStore']
 class FhirStoreArgs:
     def __init__(__self__, *,
                  dataset: pulumi.Input[_builtins.str],
-                 complex_data_type_reference_parsing: Optional[pulumi.Input[_builtins.str]] = None,
-                 consent_config: Optional[pulumi.Input['FhirStoreConsentConfigArgs']] = None,
-                 default_search_handling_strict: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_referential_integrity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_resource_versioning: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_history_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_history_modifications: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_update_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input['FhirStoreNotificationConfigArgs']] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
-                 validation_config: Optional[pulumi.Input['FhirStoreValidationConfigArgs']] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 complex_data_type_reference_parsing: pulumi.Input[Optional[_builtins.str]] = None,
+                 consent_config: pulumi.Input[Optional['FhirStoreConsentConfigArgs']] = None,
+                 default_search_handling_strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_referential_integrity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_resource_versioning: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_history_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_history_modifications: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_update_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional['FhirStoreNotificationConfigArgs']] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]] = None,
+                 stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
+                 validation_config: pulumi.Input[Optional['FhirStoreValidationConfigArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FhirStore resource.
 
@@ -160,7 +160,7 @@ class FhirStoreArgs:
 
     @_builtins.property
     @pulumi.getter(name="complexDataTypeReferenceParsing")
-    def complex_data_type_reference_parsing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def complex_data_type_reference_parsing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
         Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
@@ -168,12 +168,12 @@ class FhirStoreArgs:
         return pulumi.get(self, "complex_data_type_reference_parsing")
 
     @complex_data_type_reference_parsing.setter
-    def complex_data_type_reference_parsing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def complex_data_type_reference_parsing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "complex_data_type_reference_parsing", value)
 
     @_builtins.property
     @pulumi.getter(name="consentConfig")
-    def consent_config(self) -> Optional[pulumi.Input['FhirStoreConsentConfigArgs']]:
+    def consent_config(self) -> pulumi.Input[Optional['FhirStoreConsentConfigArgs']]:
         """
         (Optional, Beta)
         Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
@@ -182,12 +182,12 @@ class FhirStoreArgs:
         return pulumi.get(self, "consent_config")
 
     @consent_config.setter
-    def consent_config(self, value: Optional[pulumi.Input['FhirStoreConsentConfigArgs']]):
+    def consent_config(self, value: pulumi.Input[Optional['FhirStoreConsentConfigArgs']]):
         pulumi.set(self, "consent_config", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSearchHandlingStrict")
-    def default_search_handling_strict(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_search_handling_strict(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
         If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -196,12 +196,12 @@ class FhirStoreArgs:
         return pulumi.get(self, "default_search_handling_strict")
 
     @default_search_handling_strict.setter
-    def default_search_handling_strict(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_search_handling_strict(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_search_handling_strict", value)
 
     @_builtins.property
     @pulumi.getter(name="disableReferentialIntegrity")
-    def disable_referential_integrity(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_referential_integrity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
         creation. The default value is false, meaning that the API will enforce referential integrity and fail the
@@ -213,12 +213,12 @@ class FhirStoreArgs:
         return pulumi.get(self, "disable_referential_integrity")
 
     @disable_referential_integrity.setter
-    def disable_referential_integrity(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_referential_integrity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_referential_integrity", value)
 
     @_builtins.property
     @pulumi.getter(name="disableResourceVersioning")
-    def disable_resource_versioning(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_resource_versioning(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation
         of FHIR store. If set to false, which is the default behavior, all write operations will cause historical
@@ -230,12 +230,12 @@ class FhirStoreArgs:
         return pulumi.get(self, "disable_resource_versioning")
 
     @disable_resource_versioning.setter
-    def disable_resource_versioning(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_resource_versioning(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_resource_versioning", value)
 
     @_builtins.property
     @pulumi.getter(name="enableHistoryImport")
-    def enable_history_import(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_history_import(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow the bulk import API to accept history bundles and directly insert historical resource
         versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
@@ -247,12 +247,12 @@ class FhirStoreArgs:
         return pulumi.get(self, "enable_history_import")
 
     @enable_history_import.setter
-    def enable_history_import(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_history_import(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_history_import", value)
 
     @_builtins.property
     @pulumi.getter(name="enableHistoryModifications")
-    def enable_history_modifications(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_history_modifications(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
@@ -261,12 +261,12 @@ class FhirStoreArgs:
         return pulumi.get(self, "enable_history_modifications")
 
     @enable_history_modifications.setter
-    def enable_history_modifications(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_history_modifications(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_history_modifications", value)
 
     @_builtins.property
     @pulumi.getter(name="enableUpdateCreate")
-    def enable_update_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_update_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
         operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -278,12 +278,12 @@ class FhirStoreArgs:
         return pulumi.get(self, "enable_update_create")
 
     @enable_update_create.setter
-    def enable_update_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_update_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_update_create", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-supplied key-value pairs used to organize FHIR stores.
         Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -300,12 +300,12 @@ class FhirStoreArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for the FhirStore.
         ** Changing this property may recreate the FHIR store (removing all data) **
@@ -313,13 +313,13 @@ class FhirStoreArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfig")
     @_utilities.deprecated("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
-    def notification_config(self) -> Optional[pulumi.Input['FhirStoreNotificationConfigArgs']]:
+    def notification_config(self) -> pulumi.Input[Optional['FhirStoreNotificationConfigArgs']]:
         """
         (Optional, Deprecated)
         A nested object resource.
@@ -330,12 +330,12 @@ class FhirStoreArgs:
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['FhirStoreNotificationConfigArgs']]):
+    def notification_config(self, value: pulumi.Input[Optional['FhirStoreNotificationConfigArgs']]):
         pulumi.set(self, "notification_config", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfigs")
-    def notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]]:
+    def notification_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]]:
         """
         A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
         Structure is documented below.
@@ -343,12 +343,12 @@ class FhirStoreArgs:
         return pulumi.get(self, "notification_configs")
 
     @notification_configs.setter
-    def notification_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]]):
+    def notification_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]]):
         pulumi.set(self, "notification_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="streamConfigs")
-    def stream_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]]:
+    def stream_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]]:
         """
         A list of streaming configs that configure the destinations of streaming export for every resource mutation in
         this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
@@ -361,12 +361,12 @@ class FhirStoreArgs:
         return pulumi.get(self, "stream_configs")
 
     @stream_configs.setter
-    def stream_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]]):
+    def stream_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]]):
         pulumi.set(self, "stream_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="validationConfig")
-    def validation_config(self) -> Optional[pulumi.Input['FhirStoreValidationConfigArgs']]:
+    def validation_config(self) -> pulumi.Input[Optional['FhirStoreValidationConfigArgs']]:
         """
         Configuration for how to validate incoming FHIR resources against configured profiles.
         Structure is documented below.
@@ -374,12 +374,12 @@ class FhirStoreArgs:
         return pulumi.get(self, "validation_config")
 
     @validation_config.setter
-    def validation_config(self, value: Optional[pulumi.Input['FhirStoreValidationConfigArgs']]):
+    def validation_config(self, value: pulumi.Input[Optional['FhirStoreValidationConfigArgs']]):
         pulumi.set(self, "validation_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The FHIR specification version.
         Default value is `STU3`.
@@ -388,32 +388,32 @@ class FhirStoreArgs:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
 class _FhirStoreState:
     def __init__(__self__, *,
-                 complex_data_type_reference_parsing: Optional[pulumi.Input[_builtins.str]] = None,
-                 consent_config: Optional[pulumi.Input['FhirStoreConsentConfigArgs']] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_search_handling_strict: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_referential_integrity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_resource_versioning: Optional[pulumi.Input[_builtins.bool]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enable_history_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_history_modifications: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_update_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input['FhirStoreNotificationConfigArgs']] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
-                 validation_config: Optional[pulumi.Input['FhirStoreValidationConfigArgs']] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 complex_data_type_reference_parsing: pulumi.Input[Optional[_builtins.str]] = None,
+                 consent_config: pulumi.Input[Optional['FhirStoreConsentConfigArgs']] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_search_handling_strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_referential_integrity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_resource_versioning: pulumi.Input[Optional[_builtins.bool]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_history_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_history_modifications: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_update_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional['FhirStoreNotificationConfigArgs']] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
+                 validation_config: pulumi.Input[Optional['FhirStoreValidationConfigArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FhirStore resources.
 
@@ -535,7 +535,7 @@ class _FhirStoreState:
 
     @_builtins.property
     @pulumi.getter(name="complexDataTypeReferenceParsing")
-    def complex_data_type_reference_parsing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def complex_data_type_reference_parsing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
         Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
@@ -543,12 +543,12 @@ class _FhirStoreState:
         return pulumi.get(self, "complex_data_type_reference_parsing")
 
     @complex_data_type_reference_parsing.setter
-    def complex_data_type_reference_parsing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def complex_data_type_reference_parsing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "complex_data_type_reference_parsing", value)
 
     @_builtins.property
     @pulumi.getter(name="consentConfig")
-    def consent_config(self) -> Optional[pulumi.Input['FhirStoreConsentConfigArgs']]:
+    def consent_config(self) -> pulumi.Input[Optional['FhirStoreConsentConfigArgs']]:
         """
         (Optional, Beta)
         Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
@@ -557,12 +557,12 @@ class _FhirStoreState:
         return pulumi.get(self, "consent_config")
 
     @consent_config.setter
-    def consent_config(self, value: Optional[pulumi.Input['FhirStoreConsentConfigArgs']]):
+    def consent_config(self, value: pulumi.Input[Optional['FhirStoreConsentConfigArgs']]):
         pulumi.set(self, "consent_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -570,12 +570,12 @@ class _FhirStoreState:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSearchHandlingStrict")
-    def default_search_handling_strict(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_search_handling_strict(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
         If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -584,12 +584,12 @@ class _FhirStoreState:
         return pulumi.get(self, "default_search_handling_strict")
 
     @default_search_handling_strict.setter
-    def default_search_handling_strict(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_search_handling_strict(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_search_handling_strict", value)
 
     @_builtins.property
     @pulumi.getter(name="disableReferentialIntegrity")
-    def disable_referential_integrity(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_referential_integrity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
         creation. The default value is false, meaning that the API will enforce referential integrity and fail the
@@ -601,12 +601,12 @@ class _FhirStoreState:
         return pulumi.get(self, "disable_referential_integrity")
 
     @disable_referential_integrity.setter
-    def disable_referential_integrity(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_referential_integrity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_referential_integrity", value)
 
     @_builtins.property
     @pulumi.getter(name="disableResourceVersioning")
-    def disable_resource_versioning(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_resource_versioning(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation
         of FHIR store. If set to false, which is the default behavior, all write operations will cause historical
@@ -618,24 +618,24 @@ class _FhirStoreState:
         return pulumi.get(self, "disable_resource_versioning")
 
     @disable_resource_versioning.setter
-    def disable_resource_versioning(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_resource_versioning(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_resource_versioning", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="enableHistoryImport")
-    def enable_history_import(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_history_import(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow the bulk import API to accept history bundles and directly insert historical resource
         versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
@@ -647,12 +647,12 @@ class _FhirStoreState:
         return pulumi.get(self, "enable_history_import")
 
     @enable_history_import.setter
-    def enable_history_import(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_history_import(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_history_import", value)
 
     @_builtins.property
     @pulumi.getter(name="enableHistoryModifications")
-    def enable_history_modifications(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_history_modifications(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
@@ -661,12 +661,12 @@ class _FhirStoreState:
         return pulumi.get(self, "enable_history_modifications")
 
     @enable_history_modifications.setter
-    def enable_history_modifications(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_history_modifications(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_history_modifications", value)
 
     @_builtins.property
     @pulumi.getter(name="enableUpdateCreate")
-    def enable_update_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_update_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
         operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -678,12 +678,12 @@ class _FhirStoreState:
         return pulumi.get(self, "enable_update_create")
 
     @enable_update_create.setter
-    def enable_update_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_update_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_update_create", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-supplied key-value pairs used to organize FHIR stores.
         Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -700,12 +700,12 @@ class _FhirStoreState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for the FhirStore.
         ** Changing this property may recreate the FHIR store (removing all data) **
@@ -713,13 +713,13 @@ class _FhirStoreState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfig")
     @_utilities.deprecated("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
-    def notification_config(self) -> Optional[pulumi.Input['FhirStoreNotificationConfigArgs']]:
+    def notification_config(self) -> pulumi.Input[Optional['FhirStoreNotificationConfigArgs']]:
         """
         (Optional, Deprecated)
         A nested object resource.
@@ -730,12 +730,12 @@ class _FhirStoreState:
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['FhirStoreNotificationConfigArgs']]):
+    def notification_config(self, value: pulumi.Input[Optional['FhirStoreNotificationConfigArgs']]):
         pulumi.set(self, "notification_config", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfigs")
-    def notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]]:
+    def notification_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]]:
         """
         A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
         Structure is documented below.
@@ -743,12 +743,12 @@ class _FhirStoreState:
         return pulumi.get(self, "notification_configs")
 
     @notification_configs.setter
-    def notification_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]]):
+    def notification_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]]):
         pulumi.set(self, "notification_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -756,24 +756,24 @@ class _FhirStoreState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified name of this dataset
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="streamConfigs")
-    def stream_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]]:
+    def stream_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]]:
         """
         A list of streaming configs that configure the destinations of streaming export for every resource mutation in
         this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
@@ -786,12 +786,12 @@ class _FhirStoreState:
         return pulumi.get(self, "stream_configs")
 
     @stream_configs.setter
-    def stream_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]]):
+    def stream_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]]):
         pulumi.set(self, "stream_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="validationConfig")
-    def validation_config(self) -> Optional[pulumi.Input['FhirStoreValidationConfigArgs']]:
+    def validation_config(self) -> pulumi.Input[Optional['FhirStoreValidationConfigArgs']]:
         """
         Configuration for how to validate incoming FHIR resources against configured profiles.
         Structure is documented below.
@@ -799,12 +799,12 @@ class _FhirStoreState:
         return pulumi.get(self, "validation_config")
 
     @validation_config.setter
-    def validation_config(self, value: Optional[pulumi.Input['FhirStoreValidationConfigArgs']]):
+    def validation_config(self, value: pulumi.Input[Optional['FhirStoreValidationConfigArgs']]):
         pulumi.set(self, "validation_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The FHIR specification version.
         Default value is `STU3`.
@@ -813,7 +813,7 @@ class _FhirStoreState:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -823,22 +823,22 @@ class FhirStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 complex_data_type_reference_parsing: Optional[pulumi.Input[_builtins.str]] = None,
-                 consent_config: Optional[pulumi.Input[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']]] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_search_handling_strict: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_referential_integrity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_resource_versioning: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_history_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_history_modifications: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_update_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
-                 validation_config: Optional[pulumi.Input[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 complex_data_type_reference_parsing: pulumi.Input[Optional[_builtins.str]] = None,
+                 consent_config: pulumi.Input[Optional[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_search_handling_strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_referential_integrity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_resource_versioning: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_history_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_history_modifications: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_update_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]]] = None,
+                 stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
+                 validation_config: pulumi.Input[Optional[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A FhirStore is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/fhir/STU3/)
@@ -1329,22 +1329,22 @@ class FhirStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 complex_data_type_reference_parsing: Optional[pulumi.Input[_builtins.str]] = None,
-                 consent_config: Optional[pulumi.Input[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']]] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_search_handling_strict: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_referential_integrity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_resource_versioning: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_history_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_history_modifications: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_update_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
-                 validation_config: Optional[pulumi.Input[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 complex_data_type_reference_parsing: pulumi.Input[Optional[_builtins.str]] = None,
+                 consent_config: pulumi.Input[Optional[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_search_handling_strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_referential_integrity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_resource_versioning: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_history_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_history_modifications: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_update_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]]] = None,
+                 stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
+                 validation_config: pulumi.Input[Optional[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1387,25 +1387,25 @@ class FhirStore(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            complex_data_type_reference_parsing: Optional[pulumi.Input[_builtins.str]] = None,
-            consent_config: Optional[pulumi.Input[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']]] = None,
-            dataset: Optional[pulumi.Input[_builtins.str]] = None,
-            default_search_handling_strict: Optional[pulumi.Input[_builtins.bool]] = None,
-            disable_referential_integrity: Optional[pulumi.Input[_builtins.bool]] = None,
-            disable_resource_versioning: Optional[pulumi.Input[_builtins.bool]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            enable_history_import: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_history_modifications: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_update_create: Optional[pulumi.Input[_builtins.bool]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_config: Optional[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]] = None,
-            notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
-            validation_config: Optional[pulumi.Input[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'FhirStore':
+            complex_data_type_reference_parsing: pulumi.Input[Optional[_builtins.str]] = None,
+            consent_config: pulumi.Input[Optional[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']]] = None,
+            dataset: pulumi.Input[Optional[_builtins.str]] = None,
+            default_search_handling_strict: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_referential_integrity: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_resource_versioning: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_history_import: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_history_modifications: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_update_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_config: pulumi.Input[Optional[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]] = None,
+            notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            stream_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
+            validation_config: pulumi.Input[Optional[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'FhirStore':
         """
         Get an existing FhirStore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -158,32 +158,32 @@ export interface FolderState {
     /**
      * The name of the bucket that contains the folder.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The timestamp at which this folder was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * If set to true, items within folder if any will be force destroyed.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The metadata generation of the folder.
      */
-    metageneration?: pulumi.Input<string>;
+    metageneration?: pulumi.Input<string | undefined>;
     /**
      * The name of the folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The timestamp at which this folder was most recently updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -197,10 +197,10 @@ export interface FolderArgs {
     /**
      * If set to true, items within folder if any will be force destroyed.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

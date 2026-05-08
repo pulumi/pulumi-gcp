@@ -567,11 +567,11 @@ def get_region_instance_template(filter: Optional[_builtins.str] = None,
         shielded_instance_configs=pulumi.get(__ret__, 'shielded_instance_configs'),
         tags=pulumi.get(__ret__, 'tags'),
         tags_fingerprint=pulumi.get(__ret__, 'tags_fingerprint'))
-def get_region_instance_template_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        most_recent: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                        name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_region_instance_template_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        most_recent: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionInstanceTemplateResult]:
     """
     Get information about a VM instance template resource within GCE. For more information see

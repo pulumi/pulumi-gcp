@@ -332,20 +332,20 @@ export interface GuestPoliciesState {
      * [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
      * Structure is documented below.
      */
-    assignment?: pulumi.Input<inputs.osconfig.GuestPoliciesAssignment>;
+    assignment?: pulumi.Input<inputs.osconfig.GuestPoliciesAssignment | undefined>;
     /**
      * Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
      * Example: "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the guest policy. Length of the description is limited to 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The etag for this guest policy. If this is provided on update, it must match the server's etag.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The logical name of the guest policy in the project with the following restrictions:
      * * Must contain only lowercase letters, numbers, and hyphens.
@@ -354,38 +354,38 @@ export interface GuestPoliciesState {
      * * Must end with a number or a letter.
      * * Must be unique within the project.
      */
-    guestPolicyId?: pulumi.Input<string>;
+    guestPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of package repositories to configure on the VM instance.
      * This is done before any other configs are applied so they can use these repos.
      * Package repositories are only configured if the corresponding package manager(s) are available.
      * Structure is documented below.
      */
-    packageRepositories?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepository>[]>;
+    packageRepositories?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepository>[] | undefined>;
     /**
      * The software packages to be managed by this policy.
      * Structure is documented below.
      */
-    packages?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackage>[]>;
+    packages?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackage>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A list of Recipes to install on the VM instance.
      * Structure is documented below.
      */
-    recipes?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesRecipe>[]>;
+    recipes?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesRecipe>[] | undefined>;
     /**
      * Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
      * Example: "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -406,11 +406,11 @@ export interface GuestPoliciesArgs {
     /**
      * Description of the guest policy. Length of the description is limited to 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The etag for this guest policy. If this is provided on update, it must match the server's etag.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The logical name of the guest policy in the project with the following restrictions:
      * * Must contain only lowercase letters, numbers, and hyphens.
@@ -426,20 +426,20 @@ export interface GuestPoliciesArgs {
      * Package repositories are only configured if the corresponding package manager(s) are available.
      * Structure is documented below.
      */
-    packageRepositories?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepository>[]>;
+    packageRepositories?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepository>[] | undefined>;
     /**
      * The software packages to be managed by this policy.
      * Structure is documented below.
      */
-    packages?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackage>[]>;
+    packages?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesPackage>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A list of Recipes to install on the VM instance.
      * Structure is documented below.
      */
-    recipes?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesRecipe>[]>;
+    recipes?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesRecipe>[] | undefined>;
 }

@@ -160,9 +160,9 @@ def router_status(name: Optional[_builtins.str] = None,
         network=pulumi.get(__ret__, 'network'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'))
-def router_status_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                         project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def router_status_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                         project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[RouterStatusResult]:
     """
     Get a Cloud Router's status within GCE from its name and region. This data source exposes the

@@ -383,53 +383,53 @@ export interface AiEndpointWithModelGardenDeploymentState {
      * The deploy config to use for the deployment.
      * Structure is documented below.
      */
-    deployConfig?: pulumi.Input<inputs.vertex.AiEndpointWithModelGardenDeploymentDeployConfig>;
+    deployConfig?: pulumi.Input<inputs.vertex.AiEndpointWithModelGardenDeploymentDeployConfig | undefined>;
     /**
      * Output only. The display name assigned to the model deployed to the endpoint.
      * This is not required to delete the resource but is used for debug logging.
      */
-    deployedModelDisplayName?: pulumi.Input<string>;
+    deployedModelDisplayName?: pulumi.Input<string | undefined>;
     /**
      * Output only. The unique numeric ID that Vertex AI assigns to the model at the time it is deployed to the endpoint.
      * It is required to undeploy the model from the endpoint during resource deletion as described in
      * https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints/undeployModel.
      */
-    deployedModelId?: pulumi.Input<string>;
+    deployedModelId?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `endpoint`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The endpoint config to use for the deployment.
      * Structure is documented below.
      */
-    endpointConfig?: pulumi.Input<inputs.vertex.AiEndpointWithModelGardenDeploymentEndpointConfig>;
+    endpointConfig?: pulumi.Input<inputs.vertex.AiEndpointWithModelGardenDeploymentEndpointConfig | undefined>;
     /**
      * The Hugging Face model to deploy.
      * Format: Hugging Face model ID like `google/gemma-2-2b-it`.
      */
-    huggingFaceModelId?: pulumi.Input<string>;
+    huggingFaceModelId?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The model config to use for the deployment.
      * Structure is documented below.
      */
-    modelConfig?: pulumi.Input<inputs.vertex.AiEndpointWithModelGardenDeploymentModelConfig>;
+    modelConfig?: pulumi.Input<inputs.vertex.AiEndpointWithModelGardenDeploymentModelConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Model Garden model to deploy.
      * Format:
      * `publishers/{publisher}/models/{publisher_model}@{version_id}`, or
      * `publishers/hf-{hugging-face-author}/models/{hugging-face-model-name}@001`.
      */
-    publisherModelName?: pulumi.Input<string>;
+    publisherModelName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -440,17 +440,17 @@ export interface AiEndpointWithModelGardenDeploymentArgs {
      * The deploy config to use for the deployment.
      * Structure is documented below.
      */
-    deployConfig?: pulumi.Input<inputs.vertex.AiEndpointWithModelGardenDeploymentDeployConfig>;
+    deployConfig?: pulumi.Input<inputs.vertex.AiEndpointWithModelGardenDeploymentDeployConfig | undefined>;
     /**
      * The endpoint config to use for the deployment.
      * Structure is documented below.
      */
-    endpointConfig?: pulumi.Input<inputs.vertex.AiEndpointWithModelGardenDeploymentEndpointConfig>;
+    endpointConfig?: pulumi.Input<inputs.vertex.AiEndpointWithModelGardenDeploymentEndpointConfig | undefined>;
     /**
      * The Hugging Face model to deploy.
      * Format: Hugging Face model ID like `google/gemma-2-2b-it`.
      */
-    huggingFaceModelId?: pulumi.Input<string>;
+    huggingFaceModelId?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -459,17 +459,17 @@ export interface AiEndpointWithModelGardenDeploymentArgs {
      * The model config to use for the deployment.
      * Structure is documented below.
      */
-    modelConfig?: pulumi.Input<inputs.vertex.AiEndpointWithModelGardenDeploymentModelConfig>;
+    modelConfig?: pulumi.Input<inputs.vertex.AiEndpointWithModelGardenDeploymentModelConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Model Garden model to deploy.
      * Format:
      * `publishers/{publisher}/models/{publisher_model}@{version_id}`, or
      * `publishers/hf-{hugging-face-author}/models/{hugging-face-model-name}@001`.
      */
-    publisherModelName?: pulumi.Input<string>;
+    publisherModelName?: pulumi.Input<string | undefined>;
 }

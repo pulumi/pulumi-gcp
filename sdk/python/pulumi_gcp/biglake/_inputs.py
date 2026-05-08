@@ -46,11 +46,11 @@ __all__ = [
 ]
 
 class DatabaseHiveOptionsArgsDict(TypedDict):
-    location_uri: NotRequired[pulumi.Input[_builtins.str]]
+    location_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cloud Storage folder URI where the database data is stored, starting with "gs://".
     """
-    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    parameters: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Stores user supplied Hive database parameters. An object containing a
     list of"key": value pairs.
@@ -60,8 +60,8 @@ class DatabaseHiveOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseHiveOptionsArgs:
     def __init__(__self__, *,
-                 location_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 location_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] location_uri: Cloud Storage folder URI where the database data is stored, starting with "gs://".
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: Stores user supplied Hive database parameters. An object containing a
@@ -75,19 +75,19 @@ class DatabaseHiveOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="locationUri")
-    def location_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud Storage folder URI where the database data is stored, starting with "gs://".
         """
         return pulumi.get(self, "location_uri")
 
     @location_uri.setter
-    def location_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Stores user supplied Hive database parameters. An object containing a
         list of"key": value pairs.
@@ -96,21 +96,21 @@ class DatabaseHiveOptionsArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
 
 class IcebergCatalogIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class IcebergCatalogIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -136,25 +136,25 @@ class IcebergCatalogIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class IcebergCatalogIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class IcebergCatalogIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -180,21 +180,21 @@ class IcebergCatalogIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class IcebergCatalogReplicaArgsDict(TypedDict):
-    region: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The region of the replica, e.g., `us-east1`.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     If the IcebergCatalog is replicated to multiple regions, this describes the current state of the replica. STATE_UNKNOWN - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all namespaces are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
@@ -203,8 +203,8 @@ class IcebergCatalogReplicaArgsDict(TypedDict):
 @pulumi.input_type
 class IcebergCatalogReplicaArgs:
     def __init__(__self__, *,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] region: (Output)
                The region of the replica, e.g., `us-east1`.
@@ -218,7 +218,7 @@ class IcebergCatalogReplicaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The region of the replica, e.g., `us-east1`.
@@ -226,12 +226,12 @@ class IcebergCatalogReplicaArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         If the IcebergCatalog is replicated to multiple regions, this describes the current state of the replica. STATE_UNKNOWN - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all namespaces are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
@@ -239,21 +239,21 @@ class IcebergCatalogReplicaArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class IcebergNamespaceIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class IcebergNamespaceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -279,25 +279,25 @@ class IcebergNamespaceIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class IcebergNamespaceIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class IcebergNamespaceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -323,25 +323,25 @@ class IcebergNamespaceIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class IcebergTableIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class IcebergTableIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -367,25 +367,25 @@ class IcebergTableIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class IcebergTableIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class IcebergTableIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -411,11 +411,11 @@ class IcebergTableIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -424,7 +424,7 @@ class IcebergTablePartitionSpecArgsDict(TypedDict):
     """
     Structure is documented below.
     """
-    spec_id: NotRequired[pulumi.Input[_builtins.int]]
+    spec_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The unique identifier of the partition spec.
@@ -434,7 +434,7 @@ class IcebergTablePartitionSpecArgsDict(TypedDict):
 class IcebergTablePartitionSpecArgs:
     def __init__(__self__, *,
                  fields: pulumi.Input[Sequence[pulumi.Input['IcebergTablePartitionSpecFieldArgs']]],
-                 spec_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 spec_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['IcebergTablePartitionSpecFieldArgs']]] fields: Structure is documented below.
         :param pulumi.Input[_builtins.int] spec_id: (Output)
@@ -458,7 +458,7 @@ class IcebergTablePartitionSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="specId")
-    def spec_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spec_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The unique identifier of the partition spec.
@@ -466,7 +466,7 @@ class IcebergTablePartitionSpecArgs:
         return pulumi.get(self, "spec_id")
 
     @spec_id.setter
-    def spec_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spec_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spec_id", value)
 
 
@@ -483,7 +483,7 @@ class IcebergTablePartitionSpecFieldArgsDict(TypedDict):
     """
     The transform to apply to the source field.
     """
-    field_id: NotRequired[pulumi.Input[_builtins.int]]
+    field_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The unique identifier of the partition field.
@@ -495,7 +495,7 @@ class IcebergTablePartitionSpecFieldArgs:
                  name: pulumi.Input[_builtins.str],
                  source_id: pulumi.Input[_builtins.int],
                  transform: pulumi.Input[_builtins.str],
-                 field_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 field_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the partition field.
         :param pulumi.Input[_builtins.int] source_id: The source field ID for the partition field.
@@ -547,7 +547,7 @@ class IcebergTablePartitionSpecFieldArgs:
 
     @_builtins.property
     @pulumi.getter(name="fieldId")
-    def field_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def field_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The unique identifier of the partition field.
@@ -555,7 +555,7 @@ class IcebergTablePartitionSpecFieldArgs:
         return pulumi.get(self, "field_id")
 
     @field_id.setter
-    def field_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def field_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "field_id", value)
 
 
@@ -564,16 +564,16 @@ class IcebergTableSchemaArgsDict(TypedDict):
     """
     Structure is documented below.
     """
-    identifier_field_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    identifier_field_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     The field IDs that make up the identifier for the table.
     """
-    schema_id: NotRequired[pulumi.Input[_builtins.int]]
+    schema_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The unique identifier of the schema.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the schema.
     """
@@ -582,9 +582,9 @@ class IcebergTableSchemaArgsDict(TypedDict):
 class IcebergTableSchemaArgs:
     def __init__(__self__, *,
                  fields: pulumi.Input[Sequence[pulumi.Input['IcebergTableSchemaFieldArgs']]],
-                 identifier_field_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 schema_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 identifier_field_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 schema_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['IcebergTableSchemaFieldArgs']]] fields: Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] identifier_field_ids: The field IDs that make up the identifier for the table.
@@ -614,19 +614,19 @@ class IcebergTableSchemaArgs:
 
     @_builtins.property
     @pulumi.getter(name="identifierFieldIds")
-    def identifier_field_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def identifier_field_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The field IDs that make up the identifier for the table.
         """
         return pulumi.get(self, "identifier_field_ids")
 
     @identifier_field_ids.setter
-    def identifier_field_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def identifier_field_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "identifier_field_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaId")
-    def schema_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def schema_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The unique identifier of the schema.
@@ -634,19 +634,19 @@ class IcebergTableSchemaArgs:
         return pulumi.get(self, "schema_id")
 
     @schema_id.setter
-    def schema_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def schema_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "schema_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the schema.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -667,7 +667,7 @@ class IcebergTableSchemaFieldArgsDict(TypedDict):
     """
     The type of the field.
     """
-    doc: NotRequired[pulumi.Input[_builtins.str]]
+    doc: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A description of the field.
     """
@@ -679,7 +679,7 @@ class IcebergTableSchemaFieldArgs:
                  name: pulumi.Input[_builtins.str],
                  required: pulumi.Input[_builtins.bool],
                  type: pulumi.Input[_builtins.str],
-                 doc: Optional[pulumi.Input[_builtins.str]] = None):
+                 doc: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] id: The unique identifier of the field.
         :param pulumi.Input[_builtins.str] name: The name of the partition field.
@@ -744,30 +744,30 @@ class IcebergTableSchemaFieldArgs:
 
     @_builtins.property
     @pulumi.getter
-    def doc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def doc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the field.
         """
         return pulumi.get(self, "doc")
 
     @doc.setter
-    def doc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def doc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "doc", value)
 
 
 class TableHiveOptionsArgsDict(TypedDict):
-    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    parameters: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Stores user supplied Hive table parameters. An object containing a
     list of "key": value pairs.
     Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    storage_descriptor: NotRequired[pulumi.Input['TableHiveOptionsStorageDescriptorArgsDict']]
+    storage_descriptor: NotRequired[pulumi.Input[Optional['TableHiveOptionsStorageDescriptorArgs']]]
     """
     Stores physical storage information on the data.
     Structure is documented below.
     """
-    table_type: NotRequired[pulumi.Input[_builtins.str]]
+    table_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
     """
@@ -775,9 +775,9 @@ class TableHiveOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class TableHiveOptionsArgs:
     def __init__(__self__, *,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 storage_descriptor: Optional[pulumi.Input['TableHiveOptionsStorageDescriptorArgs']] = None,
-                 table_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 storage_descriptor: pulumi.Input[Optional['TableHiveOptionsStorageDescriptorArgs']] = None,
+                 table_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: Stores user supplied Hive table parameters. An object containing a
                list of "key": value pairs.
@@ -795,7 +795,7 @@ class TableHiveOptionsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Stores user supplied Hive table parameters. An object containing a
         list of "key": value pairs.
@@ -804,12 +804,12 @@ class TableHiveOptionsArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="storageDescriptor")
-    def storage_descriptor(self) -> Optional[pulumi.Input['TableHiveOptionsStorageDescriptorArgs']]:
+    def storage_descriptor(self) -> pulumi.Input[Optional['TableHiveOptionsStorageDescriptorArgs']]:
         """
         Stores physical storage information on the data.
         Structure is documented below.
@@ -817,32 +817,32 @@ class TableHiveOptionsArgs:
         return pulumi.get(self, "storage_descriptor")
 
     @storage_descriptor.setter
-    def storage_descriptor(self, value: Optional[pulumi.Input['TableHiveOptionsStorageDescriptorArgs']]):
+    def storage_descriptor(self, value: pulumi.Input[Optional['TableHiveOptionsStorageDescriptorArgs']]):
         pulumi.set(self, "storage_descriptor", value)
 
     @_builtins.property
     @pulumi.getter(name="tableType")
-    def table_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
         """
         return pulumi.get(self, "table_type")
 
     @table_type.setter
-    def table_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_type", value)
 
 
 class TableHiveOptionsStorageDescriptorArgsDict(TypedDict):
-    input_format: NotRequired[pulumi.Input[_builtins.str]]
+    input_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The fully qualified Java class name of the input format.
     """
-    location_uri: NotRequired[pulumi.Input[_builtins.str]]
+    location_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cloud Storage folder URI where the table data is stored, starting with "gs://".
     """
-    output_format: NotRequired[pulumi.Input[_builtins.str]]
+    output_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The fully qualified Java class name of the output format.
     """
@@ -850,9 +850,9 @@ class TableHiveOptionsStorageDescriptorArgsDict(TypedDict):
 @pulumi.input_type
 class TableHiveOptionsStorageDescriptorArgs:
     def __init__(__self__, *,
-                 input_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 location_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_format: Optional[pulumi.Input[_builtins.str]] = None):
+                 input_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 location_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_format: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] input_format: The fully qualified Java class name of the input format.
         :param pulumi.Input[_builtins.str] location_uri: Cloud Storage folder URI where the table data is stored, starting with "gs://".
@@ -867,38 +867,38 @@ class TableHiveOptionsStorageDescriptorArgs:
 
     @_builtins.property
     @pulumi.getter(name="inputFormat")
-    def input_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified Java class name of the input format.
         """
         return pulumi.get(self, "input_format")
 
     @input_format.setter
-    def input_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input_format", value)
 
     @_builtins.property
     @pulumi.getter(name="locationUri")
-    def location_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud Storage folder URI where the table data is stored, starting with "gs://".
         """
         return pulumi.get(self, "location_uri")
 
     @location_uri.setter
-    def location_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="outputFormat")
-    def output_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified Java class name of the output format.
         """
         return pulumi.get(self, "output_format")
 
     @output_format.setter
-    def output_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_format", value)
 
 

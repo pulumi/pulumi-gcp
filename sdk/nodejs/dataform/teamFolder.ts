@@ -141,24 +141,24 @@ export interface TeamFolderState {
     /**
      * Required. The TeamFolder's user-friendly name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The TeamFolder's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the region
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the TeamFolder.
      */
-    teamfolderId?: pulumi.Input<string>;
+    teamfolderId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,7 +173,7 @@ export interface TeamFolderArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the region
      */

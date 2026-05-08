@@ -142,9 +142,9 @@ def get_ai_feature_online_store_iam_policy(feature_online_store: Optional[_built
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'))
-def get_ai_feature_online_store_iam_policy_output(feature_online_store: Optional[pulumi.Input[_builtins.str]] = None,
-                                                  project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                  region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ai_feature_online_store_iam_policy_output(feature_online_store: pulumi.Input[Optional[_builtins.str]] = None,
+                                                  project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                  region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiFeatureOnlineStoreIamPolicyResult]:
     """
     Retrieves the current IAM policy data for featureonlinestore

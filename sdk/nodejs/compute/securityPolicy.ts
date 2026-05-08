@@ -362,63 +362,63 @@ export interface SecurityPolicyState {
     /**
      * Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
      */
-    adaptiveProtectionConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdaptiveProtectionConfig>;
+    adaptiveProtectionConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdaptiveProtectionConfig | undefined>;
     /**
      * [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
      * Structure is documented below.
      */
-    advancedOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdvancedOptionsConfig>;
+    advancedOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdvancedOptionsConfig | undefined>;
     /**
      * An optional description of this security policy. Max size is 2048.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Fingerprint of this resource.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The unique fingerprint of the labels.
      */
-    labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this address. A list of key->value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the security policy.
      *
      * - - -
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
      */
-    recaptchaOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyRecaptchaOptionsConfig>;
+    recaptchaOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyRecaptchaOptionsConfig | undefined>;
     /**
      * The set of rules that belong to this policy. There must always be a default
      * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
      * security policy, a default rule with action "allow" will be added. Structure is documented below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRule>[] | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
      * * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
@@ -429,7 +429,7 @@ export interface SecurityPolicyState {
      * * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
      * managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -439,43 +439,43 @@ export interface SecurityPolicyArgs {
     /**
      * Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
      */
-    adaptiveProtectionConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdaptiveProtectionConfig>;
+    adaptiveProtectionConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdaptiveProtectionConfig | undefined>;
     /**
      * [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
      * Structure is documented below.
      */
-    advancedOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdvancedOptionsConfig>;
+    advancedOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdvancedOptionsConfig | undefined>;
     /**
      * An optional description of this security policy. Max size is 2048.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this address. A list of key->value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the security policy.
      *
      * - - -
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
      */
-    recaptchaOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyRecaptchaOptionsConfig>;
+    recaptchaOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyRecaptchaOptionsConfig | undefined>;
     /**
      * The set of rules that belong to this policy. There must always be a default
      * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
      * security policy, a default rule with action "allow" will be added. Structure is documented below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRule>[] | undefined>;
     /**
      * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
      * * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
@@ -486,5 +486,5 @@ export interface SecurityPolicyArgs {
      * * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
      * managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

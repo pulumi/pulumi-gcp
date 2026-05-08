@@ -169,11 +169,11 @@ def get_metastore_table_iam_policy(database_id: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         service_id=pulumi.get(__ret__, 'service_id'),
         table=pulumi.get(__ret__, 'table'))
-def get_metastore_table_iam_policy_output(database_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                          location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                          table: Optional[pulumi.Input[_builtins.str]] = None,
+def get_metastore_table_iam_policy_output(database_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                          location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                          table: pulumi.Input[Optional[_builtins.str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetastoreTableIamPolicyResult]:
     """
     Retrieves the current IAM policy data for table

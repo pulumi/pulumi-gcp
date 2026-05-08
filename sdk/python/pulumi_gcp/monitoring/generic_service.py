@@ -22,10 +22,10 @@ __all__ = ['GenericServiceArgs', 'GenericService']
 class GenericServiceArgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[_builtins.str],
-                 basic_service: Optional[pulumi.Input['GenericServiceBasicServiceArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 basic_service: pulumi.Input[Optional['GenericServiceBasicServiceArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a GenericService resource.
 
@@ -70,7 +70,7 @@ class GenericServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="basicService")
-    def basic_service(self) -> Optional[pulumi.Input['GenericServiceBasicServiceArgs']]:
+    def basic_service(self) -> pulumi.Input[Optional['GenericServiceBasicServiceArgs']]:
         """
         A well-known service type, defined by its service type and service labels.
         Valid values of service types and services labels are described at
@@ -80,24 +80,24 @@ class GenericServiceArgs:
         return pulumi.get(self, "basic_service")
 
     @basic_service.setter
-    def basic_service(self, value: Optional[pulumi.Input['GenericServiceBasicServiceArgs']]):
+    def basic_service(self, value: pulumi.Input[Optional['GenericServiceBasicServiceArgs']]):
         pulumi.set(self, "basic_service", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name used for UI elements listing this Service.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -105,12 +105,12 @@ class GenericServiceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="userLabels")
-    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def user_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels which have been used to annotate the service. Label keys must start
         with a letter. Label keys and values may contain lowercase letters,
@@ -122,20 +122,20 @@ class GenericServiceArgs:
         return pulumi.get(self, "user_labels")
 
     @user_labels.setter
-    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def user_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_labels", value)
 
 
 @pulumi.input_type
 class _GenericServiceState:
     def __init__(__self__, *,
-                 basic_service: Optional[pulumi.Input['GenericServiceBasicServiceArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetries: Optional[pulumi.Input[Sequence[pulumi.Input['GenericServiceTelemetryArgs']]]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 basic_service: pulumi.Input[Optional['GenericServiceBasicServiceArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetries: pulumi.Input[Optional[Sequence[pulumi.Input['GenericServiceTelemetryArgs']]]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering GenericService resources.
 
@@ -176,7 +176,7 @@ class _GenericServiceState:
 
     @_builtins.property
     @pulumi.getter(name="basicService")
-    def basic_service(self) -> Optional[pulumi.Input['GenericServiceBasicServiceArgs']]:
+    def basic_service(self) -> pulumi.Input[Optional['GenericServiceBasicServiceArgs']]:
         """
         A well-known service type, defined by its service type and service labels.
         Valid values of service types and services labels are described at
@@ -186,24 +186,24 @@ class _GenericServiceState:
         return pulumi.get(self, "basic_service")
 
     @basic_service.setter
-    def basic_service(self, value: Optional[pulumi.Input['GenericServiceBasicServiceArgs']]):
+    def basic_service(self, value: pulumi.Input[Optional['GenericServiceBasicServiceArgs']]):
         pulumi.set(self, "basic_service", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name used for UI elements listing this Service.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full resource name for this service. The syntax is:
         projects/[PROJECT_ID]/services/[SERVICE_ID].
@@ -211,12 +211,12 @@ class _GenericServiceState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -224,12 +224,12 @@ class _GenericServiceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional service ID to use. If not given, the server will generate a
         service ID.
@@ -237,12 +237,12 @@ class _GenericServiceState:
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def telemetries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenericServiceTelemetryArgs']]]]:
+    def telemetries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenericServiceTelemetryArgs']]]]:
         """
         Configuration for how to query telemetry on a Service.
         Structure is documented below.
@@ -250,12 +250,12 @@ class _GenericServiceState:
         return pulumi.get(self, "telemetries")
 
     @telemetries.setter
-    def telemetries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenericServiceTelemetryArgs']]]]):
+    def telemetries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenericServiceTelemetryArgs']]]]):
         pulumi.set(self, "telemetries", value)
 
     @_builtins.property
     @pulumi.getter(name="userLabels")
-    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def user_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels which have been used to annotate the service. Label keys must start
         with a letter. Label keys and values may contain lowercase letters,
@@ -267,7 +267,7 @@ class _GenericServiceState:
         return pulumi.get(self, "user_labels")
 
     @user_labels.setter
-    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def user_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_labels", value)
 
 
@@ -277,11 +277,11 @@ class GenericService(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_service: Optional[pulumi.Input[Union['GenericServiceBasicServiceArgs', 'GenericServiceBasicServiceArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 basic_service: pulumi.Input[Optional[Union['GenericServiceBasicServiceArgs', 'GenericServiceBasicServiceArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         A Service is a discrete, autonomous, and network-accessible unit,
@@ -430,11 +430,11 @@ class GenericService(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_service: Optional[pulumi.Input[Union['GenericServiceBasicServiceArgs', 'GenericServiceBasicServiceArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 basic_service: pulumi.Input[Optional[Union['GenericServiceBasicServiceArgs', 'GenericServiceBasicServiceArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -463,13 +463,13 @@ class GenericService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            basic_service: Optional[pulumi.Input[Union['GenericServiceBasicServiceArgs', 'GenericServiceBasicServiceArgsDict']]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            telemetries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenericServiceTelemetryArgs', 'GenericServiceTelemetryArgsDict']]]]] = None,
-            user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'GenericService':
+            basic_service: pulumi.Input[Optional[Union['GenericServiceBasicServiceArgs', 'GenericServiceBasicServiceArgsDict']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            telemetries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenericServiceTelemetryArgs', 'GenericServiceTelemetryArgsDict']]]]] = None,
+            user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'GenericService':
         """
         Get an existing GenericService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

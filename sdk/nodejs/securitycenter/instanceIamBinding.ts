@@ -308,43 +308,43 @@ export class InstanceIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceIamBinding resources.
  */
 export interface InstanceIamBindingState {
-    condition?: pulumi.Input<inputs.securitycenter.InstanceIamBindingCondition>;
-    etag?: pulumi.Input<string>;
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    condition?: pulumi.Input<inputs.securitycenter.InstanceIamBindingCondition | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the Data Fusion instance.
      */
-    region?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a InstanceIamBinding resource.
  */
 export interface InstanceIamBindingArgs {
-    condition?: pulumi.Input<inputs.securitycenter.InstanceIamBindingCondition>;
+    condition?: pulumi.Input<inputs.securitycenter.InstanceIamBindingCondition | undefined>;
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the Data Fusion instance.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     role: pulumi.Input<string>;
 }

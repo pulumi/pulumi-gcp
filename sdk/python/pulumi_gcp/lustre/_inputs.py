@@ -47,19 +47,19 @@ class InstanceAccessRulesOptionsArgsDict(TypedDict):
     NO_SQUASH
     ROOT_SQUASH
     """
-    access_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceAccessRulesOptionsAccessRuleArgsDict']]]]
+    access_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAccessRulesOptionsAccessRuleArgs']]]]]
     """
     The access rules for the instance.
     Structure is documented below.
     """
-    default_squash_gid: NotRequired[pulumi.Input[_builtins.int]]
+    default_squash_gid: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The user squash GID for the default access rule.
     This user squash GID applies to all root users connecting from clients
     that are not matched by any of the access rules. If not set, the default
     is 0 (no GID squash).
     """
-    default_squash_uid: NotRequired[pulumi.Input[_builtins.int]]
+    default_squash_uid: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The user squash UID for the default access rule.
     This user squash UID applies to all root users connecting from clients
@@ -71,9 +71,9 @@ class InstanceAccessRulesOptionsArgsDict(TypedDict):
 class InstanceAccessRulesOptionsArgs:
     def __init__(__self__, *,
                  default_squash_mode: pulumi.Input[_builtins.str],
-                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAccessRulesOptionsAccessRuleArgs']]]] = None,
-                 default_squash_gid: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_squash_uid: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_rules: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAccessRulesOptionsAccessRuleArgs']]]] = None,
+                 default_squash_gid: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_squash_uid: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] default_squash_mode: The squash mode for the default access rule.
                Possible values:
@@ -115,7 +115,7 @@ class InstanceAccessRulesOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAccessRulesOptionsAccessRuleArgs']]]]:
+    def access_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAccessRulesOptionsAccessRuleArgs']]]]:
         """
         The access rules for the instance.
         Structure is documented below.
@@ -123,12 +123,12 @@ class InstanceAccessRulesOptionsArgs:
         return pulumi.get(self, "access_rules")
 
     @access_rules.setter
-    def access_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAccessRulesOptionsAccessRuleArgs']]]]):
+    def access_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAccessRulesOptionsAccessRuleArgs']]]]):
         pulumi.set(self, "access_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSquashGid")
-    def default_squash_gid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_squash_gid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The user squash GID for the default access rule.
         This user squash GID applies to all root users connecting from clients
@@ -138,12 +138,12 @@ class InstanceAccessRulesOptionsArgs:
         return pulumi.get(self, "default_squash_gid")
 
     @default_squash_gid.setter
-    def default_squash_gid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_squash_gid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_squash_gid", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSquashUid")
-    def default_squash_uid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_squash_uid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The user squash UID for the default access rule.
         This user squash UID applies to all root users connecting from clients
@@ -153,7 +153,7 @@ class InstanceAccessRulesOptionsArgs:
         return pulumi.get(self, "default_squash_uid")
 
     @default_squash_uid.setter
-    def default_squash_uid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_squash_uid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_squash_uid", value)
 
 
@@ -288,7 +288,7 @@ class InstanceMaintenancePolicyArgsDict(TypedDict):
     window.
     Structure is documented below.
     """
-    maintenance_exclusion_window: NotRequired[pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowArgsDict']]
+    maintenance_exclusion_window: NotRequired[pulumi.Input[Optional['InstanceMaintenancePolicyMaintenanceExclusionWindowArgs']]]
     """
     The exclusion windows for the instance. Currently limited to 1 window.
     Structure is documented below.
@@ -298,7 +298,7 @@ class InstanceMaintenancePolicyArgsDict(TypedDict):
 class InstanceMaintenancePolicyArgs:
     def __init__(__self__, *,
                  weekly_maintenance_windows: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs'],
-                 maintenance_exclusion_window: Optional[pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowArgs']] = None):
+                 maintenance_exclusion_window: pulumi.Input[Optional['InstanceMaintenancePolicyMaintenanceExclusionWindowArgs']] = None):
         """
         :param pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs'] weekly_maintenance_windows: The weekly maintenance windows for the instance. Currently limited to 1
                window.
@@ -326,7 +326,7 @@ class InstanceMaintenancePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="maintenanceExclusionWindow")
-    def maintenance_exclusion_window(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowArgs']]:
+    def maintenance_exclusion_window(self) -> pulumi.Input[Optional['InstanceMaintenancePolicyMaintenanceExclusionWindowArgs']]:
         """
         The exclusion windows for the instance. Currently limited to 1 window.
         Structure is documented below.
@@ -334,7 +334,7 @@ class InstanceMaintenancePolicyArgs:
         return pulumi.get(self, "maintenance_exclusion_window")
 
     @maintenance_exclusion_window.setter
-    def maintenance_exclusion_window(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowArgs']]):
+    def maintenance_exclusion_window(self, value: pulumi.Input[Optional['InstanceMaintenancePolicyMaintenanceExclusionWindowArgs']]):
         pulumi.set(self, "maintenance_exclusion_window", value)
 
 
@@ -492,18 +492,18 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs:
 
 
 class InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgsDict(TypedDict):
-    day: NotRequired[pulumi.Input[_builtins.int]]
+    day: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
     to specify a year by itself or a year and month where the day isn't
     significant.
     """
-    month: NotRequired[pulumi.Input[_builtins.int]]
+    month: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Month of a year. Must be from 1 to 12, or 0 to specify a year without a
     month and day.
     """
-    year: NotRequired[pulumi.Input[_builtins.int]]
+    year: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Year of the date. Must be from 1 to 9999, or 0 to specify a date without
     a year.
@@ -512,9 +512,9 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgsDict(TypedDi
 @pulumi.input_type
 class InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs:
     def __init__(__self__, *,
-                 day: Optional[pulumi.Input[_builtins.int]] = None,
-                 month: Optional[pulumi.Input[_builtins.int]] = None,
-                 year: Optional[pulumi.Input[_builtins.int]] = None):
+                 day: pulumi.Input[Optional[_builtins.int]] = None,
+                 month: pulumi.Input[Optional[_builtins.int]] = None,
+                 year: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
                to specify a year by itself or a year and month where the day isn't
@@ -533,7 +533,7 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def day(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def day(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
         to specify a year by itself or a year and month where the day isn't
@@ -542,12 +542,12 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs:
         return pulumi.get(self, "day")
 
     @day.setter
-    def day(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def day(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "day", value)
 
     @_builtins.property
     @pulumi.getter
-    def month(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def month(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Month of a year. Must be from 1 to 12, or 0 to specify a year without a
         month and day.
@@ -555,12 +555,12 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs:
         return pulumi.get(self, "month")
 
     @month.setter
-    def month(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def month(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "month", value)
 
     @_builtins.property
     @pulumi.getter
-    def year(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def year(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Year of the date. Must be from 1 to 9999, or 0 to specify a date without
         a year.
@@ -568,23 +568,23 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowEndDateArgs:
         return pulumi.get(self, "year")
 
     @year.setter
-    def year(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def year(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "year", value)
 
 
 class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgsDict(TypedDict):
-    day: NotRequired[pulumi.Input[_builtins.int]]
+    day: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
     to specify a year by itself or a year and month where the day isn't
     significant.
     """
-    month: NotRequired[pulumi.Input[_builtins.int]]
+    month: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Month of a year. Must be from 1 to 12, or 0 to specify a year without a
     month and day.
     """
-    year: NotRequired[pulumi.Input[_builtins.int]]
+    year: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Year of the date. Must be from 1 to 9999, or 0 to specify a date without
     a year.
@@ -593,9 +593,9 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgsDict(Typed
 @pulumi.input_type
 class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs:
     def __init__(__self__, *,
-                 day: Optional[pulumi.Input[_builtins.int]] = None,
-                 month: Optional[pulumi.Input[_builtins.int]] = None,
-                 year: Optional[pulumi.Input[_builtins.int]] = None):
+                 day: pulumi.Input[Optional[_builtins.int]] = None,
+                 month: pulumi.Input[Optional[_builtins.int]] = None,
+                 year: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
                to specify a year by itself or a year and month where the day isn't
@@ -614,7 +614,7 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def day(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def day(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
         to specify a year by itself or a year and month where the day isn't
@@ -623,12 +623,12 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs:
         return pulumi.get(self, "day")
 
     @day.setter
-    def day(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def day(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "day", value)
 
     @_builtins.property
     @pulumi.getter
-    def month(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def month(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Month of a year. Must be from 1 to 12, or 0 to specify a year without a
         month and day.
@@ -636,12 +636,12 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs:
         return pulumi.get(self, "month")
 
     @month.setter
-    def month(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def month(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "month", value)
 
     @_builtins.property
     @pulumi.getter
-    def year(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def year(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Year of the date. Must be from 1 to 9999, or 0 to specify a date without
         a year.
@@ -649,28 +649,28 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs:
         return pulumi.get(self, "year")
 
     @year.setter
-    def year(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def year(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "year", value)
 
 
 class InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgsDict(TypedDict):
-    hours: NotRequired[pulumi.Input[_builtins.int]]
+    hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hours of a day in 24 hour format. Must be greater than or equal to 0 and
     typically must be less than or equal to 23. An API may choose to allow the
     value "24:00:00" for scenarios like business closing time.
     """
-    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    minutes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minutes of an hour. Must be greater than or equal to 0 and less than or
     equal to 59.
     """
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
     and less than or equal to 999,999,999.
     """
-    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Seconds of a minute. Must be greater than or equal to 0 and typically must
     be less than or equal to 59. An API may allow the value 60 if it allows
@@ -680,10 +680,10 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgsDict(TypedDict)
 @pulumi.input_type
 class InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs:
     def __init__(__self__, *,
-                 hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and
                typically must be less than or equal to 23. An API may choose to allow the
@@ -707,7 +707,7 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Hours of a day in 24 hour format. Must be greater than or equal to 0 and
         typically must be less than or equal to 23. An API may choose to allow the
@@ -716,12 +716,12 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs:
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minutes of an hour. Must be greater than or equal to 0 and less than or
         equal to 59.
@@ -729,12 +729,12 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs:
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minutes", value)
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
         and less than or equal to 999,999,999.
@@ -742,12 +742,12 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs:
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds of a minute. Must be greater than or equal to 0 and typically must
         be less than or equal to 59. An API may allow the value 60 if it allows
@@ -756,7 +756,7 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs:
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds", value)
 
 
@@ -838,23 +838,23 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowsArgs:
 
 
 class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgsDict(TypedDict):
-    hours: NotRequired[pulumi.Input[_builtins.int]]
+    hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hours of a day in 24 hour format. Must be greater than or equal to 0 and
     typically must be less than or equal to 23. An API may choose to allow the
     value "24:00:00" for scenarios like business closing time.
     """
-    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    minutes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minutes of an hour. Must be greater than or equal to 0 and less than or
     equal to 59.
     """
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
     and less than or equal to 999,999,999.
     """
-    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Seconds of a minute. Must be greater than or equal to 0 and typically must
     be less than or equal to 59. An API may allow the value 60 if it allows
@@ -864,10 +864,10 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgsDict(TypedDi
 @pulumi.input_type
 class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs:
     def __init__(__self__, *,
-                 hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and
                typically must be less than or equal to 23. An API may choose to allow the
@@ -891,7 +891,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Hours of a day in 24 hour format. Must be greater than or equal to 0 and
         typically must be less than or equal to 23. An API may choose to allow the
@@ -900,12 +900,12 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs:
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minutes of an hour. Must be greater than or equal to 0 and less than or
         equal to 59.
@@ -913,12 +913,12 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs:
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minutes", value)
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Fractions of seconds, in nanoseconds. Must be greater than or equal to 0
         and less than or equal to 999,999,999.
@@ -926,12 +926,12 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs:
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds of a minute. Must be greater than or equal to 0 and typically must
         be less than or equal to 59. An API may allow the value 60 if it allows
@@ -940,17 +940,17 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowsStartTimeArgs:
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds", value)
 
 
 class InstanceUpcomingMaintenanceScheduleArgsDict(TypedDict):
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The scheduled end time for the maintenance.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The scheduled start time for the maintenance.
@@ -959,8 +959,8 @@ class InstanceUpcomingMaintenanceScheduleArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceUpcomingMaintenanceScheduleArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end_time: (Output)
                The scheduled end time for the maintenance.
@@ -974,7 +974,7 @@ class InstanceUpcomingMaintenanceScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The scheduled end time for the maintenance.
@@ -982,12 +982,12 @@ class InstanceUpcomingMaintenanceScheduleArgs:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The scheduled start time for the maintenance.
@@ -995,7 +995,7 @@ class InstanceUpcomingMaintenanceScheduleArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 

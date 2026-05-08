@@ -113,8 +113,8 @@ def get_announcements(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         parent=pulumi.get(__ret__, 'parent'))
-def get_announcements_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             parent: Optional[pulumi.Input[_builtins.str]] = None,
+def get_announcements_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             parent: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAnnouncementsResult]:
     """
     Use this data source to list announcements in a region.

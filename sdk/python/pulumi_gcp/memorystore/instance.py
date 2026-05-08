@@ -24,29 +24,29 @@ class InstanceArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  shard_count: pulumi.Input[_builtins.int],
-                 authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 automated_backup_config: Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']] = None,
-                 cross_instance_replication_config: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 desired_auto_created_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]] = None,
-                 desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]] = None,
-                 engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcs_source: Optional[pulumi.Input['InstanceGcsSourceArgs']] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_backup_source: Optional[pulumi.Input['InstanceManagedBackupSourceArgs']] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_distribution_config: Optional[pulumi.Input['InstanceZoneDistributionConfigArgs']] = None):
+                 authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 automated_backup_config: pulumi.Input[Optional['InstanceAutomatedBackupConfigArgs']] = None,
+                 cross_instance_replication_config: pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigArgs']] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 desired_auto_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]] = None,
+                 desired_psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]] = None,
+                 engine_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_source: pulumi.Input[Optional['InstanceGcsSourceArgs']] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_policy: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']] = None,
+                 maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_backup_source: pulumi.Input[Optional['InstanceManagedBackupSourceArgs']] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_config: pulumi.Input[Optional['InstancePersistenceConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_ca_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_distribution_config: pulumi.Input[Optional['InstanceZoneDistributionConfigArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -211,7 +211,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")
-    def authorization_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorization_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Immutable. Authorization mode of the instance. Possible values:
         AUTH_DISABLED
@@ -220,12 +220,12 @@ class InstanceArgs:
         return pulumi.get(self, "authorization_mode")
 
     @authorization_mode.setter
-    def authorization_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorization_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorization_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="automatedBackupConfig")
-    def automated_backup_config(self) -> Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']]:
+    def automated_backup_config(self) -> pulumi.Input[Optional['InstanceAutomatedBackupConfigArgs']]:
         """
         The automated backup config for a instance.
         Structure is documented below.
@@ -233,12 +233,12 @@ class InstanceArgs:
         return pulumi.get(self, "automated_backup_config")
 
     @automated_backup_config.setter
-    def automated_backup_config(self, value: Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']]):
+    def automated_backup_config(self, value: pulumi.Input[Optional['InstanceAutomatedBackupConfigArgs']]):
         pulumi.set(self, "automated_backup_config", value)
 
     @_builtins.property
     @pulumi.getter(name="crossInstanceReplicationConfig")
-    def cross_instance_replication_config(self) -> Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']]:
+    def cross_instance_replication_config(self) -> pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigArgs']]:
         """
         Cross instance replication config
         Structure is documented below.
@@ -246,73 +246,73 @@ class InstanceArgs:
         return pulumi.get(self, "cross_instance_replication_config")
 
     @cross_instance_replication_config.setter
-    def cross_instance_replication_config(self, value: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']]):
+    def cross_instance_replication_config(self, value: pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigArgs']]):
         pulumi.set(self, "cross_instance_replication_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
-    def deletion_protection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. If set to true deletion of the instance will fail.
         """
         return pulumi.get(self, "deletion_protection_enabled")
 
     @deletion_protection_enabled.setter
-    def deletion_protection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredAutoCreatedEndpoints")
-    def desired_auto_created_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]]:
+    def desired_auto_created_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]]:
         """
         Immutable. User inputs for the auto-created endpoints connections.
         """
         return pulumi.get(self, "desired_auto_created_endpoints")
 
     @desired_auto_created_endpoints.setter
-    def desired_auto_created_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]]):
+    def desired_auto_created_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]]):
         pulumi.set(self, "desired_auto_created_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredPscAutoConnections")
     @_utilities.deprecated("""`desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.""")
-    def desired_psc_auto_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]:
+    def desired_psc_auto_connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]:
         """
         `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         """
         return pulumi.get(self, "desired_psc_auto_connections")
 
     @desired_psc_auto_connections.setter
-    def desired_psc_auto_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]):
+    def desired_psc_auto_connections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]):
         pulumi.set(self, "desired_psc_auto_connections", value)
 
     @_builtins.property
     @pulumi.getter(name="engineConfigs")
-    def engine_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def engine_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. User-provided engine configurations for the instance.
         """
         return pulumi.get(self, "engine_configs")
 
     @engine_configs.setter
-    def engine_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def engine_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "engine_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Engine version of the instance.
         """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsSource")
-    def gcs_source(self) -> Optional[pulumi.Input['InstanceGcsSourceArgs']]:
+    def gcs_source(self) -> pulumi.Input[Optional['InstanceGcsSourceArgs']]:
         """
         GCS source for the instance.
         Structure is documented below.
@@ -320,24 +320,24 @@ class InstanceArgs:
         return pulumi.get(self, "gcs_source")
 
     @gcs_source.setter
-    def gcs_source(self, value: Optional[pulumi.Input['InstanceGcsSourceArgs']]):
+    def gcs_source(self, value: pulumi.Input[Optional['InstanceGcsSourceArgs']]):
         pulumi.set(self, "gcs_source", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
-    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The KMS key used to encrypt the at-rest data of the cluster
         """
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
-    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Labels to represent user-provided metadata.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -346,12 +346,12 @@ class InstanceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]:
         """
         Maintenance policy for a cluster
         Structure is documented below.
@@ -359,12 +359,12 @@ class InstanceArgs:
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceVersion")
-    def maintenance_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
         *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
@@ -372,12 +372,12 @@ class InstanceArgs:
         return pulumi.get(self, "maintenance_version")
 
     @maintenance_version.setter
-    def maintenance_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_version", value)
 
     @_builtins.property
     @pulumi.getter(name="managedBackupSource")
-    def managed_backup_source(self) -> Optional[pulumi.Input['InstanceManagedBackupSourceArgs']]:
+    def managed_backup_source(self) -> pulumi.Input[Optional['InstanceManagedBackupSourceArgs']]:
         """
         Managed backup source for the instance.
         Structure is documented below.
@@ -385,12 +385,12 @@ class InstanceArgs:
         return pulumi.get(self, "managed_backup_source")
 
     @managed_backup_source.setter
-    def managed_backup_source(self, value: Optional[pulumi.Input['InstanceManagedBackupSourceArgs']]):
+    def managed_backup_source(self, value: pulumi.Input[Optional['InstanceManagedBackupSourceArgs']]):
         pulumi.set(self, "managed_backup_source", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. cluster or cluster-disabled.
         Possible values:
@@ -401,12 +401,12 @@ class InstanceArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Machine type for individual nodes of the instance.
         Possible values:
@@ -418,12 +418,12 @@ class InstanceArgs:
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
     @_builtins.property
     @pulumi.getter(name="persistenceConfig")
-    def persistence_config(self) -> Optional[pulumi.Input['InstancePersistenceConfigArgs']]:
+    def persistence_config(self) -> pulumi.Input[Optional['InstancePersistenceConfigArgs']]:
         """
         Represents persistence configuration for a instance.
         Structure is documented below.
@@ -431,12 +431,12 @@ class InstanceArgs:
         return pulumi.get(self, "persistence_config")
 
     @persistence_config.setter
-    def persistence_config(self, value: Optional[pulumi.Input['InstancePersistenceConfigArgs']]):
+    def persistence_config(self, value: pulumi.Input[Optional['InstancePersistenceConfigArgs']]):
         pulumi.set(self, "persistence_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -444,24 +444,24 @@ class InstanceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaCount")
-    def replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
         """
         return pulumi.get(self, "replica_count")
 
     @replica_count.setter
-    def replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replica_count", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCaMode")
-    def server_ca_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_ca_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The serverCaMode for the TLS enabled Memorystore instance.
         If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
@@ -470,12 +470,12 @@ class InstanceArgs:
         return pulumi.get(self, "server_ca_mode")
 
     @server_ca_mode.setter
-    def server_ca_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_ca_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_ca_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCaPool")
-    def server_ca_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_ca_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
         as the server_ca_mode.
@@ -484,12 +484,12 @@ class InstanceArgs:
         return pulumi.get(self, "server_ca_pool")
 
     @server_ca_pool.setter
-    def server_ca_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_ca_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_ca_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="transitEncryptionMode")
-    def transit_encryption_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_encryption_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Immutable. In-transit encryption mode of the instance.
         Possible values:
@@ -499,12 +499,12 @@ class InstanceArgs:
         return pulumi.get(self, "transit_encryption_mode")
 
     @transit_encryption_mode.setter
-    def transit_encryption_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_encryption_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_encryption_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneDistributionConfig")
-    def zone_distribution_config(self) -> Optional[pulumi.Input['InstanceZoneDistributionConfigArgs']]:
+    def zone_distribution_config(self) -> pulumi.Input[Optional['InstanceZoneDistributionConfigArgs']]:
         """
         Zone distribution configuration for allocation of instance resources.
         Structure is documented below.
@@ -512,57 +512,57 @@ class InstanceArgs:
         return pulumi.get(self, "zone_distribution_config")
 
     @zone_distribution_config.setter
-    def zone_distribution_config(self, value: Optional[pulumi.Input['InstanceZoneDistributionConfigArgs']]):
+    def zone_distribution_config(self, value: pulumi.Input[Optional['InstanceZoneDistributionConfigArgs']]):
         pulumi.set(self, "zone_distribution_config", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 automated_backup_config: Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']] = None,
-                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_collection: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_instance_replication_config: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 desired_auto_created_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]] = None,
-                 desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]] = None,
-                 discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiscoveryEndpointArgs']]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]] = None,
-                 engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcs_source: Optional[pulumi.Input['InstanceGcsSourceArgs']] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-                 maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
-                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_backup_source: Optional[pulumi.Input['InstanceManagedBackupSourceArgs']] = None,
-                 managed_server_cas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaArgs']]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeConfigArgs']]]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_attachment_details: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscAttachmentDetailArgs']]]] = None,
-                 psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscAutoConnectionArgs']]]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceStateInfoArgs']]]] = None,
-                 transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_distribution_config: Optional[pulumi.Input['InstanceZoneDistributionConfigArgs']] = None):
+                 authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 automated_backup_config: pulumi.Input[Optional['InstanceAutomatedBackupConfigArgs']] = None,
+                 available_maintenance_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_collection: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_instance_replication_config: pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigArgs']] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 desired_auto_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]] = None,
+                 desired_psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]] = None,
+                 discovery_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDiscoveryEndpointArgs']]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointArgs']]]] = None,
+                 engine_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_source: pulumi.Input[Optional['InstanceGcsSourceArgs']] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']] = None,
+                 maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
+                 maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_backup_source: pulumi.Input[Optional['InstanceManagedBackupSourceArgs']] = None,
+                 managed_server_cas: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceManagedServerCaArgs']]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_configs: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNodeConfigArgs']]]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_config: pulumi.Input[Optional['InstancePersistenceConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_attachment_details: pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscAttachmentDetailArgs']]]] = None,
+                 psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscAutoConnectionArgs']]]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_ca_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_infos: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceStateInfoArgs']]]] = None,
+                 transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_distribution_config: pulumi.Input[Optional['InstanceZoneDistributionConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -765,7 +765,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")
-    def authorization_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorization_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Immutable. Authorization mode of the instance. Possible values:
         AUTH_DISABLED
@@ -774,12 +774,12 @@ class _InstanceState:
         return pulumi.get(self, "authorization_mode")
 
     @authorization_mode.setter
-    def authorization_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorization_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorization_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="automatedBackupConfig")
-    def automated_backup_config(self) -> Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']]:
+    def automated_backup_config(self) -> pulumi.Input[Optional['InstanceAutomatedBackupConfigArgs']]:
         """
         The automated backup config for a instance.
         Structure is documented below.
@@ -787,24 +787,24 @@ class _InstanceState:
         return pulumi.get(self, "automated_backup_config")
 
     @automated_backup_config.setter
-    def automated_backup_config(self, value: Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']]):
+    def automated_backup_config(self, value: pulumi.Input[Optional['InstanceAutomatedBackupConfigArgs']]):
         pulumi.set(self, "automated_backup_config", value)
 
     @_builtins.property
     @pulumi.getter(name="availableMaintenanceVersions")
-    def available_maintenance_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def available_maintenance_versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         This field is used to determine the available maintenance versions for the self service update.
         """
         return pulumi.get(self, "available_maintenance_versions")
 
     @available_maintenance_versions.setter
-    def available_maintenance_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def available_maintenance_versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "available_maintenance_versions", value)
 
     @_builtins.property
     @pulumi.getter(name="backupCollection")
-    def backup_collection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_collection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup collection full resource name.
         Example: projects/{project}/locations/{location}/backupCollections/{collection}
@@ -812,24 +812,24 @@ class _InstanceState:
         return pulumi.get(self, "backup_collection")
 
     @backup_collection.setter
-    def backup_collection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_collection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_collection", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Creation timestamp of the instance.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="crossInstanceReplicationConfig")
-    def cross_instance_replication_config(self) -> Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']]:
+    def cross_instance_replication_config(self) -> pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigArgs']]:
         """
         Cross instance replication config
         Structure is documented below.
@@ -837,50 +837,50 @@ class _InstanceState:
         return pulumi.get(self, "cross_instance_replication_config")
 
     @cross_instance_replication_config.setter
-    def cross_instance_replication_config(self, value: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']]):
+    def cross_instance_replication_config(self, value: pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigArgs']]):
         pulumi.set(self, "cross_instance_replication_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
-    def deletion_protection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. If set to true deletion of the instance will fail.
         """
         return pulumi.get(self, "deletion_protection_enabled")
 
     @deletion_protection_enabled.setter
-    def deletion_protection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredAutoCreatedEndpoints")
-    def desired_auto_created_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]]:
+    def desired_auto_created_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]]:
         """
         Immutable. User inputs for the auto-created endpoints connections.
         """
         return pulumi.get(self, "desired_auto_created_endpoints")
 
     @desired_auto_created_endpoints.setter
-    def desired_auto_created_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]]):
+    def desired_auto_created_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]]):
         pulumi.set(self, "desired_auto_created_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredPscAutoConnections")
     @_utilities.deprecated("""`desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.""")
-    def desired_psc_auto_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]:
+    def desired_psc_auto_connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]:
         """
         `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         """
         return pulumi.get(self, "desired_psc_auto_connections")
 
     @desired_psc_auto_connections.setter
-    def desired_psc_auto_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]):
+    def desired_psc_auto_connections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]):
         pulumi.set(self, "desired_psc_auto_connections", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryEndpoints")
     @_utilities.deprecated("""This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.""")
-    def discovery_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiscoveryEndpointArgs']]]]:
+    def discovery_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDiscoveryEndpointArgs']]]]:
         """
         (Deprecated)
         Deprecated. Output only. Endpoints clients can connect to the instance through.
@@ -889,36 +889,36 @@ class _InstanceState:
         return pulumi.get(self, "discovery_endpoints")
 
     @discovery_endpoints.setter
-    def discovery_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiscoveryEndpointArgs']]]]):
+    def discovery_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDiscoveryEndpointArgs']]]]):
         pulumi.set(self, "discovery_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveMaintenanceVersion")
-    def effective_maintenance_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_maintenance_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field represents the actual maintenance version of the cluster.
         """
         return pulumi.get(self, "effective_maintenance_version")
 
     @effective_maintenance_version.setter
-    def effective_maintenance_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_maintenance_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_maintenance_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]]:
+    def endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointArgs']]]]:
         """
         Endpoints for the instance.
         Structure is documented below.
@@ -926,36 +926,36 @@ class _InstanceState:
         return pulumi.get(self, "endpoints")
 
     @endpoints.setter
-    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]]):
+    def endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointArgs']]]]):
         pulumi.set(self, "endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="engineConfigs")
-    def engine_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def engine_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. User-provided engine configurations for the instance.
         """
         return pulumi.get(self, "engine_configs")
 
     @engine_configs.setter
-    def engine_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def engine_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "engine_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Engine version of the instance.
         """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsSource")
-    def gcs_source(self) -> Optional[pulumi.Input['InstanceGcsSourceArgs']]:
+    def gcs_source(self) -> pulumi.Input[Optional['InstanceGcsSourceArgs']]:
         """
         GCS source for the instance.
         Structure is documented below.
@@ -963,12 +963,12 @@ class _InstanceState:
         return pulumi.get(self, "gcs_source")
 
     @gcs_source.setter
-    def gcs_source(self, value: Optional[pulumi.Input['InstanceGcsSourceArgs']]):
+    def gcs_source(self, value: pulumi.Input[Optional['InstanceGcsSourceArgs']]):
         pulumi.set(self, "gcs_source", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The ID to use for the instance, which will become the final component of
         the instance's resource name.
@@ -982,24 +982,24 @@ class _InstanceState:
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
-    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The KMS key used to encrypt the at-rest data of the cluster
         """
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
-    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Labels to represent user-provided metadata.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1008,24 +1008,24 @@ class _InstanceState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]:
         """
         Maintenance policy for a cluster
         Structure is documented below.
@@ -1033,12 +1033,12 @@ class _InstanceState:
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceSchedules")
-    def maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]:
+    def maintenance_schedules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]:
         """
         Upcoming maintenance schedule.
         Structure is documented below.
@@ -1046,12 +1046,12 @@ class _InstanceState:
         return pulumi.get(self, "maintenance_schedules")
 
     @maintenance_schedules.setter
-    def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
+    def maintenance_schedules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
         pulumi.set(self, "maintenance_schedules", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceVersion")
-    def maintenance_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
         *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
@@ -1059,12 +1059,12 @@ class _InstanceState:
         return pulumi.get(self, "maintenance_version")
 
     @maintenance_version.setter
-    def maintenance_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_version", value)
 
     @_builtins.property
     @pulumi.getter(name="managedBackupSource")
-    def managed_backup_source(self) -> Optional[pulumi.Input['InstanceManagedBackupSourceArgs']]:
+    def managed_backup_source(self) -> pulumi.Input[Optional['InstanceManagedBackupSourceArgs']]:
         """
         Managed backup source for the instance.
         Structure is documented below.
@@ -1072,12 +1072,12 @@ class _InstanceState:
         return pulumi.get(self, "managed_backup_source")
 
     @managed_backup_source.setter
-    def managed_backup_source(self, value: Optional[pulumi.Input['InstanceManagedBackupSourceArgs']]):
+    def managed_backup_source(self, value: pulumi.Input[Optional['InstanceManagedBackupSourceArgs']]):
         pulumi.set(self, "managed_backup_source", value)
 
     @_builtins.property
     @pulumi.getter(name="managedServerCas")
-    def managed_server_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaArgs']]]]:
+    def managed_server_cas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceManagedServerCaArgs']]]]:
         """
         Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION
         Structure is documented below.
@@ -1085,12 +1085,12 @@ class _InstanceState:
         return pulumi.get(self, "managed_server_cas")
 
     @managed_server_cas.setter
-    def managed_server_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaArgs']]]]):
+    def managed_server_cas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceManagedServerCaArgs']]]]):
         pulumi.set(self, "managed_server_cas", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. cluster or cluster-disabled.
         Possible values:
@@ -1101,12 +1101,12 @@ class _InstanceState:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. Unique name of the instance.
         Format: projects/{project}/locations/{location}/instances/{instance}
@@ -1114,12 +1114,12 @@ class _InstanceState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeConfigs")
-    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeConfigArgs']]]]:
+    def node_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNodeConfigArgs']]]]:
         """
         Represents configuration for nodes of the instance.
         Structure is documented below.
@@ -1127,12 +1127,12 @@ class _InstanceState:
         return pulumi.get(self, "node_configs")
 
     @node_configs.setter
-    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeConfigArgs']]]]):
+    def node_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNodeConfigArgs']]]]):
         pulumi.set(self, "node_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Machine type for individual nodes of the instance.
         Possible values:
@@ -1144,12 +1144,12 @@ class _InstanceState:
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
     @_builtins.property
     @pulumi.getter(name="persistenceConfig")
-    def persistence_config(self) -> Optional[pulumi.Input['InstancePersistenceConfigArgs']]:
+    def persistence_config(self) -> pulumi.Input[Optional['InstancePersistenceConfigArgs']]:
         """
         Represents persistence configuration for a instance.
         Structure is documented below.
@@ -1157,12 +1157,12 @@ class _InstanceState:
         return pulumi.get(self, "persistence_config")
 
     @persistence_config.setter
-    def persistence_config(self, value: Optional[pulumi.Input['InstancePersistenceConfigArgs']]):
+    def persistence_config(self, value: pulumi.Input[Optional['InstancePersistenceConfigArgs']]):
         pulumi.set(self, "persistence_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -1170,12 +1170,12 @@ class _InstanceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pscAttachmentDetails")
-    def psc_attachment_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscAttachmentDetailArgs']]]]:
+    def psc_attachment_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscAttachmentDetailArgs']]]]:
         """
         Configuration of a service attachment of the cluster, for creating PSC connections.
         Structure is documented below.
@@ -1183,13 +1183,13 @@ class _InstanceState:
         return pulumi.get(self, "psc_attachment_details")
 
     @psc_attachment_details.setter
-    def psc_attachment_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscAttachmentDetailArgs']]]]):
+    def psc_attachment_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscAttachmentDetailArgs']]]]):
         pulumi.set(self, "psc_attachment_details", value)
 
     @_builtins.property
     @pulumi.getter(name="pscAutoConnections")
     @_utilities.deprecated("""`psc_auto_connections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.""")
-    def psc_auto_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscAutoConnectionArgs']]]]:
+    def psc_auto_connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscAutoConnectionArgs']]]]:
         """
         (Deprecated)
         Output only. User inputs and resource details of the auto-created PSC connections.
@@ -1198,12 +1198,12 @@ class _InstanceState:
         return pulumi.get(self, "psc_auto_connections")
 
     @psc_auto_connections.setter
-    def psc_auto_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscAutoConnectionArgs']]]]):
+    def psc_auto_connections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscAutoConnectionArgs']]]]):
         pulumi.set(self, "psc_auto_connections", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -1211,24 +1211,24 @@ class _InstanceState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaCount")
-    def replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
         """
         return pulumi.get(self, "replica_count")
 
     @replica_count.setter
-    def replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replica_count", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCaMode")
-    def server_ca_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_ca_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The serverCaMode for the TLS enabled Memorystore instance.
         If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
@@ -1237,12 +1237,12 @@ class _InstanceState:
         return pulumi.get(self, "server_ca_mode")
 
     @server_ca_mode.setter
-    def server_ca_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_ca_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_ca_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCaPool")
-    def server_ca_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_ca_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
         as the server_ca_mode.
@@ -1251,24 +1251,24 @@ class _InstanceState:
         return pulumi.get(self, "server_ca_pool")
 
     @server_ca_pool.setter
-    def server_ca_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_ca_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_ca_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="shardCount")
-    def shard_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shard_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Required. Number of shards for the instance.
         """
         return pulumi.get(self, "shard_count")
 
     @shard_count.setter
-    def shard_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shard_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shard_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Current state of the instance.
         Possible values:
@@ -1280,12 +1280,12 @@ class _InstanceState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateInfos")
-    def state_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceStateInfoArgs']]]]:
+    def state_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceStateInfoArgs']]]]:
         """
         Additional information about the state of the instance.
         Structure is documented below.
@@ -1293,12 +1293,12 @@ class _InstanceState:
         return pulumi.get(self, "state_infos")
 
     @state_infos.setter
-    def state_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceStateInfoArgs']]]]):
+    def state_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceStateInfoArgs']]]]):
         pulumi.set(self, "state_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="transitEncryptionMode")
-    def transit_encryption_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_encryption_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Immutable. In-transit encryption mode of the instance.
         Possible values:
@@ -1308,36 +1308,36 @@ class _InstanceState:
         return pulumi.get(self, "transit_encryption_mode")
 
     @transit_encryption_mode.setter
-    def transit_encryption_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_encryption_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_encryption_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. System assigned, unique identifier for the instance.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Latest update timestamp of the instance.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneDistributionConfig")
-    def zone_distribution_config(self) -> Optional[pulumi.Input['InstanceZoneDistributionConfigArgs']]:
+    def zone_distribution_config(self) -> pulumi.Input[Optional['InstanceZoneDistributionConfigArgs']]:
         """
         Zone distribution configuration for allocation of instance resources.
         Structure is documented below.
@@ -1345,7 +1345,7 @@ class _InstanceState:
         return pulumi.get(self, "zone_distribution_config")
 
     @zone_distribution_config.setter
-    def zone_distribution_config(self, value: Optional[pulumi.Input['InstanceZoneDistributionConfigArgs']]):
+    def zone_distribution_config(self, value: pulumi.Input[Optional['InstanceZoneDistributionConfigArgs']]):
         pulumi.set(self, "zone_distribution_config", value)
 
 
@@ -1355,32 +1355,32 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 automated_backup_config: Optional[pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
-                 cross_instance_replication_config: Optional[pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 desired_auto_created_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict']]]]] = None,
-                 desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
-                 engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcs_source: Optional[pulumi.Input[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
-                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_backup_source: Optional[pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_config: Optional[pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_distribution_config: Optional[pulumi.Input[Union['InstanceZoneDistributionConfigArgs', 'InstanceZoneDistributionConfigArgsDict']]] = None,
+                 authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 automated_backup_config: pulumi.Input[Optional[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
+                 cross_instance_replication_config: pulumi.Input[Optional[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 desired_auto_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict']]]]] = None,
+                 desired_psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
+                 engine_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_source: pulumi.Input[Optional[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+                 maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_backup_source: pulumi.Input[Optional[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_config: pulumi.Input[Optional[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_ca_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_distribution_config: pulumi.Input[Optional[Union['InstanceZoneDistributionConfigArgs', 'InstanceZoneDistributionConfigArgsDict']]] = None,
                  __props__=None):
         """
         A Google Cloud Memorystore instance.
@@ -2226,32 +2226,32 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 automated_backup_config: Optional[pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
-                 cross_instance_replication_config: Optional[pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 desired_auto_created_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict']]]]] = None,
-                 desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
-                 engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcs_source: Optional[pulumi.Input[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
-                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_backup_source: Optional[pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_config: Optional[pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_distribution_config: Optional[pulumi.Input[Union['InstanceZoneDistributionConfigArgs', 'InstanceZoneDistributionConfigArgsDict']]] = None,
+                 authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 automated_backup_config: pulumi.Input[Optional[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
+                 cross_instance_replication_config: pulumi.Input[Optional[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 desired_auto_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict']]]]] = None,
+                 desired_psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
+                 engine_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_source: pulumi.Input[Optional[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+                 maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_backup_source: pulumi.Input[Optional[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_config: pulumi.Input[Optional[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_ca_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_distribution_config: pulumi.Input[Optional[Union['InstanceZoneDistributionConfigArgs', 'InstanceZoneDistributionConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2323,50 +2323,50 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            automated_backup_config: Optional[pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
-            available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            backup_collection: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_instance_replication_config: Optional[pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
-            deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            desired_auto_created_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict']]]]] = None,
-            desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
-            discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDiscoveryEndpointArgs', 'InstanceDiscoveryEndpointArgsDict']]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
-            engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-            gcs_source: Optional[pulumi.Input[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
-            maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]]] = None,
-            maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-            managed_backup_source: Optional[pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']]] = None,
-            managed_server_cas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceManagedServerCaArgs', 'InstanceManagedServerCaArgsDict']]]]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']]]]] = None,
-            node_type: Optional[pulumi.Input[_builtins.str]] = None,
-            persistence_config: Optional[pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            psc_attachment_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePscAttachmentDetailArgs', 'InstancePscAttachmentDetailArgsDict']]]]] = None,
-            psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePscAutoConnectionArgs', 'InstancePscAutoConnectionArgsDict']]]]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-            server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
-            shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            state_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceStateInfoArgs', 'InstanceStateInfoArgsDict']]]]] = None,
-            transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_distribution_config: Optional[pulumi.Input[Union['InstanceZoneDistributionConfigArgs', 'InstanceZoneDistributionConfigArgsDict']]] = None) -> 'Instance':
+            authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            automated_backup_config: pulumi.Input[Optional[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
+            available_maintenance_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backup_collection: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_instance_replication_config: pulumi.Input[Optional[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
+            deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            desired_auto_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict']]]]] = None,
+            desired_psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
+            discovery_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDiscoveryEndpointArgs', 'InstanceDiscoveryEndpointArgsDict']]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
+            engine_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            gcs_source: pulumi.Input[Optional[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+            maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]]] = None,
+            maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_backup_source: pulumi.Input[Optional[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']]] = None,
+            managed_server_cas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceManagedServerCaArgs', 'InstanceManagedServerCaArgsDict']]]]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']]]]] = None,
+            node_type: pulumi.Input[Optional[_builtins.str]] = None,
+            persistence_config: pulumi.Input[Optional[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_attachment_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstancePscAttachmentDetailArgs', 'InstancePscAttachmentDetailArgsDict']]]]] = None,
+            psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstancePscAutoConnectionArgs', 'InstancePscAutoConnectionArgsDict']]]]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+            server_ca_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            server_ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceStateInfoArgs', 'InstanceStateInfoArgsDict']]]]] = None,
+            transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_distribution_config: pulumi.Input[Optional[Union['InstanceZoneDistributionConfigArgs', 'InstanceZoneDistributionConfigArgsDict']]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

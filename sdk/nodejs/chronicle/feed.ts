@@ -325,15 +325,15 @@ export interface FeedState {
      * different for each of the feeds.
      * Structure is documented below.
      */
-    details?: pulumi.Input<inputs.chronicle.FeedDetails>;
+    details?: pulumi.Input<inputs.chronicle.FeedDetails | undefined>;
     /**
      * Customer-provided feed name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Whether the feed is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * FeedFailureDetails contains details about the errors thrown by chronicle for
      * the feeds. These are user visible details. These details help user identify
@@ -341,62 +341,62 @@ export interface FeedState {
      * NEXT TAG: 5
      * Structure is documented below.
      */
-    failureDetails?: pulumi.Input<inputs.chronicle.FeedFailureDetails>;
+    failureDetails?: pulumi.Input<inputs.chronicle.FeedFailureDetails | undefined>;
     /**
      * Details about the most recent failure when feed state is FAILED.
      */
-    failureMsg?: pulumi.Input<string>;
+    failureMsg?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    feed?: pulumi.Input<string>;
+    feed?: pulumi.Input<string | undefined>;
     /**
      * Output only. The service account used by Chronicle to ingest data from Cloud Storage. This is only available when the feed source type is GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN or GOOGLE_CLOUD_STORAGE.
      */
-    feedServiceAccount?: pulumi.Input<string>;
+    feedServiceAccount?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * Latest timestamp when the transfer was successful for the feed.
      */
-    lastFeedInitiationTime?: pulumi.Input<string>;
+    lastFeedInitiationTime?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the feed.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/feeds/{feed}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Whether this feed can be updated or deleted.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Reference ID, this field will contain the legacy id of the feed.
      */
-    referenceId?: pulumi.Input<string>;
+    referenceId?: pulumi.Input<string | undefined>;
     /**
      * Output only. The secret generated for the feed. This is only available when the feed source type is HTTPS_PUSH_AMAZON_KINESIS_FIREHOSE.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * The state of the feed (e.g., ACTIVE, INACTIVE).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for the feed.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -408,15 +408,15 @@ export interface FeedArgs {
      * different for each of the feeds.
      * Structure is documented below.
      */
-    details?: pulumi.Input<inputs.chronicle.FeedDetails>;
+    details?: pulumi.Input<inputs.chronicle.FeedDetails | undefined>;
     /**
      * Customer-provided feed name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Whether the feed is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * FeedFailureDetails contains details about the errors thrown by chronicle for
      * the feeds. These are user visible details. These details help user identify
@@ -424,11 +424,11 @@ export interface FeedArgs {
      * NEXT TAG: 5
      * Structure is documented below.
      */
-    failureDetails?: pulumi.Input<inputs.chronicle.FeedFailureDetails>;
+    failureDetails?: pulumi.Input<inputs.chronicle.FeedFailureDetails | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    feed?: pulumi.Input<string>;
+    feed?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -441,5 +441,5 @@ export interface FeedArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

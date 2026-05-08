@@ -297,57 +297,57 @@ export interface RuntimeState {
     /**
      * Triggers an upgrade anytime the runtime is started if it is upgradable.
      */
-    autoUpgrade?: pulumi.Input<boolean>;
+    autoUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the Runtime.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * Required. The display name of the Runtime.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Output only. Timestamp when this NotebookRuntime will be expired.
      */
-    expirationTime?: pulumi.Input<string>;
+    expirationTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. Checks if the NotebookRuntime is upgradable.
      */
-    isUpgradable?: pulumi.Input<boolean>;
+    isUpgradable?: pulumi.Input<boolean | undefined>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the Runtime
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * 'Runtime specific information used for NotebookRuntime creation.'
      * Structure is documented below.
      */
-    notebookRuntimeTemplateRef?: pulumi.Input<inputs.colab.RuntimeNotebookRuntimeTemplateRef>;
+    notebookRuntimeTemplateRef?: pulumi.Input<inputs.colab.RuntimeNotebookRuntimeTemplateRef | undefined>;
     /**
      * Output only. The type of the notebook runtime.
      */
-    notebookRuntimeType?: pulumi.Input<string>;
+    notebookRuntimeType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The user email of the NotebookRuntime.
      */
-    runtimeUser?: pulumi.Input<string>;
+    runtimeUser?: pulumi.Input<string | undefined>;
     /**
      * Output only. The state of the runtime.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -357,15 +357,15 @@ export interface RuntimeArgs {
     /**
      * Triggers an upgrade anytime the runtime is started if it is upgradable.
      */
-    autoUpgrade?: pulumi.Input<boolean>;
+    autoUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the Runtime.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * Required. The display name of the Runtime.
      */
@@ -377,17 +377,17 @@ export interface RuntimeArgs {
     /**
      * The resource name of the Runtime
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * 'Runtime specific information used for NotebookRuntime creation.'
      * Structure is documented below.
      */
-    notebookRuntimeTemplateRef?: pulumi.Input<inputs.colab.RuntimeNotebookRuntimeTemplateRef>;
+    notebookRuntimeTemplateRef?: pulumi.Input<inputs.colab.RuntimeNotebookRuntimeTemplateRef | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The user email of the NotebookRuntime.
      */

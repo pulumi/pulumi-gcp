@@ -506,9 +506,9 @@ def get_service(location: Optional[_builtins.str] = None,
         update_time=pulumi.get(__ret__, 'update_time'),
         uri=pulumi.get(__ret__, 'uri'),
         urls=pulumi.get(__ret__, 'urls'))
-def get_service_output(location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       name: Optional[pulumi.Input[_builtins.str]] = None,
-                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_service_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       name: pulumi.Input[Optional[_builtins.str]] = None,
+                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceResult]:
     """
     Get information about a Google Cloud Run v2 Service. For more information see

@@ -122,7 +122,7 @@ def get_default_service_account(project: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         member=pulumi.get(__ret__, 'member'),
         project=pulumi.get(__ret__, 'project'))
-def get_default_service_account_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_default_service_account_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDefaultServiceAccountResult]:
     """
     Get the email address of a project's unique BigQuery service account.

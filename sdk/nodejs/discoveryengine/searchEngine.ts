@@ -285,46 +285,46 @@ export interface SearchEngineState {
      * This is the application type this engine resource represents.
      * The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
      */
-    appType?: pulumi.Input<string>;
+    appType?: pulumi.Input<string | undefined>;
     /**
      * The collection ID.
      */
-    collectionId?: pulumi.Input<string>;
+    collectionId?: pulumi.Input<string | undefined>;
     /**
      * Common config spec that specifies the metadata of the engine.
      * Structure is documented below.
      */
-    commonConfig?: pulumi.Input<inputs.discoveryengine.SearchEngineCommonConfig>;
+    commonConfig?: pulumi.Input<inputs.discoveryengine.SearchEngineCommonConfig | undefined>;
     /**
      * Timestamp the Engine was created at.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
      */
-    dataStoreIds?: pulumi.Input<pulumi.Input<string>[]>;
+    dataStoreIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to disable analytics for searches performed on this engine.
      */
-    disableAnalytics?: pulumi.Input<boolean>;
+    disableAnalytics?: pulumi.Input<boolean | undefined>;
     /**
      * Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Unique ID to use for Search Engine App.
      */
-    engineId?: pulumi.Input<string>;
+    engineId?: pulumi.Input<string | undefined>;
     /**
      * A map of the feature config for the engine to opt in or opt out of features.
      */
-    features?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    features?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
      * Default value is `GENERIC`.
      * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      */
-    industryVertical?: pulumi.Input<string>;
+    industryVertical?: pulumi.Input<string | undefined>;
     /**
      * The KMS key to be used to protect this Engine at creation time.
      * Must be set for requests that need to comply with CMEK Org Policy
@@ -332,37 +332,37 @@ export interface SearchEngineState {
      * If this field is set and processed successfully, the Engine will be
      * protected by the KMS key, as indicated in the cmekConfig field.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * Configurations for the Knowledge Graph.
      * Structure is documented below.
      */
-    knowledgeGraphConfig?: pulumi.Input<inputs.discoveryengine.SearchEngineKnowledgeGraphConfig>;
+    knowledgeGraphConfig?: pulumi.Input<inputs.discoveryengine.SearchEngineKnowledgeGraphConfig | undefined>;
     /**
      * Location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique full resource name of the search engine. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
      * characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configurations for a Search Engine.
      * Structure is documented below.
      */
-    searchEngineConfig?: pulumi.Input<inputs.discoveryengine.SearchEngineSearchEngineConfig>;
+    searchEngineConfig?: pulumi.Input<inputs.discoveryengine.SearchEngineSearchEngineConfig | undefined>;
     /**
      * Timestamp the Engine was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -373,7 +373,7 @@ export interface SearchEngineArgs {
      * This is the application type this engine resource represents.
      * The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
      */
-    appType?: pulumi.Input<string>;
+    appType?: pulumi.Input<string | undefined>;
     /**
      * The collection ID.
      */
@@ -382,7 +382,7 @@ export interface SearchEngineArgs {
      * Common config spec that specifies the metadata of the engine.
      * Structure is documented below.
      */
-    commonConfig?: pulumi.Input<inputs.discoveryengine.SearchEngineCommonConfig>;
+    commonConfig?: pulumi.Input<inputs.discoveryengine.SearchEngineCommonConfig | undefined>;
     /**
      * The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
      */
@@ -390,7 +390,7 @@ export interface SearchEngineArgs {
     /**
      * Whether to disable analytics for searches performed on this engine.
      */
-    disableAnalytics?: pulumi.Input<boolean>;
+    disableAnalytics?: pulumi.Input<boolean | undefined>;
     /**
      * Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
      */
@@ -402,13 +402,13 @@ export interface SearchEngineArgs {
     /**
      * A map of the feature config for the engine to opt in or opt out of features.
      */
-    features?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    features?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
      * Default value is `GENERIC`.
      * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      */
-    industryVertical?: pulumi.Input<string>;
+    industryVertical?: pulumi.Input<string | undefined>;
     /**
      * The KMS key to be used to protect this Engine at creation time.
      * Must be set for requests that need to comply with CMEK Org Policy
@@ -416,12 +416,12 @@ export interface SearchEngineArgs {
      * If this field is set and processed successfully, the Engine will be
      * protected by the KMS key, as indicated in the cmekConfig field.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * Configurations for the Knowledge Graph.
      * Structure is documented below.
      */
-    knowledgeGraphConfig?: pulumi.Input<inputs.discoveryengine.SearchEngineKnowledgeGraphConfig>;
+    knowledgeGraphConfig?: pulumi.Input<inputs.discoveryengine.SearchEngineKnowledgeGraphConfig | undefined>;
     /**
      * Location.
      */
@@ -430,7 +430,7 @@ export interface SearchEngineArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configurations for a Search Engine.
      * Structure is documented below.

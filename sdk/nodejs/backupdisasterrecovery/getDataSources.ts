@@ -118,7 +118,7 @@ export interface GetDataSourcesOutputArgs {
     /**
      * An expression to filter the results. For example, data_source_gcp_resource.type="compute.googleapis.com/Instance"
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The location in which the Data Source belongs.
      */
@@ -126,9 +126,9 @@ export interface GetDataSourcesOutputArgs {
     /**
      * An expression to order the results. For example, createTime desc
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * The Google Cloud Project in which the Data Source belongs.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

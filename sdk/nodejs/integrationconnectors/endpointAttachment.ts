@@ -190,56 +190,56 @@ export interface EndpointAttachmentState {
     /**
      * Time the Namespace was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Enable global access for endpoint attachment.
      */
-    endpointGlobalAccess?: pulumi.Input<boolean>;
+    endpointGlobalAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The Private Service Connect connection endpoint ip.
      */
-    endpointIp?: pulumi.Input<string>;
+    endpointIp?: pulumi.Input<string | undefined>;
     /**
      * Resource labels to represent user provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location in which Endpoint Attachment needs to be created.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of Endpoint Attachment needs to be created.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The path of the service attachment.
      */
-    serviceAttachment?: pulumi.Input<string>;
+    serviceAttachment?: pulumi.Input<string | undefined>;
     /**
      * Time the Namespace was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -249,18 +249,18 @@ export interface EndpointAttachmentArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable global access for endpoint attachment.
      */
-    endpointGlobalAccess?: pulumi.Input<boolean>;
+    endpointGlobalAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Resource labels to represent user provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location in which Endpoint Attachment needs to be created.
      */
@@ -268,12 +268,12 @@ export interface EndpointAttachmentArgs {
     /**
      * Name of Endpoint Attachment needs to be created.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The path of the service attachment.
      */

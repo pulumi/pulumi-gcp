@@ -79,11 +79,11 @@ export class RepositoryIamPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RepositoryIamPolicy resources.
  */
 export interface RepositoryIamPolicyState {
-    etag?: pulumi.Input<string>;
-    policyData?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-    repository?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
+    policyData?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
+    repository?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -91,7 +91,7 @@ export interface RepositoryIamPolicyState {
  */
 export interface RepositoryIamPolicyArgs {
     policyData: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
     repository: pulumi.Input<string>;
 }

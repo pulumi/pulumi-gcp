@@ -211,16 +211,16 @@ export interface ConfigState {
     /**
      * Optional. A reference to the customer-managed encryption key (CMEK) that will be used by default to encrypt user data.
      */
-    defaultKmsKeyName?: pulumi.Input<string>;
+    defaultKmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the region
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -230,12 +230,12 @@ export interface ConfigArgs {
     /**
      * Optional. A reference to the customer-managed encryption key (CMEK) that will be used by default to encrypt user data.
      */
-    defaultKmsKeyName?: pulumi.Input<string>;
+    defaultKmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the region
      */

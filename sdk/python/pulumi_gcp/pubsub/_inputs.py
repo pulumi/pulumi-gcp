@@ -135,7 +135,7 @@ class LiteTopicPartitionConfigArgsDict(TypedDict):
     """
     The number of partitions in the topic. Must be at least 1.
     """
-    capacity: NotRequired[pulumi.Input['LiteTopicPartitionConfigCapacityArgsDict']]
+    capacity: NotRequired[pulumi.Input[Optional['LiteTopicPartitionConfigCapacityArgs']]]
     """
     The capacity configuration.
     Structure is documented below.
@@ -145,7 +145,7 @@ class LiteTopicPartitionConfigArgsDict(TypedDict):
 class LiteTopicPartitionConfigArgs:
     def __init__(__self__, *,
                  count: pulumi.Input[_builtins.int],
-                 capacity: Optional[pulumi.Input['LiteTopicPartitionConfigCapacityArgs']] = None):
+                 capacity: pulumi.Input[Optional['LiteTopicPartitionConfigCapacityArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] count: The number of partitions in the topic. Must be at least 1.
         :param pulumi.Input['LiteTopicPartitionConfigCapacityArgs'] capacity: The capacity configuration.
@@ -169,7 +169,7 @@ class LiteTopicPartitionConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def capacity(self) -> Optional[pulumi.Input['LiteTopicPartitionConfigCapacityArgs']]:
+    def capacity(self) -> pulumi.Input[Optional['LiteTopicPartitionConfigCapacityArgs']]:
         """
         The capacity configuration.
         Structure is documented below.
@@ -177,7 +177,7 @@ class LiteTopicPartitionConfigArgs:
         return pulumi.get(self, "capacity")
 
     @capacity.setter
-    def capacity(self, value: Optional[pulumi.Input['LiteTopicPartitionConfigCapacityArgs']]):
+    def capacity(self, value: pulumi.Input[Optional['LiteTopicPartitionConfigCapacityArgs']]):
         pulumi.set(self, "capacity", value)
 
 
@@ -229,7 +229,7 @@ class LiteTopicPartitionConfigCapacityArgs:
 
 
 class LiteTopicReservationConfigArgsDict(TypedDict):
-    throughput_reservation: NotRequired[pulumi.Input[_builtins.str]]
+    throughput_reservation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Reservation to use for this topic's throughput capacity.
     """
@@ -237,7 +237,7 @@ class LiteTopicReservationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class LiteTopicReservationConfigArgs:
     def __init__(__self__, *,
-                 throughput_reservation: Optional[pulumi.Input[_builtins.str]] = None):
+                 throughput_reservation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] throughput_reservation: The Reservation to use for this topic's throughput capacity.
         """
@@ -246,14 +246,14 @@ class LiteTopicReservationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="throughputReservation")
-    def throughput_reservation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def throughput_reservation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Reservation to use for this topic's throughput capacity.
         """
         return pulumi.get(self, "throughput_reservation")
 
     @throughput_reservation.setter
-    def throughput_reservation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def throughput_reservation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "throughput_reservation", value)
 
 
@@ -264,7 +264,7 @@ class LiteTopicRetentionConfigArgsDict(TypedDict):
     in any of the topic's partitions grows beyond this value, older messages will be
     dropped to make room for newer ones, regardless of the value of period.
     """
-    period: NotRequired[pulumi.Input[_builtins.str]]
+    period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     How long a published message is retained. If unset, messages will be retained as
     long as the bytes retained for each partition is below perPartitionBytes. A
@@ -276,7 +276,7 @@ class LiteTopicRetentionConfigArgsDict(TypedDict):
 class LiteTopicRetentionConfigArgs:
     def __init__(__self__, *,
                  per_partition_bytes: pulumi.Input[_builtins.str],
-                 period: Optional[pulumi.Input[_builtins.str]] = None):
+                 period: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] per_partition_bytes: The provisioned storage, in bytes, per partition. If the number of bytes stored
                in any of the topic's partitions grows beyond this value, older messages will be
@@ -306,7 +306,7 @@ class LiteTopicRetentionConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How long a published message is retained. If unset, messages will be retained as
         long as the bytes retained for each partition is below perPartitionBytes. A
@@ -316,21 +316,21 @@ class LiteTopicRetentionConfigArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
 
 class SchemaIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class SchemaIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -356,25 +356,25 @@ class SchemaIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class SchemaIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class SchemaIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -400,11 +400,11 @@ class SchemaIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -413,29 +413,29 @@ class SubscriptionBigqueryConfigArgsDict(TypedDict):
     """
     The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
     """
-    drop_unknown_fields: NotRequired[pulumi.Input[_builtins.bool]]
+    drop_unknown_fields: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
     are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
     and any messages with extra fields are not written and remain in the subscription's backlog.
     """
-    service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The service account to use to write to BigQuery. If not specified, the Pub/Sub
     [service agent](https://cloud.google.com/iam/docs/service-agents),
     service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
     """
-    use_table_schema: NotRequired[pulumi.Input[_builtins.bool]]
+    use_table_schema: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
     must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
     """
-    use_topic_schema: NotRequired[pulumi.Input[_builtins.bool]]
+    use_topic_schema: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
     Only one of use_topic_schema and use_table_schema can be set.
     """
-    write_metadata: NotRequired[pulumi.Input[_builtins.bool]]
+    write_metadata: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
     The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
@@ -445,11 +445,11 @@ class SubscriptionBigqueryConfigArgsDict(TypedDict):
 class SubscriptionBigqueryConfigArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 drop_unknown_fields: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_table_schema: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_topic_schema: Optional[pulumi.Input[_builtins.bool]] = None,
-                 write_metadata: Optional[pulumi.Input[_builtins.bool]] = None):
+                 drop_unknown_fields: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_table_schema: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_topic_schema: pulumi.Input[Optional[_builtins.bool]] = None,
+                 write_metadata: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] table: The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
         :param pulumi.Input[_builtins.bool] drop_unknown_fields: When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
@@ -491,7 +491,7 @@ class SubscriptionBigqueryConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dropUnknownFields")
-    def drop_unknown_fields(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drop_unknown_fields(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
         are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
@@ -500,12 +500,12 @@ class SubscriptionBigqueryConfigArgs:
         return pulumi.get(self, "drop_unknown_fields")
 
     @drop_unknown_fields.setter
-    def drop_unknown_fields(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drop_unknown_fields(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drop_unknown_fields", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account to use to write to BigQuery. If not specified, the Pub/Sub
         [service agent](https://cloud.google.com/iam/docs/service-agents),
@@ -514,12 +514,12 @@ class SubscriptionBigqueryConfigArgs:
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
     @_builtins.property
     @pulumi.getter(name="useTableSchema")
-    def use_table_schema(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_table_schema(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
         must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
@@ -527,12 +527,12 @@ class SubscriptionBigqueryConfigArgs:
         return pulumi.get(self, "use_table_schema")
 
     @use_table_schema.setter
-    def use_table_schema(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_table_schema(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_table_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="useTopicSchema")
-    def use_topic_schema(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_topic_schema(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
         Only one of use_topic_schema and use_table_schema can be set.
@@ -540,12 +540,12 @@ class SubscriptionBigqueryConfigArgs:
         return pulumi.get(self, "use_topic_schema")
 
     @use_topic_schema.setter
-    def use_topic_schema(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_topic_schema(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_topic_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="writeMetadata")
-    def write_metadata(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def write_metadata(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
         The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
@@ -553,7 +553,7 @@ class SubscriptionBigqueryConfigArgs:
         return pulumi.get(self, "write_metadata")
 
     @write_metadata.setter
-    def write_metadata(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def write_metadata(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "write_metadata", value)
 
 
@@ -562,50 +562,50 @@ class SubscriptionCloudStorageConfigArgsDict(TypedDict):
     """
     User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
     """
-    avro_config: NotRequired[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgsDict']]
+    avro_config: NotRequired[pulumi.Input[Optional['SubscriptionCloudStorageConfigAvroConfigArgs']]]
     """
     If set, message data will be written to Cloud Storage in Avro format.
     Structure is documented below.
     """
-    filename_datetime_format: NotRequired[pulumi.Input[_builtins.str]]
+    filename_datetime_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
     """
-    filename_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    filename_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     User-provided prefix for Cloud Storage filename.
     """
-    filename_suffix: NotRequired[pulumi.Input[_builtins.str]]
+    filename_suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     User-provided suffix for Cloud Storage filename. Must not end in "/".
     """
-    max_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    max_bytes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
     The maxBytes limit may be exceeded in cases where messages are larger than the limit.
     """
-    max_duration: NotRequired[pulumi.Input[_builtins.str]]
+    max_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
     May not exceed the subscription's acknowledgement deadline.
     A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
     """
-    max_messages: NotRequired[pulumi.Input[_builtins.int]]
+    max_messages: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
     """
-    service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
     [service agent](https://cloud.google.com/iam/docs/service-agents),
     service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     An output-only field that indicates whether or not the subscription can receive messages.
     """
-    text_config: NotRequired[pulumi.Input['SubscriptionCloudStorageConfigTextConfigArgsDict']]
+    text_config: NotRequired[pulumi.Input[Optional['SubscriptionCloudStorageConfigTextConfigArgs']]]
     """
     If set, message data will be written to Cloud Storage in text format.
     Structure is documented below.
@@ -615,16 +615,16 @@ class SubscriptionCloudStorageConfigArgsDict(TypedDict):
 class SubscriptionCloudStorageConfigArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 avro_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs']] = None,
-                 filename_datetime_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 filename_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 filename_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_messages: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 text_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigTextConfigArgs']] = None):
+                 avro_config: pulumi.Input[Optional['SubscriptionCloudStorageConfigAvroConfigArgs']] = None,
+                 filename_datetime_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 filename_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 filename_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_messages: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 text_config: pulumi.Input[Optional['SubscriptionCloudStorageConfigTextConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
         :param pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs'] avro_config: If set, message data will be written to Cloud Storage in Avro format.
@@ -682,7 +682,7 @@ class SubscriptionCloudStorageConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="avroConfig")
-    def avro_config(self) -> Optional[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs']]:
+    def avro_config(self) -> pulumi.Input[Optional['SubscriptionCloudStorageConfigAvroConfigArgs']]:
         """
         If set, message data will be written to Cloud Storage in Avro format.
         Structure is documented below.
@@ -690,48 +690,48 @@ class SubscriptionCloudStorageConfigArgs:
         return pulumi.get(self, "avro_config")
 
     @avro_config.setter
-    def avro_config(self, value: Optional[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs']]):
+    def avro_config(self, value: pulumi.Input[Optional['SubscriptionCloudStorageConfigAvroConfigArgs']]):
         pulumi.set(self, "avro_config", value)
 
     @_builtins.property
     @pulumi.getter(name="filenameDatetimeFormat")
-    def filename_datetime_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filename_datetime_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
         """
         return pulumi.get(self, "filename_datetime_format")
 
     @filename_datetime_format.setter
-    def filename_datetime_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filename_datetime_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filename_datetime_format", value)
 
     @_builtins.property
     @pulumi.getter(name="filenamePrefix")
-    def filename_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filename_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided prefix for Cloud Storage filename.
         """
         return pulumi.get(self, "filename_prefix")
 
     @filename_prefix.setter
-    def filename_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filename_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filename_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="filenameSuffix")
-    def filename_suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filename_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided suffix for Cloud Storage filename. Must not end in "/".
         """
         return pulumi.get(self, "filename_suffix")
 
     @filename_suffix.setter
-    def filename_suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filename_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filename_suffix", value)
 
     @_builtins.property
     @pulumi.getter(name="maxBytes")
-    def max_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
         The maxBytes limit may be exceeded in cases where messages are larger than the limit.
@@ -739,12 +739,12 @@ class SubscriptionCloudStorageConfigArgs:
         return pulumi.get(self, "max_bytes")
 
     @max_bytes.setter
-    def max_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDuration")
-    def max_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
         May not exceed the subscription's acknowledgement deadline.
@@ -753,24 +753,24 @@ class SubscriptionCloudStorageConfigArgs:
         return pulumi.get(self, "max_duration")
 
     @max_duration.setter
-    def max_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="maxMessages")
-    def max_messages(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_messages(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
         """
         return pulumi.get(self, "max_messages")
 
     @max_messages.setter
-    def max_messages(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_messages(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_messages", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
         [service agent](https://cloud.google.com/iam/docs/service-agents),
@@ -779,12 +779,12 @@ class SubscriptionCloudStorageConfigArgs:
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         An output-only field that indicates whether or not the subscription can receive messages.
@@ -792,12 +792,12 @@ class SubscriptionCloudStorageConfigArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="textConfig")
-    def text_config(self) -> Optional[pulumi.Input['SubscriptionCloudStorageConfigTextConfigArgs']]:
+    def text_config(self) -> pulumi.Input[Optional['SubscriptionCloudStorageConfigTextConfigArgs']]:
         """
         If set, message data will be written to Cloud Storage in text format.
         Structure is documented below.
@@ -805,16 +805,16 @@ class SubscriptionCloudStorageConfigArgs:
         return pulumi.get(self, "text_config")
 
     @text_config.setter
-    def text_config(self, value: Optional[pulumi.Input['SubscriptionCloudStorageConfigTextConfigArgs']]):
+    def text_config(self, value: pulumi.Input[Optional['SubscriptionCloudStorageConfigTextConfigArgs']]):
         pulumi.set(self, "text_config", value)
 
 
 class SubscriptionCloudStorageConfigAvroConfigArgsDict(TypedDict):
-    use_topic_schema: NotRequired[pulumi.Input[_builtins.bool]]
+    use_topic_schema: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
     """
-    write_metadata: NotRequired[pulumi.Input[_builtins.bool]]
+    write_metadata: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
     """
@@ -822,8 +822,8 @@ class SubscriptionCloudStorageConfigAvroConfigArgsDict(TypedDict):
 @pulumi.input_type
 class SubscriptionCloudStorageConfigAvroConfigArgs:
     def __init__(__self__, *,
-                 use_topic_schema: Optional[pulumi.Input[_builtins.bool]] = None,
-                 write_metadata: Optional[pulumi.Input[_builtins.bool]] = None):
+                 use_topic_schema: pulumi.Input[Optional[_builtins.bool]] = None,
+                 write_metadata: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] use_topic_schema: When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
         :param pulumi.Input[_builtins.bool] write_metadata: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
@@ -835,31 +835,31 @@ class SubscriptionCloudStorageConfigAvroConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="useTopicSchema")
-    def use_topic_schema(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_topic_schema(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
         """
         return pulumi.get(self, "use_topic_schema")
 
     @use_topic_schema.setter
-    def use_topic_schema(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_topic_schema(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_topic_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="writeMetadata")
-    def write_metadata(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def write_metadata(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
         """
         return pulumi.get(self, "write_metadata")
 
     @write_metadata.setter
-    def write_metadata(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def write_metadata(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "write_metadata", value)
 
 
 class SubscriptionCloudStorageConfigTextConfigArgsDict(TypedDict):
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Placeholder to allow the empty text_config block.
@@ -868,7 +868,7 @@ class SubscriptionCloudStorageConfigTextConfigArgsDict(TypedDict):
 @pulumi.input_type
 class SubscriptionCloudStorageConfigTextConfigArgs:
     def __init__(__self__, *,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] state: (Output)
                Output only. Placeholder to allow the empty text_config block.
@@ -878,7 +878,7 @@ class SubscriptionCloudStorageConfigTextConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Placeholder to allow the empty text_config block.
@@ -886,12 +886,12 @@ class SubscriptionCloudStorageConfigTextConfigArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class SubscriptionDeadLetterPolicyArgsDict(TypedDict):
-    dead_letter_topic: NotRequired[pulumi.Input[_builtins.str]]
+    dead_letter_topic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the topic to which dead letter messages should be published.
     Format is `projects/{project}/topics/{topic}`.
@@ -903,7 +903,7 @@ class SubscriptionDeadLetterPolicyArgsDict(TypedDict):
     Users should ensure that there is a subscription attached to this topic
     since messages published to a topic with no subscriptions are lost.
     """
-    max_delivery_attempts: NotRequired[pulumi.Input[_builtins.int]]
+    max_delivery_attempts: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of delivery attempts for any message. The value must be
     between 5 and 100.
@@ -918,8 +918,8 @@ class SubscriptionDeadLetterPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class SubscriptionDeadLetterPolicyArgs:
     def __init__(__self__, *,
-                 dead_letter_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_delivery_attempts: Optional[pulumi.Input[_builtins.int]] = None):
+                 dead_letter_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_delivery_attempts: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] dead_letter_topic: The name of the topic to which dead letter messages should be published.
                Format is `projects/{project}/topics/{topic}`.
@@ -946,7 +946,7 @@ class SubscriptionDeadLetterPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="deadLetterTopic")
-    def dead_letter_topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dead_letter_topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the topic to which dead letter messages should be published.
         Format is `projects/{project}/topics/{topic}`.
@@ -961,12 +961,12 @@ class SubscriptionDeadLetterPolicyArgs:
         return pulumi.get(self, "dead_letter_topic")
 
     @dead_letter_topic.setter
-    def dead_letter_topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dead_letter_topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dead_letter_topic", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDeliveryAttempts")
-    def max_delivery_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_delivery_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of delivery attempts for any message. The value must be
         between 5 and 100.
@@ -980,7 +980,7 @@ class SubscriptionDeadLetterPolicyArgs:
         return pulumi.get(self, "max_delivery_attempts")
 
     @max_delivery_attempts.setter
-    def max_delivery_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_delivery_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_delivery_attempts", value)
 
 
@@ -1027,14 +1027,14 @@ class SubscriptionExpirationPolicyArgs:
 class SubscriptionIAMBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class SubscriptionIAMBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1060,25 +1060,25 @@ class SubscriptionIAMBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class SubscriptionIAMMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class SubscriptionIAMMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1104,28 +1104,28 @@ class SubscriptionIAMMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class SubscriptionMessageTransformArgsDict(TypedDict):
-    ai_inference: NotRequired[pulumi.Input['SubscriptionMessageTransformAiInferenceArgsDict']]
+    ai_inference: NotRequired[pulumi.Input[Optional['SubscriptionMessageTransformAiInferenceArgs']]]
     """
     AI Inference. Specifies the Vertex AI endpoint that inference
     requests built from the Pub/Sub message data and provided parameters will
     be sent to.
     Structure is documented below.
     """
-    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Controls whether or not to use this transform. If not set or `false`,
     the transform will be applied to messages. Default: `true`.
     """
-    javascript_udf: NotRequired[pulumi.Input['SubscriptionMessageTransformJavascriptUdfArgsDict']]
+    javascript_udf: NotRequired[pulumi.Input[Optional['SubscriptionMessageTransformJavascriptUdfArgs']]]
     """
     Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
     each one must have a unique `function_name`.
@@ -1135,9 +1135,9 @@ class SubscriptionMessageTransformArgsDict(TypedDict):
 @pulumi.input_type
 class SubscriptionMessageTransformArgs:
     def __init__(__self__, *,
-                 ai_inference: Optional[pulumi.Input['SubscriptionMessageTransformAiInferenceArgs']] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 javascript_udf: Optional[pulumi.Input['SubscriptionMessageTransformJavascriptUdfArgs']] = None):
+                 ai_inference: pulumi.Input[Optional['SubscriptionMessageTransformAiInferenceArgs']] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 javascript_udf: pulumi.Input[Optional['SubscriptionMessageTransformJavascriptUdfArgs']] = None):
         """
         :param pulumi.Input['SubscriptionMessageTransformAiInferenceArgs'] ai_inference: AI Inference. Specifies the Vertex AI endpoint that inference
                requests built from the Pub/Sub message data and provided parameters will
@@ -1158,7 +1158,7 @@ class SubscriptionMessageTransformArgs:
 
     @_builtins.property
     @pulumi.getter(name="aiInference")
-    def ai_inference(self) -> Optional[pulumi.Input['SubscriptionMessageTransformAiInferenceArgs']]:
+    def ai_inference(self) -> pulumi.Input[Optional['SubscriptionMessageTransformAiInferenceArgs']]:
         """
         AI Inference. Specifies the Vertex AI endpoint that inference
         requests built from the Pub/Sub message data and provided parameters will
@@ -1168,12 +1168,12 @@ class SubscriptionMessageTransformArgs:
         return pulumi.get(self, "ai_inference")
 
     @ai_inference.setter
-    def ai_inference(self, value: Optional[pulumi.Input['SubscriptionMessageTransformAiInferenceArgs']]):
+    def ai_inference(self, value: pulumi.Input[Optional['SubscriptionMessageTransformAiInferenceArgs']]):
         pulumi.set(self, "ai_inference", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether or not to use this transform. If not set or `false`,
         the transform will be applied to messages. Default: `true`.
@@ -1181,12 +1181,12 @@ class SubscriptionMessageTransformArgs:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="javascriptUdf")
-    def javascript_udf(self) -> Optional[pulumi.Input['SubscriptionMessageTransformJavascriptUdfArgs']]:
+    def javascript_udf(self) -> pulumi.Input[Optional['SubscriptionMessageTransformJavascriptUdfArgs']]:
         """
         Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
         each one must have a unique `function_name`.
@@ -1195,7 +1195,7 @@ class SubscriptionMessageTransformArgs:
         return pulumi.get(self, "javascript_udf")
 
     @javascript_udf.setter
-    def javascript_udf(self, value: Optional[pulumi.Input['SubscriptionMessageTransformJavascriptUdfArgs']]):
+    def javascript_udf(self, value: pulumi.Input[Optional['SubscriptionMessageTransformJavascriptUdfArgs']]):
         pulumi.set(self, "javascript_udf", value)
 
 
@@ -1207,12 +1207,12 @@ class SubscriptionMessageTransformAiInferenceArgsDict(TypedDict):
     `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
     Vertex AI API requests will be sent to this endpoint.
     """
-    service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The service account to use to make prediction requests against
     endpoints.
     """
-    unstructured_inference: NotRequired[pulumi.Input['SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgsDict']]
+    unstructured_inference: NotRequired[pulumi.Input[Optional['SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs']]]
     """
     Configuration for making inferences using arbitrary JSON payloads.
     Structure is documented below.
@@ -1222,8 +1222,8 @@ class SubscriptionMessageTransformAiInferenceArgsDict(TypedDict):
 class SubscriptionMessageTransformAiInferenceArgs:
     def __init__(__self__, *,
                  endpoint: pulumi.Input[_builtins.str],
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 unstructured_inference: Optional[pulumi.Input['SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs']] = None):
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 unstructured_inference: pulumi.Input[Optional['SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] endpoint: The endpoint to a Vertex AI model of the form
                `projects/{project}/locations/{location}/endpoints/{endpoint}` or
@@ -1257,7 +1257,7 @@ class SubscriptionMessageTransformAiInferenceArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account to use to make prediction requests against
         endpoints.
@@ -1265,12 +1265,12 @@ class SubscriptionMessageTransformAiInferenceArgs:
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
     @_builtins.property
     @pulumi.getter(name="unstructuredInference")
-    def unstructured_inference(self) -> Optional[pulumi.Input['SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs']]:
+    def unstructured_inference(self) -> pulumi.Input[Optional['SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs']]:
         """
         Configuration for making inferences using arbitrary JSON payloads.
         Structure is documented below.
@@ -1278,12 +1278,12 @@ class SubscriptionMessageTransformAiInferenceArgs:
         return pulumi.get(self, "unstructured_inference")
 
     @unstructured_inference.setter
-    def unstructured_inference(self, value: Optional[pulumi.Input['SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs']]):
+    def unstructured_inference(self, value: pulumi.Input[Optional['SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs']]):
         pulumi.set(self, "unstructured_inference", value)
 
 
 class SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgsDict(TypedDict):
-    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    parameters: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     A parameters object to be included in each inference request.
     The parameters object is combined with the data field of the Pub/Sub
@@ -1293,7 +1293,7 @@ class SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgsDict(Typed
 @pulumi.input_type
 class SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs:
     def __init__(__self__, *,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: A parameters object to be included in each inference request.
                The parameters object is combined with the data field of the Pub/Sub
@@ -1304,7 +1304,7 @@ class SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A parameters object to be included in each inference request.
         The parameters object is combined with the data field of the Pub/Sub
@@ -1313,7 +1313,7 @@ class SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
 
@@ -1452,7 +1452,7 @@ class SubscriptionPushConfigArgsDict(TypedDict):
     For example, a Webhook endpoint might use
     "https://example.com/push".
     """
-    attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    attributes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Endpoint configuration attributes.
     Every endpoint has a set of API supported attributes that can
@@ -1473,13 +1473,13 @@ class SubscriptionPushConfigArgsDict(TypedDict):
     - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
     - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
     """
-    no_wrapper: NotRequired[pulumi.Input['SubscriptionPushConfigNoWrapperArgsDict']]
+    no_wrapper: NotRequired[pulumi.Input[Optional['SubscriptionPushConfigNoWrapperArgs']]]
     """
     When set, the payload to the push endpoint is not wrapped.Sets the
     `data` field as the HTTP body for delivery.
     Structure is documented below.
     """
-    oidc_token: NotRequired[pulumi.Input['SubscriptionPushConfigOidcTokenArgsDict']]
+    oidc_token: NotRequired[pulumi.Input[Optional['SubscriptionPushConfigOidcTokenArgs']]]
     """
     If specified, Pub/Sub will generate and attach an OIDC JWT token as
     an Authorization header in the HTTP request for every pushed message.
@@ -1490,9 +1490,9 @@ class SubscriptionPushConfigArgsDict(TypedDict):
 class SubscriptionPushConfigArgs:
     def __init__(__self__, *,
                  push_endpoint: pulumi.Input[_builtins.str],
-                 attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 no_wrapper: Optional[pulumi.Input['SubscriptionPushConfigNoWrapperArgs']] = None,
-                 oidc_token: Optional[pulumi.Input['SubscriptionPushConfigOidcTokenArgs']] = None):
+                 attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 no_wrapper: pulumi.Input[Optional['SubscriptionPushConfigNoWrapperArgs']] = None,
+                 oidc_token: pulumi.Input[Optional['SubscriptionPushConfigOidcTokenArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] push_endpoint: A URL locating the endpoint to which messages should be pushed.
                For example, a Webhook endpoint might use
@@ -1546,7 +1546,7 @@ class SubscriptionPushConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Endpoint configuration attributes.
         Every endpoint has a set of API supported attributes that can
@@ -1570,12 +1570,12 @@ class SubscriptionPushConfigArgs:
         return pulumi.get(self, "attributes")
 
     @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="noWrapper")
-    def no_wrapper(self) -> Optional[pulumi.Input['SubscriptionPushConfigNoWrapperArgs']]:
+    def no_wrapper(self) -> pulumi.Input[Optional['SubscriptionPushConfigNoWrapperArgs']]:
         """
         When set, the payload to the push endpoint is not wrapped.Sets the
         `data` field as the HTTP body for delivery.
@@ -1584,12 +1584,12 @@ class SubscriptionPushConfigArgs:
         return pulumi.get(self, "no_wrapper")
 
     @no_wrapper.setter
-    def no_wrapper(self, value: Optional[pulumi.Input['SubscriptionPushConfigNoWrapperArgs']]):
+    def no_wrapper(self, value: pulumi.Input[Optional['SubscriptionPushConfigNoWrapperArgs']]):
         pulumi.set(self, "no_wrapper", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcToken")
-    def oidc_token(self) -> Optional[pulumi.Input['SubscriptionPushConfigOidcTokenArgs']]:
+    def oidc_token(self) -> pulumi.Input[Optional['SubscriptionPushConfigOidcTokenArgs']]:
         """
         If specified, Pub/Sub will generate and attach an OIDC JWT token as
         an Authorization header in the HTTP request for every pushed message.
@@ -1598,7 +1598,7 @@ class SubscriptionPushConfigArgs:
         return pulumi.get(self, "oidc_token")
 
     @oidc_token.setter
-    def oidc_token(self, value: Optional[pulumi.Input['SubscriptionPushConfigOidcTokenArgs']]):
+    def oidc_token(self, value: pulumi.Input[Optional['SubscriptionPushConfigOidcTokenArgs']]):
         pulumi.set(self, "oidc_token", value)
 
 
@@ -1644,7 +1644,7 @@ class SubscriptionPushConfigOidcTokenArgsDict(TypedDict):
     subscriptions.modifyPushConfig RPCs) must have the
     iam.serviceAccounts.actAs permission for the service account.
     """
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience to be used when generating OIDC token. The audience claim
     identifies the recipients that the JWT is intended for. The audience
@@ -1658,7 +1658,7 @@ class SubscriptionPushConfigOidcTokenArgsDict(TypedDict):
 class SubscriptionPushConfigOidcTokenArgs:
     def __init__(__self__, *,
                  service_account_email: pulumi.Input[_builtins.str],
-                 audience: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] service_account_email: Service account email to be used for generating the OIDC token.
                The caller (for subscriptions.create, subscriptions.patch, and
@@ -1692,7 +1692,7 @@ class SubscriptionPushConfigOidcTokenArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience to be used when generating OIDC token. The audience claim
         identifies the recipients that the JWT is intended for. The audience
@@ -1704,17 +1704,17 @@ class SubscriptionPushConfigOidcTokenArgs:
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
 
 class SubscriptionRetryPolicyArgsDict(TypedDict):
-    maximum_backoff: NotRequired[pulumi.Input[_builtins.str]]
+    maximum_backoff: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
-    minimum_backoff: NotRequired[pulumi.Input[_builtins.str]]
+    minimum_backoff: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -1723,8 +1723,8 @@ class SubscriptionRetryPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class SubscriptionRetryPolicyArgs:
     def __init__(__self__, *,
-                 maximum_backoff: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_backoff: Optional[pulumi.Input[_builtins.str]] = None):
+                 maximum_backoff: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_backoff: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] maximum_backoff: The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -1738,7 +1738,7 @@ class SubscriptionRetryPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="maximumBackoff")
-    def maximum_backoff(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maximum_backoff(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -1746,12 +1746,12 @@ class SubscriptionRetryPolicyArgs:
         return pulumi.get(self, "maximum_backoff")
 
     @maximum_backoff.setter
-    def maximum_backoff(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maximum_backoff(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maximum_backoff", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumBackoff")
-    def minimum_backoff(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum_backoff(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -1759,21 +1759,21 @@ class SubscriptionRetryPolicyArgs:
         return pulumi.get(self, "minimum_backoff")
 
     @minimum_backoff.setter
-    def minimum_backoff(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum_backoff(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum_backoff", value)
 
 
 class TopicIAMBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class TopicIAMBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1799,25 +1799,25 @@ class TopicIAMBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class TopicIAMMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class TopicIAMMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1843,41 +1843,41 @@ class TopicIAMMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class TopicIngestionDataSourceSettingsArgsDict(TypedDict):
-    aws_kinesis: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgsDict']]
+    aws_kinesis: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsAwsKinesisArgs']]]
     """
     Settings for ingestion from Amazon Kinesis Data Streams.
     Structure is documented below.
     """
-    aws_msk: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsAwsMskArgsDict']]
+    aws_msk: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsAwsMskArgs']]]
     """
     Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
     Structure is documented below.
     """
-    azure_event_hubs: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsAzureEventHubsArgsDict']]
+    azure_event_hubs: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsAzureEventHubsArgs']]]
     """
     Settings for ingestion from Azure Event Hubs.
     Structure is documented below.
     """
-    cloud_storage: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgsDict']]
+    cloud_storage: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageArgs']]]
     """
     Settings for ingestion from Cloud Storage.
     Structure is documented below.
     """
-    confluent_cloud: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsConfluentCloudArgsDict']]
+    confluent_cloud: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsConfluentCloudArgs']]]
     """
     Settings for ingestion from Confluent Cloud.
     Structure is documented below.
     """
-    platform_logs_settings: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict']]
+    platform_logs_settings: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs']]]
     """
     Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
     no Platform Logs will be generated.'
@@ -1887,12 +1887,12 @@ class TopicIngestionDataSourceSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsArgs:
     def __init__(__self__, *,
-                 aws_kinesis: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgs']] = None,
-                 aws_msk: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsMskArgs']] = None,
-                 azure_event_hubs: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAzureEventHubsArgs']] = None,
-                 cloud_storage: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgs']] = None,
-                 confluent_cloud: Optional[pulumi.Input['TopicIngestionDataSourceSettingsConfluentCloudArgs']] = None,
-                 platform_logs_settings: Optional[pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs']] = None):
+                 aws_kinesis: pulumi.Input[Optional['TopicIngestionDataSourceSettingsAwsKinesisArgs']] = None,
+                 aws_msk: pulumi.Input[Optional['TopicIngestionDataSourceSettingsAwsMskArgs']] = None,
+                 azure_event_hubs: pulumi.Input[Optional['TopicIngestionDataSourceSettingsAzureEventHubsArgs']] = None,
+                 cloud_storage: pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageArgs']] = None,
+                 confluent_cloud: pulumi.Input[Optional['TopicIngestionDataSourceSettingsConfluentCloudArgs']] = None,
+                 platform_logs_settings: pulumi.Input[Optional['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs']] = None):
         """
         :param pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgs'] aws_kinesis: Settings for ingestion from Amazon Kinesis Data Streams.
                Structure is documented below.
@@ -1923,7 +1923,7 @@ class TopicIngestionDataSourceSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="awsKinesis")
-    def aws_kinesis(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgs']]:
+    def aws_kinesis(self) -> pulumi.Input[Optional['TopicIngestionDataSourceSettingsAwsKinesisArgs']]:
         """
         Settings for ingestion from Amazon Kinesis Data Streams.
         Structure is documented below.
@@ -1931,12 +1931,12 @@ class TopicIngestionDataSourceSettingsArgs:
         return pulumi.get(self, "aws_kinesis")
 
     @aws_kinesis.setter
-    def aws_kinesis(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgs']]):
+    def aws_kinesis(self, value: pulumi.Input[Optional['TopicIngestionDataSourceSettingsAwsKinesisArgs']]):
         pulumi.set(self, "aws_kinesis", value)
 
     @_builtins.property
     @pulumi.getter(name="awsMsk")
-    def aws_msk(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsMskArgs']]:
+    def aws_msk(self) -> pulumi.Input[Optional['TopicIngestionDataSourceSettingsAwsMskArgs']]:
         """
         Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
         Structure is documented below.
@@ -1944,12 +1944,12 @@ class TopicIngestionDataSourceSettingsArgs:
         return pulumi.get(self, "aws_msk")
 
     @aws_msk.setter
-    def aws_msk(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsMskArgs']]):
+    def aws_msk(self, value: pulumi.Input[Optional['TopicIngestionDataSourceSettingsAwsMskArgs']]):
         pulumi.set(self, "aws_msk", value)
 
     @_builtins.property
     @pulumi.getter(name="azureEventHubs")
-    def azure_event_hubs(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsAzureEventHubsArgs']]:
+    def azure_event_hubs(self) -> pulumi.Input[Optional['TopicIngestionDataSourceSettingsAzureEventHubsArgs']]:
         """
         Settings for ingestion from Azure Event Hubs.
         Structure is documented below.
@@ -1957,12 +1957,12 @@ class TopicIngestionDataSourceSettingsArgs:
         return pulumi.get(self, "azure_event_hubs")
 
     @azure_event_hubs.setter
-    def azure_event_hubs(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAzureEventHubsArgs']]):
+    def azure_event_hubs(self, value: pulumi.Input[Optional['TopicIngestionDataSourceSettingsAzureEventHubsArgs']]):
         pulumi.set(self, "azure_event_hubs", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudStorage")
-    def cloud_storage(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgs']]:
+    def cloud_storage(self) -> pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageArgs']]:
         """
         Settings for ingestion from Cloud Storage.
         Structure is documented below.
@@ -1970,12 +1970,12 @@ class TopicIngestionDataSourceSettingsArgs:
         return pulumi.get(self, "cloud_storage")
 
     @cloud_storage.setter
-    def cloud_storage(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgs']]):
+    def cloud_storage(self, value: pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageArgs']]):
         pulumi.set(self, "cloud_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="confluentCloud")
-    def confluent_cloud(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsConfluentCloudArgs']]:
+    def confluent_cloud(self) -> pulumi.Input[Optional['TopicIngestionDataSourceSettingsConfluentCloudArgs']]:
         """
         Settings for ingestion from Confluent Cloud.
         Structure is documented below.
@@ -1983,12 +1983,12 @@ class TopicIngestionDataSourceSettingsArgs:
         return pulumi.get(self, "confluent_cloud")
 
     @confluent_cloud.setter
-    def confluent_cloud(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsConfluentCloudArgs']]):
+    def confluent_cloud(self, value: pulumi.Input[Optional['TopicIngestionDataSourceSettingsConfluentCloudArgs']]):
         pulumi.set(self, "confluent_cloud", value)
 
     @_builtins.property
     @pulumi.getter(name="platformLogsSettings")
-    def platform_logs_settings(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs']]:
+    def platform_logs_settings(self) -> pulumi.Input[Optional['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs']]:
         """
         Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
         no Platform Logs will be generated.'
@@ -1997,7 +1997,7 @@ class TopicIngestionDataSourceSettingsArgs:
         return pulumi.get(self, "platform_logs_settings")
 
     @platform_logs_settings.setter
-    def platform_logs_settings(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs']]):
+    def platform_logs_settings(self, value: pulumi.Input[Optional['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs']]):
         pulumi.set(self, "platform_logs_settings", value)
 
 
@@ -2208,33 +2208,33 @@ class TopicIngestionDataSourceSettingsAwsMskArgs:
 
 
 class TopicIngestionDataSourceSettingsAzureEventHubsArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Azure event hub client ID to use for ingestion.
     """
-    event_hub: NotRequired[pulumi.Input[_builtins.str]]
+    event_hub: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Azure event hub to ingest data from.
     """
-    gcp_service_account: NotRequired[pulumi.Input[_builtins.str]]
+    gcp_service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The GCP service account to be used for Federated Identity authentication
     with Azure (via a `AssumeRoleWithWebIdentity` call for the provided
     role).
     """
-    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Azure event hub namespace to ingest data from.
     """
-    resource_group: NotRequired[pulumi.Input[_builtins.str]]
+    resource_group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the resource group within an Azure subscription.
     """
-    subscription_id: NotRequired[pulumi.Input[_builtins.str]]
+    subscription_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Azure event hub subscription ID to use for ingestion.
     """
-    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Azure event hub tenant ID to use for ingestion.
     """
@@ -2242,13 +2242,13 @@ class TopicIngestionDataSourceSettingsAzureEventHubsArgsDict(TypedDict):
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsAzureEventHubsArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_hub: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcp_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_hub: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcp_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: The Azure event hub client ID to use for ingestion.
         :param pulumi.Input[_builtins.str] event_hub: The Azure event hub to ingest data from.
@@ -2277,31 +2277,31 @@ class TopicIngestionDataSourceSettingsAzureEventHubsArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Azure event hub client ID to use for ingestion.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="eventHub")
-    def event_hub(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_hub(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Azure event hub to ingest data from.
         """
         return pulumi.get(self, "event_hub")
 
     @event_hub.setter
-    def event_hub(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_hub(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_hub", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpServiceAccount")
-    def gcp_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcp_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCP service account to be used for Federated Identity authentication
         with Azure (via a `AssumeRoleWithWebIdentity` call for the provided
@@ -2310,55 +2310,55 @@ class TopicIngestionDataSourceSettingsAzureEventHubsArgs:
         return pulumi.get(self, "gcp_service_account")
 
     @gcp_service_account.setter
-    def gcp_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcp_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcp_service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Azure event hub namespace to ingest data from.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroup")
-    def resource_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource group within an Azure subscription.
         """
         return pulumi.get(self, "resource_group")
 
     @resource_group.setter
-    def resource_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionId")
-    def subscription_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Azure event hub subscription ID to use for ingestion.
         """
         return pulumi.get(self, "subscription_id")
 
     @subscription_id.setter
-    def subscription_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Azure event hub tenant ID to use for ingestion.
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
@@ -2369,31 +2369,31 @@ class TopicIngestionDataSourceSettingsCloudStorageArgsDict(TypedDict):
     prefix like "gs://". See the bucket naming requirements:
     https://cloud.google.com/storage/docs/buckets#naming.
     """
-    avro_format: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgsDict']]
+    avro_format: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs']]]
     """
     Configuration for reading Cloud Storage data in Avro binary format. The
     bytes of each object will be set to the `data` field of a Pub/Sub message.
     """
-    match_glob: NotRequired[pulumi.Input[_builtins.str]]
+    match_glob: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Glob pattern used to match objects that will be ingested. If unset, all
     objects will be ingested. See the supported patterns:
     https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
     """
-    minimum_object_create_time: NotRequired[pulumi.Input[_builtins.str]]
+    minimum_object_create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The timestamp set in RFC3339 text format. If set, only objects with a
     larger or equal timestamp will be ingested. Unset by default, meaning
     all objects will be ingested.
     """
-    pubsub_avro_format: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgsDict']]
+    pubsub_avro_format: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs']]]
     """
     Configuration for reading Cloud Storage data written via Cloud Storage
     subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
     data and attributes fields of the originally exported Pub/Sub message
     will be restored when publishing.
     """
-    text_format: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgsDict']]
+    text_format: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs']]]
     """
     Configuration for reading Cloud Storage data in text format. Each line of
     text as specified by the delimiter will be set to the `data` field of a
@@ -2405,11 +2405,11 @@ class TopicIngestionDataSourceSettingsCloudStorageArgsDict(TypedDict):
 class TopicIngestionDataSourceSettingsCloudStorageArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 avro_format: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs']] = None,
-                 match_glob: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_object_create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_avro_format: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs']] = None,
-                 text_format: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs']] = None):
+                 avro_format: pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs']] = None,
+                 match_glob: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_object_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_avro_format: pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs']] = None,
+                 text_format: pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Cloud Storage bucket. The bucket name must be without any
                prefix like "gs://". See the bucket naming requirements:
@@ -2459,7 +2459,7 @@ class TopicIngestionDataSourceSettingsCloudStorageArgs:
 
     @_builtins.property
     @pulumi.getter(name="avroFormat")
-    def avro_format(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs']]:
+    def avro_format(self) -> pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs']]:
         """
         Configuration for reading Cloud Storage data in Avro binary format. The
         bytes of each object will be set to the `data` field of a Pub/Sub message.
@@ -2467,12 +2467,12 @@ class TopicIngestionDataSourceSettingsCloudStorageArgs:
         return pulumi.get(self, "avro_format")
 
     @avro_format.setter
-    def avro_format(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs']]):
+    def avro_format(self, value: pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs']]):
         pulumi.set(self, "avro_format", value)
 
     @_builtins.property
     @pulumi.getter(name="matchGlob")
-    def match_glob(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_glob(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Glob pattern used to match objects that will be ingested. If unset, all
         objects will be ingested. See the supported patterns:
@@ -2481,12 +2481,12 @@ class TopicIngestionDataSourceSettingsCloudStorageArgs:
         return pulumi.get(self, "match_glob")
 
     @match_glob.setter
-    def match_glob(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_glob(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_glob", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumObjectCreateTime")
-    def minimum_object_create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum_object_create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp set in RFC3339 text format. If set, only objects with a
         larger or equal timestamp will be ingested. Unset by default, meaning
@@ -2495,12 +2495,12 @@ class TopicIngestionDataSourceSettingsCloudStorageArgs:
         return pulumi.get(self, "minimum_object_create_time")
 
     @minimum_object_create_time.setter
-    def minimum_object_create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum_object_create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum_object_create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubAvroFormat")
-    def pubsub_avro_format(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs']]:
+    def pubsub_avro_format(self) -> pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs']]:
         """
         Configuration for reading Cloud Storage data written via Cloud Storage
         subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
@@ -2510,12 +2510,12 @@ class TopicIngestionDataSourceSettingsCloudStorageArgs:
         return pulumi.get(self, "pubsub_avro_format")
 
     @pubsub_avro_format.setter
-    def pubsub_avro_format(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs']]):
+    def pubsub_avro_format(self, value: pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs']]):
         pulumi.set(self, "pubsub_avro_format", value)
 
     @_builtins.property
     @pulumi.getter(name="textFormat")
-    def text_format(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs']]:
+    def text_format(self) -> pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs']]:
         """
         Configuration for reading Cloud Storage data in text format. Each line of
         text as specified by the delimiter will be set to the `data` field of a
@@ -2525,7 +2525,7 @@ class TopicIngestionDataSourceSettingsCloudStorageArgs:
         return pulumi.get(self, "text_format")
 
     @text_format.setter
-    def text_format(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs']]):
+    def text_format(self, value: pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs']]):
         pulumi.set(self, "text_format", value)
 
 
@@ -2548,7 +2548,7 @@ class TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs:
 
 
 class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgsDict(TypedDict):
-    delimiter: NotRequired[pulumi.Input[_builtins.str]]
+    delimiter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The delimiter to use when using the 'text' format. Each line of text as
     specified by the delimiter will be set to the 'data' field of a Pub/Sub
@@ -2558,7 +2558,7 @@ class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgsDict(TypedDict):
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs:
     def __init__(__self__, *,
-                 delimiter: Optional[pulumi.Input[_builtins.str]] = None):
+                 delimiter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] delimiter: The delimiter to use when using the 'text' format. Each line of text as
                specified by the delimiter will be set to the 'data' field of a Pub/Sub
@@ -2569,7 +2569,7 @@ class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs:
 
     @_builtins.property
     @pulumi.getter
-    def delimiter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delimiter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The delimiter to use when using the 'text' format. Each line of text as
         specified by the delimiter will be set to the 'data' field of a Pub/Sub
@@ -2578,7 +2578,7 @@ class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs:
         return pulumi.get(self, "delimiter")
 
     @delimiter.setter
-    def delimiter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delimiter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delimiter", value)
 
 
@@ -2600,7 +2600,7 @@ class TopicIngestionDataSourceSettingsConfluentCloudArgsDict(TypedDict):
     """
     Name of the Confluent Cloud topic that Pub/Sub will import from.
     """
-    cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    cluster_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Confluent Cloud cluster ID.
     """
@@ -2612,7 +2612,7 @@ class TopicIngestionDataSourceSettingsConfluentCloudArgs:
                  gcp_service_account: pulumi.Input[_builtins.str],
                  identity_pool_id: pulumi.Input[_builtins.str],
                  topic: pulumi.Input[_builtins.str],
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bootstrap_server: The Confluent Cloud bootstrap server. The format is url:port.
         :param pulumi.Input[_builtins.str] gcp_service_account: The GCP service account to be used for Federated Identity authentication
@@ -2679,19 +2679,19 @@ class TopicIngestionDataSourceSettingsConfluentCloudArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Confluent Cloud cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
 
 class TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict(TypedDict):
-    severity: NotRequired[pulumi.Input[_builtins.str]]
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The minimum severity level of Platform Logs that will be written. If unspecified,
     no Platform Logs will be written.
@@ -2702,7 +2702,7 @@ class TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs:
     def __init__(__self__, *,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None):
+                 severity: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] severity: The minimum severity level of Platform Logs that will be written. If unspecified,
                no Platform Logs will be written.
@@ -2714,7 +2714,7 @@ class TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum severity level of Platform Logs that will be written. If unspecified,
         no Platform Logs will be written.
@@ -2724,7 +2724,7 @@ class TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs:
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "severity", value)
 
 
@@ -2738,7 +2738,7 @@ class TopicMessageStoragePolicyArgsDict(TypedDict):
     allowed regions. An empty list means that no regions are allowed,
     and is not a valid configuration.
     """
-    enforce_in_transit: NotRequired[pulumi.Input[_builtins.bool]]
+    enforce_in_transit: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, `allowedPersistenceRegions` is also used to enforce in-transit
     guarantees for messages. That is, Pub/Sub will fail topics.publish
@@ -2750,7 +2750,7 @@ class TopicMessageStoragePolicyArgsDict(TypedDict):
 class TopicMessageStoragePolicyArgs:
     def __init__(__self__, *,
                  allowed_persistence_regions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 enforce_in_transit: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enforce_in_transit: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_persistence_regions: A list of IDs of GCP regions where messages that are published to
                the topic may be persisted in storage. Messages published by
@@ -2786,7 +2786,7 @@ class TopicMessageStoragePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="enforceInTransit")
-    def enforce_in_transit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce_in_transit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, `allowedPersistenceRegions` is also used to enforce in-transit
         guarantees for messages. That is, Pub/Sub will fail topics.publish
@@ -2796,24 +2796,24 @@ class TopicMessageStoragePolicyArgs:
         return pulumi.get(self, "enforce_in_transit")
 
     @enforce_in_transit.setter
-    def enforce_in_transit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce_in_transit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce_in_transit", value)
 
 
 class TopicMessageTransformArgsDict(TypedDict):
-    ai_inference: NotRequired[pulumi.Input['TopicMessageTransformAiInferenceArgsDict']]
+    ai_inference: NotRequired[pulumi.Input[Optional['TopicMessageTransformAiInferenceArgs']]]
     """
     AI Inference. Specifies the Vertex AI endpoint that inference
     requests built from the Pub/Sub message data and provided parameters will
     be sent to.
     Structure is documented below.
     """
-    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Controls whether or not to use this transform. If not set or `false`,
     the transform will be applied to messages. Default: `true`.
     """
-    javascript_udf: NotRequired[pulumi.Input['TopicMessageTransformJavascriptUdfArgsDict']]
+    javascript_udf: NotRequired[pulumi.Input[Optional['TopicMessageTransformJavascriptUdfArgs']]]
     """
     Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
     each one must have a unique `function_name`.
@@ -2823,9 +2823,9 @@ class TopicMessageTransformArgsDict(TypedDict):
 @pulumi.input_type
 class TopicMessageTransformArgs:
     def __init__(__self__, *,
-                 ai_inference: Optional[pulumi.Input['TopicMessageTransformAiInferenceArgs']] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 javascript_udf: Optional[pulumi.Input['TopicMessageTransformJavascriptUdfArgs']] = None):
+                 ai_inference: pulumi.Input[Optional['TopicMessageTransformAiInferenceArgs']] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 javascript_udf: pulumi.Input[Optional['TopicMessageTransformJavascriptUdfArgs']] = None):
         """
         :param pulumi.Input['TopicMessageTransformAiInferenceArgs'] ai_inference: AI Inference. Specifies the Vertex AI endpoint that inference
                requests built from the Pub/Sub message data and provided parameters will
@@ -2846,7 +2846,7 @@ class TopicMessageTransformArgs:
 
     @_builtins.property
     @pulumi.getter(name="aiInference")
-    def ai_inference(self) -> Optional[pulumi.Input['TopicMessageTransformAiInferenceArgs']]:
+    def ai_inference(self) -> pulumi.Input[Optional['TopicMessageTransformAiInferenceArgs']]:
         """
         AI Inference. Specifies the Vertex AI endpoint that inference
         requests built from the Pub/Sub message data and provided parameters will
@@ -2856,12 +2856,12 @@ class TopicMessageTransformArgs:
         return pulumi.get(self, "ai_inference")
 
     @ai_inference.setter
-    def ai_inference(self, value: Optional[pulumi.Input['TopicMessageTransformAiInferenceArgs']]):
+    def ai_inference(self, value: pulumi.Input[Optional['TopicMessageTransformAiInferenceArgs']]):
         pulumi.set(self, "ai_inference", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether or not to use this transform. If not set or `false`,
         the transform will be applied to messages. Default: `true`.
@@ -2869,12 +2869,12 @@ class TopicMessageTransformArgs:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="javascriptUdf")
-    def javascript_udf(self) -> Optional[pulumi.Input['TopicMessageTransformJavascriptUdfArgs']]:
+    def javascript_udf(self) -> pulumi.Input[Optional['TopicMessageTransformJavascriptUdfArgs']]:
         """
         Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
         each one must have a unique `function_name`.
@@ -2883,7 +2883,7 @@ class TopicMessageTransformArgs:
         return pulumi.get(self, "javascript_udf")
 
     @javascript_udf.setter
-    def javascript_udf(self, value: Optional[pulumi.Input['TopicMessageTransformJavascriptUdfArgs']]):
+    def javascript_udf(self, value: pulumi.Input[Optional['TopicMessageTransformJavascriptUdfArgs']]):
         pulumi.set(self, "javascript_udf", value)
 
 
@@ -2895,12 +2895,12 @@ class TopicMessageTransformAiInferenceArgsDict(TypedDict):
     `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
     Vertex AI API requests will be sent to this endpoint.
     """
-    service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The service account to use to make prediction requests against
     endpoints.
     """
-    unstructured_inference: NotRequired[pulumi.Input['TopicMessageTransformAiInferenceUnstructuredInferenceArgsDict']]
+    unstructured_inference: NotRequired[pulumi.Input[Optional['TopicMessageTransformAiInferenceUnstructuredInferenceArgs']]]
     """
     Configuration for making inferences using arbitrary JSON payloads.
     Structure is documented below.
@@ -2910,8 +2910,8 @@ class TopicMessageTransformAiInferenceArgsDict(TypedDict):
 class TopicMessageTransformAiInferenceArgs:
     def __init__(__self__, *,
                  endpoint: pulumi.Input[_builtins.str],
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 unstructured_inference: Optional[pulumi.Input['TopicMessageTransformAiInferenceUnstructuredInferenceArgs']] = None):
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 unstructured_inference: pulumi.Input[Optional['TopicMessageTransformAiInferenceUnstructuredInferenceArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] endpoint: The endpoint to a Vertex AI model of the form
                `projects/{project}/locations/{location}/endpoints/{endpoint}` or
@@ -2945,7 +2945,7 @@ class TopicMessageTransformAiInferenceArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account to use to make prediction requests against
         endpoints.
@@ -2953,12 +2953,12 @@ class TopicMessageTransformAiInferenceArgs:
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
     @_builtins.property
     @pulumi.getter(name="unstructuredInference")
-    def unstructured_inference(self) -> Optional[pulumi.Input['TopicMessageTransformAiInferenceUnstructuredInferenceArgs']]:
+    def unstructured_inference(self) -> pulumi.Input[Optional['TopicMessageTransformAiInferenceUnstructuredInferenceArgs']]:
         """
         Configuration for making inferences using arbitrary JSON payloads.
         Structure is documented below.
@@ -2966,12 +2966,12 @@ class TopicMessageTransformAiInferenceArgs:
         return pulumi.get(self, "unstructured_inference")
 
     @unstructured_inference.setter
-    def unstructured_inference(self, value: Optional[pulumi.Input['TopicMessageTransformAiInferenceUnstructuredInferenceArgs']]):
+    def unstructured_inference(self, value: pulumi.Input[Optional['TopicMessageTransformAiInferenceUnstructuredInferenceArgs']]):
         pulumi.set(self, "unstructured_inference", value)
 
 
 class TopicMessageTransformAiInferenceUnstructuredInferenceArgsDict(TypedDict):
-    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    parameters: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     A parameters object to be included in each inference request.
     The parameters object is combined with the data field of the Pub/Sub
@@ -2981,7 +2981,7 @@ class TopicMessageTransformAiInferenceUnstructuredInferenceArgsDict(TypedDict):
 @pulumi.input_type
 class TopicMessageTransformAiInferenceUnstructuredInferenceArgs:
     def __init__(__self__, *,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: A parameters object to be included in each inference request.
                The parameters object is combined with the data field of the Pub/Sub
@@ -2992,7 +2992,7 @@ class TopicMessageTransformAiInferenceUnstructuredInferenceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A parameters object to be included in each inference request.
         The parameters object is combined with the data field of the Pub/Sub
@@ -3001,7 +3001,7 @@ class TopicMessageTransformAiInferenceUnstructuredInferenceArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
 
@@ -3141,7 +3141,7 @@ class TopicSchemaSettingsArgsDict(TypedDict):
     The value of this field will be _deleted-schema_
     if the schema has been deleted.
     """
-    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    encoding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The encoding of messages validated against schema.
     Default value is `ENCODING_UNSPECIFIED`.
@@ -3152,7 +3152,7 @@ class TopicSchemaSettingsArgsDict(TypedDict):
 class TopicSchemaSettingsArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None):
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] schema: The name of the schema that messages published should be
                validated against. Format is projects/{project}/schemas/{schema}.
@@ -3183,7 +3183,7 @@ class TopicSchemaSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encoding of messages validated against schema.
         Default value is `ENCODING_UNSPECIFIED`.
@@ -3192,7 +3192,7 @@ class TopicSchemaSettingsArgs:
         return pulumi.get(self, "encoding")
 
     @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoding", value)
 
 

@@ -35,8 +35,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -77,8 +77,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -119,8 +119,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -161,8 +161,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -203,8 +203,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -245,8 +245,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetDiscoveredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -286,8 +286,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetDiscoveredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -327,8 +327,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetDiscoveredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -368,8 +368,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetDiscoveredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -409,8 +409,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetDiscoveredServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -450,8 +450,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetDiscoveredWorkloadArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -491,8 +491,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetDiscoveredWorkloadArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -532,8 +532,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetDiscoveredWorkloadArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -573,8 +573,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetDiscoveredWorkloadArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -614,8 +614,8 @@ public final class ApphubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.apphub.ApphubFunctions;
      * import com.pulumi.gcp.apphub.inputs.GetDiscoveredWorkloadArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

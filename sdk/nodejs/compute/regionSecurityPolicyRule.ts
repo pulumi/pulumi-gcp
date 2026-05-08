@@ -421,17 +421,17 @@ export interface RegionSecurityPolicyRuleState {
      * * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
      * * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A match condition that incoming traffic is evaluated against.
      * If it evaluates to true, the corresponding 'action' is enforced.
      * Structure is documented below.
      */
-    match?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleMatch>;
+    match?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleMatch | undefined>;
     /**
      * A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
      * The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
@@ -443,41 +443,41 @@ export interface RegionSecurityPolicyRuleState {
      * The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
      * Structure is documented below.
      */
-    networkMatch?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleNetworkMatch>;
+    networkMatch?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleNetworkMatch | undefined>;
     /**
      * Preconfigured WAF configuration to be applied for the rule.
      * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
      * Structure is documented below.
      */
-    preconfiguredWafConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfig>;
+    preconfiguredWafConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfig | undefined>;
     /**
      * If set to true, the specified action is not enforced.
      */
-    preview?: pulumi.Input<boolean>;
+    preview?: pulumi.Input<boolean | undefined>;
     /**
      * An integer indicating the priority of a rule in the list.
      * The priority must be a positive value between 0 and 2147483647.
      * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
      * Structure is documented below.
      */
-    rateLimitOptions?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleRateLimitOptions>;
+    rateLimitOptions?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleRateLimitOptions | undefined>;
     /**
      * The Region in which the created Region Security Policy rule should reside.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the security policy this rule belongs to.
      */
-    securityPolicy?: pulumi.Input<string>;
+    securityPolicy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -496,13 +496,13 @@ export interface RegionSecurityPolicyRuleArgs {
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A match condition that incoming traffic is evaluated against.
      * If it evaluates to true, the corresponding 'action' is enforced.
      * Structure is documented below.
      */
-    match?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleMatch>;
+    match?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleMatch | undefined>;
     /**
      * A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
      * The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
@@ -514,17 +514,17 @@ export interface RegionSecurityPolicyRuleArgs {
      * The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
      * Structure is documented below.
      */
-    networkMatch?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleNetworkMatch>;
+    networkMatch?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleNetworkMatch | undefined>;
     /**
      * Preconfigured WAF configuration to be applied for the rule.
      * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
      * Structure is documented below.
      */
-    preconfiguredWafConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfig>;
+    preconfiguredWafConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfig | undefined>;
     /**
      * If set to true, the specified action is not enforced.
      */
-    preview?: pulumi.Input<boolean>;
+    preview?: pulumi.Input<boolean | undefined>;
     /**
      * An integer indicating the priority of a rule in the list.
      * The priority must be a positive value between 0 and 2147483647.
@@ -535,12 +535,12 @@ export interface RegionSecurityPolicyRuleArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
      * Structure is documented below.
      */
-    rateLimitOptions?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleRateLimitOptions>;
+    rateLimitOptions?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleRateLimitOptions | undefined>;
     /**
      * The Region in which the created Region Security Policy rule should reside.
      */

@@ -101,5 +101,5 @@ export interface GetDatabaseOutputArgs {
     /**
      * The ID of the project in which the instance belongs.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

@@ -200,34 +200,34 @@ export interface SecurityProfileV2State {
     /**
      * The timestamp at which this profile was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the security profile.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the security profile v2 resource,
      * in the format `organizations/{{org_name}}/securityProfilesV2/{{profile_id}}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee Security Profile V2,
      * in the format `organizations/{{org_name}}`.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * A map of the assessment name and the assessment config.
      * Structure is documented below.
      */
-    profileAssessmentConfigs?: pulumi.Input<pulumi.Input<inputs.apigee.SecurityProfileV2ProfileAssessmentConfig>[]>;
+    profileAssessmentConfigs?: pulumi.Input<pulumi.Input<inputs.apigee.SecurityProfileV2ProfileAssessmentConfig>[] | undefined>;
     /**
      * Resource ID of the security profile.
      */
-    profileId?: pulumi.Input<string>;
+    profileId?: pulumi.Input<string | undefined>;
     /**
      * The timestamp at which this profile was most recently updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -237,7 +237,7 @@ export interface SecurityProfileV2Args {
     /**
      * Description of the security profile.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee Security Profile V2,
      * in the format `organizations/{{org_name}}`.

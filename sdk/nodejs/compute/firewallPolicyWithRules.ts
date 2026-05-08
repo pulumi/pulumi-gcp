@@ -312,50 +312,50 @@ export interface FirewallPolicyWithRulesState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of the resource. This field is used internally during updates of this resource.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * A list of pre-define firewall policy rules.
      * Structure is documented below.
      */
-    predefinedRules?: pulumi.Input<pulumi.Input<inputs.compute.FirewallPolicyWithRulesPredefinedRule>[]>;
+    predefinedRules?: pulumi.Input<pulumi.Input<inputs.compute.FirewallPolicyWithRulesPredefinedRule>[] | undefined>;
     /**
      * Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
      */
-    ruleTupleCount?: pulumi.Input<number>;
+    ruleTupleCount?: pulumi.Input<number | undefined>;
     /**
      * A list of firewall policy rules.
      * Structure is documented below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.compute.FirewallPolicyWithRulesRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.compute.FirewallPolicyWithRulesRule>[] | undefined>;
     /**
      * Server-defined URL for the resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Server-defined URL for this resource with the resource id.
      */
-    selfLinkWithId?: pulumi.Input<string>;
+    selfLinkWithId?: pulumi.Input<string | undefined>;
     /**
      * A textual name of the security policy.
      */
-    shortName?: pulumi.Input<string>;
+    shortName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -365,7 +365,7 @@ export interface FirewallPolicyWithRulesArgs {
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}

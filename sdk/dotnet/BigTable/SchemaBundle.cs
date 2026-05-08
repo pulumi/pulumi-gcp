@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.BigTable
     ///         Table = table.Name,
     ///         ProtoSchema = new Gcp.BigTable.Inputs.SchemaBundleProtoSchemaArgs
     ///         {
-    ///             ProtoDescriptors = Std.Index.Filebase64.Invoke(new()
+    ///             ProtoDescriptors = Std.Filebase64.Invoke(new()
     ///             {
     ///                 Input = "test-fixtures/proto_schema_bundle.pb",
     ///             }).Apply(invoke =&gt; invoke.Result),

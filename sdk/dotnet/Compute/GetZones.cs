@@ -26,18 +26,22 @@ namespace Pulumi.Gcp.Compute
         ///     var available = Gcp.Compute.GetZones.Invoke();
         /// 
         ///     var foo = new List&lt;Gcp.Compute.InstanceGroupManager&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Apply(getZonesResult =&gt; getZonesResult.Names).Length; rangeIndex++)
+        ///     available.Apply(getZonesResult =&gt; getZonesResult.Names).Length().Apply(rangeBody =&gt;
         ///     {
-        ///         var range = new { Value = rangeIndex };
-        ///         foo.Add(new Gcp.Compute.InstanceGroupManager($"foo-{range.Value}", new()
+        ///         for (var rangeIndex = 0; rangeIndex &lt; rangeBody; rangeIndex++)
         ///         {
-        ///             Name = $"test-{range.Value}",
-        ///             InstanceTemplate = foobar.SelfLink,
-        ///             BaseInstanceName = $"foobar-{range.Value}",
-        ///             Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],
-        ///             TargetSize = 1,
-        ///         }));
-        ///     }
+        ///             var range = new { Value = rangeIndex };
+        ///             foo.Add(new Gcp.Compute.InstanceGroupManager($"foo-{range.Value}", new()
+        ///             {
+        ///                 Name = $"test-{range.Value}",
+        ///                 InstanceTemplate = foobar.SelfLink,
+        ///                 BaseInstanceName = $"foobar-{range.Value}",
+        ///                 Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],
+        ///                 TargetSize = 1,
+        ///             }));
+        ///         }
+        ///         return 0;
+        ///     });
         /// });
         /// ```
         /// </summary>
@@ -59,18 +63,22 @@ namespace Pulumi.Gcp.Compute
         ///     var available = Gcp.Compute.GetZones.Invoke();
         /// 
         ///     var foo = new List&lt;Gcp.Compute.InstanceGroupManager&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Apply(getZonesResult =&gt; getZonesResult.Names).Length; rangeIndex++)
+        ///     available.Apply(getZonesResult =&gt; getZonesResult.Names).Length().Apply(rangeBody =&gt;
         ///     {
-        ///         var range = new { Value = rangeIndex };
-        ///         foo.Add(new Gcp.Compute.InstanceGroupManager($"foo-{range.Value}", new()
+        ///         for (var rangeIndex = 0; rangeIndex &lt; rangeBody; rangeIndex++)
         ///         {
-        ///             Name = $"test-{range.Value}",
-        ///             InstanceTemplate = foobar.SelfLink,
-        ///             BaseInstanceName = $"foobar-{range.Value}",
-        ///             Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],
-        ///             TargetSize = 1,
-        ///         }));
-        ///     }
+        ///             var range = new { Value = rangeIndex };
+        ///             foo.Add(new Gcp.Compute.InstanceGroupManager($"foo-{range.Value}", new()
+        ///             {
+        ///                 Name = $"test-{range.Value}",
+        ///                 InstanceTemplate = foobar.SelfLink,
+        ///                 BaseInstanceName = $"foobar-{range.Value}",
+        ///                 Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],
+        ///                 TargetSize = 1,
+        ///             }));
+        ///         }
+        ///         return 0;
+        ///     });
         /// });
         /// ```
         /// </summary>
@@ -92,18 +100,22 @@ namespace Pulumi.Gcp.Compute
         ///     var available = Gcp.Compute.GetZones.Invoke();
         /// 
         ///     var foo = new List&lt;Gcp.Compute.InstanceGroupManager&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Apply(getZonesResult =&gt; getZonesResult.Names).Length; rangeIndex++)
+        ///     available.Apply(getZonesResult =&gt; getZonesResult.Names).Length().Apply(rangeBody =&gt;
         ///     {
-        ///         var range = new { Value = rangeIndex };
-        ///         foo.Add(new Gcp.Compute.InstanceGroupManager($"foo-{range.Value}", new()
+        ///         for (var rangeIndex = 0; rangeIndex &lt; rangeBody; rangeIndex++)
         ///         {
-        ///             Name = $"test-{range.Value}",
-        ///             InstanceTemplate = foobar.SelfLink,
-        ///             BaseInstanceName = $"foobar-{range.Value}",
-        ///             Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],
-        ///             TargetSize = 1,
-        ///         }));
-        ///     }
+        ///             var range = new { Value = rangeIndex };
+        ///             foo.Add(new Gcp.Compute.InstanceGroupManager($"foo-{range.Value}", new()
+        ///             {
+        ///                 Name = $"test-{range.Value}",
+        ///                 InstanceTemplate = foobar.SelfLink,
+        ///                 BaseInstanceName = $"foobar-{range.Value}",
+        ///                 Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],
+        ///                 TargetSize = 1,
+        ///             }));
+        ///         }
+        ///         return 0;
+        ///     });
         /// });
         /// ```
         /// </summary>

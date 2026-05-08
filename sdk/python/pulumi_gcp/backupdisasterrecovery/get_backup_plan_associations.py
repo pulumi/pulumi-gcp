@@ -129,9 +129,9 @@ def get_backup_plan_associations(location: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         project=pulumi.get(__ret__, 'project'),
         resource_type=pulumi.get(__ret__, 'resource_type'))
-def get_backup_plan_associations_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        resource_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_backup_plan_associations_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        resource_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPlanAssociationsResult]:
     """
     Provides a list of Backup and DR BackupPlanAssociations.

@@ -162,8 +162,8 @@ def get_project_cmek_settings(kms_key_name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         service_account_id=pulumi.get(__ret__, 'service_account_id'))
-def get_project_cmek_settings_output(kms_key_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_cmek_settings_output(kms_key_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     project: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectCmekSettingsResult]:
     """
     Describes the customer-managed encryption key (CMEK) settings associated with a project.

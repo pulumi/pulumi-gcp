@@ -138,52 +138,52 @@ __all__ = [
 ]
 
 class JobConfigArgsDict(TypedDict):
-    ad_breaks: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigAdBreakArgsDict']]]]
+    ad_breaks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigAdBreakArgs']]]]]
     """
     Ad break.
     Structure is documented below.
     """
-    edit_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigEditListArgsDict']]]]
+    edit_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigEditListArgs']]]]]
     """
     List of input assets stored in Cloud Storage.
     Structure is documented below.
     """
-    elementary_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigElementaryStreamArgsDict']]]]
+    elementary_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigElementaryStreamArgs']]]]]
     """
     List of input assets stored in Cloud Storage.
     Structure is documented below.
     """
-    encryptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigEncryptionArgsDict']]]]
+    encryptions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigEncryptionArgs']]]]]
     """
     List of encryption configurations for the content.
     Structure is documented below.
     """
-    inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigInputArgsDict']]]]
+    inputs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigInputArgs']]]]]
     """
     List of input assets stored in Cloud Storage.
     Structure is documented below.
     """
-    manifests: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigManifestArgsDict']]]]
+    manifests: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigManifestArgs']]]]]
     """
     Manifest configuration.
     Structure is documented below.
     """
-    mux_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigMuxStreamArgsDict']]]]
+    mux_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigMuxStreamArgs']]]]]
     """
     Multiplexing settings for output stream.
     Structure is documented below.
     """
-    output: NotRequired[pulumi.Input['JobConfigOutputArgsDict']]
+    output: NotRequired[pulumi.Input[Optional['JobConfigOutputArgs']]]
     """
     Location of output file(s) in a Cloud Storage bucket.
     Structure is documented below.
     """
-    overlays: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigOverlayArgsDict']]]]
+    overlays: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigOverlayArgs']]]]]
     """
     List of overlays on the output video, in descending Z-order.
     Structure is documented below.
     """
-    pubsub_destination: NotRequired[pulumi.Input['JobConfigPubsubDestinationArgsDict']]
+    pubsub_destination: NotRequired[pulumi.Input[Optional['JobConfigPubsubDestinationArgs']]]
     """
     Pub/Sub destination.
     Structure is documented below.
@@ -192,16 +192,16 @@ class JobConfigArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigArgs:
     def __init__(__self__, *,
-                 ad_breaks: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigAdBreakArgs']]]] = None,
-                 edit_lists: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigEditListArgs']]]] = None,
-                 elementary_streams: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigElementaryStreamArgs']]]] = None,
-                 encryptions: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigEncryptionArgs']]]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigInputArgs']]]] = None,
-                 manifests: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigManifestArgs']]]] = None,
-                 mux_streams: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigMuxStreamArgs']]]] = None,
-                 output: Optional[pulumi.Input['JobConfigOutputArgs']] = None,
-                 overlays: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigOverlayArgs']]]] = None,
-                 pubsub_destination: Optional[pulumi.Input['JobConfigPubsubDestinationArgs']] = None):
+                 ad_breaks: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigAdBreakArgs']]]] = None,
+                 edit_lists: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigEditListArgs']]]] = None,
+                 elementary_streams: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigElementaryStreamArgs']]]] = None,
+                 encryptions: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigEncryptionArgs']]]] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigInputArgs']]]] = None,
+                 manifests: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigManifestArgs']]]] = None,
+                 mux_streams: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigMuxStreamArgs']]]] = None,
+                 output: pulumi.Input[Optional['JobConfigOutputArgs']] = None,
+                 overlays: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigOverlayArgs']]]] = None,
+                 pubsub_destination: pulumi.Input[Optional['JobConfigPubsubDestinationArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobConfigAdBreakArgs']]] ad_breaks: Ad break.
                Structure is documented below.
@@ -247,7 +247,7 @@ class JobConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="adBreaks")
-    def ad_breaks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigAdBreakArgs']]]]:
+    def ad_breaks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigAdBreakArgs']]]]:
         """
         Ad break.
         Structure is documented below.
@@ -255,12 +255,12 @@ class JobConfigArgs:
         return pulumi.get(self, "ad_breaks")
 
     @ad_breaks.setter
-    def ad_breaks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigAdBreakArgs']]]]):
+    def ad_breaks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigAdBreakArgs']]]]):
         pulumi.set(self, "ad_breaks", value)
 
     @_builtins.property
     @pulumi.getter(name="editLists")
-    def edit_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigEditListArgs']]]]:
+    def edit_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigEditListArgs']]]]:
         """
         List of input assets stored in Cloud Storage.
         Structure is documented below.
@@ -268,12 +268,12 @@ class JobConfigArgs:
         return pulumi.get(self, "edit_lists")
 
     @edit_lists.setter
-    def edit_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigEditListArgs']]]]):
+    def edit_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigEditListArgs']]]]):
         pulumi.set(self, "edit_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="elementaryStreams")
-    def elementary_streams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigElementaryStreamArgs']]]]:
+    def elementary_streams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigElementaryStreamArgs']]]]:
         """
         List of input assets stored in Cloud Storage.
         Structure is documented below.
@@ -281,12 +281,12 @@ class JobConfigArgs:
         return pulumi.get(self, "elementary_streams")
 
     @elementary_streams.setter
-    def elementary_streams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigElementaryStreamArgs']]]]):
+    def elementary_streams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigElementaryStreamArgs']]]]):
         pulumi.set(self, "elementary_streams", value)
 
     @_builtins.property
     @pulumi.getter
-    def encryptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigEncryptionArgs']]]]:
+    def encryptions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigEncryptionArgs']]]]:
         """
         List of encryption configurations for the content.
         Structure is documented below.
@@ -294,12 +294,12 @@ class JobConfigArgs:
         return pulumi.get(self, "encryptions")
 
     @encryptions.setter
-    def encryptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigEncryptionArgs']]]]):
+    def encryptions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigEncryptionArgs']]]]):
         pulumi.set(self, "encryptions", value)
 
     @_builtins.property
     @pulumi.getter
-    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigInputArgs']]]]:
+    def inputs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigInputArgs']]]]:
         """
         List of input assets stored in Cloud Storage.
         Structure is documented below.
@@ -307,12 +307,12 @@ class JobConfigArgs:
         return pulumi.get(self, "inputs")
 
     @inputs.setter
-    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigInputArgs']]]]):
+    def inputs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigInputArgs']]]]):
         pulumi.set(self, "inputs", value)
 
     @_builtins.property
     @pulumi.getter
-    def manifests(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigManifestArgs']]]]:
+    def manifests(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigManifestArgs']]]]:
         """
         Manifest configuration.
         Structure is documented below.
@@ -320,12 +320,12 @@ class JobConfigArgs:
         return pulumi.get(self, "manifests")
 
     @manifests.setter
-    def manifests(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigManifestArgs']]]]):
+    def manifests(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigManifestArgs']]]]):
         pulumi.set(self, "manifests", value)
 
     @_builtins.property
     @pulumi.getter(name="muxStreams")
-    def mux_streams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigMuxStreamArgs']]]]:
+    def mux_streams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigMuxStreamArgs']]]]:
         """
         Multiplexing settings for output stream.
         Structure is documented below.
@@ -333,12 +333,12 @@ class JobConfigArgs:
         return pulumi.get(self, "mux_streams")
 
     @mux_streams.setter
-    def mux_streams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigMuxStreamArgs']]]]):
+    def mux_streams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigMuxStreamArgs']]]]):
         pulumi.set(self, "mux_streams", value)
 
     @_builtins.property
     @pulumi.getter
-    def output(self) -> Optional[pulumi.Input['JobConfigOutputArgs']]:
+    def output(self) -> pulumi.Input[Optional['JobConfigOutputArgs']]:
         """
         Location of output file(s) in a Cloud Storage bucket.
         Structure is documented below.
@@ -346,12 +346,12 @@ class JobConfigArgs:
         return pulumi.get(self, "output")
 
     @output.setter
-    def output(self, value: Optional[pulumi.Input['JobConfigOutputArgs']]):
+    def output(self, value: pulumi.Input[Optional['JobConfigOutputArgs']]):
         pulumi.set(self, "output", value)
 
     @_builtins.property
     @pulumi.getter
-    def overlays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigOverlayArgs']]]]:
+    def overlays(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigOverlayArgs']]]]:
         """
         List of overlays on the output video, in descending Z-order.
         Structure is documented below.
@@ -359,12 +359,12 @@ class JobConfigArgs:
         return pulumi.get(self, "overlays")
 
     @overlays.setter
-    def overlays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigOverlayArgs']]]]):
+    def overlays(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigOverlayArgs']]]]):
         pulumi.set(self, "overlays", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubDestination")
-    def pubsub_destination(self) -> Optional[pulumi.Input['JobConfigPubsubDestinationArgs']]:
+    def pubsub_destination(self) -> pulumi.Input[Optional['JobConfigPubsubDestinationArgs']]:
         """
         Pub/Sub destination.
         Structure is documented below.
@@ -372,12 +372,12 @@ class JobConfigArgs:
         return pulumi.get(self, "pubsub_destination")
 
     @pubsub_destination.setter
-    def pubsub_destination(self, value: Optional[pulumi.Input['JobConfigPubsubDestinationArgs']]):
+    def pubsub_destination(self, value: pulumi.Input[Optional['JobConfigPubsubDestinationArgs']]):
         pulumi.set(self, "pubsub_destination", value)
 
 
 class JobConfigAdBreakArgsDict(TypedDict):
-    start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    start_time_offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Start time in seconds for the ad break, relative to the output file timeline
     """
@@ -385,7 +385,7 @@ class JobConfigAdBreakArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigAdBreakArgs:
     def __init__(__self__, *,
-                 start_time_offset: Optional[pulumi.Input[_builtins.str]] = None):
+                 start_time_offset: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] start_time_offset: Start time in seconds for the ad break, relative to the output file timeline
         """
@@ -394,27 +394,27 @@ class JobConfigAdBreakArgs:
 
     @_builtins.property
     @pulumi.getter(name="startTimeOffset")
-    def start_time_offset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Start time in seconds for the ad break, relative to the output file timeline
         """
         return pulumi.get(self, "start_time_offset")
 
     @start_time_offset.setter
-    def start_time_offset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time_offset", value)
 
 
 class JobConfigEditListArgsDict(TypedDict):
-    inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    inputs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of values identifying files that should be used in this atom.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A unique key for this atom.
     """
-    start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    start_time_offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
     """
@@ -422,9 +422,9 @@ class JobConfigEditListArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigEditListArgs:
     def __init__(__self__, *,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time_offset: Optional[pulumi.Input[_builtins.str]] = None):
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time_offset: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: List of values identifying files that should be used in this atom.
         :param pulumi.Input[_builtins.str] key: A unique key for this atom.
@@ -439,52 +439,52 @@ class JobConfigEditListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def inputs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of values identifying files that should be used in this atom.
         """
         return pulumi.get(self, "inputs")
 
     @inputs.setter
-    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def inputs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "inputs", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique key for this atom.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="startTimeOffset")
-    def start_time_offset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
         """
         return pulumi.get(self, "start_time_offset")
 
     @start_time_offset.setter
-    def start_time_offset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time_offset", value)
 
 
 class JobConfigElementaryStreamArgsDict(TypedDict):
-    audio_stream: NotRequired[pulumi.Input['JobConfigElementaryStreamAudioStreamArgsDict']]
+    audio_stream: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamAudioStreamArgs']]]
     """
     Encoding of an audio stream.
     Structure is documented below.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A unique key for this atom.
     """
-    video_stream: NotRequired[pulumi.Input['JobConfigElementaryStreamVideoStreamArgsDict']]
+    video_stream: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamArgs']]]
     """
     Encoding of a video stream.
     Structure is documented below.
@@ -493,9 +493,9 @@ class JobConfigElementaryStreamArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigElementaryStreamArgs:
     def __init__(__self__, *,
-                 audio_stream: Optional[pulumi.Input['JobConfigElementaryStreamAudioStreamArgs']] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_stream: Optional[pulumi.Input['JobConfigElementaryStreamVideoStreamArgs']] = None):
+                 audio_stream: pulumi.Input[Optional['JobConfigElementaryStreamAudioStreamArgs']] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_stream: pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamArgs']] = None):
         """
         :param pulumi.Input['JobConfigElementaryStreamAudioStreamArgs'] audio_stream: Encoding of an audio stream.
                Structure is documented below.
@@ -512,7 +512,7 @@ class JobConfigElementaryStreamArgs:
 
     @_builtins.property
     @pulumi.getter(name="audioStream")
-    def audio_stream(self) -> Optional[pulumi.Input['JobConfigElementaryStreamAudioStreamArgs']]:
+    def audio_stream(self) -> pulumi.Input[Optional['JobConfigElementaryStreamAudioStreamArgs']]:
         """
         Encoding of an audio stream.
         Structure is documented below.
@@ -520,24 +520,24 @@ class JobConfigElementaryStreamArgs:
         return pulumi.get(self, "audio_stream")
 
     @audio_stream.setter
-    def audio_stream(self, value: Optional[pulumi.Input['JobConfigElementaryStreamAudioStreamArgs']]):
+    def audio_stream(self, value: pulumi.Input[Optional['JobConfigElementaryStreamAudioStreamArgs']]):
         pulumi.set(self, "audio_stream", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique key for this atom.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="videoStream")
-    def video_stream(self) -> Optional[pulumi.Input['JobConfigElementaryStreamVideoStreamArgs']]:
+    def video_stream(self) -> pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamArgs']]:
         """
         Encoding of a video stream.
         Structure is documented below.
@@ -545,7 +545,7 @@ class JobConfigElementaryStreamArgs:
         return pulumi.get(self, "video_stream")
 
     @video_stream.setter
-    def video_stream(self, value: Optional[pulumi.Input['JobConfigElementaryStreamVideoStreamArgs']]):
+    def video_stream(self, value: pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamArgs']]):
         pulumi.set(self, "video_stream", value)
 
 
@@ -554,19 +554,19 @@ class JobConfigElementaryStreamAudioStreamArgsDict(TypedDict):
     """
     Audio bitrate in bits per second.
     """
-    channel_count: NotRequired[pulumi.Input[_builtins.int]]
+    channel_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of audio channels. The default is `2`.
     """
-    channel_layouts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    channel_layouts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of channel names specifying layout of the audio channels. The default is ["fl", "fr"].
     """
-    codec: NotRequired[pulumi.Input[_builtins.str]]
+    codec: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The codec for this audio stream. The default is `aac`.
     """
-    sample_rate_hertz: NotRequired[pulumi.Input[_builtins.int]]
+    sample_rate_hertz: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The audio sample rate in Hertz. The default is `48000`.
     """
@@ -575,10 +575,10 @@ class JobConfigElementaryStreamAudioStreamArgsDict(TypedDict):
 class JobConfigElementaryStreamAudioStreamArgs:
     def __init__(__self__, *,
                  bitrate_bps: pulumi.Input[_builtins.int],
-                 channel_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 channel_layouts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 codec: Optional[pulumi.Input[_builtins.str]] = None,
-                 sample_rate_hertz: Optional[pulumi.Input[_builtins.int]] = None):
+                 channel_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 channel_layouts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 codec: pulumi.Input[Optional[_builtins.str]] = None,
+                 sample_rate_hertz: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] bitrate_bps: Audio bitrate in bits per second.
         :param pulumi.Input[_builtins.int] channel_count: Number of audio channels. The default is `2`.
@@ -610,55 +610,55 @@ class JobConfigElementaryStreamAudioStreamArgs:
 
     @_builtins.property
     @pulumi.getter(name="channelCount")
-    def channel_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def channel_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of audio channels. The default is `2`.
         """
         return pulumi.get(self, "channel_count")
 
     @channel_count.setter
-    def channel_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def channel_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "channel_count", value)
 
     @_builtins.property
     @pulumi.getter(name="channelLayouts")
-    def channel_layouts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def channel_layouts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of channel names specifying layout of the audio channels. The default is ["fl", "fr"].
         """
         return pulumi.get(self, "channel_layouts")
 
     @channel_layouts.setter
-    def channel_layouts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def channel_layouts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "channel_layouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def codec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def codec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The codec for this audio stream. The default is `aac`.
         """
         return pulumi.get(self, "codec")
 
     @codec.setter
-    def codec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def codec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "codec", value)
 
     @_builtins.property
     @pulumi.getter(name="sampleRateHertz")
-    def sample_rate_hertz(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sample_rate_hertz(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The audio sample rate in Hertz. The default is `48000`.
         """
         return pulumi.get(self, "sample_rate_hertz")
 
     @sample_rate_hertz.setter
-    def sample_rate_hertz(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sample_rate_hertz(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sample_rate_hertz", value)
 
 
 class JobConfigElementaryStreamVideoStreamArgsDict(TypedDict):
-    h264: NotRequired[pulumi.Input['JobConfigElementaryStreamVideoStreamH264ArgsDict']]
+    h264: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264Args']]]
     """
     H264 codec settings
     Structure is documented below.
@@ -670,7 +670,7 @@ class JobConfigElementaryStreamVideoStreamArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigElementaryStreamVideoStreamArgs:
     def __init__(__self__, *,
-                 h264: Optional[pulumi.Input['JobConfigElementaryStreamVideoStreamH264Args']] = None):
+                 h264: pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264Args']] = None):
         """
         :param pulumi.Input['JobConfigElementaryStreamVideoStreamH264Args'] h264: H264 codec settings
                Structure is documented below.
@@ -683,7 +683,7 @@ class JobConfigElementaryStreamVideoStreamArgs:
 
     @_builtins.property
     @pulumi.getter
-    def h264(self) -> Optional[pulumi.Input['JobConfigElementaryStreamVideoStreamH264Args']]:
+    def h264(self) -> pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264Args']]:
         """
         H264 codec settings
         Structure is documented below.
@@ -694,7 +694,7 @@ class JobConfigElementaryStreamVideoStreamArgs:
         return pulumi.get(self, "h264")
 
     @h264.setter
-    def h264(self, value: Optional[pulumi.Input['JobConfigElementaryStreamVideoStreamH264Args']]):
+    def h264(self, value: pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264Args']]):
         pulumi.set(self, "h264", value)
 
 
@@ -707,55 +707,55 @@ class JobConfigElementaryStreamVideoStreamH264ArgsDict(TypedDict):
     """
     The target video frame rate in frames per second (FPS).
     """
-    crf_level: NotRequired[pulumi.Input[_builtins.int]]
+    crf_level: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Target CRF level. The default is '21'.
     """
-    entropy_coder: NotRequired[pulumi.Input[_builtins.str]]
+    entropy_coder: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The entropy coder to use. The default is 'cabac'.
     """
-    gop_duration: NotRequired[pulumi.Input[_builtins.str]]
+    gop_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Select the GOP size based on the specified duration. The default is '3s'.
     """
-    height_pixels: NotRequired[pulumi.Input[_builtins.int]]
+    height_pixels: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The height of the video in pixels.
     """
-    hlg: NotRequired[pulumi.Input['JobConfigElementaryStreamVideoStreamH264HlgArgsDict']]
+    hlg: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264HlgArgs']]]
     """
     HLG color format setting for H264.
     """
-    pixel_format: NotRequired[pulumi.Input[_builtins.str]]
+    pixel_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Pixel format to use. The default is 'yuv420p'.
     """
-    preset: NotRequired[pulumi.Input[_builtins.str]]
+    preset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Enforces the specified codec preset. The default is 'veryfast'.
     """
-    profile: NotRequired[pulumi.Input[_builtins.str]]
+    profile: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Enforces the specified codec profile.
     """
-    rate_control_mode: NotRequired[pulumi.Input[_builtins.str]]
+    rate_control_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specify the mode. The default is 'vbr'.
     """
-    sdr: NotRequired[pulumi.Input['JobConfigElementaryStreamVideoStreamH264SdrArgsDict']]
+    sdr: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264SdrArgs']]]
     """
     SDR color format setting for H264.
     """
-    vbv_fullness_bits: NotRequired[pulumi.Input[_builtins.int]]
+    vbv_fullness_bits: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
     """
-    vbv_size_bits: NotRequired[pulumi.Input[_builtins.int]]
+    vbv_size_bits: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Size of the Video Buffering Verifier (VBV) buffer in bits.
     """
-    width_pixels: NotRequired[pulumi.Input[_builtins.int]]
+    width_pixels: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The width of the video in pixels.
     """
@@ -765,19 +765,19 @@ class JobConfigElementaryStreamVideoStreamH264Args:
     def __init__(__self__, *,
                  bitrate_bps: pulumi.Input[_builtins.int],
                  frame_rate: pulumi.Input[_builtins.int],
-                 crf_level: Optional[pulumi.Input[_builtins.int]] = None,
-                 entropy_coder: Optional[pulumi.Input[_builtins.str]] = None,
-                 gop_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 height_pixels: Optional[pulumi.Input[_builtins.int]] = None,
-                 hlg: Optional[pulumi.Input['JobConfigElementaryStreamVideoStreamH264HlgArgs']] = None,
-                 pixel_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 preset: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_control_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdr: Optional[pulumi.Input['JobConfigElementaryStreamVideoStreamH264SdrArgs']] = None,
-                 vbv_fullness_bits: Optional[pulumi.Input[_builtins.int]] = None,
-                 vbv_size_bits: Optional[pulumi.Input[_builtins.int]] = None,
-                 width_pixels: Optional[pulumi.Input[_builtins.int]] = None):
+                 crf_level: pulumi.Input[Optional[_builtins.int]] = None,
+                 entropy_coder: pulumi.Input[Optional[_builtins.str]] = None,
+                 gop_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 height_pixels: pulumi.Input[Optional[_builtins.int]] = None,
+                 hlg: pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264HlgArgs']] = None,
+                 pixel_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 preset: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_control_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdr: pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264SdrArgs']] = None,
+                 vbv_fullness_bits: pulumi.Input[Optional[_builtins.int]] = None,
+                 vbv_size_bits: pulumi.Input[Optional[_builtins.int]] = None,
+                 width_pixels: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] bitrate_bps: The video bitrate in bits per second.
         :param pulumi.Input[_builtins.int] frame_rate: The target video frame rate in frames per second (FPS).
@@ -850,158 +850,158 @@ class JobConfigElementaryStreamVideoStreamH264Args:
 
     @_builtins.property
     @pulumi.getter(name="crfLevel")
-    def crf_level(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def crf_level(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Target CRF level. The default is '21'.
         """
         return pulumi.get(self, "crf_level")
 
     @crf_level.setter
-    def crf_level(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def crf_level(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "crf_level", value)
 
     @_builtins.property
     @pulumi.getter(name="entropyCoder")
-    def entropy_coder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entropy_coder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entropy coder to use. The default is 'cabac'.
         """
         return pulumi.get(self, "entropy_coder")
 
     @entropy_coder.setter
-    def entropy_coder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entropy_coder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entropy_coder", value)
 
     @_builtins.property
     @pulumi.getter(name="gopDuration")
-    def gop_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gop_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Select the GOP size based on the specified duration. The default is '3s'.
         """
         return pulumi.get(self, "gop_duration")
 
     @gop_duration.setter
-    def gop_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gop_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gop_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="heightPixels")
-    def height_pixels(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def height_pixels(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The height of the video in pixels.
         """
         return pulumi.get(self, "height_pixels")
 
     @height_pixels.setter
-    def height_pixels(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def height_pixels(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "height_pixels", value)
 
     @_builtins.property
     @pulumi.getter
-    def hlg(self) -> Optional[pulumi.Input['JobConfigElementaryStreamVideoStreamH264HlgArgs']]:
+    def hlg(self) -> pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264HlgArgs']]:
         """
         HLG color format setting for H264.
         """
         return pulumi.get(self, "hlg")
 
     @hlg.setter
-    def hlg(self, value: Optional[pulumi.Input['JobConfigElementaryStreamVideoStreamH264HlgArgs']]):
+    def hlg(self, value: pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264HlgArgs']]):
         pulumi.set(self, "hlg", value)
 
     @_builtins.property
     @pulumi.getter(name="pixelFormat")
-    def pixel_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pixel_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pixel format to use. The default is 'yuv420p'.
         """
         return pulumi.get(self, "pixel_format")
 
     @pixel_format.setter
-    def pixel_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pixel_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pixel_format", value)
 
     @_builtins.property
     @pulumi.getter
-    def preset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enforces the specified codec preset. The default is 'veryfast'.
         """
         return pulumi.get(self, "preset")
 
     @preset.setter
-    def preset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preset", value)
 
     @_builtins.property
     @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enforces the specified codec profile.
         """
         return pulumi.get(self, "profile")
 
     @profile.setter
-    def profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile", value)
 
     @_builtins.property
     @pulumi.getter(name="rateControlMode")
-    def rate_control_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rate_control_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the mode. The default is 'vbr'.
         """
         return pulumi.get(self, "rate_control_mode")
 
     @rate_control_mode.setter
-    def rate_control_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rate_control_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rate_control_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def sdr(self) -> Optional[pulumi.Input['JobConfigElementaryStreamVideoStreamH264SdrArgs']]:
+    def sdr(self) -> pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264SdrArgs']]:
         """
         SDR color format setting for H264.
         """
         return pulumi.get(self, "sdr")
 
     @sdr.setter
-    def sdr(self, value: Optional[pulumi.Input['JobConfigElementaryStreamVideoStreamH264SdrArgs']]):
+    def sdr(self, value: pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264SdrArgs']]):
         pulumi.set(self, "sdr", value)
 
     @_builtins.property
     @pulumi.getter(name="vbvFullnessBits")
-    def vbv_fullness_bits(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vbv_fullness_bits(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
         """
         return pulumi.get(self, "vbv_fullness_bits")
 
     @vbv_fullness_bits.setter
-    def vbv_fullness_bits(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vbv_fullness_bits(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vbv_fullness_bits", value)
 
     @_builtins.property
     @pulumi.getter(name="vbvSizeBits")
-    def vbv_size_bits(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vbv_size_bits(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of the Video Buffering Verifier (VBV) buffer in bits.
         """
         return pulumi.get(self, "vbv_size_bits")
 
     @vbv_size_bits.setter
-    def vbv_size_bits(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vbv_size_bits(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vbv_size_bits", value)
 
     @_builtins.property
     @pulumi.getter(name="widthPixels")
-    def width_pixels(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def width_pixels(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The width of the video in pixels.
         """
         return pulumi.get(self, "width_pixels")
 
     @width_pixels.setter
-    def width_pixels(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def width_pixels(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "width_pixels", value)
 
 
@@ -1028,25 +1028,25 @@ class JobConfigEncryptionArgsDict(TypedDict):
     """
     Identifier for this set of encryption options.
     """
-    aes128: NotRequired[pulumi.Input['JobConfigEncryptionAes128ArgsDict']]
+    aes128: NotRequired[pulumi.Input[Optional['JobConfigEncryptionAes128Args']]]
     """
     Configuration for AES-128 encryption.
     """
-    drm_systems: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsArgsDict']]
+    drm_systems: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsArgs']]]
     """
     DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
     Structure is documented below.
     """
-    mpeg_cenc: NotRequired[pulumi.Input['JobConfigEncryptionMpegCencArgsDict']]
+    mpeg_cenc: NotRequired[pulumi.Input[Optional['JobConfigEncryptionMpegCencArgs']]]
     """
     Configuration for MPEG Common Encryption (MPEG-CENC).
     Structure is documented below.
     """
-    sample_aes: NotRequired[pulumi.Input['JobConfigEncryptionSampleAesArgsDict']]
+    sample_aes: NotRequired[pulumi.Input[Optional['JobConfigEncryptionSampleAesArgs']]]
     """
     Configuration for SAMPLE-AES encryption.
     """
-    secret_manager_key_source: NotRequired[pulumi.Input['JobConfigEncryptionSecretManagerKeySourceArgsDict']]
+    secret_manager_key_source: NotRequired[pulumi.Input[Optional['JobConfigEncryptionSecretManagerKeySourceArgs']]]
     """
     Configuration for secrets stored in Google Secret Manager.
     Structure is documented below.
@@ -1056,11 +1056,11 @@ class JobConfigEncryptionArgsDict(TypedDict):
 class JobConfigEncryptionArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 aes128: Optional[pulumi.Input['JobConfigEncryptionAes128Args']] = None,
-                 drm_systems: Optional[pulumi.Input['JobConfigEncryptionDrmSystemsArgs']] = None,
-                 mpeg_cenc: Optional[pulumi.Input['JobConfigEncryptionMpegCencArgs']] = None,
-                 sample_aes: Optional[pulumi.Input['JobConfigEncryptionSampleAesArgs']] = None,
-                 secret_manager_key_source: Optional[pulumi.Input['JobConfigEncryptionSecretManagerKeySourceArgs']] = None):
+                 aes128: pulumi.Input[Optional['JobConfigEncryptionAes128Args']] = None,
+                 drm_systems: pulumi.Input[Optional['JobConfigEncryptionDrmSystemsArgs']] = None,
+                 mpeg_cenc: pulumi.Input[Optional['JobConfigEncryptionMpegCencArgs']] = None,
+                 sample_aes: pulumi.Input[Optional['JobConfigEncryptionSampleAesArgs']] = None,
+                 secret_manager_key_source: pulumi.Input[Optional['JobConfigEncryptionSecretManagerKeySourceArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] id: Identifier for this set of encryption options.
         :param pulumi.Input['JobConfigEncryptionAes128Args'] aes128: Configuration for AES-128 encryption.
@@ -1098,19 +1098,19 @@ class JobConfigEncryptionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def aes128(self) -> Optional[pulumi.Input['JobConfigEncryptionAes128Args']]:
+    def aes128(self) -> pulumi.Input[Optional['JobConfigEncryptionAes128Args']]:
         """
         Configuration for AES-128 encryption.
         """
         return pulumi.get(self, "aes128")
 
     @aes128.setter
-    def aes128(self, value: Optional[pulumi.Input['JobConfigEncryptionAes128Args']]):
+    def aes128(self, value: pulumi.Input[Optional['JobConfigEncryptionAes128Args']]):
         pulumi.set(self, "aes128", value)
 
     @_builtins.property
     @pulumi.getter(name="drmSystems")
-    def drm_systems(self) -> Optional[pulumi.Input['JobConfigEncryptionDrmSystemsArgs']]:
+    def drm_systems(self) -> pulumi.Input[Optional['JobConfigEncryptionDrmSystemsArgs']]:
         """
         DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
         Structure is documented below.
@@ -1118,12 +1118,12 @@ class JobConfigEncryptionArgs:
         return pulumi.get(self, "drm_systems")
 
     @drm_systems.setter
-    def drm_systems(self, value: Optional[pulumi.Input['JobConfigEncryptionDrmSystemsArgs']]):
+    def drm_systems(self, value: pulumi.Input[Optional['JobConfigEncryptionDrmSystemsArgs']]):
         pulumi.set(self, "drm_systems", value)
 
     @_builtins.property
     @pulumi.getter(name="mpegCenc")
-    def mpeg_cenc(self) -> Optional[pulumi.Input['JobConfigEncryptionMpegCencArgs']]:
+    def mpeg_cenc(self) -> pulumi.Input[Optional['JobConfigEncryptionMpegCencArgs']]:
         """
         Configuration for MPEG Common Encryption (MPEG-CENC).
         Structure is documented below.
@@ -1131,24 +1131,24 @@ class JobConfigEncryptionArgs:
         return pulumi.get(self, "mpeg_cenc")
 
     @mpeg_cenc.setter
-    def mpeg_cenc(self, value: Optional[pulumi.Input['JobConfigEncryptionMpegCencArgs']]):
+    def mpeg_cenc(self, value: pulumi.Input[Optional['JobConfigEncryptionMpegCencArgs']]):
         pulumi.set(self, "mpeg_cenc", value)
 
     @_builtins.property
     @pulumi.getter(name="sampleAes")
-    def sample_aes(self) -> Optional[pulumi.Input['JobConfigEncryptionSampleAesArgs']]:
+    def sample_aes(self) -> pulumi.Input[Optional['JobConfigEncryptionSampleAesArgs']]:
         """
         Configuration for SAMPLE-AES encryption.
         """
         return pulumi.get(self, "sample_aes")
 
     @sample_aes.setter
-    def sample_aes(self, value: Optional[pulumi.Input['JobConfigEncryptionSampleAesArgs']]):
+    def sample_aes(self, value: pulumi.Input[Optional['JobConfigEncryptionSampleAesArgs']]):
         pulumi.set(self, "sample_aes", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerKeySource")
-    def secret_manager_key_source(self) -> Optional[pulumi.Input['JobConfigEncryptionSecretManagerKeySourceArgs']]:
+    def secret_manager_key_source(self) -> pulumi.Input[Optional['JobConfigEncryptionSecretManagerKeySourceArgs']]:
         """
         Configuration for secrets stored in Google Secret Manager.
         Structure is documented below.
@@ -1156,7 +1156,7 @@ class JobConfigEncryptionArgs:
         return pulumi.get(self, "secret_manager_key_source")
 
     @secret_manager_key_source.setter
-    def secret_manager_key_source(self, value: Optional[pulumi.Input['JobConfigEncryptionSecretManagerKeySourceArgs']]):
+    def secret_manager_key_source(self, value: pulumi.Input[Optional['JobConfigEncryptionSecretManagerKeySourceArgs']]):
         pulumi.set(self, "secret_manager_key_source", value)
 
 
@@ -1170,19 +1170,19 @@ class JobConfigEncryptionAes128Args:
 
 
 class JobConfigEncryptionDrmSystemsArgsDict(TypedDict):
-    clearkey: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsClearkeyArgsDict']]
+    clearkey: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsClearkeyArgs']]]
     """
     Clearkey configuration.
     """
-    fairplay: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsFairplayArgsDict']]
+    fairplay: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsFairplayArgs']]]
     """
     Fairplay configuration.
     """
-    playready: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsPlayreadyArgsDict']]
+    playready: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsPlayreadyArgs']]]
     """
     Playready configuration.
     """
-    widevine: NotRequired[pulumi.Input['JobConfigEncryptionDrmSystemsWidevineArgsDict']]
+    widevine: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsWidevineArgs']]]
     """
     Widevine configuration.
     """
@@ -1190,10 +1190,10 @@ class JobConfigEncryptionDrmSystemsArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigEncryptionDrmSystemsArgs:
     def __init__(__self__, *,
-                 clearkey: Optional[pulumi.Input['JobConfigEncryptionDrmSystemsClearkeyArgs']] = None,
-                 fairplay: Optional[pulumi.Input['JobConfigEncryptionDrmSystemsFairplayArgs']] = None,
-                 playready: Optional[pulumi.Input['JobConfigEncryptionDrmSystemsPlayreadyArgs']] = None,
-                 widevine: Optional[pulumi.Input['JobConfigEncryptionDrmSystemsWidevineArgs']] = None):
+                 clearkey: pulumi.Input[Optional['JobConfigEncryptionDrmSystemsClearkeyArgs']] = None,
+                 fairplay: pulumi.Input[Optional['JobConfigEncryptionDrmSystemsFairplayArgs']] = None,
+                 playready: pulumi.Input[Optional['JobConfigEncryptionDrmSystemsPlayreadyArgs']] = None,
+                 widevine: pulumi.Input[Optional['JobConfigEncryptionDrmSystemsWidevineArgs']] = None):
         """
         :param pulumi.Input['JobConfigEncryptionDrmSystemsClearkeyArgs'] clearkey: Clearkey configuration.
         :param pulumi.Input['JobConfigEncryptionDrmSystemsFairplayArgs'] fairplay: Fairplay configuration.
@@ -1211,50 +1211,50 @@ class JobConfigEncryptionDrmSystemsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def clearkey(self) -> Optional[pulumi.Input['JobConfigEncryptionDrmSystemsClearkeyArgs']]:
+    def clearkey(self) -> pulumi.Input[Optional['JobConfigEncryptionDrmSystemsClearkeyArgs']]:
         """
         Clearkey configuration.
         """
         return pulumi.get(self, "clearkey")
 
     @clearkey.setter
-    def clearkey(self, value: Optional[pulumi.Input['JobConfigEncryptionDrmSystemsClearkeyArgs']]):
+    def clearkey(self, value: pulumi.Input[Optional['JobConfigEncryptionDrmSystemsClearkeyArgs']]):
         pulumi.set(self, "clearkey", value)
 
     @_builtins.property
     @pulumi.getter
-    def fairplay(self) -> Optional[pulumi.Input['JobConfigEncryptionDrmSystemsFairplayArgs']]:
+    def fairplay(self) -> pulumi.Input[Optional['JobConfigEncryptionDrmSystemsFairplayArgs']]:
         """
         Fairplay configuration.
         """
         return pulumi.get(self, "fairplay")
 
     @fairplay.setter
-    def fairplay(self, value: Optional[pulumi.Input['JobConfigEncryptionDrmSystemsFairplayArgs']]):
+    def fairplay(self, value: pulumi.Input[Optional['JobConfigEncryptionDrmSystemsFairplayArgs']]):
         pulumi.set(self, "fairplay", value)
 
     @_builtins.property
     @pulumi.getter
-    def playready(self) -> Optional[pulumi.Input['JobConfigEncryptionDrmSystemsPlayreadyArgs']]:
+    def playready(self) -> pulumi.Input[Optional['JobConfigEncryptionDrmSystemsPlayreadyArgs']]:
         """
         Playready configuration.
         """
         return pulumi.get(self, "playready")
 
     @playready.setter
-    def playready(self, value: Optional[pulumi.Input['JobConfigEncryptionDrmSystemsPlayreadyArgs']]):
+    def playready(self, value: pulumi.Input[Optional['JobConfigEncryptionDrmSystemsPlayreadyArgs']]):
         pulumi.set(self, "playready", value)
 
     @_builtins.property
     @pulumi.getter
-    def widevine(self) -> Optional[pulumi.Input['JobConfigEncryptionDrmSystemsWidevineArgs']]:
+    def widevine(self) -> pulumi.Input[Optional['JobConfigEncryptionDrmSystemsWidevineArgs']]:
         """
         Widevine configuration.
         """
         return pulumi.get(self, "widevine")
 
     @widevine.setter
-    def widevine(self, value: Optional[pulumi.Input['JobConfigEncryptionDrmSystemsWidevineArgs']]):
+    def widevine(self, value: pulumi.Input[Optional['JobConfigEncryptionDrmSystemsWidevineArgs']]):
         pulumi.set(self, "widevine", value)
 
 
@@ -1360,11 +1360,11 @@ class JobConfigEncryptionSecretManagerKeySourceArgs:
 
 
 class JobConfigInputArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A unique key for this input. Must be specified when using advanced mapping and edit lists.
     """
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
     If empty, the value is populated from Job.input_uri.
@@ -1373,8 +1373,8 @@ class JobConfigInputArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigInputArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: A unique key for this input. Must be specified when using advanced mapping and edit lists.
         :param pulumi.Input[_builtins.str] uri: URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
@@ -1387,19 +1387,19 @@ class JobConfigInputArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique key for this input. Must be specified when using advanced mapping and edit lists.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
         If empty, the value is populated from Job.input_uri.
@@ -1407,20 +1407,20 @@ class JobConfigInputArgs:
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class JobConfigManifestArgsDict(TypedDict):
-    file_name: NotRequired[pulumi.Input[_builtins.str]]
+    file_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the generated file. The default is `manifest`.
     """
-    mux_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    mux_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of user supplied MuxStream.key values that should appear in this manifest.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of the manifest.
     Possible values are: `MANIFEST_TYPE_UNSPECIFIED`, `HLS`, `DASH`.
@@ -1429,9 +1429,9 @@ class JobConfigManifestArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigManifestArgs:
     def __init__(__self__, *,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 mux_streams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 mux_streams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] file_name: The name of the generated file. The default is `manifest`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mux_streams: List of user supplied MuxStream.key values that should appear in this manifest.
@@ -1447,31 +1447,31 @@ class JobConfigManifestArgs:
 
     @_builtins.property
     @pulumi.getter(name="fileName")
-    def file_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the generated file. The default is `manifest`.
         """
         return pulumi.get(self, "file_name")
 
     @file_name.setter
-    def file_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name", value)
 
     @_builtins.property
     @pulumi.getter(name="muxStreams")
-    def mux_streams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mux_streams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of user supplied MuxStream.key values that should appear in this manifest.
         """
         return pulumi.get(self, "mux_streams")
 
     @mux_streams.setter
-    def mux_streams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mux_streams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mux_streams", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the manifest.
         Possible values are: `MANIFEST_TYPE_UNSPECIFIED`, `HLS`, `DASH`.
@@ -1479,32 +1479,32 @@ class JobConfigManifestArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class JobConfigMuxStreamArgsDict(TypedDict):
-    container: NotRequired[pulumi.Input[_builtins.str]]
+    container: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The container format. The default is `mp4`.
     """
-    elementary_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    elementary_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of ElementaryStream.key values multiplexed in this stream.
     """
-    encryption_id: NotRequired[pulumi.Input[_builtins.str]]
+    encryption_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Identifier of the encryption configuration to use.
     """
-    file_name: NotRequired[pulumi.Input[_builtins.str]]
+    file_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the generated file.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A unique key for this multiplexed stream.
     """
-    segment_settings: NotRequired[pulumi.Input['JobConfigMuxStreamSegmentSettingsArgsDict']]
+    segment_settings: NotRequired[pulumi.Input[Optional['JobConfigMuxStreamSegmentSettingsArgs']]]
     """
     Segment settings for ts, fmp4 and vtt.
     Structure is documented below.
@@ -1513,12 +1513,12 @@ class JobConfigMuxStreamArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigMuxStreamArgs:
     def __init__(__self__, *,
-                 container: Optional[pulumi.Input[_builtins.str]] = None,
-                 elementary_streams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 encryption_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 segment_settings: Optional[pulumi.Input['JobConfigMuxStreamSegmentSettingsArgs']] = None):
+                 container: pulumi.Input[Optional[_builtins.str]] = None,
+                 elementary_streams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 encryption_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 segment_settings: pulumi.Input[Optional['JobConfigMuxStreamSegmentSettingsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] container: The container format. The default is `mp4`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] elementary_streams: List of ElementaryStream.key values multiplexed in this stream.
@@ -1543,67 +1543,67 @@ class JobConfigMuxStreamArgs:
 
     @_builtins.property
     @pulumi.getter
-    def container(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The container format. The default is `mp4`.
         """
         return pulumi.get(self, "container")
 
     @container.setter
-    def container(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container", value)
 
     @_builtins.property
     @pulumi.getter(name="elementaryStreams")
-    def elementary_streams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def elementary_streams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of ElementaryStream.key values multiplexed in this stream.
         """
         return pulumi.get(self, "elementary_streams")
 
     @elementary_streams.setter
-    def elementary_streams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def elementary_streams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "elementary_streams", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionId")
-    def encryption_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the encryption configuration to use.
         """
         return pulumi.get(self, "encryption_id")
 
     @encryption_id.setter
-    def encryption_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_id", value)
 
     @_builtins.property
     @pulumi.getter(name="fileName")
-    def file_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the generated file.
         """
         return pulumi.get(self, "file_name")
 
     @file_name.setter
-    def file_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique key for this multiplexed stream.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentSettings")
-    def segment_settings(self) -> Optional[pulumi.Input['JobConfigMuxStreamSegmentSettingsArgs']]:
+    def segment_settings(self) -> pulumi.Input[Optional['JobConfigMuxStreamSegmentSettingsArgs']]:
         """
         Segment settings for ts, fmp4 and vtt.
         Structure is documented below.
@@ -1611,12 +1611,12 @@ class JobConfigMuxStreamArgs:
         return pulumi.get(self, "segment_settings")
 
     @segment_settings.setter
-    def segment_settings(self, value: Optional[pulumi.Input['JobConfigMuxStreamSegmentSettingsArgs']]):
+    def segment_settings(self, value: pulumi.Input[Optional['JobConfigMuxStreamSegmentSettingsArgs']]):
         pulumi.set(self, "segment_settings", value)
 
 
 class JobConfigMuxStreamSegmentSettingsArgsDict(TypedDict):
-    segment_duration: NotRequired[pulumi.Input[_builtins.str]]
+    segment_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Duration of the segments in seconds. The default is `6.0s`.
     """
@@ -1624,7 +1624,7 @@ class JobConfigMuxStreamSegmentSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigMuxStreamSegmentSettingsArgs:
     def __init__(__self__, *,
-                 segment_duration: Optional[pulumi.Input[_builtins.str]] = None):
+                 segment_duration: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] segment_duration: Duration of the segments in seconds. The default is `6.0s`.
         """
@@ -1633,19 +1633,19 @@ class JobConfigMuxStreamSegmentSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="segmentDuration")
-    def segment_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def segment_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Duration of the segments in seconds. The default is `6.0s`.
         """
         return pulumi.get(self, "segment_duration")
 
     @segment_duration.setter
-    def segment_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def segment_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "segment_duration", value)
 
 
 class JobConfigOutputArgsDict(TypedDict):
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URI for the output file(s). For example, gs://my-bucket/outputs/.
     """
@@ -1653,7 +1653,7 @@ class JobConfigOutputArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigOutputArgs:
     def __init__(__self__, *,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: URI for the output file(s). For example, gs://my-bucket/outputs/.
         """
@@ -1662,24 +1662,24 @@ class JobConfigOutputArgs:
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI for the output file(s). For example, gs://my-bucket/outputs/.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class JobConfigOverlayArgsDict(TypedDict):
-    animations: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobConfigOverlayAnimationArgsDict']]]]
+    animations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigOverlayAnimationArgs']]]]]
     """
     List of animations. The list should be chronological, without any time overlap.
     Structure is documented below.
     """
-    image: NotRequired[pulumi.Input['JobConfigOverlayImageArgsDict']]
+    image: NotRequired[pulumi.Input[Optional['JobConfigOverlayImageArgs']]]
     """
     Image overlay.
     Structure is documented below.
@@ -1688,8 +1688,8 @@ class JobConfigOverlayArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigOverlayArgs:
     def __init__(__self__, *,
-                 animations: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigOverlayAnimationArgs']]]] = None,
-                 image: Optional[pulumi.Input['JobConfigOverlayImageArgs']] = None):
+                 animations: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigOverlayAnimationArgs']]]] = None,
+                 image: pulumi.Input[Optional['JobConfigOverlayImageArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobConfigOverlayAnimationArgs']]] animations: List of animations. The list should be chronological, without any time overlap.
                Structure is documented below.
@@ -1703,7 +1703,7 @@ class JobConfigOverlayArgs:
 
     @_builtins.property
     @pulumi.getter
-    def animations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigOverlayAnimationArgs']]]]:
+    def animations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigOverlayAnimationArgs']]]]:
         """
         List of animations. The list should be chronological, without any time overlap.
         Structure is documented below.
@@ -1711,12 +1711,12 @@ class JobConfigOverlayArgs:
         return pulumi.get(self, "animations")
 
     @animations.setter
-    def animations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigOverlayAnimationArgs']]]]):
+    def animations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigOverlayAnimationArgs']]]]):
         pulumi.set(self, "animations", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input['JobConfigOverlayImageArgs']]:
+    def image(self) -> pulumi.Input[Optional['JobConfigOverlayImageArgs']]:
         """
         Image overlay.
         Structure is documented below.
@@ -1724,12 +1724,12 @@ class JobConfigOverlayArgs:
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input['JobConfigOverlayImageArgs']]):
+    def image(self, value: pulumi.Input[Optional['JobConfigOverlayImageArgs']]):
         pulumi.set(self, "image", value)
 
 
 class JobConfigOverlayAnimationArgsDict(TypedDict):
-    animation_fade: NotRequired[pulumi.Input['JobConfigOverlayAnimationAnimationFadeArgsDict']]
+    animation_fade: NotRequired[pulumi.Input[Optional['JobConfigOverlayAnimationAnimationFadeArgs']]]
     """
     Display overlay object with fade animation.
     Structure is documented below.
@@ -1738,7 +1738,7 @@ class JobConfigOverlayAnimationArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigOverlayAnimationArgs:
     def __init__(__self__, *,
-                 animation_fade: Optional[pulumi.Input['JobConfigOverlayAnimationAnimationFadeArgs']] = None):
+                 animation_fade: pulumi.Input[Optional['JobConfigOverlayAnimationAnimationFadeArgs']] = None):
         """
         :param pulumi.Input['JobConfigOverlayAnimationAnimationFadeArgs'] animation_fade: Display overlay object with fade animation.
                Structure is documented below.
@@ -1748,7 +1748,7 @@ class JobConfigOverlayAnimationArgs:
 
     @_builtins.property
     @pulumi.getter(name="animationFade")
-    def animation_fade(self) -> Optional[pulumi.Input['JobConfigOverlayAnimationAnimationFadeArgs']]:
+    def animation_fade(self) -> pulumi.Input[Optional['JobConfigOverlayAnimationAnimationFadeArgs']]:
         """
         Display overlay object with fade animation.
         Structure is documented below.
@@ -1756,7 +1756,7 @@ class JobConfigOverlayAnimationArgs:
         return pulumi.get(self, "animation_fade")
 
     @animation_fade.setter
-    def animation_fade(self, value: Optional[pulumi.Input['JobConfigOverlayAnimationAnimationFadeArgs']]):
+    def animation_fade(self, value: pulumi.Input[Optional['JobConfigOverlayAnimationAnimationFadeArgs']]):
         pulumi.set(self, "animation_fade", value)
 
 
@@ -1770,15 +1770,15 @@ class JobConfigOverlayAnimationAnimationFadeArgsDict(TypedDict):
     * `FADE_OUT`: Fade the overlay object out of view.
     Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
     """
-    end_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    end_time_offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time to end the fade animation, in seconds.
     """
-    start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    start_time_offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time to start the fade animation, in seconds.
     """
-    xy: NotRequired[pulumi.Input['JobConfigOverlayAnimationAnimationFadeXyArgsDict']]
+    xy: NotRequired[pulumi.Input[Optional['JobConfigOverlayAnimationAnimationFadeXyArgs']]]
     """
     Normalized coordinates based on output video resolution.
     Structure is documented below.
@@ -1788,9 +1788,9 @@ class JobConfigOverlayAnimationAnimationFadeArgsDict(TypedDict):
 class JobConfigOverlayAnimationAnimationFadeArgs:
     def __init__(__self__, *,
                  fade_type: pulumi.Input[_builtins.str],
-                 end_time_offset: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time_offset: Optional[pulumi.Input[_builtins.str]] = None,
-                 xy: Optional[pulumi.Input['JobConfigOverlayAnimationAnimationFadeXyArgs']] = None):
+                 end_time_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 xy: pulumi.Input[Optional['JobConfigOverlayAnimationAnimationFadeXyArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] fade_type: Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
                The possible values are:
@@ -1830,31 +1830,31 @@ class JobConfigOverlayAnimationAnimationFadeArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTimeOffset")
-    def end_time_offset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time to end the fade animation, in seconds.
         """
         return pulumi.get(self, "end_time_offset")
 
     @end_time_offset.setter
-    def end_time_offset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time_offset", value)
 
     @_builtins.property
     @pulumi.getter(name="startTimeOffset")
-    def start_time_offset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time to start the fade animation, in seconds.
         """
         return pulumi.get(self, "start_time_offset")
 
     @start_time_offset.setter
-    def start_time_offset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time_offset", value)
 
     @_builtins.property
     @pulumi.getter
-    def xy(self) -> Optional[pulumi.Input['JobConfigOverlayAnimationAnimationFadeXyArgs']]:
+    def xy(self) -> pulumi.Input[Optional['JobConfigOverlayAnimationAnimationFadeXyArgs']]:
         """
         Normalized coordinates based on output video resolution.
         Structure is documented below.
@@ -1862,16 +1862,16 @@ class JobConfigOverlayAnimationAnimationFadeArgs:
         return pulumi.get(self, "xy")
 
     @xy.setter
-    def xy(self, value: Optional[pulumi.Input['JobConfigOverlayAnimationAnimationFadeXyArgs']]):
+    def xy(self, value: pulumi.Input[Optional['JobConfigOverlayAnimationAnimationFadeXyArgs']]):
         pulumi.set(self, "xy", value)
 
 
 class JobConfigOverlayAnimationAnimationFadeXyArgsDict(TypedDict):
-    x: NotRequired[pulumi.Input[_builtins.float]]
+    x: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Normalized x coordinate.
     """
-    y: NotRequired[pulumi.Input[_builtins.float]]
+    y: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Normalized y coordinate.
     """
@@ -1879,8 +1879,8 @@ class JobConfigOverlayAnimationAnimationFadeXyArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigOverlayAnimationAnimationFadeXyArgs:
     def __init__(__self__, *,
-                 x: Optional[pulumi.Input[_builtins.float]] = None,
-                 y: Optional[pulumi.Input[_builtins.float]] = None):
+                 x: pulumi.Input[Optional[_builtins.float]] = None,
+                 y: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.float] x: Normalized x coordinate.
         :param pulumi.Input[_builtins.float] y: Normalized y coordinate.
@@ -1892,26 +1892,26 @@ class JobConfigOverlayAnimationAnimationFadeXyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def x(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def x(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Normalized x coordinate.
         """
         return pulumi.get(self, "x")
 
     @x.setter
-    def x(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def x(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "x", value)
 
     @_builtins.property
     @pulumi.getter
-    def y(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def y(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Normalized y coordinate.
         """
         return pulumi.get(self, "y")
 
     @y.setter
-    def y(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def y(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "y", value)
 
 
@@ -1944,7 +1944,7 @@ class JobConfigOverlayImageArgs:
 
 
 class JobConfigPubsubDestinationArgsDict(TypedDict):
-    topic: NotRequired[pulumi.Input[_builtins.str]]
+    topic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
     """
@@ -1952,7 +1952,7 @@ class JobConfigPubsubDestinationArgsDict(TypedDict):
 @pulumi.input_type
 class JobConfigPubsubDestinationArgs:
     def __init__(__self__, *,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None):
+                 topic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] topic: The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
         """
@@ -1961,64 +1961,64 @@ class JobConfigPubsubDestinationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
         """
         return pulumi.get(self, "topic")
 
     @topic.setter
-    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic", value)
 
 
 class JobTemplateConfigArgsDict(TypedDict):
-    ad_breaks: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigAdBreakArgsDict']]]]
+    ad_breaks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigAdBreakArgs']]]]]
     """
     Ad break.
     Structure is documented below.
     """
-    edit_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigEditListArgsDict']]]]
+    edit_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigEditListArgs']]]]]
     """
     List of input assets stored in Cloud Storage.
     Structure is documented below.
     """
-    elementary_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigElementaryStreamArgsDict']]]]
+    elementary_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigElementaryStreamArgs']]]]]
     """
     List of input assets stored in Cloud Storage.
     Structure is documented below.
     """
-    encryptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigEncryptionArgsDict']]]]
+    encryptions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigEncryptionArgs']]]]]
     """
     List of encryption configurations for the content.
     Structure is documented below.
     """
-    inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigInputArgsDict']]]]
+    inputs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigInputArgs']]]]]
     """
     List of input assets stored in Cloud Storage.
     Structure is documented below.
     """
-    manifests: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigManifestArgsDict']]]]
+    manifests: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigManifestArgs']]]]]
     """
     Manifest configuration.
     Structure is documented below.
     """
-    mux_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigMuxStreamArgsDict']]]]
+    mux_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigMuxStreamArgs']]]]]
     """
     Multiplexing settings for output stream.
     Structure is documented below.
     """
-    output: NotRequired[pulumi.Input['JobTemplateConfigOutputArgsDict']]
+    output: NotRequired[pulumi.Input[Optional['JobTemplateConfigOutputArgs']]]
     """
     Location of output file(s) in a Cloud Storage bucket.
     Structure is documented below.
     """
-    overlays: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigOverlayArgsDict']]]]
+    overlays: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigOverlayArgs']]]]]
     """
     List of overlays on the output video, in descending Z-order.
     Structure is documented below.
     """
-    pubsub_destination: NotRequired[pulumi.Input['JobTemplateConfigPubsubDestinationArgsDict']]
+    pubsub_destination: NotRequired[pulumi.Input[Optional['JobTemplateConfigPubsubDestinationArgs']]]
     """
     Pub/Sub destination.
     Structure is documented below.
@@ -2027,16 +2027,16 @@ class JobTemplateConfigArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigArgs:
     def __init__(__self__, *,
-                 ad_breaks: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigAdBreakArgs']]]] = None,
-                 edit_lists: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigEditListArgs']]]] = None,
-                 elementary_streams: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigElementaryStreamArgs']]]] = None,
-                 encryptions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigEncryptionArgs']]]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigInputArgs']]]] = None,
-                 manifests: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigManifestArgs']]]] = None,
-                 mux_streams: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigMuxStreamArgs']]]] = None,
-                 output: Optional[pulumi.Input['JobTemplateConfigOutputArgs']] = None,
-                 overlays: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigOverlayArgs']]]] = None,
-                 pubsub_destination: Optional[pulumi.Input['JobTemplateConfigPubsubDestinationArgs']] = None):
+                 ad_breaks: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigAdBreakArgs']]]] = None,
+                 edit_lists: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigEditListArgs']]]] = None,
+                 elementary_streams: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigElementaryStreamArgs']]]] = None,
+                 encryptions: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigEncryptionArgs']]]] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigInputArgs']]]] = None,
+                 manifests: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigManifestArgs']]]] = None,
+                 mux_streams: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigMuxStreamArgs']]]] = None,
+                 output: pulumi.Input[Optional['JobTemplateConfigOutputArgs']] = None,
+                 overlays: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigOverlayArgs']]]] = None,
+                 pubsub_destination: pulumi.Input[Optional['JobTemplateConfigPubsubDestinationArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigAdBreakArgs']]] ad_breaks: Ad break.
                Structure is documented below.
@@ -2082,7 +2082,7 @@ class JobTemplateConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="adBreaks")
-    def ad_breaks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigAdBreakArgs']]]]:
+    def ad_breaks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigAdBreakArgs']]]]:
         """
         Ad break.
         Structure is documented below.
@@ -2090,12 +2090,12 @@ class JobTemplateConfigArgs:
         return pulumi.get(self, "ad_breaks")
 
     @ad_breaks.setter
-    def ad_breaks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigAdBreakArgs']]]]):
+    def ad_breaks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigAdBreakArgs']]]]):
         pulumi.set(self, "ad_breaks", value)
 
     @_builtins.property
     @pulumi.getter(name="editLists")
-    def edit_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigEditListArgs']]]]:
+    def edit_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigEditListArgs']]]]:
         """
         List of input assets stored in Cloud Storage.
         Structure is documented below.
@@ -2103,12 +2103,12 @@ class JobTemplateConfigArgs:
         return pulumi.get(self, "edit_lists")
 
     @edit_lists.setter
-    def edit_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigEditListArgs']]]]):
+    def edit_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigEditListArgs']]]]):
         pulumi.set(self, "edit_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="elementaryStreams")
-    def elementary_streams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigElementaryStreamArgs']]]]:
+    def elementary_streams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigElementaryStreamArgs']]]]:
         """
         List of input assets stored in Cloud Storage.
         Structure is documented below.
@@ -2116,12 +2116,12 @@ class JobTemplateConfigArgs:
         return pulumi.get(self, "elementary_streams")
 
     @elementary_streams.setter
-    def elementary_streams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigElementaryStreamArgs']]]]):
+    def elementary_streams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigElementaryStreamArgs']]]]):
         pulumi.set(self, "elementary_streams", value)
 
     @_builtins.property
     @pulumi.getter
-    def encryptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigEncryptionArgs']]]]:
+    def encryptions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigEncryptionArgs']]]]:
         """
         List of encryption configurations for the content.
         Structure is documented below.
@@ -2129,12 +2129,12 @@ class JobTemplateConfigArgs:
         return pulumi.get(self, "encryptions")
 
     @encryptions.setter
-    def encryptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigEncryptionArgs']]]]):
+    def encryptions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigEncryptionArgs']]]]):
         pulumi.set(self, "encryptions", value)
 
     @_builtins.property
     @pulumi.getter
-    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigInputArgs']]]]:
+    def inputs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigInputArgs']]]]:
         """
         List of input assets stored in Cloud Storage.
         Structure is documented below.
@@ -2142,12 +2142,12 @@ class JobTemplateConfigArgs:
         return pulumi.get(self, "inputs")
 
     @inputs.setter
-    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigInputArgs']]]]):
+    def inputs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigInputArgs']]]]):
         pulumi.set(self, "inputs", value)
 
     @_builtins.property
     @pulumi.getter
-    def manifests(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigManifestArgs']]]]:
+    def manifests(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigManifestArgs']]]]:
         """
         Manifest configuration.
         Structure is documented below.
@@ -2155,12 +2155,12 @@ class JobTemplateConfigArgs:
         return pulumi.get(self, "manifests")
 
     @manifests.setter
-    def manifests(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigManifestArgs']]]]):
+    def manifests(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigManifestArgs']]]]):
         pulumi.set(self, "manifests", value)
 
     @_builtins.property
     @pulumi.getter(name="muxStreams")
-    def mux_streams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigMuxStreamArgs']]]]:
+    def mux_streams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigMuxStreamArgs']]]]:
         """
         Multiplexing settings for output stream.
         Structure is documented below.
@@ -2168,12 +2168,12 @@ class JobTemplateConfigArgs:
         return pulumi.get(self, "mux_streams")
 
     @mux_streams.setter
-    def mux_streams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigMuxStreamArgs']]]]):
+    def mux_streams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigMuxStreamArgs']]]]):
         pulumi.set(self, "mux_streams", value)
 
     @_builtins.property
     @pulumi.getter
-    def output(self) -> Optional[pulumi.Input['JobTemplateConfigOutputArgs']]:
+    def output(self) -> pulumi.Input[Optional['JobTemplateConfigOutputArgs']]:
         """
         Location of output file(s) in a Cloud Storage bucket.
         Structure is documented below.
@@ -2181,12 +2181,12 @@ class JobTemplateConfigArgs:
         return pulumi.get(self, "output")
 
     @output.setter
-    def output(self, value: Optional[pulumi.Input['JobTemplateConfigOutputArgs']]):
+    def output(self, value: pulumi.Input[Optional['JobTemplateConfigOutputArgs']]):
         pulumi.set(self, "output", value)
 
     @_builtins.property
     @pulumi.getter
-    def overlays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigOverlayArgs']]]]:
+    def overlays(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigOverlayArgs']]]]:
         """
         List of overlays on the output video, in descending Z-order.
         Structure is documented below.
@@ -2194,12 +2194,12 @@ class JobTemplateConfigArgs:
         return pulumi.get(self, "overlays")
 
     @overlays.setter
-    def overlays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigOverlayArgs']]]]):
+    def overlays(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigOverlayArgs']]]]):
         pulumi.set(self, "overlays", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubDestination")
-    def pubsub_destination(self) -> Optional[pulumi.Input['JobTemplateConfigPubsubDestinationArgs']]:
+    def pubsub_destination(self) -> pulumi.Input[Optional['JobTemplateConfigPubsubDestinationArgs']]:
         """
         Pub/Sub destination.
         Structure is documented below.
@@ -2207,12 +2207,12 @@ class JobTemplateConfigArgs:
         return pulumi.get(self, "pubsub_destination")
 
     @pubsub_destination.setter
-    def pubsub_destination(self, value: Optional[pulumi.Input['JobTemplateConfigPubsubDestinationArgs']]):
+    def pubsub_destination(self, value: pulumi.Input[Optional['JobTemplateConfigPubsubDestinationArgs']]):
         pulumi.set(self, "pubsub_destination", value)
 
 
 class JobTemplateConfigAdBreakArgsDict(TypedDict):
-    start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    start_time_offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Start time in seconds for the ad break, relative to the output file timeline
     """
@@ -2220,7 +2220,7 @@ class JobTemplateConfigAdBreakArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigAdBreakArgs:
     def __init__(__self__, *,
-                 start_time_offset: Optional[pulumi.Input[_builtins.str]] = None):
+                 start_time_offset: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] start_time_offset: Start time in seconds for the ad break, relative to the output file timeline
         """
@@ -2229,27 +2229,27 @@ class JobTemplateConfigAdBreakArgs:
 
     @_builtins.property
     @pulumi.getter(name="startTimeOffset")
-    def start_time_offset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Start time in seconds for the ad break, relative to the output file timeline
         """
         return pulumi.get(self, "start_time_offset")
 
     @start_time_offset.setter
-    def start_time_offset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time_offset", value)
 
 
 class JobTemplateConfigEditListArgsDict(TypedDict):
-    inputs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    inputs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of values identifying files that should be used in this atom.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A unique key for this atom.
     """
-    start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    start_time_offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Start time in seconds for the atom, relative to the input file timeline.  The default is `0s`.
     """
@@ -2257,9 +2257,9 @@ class JobTemplateConfigEditListArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigEditListArgs:
     def __init__(__self__, *,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time_offset: Optional[pulumi.Input[_builtins.str]] = None):
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time_offset: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: List of values identifying files that should be used in this atom.
         :param pulumi.Input[_builtins.str] key: A unique key for this atom.
@@ -2274,52 +2274,52 @@ class JobTemplateConfigEditListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def inputs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of values identifying files that should be used in this atom.
         """
         return pulumi.get(self, "inputs")
 
     @inputs.setter
-    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def inputs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "inputs", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique key for this atom.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="startTimeOffset")
-    def start_time_offset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Start time in seconds for the atom, relative to the input file timeline.  The default is `0s`.
         """
         return pulumi.get(self, "start_time_offset")
 
     @start_time_offset.setter
-    def start_time_offset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time_offset", value)
 
 
 class JobTemplateConfigElementaryStreamArgsDict(TypedDict):
-    audio_stream: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamAudioStreamArgsDict']]
+    audio_stream: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamAudioStreamArgs']]]
     """
     Encoding of an audio stream.
     Structure is documented below.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A unique key for this atom.
     """
-    video_stream: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamArgsDict']]
+    video_stream: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamArgs']]]
     """
     Encoding of a video stream.
     Structure is documented below.
@@ -2328,9 +2328,9 @@ class JobTemplateConfigElementaryStreamArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigElementaryStreamArgs:
     def __init__(__self__, *,
-                 audio_stream: Optional[pulumi.Input['JobTemplateConfigElementaryStreamAudioStreamArgs']] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_stream: Optional[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamArgs']] = None):
+                 audio_stream: pulumi.Input[Optional['JobTemplateConfigElementaryStreamAudioStreamArgs']] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_stream: pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamArgs']] = None):
         """
         :param pulumi.Input['JobTemplateConfigElementaryStreamAudioStreamArgs'] audio_stream: Encoding of an audio stream.
                Structure is documented below.
@@ -2347,7 +2347,7 @@ class JobTemplateConfigElementaryStreamArgs:
 
     @_builtins.property
     @pulumi.getter(name="audioStream")
-    def audio_stream(self) -> Optional[pulumi.Input['JobTemplateConfigElementaryStreamAudioStreamArgs']]:
+    def audio_stream(self) -> pulumi.Input[Optional['JobTemplateConfigElementaryStreamAudioStreamArgs']]:
         """
         Encoding of an audio stream.
         Structure is documented below.
@@ -2355,24 +2355,24 @@ class JobTemplateConfigElementaryStreamArgs:
         return pulumi.get(self, "audio_stream")
 
     @audio_stream.setter
-    def audio_stream(self, value: Optional[pulumi.Input['JobTemplateConfigElementaryStreamAudioStreamArgs']]):
+    def audio_stream(self, value: pulumi.Input[Optional['JobTemplateConfigElementaryStreamAudioStreamArgs']]):
         pulumi.set(self, "audio_stream", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique key for this atom.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="videoStream")
-    def video_stream(self) -> Optional[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamArgs']]:
+    def video_stream(self) -> pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamArgs']]:
         """
         Encoding of a video stream.
         Structure is documented below.
@@ -2380,7 +2380,7 @@ class JobTemplateConfigElementaryStreamArgs:
         return pulumi.get(self, "video_stream")
 
     @video_stream.setter
-    def video_stream(self, value: Optional[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamArgs']]):
+    def video_stream(self, value: pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamArgs']]):
         pulumi.set(self, "video_stream", value)
 
 
@@ -2389,19 +2389,19 @@ class JobTemplateConfigElementaryStreamAudioStreamArgsDict(TypedDict):
     """
     Audio bitrate in bits per second.
     """
-    channel_count: NotRequired[pulumi.Input[_builtins.int]]
+    channel_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of audio channels. The default is `2`.
     """
-    channel_layouts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    channel_layouts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of channel names specifying layout of the audio channels.  The default is ["fl", "fr"].
     """
-    codec: NotRequired[pulumi.Input[_builtins.str]]
+    codec: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The codec for this audio stream. The default is `aac`.
     """
-    sample_rate_hertz: NotRequired[pulumi.Input[_builtins.int]]
+    sample_rate_hertz: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The audio sample rate in Hertz. The default is `48000`.
     """
@@ -2410,10 +2410,10 @@ class JobTemplateConfigElementaryStreamAudioStreamArgsDict(TypedDict):
 class JobTemplateConfigElementaryStreamAudioStreamArgs:
     def __init__(__self__, *,
                  bitrate_bps: pulumi.Input[_builtins.int],
-                 channel_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 channel_layouts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 codec: Optional[pulumi.Input[_builtins.str]] = None,
-                 sample_rate_hertz: Optional[pulumi.Input[_builtins.int]] = None):
+                 channel_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 channel_layouts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 codec: pulumi.Input[Optional[_builtins.str]] = None,
+                 sample_rate_hertz: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] bitrate_bps: Audio bitrate in bits per second.
         :param pulumi.Input[_builtins.int] channel_count: Number of audio channels. The default is `2`.
@@ -2445,55 +2445,55 @@ class JobTemplateConfigElementaryStreamAudioStreamArgs:
 
     @_builtins.property
     @pulumi.getter(name="channelCount")
-    def channel_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def channel_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of audio channels. The default is `2`.
         """
         return pulumi.get(self, "channel_count")
 
     @channel_count.setter
-    def channel_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def channel_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "channel_count", value)
 
     @_builtins.property
     @pulumi.getter(name="channelLayouts")
-    def channel_layouts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def channel_layouts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of channel names specifying layout of the audio channels.  The default is ["fl", "fr"].
         """
         return pulumi.get(self, "channel_layouts")
 
     @channel_layouts.setter
-    def channel_layouts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def channel_layouts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "channel_layouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def codec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def codec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The codec for this audio stream. The default is `aac`.
         """
         return pulumi.get(self, "codec")
 
     @codec.setter
-    def codec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def codec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "codec", value)
 
     @_builtins.property
     @pulumi.getter(name="sampleRateHertz")
-    def sample_rate_hertz(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sample_rate_hertz(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The audio sample rate in Hertz. The default is `48000`.
         """
         return pulumi.get(self, "sample_rate_hertz")
 
     @sample_rate_hertz.setter
-    def sample_rate_hertz(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sample_rate_hertz(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sample_rate_hertz", value)
 
 
 class JobTemplateConfigElementaryStreamVideoStreamArgsDict(TypedDict):
-    h264: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264ArgsDict']]
+    h264: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264Args']]]
     """
     H264 codec settings
     Structure is documented below.
@@ -2505,7 +2505,7 @@ class JobTemplateConfigElementaryStreamVideoStreamArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigElementaryStreamVideoStreamArgs:
     def __init__(__self__, *,
-                 h264: Optional[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264Args']] = None):
+                 h264: pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264Args']] = None):
         """
         :param pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264Args'] h264: H264 codec settings
                Structure is documented below.
@@ -2518,7 +2518,7 @@ class JobTemplateConfigElementaryStreamVideoStreamArgs:
 
     @_builtins.property
     @pulumi.getter
-    def h264(self) -> Optional[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264Args']]:
+    def h264(self) -> pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264Args']]:
         """
         H264 codec settings
         Structure is documented below.
@@ -2529,7 +2529,7 @@ class JobTemplateConfigElementaryStreamVideoStreamArgs:
         return pulumi.get(self, "h264")
 
     @h264.setter
-    def h264(self, value: Optional[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264Args']]):
+    def h264(self, value: pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264Args']]):
         pulumi.set(self, "h264", value)
 
 
@@ -2542,55 +2542,55 @@ class JobTemplateConfigElementaryStreamVideoStreamH264ArgsDict(TypedDict):
     """
     The target video frame rate in frames per second (FPS).
     """
-    crf_level: NotRequired[pulumi.Input[_builtins.int]]
+    crf_level: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Target CRF level. The default is '21'.
     """
-    entropy_coder: NotRequired[pulumi.Input[_builtins.str]]
+    entropy_coder: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The entropy coder to use. The default is 'cabac'.
     """
-    gop_duration: NotRequired[pulumi.Input[_builtins.str]]
+    gop_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Select the GOP size based on the specified duration. The default is '3s'.
     """
-    height_pixels: NotRequired[pulumi.Input[_builtins.int]]
+    height_pixels: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The height of the video in pixels.
     """
-    hlg: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264HlgArgsDict']]
+    hlg: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264HlgArgs']]]
     """
     HLG color format setting for H264.
     """
-    pixel_format: NotRequired[pulumi.Input[_builtins.str]]
+    pixel_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Pixel format to use. The default is 'yuv420p'.
     """
-    preset: NotRequired[pulumi.Input[_builtins.str]]
+    preset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Enforces the specified codec preset. The default is 'veryfast'.
     """
-    profile: NotRequired[pulumi.Input[_builtins.str]]
+    profile: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Enforces the specified codec profile.
     """
-    rate_control_mode: NotRequired[pulumi.Input[_builtins.str]]
+    rate_control_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specify the mode. The default is 'vbr'.
     """
-    sdr: NotRequired[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264SdrArgsDict']]
+    sdr: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264SdrArgs']]]
     """
     SDR color format setting for H264.
     """
-    vbv_fullness_bits: NotRequired[pulumi.Input[_builtins.int]]
+    vbv_fullness_bits: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
     """
-    vbv_size_bits: NotRequired[pulumi.Input[_builtins.int]]
+    vbv_size_bits: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Size of the Video Buffering Verifier (VBV) buffer in bits.
     """
-    width_pixels: NotRequired[pulumi.Input[_builtins.int]]
+    width_pixels: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The width of the video in pixels.
     """
@@ -2600,19 +2600,19 @@ class JobTemplateConfigElementaryStreamVideoStreamH264Args:
     def __init__(__self__, *,
                  bitrate_bps: pulumi.Input[_builtins.int],
                  frame_rate: pulumi.Input[_builtins.int],
-                 crf_level: Optional[pulumi.Input[_builtins.int]] = None,
-                 entropy_coder: Optional[pulumi.Input[_builtins.str]] = None,
-                 gop_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 height_pixels: Optional[pulumi.Input[_builtins.int]] = None,
-                 hlg: Optional[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264HlgArgs']] = None,
-                 pixel_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 preset: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_control_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdr: Optional[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264SdrArgs']] = None,
-                 vbv_fullness_bits: Optional[pulumi.Input[_builtins.int]] = None,
-                 vbv_size_bits: Optional[pulumi.Input[_builtins.int]] = None,
-                 width_pixels: Optional[pulumi.Input[_builtins.int]] = None):
+                 crf_level: pulumi.Input[Optional[_builtins.int]] = None,
+                 entropy_coder: pulumi.Input[Optional[_builtins.str]] = None,
+                 gop_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 height_pixels: pulumi.Input[Optional[_builtins.int]] = None,
+                 hlg: pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264HlgArgs']] = None,
+                 pixel_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 preset: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_control_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdr: pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264SdrArgs']] = None,
+                 vbv_fullness_bits: pulumi.Input[Optional[_builtins.int]] = None,
+                 vbv_size_bits: pulumi.Input[Optional[_builtins.int]] = None,
+                 width_pixels: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] bitrate_bps: The video bitrate in bits per second.
         :param pulumi.Input[_builtins.int] frame_rate: The target video frame rate in frames per second (FPS).
@@ -2685,158 +2685,158 @@ class JobTemplateConfigElementaryStreamVideoStreamH264Args:
 
     @_builtins.property
     @pulumi.getter(name="crfLevel")
-    def crf_level(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def crf_level(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Target CRF level. The default is '21'.
         """
         return pulumi.get(self, "crf_level")
 
     @crf_level.setter
-    def crf_level(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def crf_level(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "crf_level", value)
 
     @_builtins.property
     @pulumi.getter(name="entropyCoder")
-    def entropy_coder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entropy_coder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entropy coder to use. The default is 'cabac'.
         """
         return pulumi.get(self, "entropy_coder")
 
     @entropy_coder.setter
-    def entropy_coder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entropy_coder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entropy_coder", value)
 
     @_builtins.property
     @pulumi.getter(name="gopDuration")
-    def gop_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gop_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Select the GOP size based on the specified duration. The default is '3s'.
         """
         return pulumi.get(self, "gop_duration")
 
     @gop_duration.setter
-    def gop_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gop_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gop_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="heightPixels")
-    def height_pixels(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def height_pixels(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The height of the video in pixels.
         """
         return pulumi.get(self, "height_pixels")
 
     @height_pixels.setter
-    def height_pixels(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def height_pixels(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "height_pixels", value)
 
     @_builtins.property
     @pulumi.getter
-    def hlg(self) -> Optional[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264HlgArgs']]:
+    def hlg(self) -> pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264HlgArgs']]:
         """
         HLG color format setting for H264.
         """
         return pulumi.get(self, "hlg")
 
     @hlg.setter
-    def hlg(self, value: Optional[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264HlgArgs']]):
+    def hlg(self, value: pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264HlgArgs']]):
         pulumi.set(self, "hlg", value)
 
     @_builtins.property
     @pulumi.getter(name="pixelFormat")
-    def pixel_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pixel_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pixel format to use. The default is 'yuv420p'.
         """
         return pulumi.get(self, "pixel_format")
 
     @pixel_format.setter
-    def pixel_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pixel_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pixel_format", value)
 
     @_builtins.property
     @pulumi.getter
-    def preset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enforces the specified codec preset. The default is 'veryfast'.
         """
         return pulumi.get(self, "preset")
 
     @preset.setter
-    def preset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preset", value)
 
     @_builtins.property
     @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enforces the specified codec profile.
         """
         return pulumi.get(self, "profile")
 
     @profile.setter
-    def profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile", value)
 
     @_builtins.property
     @pulumi.getter(name="rateControlMode")
-    def rate_control_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rate_control_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the mode. The default is 'vbr'.
         """
         return pulumi.get(self, "rate_control_mode")
 
     @rate_control_mode.setter
-    def rate_control_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rate_control_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rate_control_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def sdr(self) -> Optional[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264SdrArgs']]:
+    def sdr(self) -> pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264SdrArgs']]:
         """
         SDR color format setting for H264.
         """
         return pulumi.get(self, "sdr")
 
     @sdr.setter
-    def sdr(self, value: Optional[pulumi.Input['JobTemplateConfigElementaryStreamVideoStreamH264SdrArgs']]):
+    def sdr(self, value: pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264SdrArgs']]):
         pulumi.set(self, "sdr", value)
 
     @_builtins.property
     @pulumi.getter(name="vbvFullnessBits")
-    def vbv_fullness_bits(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vbv_fullness_bits(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
         """
         return pulumi.get(self, "vbv_fullness_bits")
 
     @vbv_fullness_bits.setter
-    def vbv_fullness_bits(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vbv_fullness_bits(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vbv_fullness_bits", value)
 
     @_builtins.property
     @pulumi.getter(name="vbvSizeBits")
-    def vbv_size_bits(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vbv_size_bits(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of the Video Buffering Verifier (VBV) buffer in bits.
         """
         return pulumi.get(self, "vbv_size_bits")
 
     @vbv_size_bits.setter
-    def vbv_size_bits(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vbv_size_bits(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vbv_size_bits", value)
 
     @_builtins.property
     @pulumi.getter(name="widthPixels")
-    def width_pixels(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def width_pixels(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The width of the video in pixels.
         """
         return pulumi.get(self, "width_pixels")
 
     @width_pixels.setter
-    def width_pixels(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def width_pixels(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "width_pixels", value)
 
 
@@ -2863,25 +2863,25 @@ class JobTemplateConfigEncryptionArgsDict(TypedDict):
     """
     Identifier for this set of encryption options.
     """
-    aes128: NotRequired[pulumi.Input['JobTemplateConfigEncryptionAes128ArgsDict']]
+    aes128: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionAes128Args']]]
     """
     Configuration for AES-128 encryption.
     """
-    drm_systems: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsArgsDict']]
+    drm_systems: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsArgs']]]
     """
     DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
     Structure is documented below.
     """
-    mpeg_cenc: NotRequired[pulumi.Input['JobTemplateConfigEncryptionMpegCencArgsDict']]
+    mpeg_cenc: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionMpegCencArgs']]]
     """
     Configuration for MPEG Common Encryption (MPEG-CENC).
     Structure is documented below.
     """
-    sample_aes: NotRequired[pulumi.Input['JobTemplateConfigEncryptionSampleAesArgsDict']]
+    sample_aes: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionSampleAesArgs']]]
     """
     Configuration for SAMPLE-AES encryption.
     """
-    secret_manager_key_source: NotRequired[pulumi.Input['JobTemplateConfigEncryptionSecretManagerKeySourceArgsDict']]
+    secret_manager_key_source: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionSecretManagerKeySourceArgs']]]
     """
     Configuration for secrets stored in Google Secret Manager.
     Structure is documented below.
@@ -2891,11 +2891,11 @@ class JobTemplateConfigEncryptionArgsDict(TypedDict):
 class JobTemplateConfigEncryptionArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 aes128: Optional[pulumi.Input['JobTemplateConfigEncryptionAes128Args']] = None,
-                 drm_systems: Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsArgs']] = None,
-                 mpeg_cenc: Optional[pulumi.Input['JobTemplateConfigEncryptionMpegCencArgs']] = None,
-                 sample_aes: Optional[pulumi.Input['JobTemplateConfigEncryptionSampleAesArgs']] = None,
-                 secret_manager_key_source: Optional[pulumi.Input['JobTemplateConfigEncryptionSecretManagerKeySourceArgs']] = None):
+                 aes128: pulumi.Input[Optional['JobTemplateConfigEncryptionAes128Args']] = None,
+                 drm_systems: pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsArgs']] = None,
+                 mpeg_cenc: pulumi.Input[Optional['JobTemplateConfigEncryptionMpegCencArgs']] = None,
+                 sample_aes: pulumi.Input[Optional['JobTemplateConfigEncryptionSampleAesArgs']] = None,
+                 secret_manager_key_source: pulumi.Input[Optional['JobTemplateConfigEncryptionSecretManagerKeySourceArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] id: Identifier for this set of encryption options.
         :param pulumi.Input['JobTemplateConfigEncryptionAes128Args'] aes128: Configuration for AES-128 encryption.
@@ -2933,19 +2933,19 @@ class JobTemplateConfigEncryptionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def aes128(self) -> Optional[pulumi.Input['JobTemplateConfigEncryptionAes128Args']]:
+    def aes128(self) -> pulumi.Input[Optional['JobTemplateConfigEncryptionAes128Args']]:
         """
         Configuration for AES-128 encryption.
         """
         return pulumi.get(self, "aes128")
 
     @aes128.setter
-    def aes128(self, value: Optional[pulumi.Input['JobTemplateConfigEncryptionAes128Args']]):
+    def aes128(self, value: pulumi.Input[Optional['JobTemplateConfigEncryptionAes128Args']]):
         pulumi.set(self, "aes128", value)
 
     @_builtins.property
     @pulumi.getter(name="drmSystems")
-    def drm_systems(self) -> Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsArgs']]:
+    def drm_systems(self) -> pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsArgs']]:
         """
         DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
         Structure is documented below.
@@ -2953,12 +2953,12 @@ class JobTemplateConfigEncryptionArgs:
         return pulumi.get(self, "drm_systems")
 
     @drm_systems.setter
-    def drm_systems(self, value: Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsArgs']]):
+    def drm_systems(self, value: pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsArgs']]):
         pulumi.set(self, "drm_systems", value)
 
     @_builtins.property
     @pulumi.getter(name="mpegCenc")
-    def mpeg_cenc(self) -> Optional[pulumi.Input['JobTemplateConfigEncryptionMpegCencArgs']]:
+    def mpeg_cenc(self) -> pulumi.Input[Optional['JobTemplateConfigEncryptionMpegCencArgs']]:
         """
         Configuration for MPEG Common Encryption (MPEG-CENC).
         Structure is documented below.
@@ -2966,24 +2966,24 @@ class JobTemplateConfigEncryptionArgs:
         return pulumi.get(self, "mpeg_cenc")
 
     @mpeg_cenc.setter
-    def mpeg_cenc(self, value: Optional[pulumi.Input['JobTemplateConfigEncryptionMpegCencArgs']]):
+    def mpeg_cenc(self, value: pulumi.Input[Optional['JobTemplateConfigEncryptionMpegCencArgs']]):
         pulumi.set(self, "mpeg_cenc", value)
 
     @_builtins.property
     @pulumi.getter(name="sampleAes")
-    def sample_aes(self) -> Optional[pulumi.Input['JobTemplateConfigEncryptionSampleAesArgs']]:
+    def sample_aes(self) -> pulumi.Input[Optional['JobTemplateConfigEncryptionSampleAesArgs']]:
         """
         Configuration for SAMPLE-AES encryption.
         """
         return pulumi.get(self, "sample_aes")
 
     @sample_aes.setter
-    def sample_aes(self, value: Optional[pulumi.Input['JobTemplateConfigEncryptionSampleAesArgs']]):
+    def sample_aes(self, value: pulumi.Input[Optional['JobTemplateConfigEncryptionSampleAesArgs']]):
         pulumi.set(self, "sample_aes", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerKeySource")
-    def secret_manager_key_source(self) -> Optional[pulumi.Input['JobTemplateConfigEncryptionSecretManagerKeySourceArgs']]:
+    def secret_manager_key_source(self) -> pulumi.Input[Optional['JobTemplateConfigEncryptionSecretManagerKeySourceArgs']]:
         """
         Configuration for secrets stored in Google Secret Manager.
         Structure is documented below.
@@ -2991,7 +2991,7 @@ class JobTemplateConfigEncryptionArgs:
         return pulumi.get(self, "secret_manager_key_source")
 
     @secret_manager_key_source.setter
-    def secret_manager_key_source(self, value: Optional[pulumi.Input['JobTemplateConfigEncryptionSecretManagerKeySourceArgs']]):
+    def secret_manager_key_source(self, value: pulumi.Input[Optional['JobTemplateConfigEncryptionSecretManagerKeySourceArgs']]):
         pulumi.set(self, "secret_manager_key_source", value)
 
 
@@ -3005,19 +3005,19 @@ class JobTemplateConfigEncryptionAes128Args:
 
 
 class JobTemplateConfigEncryptionDrmSystemsArgsDict(TypedDict):
-    clearkey: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsClearkeyArgsDict']]
+    clearkey: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsClearkeyArgs']]]
     """
     Clearkey configuration.
     """
-    fairplay: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsFairplayArgsDict']]
+    fairplay: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsFairplayArgs']]]
     """
     Fairplay configuration.
     """
-    playready: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsPlayreadyArgsDict']]
+    playready: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsPlayreadyArgs']]]
     """
     Playready configuration.
     """
-    widevine: NotRequired[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsWidevineArgsDict']]
+    widevine: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsWidevineArgs']]]
     """
     Widevine configuration.
     """
@@ -3025,10 +3025,10 @@ class JobTemplateConfigEncryptionDrmSystemsArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigEncryptionDrmSystemsArgs:
     def __init__(__self__, *,
-                 clearkey: Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsClearkeyArgs']] = None,
-                 fairplay: Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsFairplayArgs']] = None,
-                 playready: Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsPlayreadyArgs']] = None,
-                 widevine: Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsWidevineArgs']] = None):
+                 clearkey: pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsClearkeyArgs']] = None,
+                 fairplay: pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsFairplayArgs']] = None,
+                 playready: pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsPlayreadyArgs']] = None,
+                 widevine: pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsWidevineArgs']] = None):
         """
         :param pulumi.Input['JobTemplateConfigEncryptionDrmSystemsClearkeyArgs'] clearkey: Clearkey configuration.
         :param pulumi.Input['JobTemplateConfigEncryptionDrmSystemsFairplayArgs'] fairplay: Fairplay configuration.
@@ -3046,50 +3046,50 @@ class JobTemplateConfigEncryptionDrmSystemsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def clearkey(self) -> Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsClearkeyArgs']]:
+    def clearkey(self) -> pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsClearkeyArgs']]:
         """
         Clearkey configuration.
         """
         return pulumi.get(self, "clearkey")
 
     @clearkey.setter
-    def clearkey(self, value: Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsClearkeyArgs']]):
+    def clearkey(self, value: pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsClearkeyArgs']]):
         pulumi.set(self, "clearkey", value)
 
     @_builtins.property
     @pulumi.getter
-    def fairplay(self) -> Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsFairplayArgs']]:
+    def fairplay(self) -> pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsFairplayArgs']]:
         """
         Fairplay configuration.
         """
         return pulumi.get(self, "fairplay")
 
     @fairplay.setter
-    def fairplay(self, value: Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsFairplayArgs']]):
+    def fairplay(self, value: pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsFairplayArgs']]):
         pulumi.set(self, "fairplay", value)
 
     @_builtins.property
     @pulumi.getter
-    def playready(self) -> Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsPlayreadyArgs']]:
+    def playready(self) -> pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsPlayreadyArgs']]:
         """
         Playready configuration.
         """
         return pulumi.get(self, "playready")
 
     @playready.setter
-    def playready(self, value: Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsPlayreadyArgs']]):
+    def playready(self, value: pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsPlayreadyArgs']]):
         pulumi.set(self, "playready", value)
 
     @_builtins.property
     @pulumi.getter
-    def widevine(self) -> Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsWidevineArgs']]:
+    def widevine(self) -> pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsWidevineArgs']]:
         """
         Widevine configuration.
         """
         return pulumi.get(self, "widevine")
 
     @widevine.setter
-    def widevine(self, value: Optional[pulumi.Input['JobTemplateConfigEncryptionDrmSystemsWidevineArgs']]):
+    def widevine(self, value: pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsWidevineArgs']]):
         pulumi.set(self, "widevine", value)
 
 
@@ -3195,11 +3195,11 @@ class JobTemplateConfigEncryptionSecretManagerKeySourceArgs:
 
 
 class JobTemplateConfigInputArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A unique key for this input. Must be specified when using advanced mapping and edit lists.
     """
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
     If empty, the value is populated from Job.input_uri.
@@ -3208,8 +3208,8 @@ class JobTemplateConfigInputArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigInputArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: A unique key for this input. Must be specified when using advanced mapping and edit lists.
         :param pulumi.Input[_builtins.str] uri: URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
@@ -3222,19 +3222,19 @@ class JobTemplateConfigInputArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique key for this input. Must be specified when using advanced mapping and edit lists.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
         If empty, the value is populated from Job.input_uri.
@@ -3242,20 +3242,20 @@ class JobTemplateConfigInputArgs:
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class JobTemplateConfigManifestArgsDict(TypedDict):
-    file_name: NotRequired[pulumi.Input[_builtins.str]]
+    file_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the generated file. The default is `manifest`.
     """
-    mux_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    mux_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of user supplied MuxStream.key values that should appear in this manifest.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of the manifest.
     Possible values are: `MANIFEST_TYPE_UNSPECIFIED`, `HLS`, `DASH`.
@@ -3264,9 +3264,9 @@ class JobTemplateConfigManifestArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigManifestArgs:
     def __init__(__self__, *,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 mux_streams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 mux_streams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] file_name: The name of the generated file. The default is `manifest`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mux_streams: List of user supplied MuxStream.key values that should appear in this manifest.
@@ -3282,31 +3282,31 @@ class JobTemplateConfigManifestArgs:
 
     @_builtins.property
     @pulumi.getter(name="fileName")
-    def file_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the generated file. The default is `manifest`.
         """
         return pulumi.get(self, "file_name")
 
     @file_name.setter
-    def file_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name", value)
 
     @_builtins.property
     @pulumi.getter(name="muxStreams")
-    def mux_streams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mux_streams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of user supplied MuxStream.key values that should appear in this manifest.
         """
         return pulumi.get(self, "mux_streams")
 
     @mux_streams.setter
-    def mux_streams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mux_streams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mux_streams", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the manifest.
         Possible values are: `MANIFEST_TYPE_UNSPECIFIED`, `HLS`, `DASH`.
@@ -3314,32 +3314,32 @@ class JobTemplateConfigManifestArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class JobTemplateConfigMuxStreamArgsDict(TypedDict):
-    container: NotRequired[pulumi.Input[_builtins.str]]
+    container: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The container format. The default is `mp4`.
     """
-    elementary_streams: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    elementary_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of ElementaryStream.key values multiplexed in this stream.
     """
-    encryption_id: NotRequired[pulumi.Input[_builtins.str]]
+    encryption_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Identifier of the encryption configuration to use.
     """
-    file_name: NotRequired[pulumi.Input[_builtins.str]]
+    file_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the generated file.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A unique key for this multiplexed stream.
     """
-    segment_settings: NotRequired[pulumi.Input['JobTemplateConfigMuxStreamSegmentSettingsArgsDict']]
+    segment_settings: NotRequired[pulumi.Input[Optional['JobTemplateConfigMuxStreamSegmentSettingsArgs']]]
     """
     Segment settings for ts, fmp4 and vtt.
     Structure is documented below.
@@ -3348,12 +3348,12 @@ class JobTemplateConfigMuxStreamArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigMuxStreamArgs:
     def __init__(__self__, *,
-                 container: Optional[pulumi.Input[_builtins.str]] = None,
-                 elementary_streams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 encryption_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 segment_settings: Optional[pulumi.Input['JobTemplateConfigMuxStreamSegmentSettingsArgs']] = None):
+                 container: pulumi.Input[Optional[_builtins.str]] = None,
+                 elementary_streams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 encryption_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 segment_settings: pulumi.Input[Optional['JobTemplateConfigMuxStreamSegmentSettingsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] container: The container format. The default is `mp4`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] elementary_streams: List of ElementaryStream.key values multiplexed in this stream.
@@ -3378,67 +3378,67 @@ class JobTemplateConfigMuxStreamArgs:
 
     @_builtins.property
     @pulumi.getter
-    def container(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The container format. The default is `mp4`.
         """
         return pulumi.get(self, "container")
 
     @container.setter
-    def container(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container", value)
 
     @_builtins.property
     @pulumi.getter(name="elementaryStreams")
-    def elementary_streams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def elementary_streams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of ElementaryStream.key values multiplexed in this stream.
         """
         return pulumi.get(self, "elementary_streams")
 
     @elementary_streams.setter
-    def elementary_streams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def elementary_streams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "elementary_streams", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionId")
-    def encryption_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the encryption configuration to use.
         """
         return pulumi.get(self, "encryption_id")
 
     @encryption_id.setter
-    def encryption_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_id", value)
 
     @_builtins.property
     @pulumi.getter(name="fileName")
-    def file_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the generated file.
         """
         return pulumi.get(self, "file_name")
 
     @file_name.setter
-    def file_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique key for this multiplexed stream.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentSettings")
-    def segment_settings(self) -> Optional[pulumi.Input['JobTemplateConfigMuxStreamSegmentSettingsArgs']]:
+    def segment_settings(self) -> pulumi.Input[Optional['JobTemplateConfigMuxStreamSegmentSettingsArgs']]:
         """
         Segment settings for ts, fmp4 and vtt.
         Structure is documented below.
@@ -3446,12 +3446,12 @@ class JobTemplateConfigMuxStreamArgs:
         return pulumi.get(self, "segment_settings")
 
     @segment_settings.setter
-    def segment_settings(self, value: Optional[pulumi.Input['JobTemplateConfigMuxStreamSegmentSettingsArgs']]):
+    def segment_settings(self, value: pulumi.Input[Optional['JobTemplateConfigMuxStreamSegmentSettingsArgs']]):
         pulumi.set(self, "segment_settings", value)
 
 
 class JobTemplateConfigMuxStreamSegmentSettingsArgsDict(TypedDict):
-    segment_duration: NotRequired[pulumi.Input[_builtins.str]]
+    segment_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Duration of the segments in seconds. The default is `6.0s`.
     """
@@ -3459,7 +3459,7 @@ class JobTemplateConfigMuxStreamSegmentSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigMuxStreamSegmentSettingsArgs:
     def __init__(__self__, *,
-                 segment_duration: Optional[pulumi.Input[_builtins.str]] = None):
+                 segment_duration: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] segment_duration: Duration of the segments in seconds. The default is `6.0s`.
         """
@@ -3468,19 +3468,19 @@ class JobTemplateConfigMuxStreamSegmentSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="segmentDuration")
-    def segment_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def segment_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Duration of the segments in seconds. The default is `6.0s`.
         """
         return pulumi.get(self, "segment_duration")
 
     @segment_duration.setter
-    def segment_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def segment_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "segment_duration", value)
 
 
 class JobTemplateConfigOutputArgsDict(TypedDict):
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URI for the output file(s). For example, gs://my-bucket/outputs/.
     """
@@ -3488,7 +3488,7 @@ class JobTemplateConfigOutputArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigOutputArgs:
     def __init__(__self__, *,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: URI for the output file(s). For example, gs://my-bucket/outputs/.
         """
@@ -3497,24 +3497,24 @@ class JobTemplateConfigOutputArgs:
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI for the output file(s). For example, gs://my-bucket/outputs/.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class JobTemplateConfigOverlayArgsDict(TypedDict):
-    animations: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigOverlayAnimationArgsDict']]]]
+    animations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigOverlayAnimationArgs']]]]]
     """
     List of animations. The list should be chronological, without any time overlap.
     Structure is documented below.
     """
-    image: NotRequired[pulumi.Input['JobTemplateConfigOverlayImageArgsDict']]
+    image: NotRequired[pulumi.Input[Optional['JobTemplateConfigOverlayImageArgs']]]
     """
     Image overlay.
     Structure is documented below.
@@ -3523,8 +3523,8 @@ class JobTemplateConfigOverlayArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigOverlayArgs:
     def __init__(__self__, *,
-                 animations: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigOverlayAnimationArgs']]]] = None,
-                 image: Optional[pulumi.Input['JobTemplateConfigOverlayImageArgs']] = None):
+                 animations: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigOverlayAnimationArgs']]]] = None,
+                 image: pulumi.Input[Optional['JobTemplateConfigOverlayImageArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigOverlayAnimationArgs']]] animations: List of animations. The list should be chronological, without any time overlap.
                Structure is documented below.
@@ -3538,7 +3538,7 @@ class JobTemplateConfigOverlayArgs:
 
     @_builtins.property
     @pulumi.getter
-    def animations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigOverlayAnimationArgs']]]]:
+    def animations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigOverlayAnimationArgs']]]]:
         """
         List of animations. The list should be chronological, without any time overlap.
         Structure is documented below.
@@ -3546,12 +3546,12 @@ class JobTemplateConfigOverlayArgs:
         return pulumi.get(self, "animations")
 
     @animations.setter
-    def animations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateConfigOverlayAnimationArgs']]]]):
+    def animations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigOverlayAnimationArgs']]]]):
         pulumi.set(self, "animations", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input['JobTemplateConfigOverlayImageArgs']]:
+    def image(self) -> pulumi.Input[Optional['JobTemplateConfigOverlayImageArgs']]:
         """
         Image overlay.
         Structure is documented below.
@@ -3559,12 +3559,12 @@ class JobTemplateConfigOverlayArgs:
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input['JobTemplateConfigOverlayImageArgs']]):
+    def image(self, value: pulumi.Input[Optional['JobTemplateConfigOverlayImageArgs']]):
         pulumi.set(self, "image", value)
 
 
 class JobTemplateConfigOverlayAnimationArgsDict(TypedDict):
-    animation_fade: NotRequired[pulumi.Input['JobTemplateConfigOverlayAnimationAnimationFadeArgsDict']]
+    animation_fade: NotRequired[pulumi.Input[Optional['JobTemplateConfigOverlayAnimationAnimationFadeArgs']]]
     """
     Display overlay object with fade animation.
     Structure is documented below.
@@ -3573,7 +3573,7 @@ class JobTemplateConfigOverlayAnimationArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigOverlayAnimationArgs:
     def __init__(__self__, *,
-                 animation_fade: Optional[pulumi.Input['JobTemplateConfigOverlayAnimationAnimationFadeArgs']] = None):
+                 animation_fade: pulumi.Input[Optional['JobTemplateConfigOverlayAnimationAnimationFadeArgs']] = None):
         """
         :param pulumi.Input['JobTemplateConfigOverlayAnimationAnimationFadeArgs'] animation_fade: Display overlay object with fade animation.
                Structure is documented below.
@@ -3583,7 +3583,7 @@ class JobTemplateConfigOverlayAnimationArgs:
 
     @_builtins.property
     @pulumi.getter(name="animationFade")
-    def animation_fade(self) -> Optional[pulumi.Input['JobTemplateConfigOverlayAnimationAnimationFadeArgs']]:
+    def animation_fade(self) -> pulumi.Input[Optional['JobTemplateConfigOverlayAnimationAnimationFadeArgs']]:
         """
         Display overlay object with fade animation.
         Structure is documented below.
@@ -3591,7 +3591,7 @@ class JobTemplateConfigOverlayAnimationArgs:
         return pulumi.get(self, "animation_fade")
 
     @animation_fade.setter
-    def animation_fade(self, value: Optional[pulumi.Input['JobTemplateConfigOverlayAnimationAnimationFadeArgs']]):
+    def animation_fade(self, value: pulumi.Input[Optional['JobTemplateConfigOverlayAnimationAnimationFadeArgs']]):
         pulumi.set(self, "animation_fade", value)
 
 
@@ -3605,15 +3605,15 @@ class JobTemplateConfigOverlayAnimationAnimationFadeArgsDict(TypedDict):
     * `FADE_OUT`: Fade the overlay object out of view.
     Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
     """
-    end_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    end_time_offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time to end the fade animation, in seconds.
     """
-    start_time_offset: NotRequired[pulumi.Input[_builtins.str]]
+    start_time_offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time to start the fade animation, in seconds.
     """
-    xy: NotRequired[pulumi.Input['JobTemplateConfigOverlayAnimationAnimationFadeXyArgsDict']]
+    xy: NotRequired[pulumi.Input[Optional['JobTemplateConfigOverlayAnimationAnimationFadeXyArgs']]]
     """
     Normalized coordinates based on output video resolution.
     Structure is documented below.
@@ -3623,9 +3623,9 @@ class JobTemplateConfigOverlayAnimationAnimationFadeArgsDict(TypedDict):
 class JobTemplateConfigOverlayAnimationAnimationFadeArgs:
     def __init__(__self__, *,
                  fade_type: pulumi.Input[_builtins.str],
-                 end_time_offset: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time_offset: Optional[pulumi.Input[_builtins.str]] = None,
-                 xy: Optional[pulumi.Input['JobTemplateConfigOverlayAnimationAnimationFadeXyArgs']] = None):
+                 end_time_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 xy: pulumi.Input[Optional['JobTemplateConfigOverlayAnimationAnimationFadeXyArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] fade_type: Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
                The possible values are:
@@ -3665,31 +3665,31 @@ class JobTemplateConfigOverlayAnimationAnimationFadeArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTimeOffset")
-    def end_time_offset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time to end the fade animation, in seconds.
         """
         return pulumi.get(self, "end_time_offset")
 
     @end_time_offset.setter
-    def end_time_offset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time_offset", value)
 
     @_builtins.property
     @pulumi.getter(name="startTimeOffset")
-    def start_time_offset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time to start the fade animation, in seconds.
         """
         return pulumi.get(self, "start_time_offset")
 
     @start_time_offset.setter
-    def start_time_offset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time_offset", value)
 
     @_builtins.property
     @pulumi.getter
-    def xy(self) -> Optional[pulumi.Input['JobTemplateConfigOverlayAnimationAnimationFadeXyArgs']]:
+    def xy(self) -> pulumi.Input[Optional['JobTemplateConfigOverlayAnimationAnimationFadeXyArgs']]:
         """
         Normalized coordinates based on output video resolution.
         Structure is documented below.
@@ -3697,16 +3697,16 @@ class JobTemplateConfigOverlayAnimationAnimationFadeArgs:
         return pulumi.get(self, "xy")
 
     @xy.setter
-    def xy(self, value: Optional[pulumi.Input['JobTemplateConfigOverlayAnimationAnimationFadeXyArgs']]):
+    def xy(self, value: pulumi.Input[Optional['JobTemplateConfigOverlayAnimationAnimationFadeXyArgs']]):
         pulumi.set(self, "xy", value)
 
 
 class JobTemplateConfigOverlayAnimationAnimationFadeXyArgsDict(TypedDict):
-    x: NotRequired[pulumi.Input[_builtins.float]]
+    x: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Normalized x coordinate.
     """
-    y: NotRequired[pulumi.Input[_builtins.float]]
+    y: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Normalized y coordinate.
     """
@@ -3714,8 +3714,8 @@ class JobTemplateConfigOverlayAnimationAnimationFadeXyArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigOverlayAnimationAnimationFadeXyArgs:
     def __init__(__self__, *,
-                 x: Optional[pulumi.Input[_builtins.float]] = None,
-                 y: Optional[pulumi.Input[_builtins.float]] = None):
+                 x: pulumi.Input[Optional[_builtins.float]] = None,
+                 y: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.float] x: Normalized x coordinate.
         :param pulumi.Input[_builtins.float] y: Normalized y coordinate.
@@ -3727,26 +3727,26 @@ class JobTemplateConfigOverlayAnimationAnimationFadeXyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def x(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def x(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Normalized x coordinate.
         """
         return pulumi.get(self, "x")
 
     @x.setter
-    def x(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def x(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "x", value)
 
     @_builtins.property
     @pulumi.getter
-    def y(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def y(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Normalized y coordinate.
         """
         return pulumi.get(self, "y")
 
     @y.setter
-    def y(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def y(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "y", value)
 
 
@@ -3779,7 +3779,7 @@ class JobTemplateConfigOverlayImageArgs:
 
 
 class JobTemplateConfigPubsubDestinationArgsDict(TypedDict):
-    topic: NotRequired[pulumi.Input[_builtins.str]]
+    topic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
     """
@@ -3787,7 +3787,7 @@ class JobTemplateConfigPubsubDestinationArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateConfigPubsubDestinationArgs:
     def __init__(__self__, *,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None):
+                 topic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] topic: The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
         """
@@ -3796,14 +3796,14 @@ class JobTemplateConfigPubsubDestinationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
         """
         return pulumi.get(self, "topic")
 
     @topic.setter
-    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic", value)
 
 

@@ -226,48 +226,48 @@ export interface SecurityFeedbackState {
     /**
      * Optional text the user can provide for additional, unstructured context.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The time when this specific feedback id was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The display name of the feedback.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * One or more attribute/value pairs for constraining the feedback.
      * Structure is documented below.
      */
-    feedbackContexts?: pulumi.Input<pulumi.Input<inputs.apigee.SecurityFeedbackFeedbackContext>[]>;
+    feedbackContexts?: pulumi.Input<pulumi.Input<inputs.apigee.SecurityFeedbackFeedbackContext>[] | undefined>;
     /**
      * Resource ID of the security feedback.
      */
-    feedbackId?: pulumi.Input<string>;
+    feedbackId?: pulumi.Input<string | undefined>;
     /**
      * The type of feedback being submitted.
      * Possible values are: `EXCLUDED_DETECTION`.
      */
-    feedbackType?: pulumi.Input<string>;
+    feedbackType?: pulumi.Input<string | undefined>;
     /**
      * Name of the security feedback resource,
      * in the format `organizations/{{org_name}}/securityFeedback/{{feedback_id}}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee Security Feedback,
      * in the format `organizations/{{org_name}}`.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The reason for the feedback.
      * Possible values are: `INTERNAL_SYSTEM`, `NON_RISK_CLIENT`, `NAT`, `PENETRATION_TEST`, `OTHER`.
      */
-    reason?: pulumi.Input<string>;
+    reason?: pulumi.Input<string | undefined>;
     /**
      * The time when this specific feedback id was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -277,11 +277,11 @@ export interface SecurityFeedbackArgs {
     /**
      * Optional text the user can provide for additional, unstructured context.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The display name of the feedback.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * One or more attribute/value pairs for constraining the feedback.
      * Structure is documented below.
@@ -305,5 +305,5 @@ export interface SecurityFeedbackArgs {
      * The reason for the feedback.
      * Possible values are: `INTERNAL_SYSTEM`, `NON_RISK_CLIENT`, `NAT`, `PENETRATION_TEST`, `OTHER`.
      */
-    reason?: pulumi.Input<string>;
+    reason?: pulumi.Input<string | undefined>;
 }

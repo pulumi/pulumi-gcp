@@ -21,17 +21,17 @@ __all__ = ['URLMapArgs', 'URLMap']
 @pulumi.input_type
 class URLMapArgs:
     def __init__(__self__, *,
-                 default_custom_error_response_policy: Optional[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs']] = None,
-                 default_route_action: Optional[pulumi.Input['URLMapDefaultRouteActionArgs']] = None,
-                 default_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_url_redirect: Optional[pulumi.Input['URLMapDefaultUrlRedirectArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 header_action: Optional[pulumi.Input['URLMapHeaderActionArgs']] = None,
-                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHostRuleArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tests: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]] = None):
+                 default_custom_error_response_policy: pulumi.Input[Optional['URLMapDefaultCustomErrorResponsePolicyArgs']] = None,
+                 default_route_action: pulumi.Input[Optional['URLMapDefaultRouteActionArgs']] = None,
+                 default_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_url_redirect: pulumi.Input[Optional['URLMapDefaultUrlRedirectArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 header_action: pulumi.Input[Optional['URLMapHeaderActionArgs']] = None,
+                 host_rules: pulumi.Input[Optional[Sequence[pulumi.Input['URLMapHostRuleArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_matchers: pulumi.Input[Optional[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tests: pulumi.Input[Optional[Sequence[pulumi.Input['URLMapTestArgs']]]] = None):
         """
         The set of arguments for constructing a URLMap resource.
 
@@ -103,7 +103,7 @@ class URLMapArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultCustomErrorResponsePolicy")
-    def default_custom_error_response_policy(self) -> Optional[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs']]:
+    def default_custom_error_response_policy(self) -> pulumi.Input[Optional['URLMapDefaultCustomErrorResponsePolicyArgs']]:
         """
         defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
         This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
@@ -118,12 +118,12 @@ class URLMapArgs:
         return pulumi.get(self, "default_custom_error_response_policy")
 
     @default_custom_error_response_policy.setter
-    def default_custom_error_response_policy(self, value: Optional[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs']]):
+    def default_custom_error_response_policy(self, value: pulumi.Input[Optional['URLMapDefaultCustomErrorResponsePolicyArgs']]):
         pulumi.set(self, "default_custom_error_response_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultRouteAction")
-    def default_route_action(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionArgs']]:
+    def default_route_action(self) -> pulumi.Input[Optional['URLMapDefaultRouteActionArgs']]:
         """
         defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
         like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
@@ -135,24 +135,24 @@ class URLMapArgs:
         return pulumi.get(self, "default_route_action")
 
     @default_route_action.setter
-    def default_route_action(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionArgs']]):
+    def default_route_action(self, value: pulumi.Input[Optional['URLMapDefaultRouteActionArgs']]):
         pulumi.set(self, "default_route_action", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultService")
-    def default_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backend service or backend bucket to use when none of the given rules match.
         """
         return pulumi.get(self, "default_service")
 
     @default_service.setter
-    def default_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_service", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultUrlRedirect")
-    def default_url_redirect(self) -> Optional[pulumi.Input['URLMapDefaultUrlRedirectArgs']]:
+    def default_url_redirect(self) -> pulumi.Input[Optional['URLMapDefaultUrlRedirectArgs']]:
         """
         When none of the specified hostRules match, the request is redirected to a URL specified
         by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
@@ -162,12 +162,12 @@ class URLMapArgs:
         return pulumi.get(self, "default_url_redirect")
 
     @default_url_redirect.setter
-    def default_url_redirect(self, value: Optional[pulumi.Input['URLMapDefaultUrlRedirectArgs']]):
+    def default_url_redirect(self, value: pulumi.Input[Optional['URLMapDefaultUrlRedirectArgs']]):
         pulumi.set(self, "default_url_redirect", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you create
         the resource.
@@ -175,12 +175,12 @@ class URLMapArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['URLMapHeaderActionArgs']]:
+    def header_action(self) -> pulumi.Input[Optional['URLMapHeaderActionArgs']]:
         """
         Specifies changes to request and response headers that need to take effect for
         the selected backendService. The headerAction specified here take effect after
@@ -190,12 +190,12 @@ class URLMapArgs:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['URLMapHeaderActionArgs']]):
+    def header_action(self, value: pulumi.Input[Optional['URLMapHeaderActionArgs']]):
         pulumi.set(self, "header_action", value)
 
     @_builtins.property
     @pulumi.getter(name="hostRules")
-    def host_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHostRuleArgs']]]]:
+    def host_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['URLMapHostRuleArgs']]]]:
         """
         The list of HostRules to use against the URL.
         Structure is documented below.
@@ -203,12 +203,12 @@ class URLMapArgs:
         return pulumi.get(self, "host_rules")
 
     @host_rules.setter
-    def host_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHostRuleArgs']]]]):
+    def host_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['URLMapHostRuleArgs']]]]):
         pulumi.set(self, "host_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The
         name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -220,12 +220,12 @@ class URLMapArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="pathMatchers")
-    def path_matchers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]]:
+    def path_matchers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]]:
         """
         The list of named PathMatchers to use against the URL.
         Structure is documented below.
@@ -233,12 +233,12 @@ class URLMapArgs:
         return pulumi.get(self, "path_matchers")
 
     @path_matchers.setter
-    def path_matchers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]]):
+    def path_matchers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]]):
         pulumi.set(self, "path_matchers", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -246,12 +246,12 @@ class URLMapArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def tests(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]]:
+    def tests(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['URLMapTestArgs']]]]:
         """
         The list of expected URL mapping tests. Request to update this UrlMap will
         succeed only if all of the test cases pass. You can specify a maximum of 100
@@ -261,28 +261,28 @@ class URLMapArgs:
         return pulumi.get(self, "tests")
 
     @tests.setter
-    def tests(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]]):
+    def tests(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['URLMapTestArgs']]]]):
         pulumi.set(self, "tests", value)
 
 
 @pulumi.input_type
 class _URLMapState:
     def __init__(__self__, *,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_custom_error_response_policy: Optional[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs']] = None,
-                 default_route_action: Optional[pulumi.Input['URLMapDefaultRouteActionArgs']] = None,
-                 default_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_url_redirect: Optional[pulumi.Input['URLMapDefaultUrlRedirectArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 header_action: Optional[pulumi.Input['URLMapHeaderActionArgs']] = None,
-                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHostRuleArgs']]]] = None,
-                 map_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 tests: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]] = None):
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_custom_error_response_policy: pulumi.Input[Optional['URLMapDefaultCustomErrorResponsePolicyArgs']] = None,
+                 default_route_action: pulumi.Input[Optional['URLMapDefaultRouteActionArgs']] = None,
+                 default_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_url_redirect: pulumi.Input[Optional['URLMapDefaultUrlRedirectArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 header_action: pulumi.Input[Optional['URLMapHeaderActionArgs']] = None,
+                 host_rules: pulumi.Input[Optional[Sequence[pulumi.Input['URLMapHostRuleArgs']]]] = None,
+                 map_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_matchers: pulumi.Input[Optional[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 tests: pulumi.Input[Optional[Sequence[pulumi.Input['URLMapTestArgs']]]] = None):
         """
         Input properties used for looking up and filtering URLMap resources.
 
@@ -367,19 +367,19 @@ class _URLMapState:
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCustomErrorResponsePolicy")
-    def default_custom_error_response_policy(self) -> Optional[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs']]:
+    def default_custom_error_response_policy(self) -> pulumi.Input[Optional['URLMapDefaultCustomErrorResponsePolicyArgs']]:
         """
         defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
         This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
@@ -394,12 +394,12 @@ class _URLMapState:
         return pulumi.get(self, "default_custom_error_response_policy")
 
     @default_custom_error_response_policy.setter
-    def default_custom_error_response_policy(self, value: Optional[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs']]):
+    def default_custom_error_response_policy(self, value: pulumi.Input[Optional['URLMapDefaultCustomErrorResponsePolicyArgs']]):
         pulumi.set(self, "default_custom_error_response_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultRouteAction")
-    def default_route_action(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionArgs']]:
+    def default_route_action(self) -> pulumi.Input[Optional['URLMapDefaultRouteActionArgs']]:
         """
         defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
         like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
@@ -411,24 +411,24 @@ class _URLMapState:
         return pulumi.get(self, "default_route_action")
 
     @default_route_action.setter
-    def default_route_action(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionArgs']]):
+    def default_route_action(self, value: pulumi.Input[Optional['URLMapDefaultRouteActionArgs']]):
         pulumi.set(self, "default_route_action", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultService")
-    def default_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backend service or backend bucket to use when none of the given rules match.
         """
         return pulumi.get(self, "default_service")
 
     @default_service.setter
-    def default_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_service", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultUrlRedirect")
-    def default_url_redirect(self) -> Optional[pulumi.Input['URLMapDefaultUrlRedirectArgs']]:
+    def default_url_redirect(self) -> pulumi.Input[Optional['URLMapDefaultUrlRedirectArgs']]:
         """
         When none of the specified hostRules match, the request is redirected to a URL specified
         by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
@@ -438,12 +438,12 @@ class _URLMapState:
         return pulumi.get(self, "default_url_redirect")
 
     @default_url_redirect.setter
-    def default_url_redirect(self, value: Optional[pulumi.Input['URLMapDefaultUrlRedirectArgs']]):
+    def default_url_redirect(self, value: pulumi.Input[Optional['URLMapDefaultUrlRedirectArgs']]):
         pulumi.set(self, "default_url_redirect", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you create
         the resource.
@@ -451,12 +451,12 @@ class _URLMapState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fingerprint of this resource. A hash of the contents stored in this object. This
         field is used in optimistic locking.
@@ -464,12 +464,12 @@ class _URLMapState:
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['URLMapHeaderActionArgs']]:
+    def header_action(self) -> pulumi.Input[Optional['URLMapHeaderActionArgs']]:
         """
         Specifies changes to request and response headers that need to take effect for
         the selected backendService. The headerAction specified here take effect after
@@ -479,12 +479,12 @@ class _URLMapState:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['URLMapHeaderActionArgs']]):
+    def header_action(self, value: pulumi.Input[Optional['URLMapHeaderActionArgs']]):
         pulumi.set(self, "header_action", value)
 
     @_builtins.property
     @pulumi.getter(name="hostRules")
-    def host_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHostRuleArgs']]]]:
+    def host_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['URLMapHostRuleArgs']]]]:
         """
         The list of HostRules to use against the URL.
         Structure is documented below.
@@ -492,24 +492,24 @@ class _URLMapState:
         return pulumi.get(self, "host_rules")
 
     @host_rules.setter
-    def host_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapHostRuleArgs']]]]):
+    def host_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['URLMapHostRuleArgs']]]]):
         pulumi.set(self, "host_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="mapId")
-    def map_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def map_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique identifier for the resource.
         """
         return pulumi.get(self, "map_id")
 
     @map_id.setter
-    def map_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def map_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "map_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The
         name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -521,12 +521,12 @@ class _URLMapState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="pathMatchers")
-    def path_matchers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]]:
+    def path_matchers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]]:
         """
         The list of named PathMatchers to use against the URL.
         Structure is documented below.
@@ -534,12 +534,12 @@ class _URLMapState:
         return pulumi.get(self, "path_matchers")
 
     @path_matchers.setter
-    def path_matchers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]]):
+    def path_matchers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]]):
         pulumi.set(self, "path_matchers", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -547,24 +547,24 @@ class _URLMapState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter
-    def tests(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]]:
+    def tests(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['URLMapTestArgs']]]]:
         """
         The list of expected URL mapping tests. Request to update this UrlMap will
         succeed only if all of the test cases pass. You can specify a maximum of 100
@@ -574,7 +574,7 @@ class _URLMapState:
         return pulumi.get(self, "tests")
 
     @tests.setter
-    def tests(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]]):
+    def tests(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['URLMapTestArgs']]]]):
         pulumi.set(self, "tests", value)
 
 
@@ -584,17 +584,17 @@ class URLMap(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_custom_error_response_policy: Optional[pulumi.Input[Union['URLMapDefaultCustomErrorResponsePolicyArgs', 'URLMapDefaultCustomErrorResponsePolicyArgsDict']]] = None,
-                 default_route_action: Optional[pulumi.Input[Union['URLMapDefaultRouteActionArgs', 'URLMapDefaultRouteActionArgsDict']]] = None,
-                 default_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_url_redirect: Optional[pulumi.Input[Union['URLMapDefaultUrlRedirectArgs', 'URLMapDefaultUrlRedirectArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 header_action: Optional[pulumi.Input[Union['URLMapHeaderActionArgs', 'URLMapHeaderActionArgsDict']]] = None,
-                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['URLMapHostRuleArgs', 'URLMapHostRuleArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['URLMapPathMatcherArgs', 'URLMapPathMatcherArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tests: Optional[pulumi.Input[Sequence[pulumi.Input[Union['URLMapTestArgs', 'URLMapTestArgsDict']]]]] = None,
+                 default_custom_error_response_policy: pulumi.Input[Optional[Union['URLMapDefaultCustomErrorResponsePolicyArgs', 'URLMapDefaultCustomErrorResponsePolicyArgsDict']]] = None,
+                 default_route_action: pulumi.Input[Optional[Union['URLMapDefaultRouteActionArgs', 'URLMapDefaultRouteActionArgsDict']]] = None,
+                 default_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_url_redirect: pulumi.Input[Optional[Union['URLMapDefaultUrlRedirectArgs', 'URLMapDefaultUrlRedirectArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 header_action: pulumi.Input[Optional[Union['URLMapHeaderActionArgs', 'URLMapHeaderActionArgsDict']]] = None,
+                 host_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['URLMapHostRuleArgs', 'URLMapHostRuleArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['URLMapPathMatcherArgs', 'URLMapPathMatcherArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['URLMapTestArgs', 'URLMapTestArgsDict']]]]] = None,
                  __props__=None):
         """
         UrlMaps are used to route requests to a backend service based on rules
@@ -1151,7 +1151,7 @@ class URLMap(pulumi.CustomResource):
             default_route_action={
                 "request_mirror_policy": {
                     "backend_service": mirror.id,
-                    "mirror_percent": 50,
+                    "mirror_percent": float(50),
                 },
             },
             host_rules=[{
@@ -1195,7 +1195,7 @@ class URLMap(pulumi.CustomResource):
             default_route_action={
                 "request_mirror_policy": {
                     "backend_service": mirror.id,
-                    "mirror_percent": 50,
+                    "mirror_percent": float(50),
                 },
             },
             host_rules=[{
@@ -1430,7 +1430,7 @@ class URLMap(pulumi.CustomResource):
                 "default_route_action": {
                     "request_mirror_policy": {
                         "backend_service": mirror.id,
-                        "mirror_percent": 75,
+                        "mirror_percent": float(75),
                     },
                 },
             }])
@@ -1477,7 +1477,7 @@ class URLMap(pulumi.CustomResource):
                     "route_action": {
                         "request_mirror_policy": {
                             "backend_service": mirror.id,
-                            "mirror_percent": 25,
+                            "mirror_percent": float(25),
                         },
                     },
                 }],
@@ -2590,7 +2590,7 @@ class URLMap(pulumi.CustomResource):
             default_route_action={
                 "request_mirror_policy": {
                     "backend_service": mirror.id,
-                    "mirror_percent": 50,
+                    "mirror_percent": float(50),
                 },
             },
             host_rules=[{
@@ -2634,7 +2634,7 @@ class URLMap(pulumi.CustomResource):
             default_route_action={
                 "request_mirror_policy": {
                     "backend_service": mirror.id,
-                    "mirror_percent": 50,
+                    "mirror_percent": float(50),
                 },
             },
             host_rules=[{
@@ -2869,7 +2869,7 @@ class URLMap(pulumi.CustomResource):
                 "default_route_action": {
                     "request_mirror_policy": {
                         "backend_service": mirror.id,
-                        "mirror_percent": 75,
+                        "mirror_percent": float(75),
                     },
                 },
             }])
@@ -2916,7 +2916,7 @@ class URLMap(pulumi.CustomResource):
                     "route_action": {
                         "request_mirror_policy": {
                             "backend_service": mirror.id,
-                            "mirror_percent": 25,
+                            "mirror_percent": float(25),
                         },
                     },
                 }],
@@ -3438,17 +3438,17 @@ class URLMap(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_custom_error_response_policy: Optional[pulumi.Input[Union['URLMapDefaultCustomErrorResponsePolicyArgs', 'URLMapDefaultCustomErrorResponsePolicyArgsDict']]] = None,
-                 default_route_action: Optional[pulumi.Input[Union['URLMapDefaultRouteActionArgs', 'URLMapDefaultRouteActionArgsDict']]] = None,
-                 default_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_url_redirect: Optional[pulumi.Input[Union['URLMapDefaultUrlRedirectArgs', 'URLMapDefaultUrlRedirectArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 header_action: Optional[pulumi.Input[Union['URLMapHeaderActionArgs', 'URLMapHeaderActionArgsDict']]] = None,
-                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['URLMapHostRuleArgs', 'URLMapHostRuleArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['URLMapPathMatcherArgs', 'URLMapPathMatcherArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tests: Optional[pulumi.Input[Sequence[pulumi.Input[Union['URLMapTestArgs', 'URLMapTestArgsDict']]]]] = None,
+                 default_custom_error_response_policy: pulumi.Input[Optional[Union['URLMapDefaultCustomErrorResponsePolicyArgs', 'URLMapDefaultCustomErrorResponsePolicyArgsDict']]] = None,
+                 default_route_action: pulumi.Input[Optional[Union['URLMapDefaultRouteActionArgs', 'URLMapDefaultRouteActionArgsDict']]] = None,
+                 default_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_url_redirect: pulumi.Input[Optional[Union['URLMapDefaultUrlRedirectArgs', 'URLMapDefaultUrlRedirectArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 header_action: pulumi.Input[Optional[Union['URLMapHeaderActionArgs', 'URLMapHeaderActionArgsDict']]] = None,
+                 host_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['URLMapHostRuleArgs', 'URLMapHostRuleArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['URLMapPathMatcherArgs', 'URLMapPathMatcherArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['URLMapTestArgs', 'URLMapTestArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -3483,21 +3483,21 @@ class URLMap(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            default_custom_error_response_policy: Optional[pulumi.Input[Union['URLMapDefaultCustomErrorResponsePolicyArgs', 'URLMapDefaultCustomErrorResponsePolicyArgsDict']]] = None,
-            default_route_action: Optional[pulumi.Input[Union['URLMapDefaultRouteActionArgs', 'URLMapDefaultRouteActionArgsDict']]] = None,
-            default_service: Optional[pulumi.Input[_builtins.str]] = None,
-            default_url_redirect: Optional[pulumi.Input[Union['URLMapDefaultUrlRedirectArgs', 'URLMapDefaultUrlRedirectArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            header_action: Optional[pulumi.Input[Union['URLMapHeaderActionArgs', 'URLMapHeaderActionArgsDict']]] = None,
-            host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['URLMapHostRuleArgs', 'URLMapHostRuleArgsDict']]]]] = None,
-            map_id: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['URLMapPathMatcherArgs', 'URLMapPathMatcherArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            tests: Optional[pulumi.Input[Sequence[pulumi.Input[Union['URLMapTestArgs', 'URLMapTestArgsDict']]]]] = None) -> 'URLMap':
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            default_custom_error_response_policy: pulumi.Input[Optional[Union['URLMapDefaultCustomErrorResponsePolicyArgs', 'URLMapDefaultCustomErrorResponsePolicyArgsDict']]] = None,
+            default_route_action: pulumi.Input[Optional[Union['URLMapDefaultRouteActionArgs', 'URLMapDefaultRouteActionArgsDict']]] = None,
+            default_service: pulumi.Input[Optional[_builtins.str]] = None,
+            default_url_redirect: pulumi.Input[Optional[Union['URLMapDefaultUrlRedirectArgs', 'URLMapDefaultUrlRedirectArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            header_action: pulumi.Input[Optional[Union['URLMapHeaderActionArgs', 'URLMapHeaderActionArgsDict']]] = None,
+            host_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['URLMapHostRuleArgs', 'URLMapHostRuleArgsDict']]]]] = None,
+            map_id: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            path_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['URLMapPathMatcherArgs', 'URLMapPathMatcherArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            tests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['URLMapTestArgs', 'URLMapTestArgsDict']]]]] = None) -> 'URLMap':
         """
         Get an existing URLMap resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

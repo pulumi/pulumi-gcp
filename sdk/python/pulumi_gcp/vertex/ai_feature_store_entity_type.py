@@ -22,11 +22,11 @@ __all__ = ['AiFeatureStoreEntityTypeArgs', 'AiFeatureStoreEntityType']
 class AiFeatureStoreEntityTypeArgs:
     def __init__(__self__, *,
                  featurestore: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 monitoring_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 offline_storage_ttl_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 monitoring_config: pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 offline_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a AiFeatureStoreEntityType resource.
 
@@ -69,19 +69,19 @@ class AiFeatureStoreEntityTypeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Description of the EntityType.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value label pairs to assign to this EntityType.
 
@@ -91,12 +91,12 @@ class AiFeatureStoreEntityTypeArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="monitoringConfig")
-    def monitoring_config(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']]:
+    def monitoring_config(self) -> pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigArgs']]:
         """
         The default monitoring configuration for all Features under this EntityType.
         If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
@@ -105,24 +105,24 @@ class AiFeatureStoreEntityTypeArgs:
         return pulumi.get(self, "monitoring_config")
 
     @monitoring_config.setter
-    def monitoring_config(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']]):
+    def monitoring_config(self, value: pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigArgs']]):
         pulumi.set(self, "monitoring_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="offlineStorageTtlDays")
-    def offline_storage_ttl_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def offline_storage_ttl_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional, Beta)
         Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
@@ -130,25 +130,25 @@ class AiFeatureStoreEntityTypeArgs:
         return pulumi.get(self, "offline_storage_ttl_days")
 
     @offline_storage_ttl_days.setter
-    def offline_storage_ttl_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def offline_storage_ttl_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "offline_storage_ttl_days", value)
 
 
 @pulumi.input_type
 class _AiFeatureStoreEntityTypeState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 featurestore: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 monitoring_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 offline_storage_ttl_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 featurestore: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 monitoring_config: pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 offline_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureStoreEntityType resources.
 
@@ -199,67 +199,67 @@ class _AiFeatureStoreEntityTypeState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Description of the EntityType.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to perform consistent read-modify-write updates.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def featurestore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def featurestore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
         """
         return pulumi.get(self, "featurestore")
 
     @featurestore.setter
-    def featurestore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def featurestore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "featurestore", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value label pairs to assign to this EntityType.
 
@@ -269,12 +269,12 @@ class _AiFeatureStoreEntityTypeState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="monitoringConfig")
-    def monitoring_config(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']]:
+    def monitoring_config(self) -> pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigArgs']]:
         """
         The default monitoring configuration for all Features under this EntityType.
         If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
@@ -283,24 +283,24 @@ class _AiFeatureStoreEntityTypeState:
         return pulumi.get(self, "monitoring_config")
 
     @monitoring_config.setter
-    def monitoring_config(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']]):
+    def monitoring_config(self, value: pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigArgs']]):
         pulumi.set(self, "monitoring_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="offlineStorageTtlDays")
-    def offline_storage_ttl_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def offline_storage_ttl_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional, Beta)
         Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
@@ -308,12 +308,12 @@ class _AiFeatureStoreEntityTypeState:
         return pulumi.get(self, "offline_storage_ttl_days")
 
     @offline_storage_ttl_days.setter
-    def offline_storage_ttl_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def offline_storage_ttl_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "offline_storage_ttl_days", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -321,31 +321,31 @@ class _AiFeatureStoreEntityTypeState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the EntityType.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -355,12 +355,12 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 featurestore: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 monitoring_config: Optional[pulumi.Input[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 offline_storage_ttl_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 featurestore: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 monitoring_config: pulumi.Input[Optional[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 offline_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         An entity type is a type of object in a system that needs to be modeled and have stored information about. For example, driver is an entity type, and driver0 is an instance of an entity type driver.
@@ -408,7 +408,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                     "value": 0.8,
                 },
                 "categorical_threshold_config": {
-                    "value": 10,
+                    "value": float(10),
                 },
                 "import_features_analysis": {
                     "state": "ENABLED",
@@ -535,7 +535,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                     "value": 0.8,
                 },
                 "categorical_threshold_config": {
-                    "value": 10,
+                    "value": float(10),
                 },
                 "import_features_analysis": {
                     "state": "ENABLED",
@@ -610,12 +610,12 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 featurestore: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 monitoring_config: Optional[pulumi.Input[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 offline_storage_ttl_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 featurestore: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 monitoring_config: pulumi.Input[Optional[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 offline_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -651,18 +651,18 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            featurestore: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            monitoring_config: Optional[pulumi.Input[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            offline_storage_ttl_days: Optional[pulumi.Input[_builtins.int]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiFeatureStoreEntityType':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            featurestore: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            monitoring_config: pulumi.Input[Optional[Union['AiFeatureStoreEntityTypeMonitoringConfigArgs', 'AiFeatureStoreEntityTypeMonitoringConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            offline_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiFeatureStoreEntityType':
         """
         Get an existing AiFeatureStoreEntityType resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -281,47 +281,47 @@ export interface EntryLinkState {
      * The Aspects attached to the Entry Link.
      * Structure is documented below.
      */
-    aspects?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryLinkAspect>[]>;
+    aspects?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryLinkAspect>[] | undefined>;
     /**
      * The time when the Entry Link was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The id of the entry group this entry link is in.
      */
-    entryGroupId?: pulumi.Input<string>;
+    entryGroupId?: pulumi.Input<string | undefined>;
     /**
      * The id of the entry link to create.
      */
-    entryLinkId?: pulumi.Input<string>;
+    entryLinkId?: pulumi.Input<string | undefined>;
     /**
      * Relative resource name of the Entry Link Type used to create this Entry Link. For example:
      * projects/dataplex-types/locations/global/entryLinkTypes/definition
      */
-    entryLinkType?: pulumi.Input<string>;
+    entryLinkType?: pulumi.Input<string | undefined>;
     /**
      * Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
      * Structure is documented below.
      */
-    entryReferences?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryLinkEntryReference>[]>;
+    entryReferences?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryLinkEntryReference>[] | undefined>;
     /**
      * The location for the entry.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The relative resource name of the Entry Link, of the form:
      * projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The time when the Entry Link was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -332,7 +332,7 @@ export interface EntryLinkArgs {
      * The Aspects attached to the Entry Link.
      * Structure is documented below.
      */
-    aspects?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryLinkAspect>[]>;
+    aspects?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryLinkAspect>[] | undefined>;
     /**
      * The id of the entry group this entry link is in.
      */
@@ -359,5 +359,5 @@ export interface EntryLinkArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

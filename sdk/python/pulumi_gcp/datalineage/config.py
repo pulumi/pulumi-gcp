@@ -79,11 +79,11 @@ class ConfigArgs:
 @pulumi.input_type
 class _ConfigState:
     def __init__(__self__, *,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingestion: Optional[pulumi.Input['ConfigIngestionArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None):
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingestion: pulumi.Input[Optional['ConfigIngestionArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Config resources.
 
@@ -112,19 +112,19 @@ class _ConfigState:
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used for optimistic concurrency control when patching config.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def ingestion(self) -> Optional[pulumi.Input['ConfigIngestionArgs']]:
+    def ingestion(self) -> pulumi.Input[Optional['ConfigIngestionArgs']]:
         """
         Defines how Lineage should be ingested for this resource.
         Structure is documented below.
@@ -132,24 +132,24 @@ class _ConfigState:
         return pulumi.get(self, "ingestion")
 
     @ingestion.setter
-    def ingestion(self, value: Optional[pulumi.Input['ConfigIngestionArgs']]):
+    def ingestion(self, value: pulumi.Input[Optional['ConfigIngestionArgs']]):
         pulumi.set(self, "ingestion", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the data lineage configuration for integration.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name of the config.
         Format: organizations/{organization_id}/locations/{location}/config,
@@ -160,12 +160,12 @@ class _ConfigState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Parent scope for the config.
         Format: projects/{project-id|project-number} or folders/{folder-number} or organizations/{organization-number}.
@@ -173,7 +173,7 @@ class _ConfigState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
 
@@ -183,9 +183,9 @@ class Config(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ingestion: Optional[pulumi.Input[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 ingestion: pulumi.Input[Optional[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Configuration for Data Lineage.
@@ -416,9 +416,9 @@ class Config(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ingestion: Optional[pulumi.Input[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 ingestion: pulumi.Input[Optional[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -449,11 +449,11 @@ class Config(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            ingestion: Optional[pulumi.Input[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None) -> 'Config':
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            ingestion: pulumi.Input[Optional[Union['ConfigIngestionArgs', 'ConfigIngestionArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None) -> 'Config':
         """
         Get an existing Config resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

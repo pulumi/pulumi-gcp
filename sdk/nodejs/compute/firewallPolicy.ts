@@ -169,45 +169,45 @@ export interface FirewallPolicyState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of the resource. This field is used internally during updates of this resource.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    firewallPolicyId?: pulumi.Input<string>;
+    firewallPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent of the firewall policy.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
      */
-    ruleTupleCount?: pulumi.Input<number>;
+    ruleTupleCount?: pulumi.Input<number | undefined>;
     /**
      * Server-defined URL for the resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Server-defined URL for this resource with the resource id.
      */
-    selfLinkWithId?: pulumi.Input<string>;
+    selfLinkWithId?: pulumi.Input<string | undefined>;
     /**
      * User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
      * This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
      * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    shortName?: pulumi.Input<string>;
+    shortName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -217,7 +217,7 @@ export interface FirewallPolicyArgs {
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The parent of the firewall policy.
      */

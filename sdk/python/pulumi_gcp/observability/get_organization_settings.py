@@ -148,8 +148,8 @@ def get_organization_settings(location: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         organization=pulumi.get(__ret__, 'organization'),
         service_account_id=pulumi.get(__ret__, 'service_account_id'))
-def get_organization_settings_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                                     organization: Optional[pulumi.Input[_builtins.str]] = None,
+def get_organization_settings_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                                     organization: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationSettingsResult]:
     """
     Describes the Google Cloud Observability Settings associated with an organization.

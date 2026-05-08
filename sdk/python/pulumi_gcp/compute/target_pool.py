@@ -19,16 +19,16 @@ __all__ = ['TargetPoolArgs', 'TargetPool']
 @pulumi.input_type
 class TargetPoolArgs:
     def __init__(__self__, *,
-                 backup_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 failover_ratio: Optional[pulumi.Input[_builtins.float]] = None,
-                 health_checks: Optional[pulumi.Input[_builtins.str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 failover_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 health_checks: pulumi.Input[Optional[_builtins.str]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TargetPool resource.
 
@@ -80,7 +80,7 @@ class TargetPoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupPool")
-    def backup_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to the backup target pool. Must also set
         failover_ratio.
@@ -88,24 +88,24 @@ class TargetPoolArgs:
         return pulumi.get(self, "backup_pool")
 
     @backup_pool.setter
-    def backup_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_pool", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Textual description field.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="failoverRatio")
-    def failover_ratio(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def failover_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Ratio (0 to 1) of failed nodes before using the
         backup pool (which must also be set).
@@ -113,12 +113,12 @@ class TargetPoolArgs:
         return pulumi.get(self, "failover_ratio")
 
     @failover_ratio.setter
-    def failover_ratio(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def failover_ratio(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "failover_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="healthChecks")
-    def health_checks(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_checks(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         List of zero or one health check name or self_link. Only
         legacy `compute.HttpHealthCheck` is supported.
@@ -126,12 +126,12 @@ class TargetPoolArgs:
         return pulumi.get(self, "health_checks")
 
     @health_checks.setter
-    def health_checks(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_checks(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_checks", value)
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of instances in the pool. They can be given as
         URLs, or in the form of "zone/name". Note that the instances need not exist
@@ -142,12 +142,12 @@ class TargetPoolArgs:
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instances", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the resource, required by GCE. Changing
         this forces a new resource to be created.
@@ -157,12 +157,12 @@ class TargetPoolArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -170,12 +170,12 @@ class TargetPoolArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Where the target pool resides. Defaults to project
         region.
@@ -183,24 +183,24 @@ class TargetPoolArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicy")
-    def security_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ) The resource URL for the security policy associated with this target pool.
         """
         return pulumi.get(self, "security_policy")
 
     @security_policy.setter
-    def security_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How to distribute load. Options are "NONE" (no
         affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
@@ -209,24 +209,24 @@ class TargetPoolArgs:
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
-    def session_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_affinity", value)
 
 
 @pulumi.input_type
 class _TargetPoolState:
     def __init__(__self__, *,
-                 backup_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 failover_ratio: Optional[pulumi.Input[_builtins.float]] = None,
-                 health_checks: Optional[pulumi.Input[_builtins.str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 failover_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 health_checks: pulumi.Input[Optional[_builtins.str]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TargetPool resources.
 
@@ -281,7 +281,7 @@ class _TargetPoolState:
 
     @_builtins.property
     @pulumi.getter(name="backupPool")
-    def backup_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to the backup target pool. Must also set
         failover_ratio.
@@ -289,24 +289,24 @@ class _TargetPoolState:
         return pulumi.get(self, "backup_pool")
 
     @backup_pool.setter
-    def backup_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_pool", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Textual description field.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="failoverRatio")
-    def failover_ratio(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def failover_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Ratio (0 to 1) of failed nodes before using the
         backup pool (which must also be set).
@@ -314,12 +314,12 @@ class _TargetPoolState:
         return pulumi.get(self, "failover_ratio")
 
     @failover_ratio.setter
-    def failover_ratio(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def failover_ratio(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "failover_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="healthChecks")
-    def health_checks(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_checks(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         List of zero or one health check name or self_link. Only
         legacy `compute.HttpHealthCheck` is supported.
@@ -327,12 +327,12 @@ class _TargetPoolState:
         return pulumi.get(self, "health_checks")
 
     @health_checks.setter
-    def health_checks(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_checks(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_checks", value)
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of instances in the pool. They can be given as
         URLs, or in the form of "zone/name". Note that the instances need not exist
@@ -343,12 +343,12 @@ class _TargetPoolState:
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instances", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the resource, required by GCE. Changing
         this forces a new resource to be created.
@@ -358,12 +358,12 @@ class _TargetPoolState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -371,12 +371,12 @@ class _TargetPoolState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Where the target pool resides. Defaults to project
         region.
@@ -384,36 +384,36 @@ class _TargetPoolState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicy")
-    def security_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ) The resource URL for the security policy associated with this target pool.
         """
         return pulumi.get(self, "security_policy")
 
     @security_policy.setter
-    def security_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How to distribute load. Options are "NONE" (no
         affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
@@ -422,7 +422,7 @@ class _TargetPoolState:
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
-    def session_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_affinity", value)
 
 
@@ -432,16 +432,16 @@ class TargetPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 failover_ratio: Optional[pulumi.Input[_builtins.float]] = None,
-                 health_checks: Optional[pulumi.Input[_builtins.str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 failover_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 health_checks: pulumi.Input[Optional[_builtins.str]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a Target Pool within GCE. This is a collection of instances used as
@@ -583,16 +583,16 @@ class TargetPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 failover_ratio: Optional[pulumi.Input[_builtins.float]] = None,
-                 health_checks: Optional[pulumi.Input[_builtins.str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 failover_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 health_checks: pulumi.Input[Optional[_builtins.str]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -623,17 +623,17 @@ class TargetPool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_pool: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            failover_ratio: Optional[pulumi.Input[_builtins.float]] = None,
-            health_checks: Optional[pulumi.Input[_builtins.str]] = None,
-            instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            session_affinity: Optional[pulumi.Input[_builtins.str]] = None) -> 'TargetPool':
+            backup_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            failover_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+            health_checks: pulumi.Input[Optional[_builtins.str]] = None,
+            instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            session_affinity: pulumi.Input[Optional[_builtins.str]] = None) -> 'TargetPool':
         """
         Get an existing TargetPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

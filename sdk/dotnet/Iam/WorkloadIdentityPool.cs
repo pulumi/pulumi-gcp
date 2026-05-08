@@ -102,14 +102,14 @@ namespace Pulumi.Gcp.Iam
     ///                     {
     ///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
     ///                         {
-    ///                             PemCertificate = Std.Index.File.Invoke(new()
+    ///                             PemCertificate = Std.File.Invoke(new()
     ///                             {
     ///                                 Input = "test-fixtures/trust_anchor_1.pem",
     ///                             }).Apply(invoke =&gt; invoke.Result),
     ///                         },
     ///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
     ///                         {
-    ///                             PemCertificate = Std.Index.File.Invoke(new()
+    ///                             PemCertificate = Std.File.Invoke(new()
     ///                             {
     ///                                 Input = "test-fixtures/trust_anchor_2.pem",
     ///                             }).Apply(invoke =&gt; invoke.Result),
@@ -124,14 +124,14 @@ namespace Pulumi.Gcp.Iam
     ///                     {
     ///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
     ///                         {
-    ///                             PemCertificate = Std.Index.File.Invoke(new()
+    ///                             PemCertificate = Std.File.Invoke(new()
     ///                             {
     ///                                 Input = "test-fixtures/trust_anchor_3.pem",
     ///                             }).Apply(invoke =&gt; invoke.Result),
     ///                         },
     ///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
     ///                         {
-    ///                             PemCertificate = Std.Index.File.Invoke(new()
+    ///                             PemCertificate = Std.File.Invoke(new()
     ///                             {
     ///                                 Input = "test-fixtures/trust_anchor_4.pem",
     ///                             }).Apply(invoke =&gt; invoke.Result),
@@ -188,14 +188,14 @@ namespace Pulumi.Gcp.Iam
     ///                     {
     ///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
     ///                         {
-    ///                             PemCertificate = Std.Index.File.Invoke(new()
+    ///                             PemCertificate = Std.File.Invoke(new()
     ///                             {
     ///                                 Input = "test-fixtures/trust_anchor_1.pem",
     ///                             }).Apply(invoke =&gt; invoke.Result),
     ///                         },
     ///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
     ///                         {
-    ///                             PemCertificate = Std.Index.File.Invoke(new()
+    ///                             PemCertificate = Std.File.Invoke(new()
     ///                             {
     ///                                 Input = "test-fixtures/trust_anchor_2.pem",
     ///                             }).Apply(invoke =&gt; invoke.Result),
@@ -210,14 +210,14 @@ namespace Pulumi.Gcp.Iam
     ///                     {
     ///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
     ///                         {
-    ///                             PemCertificate = Std.Index.File.Invoke(new()
+    ///                             PemCertificate = Std.File.Invoke(new()
     ///                             {
     ///                                 Input = "test-fixtures/trust_anchor_3.pem",
     ///                             }).Apply(invoke =&gt; invoke.Result),
     ///                         },
     ///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
     ///                         {
-    ///                             PemCertificate = Std.Index.File.Invoke(new()
+    ///                             PemCertificate = Std.File.Invoke(new()
     ///                             {
     ///                                 Input = "test-fixtures/trust_anchor_4.pem",
     ///                             }).Apply(invoke =&gt; invoke.Result),

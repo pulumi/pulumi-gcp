@@ -257,39 +257,39 @@ export interface InterceptEndpointGroupAssociationState {
      * The timestamp when the resource was created.
      * See https://google.aip.dev/148#timestamps.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The endpoint group that this association is connected to, for example:
      * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
      * See https://google.aip.dev/124.
      */
-    interceptEndpointGroup?: pulumi.Input<string>;
+    interceptEndpointGroup?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the new association, which will become the final
      * component of the endpoint group's resource name. If not provided, the
      * server will generate a unique ID.
      */
-    interceptEndpointGroupAssociationId?: pulumi.Input<string>;
+    interceptEndpointGroupAssociationId?: pulumi.Input<string | undefined>;
     /**
      * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cloud location of the association, currently restricted to `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The list of locations where the association is configured. This information
      * is retrieved from the linked endpoint group.
      * Structure is documented below.
      */
-    locations?: pulumi.Input<pulumi.Input<inputs.networksecurity.InterceptEndpointGroupAssociationLocation>[]>;
+    locations?: pulumi.Input<pulumi.Input<inputs.networksecurity.InterceptEndpointGroupAssociationLocation>[] | undefined>;
     /**
      * (Deprecated)
      * The list of locations where the association is present. This information
@@ -299,36 +299,36 @@ export interface InterceptEndpointGroupAssociationState {
      *
      * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
      */
-    locationsDetails?: pulumi.Input<pulumi.Input<inputs.networksecurity.InterceptEndpointGroupAssociationLocationsDetail>[]>;
+    locationsDetails?: pulumi.Input<pulumi.Input<inputs.networksecurity.InterceptEndpointGroupAssociationLocationsDetail>[] | undefined>;
     /**
      * The resource name of this endpoint group association, for example:
      * `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`.
      * See https://google.aip.dev/122 for more details.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The VPC network that is associated. for example:
      * `projects/123456789/global/networks/my-network`.
      * See https://google.aip.dev/124.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The current state of the resource does not match the user's intended state,
      * and the system is working to reconcile them. This part of the normal
      * operation (e.g. adding a new location to the target deployment group).
      * See https://google.aip.dev/128.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * (Output)
      * The current state of the association in this location.
@@ -337,12 +337,12 @@ export interface InterceptEndpointGroupAssociationState {
      * ACTIVE
      * OUT_OF_SYNC
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was most recently updated.
      * See https://google.aip.dev/148#timestamps.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -360,13 +360,13 @@ export interface InterceptEndpointGroupAssociationArgs {
      * component of the endpoint group's resource name. If not provided, the
      * server will generate a unique ID.
      */
-    interceptEndpointGroupAssociationId?: pulumi.Input<string>;
+    interceptEndpointGroupAssociationId?: pulumi.Input<string | undefined>;
     /**
      * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cloud location of the association, currently restricted to `global`.
      */
@@ -381,5 +381,5 @@ export interface InterceptEndpointGroupAssociationArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

@@ -502,34 +502,34 @@ export interface ServiceState {
      * (For legacy support, if `template.metadata.name` is unset in state while
      * this field is set to false, the revision name will still autogenerate.)
      */
-    autogenerateRevisionName?: pulumi.Input<boolean>;
+    autogenerateRevisionName?: pulumi.Input<boolean | undefined>;
     /**
      * The location of the cloud run instance. eg us-central1
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Metadata associated with this Service, including name, namespace, labels,
      * and annotations.
      * Structure is documented below.
      */
-    metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
+    metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata | undefined>;
     /**
      * Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
      * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * Status of the condition, one of True, False, Unknown.
      */
-    statuses?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceStatus>[] | undefined>;
     /**
      * template holds the latest specification for the Revision to
      * be stamped out. The template references the container image, and may also
@@ -542,13 +542,13 @@ export interface ServiceState {
      * responsible for materializing the container image from source.
      * Structure is documented below.
      */
-    template?: pulumi.Input<inputs.cloudrun.ServiceTemplate>;
+    template?: pulumi.Input<inputs.cloudrun.ServiceTemplate | undefined>;
     /**
      * Traffic specifies how to distribute traffic over a collection of Knative Revisions
      * and Configurations
      * Structure is documented below.
      */
-    traffics?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTraffic>[]>;
+    traffics?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTraffic>[] | undefined>;
 }
 
 /**
@@ -562,7 +562,7 @@ export interface ServiceArgs {
      * (For legacy support, if `template.metadata.name` is unset in state while
      * this field is set to false, the revision name will still autogenerate.)
      */
-    autogenerateRevisionName?: pulumi.Input<boolean>;
+    autogenerateRevisionName?: pulumi.Input<boolean | undefined>;
     /**
      * The location of the cloud run instance. eg us-central1
      */
@@ -572,19 +572,19 @@ export interface ServiceArgs {
      * and annotations.
      * Structure is documented below.
      */
-    metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
+    metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata | undefined>;
     /**
      * Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
      * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * template holds the latest specification for the Revision to
      * be stamped out. The template references the container image, and may also
@@ -597,11 +597,11 @@ export interface ServiceArgs {
      * responsible for materializing the container image from source.
      * Structure is documented below.
      */
-    template?: pulumi.Input<inputs.cloudrun.ServiceTemplate>;
+    template?: pulumi.Input<inputs.cloudrun.ServiceTemplate | undefined>;
     /**
      * Traffic specifies how to distribute traffic over a collection of Knative Revisions
      * and Configurations
      * Structure is documented below.
      */
-    traffics?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTraffic>[]>;
+    traffics?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTraffic>[] | undefined>;
 }

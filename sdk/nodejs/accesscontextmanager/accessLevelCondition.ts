@@ -230,18 +230,18 @@ export interface AccessLevelConditionState {
     /**
      * The name of the Access Level to add this condition to.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * The name of the Access Policy this resource belongs to.
      */
-    accessPolicyId?: pulumi.Input<string>;
+    accessPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Device specific restrictions, all restrictions must hold for
      * the Condition to be true. If not specified, all devices are
      * allowed.
      * Structure is documented below.
      */
-    devicePolicy?: pulumi.Input<inputs.accesscontextmanager.AccessLevelConditionDevicePolicy>;
+    devicePolicy?: pulumi.Input<inputs.accesscontextmanager.AccessLevelConditionDevicePolicy | undefined>;
     /**
      * A list of CIDR block IP subnetwork specification. May be IPv4
      * or IPv6.
@@ -254,7 +254,7 @@ export interface AccessLevelConditionState {
      * listed subnets in order for this Condition to be true.
      * If empty, all IP addresses are allowed.
      */
-    ipSubnetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    ipSubnetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An allowed list of members (users, service accounts).
      * Using groups is not supported yet.
@@ -264,19 +264,19 @@ export interface AccessLevelConditionState {
      * groups, etc.).
      * Formats: `user:{emailid}`, `serviceAccount:{emailid}`
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to negate the Condition. If true, the Condition becomes
      * a NAND over its non-empty fields, each field must be false for
      * the Condition overall to be satisfied. Defaults to false.
      */
-    negate?: pulumi.Input<boolean>;
+    negate?: pulumi.Input<boolean | undefined>;
     /**
      * The request must originate from one of the provided
      * countries/regions.
      * Format: A valid ISO 3166-1 alpha-2 code.
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of other access levels defined in the same Policy,
      * referenced by resource name. Referencing an AccessLevel which
@@ -284,12 +284,12 @@ export interface AccessLevelConditionState {
      * granted for the Condition to be true.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      */
-    requiredAccessLevels?: pulumi.Input<pulumi.Input<string>[]>;
+    requiredAccessLevels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
      * Structure is documented below.
      */
-    vpcNetworkSources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelConditionVpcNetworkSource>[]>;
+    vpcNetworkSources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelConditionVpcNetworkSource>[] | undefined>;
 }
 
 /**
@@ -306,7 +306,7 @@ export interface AccessLevelConditionArgs {
      * allowed.
      * Structure is documented below.
      */
-    devicePolicy?: pulumi.Input<inputs.accesscontextmanager.AccessLevelConditionDevicePolicy>;
+    devicePolicy?: pulumi.Input<inputs.accesscontextmanager.AccessLevelConditionDevicePolicy | undefined>;
     /**
      * A list of CIDR block IP subnetwork specification. May be IPv4
      * or IPv6.
@@ -319,7 +319,7 @@ export interface AccessLevelConditionArgs {
      * listed subnets in order for this Condition to be true.
      * If empty, all IP addresses are allowed.
      */
-    ipSubnetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    ipSubnetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An allowed list of members (users, service accounts).
      * Using groups is not supported yet.
@@ -329,19 +329,19 @@ export interface AccessLevelConditionArgs {
      * groups, etc.).
      * Formats: `user:{emailid}`, `serviceAccount:{emailid}`
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to negate the Condition. If true, the Condition becomes
      * a NAND over its non-empty fields, each field must be false for
      * the Condition overall to be satisfied. Defaults to false.
      */
-    negate?: pulumi.Input<boolean>;
+    negate?: pulumi.Input<boolean | undefined>;
     /**
      * The request must originate from one of the provided
      * countries/regions.
      * Format: A valid ISO 3166-1 alpha-2 code.
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of other access levels defined in the same Policy,
      * referenced by resource name. Referencing an AccessLevel which
@@ -349,10 +349,10 @@ export interface AccessLevelConditionArgs {
      * granted for the Condition to be true.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      */
-    requiredAccessLevels?: pulumi.Input<pulumi.Input<string>[]>;
+    requiredAccessLevels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
      * Structure is documented below.
      */
-    vpcNetworkSources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelConditionVpcNetworkSource>[]>;
+    vpcNetworkSources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelConditionVpcNetworkSource>[] | undefined>;
 }

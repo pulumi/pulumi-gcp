@@ -259,47 +259,47 @@ export interface ProjectBucketConfigState {
     /**
      * The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
      */
-    bucketId?: pulumi.Input<string>;
+    bucketId?: pulumi.Input<string | undefined>;
     /**
      * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
      */
-    cmekSettings?: pulumi.Input<inputs.logging.ProjectBucketConfigCmekSettings>;
+    cmekSettings?: pulumi.Input<inputs.logging.ProjectBucketConfigCmekSettings | undefined>;
     /**
      * Describes this bucket.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
      */
-    enableAnalytics?: pulumi.Input<boolean>;
+    enableAnalytics?: pulumi.Input<boolean | undefined>;
     /**
      * A list of indexed fields and related configuration data. Structure is documented below.
      */
-    indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.ProjectBucketConfigIndexConfig>[]>;
+    indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.ProjectBucketConfigIndexConfig>[] | undefined>;
     /**
      * The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      */
-    lifecycleState?: pulumi.Input<string>;
+    lifecycleState?: pulumi.Input<string | undefined>;
     /**
      * The location of the bucket.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent resource that contains the logging bucket.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
      */
-    retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -313,19 +313,19 @@ export interface ProjectBucketConfigArgs {
     /**
      * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
      */
-    cmekSettings?: pulumi.Input<inputs.logging.ProjectBucketConfigCmekSettings>;
+    cmekSettings?: pulumi.Input<inputs.logging.ProjectBucketConfigCmekSettings | undefined>;
     /**
      * Describes this bucket.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
      */
-    enableAnalytics?: pulumi.Input<boolean>;
+    enableAnalytics?: pulumi.Input<boolean | undefined>;
     /**
      * A list of indexed fields and related configuration data. Structure is documented below.
      */
-    indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.ProjectBucketConfigIndexConfig>[]>;
+    indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.ProjectBucketConfigIndexConfig>[] | undefined>;
     /**
      * The location of the bucket.
      */
@@ -333,7 +333,7 @@ export interface ProjectBucketConfigArgs {
     /**
      * Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * The parent resource that contains the logging bucket.
      */
@@ -341,5 +341,5 @@ export interface ProjectBucketConfigArgs {
     /**
      * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
      */
-    retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number | undefined>;
 }

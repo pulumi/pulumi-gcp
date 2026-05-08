@@ -171,7 +171,7 @@ export interface GetReservationSubBlockOutputArgs {
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the parent reservation.
      *
@@ -185,5 +185,5 @@ export interface GetReservationSubBlockOutputArgs {
     /**
      * The zone where the reservation sub-block resides.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

@@ -320,11 +320,11 @@ export interface Hl7StoreState {
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      */
-    dataset?: pulumi.Input<string>;
+    dataset?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * User-supplied key-value pairs used to organize HL7v2 stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -338,12 +338,12 @@ export interface Hl7StoreState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource name for the Hl7V2Store.
      * ** Changing this property may recreate the Hl7v2 store (removing all data) **
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Deprecated)
      * A nested object resource.
@@ -353,32 +353,32 @@ export interface Hl7StoreState {
      *
      * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      */
-    notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;
+    notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig | undefined>;
     /**
      * A list of notification configs. Each configuration uses a filter to determine whether to publish a
      * message (both Ingest & Create) on the corresponding notification destination. Only the message name
      * is sent as part of the notification. Supplied by the client.
      * Structure is documented below.
      */
-    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfigs>[]>;
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfigs>[] | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;
+    parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Determines whether duplicate messages are allowed.
      */
-    rejectDuplicateMessage?: pulumi.Input<boolean>;
+    rejectDuplicateMessage?: pulumi.Input<boolean | undefined>;
     /**
      * The fully qualified name of this dataset
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -403,12 +403,12 @@ export interface Hl7StoreArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource name for the Hl7V2Store.
      * ** Changing this property may recreate the Hl7v2 store (removing all data) **
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Deprecated)
      * A nested object resource.
@@ -418,21 +418,21 @@ export interface Hl7StoreArgs {
      *
      * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      */
-    notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;
+    notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig | undefined>;
     /**
      * A list of notification configs. Each configuration uses a filter to determine whether to publish a
      * message (both Ingest & Create) on the corresponding notification destination. Only the message name
      * is sent as part of the notification. Supplied by the client.
      * Structure is documented below.
      */
-    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfigs>[]>;
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfigs>[] | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;
+    parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig | undefined>;
     /**
      * Determines whether duplicate messages are allowed.
      */
-    rejectDuplicateMessage?: pulumi.Input<boolean>;
+    rejectDuplicateMessage?: pulumi.Input<boolean | undefined>;
 }

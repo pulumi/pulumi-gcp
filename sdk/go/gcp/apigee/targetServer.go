@@ -50,27 +50,27 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+//			apigee2, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("apigee.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+//			servicenetworking2, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigee,
+//				apigee2,
 //			}))
 //			if err != nil {
 //				return err
 //			}
-//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+//			compute2, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("compute.googleapis.com"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				servicenetworking,
+//				servicenetworking2,
 //			}))
 //			if err != nil {
 //				return err
@@ -79,7 +79,7 @@ import (
 //				Name:    pulumi.String("apigee-network"),
 //				Project: project.ProjectId,
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				compute,
+//				compute2,
 //			}))
 //			if err != nil {
 //				return err
@@ -102,7 +102,7 @@ import (
 //					apigeeRange.Name,
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				servicenetworking,
+//				servicenetworking2,
 //			}))
 //			if err != nil {
 //				return err
@@ -113,7 +113,7 @@ import (
 //				AuthorizedNetwork: apigeeNetwork.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
-//				apigee,
+//				apigee2,
 //			}))
 //			if err != nil {
 //				return err

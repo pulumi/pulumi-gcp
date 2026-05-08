@@ -326,64 +326,64 @@ export interface GrpcRouteState {
     /**
      * Time the GrpcRoute was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
      */
-    gateways?: pulumi.Input<pulumi.Input<string>[]>;
+    gateways?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required. Service hostnames with an optional port for which this route describes traffic.
      */
-    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of label tags associated with the GrpcRoute resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
      */
-    meshes?: pulumi.Input<pulumi.Input<string>[]>;
+    meshes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the GrpcRoute resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Rules that define how traffic is routed and handled.
      * Structure is documented below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.networkservices.GrpcRouteRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.networkservices.GrpcRouteRule>[] | undefined>;
     /**
      * Server-defined URL of this resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Time the GrpcRoute was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -393,11 +393,11 @@ export interface GrpcRouteArgs {
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
      */
-    gateways?: pulumi.Input<pulumi.Input<string>[]>;
+    gateways?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required. Service hostnames with an optional port for which this route describes traffic.
      */
@@ -407,24 +407,24 @@ export interface GrpcRouteArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
      */
-    meshes?: pulumi.Input<pulumi.Input<string>[]>;
+    meshes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the GrpcRoute resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Rules that define how traffic is routed and handled.
      * Structure is documented below.

@@ -62,14 +62,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			dns, err := projects.NewService(ctx, "dns", &projects.ServiceArgs{
+//			dns2, err := projects.NewService(ctx, "dns", &projects.ServiceArgs{
 //				Project: targetProject.ProjectId,
 //				Service: pulumi.String("dns.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+//			compute2, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
 //				Project: targetProject.ProjectId,
 //				Service: pulumi.String("compute.googleapis.com"),
 //			})
@@ -81,7 +81,7 @@ import (
 //				Name:                  pulumi.String("test"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				compute,
+//				compute2,
 //			}))
 //			if err != nil {
 //				return err
@@ -98,7 +98,7 @@ import (
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				dns,
+//				dns2,
 //			}))
 //			if err != nil {
 //				return err

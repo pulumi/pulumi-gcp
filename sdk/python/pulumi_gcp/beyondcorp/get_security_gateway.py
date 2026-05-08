@@ -220,8 +220,8 @@ def get_security_gateway(project: Optional[_builtins.str] = None,
         service_discoveries=pulumi.get(__ret__, 'service_discoveries'),
         state=pulumi.get(__ret__, 'state'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_security_gateway_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_security_gateway_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                security_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityGatewayResult]:
     """
     Get information about a Google BeyondCorp Security Gateway.

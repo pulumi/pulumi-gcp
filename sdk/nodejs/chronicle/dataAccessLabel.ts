@@ -193,57 +193,57 @@ export interface DataAccessLabelState {
     /**
      * Output only. The user who created the data access label.
      */
-    author?: pulumi.Input<string>;
+    author?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time at which the data access label was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Required. The ID to use for the data access label, which will become the label's
      * display name and the final component of the label's resource name. The
      * maximum number of characters should be 63. Regex pattern is as per AIP:
      * https://google.aip.dev/122#resource-id-segments
      */
-    dataAccessLabelId?: pulumi.Input<string>;
+    dataAccessLabelId?: pulumi.Input<string | undefined>;
     /**
      * Optional. A description of the data access label for a human reader.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Output only. The short name displayed for the label as it appears on event data. This is same as data access label id.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * Output only. The user who last updated the data access label.
      */
-    lastEditor?: pulumi.Input<string>;
+    lastEditor?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique resource name of the data access label. This unique identifier is generated using values provided for the URL parameters.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/dataAccessLabels/{data_access_label_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A UDM query over event data.
      */
-    udmQuery?: pulumi.Input<string>;
+    udmQuery?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time at which the data access label was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -260,7 +260,7 @@ export interface DataAccessLabelArgs {
     /**
      * Optional. A description of the data access label for a human reader.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
@@ -273,7 +273,7 @@ export interface DataAccessLabelArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A UDM query over event data.
      */

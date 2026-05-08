@@ -123,7 +123,7 @@ export interface GetStoragePoolOutputArgs {
     /**
      * The project in which the Storage Pool exists. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The zone where the Storage Pool resides.
      */

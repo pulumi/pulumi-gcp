@@ -22,8 +22,8 @@ class AppCheckDeviceCheckConfigArgs:
                  app_id: pulumi.Input[_builtins.str],
                  key_id: pulumi.Input[_builtins.str],
                  private_key: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_ttl: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_ttl: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppCheckDeviceCheckConfig resource.
 
@@ -86,7 +86,7 @@ class AppCheckDeviceCheckConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -94,12 +94,12 @@ class AppCheckDeviceCheckConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenTtl")
-    def token_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the duration for which App Check tokens exchanged from DeviceCheck artifacts will be valid.
         If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
@@ -108,20 +108,20 @@ class AppCheckDeviceCheckConfigArgs:
         return pulumi.get(self, "token_ttl")
 
     @token_ttl.setter
-    def token_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_ttl", value)
 
 
 @pulumi.input_type
 class _AppCheckDeviceCheckConfigState:
     def __init__(__self__, *,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_ttl: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_ttl: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppCheckDeviceCheckConfig resources.
 
@@ -156,7 +156,7 @@ class _AppCheckDeviceCheckConfigState:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of an
         [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
@@ -164,36 +164,36 @@ class _AppCheckDeviceCheckConfigState:
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
         """
         return pulumi.get(self, "key_id")
 
     @key_id.setter
-    def key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative resource name of the DeviceCheck configuration object
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The contents of the private key (.p8) file associated with the key specified by keyId.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -201,12 +201,12 @@ class _AppCheckDeviceCheckConfigState:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKeySet")
-    def private_key_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def private_key_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the privateKey field was previously set. Since App Check will never return the
         privateKey field, this field is the only way to find out whether it was previously set.
@@ -214,12 +214,12 @@ class _AppCheckDeviceCheckConfigState:
         return pulumi.get(self, "private_key_set")
 
     @private_key_set.setter
-    def private_key_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def private_key_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "private_key_set", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -227,12 +227,12 @@ class _AppCheckDeviceCheckConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenTtl")
-    def token_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the duration for which App Check tokens exchanged from DeviceCheck artifacts will be valid.
         If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
@@ -241,7 +241,7 @@ class _AppCheckDeviceCheckConfigState:
         return pulumi.get(self, "token_ttl")
 
     @token_ttl.setter
-    def token_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_ttl", value)
 
 
@@ -251,11 +251,11 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_ttl: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_ttl: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An app's DeviceCheck configuration object. Note that the Team ID registered with your
@@ -401,11 +401,11 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_ttl: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_ttl: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -440,13 +440,13 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            private_key: Optional[pulumi.Input[_builtins.str]] = None,
-            private_key_set: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            token_ttl: Optional[pulumi.Input[_builtins.str]] = None) -> 'AppCheckDeviceCheckConfig':
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key_set: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            token_ttl: pulumi.Input[Optional[_builtins.str]] = None) -> 'AppCheckDeviceCheckConfig':
         """
         Get an existing AppCheckDeviceCheckConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

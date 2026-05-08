@@ -23,15 +23,15 @@ class IndexArgs:
     def __init__(__self__, *,
                  collection: pulumi.Input[_builtins.str],
                  fields: pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]],
-                 api_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 density: Optional[pulumi.Input[_builtins.str]] = None,
-                 multikey: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unique: Optional[pulumi.Input[_builtins.bool]] = None):
+                 api_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 density: pulumi.Input[Optional[_builtins.str]] = None,
+                 multikey: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unique: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Index resource.
 
@@ -115,7 +115,7 @@ class IndexArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiScope")
-    def api_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The API scope at which a query is run.
         Default value is `ANY_API`.
@@ -124,24 +124,24 @@ class IndexArgs:
         return pulumi.get(self, "api_scope")
 
     @api_scope.setter
-    def api_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Firestore database id. Defaults to `"(default)"`.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deletion behavior for this index.
         If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
@@ -151,12 +151,12 @@ class IndexArgs:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def density(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def density(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The density configuration for this index.
         Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
@@ -164,24 +164,24 @@ class IndexArgs:
         return pulumi.get(self, "density")
 
     @density.setter
-    def density(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def density(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "density", value)
 
     @_builtins.property
     @pulumi.getter
-    def multikey(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multikey(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
         """
         return pulumi.get(self, "multikey")
 
     @multikey.setter
-    def multikey(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multikey(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multikey", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -189,12 +189,12 @@ class IndexArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="queryScope")
-    def query_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scope at which a query is run.
         Default value is `COLLECTION`.
@@ -203,49 +203,49 @@ class IndexArgs:
         return pulumi.get(self, "query_scope")
 
     @query_scope.setter
-    def query_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="skipWait")
-    def skip_wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to skip waiting for the index to be created.
         """
         return pulumi.get(self, "skip_wait")
 
     @skip_wait.setter
-    def skip_wait(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_wait(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_wait", value)
 
     @_builtins.property
     @pulumi.getter
-    def unique(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unique(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         """
         return pulumi.get(self, "unique")
 
     @unique.setter
-    def unique(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unique(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unique", value)
 
 
 @pulumi.input_type
 class _IndexState:
     def __init__(__self__, *,
-                 api_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 collection: Optional[pulumi.Input[_builtins.str]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 density: Optional[pulumi.Input[_builtins.str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]] = None,
-                 multikey: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unique: Optional[pulumi.Input[_builtins.bool]] = None):
+                 api_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 collection: pulumi.Input[Optional[_builtins.str]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 density: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input['IndexFieldArgs']]]] = None,
+                 multikey: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unique: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Index resources.
 
@@ -305,7 +305,7 @@ class _IndexState:
 
     @_builtins.property
     @pulumi.getter(name="apiScope")
-    def api_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The API scope at which a query is run.
         Default value is `ANY_API`.
@@ -314,36 +314,36 @@ class _IndexState:
         return pulumi.get(self, "api_scope")
 
     @api_scope.setter
-    def api_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def collection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The collection being indexed.
         """
         return pulumi.get(self, "collection")
 
     @collection.setter
-    def collection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collection", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Firestore database id. Defaults to `"(default)"`.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deletion behavior for this index.
         If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
@@ -353,12 +353,12 @@ class _IndexState:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def density(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def density(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The density configuration for this index.
         Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
@@ -366,12 +366,12 @@ class _IndexState:
         return pulumi.get(self, "density")
 
     @density.setter
-    def density(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def density(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "density", value)
 
     @_builtins.property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]]:
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IndexFieldArgs']]]]:
         """
         The fields supported by this index. The last non-stored field entry is
         always for the field path `__name__`. If, on creation, `__name__` was not
@@ -384,24 +384,24 @@ class _IndexState:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]]):
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IndexFieldArgs']]]]):
         pulumi.set(self, "fields", value)
 
     @_builtins.property
     @pulumi.getter
-    def multikey(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multikey(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
         """
         return pulumi.get(self, "multikey")
 
     @multikey.setter
-    def multikey(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multikey(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multikey", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A server defined name for this index. Format:
         `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
@@ -409,12 +409,12 @@ class _IndexState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -422,12 +422,12 @@ class _IndexState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="queryScope")
-    def query_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scope at which a query is run.
         Default value is `COLLECTION`.
@@ -436,31 +436,31 @@ class _IndexState:
         return pulumi.get(self, "query_scope")
 
     @query_scope.setter
-    def query_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="skipWait")
-    def skip_wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to skip waiting for the index to be created.
         """
         return pulumi.get(self, "skip_wait")
 
     @skip_wait.setter
-    def skip_wait(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_wait(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_wait", value)
 
     @_builtins.property
     @pulumi.getter
-    def unique(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unique(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         """
         return pulumi.get(self, "unique")
 
     @unique.setter
-    def unique(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unique(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unique", value)
 
 
@@ -470,17 +470,17 @@ class Index(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 collection: Optional[pulumi.Input[_builtins.str]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 density: Optional[pulumi.Input[_builtins.str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
-                 multikey: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unique: Optional[pulumi.Input[_builtins.bool]] = None,
+                 api_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 collection: pulumi.Input[Optional[_builtins.str]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 density: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
+                 multikey: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unique: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Cloud Firestore indexes enable simple and complex queries against documents in a database.
@@ -1276,17 +1276,17 @@ class Index(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 collection: Optional[pulumi.Input[_builtins.str]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 density: Optional[pulumi.Input[_builtins.str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
-                 multikey: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unique: Optional[pulumi.Input[_builtins.bool]] = None,
+                 api_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 collection: pulumi.Input[Optional[_builtins.str]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 density: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
+                 multikey: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unique: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1322,18 +1322,18 @@ class Index(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            collection: Optional[pulumi.Input[_builtins.str]] = None,
-            database: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            density: Optional[pulumi.Input[_builtins.str]] = None,
-            fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
-            multikey: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            query_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-            unique: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Index':
+            api_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            collection: pulumi.Input[Optional[_builtins.str]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            density: pulumi.Input[Optional[_builtins.str]] = None,
+            fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]]] = None,
+            multikey: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            query_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+            unique: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Index':
         """
         Get an existing Index resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

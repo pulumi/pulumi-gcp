@@ -125,8 +125,8 @@ def get_attestor_iam_policy(attestor: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-def get_attestor_iam_policy_output(attestor: Optional[pulumi.Input[_builtins.str]] = None,
-                                   project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_attestor_iam_policy_output(attestor: pulumi.Input[Optional[_builtins.str]] = None,
+                                   project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAttestorIamPolicyResult]:
     """
     Retrieves the current IAM policy data for attestor

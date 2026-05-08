@@ -22,7 +22,7 @@ class RegionalParameterVersionArgs:
                  parameter: pulumi.Input[_builtins.str],
                  parameter_data: pulumi.Input[_builtins.str],
                  parameter_version_id: pulumi.Input[_builtins.str],
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RegionalParameterVersion resource.
 
@@ -77,29 +77,29 @@ class RegionalParameterVersionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
 
 @pulumi.input_type
 class _RegionalParameterVersionState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kms_key_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_version_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionalParameterVersion resources.
 
@@ -137,31 +137,31 @@ class _RegionalParameterVersionState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the Regional Parameter Version was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyVersion")
-    def kms_key_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
         `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
@@ -169,24 +169,24 @@ class _RegionalParameterVersionState:
         return pulumi.get(self, "kms_key_version")
 
     @kms_key_version.setter
-    def kms_key_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location of Parameter Manager Regional parameter resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Regional Parameter Version. Format:
         `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
@@ -194,24 +194,24 @@ class _RegionalParameterVersionState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Parameter Manager Regional Parameter resource.
         """
         return pulumi.get(self, "parameter")
 
     @parameter.setter
-    def parameter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterData")
-    def parameter_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Regional Parameter data.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -219,31 +219,31 @@ class _RegionalParameterVersionState:
         return pulumi.get(self, "parameter_data")
 
     @parameter_data.setter
-    def parameter_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_data", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterVersionId")
-    def parameter_version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_version_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
         """
         return pulumi.get(self, "parameter_version_id")
 
     @parameter_version_id.setter
-    def parameter_version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_version_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_version_id", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the Regional Parameter Version was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -253,10 +253,10 @@ class RegionalParameterVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 parameter: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_version_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 parameter: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_version_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Regional Parameter Version resource that stores the actual value of the regional parameter.
@@ -495,10 +495,10 @@ class RegionalParameterVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 parameter: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_version_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 parameter: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_version_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -535,15 +535,15 @@ class RegionalParameterVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            kms_key_version: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parameter: Optional[pulumi.Input[_builtins.str]] = None,
-            parameter_data: Optional[pulumi.Input[_builtins.str]] = None,
-            parameter_version_id: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'RegionalParameterVersion':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            kms_key_version: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter_data: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegionalParameterVersion':
         """
         Get an existing RegionalParameterVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -313,79 +313,79 @@ export interface AzureNodePoolState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Autoscaler configuration for this node pool.
      */
-    autoscaling?: pulumi.Input<inputs.container.AzureNodePoolAutoscaling>;
+    autoscaling?: pulumi.Input<inputs.container.AzureNodePoolAutoscaling | undefined>;
     /**
      * Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
      */
-    azureAvailabilityZone?: pulumi.Input<string>;
+    azureAvailabilityZone?: pulumi.Input<string | undefined>;
     /**
      * The azureCluster for the resource
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * The node configuration of the node pool.
      */
-    config?: pulumi.Input<inputs.container.AzureNodePoolConfig>;
+    config?: pulumi.Input<inputs.container.AzureNodePoolConfig | undefined>;
     /**
      * Output only. The time at which this node pool was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The Management configuration for this node pool.
      */
-    management?: pulumi.Input<inputs.container.AzureNodePoolManagement>;
+    management?: pulumi.Input<inputs.container.AzureNodePoolManagement | undefined>;
     /**
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
-    maxPodsConstraint?: pulumi.Input<inputs.container.AzureNodePoolMaxPodsConstraint>;
+    maxPodsConstraint?: pulumi.Input<inputs.container.AzureNodePoolMaxPodsConstraint | undefined>;
     /**
      * The name of this resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. If set, there are currently pending changes to the node pool.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * Output only. A globally unique identifier for the node pool.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time at which this node pool was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -398,7 +398,7 @@ export interface AzureNodePoolArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Autoscaler configuration for this node pool.
      */
@@ -406,7 +406,7 @@ export interface AzureNodePoolArgs {
     /**
      * Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
      */
-    azureAvailabilityZone?: pulumi.Input<string>;
+    azureAvailabilityZone?: pulumi.Input<string | undefined>;
     /**
      * The azureCluster for the resource
      */
@@ -422,7 +422,7 @@ export interface AzureNodePoolArgs {
     /**
      * The Management configuration for this node pool.
      */
-    management?: pulumi.Input<inputs.container.AzureNodePoolManagement>;
+    management?: pulumi.Input<inputs.container.AzureNodePoolManagement | undefined>;
     /**
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
@@ -430,11 +430,11 @@ export interface AzureNodePoolArgs {
     /**
      * The name of this resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
      */

@@ -22,7 +22,7 @@ __all__ = ['ApplicationUrlDispatchRulesArgs', 'ApplicationUrlDispatchRules']
 class ApplicationUrlDispatchRulesArgs:
     def __init__(__self__, *,
                  dispatch_rules: pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationUrlDispatchRules resource.
 
@@ -50,7 +50,7 @@ class ApplicationUrlDispatchRulesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -58,15 +58,15 @@ class ApplicationUrlDispatchRulesArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ApplicationUrlDispatchRulesState:
     def __init__(__self__, *,
-                 dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 dispatch_rules: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationUrlDispatchRules resources.
 
@@ -82,7 +82,7 @@ class _ApplicationUrlDispatchRulesState:
 
     @_builtins.property
     @pulumi.getter(name="dispatchRules")
-    def dispatch_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]]]:
+    def dispatch_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]]]:
         """
         Rules to match an HTTP request and dispatch that request to a service.
         Structure is documented below.
@@ -90,12 +90,12 @@ class _ApplicationUrlDispatchRulesState:
         return pulumi.get(self, "dispatch_rules")
 
     @dispatch_rules.setter
-    def dispatch_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]]]):
+    def dispatch_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationUrlDispatchRulesDispatchRuleArgs']]]]):
         pulumi.set(self, "dispatch_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -103,7 +103,7 @@ class _ApplicationUrlDispatchRulesState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -113,8 +113,8 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 dispatch_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Rules to match an HTTP request and dispatch that request to a service.
@@ -282,8 +282,8 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 dispatch_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -307,8 +307,8 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApplicationUrlDispatchRules':
+            dispatch_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApplicationUrlDispatchRules':
         """
         Get an existing ApplicationUrlDispatchRules resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

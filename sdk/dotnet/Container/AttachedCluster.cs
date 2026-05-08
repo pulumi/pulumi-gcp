@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.Container
     ///         OidcConfig = new Gcp.Container.Inputs.AttachedClusterOidcConfigArgs
     ///         {
     ///             IssuerUrl = "https://oidc.issuer.url",
-    ///             Jwks = Std.Index.Base64encode.Invoke(new()
+    ///             Jwks = Std.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "{\"keys\":[{\"use\":\"sig\",\"kty\":\"RSA\",\"kid\":\"testid\",\"alg\":\"RS256\",\"n\":\"somedata\",\"e\":\"AQAB\"}]}",
     ///             }).Apply(invoke =&gt; invoke.Result),

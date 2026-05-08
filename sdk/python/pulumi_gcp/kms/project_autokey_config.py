@@ -19,8 +19,8 @@ __all__ = ['ProjectAutokeyConfigArgs', 'ProjectAutokeyConfig']
 @pulumi.input_type
 class ProjectAutokeyConfigArgs:
     def __init__(__self__, *,
-                 key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 key_project_resolution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectAutokeyConfig resource.
 
@@ -36,7 +36,7 @@ class ProjectAutokeyConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="keyProjectResolutionMode")
-    def key_project_resolution_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_project_resolution_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How Autokey determines which project to use when provisioning CMEK keys.
         Possible values are: `RESOURCE_PROJECT`, `DISABLED`.
@@ -44,12 +44,12 @@ class ProjectAutokeyConfigArgs:
         return pulumi.get(self, "key_project_resolution_mode")
 
     @key_project_resolution_mode.setter
-    def key_project_resolution_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_project_resolution_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_project_resolution_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -57,16 +57,16 @@ class ProjectAutokeyConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ProjectAutokeyConfigState:
     def __init__(__self__, *,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_project_resolution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectAutokeyConfig resources.
 
@@ -85,19 +85,19 @@ class _ProjectAutokeyConfigState:
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The etag of the AutokeyConfig for optimistic concurrency control.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="keyProjectResolutionMode")
-    def key_project_resolution_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_project_resolution_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How Autokey determines which project to use when provisioning CMEK keys.
         Possible values are: `RESOURCE_PROJECT`, `DISABLED`.
@@ -105,12 +105,12 @@ class _ProjectAutokeyConfigState:
         return pulumi.get(self, "key_project_resolution_mode")
 
     @key_project_resolution_mode.setter
-    def key_project_resolution_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_project_resolution_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_project_resolution_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -118,7 +118,7 @@ class _ProjectAutokeyConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -128,8 +128,8 @@ class ProjectAutokeyConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_project_resolution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         `ProjectAutokeyConfig` is a singleton resource used to configure the auto-provisioning
@@ -313,8 +313,8 @@ class ProjectAutokeyConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_project_resolution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -337,9 +337,9 @@ class ProjectAutokeyConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectAutokeyConfig':
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            key_project_resolution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectAutokeyConfig':
         """
         Get an existing ProjectAutokeyConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

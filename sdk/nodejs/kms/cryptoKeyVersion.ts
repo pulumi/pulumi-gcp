@@ -163,41 +163,41 @@ export interface CryptoKeyVersionState {
     /**
      * The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
      * Only provided for key versions with protectionLevel HSM.
      * Structure is documented below.
      */
-    attestations?: pulumi.Input<pulumi.Input<inputs.kms.CryptoKeyVersionAttestation>[]>;
+    attestations?: pulumi.Input<pulumi.Input<inputs.kms.CryptoKeyVersionAttestation>[] | undefined>;
     /**
      * The name of the cryptoKey associated with the CryptoKeyVersions.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
      */
-    cryptoKey?: pulumi.Input<string>;
+    cryptoKey?: pulumi.Input<string | undefined>;
     /**
      * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
      * Structure is documented below.
      */
-    externalProtectionLevelOptions?: pulumi.Input<inputs.kms.CryptoKeyVersionExternalProtectionLevelOptions>;
+    externalProtectionLevelOptions?: pulumi.Input<inputs.kms.CryptoKeyVersionExternalProtectionLevelOptions | undefined>;
     /**
      * The time this CryptoKeyVersion key material was generated
      */
-    generateTime?: pulumi.Input<string>;
+    generateTime?: pulumi.Input<string | undefined>;
     /**
      * The resource name for this CryptoKeyVersion.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
      */
-    protectionLevel?: pulumi.Input<string>;
+    protectionLevel?: pulumi.Input<string | undefined>;
     /**
      * The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
      * otherwise the value of this field is always retrieved automatically.
      * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -213,11 +213,11 @@ export interface CryptoKeyVersionArgs {
      * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
      * Structure is documented below.
      */
-    externalProtectionLevelOptions?: pulumi.Input<inputs.kms.CryptoKeyVersionExternalProtectionLevelOptions>;
+    externalProtectionLevelOptions?: pulumi.Input<inputs.kms.CryptoKeyVersionExternalProtectionLevelOptions | undefined>;
     /**
      * The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
      * otherwise the value of this field is always retrieved automatically.
      * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }

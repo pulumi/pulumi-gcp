@@ -138,21 +138,21 @@ export interface PreviewFeatureState {
      * The activation status of the preview feature.
      * Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
      */
-    activationStatus?: pulumi.Input<string>;
+    activationStatus?: pulumi.Input<string | undefined>;
     /**
      * The name of the preview feature.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The rollout operation of the feature.
      * Structure is documented below.
      */
-    rolloutOperation?: pulumi.Input<inputs.compute.PreviewFeatureRolloutOperation>;
+    rolloutOperation?: pulumi.Input<inputs.compute.PreviewFeatureRolloutOperation | undefined>;
 }
 
 /**
@@ -167,15 +167,15 @@ export interface PreviewFeatureArgs {
     /**
      * The name of the preview feature.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The rollout operation of the feature.
      * Structure is documented below.
      */
-    rolloutOperation?: pulumi.Input<inputs.compute.PreviewFeatureRolloutOperation>;
+    rolloutOperation?: pulumi.Input<inputs.compute.PreviewFeatureRolloutOperation | undefined>;
 }

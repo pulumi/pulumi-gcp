@@ -177,43 +177,43 @@ export interface GeneratorState {
     /**
      * Optional. Human readable description of the generator.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
      */
-    generatorId?: pulumi.Input<string>;
+    generatorId?: pulumi.Input<string | undefined>;
     /**
      * Optional. Inference parameters for this generator.
      * Structure is documented below.
      */
-    inferenceParameter?: pulumi.Input<inputs.diagflow.GeneratorInferenceParameter>;
+    inferenceParameter?: pulumi.Input<inputs.diagflow.GeneratorInferenceParameter | undefined>;
     /**
      * desc
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the generator.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Optional. The published Large Language Model name. * To use the latest model version, specify the model name without version number. Example: text-bison * To use a stable model version, specify the version number as well. Example: text-bison@002.
      */
-    publishedModel?: pulumi.Input<string>;
+    publishedModel?: pulumi.Input<string | undefined>;
     /**
      * Input of prebuilt Summarization feature.
      * Structure is documented below.
      */
-    summarizationContext?: pulumi.Input<inputs.diagflow.GeneratorSummarizationContext>;
+    summarizationContext?: pulumi.Input<inputs.diagflow.GeneratorSummarizationContext | undefined>;
     /**
      * Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
      * Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
      */
-    triggerEvent?: pulumi.Input<string>;
+    triggerEvent?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -223,16 +223,16 @@ export interface GeneratorArgs {
     /**
      * Optional. Human readable description of the generator.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
      */
-    generatorId?: pulumi.Input<string>;
+    generatorId?: pulumi.Input<string | undefined>;
     /**
      * Optional. Inference parameters for this generator.
      * Structure is documented below.
      */
-    inferenceParameter?: pulumi.Input<inputs.diagflow.GeneratorInferenceParameter>;
+    inferenceParameter?: pulumi.Input<inputs.diagflow.GeneratorInferenceParameter | undefined>;
     /**
      * desc
      */
@@ -241,11 +241,11 @@ export interface GeneratorArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Optional. The published Large Language Model name. * To use the latest model version, specify the model name without version number. Example: text-bison * To use a stable model version, specify the version number as well. Example: text-bison@002.
      */
-    publishedModel?: pulumi.Input<string>;
+    publishedModel?: pulumi.Input<string | undefined>;
     /**
      * Input of prebuilt Summarization feature.
      * Structure is documented below.
@@ -255,5 +255,5 @@ export interface GeneratorArgs {
      * Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
      * Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
      */
-    triggerEvent?: pulumi.Input<string>;
+    triggerEvent?: pulumi.Input<string | undefined>;
 }

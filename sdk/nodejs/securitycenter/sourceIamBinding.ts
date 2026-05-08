@@ -135,23 +135,23 @@ export class SourceIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SourceIamBinding resources.
  */
 export interface SourceIamBindingState {
-    condition?: pulumi.Input<inputs.securitycenter.SourceIamBindingCondition>;
-    etag?: pulumi.Input<string>;
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    condition?: pulumi.Input<inputs.securitycenter.SourceIamBindingCondition | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The organization whose Cloud Security Command Center the Source
      * lives in.
      */
-    organization?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a SourceIamBinding resource.
  */
 export interface SourceIamBindingArgs {
-    condition?: pulumi.Input<inputs.securitycenter.SourceIamBindingCondition>;
+    condition?: pulumi.Input<inputs.securitycenter.SourceIamBindingCondition | undefined>;
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The organization whose Cloud Security Command Center the Source

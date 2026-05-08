@@ -105,7 +105,7 @@ def get_group_memberships(group: Optional[_builtins.str] = None,
         group=pulumi.get(__ret__, 'group'),
         id=pulumi.get(__ret__, 'id'),
         memberships=pulumi.get(__ret__, 'memberships'))
-def get_group_memberships_output(group: Optional[pulumi.Input[_builtins.str]] = None,
+def get_group_memberships_output(group: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupMembershipsResult]:
     """
     Use this data source to get list of the Cloud Identity Group Memberships within a given Group.

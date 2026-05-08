@@ -20,216 +20,216 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 access_approval_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_context_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 active_directory_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 add_pulumi_attribution_label: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alloydb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_gateway_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 apigee_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 apihub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 apikeys_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 apphub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 artifact_registry_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 assured_workloads_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_dr_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 batching: Optional[pulumi.Input['ProviderBatchingArgs']] = None,
-                 beyondcorp_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 big_query_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 biglake_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 biglake_iceberg_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_connection_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_datapolicy_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_datapolicyv2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_reservation_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigtable_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_budgets_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 binary_authorization_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 blockchain_node_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ces_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 chronicle_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_asset_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_build_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_functions_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_identity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_ids_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_quotas_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_run_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_run_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_scheduler_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_security_compliance_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_tasks_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudbuildv2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 clouddeploy_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 clouddomains_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudfunctions2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 colab_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 composer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_center_insights_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_analysis_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_attached_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_aws_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_azure_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 core_billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_catalog_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_fusion_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_lineage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_loss_prevention_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_pipeline_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_migration_service_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataflow_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataform_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataplex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataproc_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataproc_gdc_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataproc_metastore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastream_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 deployment_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 developer_connect_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dialogflow_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dialogflow_cx_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_google_partner_name: Optional[pulumi.Input[_builtins.bool]] = None,
-                 discovery_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_ai_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 edgecontainer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 edgenetwork_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 essential_contacts_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 eventarc_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_credentials: Optional[pulumi.Input['ProviderExternalCredentialsArgs']] = None,
-                 filestore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_ai_logic_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_app_check_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_app_hosting_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_data_connect_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_database_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_extensions_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_hosting_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_remote_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_storage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebaserules_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firestore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gemini_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_backup_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_hub2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_hub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gkeonprem_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_partner_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthcare_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 hypercomputecluster_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_beta_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_credentials_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_workforce_pool_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iap_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity_platform_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 impersonate_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 integration_connectors_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 integrations_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 looker_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 lustre_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_kafka_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 memcache_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 memorystore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 migration_center_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ml_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_armor_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_armor_global_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitoring_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 netapp_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_connectivity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_connectivityv1_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_management_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_security_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_services_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebooks_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 observability_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 oracle_database_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_policy_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_config_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_login_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 parallelstore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 poll_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefer_global_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefer_regional_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
-                 privateca_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 privileged_access_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ca_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_lite_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_attribution_label_addition_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 recaptcha_enterprise_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 redis_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_manager3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_manager_v3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtimeconfig_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 saas_runtime_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secret_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure_source_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_center_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_center_management_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_center_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_scanner_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 securityposture_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_directory_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_management_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_networking_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_usage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_verification_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_repo_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 spanner_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_batch_operations_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_control_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_insights_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_transfer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags_location_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 tpu_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 transcoder_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 universe_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_project_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vector_search_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 vertex_ai_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmwareengine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_access_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 workbench_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 workflows_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 workstations_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_approval_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_context_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 active_directory_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 add_pulumi_attribution_label: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alloydb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_gateway_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 apigee_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 apihub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 apikeys_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 apphub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 artifact_registry_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 assured_workloads_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_dr_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 batching: pulumi.Input[Optional['ProviderBatchingArgs']] = None,
+                 beyondcorp_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 big_query_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 biglake_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 biglake_iceberg_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_analytics_hub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_connection_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_data_transfer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_datapolicy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_datapolicyv2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_reservation_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigtable_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_budgets_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 binary_authorization_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 blockchain_node_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ces_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 chronicle_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_asset_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_billing_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_build_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_functions_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_identity_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_ids_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_quotas_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_resource_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_run_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_run_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_scheduler_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_security_compliance_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_tasks_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudbuildv2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 clouddeploy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 clouddomains_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudfunctions2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 colab_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 composer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_center_insights_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_analysis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_attached_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_aws_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_azure_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 core_billing_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_catalog_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_fusion_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_lineage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_loss_prevention_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_pipeline_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_migration_service_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataflow_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataform_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataplex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataproc_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataproc_gdc_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataproc_metastore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastream_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deployment_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 developer_connect_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dialogflow_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dialogflow_cx_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_google_partner_name: pulumi.Input[Optional[_builtins.bool]] = None,
+                 discovery_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_ai_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_ai_warehouse_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 edgecontainer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 edgenetwork_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 essential_contacts_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 eventarc_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_credentials: pulumi.Input[Optional['ProviderExternalCredentialsArgs']] = None,
+                 filestore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_ai_logic_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_app_check_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_app_hosting_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_data_connect_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_database_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_extensions_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_hosting_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_remote_config_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_storage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebaserules_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firestore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gemini_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_backup_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_hub2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_hub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gkeonprem_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_partner_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthcare_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 hypercomputecluster_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam3_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_beta_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_credentials_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_workforce_pool_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iap_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity_platform_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 impersonate_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 impersonate_service_account_delegates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 integration_connectors_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 integrations_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 looker_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 lustre_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_kafka_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 memcache_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 memorystore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 migration_center_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ml_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_armor_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_armor_global_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitoring_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 netapp_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_connectivity_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_connectivityv1_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_management_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_security_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_services_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebooks_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 observability_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 oracle_database_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_policy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_config_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_config_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_login_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 parallelstore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_manager_regional_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 poll_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefer_global_endpoints: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefer_regional_endpoints: pulumi.Input[Optional[_builtins.bool]] = None,
+                 privateca_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 privileged_access_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ca_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_lite_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_attribution_label_addition_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 recaptcha_enterprise_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 redis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_manager3_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_manager_v3_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_config_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtimeconfig_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 saas_runtime_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secret_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_manager_regional_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure_source_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_center_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_center_management_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_center_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_scanner_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 securityposture_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_management_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_networking_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_usage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_verification_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_repo_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 spanner_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_batch_operations_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_control_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_insights_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_transfer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags_location_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 tpu_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 transcoder_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 universe_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_project_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vector_search_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 vertex_ai_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmwareengine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_access_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workbench_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workflows_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstations_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         """
@@ -662,1892 +662,1892 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessApprovalCustomEndpoint")
-    def access_approval_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_approval_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "access_approval_custom_endpoint")
 
     @access_approval_custom_endpoint.setter
-    def access_approval_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_approval_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_approval_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="accessContextManagerCustomEndpoint")
-    def access_context_manager_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_context_manager_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "access_context_manager_custom_endpoint")
 
     @access_context_manager_custom_endpoint.setter
-    def access_context_manager_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_context_manager_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_context_manager_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="accessToken")
-    def access_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "access_token")
 
     @access_token.setter
-    def access_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_token", value)
 
     @_builtins.property
     @pulumi.getter(name="activeDirectoryCustomEndpoint")
-    def active_directory_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def active_directory_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "active_directory_custom_endpoint")
 
     @active_directory_custom_endpoint.setter
-    def active_directory_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def active_directory_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "active_directory_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="addPulumiAttributionLabel")
-    def add_pulumi_attribution_label(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def add_pulumi_attribution_label(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "add_pulumi_attribution_label")
 
     @add_pulumi_attribution_label.setter
-    def add_pulumi_attribution_label(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def add_pulumi_attribution_label(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "add_pulumi_attribution_label", value)
 
     @_builtins.property
     @pulumi.getter(name="alloydbCustomEndpoint")
-    def alloydb_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alloydb_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "alloydb_custom_endpoint")
 
     @alloydb_custom_endpoint.setter
-    def alloydb_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alloydb_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alloydb_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="apiGatewayCustomEndpoint")
-    def api_gateway_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_gateway_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "api_gateway_custom_endpoint")
 
     @api_gateway_custom_endpoint.setter
-    def api_gateway_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_gateway_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_gateway_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="apigeeCustomEndpoint")
-    def apigee_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def apigee_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "apigee_custom_endpoint")
 
     @apigee_custom_endpoint.setter
-    def apigee_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def apigee_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "apigee_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="apihubCustomEndpoint")
-    def apihub_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def apihub_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "apihub_custom_endpoint")
 
     @apihub_custom_endpoint.setter
-    def apihub_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def apihub_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "apihub_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="apikeysCustomEndpoint")
-    def apikeys_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def apikeys_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "apikeys_custom_endpoint")
 
     @apikeys_custom_endpoint.setter
-    def apikeys_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def apikeys_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "apikeys_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="appEngineCustomEndpoint")
-    def app_engine_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_engine_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "app_engine_custom_endpoint")
 
     @app_engine_custom_endpoint.setter
-    def app_engine_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_engine_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_engine_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="apphubCustomEndpoint")
-    def apphub_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def apphub_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "apphub_custom_endpoint")
 
     @apphub_custom_endpoint.setter
-    def apphub_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def apphub_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "apphub_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="artifactRegistryCustomEndpoint")
-    def artifact_registry_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def artifact_registry_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "artifact_registry_custom_endpoint")
 
     @artifact_registry_custom_endpoint.setter
-    def artifact_registry_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def artifact_registry_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "artifact_registry_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="assuredWorkloadsCustomEndpoint")
-    def assured_workloads_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assured_workloads_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "assured_workloads_custom_endpoint")
 
     @assured_workloads_custom_endpoint.setter
-    def assured_workloads_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assured_workloads_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assured_workloads_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="backupDrCustomEndpoint")
-    def backup_dr_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_dr_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "backup_dr_custom_endpoint")
 
     @backup_dr_custom_endpoint.setter
-    def backup_dr_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_dr_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_dr_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def batching(self) -> Optional[pulumi.Input['ProviderBatchingArgs']]:
+    def batching(self) -> pulumi.Input[Optional['ProviderBatchingArgs']]:
         return pulumi.get(self, "batching")
 
     @batching.setter
-    def batching(self, value: Optional[pulumi.Input['ProviderBatchingArgs']]):
+    def batching(self, value: pulumi.Input[Optional['ProviderBatchingArgs']]):
         pulumi.set(self, "batching", value)
 
     @_builtins.property
     @pulumi.getter(name="beyondcorpCustomEndpoint")
-    def beyondcorp_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def beyondcorp_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "beyondcorp_custom_endpoint")
 
     @beyondcorp_custom_endpoint.setter
-    def beyondcorp_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def beyondcorp_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "beyondcorp_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="bigQueryCustomEndpoint")
-    def big_query_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def big_query_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "big_query_custom_endpoint")
 
     @big_query_custom_endpoint.setter
-    def big_query_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def big_query_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "big_query_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="biglakeCustomEndpoint")
-    def biglake_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biglake_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "biglake_custom_endpoint")
 
     @biglake_custom_endpoint.setter
-    def biglake_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biglake_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biglake_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="biglakeIcebergCustomEndpoint")
-    def biglake_iceberg_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biglake_iceberg_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "biglake_iceberg_custom_endpoint")
 
     @biglake_iceberg_custom_endpoint.setter
-    def biglake_iceberg_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biglake_iceberg_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biglake_iceberg_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="bigqueryAnalyticsHubCustomEndpoint")
-    def bigquery_analytics_hub_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bigquery_analytics_hub_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bigquery_analytics_hub_custom_endpoint")
 
     @bigquery_analytics_hub_custom_endpoint.setter
-    def bigquery_analytics_hub_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bigquery_analytics_hub_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bigquery_analytics_hub_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="bigqueryConnectionCustomEndpoint")
-    def bigquery_connection_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bigquery_connection_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bigquery_connection_custom_endpoint")
 
     @bigquery_connection_custom_endpoint.setter
-    def bigquery_connection_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bigquery_connection_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bigquery_connection_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="bigqueryDataTransferCustomEndpoint")
-    def bigquery_data_transfer_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bigquery_data_transfer_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bigquery_data_transfer_custom_endpoint")
 
     @bigquery_data_transfer_custom_endpoint.setter
-    def bigquery_data_transfer_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bigquery_data_transfer_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bigquery_data_transfer_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="bigqueryDatapolicyCustomEndpoint")
-    def bigquery_datapolicy_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bigquery_datapolicy_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bigquery_datapolicy_custom_endpoint")
 
     @bigquery_datapolicy_custom_endpoint.setter
-    def bigquery_datapolicy_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bigquery_datapolicy_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bigquery_datapolicy_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="bigqueryDatapolicyv2CustomEndpoint")
-    def bigquery_datapolicyv2_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bigquery_datapolicyv2_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bigquery_datapolicyv2_custom_endpoint")
 
     @bigquery_datapolicyv2_custom_endpoint.setter
-    def bigquery_datapolicyv2_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bigquery_datapolicyv2_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bigquery_datapolicyv2_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="bigqueryReservationCustomEndpoint")
-    def bigquery_reservation_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bigquery_reservation_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bigquery_reservation_custom_endpoint")
 
     @bigquery_reservation_custom_endpoint.setter
-    def bigquery_reservation_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bigquery_reservation_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bigquery_reservation_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="bigtableCustomEndpoint")
-    def bigtable_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bigtable_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bigtable_custom_endpoint")
 
     @bigtable_custom_endpoint.setter
-    def bigtable_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bigtable_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bigtable_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="billingBudgetsCustomEndpoint")
-    def billing_budgets_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_budgets_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "billing_budgets_custom_endpoint")
 
     @billing_budgets_custom_endpoint.setter
-    def billing_budgets_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_budgets_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_budgets_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="billingCustomEndpoint")
-    def billing_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "billing_custom_endpoint")
 
     @billing_custom_endpoint.setter
-    def billing_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="billingProject")
-    def billing_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "billing_project")
 
     @billing_project.setter
-    def billing_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_project", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorizationCustomEndpoint")
-    def binary_authorization_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def binary_authorization_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "binary_authorization_custom_endpoint")
 
     @binary_authorization_custom_endpoint.setter
-    def binary_authorization_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def binary_authorization_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "binary_authorization_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="blockchainNodeEngineCustomEndpoint")
-    def blockchain_node_engine_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def blockchain_node_engine_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "blockchain_node_engine_custom_endpoint")
 
     @blockchain_node_engine_custom_endpoint.setter
-    def blockchain_node_engine_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def blockchain_node_engine_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "blockchain_node_engine_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateManagerCustomEndpoint")
-    def certificate_manager_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_manager_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "certificate_manager_custom_endpoint")
 
     @certificate_manager_custom_endpoint.setter
-    def certificate_manager_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_manager_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_manager_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cesCustomEndpoint")
-    def ces_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ces_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ces_custom_endpoint")
 
     @ces_custom_endpoint.setter
-    def ces_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ces_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ces_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="chronicleCustomEndpoint")
-    def chronicle_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chronicle_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "chronicle_custom_endpoint")
 
     @chronicle_custom_endpoint.setter
-    def chronicle_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chronicle_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chronicle_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudAssetCustomEndpoint")
-    def cloud_asset_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_asset_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_asset_custom_endpoint")
 
     @cloud_asset_custom_endpoint.setter
-    def cloud_asset_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_asset_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_asset_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudBillingCustomEndpoint")
-    def cloud_billing_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_billing_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_billing_custom_endpoint")
 
     @cloud_billing_custom_endpoint.setter
-    def cloud_billing_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_billing_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_billing_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudBuildCustomEndpoint")
-    def cloud_build_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_build_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_build_custom_endpoint")
 
     @cloud_build_custom_endpoint.setter
-    def cloud_build_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_build_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_build_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudFunctionsCustomEndpoint")
-    def cloud_functions_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_functions_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_functions_custom_endpoint")
 
     @cloud_functions_custom_endpoint.setter
-    def cloud_functions_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_functions_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_functions_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudIdentityCustomEndpoint")
-    def cloud_identity_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_identity_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_identity_custom_endpoint")
 
     @cloud_identity_custom_endpoint.setter
-    def cloud_identity_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_identity_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_identity_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudIdsCustomEndpoint")
-    def cloud_ids_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_ids_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_ids_custom_endpoint")
 
     @cloud_ids_custom_endpoint.setter
-    def cloud_ids_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_ids_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_ids_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudQuotasCustomEndpoint")
-    def cloud_quotas_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_quotas_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_quotas_custom_endpoint")
 
     @cloud_quotas_custom_endpoint.setter
-    def cloud_quotas_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_quotas_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_quotas_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudResourceManagerCustomEndpoint")
-    def cloud_resource_manager_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_resource_manager_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_resource_manager_custom_endpoint")
 
     @cloud_resource_manager_custom_endpoint.setter
-    def cloud_resource_manager_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_resource_manager_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_resource_manager_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudRunCustomEndpoint")
-    def cloud_run_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_run_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_run_custom_endpoint")
 
     @cloud_run_custom_endpoint.setter
-    def cloud_run_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_run_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_run_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudRunV2CustomEndpoint")
-    def cloud_run_v2_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_run_v2_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_run_v2_custom_endpoint")
 
     @cloud_run_v2_custom_endpoint.setter
-    def cloud_run_v2_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_run_v2_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_run_v2_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudSchedulerCustomEndpoint")
-    def cloud_scheduler_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_scheduler_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_scheduler_custom_endpoint")
 
     @cloud_scheduler_custom_endpoint.setter
-    def cloud_scheduler_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_scheduler_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_scheduler_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudSecurityComplianceCustomEndpoint")
-    def cloud_security_compliance_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_security_compliance_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_security_compliance_custom_endpoint")
 
     @cloud_security_compliance_custom_endpoint.setter
-    def cloud_security_compliance_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_security_compliance_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_security_compliance_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudTasksCustomEndpoint")
-    def cloud_tasks_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_tasks_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_tasks_custom_endpoint")
 
     @cloud_tasks_custom_endpoint.setter
-    def cloud_tasks_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_tasks_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_tasks_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudbuildv2CustomEndpoint")
-    def cloudbuildv2_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloudbuildv2_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloudbuildv2_custom_endpoint")
 
     @cloudbuildv2_custom_endpoint.setter
-    def cloudbuildv2_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloudbuildv2_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloudbuildv2_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="clouddeployCustomEndpoint")
-    def clouddeploy_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clouddeploy_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "clouddeploy_custom_endpoint")
 
     @clouddeploy_custom_endpoint.setter
-    def clouddeploy_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clouddeploy_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clouddeploy_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="clouddomainsCustomEndpoint")
-    def clouddomains_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clouddomains_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "clouddomains_custom_endpoint")
 
     @clouddomains_custom_endpoint.setter
-    def clouddomains_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clouddomains_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clouddomains_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudfunctions2CustomEndpoint")
-    def cloudfunctions2_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloudfunctions2_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloudfunctions2_custom_endpoint")
 
     @cloudfunctions2_custom_endpoint.setter
-    def cloudfunctions2_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloudfunctions2_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloudfunctions2_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="colabCustomEndpoint")
-    def colab_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def colab_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "colab_custom_endpoint")
 
     @colab_custom_endpoint.setter
-    def colab_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def colab_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "colab_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="composerCustomEndpoint")
-    def composer_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def composer_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "composer_custom_endpoint")
 
     @composer_custom_endpoint.setter
-    def composer_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def composer_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "composer_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="computeCustomEndpoint")
-    def compute_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "compute_custom_endpoint")
 
     @compute_custom_endpoint.setter
-    def compute_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="contactCenterInsightsCustomEndpoint")
-    def contact_center_insights_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contact_center_insights_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "contact_center_insights_custom_endpoint")
 
     @contact_center_insights_custom_endpoint.setter
-    def contact_center_insights_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contact_center_insights_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contact_center_insights_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="containerAnalysisCustomEndpoint")
-    def container_analysis_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_analysis_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "container_analysis_custom_endpoint")
 
     @container_analysis_custom_endpoint.setter
-    def container_analysis_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_analysis_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_analysis_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="containerAttachedCustomEndpoint")
-    def container_attached_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_attached_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "container_attached_custom_endpoint")
 
     @container_attached_custom_endpoint.setter
-    def container_attached_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_attached_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_attached_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="containerAwsCustomEndpoint")
-    def container_aws_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_aws_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "container_aws_custom_endpoint")
 
     @container_aws_custom_endpoint.setter
-    def container_aws_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_aws_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_aws_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="containerAzureCustomEndpoint")
-    def container_azure_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_azure_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "container_azure_custom_endpoint")
 
     @container_azure_custom_endpoint.setter
-    def container_azure_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_azure_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_azure_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="containerCustomEndpoint")
-    def container_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "container_custom_endpoint")
 
     @container_custom_endpoint.setter
-    def container_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="coreBillingCustomEndpoint")
-    def core_billing_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def core_billing_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "core_billing_custom_endpoint")
 
     @core_billing_custom_endpoint.setter
-    def core_billing_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def core_billing_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "core_billing_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def credentials(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credentials(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "credentials")
 
     @credentials.setter
-    def credentials(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credentials(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="dataCatalogCustomEndpoint")
-    def data_catalog_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_catalog_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "data_catalog_custom_endpoint")
 
     @data_catalog_custom_endpoint.setter
-    def data_catalog_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_catalog_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_catalog_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="dataFusionCustomEndpoint")
-    def data_fusion_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_fusion_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "data_fusion_custom_endpoint")
 
     @data_fusion_custom_endpoint.setter
-    def data_fusion_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_fusion_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_fusion_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLineageCustomEndpoint")
-    def data_lineage_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_lineage_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "data_lineage_custom_endpoint")
 
     @data_lineage_custom_endpoint.setter
-    def data_lineage_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_lineage_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_lineage_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLossPreventionCustomEndpoint")
-    def data_loss_prevention_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_loss_prevention_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "data_loss_prevention_custom_endpoint")
 
     @data_loss_prevention_custom_endpoint.setter
-    def data_loss_prevention_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_loss_prevention_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_loss_prevention_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="dataPipelineCustomEndpoint")
-    def data_pipeline_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_pipeline_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "data_pipeline_custom_endpoint")
 
     @data_pipeline_custom_endpoint.setter
-    def data_pipeline_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_pipeline_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_pipeline_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseMigrationServiceCustomEndpoint")
-    def database_migration_service_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_migration_service_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "database_migration_service_custom_endpoint")
 
     @database_migration_service_custom_endpoint.setter
-    def database_migration_service_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_migration_service_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_migration_service_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="dataflowCustomEndpoint")
-    def dataflow_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataflow_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dataflow_custom_endpoint")
 
     @dataflow_custom_endpoint.setter
-    def dataflow_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataflow_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataflow_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="dataformCustomEndpoint")
-    def dataform_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataform_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dataform_custom_endpoint")
 
     @dataform_custom_endpoint.setter
-    def dataform_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataform_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataform_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="dataplexCustomEndpoint")
-    def dataplex_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataplex_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dataplex_custom_endpoint")
 
     @dataplex_custom_endpoint.setter
-    def dataplex_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataplex_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataplex_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="dataprocCustomEndpoint")
-    def dataproc_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataproc_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dataproc_custom_endpoint")
 
     @dataproc_custom_endpoint.setter
-    def dataproc_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataproc_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataproc_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="dataprocGdcCustomEndpoint")
-    def dataproc_gdc_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataproc_gdc_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dataproc_gdc_custom_endpoint")
 
     @dataproc_gdc_custom_endpoint.setter
-    def dataproc_gdc_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataproc_gdc_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataproc_gdc_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="dataprocMetastoreCustomEndpoint")
-    def dataproc_metastore_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataproc_metastore_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dataproc_metastore_custom_endpoint")
 
     @dataproc_metastore_custom_endpoint.setter
-    def dataproc_metastore_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataproc_metastore_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataproc_metastore_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="datastreamCustomEndpoint")
-    def datastream_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastream_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "datastream_custom_endpoint")
 
     @datastream_custom_endpoint.setter
-    def datastream_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastream_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastream_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultLabels")
-    def default_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def default_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "default_labels")
 
     @default_labels.setter
-    def default_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def default_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "default_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentManagerCustomEndpoint")
-    def deployment_manager_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_manager_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "deployment_manager_custom_endpoint")
 
     @deployment_manager_custom_endpoint.setter
-    def deployment_manager_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_manager_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_manager_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="developerConnectCustomEndpoint")
-    def developer_connect_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def developer_connect_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "developer_connect_custom_endpoint")
 
     @developer_connect_custom_endpoint.setter
-    def developer_connect_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def developer_connect_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "developer_connect_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="dialogflowCustomEndpoint")
-    def dialogflow_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dialogflow_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dialogflow_custom_endpoint")
 
     @dialogflow_custom_endpoint.setter
-    def dialogflow_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dialogflow_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dialogflow_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="dialogflowCxCustomEndpoint")
-    def dialogflow_cx_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dialogflow_cx_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dialogflow_cx_custom_endpoint")
 
     @dialogflow_cx_custom_endpoint.setter
-    def dialogflow_cx_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dialogflow_cx_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dialogflow_cx_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="disableGooglePartnerName")
-    def disable_google_partner_name(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_google_partner_name(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "disable_google_partner_name")
 
     @disable_google_partner_name.setter
-    def disable_google_partner_name(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_google_partner_name(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_google_partner_name", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryEngineCustomEndpoint")
-    def discovery_engine_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discovery_engine_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "discovery_engine_custom_endpoint")
 
     @discovery_engine_custom_endpoint.setter
-    def discovery_engine_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discovery_engine_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discovery_engine_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsCustomEndpoint")
-    def dns_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dns_custom_endpoint")
 
     @dns_custom_endpoint.setter
-    def dns_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="documentAiCustomEndpoint")
-    def document_ai_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def document_ai_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "document_ai_custom_endpoint")
 
     @document_ai_custom_endpoint.setter
-    def document_ai_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def document_ai_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "document_ai_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="documentAiWarehouseCustomEndpoint")
-    def document_ai_warehouse_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def document_ai_warehouse_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "document_ai_warehouse_custom_endpoint")
 
     @document_ai_warehouse_custom_endpoint.setter
-    def document_ai_warehouse_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def document_ai_warehouse_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "document_ai_warehouse_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="edgecontainerCustomEndpoint")
-    def edgecontainer_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edgecontainer_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "edgecontainer_custom_endpoint")
 
     @edgecontainer_custom_endpoint.setter
-    def edgecontainer_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edgecontainer_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edgecontainer_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="edgenetworkCustomEndpoint")
-    def edgenetwork_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edgenetwork_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "edgenetwork_custom_endpoint")
 
     @edgenetwork_custom_endpoint.setter
-    def edgenetwork_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edgenetwork_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edgenetwork_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="essentialContactsCustomEndpoint")
-    def essential_contacts_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def essential_contacts_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "essential_contacts_custom_endpoint")
 
     @essential_contacts_custom_endpoint.setter
-    def essential_contacts_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def essential_contacts_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "essential_contacts_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="eventarcCustomEndpoint")
-    def eventarc_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eventarc_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "eventarc_custom_endpoint")
 
     @eventarc_custom_endpoint.setter
-    def eventarc_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eventarc_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eventarc_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="externalCredentials")
-    def external_credentials(self) -> Optional[pulumi.Input['ProviderExternalCredentialsArgs']]:
+    def external_credentials(self) -> pulumi.Input[Optional['ProviderExternalCredentialsArgs']]:
         return pulumi.get(self, "external_credentials")
 
     @external_credentials.setter
-    def external_credentials(self, value: Optional[pulumi.Input['ProviderExternalCredentialsArgs']]):
+    def external_credentials(self, value: pulumi.Input[Optional['ProviderExternalCredentialsArgs']]):
         pulumi.set(self, "external_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="filestoreCustomEndpoint")
-    def filestore_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filestore_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "filestore_custom_endpoint")
 
     @filestore_custom_endpoint.setter
-    def filestore_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filestore_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filestore_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="firebaseAiLogicCustomEndpoint")
-    def firebase_ai_logic_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firebase_ai_logic_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "firebase_ai_logic_custom_endpoint")
 
     @firebase_ai_logic_custom_endpoint.setter
-    def firebase_ai_logic_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firebase_ai_logic_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firebase_ai_logic_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="firebaseAppCheckCustomEndpoint")
-    def firebase_app_check_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firebase_app_check_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "firebase_app_check_custom_endpoint")
 
     @firebase_app_check_custom_endpoint.setter
-    def firebase_app_check_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firebase_app_check_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firebase_app_check_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="firebaseAppHostingCustomEndpoint")
-    def firebase_app_hosting_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firebase_app_hosting_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "firebase_app_hosting_custom_endpoint")
 
     @firebase_app_hosting_custom_endpoint.setter
-    def firebase_app_hosting_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firebase_app_hosting_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firebase_app_hosting_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="firebaseCustomEndpoint")
-    def firebase_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firebase_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "firebase_custom_endpoint")
 
     @firebase_custom_endpoint.setter
-    def firebase_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firebase_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firebase_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="firebaseDataConnectCustomEndpoint")
-    def firebase_data_connect_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firebase_data_connect_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "firebase_data_connect_custom_endpoint")
 
     @firebase_data_connect_custom_endpoint.setter
-    def firebase_data_connect_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firebase_data_connect_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firebase_data_connect_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="firebaseDatabaseCustomEndpoint")
-    def firebase_database_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firebase_database_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "firebase_database_custom_endpoint")
 
     @firebase_database_custom_endpoint.setter
-    def firebase_database_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firebase_database_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firebase_database_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="firebaseExtensionsCustomEndpoint")
-    def firebase_extensions_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firebase_extensions_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "firebase_extensions_custom_endpoint")
 
     @firebase_extensions_custom_endpoint.setter
-    def firebase_extensions_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firebase_extensions_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firebase_extensions_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="firebaseHostingCustomEndpoint")
-    def firebase_hosting_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firebase_hosting_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "firebase_hosting_custom_endpoint")
 
     @firebase_hosting_custom_endpoint.setter
-    def firebase_hosting_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firebase_hosting_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firebase_hosting_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="firebaseRemoteConfigCustomEndpoint")
-    def firebase_remote_config_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firebase_remote_config_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "firebase_remote_config_custom_endpoint")
 
     @firebase_remote_config_custom_endpoint.setter
-    def firebase_remote_config_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firebase_remote_config_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firebase_remote_config_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="firebaseStorageCustomEndpoint")
-    def firebase_storage_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firebase_storage_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "firebase_storage_custom_endpoint")
 
     @firebase_storage_custom_endpoint.setter
-    def firebase_storage_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firebase_storage_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firebase_storage_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="firebaserulesCustomEndpoint")
-    def firebaserules_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firebaserules_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "firebaserules_custom_endpoint")
 
     @firebaserules_custom_endpoint.setter
-    def firebaserules_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firebaserules_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firebaserules_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="firestoreCustomEndpoint")
-    def firestore_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firestore_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "firestore_custom_endpoint")
 
     @firestore_custom_endpoint.setter
-    def firestore_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firestore_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firestore_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="geminiCustomEndpoint")
-    def gemini_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gemini_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gemini_custom_endpoint")
 
     @gemini_custom_endpoint.setter
-    def gemini_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gemini_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gemini_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeBackupCustomEndpoint")
-    def gke_backup_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gke_backup_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gke_backup_custom_endpoint")
 
     @gke_backup_custom_endpoint.setter
-    def gke_backup_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gke_backup_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gke_backup_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeHub2CustomEndpoint")
-    def gke_hub2_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gke_hub2_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gke_hub2_custom_endpoint")
 
     @gke_hub2_custom_endpoint.setter
-    def gke_hub2_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gke_hub2_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gke_hub2_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeHubCustomEndpoint")
-    def gke_hub_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gke_hub_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gke_hub_custom_endpoint")
 
     @gke_hub_custom_endpoint.setter
-    def gke_hub_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gke_hub_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gke_hub_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeonpremCustomEndpoint")
-    def gkeonprem_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gkeonprem_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gkeonprem_custom_endpoint")
 
     @gkeonprem_custom_endpoint.setter
-    def gkeonprem_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gkeonprem_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gkeonprem_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="googlePartnerName")
-    def google_partner_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def google_partner_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "google_partner_name")
 
     @google_partner_name.setter
-    def google_partner_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def google_partner_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "google_partner_name", value)
 
     @_builtins.property
     @pulumi.getter(name="healthcareCustomEndpoint")
-    def healthcare_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def healthcare_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "healthcare_custom_endpoint")
 
     @healthcare_custom_endpoint.setter
-    def healthcare_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def healthcare_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "healthcare_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="hypercomputeclusterCustomEndpoint")
-    def hypercomputecluster_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hypercomputecluster_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "hypercomputecluster_custom_endpoint")
 
     @hypercomputecluster_custom_endpoint.setter
-    def hypercomputecluster_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hypercomputecluster_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hypercomputecluster_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="iam2CustomEndpoint")
-    def iam2_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam2_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "iam2_custom_endpoint")
 
     @iam2_custom_endpoint.setter
-    def iam2_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam2_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam2_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="iam3CustomEndpoint")
-    def iam3_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam3_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "iam3_custom_endpoint")
 
     @iam3_custom_endpoint.setter
-    def iam3_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam3_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam3_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="iamBetaCustomEndpoint")
-    def iam_beta_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam_beta_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "iam_beta_custom_endpoint")
 
     @iam_beta_custom_endpoint.setter
-    def iam_beta_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam_beta_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam_beta_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="iamCredentialsCustomEndpoint")
-    def iam_credentials_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam_credentials_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "iam_credentials_custom_endpoint")
 
     @iam_credentials_custom_endpoint.setter
-    def iam_credentials_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam_credentials_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam_credentials_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="iamCustomEndpoint")
-    def iam_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "iam_custom_endpoint")
 
     @iam_custom_endpoint.setter
-    def iam_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="iamWorkforcePoolCustomEndpoint")
-    def iam_workforce_pool_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam_workforce_pool_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "iam_workforce_pool_custom_endpoint")
 
     @iam_workforce_pool_custom_endpoint.setter
-    def iam_workforce_pool_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam_workforce_pool_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam_workforce_pool_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="iapCustomEndpoint")
-    def iap_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iap_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "iap_custom_endpoint")
 
     @iap_custom_endpoint.setter
-    def iap_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iap_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iap_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="identityPlatformCustomEndpoint")
-    def identity_platform_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identity_platform_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "identity_platform_custom_endpoint")
 
     @identity_platform_custom_endpoint.setter
-    def identity_platform_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identity_platform_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identity_platform_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="impersonateServiceAccount")
-    def impersonate_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def impersonate_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "impersonate_service_account")
 
     @impersonate_service_account.setter
-    def impersonate_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def impersonate_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "impersonate_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="impersonateServiceAccountDelegates")
-    def impersonate_service_account_delegates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def impersonate_service_account_delegates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "impersonate_service_account_delegates")
 
     @impersonate_service_account_delegates.setter
-    def impersonate_service_account_delegates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def impersonate_service_account_delegates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "impersonate_service_account_delegates", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationConnectorsCustomEndpoint")
-    def integration_connectors_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def integration_connectors_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "integration_connectors_custom_endpoint")
 
     @integration_connectors_custom_endpoint.setter
-    def integration_connectors_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def integration_connectors_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "integration_connectors_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationsCustomEndpoint")
-    def integrations_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def integrations_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "integrations_custom_endpoint")
 
     @integrations_custom_endpoint.setter
-    def integrations_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def integrations_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "integrations_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsCustomEndpoint")
-    def kms_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "kms_custom_endpoint")
 
     @kms_custom_endpoint.setter
-    def kms_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingCustomEndpoint")
-    def logging_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logging_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "logging_custom_endpoint")
 
     @logging_custom_endpoint.setter
-    def logging_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logging_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logging_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="lookerCustomEndpoint")
-    def looker_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def looker_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "looker_custom_endpoint")
 
     @looker_custom_endpoint.setter
-    def looker_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def looker_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "looker_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="lustreCustomEndpoint")
-    def lustre_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lustre_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "lustre_custom_endpoint")
 
     @lustre_custom_endpoint.setter
-    def lustre_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lustre_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lustre_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="managedKafkaCustomEndpoint")
-    def managed_kafka_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def managed_kafka_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "managed_kafka_custom_endpoint")
 
     @managed_kafka_custom_endpoint.setter
-    def managed_kafka_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def managed_kafka_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "managed_kafka_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="memcacheCustomEndpoint")
-    def memcache_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memcache_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "memcache_custom_endpoint")
 
     @memcache_custom_endpoint.setter
-    def memcache_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memcache_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memcache_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="memorystoreCustomEndpoint")
-    def memorystore_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memorystore_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "memorystore_custom_endpoint")
 
     @memorystore_custom_endpoint.setter
-    def memorystore_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memorystore_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memorystore_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="migrationCenterCustomEndpoint")
-    def migration_center_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def migration_center_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "migration_center_custom_endpoint")
 
     @migration_center_custom_endpoint.setter
-    def migration_center_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def migration_center_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "migration_center_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="mlEngineCustomEndpoint")
-    def ml_engine_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ml_engine_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ml_engine_custom_endpoint")
 
     @ml_engine_custom_endpoint.setter
-    def ml_engine_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ml_engine_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ml_engine_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="modelArmorCustomEndpoint")
-    def model_armor_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_armor_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "model_armor_custom_endpoint")
 
     @model_armor_custom_endpoint.setter
-    def model_armor_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_armor_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_armor_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="modelArmorGlobalCustomEndpoint")
-    def model_armor_global_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_armor_global_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "model_armor_global_custom_endpoint")
 
     @model_armor_global_custom_endpoint.setter
-    def model_armor_global_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_armor_global_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_armor_global_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="monitoringCustomEndpoint")
-    def monitoring_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitoring_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "monitoring_custom_endpoint")
 
     @monitoring_custom_endpoint.setter
-    def monitoring_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitoring_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitoring_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="netappCustomEndpoint")
-    def netapp_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def netapp_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "netapp_custom_endpoint")
 
     @netapp_custom_endpoint.setter
-    def netapp_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def netapp_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "netapp_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConnectivityCustomEndpoint")
-    def network_connectivity_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_connectivity_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "network_connectivity_custom_endpoint")
 
     @network_connectivity_custom_endpoint.setter
-    def network_connectivity_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_connectivity_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_connectivity_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConnectivityv1CustomEndpoint")
-    def network_connectivityv1_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_connectivityv1_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "network_connectivityv1_custom_endpoint")
 
     @network_connectivityv1_custom_endpoint.setter
-    def network_connectivityv1_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_connectivityv1_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_connectivityv1_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="networkManagementCustomEndpoint")
-    def network_management_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_management_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "network_management_custom_endpoint")
 
     @network_management_custom_endpoint.setter
-    def network_management_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_management_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_management_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="networkSecurityCustomEndpoint")
-    def network_security_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_security_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "network_security_custom_endpoint")
 
     @network_security_custom_endpoint.setter
-    def network_security_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_security_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_security_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="networkServicesCustomEndpoint")
-    def network_services_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_services_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "network_services_custom_endpoint")
 
     @network_services_custom_endpoint.setter
-    def network_services_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_services_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_services_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="notebooksCustomEndpoint")
-    def notebooks_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notebooks_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "notebooks_custom_endpoint")
 
     @notebooks_custom_endpoint.setter
-    def notebooks_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notebooks_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notebooks_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="observabilityCustomEndpoint")
-    def observability_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def observability_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "observability_custom_endpoint")
 
     @observability_custom_endpoint.setter
-    def observability_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def observability_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "observability_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="oracleDatabaseCustomEndpoint")
-    def oracle_database_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oracle_database_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "oracle_database_custom_endpoint")
 
     @oracle_database_custom_endpoint.setter
-    def oracle_database_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oracle_database_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oracle_database_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="orgPolicyCustomEndpoint")
-    def org_policy_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_policy_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_policy_custom_endpoint")
 
     @org_policy_custom_endpoint.setter
-    def org_policy_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_policy_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_policy_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="osConfigCustomEndpoint")
-    def os_config_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_config_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "os_config_custom_endpoint")
 
     @os_config_custom_endpoint.setter
-    def os_config_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_config_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_config_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="osConfigV2CustomEndpoint")
-    def os_config_v2_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_config_v2_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "os_config_v2_custom_endpoint")
 
     @os_config_v2_custom_endpoint.setter
-    def os_config_v2_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_config_v2_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_config_v2_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="osLoginCustomEndpoint")
-    def os_login_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_login_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "os_login_custom_endpoint")
 
     @os_login_custom_endpoint.setter
-    def os_login_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_login_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_login_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="parallelstoreCustomEndpoint")
-    def parallelstore_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parallelstore_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "parallelstore_custom_endpoint")
 
     @parallelstore_custom_endpoint.setter
-    def parallelstore_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parallelstore_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parallelstore_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterManagerCustomEndpoint")
-    def parameter_manager_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_manager_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "parameter_manager_custom_endpoint")
 
     @parameter_manager_custom_endpoint.setter
-    def parameter_manager_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_manager_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_manager_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterManagerRegionalCustomEndpoint")
-    def parameter_manager_regional_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_manager_regional_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "parameter_manager_regional_custom_endpoint")
 
     @parameter_manager_regional_custom_endpoint.setter
-    def parameter_manager_regional_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_manager_regional_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_manager_regional_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="pollInterval")
-    def poll_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def poll_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "poll_interval")
 
     @poll_interval.setter
-    def poll_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def poll_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "poll_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="preferGlobalEndpoints")
-    def prefer_global_endpoints(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prefer_global_endpoints(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "prefer_global_endpoints")
 
     @prefer_global_endpoints.setter
-    def prefer_global_endpoints(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prefer_global_endpoints(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prefer_global_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="preferRegionalEndpoints")
-    def prefer_regional_endpoints(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prefer_regional_endpoints(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "prefer_regional_endpoints")
 
     @prefer_regional_endpoints.setter
-    def prefer_regional_endpoints(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prefer_regional_endpoints(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prefer_regional_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="privatecaCustomEndpoint")
-    def privateca_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def privateca_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "privateca_custom_endpoint")
 
     @privateca_custom_endpoint.setter
-    def privateca_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def privateca_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "privateca_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="privilegedAccessManagerCustomEndpoint")
-    def privileged_access_manager_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def privileged_access_manager_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "privileged_access_manager_custom_endpoint")
 
     @privileged_access_manager_custom_endpoint.setter
-    def privileged_access_manager_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def privileged_access_manager_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "privileged_access_manager_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="publicCaCustomEndpoint")
-    def public_ca_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ca_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "public_ca_custom_endpoint")
 
     @public_ca_custom_endpoint.setter
-    def public_ca_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ca_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ca_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubCustomEndpoint")
-    def pubsub_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pubsub_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "pubsub_custom_endpoint")
 
     @pubsub_custom_endpoint.setter
-    def pubsub_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pubsub_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pubsub_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubLiteCustomEndpoint")
-    def pubsub_lite_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pubsub_lite_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "pubsub_lite_custom_endpoint")
 
     @pubsub_lite_custom_endpoint.setter
-    def pubsub_lite_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pubsub_lite_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pubsub_lite_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiAttributionLabelAdditionStrategy")
-    def pulumi_attribution_label_addition_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pulumi_attribution_label_addition_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "pulumi_attribution_label_addition_strategy")
 
     @pulumi_attribution_label_addition_strategy.setter
-    def pulumi_attribution_label_addition_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pulumi_attribution_label_addition_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pulumi_attribution_label_addition_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="recaptchaEnterpriseCustomEndpoint")
-    def recaptcha_enterprise_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recaptcha_enterprise_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "recaptcha_enterprise_custom_endpoint")
 
     @recaptcha_enterprise_custom_endpoint.setter
-    def recaptcha_enterprise_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recaptcha_enterprise_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recaptcha_enterprise_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="redisCustomEndpoint")
-    def redis_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redis_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "redis_custom_endpoint")
 
     @redis_custom_endpoint.setter
-    def redis_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redis_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redis_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="requestReason")
-    def request_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_reason")
 
     @request_reason.setter
-    def request_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="requestTimeout")
-    def request_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_timeout")
 
     @request_timeout.setter
-    def request_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceManager3CustomEndpoint")
-    def resource_manager3_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_manager3_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resource_manager3_custom_endpoint")
 
     @resource_manager3_custom_endpoint.setter
-    def resource_manager3_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_manager3_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_manager3_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceManagerCustomEndpoint")
-    def resource_manager_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_manager_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resource_manager_custom_endpoint")
 
     @resource_manager_custom_endpoint.setter
-    def resource_manager_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_manager_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_manager_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceManagerV3CustomEndpoint")
-    def resource_manager_v3_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_manager_v3_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resource_manager_v3_custom_endpoint")
 
     @resource_manager_v3_custom_endpoint.setter
-    def resource_manager_v3_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_manager_v3_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_manager_v3_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeConfigCustomEndpoint")
-    def runtime_config_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_config_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "runtime_config_custom_endpoint")
 
     @runtime_config_custom_endpoint.setter
-    def runtime_config_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_config_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_config_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeconfigCustomEndpoint")
-    def runtimeconfig_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtimeconfig_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "runtimeconfig_custom_endpoint")
 
     @runtimeconfig_custom_endpoint.setter
-    def runtimeconfig_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtimeconfig_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtimeconfig_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="saasRuntimeCustomEndpoint")
-    def saas_runtime_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saas_runtime_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "saas_runtime_custom_endpoint")
 
     @saas_runtime_custom_endpoint.setter
-    def saas_runtime_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saas_runtime_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saas_runtime_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerCustomEndpoint")
-    def secret_manager_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_manager_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "secret_manager_custom_endpoint")
 
     @secret_manager_custom_endpoint.setter
-    def secret_manager_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_manager_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_manager_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerRegionalCustomEndpoint")
-    def secret_manager_regional_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_manager_regional_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "secret_manager_regional_custom_endpoint")
 
     @secret_manager_regional_custom_endpoint.setter
-    def secret_manager_regional_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_manager_regional_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_manager_regional_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="secureSourceManagerCustomEndpoint")
-    def secure_source_manager_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secure_source_manager_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "secure_source_manager_custom_endpoint")
 
     @secure_source_manager_custom_endpoint.setter
-    def secure_source_manager_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secure_source_manager_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secure_source_manager_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="securityCenterCustomEndpoint")
-    def security_center_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_center_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "security_center_custom_endpoint")
 
     @security_center_custom_endpoint.setter
-    def security_center_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_center_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_center_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="securityCenterManagementCustomEndpoint")
-    def security_center_management_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_center_management_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "security_center_management_custom_endpoint")
 
     @security_center_management_custom_endpoint.setter
-    def security_center_management_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_center_management_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_center_management_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="securityCenterV2CustomEndpoint")
-    def security_center_v2_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_center_v2_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "security_center_v2_custom_endpoint")
 
     @security_center_v2_custom_endpoint.setter
-    def security_center_v2_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_center_v2_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_center_v2_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="securityScannerCustomEndpoint")
-    def security_scanner_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_scanner_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "security_scanner_custom_endpoint")
 
     @security_scanner_custom_endpoint.setter
-    def security_scanner_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_scanner_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_scanner_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="securitypostureCustomEndpoint")
-    def securityposture_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def securityposture_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "securityposture_custom_endpoint")
 
     @securityposture_custom_endpoint.setter
-    def securityposture_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def securityposture_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "securityposture_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDirectoryCustomEndpoint")
-    def service_directory_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_directory_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "service_directory_custom_endpoint")
 
     @service_directory_custom_endpoint.setter
-    def service_directory_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_directory_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_directory_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceManagementCustomEndpoint")
-    def service_management_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_management_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "service_management_custom_endpoint")
 
     @service_management_custom_endpoint.setter
-    def service_management_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_management_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_management_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceNetworkingCustomEndpoint")
-    def service_networking_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_networking_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "service_networking_custom_endpoint")
 
     @service_networking_custom_endpoint.setter
-    def service_networking_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_networking_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_networking_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceUsageCustomEndpoint")
-    def service_usage_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_usage_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "service_usage_custom_endpoint")
 
     @service_usage_custom_endpoint.setter
-    def service_usage_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_usage_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_usage_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVerificationCustomEndpoint")
-    def site_verification_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_verification_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "site_verification_custom_endpoint")
 
     @site_verification_custom_endpoint.setter
-    def site_verification_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_verification_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_verification_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRepoCustomEndpoint")
-    def source_repo_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_repo_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source_repo_custom_endpoint")
 
     @source_repo_custom_endpoint.setter
-    def source_repo_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_repo_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_repo_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="spannerCustomEndpoint")
-    def spanner_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spanner_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "spanner_custom_endpoint")
 
     @spanner_custom_endpoint.setter
-    def spanner_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spanner_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spanner_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlCustomEndpoint")
-    def sql_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sql_custom_endpoint")
 
     @sql_custom_endpoint.setter
-    def sql_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="storageBatchOperationsCustomEndpoint")
-    def storage_batch_operations_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_batch_operations_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_batch_operations_custom_endpoint")
 
     @storage_batch_operations_custom_endpoint.setter
-    def storage_batch_operations_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_batch_operations_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_batch_operations_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="storageControlCustomEndpoint")
-    def storage_control_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_control_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_control_custom_endpoint")
 
     @storage_control_custom_endpoint.setter
-    def storage_control_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_control_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_control_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="storageCustomEndpoint")
-    def storage_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_custom_endpoint")
 
     @storage_custom_endpoint.setter
-    def storage_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="storageInsightsCustomEndpoint")
-    def storage_insights_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_insights_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_insights_custom_endpoint")
 
     @storage_insights_custom_endpoint.setter
-    def storage_insights_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_insights_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_insights_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="storageTransferCustomEndpoint")
-    def storage_transfer_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_transfer_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_transfer_custom_endpoint")
 
     @storage_transfer_custom_endpoint.setter
-    def storage_transfer_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_transfer_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_transfer_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="tagsCustomEndpoint")
-    def tags_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tags_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "tags_custom_endpoint")
 
     @tags_custom_endpoint.setter
-    def tags_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tags_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tags_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="tagsLocationCustomEndpoint")
-    def tags_location_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tags_location_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "tags_location_custom_endpoint")
 
     @tags_location_custom_endpoint.setter
-    def tags_location_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tags_location_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tags_location_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="tpuV2CustomEndpoint")
-    def tpu_v2_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tpu_v2_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "tpu_v2_custom_endpoint")
 
     @tpu_v2_custom_endpoint.setter
-    def tpu_v2_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tpu_v2_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tpu_v2_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="transcoderCustomEndpoint")
-    def transcoder_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transcoder_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "transcoder_custom_endpoint")
 
     @transcoder_custom_endpoint.setter
-    def transcoder_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transcoder_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transcoder_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="universeDomain")
-    def universe_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def universe_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "universe_domain")
 
     @universe_domain.setter
-    def universe_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def universe_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "universe_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="userProjectOverride")
-    def user_project_override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def user_project_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "user_project_override")
 
     @user_project_override.setter
-    def user_project_override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def user_project_override(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "user_project_override", value)
 
     @_builtins.property
     @pulumi.getter(name="vectorSearchCustomEndpoint")
-    def vector_search_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vector_search_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vector_search_custom_endpoint")
 
     @vector_search_custom_endpoint.setter
-    def vector_search_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vector_search_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vector_search_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="vertexAiCustomEndpoint")
-    def vertex_ai_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vertex_ai_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vertex_ai_custom_endpoint")
 
     @vertex_ai_custom_endpoint.setter
-    def vertex_ai_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vertex_ai_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vertex_ai_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="vmwareengineCustomEndpoint")
-    def vmwareengine_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vmwareengine_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vmwareengine_custom_endpoint")
 
     @vmwareengine_custom_endpoint.setter
-    def vmwareengine_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vmwareengine_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vmwareengine_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcAccessCustomEndpoint")
-    def vpc_access_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_access_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vpc_access_custom_endpoint")
 
     @vpc_access_custom_endpoint.setter
-    def vpc_access_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_access_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_access_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="workbenchCustomEndpoint")
-    def workbench_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workbench_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "workbench_custom_endpoint")
 
     @workbench_custom_endpoint.setter
-    def workbench_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workbench_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workbench_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="workflowsCustomEndpoint")
-    def workflows_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workflows_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "workflows_custom_endpoint")
 
     @workflows_custom_endpoint.setter
-    def workflows_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workflows_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workflows_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadIdentityCustomEndpoint")
-    def workload_identity_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workload_identity_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "workload_identity_custom_endpoint")
 
     @workload_identity_custom_endpoint.setter
-    def workload_identity_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workload_identity_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workload_identity_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="workstationsCustomEndpoint")
-    def workstations_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workstations_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "workstations_custom_endpoint")
 
     @workstations_custom_endpoint.setter
-    def workstations_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workstations_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workstations_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -2557,216 +2557,216 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_approval_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_context_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 active_directory_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 add_pulumi_attribution_label: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alloydb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_gateway_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 apigee_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 apihub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 apikeys_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 apphub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 artifact_registry_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 assured_workloads_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_dr_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 batching: Optional[pulumi.Input[Union['ProviderBatchingArgs', 'ProviderBatchingArgsDict']]] = None,
-                 beyondcorp_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 big_query_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 biglake_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 biglake_iceberg_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_connection_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_datapolicy_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_datapolicyv2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_reservation_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigtable_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_budgets_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 binary_authorization_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 blockchain_node_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ces_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 chronicle_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_asset_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_build_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_functions_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_identity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_ids_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_quotas_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_run_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_run_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_scheduler_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_security_compliance_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_tasks_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudbuildv2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 clouddeploy_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 clouddomains_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudfunctions2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 colab_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 composer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_center_insights_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_analysis_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_attached_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_aws_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_azure_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 core_billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_catalog_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_fusion_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_lineage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_loss_prevention_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_pipeline_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_migration_service_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataflow_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataform_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataplex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataproc_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataproc_gdc_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataproc_metastore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastream_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 deployment_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 developer_connect_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dialogflow_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dialogflow_cx_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_google_partner_name: Optional[pulumi.Input[_builtins.bool]] = None,
-                 discovery_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_ai_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 edgecontainer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 edgenetwork_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 essential_contacts_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 eventarc_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_credentials: Optional[pulumi.Input[Union['ProviderExternalCredentialsArgs', 'ProviderExternalCredentialsArgsDict']]] = None,
-                 filestore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_ai_logic_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_app_check_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_app_hosting_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_data_connect_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_database_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_extensions_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_hosting_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_remote_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_storage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebaserules_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firestore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gemini_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_backup_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_hub2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_hub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gkeonprem_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_partner_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthcare_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 hypercomputecluster_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_beta_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_credentials_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_workforce_pool_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iap_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity_platform_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 impersonate_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 integration_connectors_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 integrations_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 looker_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 lustre_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_kafka_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 memcache_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 memorystore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 migration_center_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ml_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_armor_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_armor_global_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitoring_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 netapp_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_connectivity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_connectivityv1_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_management_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_security_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_services_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebooks_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 observability_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 oracle_database_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_policy_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_config_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_login_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 parallelstore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 poll_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefer_global_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefer_regional_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
-                 privateca_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 privileged_access_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ca_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_lite_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_attribution_label_addition_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 recaptcha_enterprise_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 redis_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_manager3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_manager_v3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtimeconfig_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 saas_runtime_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secret_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure_source_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_center_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_center_management_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_center_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_scanner_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 securityposture_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_directory_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_management_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_networking_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_usage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_verification_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_repo_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 spanner_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_batch_operations_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_control_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_insights_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_transfer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags_location_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 tpu_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 transcoder_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 universe_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_project_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vector_search_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 vertex_ai_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmwareengine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_access_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 workbench_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 workflows_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 workstations_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_approval_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_context_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 active_directory_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 add_pulumi_attribution_label: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alloydb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_gateway_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 apigee_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 apihub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 apikeys_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 apphub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 artifact_registry_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 assured_workloads_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_dr_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 batching: pulumi.Input[Optional[Union['ProviderBatchingArgs', 'ProviderBatchingArgsDict']]] = None,
+                 beyondcorp_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 big_query_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 biglake_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 biglake_iceberg_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_analytics_hub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_connection_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_data_transfer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_datapolicy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_datapolicyv2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_reservation_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigtable_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_budgets_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 binary_authorization_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 blockchain_node_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ces_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 chronicle_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_asset_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_billing_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_build_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_functions_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_identity_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_ids_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_quotas_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_resource_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_run_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_run_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_scheduler_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_security_compliance_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_tasks_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudbuildv2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 clouddeploy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 clouddomains_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudfunctions2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 colab_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 composer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_center_insights_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_analysis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_attached_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_aws_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_azure_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 core_billing_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_catalog_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_fusion_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_lineage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_loss_prevention_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_pipeline_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_migration_service_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataflow_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataform_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataplex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataproc_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataproc_gdc_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataproc_metastore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastream_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deployment_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 developer_connect_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dialogflow_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dialogflow_cx_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_google_partner_name: pulumi.Input[Optional[_builtins.bool]] = None,
+                 discovery_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_ai_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_ai_warehouse_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 edgecontainer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 edgenetwork_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 essential_contacts_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 eventarc_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_credentials: pulumi.Input[Optional[Union['ProviderExternalCredentialsArgs', 'ProviderExternalCredentialsArgsDict']]] = None,
+                 filestore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_ai_logic_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_app_check_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_app_hosting_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_data_connect_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_database_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_extensions_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_hosting_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_remote_config_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_storage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebaserules_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firestore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gemini_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_backup_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_hub2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_hub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gkeonprem_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_partner_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthcare_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 hypercomputecluster_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam3_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_beta_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_credentials_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_workforce_pool_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iap_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity_platform_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 impersonate_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 impersonate_service_account_delegates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 integration_connectors_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 integrations_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 looker_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 lustre_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_kafka_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 memcache_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 memorystore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 migration_center_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ml_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_armor_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_armor_global_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitoring_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 netapp_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_connectivity_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_connectivityv1_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_management_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_security_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_services_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebooks_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 observability_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 oracle_database_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_policy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_config_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_config_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_login_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 parallelstore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_manager_regional_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 poll_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefer_global_endpoints: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefer_regional_endpoints: pulumi.Input[Optional[_builtins.bool]] = None,
+                 privateca_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 privileged_access_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ca_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_lite_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_attribution_label_addition_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 recaptcha_enterprise_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 redis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_manager3_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_manager_v3_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_config_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtimeconfig_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 saas_runtime_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secret_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_manager_regional_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure_source_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_center_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_center_management_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_center_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_scanner_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 securityposture_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_management_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_networking_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_usage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_verification_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_repo_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 spanner_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_batch_operations_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_control_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_insights_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_transfer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags_location_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 tpu_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 transcoder_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 universe_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_project_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vector_search_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 vertex_ai_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmwareengine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_access_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workbench_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workflows_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstations_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the google-beta package. By default, resources use package-wide configuration
@@ -2806,216 +2806,216 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_approval_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_context_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 active_directory_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 add_pulumi_attribution_label: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alloydb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_gateway_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 apigee_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 apihub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 apikeys_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 apphub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 artifact_registry_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 assured_workloads_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_dr_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 batching: Optional[pulumi.Input[Union['ProviderBatchingArgs', 'ProviderBatchingArgsDict']]] = None,
-                 beyondcorp_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 big_query_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 biglake_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 biglake_iceberg_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_connection_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_datapolicy_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_datapolicyv2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigquery_reservation_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 bigtable_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_budgets_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 binary_authorization_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 blockchain_node_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ces_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 chronicle_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_asset_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_build_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_functions_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_identity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_ids_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_quotas_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_run_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_run_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_scheduler_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_security_compliance_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_tasks_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudbuildv2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 clouddeploy_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 clouddomains_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudfunctions2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 colab_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 composer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_center_insights_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_analysis_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_attached_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_aws_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_azure_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 core_billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_catalog_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_fusion_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_lineage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_loss_prevention_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_pipeline_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_migration_service_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataflow_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataform_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataplex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataproc_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataproc_gdc_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataproc_metastore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastream_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 deployment_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 developer_connect_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dialogflow_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dialogflow_cx_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_google_partner_name: Optional[pulumi.Input[_builtins.bool]] = None,
-                 discovery_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_ai_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 edgecontainer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 edgenetwork_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 essential_contacts_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 eventarc_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_credentials: Optional[pulumi.Input[Union['ProviderExternalCredentialsArgs', 'ProviderExternalCredentialsArgsDict']]] = None,
-                 filestore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_ai_logic_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_app_check_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_app_hosting_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_data_connect_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_database_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_extensions_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_hosting_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_remote_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebase_storage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firebaserules_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 firestore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gemini_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_backup_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_hub2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_hub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gkeonprem_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_partner_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthcare_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 hypercomputecluster_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_beta_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_credentials_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_workforce_pool_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iap_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity_platform_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 impersonate_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 integration_connectors_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 integrations_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 looker_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 lustre_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_kafka_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 memcache_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 memorystore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 migration_center_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ml_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_armor_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_armor_global_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitoring_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 netapp_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_connectivity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_connectivityv1_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_management_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_security_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_services_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebooks_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 observability_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 oracle_database_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_policy_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_config_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_login_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 parallelstore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 poll_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefer_global_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefer_regional_endpoints: Optional[pulumi.Input[_builtins.bool]] = None,
-                 privateca_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 privileged_access_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ca_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_lite_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_attribution_label_addition_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 recaptcha_enterprise_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 redis_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_manager3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_manager_v3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtimeconfig_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 saas_runtime_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secret_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure_source_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_center_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_center_management_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_center_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_scanner_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 securityposture_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_directory_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_management_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_networking_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_usage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_verification_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_repo_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 spanner_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_batch_operations_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_control_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_insights_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_transfer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags_location_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 tpu_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 transcoder_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 universe_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_project_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vector_search_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 vertex_ai_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmwareengine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_access_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 workbench_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 workflows_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 workstations_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_approval_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_context_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 active_directory_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 add_pulumi_attribution_label: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alloydb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_gateway_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 apigee_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 apihub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 apikeys_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 apphub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 artifact_registry_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 assured_workloads_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_dr_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 batching: pulumi.Input[Optional[Union['ProviderBatchingArgs', 'ProviderBatchingArgsDict']]] = None,
+                 beyondcorp_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 big_query_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 biglake_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 biglake_iceberg_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_analytics_hub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_connection_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_data_transfer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_datapolicy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_datapolicyv2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigquery_reservation_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 bigtable_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_budgets_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 binary_authorization_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 blockchain_node_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ces_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 chronicle_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_asset_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_billing_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_build_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_functions_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_identity_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_ids_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_quotas_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_resource_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_run_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_run_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_scheduler_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_security_compliance_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_tasks_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudbuildv2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 clouddeploy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 clouddomains_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudfunctions2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 colab_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 composer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_center_insights_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_analysis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_attached_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_aws_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_azure_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 core_billing_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_catalog_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_fusion_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_lineage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_loss_prevention_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_pipeline_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_migration_service_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataflow_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataform_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataplex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataproc_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataproc_gdc_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataproc_metastore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastream_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deployment_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 developer_connect_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dialogflow_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dialogflow_cx_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_google_partner_name: pulumi.Input[Optional[_builtins.bool]] = None,
+                 discovery_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_ai_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_ai_warehouse_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 edgecontainer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 edgenetwork_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 essential_contacts_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 eventarc_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_credentials: pulumi.Input[Optional[Union['ProviderExternalCredentialsArgs', 'ProviderExternalCredentialsArgsDict']]] = None,
+                 filestore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_ai_logic_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_app_check_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_app_hosting_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_data_connect_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_database_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_extensions_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_hosting_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_remote_config_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebase_storage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firebaserules_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 firestore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gemini_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_backup_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_hub2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_hub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gkeonprem_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_partner_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthcare_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 hypercomputecluster_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam3_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_beta_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_credentials_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_workforce_pool_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iap_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity_platform_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 impersonate_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 impersonate_service_account_delegates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 integration_connectors_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 integrations_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 looker_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 lustre_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_kafka_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 memcache_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 memorystore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 migration_center_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ml_engine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_armor_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_armor_global_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitoring_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 netapp_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_connectivity_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_connectivityv1_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_management_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_security_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_services_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebooks_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 observability_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 oracle_database_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_policy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_config_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_config_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_login_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 parallelstore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_manager_regional_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 poll_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefer_global_endpoints: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefer_regional_endpoints: pulumi.Input[Optional[_builtins.bool]] = None,
+                 privateca_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 privileged_access_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ca_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_lite_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_attribution_label_addition_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 recaptcha_enterprise_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 redis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_manager3_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_manager_v3_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_config_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtimeconfig_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 saas_runtime_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secret_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_manager_regional_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure_source_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_center_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_center_management_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_center_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_scanner_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 securityposture_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_management_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_networking_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_usage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_verification_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_repo_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 spanner_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_batch_operations_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_control_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_insights_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_transfer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags_location_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 tpu_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 transcoder_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 universe_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_project_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vector_search_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 vertex_ai_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmwareengine_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_access_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workbench_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workflows_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstations_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

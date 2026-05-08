@@ -204,55 +204,55 @@ export interface SacRealmState {
     /**
      * Timestamp when the realm was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Identifier. Resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Key to be shared with SSE service provider during pairing.
      * Structure is documented below.
      */
-    pairingKeys?: pulumi.Input<pulumi.Input<inputs.networksecurity.SacRealmPairingKey>[]>;
+    pairingKeys?: pulumi.Input<pulumi.Input<inputs.networksecurity.SacRealmPairingKey>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * SSE service provider associated with the realm.
      * Possible values are: `SECURITY_SERVICE_UNSPECIFIED`, `PALO_ALTO_PRISMA_ACCESS`, `SYMANTEC_CLOUD_SWG`.
      */
-    securityService?: pulumi.Input<string>;
+    securityService?: pulumi.Input<string | undefined>;
     /**
      * State of the realm.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Configuration required for Symantec realms.
      * Structure is documented below.
      */
-    symantecOptions?: pulumi.Input<inputs.networksecurity.SacRealmSymantecOptions>;
+    symantecOptions?: pulumi.Input<inputs.networksecurity.SacRealmSymantecOptions | undefined>;
     /**
      * Timestamp when the realm was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -265,16 +265,16 @@ export interface SacRealmArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Identifier. Resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * SSE service provider associated with the realm.
      * Possible values are: `SECURITY_SERVICE_UNSPECIFIED`, `PALO_ALTO_PRISMA_ACCESS`, `SYMANTEC_CLOUD_SWG`.
@@ -284,5 +284,5 @@ export interface SacRealmArgs {
      * Configuration required for Symantec realms.
      * Structure is documented below.
      */
-    symantecOptions?: pulumi.Input<inputs.networksecurity.SacRealmSymantecOptions>;
+    symantecOptions?: pulumi.Input<inputs.networksecurity.SacRealmSymantecOptions | undefined>;
 }

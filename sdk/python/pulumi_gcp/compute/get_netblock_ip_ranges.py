@@ -167,7 +167,7 @@ def get_netblock_ip_ranges(range_type: Optional[_builtins.str] = None,
         cidr_blocks_ipv6s=pulumi.get(__ret__, 'cidr_blocks_ipv6s'),
         id=pulumi.get(__ret__, 'id'),
         range_type=pulumi.get(__ret__, 'range_type'))
-def get_netblock_ip_ranges_output(range_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_netblock_ip_ranges_output(range_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetblockIPRangesResult]:
     """
     Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.

@@ -38,8 +38,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -77,8 +77,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -116,8 +116,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -155,8 +155,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -194,8 +194,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -233,8 +233,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -272,8 +272,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -311,8 +311,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -350,8 +350,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -389,8 +389,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -428,8 +428,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -467,8 +467,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -506,8 +506,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -545,8 +545,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -584,8 +584,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -623,8 +623,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -662,8 +662,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -701,8 +701,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetSupportedDatabaseFlagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -741,8 +741,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetSupportedDatabaseFlagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -781,8 +781,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetSupportedDatabaseFlagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -821,8 +821,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetSupportedDatabaseFlagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -861,8 +861,8 @@ public final class AlloydbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.alloydb.AlloydbFunctions;
      * import com.pulumi.gcp.alloydb.inputs.GetSupportedDatabaseFlagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

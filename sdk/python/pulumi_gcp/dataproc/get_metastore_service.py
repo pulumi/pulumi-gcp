@@ -374,9 +374,9 @@ def get_metastore_service(location: Optional[_builtins.str] = None,
         tier=pulumi.get(__ret__, 'tier'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_metastore_service_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                                 project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_metastore_service_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                                 project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetastoreServiceResult]:
     """
     Get a Dataproc Metastore service from Google Cloud by its id and location.

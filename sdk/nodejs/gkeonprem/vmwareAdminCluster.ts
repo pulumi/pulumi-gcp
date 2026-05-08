@@ -528,7 +528,7 @@ export interface VmwareAdminClusterState {
      * The VMware admin cluster addon node configuration.
      * Structure is documented below.
      */
-    addonNode?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAddonNode>;
+    addonNode?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAddonNode | undefined>;
     /**
      * Annotations on the VMware Admin Cluster.
      * This field has the same restrictions as Kubernetes annotations.
@@ -542,52 +542,52 @@ export interface VmwareAdminClusterState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
      * least three physical hosts in the datacenter.
      * Structure is documented below.
      */
-    antiAffinityGroups?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAntiAffinityGroups>;
+    antiAffinityGroups?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAntiAffinityGroups | undefined>;
     /**
      * The VMware admin cluster authorization configuration.
      * Structure is documented below.
      */
-    authorization?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAuthorization>;
+    authorization?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAuthorization | undefined>;
     /**
      * Configuration for auto repairing.
      * Structure is documented below.
      */
-    autoRepairConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAutoRepairConfig>;
+    autoRepairConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAutoRepairConfig | undefined>;
     /**
      * The bootstrap cluster this VMware admin cluster belongs to.
      */
-    bootstrapClusterMembership?: pulumi.Input<string>;
+    bootstrapClusterMembership?: pulumi.Input<string | undefined>;
     /**
      * The VMware admin cluster control plane node configuration.
      * Structure is documented below.
      */
-    controlPlaneNode?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterControlPlaneNode>;
+    controlPlaneNode?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterControlPlaneNode | undefined>;
     /**
      * The time the cluster was created, in RFC3339 text format.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A human readable description of this VMware admin cluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If set, the advanced cluster feature is enabled.
      */
-    enableAdvancedCluster?: pulumi.Input<boolean>;
+    enableAdvancedCluster?: pulumi.Input<boolean | undefined>;
     /**
      * The DNS name of VMware admin cluster's API server.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * This checksum is computed by the server based on the value of other
      * fields, and may be sent on update and delete requests to ensure the
@@ -595,21 +595,21 @@ export interface VmwareAdminClusterState {
      * Allows clients to perform consistent read-modify-writes
      * through optimistic concurrency control.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Fleet configuration for the cluster.
      * Structure is documented below.
      */
-    fleets?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VmwareAdminClusterFleet>[]>;
+    fleets?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VmwareAdminClusterFleet>[] | undefined>;
     /**
      * The OS image type for the VMware admin cluster.
      */
-    imageType?: pulumi.Input<string>;
+    imageType?: pulumi.Input<string | undefined>;
     /**
      * Specifies the load balancer configuration for VMware admin cluster.
      * Structure is documented below.
      */
-    loadBalancer?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterLoadBalancer>;
+    loadBalancer?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterLoadBalancer | undefined>;
     /**
      * The object name of the VMwareAdminCluster custom resource on the
      * associated admin cluster. This field is used to support conflicting
@@ -622,71 +622,71 @@ export interface VmwareAdminClusterState {
      * kubectl and should expect to see the local name when viewing admin
      * cluster controller logs.
      */
-    localName?: pulumi.Input<string>;
+    localName?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The VMware admin cluster resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The VMware admin cluster network configuration.
      * Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterNetworkConfig | undefined>;
     /**
      * The Anthos clusters on the VMware version for the admin cluster.
      */
-    onPremVersion?: pulumi.Input<string>;
+    onPremVersion?: pulumi.Input<string | undefined>;
     /**
      * The VMware platform configuration.
      * Structure is documented below.
      */
-    platformConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPlatformConfig>;
+    platformConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPlatformConfig | undefined>;
     /**
      * Configuration for private registry.
      * Structure is documented below.
      */
-    privateRegistryConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPrivateRegistryConfig>;
+    privateRegistryConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPrivateRegistryConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configuration for proxy.
      * Structure is documented below.
      */
-    proxy?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterProxy>;
+    proxy?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterProxy | undefined>;
     /**
      * If set, there are currently changes in flight to the VMware admin cluster.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * (Output)
      * The lifecycle state of the condition.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * ResourceStatus representing detailed cluster state.
      * Structure is documented below.
      */
-    statuses?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VmwareAdminClusterStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VmwareAdminClusterStatus>[] | undefined>;
     /**
      * The unique identifier of the VMware Admin Cluster.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The time the cluster was last updated, in RFC3339 text format.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies vCenter config for the admin cluster.
      * Structure is documented below.
      */
-    vcenter?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterVcenter>;
+    vcenter?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterVcenter | undefined>;
 }
 
 /**
@@ -697,7 +697,7 @@ export interface VmwareAdminClusterArgs {
      * The VMware admin cluster addon node configuration.
      * Structure is documented below.
      */
-    addonNode?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAddonNode>;
+    addonNode?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAddonNode | undefined>;
     /**
      * Annotations on the VMware Admin Cluster.
      * This field has the same restrictions as Kubernetes annotations.
@@ -711,49 +711,49 @@ export interface VmwareAdminClusterArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
      * least three physical hosts in the datacenter.
      * Structure is documented below.
      */
-    antiAffinityGroups?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAntiAffinityGroups>;
+    antiAffinityGroups?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAntiAffinityGroups | undefined>;
     /**
      * The VMware admin cluster authorization configuration.
      * Structure is documented below.
      */
-    authorization?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAuthorization>;
+    authorization?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAuthorization | undefined>;
     /**
      * Configuration for auto repairing.
      * Structure is documented below.
      */
-    autoRepairConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAutoRepairConfig>;
+    autoRepairConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAutoRepairConfig | undefined>;
     /**
      * The bootstrap cluster this VMware admin cluster belongs to.
      */
-    bootstrapClusterMembership?: pulumi.Input<string>;
+    bootstrapClusterMembership?: pulumi.Input<string | undefined>;
     /**
      * The VMware admin cluster control plane node configuration.
      * Structure is documented below.
      */
-    controlPlaneNode?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterControlPlaneNode>;
+    controlPlaneNode?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterControlPlaneNode | undefined>;
     /**
      * A human readable description of this VMware admin cluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If set, the advanced cluster feature is enabled.
      */
-    enableAdvancedCluster?: pulumi.Input<boolean>;
+    enableAdvancedCluster?: pulumi.Input<boolean | undefined>;
     /**
      * The OS image type for the VMware admin cluster.
      */
-    imageType?: pulumi.Input<string>;
+    imageType?: pulumi.Input<string | undefined>;
     /**
      * Specifies the load balancer configuration for VMware admin cluster.
      * Structure is documented below.
      */
-    loadBalancer?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterLoadBalancer>;
+    loadBalancer?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterLoadBalancer | undefined>;
     /**
      * The location of the resource.
      */
@@ -761,7 +761,7 @@ export interface VmwareAdminClusterArgs {
     /**
      * The VMware admin cluster resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The VMware admin cluster network configuration.
      * Structure is documented below.
@@ -770,30 +770,30 @@ export interface VmwareAdminClusterArgs {
     /**
      * The Anthos clusters on the VMware version for the admin cluster.
      */
-    onPremVersion?: pulumi.Input<string>;
+    onPremVersion?: pulumi.Input<string | undefined>;
     /**
      * The VMware platform configuration.
      * Structure is documented below.
      */
-    platformConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPlatformConfig>;
+    platformConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPlatformConfig | undefined>;
     /**
      * Configuration for private registry.
      * Structure is documented below.
      */
-    privateRegistryConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPrivateRegistryConfig>;
+    privateRegistryConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPrivateRegistryConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configuration for proxy.
      * Structure is documented below.
      */
-    proxy?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterProxy>;
+    proxy?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterProxy | undefined>;
     /**
      * Specifies vCenter config for the admin cluster.
      * Structure is documented below.
      */
-    vcenter?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterVcenter>;
+    vcenter?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterVcenter | undefined>;
 }

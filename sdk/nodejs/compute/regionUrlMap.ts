@@ -1215,7 +1215,7 @@ export interface RegionUrlMapState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
      * Only one of defaultRouteAction or defaultUrlRedirect must be set.
@@ -1223,7 +1223,7 @@ export interface RegionUrlMapState {
      * defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
      * Structure is documented below.
      */
-    defaultRouteAction?: pulumi.Input<inputs.compute.RegionUrlMapDefaultRouteAction>;
+    defaultRouteAction?: pulumi.Input<inputs.compute.RegionUrlMapDefaultRouteAction | undefined>;
     /**
      * The full or partial URL of the defaultService resource to which traffic is directed if
      * none of the hostRules match. If defaultRouteAction is additionally specified, advanced
@@ -1233,24 +1233,24 @@ export interface RegionUrlMapState {
      * weightedBackendServices, service must not be specified.  Only one of defaultService,
      * defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
      */
-    defaultService?: pulumi.Input<string>;
+    defaultService?: pulumi.Input<string | undefined>;
     /**
      * When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
      * defaultRouteAction must not be set.
      * Structure is documented below.
      */
-    defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapDefaultUrlRedirect>;
+    defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapDefaultUrlRedirect | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of this resource. This field is used internally during
      * updates of this resource.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * Specifies changes to request and response headers that need to take effect for the selected backendService.
      * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
@@ -1258,16 +1258,16 @@ export interface RegionUrlMapState {
      * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
      * Structure is documented below.
      */
-    headerAction?: pulumi.Input<inputs.compute.RegionUrlMapHeaderAction>;
+    headerAction?: pulumi.Input<inputs.compute.RegionUrlMapHeaderAction | undefined>;
     /**
      * The list of HostRules to use against the URL.
      * Structure is documented below.
      */
-    hostRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapHostRule>[]>;
+    hostRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapHostRule>[] | undefined>;
     /**
      * The unique identifier for the resource.
      */
-    mapId?: pulumi.Input<number>;
+    mapId?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -1277,32 +1277,32 @@ export interface RegionUrlMapState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of named PathMatchers to use against the URL.
      * Structure is documented below.
      */
-    pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcher>[]>;
+    pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcher>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Region in which the url map should reside.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The list of expected URL mappings. Requests to update this UrlMap will
      * succeed only if all of the test cases pass.
      * Structure is documented below.
      */
-    tests?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapTest>[]>;
+    tests?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapTest>[] | undefined>;
 }
 
 /**
@@ -1316,7 +1316,7 @@ export interface RegionUrlMapArgs {
      * defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
      * Structure is documented below.
      */
-    defaultRouteAction?: pulumi.Input<inputs.compute.RegionUrlMapDefaultRouteAction>;
+    defaultRouteAction?: pulumi.Input<inputs.compute.RegionUrlMapDefaultRouteAction | undefined>;
     /**
      * The full or partial URL of the defaultService resource to which traffic is directed if
      * none of the hostRules match. If defaultRouteAction is additionally specified, advanced
@@ -1326,19 +1326,19 @@ export interface RegionUrlMapArgs {
      * weightedBackendServices, service must not be specified.  Only one of defaultService,
      * defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
      */
-    defaultService?: pulumi.Input<string>;
+    defaultService?: pulumi.Input<string | undefined>;
     /**
      * When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
      * defaultRouteAction must not be set.
      * Structure is documented below.
      */
-    defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapDefaultUrlRedirect>;
+    defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapDefaultUrlRedirect | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies changes to request and response headers that need to take effect for the selected backendService.
      * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
@@ -1346,12 +1346,12 @@ export interface RegionUrlMapArgs {
      * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
      * Structure is documented below.
      */
-    headerAction?: pulumi.Input<inputs.compute.RegionUrlMapHeaderAction>;
+    headerAction?: pulumi.Input<inputs.compute.RegionUrlMapHeaderAction | undefined>;
     /**
      * The list of HostRules to use against the URL.
      * Structure is documented below.
      */
-    hostRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapHostRule>[]>;
+    hostRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapHostRule>[] | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -1361,26 +1361,26 @@ export interface RegionUrlMapArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of named PathMatchers to use against the URL.
      * Structure is documented below.
      */
-    pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcher>[]>;
+    pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcher>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Region in which the url map should reside.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The list of expected URL mappings. Requests to update this UrlMap will
      * succeed only if all of the test cases pass.
      * Structure is documented below.
      */
-    tests?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapTest>[]>;
+    tests?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapTest>[] | undefined>;
 }

@@ -73,9 +73,9 @@ class CapabilityArgs:
 @pulumi.input_type
 class _CapabilityState:
     def __init__(__self__, *,
-                 capability_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.bool]] = None):
+                 capability_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Capability resources.
 
@@ -92,38 +92,38 @@ class _CapabilityState:
 
     @_builtins.property
     @pulumi.getter(name="capabilityName")
-    def capability_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def capability_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Capability name that should be updated on the folder.
         """
         return pulumi.get(self, "capability_name")
 
     @capability_name.setter
-    def capability_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def capability_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "capability_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Folder on which Capability needs to be updated in the format folders/folder_id.
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Capability Value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "value", value)
 
 
@@ -133,9 +133,9 @@ class Capability(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capability_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.bool]] = None,
+                 capability_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         An app-enabled folder is a folder within the Google Cloud resource hierarchy that has been configured for application management. This folder lets you define and manage App Hub applications. These applications are functional groupings of services and workloads that span multiple projects within that folder and its descendant projects.
@@ -256,9 +256,9 @@ class Capability(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capability_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.bool]] = None,
+                 capability_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -287,9 +287,9 @@ class Capability(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            capability_name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            value: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Capability':
+            capability_name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Capability':
         """
         Get an existing Capability resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

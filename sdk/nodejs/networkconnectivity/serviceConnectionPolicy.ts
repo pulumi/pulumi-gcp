@@ -230,72 +230,72 @@ export interface ServiceConnectionPolicyState {
     /**
      * The timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Free-text description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The type of underlying resources used to create the connection.
      */
-    infrastructure?: pulumi.Input<string>;
+    infrastructure?: pulumi.Input<string | undefined>;
     /**
      * User-defined labels.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the ServiceConnectionPolicy.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
      * Structure is documented below.
      */
-    pscConfig?: pulumi.Input<inputs.networkconnectivity.ServiceConnectionPolicyPscConfig>;
+    pscConfig?: pulumi.Input<inputs.networkconnectivity.ServiceConnectionPolicyPscConfig | undefined>;
     /**
      * Information about each Private Service Connect connection.
      * Structure is documented below.
      */
-    pscConnections?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.ServiceConnectionPolicyPscConnection>[]>;
+    pscConnections?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.ServiceConnectionPolicyPscConnection>[] | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
      * It is provided by the Service Producer. Google services have a prefix of gcp. For example, google-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
      * For a list of supported services, see [Supported Services](https://docs.cloud.google.com/vpc/docs/about-service-connectivity-automation#supported-services).
      */
-    serviceClass?: pulumi.Input<string>;
+    serviceClass?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -305,14 +305,14 @@ export interface ServiceConnectionPolicyArgs {
     /**
      * Free-text description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User-defined labels.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the ServiceConnectionPolicy.
      */
@@ -320,7 +320,7 @@ export interface ServiceConnectionPolicyArgs {
     /**
      * The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
      */
@@ -329,12 +329,12 @@ export interface ServiceConnectionPolicyArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
      * Structure is documented below.
      */
-    pscConfig?: pulumi.Input<inputs.networkconnectivity.ServiceConnectionPolicyPscConfig>;
+    pscConfig?: pulumi.Input<inputs.networkconnectivity.ServiceConnectionPolicyPscConfig | undefined>;
     /**
      * The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
      * It is provided by the Service Producer. Google services have a prefix of gcp. For example, google-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.

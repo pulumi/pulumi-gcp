@@ -214,56 +214,56 @@ export interface IcebergCatalogState {
     /**
      * Output only. The service account used for credential vending. It might be empty if credential vending was never enabled for the catalog.
      */
-    biglakeServiceAccount?: pulumi.Input<string>;
+    biglakeServiceAccount?: pulumi.Input<string | undefined>;
     /**
      * The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
      * Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
      */
-    catalogType?: pulumi.Input<string>;
+    catalogType?: pulumi.Input<string | undefined>;
     /**
      * Output only. The creation time of the IcebergCatalog.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
      * Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
      */
-    credentialMode?: pulumi.Input<string>;
+    credentialMode?: pulumi.Input<string | undefined>;
     /**
      * Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
      */
-    defaultLocation?: pulumi.Input<string>;
+    defaultLocation?: pulumi.Input<string | undefined>;
     /**
      * The name of the IcebergCatalog.
      * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
      * exact same value of the GCS bucket's name. For example, for a bucket:
      * gs://bucket-name, the catalog name will be exactly "bucket-name".
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The primary location for mirroring the remote catalog metadata. It must be
      * a BigLake-supported location, and it should be proximate to the remote
      * catalog's location.
      */
-    primaryLocation?: pulumi.Input<string>;
+    primaryLocation?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. The replicas for the catalog metadata.
      * Structure is documented below.
      */
-    replicas?: pulumi.Input<pulumi.Input<inputs.biglake.IcebergCatalogReplica>[]>;
+    replicas?: pulumi.Input<pulumi.Input<inputs.biglake.IcebergCatalogReplica>[] | undefined>;
     /**
      * Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
      */
-    storageRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    storageRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Output only. The last modification time of the IcebergCatalog.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -279,23 +279,23 @@ export interface IcebergCatalogArgs {
      * The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
      * Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
      */
-    credentialMode?: pulumi.Input<string>;
+    credentialMode?: pulumi.Input<string | undefined>;
     /**
      * The name of the IcebergCatalog.
      * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
      * exact same value of the GCS bucket's name. For example, for a bucket:
      * gs://bucket-name, the catalog name will be exactly "bucket-name".
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The primary location for mirroring the remote catalog metadata. It must be
      * a BigLake-supported location, and it should be proximate to the remote
      * catalog's location.
      */
-    primaryLocation?: pulumi.Input<string>;
+    primaryLocation?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.SecretManager
     ///     var regionalSecretVersionBase64 = new Gcp.SecretManager.RegionalSecretVersion("regional_secret_version_base64", new()
     ///     {
     ///         Secret = secret_basic.Id,
-    ///         SecretData = Std.Index.Filebase64.Invoke(new()
+    ///         SecretData = Std.Filebase64.Invoke(new()
     ///         {
     ///             Input = "secret-data.pfx",
     ///         }).Apply(invoke =&gt; invoke.Result),

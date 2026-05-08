@@ -24,19 +24,19 @@ class BackupVaultArgs:
                  backup_minimum_enforced_retention_duration: pulumi.Input[_builtins.str],
                  backup_vault_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 access_restriction: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_missing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 backup_retention_inheritance: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_config: Optional[pulumi.Input['BackupVaultEncryptionConfigArgs']] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_backup_plan_references: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_inactive_datasources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_restriction: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_missing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 backup_retention_inheritance: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_config: pulumi.Input[Optional['BackupVaultEncryptionConfigArgs']] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_backup_plan_references: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_inactive_datasources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupVault resource.
 
@@ -148,7 +148,7 @@ class BackupVaultArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessRestriction")
-    def access_restriction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_restriction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
         Default value is `WITHIN_ORGANIZATION`.
@@ -157,24 +157,24 @@ class BackupVaultArgs:
         return pulumi.get(self, "access_restriction")
 
     @access_restriction.setter
-    def access_restriction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_restriction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="allowMissing")
-    def allow_missing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_missing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
         """
         return pulumi.get(self, "allow_missing")
 
     @allow_missing.setter
-    def allow_missing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_missing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_missing", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. User annotations. See https://google.aip.dev/128#annotations
         Stores small amounts of arbitrary data.
@@ -184,12 +184,12 @@ class BackupVaultArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionInheritance")
-    def backup_retention_inheritance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_retention_inheritance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
         Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
@@ -197,36 +197,36 @@ class BackupVaultArgs:
         return pulumi.get(self, "backup_retention_inheritance")
 
     @backup_retention_inheritance.setter
-    def backup_retention_inheritance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_retention_inheritance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_retention_inheritance", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The description of the BackupVault instance (2048 characters or less).
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Time after which the BackupVault resource is locked.
         """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['BackupVaultEncryptionConfigArgs']]:
+    def encryption_config(self) -> pulumi.Input[Optional['BackupVaultEncryptionConfigArgs']]:
         """
         Encryption configuration for the backup vault.
         Structure is documented below.
@@ -234,13 +234,13 @@ class BackupVaultArgs:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['BackupVaultEncryptionConfigArgs']]):
+    def encryption_config(self, value: pulumi.Input[Optional['BackupVaultEncryptionConfigArgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
     @_utilities.deprecated("""`force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.""")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Deprecated)
         If set, the following restrictions against deletion of the backup vault instance can be overridden:
@@ -252,12 +252,12 @@ class BackupVaultArgs:
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="forceUpdate")
-    def force_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set, allow update to extend the minimum enforced retention for backup vault. This overrides
         the restriction against conflicting retention periods. This conflict may occur when the
@@ -267,12 +267,12 @@ class BackupVaultArgs:
         return pulumi.get(self, "force_update")
 
     @force_update.setter
-    def force_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_update", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreBackupPlanReferences")
-    def ignore_backup_plan_references(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_backup_plan_references(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set, the following restrictions against deletion of the backup vault instance can be overridden:
         * deletion of a backup vault instance that is being referenced by an active backup plan.
@@ -280,12 +280,12 @@ class BackupVaultArgs:
         return pulumi.get(self, "ignore_backup_plan_references")
 
     @ignore_backup_plan_references.setter
-    def ignore_backup_plan_references(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_backup_plan_references(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_backup_plan_references", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreInactiveDatasources")
-    def ignore_inactive_datasources(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_inactive_datasources(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set, the following restrictions against deletion of the backup vault instance can be overridden:
         * deletion of a backup vault instance containing no backups, but still containing empty datasources.
@@ -293,12 +293,12 @@ class BackupVaultArgs:
         return pulumi.get(self, "ignore_inactive_datasources")
 
     @ignore_inactive_datasources.setter
-    def ignore_inactive_datasources(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_inactive_datasources(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_inactive_datasources", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Resource labels to represent user provided metadata.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -307,12 +307,12 @@ class BackupVaultArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -320,42 +320,42 @@ class BackupVaultArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _BackupVaultState:
     def __init__(__self__, *,
-                 access_restriction: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_missing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 backup_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_minimum_enforced_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_inheritance: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_config: Optional[pulumi.Input['BackupVaultEncryptionConfigArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_backup_plan_references: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_inactive_datasources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_stored_bytes: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_restriction: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_missing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 backup_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_minimum_enforced_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_inheritance: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_config: pulumi.Input[Optional['BackupVaultEncryptionConfigArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_backup_plan_references: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_inactive_datasources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_stored_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupVault resources.
 
@@ -480,7 +480,7 @@ class _BackupVaultState:
 
     @_builtins.property
     @pulumi.getter(name="accessRestriction")
-    def access_restriction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_restriction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
         Default value is `WITHIN_ORGANIZATION`.
@@ -489,24 +489,24 @@ class _BackupVaultState:
         return pulumi.get(self, "access_restriction")
 
     @access_restriction.setter
-    def access_restriction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_restriction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="allowMissing")
-    def allow_missing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_missing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
         """
         return pulumi.get(self, "allow_missing")
 
     @allow_missing.setter
-    def allow_missing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_missing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_missing", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. User annotations. See https://google.aip.dev/128#annotations
         Stores small amounts of arbitrary data.
@@ -516,36 +516,36 @@ class _BackupVaultState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="backupCount")
-    def backup_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The number of backups in this backup vault.
         """
         return pulumi.get(self, "backup_count")
 
     @backup_count.setter
-    def backup_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_count", value)
 
     @_builtins.property
     @pulumi.getter(name="backupMinimumEnforcedRetentionDuration")
-    def backup_minimum_enforced_retention_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_minimum_enforced_retention_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
         """
         return pulumi.get(self, "backup_minimum_enforced_retention_duration")
 
     @backup_minimum_enforced_retention_duration.setter
-    def backup_minimum_enforced_retention_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_minimum_enforced_retention_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_minimum_enforced_retention_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionInheritance")
-    def backup_retention_inheritance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_retention_inheritance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
         Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
@@ -553,96 +553,96 @@ class _BackupVaultState:
         return pulumi.get(self, "backup_retention_inheritance")
 
     @backup_retention_inheritance.setter
-    def backup_retention_inheritance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_retention_inheritance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_retention_inheritance", value)
 
     @_builtins.property
     @pulumi.getter(name="backupVaultId")
-    def backup_vault_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_vault_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. ID of the requesting object.
         """
         return pulumi.get(self, "backup_vault_id")
 
     @backup_vault_id.setter
-    def backup_vault_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_vault_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_vault_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time when the instance was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def deletable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. Set to true when there are no backups nested under this resource.
         """
         return pulumi.get(self, "deletable")
 
     @deletable.setter
-    def deletable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletable", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The description of the BackupVault instance (2048 characters or less).
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Time after which the BackupVault resource is locked.
         """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['BackupVaultEncryptionConfigArgs']]:
+    def encryption_config(self) -> pulumi.Input[Optional['BackupVaultEncryptionConfigArgs']]:
         """
         Encryption configuration for the backup vault.
         Structure is documented below.
@@ -650,25 +650,25 @@ class _BackupVaultState:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['BackupVaultEncryptionConfigArgs']]):
+    def encryption_config(self, value: pulumi.Input[Optional['BackupVaultEncryptionConfigArgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
     @_utilities.deprecated("""`force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.""")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Deprecated)
         If set, the following restrictions against deletion of the backup vault instance can be overridden:
@@ -680,12 +680,12 @@ class _BackupVaultState:
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="forceUpdate")
-    def force_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set, allow update to extend the minimum enforced retention for backup vault. This overrides
         the restriction against conflicting retention periods. This conflict may occur when the
@@ -695,12 +695,12 @@ class _BackupVaultState:
         return pulumi.get(self, "force_update")
 
     @force_update.setter
-    def force_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_update", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreBackupPlanReferences")
-    def ignore_backup_plan_references(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_backup_plan_references(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set, the following restrictions against deletion of the backup vault instance can be overridden:
         * deletion of a backup vault instance that is being referenced by an active backup plan.
@@ -708,12 +708,12 @@ class _BackupVaultState:
         return pulumi.get(self, "ignore_backup_plan_references")
 
     @ignore_backup_plan_references.setter
-    def ignore_backup_plan_references(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_backup_plan_references(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_backup_plan_references", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreInactiveDatasources")
-    def ignore_inactive_datasources(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_inactive_datasources(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set, the following restrictions against deletion of the backup vault instance can be overridden:
         * deletion of a backup vault instance containing no backups, but still containing empty datasources.
@@ -721,12 +721,12 @@ class _BackupVaultState:
         return pulumi.get(self, "ignore_inactive_datasources")
 
     @ignore_inactive_datasources.setter
-    def ignore_inactive_datasources(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_inactive_datasources(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_inactive_datasources", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Resource labels to represent user provided metadata.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -735,36 +735,36 @@ class _BackupVaultState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCP location for the backup vault.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Identifier. The resource name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -772,12 +772,12 @@ class _BackupVaultState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -785,24 +785,24 @@ class _BackupVaultState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Service account used by the BackupVault Service for this BackupVault.  The user should grant this account permissions in their workload project to enable the service to run backups and restores there.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The BackupVault resource instance state.
         Possible values:
@@ -815,43 +815,43 @@ class _BackupVaultState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="totalStoredBytes")
-    def total_stored_bytes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def total_stored_bytes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Total size of the storage used by all backup resources.
         """
         return pulumi.get(self, "total_stored_bytes")
 
     @total_stored_bytes.setter
-    def total_stored_bytes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def total_stored_bytes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "total_stored_bytes", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Output only Immutable after resource creation until resource deletion.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time when the instance was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -861,22 +861,22 @@ class BackupVault(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_restriction: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_missing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 backup_minimum_enforced_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_inheritance: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_config: Optional[pulumi.Input[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_backup_plan_references: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_inactive_datasources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_restriction: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_missing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 backup_minimum_enforced_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_inheritance: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_backup_plan_references: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_inactive_datasources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Container to store and organize immutable and indelible backups.
@@ -1096,22 +1096,22 @@ class BackupVault(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_restriction: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_missing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 backup_minimum_enforced_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_inheritance: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_config: Optional[pulumi.Input[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_backup_plan_references: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_inactive_datasources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_restriction: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_missing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 backup_minimum_enforced_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_inheritance: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_backup_plan_references: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_inactive_datasources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1168,35 +1168,35 @@ class BackupVault(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_restriction: Optional[pulumi.Input[_builtins.str]] = None,
-            allow_missing: Optional[pulumi.Input[_builtins.bool]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            backup_count: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_minimum_enforced_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_retention_inheritance: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletable: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-            encryption_config: Optional[pulumi.Input[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-            ignore_backup_plan_references: Optional[pulumi.Input[_builtins.bool]] = None,
-            ignore_inactive_datasources: Optional[pulumi.Input[_builtins.bool]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            total_stored_bytes: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'BackupVault':
+            access_restriction: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_missing: pulumi.Input[Optional[_builtins.bool]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            backup_count: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_minimum_enforced_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_retention_inheritance: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletable: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_config: pulumi.Input[Optional[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            ignore_backup_plan_references: pulumi.Input[Optional[_builtins.bool]] = None,
+            ignore_inactive_datasources: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            total_stored_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'BackupVault':
         """
         Get an existing BackupVault resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

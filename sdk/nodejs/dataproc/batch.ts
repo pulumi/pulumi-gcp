@@ -507,106 +507,106 @@ export interface BatchState {
      * The ID to use for the batch, which will become the final component of the batch's resource name.
      * This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
      */
-    batchId?: pulumi.Input<string>;
+    batchId?: pulumi.Input<string | undefined>;
     /**
      * The time when the batch was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The email address of the user who created the batch.
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Environment configuration for the batch execution.
      * Structure is documented below.
      */
-    environmentConfig?: pulumi.Input<inputs.dataproc.BatchEnvironmentConfig>;
+    environmentConfig?: pulumi.Input<inputs.dataproc.BatchEnvironmentConfig | undefined>;
     /**
      * The labels to associate with this batch.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location in which the batch will be created in.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the batch.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the operation associated with this batch.
      */
-    operation?: pulumi.Input<string>;
+    operation?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * PySpark batch config.
      * Structure is documented below.
      */
-    pysparkBatch?: pulumi.Input<inputs.dataproc.BatchPysparkBatch>;
+    pysparkBatch?: pulumi.Input<inputs.dataproc.BatchPysparkBatch | undefined>;
     /**
      * Runtime configuration for the batch execution.
      * Structure is documented below.
      */
-    runtimeConfig?: pulumi.Input<inputs.dataproc.BatchRuntimeConfig>;
+    runtimeConfig?: pulumi.Input<inputs.dataproc.BatchRuntimeConfig | undefined>;
     /**
      * Runtime information about batch execution.
      * Structure is documented below.
      */
-    runtimeInfos?: pulumi.Input<pulumi.Input<inputs.dataproc.BatchRuntimeInfo>[]>;
+    runtimeInfos?: pulumi.Input<pulumi.Input<inputs.dataproc.BatchRuntimeInfo>[] | undefined>;
     /**
      * Spark batch config.
      * Structure is documented below.
      */
-    sparkBatch?: pulumi.Input<inputs.dataproc.BatchSparkBatch>;
+    sparkBatch?: pulumi.Input<inputs.dataproc.BatchSparkBatch | undefined>;
     /**
      * SparkR batch config.
      * Structure is documented below.
      */
-    sparkRBatch?: pulumi.Input<inputs.dataproc.BatchSparkRBatch>;
+    sparkRBatch?: pulumi.Input<inputs.dataproc.BatchSparkRBatch | undefined>;
     /**
      * Spark SQL batch config.
      * Structure is documented below.
      */
-    sparkSqlBatch?: pulumi.Input<inputs.dataproc.BatchSparkSqlBatch>;
+    sparkSqlBatch?: pulumi.Input<inputs.dataproc.BatchSparkSqlBatch | undefined>;
     /**
      * (Output)
      * The state of the batch at this point in history. For possible values, see the [API documentation](https://cloud.google.com/dataproc-serverless/docs/reference/rest/v1/projects.locations.batches#State).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Historical state information for the batch.
      * Structure is documented below.
      */
-    stateHistories?: pulumi.Input<pulumi.Input<inputs.dataproc.BatchStateHistory>[]>;
+    stateHistories?: pulumi.Input<pulumi.Input<inputs.dataproc.BatchStateHistory>[] | undefined>;
     /**
      * (Output)
      * Details about the state at this point in history.
      */
-    stateMessage?: pulumi.Input<string>;
+    stateMessage?: pulumi.Input<string | undefined>;
     /**
      * Batch state details, such as a failure description if the state is FAILED.
      */
-    stateTime?: pulumi.Input<string>;
+    stateTime?: pulumi.Input<string | undefined>;
     /**
      * A batch UUID (Unique Universal Identifier). The service generates this value when it creates the batch.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -617,51 +617,51 @@ export interface BatchArgs {
      * The ID to use for the batch, which will become the final component of the batch's resource name.
      * This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
      */
-    batchId?: pulumi.Input<string>;
+    batchId?: pulumi.Input<string | undefined>;
     /**
      * Environment configuration for the batch execution.
      * Structure is documented below.
      */
-    environmentConfig?: pulumi.Input<inputs.dataproc.BatchEnvironmentConfig>;
+    environmentConfig?: pulumi.Input<inputs.dataproc.BatchEnvironmentConfig | undefined>;
     /**
      * The labels to associate with this batch.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location in which the batch will be created in.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * PySpark batch config.
      * Structure is documented below.
      */
-    pysparkBatch?: pulumi.Input<inputs.dataproc.BatchPysparkBatch>;
+    pysparkBatch?: pulumi.Input<inputs.dataproc.BatchPysparkBatch | undefined>;
     /**
      * Runtime configuration for the batch execution.
      * Structure is documented below.
      */
-    runtimeConfig?: pulumi.Input<inputs.dataproc.BatchRuntimeConfig>;
+    runtimeConfig?: pulumi.Input<inputs.dataproc.BatchRuntimeConfig | undefined>;
     /**
      * Spark batch config.
      * Structure is documented below.
      */
-    sparkBatch?: pulumi.Input<inputs.dataproc.BatchSparkBatch>;
+    sparkBatch?: pulumi.Input<inputs.dataproc.BatchSparkBatch | undefined>;
     /**
      * SparkR batch config.
      * Structure is documented below.
      */
-    sparkRBatch?: pulumi.Input<inputs.dataproc.BatchSparkRBatch>;
+    sparkRBatch?: pulumi.Input<inputs.dataproc.BatchSparkRBatch | undefined>;
     /**
      * Spark SQL batch config.
      * Structure is documented below.
      */
-    sparkSqlBatch?: pulumi.Input<inputs.dataproc.BatchSparkSqlBatch>;
+    sparkSqlBatch?: pulumi.Input<inputs.dataproc.BatchSparkSqlBatch | undefined>;
 }

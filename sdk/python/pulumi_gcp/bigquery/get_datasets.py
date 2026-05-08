@@ -100,7 +100,7 @@ def get_datasets(project: Optional[_builtins.str] = None,
         datasets=pulumi.get(__ret__, 'datasets'),
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'))
-def get_datasets_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_datasets_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatasetsResult]:
     """
     Get a list of datasets in a GCP project. For more information see

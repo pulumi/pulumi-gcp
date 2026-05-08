@@ -22,28 +22,28 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  shard_count: pulumi.Input[_builtins.int],
-                 authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 automated_backup_config: Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']] = None,
-                 cross_cluster_replication_config: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs_source: Optional[pulumi.Input['ClusterGcsSourceArgs']] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
-                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_backup_source: Optional[pulumi.Input['ClusterManagedBackupSourceArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_config: Optional[pulumi.Input['ClusterPersistenceConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]] = None,
-                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_distribution_config: Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']] = None):
+                 authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 automated_backup_config: pulumi.Input[Optional['ClusterAutomatedBackupConfigArgs']] = None,
+                 cross_cluster_replication_config: pulumi.Input[Optional['ClusterCrossClusterReplicationConfigArgs']] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs_source: pulumi.Input[Optional['ClusterGcsSourceArgs']] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_policy: pulumi.Input[Optional['ClusterMaintenancePolicyArgs']] = None,
+                 maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_backup_source: pulumi.Input[Optional['ClusterManagedBackupSourceArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_config: pulumi.Input[Optional['ClusterPersistenceConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPscConfigArgs']]]] = None,
+                 redis_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_ca_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_distribution_config: pulumi.Input[Optional['ClusterZoneDistributionConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -161,7 +161,7 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")
-    def authorization_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorization_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         Default value is `AUTH_MODE_DISABLED`.
@@ -170,12 +170,12 @@ class ClusterArgs:
         return pulumi.get(self, "authorization_mode")
 
     @authorization_mode.setter
-    def authorization_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorization_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorization_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="automatedBackupConfig")
-    def automated_backup_config(self) -> Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']]:
+    def automated_backup_config(self) -> pulumi.Input[Optional['ClusterAutomatedBackupConfigArgs']]:
         """
         The automated backup config for a instance.
         Structure is documented below.
@@ -183,12 +183,12 @@ class ClusterArgs:
         return pulumi.get(self, "automated_backup_config")
 
     @automated_backup_config.setter
-    def automated_backup_config(self, value: Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']]):
+    def automated_backup_config(self, value: pulumi.Input[Optional['ClusterAutomatedBackupConfigArgs']]):
         pulumi.set(self, "automated_backup_config", value)
 
     @_builtins.property
     @pulumi.getter(name="crossClusterReplicationConfig")
-    def cross_cluster_replication_config(self) -> Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']]:
+    def cross_cluster_replication_config(self) -> pulumi.Input[Optional['ClusterCrossClusterReplicationConfigArgs']]:
         """
         Cross cluster replication config
         Structure is documented below.
@@ -196,12 +196,12 @@ class ClusterArgs:
         return pulumi.get(self, "cross_cluster_replication_config")
 
     @cross_cluster_replication_config.setter
-    def cross_cluster_replication_config(self, value: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']]):
+    def cross_cluster_replication_config(self, value: pulumi.Input[Optional['ClusterCrossClusterReplicationConfigArgs']]):
         pulumi.set(self, "cross_cluster_replication_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
-    def deletion_protection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Indicates if the cluster is deletion protected or not.
         If the value if set to true, any delete cluster operation will fail.
@@ -210,12 +210,12 @@ class ClusterArgs:
         return pulumi.get(self, "deletion_protection_enabled")
 
     @deletion_protection_enabled.setter
-    def deletion_protection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsSource")
-    def gcs_source(self) -> Optional[pulumi.Input['ClusterGcsSourceArgs']]:
+    def gcs_source(self) -> pulumi.Input[Optional['ClusterGcsSourceArgs']]:
         """
         Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
         Structure is documented below.
@@ -223,24 +223,24 @@ class ClusterArgs:
         return pulumi.get(self, "gcs_source")
 
     @gcs_source.setter
-    def gcs_source(self, value: Optional[pulumi.Input['ClusterGcsSourceArgs']]):
+    def gcs_source(self, value: pulumi.Input[Optional['ClusterGcsSourceArgs']]):
         pulumi.set(self, "gcs_source", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
-    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The KMS key used to encrypt the at-rest data of the cluster.
         """
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
-    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels to represent user provided metadata.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -249,12 +249,12 @@ class ClusterArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> pulumi.Input[Optional['ClusterMaintenancePolicyArgs']]:
         """
         Maintenance policy for a cluster
         Structure is documented below.
@@ -262,12 +262,12 @@ class ClusterArgs:
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: pulumi.Input[Optional['ClusterMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceVersion")
-    def maintenance_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
         *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
@@ -275,12 +275,12 @@ class ClusterArgs:
         return pulumi.get(self, "maintenance_version")
 
     @maintenance_version.setter
-    def maintenance_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_version", value)
 
     @_builtins.property
     @pulumi.getter(name="managedBackupSource")
-    def managed_backup_source(self) -> Optional[pulumi.Input['ClusterManagedBackupSourceArgs']]:
+    def managed_backup_source(self) -> pulumi.Input[Optional['ClusterManagedBackupSourceArgs']]:
         """
         Backups that generated and managed by memorystore.
         Structure is documented below.
@@ -288,12 +288,12 @@ class ClusterArgs:
         return pulumi.get(self, "managed_backup_source")
 
     @managed_backup_source.setter
-    def managed_backup_source(self, value: Optional[pulumi.Input['ClusterManagedBackupSourceArgs']]):
+    def managed_backup_source(self, value: pulumi.Input[Optional['ClusterManagedBackupSourceArgs']]):
         pulumi.set(self, "managed_backup_source", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique name of the resource in this scope including project and location using the form:
         projects/{projectId}/locations/{locationId}/clusters/{clusterId}
@@ -301,12 +301,12 @@ class ClusterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The nodeType for the Redis cluster.
         If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
@@ -315,12 +315,12 @@ class ClusterArgs:
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
     @_builtins.property
     @pulumi.getter(name="persistenceConfig")
-    def persistence_config(self) -> Optional[pulumi.Input['ClusterPersistenceConfigArgs']]:
+    def persistence_config(self) -> pulumi.Input[Optional['ClusterPersistenceConfigArgs']]:
         """
         Persistence config (RDB, AOF) for the cluster.
         Structure is documented below.
@@ -328,12 +328,12 @@ class ClusterArgs:
         return pulumi.get(self, "persistence_config")
 
     @persistence_config.setter
-    def persistence_config(self, value: Optional[pulumi.Input['ClusterPersistenceConfigArgs']]):
+    def persistence_config(self, value: pulumi.Input[Optional['ClusterPersistenceConfigArgs']]):
         pulumi.set(self, "persistence_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -341,12 +341,12 @@ class ClusterArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConfigs")
-    def psc_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]]:
+    def psc_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPscConfigArgs']]]]:
         """
         Required. Each PscConfig configures the consumer network where two
         network addresses will be designated to the cluster for client access.
@@ -356,12 +356,12 @@ class ClusterArgs:
         return pulumi.get(self, "psc_configs")
 
     @psc_configs.setter
-    def psc_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]]):
+    def psc_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPscConfigArgs']]]]):
         pulumi.set(self, "psc_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="redisConfigs")
-    def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def redis_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
         Please check Memorystore documentation for the list of supported parameters:
@@ -370,36 +370,36 @@ class ClusterArgs:
         return pulumi.get(self, "redis_configs")
 
     @redis_configs.setter
-    def redis_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def redis_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "redis_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the region of the Redis cluster.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaCount")
-    def replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. The number of replica nodes per shard.
         """
         return pulumi.get(self, "replica_count")
 
     @replica_count.setter
-    def replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replica_count", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCaMode")
-    def server_ca_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_ca_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The serverCaMode for the TLS enabled Redis cluster.
         If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
@@ -408,12 +408,12 @@ class ClusterArgs:
         return pulumi.get(self, "server_ca_mode")
 
     @server_ca_mode.setter
-    def server_ca_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_ca_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_ca_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCaPool")
-    def server_ca_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_ca_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
         as the server_ca_mode.
@@ -422,12 +422,12 @@ class ClusterArgs:
         return pulumi.get(self, "server_ca_pool")
 
     @server_ca_pool.setter
-    def server_ca_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_ca_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_ca_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="transitEncryptionMode")
-    def transit_encryption_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_encryption_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The in-transit encryption for the Redis cluster.
         If not provided, encryption is disabled for the cluster.
@@ -437,12 +437,12 @@ class ClusterArgs:
         return pulumi.get(self, "transit_encryption_mode")
 
     @transit_encryption_mode.setter
-    def transit_encryption_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_encryption_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_encryption_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneDistributionConfig")
-    def zone_distribution_config(self) -> Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']]:
+    def zone_distribution_config(self) -> pulumi.Input[Optional['ClusterZoneDistributionConfigArgs']]:
         """
         Immutable. Zone distribution config for Memorystore Redis cluster.
         Structure is documented below.
@@ -450,52 +450,52 @@ class ClusterArgs:
         return pulumi.get(self, "zone_distribution_config")
 
     @zone_distribution_config.setter
-    def zone_distribution_config(self, value: Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']]):
+    def zone_distribution_config(self, value: pulumi.Input[Optional['ClusterZoneDistributionConfigArgs']]):
         pulumi.set(self, "zone_distribution_config", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 automated_backup_config: Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']] = None,
-                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_collection: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_cluster_replication_config: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcs_source: Optional[pulumi.Input['ClusterGcsSourceArgs']] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
-                 maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]]] = None,
-                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_backup_source: Optional[pulumi.Input['ClusterManagedBackupSourceArgs']] = None,
-                 managed_server_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterManagedServerCaArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_config: Optional[pulumi.Input['ClusterPersistenceConfigArgs']] = None,
-                 precise_size_gb: Optional[pulumi.Input[_builtins.float]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]] = None,
-                 psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArgs']]]] = None,
-                 psc_service_attachments: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscServiceAttachmentArgs']]]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArgs']]]] = None,
-                 transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_distribution_config: Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']] = None):
+                 authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 automated_backup_config: pulumi.Input[Optional['ClusterAutomatedBackupConfigArgs']] = None,
+                 available_maintenance_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_collection: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_cluster_replication_config: pulumi.Input[Optional['ClusterCrossClusterReplicationConfigArgs']] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 discovery_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_source: pulumi.Input[Optional['ClusterGcsSourceArgs']] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_policy: pulumi.Input[Optional['ClusterMaintenancePolicyArgs']] = None,
+                 maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]]] = None,
+                 maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_backup_source: pulumi.Input[Optional['ClusterManagedBackupSourceArgs']] = None,
+                 managed_server_cas: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterManagedServerCaArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_config: pulumi.Input[Optional['ClusterPersistenceConfigArgs']] = None,
+                 precise_size_gb: pulumi.Input[Optional[_builtins.float]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPscConfigArgs']]]] = None,
+                 psc_connections: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPscConnectionArgs']]]] = None,
+                 psc_service_attachments: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPscServiceAttachmentArgs']]]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 redis_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_ca_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStateInfoArgs']]]] = None,
+                 transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_distribution_config: pulumi.Input[Optional['ClusterZoneDistributionConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -662,7 +662,7 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")
-    def authorization_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorization_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         Default value is `AUTH_MODE_DISABLED`.
@@ -671,12 +671,12 @@ class _ClusterState:
         return pulumi.get(self, "authorization_mode")
 
     @authorization_mode.setter
-    def authorization_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorization_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorization_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="automatedBackupConfig")
-    def automated_backup_config(self) -> Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']]:
+    def automated_backup_config(self) -> pulumi.Input[Optional['ClusterAutomatedBackupConfigArgs']]:
         """
         The automated backup config for a instance.
         Structure is documented below.
@@ -684,24 +684,24 @@ class _ClusterState:
         return pulumi.get(self, "automated_backup_config")
 
     @automated_backup_config.setter
-    def automated_backup_config(self, value: Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']]):
+    def automated_backup_config(self, value: pulumi.Input[Optional['ClusterAutomatedBackupConfigArgs']]):
         pulumi.set(self, "automated_backup_config", value)
 
     @_builtins.property
     @pulumi.getter(name="availableMaintenanceVersions")
-    def available_maintenance_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def available_maintenance_versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         This field is used to determine the available maintenance versions for the self service update.
         """
         return pulumi.get(self, "available_maintenance_versions")
 
     @available_maintenance_versions.setter
-    def available_maintenance_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def available_maintenance_versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "available_maintenance_versions", value)
 
     @_builtins.property
     @pulumi.getter(name="backupCollection")
-    def backup_collection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_collection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup collection full resource name.
         Example: projects/{project}/locations/{location}/backupCollections/{collection}
@@ -709,12 +709,12 @@ class _ClusterState:
         return pulumi.get(self, "backup_collection")
 
     @backup_collection.setter
-    def backup_collection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_collection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_collection", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp associated with the cluster creation request. A timestamp in
         RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
@@ -723,12 +723,12 @@ class _ClusterState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="crossClusterReplicationConfig")
-    def cross_cluster_replication_config(self) -> Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']]:
+    def cross_cluster_replication_config(self) -> pulumi.Input[Optional['ClusterCrossClusterReplicationConfigArgs']]:
         """
         Cross cluster replication config
         Structure is documented below.
@@ -736,12 +736,12 @@ class _ClusterState:
         return pulumi.get(self, "cross_cluster_replication_config")
 
     @cross_cluster_replication_config.setter
-    def cross_cluster_replication_config(self, value: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']]):
+    def cross_cluster_replication_config(self, value: pulumi.Input[Optional['ClusterCrossClusterReplicationConfigArgs']]):
         pulumi.set(self, "cross_cluster_replication_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
-    def deletion_protection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Indicates if the cluster is deletion protected or not.
         If the value if set to true, any delete cluster operation will fail.
@@ -750,12 +750,12 @@ class _ClusterState:
         return pulumi.get(self, "deletion_protection_enabled")
 
     @deletion_protection_enabled.setter
-    def deletion_protection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryEndpoints")
-    def discovery_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]]:
+    def discovery_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]]:
         """
         Output only. Endpoints created on each given network,
         for Redis clients to connect to the cluster.
@@ -765,36 +765,36 @@ class _ClusterState:
         return pulumi.get(self, "discovery_endpoints")
 
     @discovery_endpoints.setter
-    def discovery_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]]):
+    def discovery_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]]):
         pulumi.set(self, "discovery_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveMaintenanceVersion")
-    def effective_maintenance_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_maintenance_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field represents the actual maintenance version of the cluster.
         """
         return pulumi.get(self, "effective_maintenance_version")
 
     @effective_maintenance_version.setter
-    def effective_maintenance_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_maintenance_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_maintenance_version", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsSource")
-    def gcs_source(self) -> Optional[pulumi.Input['ClusterGcsSourceArgs']]:
+    def gcs_source(self) -> pulumi.Input[Optional['ClusterGcsSourceArgs']]:
         """
         Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
         Structure is documented below.
@@ -802,24 +802,24 @@ class _ClusterState:
         return pulumi.get(self, "gcs_source")
 
     @gcs_source.setter
-    def gcs_source(self, value: Optional[pulumi.Input['ClusterGcsSourceArgs']]):
+    def gcs_source(self, value: pulumi.Input[Optional['ClusterGcsSourceArgs']]):
         pulumi.set(self, "gcs_source", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
-    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The KMS key used to encrypt the at-rest data of the cluster.
         """
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
-    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels to represent user provided metadata.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -828,12 +828,12 @@ class _ClusterState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> pulumi.Input[Optional['ClusterMaintenancePolicyArgs']]:
         """
         Maintenance policy for a cluster
         Structure is documented below.
@@ -841,12 +841,12 @@ class _ClusterState:
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: pulumi.Input[Optional['ClusterMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceSchedules")
-    def maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]]]:
+    def maintenance_schedules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]]]:
         """
         Upcoming maintenance schedule.
         Structure is documented below.
@@ -854,12 +854,12 @@ class _ClusterState:
         return pulumi.get(self, "maintenance_schedules")
 
     @maintenance_schedules.setter
-    def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]]]):
+    def maintenance_schedules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]]]):
         pulumi.set(self, "maintenance_schedules", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceVersion")
-    def maintenance_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
         *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
@@ -867,12 +867,12 @@ class _ClusterState:
         return pulumi.get(self, "maintenance_version")
 
     @maintenance_version.setter
-    def maintenance_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_version", value)
 
     @_builtins.property
     @pulumi.getter(name="managedBackupSource")
-    def managed_backup_source(self) -> Optional[pulumi.Input['ClusterManagedBackupSourceArgs']]:
+    def managed_backup_source(self) -> pulumi.Input[Optional['ClusterManagedBackupSourceArgs']]:
         """
         Backups that generated and managed by memorystore.
         Structure is documented below.
@@ -880,12 +880,12 @@ class _ClusterState:
         return pulumi.get(self, "managed_backup_source")
 
     @managed_backup_source.setter
-    def managed_backup_source(self, value: Optional[pulumi.Input['ClusterManagedBackupSourceArgs']]):
+    def managed_backup_source(self, value: pulumi.Input[Optional['ClusterManagedBackupSourceArgs']]):
         pulumi.set(self, "managed_backup_source", value)
 
     @_builtins.property
     @pulumi.getter(name="managedServerCas")
-    def managed_server_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterManagedServerCaArgs']]]]:
+    def managed_server_cas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterManagedServerCaArgs']]]]:
         """
         Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
         Structure is documented below.
@@ -893,12 +893,12 @@ class _ClusterState:
         return pulumi.get(self, "managed_server_cas")
 
     @managed_server_cas.setter
-    def managed_server_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterManagedServerCaArgs']]]]):
+    def managed_server_cas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterManagedServerCaArgs']]]]):
         pulumi.set(self, "managed_server_cas", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique name of the resource in this scope including project and location using the form:
         projects/{projectId}/locations/{locationId}/clusters/{clusterId}
@@ -906,12 +906,12 @@ class _ClusterState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The nodeType for the Redis cluster.
         If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
@@ -920,12 +920,12 @@ class _ClusterState:
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
     @_builtins.property
     @pulumi.getter(name="persistenceConfig")
-    def persistence_config(self) -> Optional[pulumi.Input['ClusterPersistenceConfigArgs']]:
+    def persistence_config(self) -> pulumi.Input[Optional['ClusterPersistenceConfigArgs']]:
         """
         Persistence config (RDB, AOF) for the cluster.
         Structure is documented below.
@@ -933,24 +933,24 @@ class _ClusterState:
         return pulumi.get(self, "persistence_config")
 
     @persistence_config.setter
-    def persistence_config(self, value: Optional[pulumi.Input['ClusterPersistenceConfigArgs']]):
+    def persistence_config(self, value: pulumi.Input[Optional['ClusterPersistenceConfigArgs']]):
         pulumi.set(self, "persistence_config", value)
 
     @_builtins.property
     @pulumi.getter(name="preciseSizeGb")
-    def precise_size_gb(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def precise_size_gb(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Output only. Redis memory precise size in GB for the entire cluster.
         """
         return pulumi.get(self, "precise_size_gb")
 
     @precise_size_gb.setter
-    def precise_size_gb(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def precise_size_gb(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "precise_size_gb", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -958,12 +958,12 @@ class _ClusterState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConfigs")
-    def psc_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]]:
+    def psc_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPscConfigArgs']]]]:
         """
         Required. Each PscConfig configures the consumer network where two
         network addresses will be designated to the cluster for client access.
@@ -973,12 +973,12 @@ class _ClusterState:
         return pulumi.get(self, "psc_configs")
 
     @psc_configs.setter
-    def psc_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]]):
+    def psc_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPscConfigArgs']]]]):
         pulumi.set(self, "psc_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConnections")
-    def psc_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArgs']]]]:
+    def psc_connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPscConnectionArgs']]]]:
         """
         Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
         Structure is documented below.
@@ -986,12 +986,12 @@ class _ClusterState:
         return pulumi.get(self, "psc_connections")
 
     @psc_connections.setter
-    def psc_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArgs']]]]):
+    def psc_connections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPscConnectionArgs']]]]):
         pulumi.set(self, "psc_connections", value)
 
     @_builtins.property
     @pulumi.getter(name="pscServiceAttachments")
-    def psc_service_attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscServiceAttachmentArgs']]]]:
+    def psc_service_attachments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPscServiceAttachmentArgs']]]]:
         """
         Service attachment details to configure Psc connections.
         Structure is documented below.
@@ -999,12 +999,12 @@ class _ClusterState:
         return pulumi.get(self, "psc_service_attachments")
 
     @psc_service_attachments.setter
-    def psc_service_attachments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscServiceAttachmentArgs']]]]):
+    def psc_service_attachments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPscServiceAttachmentArgs']]]]):
         pulumi.set(self, "psc_service_attachments", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -1012,12 +1012,12 @@ class _ClusterState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="redisConfigs")
-    def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def redis_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
         Please check Memorystore documentation for the list of supported parameters:
@@ -1026,36 +1026,36 @@ class _ClusterState:
         return pulumi.get(self, "redis_configs")
 
     @redis_configs.setter
-    def redis_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def redis_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "redis_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the region of the Redis cluster.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaCount")
-    def replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. The number of replica nodes per shard.
         """
         return pulumi.get(self, "replica_count")
 
     @replica_count.setter
-    def replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replica_count", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCaMode")
-    def server_ca_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_ca_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The serverCaMode for the TLS enabled Redis cluster.
         If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
@@ -1064,12 +1064,12 @@ class _ClusterState:
         return pulumi.get(self, "server_ca_mode")
 
     @server_ca_mode.setter
-    def server_ca_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_ca_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_ca_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCaPool")
-    def server_ca_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_ca_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
         as the server_ca_mode.
@@ -1078,48 +1078,48 @@ class _ClusterState:
         return pulumi.get(self, "server_ca_pool")
 
     @server_ca_pool.setter
-    def server_ca_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_ca_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_ca_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="shardCount")
-    def shard_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shard_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Required. Number of shards for the Redis cluster.
         """
         return pulumi.get(self, "shard_count")
 
     @shard_count.setter
-    def shard_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shard_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shard_count", value)
 
     @_builtins.property
     @pulumi.getter(name="sizeGb")
-    def size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Output only. Redis memory size in GB for the entire cluster.
         """
         return pulumi.get(self, "size_gb")
 
     @size_gb.setter
-    def size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size_gb", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateInfos")
-    def state_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArgs']]]]:
+    def state_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStateInfoArgs']]]]:
         """
         Output only. Additional information about the current state of the cluster.
         Structure is documented below.
@@ -1127,12 +1127,12 @@ class _ClusterState:
         return pulumi.get(self, "state_infos")
 
     @state_infos.setter
-    def state_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArgs']]]]):
+    def state_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStateInfoArgs']]]]):
         pulumi.set(self, "state_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="transitEncryptionMode")
-    def transit_encryption_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_encryption_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The in-transit encryption for the Redis cluster.
         If not provided, encryption is disabled for the cluster.
@@ -1142,24 +1142,24 @@ class _ClusterState:
         return pulumi.get(self, "transit_encryption_mode")
 
     @transit_encryption_mode.setter
-    def transit_encryption_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_encryption_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_encryption_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System assigned, unique identifier for the cluster.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneDistributionConfig")
-    def zone_distribution_config(self) -> Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']]:
+    def zone_distribution_config(self) -> pulumi.Input[Optional['ClusterZoneDistributionConfigArgs']]:
         """
         Immutable. Zone distribution config for Memorystore Redis cluster.
         Structure is documented below.
@@ -1167,7 +1167,7 @@ class _ClusterState:
         return pulumi.get(self, "zone_distribution_config")
 
     @zone_distribution_config.setter
-    def zone_distribution_config(self, value: Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']]):
+    def zone_distribution_config(self, value: pulumi.Input[Optional['ClusterZoneDistributionConfigArgs']]):
         pulumi.set(self, "zone_distribution_config", value)
 
 
@@ -1177,29 +1177,29 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 automated_backup_config: Optional[pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
-                 cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs_source: Optional[pulumi.Input[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
-                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_backup_source: Optional[pulumi.Input[Union['ClusterManagedBackupSourceArgs', 'ClusterManagedBackupSourceArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_config: Optional[pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]]] = None,
-                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_distribution_config: Optional[pulumi.Input[Union['ClusterZoneDistributionConfigArgs', 'ClusterZoneDistributionConfigArgsDict']]] = None,
+                 authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 automated_backup_config: pulumi.Input[Optional[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
+                 cross_cluster_replication_config: pulumi.Input[Optional[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs_source: pulumi.Input[Optional[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+                 maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_backup_source: pulumi.Input[Optional[Union['ClusterManagedBackupSourceArgs', 'ClusterManagedBackupSourceArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_config: pulumi.Input[Optional[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]]] = None,
+                 redis_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_ca_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_distribution_config: pulumi.Input[Optional[Union['ClusterZoneDistributionConfigArgs', 'ClusterZoneDistributionConfigArgsDict']]] = None,
                  __props__=None):
         """
         A Google Cloud Redis Cluster instance.
@@ -2512,29 +2512,29 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 automated_backup_config: Optional[pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
-                 cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs_source: Optional[pulumi.Input[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
-                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_backup_source: Optional[pulumi.Input[Union['ClusterManagedBackupSourceArgs', 'ClusterManagedBackupSourceArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_config: Optional[pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]]] = None,
-                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_distribution_config: Optional[pulumi.Input[Union['ClusterZoneDistributionConfigArgs', 'ClusterZoneDistributionConfigArgsDict']]] = None,
+                 authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 automated_backup_config: pulumi.Input[Optional[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
+                 cross_cluster_replication_config: pulumi.Input[Optional[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs_source: pulumi.Input[Optional[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+                 maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_backup_source: pulumi.Input[Optional[Union['ClusterManagedBackupSourceArgs', 'ClusterManagedBackupSourceArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_config: pulumi.Input[Optional[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]]] = None,
+                 redis_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_ca_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_distribution_config: pulumi.Input[Optional[Union['ClusterZoneDistributionConfigArgs', 'ClusterZoneDistributionConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2597,45 +2597,45 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            automated_backup_config: Optional[pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
-            available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            backup_collection: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
-            deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-            gcs_source: Optional[pulumi.Input[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']]] = None,
-            kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
-            maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterMaintenanceScheduleArgs', 'ClusterMaintenanceScheduleArgsDict']]]]] = None,
-            maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-            managed_backup_source: Optional[pulumi.Input[Union['ClusterManagedBackupSourceArgs', 'ClusterManagedBackupSourceArgsDict']]] = None,
-            managed_server_cas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterManagedServerCaArgs', 'ClusterManagedServerCaArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_type: Optional[pulumi.Input[_builtins.str]] = None,
-            persistence_config: Optional[pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']]] = None,
-            precise_size_gb: Optional[pulumi.Input[_builtins.float]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]]] = None,
-            psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConnectionArgs', 'ClusterPscConnectionArgsDict']]]]] = None,
-            psc_service_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscServiceAttachmentArgs', 'ClusterPscServiceAttachmentArgsDict']]]]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-            server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
-            shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-            size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            state_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterStateInfoArgs', 'ClusterStateInfoArgsDict']]]]] = None,
-            transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_distribution_config: Optional[pulumi.Input[Union['ClusterZoneDistributionConfigArgs', 'ClusterZoneDistributionConfigArgsDict']]] = None) -> 'Cluster':
+            authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            automated_backup_config: pulumi.Input[Optional[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
+            available_maintenance_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backup_collection: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_cluster_replication_config: pulumi.Input[Optional[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
+            deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            discovery_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+            gcs_source: pulumi.Input[Optional[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']]] = None,
+            kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+            maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterMaintenanceScheduleArgs', 'ClusterMaintenanceScheduleArgsDict']]]]] = None,
+            maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_backup_source: pulumi.Input[Optional[Union['ClusterManagedBackupSourceArgs', 'ClusterManagedBackupSourceArgsDict']]] = None,
+            managed_server_cas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterManagedServerCaArgs', 'ClusterManagedServerCaArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_type: pulumi.Input[Optional[_builtins.str]] = None,
+            persistence_config: pulumi.Input[Optional[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']]] = None,
+            precise_size_gb: pulumi.Input[Optional[_builtins.float]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]]] = None,
+            psc_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPscConnectionArgs', 'ClusterPscConnectionArgsDict']]]]] = None,
+            psc_service_attachments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPscServiceAttachmentArgs', 'ClusterPscServiceAttachmentArgsDict']]]]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            redis_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+            server_ca_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            server_ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+            size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterStateInfoArgs', 'ClusterStateInfoArgsDict']]]]] = None,
+            transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_distribution_config: pulumi.Input[Optional[Union['ClusterZoneDistributionConfigArgs', 'ClusterZoneDistributionConfigArgsDict']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

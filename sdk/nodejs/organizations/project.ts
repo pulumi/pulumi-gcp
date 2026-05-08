@@ -244,7 +244,7 @@ export interface ProjectState {
      * `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
      * with the GCE API and currently leaves it enabled.
      */
-    autoCreateNetwork?: pulumi.Input<boolean>;
+    autoCreateNetwork?: pulumi.Input<boolean | undefined>;
     /**
      * The alphanumeric ID of the billing account this project
      * belongs to. The user or service account performing this operation with the provider
@@ -252,18 +252,18 @@ export interface ProjectState {
      * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
      * for more details.
      */
-    billingAccount?: pulumi.Input<string>;
+    billingAccount?: pulumi.Input<string | undefined>;
     /**
      * The deletion policy for the Project. Setting PREVENT will protect the project
      * against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
      * to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
      * the Google API. Possible values are: "PREVENT", "ABANDON", "DELETE". Default value is `PREVENT`.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The numeric ID of the folder this project should be
      * created under. Only one of `orgId` or `folderId` may be
@@ -271,21 +271,21 @@ export interface ProjectState {
      * created under the specified folder. Changing this forces the
      * project to be migrated to the newly specified folder.
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs to assign to the project.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The display name of the project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The numeric identifier of the project.
      */
-    number?: pulumi.Input<string>;
+    number?: pulumi.Input<string | undefined>;
     /**
      * The numeric ID of the organization this project belongs to.
      * Changing this forces a new project to be created.  Only one of
@@ -294,19 +294,19 @@ export interface ProjectState {
      * this forces the project to be migrated to the newly specified
      * organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The project ID. Changing this forces a new project to be created.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * (ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `gcp.tags.TagValue` resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -321,7 +321,7 @@ export interface ProjectArgs {
      * `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
      * with the GCE API and currently leaves it enabled.
      */
-    autoCreateNetwork?: pulumi.Input<boolean>;
+    autoCreateNetwork?: pulumi.Input<boolean | undefined>;
     /**
      * The alphanumeric ID of the billing account this project
      * belongs to. The user or service account performing this operation with the provider
@@ -329,14 +329,14 @@ export interface ProjectArgs {
      * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
      * for more details.
      */
-    billingAccount?: pulumi.Input<string>;
+    billingAccount?: pulumi.Input<string | undefined>;
     /**
      * The deletion policy for the Project. Setting PREVENT will protect the project
      * against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
      * to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
      * the Google API. Possible values are: "PREVENT", "ABANDON", "DELETE". Default value is `PREVENT`.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The numeric ID of the folder this project should be
      * created under. Only one of `orgId` or `folderId` may be
@@ -344,17 +344,17 @@ export interface ProjectArgs {
      * created under the specified folder. Changing this forces the
      * project to be migrated to the newly specified folder.
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs to assign to the project.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The display name of the project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The numeric ID of the organization this project belongs to.
      * Changing this forces a new project to be created.  Only one of
@@ -363,13 +363,13 @@ export interface ProjectArgs {
      * this forces the project to be migrated to the newly specified
      * organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The project ID. Changing this forces a new project to be created.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `gcp.tags.TagValue` resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

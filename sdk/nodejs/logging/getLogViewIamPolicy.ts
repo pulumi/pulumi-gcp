@@ -117,7 +117,7 @@ export interface GetLogViewIamPolicyOutputArgs {
      * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
      * location is specified, it is taken from the provider configuration.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */

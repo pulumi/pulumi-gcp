@@ -426,9 +426,9 @@ def get_worker_pool(location: Optional[_builtins.str] = None,
         terminal_conditions=pulumi.get(__ret__, 'terminal_conditions'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_worker_pool_output(location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           name: Optional[pulumi.Input[_builtins.str]] = None,
-                           project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_worker_pool_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           name: pulumi.Input[Optional[_builtins.str]] = None,
+                           project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkerPoolResult]:
     """
     Get information about a Google Cloud Run v2 Worker Pool. For more information see

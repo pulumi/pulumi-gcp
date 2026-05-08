@@ -321,61 +321,61 @@ export interface CxPlaybookState {
      * The timestamp of initial playbook creation.
      * Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the playbook, unique within an agent.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
      */
-    goal?: pulumi.Input<string>;
+    goal?: pulumi.Input<string | undefined>;
     /**
      * Instruction to accomplish target goal.
      * Structure is documented below.
      */
-    instruction?: pulumi.Input<inputs.diagflow.CxPlaybookInstruction>;
+    instruction?: pulumi.Input<inputs.diagflow.CxPlaybookInstruction | undefined>;
     /**
      * Llm model settings for the playbook.
      * Structure is documented below.
      */
-    llmModelSettings?: pulumi.Input<inputs.diagflow.CxPlaybookLlmModelSettings>;
+    llmModelSettings?: pulumi.Input<inputs.diagflow.CxPlaybookLlmModelSettings | undefined>;
     /**
      * The unique identifier of the Playbook.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/playbooks/<Playbook ID>.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The agent to create a Playbook for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Type of the playbook.
      * Possible values are: `PLAYBOOK_TYPE_UNSPECIFIED`, `TASK`, `ROUTINE`.
      */
-    playbookType?: pulumi.Input<string>;
+    playbookType?: pulumi.Input<string | undefined>;
     /**
      * The resource name of flows referenced by the current playbook in the instructions.
      */
-    referencedFlows?: pulumi.Input<pulumi.Input<string>[]>;
+    referencedFlows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The resource name of other playbooks referenced by the current playbook in the instructions.
      */
-    referencedPlaybooks?: pulumi.Input<pulumi.Input<string>[]>;
+    referencedPlaybooks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The resource name of tools referenced by the current playbook in the instructions. If not provided explicitly, they are will be implied using the tool being referenced in goal and steps.
      */
-    referencedTools?: pulumi.Input<pulumi.Input<string>[]>;
+    referencedTools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Estimated number of tokes current playbook takes when sent to the LLM.
      */
-    tokenCount?: pulumi.Input<string>;
+    tokenCount?: pulumi.Input<string | undefined>;
     /**
      * Last time the playbook version was updated.
      * Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -394,24 +394,24 @@ export interface CxPlaybookArgs {
      * Instruction to accomplish target goal.
      * Structure is documented below.
      */
-    instruction?: pulumi.Input<inputs.diagflow.CxPlaybookInstruction>;
+    instruction?: pulumi.Input<inputs.diagflow.CxPlaybookInstruction | undefined>;
     /**
      * Llm model settings for the playbook.
      * Structure is documented below.
      */
-    llmModelSettings?: pulumi.Input<inputs.diagflow.CxPlaybookLlmModelSettings>;
+    llmModelSettings?: pulumi.Input<inputs.diagflow.CxPlaybookLlmModelSettings | undefined>;
     /**
      * The agent to create a Playbook for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Type of the playbook.
      * Possible values are: `PLAYBOOK_TYPE_UNSPECIFIED`, `TASK`, `ROUTINE`.
      */
-    playbookType?: pulumi.Input<string>;
+    playbookType?: pulumi.Input<string | undefined>;
     /**
      * The resource name of tools referenced by the current playbook in the instructions. If not provided explicitly, they are will be implied using the tool being referenced in goal and steps.
      */
-    referencedTools?: pulumi.Input<pulumi.Input<string>[]>;
+    referencedTools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

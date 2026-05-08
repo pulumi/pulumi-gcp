@@ -192,7 +192,7 @@ export interface GeminiGcpEnablementSettingState {
     /**
      * Create time stamp.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Deprecated)
      * Whether web grounding should be disabled.
@@ -201,55 +201,55 @@ export interface GeminiGcpEnablementSettingState {
      *
      * @deprecated `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      */
-    disableWebGrounding?: pulumi.Input<boolean>;
+    disableWebGrounding?: pulumi.Input<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether customer data sharing should be enabled.
      */
-    enableCustomerDataSharing?: pulumi.Input<boolean>;
+    enableCustomerDataSharing?: pulumi.Input<boolean | undefined>;
     /**
      * Id of the Gemini Gcp Enablement setting.
      */
-    geminiGcpEnablementSettingId?: pulumi.Input<string>;
+    geminiGcpEnablementSettingId?: pulumi.Input<string | undefined>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. Name of the resource.
      * Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Update time stamp.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Web grounding type.
      * Possible values:
      * GROUNDING_WITH_GOOGLE_SEARCH
      * WEB_GROUNDING_FOR_ENTERPRISE
      */
-    webGroundingType?: pulumi.Input<string>;
+    webGroundingType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -264,11 +264,11 @@ export interface GeminiGcpEnablementSettingArgs {
      *
      * @deprecated `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      */
-    disableWebGrounding?: pulumi.Input<boolean>;
+    disableWebGrounding?: pulumi.Input<boolean | undefined>;
     /**
      * Whether customer data sharing should be enabled.
      */
-    enableCustomerDataSharing?: pulumi.Input<boolean>;
+    enableCustomerDataSharing?: pulumi.Input<boolean | undefined>;
     /**
      * Id of the Gemini Gcp Enablement setting.
      */
@@ -278,7 +278,7 @@ export interface GeminiGcpEnablementSettingArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -287,12 +287,12 @@ export interface GeminiGcpEnablementSettingArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Web grounding type.
      * Possible values:
      * GROUNDING_WITH_GOOGLE_SEARCH
      * WEB_GROUNDING_FOR_ENTERPRISE
      */
-    webGroundingType?: pulumi.Input<string>;
+    webGroundingType?: pulumi.Input<string | undefined>;
 }

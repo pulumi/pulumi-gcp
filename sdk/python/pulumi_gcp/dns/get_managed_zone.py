@@ -166,8 +166,8 @@ def get_managed_zone(name: Optional[_builtins.str] = None,
         name_servers=pulumi.get(__ret__, 'name_servers'),
         project=pulumi.get(__ret__, 'project'),
         visibility=pulumi.get(__ret__, 'visibility'))
-def get_managed_zone_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                            project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_managed_zone_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                            project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetManagedZoneResult]:
     """
     Provides access to a zone's attributes within Google Cloud DNS.

@@ -249,11 +249,11 @@ export interface ApiKeyState {
     /**
      * Human-readable display name of this API key. Modifiable by user.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
      */
-    keyString?: pulumi.Input<string>;
+    keyString?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
      *
@@ -261,23 +261,23 @@ export interface ApiKeyState {
      *
      * - - -
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Key restrictions.
      */
-    restrictions?: pulumi.Input<inputs.projects.ApiKeyRestrictions>;
+    restrictions?: pulumi.Input<inputs.projects.ApiKeyRestrictions | undefined>;
     /**
      * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
     /**
      * Output only. Unique id in UUID4 format.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -287,7 +287,7 @@ export interface ApiKeyArgs {
     /**
      * Human-readable display name of this API key. Modifiable by user.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
      *
@@ -295,17 +295,17 @@ export interface ApiKeyArgs {
      *
      * - - -
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Key restrictions.
      */
-    restrictions?: pulumi.Input<inputs.projects.ApiKeyRestrictions>;
+    restrictions?: pulumi.Input<inputs.projects.ApiKeyRestrictions | undefined>;
     /**
      * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
 }

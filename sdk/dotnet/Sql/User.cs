@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
@@ -110,7 +110,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     ///     var iamServiceAccountUser = new Gcp.Sql.User("iam_service_account_user", new()
     ///     {
-    ///         Name = Std.Index.Trimsuffix.Invoke(new()
+    ///         Name = Std.Trimsuffix.Invoke(new()
     ///         {
     ///             Input = serviceAccount.Email,
     ///             Suffix = ".gserviceaccount.com",
@@ -165,7 +165,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });

@@ -20,11 +20,11 @@ __all__ = ['AuthorizedOrgsDescArgs', 'AuthorizedOrgsDesc']
 class AuthorizedOrgsDescArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
-                 asset_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization_direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 orgs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 asset_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization_direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 orgs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AuthorizedOrgsDesc resource.
 
@@ -85,7 +85,7 @@ class AuthorizedOrgsDescArgs:
 
     @_builtins.property
     @pulumi.getter(name="assetType")
-    def asset_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def asset_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of entities that need to use the authorization relationship during
         evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
@@ -95,12 +95,12 @@ class AuthorizedOrgsDescArgs:
         return pulumi.get(self, "asset_type")
 
     @asset_type.setter
-    def asset_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def asset_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "asset_type", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationDirection")
-    def authorization_direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorization_direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The direction of the authorization relationship between this organization
         and the organizations listed in the "orgs" field. The valid values for this
@@ -121,12 +121,12 @@ class AuthorizedOrgsDescArgs:
         return pulumi.get(self, "authorization_direction")
 
     @authorization_direction.setter
-    def authorization_direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorization_direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorization_direction", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationType")
-    def authorization_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorization_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
         Possible values are: `AUTHORIZATION_TYPE_TRUST`.
@@ -134,12 +134,12 @@ class AuthorizedOrgsDescArgs:
         return pulumi.get(self, "authorization_type")
 
     @authorization_type.setter
-    def authorization_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorization_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorization_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name for the `AuthorizedOrgsDesc`. Format:
         `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
@@ -150,12 +150,12 @@ class AuthorizedOrgsDescArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def orgs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def orgs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of organization ids in this AuthorizedOrgsDesc.
         Format: `organizations/<org_number>`
@@ -164,21 +164,21 @@ class AuthorizedOrgsDescArgs:
         return pulumi.get(self, "orgs")
 
     @orgs.setter
-    def orgs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def orgs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "orgs", value)
 
 
 @pulumi.input_type
 class _AuthorizedOrgsDescState:
     def __init__(__self__, *,
-                 asset_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization_direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 orgs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 asset_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization_direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 orgs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthorizedOrgsDesc resources.
 
@@ -234,7 +234,7 @@ class _AuthorizedOrgsDescState:
 
     @_builtins.property
     @pulumi.getter(name="assetType")
-    def asset_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def asset_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of entities that need to use the authorization relationship during
         evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
@@ -244,12 +244,12 @@ class _AuthorizedOrgsDescState:
         return pulumi.get(self, "asset_type")
 
     @asset_type.setter
-    def asset_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def asset_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "asset_type", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationDirection")
-    def authorization_direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorization_direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The direction of the authorization relationship between this organization
         and the organizations listed in the "orgs" field. The valid values for this
@@ -270,12 +270,12 @@ class _AuthorizedOrgsDescState:
         return pulumi.get(self, "authorization_direction")
 
     @authorization_direction.setter
-    def authorization_direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorization_direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorization_direction", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationType")
-    def authorization_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorization_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
         Possible values are: `AUTHORIZATION_TYPE_TRUST`.
@@ -283,24 +283,24 @@ class _AuthorizedOrgsDescState:
         return pulumi.get(self, "authorization_type")
 
     @authorization_type.setter
-    def authorization_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorization_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorization_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time the AuthorizedOrgsDesc was created in UTC.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name for the `AuthorizedOrgsDesc`. Format:
         `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
@@ -311,12 +311,12 @@ class _AuthorizedOrgsDescState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def orgs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def orgs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of organization ids in this AuthorizedOrgsDesc.
         Format: `organizations/<org_number>`
@@ -325,31 +325,31 @@ class _AuthorizedOrgsDescState:
         return pulumi.get(self, "orgs")
 
     @orgs.setter
-    def orgs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def orgs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "orgs", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time the AuthorizedOrgsDesc was updated in UTC.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -359,12 +359,12 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 asset_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization_direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 orgs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 asset_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization_direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 orgs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An authorized organizations description describes a list of organizations
@@ -530,12 +530,12 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 asset_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization_direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 orgs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 asset_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization_direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 orgs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -565,14 +565,14 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            asset_type: Optional[pulumi.Input[_builtins.str]] = None,
-            authorization_direction: Optional[pulumi.Input[_builtins.str]] = None,
-            authorization_type: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            orgs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AuthorizedOrgsDesc':
+            asset_type: pulumi.Input[Optional[_builtins.str]] = None,
+            authorization_direction: pulumi.Input[Optional[_builtins.str]] = None,
+            authorization_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            orgs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AuthorizedOrgsDesc':
         """
         Get an existing AuthorizedOrgsDesc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

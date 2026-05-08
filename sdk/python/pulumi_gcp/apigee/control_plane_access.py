@@ -19,9 +19,9 @@ __all__ = ['ControlPlaneAccessArgs', 'ControlPlaneAccess']
 @pulumi.input_type
 class ControlPlaneAccessArgs:
     def __init__(__self__, *,
-                 analytics_publisher_identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 synchronizer_identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 analytics_publisher_identities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 synchronizer_identities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ControlPlaneAccess resource.
 
@@ -43,7 +43,7 @@ class ControlPlaneAccessArgs:
 
     @_builtins.property
     @pulumi.getter(name="analyticsPublisherIdentities")
-    def analytics_publisher_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def analytics_publisher_identities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Array of service accounts authorized to publish analytics data to the control plane, each specified using the following format: `serviceAccount:service-account-name`.
         The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
@@ -52,24 +52,24 @@ class ControlPlaneAccessArgs:
         return pulumi.get(self, "analytics_publisher_identities")
 
     @analytics_publisher_identities.setter
-    def analytics_publisher_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def analytics_publisher_identities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "analytics_publisher_identities", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Apigee organization.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="synchronizerIdentities")
-    def synchronizer_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def synchronizer_identities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
         The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
@@ -79,16 +79,16 @@ class ControlPlaneAccessArgs:
         return pulumi.get(self, "synchronizer_identities")
 
     @synchronizer_identities.setter
-    def synchronizer_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def synchronizer_identities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "synchronizer_identities", value)
 
 
 @pulumi.input_type
 class _ControlPlaneAccessState:
     def __init__(__self__, *,
-                 analytics_publisher_identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 synchronizer_identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 analytics_publisher_identities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 synchronizer_identities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ControlPlaneAccess resources.
 
@@ -110,7 +110,7 @@ class _ControlPlaneAccessState:
 
     @_builtins.property
     @pulumi.getter(name="analyticsPublisherIdentities")
-    def analytics_publisher_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def analytics_publisher_identities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Array of service accounts authorized to publish analytics data to the control plane, each specified using the following format: `serviceAccount:service-account-name`.
         The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
@@ -119,24 +119,24 @@ class _ControlPlaneAccessState:
         return pulumi.get(self, "analytics_publisher_identities")
 
     @analytics_publisher_identities.setter
-    def analytics_publisher_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def analytics_publisher_identities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "analytics_publisher_identities", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Apigee organization.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="synchronizerIdentities")
-    def synchronizer_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def synchronizer_identities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
         The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
@@ -146,7 +146,7 @@ class _ControlPlaneAccessState:
         return pulumi.get(self, "synchronizer_identities")
 
     @synchronizer_identities.setter
-    def synchronizer_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def synchronizer_identities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "synchronizer_identities", value)
 
 
@@ -156,9 +156,9 @@ class ControlPlaneAccess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 analytics_publisher_identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 synchronizer_identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 analytics_publisher_identities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 synchronizer_identities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Authorize the Runtime components to access directly with Apigee Control Plane.
@@ -310,9 +310,9 @@ class ControlPlaneAccess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 analytics_publisher_identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 synchronizer_identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 analytics_publisher_identities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 synchronizer_identities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -335,9 +335,9 @@ class ControlPlaneAccess(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            analytics_publisher_identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            synchronizer_identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ControlPlaneAccess':
+            analytics_publisher_identities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            synchronizer_identities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ControlPlaneAccess':
         """
         Get an existing ControlPlaneAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

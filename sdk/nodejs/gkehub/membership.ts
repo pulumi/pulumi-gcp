@@ -242,46 +242,46 @@ export interface MembershipState {
      * https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
      * Structure is documented below.
      */
-    authority?: pulumi.Input<inputs.gkehub.MembershipAuthority>;
+    authority?: pulumi.Input<inputs.gkehub.MembershipAuthority | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
      * Structure is documented below.
      */
-    endpoint?: pulumi.Input<inputs.gkehub.MembershipEndpoint>;
+    endpoint?: pulumi.Input<inputs.gkehub.MembershipEndpoint | undefined>;
     /**
      * Labels to apply to this membership.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location of the membership.
      * The default value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The client-provided identifier of the membership.
      */
-    membershipId?: pulumi.Input<string>;
+    membershipId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the membership.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -294,24 +294,24 @@ export interface MembershipArgs {
      * https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
      * Structure is documented below.
      */
-    authority?: pulumi.Input<inputs.gkehub.MembershipAuthority>;
+    authority?: pulumi.Input<inputs.gkehub.MembershipAuthority | undefined>;
     /**
      * If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
      * Structure is documented below.
      */
-    endpoint?: pulumi.Input<inputs.gkehub.MembershipEndpoint>;
+    endpoint?: pulumi.Input<inputs.gkehub.MembershipEndpoint | undefined>;
     /**
      * Labels to apply to this membership.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location of the membership.
      * The default value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The client-provided identifier of the membership.
      */
@@ -320,5 +320,5 @@ export interface MembershipArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

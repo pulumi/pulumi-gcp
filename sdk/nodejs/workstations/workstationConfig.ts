@@ -777,51 +777,51 @@ export interface WorkstationConfigState {
      * A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
      * Structure is documented below.
      */
-    allowedPorts?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigAllowedPort>[]>;
+    allowedPorts?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigAllowedPort>[] | undefined>;
     /**
      * Client-specified annotations. This is distinct from labels.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Status conditions describing the current resource state.
      * Structure is documented below.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigCondition>[] | undefined>;
     /**
      * Container that will be run for each workstation using this configuration when that workstation is started.
      * Structure is documented below.
      */
-    container?: pulumi.Input<inputs.workstations.WorkstationConfigContainer>;
+    container?: pulumi.Input<inputs.workstations.WorkstationConfigContainer | undefined>;
     /**
      * Time when this resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
      */
-    degraded?: pulumi.Input<boolean>;
+    degraded?: pulumi.Input<boolean | undefined>;
     /**
      * Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
      */
-    disableTcpConnections?: pulumi.Input<boolean>;
+    disableTcpConnections?: pulumi.Input<boolean | undefined>;
     /**
      * Human-readable name for this resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
      */
-    enableAuditAgent?: pulumi.Input<boolean>;
+    enableAuditAgent?: pulumi.Input<boolean | undefined>;
     /**
      * Encrypts resources of this workstation configuration using a customer-managed encryption key.
      * If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
@@ -829,87 +829,87 @@ export interface WorkstationConfigState {
      * If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
      * Structure is documented below.
      */
-    encryptionKey?: pulumi.Input<inputs.workstations.WorkstationConfigEncryptionKey>;
+    encryptionKey?: pulumi.Input<inputs.workstations.WorkstationConfigEncryptionKey | undefined>;
     /**
      * Ephemeral directories which won't persist across workstation sessions.
      * Structure is documented below.
      */
-    ephemeralDirectories?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigEphemeralDirectory>[]>;
+    ephemeralDirectories?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigEphemeralDirectory>[] | undefined>;
     /**
      * Checksum computed by the server.
      * May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Runtime host for a workstation.
      * Structure is documented below.
      */
-    host?: pulumi.Input<inputs.workstations.WorkstationConfigHost>;
+    host?: pulumi.Input<inputs.workstations.WorkstationConfigHost | undefined>;
     /**
      * How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    idleTimeout?: pulumi.Input<string>;
+    idleTimeout?: pulumi.Input<string | undefined>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where the workstation cluster config should reside.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
      */
-    maxUsableWorkstations?: pulumi.Input<number>;
+    maxUsableWorkstations?: pulumi.Input<number | undefined>;
     /**
      * Full name of this resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Directories to persist across workstation sessions.
      * Structure is documented below.
      */
-    persistentDirectories?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigPersistentDirectory>[]>;
+    persistentDirectories?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigPersistentDirectory>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Readiness checks to be performed on a workstation.
      * Structure is documented below.
      */
-    readinessChecks?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigReadinessCheck>[]>;
+    readinessChecks?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigReadinessCheck>[] | undefined>;
     /**
      * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
      * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
      */
-    replicaZones?: pulumi.Input<pulumi.Input<string>[]>;
+    replicaZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    runningTimeout?: pulumi.Input<string>;
+    runningTimeout?: pulumi.Input<string | undefined>;
     /**
      * The system-generated UID of the resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent workstation cluster.
      */
-    workstationClusterId?: pulumi.Input<string>;
+    workstationClusterId?: pulumi.Input<string | undefined>;
     /**
      * The ID to be assigned to the workstation cluster config.
      */
-    workstationConfigId?: pulumi.Input<string>;
+    workstationConfigId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -920,30 +920,30 @@ export interface WorkstationConfigArgs {
      * A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
      * Structure is documented below.
      */
-    allowedPorts?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigAllowedPort>[]>;
+    allowedPorts?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigAllowedPort>[] | undefined>;
     /**
      * Client-specified annotations. This is distinct from labels.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Container that will be run for each workstation using this configuration when that workstation is started.
      * Structure is documented below.
      */
-    container?: pulumi.Input<inputs.workstations.WorkstationConfigContainer>;
+    container?: pulumi.Input<inputs.workstations.WorkstationConfigContainer | undefined>;
     /**
      * Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
      */
-    disableTcpConnections?: pulumi.Input<boolean>;
+    disableTcpConnections?: pulumi.Input<boolean | undefined>;
     /**
      * Human-readable name for this resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
      */
-    enableAuditAgent?: pulumi.Input<boolean>;
+    enableAuditAgent?: pulumi.Input<boolean | undefined>;
     /**
      * Encrypts resources of this workstation configuration using a customer-managed encryption key.
      * If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
@@ -951,28 +951,28 @@ export interface WorkstationConfigArgs {
      * If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
      * Structure is documented below.
      */
-    encryptionKey?: pulumi.Input<inputs.workstations.WorkstationConfigEncryptionKey>;
+    encryptionKey?: pulumi.Input<inputs.workstations.WorkstationConfigEncryptionKey | undefined>;
     /**
      * Ephemeral directories which won't persist across workstation sessions.
      * Structure is documented below.
      */
-    ephemeralDirectories?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigEphemeralDirectory>[]>;
+    ephemeralDirectories?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigEphemeralDirectory>[] | undefined>;
     /**
      * Runtime host for a workstation.
      * Structure is documented below.
      */
-    host?: pulumi.Input<inputs.workstations.WorkstationConfigHost>;
+    host?: pulumi.Input<inputs.workstations.WorkstationConfigHost | undefined>;
     /**
      * How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    idleTimeout?: pulumi.Input<string>;
+    idleTimeout?: pulumi.Input<string | undefined>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where the workstation cluster config should reside.
      */
@@ -980,32 +980,32 @@ export interface WorkstationConfigArgs {
     /**
      * Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
      */
-    maxUsableWorkstations?: pulumi.Input<number>;
+    maxUsableWorkstations?: pulumi.Input<number | undefined>;
     /**
      * Directories to persist across workstation sessions.
      * Structure is documented below.
      */
-    persistentDirectories?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigPersistentDirectory>[]>;
+    persistentDirectories?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigPersistentDirectory>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Readiness checks to be performed on a workstation.
      * Structure is documented below.
      */
-    readinessChecks?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigReadinessCheck>[]>;
+    readinessChecks?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigReadinessCheck>[] | undefined>;
     /**
      * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
      * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
      */
-    replicaZones?: pulumi.Input<pulumi.Input<string>[]>;
+    replicaZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    runningTimeout?: pulumi.Input<string>;
+    runningTimeout?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent workstation cluster.
      */

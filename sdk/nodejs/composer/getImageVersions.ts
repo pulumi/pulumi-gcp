@@ -117,10 +117,10 @@ export interface GetImageVersionsOutputArgs {
      * The ID of the project to list versions in.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The location to list versions in.
      * If it is not provider, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

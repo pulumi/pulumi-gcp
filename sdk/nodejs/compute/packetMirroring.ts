@@ -259,54 +259,54 @@ export interface PacketMirroringState {
      * set to true.
      * Structure is documented below.
      */
-    collectorIlb?: pulumi.Input<inputs.compute.PacketMirroringCollectorIlb>;
+    collectorIlb?: pulumi.Input<inputs.compute.PacketMirroringCollectorIlb | undefined>;
     /**
      * A human-readable description of the rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
      * policy will not be enforced on the network. The default is TRUE.
      * Possible values are: `TRUE`, `FALSE`.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
     /**
      * A filter for mirrored traffic.  If unset, all traffic is mirrored.
      * Structure is documented below.
      */
-    filter?: pulumi.Input<inputs.compute.PacketMirroringFilter>;
+    filter?: pulumi.Input<inputs.compute.PacketMirroringFilter | undefined>;
     /**
      * A means of specifying which resources to mirror.
      * Structure is documented below.
      */
-    mirroredResources?: pulumi.Input<inputs.compute.PacketMirroringMirroredResources>;
+    mirroredResources?: pulumi.Input<inputs.compute.PacketMirroringMirroredResources | undefined>;
     /**
      * The name of the packet mirroring rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the mirrored VPC network. Only packets in this network
      * will be mirrored. All mirrored VMs should have a NIC in the given
      * network. All mirrored subnetworks should belong to the given network.
      * Structure is documented below.
      */
-    network?: pulumi.Input<inputs.compute.PacketMirroringNetwork>;
+    network?: pulumi.Input<inputs.compute.PacketMirroringNetwork | undefined>;
     /**
      * Since only one rule can be active at a time, priority is
      * used to break ties in the case of two rules that apply to
      * the same instances.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Region in which the created address should reside.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -324,18 +324,18 @@ export interface PacketMirroringArgs {
     /**
      * A human-readable description of the rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
      * policy will not be enforced on the network. The default is TRUE.
      * Possible values are: `TRUE`, `FALSE`.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
     /**
      * A filter for mirrored traffic.  If unset, all traffic is mirrored.
      * Structure is documented below.
      */
-    filter?: pulumi.Input<inputs.compute.PacketMirroringFilter>;
+    filter?: pulumi.Input<inputs.compute.PacketMirroringFilter | undefined>;
     /**
      * A means of specifying which resources to mirror.
      * Structure is documented below.
@@ -344,7 +344,7 @@ export interface PacketMirroringArgs {
     /**
      * The name of the packet mirroring rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the mirrored VPC network. Only packets in this network
      * will be mirrored. All mirrored VMs should have a NIC in the given
@@ -357,15 +357,15 @@ export interface PacketMirroringArgs {
      * used to break ties in the case of two rules that apply to
      * the same instances.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Region in which the created address should reside.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

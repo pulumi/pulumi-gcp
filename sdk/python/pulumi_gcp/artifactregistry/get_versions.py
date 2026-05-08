@@ -166,12 +166,12 @@ def get_versions(filter: Optional[_builtins.str] = None,
         repository_id=pulumi.get(__ret__, 'repository_id'),
         versions=pulumi.get(__ret__, 'versions'),
         view=pulumi.get(__ret__, 'view'))
-def get_versions_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        location: Optional[pulumi.Input[_builtins.str]] = None,
-                        package_name: Optional[pulumi.Input[_builtins.str]] = None,
-                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        repository_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        view: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_versions_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        location: pulumi.Input[Optional[_builtins.str]] = None,
+                        package_name: pulumi.Input[Optional[_builtins.str]] = None,
+                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        view: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVersionsResult]:
     """
     Get information about Artifact Registry versions.

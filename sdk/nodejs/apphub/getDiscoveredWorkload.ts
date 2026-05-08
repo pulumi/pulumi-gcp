@@ -110,7 +110,7 @@ export interface GetDiscoveredWorkloadOutputArgs {
     /**
      * The host project of the discovered workload.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The uri of the workload (instance group managed by the Instance Group Manager). Example: "//compute.googleapis.com/projects/1/regions/us-east1/instanceGroups/id1"
      */

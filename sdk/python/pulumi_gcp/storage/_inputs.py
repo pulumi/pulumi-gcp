@@ -269,12 +269,12 @@ class BatchOperationsJobBucketListBucketsArgsDict(TypedDict):
     """
     Bucket name for the objects to be transformed.
     """
-    manifest: NotRequired[pulumi.Input['BatchOperationsJobBucketListBucketsManifestArgsDict']]
+    manifest: NotRequired[pulumi.Input[Optional['BatchOperationsJobBucketListBucketsManifestArgs']]]
     """
     contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
     Structure is documented below.
     """
-    prefix_list: NotRequired[pulumi.Input['BatchOperationsJobBucketListBucketsPrefixListArgsDict']]
+    prefix_list: NotRequired[pulumi.Input[Optional['BatchOperationsJobBucketListBucketsPrefixListArgs']]]
     """
     Specifies objects matching a prefix set.
     Structure is documented below.
@@ -284,8 +284,8 @@ class BatchOperationsJobBucketListBucketsArgsDict(TypedDict):
 class BatchOperationsJobBucketListBucketsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 manifest: Optional[pulumi.Input['BatchOperationsJobBucketListBucketsManifestArgs']] = None,
-                 prefix_list: Optional[pulumi.Input['BatchOperationsJobBucketListBucketsPrefixListArgs']] = None):
+                 manifest: pulumi.Input[Optional['BatchOperationsJobBucketListBucketsManifestArgs']] = None,
+                 prefix_list: pulumi.Input[Optional['BatchOperationsJobBucketListBucketsPrefixListArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Bucket name for the objects to be transformed.
         :param pulumi.Input['BatchOperationsJobBucketListBucketsManifestArgs'] manifest: contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
@@ -313,7 +313,7 @@ class BatchOperationsJobBucketListBucketsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def manifest(self) -> Optional[pulumi.Input['BatchOperationsJobBucketListBucketsManifestArgs']]:
+    def manifest(self) -> pulumi.Input[Optional['BatchOperationsJobBucketListBucketsManifestArgs']]:
         """
         contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
         Structure is documented below.
@@ -321,12 +321,12 @@ class BatchOperationsJobBucketListBucketsArgs:
         return pulumi.get(self, "manifest")
 
     @manifest.setter
-    def manifest(self, value: Optional[pulumi.Input['BatchOperationsJobBucketListBucketsManifestArgs']]):
+    def manifest(self, value: pulumi.Input[Optional['BatchOperationsJobBucketListBucketsManifestArgs']]):
         pulumi.set(self, "manifest", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixList")
-    def prefix_list(self) -> Optional[pulumi.Input['BatchOperationsJobBucketListBucketsPrefixListArgs']]:
+    def prefix_list(self) -> pulumi.Input[Optional['BatchOperationsJobBucketListBucketsPrefixListArgs']]:
         """
         Specifies objects matching a prefix set.
         Structure is documented below.
@@ -334,12 +334,12 @@ class BatchOperationsJobBucketListBucketsArgs:
         return pulumi.get(self, "prefix_list")
 
     @prefix_list.setter
-    def prefix_list(self, value: Optional[pulumi.Input['BatchOperationsJobBucketListBucketsPrefixListArgs']]):
+    def prefix_list(self, value: pulumi.Input[Optional['BatchOperationsJobBucketListBucketsPrefixListArgs']]):
         pulumi.set(self, "prefix_list", value)
 
 
 class BatchOperationsJobBucketListBucketsManifestArgsDict(TypedDict):
-    manifest_location: NotRequired[pulumi.Input[_builtins.str]]
+    manifest_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies objects in a manifest file.
     """
@@ -347,7 +347,7 @@ class BatchOperationsJobBucketListBucketsManifestArgsDict(TypedDict):
 @pulumi.input_type
 class BatchOperationsJobBucketListBucketsManifestArgs:
     def __init__(__self__, *,
-                 manifest_location: Optional[pulumi.Input[_builtins.str]] = None):
+                 manifest_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] manifest_location: Specifies objects in a manifest file.
         """
@@ -356,19 +356,19 @@ class BatchOperationsJobBucketListBucketsManifestArgs:
 
     @_builtins.property
     @pulumi.getter(name="manifestLocation")
-    def manifest_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def manifest_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies objects in a manifest file.
         """
         return pulumi.get(self, "manifest_location")
 
     @manifest_location.setter
-    def manifest_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def manifest_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "manifest_location", value)
 
 
 class BatchOperationsJobBucketListBucketsPrefixListArgsDict(TypedDict):
-    included_object_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    included_object_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Optional)
     """
@@ -376,7 +376,7 @@ class BatchOperationsJobBucketListBucketsPrefixListArgsDict(TypedDict):
 @pulumi.input_type
 class BatchOperationsJobBucketListBucketsPrefixListArgs:
     def __init__(__self__, *,
-                 included_object_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 included_object_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_object_prefixes: (Optional)
         """
@@ -385,14 +385,14 @@ class BatchOperationsJobBucketListBucketsPrefixListArgs:
 
     @_builtins.property
     @pulumi.getter(name="includedObjectPrefixes")
-    def included_object_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def included_object_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional)
         """
         return pulumi.get(self, "included_object_prefixes")
 
     @included_object_prefixes.setter
-    def included_object_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def included_object_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "included_object_prefixes", value)
 
 
@@ -425,31 +425,31 @@ class BatchOperationsJobDeleteObjectArgs:
 
 
 class BatchOperationsJobPutMetadataArgsDict(TypedDict):
-    cache_control: NotRequired[pulumi.Input[_builtins.str]]
+    cache_control: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
     """
-    content_disposition: NotRequired[pulumi.Input[_builtins.str]]
+    content_disposition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Content-Disposition of the object data.
     """
-    content_encoding: NotRequired[pulumi.Input[_builtins.str]]
+    content_encoding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Content Encoding of the object data.
     """
-    content_language: NotRequired[pulumi.Input[_builtins.str]]
+    content_language: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Content-Language of the object data.
     """
-    content_type: NotRequired[pulumi.Input[_builtins.str]]
+    content_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Content-Type of the object data.
     """
-    custom_metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    custom_metadata: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     User-provided metadata, in key/value pairs.
     """
-    custom_time: NotRequired[pulumi.Input[_builtins.str]]
+    custom_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Updates the objects fixed custom time metadata.
     """
@@ -457,13 +457,13 @@ class BatchOperationsJobPutMetadataArgsDict(TypedDict):
 @pulumi.input_type
 class BatchOperationsJobPutMetadataArgs:
     def __init__(__self__, *,
-                 cache_control: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 custom_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 custom_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cache_control: Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
         :param pulumi.Input[_builtins.str] content_disposition: Content-Disposition of the object data.
@@ -490,95 +490,95 @@ class BatchOperationsJobPutMetadataArgs:
 
     @_builtins.property
     @pulumi.getter(name="cacheControl")
-    def cache_control(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_control(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
         """
         return pulumi.get(self, "cache_control")
 
     @cache_control.setter
-    def cache_control(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_control(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_control", value)
 
     @_builtins.property
     @pulumi.getter(name="contentDisposition")
-    def content_disposition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content-Disposition of the object data.
         """
         return pulumi.get(self, "content_disposition")
 
     @content_disposition.setter
-    def content_disposition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_disposition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_disposition", value)
 
     @_builtins.property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content Encoding of the object data.
         """
         return pulumi.get(self, "content_encoding")
 
     @content_encoding.setter
-    def content_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="contentLanguage")
-    def content_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content-Language of the object data.
         """
         return pulumi.get(self, "content_language")
 
     @content_language.setter
-    def content_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_language", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content-Type of the object data.
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="customMetadata")
-    def custom_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-provided metadata, in key/value pairs.
         """
         return pulumi.get(self, "custom_metadata")
 
     @custom_metadata.setter
-    def custom_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="customTime")
-    def custom_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Updates the objects fixed custom time metadata.
         """
         return pulumi.get(self, "custom_time")
 
     @custom_time.setter
-    def custom_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_time", value)
 
 
 class BatchOperationsJobPutObjectHoldArgsDict(TypedDict):
-    event_based_hold: NotRequired[pulumi.Input[_builtins.str]]
+    event_based_hold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     set/unset to update event based hold for objects.
     """
-    temporary_hold: NotRequired[pulumi.Input[_builtins.str]]
+    temporary_hold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     set/unset to update temporary based hold for objects.
     """
@@ -586,8 +586,8 @@ class BatchOperationsJobPutObjectHoldArgsDict(TypedDict):
 @pulumi.input_type
 class BatchOperationsJobPutObjectHoldArgs:
     def __init__(__self__, *,
-                 event_based_hold: Optional[pulumi.Input[_builtins.str]] = None,
-                 temporary_hold: Optional[pulumi.Input[_builtins.str]] = None):
+                 event_based_hold: pulumi.Input[Optional[_builtins.str]] = None,
+                 temporary_hold: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] event_based_hold: set/unset to update event based hold for objects.
         :param pulumi.Input[_builtins.str] temporary_hold: set/unset to update temporary based hold for objects.
@@ -599,26 +599,26 @@ class BatchOperationsJobPutObjectHoldArgs:
 
     @_builtins.property
     @pulumi.getter(name="eventBasedHold")
-    def event_based_hold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_based_hold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         set/unset to update event based hold for objects.
         """
         return pulumi.get(self, "event_based_hold")
 
     @event_based_hold.setter
-    def event_based_hold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_based_hold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_based_hold", value)
 
     @_builtins.property
     @pulumi.getter(name="temporaryHold")
-    def temporary_hold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def temporary_hold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         set/unset to update temporary based hold for objects.
         """
         return pulumi.get(self, "temporary_hold")
 
     @temporary_hold.setter
-    def temporary_hold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def temporary_hold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "temporary_hold", value)
 
 
@@ -655,7 +655,7 @@ class BucketAutoclassArgsDict(TypedDict):
     """
     While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
     """
-    terminal_storage_class: NotRequired[pulumi.Input[_builtins.str]]
+    terminal_storage_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: `NEARLINE`, `ARCHIVE`.
     """
@@ -664,7 +664,7 @@ class BucketAutoclassArgsDict(TypedDict):
 class BucketAutoclassArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool],
-                 terminal_storage_class: Optional[pulumi.Input[_builtins.str]] = None):
+                 terminal_storage_class: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
         :param pulumi.Input[_builtins.str] terminal_storage_class: The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: `NEARLINE`, `ARCHIVE`.
@@ -687,31 +687,31 @@ class BucketAutoclassArgs:
 
     @_builtins.property
     @pulumi.getter(name="terminalStorageClass")
-    def terminal_storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def terminal_storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: `NEARLINE`, `ARCHIVE`.
         """
         return pulumi.get(self, "terminal_storage_class")
 
     @terminal_storage_class.setter
-    def terminal_storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def terminal_storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "terminal_storage_class", value)
 
 
 class BucketCorArgsDict(TypedDict):
-    max_age_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    max_age_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
     """
-    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
     """
-    origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    origins: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
     """
-    response_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    response_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
     """
@@ -719,10 +719,10 @@ class BucketCorArgsDict(TypedDict):
 @pulumi.input_type
 class BucketCorArgs:
     def __init__(__self__, *,
-                 max_age_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 max_age_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.int] max_age_seconds: The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] methods: The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
@@ -740,50 +740,50 @@ class BucketCorArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxAgeSeconds")
-    def max_age_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_age_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
         """
         return pulumi.get(self, "max_age_seconds")
 
     @max_age_seconds.setter
-    def max_age_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_age_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_age_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def methods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
         """
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def methods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "methods", value)
 
     @_builtins.property
     @pulumi.getter
-    def origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def origins(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
         """
         return pulumi.get(self, "origins")
 
     @origins.setter
-    def origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def origins(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "origins", value)
 
     @_builtins.property
     @pulumi.getter(name="responseHeaders")
-    def response_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def response_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
         """
         return pulumi.get(self, "response_headers")
 
     @response_headers.setter
-    def response_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def response_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "response_headers", value)
 
 
@@ -816,15 +816,15 @@ class BucketCustomPlacementConfigArgs:
 
 
 class BucketEncryptionArgsDict(TypedDict):
-    customer_managed_encryption_enforcement_config: NotRequired[pulumi.Input['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgsDict']]
+    customer_managed_encryption_enforcement_config: NotRequired[pulumi.Input[Optional['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs']]]
     """
     If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
     """
-    customer_supplied_encryption_enforcement_config: NotRequired[pulumi.Input['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgsDict']]
+    customer_supplied_encryption_enforcement_config: NotRequired[pulumi.Input[Optional['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs']]]
     """
     If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
     """
-    default_kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    default_kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
     You must pay attention to whether the crypto key is available in the location that this bucket is created in.
@@ -841,7 +841,7 @@ class BucketEncryptionArgsDict(TypedDict):
     state of the project.
     You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
     """
-    google_managed_encryption_enforcement_config: NotRequired[pulumi.Input['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgsDict']]
+    google_managed_encryption_enforcement_config: NotRequired[pulumi.Input[Optional['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs']]]
     """
     If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
     """
@@ -849,10 +849,10 @@ class BucketEncryptionArgsDict(TypedDict):
 @pulumi.input_type
 class BucketEncryptionArgs:
     def __init__(__self__, *,
-                 customer_managed_encryption_enforcement_config: Optional[pulumi.Input['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs']] = None,
-                 customer_supplied_encryption_enforcement_config: Optional[pulumi.Input['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs']] = None,
-                 default_kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_managed_encryption_enforcement_config: Optional[pulumi.Input['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs']] = None):
+                 customer_managed_encryption_enforcement_config: pulumi.Input[Optional['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs']] = None,
+                 customer_supplied_encryption_enforcement_config: pulumi.Input[Optional['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs']] = None,
+                 default_kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_managed_encryption_enforcement_config: pulumi.Input[Optional['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs']] = None):
         """
         :param pulumi.Input['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs'] customer_managed_encryption_enforcement_config: If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
         :param pulumi.Input['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs'] customer_supplied_encryption_enforcement_config: If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
@@ -883,31 +883,31 @@ class BucketEncryptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="customerManagedEncryptionEnforcementConfig")
-    def customer_managed_encryption_enforcement_config(self) -> Optional[pulumi.Input['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs']]:
+    def customer_managed_encryption_enforcement_config(self) -> pulumi.Input[Optional['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs']]:
         """
         If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
         """
         return pulumi.get(self, "customer_managed_encryption_enforcement_config")
 
     @customer_managed_encryption_enforcement_config.setter
-    def customer_managed_encryption_enforcement_config(self, value: Optional[pulumi.Input['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs']]):
+    def customer_managed_encryption_enforcement_config(self, value: pulumi.Input[Optional['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs']]):
         pulumi.set(self, "customer_managed_encryption_enforcement_config", value)
 
     @_builtins.property
     @pulumi.getter(name="customerSuppliedEncryptionEnforcementConfig")
-    def customer_supplied_encryption_enforcement_config(self) -> Optional[pulumi.Input['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs']]:
+    def customer_supplied_encryption_enforcement_config(self) -> pulumi.Input[Optional['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs']]:
         """
         If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
         """
         return pulumi.get(self, "customer_supplied_encryption_enforcement_config")
 
     @customer_supplied_encryption_enforcement_config.setter
-    def customer_supplied_encryption_enforcement_config(self, value: Optional[pulumi.Input['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs']]):
+    def customer_supplied_encryption_enforcement_config(self, value: pulumi.Input[Optional['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs']]):
         pulumi.set(self, "customer_supplied_encryption_enforcement_config", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultKmsKeyName")
-    def default_kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
         You must pay attention to whether the crypto key is available in the location that this bucket is created in.
@@ -927,19 +927,19 @@ class BucketEncryptionArgs:
         return pulumi.get(self, "default_kms_key_name")
 
     @default_kms_key_name.setter
-    def default_kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="googleManagedEncryptionEnforcementConfig")
-    def google_managed_encryption_enforcement_config(self) -> Optional[pulumi.Input['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs']]:
+    def google_managed_encryption_enforcement_config(self) -> pulumi.Input[Optional['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs']]:
         """
         If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
         """
         return pulumi.get(self, "google_managed_encryption_enforcement_config")
 
     @google_managed_encryption_enforcement_config.setter
-    def google_managed_encryption_enforcement_config(self, value: Optional[pulumi.Input['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs']]):
+    def google_managed_encryption_enforcement_config(self, value: pulumi.Input[Optional['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs']]):
         pulumi.set(self, "google_managed_encryption_enforcement_config", value)
 
 
@@ -948,7 +948,7 @@ class BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgsDict(TypedDi
     """
     Whether Customer Managed Encryption (CMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CMEK encryption. If NotRestricted or unset, creation of new objects with CMEK encryption is allowed.
     """
-    effective_time: NotRequired[pulumi.Input[_builtins.str]]
+    effective_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time from which the config was effective.
     """
@@ -957,7 +957,7 @@ class BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgsDict(TypedDi
 class BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs:
     def __init__(__self__, *,
                  restriction_mode: pulumi.Input[_builtins.str],
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] restriction_mode: Whether Customer Managed Encryption (CMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CMEK encryption. If NotRestricted or unset, creation of new objects with CMEK encryption is allowed.
         :param pulumi.Input[_builtins.str] effective_time: Time from which the config was effective.
@@ -980,14 +980,14 @@ class BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time from which the config was effective.
         """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
 
@@ -996,7 +996,7 @@ class BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgsDict(TypedD
     """
     Whether Customer Supplied Encryption (CSEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CSEK encryption. If NotRestricted or unset, creation of new objects with CSEK encryption is allowed.
     """
-    effective_time: NotRequired[pulumi.Input[_builtins.str]]
+    effective_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time from which the config was effective.
     """
@@ -1005,7 +1005,7 @@ class BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgsDict(TypedD
 class BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs:
     def __init__(__self__, *,
                  restriction_mode: pulumi.Input[_builtins.str],
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] restriction_mode: Whether Customer Supplied Encryption (CSEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CSEK encryption. If NotRestricted or unset, creation of new objects with CSEK encryption is allowed.
         :param pulumi.Input[_builtins.str] effective_time: Time from which the config was effective.
@@ -1028,14 +1028,14 @@ class BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time from which the config was effective.
         """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
 
@@ -1044,7 +1044,7 @@ class BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgsDict(TypedDict
     """
     Whether Google Managed Encryption (GMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using GMEK encryption. If NotRestricted or unset, creation of new objects with GMEK encryption is allowed.
     """
-    effective_time: NotRequired[pulumi.Input[_builtins.str]]
+    effective_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time from which the config was effective.
     """
@@ -1053,7 +1053,7 @@ class BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgsDict(TypedDict
 class BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs:
     def __init__(__self__, *,
                  restriction_mode: pulumi.Input[_builtins.str],
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] restriction_mode: Whether Google Managed Encryption (GMEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using GMEK encryption. If NotRestricted or unset, creation of new objects with GMEK encryption is allowed.
         :param pulumi.Input[_builtins.str] effective_time: Time from which the config was effective.
@@ -1076,14 +1076,14 @@ class BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time from which the config was effective.
         """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
 
@@ -1124,7 +1124,7 @@ class BucketIAMBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -1138,7 +1138,7 @@ class BucketIAMBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -1179,7 +1179,7 @@ class BucketIAMBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -1190,7 +1190,7 @@ class BucketIAMBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -1203,7 +1203,7 @@ class BucketIAMMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -1217,7 +1217,7 @@ class BucketIAMMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -1258,7 +1258,7 @@ class BucketIAMMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -1269,7 +1269,7 @@ class BucketIAMMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -1282,19 +1282,19 @@ class BucketIpFilterArgsDict(TypedDict):
 
     **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
     """
-    allow_all_service_agent_access: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_all_service_agent_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
     """
-    allow_cross_org_vpcs: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_cross_org_vpcs: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     While set `true`, allows cross-org VPCs in the bucket's IP filter configuration.
     """
-    public_network_source: NotRequired[pulumi.Input['BucketIpFilterPublicNetworkSourceArgsDict']]
+    public_network_source: NotRequired[pulumi.Input[Optional['BucketIpFilterPublicNetworkSourceArgs']]]
     """
     The public network IP address ranges that can access the bucket and its data. Structure is documented below.
     """
-    vpc_network_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketIpFilterVpcNetworkSourceArgsDict']]]]
+    vpc_network_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketIpFilterVpcNetworkSourceArgs']]]]]
     """
     The list of VPC networks that can access the bucket. Structure is documented below.
     """
@@ -1303,10 +1303,10 @@ class BucketIpFilterArgsDict(TypedDict):
 class BucketIpFilterArgs:
     def __init__(__self__, *,
                  mode: pulumi.Input[_builtins.str],
-                 allow_all_service_agent_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_cross_org_vpcs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_network_source: Optional[pulumi.Input['BucketIpFilterPublicNetworkSourceArgs']] = None,
-                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['BucketIpFilterVpcNetworkSourceArgs']]]] = None):
+                 allow_all_service_agent_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_cross_org_vpcs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_network_source: pulumi.Input[Optional['BucketIpFilterPublicNetworkSourceArgs']] = None,
+                 vpc_network_sources: pulumi.Input[Optional[Sequence[pulumi.Input['BucketIpFilterVpcNetworkSourceArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] mode: The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
                
@@ -1346,50 +1346,50 @@ class BucketIpFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowAllServiceAgentAccess")
-    def allow_all_service_agent_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_all_service_agent_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
         """
         return pulumi.get(self, "allow_all_service_agent_access")
 
     @allow_all_service_agent_access.setter
-    def allow_all_service_agent_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_all_service_agent_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_all_service_agent_access", value)
 
     @_builtins.property
     @pulumi.getter(name="allowCrossOrgVpcs")
-    def allow_cross_org_vpcs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_cross_org_vpcs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         While set `true`, allows cross-org VPCs in the bucket's IP filter configuration.
         """
         return pulumi.get(self, "allow_cross_org_vpcs")
 
     @allow_cross_org_vpcs.setter
-    def allow_cross_org_vpcs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_cross_org_vpcs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_cross_org_vpcs", value)
 
     @_builtins.property
     @pulumi.getter(name="publicNetworkSource")
-    def public_network_source(self) -> Optional[pulumi.Input['BucketIpFilterPublicNetworkSourceArgs']]:
+    def public_network_source(self) -> pulumi.Input[Optional['BucketIpFilterPublicNetworkSourceArgs']]:
         """
         The public network IP address ranges that can access the bucket and its data. Structure is documented below.
         """
         return pulumi.get(self, "public_network_source")
 
     @public_network_source.setter
-    def public_network_source(self, value: Optional[pulumi.Input['BucketIpFilterPublicNetworkSourceArgs']]):
+    def public_network_source(self, value: pulumi.Input[Optional['BucketIpFilterPublicNetworkSourceArgs']]):
         pulumi.set(self, "public_network_source", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcNetworkSources")
-    def vpc_network_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketIpFilterVpcNetworkSourceArgs']]]]:
+    def vpc_network_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BucketIpFilterVpcNetworkSourceArgs']]]]:
         """
         The list of VPC networks that can access the bucket. Structure is documented below.
         """
         return pulumi.get(self, "vpc_network_sources")
 
     @vpc_network_sources.setter
-    def vpc_network_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketIpFilterVpcNetworkSourceArgs']]]]):
+    def vpc_network_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BucketIpFilterVpcNetworkSourceArgs']]]]):
         pulumi.set(self, "vpc_network_sources", value)
 
 
@@ -1520,7 +1520,7 @@ class BucketLifecycleRuleActionArgsDict(TypedDict):
     """
     The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
     """
-    storage_class: NotRequired[pulumi.Input[_builtins.str]]
+    storage_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
     """
@@ -1529,7 +1529,7 @@ class BucketLifecycleRuleActionArgsDict(TypedDict):
 class BucketLifecycleRuleActionArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None):
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
         :param pulumi.Input[_builtins.str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
@@ -1552,75 +1552,75 @@ class BucketLifecycleRuleActionArgs:
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         """
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
-    def storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_class", value)
 
 
 class BucketLifecycleRuleConditionArgsDict(TypedDict):
-    age: NotRequired[pulumi.Input[_builtins.int]]
+    age: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
     """
-    created_before: NotRequired[pulumi.Input[_builtins.str]]
+    created_before: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
     """
-    custom_time_before: NotRequired[pulumi.Input[_builtins.str]]
+    custom_time_before: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
     """
-    days_since_custom_time: NotRequired[pulumi.Input[_builtins.int]]
+    days_since_custom_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `days_since_custom_time` condition.
     """
-    days_since_noncurrent_time: NotRequired[pulumi.Input[_builtins.int]]
+    days_since_noncurrent_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `days_since_noncurrent_time` condition.
     """
-    matches_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    matches_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     One or more matching name prefixes to satisfy this condition.
     """
-    matches_storage_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    matches_storage_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
     """
-    matches_suffixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    matches_suffixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     One or more matching name suffixes to satisfy this condition.
     """
-    noncurrent_time_before: NotRequired[pulumi.Input[_builtins.str]]
+    noncurrent_time_before: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrent_time_before` condition.
     """
-    num_newer_versions: NotRequired[pulumi.Input[_builtins.int]]
+    num_newer_versions: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `num_newer_versions` condition.
     """
-    send_age_if_zero: NotRequired[pulumi.Input[_builtins.bool]]
+    send_age_if_zero: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
     """
-    send_days_since_custom_time_if_zero: NotRequired[pulumi.Input[_builtins.bool]]
+    send_days_since_custom_time_if_zero: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
     """
-    send_days_since_noncurrent_time_if_zero: NotRequired[pulumi.Input[_builtins.bool]]
+    send_days_since_noncurrent_time_if_zero: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
     """
-    send_num_newer_versions_if_zero: NotRequired[pulumi.Input[_builtins.bool]]
+    send_num_newer_versions_if_zero: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
     """
-    with_state: NotRequired[pulumi.Input[_builtins.str]]
+    with_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
     """
@@ -1628,21 +1628,21 @@ class BucketLifecycleRuleConditionArgsDict(TypedDict):
 @pulumi.input_type
 class BucketLifecycleRuleConditionArgs:
     def __init__(__self__, *,
-                 age: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_before: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_time_before: Optional[pulumi.Input[_builtins.str]] = None,
-                 days_since_custom_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 days_since_noncurrent_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 matches_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 matches_storage_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 matches_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 noncurrent_time_before: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_newer_versions: Optional[pulumi.Input[_builtins.int]] = None,
-                 send_age_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 send_days_since_custom_time_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 send_days_since_noncurrent_time_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 send_num_newer_versions_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 with_state: Optional[pulumi.Input[_builtins.str]] = None):
+                 age: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_before: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_time_before: pulumi.Input[Optional[_builtins.str]] = None,
+                 days_since_custom_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 days_since_noncurrent_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 matches_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 matches_storage_classes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 matches_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 noncurrent_time_before: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_newer_versions: pulumi.Input[Optional[_builtins.int]] = None,
+                 send_age_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 send_days_since_custom_time_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 send_days_since_noncurrent_time_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 send_num_newer_versions_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 with_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] age: Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
         :param pulumi.Input[_builtins.str] created_before: A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
@@ -1693,182 +1693,182 @@ class BucketLifecycleRuleConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def age(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def age(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
         """
         return pulumi.get(self, "age")
 
     @age.setter
-    def age(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def age(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "age", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBefore")
-    def created_before(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_before(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
         """
         return pulumi.get(self, "created_before")
 
     @created_before.setter
-    def created_before(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_before(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_before", value)
 
     @_builtins.property
     @pulumi.getter(name="customTimeBefore")
-    def custom_time_before(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_time_before(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
         """
         return pulumi.get(self, "custom_time_before")
 
     @custom_time_before.setter
-    def custom_time_before(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_time_before(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_time_before", value)
 
     @_builtins.property
     @pulumi.getter(name="daysSinceCustomTime")
-    def days_since_custom_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def days_since_custom_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `days_since_custom_time` condition.
         """
         return pulumi.get(self, "days_since_custom_time")
 
     @days_since_custom_time.setter
-    def days_since_custom_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def days_since_custom_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "days_since_custom_time", value)
 
     @_builtins.property
     @pulumi.getter(name="daysSinceNoncurrentTime")
-    def days_since_noncurrent_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def days_since_noncurrent_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `days_since_noncurrent_time` condition.
         """
         return pulumi.get(self, "days_since_noncurrent_time")
 
     @days_since_noncurrent_time.setter
-    def days_since_noncurrent_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def days_since_noncurrent_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "days_since_noncurrent_time", value)
 
     @_builtins.property
     @pulumi.getter(name="matchesPrefixes")
-    def matches_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def matches_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more matching name prefixes to satisfy this condition.
         """
         return pulumi.get(self, "matches_prefixes")
 
     @matches_prefixes.setter
-    def matches_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def matches_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "matches_prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="matchesStorageClasses")
-    def matches_storage_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def matches_storage_classes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
         """
         return pulumi.get(self, "matches_storage_classes")
 
     @matches_storage_classes.setter
-    def matches_storage_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def matches_storage_classes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "matches_storage_classes", value)
 
     @_builtins.property
     @pulumi.getter(name="matchesSuffixes")
-    def matches_suffixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def matches_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more matching name suffixes to satisfy this condition.
         """
         return pulumi.get(self, "matches_suffixes")
 
     @matches_suffixes.setter
-    def matches_suffixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def matches_suffixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "matches_suffixes", value)
 
     @_builtins.property
     @pulumi.getter(name="noncurrentTimeBefore")
-    def noncurrent_time_before(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def noncurrent_time_before(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored, and your state will treat it as though you supplied no `noncurrent_time_before` condition.
         """
         return pulumi.get(self, "noncurrent_time_before")
 
     @noncurrent_time_before.setter
-    def noncurrent_time_before(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def noncurrent_time_before(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "noncurrent_time_before", value)
 
     @_builtins.property
     @pulumi.getter(name="numNewerVersions")
-    def num_newer_versions(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_newer_versions(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition. Due to a current bug you are unable to set this value to `0` within Terraform. When set to `0` it will be ignored and your state will treat it as though you supplied no `num_newer_versions` condition.
         """
         return pulumi.get(self, "num_newer_versions")
 
     @num_newer_versions.setter
-    def num_newer_versions(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_newer_versions(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_newer_versions", value)
 
     @_builtins.property
     @pulumi.getter(name="sendAgeIfZero")
-    def send_age_if_zero(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_age_if_zero(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
         """
         return pulumi.get(self, "send_age_if_zero")
 
     @send_age_if_zero.setter
-    def send_age_if_zero(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_age_if_zero(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_age_if_zero", value)
 
     @_builtins.property
     @pulumi.getter(name="sendDaysSinceCustomTimeIfZero")
-    def send_days_since_custom_time_if_zero(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_days_since_custom_time_if_zero(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
         """
         return pulumi.get(self, "send_days_since_custom_time_if_zero")
 
     @send_days_since_custom_time_if_zero.setter
-    def send_days_since_custom_time_if_zero(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_days_since_custom_time_if_zero(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_days_since_custom_time_if_zero", value)
 
     @_builtins.property
     @pulumi.getter(name="sendDaysSinceNoncurrentTimeIfZero")
-    def send_days_since_noncurrent_time_if_zero(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_days_since_noncurrent_time_if_zero(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
         """
         return pulumi.get(self, "send_days_since_noncurrent_time_if_zero")
 
     @send_days_since_noncurrent_time_if_zero.setter
-    def send_days_since_noncurrent_time_if_zero(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_days_since_noncurrent_time_if_zero(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_days_since_noncurrent_time_if_zero", value)
 
     @_builtins.property
     @pulumi.getter(name="sendNumNewerVersionsIfZero")
-    def send_num_newer_versions_if_zero(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_num_newer_versions_if_zero(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
         """
         return pulumi.get(self, "send_num_newer_versions_if_zero")
 
     @send_num_newer_versions_if_zero.setter
-    def send_num_newer_versions_if_zero(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_num_newer_versions_if_zero(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_num_newer_versions_if_zero", value)
 
     @_builtins.property
     @pulumi.getter(name="withState")
-    def with_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def with_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
         """
         return pulumi.get(self, "with_state")
 
     @with_state.setter
-    def with_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def with_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "with_state", value)
 
 
@@ -1877,7 +1877,7 @@ class BucketLoggingArgsDict(TypedDict):
     """
     The bucket that will receive log objects.
     """
-    log_object_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    log_object_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The object prefix for log objects. If it's not provided,
     by default GCS sets this to this bucket's name.
@@ -1887,7 +1887,7 @@ class BucketLoggingArgsDict(TypedDict):
 class BucketLoggingArgs:
     def __init__(__self__, *,
                  log_bucket: pulumi.Input[_builtins.str],
-                 log_object_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 log_object_prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] log_bucket: The bucket that will receive log objects.
         :param pulumi.Input[_builtins.str] log_object_prefix: The object prefix for log objects. If it's not provided,
@@ -1911,7 +1911,7 @@ class BucketLoggingArgs:
 
     @_builtins.property
     @pulumi.getter(name="logObjectPrefix")
-    def log_object_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_object_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object prefix for log objects. If it's not provided,
         by default GCS sets this to this bucket's name.
@@ -1919,7 +1919,7 @@ class BucketLoggingArgs:
         return pulumi.get(self, "log_object_prefix")
 
     @log_object_prefix.setter
-    def log_object_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_object_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_object_prefix", value)
 
 
@@ -1960,11 +1960,11 @@ class BucketObjectContextsCustomArgsDict(TypedDict):
     """
     The value associated with this context. This field holds the primary information for the given context key.
     """
-    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time when context was first added to the storage object in RFC 3399 format.
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time when context was last updated in RFC 3399 format.
 
@@ -1976,8 +1976,8 @@ class BucketObjectContextsCustomArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
         :param pulumi.Input[_builtins.str] value: The value associated with this context. This field holds the primary information for the given context key.
@@ -2019,19 +2019,19 @@ class BucketObjectContextsCustomArgs:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when context was first added to the storage object in RFC 3399 format.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when context was last updated in RFC 3399 format.
 
@@ -2040,7 +2040,7 @@ class BucketObjectContextsCustomArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -2049,7 +2049,7 @@ class BucketObjectCustomerEncryptionArgsDict(TypedDict):
     """
     Base64 encoded Customer-Supplied Encryption Key.
     """
-    encryption_algorithm: NotRequired[pulumi.Input[_builtins.str]]
+    encryption_algorithm: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Encryption algorithm. Default: AES256
     """
@@ -2058,7 +2058,7 @@ class BucketObjectCustomerEncryptionArgsDict(TypedDict):
 class BucketObjectCustomerEncryptionArgs:
     def __init__(__self__, *,
                  encryption_key: pulumi.Input[_builtins.str],
-                 encryption_algorithm: Optional[pulumi.Input[_builtins.str]] = None):
+                 encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] encryption_key: Base64 encoded Customer-Supplied Encryption Key.
         :param pulumi.Input[_builtins.str] encryption_algorithm: Encryption algorithm. Default: AES256
@@ -2081,14 +2081,14 @@ class BucketObjectCustomerEncryptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="encryptionAlgorithm")
-    def encryption_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Encryption algorithm. Default: AES256
         """
         return pulumi.get(self, "encryption_algorithm")
 
     @encryption_algorithm.setter
-    def encryption_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_algorithm", value)
 
 
@@ -2150,7 +2150,7 @@ class BucketRetentionPolicyArgsDict(TypedDict):
     """
     The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
     """
-    is_locked: NotRequired[pulumi.Input[_builtins.bool]]
+    is_locked: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
     """
@@ -2159,7 +2159,7 @@ class BucketRetentionPolicyArgsDict(TypedDict):
 class BucketRetentionPolicyArgs:
     def __init__(__self__, *,
                  retention_period: pulumi.Input[_builtins.str],
-                 is_locked: Optional[pulumi.Input[_builtins.bool]] = None):
+                 is_locked: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] retention_period: The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
         :param pulumi.Input[_builtins.bool] is_locked: If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
@@ -2182,23 +2182,23 @@ class BucketRetentionPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="isLocked")
-    def is_locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
         """
         return pulumi.get(self, "is_locked")
 
     @is_locked.setter
-    def is_locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_locked", value)
 
 
 class BucketSoftDeletePolicyArgsDict(TypedDict):
-    effective_time: NotRequired[pulumi.Input[_builtins.str]]
+    effective_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
     """
-    retention_duration_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    retention_duration_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
     """
@@ -2206,8 +2206,8 @@ class BucketSoftDeletePolicyArgsDict(TypedDict):
 @pulumi.input_type
 class BucketSoftDeletePolicyArgs:
     def __init__(__self__, *,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_duration_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_duration_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] effective_time: Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
         :param pulumi.Input[_builtins.int] retention_duration_seconds: The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
@@ -2219,26 +2219,26 @@ class BucketSoftDeletePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
         """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionDurationSeconds")
-    def retention_duration_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_duration_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
         """
         return pulumi.get(self, "retention_duration_seconds")
 
     @retention_duration_seconds.setter
-    def retention_duration_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_duration_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_duration_seconds", value)
 
 
@@ -2271,12 +2271,12 @@ class BucketVersioningArgs:
 
 
 class BucketWebsiteArgsDict(TypedDict):
-    main_page_suffix: NotRequired[pulumi.Input[_builtins.str]]
+    main_page_suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Behaves as the bucket's directory index where
     missing objects are treated as potential directories.
     """
-    not_found_page: NotRequired[pulumi.Input[_builtins.str]]
+    not_found_page: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The custom object to return when a requested
     resource is not found.
@@ -2285,8 +2285,8 @@ class BucketWebsiteArgsDict(TypedDict):
 @pulumi.input_type
 class BucketWebsiteArgs:
     def __init__(__self__, *,
-                 main_page_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_found_page: Optional[pulumi.Input[_builtins.str]] = None):
+                 main_page_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_found_page: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] main_page_suffix: Behaves as the bucket's directory index where
                missing objects are treated as potential directories.
@@ -2300,7 +2300,7 @@ class BucketWebsiteArgs:
 
     @_builtins.property
     @pulumi.getter(name="mainPageSuffix")
-    def main_page_suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def main_page_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Behaves as the bucket's directory index where
         missing objects are treated as potential directories.
@@ -2308,12 +2308,12 @@ class BucketWebsiteArgs:
         return pulumi.get(self, "main_page_suffix")
 
     @main_page_suffix.setter
-    def main_page_suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def main_page_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "main_page_suffix", value)
 
     @_builtins.property
     @pulumi.getter(name="notFoundPage")
-    def not_found_page(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def not_found_page(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The custom object to return when a requested
         resource is not found.
@@ -2321,17 +2321,17 @@ class BucketWebsiteArgs:
         return pulumi.get(self, "not_found_page")
 
     @not_found_page.setter
-    def not_found_page(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def not_found_page(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "not_found_page", value)
 
 
 class ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgsDict(TypedDict):
-    effective_edition: NotRequired[pulumi.Input[_builtins.str]]
+    effective_edition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The `StorageIntelligence` edition that is applicable for the resource.
     """
-    intelligence_config: NotRequired[pulumi.Input[_builtins.str]]
+    intelligence_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Intelligence config resource that is applied for the target resource.
@@ -2340,8 +2340,8 @@ class ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgsDict(TypedDi
 @pulumi.input_type
 class ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs:
     def __init__(__self__, *,
-                 effective_edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 intelligence_config: Optional[pulumi.Input[_builtins.str]] = None):
+                 effective_edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 intelligence_config: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effective_edition: (Output)
                The `StorageIntelligence` edition that is applicable for the resource.
@@ -2355,7 +2355,7 @@ class ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="effectiveEdition")
-    def effective_edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The `StorageIntelligence` edition that is applicable for the resource.
@@ -2363,12 +2363,12 @@ class ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs:
         return pulumi.get(self, "effective_edition")
 
     @effective_edition.setter
-    def effective_edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_edition", value)
 
     @_builtins.property
     @pulumi.getter(name="intelligenceConfig")
-    def intelligence_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def intelligence_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Intelligence config resource that is applied for the target resource.
@@ -2376,27 +2376,27 @@ class ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs:
         return pulumi.get(self, "intelligence_config")
 
     @intelligence_config.setter
-    def intelligence_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def intelligence_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "intelligence_config", value)
 
 
 class ControlFolderIntelligenceConfigFilterArgsDict(TypedDict):
-    excluded_cloud_storage_buckets: NotRequired[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict']]
+    excluded_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]]
     """
     Buckets to exclude from the Storage Intelligence plan.
     Structure is documented below.
     """
-    excluded_cloud_storage_locations: NotRequired[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict']]
+    excluded_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]]
     """
     Locations to exclude from the Storage Intelligence plan.
     Structure is documented below.
     """
-    included_cloud_storage_buckets: NotRequired[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict']]
+    included_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]]
     """
     Buckets to include in the Storage Intelligence plan.
     Structure is documented below.
     """
-    included_cloud_storage_locations: NotRequired[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict']]
+    included_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]]
     """
     Locations to include in the Storage Intelligence plan.
     Structure is documented below.
@@ -2405,10 +2405,10 @@ class ControlFolderIntelligenceConfigFilterArgsDict(TypedDict):
 @pulumi.input_type
 class ControlFolderIntelligenceConfigFilterArgs:
     def __init__(__self__, *,
-                 excluded_cloud_storage_buckets: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']] = None,
-                 excluded_cloud_storage_locations: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']] = None,
-                 included_cloud_storage_buckets: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']] = None,
-                 included_cloud_storage_locations: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']] = None):
+                 excluded_cloud_storage_buckets: pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']] = None,
+                 excluded_cloud_storage_locations: pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']] = None,
+                 included_cloud_storage_buckets: pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']] = None,
+                 included_cloud_storage_locations: pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']] = None):
         """
         :param pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs'] excluded_cloud_storage_buckets: Buckets to exclude from the Storage Intelligence plan.
                Structure is documented below.
@@ -2430,7 +2430,7 @@ class ControlFolderIntelligenceConfigFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludedCloudStorageBuckets")
-    def excluded_cloud_storage_buckets(self) -> Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]:
+    def excluded_cloud_storage_buckets(self) -> pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]:
         """
         Buckets to exclude from the Storage Intelligence plan.
         Structure is documented below.
@@ -2438,12 +2438,12 @@ class ControlFolderIntelligenceConfigFilterArgs:
         return pulumi.get(self, "excluded_cloud_storage_buckets")
 
     @excluded_cloud_storage_buckets.setter
-    def excluded_cloud_storage_buckets(self, value: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]):
+    def excluded_cloud_storage_buckets(self, value: pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]):
         pulumi.set(self, "excluded_cloud_storage_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="excludedCloudStorageLocations")
-    def excluded_cloud_storage_locations(self) -> Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]:
+    def excluded_cloud_storage_locations(self) -> pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]:
         """
         Locations to exclude from the Storage Intelligence plan.
         Structure is documented below.
@@ -2451,12 +2451,12 @@ class ControlFolderIntelligenceConfigFilterArgs:
         return pulumi.get(self, "excluded_cloud_storage_locations")
 
     @excluded_cloud_storage_locations.setter
-    def excluded_cloud_storage_locations(self, value: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]):
+    def excluded_cloud_storage_locations(self, value: pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]):
         pulumi.set(self, "excluded_cloud_storage_locations", value)
 
     @_builtins.property
     @pulumi.getter(name="includedCloudStorageBuckets")
-    def included_cloud_storage_buckets(self) -> Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]:
+    def included_cloud_storage_buckets(self) -> pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]:
         """
         Buckets to include in the Storage Intelligence plan.
         Structure is documented below.
@@ -2464,12 +2464,12 @@ class ControlFolderIntelligenceConfigFilterArgs:
         return pulumi.get(self, "included_cloud_storage_buckets")
 
     @included_cloud_storage_buckets.setter
-    def included_cloud_storage_buckets(self, value: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]):
+    def included_cloud_storage_buckets(self, value: pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]):
         pulumi.set(self, "included_cloud_storage_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="includedCloudStorageLocations")
-    def included_cloud_storage_locations(self) -> Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]:
+    def included_cloud_storage_locations(self) -> pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]:
         """
         Locations to include in the Storage Intelligence plan.
         Structure is documented below.
@@ -2477,7 +2477,7 @@ class ControlFolderIntelligenceConfigFilterArgs:
         return pulumi.get(self, "included_cloud_storage_locations")
 
     @included_cloud_storage_locations.setter
-    def included_cloud_storage_locations(self, value: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]):
+    def included_cloud_storage_locations(self, value: pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]):
         pulumi.set(self, "included_cloud_storage_locations", value)
 
 
@@ -2594,7 +2594,7 @@ class ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs:
 
 
 class ControlFolderIntelligenceConfigTrialConfigArgsDict(TypedDict):
-    expire_time: NotRequired[pulumi.Input[_builtins.str]]
+    expire_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time at which the trial expires.
@@ -2603,7 +2603,7 @@ class ControlFolderIntelligenceConfigTrialConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ControlFolderIntelligenceConfigTrialConfigArgs:
     def __init__(__self__, *,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expire_time: (Output)
                The time at which the trial expires.
@@ -2613,7 +2613,7 @@ class ControlFolderIntelligenceConfigTrialConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time at which the trial expires.
@@ -2621,17 +2621,17 @@ class ControlFolderIntelligenceConfigTrialConfigArgs:
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
 
 class ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgsDict(TypedDict):
-    effective_edition: NotRequired[pulumi.Input[_builtins.str]]
+    effective_edition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The `StorageIntelligence` edition that is applicable for the resource.
     """
-    intelligence_config: NotRequired[pulumi.Input[_builtins.str]]
+    intelligence_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Intelligence config resource that is applied for the target resource.
@@ -2640,8 +2640,8 @@ class ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgsDict(T
 @pulumi.input_type
 class ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs:
     def __init__(__self__, *,
-                 effective_edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 intelligence_config: Optional[pulumi.Input[_builtins.str]] = None):
+                 effective_edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 intelligence_config: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effective_edition: (Output)
                The `StorageIntelligence` edition that is applicable for the resource.
@@ -2655,7 +2655,7 @@ class ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="effectiveEdition")
-    def effective_edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The `StorageIntelligence` edition that is applicable for the resource.
@@ -2663,12 +2663,12 @@ class ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs:
         return pulumi.get(self, "effective_edition")
 
     @effective_edition.setter
-    def effective_edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_edition", value)
 
     @_builtins.property
     @pulumi.getter(name="intelligenceConfig")
-    def intelligence_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def intelligence_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Intelligence config resource that is applied for the target resource.
@@ -2676,27 +2676,27 @@ class ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs:
         return pulumi.get(self, "intelligence_config")
 
     @intelligence_config.setter
-    def intelligence_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def intelligence_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "intelligence_config", value)
 
 
 class ControlOrganizationIntelligenceConfigFilterArgsDict(TypedDict):
-    excluded_cloud_storage_buckets: NotRequired[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict']]
+    excluded_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]]
     """
     Buckets to exclude from the Storage Intelligence plan.
     Structure is documented below.
     """
-    excluded_cloud_storage_locations: NotRequired[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict']]
+    excluded_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]]
     """
     Locations to exclude from the Storage Intelligence plan.
     Structure is documented below.
     """
-    included_cloud_storage_buckets: NotRequired[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict']]
+    included_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]]
     """
     Buckets to include in the Storage Intelligence plan.
     Structure is documented below.
     """
-    included_cloud_storage_locations: NotRequired[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict']]
+    included_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]]
     """
     Locations to include in the Storage Intelligence plan.
     Structure is documented below.
@@ -2705,10 +2705,10 @@ class ControlOrganizationIntelligenceConfigFilterArgsDict(TypedDict):
 @pulumi.input_type
 class ControlOrganizationIntelligenceConfigFilterArgs:
     def __init__(__self__, *,
-                 excluded_cloud_storage_buckets: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']] = None,
-                 excluded_cloud_storage_locations: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']] = None,
-                 included_cloud_storage_buckets: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']] = None,
-                 included_cloud_storage_locations: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']] = None):
+                 excluded_cloud_storage_buckets: pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']] = None,
+                 excluded_cloud_storage_locations: pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']] = None,
+                 included_cloud_storage_buckets: pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']] = None,
+                 included_cloud_storage_locations: pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']] = None):
         """
         :param pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs'] excluded_cloud_storage_buckets: Buckets to exclude from the Storage Intelligence plan.
                Structure is documented below.
@@ -2730,7 +2730,7 @@ class ControlOrganizationIntelligenceConfigFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludedCloudStorageBuckets")
-    def excluded_cloud_storage_buckets(self) -> Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]:
+    def excluded_cloud_storage_buckets(self) -> pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]:
         """
         Buckets to exclude from the Storage Intelligence plan.
         Structure is documented below.
@@ -2738,12 +2738,12 @@ class ControlOrganizationIntelligenceConfigFilterArgs:
         return pulumi.get(self, "excluded_cloud_storage_buckets")
 
     @excluded_cloud_storage_buckets.setter
-    def excluded_cloud_storage_buckets(self, value: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]):
+    def excluded_cloud_storage_buckets(self, value: pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]):
         pulumi.set(self, "excluded_cloud_storage_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="excludedCloudStorageLocations")
-    def excluded_cloud_storage_locations(self) -> Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]:
+    def excluded_cloud_storage_locations(self) -> pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]:
         """
         Locations to exclude from the Storage Intelligence plan.
         Structure is documented below.
@@ -2751,12 +2751,12 @@ class ControlOrganizationIntelligenceConfigFilterArgs:
         return pulumi.get(self, "excluded_cloud_storage_locations")
 
     @excluded_cloud_storage_locations.setter
-    def excluded_cloud_storage_locations(self, value: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]):
+    def excluded_cloud_storage_locations(self, value: pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]):
         pulumi.set(self, "excluded_cloud_storage_locations", value)
 
     @_builtins.property
     @pulumi.getter(name="includedCloudStorageBuckets")
-    def included_cloud_storage_buckets(self) -> Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]:
+    def included_cloud_storage_buckets(self) -> pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]:
         """
         Buckets to include in the Storage Intelligence plan.
         Structure is documented below.
@@ -2764,12 +2764,12 @@ class ControlOrganizationIntelligenceConfigFilterArgs:
         return pulumi.get(self, "included_cloud_storage_buckets")
 
     @included_cloud_storage_buckets.setter
-    def included_cloud_storage_buckets(self, value: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]):
+    def included_cloud_storage_buckets(self, value: pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]):
         pulumi.set(self, "included_cloud_storage_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="includedCloudStorageLocations")
-    def included_cloud_storage_locations(self) -> Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]:
+    def included_cloud_storage_locations(self) -> pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]:
         """
         Locations to include in the Storage Intelligence plan.
         Structure is documented below.
@@ -2777,7 +2777,7 @@ class ControlOrganizationIntelligenceConfigFilterArgs:
         return pulumi.get(self, "included_cloud_storage_locations")
 
     @included_cloud_storage_locations.setter
-    def included_cloud_storage_locations(self, value: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]):
+    def included_cloud_storage_locations(self, value: pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]):
         pulumi.set(self, "included_cloud_storage_locations", value)
 
 
@@ -2894,7 +2894,7 @@ class ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsAr
 
 
 class ControlOrganizationIntelligenceConfigTrialConfigArgsDict(TypedDict):
-    expire_time: NotRequired[pulumi.Input[_builtins.str]]
+    expire_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time at which the trial expires.
@@ -2903,7 +2903,7 @@ class ControlOrganizationIntelligenceConfigTrialConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ControlOrganizationIntelligenceConfigTrialConfigArgs:
     def __init__(__self__, *,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expire_time: (Output)
                The time at which the trial expires.
@@ -2913,7 +2913,7 @@ class ControlOrganizationIntelligenceConfigTrialConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time at which the trial expires.
@@ -2921,17 +2921,17 @@ class ControlOrganizationIntelligenceConfigTrialConfigArgs:
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
 
 class ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict(TypedDict):
-    effective_edition: NotRequired[pulumi.Input[_builtins.str]]
+    effective_edition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The `StorageIntelligence` edition that is applicable for the resource.
     """
-    intelligence_config: NotRequired[pulumi.Input[_builtins.str]]
+    intelligence_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Intelligence config resource that is applied for the target resource.
@@ -2940,8 +2940,8 @@ class ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict(TypedD
 @pulumi.input_type
 class ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs:
     def __init__(__self__, *,
-                 effective_edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 intelligence_config: Optional[pulumi.Input[_builtins.str]] = None):
+                 effective_edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 intelligence_config: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effective_edition: (Output)
                The `StorageIntelligence` edition that is applicable for the resource.
@@ -2955,7 +2955,7 @@ class ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="effectiveEdition")
-    def effective_edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The `StorageIntelligence` edition that is applicable for the resource.
@@ -2963,12 +2963,12 @@ class ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs:
         return pulumi.get(self, "effective_edition")
 
     @effective_edition.setter
-    def effective_edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_edition", value)
 
     @_builtins.property
     @pulumi.getter(name="intelligenceConfig")
-    def intelligence_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def intelligence_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Intelligence config resource that is applied for the target resource.
@@ -2976,27 +2976,27 @@ class ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs:
         return pulumi.get(self, "intelligence_config")
 
     @intelligence_config.setter
-    def intelligence_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def intelligence_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "intelligence_config", value)
 
 
 class ControlProjectIntelligenceConfigFilterArgsDict(TypedDict):
-    excluded_cloud_storage_buckets: NotRequired[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict']]
+    excluded_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]]
     """
     Buckets to exclude from the Storage Intelligence plan.
     Structure is documented below.
     """
-    excluded_cloud_storage_locations: NotRequired[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict']]
+    excluded_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]]
     """
     Locations to exclude from the Storage Intelligence plan.
     Structure is documented below.
     """
-    included_cloud_storage_buckets: NotRequired[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict']]
+    included_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]]
     """
     Buckets to include in the Storage Intelligence plan.
     Structure is documented below.
     """
-    included_cloud_storage_locations: NotRequired[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict']]
+    included_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]]
     """
     Locations to include in the Storage Intelligence plan.
     Structure is documented below.
@@ -3005,10 +3005,10 @@ class ControlProjectIntelligenceConfigFilterArgsDict(TypedDict):
 @pulumi.input_type
 class ControlProjectIntelligenceConfigFilterArgs:
     def __init__(__self__, *,
-                 excluded_cloud_storage_buckets: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']] = None,
-                 excluded_cloud_storage_locations: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']] = None,
-                 included_cloud_storage_buckets: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']] = None,
-                 included_cloud_storage_locations: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']] = None):
+                 excluded_cloud_storage_buckets: pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']] = None,
+                 excluded_cloud_storage_locations: pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']] = None,
+                 included_cloud_storage_buckets: pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']] = None,
+                 included_cloud_storage_locations: pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']] = None):
         """
         :param pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs'] excluded_cloud_storage_buckets: Buckets to exclude from the Storage Intelligence plan.
                Structure is documented below.
@@ -3030,7 +3030,7 @@ class ControlProjectIntelligenceConfigFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludedCloudStorageBuckets")
-    def excluded_cloud_storage_buckets(self) -> Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]:
+    def excluded_cloud_storage_buckets(self) -> pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]:
         """
         Buckets to exclude from the Storage Intelligence plan.
         Structure is documented below.
@@ -3038,12 +3038,12 @@ class ControlProjectIntelligenceConfigFilterArgs:
         return pulumi.get(self, "excluded_cloud_storage_buckets")
 
     @excluded_cloud_storage_buckets.setter
-    def excluded_cloud_storage_buckets(self, value: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]):
+    def excluded_cloud_storage_buckets(self, value: pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]):
         pulumi.set(self, "excluded_cloud_storage_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="excludedCloudStorageLocations")
-    def excluded_cloud_storage_locations(self) -> Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]:
+    def excluded_cloud_storage_locations(self) -> pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]:
         """
         Locations to exclude from the Storage Intelligence plan.
         Structure is documented below.
@@ -3051,12 +3051,12 @@ class ControlProjectIntelligenceConfigFilterArgs:
         return pulumi.get(self, "excluded_cloud_storage_locations")
 
     @excluded_cloud_storage_locations.setter
-    def excluded_cloud_storage_locations(self, value: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]):
+    def excluded_cloud_storage_locations(self, value: pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]):
         pulumi.set(self, "excluded_cloud_storage_locations", value)
 
     @_builtins.property
     @pulumi.getter(name="includedCloudStorageBuckets")
-    def included_cloud_storage_buckets(self) -> Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]:
+    def included_cloud_storage_buckets(self) -> pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]:
         """
         Buckets to include in the Storage Intelligence plan.
         Structure is documented below.
@@ -3064,12 +3064,12 @@ class ControlProjectIntelligenceConfigFilterArgs:
         return pulumi.get(self, "included_cloud_storage_buckets")
 
     @included_cloud_storage_buckets.setter
-    def included_cloud_storage_buckets(self, value: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]):
+    def included_cloud_storage_buckets(self, value: pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]):
         pulumi.set(self, "included_cloud_storage_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="includedCloudStorageLocations")
-    def included_cloud_storage_locations(self) -> Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]:
+    def included_cloud_storage_locations(self) -> pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]:
         """
         Locations to include in the Storage Intelligence plan.
         Structure is documented below.
@@ -3077,7 +3077,7 @@ class ControlProjectIntelligenceConfigFilterArgs:
         return pulumi.get(self, "included_cloud_storage_locations")
 
     @included_cloud_storage_locations.setter
-    def included_cloud_storage_locations(self, value: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]):
+    def included_cloud_storage_locations(self, value: pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]):
         pulumi.set(self, "included_cloud_storage_locations", value)
 
 
@@ -3194,7 +3194,7 @@ class ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs:
 
 
 class ControlProjectIntelligenceConfigTrialConfigArgsDict(TypedDict):
-    expire_time: NotRequired[pulumi.Input[_builtins.str]]
+    expire_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time at which the trial expires.
@@ -3203,7 +3203,7 @@ class ControlProjectIntelligenceConfigTrialConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ControlProjectIntelligenceConfigTrialConfigArgs:
     def __init__(__self__, *,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expire_time: (Output)
                The time at which the trial expires.
@@ -3213,7 +3213,7 @@ class ControlProjectIntelligenceConfigTrialConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time at which the trial expires.
@@ -3221,16 +3221,16 @@ class ControlProjectIntelligenceConfigTrialConfigArgs:
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
 
 class DefaultObjectAccessControlProjectTeamArgsDict(TypedDict):
-    project_number: NotRequired[pulumi.Input[_builtins.str]]
+    project_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The project team associated with the entity
     """
-    team: NotRequired[pulumi.Input[_builtins.str]]
+    team: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The team.
     Possible values are: `editors`, `owners`, `viewers`.
@@ -3239,8 +3239,8 @@ class DefaultObjectAccessControlProjectTeamArgsDict(TypedDict):
 @pulumi.input_type
 class DefaultObjectAccessControlProjectTeamArgs:
     def __init__(__self__, *,
-                 project_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 team: Optional[pulumi.Input[_builtins.str]] = None):
+                 project_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 team: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] project_number: The project team associated with the entity
         :param pulumi.Input[_builtins.str] team: The team.
@@ -3253,19 +3253,19 @@ class DefaultObjectAccessControlProjectTeamArgs:
 
     @_builtins.property
     @pulumi.getter(name="projectNumber")
-    def project_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project team associated with the entity
         """
         return pulumi.get(self, "project_number")
 
     @project_number.setter
-    def project_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def team(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def team(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The team.
         Possible values are: `editors`, `owners`, `viewers`.
@@ -3273,7 +3273,7 @@ class DefaultObjectAccessControlProjectTeamArgs:
         return pulumi.get(self, "team")
 
     @team.setter
-    def team(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def team(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "team", value)
 
 
@@ -3309,12 +3309,12 @@ class InsightsDatasetConfigExcludeCloudStorageBucketsArgs:
 
 
 class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgsDict(TypedDict):
-    bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    bucket_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The list of cloud storage bucket names to exclude in the DatasetConfig.
     Exactly one of the bucket_name and bucket_prefix_regex should be specified.
     """
-    bucket_prefix_regex: NotRequired[pulumi.Input[_builtins.str]]
+    bucket_prefix_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The list of regex patterns for bucket names matching the regex.
     Regex should follow the syntax specified in google/re2 on GitHub.
@@ -3324,8 +3324,8 @@ class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgsDict(
 @pulumi.input_type
 class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs:
     def __init__(__self__, *,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_prefix_regex: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_prefix_regex: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_name: The list of cloud storage bucket names to exclude in the DatasetConfig.
                Exactly one of the bucket_name and bucket_prefix_regex should be specified.
@@ -3340,7 +3340,7 @@ class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs:
 
     @_builtins.property
     @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of cloud storage bucket names to exclude in the DatasetConfig.
         Exactly one of the bucket_name and bucket_prefix_regex should be specified.
@@ -3348,12 +3348,12 @@ class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs:
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketPrefixRegex")
-    def bucket_prefix_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_prefix_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of regex patterns for bucket names matching the regex.
         Regex should follow the syntax specified in google/re2 on GitHub.
@@ -3362,7 +3362,7 @@ class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs:
         return pulumi.get(self, "bucket_prefix_regex")
 
     @bucket_prefix_regex.setter
-    def bucket_prefix_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_prefix_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_prefix_regex", value)
 
 
@@ -3400,7 +3400,7 @@ class InsightsDatasetConfigIdentityArgsDict(TypedDict):
     Type of identity to use for the DatasetConfig.
     Possible values are: `IDENTITY_TYPE_PER_CONFIG`, `IDENTITY_TYPE_PER_PROJECT`.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Name of the identity.
@@ -3410,7 +3410,7 @@ class InsightsDatasetConfigIdentityArgsDict(TypedDict):
 class InsightsDatasetConfigIdentityArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: Type of identity to use for the DatasetConfig.
                Possible values are: `IDENTITY_TYPE_PER_CONFIG`, `IDENTITY_TYPE_PER_PROJECT`.
@@ -3436,7 +3436,7 @@ class InsightsDatasetConfigIdentityArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Name of the identity.
@@ -3444,7 +3444,7 @@ class InsightsDatasetConfigIdentityArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -3480,12 +3480,12 @@ class InsightsDatasetConfigIncludeCloudStorageBucketsArgs:
 
 
 class InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgsDict(TypedDict):
-    bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    bucket_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The list of cloud storage bucket names to exclude in the DatasetConfig.
     Exactly one of the bucket_name and bucket_prefix_regex should be specified.
     """
-    bucket_prefix_regex: NotRequired[pulumi.Input[_builtins.str]]
+    bucket_prefix_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The list of regex patterns for bucket names matching the regex.
     Regex should follow the syntax specified in google/re2 on GitHub.
@@ -3495,8 +3495,8 @@ class InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgsDict(
 @pulumi.input_type
 class InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs:
     def __init__(__self__, *,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_prefix_regex: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_prefix_regex: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_name: The list of cloud storage bucket names to exclude in the DatasetConfig.
                Exactly one of the bucket_name and bucket_prefix_regex should be specified.
@@ -3511,7 +3511,7 @@ class InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs:
 
     @_builtins.property
     @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of cloud storage bucket names to exclude in the DatasetConfig.
         Exactly one of the bucket_name and bucket_prefix_regex should be specified.
@@ -3519,12 +3519,12 @@ class InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs:
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketPrefixRegex")
-    def bucket_prefix_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_prefix_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of regex patterns for bucket names matching the regex.
         Regex should follow the syntax specified in google/re2 on GitHub.
@@ -3533,7 +3533,7 @@ class InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs:
         return pulumi.get(self, "bucket_prefix_regex")
 
     @bucket_prefix_regex.setter
-    def bucket_prefix_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_prefix_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_prefix_regex", value)
 
 
@@ -3566,12 +3566,12 @@ class InsightsDatasetConfigIncludeCloudStorageLocationsArgs:
 
 
 class InsightsDatasetConfigLinkArgsDict(TypedDict):
-    dataset: NotRequired[pulumi.Input[_builtins.str]]
+    dataset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Dataset name for the linked DatasetConfig.
     """
-    linked: NotRequired[pulumi.Input[_builtins.bool]]
+    linked: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     State of the linked DatasetConfig.
@@ -3580,8 +3580,8 @@ class InsightsDatasetConfigLinkArgsDict(TypedDict):
 @pulumi.input_type
 class InsightsDatasetConfigLinkArgs:
     def __init__(__self__, *,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked: Optional[pulumi.Input[_builtins.bool]] = None):
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] dataset: (Output)
                Dataset name for the linked DatasetConfig.
@@ -3595,7 +3595,7 @@ class InsightsDatasetConfigLinkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Dataset name for the linked DatasetConfig.
@@ -3603,12 +3603,12 @@ class InsightsDatasetConfigLinkArgs:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset", value)
 
     @_builtins.property
     @pulumi.getter
-    def linked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def linked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         State of the linked DatasetConfig.
@@ -3616,12 +3616,12 @@ class InsightsDatasetConfigLinkArgs:
         return pulumi.get(self, "linked")
 
     @linked.setter
-    def linked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def linked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "linked", value)
 
 
 class InsightsDatasetConfigSourceFoldersArgsDict(TypedDict):
-    folder_numbers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    folder_numbers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of folder numbers to include in the DatasetConfig.
     """
@@ -3629,7 +3629,7 @@ class InsightsDatasetConfigSourceFoldersArgsDict(TypedDict):
 @pulumi.input_type
 class InsightsDatasetConfigSourceFoldersArgs:
     def __init__(__self__, *,
-                 folder_numbers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 folder_numbers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] folder_numbers: The list of folder numbers to include in the DatasetConfig.
         """
@@ -3638,19 +3638,19 @@ class InsightsDatasetConfigSourceFoldersArgs:
 
     @_builtins.property
     @pulumi.getter(name="folderNumbers")
-    def folder_numbers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def folder_numbers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of folder numbers to include in the DatasetConfig.
         """
         return pulumi.get(self, "folder_numbers")
 
     @folder_numbers.setter
-    def folder_numbers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def folder_numbers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "folder_numbers", value)
 
 
 class InsightsDatasetConfigSourceProjectsArgsDict(TypedDict):
-    project_numbers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    project_numbers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of project numbers to include in the DatasetConfig.
     """
@@ -3658,7 +3658,7 @@ class InsightsDatasetConfigSourceProjectsArgsDict(TypedDict):
 @pulumi.input_type
 class InsightsDatasetConfigSourceProjectsArgs:
     def __init__(__self__, *,
-                 project_numbers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 project_numbers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_numbers: The list of project numbers to include in the DatasetConfig.
         """
@@ -3667,27 +3667,27 @@ class InsightsDatasetConfigSourceProjectsArgs:
 
     @_builtins.property
     @pulumi.getter(name="projectNumbers")
-    def project_numbers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def project_numbers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of project numbers to include in the DatasetConfig.
         """
         return pulumi.get(self, "project_numbers")
 
     @project_numbers.setter
-    def project_numbers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def project_numbers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "project_numbers", value)
 
 
 class InsightsReportConfigCsvOptionsArgsDict(TypedDict):
-    delimiter: NotRequired[pulumi.Input[_builtins.str]]
+    delimiter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The delimiter used to separate the fields in the inventory report CSV file.
     """
-    header_required: NotRequired[pulumi.Input[_builtins.bool]]
+    header_required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     The boolean that indicates whether or not headers are included in the inventory report CSV file.
     """
-    record_separator: NotRequired[pulumi.Input[_builtins.str]]
+    record_separator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The character used to separate the records in the inventory report CSV file.
     """
@@ -3695,9 +3695,9 @@ class InsightsReportConfigCsvOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class InsightsReportConfigCsvOptionsArgs:
     def __init__(__self__, *,
-                 delimiter: Optional[pulumi.Input[_builtins.str]] = None,
-                 header_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 record_separator: Optional[pulumi.Input[_builtins.str]] = None):
+                 delimiter: pulumi.Input[Optional[_builtins.str]] = None,
+                 header_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 record_separator: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] delimiter: The delimiter used to separate the fields in the inventory report CSV file.
         :param pulumi.Input[_builtins.bool] header_required: The boolean that indicates whether or not headers are included in the inventory report CSV file.
@@ -3712,38 +3712,38 @@ class InsightsReportConfigCsvOptionsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def delimiter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delimiter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The delimiter used to separate the fields in the inventory report CSV file.
         """
         return pulumi.get(self, "delimiter")
 
     @delimiter.setter
-    def delimiter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delimiter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delimiter", value)
 
     @_builtins.property
     @pulumi.getter(name="headerRequired")
-    def header_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def header_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The boolean that indicates whether or not headers are included in the inventory report CSV file.
         """
         return pulumi.get(self, "header_required")
 
     @header_required.setter
-    def header_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def header_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "header_required", value)
 
     @_builtins.property
     @pulumi.getter(name="recordSeparator")
-    def record_separator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def record_separator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The character used to separate the records in the inventory report CSV file.
         """
         return pulumi.get(self, "record_separator")
 
     @record_separator.setter
-    def record_separator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def record_separator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "record_separator", value)
 
 
@@ -3964,7 +3964,7 @@ class InsightsReportConfigObjectMetadataReportOptionsArgsDict(TypedDict):
     Options for where the inventory reports are stored.
     Structure is documented below.
     """
-    storage_filters: NotRequired[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgsDict']]
+    storage_filters: NotRequired[pulumi.Input[Optional['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -3975,7 +3975,7 @@ class InsightsReportConfigObjectMetadataReportOptionsArgs:
     def __init__(__self__, *,
                  metadata_fields: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  storage_destination_options: pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs'],
-                 storage_filters: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']] = None):
+                 storage_filters: pulumi.Input[Optional['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] metadata_fields: The metadata fields included in an inventory report.
         :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs'] storage_destination_options: Options for where the inventory reports are stored.
@@ -4015,7 +4015,7 @@ class InsightsReportConfigObjectMetadataReportOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="storageFilters")
-    def storage_filters(self) -> Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']]:
+    def storage_filters(self) -> pulumi.Input[Optional['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -4023,7 +4023,7 @@ class InsightsReportConfigObjectMetadataReportOptionsArgs:
         return pulumi.get(self, "storage_filters")
 
     @storage_filters.setter
-    def storage_filters(self, value: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']]):
+    def storage_filters(self, value: pulumi.Input[Optional['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']]):
         pulumi.set(self, "storage_filters", value)
 
 
@@ -4032,7 +4032,7 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsAr
     """
     The destination bucket that stores the generated inventory reports.
     """
-    destination_path: NotRequired[pulumi.Input[_builtins.str]]
+    destination_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path within the destination bucket to store generated inventory reports.
     """
@@ -4041,7 +4041,7 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsAr
 class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 destination_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 destination_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: The destination bucket that stores the generated inventory reports.
         :param pulumi.Input[_builtins.str] destination_path: The path within the destination bucket to store generated inventory reports.
@@ -4064,19 +4064,19 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsAr
 
     @_builtins.property
     @pulumi.getter(name="destinationPath")
-    def destination_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path within the destination bucket to store generated inventory reports.
         """
         return pulumi.get(self, "destination_path")
 
     @destination_path.setter
-    def destination_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_path", value)
 
 
 class InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgsDict(TypedDict):
-    bucket: NotRequired[pulumi.Input[_builtins.str]]
+    bucket: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The filter to use when specifying which bucket to generate inventory reports for.
     """
@@ -4084,7 +4084,7 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgsDict(Type
 @pulumi.input_type
 class InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: The filter to use when specifying which bucket to generate inventory reports for.
         """
@@ -4093,14 +4093,14 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The filter to use when specifying which bucket to generate inventory reports for.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
 
@@ -4122,7 +4122,7 @@ class ManagedFolderIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -4136,7 +4136,7 @@ class ManagedFolderIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -4177,7 +4177,7 @@ class ManagedFolderIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -4188,7 +4188,7 @@ class ManagedFolderIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -4201,7 +4201,7 @@ class ManagedFolderIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -4215,7 +4215,7 @@ class ManagedFolderIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -4256,7 +4256,7 @@ class ManagedFolderIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -4267,16 +4267,16 @@ class ManagedFolderIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ObjectAccessControlProjectTeamArgsDict(TypedDict):
-    project_number: NotRequired[pulumi.Input[_builtins.str]]
+    project_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The project team associated with the entity
     """
-    team: NotRequired[pulumi.Input[_builtins.str]]
+    team: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The team.
     Possible values are: `editors`, `owners`, `viewers`.
@@ -4285,8 +4285,8 @@ class ObjectAccessControlProjectTeamArgsDict(TypedDict):
 @pulumi.input_type
 class ObjectAccessControlProjectTeamArgs:
     def __init__(__self__, *,
-                 project_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 team: Optional[pulumi.Input[_builtins.str]] = None):
+                 project_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 team: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] project_number: The project team associated with the entity
         :param pulumi.Input[_builtins.str] team: The team.
@@ -4299,19 +4299,19 @@ class ObjectAccessControlProjectTeamArgs:
 
     @_builtins.property
     @pulumi.getter(name="projectNumber")
-    def project_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project team associated with the entity
         """
         return pulumi.get(self, "project_number")
 
     @project_number.setter
-    def project_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def team(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def team(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The team.
         Possible values are: `editors`, `owners`, `viewers`.
@@ -4319,7 +4319,7 @@ class ObjectAccessControlProjectTeamArgs:
         return pulumi.get(self, "team")
 
     @team.setter
-    def team(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def team(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "team", value)
 
 
@@ -4356,11 +4356,11 @@ class TransferJobEventStreamArgsDict(TypedDict):
     """
     Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
     """
-    event_stream_expiration_time: NotRequired[pulumi.Input[_builtins.str]]
+    event_stream_expiration_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    event_stream_start_time: NotRequired[pulumi.Input[_builtins.str]]
+    event_stream_start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
@@ -4369,8 +4369,8 @@ class TransferJobEventStreamArgsDict(TypedDict):
 class TransferJobEventStreamArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 event_stream_expiration_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_stream_start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 event_stream_expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_stream_start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
         :param pulumi.Input[_builtins.str] event_stream_expiration_time: Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -4396,39 +4396,39 @@ class TransferJobEventStreamArgs:
 
     @_builtins.property
     @pulumi.getter(name="eventStreamExpirationTime")
-    def event_stream_expiration_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_stream_expiration_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "event_stream_expiration_time")
 
     @event_stream_expiration_time.setter
-    def event_stream_expiration_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_stream_expiration_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_stream_expiration_time", value)
 
     @_builtins.property
     @pulumi.getter(name="eventStreamStartTime")
-    def event_stream_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_stream_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "event_stream_start_time")
 
     @event_stream_start_time.setter
-    def event_stream_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_stream_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_stream_start_time", value)
 
 
 class TransferJobLoggingConfigArgsDict(TypedDict):
-    enable_on_prem_gcs_transfer_logs: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_on_prem_gcs_transfer_logs: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
     """
-    log_action_states: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    log_action_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
     """
-    log_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    log_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
     """
@@ -4436,9 +4436,9 @@ class TransferJobLoggingConfigArgsDict(TypedDict):
 @pulumi.input_type
 class TransferJobLoggingConfigArgs:
     def __init__(__self__, *,
-                 enable_on_prem_gcs_transfer_logs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_action_states: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 enable_on_prem_gcs_transfer_logs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_action_states: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_on_prem_gcs_transfer_logs: For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_action_states: States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
@@ -4453,38 +4453,38 @@ class TransferJobLoggingConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableOnPremGcsTransferLogs")
-    def enable_on_prem_gcs_transfer_logs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_on_prem_gcs_transfer_logs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
         """
         return pulumi.get(self, "enable_on_prem_gcs_transfer_logs")
 
     @enable_on_prem_gcs_transfer_logs.setter
-    def enable_on_prem_gcs_transfer_logs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_on_prem_gcs_transfer_logs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_on_prem_gcs_transfer_logs", value)
 
     @_builtins.property
     @pulumi.getter(name="logActionStates")
-    def log_action_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def log_action_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
         """
         return pulumi.get(self, "log_action_states")
 
     @log_action_states.setter
-    def log_action_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def log_action_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "log_action_states", value)
 
     @_builtins.property
     @pulumi.getter(name="logActions")
-    def log_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def log_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
         """
         return pulumi.get(self, "log_actions")
 
     @log_actions.setter
-    def log_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def log_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "log_actions", value)
 
 
@@ -4497,7 +4497,7 @@ class TransferJobNotificationConfigArgsDict(TypedDict):
     """
     The Topic.name of the Pub/Sub topic to which to publish notifications. Must be of the format: projects/{project}/topics/{topic}. Not matching this format results in an INVALID_ARGUMENT error.
     """
-    event_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    event_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Event types for which a notification is desired. If empty, send notifications for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
     """
@@ -4507,7 +4507,7 @@ class TransferJobNotificationConfigArgs:
     def __init__(__self__, *,
                  payload_format: pulumi.Input[_builtins.str],
                  pubsub_topic: pulumi.Input[_builtins.str],
-                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] payload_format: The desired format of the notification message payloads. One of "NONE" or "JSON".
         :param pulumi.Input[_builtins.str] pubsub_topic: The Topic.name of the Pub/Sub topic to which to publish notifications. Must be of the format: projects/{project}/topics/{topic}. Not matching this format results in an INVALID_ARGUMENT error.
@@ -4544,31 +4544,31 @@ class TransferJobNotificationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="eventTypes")
-    def event_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def event_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Event types for which a notification is desired. If empty, send notifications for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
         """
         return pulumi.get(self, "event_types")
 
     @event_types.setter
-    def event_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def event_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "event_types", value)
 
 
 class TransferJobReplicationSpecArgsDict(TypedDict):
-    gcs_data_sink: NotRequired[pulumi.Input['TransferJobReplicationSpecGcsDataSinkArgsDict']]
+    gcs_data_sink: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecGcsDataSinkArgs']]]
     """
     A Google Cloud Storage data sink. Structure documented below.
     """
-    gcs_data_source: NotRequired[pulumi.Input['TransferJobReplicationSpecGcsDataSourceArgsDict']]
+    gcs_data_source: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecGcsDataSourceArgs']]]
     """
     A Google Cloud Storage data source. Structure documented below.
     """
-    object_conditions: NotRequired[pulumi.Input['TransferJobReplicationSpecObjectConditionsArgsDict']]
+    object_conditions: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecObjectConditionsArgs']]]
     """
     Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
     """
-    transfer_options: NotRequired[pulumi.Input['TransferJobReplicationSpecTransferOptionsArgsDict']]
+    transfer_options: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecTransferOptionsArgs']]]
     """
     Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
     """
@@ -4576,10 +4576,10 @@ class TransferJobReplicationSpecArgsDict(TypedDict):
 @pulumi.input_type
 class TransferJobReplicationSpecArgs:
     def __init__(__self__, *,
-                 gcs_data_sink: Optional[pulumi.Input['TransferJobReplicationSpecGcsDataSinkArgs']] = None,
-                 gcs_data_source: Optional[pulumi.Input['TransferJobReplicationSpecGcsDataSourceArgs']] = None,
-                 object_conditions: Optional[pulumi.Input['TransferJobReplicationSpecObjectConditionsArgs']] = None,
-                 transfer_options: Optional[pulumi.Input['TransferJobReplicationSpecTransferOptionsArgs']] = None):
+                 gcs_data_sink: pulumi.Input[Optional['TransferJobReplicationSpecGcsDataSinkArgs']] = None,
+                 gcs_data_source: pulumi.Input[Optional['TransferJobReplicationSpecGcsDataSourceArgs']] = None,
+                 object_conditions: pulumi.Input[Optional['TransferJobReplicationSpecObjectConditionsArgs']] = None,
+                 transfer_options: pulumi.Input[Optional['TransferJobReplicationSpecTransferOptionsArgs']] = None):
         """
         :param pulumi.Input['TransferJobReplicationSpecGcsDataSinkArgs'] gcs_data_sink: A Google Cloud Storage data sink. Structure documented below.
         :param pulumi.Input['TransferJobReplicationSpecGcsDataSourceArgs'] gcs_data_source: A Google Cloud Storage data source. Structure documented below.
@@ -4597,50 +4597,50 @@ class TransferJobReplicationSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="gcsDataSink")
-    def gcs_data_sink(self) -> Optional[pulumi.Input['TransferJobReplicationSpecGcsDataSinkArgs']]:
+    def gcs_data_sink(self) -> pulumi.Input[Optional['TransferJobReplicationSpecGcsDataSinkArgs']]:
         """
         A Google Cloud Storage data sink. Structure documented below.
         """
         return pulumi.get(self, "gcs_data_sink")
 
     @gcs_data_sink.setter
-    def gcs_data_sink(self, value: Optional[pulumi.Input['TransferJobReplicationSpecGcsDataSinkArgs']]):
+    def gcs_data_sink(self, value: pulumi.Input[Optional['TransferJobReplicationSpecGcsDataSinkArgs']]):
         pulumi.set(self, "gcs_data_sink", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsDataSource")
-    def gcs_data_source(self) -> Optional[pulumi.Input['TransferJobReplicationSpecGcsDataSourceArgs']]:
+    def gcs_data_source(self) -> pulumi.Input[Optional['TransferJobReplicationSpecGcsDataSourceArgs']]:
         """
         A Google Cloud Storage data source. Structure documented below.
         """
         return pulumi.get(self, "gcs_data_source")
 
     @gcs_data_source.setter
-    def gcs_data_source(self, value: Optional[pulumi.Input['TransferJobReplicationSpecGcsDataSourceArgs']]):
+    def gcs_data_source(self, value: pulumi.Input[Optional['TransferJobReplicationSpecGcsDataSourceArgs']]):
         pulumi.set(self, "gcs_data_source", value)
 
     @_builtins.property
     @pulumi.getter(name="objectConditions")
-    def object_conditions(self) -> Optional[pulumi.Input['TransferJobReplicationSpecObjectConditionsArgs']]:
+    def object_conditions(self) -> pulumi.Input[Optional['TransferJobReplicationSpecObjectConditionsArgs']]:
         """
         Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
         """
         return pulumi.get(self, "object_conditions")
 
     @object_conditions.setter
-    def object_conditions(self, value: Optional[pulumi.Input['TransferJobReplicationSpecObjectConditionsArgs']]):
+    def object_conditions(self, value: pulumi.Input[Optional['TransferJobReplicationSpecObjectConditionsArgs']]):
         pulumi.set(self, "object_conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="transferOptions")
-    def transfer_options(self) -> Optional[pulumi.Input['TransferJobReplicationSpecTransferOptionsArgs']]:
+    def transfer_options(self) -> pulumi.Input[Optional['TransferJobReplicationSpecTransferOptionsArgs']]:
         """
         Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         """
         return pulumi.get(self, "transfer_options")
 
     @transfer_options.setter
-    def transfer_options(self, value: Optional[pulumi.Input['TransferJobReplicationSpecTransferOptionsArgs']]):
+    def transfer_options(self, value: pulumi.Input[Optional['TransferJobReplicationSpecTransferOptionsArgs']]):
         pulumi.set(self, "transfer_options", value)
 
 
@@ -4649,7 +4649,7 @@ class TransferJobReplicationSpecGcsDataSinkArgsDict(TypedDict):
     """
     Google Cloud Storage bucket name.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
     """
@@ -4658,7 +4658,7 @@ class TransferJobReplicationSpecGcsDataSinkArgsDict(TypedDict):
 class TransferJobReplicationSpecGcsDataSinkArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[_builtins.str],
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_name: Google Cloud Storage bucket name.
         :param pulumi.Input[_builtins.str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -4681,14 +4681,14 @@ class TransferJobReplicationSpecGcsDataSinkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
@@ -4697,7 +4697,7 @@ class TransferJobReplicationSpecGcsDataSourceArgsDict(TypedDict):
     """
     Google Cloud Storage bucket name.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
     """
@@ -4706,7 +4706,7 @@ class TransferJobReplicationSpecGcsDataSourceArgsDict(TypedDict):
 class TransferJobReplicationSpecGcsDataSourceArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[_builtins.str],
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_name: Google Cloud Storage bucket name.
         :param pulumi.Input[_builtins.str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -4729,39 +4729,39 @@ class TransferJobReplicationSpecGcsDataSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
 class TransferJobReplicationSpecObjectConditionsArgsDict(TypedDict):
-    exclude_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
     """
-    include_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    include_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     If `include_prefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
     """
-    last_modified_before: NotRequired[pulumi.Input[_builtins.str]]
+    last_modified_before: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    last_modified_since: NotRequired[pulumi.Input[_builtins.str]]
+    last_modified_since: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    max_time_elapsed_since_last_modification: NotRequired[pulumi.Input[_builtins.str]]
+    max_time_elapsed_since_last_modification: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
-    min_time_elapsed_since_last_modification: NotRequired[pulumi.Input[_builtins.str]]
+    min_time_elapsed_since_last_modification: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
@@ -4769,12 +4769,12 @@ class TransferJobReplicationSpecObjectConditionsArgsDict(TypedDict):
 @pulumi.input_type
 class TransferJobReplicationSpecObjectConditionsArgs:
     def __init__(__self__, *,
-                 exclude_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 last_modified_before: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified_since: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_time_elapsed_since_last_modification: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_time_elapsed_since_last_modification: Optional[pulumi.Input[_builtins.str]] = None):
+                 exclude_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 last_modified_before: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified_since: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_time_elapsed_since_last_modification: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_time_elapsed_since_last_modification: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_prefixes: `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_prefixes: If `include_prefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
@@ -4798,96 +4798,96 @@ class TransferJobReplicationSpecObjectConditionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludePrefixes")
-    def exclude_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
         """
         return pulumi.get(self, "exclude_prefixes")
 
     @exclude_prefixes.setter
-    def exclude_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="includePrefixes")
-    def include_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def include_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `include_prefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
         """
         return pulumi.get(self, "include_prefixes")
 
     @include_prefixes.setter
-    def include_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def include_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "include_prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedBefore")
-    def last_modified_before(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified_before(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "last_modified_before")
 
     @last_modified_before.setter
-    def last_modified_before(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified_before(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified_before", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedSince")
-    def last_modified_since(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified_since(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "last_modified_since")
 
     @last_modified_since.setter
-    def last_modified_since(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified_since(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified_since", value)
 
     @_builtins.property
     @pulumi.getter(name="maxTimeElapsedSinceLastModification")
-    def max_time_elapsed_since_last_modification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_time_elapsed_since_last_modification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "max_time_elapsed_since_last_modification")
 
     @max_time_elapsed_since_last_modification.setter
-    def max_time_elapsed_since_last_modification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_time_elapsed_since_last_modification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_time_elapsed_since_last_modification", value)
 
     @_builtins.property
     @pulumi.getter(name="minTimeElapsedSinceLastModification")
-    def min_time_elapsed_since_last_modification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_time_elapsed_since_last_modification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "min_time_elapsed_since_last_modification")
 
     @min_time_elapsed_since_last_modification.setter
-    def min_time_elapsed_since_last_modification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_time_elapsed_since_last_modification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_time_elapsed_since_last_modification", value)
 
 
 class TransferJobReplicationSpecTransferOptionsArgsDict(TypedDict):
-    delete_objects_from_source_after_transfer: NotRequired[pulumi.Input[_builtins.bool]]
+    delete_objects_from_source_after_transfer: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
     """
-    delete_objects_unique_in_sink: NotRequired[pulumi.Input[_builtins.bool]]
+    delete_objects_unique_in_sink: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether objects that exist only in the sink should be deleted. Note that this option and
     `delete_objects_from_source_after_transfer` are mutually exclusive.
     """
-    metadata_options: NotRequired[pulumi.Input['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgsDict']]
+    metadata_options: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs']]]
     """
     Specifies the metadata options for running a transfer. Structure documented below.
     """
-    overwrite_objects_already_existing_in_sink: NotRequired[pulumi.Input[_builtins.bool]]
+    overwrite_objects_already_existing_in_sink: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether overwriting objects that already exist in the sink is allowed.
     """
-    overwrite_when: NotRequired[pulumi.Input[_builtins.str]]
+    overwrite_when: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
     """
@@ -4895,11 +4895,11 @@ class TransferJobReplicationSpecTransferOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class TransferJobReplicationSpecTransferOptionsArgs:
     def __init__(__self__, *,
-                 delete_objects_from_source_after_transfer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_objects_unique_in_sink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata_options: Optional[pulumi.Input['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs']] = None,
-                 overwrite_objects_already_existing_in_sink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 overwrite_when: Optional[pulumi.Input[_builtins.str]] = None):
+                 delete_objects_from_source_after_transfer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_objects_unique_in_sink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata_options: pulumi.Input[Optional['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs']] = None,
+                 overwrite_objects_already_existing_in_sink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 overwrite_when: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] delete_objects_from_source_after_transfer: Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
         :param pulumi.Input[_builtins.bool] delete_objects_unique_in_sink: Whether objects that exist only in the sink should be deleted. Note that this option and
@@ -4921,19 +4921,19 @@ class TransferJobReplicationSpecTransferOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="deleteObjectsFromSourceAfterTransfer")
-    def delete_objects_from_source_after_transfer(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_objects_from_source_after_transfer(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
         """
         return pulumi.get(self, "delete_objects_from_source_after_transfer")
 
     @delete_objects_from_source_after_transfer.setter
-    def delete_objects_from_source_after_transfer(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_objects_from_source_after_transfer(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_objects_from_source_after_transfer", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteObjectsUniqueInSink")
-    def delete_objects_unique_in_sink(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_objects_unique_in_sink(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether objects that exist only in the sink should be deleted. Note that this option and
         `delete_objects_from_source_after_transfer` are mutually exclusive.
@@ -4941,80 +4941,80 @@ class TransferJobReplicationSpecTransferOptionsArgs:
         return pulumi.get(self, "delete_objects_unique_in_sink")
 
     @delete_objects_unique_in_sink.setter
-    def delete_objects_unique_in_sink(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_objects_unique_in_sink(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_objects_unique_in_sink", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataOptions")
-    def metadata_options(self) -> Optional[pulumi.Input['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs']]:
+    def metadata_options(self) -> pulumi.Input[Optional['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs']]:
         """
         Specifies the metadata options for running a transfer. Structure documented below.
         """
         return pulumi.get(self, "metadata_options")
 
     @metadata_options.setter
-    def metadata_options(self, value: Optional[pulumi.Input['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs']]):
+    def metadata_options(self, value: pulumi.Input[Optional['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs']]):
         pulumi.set(self, "metadata_options", value)
 
     @_builtins.property
     @pulumi.getter(name="overwriteObjectsAlreadyExistingInSink")
-    def overwrite_objects_already_existing_in_sink(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite_objects_already_existing_in_sink(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether overwriting objects that already exist in the sink is allowed.
         """
         return pulumi.get(self, "overwrite_objects_already_existing_in_sink")
 
     @overwrite_objects_already_existing_in_sink.setter
-    def overwrite_objects_already_existing_in_sink(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite_objects_already_existing_in_sink(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite_objects_already_existing_in_sink", value)
 
     @_builtins.property
     @pulumi.getter(name="overwriteWhen")
-    def overwrite_when(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def overwrite_when(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
         """
         return pulumi.get(self, "overwrite_when")
 
     @overwrite_when.setter
-    def overwrite_when(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def overwrite_when(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "overwrite_when", value)
 
 
 class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgsDict(TypedDict):
-    acl: NotRequired[pulumi.Input[_builtins.str]]
+    acl: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
     """
-    gid: NotRequired[pulumi.Input[_builtins.str]]
+    gid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
     """
-    kms_key: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
     """
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how each file's mode attribute should be handled by the transfer.
     """
-    storage_class: NotRequired[pulumi.Input[_builtins.str]]
+    storage_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
     """
-    symlink: NotRequired[pulumi.Input[_builtins.str]]
+    symlink: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how symlinks should be handled by the transfer.
     """
-    temporary_hold: NotRequired[pulumi.Input[_builtins.str]]
+    temporary_hold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
     """
-    time_created: NotRequired[pulumi.Input[_builtins.str]]
+    time_created: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how each object's timeCreated metadata is preserved for transfers.
     """
-    uid: NotRequired[pulumi.Input[_builtins.str]]
+    uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
     """
@@ -5022,15 +5022,15 @@ class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgsDict(TypedDict
 @pulumi.input_type
 class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 gid: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 symlink: Optional[pulumi.Input[_builtins.str]] = None,
-                 temporary_hold: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_created: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 gid: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 symlink: pulumi.Input[Optional[_builtins.str]] = None,
+                 temporary_hold: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_created: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] acl: Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
         :param pulumi.Input[_builtins.str] gid: Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
@@ -5063,110 +5063,110 @@ class TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def gid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
         """
         return pulumi.get(self, "gid")
 
     @gid.setter
-    def gid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gid", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
-    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
         """
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
-    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how each file's mode attribute should be handled by the transfer.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
         """
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
-    def storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_class", value)
 
     @_builtins.property
     @pulumi.getter
-    def symlink(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def symlink(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how symlinks should be handled by the transfer.
         """
         return pulumi.get(self, "symlink")
 
     @symlink.setter
-    def symlink(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def symlink(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "symlink", value)
 
     @_builtins.property
     @pulumi.getter(name="temporaryHold")
-    def temporary_hold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def temporary_hold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
         """
         return pulumi.get(self, "temporary_hold")
 
     @temporary_hold.setter
-    def temporary_hold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def temporary_hold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "temporary_hold", value)
 
     @_builtins.property
     @pulumi.getter(name="timeCreated")
-    def time_created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how each object's timeCreated metadata is preserved for transfers.
         """
         return pulumi.get(self, "time_created")
 
     @time_created.setter
-    def time_created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_created", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
@@ -5175,15 +5175,15 @@ class TransferJobScheduleArgsDict(TypedDict):
     """
     The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
     """
-    repeat_interval: NotRequired[pulumi.Input[_builtins.str]]
+    repeat_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
-    schedule_end_date: NotRequired[pulumi.Input['TransferJobScheduleScheduleEndDateArgsDict']]
+    schedule_end_date: NotRequired[pulumi.Input[Optional['TransferJobScheduleScheduleEndDateArgs']]]
     """
     The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
     """
-    start_time_of_day: NotRequired[pulumi.Input['TransferJobScheduleStartTimeOfDayArgsDict']]
+    start_time_of_day: NotRequired[pulumi.Input[Optional['TransferJobScheduleStartTimeOfDayArgs']]]
     """
     The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
     """
@@ -5192,9 +5192,9 @@ class TransferJobScheduleArgsDict(TypedDict):
 class TransferJobScheduleArgs:
     def __init__(__self__, *,
                  schedule_start_date: pulumi.Input['TransferJobScheduleScheduleStartDateArgs'],
-                 repeat_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_end_date: Optional[pulumi.Input['TransferJobScheduleScheduleEndDateArgs']] = None,
-                 start_time_of_day: Optional[pulumi.Input['TransferJobScheduleStartTimeOfDayArgs']] = None):
+                 repeat_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_end_date: pulumi.Input[Optional['TransferJobScheduleScheduleEndDateArgs']] = None,
+                 start_time_of_day: pulumi.Input[Optional['TransferJobScheduleStartTimeOfDayArgs']] = None):
         """
         :param pulumi.Input['TransferJobScheduleScheduleStartDateArgs'] schedule_start_date: The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
         :param pulumi.Input[_builtins.str] repeat_interval: Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -5223,38 +5223,38 @@ class TransferJobScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="repeatInterval")
-    def repeat_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repeat_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "repeat_interval")
 
     @repeat_interval.setter
-    def repeat_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repeat_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repeat_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleEndDate")
-    def schedule_end_date(self) -> Optional[pulumi.Input['TransferJobScheduleScheduleEndDateArgs']]:
+    def schedule_end_date(self) -> pulumi.Input[Optional['TransferJobScheduleScheduleEndDateArgs']]:
         """
         The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
         """
         return pulumi.get(self, "schedule_end_date")
 
     @schedule_end_date.setter
-    def schedule_end_date(self, value: Optional[pulumi.Input['TransferJobScheduleScheduleEndDateArgs']]):
+    def schedule_end_date(self, value: pulumi.Input[Optional['TransferJobScheduleScheduleEndDateArgs']]):
         pulumi.set(self, "schedule_end_date", value)
 
     @_builtins.property
     @pulumi.getter(name="startTimeOfDay")
-    def start_time_of_day(self) -> Optional[pulumi.Input['TransferJobScheduleStartTimeOfDayArgs']]:
+    def start_time_of_day(self) -> pulumi.Input[Optional['TransferJobScheduleStartTimeOfDayArgs']]:
         """
         The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
         """
         return pulumi.get(self, "start_time_of_day")
 
     @start_time_of_day.setter
-    def start_time_of_day(self, value: Optional[pulumi.Input['TransferJobScheduleStartTimeOfDayArgs']]):
+    def start_time_of_day(self, value: pulumi.Input[Optional['TransferJobScheduleStartTimeOfDayArgs']]):
         pulumi.set(self, "start_time_of_day", value)
 
 
@@ -5476,59 +5476,59 @@ class TransferJobScheduleStartTimeOfDayArgs:
 
 
 class TransferJobTransferSpecArgsDict(TypedDict):
-    aws_s3_compatible_data_source: NotRequired[pulumi.Input['TransferJobTransferSpecAwsS3CompatibleDataSourceArgsDict']]
+    aws_s3_compatible_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAwsS3CompatibleDataSourceArgs']]]
     """
     An AWS S3 Compatible data source. Structure documented below.
     """
-    aws_s3_data_source: NotRequired[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgsDict']]
+    aws_s3_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAwsS3DataSourceArgs']]]
     """
     An AWS S3 data source. Structure documented below.
     """
-    azure_blob_storage_data_source: NotRequired[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgsDict']]
+    azure_blob_storage_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']]]
     """
     An Azure Blob Storage data source. Structure documented below.
     """
-    gcs_data_sink: NotRequired[pulumi.Input['TransferJobTransferSpecGcsDataSinkArgsDict']]
+    gcs_data_sink: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecGcsDataSinkArgs']]]
     """
     A Google Cloud Storage data sink. Structure documented below.
     """
-    gcs_data_source: NotRequired[pulumi.Input['TransferJobTransferSpecGcsDataSourceArgsDict']]
+    gcs_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecGcsDataSourceArgs']]]
     """
     A Google Cloud Storage data source. Structure documented below.
     """
-    hdfs_data_source: NotRequired[pulumi.Input['TransferJobTransferSpecHdfsDataSourceArgsDict']]
+    hdfs_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecHdfsDataSourceArgs']]]
     """
     An HDFS data source. Structure documented below.
     """
-    http_data_source: NotRequired[pulumi.Input['TransferJobTransferSpecHttpDataSourceArgsDict']]
+    http_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecHttpDataSourceArgs']]]
     """
     A HTTP URL data source. Structure documented below.
     """
-    object_conditions: NotRequired[pulumi.Input['TransferJobTransferSpecObjectConditionsArgsDict']]
+    object_conditions: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecObjectConditionsArgs']]]
     """
     Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
     """
-    posix_data_sink: NotRequired[pulumi.Input['TransferJobTransferSpecPosixDataSinkArgsDict']]
+    posix_data_sink: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecPosixDataSinkArgs']]]
     """
     A POSIX data sink. Structure documented below.
     """
-    posix_data_source: NotRequired[pulumi.Input['TransferJobTransferSpecPosixDataSourceArgsDict']]
+    posix_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecPosixDataSourceArgs']]]
     """
     A POSIX filesystem data source. Structure documented below.
     """
-    sink_agent_pool_name: NotRequired[pulumi.Input[_builtins.str]]
+    sink_agent_pool_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
     """
-    source_agent_pool_name: NotRequired[pulumi.Input[_builtins.str]]
+    source_agent_pool_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
     """
-    transfer_manifest: NotRequired[pulumi.Input['TransferJobTransferSpecTransferManifestArgsDict']]
+    transfer_manifest: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecTransferManifestArgs']]]
     """
     Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
     """
-    transfer_options: NotRequired[pulumi.Input['TransferJobTransferSpecTransferOptionsArgsDict']]
+    transfer_options: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecTransferOptionsArgs']]]
     """
     Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
     """
@@ -5536,20 +5536,20 @@ class TransferJobTransferSpecArgsDict(TypedDict):
 @pulumi.input_type
 class TransferJobTransferSpecArgs:
     def __init__(__self__, *,
-                 aws_s3_compatible_data_source: Optional[pulumi.Input['TransferJobTransferSpecAwsS3CompatibleDataSourceArgs']] = None,
-                 aws_s3_data_source: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgs']] = None,
-                 azure_blob_storage_data_source: Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']] = None,
-                 gcs_data_sink: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSinkArgs']] = None,
-                 gcs_data_source: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSourceArgs']] = None,
-                 hdfs_data_source: Optional[pulumi.Input['TransferJobTransferSpecHdfsDataSourceArgs']] = None,
-                 http_data_source: Optional[pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs']] = None,
-                 object_conditions: Optional[pulumi.Input['TransferJobTransferSpecObjectConditionsArgs']] = None,
-                 posix_data_sink: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs']] = None,
-                 posix_data_source: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs']] = None,
-                 sink_agent_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_agent_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transfer_manifest: Optional[pulumi.Input['TransferJobTransferSpecTransferManifestArgs']] = None,
-                 transfer_options: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsArgs']] = None):
+                 aws_s3_compatible_data_source: pulumi.Input[Optional['TransferJobTransferSpecAwsS3CompatibleDataSourceArgs']] = None,
+                 aws_s3_data_source: pulumi.Input[Optional['TransferJobTransferSpecAwsS3DataSourceArgs']] = None,
+                 azure_blob_storage_data_source: pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']] = None,
+                 gcs_data_sink: pulumi.Input[Optional['TransferJobTransferSpecGcsDataSinkArgs']] = None,
+                 gcs_data_source: pulumi.Input[Optional['TransferJobTransferSpecGcsDataSourceArgs']] = None,
+                 hdfs_data_source: pulumi.Input[Optional['TransferJobTransferSpecHdfsDataSourceArgs']] = None,
+                 http_data_source: pulumi.Input[Optional['TransferJobTransferSpecHttpDataSourceArgs']] = None,
+                 object_conditions: pulumi.Input[Optional['TransferJobTransferSpecObjectConditionsArgs']] = None,
+                 posix_data_sink: pulumi.Input[Optional['TransferJobTransferSpecPosixDataSinkArgs']] = None,
+                 posix_data_source: pulumi.Input[Optional['TransferJobTransferSpecPosixDataSourceArgs']] = None,
+                 sink_agent_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_agent_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transfer_manifest: pulumi.Input[Optional['TransferJobTransferSpecTransferManifestArgs']] = None,
+                 transfer_options: pulumi.Input[Optional['TransferJobTransferSpecTransferOptionsArgs']] = None):
         """
         :param pulumi.Input['TransferJobTransferSpecAwsS3CompatibleDataSourceArgs'] aws_s3_compatible_data_source: An AWS S3 Compatible data source. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgs'] aws_s3_data_source: An AWS S3 data source. Structure documented below.
@@ -5597,170 +5597,170 @@ class TransferJobTransferSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="awsS3CompatibleDataSource")
-    def aws_s3_compatible_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecAwsS3CompatibleDataSourceArgs']]:
+    def aws_s3_compatible_data_source(self) -> pulumi.Input[Optional['TransferJobTransferSpecAwsS3CompatibleDataSourceArgs']]:
         """
         An AWS S3 Compatible data source. Structure documented below.
         """
         return pulumi.get(self, "aws_s3_compatible_data_source")
 
     @aws_s3_compatible_data_source.setter
-    def aws_s3_compatible_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecAwsS3CompatibleDataSourceArgs']]):
+    def aws_s3_compatible_data_source(self, value: pulumi.Input[Optional['TransferJobTransferSpecAwsS3CompatibleDataSourceArgs']]):
         pulumi.set(self, "aws_s3_compatible_data_source", value)
 
     @_builtins.property
     @pulumi.getter(name="awsS3DataSource")
-    def aws_s3_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgs']]:
+    def aws_s3_data_source(self) -> pulumi.Input[Optional['TransferJobTransferSpecAwsS3DataSourceArgs']]:
         """
         An AWS S3 data source. Structure documented below.
         """
         return pulumi.get(self, "aws_s3_data_source")
 
     @aws_s3_data_source.setter
-    def aws_s3_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgs']]):
+    def aws_s3_data_source(self, value: pulumi.Input[Optional['TransferJobTransferSpecAwsS3DataSourceArgs']]):
         pulumi.set(self, "aws_s3_data_source", value)
 
     @_builtins.property
     @pulumi.getter(name="azureBlobStorageDataSource")
-    def azure_blob_storage_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']]:
+    def azure_blob_storage_data_source(self) -> pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']]:
         """
         An Azure Blob Storage data source. Structure documented below.
         """
         return pulumi.get(self, "azure_blob_storage_data_source")
 
     @azure_blob_storage_data_source.setter
-    def azure_blob_storage_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']]):
+    def azure_blob_storage_data_source(self, value: pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']]):
         pulumi.set(self, "azure_blob_storage_data_source", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsDataSink")
-    def gcs_data_sink(self) -> Optional[pulumi.Input['TransferJobTransferSpecGcsDataSinkArgs']]:
+    def gcs_data_sink(self) -> pulumi.Input[Optional['TransferJobTransferSpecGcsDataSinkArgs']]:
         """
         A Google Cloud Storage data sink. Structure documented below.
         """
         return pulumi.get(self, "gcs_data_sink")
 
     @gcs_data_sink.setter
-    def gcs_data_sink(self, value: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSinkArgs']]):
+    def gcs_data_sink(self, value: pulumi.Input[Optional['TransferJobTransferSpecGcsDataSinkArgs']]):
         pulumi.set(self, "gcs_data_sink", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsDataSource")
-    def gcs_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecGcsDataSourceArgs']]:
+    def gcs_data_source(self) -> pulumi.Input[Optional['TransferJobTransferSpecGcsDataSourceArgs']]:
         """
         A Google Cloud Storage data source. Structure documented below.
         """
         return pulumi.get(self, "gcs_data_source")
 
     @gcs_data_source.setter
-    def gcs_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSourceArgs']]):
+    def gcs_data_source(self, value: pulumi.Input[Optional['TransferJobTransferSpecGcsDataSourceArgs']]):
         pulumi.set(self, "gcs_data_source", value)
 
     @_builtins.property
     @pulumi.getter(name="hdfsDataSource")
-    def hdfs_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecHdfsDataSourceArgs']]:
+    def hdfs_data_source(self) -> pulumi.Input[Optional['TransferJobTransferSpecHdfsDataSourceArgs']]:
         """
         An HDFS data source. Structure documented below.
         """
         return pulumi.get(self, "hdfs_data_source")
 
     @hdfs_data_source.setter
-    def hdfs_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecHdfsDataSourceArgs']]):
+    def hdfs_data_source(self, value: pulumi.Input[Optional['TransferJobTransferSpecHdfsDataSourceArgs']]):
         pulumi.set(self, "hdfs_data_source", value)
 
     @_builtins.property
     @pulumi.getter(name="httpDataSource")
-    def http_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs']]:
+    def http_data_source(self) -> pulumi.Input[Optional['TransferJobTransferSpecHttpDataSourceArgs']]:
         """
         A HTTP URL data source. Structure documented below.
         """
         return pulumi.get(self, "http_data_source")
 
     @http_data_source.setter
-    def http_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs']]):
+    def http_data_source(self, value: pulumi.Input[Optional['TransferJobTransferSpecHttpDataSourceArgs']]):
         pulumi.set(self, "http_data_source", value)
 
     @_builtins.property
     @pulumi.getter(name="objectConditions")
-    def object_conditions(self) -> Optional[pulumi.Input['TransferJobTransferSpecObjectConditionsArgs']]:
+    def object_conditions(self) -> pulumi.Input[Optional['TransferJobTransferSpecObjectConditionsArgs']]:
         """
         Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
         """
         return pulumi.get(self, "object_conditions")
 
     @object_conditions.setter
-    def object_conditions(self, value: Optional[pulumi.Input['TransferJobTransferSpecObjectConditionsArgs']]):
+    def object_conditions(self, value: pulumi.Input[Optional['TransferJobTransferSpecObjectConditionsArgs']]):
         pulumi.set(self, "object_conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="posixDataSink")
-    def posix_data_sink(self) -> Optional[pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs']]:
+    def posix_data_sink(self) -> pulumi.Input[Optional['TransferJobTransferSpecPosixDataSinkArgs']]:
         """
         A POSIX data sink. Structure documented below.
         """
         return pulumi.get(self, "posix_data_sink")
 
     @posix_data_sink.setter
-    def posix_data_sink(self, value: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs']]):
+    def posix_data_sink(self, value: pulumi.Input[Optional['TransferJobTransferSpecPosixDataSinkArgs']]):
         pulumi.set(self, "posix_data_sink", value)
 
     @_builtins.property
     @pulumi.getter(name="posixDataSource")
-    def posix_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs']]:
+    def posix_data_source(self) -> pulumi.Input[Optional['TransferJobTransferSpecPosixDataSourceArgs']]:
         """
         A POSIX filesystem data source. Structure documented below.
         """
         return pulumi.get(self, "posix_data_source")
 
     @posix_data_source.setter
-    def posix_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs']]):
+    def posix_data_source(self, value: pulumi.Input[Optional['TransferJobTransferSpecPosixDataSourceArgs']]):
         pulumi.set(self, "posix_data_source", value)
 
     @_builtins.property
     @pulumi.getter(name="sinkAgentPoolName")
-    def sink_agent_pool_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sink_agent_pool_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
         """
         return pulumi.get(self, "sink_agent_pool_name")
 
     @sink_agent_pool_name.setter
-    def sink_agent_pool_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sink_agent_pool_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sink_agent_pool_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceAgentPoolName")
-    def source_agent_pool_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_agent_pool_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
         """
         return pulumi.get(self, "source_agent_pool_name")
 
     @source_agent_pool_name.setter
-    def source_agent_pool_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_agent_pool_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_agent_pool_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transferManifest")
-    def transfer_manifest(self) -> Optional[pulumi.Input['TransferJobTransferSpecTransferManifestArgs']]:
+    def transfer_manifest(self) -> pulumi.Input[Optional['TransferJobTransferSpecTransferManifestArgs']]:
         """
         Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
         """
         return pulumi.get(self, "transfer_manifest")
 
     @transfer_manifest.setter
-    def transfer_manifest(self, value: Optional[pulumi.Input['TransferJobTransferSpecTransferManifestArgs']]):
+    def transfer_manifest(self, value: pulumi.Input[Optional['TransferJobTransferSpecTransferManifestArgs']]):
         pulumi.set(self, "transfer_manifest", value)
 
     @_builtins.property
     @pulumi.getter(name="transferOptions")
-    def transfer_options(self) -> Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsArgs']]:
+    def transfer_options(self) -> pulumi.Input[Optional['TransferJobTransferSpecTransferOptionsArgs']]:
         """
         Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         """
         return pulumi.get(self, "transfer_options")
 
     @transfer_options.setter
-    def transfer_options(self, value: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsArgs']]):
+    def transfer_options(self, value: pulumi.Input[Optional['TransferJobTransferSpecTransferOptionsArgs']]):
         pulumi.set(self, "transfer_options", value)
 
 
@@ -5773,15 +5773,15 @@ class TransferJobTransferSpecAwsS3CompatibleDataSourceArgsDict(TypedDict):
     """
     Endpoint of the storage service.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the path to transfer objects.
     """
-    region: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
     """
-    s3_metadata: NotRequired[pulumi.Input['TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgsDict']]
+    s3_metadata: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs']]]
     """
     S3 compatible metadata.
     """
@@ -5791,9 +5791,9 @@ class TransferJobTransferSpecAwsS3CompatibleDataSourceArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[_builtins.str],
                  endpoint: pulumi.Input[_builtins.str],
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_metadata: Optional[pulumi.Input['TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs']] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_metadata: pulumi.Input[Optional['TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] endpoint: Endpoint of the storage service.
@@ -5836,55 +5836,55 @@ class TransferJobTransferSpecAwsS3CompatibleDataSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the path to transfer objects.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="s3Metadata")
-    def s3_metadata(self) -> Optional[pulumi.Input['TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs']]:
+    def s3_metadata(self) -> pulumi.Input[Optional['TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs']]:
         """
         S3 compatible metadata.
         """
         return pulumi.get(self, "s3_metadata")
 
     @s3_metadata.setter
-    def s3_metadata(self, value: Optional[pulumi.Input['TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs']]):
+    def s3_metadata(self, value: pulumi.Input[Optional['TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs']]):
         pulumi.set(self, "s3_metadata", value)
 
 
 class TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgsDict(TypedDict):
-    auth_method: NotRequired[pulumi.Input[_builtins.str]]
+    auth_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
     """
-    list_api: NotRequired[pulumi.Input[_builtins.str]]
+    list_api: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
     """
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
     """
-    request_model: NotRequired[pulumi.Input[_builtins.str]]
+    request_model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
     """
@@ -5892,10 +5892,10 @@ class TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgsDict(TypedDi
 @pulumi.input_type
 class TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs:
     def __init__(__self__, *,
-                 auth_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 list_api: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_model: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 list_api: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_model: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_method: Authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
         :param pulumi.Input[_builtins.str] list_api: The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
@@ -5913,50 +5913,50 @@ class TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs:
 
     @_builtins.property
     @pulumi.getter(name="authMethod")
-    def auth_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
         """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
-    def auth_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_method", value)
 
     @_builtins.property
     @pulumi.getter(name="listApi")
-    def list_api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def list_api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
         """
         return pulumi.get(self, "list_api")
 
     @list_api.setter
-    def list_api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def list_api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "list_api", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="requestModel")
-    def request_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
         """
         return pulumi.get(self, "request_model")
 
     @request_model.setter
-    def request_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_model", value)
 
 
@@ -5965,27 +5965,27 @@ class TransferJobTransferSpecAwsS3DataSourceArgsDict(TypedDict):
     """
     S3 Bucket name.
     """
-    aws_access_key: NotRequired[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgsDict']]
+    aws_access_key: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']]]
     """
     AWS credentials block.
     """
-    cloudfront_domain: NotRequired[pulumi.Input[_builtins.str]]
+    cloudfront_domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
     """
-    credentials_secret: NotRequired[pulumi.Input[_builtins.str]]
+    credentials_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
     """
-    managed_private_network: NotRequired[pulumi.Input[_builtins.bool]]
+    managed_private_network: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     S3 Bucket path in bucket to transfer.
     """
-    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    role_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
     """
@@ -5994,12 +5994,12 @@ class TransferJobTransferSpecAwsS3DataSourceArgsDict(TypedDict):
 class TransferJobTransferSpecAwsS3DataSourceArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[_builtins.str],
-                 aws_access_key: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']] = None,
-                 cloudfront_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_private_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 aws_access_key: pulumi.Input[Optional['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']] = None,
+                 cloudfront_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_private_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_name: S3 Bucket name.
         :param pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs'] aws_access_key: AWS credentials block.
@@ -6037,74 +6037,74 @@ class TransferJobTransferSpecAwsS3DataSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="awsAccessKey")
-    def aws_access_key(self) -> Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']]:
+    def aws_access_key(self) -> pulumi.Input[Optional['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']]:
         """
         AWS credentials block.
         """
         return pulumi.get(self, "aws_access_key")
 
     @aws_access_key.setter
-    def aws_access_key(self, value: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']]):
+    def aws_access_key(self, value: pulumi.Input[Optional['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']]):
         pulumi.set(self, "aws_access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudfrontDomain")
-    def cloudfront_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloudfront_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
         """
         return pulumi.get(self, "cloudfront_domain")
 
     @cloudfront_domain.setter
-    def cloudfront_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloudfront_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloudfront_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialsSecret")
-    def credentials_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credentials_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
         """
         return pulumi.get(self, "credentials_secret")
 
     @credentials_secret.setter
-    def credentials_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credentials_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credentials_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="managedPrivateNetwork")
-    def managed_private_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def managed_private_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
         """
         return pulumi.get(self, "managed_private_network")
 
     @managed_private_network.setter
-    def managed_private_network(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def managed_private_network(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "managed_private_network", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         S3 Bucket path in bucket to transfer.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
 
@@ -6164,19 +6164,19 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceArgsDict(TypedDict):
     """
     The name of the Azure Storage account.
     """
-    azure_credentials: NotRequired[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgsDict']]
+    azure_credentials: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs']]]
     """
     ) Credentials used to authenticate API requests to Azure block.
     """
-    credentials_secret: NotRequired[pulumi.Input[_builtins.str]]
+    credentials_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
     """
-    federated_identity_config: NotRequired[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgsDict']]
+    federated_identity_config: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs']]]
     """
     Federated identity config of a user registered Azure application. Structure documented below.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
     """
@@ -6186,10 +6186,10 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceArgs:
     def __init__(__self__, *,
                  container: pulumi.Input[_builtins.str],
                  storage_account: pulumi.Input[_builtins.str],
-                 azure_credentials: Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs']] = None,
-                 credentials_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 federated_identity_config: Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs']] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 azure_credentials: pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs']] = None,
+                 credentials_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 federated_identity_config: pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs']] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] container: The container to transfer from the Azure Storage account.`
         :param pulumi.Input[_builtins.str] storage_account: The name of the Azure Storage account.
@@ -6235,50 +6235,50 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="azureCredentials")
-    def azure_credentials(self) -> Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs']]:
+    def azure_credentials(self) -> pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs']]:
         """
         ) Credentials used to authenticate API requests to Azure block.
         """
         return pulumi.get(self, "azure_credentials")
 
     @azure_credentials.setter
-    def azure_credentials(self, value: Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs']]):
+    def azure_credentials(self, value: pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs']]):
         pulumi.set(self, "azure_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialsSecret")
-    def credentials_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credentials_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
         """
         return pulumi.get(self, "credentials_secret")
 
     @credentials_secret.setter
-    def credentials_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credentials_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credentials_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="federatedIdentityConfig")
-    def federated_identity_config(self) -> Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs']]:
+    def federated_identity_config(self) -> pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs']]:
         """
         Federated identity config of a user registered Azure application. Structure documented below.
         """
         return pulumi.get(self, "federated_identity_config")
 
     @federated_identity_config.setter
-    def federated_identity_config(self, value: Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs']]):
+    def federated_identity_config(self, value: pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs']]):
         pulumi.set(self, "federated_identity_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
@@ -6368,7 +6368,7 @@ class TransferJobTransferSpecGcsDataSinkArgsDict(TypedDict):
     """
     Google Cloud Storage bucket name.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
     """
@@ -6377,7 +6377,7 @@ class TransferJobTransferSpecGcsDataSinkArgsDict(TypedDict):
 class TransferJobTransferSpecGcsDataSinkArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[_builtins.str],
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_name: Google Cloud Storage bucket name.
         :param pulumi.Input[_builtins.str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -6400,14 +6400,14 @@ class TransferJobTransferSpecGcsDataSinkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
@@ -6416,7 +6416,7 @@ class TransferJobTransferSpecGcsDataSourceArgsDict(TypedDict):
     """
     Google Cloud Storage bucket name.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
     """
@@ -6425,7 +6425,7 @@ class TransferJobTransferSpecGcsDataSourceArgsDict(TypedDict):
 class TransferJobTransferSpecGcsDataSourceArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[_builtins.str],
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_name: Google Cloud Storage bucket name.
         :param pulumi.Input[_builtins.str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -6448,14 +6448,14 @@ class TransferJobTransferSpecGcsDataSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
@@ -6516,27 +6516,27 @@ class TransferJobTransferSpecHttpDataSourceArgs:
 
 
 class TransferJobTransferSpecObjectConditionsArgsDict(TypedDict):
-    exclude_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
     """
-    include_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    include_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     If `include_prefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
     """
-    last_modified_before: NotRequired[pulumi.Input[_builtins.str]]
+    last_modified_before: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    last_modified_since: NotRequired[pulumi.Input[_builtins.str]]
+    last_modified_since: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    max_time_elapsed_since_last_modification: NotRequired[pulumi.Input[_builtins.str]]
+    max_time_elapsed_since_last_modification: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
-    min_time_elapsed_since_last_modification: NotRequired[pulumi.Input[_builtins.str]]
+    min_time_elapsed_since_last_modification: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
@@ -6544,12 +6544,12 @@ class TransferJobTransferSpecObjectConditionsArgsDict(TypedDict):
 @pulumi.input_type
 class TransferJobTransferSpecObjectConditionsArgs:
     def __init__(__self__, *,
-                 exclude_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 last_modified_before: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified_since: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_time_elapsed_since_last_modification: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_time_elapsed_since_last_modification: Optional[pulumi.Input[_builtins.str]] = None):
+                 exclude_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 last_modified_before: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified_since: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_time_elapsed_since_last_modification: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_time_elapsed_since_last_modification: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_prefixes: `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_prefixes: If `include_prefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
@@ -6573,74 +6573,74 @@ class TransferJobTransferSpecObjectConditionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludePrefixes")
-    def exclude_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
         """
         return pulumi.get(self, "exclude_prefixes")
 
     @exclude_prefixes.setter
-    def exclude_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="includePrefixes")
-    def include_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def include_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `include_prefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
         """
         return pulumi.get(self, "include_prefixes")
 
     @include_prefixes.setter
-    def include_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def include_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "include_prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedBefore")
-    def last_modified_before(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified_before(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "last_modified_before")
 
     @last_modified_before.setter
-    def last_modified_before(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified_before(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified_before", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedSince")
-    def last_modified_since(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified_since(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "last_modified_since")
 
     @last_modified_since.setter
-    def last_modified_since(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified_since(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified_since", value)
 
     @_builtins.property
     @pulumi.getter(name="maxTimeElapsedSinceLastModification")
-    def max_time_elapsed_since_last_modification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_time_elapsed_since_last_modification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "max_time_elapsed_since_last_modification")
 
     @max_time_elapsed_since_last_modification.setter
-    def max_time_elapsed_since_last_modification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_time_elapsed_since_last_modification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_time_elapsed_since_last_modification", value)
 
     @_builtins.property
     @pulumi.getter(name="minTimeElapsedSinceLastModification")
-    def min_time_elapsed_since_last_modification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_time_elapsed_since_last_modification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "min_time_elapsed_since_last_modification")
 
     @min_time_elapsed_since_last_modification.setter
-    def min_time_elapsed_since_last_modification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_time_elapsed_since_last_modification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_time_elapsed_since_last_modification", value)
 
 
@@ -6729,24 +6729,24 @@ class TransferJobTransferSpecTransferManifestArgs:
 
 
 class TransferJobTransferSpecTransferOptionsArgsDict(TypedDict):
-    delete_objects_from_source_after_transfer: NotRequired[pulumi.Input[_builtins.bool]]
+    delete_objects_from_source_after_transfer: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
     """
-    delete_objects_unique_in_sink: NotRequired[pulumi.Input[_builtins.bool]]
+    delete_objects_unique_in_sink: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether objects that exist only in the sink should be deleted. Note that this option and
     `delete_objects_from_source_after_transfer` are mutually exclusive.
     """
-    metadata_options: NotRequired[pulumi.Input['TransferJobTransferSpecTransferOptionsMetadataOptionsArgsDict']]
+    metadata_options: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs']]]
     """
     Specifies the metadata options for running a transfer. Structure documented below.
     """
-    overwrite_objects_already_existing_in_sink: NotRequired[pulumi.Input[_builtins.bool]]
+    overwrite_objects_already_existing_in_sink: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether overwriting objects that already exist in the sink is allowed.
     """
-    overwrite_when: NotRequired[pulumi.Input[_builtins.str]]
+    overwrite_when: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
     """
@@ -6754,11 +6754,11 @@ class TransferJobTransferSpecTransferOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class TransferJobTransferSpecTransferOptionsArgs:
     def __init__(__self__, *,
-                 delete_objects_from_source_after_transfer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_objects_unique_in_sink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata_options: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs']] = None,
-                 overwrite_objects_already_existing_in_sink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 overwrite_when: Optional[pulumi.Input[_builtins.str]] = None):
+                 delete_objects_from_source_after_transfer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_objects_unique_in_sink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata_options: pulumi.Input[Optional['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs']] = None,
+                 overwrite_objects_already_existing_in_sink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 overwrite_when: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] delete_objects_from_source_after_transfer: Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
         :param pulumi.Input[_builtins.bool] delete_objects_unique_in_sink: Whether objects that exist only in the sink should be deleted. Note that this option and
@@ -6780,19 +6780,19 @@ class TransferJobTransferSpecTransferOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="deleteObjectsFromSourceAfterTransfer")
-    def delete_objects_from_source_after_transfer(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_objects_from_source_after_transfer(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
         """
         return pulumi.get(self, "delete_objects_from_source_after_transfer")
 
     @delete_objects_from_source_after_transfer.setter
-    def delete_objects_from_source_after_transfer(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_objects_from_source_after_transfer(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_objects_from_source_after_transfer", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteObjectsUniqueInSink")
-    def delete_objects_unique_in_sink(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_objects_unique_in_sink(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether objects that exist only in the sink should be deleted. Note that this option and
         `delete_objects_from_source_after_transfer` are mutually exclusive.
@@ -6800,80 +6800,80 @@ class TransferJobTransferSpecTransferOptionsArgs:
         return pulumi.get(self, "delete_objects_unique_in_sink")
 
     @delete_objects_unique_in_sink.setter
-    def delete_objects_unique_in_sink(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_objects_unique_in_sink(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_objects_unique_in_sink", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataOptions")
-    def metadata_options(self) -> Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs']]:
+    def metadata_options(self) -> pulumi.Input[Optional['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs']]:
         """
         Specifies the metadata options for running a transfer. Structure documented below.
         """
         return pulumi.get(self, "metadata_options")
 
     @metadata_options.setter
-    def metadata_options(self, value: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs']]):
+    def metadata_options(self, value: pulumi.Input[Optional['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs']]):
         pulumi.set(self, "metadata_options", value)
 
     @_builtins.property
     @pulumi.getter(name="overwriteObjectsAlreadyExistingInSink")
-    def overwrite_objects_already_existing_in_sink(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite_objects_already_existing_in_sink(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether overwriting objects that already exist in the sink is allowed.
         """
         return pulumi.get(self, "overwrite_objects_already_existing_in_sink")
 
     @overwrite_objects_already_existing_in_sink.setter
-    def overwrite_objects_already_existing_in_sink(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite_objects_already_existing_in_sink(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite_objects_already_existing_in_sink", value)
 
     @_builtins.property
     @pulumi.getter(name="overwriteWhen")
-    def overwrite_when(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def overwrite_when(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
         """
         return pulumi.get(self, "overwrite_when")
 
     @overwrite_when.setter
-    def overwrite_when(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def overwrite_when(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "overwrite_when", value)
 
 
 class TransferJobTransferSpecTransferOptionsMetadataOptionsArgsDict(TypedDict):
-    acl: NotRequired[pulumi.Input[_builtins.str]]
+    acl: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
     """
-    gid: NotRequired[pulumi.Input[_builtins.str]]
+    gid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
     """
-    kms_key: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
     """
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how each file's mode attribute should be handled by the transfer.
     """
-    storage_class: NotRequired[pulumi.Input[_builtins.str]]
+    storage_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
     """
-    symlink: NotRequired[pulumi.Input[_builtins.str]]
+    symlink: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how symlinks should be handled by the transfer.
     """
-    temporary_hold: NotRequired[pulumi.Input[_builtins.str]]
+    temporary_hold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
     """
-    time_created: NotRequired[pulumi.Input[_builtins.str]]
+    time_created: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how each object's timeCreated metadata is preserved for transfers.
     """
-    uid: NotRequired[pulumi.Input[_builtins.str]]
+    uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
     """
@@ -6881,15 +6881,15 @@ class TransferJobTransferSpecTransferOptionsMetadataOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class TransferJobTransferSpecTransferOptionsMetadataOptionsArgs:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 gid: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 symlink: Optional[pulumi.Input[_builtins.str]] = None,
-                 temporary_hold: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_created: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 gid: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 symlink: pulumi.Input[Optional[_builtins.str]] = None,
+                 temporary_hold: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_created: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] acl: Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
         :param pulumi.Input[_builtins.str] gid: Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
@@ -6922,110 +6922,110 @@ class TransferJobTransferSpecTransferOptionsMetadataOptionsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def gid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
         """
         return pulumi.get(self, "gid")
 
     @gid.setter
-    def gid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gid", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
-    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
         """
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
-    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how each file's mode attribute should be handled by the transfer.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
         """
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
-    def storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_class", value)
 
     @_builtins.property
     @pulumi.getter
-    def symlink(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def symlink(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how symlinks should be handled by the transfer.
         """
         return pulumi.get(self, "symlink")
 
     @symlink.setter
-    def symlink(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def symlink(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "symlink", value)
 
     @_builtins.property
     @pulumi.getter(name="temporaryHold")
-    def temporary_hold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def temporary_hold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
         """
         return pulumi.get(self, "temporary_hold")
 
     @temporary_hold.setter
-    def temporary_hold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def temporary_hold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "temporary_hold", value)
 
     @_builtins.property
     @pulumi.getter(name="timeCreated")
-    def time_created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how each object's timeCreated metadata is preserved for transfers.
         """
         return pulumi.get(self, "time_created")
 
     @time_created.setter
-    def time_created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_created", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 

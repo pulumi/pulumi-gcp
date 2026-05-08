@@ -24,10 +24,10 @@ class RecordSetArgs:
                  managed_zone: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_policy: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']] = None,
-                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_policy: pulumi.Input[Optional['RecordSetRoutingPolicyArgs']] = None,
+                 rrdatas: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a RecordSet resource.
 
@@ -99,7 +99,7 @@ class RecordSetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -107,12 +107,12 @@ class RecordSetArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="routingPolicy")
-    def routing_policy(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyArgs']]:
+    def routing_policy(self) -> pulumi.Input[Optional['RecordSetRoutingPolicyArgs']]:
         """
         The configuration for steering traffic based on query.
         Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
@@ -121,12 +121,12 @@ class RecordSetArgs:
         return pulumi.get(self, "routing_policy")
 
     @routing_policy.setter
-    def routing_policy(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']]):
+    def routing_policy(self, value: pulumi.Input[Optional['RecordSetRoutingPolicyArgs']]):
         pulumi.set(self, "routing_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def rrdatas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The string data for the records in this record set
         whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\\" \\"` inside the Terraform configuration string (e.g. `"first255characters\\" \\"morecharacters"`).
@@ -134,32 +134,32 @@ class RecordSetArgs:
         return pulumi.get(self, "rrdatas")
 
     @rrdatas.setter
-    def rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def rrdatas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "rrdatas", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time-to-live of this record set (seconds).
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
 
 @pulumi.input_type
 class _RecordSetState:
     def __init__(__self__, *,
-                 managed_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_policy: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']] = None,
-                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_policy: pulumi.Input[Optional['RecordSetRoutingPolicyArgs']] = None,
+                 rrdatas: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RecordSet resources.
 
@@ -195,7 +195,7 @@ class _RecordSetState:
 
     @_builtins.property
     @pulumi.getter(name="managedZone")
-    def managed_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def managed_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the zone in which this record set will
         reside.
@@ -203,24 +203,24 @@ class _RecordSetState:
         return pulumi.get(self, "managed_zone")
 
     @managed_zone.setter
-    def managed_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def managed_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "managed_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS name this record set will apply to.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -228,12 +228,12 @@ class _RecordSetState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="routingPolicy")
-    def routing_policy(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyArgs']]:
+    def routing_policy(self) -> pulumi.Input[Optional['RecordSetRoutingPolicyArgs']]:
         """
         The configuration for steering traffic based on query.
         Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
@@ -242,12 +242,12 @@ class _RecordSetState:
         return pulumi.get(self, "routing_policy")
 
     @routing_policy.setter
-    def routing_policy(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyArgs']]):
+    def routing_policy(self, value: pulumi.Input[Optional['RecordSetRoutingPolicyArgs']]):
         pulumi.set(self, "routing_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def rrdatas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The string data for the records in this record set
         whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\\" \\"` inside the Terraform configuration string (e.g. `"first255characters\\" \\"morecharacters"`).
@@ -255,24 +255,24 @@ class _RecordSetState:
         return pulumi.get(self, "rrdatas")
 
     @rrdatas.setter
-    def rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def rrdatas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "rrdatas", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time-to-live of this record set (seconds).
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS record set type.
 
@@ -281,7 +281,7 @@ class _RecordSetState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -291,13 +291,13 @@ class RecordSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 managed_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_policy: Optional[pulumi.Input[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict']]] = None,
-                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_policy: pulumi.Input[Optional[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict']]] = None,
+                 rrdatas: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/docs/records/) and
@@ -851,13 +851,13 @@ class RecordSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 managed_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_policy: Optional[pulumi.Input[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict']]] = None,
-                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_policy: pulumi.Input[Optional[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict']]] = None,
+                 rrdatas: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -890,13 +890,13 @@ class RecordSet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            managed_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            routing_policy: Optional[pulumi.Input[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict']]] = None,
-            rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ttl: Optional[pulumi.Input[_builtins.int]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'RecordSet':
+            managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            routing_policy: pulumi.Input[Optional[Union['RecordSetRoutingPolicyArgs', 'RecordSetRoutingPolicyArgsDict']]] = None,
+            rrdatas: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'RecordSet':
         """
         Get an existing RecordSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

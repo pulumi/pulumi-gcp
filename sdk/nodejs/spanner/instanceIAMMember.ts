@@ -240,15 +240,15 @@ export class InstanceIAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceIAMMember resources.
  */
 export interface InstanceIAMMemberState {
-    condition?: pulumi.Input<inputs.spanner.InstanceIAMMemberCondition>;
+    condition?: pulumi.Input<inputs.spanner.InstanceIAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the instance's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -261,25 +261,25 @@ export interface InstanceIAMMemberState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    member?: pulumi.Input<string>;
+    member?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a InstanceIAMMember resource.
  */
 export interface InstanceIAMMemberArgs {
-    condition?: pulumi.Input<inputs.spanner.InstanceIAMMemberCondition>;
+    condition?: pulumi.Input<inputs.spanner.InstanceIAMMemberCondition | undefined>;
     /**
      * The name of the instance.
      */
@@ -301,7 +301,7 @@ export interface InstanceIAMMemberArgs {
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format

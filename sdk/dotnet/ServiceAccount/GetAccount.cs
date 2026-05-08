@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///         ServiceAccountId = myaccount.Apply(getAccountResult =&gt; getAccountResult.Name),
         ///     });
         /// 
-        ///     var google_application_credentials = new Kubernetes.Index.Secret("google-application-credentials", new()
+        ///     var google_application_credentials = new Kubernetes.Secret("google-application-credentials", new()
         ///     {
         ///         Metadata = new[]
         ///         {
@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///         },
         ///         Data = 
         ///         {
-        ///             { "json", Std.Index.Base64decode.Invoke(new()
+        ///             { "json", Std.Base64decode.Invoke(new()
         ///             {
         ///                 Input = mykey.PrivateKey,
         ///             }).Result },
@@ -123,7 +123,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///         ServiceAccountId = myaccount.Apply(getAccountResult =&gt; getAccountResult.Name),
         ///     });
         /// 
-        ///     var google_application_credentials = new Kubernetes.Index.Secret("google-application-credentials", new()
+        ///     var google_application_credentials = new Kubernetes.Secret("google-application-credentials", new()
         ///     {
         ///         Metadata = new[]
         ///         {
@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///         },
         ///         Data = 
         ///         {
-        ///             { "json", Std.Index.Base64decode.Invoke(new()
+        ///             { "json", Std.Base64decode.Invoke(new()
         ///             {
         ///                 Input = mykey.PrivateKey,
         ///             }).Result },
@@ -191,7 +191,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///         ServiceAccountId = myaccount.Apply(getAccountResult =&gt; getAccountResult.Name),
         ///     });
         /// 
-        ///     var google_application_credentials = new Kubernetes.Index.Secret("google-application-credentials", new()
+        ///     var google_application_credentials = new Kubernetes.Secret("google-application-credentials", new()
         ///     {
         ///         Metadata = new[]
         ///         {
@@ -202,7 +202,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///         },
         ///         Data = 
         ///         {
-        ///             { "json", Std.Index.Base64decode.Invoke(new()
+        ///             { "json", Std.Base64decode.Invoke(new()
         ///             {
         ///                 Input = mykey.PrivateKey,
         ///             }).Result },

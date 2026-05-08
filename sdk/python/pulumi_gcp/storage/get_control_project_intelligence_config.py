@@ -137,7 +137,7 @@ def get_control_project_intelligence_config(name: Optional[_builtins.str] = None
         name=pulumi.get(__ret__, 'name'),
         trial_configs=pulumi.get(__ret__, 'trial_configs'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_control_project_intelligence_config_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_control_project_intelligence_config_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetControlProjectIntelligenceConfigResult]:
     """
     Use this data source to get information about a Project Storage Intelligence config resource.

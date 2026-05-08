@@ -166,10 +166,10 @@ def get_account_access_token(delegates: Optional[Sequence[_builtins.str]] = None
         lifetime=pulumi.get(__ret__, 'lifetime'),
         scopes=pulumi.get(__ret__, 'scopes'),
         target_service_account=pulumi.get(__ret__, 'target_service_account'))
-def get_account_access_token_output(delegates: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                    lifetime: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    scopes: Optional[pulumi.Input[Sequence[_builtins.str]]] = None,
-                                    target_service_account: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_access_token_output(delegates: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                    lifetime: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    scopes: pulumi.Input[Optional[Sequence[_builtins.str]]] = None,
+                                    target_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountAccessTokenResult]:
     """
     This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.

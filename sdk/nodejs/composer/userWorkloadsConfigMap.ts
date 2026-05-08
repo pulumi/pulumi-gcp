@@ -165,24 +165,24 @@ export interface UserWorkloadsConfigMapState {
      * The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
      * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
      */
-    data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    data?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Environment where the Kubernetes ConfigMap will be stored and used.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * Name of the Kubernetes ConfigMap.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The location or Compute Engine region for the environment.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -193,7 +193,7 @@ export interface UserWorkloadsConfigMapArgs {
      * The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
      * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
      */
-    data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    data?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Environment where the Kubernetes ConfigMap will be stored and used.
      */
@@ -201,14 +201,14 @@ export interface UserWorkloadsConfigMapArgs {
     /**
      * Name of the Kubernetes ConfigMap.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The location or Compute Engine region for the environment.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

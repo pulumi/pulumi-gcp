@@ -305,42 +305,42 @@ export interface StoragePoolState {
      * Provisioning type of the byte capacity of the pool.
      * Possible values are: `STANDARD`, `ADVANCED`.
      */
-    capacityProvisioningType?: pulumi.Input<string>;
+    capacityProvisioningType?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the StoragePool.
      * When the field is set to true or unset in Terraform state, a `pulumi up`
      * or `terraform destroy` that would delete the StoragePool will fail.
      * When the field is set to false, deleting the StoragePool is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * A description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of the resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource.
      * Used internally during updates.
      */
-    labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this storage pool. These can be later modified by the setLabels method.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created.
      * The name must be 1-63 characters long, and comply with RFC1035.
@@ -350,63 +350,63 @@ export interface StoragePoolState {
      * and all following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.StoragePoolParams>;
+    params?: pulumi.Input<inputs.compute.StoragePoolParams | undefined>;
     /**
      * Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
      * Possible values are: `STANDARD`, `ADVANCED`.
      */
-    performanceProvisioningType?: pulumi.Input<string>;
+    performanceProvisioningType?: pulumi.Input<string | undefined>;
     /**
      * Size, in GiB, of the storage pool. For more information about the size limits,
      * see https://cloud.google.com/compute/docs/disks/storage-pools.
      */
-    poolProvisionedCapacityGb?: pulumi.Input<string>;
+    poolProvisionedCapacityGb?: pulumi.Input<string | undefined>;
     /**
      * Provisioned IOPS of the storage pool.
      * Only relevant if the storage pool type is `hyperdisk-balanced`.
      */
-    poolProvisionedIops?: pulumi.Input<string>;
+    poolProvisionedIops?: pulumi.Input<string | undefined>;
     /**
      * Provisioned throughput, in MB/s, of the storage pool.
      * Only relevant if the storage pool type is `hyperdisk-balanced` or `hyperdisk-throughput`.
      */
-    poolProvisionedThroughput?: pulumi.Input<string>;
+    poolProvisionedThroughput?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Status information for the storage pool resource.
      * Structure is documented below.
      */
-    resourceStatuses?: pulumi.Input<pulumi.Input<inputs.compute.StoragePoolResourceStatus>[]>;
+    resourceStatuses?: pulumi.Input<pulumi.Input<inputs.compute.StoragePoolResourceStatus>[] | undefined>;
     /**
      * Status information for the storage pool resource.
      * Structure is documented below.
      */
-    statuses?: pulumi.Input<pulumi.Input<inputs.compute.StoragePoolStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.compute.StoragePoolStatus>[] | undefined>;
     /**
      * Type of the storage pool. For example, the
      * following are valid values:
      * * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
      * * `hyperdisk-throughput`
      */
-    storagePoolType?: pulumi.Input<string>;
+    storagePoolType?: pulumi.Input<string | undefined>;
     /**
      * A reference to the zone where the storage pool resides.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -417,25 +417,25 @@ export interface StoragePoolArgs {
      * Provisioning type of the byte capacity of the pool.
      * Possible values are: `STANDARD`, `ADVANCED`.
      */
-    capacityProvisioningType?: pulumi.Input<string>;
+    capacityProvisioningType?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the StoragePool.
      * When the field is set to true or unset in Terraform state, a `pulumi up`
      * or `terraform destroy` that would delete the StoragePool will fail.
      * When the field is set to false, deleting the StoragePool is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * A description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this storage pool. These can be later modified by the setLabels method.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created.
      * The name must be 1-63 characters long, and comply with RFC1035.
@@ -445,17 +445,17 @@ export interface StoragePoolArgs {
      * and all following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.StoragePoolParams>;
+    params?: pulumi.Input<inputs.compute.StoragePoolParams | undefined>;
     /**
      * Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
      * Possible values are: `STANDARD`, `ADVANCED`.
      */
-    performanceProvisioningType?: pulumi.Input<string>;
+    performanceProvisioningType?: pulumi.Input<string | undefined>;
     /**
      * Size, in GiB, of the storage pool. For more information about the size limits,
      * see https://cloud.google.com/compute/docs/disks/storage-pools.
@@ -465,7 +465,7 @@ export interface StoragePoolArgs {
      * Provisioned IOPS of the storage pool.
      * Only relevant if the storage pool type is `hyperdisk-balanced`.
      */
-    poolProvisionedIops?: pulumi.Input<string>;
+    poolProvisionedIops?: pulumi.Input<string | undefined>;
     /**
      * Provisioned throughput, in MB/s, of the storage pool.
      * Only relevant if the storage pool type is `hyperdisk-balanced` or `hyperdisk-throughput`.
@@ -475,7 +475,7 @@ export interface StoragePoolArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Type of the storage pool. For example, the
      * following are valid values:
@@ -486,5 +486,5 @@ export interface StoragePoolArgs {
     /**
      * A reference to the zone where the storage pool resides.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

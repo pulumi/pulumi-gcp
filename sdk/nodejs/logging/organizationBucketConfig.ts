@@ -166,39 +166,39 @@ export interface OrganizationBucketConfigState {
     /**
      * The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
      */
-    bucketId?: pulumi.Input<string>;
+    bucketId?: pulumi.Input<string | undefined>;
     /**
      * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      */
-    cmekSettings?: pulumi.Input<inputs.logging.OrganizationBucketConfigCmekSettings>;
+    cmekSettings?: pulumi.Input<inputs.logging.OrganizationBucketConfigCmekSettings | undefined>;
     /**
      * Describes this bucket.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A list of indexed fields and related configuration data. Structure is documented below.
      */
-    indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.OrganizationBucketConfigIndexConfig>[]>;
+    indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.OrganizationBucketConfigIndexConfig>[] | undefined>;
     /**
      * The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      */
-    lifecycleState?: pulumi.Input<string>;
+    lifecycleState?: pulumi.Input<string | undefined>;
     /**
      * The location of the bucket. The supported locations are: "global" "us-central1"
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent resource that contains the logging bucket.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
      */
-    retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -212,15 +212,15 @@ export interface OrganizationBucketConfigArgs {
     /**
      * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      */
-    cmekSettings?: pulumi.Input<inputs.logging.OrganizationBucketConfigCmekSettings>;
+    cmekSettings?: pulumi.Input<inputs.logging.OrganizationBucketConfigCmekSettings | undefined>;
     /**
      * Describes this bucket.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A list of indexed fields and related configuration data. Structure is documented below.
      */
-    indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.OrganizationBucketConfigIndexConfig>[]>;
+    indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.OrganizationBucketConfigIndexConfig>[] | undefined>;
     /**
      * The location of the bucket. The supported locations are: "global" "us-central1"
      */
@@ -232,5 +232,5 @@ export interface OrganizationBucketConfigArgs {
     /**
      * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
      */
-    retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number | undefined>;
 }

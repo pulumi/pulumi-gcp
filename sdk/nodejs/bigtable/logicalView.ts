@@ -164,28 +164,28 @@ export interface LogicalViewState {
     /**
      * Set to true to make the logical view protected against deletion.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the instance to create the logical view within.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
      */
-    logicalViewId?: pulumi.Input<string>;
+    logicalViewId?: pulumi.Input<string | undefined>;
     /**
      * The unique name of the requested logical view. Values are of the form `projects/<project>/instances/<instance>/logicalViews/<logicalViewId>`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The logical view's select query.
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -195,11 +195,11 @@ export interface LogicalViewArgs {
     /**
      * Set to true to make the logical view protected against deletion.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the instance to create the logical view within.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
      */
@@ -208,7 +208,7 @@ export interface LogicalViewArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The logical view's select query.
      */

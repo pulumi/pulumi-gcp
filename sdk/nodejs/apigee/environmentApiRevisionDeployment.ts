@@ -176,43 +176,43 @@ export interface EnvironmentApiRevisionDeploymentState {
     /**
      * Apigee API proxy name.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * Basepaths associated with the deployed proxy.
      */
-    basepaths?: pulumi.Input<pulumi.Input<string>[]>;
+    basepaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * RFC3339 timestamp when deployment started.
      */
-    deployStartTime?: pulumi.Input<string>;
+    deployStartTime?: pulumi.Input<string | undefined>;
     /**
      * Apigee environment name.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * Apigee organization ID.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * If true, replaces other deployed revisions of this proxy in the environment.
      */
-    override?: pulumi.Input<boolean>;
+    override?: pulumi.Input<boolean | undefined>;
     /**
      * API proxy revision number to deploy.
      */
-    revision?: pulumi.Input<number>;
+    revision?: pulumi.Input<number | undefined>;
     /**
      * If true, enables sequenced rollout for safe traffic switching.
      */
-    sequencedRollout?: pulumi.Input<boolean>;
+    sequencedRollout?: pulumi.Input<boolean | undefined>;
     /**
      * Optional service account the deployed proxy runs as.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Deployment state reported by Apigee.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -234,7 +234,7 @@ export interface EnvironmentApiRevisionDeploymentArgs {
     /**
      * If true, replaces other deployed revisions of this proxy in the environment.
      */
-    override?: pulumi.Input<boolean>;
+    override?: pulumi.Input<boolean | undefined>;
     /**
      * API proxy revision number to deploy.
      */
@@ -242,9 +242,9 @@ export interface EnvironmentApiRevisionDeploymentArgs {
     /**
      * If true, enables sequenced rollout for safe traffic switching.
      */
-    sequencedRollout?: pulumi.Input<boolean>;
+    sequencedRollout?: pulumi.Input<boolean | undefined>;
     /**
      * Optional service account the deployed proxy runs as.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
 }

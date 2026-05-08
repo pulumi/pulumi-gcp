@@ -206,28 +206,28 @@ export interface EdgeCacheKeysetState {
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Set of label tags associated with the EdgeCache resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * An ordered list of Ed25519 public keys to use for validating signed requests.
      * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
@@ -237,12 +237,12 @@ export interface EdgeCacheKeysetState {
      * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
      * Structure is documented below.
      */
-    publicKeys?: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetPublicKey>[]>;
+    publicKeys?: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetPublicKey>[] | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An ordered list of shared keys to use for validating signed requests.
      * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
@@ -250,7 +250,7 @@ export interface EdgeCacheKeysetState {
      * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
      * Structure is documented below.
      */
-    validationSharedKeys?: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetValidationSharedKey>[]>;
+    validationSharedKeys?: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetValidationSharedKey>[] | undefined>;
 }
 
 /**
@@ -260,24 +260,24 @@ export interface EdgeCacheKeysetArgs {
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Set of label tags associated with the EdgeCache resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * An ordered list of Ed25519 public keys to use for validating signed requests.
      * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
@@ -287,7 +287,7 @@ export interface EdgeCacheKeysetArgs {
      * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
      * Structure is documented below.
      */
-    publicKeys?: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetPublicKey>[]>;
+    publicKeys?: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetPublicKey>[] | undefined>;
     /**
      * An ordered list of shared keys to use for validating signed requests.
      * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
@@ -295,5 +295,5 @@ export interface EdgeCacheKeysetArgs {
      * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
      * Structure is documented below.
      */
-    validationSharedKeys?: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetValidationSharedKey>[]>;
+    validationSharedKeys?: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetValidationSharedKey>[] | undefined>;
 }

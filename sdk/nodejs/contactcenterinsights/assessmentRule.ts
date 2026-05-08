@@ -167,7 +167,7 @@ export interface AssessmentRuleState {
      * If true, apply this rule to conversations. Otherwise, this rule is
      * inactive.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * A unique ID for the new AssessmentRule. This ID will become the final
      * component of the AssessmentRule's resource name. If no ID is specified,
@@ -175,44 +175,44 @@ export interface AssessmentRuleState {
      * This value should be 4-64 characters and must match the regular
      * expression `^[A-Za-z0-9]{4,64}$`.
      */
-    assessmentRuleId?: pulumi.Input<string>;
+    assessmentRuleId?: pulumi.Input<string | undefined>;
     /**
      * The time at which this assessment rule was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Display Name of the assessment rule.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the assessment rule.
      * Format:
      * projects/{project}/locations/{location}/assessmentRules/{assessment_rule}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Message for sampling conversations.
      * Structure is documented below.
      */
-    sampleRule?: pulumi.Input<inputs.contactcenterinsights.AssessmentRuleSampleRule>;
+    sampleRule?: pulumi.Input<inputs.contactcenterinsights.AssessmentRuleSampleRule | undefined>;
     /**
      * Message for schedule info.
      * Structure is documented below.
      */
-    scheduleInfo?: pulumi.Input<inputs.contactcenterinsights.AssessmentRuleScheduleInfo>;
+    scheduleInfo?: pulumi.Input<inputs.contactcenterinsights.AssessmentRuleScheduleInfo | undefined>;
     /**
      * The most recent time at which this assessment rule was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -223,7 +223,7 @@ export interface AssessmentRuleArgs {
      * If true, apply this rule to conversations. Otherwise, this rule is
      * inactive.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * A unique ID for the new AssessmentRule. This ID will become the final
      * component of the AssessmentRule's resource name. If no ID is specified,
@@ -231,11 +231,11 @@ export interface AssessmentRuleArgs {
      * This value should be 4-64 characters and must match the regular
      * expression `^[A-Za-z0-9]{4,64}$`.
      */
-    assessmentRuleId?: pulumi.Input<string>;
+    assessmentRuleId?: pulumi.Input<string | undefined>;
     /**
      * Display Name of the assessment rule.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Location of the resource.
      */
@@ -244,15 +244,15 @@ export interface AssessmentRuleArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Message for sampling conversations.
      * Structure is documented below.
      */
-    sampleRule?: pulumi.Input<inputs.contactcenterinsights.AssessmentRuleSampleRule>;
+    sampleRule?: pulumi.Input<inputs.contactcenterinsights.AssessmentRuleSampleRule | undefined>;
     /**
      * Message for schedule info.
      * Structure is documented below.
      */
-    scheduleInfo?: pulumi.Input<inputs.contactcenterinsights.AssessmentRuleScheduleInfo>;
+    scheduleInfo?: pulumi.Input<inputs.contactcenterinsights.AssessmentRuleScheduleInfo | undefined>;
 }

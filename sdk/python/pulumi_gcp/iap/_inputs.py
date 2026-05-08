@@ -110,7 +110,7 @@ class AgentRegistryIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -124,7 +124,7 @@ class AgentRegistryIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -165,7 +165,7 @@ class AgentRegistryIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -176,7 +176,7 @@ class AgentRegistryIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -189,7 +189,7 @@ class AgentRegistryIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -203,7 +203,7 @@ class AgentRegistryIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -244,7 +244,7 @@ class AgentRegistryIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -255,7 +255,7 @@ class AgentRegistryIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -268,7 +268,7 @@ class AppEngineServiceIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -282,7 +282,7 @@ class AppEngineServiceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -323,7 +323,7 @@ class AppEngineServiceIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -334,7 +334,7 @@ class AppEngineServiceIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -347,7 +347,7 @@ class AppEngineServiceIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -361,7 +361,7 @@ class AppEngineServiceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -402,7 +402,7 @@ class AppEngineServiceIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -413,7 +413,7 @@ class AppEngineServiceIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -426,7 +426,7 @@ class AppEngineVersionIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -440,7 +440,7 @@ class AppEngineVersionIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -481,7 +481,7 @@ class AppEngineVersionIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -492,7 +492,7 @@ class AppEngineVersionIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -505,7 +505,7 @@ class AppEngineVersionIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -519,7 +519,7 @@ class AppEngineVersionIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -560,7 +560,7 @@ class AppEngineVersionIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -571,7 +571,7 @@ class AppEngineVersionIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -584,7 +584,7 @@ class LocationWebIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -598,7 +598,7 @@ class LocationWebIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -639,7 +639,7 @@ class LocationWebIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -650,7 +650,7 @@ class LocationWebIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -663,7 +663,7 @@ class LocationWebIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -677,7 +677,7 @@ class LocationWebIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -718,7 +718,7 @@ class LocationWebIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -729,28 +729,28 @@ class LocationWebIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class SettingsAccessSettingsArgsDict(TypedDict):
-    allowed_domains_settings: NotRequired[pulumi.Input['SettingsAccessSettingsAllowedDomainsSettingsArgsDict']]
+    allowed_domains_settings: NotRequired[pulumi.Input[Optional['SettingsAccessSettingsAllowedDomainsSettingsArgs']]]
     """
     Settings to configure and enable allowed domains.
     Structure is documented below.
     """
-    cors_settings: NotRequired[pulumi.Input['SettingsAccessSettingsCorsSettingsArgsDict']]
+    cors_settings: NotRequired[pulumi.Input[Optional['SettingsAccessSettingsCorsSettingsArgs']]]
     """
     Configuration to allow cross-origin requests via IAP.
     Structure is documented below.
     """
-    gcip_settings: NotRequired[pulumi.Input['SettingsAccessSettingsGcipSettingsArgsDict']]
+    gcip_settings: NotRequired[pulumi.Input[Optional['SettingsAccessSettingsGcipSettingsArgs']]]
     """
     GCIP claims and endpoint configurations for 3p identity providers.
     * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
     Structure is documented below.
     """
-    identity_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    identity_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Identity sources that IAP can use to authenticate the end user. Only one identity source
     can be configured. The possible values are:
@@ -758,17 +758,17 @@ class SettingsAccessSettingsArgsDict(TypedDict):
     Identity Federation.
     Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
     """
-    oauth_settings: NotRequired[pulumi.Input['SettingsAccessSettingsOauthSettingsArgsDict']]
+    oauth_settings: NotRequired[pulumi.Input[Optional['SettingsAccessSettingsOauthSettingsArgs']]]
     """
     Settings to configure IAP's OAuth behavior.
     Structure is documented below.
     """
-    reauth_settings: NotRequired[pulumi.Input['SettingsAccessSettingsReauthSettingsArgsDict']]
+    reauth_settings: NotRequired[pulumi.Input[Optional['SettingsAccessSettingsReauthSettingsArgs']]]
     """
     Settings to configure reauthentication policies in IAP.
     Structure is documented below.
     """
-    workforce_identity_settings: NotRequired[pulumi.Input['SettingsAccessSettingsWorkforceIdentitySettingsArgsDict']]
+    workforce_identity_settings: NotRequired[pulumi.Input[Optional['SettingsAccessSettingsWorkforceIdentitySettingsArgs']]]
     """
     Settings to configure the workforce identity federation, including workforce pools
     and OAuth 2.0 settings.
@@ -778,13 +778,13 @@ class SettingsAccessSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class SettingsAccessSettingsArgs:
     def __init__(__self__, *,
-                 allowed_domains_settings: Optional[pulumi.Input['SettingsAccessSettingsAllowedDomainsSettingsArgs']] = None,
-                 cors_settings: Optional[pulumi.Input['SettingsAccessSettingsCorsSettingsArgs']] = None,
-                 gcip_settings: Optional[pulumi.Input['SettingsAccessSettingsGcipSettingsArgs']] = None,
-                 identity_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oauth_settings: Optional[pulumi.Input['SettingsAccessSettingsOauthSettingsArgs']] = None,
-                 reauth_settings: Optional[pulumi.Input['SettingsAccessSettingsReauthSettingsArgs']] = None,
-                 workforce_identity_settings: Optional[pulumi.Input['SettingsAccessSettingsWorkforceIdentitySettingsArgs']] = None):
+                 allowed_domains_settings: pulumi.Input[Optional['SettingsAccessSettingsAllowedDomainsSettingsArgs']] = None,
+                 cors_settings: pulumi.Input[Optional['SettingsAccessSettingsCorsSettingsArgs']] = None,
+                 gcip_settings: pulumi.Input[Optional['SettingsAccessSettingsGcipSettingsArgs']] = None,
+                 identity_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oauth_settings: pulumi.Input[Optional['SettingsAccessSettingsOauthSettingsArgs']] = None,
+                 reauth_settings: pulumi.Input[Optional['SettingsAccessSettingsReauthSettingsArgs']] = None,
+                 workforce_identity_settings: pulumi.Input[Optional['SettingsAccessSettingsWorkforceIdentitySettingsArgs']] = None):
         """
         :param pulumi.Input['SettingsAccessSettingsAllowedDomainsSettingsArgs'] allowed_domains_settings: Settings to configure and enable allowed domains.
                Structure is documented below.
@@ -823,7 +823,7 @@ class SettingsAccessSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedDomainsSettings")
-    def allowed_domains_settings(self) -> Optional[pulumi.Input['SettingsAccessSettingsAllowedDomainsSettingsArgs']]:
+    def allowed_domains_settings(self) -> pulumi.Input[Optional['SettingsAccessSettingsAllowedDomainsSettingsArgs']]:
         """
         Settings to configure and enable allowed domains.
         Structure is documented below.
@@ -831,12 +831,12 @@ class SettingsAccessSettingsArgs:
         return pulumi.get(self, "allowed_domains_settings")
 
     @allowed_domains_settings.setter
-    def allowed_domains_settings(self, value: Optional[pulumi.Input['SettingsAccessSettingsAllowedDomainsSettingsArgs']]):
+    def allowed_domains_settings(self, value: pulumi.Input[Optional['SettingsAccessSettingsAllowedDomainsSettingsArgs']]):
         pulumi.set(self, "allowed_domains_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="corsSettings")
-    def cors_settings(self) -> Optional[pulumi.Input['SettingsAccessSettingsCorsSettingsArgs']]:
+    def cors_settings(self) -> pulumi.Input[Optional['SettingsAccessSettingsCorsSettingsArgs']]:
         """
         Configuration to allow cross-origin requests via IAP.
         Structure is documented below.
@@ -844,12 +844,12 @@ class SettingsAccessSettingsArgs:
         return pulumi.get(self, "cors_settings")
 
     @cors_settings.setter
-    def cors_settings(self, value: Optional[pulumi.Input['SettingsAccessSettingsCorsSettingsArgs']]):
+    def cors_settings(self, value: pulumi.Input[Optional['SettingsAccessSettingsCorsSettingsArgs']]):
         pulumi.set(self, "cors_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="gcipSettings")
-    def gcip_settings(self) -> Optional[pulumi.Input['SettingsAccessSettingsGcipSettingsArgs']]:
+    def gcip_settings(self) -> pulumi.Input[Optional['SettingsAccessSettingsGcipSettingsArgs']]:
         """
         GCIP claims and endpoint configurations for 3p identity providers.
         * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
@@ -858,12 +858,12 @@ class SettingsAccessSettingsArgs:
         return pulumi.get(self, "gcip_settings")
 
     @gcip_settings.setter
-    def gcip_settings(self, value: Optional[pulumi.Input['SettingsAccessSettingsGcipSettingsArgs']]):
+    def gcip_settings(self, value: pulumi.Input[Optional['SettingsAccessSettingsGcipSettingsArgs']]):
         pulumi.set(self, "gcip_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="identitySources")
-    def identity_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def identity_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Identity sources that IAP can use to authenticate the end user. Only one identity source
         can be configured. The possible values are:
@@ -874,12 +874,12 @@ class SettingsAccessSettingsArgs:
         return pulumi.get(self, "identity_sources")
 
     @identity_sources.setter
-    def identity_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def identity_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "identity_sources", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthSettings")
-    def oauth_settings(self) -> Optional[pulumi.Input['SettingsAccessSettingsOauthSettingsArgs']]:
+    def oauth_settings(self) -> pulumi.Input[Optional['SettingsAccessSettingsOauthSettingsArgs']]:
         """
         Settings to configure IAP's OAuth behavior.
         Structure is documented below.
@@ -887,12 +887,12 @@ class SettingsAccessSettingsArgs:
         return pulumi.get(self, "oauth_settings")
 
     @oauth_settings.setter
-    def oauth_settings(self, value: Optional[pulumi.Input['SettingsAccessSettingsOauthSettingsArgs']]):
+    def oauth_settings(self, value: pulumi.Input[Optional['SettingsAccessSettingsOauthSettingsArgs']]):
         pulumi.set(self, "oauth_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="reauthSettings")
-    def reauth_settings(self) -> Optional[pulumi.Input['SettingsAccessSettingsReauthSettingsArgs']]:
+    def reauth_settings(self) -> pulumi.Input[Optional['SettingsAccessSettingsReauthSettingsArgs']]:
         """
         Settings to configure reauthentication policies in IAP.
         Structure is documented below.
@@ -900,12 +900,12 @@ class SettingsAccessSettingsArgs:
         return pulumi.get(self, "reauth_settings")
 
     @reauth_settings.setter
-    def reauth_settings(self, value: Optional[pulumi.Input['SettingsAccessSettingsReauthSettingsArgs']]):
+    def reauth_settings(self, value: pulumi.Input[Optional['SettingsAccessSettingsReauthSettingsArgs']]):
         pulumi.set(self, "reauth_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="workforceIdentitySettings")
-    def workforce_identity_settings(self) -> Optional[pulumi.Input['SettingsAccessSettingsWorkforceIdentitySettingsArgs']]:
+    def workforce_identity_settings(self) -> pulumi.Input[Optional['SettingsAccessSettingsWorkforceIdentitySettingsArgs']]:
         """
         Settings to configure the workforce identity federation, including workforce pools
         and OAuth 2.0 settings.
@@ -914,16 +914,16 @@ class SettingsAccessSettingsArgs:
         return pulumi.get(self, "workforce_identity_settings")
 
     @workforce_identity_settings.setter
-    def workforce_identity_settings(self, value: Optional[pulumi.Input['SettingsAccessSettingsWorkforceIdentitySettingsArgs']]):
+    def workforce_identity_settings(self, value: pulumi.Input[Optional['SettingsAccessSettingsWorkforceIdentitySettingsArgs']]):
         pulumi.set(self, "workforce_identity_settings", value)
 
 
 class SettingsAccessSettingsAllowedDomainsSettingsArgsDict(TypedDict):
-    domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of trusted domains.
     """
-    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Configuration for customers to opt in for the feature.
     """
@@ -931,8 +931,8 @@ class SettingsAccessSettingsAllowedDomainsSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class SettingsAccessSettingsAllowedDomainsSettingsArgs:
     def __init__(__self__, *,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None):
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domains: List of trusted domains.
         :param pulumi.Input[_builtins.bool] enable: Configuration for customers to opt in for the feature.
@@ -944,31 +944,31 @@ class SettingsAccessSettingsAllowedDomainsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of trusted domains.
         """
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domains", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Configuration for customers to opt in for the feature.
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
 
 class SettingsAccessSettingsCorsSettingsArgsDict(TypedDict):
-    allow_http_options: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_http_options: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Configuration to allow HTTP OPTIONS calls to skip authorization.
     If undefined, IAP will not apply any special logic to OPTIONS requests.
@@ -977,7 +977,7 @@ class SettingsAccessSettingsCorsSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class SettingsAccessSettingsCorsSettingsArgs:
     def __init__(__self__, *,
-                 allow_http_options: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allow_http_options: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_http_options: Configuration to allow HTTP OPTIONS calls to skip authorization.
                If undefined, IAP will not apply any special logic to OPTIONS requests.
@@ -987,7 +987,7 @@ class SettingsAccessSettingsCorsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowHttpOptions")
-    def allow_http_options(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_http_options(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Configuration to allow HTTP OPTIONS calls to skip authorization.
         If undefined, IAP will not apply any special logic to OPTIONS requests.
@@ -995,18 +995,18 @@ class SettingsAccessSettingsCorsSettingsArgs:
         return pulumi.get(self, "allow_http_options")
 
     @allow_http_options.setter
-    def allow_http_options(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_http_options(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_http_options", value)
 
 
 class SettingsAccessSettingsGcipSettingsArgsDict(TypedDict):
-    login_page_uri: NotRequired[pulumi.Input[_builtins.str]]
+    login_page_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Login page URI associated with the GCIP tenants. Typically, all resources within
     the same project share the same login page, though it could be overridden at the
     sub resource level.
     """
-    tenant_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    tenant_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     GCIP tenant ids that are linked to the IAP resource. tenantIds could be a string
     beginning with a number character to indicate authenticating with GCIP tenant flow,
@@ -1018,8 +1018,8 @@ class SettingsAccessSettingsGcipSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class SettingsAccessSettingsGcipSettingsArgs:
     def __init__(__self__, *,
-                 login_page_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 login_page_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] login_page_uri: Login page URI associated with the GCIP tenants. Typically, all resources within
                the same project share the same login page, though it could be overridden at the
@@ -1037,7 +1037,7 @@ class SettingsAccessSettingsGcipSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="loginPageUri")
-    def login_page_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_page_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Login page URI associated with the GCIP tenants. Typically, all resources within
         the same project share the same login page, though it could be overridden at the
@@ -1046,12 +1046,12 @@ class SettingsAccessSettingsGcipSettingsArgs:
         return pulumi.get(self, "login_page_uri")
 
     @login_page_uri.setter
-    def login_page_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_page_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_page_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantIds")
-    def tenant_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tenant_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         GCIP tenant ids that are linked to the IAP resource. tenantIds could be a string
         beginning with a number character to indicate authenticating with GCIP tenant flow,
@@ -1062,26 +1062,26 @@ class SettingsAccessSettingsGcipSettingsArgs:
         return pulumi.get(self, "tenant_ids")
 
     @tenant_ids.setter
-    def tenant_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tenant_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tenant_ids", value)
 
 
 class SettingsAccessSettingsOauthSettingsArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     OAuth secret paired with client ID.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    client_secret_sha256: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret_sha256: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     OAuth secret sha256 paired with client ID.
     """
-    login_hint: NotRequired[pulumi.Input[_builtins.str]]
+    login_hint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Domain hint to send as hd=? parameter in OAuth request flow.
     Enables redirect to primary IDP by skipping Google's login screen.
@@ -1090,7 +1090,7 @@ class SettingsAccessSettingsOauthSettingsArgsDict(TypedDict):
     since access behavior is managed by IAM policies.
     * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
     """
-    programmatic_clients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    programmatic_clients: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of client ids allowed to use IAP programmatically.
     """
@@ -1098,11 +1098,11 @@ class SettingsAccessSettingsOauthSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class SettingsAccessSettingsOauthSettingsArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret_sha256: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_hint: Optional[pulumi.Input[_builtins.str]] = None,
-                 programmatic_clients: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_hint: pulumi.Input[Optional[_builtins.str]] = None,
+                 programmatic_clients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
         :param pulumi.Input[_builtins.str] client_secret: OAuth secret paired with client ID.
@@ -1130,19 +1130,19 @@ class SettingsAccessSettingsOauthSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OAuth secret paired with client ID.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1150,12 +1150,12 @@ class SettingsAccessSettingsOauthSettingsArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecretSha256")
-    def client_secret_sha256(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret_sha256(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         OAuth secret sha256 paired with client ID.
@@ -1163,12 +1163,12 @@ class SettingsAccessSettingsOauthSettingsArgs:
         return pulumi.get(self, "client_secret_sha256")
 
     @client_secret_sha256.setter
-    def client_secret_sha256(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret_sha256(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret_sha256", value)
 
     @_builtins.property
     @pulumi.getter(name="loginHint")
-    def login_hint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_hint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain hint to send as hd=? parameter in OAuth request flow.
         Enables redirect to primary IDP by skipping Google's login screen.
@@ -1180,19 +1180,19 @@ class SettingsAccessSettingsOauthSettingsArgs:
         return pulumi.get(self, "login_hint")
 
     @login_hint.setter
-    def login_hint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_hint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_hint", value)
 
     @_builtins.property
     @pulumi.getter(name="programmaticClients")
-    def programmatic_clients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def programmatic_clients(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of client ids allowed to use IAP programmatically.
         """
         return pulumi.get(self, "programmatic_clients")
 
     @programmatic_clients.setter
-    def programmatic_clients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def programmatic_clients(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "programmatic_clients", value)
 
 
@@ -1299,7 +1299,7 @@ class SettingsAccessSettingsReauthSettingsArgs:
 
 
 class SettingsAccessSettingsWorkforceIdentitySettingsArgsDict(TypedDict):
-    oauth2: NotRequired[pulumi.Input['SettingsAccessSettingsWorkforceIdentitySettingsOauth2ArgsDict']]
+    oauth2: NotRequired[pulumi.Input[Optional['SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args']]]
     """
     OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
     federation services.
@@ -1308,7 +1308,7 @@ class SettingsAccessSettingsWorkforceIdentitySettingsArgsDict(TypedDict):
 
     <a name="nested_access_settings_workforce_identity_settings_oauth2"></a>The `oauth2` block supports:
     """
-    workforce_pools: NotRequired[pulumi.Input[_builtins.str]]
+    workforce_pools: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The workforce pool resources. Only one workforce pool is accepted.
     """
@@ -1316,8 +1316,8 @@ class SettingsAccessSettingsWorkforceIdentitySettingsArgsDict(TypedDict):
 @pulumi.input_type
 class SettingsAccessSettingsWorkforceIdentitySettingsArgs:
     def __init__(__self__, *,
-                 oauth2: Optional[pulumi.Input['SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args']] = None,
-                 workforce_pools: Optional[pulumi.Input[_builtins.str]] = None):
+                 oauth2: pulumi.Input[Optional['SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args']] = None,
+                 workforce_pools: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args'] oauth2: OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
                federation services.
@@ -1334,7 +1334,7 @@ class SettingsAccessSettingsWorkforceIdentitySettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def oauth2(self) -> Optional[pulumi.Input['SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args']]:
+    def oauth2(self) -> pulumi.Input[Optional['SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args']]:
         """
         OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
         federation services.
@@ -1346,34 +1346,34 @@ class SettingsAccessSettingsWorkforceIdentitySettingsArgs:
         return pulumi.get(self, "oauth2")
 
     @oauth2.setter
-    def oauth2(self, value: Optional[pulumi.Input['SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args']]):
+    def oauth2(self, value: pulumi.Input[Optional['SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args']]):
         pulumi.set(self, "oauth2", value)
 
     @_builtins.property
     @pulumi.getter(name="workforcePools")
-    def workforce_pools(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workforce_pools(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The workforce pool resources. Only one workforce pool is accepted.
         """
         return pulumi.get(self, "workforce_pools")
 
     @workforce_pools.setter
-    def workforce_pools(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workforce_pools(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workforce_pools", value)
 
 
 class SettingsAccessSettingsWorkforceIdentitySettingsOauth2ArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OAuth 2.0 client ID registered in the workforce identity
     federation OAuth 2.0 Server.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. The OAuth 2.0 client secret created while registering
     the client ID.
     """
-    client_secret_sha256: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret_sha256: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. SHA256 hash value for the client secret. This field
     is returned by IAP when the settings are retrieved.
@@ -1382,9 +1382,9 @@ class SettingsAccessSettingsWorkforceIdentitySettingsOauth2ArgsDict(TypedDict):
 @pulumi.input_type
 class SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret_sha256: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret_sha256: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: The OAuth 2.0 client ID registered in the workforce identity
                federation OAuth 2.0 Server.
@@ -1402,7 +1402,7 @@ class SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OAuth 2.0 client ID registered in the workforce identity
         federation OAuth 2.0 Server.
@@ -1410,12 +1410,12 @@ class SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args:
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. The OAuth 2.0 client secret created while registering
         the client ID.
@@ -1423,12 +1423,12 @@ class SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecretSha256")
-    def client_secret_sha256(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret_sha256(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. SHA256 hash value for the client secret. This field
         is returned by IAP when the settings are retrieved.
@@ -1436,29 +1436,29 @@ class SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args:
         return pulumi.get(self, "client_secret_sha256")
 
     @client_secret_sha256.setter
-    def client_secret_sha256(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret_sha256(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret_sha256", value)
 
 
 class SettingsApplicationSettingsArgsDict(TypedDict):
-    access_denied_page_settings: NotRequired[pulumi.Input['SettingsApplicationSettingsAccessDeniedPageSettingsArgsDict']]
+    access_denied_page_settings: NotRequired[pulumi.Input[Optional['SettingsApplicationSettingsAccessDeniedPageSettingsArgs']]]
     """
     Customization for Access Denied page. IAP allows customers to define a custom URI
     to use as the error page when access is denied to users. If IAP prevents access
     to this page, the default IAP error page will be displayed instead.
     Structure is documented below.
     """
-    attribute_propagation_settings: NotRequired[pulumi.Input['SettingsApplicationSettingsAttributePropagationSettingsArgsDict']]
+    attribute_propagation_settings: NotRequired[pulumi.Input[Optional['SettingsApplicationSettingsAttributePropagationSettingsArgs']]]
     """
     Settings to configure attribute propagation.
     Structure is documented below.
     """
-    cookie_domain: NotRequired[pulumi.Input[_builtins.str]]
+    cookie_domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Domain value to set for cookies generated by IAP. This value is not validated by the API,
     but will be ignored at runtime if invalid.
     """
-    csm_settings: NotRequired[pulumi.Input['SettingsApplicationSettingsCsmSettingsArgsDict']]
+    csm_settings: NotRequired[pulumi.Input[Optional['SettingsApplicationSettingsCsmSettingsArgs']]]
     """
     Settings to configure IAP's behavior for a service mesh.
     Structure is documented below.
@@ -1467,10 +1467,10 @@ class SettingsApplicationSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class SettingsApplicationSettingsArgs:
     def __init__(__self__, *,
-                 access_denied_page_settings: Optional[pulumi.Input['SettingsApplicationSettingsAccessDeniedPageSettingsArgs']] = None,
-                 attribute_propagation_settings: Optional[pulumi.Input['SettingsApplicationSettingsAttributePropagationSettingsArgs']] = None,
-                 cookie_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 csm_settings: Optional[pulumi.Input['SettingsApplicationSettingsCsmSettingsArgs']] = None):
+                 access_denied_page_settings: pulumi.Input[Optional['SettingsApplicationSettingsAccessDeniedPageSettingsArgs']] = None,
+                 attribute_propagation_settings: pulumi.Input[Optional['SettingsApplicationSettingsAttributePropagationSettingsArgs']] = None,
+                 cookie_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 csm_settings: pulumi.Input[Optional['SettingsApplicationSettingsCsmSettingsArgs']] = None):
         """
         :param pulumi.Input['SettingsApplicationSettingsAccessDeniedPageSettingsArgs'] access_denied_page_settings: Customization for Access Denied page. IAP allows customers to define a custom URI
                to use as the error page when access is denied to users. If IAP prevents access
@@ -1494,7 +1494,7 @@ class SettingsApplicationSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessDeniedPageSettings")
-    def access_denied_page_settings(self) -> Optional[pulumi.Input['SettingsApplicationSettingsAccessDeniedPageSettingsArgs']]:
+    def access_denied_page_settings(self) -> pulumi.Input[Optional['SettingsApplicationSettingsAccessDeniedPageSettingsArgs']]:
         """
         Customization for Access Denied page. IAP allows customers to define a custom URI
         to use as the error page when access is denied to users. If IAP prevents access
@@ -1504,12 +1504,12 @@ class SettingsApplicationSettingsArgs:
         return pulumi.get(self, "access_denied_page_settings")
 
     @access_denied_page_settings.setter
-    def access_denied_page_settings(self, value: Optional[pulumi.Input['SettingsApplicationSettingsAccessDeniedPageSettingsArgs']]):
+    def access_denied_page_settings(self, value: pulumi.Input[Optional['SettingsApplicationSettingsAccessDeniedPageSettingsArgs']]):
         pulumi.set(self, "access_denied_page_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="attributePropagationSettings")
-    def attribute_propagation_settings(self) -> Optional[pulumi.Input['SettingsApplicationSettingsAttributePropagationSettingsArgs']]:
+    def attribute_propagation_settings(self) -> pulumi.Input[Optional['SettingsApplicationSettingsAttributePropagationSettingsArgs']]:
         """
         Settings to configure attribute propagation.
         Structure is documented below.
@@ -1517,12 +1517,12 @@ class SettingsApplicationSettingsArgs:
         return pulumi.get(self, "attribute_propagation_settings")
 
     @attribute_propagation_settings.setter
-    def attribute_propagation_settings(self, value: Optional[pulumi.Input['SettingsApplicationSettingsAttributePropagationSettingsArgs']]):
+    def attribute_propagation_settings(self, value: pulumi.Input[Optional['SettingsApplicationSettingsAttributePropagationSettingsArgs']]):
         pulumi.set(self, "attribute_propagation_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="cookieDomain")
-    def cookie_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cookie_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Domain value to set for cookies generated by IAP. This value is not validated by the API,
         but will be ignored at runtime if invalid.
@@ -1530,12 +1530,12 @@ class SettingsApplicationSettingsArgs:
         return pulumi.get(self, "cookie_domain")
 
     @cookie_domain.setter
-    def cookie_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cookie_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cookie_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="csmSettings")
-    def csm_settings(self) -> Optional[pulumi.Input['SettingsApplicationSettingsCsmSettingsArgs']]:
+    def csm_settings(self) -> pulumi.Input[Optional['SettingsApplicationSettingsCsmSettingsArgs']]:
         """
         Settings to configure IAP's behavior for a service mesh.
         Structure is documented below.
@@ -1543,20 +1543,20 @@ class SettingsApplicationSettingsArgs:
         return pulumi.get(self, "csm_settings")
 
     @csm_settings.setter
-    def csm_settings(self, value: Optional[pulumi.Input['SettingsApplicationSettingsCsmSettingsArgs']]):
+    def csm_settings(self, value: pulumi.Input[Optional['SettingsApplicationSettingsCsmSettingsArgs']]):
         pulumi.set(self, "csm_settings", value)
 
 
 class SettingsApplicationSettingsAccessDeniedPageSettingsArgsDict(TypedDict):
-    access_denied_page_uri: NotRequired[pulumi.Input[_builtins.str]]
+    access_denied_page_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URI to be redirected to when access is denied.
     """
-    generate_troubleshooting_uri: NotRequired[pulumi.Input[_builtins.bool]]
+    generate_troubleshooting_uri: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to generate a troubleshooting URL on access denied events to this application.
     """
-    remediation_token_generation_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    remediation_token_generation_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to generate remediation token on access denied events to this application.
     """
@@ -1564,9 +1564,9 @@ class SettingsApplicationSettingsAccessDeniedPageSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class SettingsApplicationSettingsAccessDeniedPageSettingsArgs:
     def __init__(__self__, *,
-                 access_denied_page_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 generate_troubleshooting_uri: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remediation_token_generation_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 access_denied_page_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 generate_troubleshooting_uri: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remediation_token_generation_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] access_denied_page_uri: The URI to be redirected to when access is denied.
         :param pulumi.Input[_builtins.bool] generate_troubleshooting_uri: Whether to generate a troubleshooting URL on access denied events to this application.
@@ -1581,54 +1581,54 @@ class SettingsApplicationSettingsAccessDeniedPageSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessDeniedPageUri")
-    def access_denied_page_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_denied_page_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI to be redirected to when access is denied.
         """
         return pulumi.get(self, "access_denied_page_uri")
 
     @access_denied_page_uri.setter
-    def access_denied_page_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_denied_page_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_denied_page_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="generateTroubleshootingUri")
-    def generate_troubleshooting_uri(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def generate_troubleshooting_uri(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to generate a troubleshooting URL on access denied events to this application.
         """
         return pulumi.get(self, "generate_troubleshooting_uri")
 
     @generate_troubleshooting_uri.setter
-    def generate_troubleshooting_uri(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def generate_troubleshooting_uri(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "generate_troubleshooting_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="remediationTokenGenerationEnabled")
-    def remediation_token_generation_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remediation_token_generation_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to generate remediation token on access denied events to this application.
         """
         return pulumi.get(self, "remediation_token_generation_enabled")
 
     @remediation_token_generation_enabled.setter
-    def remediation_token_generation_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remediation_token_generation_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remediation_token_generation_enabled", value)
 
 
 class SettingsApplicationSettingsAttributePropagationSettingsArgsDict(TypedDict):
-    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the provided attribute propagation settings should be evaluated on user requests.
     If set to true, attributes returned from the expression will be propagated in the set output credentials.
     """
-    expression: NotRequired[pulumi.Input[_builtins.str]]
+    expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Raw string CEL expression. Must return a list of attributes. A maximum of 45 attributes can
     be selected. Expressions can select different attribute types from attributes:
     attributes.saml_attributes, attributes.iap_attributes.
     """
-    output_credentials: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    output_credentials: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Which output credentials attributes selected by the CEL expression should be propagated in.
     All attributes will be fully duplicated in each selected output credential.
@@ -1644,9 +1644,9 @@ class SettingsApplicationSettingsAttributePropagationSettingsArgsDict(TypedDict)
 @pulumi.input_type
 class SettingsApplicationSettingsAttributePropagationSettingsArgs:
     def __init__(__self__, *,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable: Whether the provided attribute propagation settings should be evaluated on user requests.
                If set to true, attributes returned from the expression will be propagated in the set output credentials.
@@ -1672,7 +1672,7 @@ class SettingsApplicationSettingsAttributePropagationSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the provided attribute propagation settings should be evaluated on user requests.
         If set to true, attributes returned from the expression will be propagated in the set output credentials.
@@ -1680,12 +1680,12 @@ class SettingsApplicationSettingsAttributePropagationSettingsArgs:
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Raw string CEL expression. Must return a list of attributes. A maximum of 45 attributes can
         be selected. Expressions can select different attribute types from attributes:
@@ -1694,12 +1694,12 @@ class SettingsApplicationSettingsAttributePropagationSettingsArgs:
         return pulumi.get(self, "expression")
 
     @expression.setter
-    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expression", value)
 
     @_builtins.property
     @pulumi.getter(name="outputCredentials")
-    def output_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def output_credentials(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Which output credentials attributes selected by the CEL expression should be propagated in.
         All attributes will be fully duplicated in each selected output credential.
@@ -1714,12 +1714,12 @@ class SettingsApplicationSettingsAttributePropagationSettingsArgs:
         return pulumi.get(self, "output_credentials")
 
     @output_credentials.setter
-    def output_credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def output_credentials(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "output_credentials", value)
 
 
 class SettingsApplicationSettingsCsmSettingsArgsDict(TypedDict):
-    rctoken_aud: NotRequired[pulumi.Input[_builtins.str]]
+    rctoken_aud: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience claim set in the generated RCToken. This value is not validated by IAP.
     """
@@ -1727,7 +1727,7 @@ class SettingsApplicationSettingsCsmSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class SettingsApplicationSettingsCsmSettingsArgs:
     def __init__(__self__, *,
-                 rctoken_aud: Optional[pulumi.Input[_builtins.str]] = None):
+                 rctoken_aud: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] rctoken_aud: Audience claim set in the generated RCToken. This value is not validated by IAP.
         """
@@ -1736,14 +1736,14 @@ class SettingsApplicationSettingsCsmSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="rctokenAud")
-    def rctoken_aud(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rctoken_aud(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience claim set in the generated RCToken. This value is not validated by IAP.
         """
         return pulumi.get(self, "rctoken_aud")
 
     @rctoken_aud.setter
-    def rctoken_aud(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rctoken_aud(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rctoken_aud", value)
 
 
@@ -1756,7 +1756,7 @@ class TunnelDestGroupIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -1770,7 +1770,7 @@ class TunnelDestGroupIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -1811,7 +1811,7 @@ class TunnelDestGroupIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -1822,7 +1822,7 @@ class TunnelDestGroupIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -1835,7 +1835,7 @@ class TunnelDestGroupIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -1849,7 +1849,7 @@ class TunnelDestGroupIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -1890,7 +1890,7 @@ class TunnelDestGroupIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -1901,7 +1901,7 @@ class TunnelDestGroupIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -1914,7 +1914,7 @@ class TunnelIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
     """
@@ -1924,7 +1924,7 @@ class TunnelIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -1961,14 +1961,14 @@ class TunnelIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -1981,7 +1981,7 @@ class TunnelIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
     """
@@ -1991,7 +1991,7 @@ class TunnelIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2028,14 +2028,14 @@ class TunnelIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2048,7 +2048,7 @@ class TunnelInstanceIAMBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2062,7 +2062,7 @@ class TunnelInstanceIAMBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2103,7 +2103,7 @@ class TunnelInstanceIAMBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2114,7 +2114,7 @@ class TunnelInstanceIAMBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2127,7 +2127,7 @@ class TunnelInstanceIAMMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2141,7 +2141,7 @@ class TunnelInstanceIAMMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2182,7 +2182,7 @@ class TunnelInstanceIAMMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2193,7 +2193,7 @@ class TunnelInstanceIAMMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2206,7 +2206,7 @@ class WebBackendServiceIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2220,7 +2220,7 @@ class WebBackendServiceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2261,7 +2261,7 @@ class WebBackendServiceIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2272,7 +2272,7 @@ class WebBackendServiceIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2285,7 +2285,7 @@ class WebBackendServiceIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2299,7 +2299,7 @@ class WebBackendServiceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2340,7 +2340,7 @@ class WebBackendServiceIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2351,7 +2351,7 @@ class WebBackendServiceIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2364,7 +2364,7 @@ class WebCloudRunServiceIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2378,7 +2378,7 @@ class WebCloudRunServiceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2419,7 +2419,7 @@ class WebCloudRunServiceIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2430,7 +2430,7 @@ class WebCloudRunServiceIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2443,7 +2443,7 @@ class WebCloudRunServiceIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2457,7 +2457,7 @@ class WebCloudRunServiceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2498,7 +2498,7 @@ class WebCloudRunServiceIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2509,7 +2509,7 @@ class WebCloudRunServiceIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2522,7 +2522,7 @@ class WebForwardingRuleServiceIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2536,7 +2536,7 @@ class WebForwardingRuleServiceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2577,7 +2577,7 @@ class WebForwardingRuleServiceIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2588,7 +2588,7 @@ class WebForwardingRuleServiceIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2601,7 +2601,7 @@ class WebForwardingRuleServiceIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2615,7 +2615,7 @@ class WebForwardingRuleServiceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2656,7 +2656,7 @@ class WebForwardingRuleServiceIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2667,7 +2667,7 @@ class WebForwardingRuleServiceIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2680,7 +2680,7 @@ class WebIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2694,7 +2694,7 @@ class WebIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2735,7 +2735,7 @@ class WebIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2746,7 +2746,7 @@ class WebIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2759,7 +2759,7 @@ class WebIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2773,7 +2773,7 @@ class WebIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2814,7 +2814,7 @@ class WebIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2825,7 +2825,7 @@ class WebIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2838,7 +2838,7 @@ class WebRegionBackendServiceIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2852,7 +2852,7 @@ class WebRegionBackendServiceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2893,7 +2893,7 @@ class WebRegionBackendServiceIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2904,7 +2904,7 @@ class WebRegionBackendServiceIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2917,7 +2917,7 @@ class WebRegionBackendServiceIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2931,7 +2931,7 @@ class WebRegionBackendServiceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2972,7 +2972,7 @@ class WebRegionBackendServiceIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2983,7 +2983,7 @@ class WebRegionBackendServiceIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2996,7 +2996,7 @@ class WebRegionForwardingRuleServiceIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -3010,7 +3010,7 @@ class WebRegionForwardingRuleServiceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -3051,7 +3051,7 @@ class WebRegionForwardingRuleServiceIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -3062,7 +3062,7 @@ class WebRegionForwardingRuleServiceIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -3075,7 +3075,7 @@ class WebRegionForwardingRuleServiceIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -3089,7 +3089,7 @@ class WebRegionForwardingRuleServiceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -3130,7 +3130,7 @@ class WebRegionForwardingRuleServiceIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -3141,7 +3141,7 @@ class WebRegionForwardingRuleServiceIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -3154,7 +3154,7 @@ class WebTypeAppEngingIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -3168,7 +3168,7 @@ class WebTypeAppEngingIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -3209,7 +3209,7 @@ class WebTypeAppEngingIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -3220,7 +3220,7 @@ class WebTypeAppEngingIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -3233,7 +3233,7 @@ class WebTypeAppEngingIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -3247,7 +3247,7 @@ class WebTypeAppEngingIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -3288,7 +3288,7 @@ class WebTypeAppEngingIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -3299,7 +3299,7 @@ class WebTypeAppEngingIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -3312,7 +3312,7 @@ class WebTypeComputeIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -3326,7 +3326,7 @@ class WebTypeComputeIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -3367,7 +3367,7 @@ class WebTypeComputeIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -3378,7 +3378,7 @@ class WebTypeComputeIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -3391,7 +3391,7 @@ class WebTypeComputeIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -3405,7 +3405,7 @@ class WebTypeComputeIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -3446,7 +3446,7 @@ class WebTypeComputeIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -3457,7 +3457,7 @@ class WebTypeComputeIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 

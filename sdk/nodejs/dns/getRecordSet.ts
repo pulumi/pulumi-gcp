@@ -128,7 +128,7 @@ export interface GetRecordSetOutputArgs {
     /**
      * The ID of the project for the Google Cloud.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
      */

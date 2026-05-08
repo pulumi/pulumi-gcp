@@ -24,18 +24,18 @@ class InternalRangeArgs:
                  network: pulumi.Input[_builtins.str],
                  peering: pulumi.Input[_builtins.str],
                  usage: pulumi.Input[_builtins.str],
-                 allocation_options: Optional[pulumi.Input['InternalRangeAllocationOptionsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 immutable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 migration: Optional[pulumi.Input['InternalRangeMigrationArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overlaps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allocation_options: pulumi.Input[Optional['InternalRangeAllocationOptionsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 migration: pulumi.Input[Optional['InternalRangeMigrationArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overlaps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a InternalRange resource.
 
@@ -139,7 +139,7 @@ class InternalRangeArgs:
 
     @_builtins.property
     @pulumi.getter(name="allocationOptions")
-    def allocation_options(self) -> Optional[pulumi.Input['InternalRangeAllocationOptionsArgs']]:
+    def allocation_options(self) -> pulumi.Input[Optional['InternalRangeAllocationOptionsArgs']]:
         """
         Options for automatically allocating a free range with a size given by prefixLength.
         Structure is documented below.
@@ -147,24 +147,24 @@ class InternalRangeArgs:
         return pulumi.get(self, "allocation_options")
 
     @allocation_options.setter
-    def allocation_options(self, value: Optional[pulumi.Input['InternalRangeAllocationOptionsArgs']]):
+    def allocation_options(self, value: pulumi.Input[Optional['InternalRangeAllocationOptionsArgs']]):
         pulumi.set(self, "allocation_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeCidrRanges")
-    def exclude_cidr_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_cidr_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
         Only IPv4 CIDR ranges are supported.
@@ -172,24 +172,24 @@ class InternalRangeArgs:
         return pulumi.get(self, "exclude_cidr_ranges")
 
     @exclude_cidr_ranges.setter
-    def exclude_cidr_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_cidr_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_cidr_ranges", value)
 
     @_builtins.property
     @pulumi.getter
-    def immutable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def immutable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Immutable ranges cannot have their fields modified, except for labels and description.
         """
         return pulumi.get(self, "immutable")
 
     @immutable.setter
-    def immutable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def immutable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "immutable", value)
 
     @_builtins.property
     @pulumi.getter(name="ipCidrRange")
-    def ip_cidr_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_cidr_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP range that this internal range defines.
         NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
@@ -198,12 +198,12 @@ class InternalRangeArgs:
         return pulumi.get(self, "ip_cidr_range")
 
     @ip_cidr_range.setter
-    def ip_cidr_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_cidr_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_cidr_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined labels.
 
@@ -213,12 +213,12 @@ class InternalRangeArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def migration(self) -> Optional[pulumi.Input['InternalRangeMigrationArgs']]:
+    def migration(self) -> pulumi.Input[Optional['InternalRangeMigrationArgs']]:
         """
         Specification for migration with source and target resource names.
         Structure is documented below.
@@ -226,24 +226,24 @@ class InternalRangeArgs:
         return pulumi.get(self, "migration")
 
     @migration.setter
-    def migration(self, value: Optional[pulumi.Input['InternalRangeMigrationArgs']]):
+    def migration(self, value: pulumi.Input[Optional['InternalRangeMigrationArgs']]):
         pulumi.set(self, "migration", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the policy based route.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def overlaps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def overlaps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Types of resources that are allowed to overlap with the current internal range.
         Each value may be one of: `OVERLAP_ROUTE_RANGE`, `OVERLAP_EXISTING_SUBNET_RANGE`.
@@ -251,12 +251,12 @@ class InternalRangeArgs:
         return pulumi.get(self, "overlaps")
 
     @overlaps.setter
-    def overlaps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def overlaps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "overlaps", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixLength")
-    def prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
         If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
@@ -266,12 +266,12 @@ class InternalRangeArgs:
         return pulumi.get(self, "prefix_length")
 
     @prefix_length.setter
-    def prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "prefix_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -279,12 +279,12 @@ class InternalRangeArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="targetCidrRanges")
-    def target_cidr_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_cidr_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Can be set to narrow down or pick a different address space while searching for a free range.
         If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
@@ -292,31 +292,31 @@ class InternalRangeArgs:
         return pulumi.get(self, "target_cidr_ranges")
 
     @target_cidr_ranges.setter
-    def target_cidr_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_cidr_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_cidr_ranges", value)
 
 
 @pulumi.input_type
 class _InternalRangeState:
     def __init__(__self__, *,
-                 allocation_options: Optional[pulumi.Input['InternalRangeAllocationOptionsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 immutable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 migration: Optional[pulumi.Input['InternalRangeMigrationArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 overlaps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peering: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allocation_options: pulumi.Input[Optional['InternalRangeAllocationOptionsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 exclude_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 migration: pulumi.Input[Optional['InternalRangeMigrationArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 overlaps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peering: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering InternalRange resources.
 
@@ -397,7 +397,7 @@ class _InternalRangeState:
 
     @_builtins.property
     @pulumi.getter(name="allocationOptions")
-    def allocation_options(self) -> Optional[pulumi.Input['InternalRangeAllocationOptionsArgs']]:
+    def allocation_options(self) -> pulumi.Input[Optional['InternalRangeAllocationOptionsArgs']]:
         """
         Options for automatically allocating a free range with a size given by prefixLength.
         Structure is documented below.
@@ -405,36 +405,36 @@ class _InternalRangeState:
         return pulumi.get(self, "allocation_options")
 
     @allocation_options.setter
-    def allocation_options(self, value: Optional[pulumi.Input['InternalRangeAllocationOptionsArgs']]):
+    def allocation_options(self, value: pulumi.Input[Optional['InternalRangeAllocationOptionsArgs']]):
         pulumi.set(self, "allocation_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeCidrRanges")
-    def exclude_cidr_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_cidr_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
         Only IPv4 CIDR ranges are supported.
@@ -442,24 +442,24 @@ class _InternalRangeState:
         return pulumi.get(self, "exclude_cidr_ranges")
 
     @exclude_cidr_ranges.setter
-    def exclude_cidr_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_cidr_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_cidr_ranges", value)
 
     @_builtins.property
     @pulumi.getter
-    def immutable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def immutable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Immutable ranges cannot have their fields modified, except for labels and description.
         """
         return pulumi.get(self, "immutable")
 
     @immutable.setter
-    def immutable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def immutable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "immutable", value)
 
     @_builtins.property
     @pulumi.getter(name="ipCidrRange")
-    def ip_cidr_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_cidr_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP range that this internal range defines.
         NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
@@ -468,12 +468,12 @@ class _InternalRangeState:
         return pulumi.get(self, "ip_cidr_range")
 
     @ip_cidr_range.setter
-    def ip_cidr_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_cidr_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_cidr_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined labels.
 
@@ -483,12 +483,12 @@ class _InternalRangeState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def migration(self) -> Optional[pulumi.Input['InternalRangeMigrationArgs']]:
+    def migration(self) -> pulumi.Input[Optional['InternalRangeMigrationArgs']]:
         """
         Specification for migration with source and target resource names.
         Structure is documented below.
@@ -496,36 +496,36 @@ class _InternalRangeState:
         return pulumi.get(self, "migration")
 
     @migration.setter
-    def migration(self, value: Optional[pulumi.Input['InternalRangeMigrationArgs']]):
+    def migration(self, value: pulumi.Input[Optional['InternalRangeMigrationArgs']]):
         pulumi.set(self, "migration", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the policy based route.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def overlaps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def overlaps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Types of resources that are allowed to overlap with the current internal range.
         Each value may be one of: `OVERLAP_ROUTE_RANGE`, `OVERLAP_EXISTING_SUBNET_RANGE`.
@@ -533,12 +533,12 @@ class _InternalRangeState:
         return pulumi.get(self, "overlaps")
 
     @overlaps.setter
-    def overlaps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def overlaps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "overlaps", value)
 
     @_builtins.property
     @pulumi.getter
-    def peering(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peering(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of peering set for this internal range.
         Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
@@ -546,12 +546,12 @@ class _InternalRangeState:
         return pulumi.get(self, "peering")
 
     @peering.setter
-    def peering(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peering(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peering", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixLength")
-    def prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
         If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
@@ -561,12 +561,12 @@ class _InternalRangeState:
         return pulumi.get(self, "prefix_length")
 
     @prefix_length.setter
-    def prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "prefix_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -574,12 +574,12 @@ class _InternalRangeState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -587,12 +587,12 @@ class _InternalRangeState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="targetCidrRanges")
-    def target_cidr_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_cidr_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Can be set to narrow down or pick a different address space while searching for a free range.
         If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
@@ -600,12 +600,12 @@ class _InternalRangeState:
         return pulumi.get(self, "target_cidr_ranges")
 
     @target_cidr_ranges.setter
-    def target_cidr_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_cidr_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_cidr_ranges", value)
 
     @_builtins.property
     @pulumi.getter
-    def usage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of usage set for this InternalRange.
         Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
@@ -613,12 +613,12 @@ class _InternalRangeState:
         return pulumi.get(self, "usage")
 
     @usage.setter
-    def usage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage", value)
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Output only. The list of resources that refer to this internal range.
         Resources that use the internal range for their range allocation are referred to as users of the range.
@@ -627,7 +627,7 @@ class _InternalRangeState:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "users", value)
 
 
@@ -637,21 +637,21 @@ class InternalRange(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_options: Optional[pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 immutable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 migration: Optional[pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 overlaps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peering: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 usage: Optional[pulumi.Input[_builtins.str]] = None,
+                 allocation_options: pulumi.Input[Optional[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 migration: pulumi.Input[Optional[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 overlaps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peering: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 usage: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The internal range resource for IPAM operations within a VPC network. Used to represent a private address range along with behavioral characterstics of that range (its usage and peering behavior). Networking resources can link to this range if they are created as belonging to it.
@@ -1062,21 +1062,21 @@ class InternalRange(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_options: Optional[pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 immutable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 migration: Optional[pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 overlaps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peering: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 usage: Optional[pulumi.Input[_builtins.str]] = None,
+                 allocation_options: pulumi.Input[Optional[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 migration: pulumi.Input[Optional[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 overlaps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peering: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 usage: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1122,24 +1122,24 @@ class InternalRange(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allocation_options: Optional[pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            immutable: Optional[pulumi.Input[_builtins.bool]] = None,
-            ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            migration: Optional[pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            overlaps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            peering: Optional[pulumi.Input[_builtins.str]] = None,
-            prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            target_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            usage: Optional[pulumi.Input[_builtins.str]] = None,
-            users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'InternalRange':
+            allocation_options: pulumi.Input[Optional[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            exclude_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+            ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            migration: pulumi.Input[Optional[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            overlaps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            peering: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            target_cidr_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            usage: pulumi.Input[Optional[_builtins.str]] = None,
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'InternalRange':
         """
         Get an existing InternalRange resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -22,29 +22,29 @@ __all__ = ['BucketArgs', 'Bucket']
 class BucketArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 autoclass: Optional[pulumi.Input['BucketAutoclassArgs']] = None,
-                 cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
-                 custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
-                 default_event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_object_retention: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hierarchical_namespace: Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']] = None,
-                 ip_filter: Optional[pulumi.Input['BucketIpFilterArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
-                 logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_access_prevention: Optional[pulumi.Input[_builtins.str]] = None,
-                 requester_pays: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
-                 rpo: Optional[pulumi.Input[_builtins.str]] = None,
-                 soft_delete_policy: Optional[pulumi.Input['BucketSoftDeletePolicyArgs']] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 uniform_bucket_level_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
-                 website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
+                 autoclass: pulumi.Input[Optional['BucketAutoclassArgs']] = None,
+                 cors: pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
+                 custom_placement_config: pulumi.Input[Optional['BucketCustomPlacementConfigArgs']] = None,
+                 default_event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_object_retention: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption: pulumi.Input[Optional['BucketEncryptionArgs']] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hierarchical_namespace: pulumi.Input[Optional['BucketHierarchicalNamespaceArgs']] = None,
+                 ip_filter: pulumi.Input[Optional['BucketIpFilterArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
+                 logging: pulumi.Input[Optional['BucketLoggingArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_access_prevention: pulumi.Input[Optional[_builtins.str]] = None,
+                 requester_pays: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retention_policy: pulumi.Input[Optional['BucketRetentionPolicyArgs']] = None,
+                 rpo: pulumi.Input[Optional[_builtins.str]] = None,
+                 soft_delete_policy: pulumi.Input[Optional['BucketSoftDeletePolicyArgs']] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 uniform_bucket_level_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 versioning: pulumi.Input[Optional['BucketVersioningArgs']] = None,
+                 website: pulumi.Input[Optional['BucketWebsiteArgs']] = None):
         """
         The set of arguments for constructing a Bucket resource.
 
@@ -140,163 +140,163 @@ class BucketArgs:
 
     @_builtins.property
     @pulumi.getter
-    def autoclass(self) -> Optional[pulumi.Input['BucketAutoclassArgs']]:
+    def autoclass(self) -> pulumi.Input[Optional['BucketAutoclassArgs']]:
         """
         The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
         """
         return pulumi.get(self, "autoclass")
 
     @autoclass.setter
-    def autoclass(self, value: Optional[pulumi.Input['BucketAutoclassArgs']]):
+    def autoclass(self, value: pulumi.Input[Optional['BucketAutoclassArgs']]):
         pulumi.set(self, "autoclass", value)
 
     @_builtins.property
     @pulumi.getter
-    def cors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]]:
+    def cors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorArgs']]]]:
         """
         The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         """
         return pulumi.get(self, "cors")
 
     @cors.setter
-    def cors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]]):
+    def cors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorArgs']]]]):
         pulumi.set(self, "cors", value)
 
     @_builtins.property
     @pulumi.getter(name="customPlacementConfig")
-    def custom_placement_config(self) -> Optional[pulumi.Input['BucketCustomPlacementConfigArgs']]:
+    def custom_placement_config(self) -> pulumi.Input[Optional['BucketCustomPlacementConfigArgs']]:
         """
         The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         """
         return pulumi.get(self, "custom_placement_config")
 
     @custom_placement_config.setter
-    def custom_placement_config(self, value: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']]):
+    def custom_placement_config(self, value: pulumi.Input[Optional['BucketCustomPlacementConfigArgs']]):
         pulumi.set(self, "custom_placement_config", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultEventBasedHold")
-    def default_event_based_hold(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_event_based_hold(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         """
         return pulumi.get(self, "default_event_based_hold")
 
     @default_event_based_hold.setter
-    def default_event_based_hold(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_event_based_hold(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_event_based_hold", value)
 
     @_builtins.property
     @pulumi.getter(name="enableObjectRetention")
-    def enable_object_retention(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_object_retention(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         """
         return pulumi.get(self, "enable_object_retention")
 
     @enable_object_retention.setter
-    def enable_object_retention(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_object_retention(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_object_retention", value)
 
     @_builtins.property
     @pulumi.getter
-    def encryption(self) -> Optional[pulumi.Input['BucketEncryptionArgs']]:
+    def encryption(self) -> pulumi.Input[Optional['BucketEncryptionArgs']]:
         """
         The bucket's encryption configuration. Structure is documented below.
         """
         return pulumi.get(self, "encryption")
 
     @encryption.setter
-    def encryption(self, value: Optional[pulumi.Input['BucketEncryptionArgs']]):
+    def encryption(self, value: pulumi.Input[Optional['BucketEncryptionArgs']]):
         pulumi.set(self, "encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="hierarchicalNamespace")
-    def hierarchical_namespace(self) -> Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']]:
+    def hierarchical_namespace(self) -> pulumi.Input[Optional['BucketHierarchicalNamespaceArgs']]:
         """
         The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         """
         return pulumi.get(self, "hierarchical_namespace")
 
     @hierarchical_namespace.setter
-    def hierarchical_namespace(self, value: Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']]):
+    def hierarchical_namespace(self, value: pulumi.Input[Optional['BucketHierarchicalNamespaceArgs']]):
         pulumi.set(self, "hierarchical_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="ipFilter")
-    def ip_filter(self) -> Optional[pulumi.Input['BucketIpFilterArgs']]:
+    def ip_filter(self) -> pulumi.Input[Optional['BucketIpFilterArgs']]:
         """
         The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
         """
         return pulumi.get(self, "ip_filter")
 
     @ip_filter.setter
-    def ip_filter(self, value: Optional[pulumi.Input['BucketIpFilterArgs']]):
+    def ip_filter(self, value: pulumi.Input[Optional['BucketIpFilterArgs']]):
         pulumi.set(self, "ip_filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key/value label pairs to assign to the bucket.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]:
+    def lifecycle_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]:
         """
         The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         """
         return pulumi.get(self, "lifecycle_rules")
 
     @lifecycle_rules.setter
-    def lifecycle_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]):
+    def lifecycle_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]):
         pulumi.set(self, "lifecycle_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def logging(self) -> Optional[pulumi.Input['BucketLoggingArgs']]:
+    def logging(self) -> pulumi.Input[Optional['BucketLoggingArgs']]:
         """
         The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
         """
         return pulumi.get(self, "logging")
 
     @logging.setter
-    def logging(self, value: Optional[pulumi.Input['BucketLoggingArgs']]):
+    def logging(self, value: pulumi.Input[Optional['BucketLoggingArgs']]):
         pulumi.set(self, "logging", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -304,152 +304,152 @@ class BucketArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="publicAccessPrevention")
-    def public_access_prevention(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_access_prevention(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention) only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         """
         return pulumi.get(self, "public_access_prevention")
 
     @public_access_prevention.setter
-    def public_access_prevention(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_access_prevention(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_access_prevention", value)
 
     @_builtins.property
     @pulumi.getter(name="requesterPays")
-    def requester_pays(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def requester_pays(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         """
         return pulumi.get(self, "requester_pays")
 
     @requester_pays.setter
-    def requester_pays(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def requester_pays(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "requester_pays", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionPolicy")
-    def retention_policy(self) -> Optional[pulumi.Input['BucketRetentionPolicyArgs']]:
+    def retention_policy(self) -> pulumi.Input[Optional['BucketRetentionPolicyArgs']]:
         """
         Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         """
         return pulumi.get(self, "retention_policy")
 
     @retention_policy.setter
-    def retention_policy(self, value: Optional[pulumi.Input['BucketRetentionPolicyArgs']]):
+    def retention_policy(self, value: pulumi.Input[Optional['BucketRetentionPolicyArgs']]):
         pulumi.set(self, "retention_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def rpo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rpo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
         """
         return pulumi.get(self, "rpo")
 
     @rpo.setter
-    def rpo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rpo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rpo", value)
 
     @_builtins.property
     @pulumi.getter(name="softDeletePolicy")
-    def soft_delete_policy(self) -> Optional[pulumi.Input['BucketSoftDeletePolicyArgs']]:
+    def soft_delete_policy(self) -> pulumi.Input[Optional['BucketSoftDeletePolicyArgs']]:
         """
         The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
         """
         return pulumi.get(self, "soft_delete_policy")
 
     @soft_delete_policy.setter
-    def soft_delete_policy(self, value: Optional[pulumi.Input['BucketSoftDeletePolicyArgs']]):
+    def soft_delete_policy(self, value: pulumi.Input[Optional['BucketSoftDeletePolicyArgs']]):
         pulumi.set(self, "soft_delete_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         """
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
-    def storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_class", value)
 
     @_builtins.property
     @pulumi.getter(name="uniformBucketLevelAccess")
-    def uniform_bucket_level_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def uniform_bucket_level_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         """
         return pulumi.get(self, "uniform_bucket_level_access")
 
     @uniform_bucket_level_access.setter
-    def uniform_bucket_level_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def uniform_bucket_level_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "uniform_bucket_level_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def versioning(self) -> Optional[pulumi.Input['BucketVersioningArgs']]:
+    def versioning(self) -> pulumi.Input[Optional['BucketVersioningArgs']]:
         """
         The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
         """
         return pulumi.get(self, "versioning")
 
     @versioning.setter
-    def versioning(self, value: Optional[pulumi.Input['BucketVersioningArgs']]):
+    def versioning(self, value: pulumi.Input[Optional['BucketVersioningArgs']]):
         pulumi.set(self, "versioning", value)
 
     @_builtins.property
     @pulumi.getter
-    def website(self) -> Optional[pulumi.Input['BucketWebsiteArgs']]:
+    def website(self) -> pulumi.Input[Optional['BucketWebsiteArgs']]:
         """
         Configuration if the bucket acts as a website. Structure is documented below.
         """
         return pulumi.get(self, "website")
 
     @website.setter
-    def website(self, value: Optional[pulumi.Input['BucketWebsiteArgs']]):
+    def website(self, value: pulumi.Input[Optional['BucketWebsiteArgs']]):
         pulumi.set(self, "website", value)
 
 
 @pulumi.input_type
 class _BucketState:
     def __init__(__self__, *,
-                 autoclass: Optional[pulumi.Input['BucketAutoclassArgs']] = None,
-                 cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
-                 custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
-                 default_event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enable_object_retention: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hierarchical_namespace: Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']] = None,
-                 ip_filter: Optional[pulumi.Input['BucketIpFilterArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 public_access_prevention: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 requester_pays: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
-                 rpo: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 soft_delete_policy: Optional[pulumi.Input['BucketSoftDeletePolicyArgs']] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_created: Optional[pulumi.Input[_builtins.str]] = None,
-                 uniform_bucket_level_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updated: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
-                 website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
+                 autoclass: pulumi.Input[Optional['BucketAutoclassArgs']] = None,
+                 cors: pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
+                 custom_placement_config: pulumi.Input[Optional['BucketCustomPlacementConfigArgs']] = None,
+                 default_event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_object_retention: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption: pulumi.Input[Optional['BucketEncryptionArgs']] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hierarchical_namespace: pulumi.Input[Optional['BucketHierarchicalNamespaceArgs']] = None,
+                 ip_filter: pulumi.Input[Optional['BucketIpFilterArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging: pulumi.Input[Optional['BucketLoggingArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 public_access_prevention: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 requester_pays: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retention_policy: pulumi.Input[Optional['BucketRetentionPolicyArgs']] = None,
+                 rpo: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 soft_delete_policy: pulumi.Input[Optional['BucketSoftDeletePolicyArgs']] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_created: pulumi.Input[Optional[_builtins.str]] = None,
+                 uniform_bucket_level_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updated: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning: pulumi.Input[Optional['BucketVersioningArgs']] = None,
+                 website: pulumi.Input[Optional['BucketWebsiteArgs']] = None):
         """
         Input properties used for looking up and filtering Bucket resources.
 
@@ -553,151 +553,151 @@ class _BucketState:
 
     @_builtins.property
     @pulumi.getter
-    def autoclass(self) -> Optional[pulumi.Input['BucketAutoclassArgs']]:
+    def autoclass(self) -> pulumi.Input[Optional['BucketAutoclassArgs']]:
         """
         The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
         """
         return pulumi.get(self, "autoclass")
 
     @autoclass.setter
-    def autoclass(self, value: Optional[pulumi.Input['BucketAutoclassArgs']]):
+    def autoclass(self, value: pulumi.Input[Optional['BucketAutoclassArgs']]):
         pulumi.set(self, "autoclass", value)
 
     @_builtins.property
     @pulumi.getter
-    def cors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]]:
+    def cors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorArgs']]]]:
         """
         The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         """
         return pulumi.get(self, "cors")
 
     @cors.setter
-    def cors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]]):
+    def cors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorArgs']]]]):
         pulumi.set(self, "cors", value)
 
     @_builtins.property
     @pulumi.getter(name="customPlacementConfig")
-    def custom_placement_config(self) -> Optional[pulumi.Input['BucketCustomPlacementConfigArgs']]:
+    def custom_placement_config(self) -> pulumi.Input[Optional['BucketCustomPlacementConfigArgs']]:
         """
         The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         """
         return pulumi.get(self, "custom_placement_config")
 
     @custom_placement_config.setter
-    def custom_placement_config(self, value: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']]):
+    def custom_placement_config(self, value: pulumi.Input[Optional['BucketCustomPlacementConfigArgs']]):
         pulumi.set(self, "custom_placement_config", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultEventBasedHold")
-    def default_event_based_hold(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_event_based_hold(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         """
         return pulumi.get(self, "default_event_based_hold")
 
     @default_event_based_hold.setter
-    def default_event_based_hold(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_event_based_hold(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_event_based_hold", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="enableObjectRetention")
-    def enable_object_retention(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_object_retention(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         """
         return pulumi.get(self, "enable_object_retention")
 
     @enable_object_retention.setter
-    def enable_object_retention(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_object_retention(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_object_retention", value)
 
     @_builtins.property
     @pulumi.getter
-    def encryption(self) -> Optional[pulumi.Input['BucketEncryptionArgs']]:
+    def encryption(self) -> pulumi.Input[Optional['BucketEncryptionArgs']]:
         """
         The bucket's encryption configuration. Structure is documented below.
         """
         return pulumi.get(self, "encryption")
 
     @encryption.setter
-    def encryption(self, value: Optional[pulumi.Input['BucketEncryptionArgs']]):
+    def encryption(self, value: pulumi.Input[Optional['BucketEncryptionArgs']]):
         pulumi.set(self, "encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="hierarchicalNamespace")
-    def hierarchical_namespace(self) -> Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']]:
+    def hierarchical_namespace(self) -> pulumi.Input[Optional['BucketHierarchicalNamespaceArgs']]:
         """
         The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         """
         return pulumi.get(self, "hierarchical_namespace")
 
     @hierarchical_namespace.setter
-    def hierarchical_namespace(self, value: Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']]):
+    def hierarchical_namespace(self, value: pulumi.Input[Optional['BucketHierarchicalNamespaceArgs']]):
         pulumi.set(self, "hierarchical_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="ipFilter")
-    def ip_filter(self) -> Optional[pulumi.Input['BucketIpFilterArgs']]:
+    def ip_filter(self) -> pulumi.Input[Optional['BucketIpFilterArgs']]:
         """
         The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
         """
         return pulumi.get(self, "ip_filter")
 
     @ip_filter.setter
-    def ip_filter(self, value: Optional[pulumi.Input['BucketIpFilterArgs']]):
+    def ip_filter(self, value: pulumi.Input[Optional['BucketIpFilterArgs']]):
         pulumi.set(self, "ip_filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key/value label pairs to assign to the bucket.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]:
+    def lifecycle_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]:
         """
         The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         """
         return pulumi.get(self, "lifecycle_rules")
 
     @lifecycle_rules.setter
-    def lifecycle_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]):
+    def lifecycle_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]):
         pulumi.set(self, "lifecycle_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
 
@@ -706,36 +706,36 @@ class _BucketState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def logging(self) -> Optional[pulumi.Input['BucketLoggingArgs']]:
+    def logging(self) -> pulumi.Input[Optional['BucketLoggingArgs']]:
         """
         The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
         """
         return pulumi.get(self, "logging")
 
     @logging.setter
-    def logging(self, value: Optional[pulumi.Input['BucketLoggingArgs']]):
+    def logging(self, value: pulumi.Input[Optional['BucketLoggingArgs']]):
         pulumi.set(self, "logging", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -743,187 +743,187 @@ class _BucketState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="projectNumber")
-    def project_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def project_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The project number of the project in which the resource belongs.
         """
         return pulumi.get(self, "project_number")
 
     @project_number.setter
-    def project_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def project_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "project_number", value)
 
     @_builtins.property
     @pulumi.getter(name="publicAccessPrevention")
-    def public_access_prevention(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_access_prevention(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention) only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         """
         return pulumi.get(self, "public_access_prevention")
 
     @public_access_prevention.setter
-    def public_access_prevention(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_access_prevention(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_access_prevention", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="requesterPays")
-    def requester_pays(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def requester_pays(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         """
         return pulumi.get(self, "requester_pays")
 
     @requester_pays.setter
-    def requester_pays(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def requester_pays(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "requester_pays", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionPolicy")
-    def retention_policy(self) -> Optional[pulumi.Input['BucketRetentionPolicyArgs']]:
+    def retention_policy(self) -> pulumi.Input[Optional['BucketRetentionPolicyArgs']]:
         """
         Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         """
         return pulumi.get(self, "retention_policy")
 
     @retention_policy.setter
-    def retention_policy(self, value: Optional[pulumi.Input['BucketRetentionPolicyArgs']]):
+    def retention_policy(self, value: pulumi.Input[Optional['BucketRetentionPolicyArgs']]):
         pulumi.set(self, "retention_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def rpo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rpo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
         """
         return pulumi.get(self, "rpo")
 
     @rpo.setter
-    def rpo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rpo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rpo", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="softDeletePolicy")
-    def soft_delete_policy(self) -> Optional[pulumi.Input['BucketSoftDeletePolicyArgs']]:
+    def soft_delete_policy(self) -> pulumi.Input[Optional['BucketSoftDeletePolicyArgs']]:
         """
         The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
         """
         return pulumi.get(self, "soft_delete_policy")
 
     @soft_delete_policy.setter
-    def soft_delete_policy(self, value: Optional[pulumi.Input['BucketSoftDeletePolicyArgs']]):
+    def soft_delete_policy(self, value: pulumi.Input[Optional['BucketSoftDeletePolicyArgs']]):
         pulumi.set(self, "soft_delete_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         """
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
-    def storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_class", value)
 
     @_builtins.property
     @pulumi.getter(name="timeCreated")
-    def time_created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the bucket in RFC 3339 format.
         """
         return pulumi.get(self, "time_created")
 
     @time_created.setter
-    def time_created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_created", value)
 
     @_builtins.property
     @pulumi.getter(name="uniformBucketLevelAccess")
-    def uniform_bucket_level_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def uniform_bucket_level_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         """
         return pulumi.get(self, "uniform_bucket_level_access")
 
     @uniform_bucket_level_access.setter
-    def uniform_bucket_level_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def uniform_bucket_level_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "uniform_bucket_level_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base URL of the bucket, in the format `gs://<bucket-name>`.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter
-    def versioning(self) -> Optional[pulumi.Input['BucketVersioningArgs']]:
+    def versioning(self) -> pulumi.Input[Optional['BucketVersioningArgs']]:
         """
         The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
         """
         return pulumi.get(self, "versioning")
 
     @versioning.setter
-    def versioning(self, value: Optional[pulumi.Input['BucketVersioningArgs']]):
+    def versioning(self, value: pulumi.Input[Optional['BucketVersioningArgs']]):
         pulumi.set(self, "versioning", value)
 
     @_builtins.property
     @pulumi.getter
-    def website(self) -> Optional[pulumi.Input['BucketWebsiteArgs']]:
+    def website(self) -> pulumi.Input[Optional['BucketWebsiteArgs']]:
         """
         Configuration if the bucket acts as a website. Structure is documented below.
         """
         return pulumi.get(self, "website")
 
     @website.setter
-    def website(self, value: Optional[pulumi.Input['BucketWebsiteArgs']]):
+    def website(self, value: pulumi.Input[Optional['BucketWebsiteArgs']]):
         pulumi.set(self, "website", value)
 
 
@@ -933,30 +933,30 @@ class Bucket(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoclass: Optional[pulumi.Input[Union['BucketAutoclassArgs', 'BucketAutoclassArgsDict']]] = None,
-                 cors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]]] = None,
-                 custom_placement_config: Optional[pulumi.Input[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']]] = None,
-                 default_event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_object_retention: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption: Optional[pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hierarchical_namespace: Optional[pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']]] = None,
-                 ip_filter: Optional[pulumi.Input[Union['BucketIpFilterArgs', 'BucketIpFilterArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging: Optional[pulumi.Input[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_access_prevention: Optional[pulumi.Input[_builtins.str]] = None,
-                 requester_pays: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retention_policy: Optional[pulumi.Input[Union['BucketRetentionPolicyArgs', 'BucketRetentionPolicyArgsDict']]] = None,
-                 rpo: Optional[pulumi.Input[_builtins.str]] = None,
-                 soft_delete_policy: Optional[pulumi.Input[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']]] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 uniform_bucket_level_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 versioning: Optional[pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
-                 website: Optional[pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None,
+                 autoclass: pulumi.Input[Optional[Union['BucketAutoclassArgs', 'BucketAutoclassArgsDict']]] = None,
+                 cors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]]] = None,
+                 custom_placement_config: pulumi.Input[Optional[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']]] = None,
+                 default_event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_object_retention: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption: pulumi.Input[Optional[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hierarchical_namespace: pulumi.Input[Optional[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']]] = None,
+                 ip_filter: pulumi.Input[Optional[Union['BucketIpFilterArgs', 'BucketIpFilterArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging: pulumi.Input[Optional[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_access_prevention: pulumi.Input[Optional[_builtins.str]] = None,
+                 requester_pays: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retention_policy: pulumi.Input[Optional[Union['BucketRetentionPolicyArgs', 'BucketRetentionPolicyArgsDict']]] = None,
+                 rpo: pulumi.Input[Optional[_builtins.str]] = None,
+                 soft_delete_policy: pulumi.Input[Optional[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 uniform_bucket_level_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 versioning: pulumi.Input[Optional[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
+                 website: pulumi.Input[Optional[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new bucket in Google cloud storage service (GCS).
@@ -1457,30 +1457,30 @@ class Bucket(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoclass: Optional[pulumi.Input[Union['BucketAutoclassArgs', 'BucketAutoclassArgsDict']]] = None,
-                 cors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]]] = None,
-                 custom_placement_config: Optional[pulumi.Input[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']]] = None,
-                 default_event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_object_retention: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption: Optional[pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hierarchical_namespace: Optional[pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']]] = None,
-                 ip_filter: Optional[pulumi.Input[Union['BucketIpFilterArgs', 'BucketIpFilterArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging: Optional[pulumi.Input[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_access_prevention: Optional[pulumi.Input[_builtins.str]] = None,
-                 requester_pays: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retention_policy: Optional[pulumi.Input[Union['BucketRetentionPolicyArgs', 'BucketRetentionPolicyArgsDict']]] = None,
-                 rpo: Optional[pulumi.Input[_builtins.str]] = None,
-                 soft_delete_policy: Optional[pulumi.Input[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']]] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 uniform_bucket_level_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 versioning: Optional[pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
-                 website: Optional[pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None,
+                 autoclass: pulumi.Input[Optional[Union['BucketAutoclassArgs', 'BucketAutoclassArgsDict']]] = None,
+                 cors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]]] = None,
+                 custom_placement_config: pulumi.Input[Optional[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']]] = None,
+                 default_event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_object_retention: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption: pulumi.Input[Optional[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hierarchical_namespace: pulumi.Input[Optional[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']]] = None,
+                 ip_filter: pulumi.Input[Optional[Union['BucketIpFilterArgs', 'BucketIpFilterArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging: pulumi.Input[Optional[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_access_prevention: pulumi.Input[Optional[_builtins.str]] = None,
+                 requester_pays: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retention_policy: pulumi.Input[Optional[Union['BucketRetentionPolicyArgs', 'BucketRetentionPolicyArgsDict']]] = None,
+                 rpo: pulumi.Input[Optional[_builtins.str]] = None,
+                 soft_delete_policy: pulumi.Input[Optional[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 uniform_bucket_level_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 versioning: pulumi.Input[Optional[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
+                 website: pulumi.Input[Optional[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1535,37 +1535,37 @@ class Bucket(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoclass: Optional[pulumi.Input[Union['BucketAutoclassArgs', 'BucketAutoclassArgsDict']]] = None,
-            cors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]]] = None,
-            custom_placement_config: Optional[pulumi.Input[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']]] = None,
-            default_event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            enable_object_retention: Optional[pulumi.Input[_builtins.bool]] = None,
-            encryption: Optional[pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
-            force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            hierarchical_namespace: Optional[pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']]] = None,
-            ip_filter: Optional[pulumi.Input[Union['BucketIpFilterArgs', 'BucketIpFilterArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            logging: Optional[pulumi.Input[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            project_number: Optional[pulumi.Input[_builtins.int]] = None,
-            public_access_prevention: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            requester_pays: Optional[pulumi.Input[_builtins.bool]] = None,
-            retention_policy: Optional[pulumi.Input[Union['BucketRetentionPolicyArgs', 'BucketRetentionPolicyArgsDict']]] = None,
-            rpo: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            soft_delete_policy: Optional[pulumi.Input[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']]] = None,
-            storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-            time_created: Optional[pulumi.Input[_builtins.str]] = None,
-            uniform_bucket_level_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            updated: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            versioning: Optional[pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
-            website: Optional[pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None) -> 'Bucket':
+            autoclass: pulumi.Input[Optional[Union['BucketAutoclassArgs', 'BucketAutoclassArgsDict']]] = None,
+            cors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]]] = None,
+            custom_placement_config: pulumi.Input[Optional[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']]] = None,
+            default_event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_object_retention: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption: pulumi.Input[Optional[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            hierarchical_namespace: pulumi.Input[Optional[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']]] = None,
+            ip_filter: pulumi.Input[Optional[Union['BucketIpFilterArgs', 'BucketIpFilterArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            logging: pulumi.Input[Optional[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_number: pulumi.Input[Optional[_builtins.int]] = None,
+            public_access_prevention: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            requester_pays: pulumi.Input[Optional[_builtins.bool]] = None,
+            retention_policy: pulumi.Input[Optional[Union['BucketRetentionPolicyArgs', 'BucketRetentionPolicyArgsDict']]] = None,
+            rpo: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            soft_delete_policy: pulumi.Input[Optional[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']]] = None,
+            storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+            time_created: pulumi.Input[Optional[_builtins.str]] = None,
+            uniform_bucket_level_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            versioning: pulumi.Input[Optional[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
+            website: pulumi.Input[Optional[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None) -> 'Bucket':
         """
         Get an existing Bucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

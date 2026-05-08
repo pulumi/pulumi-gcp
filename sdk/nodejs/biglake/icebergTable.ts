@@ -236,38 +236,38 @@ export interface IcebergTableState {
     /**
      * The name of the IcebergCatalog.
      */
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * The location of the table.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the table.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent namespace of the table.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition spec of the table.
      * Structure is documented below.
      */
-    partitionSpec?: pulumi.Input<inputs.biglake.IcebergTablePartitionSpec>;
+    partitionSpec?: pulumi.Input<inputs.biglake.IcebergTablePartitionSpec | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * User-defined properties for the table.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The schema of the table.
      * Structure is documented below.
      */
-    schema?: pulumi.Input<inputs.biglake.IcebergTableSchema>;
+    schema?: pulumi.Input<inputs.biglake.IcebergTableSchema | undefined>;
 }
 
 /**
@@ -281,11 +281,11 @@ export interface IcebergTableArgs {
     /**
      * The location of the table.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the table.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent namespace of the table.
      */
@@ -294,16 +294,16 @@ export interface IcebergTableArgs {
      * The partition spec of the table.
      * Structure is documented below.
      */
-    partitionSpec?: pulumi.Input<inputs.biglake.IcebergTablePartitionSpec>;
+    partitionSpec?: pulumi.Input<inputs.biglake.IcebergTablePartitionSpec | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * User-defined properties for the table.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The schema of the table.
      * Structure is documented below.

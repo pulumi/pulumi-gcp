@@ -211,60 +211,60 @@ export interface AppGatewayState {
      * A list of connections allocated for the Gateway.
      * Structure is documented below.
      */
-    allocatedConnections?: pulumi.Input<pulumi.Input<inputs.beyondcorp.AppGatewayAllocatedConnection>[]>;
+    allocatedConnections?: pulumi.Input<pulumi.Input<inputs.beyondcorp.AppGatewayAllocatedConnection>[] | undefined>;
     /**
      * An arbitrary user-provided name for the AppGateway.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of hosting used by the AppGateway.
      * Default value is `HOST_TYPE_UNSPECIFIED`.
      * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
      */
-    hostType?: pulumi.Input<string>;
+    hostType?: pulumi.Input<string | undefined>;
     /**
      * Resource labels to represent user provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ID of the AppGateway.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of the AppGateway.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Represents the different states of a AppGateway.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The type of network connectivity used by the AppGateway.
      * Default value is `TYPE_UNSPECIFIED`.
      * Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Server-defined URI for this resource.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -274,37 +274,37 @@ export interface AppGatewayArgs {
     /**
      * An arbitrary user-provided name for the AppGateway.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The type of hosting used by the AppGateway.
      * Default value is `HOST_TYPE_UNSPECIFIED`.
      * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
      */
-    hostType?: pulumi.Input<string>;
+    hostType?: pulumi.Input<string | undefined>;
     /**
      * Resource labels to represent user provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ID of the AppGateway.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the AppGateway.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The type of network connectivity used by the AppGateway.
      * Default value is `TYPE_UNSPECIFIED`.
      * Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

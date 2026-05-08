@@ -77,8 +77,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -120,8 +120,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -163,8 +163,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -206,8 +206,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -249,8 +249,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -289,8 +289,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -329,8 +329,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -369,8 +369,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -409,8 +409,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -449,8 +449,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -494,8 +494,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -540,8 +540,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -586,8 +586,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -632,8 +632,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -678,8 +678,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -724,8 +724,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -770,8 +770,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -818,8 +818,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -867,8 +867,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -916,8 +916,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -965,8 +965,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1014,8 +1014,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1065,8 +1065,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1117,8 +1117,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1169,8 +1169,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1221,8 +1221,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1273,8 +1273,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1320,8 +1320,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1364,8 +1364,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1408,8 +1408,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1452,8 +1452,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1496,8 +1496,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketObjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1540,8 +1540,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1584,8 +1584,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1628,8 +1628,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1672,8 +1672,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1716,8 +1716,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1760,8 +1760,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1804,8 +1804,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1847,8 +1847,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1890,8 +1890,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1933,8 +1933,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1976,8 +1976,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2019,8 +2019,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2062,8 +2062,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2105,8 +2105,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2148,8 +2148,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2191,8 +2191,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2234,8 +2234,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2277,8 +2277,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2320,8 +2320,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2363,8 +2363,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2406,8 +2406,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2449,8 +2449,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2492,8 +2492,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2537,8 +2537,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2582,8 +2582,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2627,8 +2627,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2672,8 +2672,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2733,8 +2733,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2773,8 +2773,8 @@ public final class StorageFunctions {
      * import com.pulumi.std.inputs.FileArgs;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2825,8 +2825,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2865,8 +2865,8 @@ public final class StorageFunctions {
      * import com.pulumi.std.inputs.FileArgs;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2917,8 +2917,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2957,8 +2957,8 @@ public final class StorageFunctions {
      * import com.pulumi.std.inputs.FileArgs;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3009,8 +3009,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3049,8 +3049,8 @@ public final class StorageFunctions {
      * import com.pulumi.std.inputs.FileArgs;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3101,8 +3101,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3141,8 +3141,8 @@ public final class StorageFunctions {
      * import com.pulumi.std.inputs.FileArgs;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3224,8 +3224,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.pubsub.TopicIAMBinding;
      * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3268,8 +3268,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3358,8 +3358,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.pubsub.TopicIAMBinding;
      * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3402,8 +3402,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3492,8 +3492,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.pubsub.TopicIAMBinding;
      * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3536,8 +3536,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3626,8 +3626,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.pubsub.TopicIAMBinding;
      * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3670,8 +3670,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3760,8 +3760,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.pubsub.TopicIAMBinding;
      * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3804,8 +3804,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3894,8 +3894,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.pubsub.TopicIAMBinding;
      * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3938,8 +3938,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4028,8 +4028,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.pubsub.TopicIAMBinding;
      * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4072,8 +4072,8 @@ public final class StorageFunctions {
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4127,8 +4127,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4167,8 +4167,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4207,8 +4207,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4247,8 +4247,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4287,8 +4287,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4327,8 +4327,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4367,8 +4367,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4407,8 +4407,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4451,8 +4451,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4495,8 +4495,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4539,8 +4539,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4583,8 +4583,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4627,8 +4627,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4671,8 +4671,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

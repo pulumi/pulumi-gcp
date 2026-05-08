@@ -568,20 +568,20 @@ __all__ = [
 ]
 
 class GuestPoliciesAssignmentArgsDict(TypedDict):
-    group_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgsDict']]]]
+    group_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]]]
     """
     Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
     for example "env=prod or env=staging".
     Structure is documented below.
     """
-    instance_name_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    instance_name_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Targets VM instances whose name starts with one of these prefixes.
     Like labels, this is another way to group VM instances when targeting configs,
     for example prefix="prod-".
     Only supported for project-level policies.
     """
-    instances: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Targets any of the instances specified. Instances are specified by their URI in the form
     zones/[ZONE]/instances/[INSTANCE_NAME].
@@ -589,13 +589,13 @@ class GuestPoliciesAssignmentArgsDict(TypedDict):
     by the instance or to target specific VM instances for development and testing.
     Only supported for project-level policies and must reference instances within this project.
     """
-    os_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgsDict']]]]
+    os_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]]]
     """
     Targets VM instances matching at least one of the following OS types.
     VM instances must match all supplied criteria for a given OsType to be included.
     Structure is documented below.
     """
-    zones: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    zones: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Targets instances in any of these zones. Leave empty to target instances in any zone.
     Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
@@ -604,11 +604,11 @@ class GuestPoliciesAssignmentArgsDict(TypedDict):
 @pulumi.input_type
 class GuestPoliciesAssignmentArgs:
     def __init__(__self__, *,
-                 group_labels: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]] = None,
-                 instance_name_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 os_types: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 group_labels: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]] = None,
+                 instance_name_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 os_types: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]] group_labels: Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
                for example "env=prod or env=staging".
@@ -641,7 +641,7 @@ class GuestPoliciesAssignmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupLabels")
-    def group_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]]:
+    def group_labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]]:
         """
         Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
         for example "env=prod or env=staging".
@@ -650,12 +650,12 @@ class GuestPoliciesAssignmentArgs:
         return pulumi.get(self, "group_labels")
 
     @group_labels.setter
-    def group_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]]):
+    def group_labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]]):
         pulumi.set(self, "group_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceNamePrefixes")
-    def instance_name_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_name_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Targets VM instances whose name starts with one of these prefixes.
         Like labels, this is another way to group VM instances when targeting configs,
@@ -665,12 +665,12 @@ class GuestPoliciesAssignmentArgs:
         return pulumi.get(self, "instance_name_prefixes")
 
     @instance_name_prefixes.setter
-    def instance_name_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_name_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_name_prefixes", value)
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Targets any of the instances specified. Instances are specified by their URI in the form
         zones/[ZONE]/instances/[INSTANCE_NAME].
@@ -681,12 +681,12 @@ class GuestPoliciesAssignmentArgs:
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instances", value)
 
     @_builtins.property
     @pulumi.getter(name="osTypes")
-    def os_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]]:
+    def os_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]]:
         """
         Targets VM instances matching at least one of the following OS types.
         VM instances must match all supplied criteria for a given OsType to be included.
@@ -695,12 +695,12 @@ class GuestPoliciesAssignmentArgs:
         return pulumi.get(self, "os_types")
 
     @os_types.setter
-    def os_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]]):
+    def os_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]]):
         pulumi.set(self, "os_types", value)
 
     @_builtins.property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Targets instances in any of these zones. Leave empty to target instances in any zone.
         Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
@@ -708,7 +708,7 @@ class GuestPoliciesAssignmentArgs:
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "zones", value)
 
 
@@ -741,15 +741,15 @@ class GuestPoliciesAssignmentGroupLabelArgs:
 
 
 class GuestPoliciesAssignmentOsTypeArgsDict(TypedDict):
-    os_architecture: NotRequired[pulumi.Input[_builtins.str]]
+    os_architecture: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Targets VM instances with OS Inventory enabled and having the following OS architecture.
     """
-    os_short_name: NotRequired[pulumi.Input[_builtins.str]]
+    os_short_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
     """
-    os_version: NotRequired[pulumi.Input[_builtins.str]]
+    os_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Targets VM instances with OS Inventory enabled and having the following following OS version.
     """
@@ -757,9 +757,9 @@ class GuestPoliciesAssignmentOsTypeArgsDict(TypedDict):
 @pulumi.input_type
 class GuestPoliciesAssignmentOsTypeArgs:
     def __init__(__self__, *,
-                 os_architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_short_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 os_architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_short_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] os_architecture: Targets VM instances with OS Inventory enabled and having the following OS architecture.
         :param pulumi.Input[_builtins.str] os_short_name: Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
@@ -774,38 +774,38 @@ class GuestPoliciesAssignmentOsTypeArgs:
 
     @_builtins.property
     @pulumi.getter(name="osArchitecture")
-    def os_architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Targets VM instances with OS Inventory enabled and having the following OS architecture.
         """
         return pulumi.get(self, "os_architecture")
 
     @os_architecture.setter
-    def os_architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_architecture", value)
 
     @_builtins.property
     @pulumi.getter(name="osShortName")
-    def os_short_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_short_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
         """
         return pulumi.get(self, "os_short_name")
 
     @os_short_name.setter
-    def os_short_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_short_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_short_name", value)
 
     @_builtins.property
     @pulumi.getter(name="osVersion")
-    def os_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Targets VM instances with OS Inventory enabled and having the following following OS version.
         """
         return pulumi.get(self, "os_version")
 
     @os_version.setter
-    def os_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_version", value)
 
 
@@ -815,12 +815,12 @@ class GuestPoliciesPackageArgsDict(TypedDict):
     The name of the package. A package is uniquely identified for conflict validation
     by checking the package name and the manager(s) that the package targets.
     """
-    desired_state: NotRequired[pulumi.Input[_builtins.str]]
+    desired_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
     Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
     """
-    manager: NotRequired[pulumi.Input[_builtins.str]]
+    manager: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of package manager that can be used to install this package. If a system does not have the package manager,
     the package is not installed or removed no error message is returned. By default, or if you specify ANY,
@@ -835,8 +835,8 @@ class GuestPoliciesPackageArgsDict(TypedDict):
 class GuestPoliciesPackageArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 manager: Optional[pulumi.Input[_builtins.str]] = None):
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 manager: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the package. A package is uniquely identified for conflict validation
                by checking the package name and the manager(s) that the package targets.
@@ -871,7 +871,7 @@ class GuestPoliciesPackageArgs:
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
         Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
@@ -879,12 +879,12 @@ class GuestPoliciesPackageArgs:
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def manager(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def manager(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of package manager that can be used to install this package. If a system does not have the package manager,
         the package is not installed or removed no error message is returned. By default, or if you specify ANY,
@@ -897,27 +897,27 @@ class GuestPoliciesPackageArgs:
         return pulumi.get(self, "manager")
 
     @manager.setter
-    def manager(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def manager(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "manager", value)
 
 
 class GuestPoliciesPackageRepositoryArgsDict(TypedDict):
-    apt: NotRequired[pulumi.Input['GuestPoliciesPackageRepositoryAptArgsDict']]
+    apt: NotRequired[pulumi.Input[Optional['GuestPoliciesPackageRepositoryAptArgs']]]
     """
     An Apt Repository.
     Structure is documented below.
     """
-    goo: NotRequired[pulumi.Input['GuestPoliciesPackageRepositoryGooArgsDict']]
+    goo: NotRequired[pulumi.Input[Optional['GuestPoliciesPackageRepositoryGooArgs']]]
     """
     A Goo Repository.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input['GuestPoliciesPackageRepositoryYumArgsDict']]
+    yum: NotRequired[pulumi.Input[Optional['GuestPoliciesPackageRepositoryYumArgs']]]
     """
     A Yum Repository.
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input['GuestPoliciesPackageRepositoryZypperArgsDict']]
+    zypper: NotRequired[pulumi.Input[Optional['GuestPoliciesPackageRepositoryZypperArgs']]]
     """
     A Zypper Repository.
     Structure is documented below.
@@ -926,10 +926,10 @@ class GuestPoliciesPackageRepositoryArgsDict(TypedDict):
 @pulumi.input_type
 class GuestPoliciesPackageRepositoryArgs:
     def __init__(__self__, *,
-                 apt: Optional[pulumi.Input['GuestPoliciesPackageRepositoryAptArgs']] = None,
-                 goo: Optional[pulumi.Input['GuestPoliciesPackageRepositoryGooArgs']] = None,
-                 yum: Optional[pulumi.Input['GuestPoliciesPackageRepositoryYumArgs']] = None,
-                 zypper: Optional[pulumi.Input['GuestPoliciesPackageRepositoryZypperArgs']] = None):
+                 apt: pulumi.Input[Optional['GuestPoliciesPackageRepositoryAptArgs']] = None,
+                 goo: pulumi.Input[Optional['GuestPoliciesPackageRepositoryGooArgs']] = None,
+                 yum: pulumi.Input[Optional['GuestPoliciesPackageRepositoryYumArgs']] = None,
+                 zypper: pulumi.Input[Optional['GuestPoliciesPackageRepositoryZypperArgs']] = None):
         """
         :param pulumi.Input['GuestPoliciesPackageRepositoryAptArgs'] apt: An Apt Repository.
                Structure is documented below.
@@ -951,7 +951,7 @@ class GuestPoliciesPackageRepositoryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['GuestPoliciesPackageRepositoryAptArgs']]:
+    def apt(self) -> pulumi.Input[Optional['GuestPoliciesPackageRepositoryAptArgs']]:
         """
         An Apt Repository.
         Structure is documented below.
@@ -959,12 +959,12 @@ class GuestPoliciesPackageRepositoryArgs:
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['GuestPoliciesPackageRepositoryAptArgs']]):
+    def apt(self, value: pulumi.Input[Optional['GuestPoliciesPackageRepositoryAptArgs']]):
         pulumi.set(self, "apt", value)
 
     @_builtins.property
     @pulumi.getter
-    def goo(self) -> Optional[pulumi.Input['GuestPoliciesPackageRepositoryGooArgs']]:
+    def goo(self) -> pulumi.Input[Optional['GuestPoliciesPackageRepositoryGooArgs']]:
         """
         A Goo Repository.
         Structure is documented below.
@@ -972,12 +972,12 @@ class GuestPoliciesPackageRepositoryArgs:
         return pulumi.get(self, "goo")
 
     @goo.setter
-    def goo(self, value: Optional[pulumi.Input['GuestPoliciesPackageRepositoryGooArgs']]):
+    def goo(self, value: pulumi.Input[Optional['GuestPoliciesPackageRepositoryGooArgs']]):
         pulumi.set(self, "goo", value)
 
     @_builtins.property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['GuestPoliciesPackageRepositoryYumArgs']]:
+    def yum(self) -> pulumi.Input[Optional['GuestPoliciesPackageRepositoryYumArgs']]:
         """
         A Yum Repository.
         Structure is documented below.
@@ -985,12 +985,12 @@ class GuestPoliciesPackageRepositoryArgs:
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['GuestPoliciesPackageRepositoryYumArgs']]):
+    def yum(self, value: pulumi.Input[Optional['GuestPoliciesPackageRepositoryYumArgs']]):
         pulumi.set(self, "yum", value)
 
     @_builtins.property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['GuestPoliciesPackageRepositoryZypperArgs']]:
+    def zypper(self) -> pulumi.Input[Optional['GuestPoliciesPackageRepositoryZypperArgs']]:
         """
         A Zypper Repository.
         Structure is documented below.
@@ -998,7 +998,7 @@ class GuestPoliciesPackageRepositoryArgs:
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['GuestPoliciesPackageRepositoryZypperArgs']]):
+    def zypper(self, value: pulumi.Input[Optional['GuestPoliciesPackageRepositoryZypperArgs']]):
         pulumi.set(self, "zypper", value)
 
 
@@ -1015,13 +1015,13 @@ class GuestPoliciesPackageRepositoryAptArgsDict(TypedDict):
     """
     URI for this repository.
     """
-    archive_type: NotRequired[pulumi.Input[_builtins.str]]
+    archive_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of archive files in this repository. The default behavior is DEB.
     Default value is `DEB`.
     Possible values are: `DEB`, `DEB_SRC`.
     """
-    gpg_key: NotRequired[pulumi.Input[_builtins.str]]
+    gpg_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URI of the key file for this repository. The agent maintains a keyring at
     /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
@@ -1033,8 +1033,8 @@ class GuestPoliciesPackageRepositoryAptArgs:
                  components: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  distribution: pulumi.Input[_builtins.str],
                  uri: pulumi.Input[_builtins.str],
-                 archive_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpg_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 archive_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpg_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] components: List of components for this repository. Must contain at least one item.
         :param pulumi.Input[_builtins.str] distribution: Distribution of this repository.
@@ -1091,7 +1091,7 @@ class GuestPoliciesPackageRepositoryAptArgs:
 
     @_builtins.property
     @pulumi.getter(name="archiveType")
-    def archive_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def archive_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of archive files in this repository. The default behavior is DEB.
         Default value is `DEB`.
@@ -1100,12 +1100,12 @@ class GuestPoliciesPackageRepositoryAptArgs:
         return pulumi.get(self, "archive_type")
 
     @archive_type.setter
-    def archive_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def archive_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "archive_type", value)
 
     @_builtins.property
     @pulumi.getter(name="gpgKey")
-    def gpg_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gpg_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI of the key file for this repository. The agent maintains a keyring at
         /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
@@ -1113,7 +1113,7 @@ class GuestPoliciesPackageRepositoryAptArgs:
         return pulumi.get(self, "gpg_key")
 
     @gpg_key.setter
-    def gpg_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gpg_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gpg_key", value)
 
 
@@ -1174,11 +1174,11 @@ class GuestPoliciesPackageRepositoryYumArgsDict(TypedDict):
     A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
     if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the repository.
     """
-    gpg_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    gpg_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     URIs of GPG keys.
     """
@@ -1188,8 +1188,8 @@ class GuestPoliciesPackageRepositoryYumArgs:
     def __init__(__self__, *,
                  base_url: pulumi.Input[_builtins.str],
                  id: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpg_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] base_url: The location of the repository directory.
         :param pulumi.Input[_builtins.str] id: A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
@@ -1231,26 +1231,26 @@ class GuestPoliciesPackageRepositoryYumArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the repository.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gpgKeys")
-    def gpg_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def gpg_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
 
     @gpg_keys.setter
-    def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def gpg_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "gpg_keys", value)
 
 
@@ -1264,11 +1264,11 @@ class GuestPoliciesPackageRepositoryZypperArgsDict(TypedDict):
     A one word, unique name for this repository. This is the repo id in the zypper config file and also the displayName
     if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the repository.
     """
-    gpg_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    gpg_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     URIs of GPG keys.
     """
@@ -1278,8 +1278,8 @@ class GuestPoliciesPackageRepositoryZypperArgs:
     def __init__(__self__, *,
                  base_url: pulumi.Input[_builtins.str],
                  id: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpg_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] base_url: The location of the repository directory.
         :param pulumi.Input[_builtins.str] id: A one word, unique name for this repository. This is the repo id in the zypper config file and also the displayName
@@ -1321,26 +1321,26 @@ class GuestPoliciesPackageRepositoryZypperArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the repository.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gpgKeys")
-    def gpg_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def gpg_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
 
     @gpg_keys.setter
-    def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def gpg_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "gpg_keys", value)
 
 
@@ -1352,12 +1352,12 @@ class GuestPoliciesRecipeArgsDict(TypedDict):
     This means that requests to create multiple recipes with the same name and version are rejected since they
     could potentially have conflicting assignments.
     """
-    artifacts: NotRequired[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgsDict']]]]
+    artifacts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]]]
     """
     Resources available to be used in the steps in the recipe.
     Structure is documented below.
     """
-    desired_state: NotRequired[pulumi.Input[_builtins.str]]
+    desired_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Default is INSTALLED. The desired state the agent should maintain for this recipe.
     INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
@@ -1367,19 +1367,19 @@ class GuestPoliciesRecipeArgsDict(TypedDict):
     Default value is `INSTALLED`.
     Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
     """
-    install_steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgsDict']]]]
+    install_steps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]]]
     """
     Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
     Any steps taken (including partially completed steps) are not rolled back.
     Structure is documented below.
     """
-    update_steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgsDict']]]]
+    update_steps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]]]
     """
     Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
     Any steps taken (including partially completed steps) are not rolled back.
     Structure is documented below.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
     """
@@ -1388,11 +1388,11 @@ class GuestPoliciesRecipeArgsDict(TypedDict):
 class GuestPoliciesRecipeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 install_steps: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]] = None,
-                 update_steps: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 artifacts: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 install_steps: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]] = None,
+                 update_steps: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
                Names are also used to identify resources which helps to determine whether guest policies have conflicts.
@@ -1444,7 +1444,7 @@ class GuestPoliciesRecipeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def artifacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]]:
+    def artifacts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]]:
         """
         Resources available to be used in the steps in the recipe.
         Structure is documented below.
@@ -1452,12 +1452,12 @@ class GuestPoliciesRecipeArgs:
         return pulumi.get(self, "artifacts")
 
     @artifacts.setter
-    def artifacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]]):
+    def artifacts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]]):
         pulumi.set(self, "artifacts", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default is INSTALLED. The desired state the agent should maintain for this recipe.
         INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
@@ -1470,12 +1470,12 @@ class GuestPoliciesRecipeArgs:
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter(name="installSteps")
-    def install_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]]:
+    def install_steps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]]:
         """
         Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
         Any steps taken (including partially completed steps) are not rolled back.
@@ -1484,12 +1484,12 @@ class GuestPoliciesRecipeArgs:
         return pulumi.get(self, "install_steps")
 
     @install_steps.setter
-    def install_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]]):
+    def install_steps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]]):
         pulumi.set(self, "install_steps", value)
 
     @_builtins.property
     @pulumi.getter(name="updateSteps")
-    def update_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]]:
+    def update_steps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]]:
         """
         Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
         Any steps taken (including partially completed steps) are not rolled back.
@@ -1498,19 +1498,19 @@ class GuestPoliciesRecipeArgs:
         return pulumi.get(self, "update_steps")
 
     @update_steps.setter
-    def update_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]]):
+    def update_steps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]]):
         pulumi.set(self, "update_steps", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -1520,18 +1520,18 @@ class GuestPoliciesRecipeArtifactArgsDict(TypedDict):
     Id of the artifact, which the installation and update steps of this recipe can reference.
     Artifacts in a recipe cannot have the same id.
     """
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, recipes are subject to validations based on the artifact type:
     Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
     GCS: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['GuestPoliciesRecipeArtifactGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeArtifactGcsArgs']]]
     """
     A Google Cloud Storage artifact.
     Structure is documented below.
     """
-    remote: NotRequired[pulumi.Input['GuestPoliciesRecipeArtifactRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeArtifactRemoteArgs']]]
     """
     A generic remote artifact.
     Structure is documented below.
@@ -1541,9 +1541,9 @@ class GuestPoliciesRecipeArtifactArgsDict(TypedDict):
 class GuestPoliciesRecipeArtifactArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['GuestPoliciesRecipeArtifactGcsArgs']] = None,
-                 remote: Optional[pulumi.Input['GuestPoliciesRecipeArtifactRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['GuestPoliciesRecipeArtifactGcsArgs']] = None,
+                 remote: pulumi.Input[Optional['GuestPoliciesRecipeArtifactRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] id: Id of the artifact, which the installation and update steps of this recipe can reference.
                Artifacts in a recipe cannot have the same id.
@@ -1578,7 +1578,7 @@ class GuestPoliciesRecipeArtifactArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, recipes are subject to validations based on the artifact type:
         Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
@@ -1587,12 +1587,12 @@ class GuestPoliciesRecipeArtifactArgs:
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['GuestPoliciesRecipeArtifactGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['GuestPoliciesRecipeArtifactGcsArgs']]:
         """
         A Google Cloud Storage artifact.
         Structure is documented below.
@@ -1600,12 +1600,12 @@ class GuestPoliciesRecipeArtifactArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['GuestPoliciesRecipeArtifactGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['GuestPoliciesRecipeArtifactGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['GuestPoliciesRecipeArtifactRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['GuestPoliciesRecipeArtifactRemoteArgs']]:
         """
         A generic remote artifact.
         Structure is documented below.
@@ -1613,22 +1613,22 @@ class GuestPoliciesRecipeArtifactArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['GuestPoliciesRecipeArtifactRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['GuestPoliciesRecipeArtifactRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
 class GuestPoliciesRecipeArtifactGcsArgsDict(TypedDict):
-    bucket: NotRequired[pulumi.Input[_builtins.str]]
+    bucket: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
     this value would be my-bucket.
     """
-    generation: NotRequired[pulumi.Input[_builtins.int]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
     https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
     """
-    object: NotRequired[pulumi.Input[_builtins.str]]
+    object: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
     this value would be foo/bar.
@@ -1637,9 +1637,9 @@ class GuestPoliciesRecipeArtifactGcsArgsDict(TypedDict):
 @pulumi.input_type
 class GuestPoliciesRecipeArtifactGcsArgs:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 generation: Optional[pulumi.Input[_builtins.int]] = None,
-                 object: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 generation: pulumi.Input[Optional[_builtins.int]] = None,
+                 object: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
                this value would be my-bucket.
@@ -1657,7 +1657,7 @@ class GuestPoliciesRecipeArtifactGcsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
         this value would be my-bucket.
@@ -1665,12 +1665,12 @@ class GuestPoliciesRecipeArtifactGcsArgs:
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
         https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
@@ -1678,12 +1678,12 @@ class GuestPoliciesRecipeArtifactGcsArgs:
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "generation", value)
 
     @_builtins.property
     @pulumi.getter
-    def object(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
         this value would be foo/bar.
@@ -1691,18 +1691,18 @@ class GuestPoliciesRecipeArtifactGcsArgs:
         return pulumi.get(self, "object")
 
     @object.setter
-    def object(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object", value)
 
 
 class GuestPoliciesRecipeArtifactRemoteArgsDict(TypedDict):
-    check_sum: NotRequired[pulumi.Input[_builtins.str]]
+    check_sum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
     If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any
     of the steps.
     """
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
     """
@@ -1710,8 +1710,8 @@ class GuestPoliciesRecipeArtifactRemoteArgsDict(TypedDict):
 @pulumi.input_type
 class GuestPoliciesRecipeArtifactRemoteArgs:
     def __init__(__self__, *,
-                 check_sum: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 check_sum: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] check_sum: Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
                If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any
@@ -1725,7 +1725,7 @@ class GuestPoliciesRecipeArtifactRemoteArgs:
 
     @_builtins.property
     @pulumi.getter(name="checkSum")
-    def check_sum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_sum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
         If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any
@@ -1734,54 +1734,54 @@ class GuestPoliciesRecipeArtifactRemoteArgs:
         return pulumi.get(self, "check_sum")
 
     @check_sum.setter
-    def check_sum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_sum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_sum", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class GuestPoliciesRecipeInstallStepArgsDict(TypedDict):
-    archive_extraction: NotRequired[pulumi.Input['GuestPoliciesRecipeInstallStepArchiveExtractionArgsDict']]
+    archive_extraction: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepArchiveExtractionArgs']]]
     """
     Extracts an archive into the specified directory.
     Structure is documented below.
     """
-    dpkg_installation: NotRequired[pulumi.Input['GuestPoliciesRecipeInstallStepDpkgInstallationArgsDict']]
+    dpkg_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepDpkgInstallationArgs']]]
     """
     Installs a deb file via dpkg.
     Structure is documented below.
     """
-    file_copy: NotRequired[pulumi.Input['GuestPoliciesRecipeInstallStepFileCopyArgsDict']]
+    file_copy: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepFileCopyArgs']]]
     """
     Copies a file onto the instance.
     Structure is documented below.
     """
-    file_exec: NotRequired[pulumi.Input['GuestPoliciesRecipeInstallStepFileExecArgsDict']]
+    file_exec: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepFileExecArgs']]]
     """
     Executes an artifact or local file.
     Structure is documented below.
     """
-    msi_installation: NotRequired[pulumi.Input['GuestPoliciesRecipeInstallStepMsiInstallationArgsDict']]
+    msi_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepMsiInstallationArgs']]]
     """
     Installs an MSI file.
     Structure is documented below.
     """
-    rpm_installation: NotRequired[pulumi.Input['GuestPoliciesRecipeInstallStepRpmInstallationArgsDict']]
+    rpm_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepRpmInstallationArgs']]]
     """
     Installs an rpm file via the rpm utility.
     Structure is documented below.
     """
-    script_run: NotRequired[pulumi.Input['GuestPoliciesRecipeInstallStepScriptRunArgsDict']]
+    script_run: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepScriptRunArgs']]]
     """
     Runs commands in a shell.
     Structure is documented below.
@@ -1790,13 +1790,13 @@ class GuestPoliciesRecipeInstallStepArgsDict(TypedDict):
 @pulumi.input_type
 class GuestPoliciesRecipeInstallStepArgs:
     def __init__(__self__, *,
-                 archive_extraction: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepArchiveExtractionArgs']] = None,
-                 dpkg_installation: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepDpkgInstallationArgs']] = None,
-                 file_copy: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileCopyArgs']] = None,
-                 file_exec: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileExecArgs']] = None,
-                 msi_installation: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepMsiInstallationArgs']] = None,
-                 rpm_installation: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepRpmInstallationArgs']] = None,
-                 script_run: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepScriptRunArgs']] = None):
+                 archive_extraction: pulumi.Input[Optional['GuestPoliciesRecipeInstallStepArchiveExtractionArgs']] = None,
+                 dpkg_installation: pulumi.Input[Optional['GuestPoliciesRecipeInstallStepDpkgInstallationArgs']] = None,
+                 file_copy: pulumi.Input[Optional['GuestPoliciesRecipeInstallStepFileCopyArgs']] = None,
+                 file_exec: pulumi.Input[Optional['GuestPoliciesRecipeInstallStepFileExecArgs']] = None,
+                 msi_installation: pulumi.Input[Optional['GuestPoliciesRecipeInstallStepMsiInstallationArgs']] = None,
+                 rpm_installation: pulumi.Input[Optional['GuestPoliciesRecipeInstallStepRpmInstallationArgs']] = None,
+                 script_run: pulumi.Input[Optional['GuestPoliciesRecipeInstallStepScriptRunArgs']] = None):
         """
         :param pulumi.Input['GuestPoliciesRecipeInstallStepArchiveExtractionArgs'] archive_extraction: Extracts an archive into the specified directory.
                Structure is documented below.
@@ -1830,7 +1830,7 @@ class GuestPoliciesRecipeInstallStepArgs:
 
     @_builtins.property
     @pulumi.getter(name="archiveExtraction")
-    def archive_extraction(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepArchiveExtractionArgs']]:
+    def archive_extraction(self) -> pulumi.Input[Optional['GuestPoliciesRecipeInstallStepArchiveExtractionArgs']]:
         """
         Extracts an archive into the specified directory.
         Structure is documented below.
@@ -1838,12 +1838,12 @@ class GuestPoliciesRecipeInstallStepArgs:
         return pulumi.get(self, "archive_extraction")
 
     @archive_extraction.setter
-    def archive_extraction(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepArchiveExtractionArgs']]):
+    def archive_extraction(self, value: pulumi.Input[Optional['GuestPoliciesRecipeInstallStepArchiveExtractionArgs']]):
         pulumi.set(self, "archive_extraction", value)
 
     @_builtins.property
     @pulumi.getter(name="dpkgInstallation")
-    def dpkg_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepDpkgInstallationArgs']]:
+    def dpkg_installation(self) -> pulumi.Input[Optional['GuestPoliciesRecipeInstallStepDpkgInstallationArgs']]:
         """
         Installs a deb file via dpkg.
         Structure is documented below.
@@ -1851,12 +1851,12 @@ class GuestPoliciesRecipeInstallStepArgs:
         return pulumi.get(self, "dpkg_installation")
 
     @dpkg_installation.setter
-    def dpkg_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepDpkgInstallationArgs']]):
+    def dpkg_installation(self, value: pulumi.Input[Optional['GuestPoliciesRecipeInstallStepDpkgInstallationArgs']]):
         pulumi.set(self, "dpkg_installation", value)
 
     @_builtins.property
     @pulumi.getter(name="fileCopy")
-    def file_copy(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileCopyArgs']]:
+    def file_copy(self) -> pulumi.Input[Optional['GuestPoliciesRecipeInstallStepFileCopyArgs']]:
         """
         Copies a file onto the instance.
         Structure is documented below.
@@ -1864,12 +1864,12 @@ class GuestPoliciesRecipeInstallStepArgs:
         return pulumi.get(self, "file_copy")
 
     @file_copy.setter
-    def file_copy(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileCopyArgs']]):
+    def file_copy(self, value: pulumi.Input[Optional['GuestPoliciesRecipeInstallStepFileCopyArgs']]):
         pulumi.set(self, "file_copy", value)
 
     @_builtins.property
     @pulumi.getter(name="fileExec")
-    def file_exec(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileExecArgs']]:
+    def file_exec(self) -> pulumi.Input[Optional['GuestPoliciesRecipeInstallStepFileExecArgs']]:
         """
         Executes an artifact or local file.
         Structure is documented below.
@@ -1877,12 +1877,12 @@ class GuestPoliciesRecipeInstallStepArgs:
         return pulumi.get(self, "file_exec")
 
     @file_exec.setter
-    def file_exec(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepFileExecArgs']]):
+    def file_exec(self, value: pulumi.Input[Optional['GuestPoliciesRecipeInstallStepFileExecArgs']]):
         pulumi.set(self, "file_exec", value)
 
     @_builtins.property
     @pulumi.getter(name="msiInstallation")
-    def msi_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepMsiInstallationArgs']]:
+    def msi_installation(self) -> pulumi.Input[Optional['GuestPoliciesRecipeInstallStepMsiInstallationArgs']]:
         """
         Installs an MSI file.
         Structure is documented below.
@@ -1890,12 +1890,12 @@ class GuestPoliciesRecipeInstallStepArgs:
         return pulumi.get(self, "msi_installation")
 
     @msi_installation.setter
-    def msi_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepMsiInstallationArgs']]):
+    def msi_installation(self, value: pulumi.Input[Optional['GuestPoliciesRecipeInstallStepMsiInstallationArgs']]):
         pulumi.set(self, "msi_installation", value)
 
     @_builtins.property
     @pulumi.getter(name="rpmInstallation")
-    def rpm_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepRpmInstallationArgs']]:
+    def rpm_installation(self) -> pulumi.Input[Optional['GuestPoliciesRecipeInstallStepRpmInstallationArgs']]:
         """
         Installs an rpm file via the rpm utility.
         Structure is documented below.
@@ -1903,12 +1903,12 @@ class GuestPoliciesRecipeInstallStepArgs:
         return pulumi.get(self, "rpm_installation")
 
     @rpm_installation.setter
-    def rpm_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepRpmInstallationArgs']]):
+    def rpm_installation(self, value: pulumi.Input[Optional['GuestPoliciesRecipeInstallStepRpmInstallationArgs']]):
         pulumi.set(self, "rpm_installation", value)
 
     @_builtins.property
     @pulumi.getter(name="scriptRun")
-    def script_run(self) -> Optional[pulumi.Input['GuestPoliciesRecipeInstallStepScriptRunArgs']]:
+    def script_run(self) -> pulumi.Input[Optional['GuestPoliciesRecipeInstallStepScriptRunArgs']]:
         """
         Runs commands in a shell.
         Structure is documented below.
@@ -1916,7 +1916,7 @@ class GuestPoliciesRecipeInstallStepArgs:
         return pulumi.get(self, "script_run")
 
     @script_run.setter
-    def script_run(self, value: Optional[pulumi.Input['GuestPoliciesRecipeInstallStepScriptRunArgs']]):
+    def script_run(self, value: pulumi.Input[Optional['GuestPoliciesRecipeInstallStepScriptRunArgs']]):
         pulumi.set(self, "script_run", value)
 
 
@@ -1930,7 +1930,7 @@ class GuestPoliciesRecipeInstallStepArchiveExtractionArgsDict(TypedDict):
     The type of the archive to extract.
     Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
     """
-    destination: NotRequired[pulumi.Input[_builtins.str]]
+    destination: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Directory to extract archive to. Defaults to / on Linux or C:\\ on Windows.
     """
@@ -1940,7 +1940,7 @@ class GuestPoliciesRecipeInstallStepArchiveExtractionArgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 destination: Optional[pulumi.Input[_builtins.str]] = None):
+                 destination: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] artifact_id: The id of the relevant artifact in the recipe.
         :param pulumi.Input[_builtins.str] type: The type of the archive to extract.
@@ -1979,14 +1979,14 @@ class GuestPoliciesRecipeInstallStepArchiveExtractionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Directory to extract archive to. Defaults to / on Linux or C:\\ on Windows.
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination", value)
 
 
@@ -2027,12 +2027,12 @@ class GuestPoliciesRecipeInstallStepFileCopyArgsDict(TypedDict):
     """
     The absolute path on the instance to put the file.
     """
-    overwrite: NotRequired[pulumi.Input[_builtins.bool]]
+    overwrite: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
     is not overwritten and the step is considered a success. Defaults to false.
     """
-    permissions: NotRequired[pulumi.Input[_builtins.str]]
+    permissions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
     for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
@@ -2047,8 +2047,8 @@ class GuestPoliciesRecipeInstallStepFileCopyArgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[_builtins.str],
                  destination: pulumi.Input[_builtins.str],
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 permissions: Optional[pulumi.Input[_builtins.str]] = None):
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 permissions: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] artifact_id: The id of the relevant artifact in the recipe.
         :param pulumi.Input[_builtins.str] destination: The absolute path on the instance to put the file.
@@ -2094,7 +2094,7 @@ class GuestPoliciesRecipeInstallStepFileCopyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
         is not overwritten and the step is considered a success. Defaults to false.
@@ -2102,12 +2102,12 @@ class GuestPoliciesRecipeInstallStepFileCopyArgs:
         return pulumi.get(self, "overwrite")
 
     @overwrite.setter
-    def overwrite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permissions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
         for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
@@ -2119,24 +2119,24 @@ class GuestPoliciesRecipeInstallStepFileCopyArgs:
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permissions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permissions", value)
 
 
 class GuestPoliciesRecipeInstallStepFileExecArgsDict(TypedDict):
-    allowed_exit_codes: NotRequired[pulumi.Input[_builtins.str]]
+    allowed_exit_codes: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A list of possible return values that the program can return to indicate a success. Defaults to [0].
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Arguments to be passed to the provided executable.
     """
-    artifact_id: NotRequired[pulumi.Input[_builtins.str]]
+    artifact_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The id of the relevant artifact in the recipe.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The absolute path of the file on the local filesystem.
     """
@@ -2144,10 +2144,10 @@ class GuestPoliciesRecipeInstallStepFileExecArgsDict(TypedDict):
 @pulumi.input_type
 class GuestPoliciesRecipeInstallStepFileExecArgs:
     def __init__(__self__, *,
-                 allowed_exit_codes: Optional[pulumi.Input[_builtins.str]] = None,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 artifact_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_exit_codes: pulumi.Input[Optional[_builtins.str]] = None,
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 artifact_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] allowed_exit_codes: A list of possible return values that the program can return to indicate a success. Defaults to [0].
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Arguments to be passed to the provided executable.
@@ -2165,50 +2165,50 @@ class GuestPoliciesRecipeInstallStepFileExecArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedExitCodes")
-    def allowed_exit_codes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allowed_exit_codes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A list of possible return values that the program can return to indicate a success. Defaults to [0].
         """
         return pulumi.get(self, "allowed_exit_codes")
 
     @allowed_exit_codes.setter
-    def allowed_exit_codes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allowed_exit_codes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allowed_exit_codes", value)
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Arguments to be passed to the provided executable.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter(name="artifactId")
-    def artifact_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def artifact_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the relevant artifact in the recipe.
         """
         return pulumi.get(self, "artifact_id")
 
     @artifact_id.setter
-    def artifact_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def artifact_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "artifact_id", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The absolute path of the file on the local filesystem.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
 
@@ -2217,11 +2217,11 @@ class GuestPoliciesRecipeInstallStepMsiInstallationArgsDict(TypedDict):
     """
     The id of the relevant artifact in the recipe.
     """
-    allowed_exit_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    allowed_exit_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
     """
-    flags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    flags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The flags to use when installing the MSI. Defaults to the install flag.
     """
@@ -2230,8 +2230,8 @@ class GuestPoliciesRecipeInstallStepMsiInstallationArgsDict(TypedDict):
 class GuestPoliciesRecipeInstallStepMsiInstallationArgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[_builtins.str],
-                 allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allowed_exit_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] artifact_id: The id of the relevant artifact in the recipe.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -2257,26 +2257,26 @@ class GuestPoliciesRecipeInstallStepMsiInstallationArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedExitCodes")
-    def allowed_exit_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def allowed_exit_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         """
         return pulumi.get(self, "allowed_exit_codes")
 
     @allowed_exit_codes.setter
-    def allowed_exit_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def allowed_exit_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "allowed_exit_codes", value)
 
     @_builtins.property
     @pulumi.getter
-    def flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The flags to use when installing the MSI. Defaults to the install flag.
         """
         return pulumi.get(self, "flags")
 
     @flags.setter
-    def flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def flags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "flags", value)
 
 
@@ -2313,11 +2313,11 @@ class GuestPoliciesRecipeInstallStepScriptRunArgsDict(TypedDict):
     """
     The shell script to be executed.
     """
-    allowed_exit_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    allowed_exit_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
     """
-    interpreter: NotRequired[pulumi.Input[_builtins.str]]
+    interpreter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
     which likely only succeed for scripts with shebang lines.
@@ -2328,8 +2328,8 @@ class GuestPoliciesRecipeInstallStepScriptRunArgsDict(TypedDict):
 class GuestPoliciesRecipeInstallStepScriptRunArgs:
     def __init__(__self__, *,
                  script: pulumi.Input[_builtins.str],
-                 allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 interpreter: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_exit_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 interpreter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] script: The shell script to be executed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -2357,19 +2357,19 @@ class GuestPoliciesRecipeInstallStepScriptRunArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedExitCodes")
-    def allowed_exit_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def allowed_exit_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         """
         return pulumi.get(self, "allowed_exit_codes")
 
     @allowed_exit_codes.setter
-    def allowed_exit_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def allowed_exit_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "allowed_exit_codes", value)
 
     @_builtins.property
     @pulumi.getter
-    def interpreter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interpreter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
         which likely only succeed for scripts with shebang lines.
@@ -2378,42 +2378,42 @@ class GuestPoliciesRecipeInstallStepScriptRunArgs:
         return pulumi.get(self, "interpreter")
 
     @interpreter.setter
-    def interpreter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interpreter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interpreter", value)
 
 
 class GuestPoliciesRecipeUpdateStepArgsDict(TypedDict):
-    archive_extraction: NotRequired[pulumi.Input['GuestPoliciesRecipeUpdateStepArchiveExtractionArgsDict']]
+    archive_extraction: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepArchiveExtractionArgs']]]
     """
     Extracts an archive into the specified directory.
     Structure is documented below.
     """
-    dpkg_installation: NotRequired[pulumi.Input['GuestPoliciesRecipeUpdateStepDpkgInstallationArgsDict']]
+    dpkg_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepDpkgInstallationArgs']]]
     """
     Installs a deb file via dpkg.
     Structure is documented below.
     """
-    file_copy: NotRequired[pulumi.Input['GuestPoliciesRecipeUpdateStepFileCopyArgsDict']]
+    file_copy: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepFileCopyArgs']]]
     """
     Copies a file onto the instance.
     Structure is documented below.
     """
-    file_exec: NotRequired[pulumi.Input['GuestPoliciesRecipeUpdateStepFileExecArgsDict']]
+    file_exec: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepFileExecArgs']]]
     """
     Executes an artifact or local file.
     Structure is documented below.
     """
-    msi_installation: NotRequired[pulumi.Input['GuestPoliciesRecipeUpdateStepMsiInstallationArgsDict']]
+    msi_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepMsiInstallationArgs']]]
     """
     Installs an MSI file.
     Structure is documented below.
     """
-    rpm_installation: NotRequired[pulumi.Input['GuestPoliciesRecipeUpdateStepRpmInstallationArgsDict']]
+    rpm_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepRpmInstallationArgs']]]
     """
     Installs an rpm file via the rpm utility.
     Structure is documented below.
     """
-    script_run: NotRequired[pulumi.Input['GuestPoliciesRecipeUpdateStepScriptRunArgsDict']]
+    script_run: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepScriptRunArgs']]]
     """
     Runs commands in a shell.
     Structure is documented below.
@@ -2422,13 +2422,13 @@ class GuestPoliciesRecipeUpdateStepArgsDict(TypedDict):
 @pulumi.input_type
 class GuestPoliciesRecipeUpdateStepArgs:
     def __init__(__self__, *,
-                 archive_extraction: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepArchiveExtractionArgs']] = None,
-                 dpkg_installation: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepDpkgInstallationArgs']] = None,
-                 file_copy: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileCopyArgs']] = None,
-                 file_exec: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileExecArgs']] = None,
-                 msi_installation: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepMsiInstallationArgs']] = None,
-                 rpm_installation: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepRpmInstallationArgs']] = None,
-                 script_run: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepScriptRunArgs']] = None):
+                 archive_extraction: pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepArchiveExtractionArgs']] = None,
+                 dpkg_installation: pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepDpkgInstallationArgs']] = None,
+                 file_copy: pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepFileCopyArgs']] = None,
+                 file_exec: pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepFileExecArgs']] = None,
+                 msi_installation: pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepMsiInstallationArgs']] = None,
+                 rpm_installation: pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepRpmInstallationArgs']] = None,
+                 script_run: pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepScriptRunArgs']] = None):
         """
         :param pulumi.Input['GuestPoliciesRecipeUpdateStepArchiveExtractionArgs'] archive_extraction: Extracts an archive into the specified directory.
                Structure is documented below.
@@ -2462,7 +2462,7 @@ class GuestPoliciesRecipeUpdateStepArgs:
 
     @_builtins.property
     @pulumi.getter(name="archiveExtraction")
-    def archive_extraction(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepArchiveExtractionArgs']]:
+    def archive_extraction(self) -> pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepArchiveExtractionArgs']]:
         """
         Extracts an archive into the specified directory.
         Structure is documented below.
@@ -2470,12 +2470,12 @@ class GuestPoliciesRecipeUpdateStepArgs:
         return pulumi.get(self, "archive_extraction")
 
     @archive_extraction.setter
-    def archive_extraction(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepArchiveExtractionArgs']]):
+    def archive_extraction(self, value: pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepArchiveExtractionArgs']]):
         pulumi.set(self, "archive_extraction", value)
 
     @_builtins.property
     @pulumi.getter(name="dpkgInstallation")
-    def dpkg_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepDpkgInstallationArgs']]:
+    def dpkg_installation(self) -> pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepDpkgInstallationArgs']]:
         """
         Installs a deb file via dpkg.
         Structure is documented below.
@@ -2483,12 +2483,12 @@ class GuestPoliciesRecipeUpdateStepArgs:
         return pulumi.get(self, "dpkg_installation")
 
     @dpkg_installation.setter
-    def dpkg_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepDpkgInstallationArgs']]):
+    def dpkg_installation(self, value: pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepDpkgInstallationArgs']]):
         pulumi.set(self, "dpkg_installation", value)
 
     @_builtins.property
     @pulumi.getter(name="fileCopy")
-    def file_copy(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileCopyArgs']]:
+    def file_copy(self) -> pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepFileCopyArgs']]:
         """
         Copies a file onto the instance.
         Structure is documented below.
@@ -2496,12 +2496,12 @@ class GuestPoliciesRecipeUpdateStepArgs:
         return pulumi.get(self, "file_copy")
 
     @file_copy.setter
-    def file_copy(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileCopyArgs']]):
+    def file_copy(self, value: pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepFileCopyArgs']]):
         pulumi.set(self, "file_copy", value)
 
     @_builtins.property
     @pulumi.getter(name="fileExec")
-    def file_exec(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileExecArgs']]:
+    def file_exec(self) -> pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepFileExecArgs']]:
         """
         Executes an artifact or local file.
         Structure is documented below.
@@ -2509,12 +2509,12 @@ class GuestPoliciesRecipeUpdateStepArgs:
         return pulumi.get(self, "file_exec")
 
     @file_exec.setter
-    def file_exec(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepFileExecArgs']]):
+    def file_exec(self, value: pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepFileExecArgs']]):
         pulumi.set(self, "file_exec", value)
 
     @_builtins.property
     @pulumi.getter(name="msiInstallation")
-    def msi_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepMsiInstallationArgs']]:
+    def msi_installation(self) -> pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepMsiInstallationArgs']]:
         """
         Installs an MSI file.
         Structure is documented below.
@@ -2522,12 +2522,12 @@ class GuestPoliciesRecipeUpdateStepArgs:
         return pulumi.get(self, "msi_installation")
 
     @msi_installation.setter
-    def msi_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepMsiInstallationArgs']]):
+    def msi_installation(self, value: pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepMsiInstallationArgs']]):
         pulumi.set(self, "msi_installation", value)
 
     @_builtins.property
     @pulumi.getter(name="rpmInstallation")
-    def rpm_installation(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepRpmInstallationArgs']]:
+    def rpm_installation(self) -> pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepRpmInstallationArgs']]:
         """
         Installs an rpm file via the rpm utility.
         Structure is documented below.
@@ -2535,12 +2535,12 @@ class GuestPoliciesRecipeUpdateStepArgs:
         return pulumi.get(self, "rpm_installation")
 
     @rpm_installation.setter
-    def rpm_installation(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepRpmInstallationArgs']]):
+    def rpm_installation(self, value: pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepRpmInstallationArgs']]):
         pulumi.set(self, "rpm_installation", value)
 
     @_builtins.property
     @pulumi.getter(name="scriptRun")
-    def script_run(self) -> Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepScriptRunArgs']]:
+    def script_run(self) -> pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepScriptRunArgs']]:
         """
         Runs commands in a shell.
         Structure is documented below.
@@ -2548,7 +2548,7 @@ class GuestPoliciesRecipeUpdateStepArgs:
         return pulumi.get(self, "script_run")
 
     @script_run.setter
-    def script_run(self, value: Optional[pulumi.Input['GuestPoliciesRecipeUpdateStepScriptRunArgs']]):
+    def script_run(self, value: pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepScriptRunArgs']]):
         pulumi.set(self, "script_run", value)
 
 
@@ -2562,7 +2562,7 @@ class GuestPoliciesRecipeUpdateStepArchiveExtractionArgsDict(TypedDict):
     The type of the archive to extract.
     Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
     """
-    destination: NotRequired[pulumi.Input[_builtins.str]]
+    destination: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Directory to extract archive to. Defaults to / on Linux or C:\\ on Windows.
     """
@@ -2572,7 +2572,7 @@ class GuestPoliciesRecipeUpdateStepArchiveExtractionArgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 destination: Optional[pulumi.Input[_builtins.str]] = None):
+                 destination: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] artifact_id: The id of the relevant artifact in the recipe.
         :param pulumi.Input[_builtins.str] type: The type of the archive to extract.
@@ -2611,14 +2611,14 @@ class GuestPoliciesRecipeUpdateStepArchiveExtractionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Directory to extract archive to. Defaults to / on Linux or C:\\ on Windows.
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination", value)
 
 
@@ -2659,12 +2659,12 @@ class GuestPoliciesRecipeUpdateStepFileCopyArgsDict(TypedDict):
     """
     The absolute path on the instance to put the file.
     """
-    overwrite: NotRequired[pulumi.Input[_builtins.bool]]
+    overwrite: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
     is not overwritten and the step is considered a success. Defaults to false.
     """
-    permissions: NotRequired[pulumi.Input[_builtins.str]]
+    permissions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
     for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
@@ -2679,8 +2679,8 @@ class GuestPoliciesRecipeUpdateStepFileCopyArgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[_builtins.str],
                  destination: pulumi.Input[_builtins.str],
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 permissions: Optional[pulumi.Input[_builtins.str]] = None):
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 permissions: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] artifact_id: The id of the relevant artifact in the recipe.
         :param pulumi.Input[_builtins.str] destination: The absolute path on the instance to put the file.
@@ -2726,7 +2726,7 @@ class GuestPoliciesRecipeUpdateStepFileCopyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
         is not overwritten and the step is considered a success. Defaults to false.
@@ -2734,12 +2734,12 @@ class GuestPoliciesRecipeUpdateStepFileCopyArgs:
         return pulumi.get(self, "overwrite")
 
     @overwrite.setter
-    def overwrite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permissions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
         for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
@@ -2751,24 +2751,24 @@ class GuestPoliciesRecipeUpdateStepFileCopyArgs:
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permissions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permissions", value)
 
 
 class GuestPoliciesRecipeUpdateStepFileExecArgsDict(TypedDict):
-    allowed_exit_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    allowed_exit_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     A list of possible return values that the program can return to indicate a success. Defaults to [0].
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Arguments to be passed to the provided executable.
     """
-    artifact_id: NotRequired[pulumi.Input[_builtins.str]]
+    artifact_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The id of the relevant artifact in the recipe.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The absolute path of the file on the local filesystem.
     """
@@ -2776,10 +2776,10 @@ class GuestPoliciesRecipeUpdateStepFileExecArgsDict(TypedDict):
 @pulumi.input_type
 class GuestPoliciesRecipeUpdateStepFileExecArgs:
     def __init__(__self__, *,
-                 allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 artifact_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_exit_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 artifact_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] allowed_exit_codes: A list of possible return values that the program can return to indicate a success. Defaults to [0].
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Arguments to be passed to the provided executable.
@@ -2797,50 +2797,50 @@ class GuestPoliciesRecipeUpdateStepFileExecArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedExitCodes")
-    def allowed_exit_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def allowed_exit_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         A list of possible return values that the program can return to indicate a success. Defaults to [0].
         """
         return pulumi.get(self, "allowed_exit_codes")
 
     @allowed_exit_codes.setter
-    def allowed_exit_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def allowed_exit_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "allowed_exit_codes", value)
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Arguments to be passed to the provided executable.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter(name="artifactId")
-    def artifact_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def artifact_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the relevant artifact in the recipe.
         """
         return pulumi.get(self, "artifact_id")
 
     @artifact_id.setter
-    def artifact_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def artifact_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "artifact_id", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The absolute path of the file on the local filesystem.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
 
@@ -2849,11 +2849,11 @@ class GuestPoliciesRecipeUpdateStepMsiInstallationArgsDict(TypedDict):
     """
     The id of the relevant artifact in the recipe.
     """
-    allowed_exit_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    allowed_exit_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
     """
-    flags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    flags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The flags to use when installing the MSI. Defaults to the install flag.
     """
@@ -2862,8 +2862,8 @@ class GuestPoliciesRecipeUpdateStepMsiInstallationArgsDict(TypedDict):
 class GuestPoliciesRecipeUpdateStepMsiInstallationArgs:
     def __init__(__self__, *,
                  artifact_id: pulumi.Input[_builtins.str],
-                 allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allowed_exit_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] artifact_id: The id of the relevant artifact in the recipe.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -2889,26 +2889,26 @@ class GuestPoliciesRecipeUpdateStepMsiInstallationArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedExitCodes")
-    def allowed_exit_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def allowed_exit_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         """
         return pulumi.get(self, "allowed_exit_codes")
 
     @allowed_exit_codes.setter
-    def allowed_exit_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def allowed_exit_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "allowed_exit_codes", value)
 
     @_builtins.property
     @pulumi.getter
-    def flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The flags to use when installing the MSI. Defaults to the install flag.
         """
         return pulumi.get(self, "flags")
 
     @flags.setter
-    def flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def flags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "flags", value)
 
 
@@ -2945,11 +2945,11 @@ class GuestPoliciesRecipeUpdateStepScriptRunArgsDict(TypedDict):
     """
     The shell script to be executed.
     """
-    allowed_exit_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    allowed_exit_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
     """
-    interpreter: NotRequired[pulumi.Input[_builtins.str]]
+    interpreter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
     which likely only succeed for scripts with shebang lines.
@@ -2960,8 +2960,8 @@ class GuestPoliciesRecipeUpdateStepScriptRunArgsDict(TypedDict):
 class GuestPoliciesRecipeUpdateStepScriptRunArgs:
     def __init__(__self__, *,
                  script: pulumi.Input[_builtins.str],
-                 allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 interpreter: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_exit_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 interpreter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] script: The shell script to be executed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -2989,19 +2989,19 @@ class GuestPoliciesRecipeUpdateStepScriptRunArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedExitCodes")
-    def allowed_exit_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def allowed_exit_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         """
         return pulumi.get(self, "allowed_exit_codes")
 
     @allowed_exit_codes.setter
-    def allowed_exit_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def allowed_exit_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "allowed_exit_codes", value)
 
     @_builtins.property
     @pulumi.getter
-    def interpreter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interpreter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
         which likely only succeed for scripts with shebang lines.
@@ -3010,31 +3010,31 @@ class GuestPoliciesRecipeUpdateStepScriptRunArgs:
         return pulumi.get(self, "interpreter")
 
     @interpreter.setter
-    def interpreter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interpreter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interpreter", value)
 
 
 class OsPolicyAssignmentInstanceFilterArgsDict(TypedDict):
-    all: NotRequired[pulumi.Input[_builtins.bool]]
+    all: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Target all VMs in the project. If true, no other criteria
     is permitted.
     """
-    exclusion_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgsDict']]]]
+    exclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]]]]
     """
     List of label sets used for VM exclusion. If
     the list has more than one label set, the VM is excluded if any of the label
     sets are applicable for the VM. Structure is
     documented below.
     """
-    inclusion_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgsDict']]]]
+    inclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]]]]
     """
     List of label sets used for VM inclusion. If
     the list has more than one `LabelSet`, the VM is included if any of the
     label sets are applicable for the VM. Structure is
     documented below.
     """
-    inventories: NotRequired[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgsDict']]]]
+    inventories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]]]]
     """
     List of inventories to select VMs. A VM is
     selected if its inventory data matches at least one of the following
@@ -3044,10 +3044,10 @@ class OsPolicyAssignmentInstanceFilterArgsDict(TypedDict):
 @pulumi.input_type
 class OsPolicyAssignmentInstanceFilterArgs:
     def __init__(__self__, *,
-                 all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]]] = None,
-                 inclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]]] = None,
-                 inventories: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]]] = None):
+                 all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclusion_labels: pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]]] = None,
+                 inclusion_labels: pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]]] = None,
+                 inventories: pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] all: Target all VMs in the project. If true, no other criteria
                is permitted.
@@ -3074,7 +3074,7 @@ class OsPolicyAssignmentInstanceFilterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Target all VMs in the project. If true, no other criteria
         is permitted.
@@ -3082,12 +3082,12 @@ class OsPolicyAssignmentInstanceFilterArgs:
         return pulumi.get(self, "all")
 
     @all.setter
-    def all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusionLabels")
-    def exclusion_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]]]:
+    def exclusion_labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]]]:
         """
         List of label sets used for VM exclusion. If
         the list has more than one label set, the VM is excluded if any of the label
@@ -3097,12 +3097,12 @@ class OsPolicyAssignmentInstanceFilterArgs:
         return pulumi.get(self, "exclusion_labels")
 
     @exclusion_labels.setter
-    def exclusion_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]]]):
+    def exclusion_labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]]]):
         pulumi.set(self, "exclusion_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="inclusionLabels")
-    def inclusion_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]]]:
+    def inclusion_labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]]]:
         """
         List of label sets used for VM inclusion. If
         the list has more than one `LabelSet`, the VM is included if any of the
@@ -3112,12 +3112,12 @@ class OsPolicyAssignmentInstanceFilterArgs:
         return pulumi.get(self, "inclusion_labels")
 
     @inclusion_labels.setter
-    def inclusion_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]]]):
+    def inclusion_labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]]]):
         pulumi.set(self, "inclusion_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def inventories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]]]:
+    def inventories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]]]:
         """
         List of inventories to select VMs. A VM is
         selected if its inventory data matches at least one of the following
@@ -3126,12 +3126,12 @@ class OsPolicyAssignmentInstanceFilterArgs:
         return pulumi.get(self, "inventories")
 
     @inventories.setter
-    def inventories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]]]):
+    def inventories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]]]):
         pulumi.set(self, "inventories", value)
 
 
 class OsPolicyAssignmentInstanceFilterExclusionLabelArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels are identified by key/value pairs in this map.
     A VM should contain all the key/value pairs specified in this map to be
@@ -3141,7 +3141,7 @@ class OsPolicyAssignmentInstanceFilterExclusionLabelArgsDict(TypedDict):
 @pulumi.input_type
 class OsPolicyAssignmentInstanceFilterExclusionLabelArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are identified by key/value pairs in this map.
                A VM should contain all the key/value pairs specified in this map to be
@@ -3152,7 +3152,7 @@ class OsPolicyAssignmentInstanceFilterExclusionLabelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are identified by key/value pairs in this map.
         A VM should contain all the key/value pairs specified in this map to be
@@ -3161,12 +3161,12 @@ class OsPolicyAssignmentInstanceFilterExclusionLabelArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
 
 class OsPolicyAssignmentInstanceFilterInclusionLabelArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels are identified by key/value pairs in this map.
     A VM should contain all the key/value pairs specified in this map to be
@@ -3176,7 +3176,7 @@ class OsPolicyAssignmentInstanceFilterInclusionLabelArgsDict(TypedDict):
 @pulumi.input_type
 class OsPolicyAssignmentInstanceFilterInclusionLabelArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are identified by key/value pairs in this map.
                A VM should contain all the key/value pairs specified in this map to be
@@ -3187,7 +3187,7 @@ class OsPolicyAssignmentInstanceFilterInclusionLabelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are identified by key/value pairs in this map.
         A VM should contain all the key/value pairs specified in this map to be
@@ -3196,7 +3196,7 @@ class OsPolicyAssignmentInstanceFilterInclusionLabelArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
 
@@ -3205,7 +3205,7 @@ class OsPolicyAssignmentInstanceFilterInventoryArgsDict(TypedDict):
     """
     The OS short name
     """
-    os_version: NotRequired[pulumi.Input[_builtins.str]]
+    os_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OS version Prefix matches are supported if
     asterisk(*) is provided as the last character. For example, to match all
@@ -3217,7 +3217,7 @@ class OsPolicyAssignmentInstanceFilterInventoryArgsDict(TypedDict):
 class OsPolicyAssignmentInstanceFilterInventoryArgs:
     def __init__(__self__, *,
                  os_short_name: pulumi.Input[_builtins.str],
-                 os_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 os_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] os_short_name: The OS short name
         :param pulumi.Input[_builtins.str] os_version: The OS version Prefix matches are supported if
@@ -3243,7 +3243,7 @@ class OsPolicyAssignmentInstanceFilterInventoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="osVersion")
-    def os_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OS version Prefix matches are supported if
         asterisk(*) is provided as the last character. For example, to match all
@@ -3253,7 +3253,7 @@ class OsPolicyAssignmentInstanceFilterInventoryArgs:
         return pulumi.get(self, "os_version")
 
     @os_version.setter
-    def os_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_version", value)
 
 
@@ -3283,14 +3283,14 @@ class OsPolicyAssignmentOsPolicyArgsDict(TypedDict):
     toggled by the flag `allow_no_resource_group_match` Structure is
     documented below.
     """
-    allow_no_resource_group_match: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_no_resource_group_match: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     This flag determines the OS
     policy compliance status when none of the resource groups within the policy
     are applicable for a VM. Set this value to `true` if the policy needs to be
     reported as compliant even if the policy has nothing to validate or enforce.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Policy description. Length of the description is
     limited to 1024 characters.
@@ -3302,8 +3302,8 @@ class OsPolicyAssignmentOsPolicyArgs:
                  id: pulumi.Input[_builtins.str],
                  mode: pulumi.Input[_builtins.str],
                  resource_groups: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArgs']]],
-                 allow_no_resource_group_match: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_no_resource_group_match: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The id of the OS policy with the following restrictions:
                
@@ -3387,7 +3387,7 @@ class OsPolicyAssignmentOsPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowNoResourceGroupMatch")
-    def allow_no_resource_group_match(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_no_resource_group_match(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This flag determines the OS
         policy compliance status when none of the resource groups within the policy
@@ -3397,12 +3397,12 @@ class OsPolicyAssignmentOsPolicyArgs:
         return pulumi.get(self, "allow_no_resource_group_match")
 
     @allow_no_resource_group_match.setter
-    def allow_no_resource_group_match(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_no_resource_group_match(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_no_resource_group_match", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy description. Length of the description is
         limited to 1024 characters.
@@ -3410,7 +3410,7 @@ class OsPolicyAssignmentOsPolicyArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -3421,7 +3421,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupArgsDict(TypedDict):
     group. The resources are executed in the exact order specified here.
     Structure is documented below.
     """
-    inventory_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgsDict']]]]
+    inventory_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]]]]
     """
     List of inventory filters for the resource
     group. The resources in this resource group are applied to the target VM if
@@ -3438,7 +3438,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupArgsDict(TypedDict):
 class OsPolicyAssignmentOsPolicyResourceGroupArgs:
     def __init__(__self__, *,
                  resources: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArgs']]],
-                 inventory_filters: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]]] = None):
+                 inventory_filters: pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArgs']]] resources: List of resources configured for this resource
                group. The resources are executed in the exact order specified here.
@@ -3473,7 +3473,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="inventoryFilters")
-    def inventory_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]]]:
+    def inventory_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]]]:
         """
         List of inventory filters for the resource
         group. The resources in this resource group are applied to the target VM if
@@ -3488,7 +3488,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupArgs:
         return pulumi.get(self, "inventory_filters")
 
     @inventory_filters.setter
-    def inventory_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]]]):
+    def inventory_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]]]):
         pulumi.set(self, "inventory_filters", value)
 
 
@@ -3497,7 +3497,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgsDict(TypedDict):
     """
     The OS short name
     """
-    os_version: NotRequired[pulumi.Input[_builtins.str]]
+    os_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OS version Prefix matches are supported if
     asterisk(*) is provided as the last character. For example, to match all
@@ -3509,7 +3509,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgsDict(TypedDict):
 class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs:
     def __init__(__self__, *,
                  os_short_name: pulumi.Input[_builtins.str],
-                 os_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 os_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] os_short_name: The OS short name
         :param pulumi.Input[_builtins.str] os_version: The OS version Prefix matches are supported if
@@ -3535,7 +3535,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="osVersion")
-    def os_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OS version Prefix matches are supported if
         asterisk(*) is provided as the last character. For example, to match all
@@ -3545,7 +3545,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs:
         return pulumi.get(self, "os_version")
 
     @os_version.setter
-    def os_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_version", value)
 
 
@@ -3560,22 +3560,22 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgsDict(TypedDict):
     *   Must end with a number or a letter.
     *   Must be unique within the OS policy.
     """
-    exec_: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgsDict']]
+    exec_: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs']]]
     """
     Exec resource Structure is
     documented below.
     """
-    file: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']]]
     """
     File resource Structure is
     documented below.
     """
-    pkg: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgsDict']]
+    pkg: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']]]
     """
     Package resource Structure is
     documented below.
     """
-    repository: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgsDict']]
+    repository: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']]]
     """
     Package repository resource Structure is
     documented below.
@@ -3585,10 +3585,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgsDict(TypedDict):
 class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 exec_: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs']] = None,
-                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']] = None,
-                 pkg: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']] = None,
-                 repository: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']] = None):
+                 exec_: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs']] = None,
+                 file: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']] = None,
+                 pkg: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']] = None,
+                 repository: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] id: The id of the resource with the following restrictions:
                
@@ -3636,7 +3636,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="exec")
-    def exec_(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs']]:
+    def exec_(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs']]:
         """
         Exec resource Structure is
         documented below.
@@ -3644,12 +3644,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
         return pulumi.get(self, "exec_")
 
     @exec_.setter
-    def exec_(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs']]):
+    def exec_(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs']]):
         pulumi.set(self, "exec_", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']]:
         """
         File resource Structure is
         documented below.
@@ -3657,12 +3657,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter
-    def pkg(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']]:
+    def pkg(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']]:
         """
         Package resource Structure is
         documented below.
@@ -3670,12 +3670,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
         return pulumi.get(self, "pkg")
 
     @pkg.setter
-    def pkg(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']]):
+    def pkg(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']]):
         pulumi.set(self, "pkg", value)
 
     @_builtins.property
     @pulumi.getter
-    def repository(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']]:
+    def repository(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']]:
         """
         Package repository resource Structure is
         documented below.
@@ -3683,7 +3683,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
         return pulumi.get(self, "repository")
 
     @repository.setter
-    def repository(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']]):
+    def repository(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']]):
         pulumi.set(self, "repository", value)
 
 
@@ -3696,7 +3696,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgsDict(TypedDict):
     a failure running validate. Structure is
     documented below.
     """
-    enforce: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgsDict']]
+    enforce: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']]]
     """
     What to run to bring this resource into the desired
     state. An exit code of 100 indicates "success", any other exit code
@@ -3708,7 +3708,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgsDict(TypedDict):
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs:
     def __init__(__self__, *,
                  validate: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs'],
-                 enforce: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']] = None):
+                 enforce: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']] = None):
         """
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs'] validate: What to run to validate this resource is in the
                desired state. An exit code of 100 indicates "in desired state", and exit
@@ -3742,7 +3742,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enforce(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']]:
+    def enforce(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']]:
         """
         What to run to bring this resource into the desired
         state. An exit code of 100 indicates "success", any other exit code
@@ -3752,7 +3752,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs:
         return pulumi.get(self, "enforce")
 
     @enforce.setter
-    def enforce(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']]):
+    def enforce(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']]):
         pulumi.set(self, "enforce", value)
 
 
@@ -3762,17 +3762,17 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgsDict(TypedDi
     The script interpreter to use. Possible values
     are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional arguments to pass to the source during
     execution.
     """
-    file: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']]]
     """
     A remote or local file. Structure is
     documented below.
     """
-    output_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    output_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Only recorded for enforce Exec. Path to an
     output file (that is created by this Exec) whose content will be recorded in
@@ -3780,7 +3780,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgsDict(TypedDi
     read this file will result in this ExecResource being non-compliant. Output
     file size is limited to 100K bytes.
     """
-    script: NotRequired[pulumi.Input[_builtins.str]]
+    script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An inline script. The size of the script is limited to
     1024 characters.
@@ -3790,10 +3790,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgsDict(TypedDi
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
     def __init__(__self__, *,
                  interpreter: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']] = None,
-                 output_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 file: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']] = None,
+                 output_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] interpreter: The script interpreter to use. Possible values
                are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
@@ -3834,7 +3834,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional arguments to pass to the source during
         execution.
@@ -3842,12 +3842,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']]:
         """
         A remote or local file. Structure is
         documented below.
@@ -3855,12 +3855,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter(name="outputFilePath")
-    def output_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only recorded for enforce Exec. Path to an
         output file (that is created by this Exec) whose content will be recorded in
@@ -3871,12 +3871,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
         return pulumi.get(self, "output_file_path")
 
     @output_file_path.setter
-    def output_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_file_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An inline script. The size of the script is limited to
         1024 characters.
@@ -3884,27 +3884,27 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script", value)
 
 
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are
     subject to validations based on the file type: Remote: A checksum must be
     specified. Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]]
     """
     A Cloud Storage object. Structure is
     documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]]
     """
     A generic remote file. Structure is
     documented below.
@@ -3913,10 +3913,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgsDict(Typ
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
@@ -3938,7 +3938,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are
         subject to validations based on the file type: Remote: A checksum must be
@@ -3947,12 +3947,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs:
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]:
         """
         A Cloud Storage object. Structure is
         documented below.
@@ -3960,24 +3960,24 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]:
         """
         A generic remote file. Structure is
         documented below.
@@ -3985,7 +3985,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -3998,7 +3998,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgsDict(
     """
     Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.int]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -4008,7 +4008,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.int]] = None):
+                 generation: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Name of the Cloud Storage object.
@@ -4045,14 +4045,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "generation", value)
 
 
@@ -4062,7 +4062,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgsDi
     URI from which to fetch the object. It should contain
     both the protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -4071,7 +4071,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgsDi
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: URI from which to fetch the object. It should contain
                both the protocol and path following the format `{protocol}://{location}`.
@@ -4096,14 +4096,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs:
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -4113,17 +4113,17 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgsDict(TypedD
     The script interpreter to use. Possible values
     are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional arguments to pass to the source during
     execution.
     """
-    file: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']]]
     """
     A remote or local file. Structure is
     documented below.
     """
-    output_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    output_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Only recorded for enforce Exec. Path to an
     output file (that is created by this Exec) whose content will be recorded in
@@ -4131,7 +4131,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgsDict(TypedD
     read this file will result in this ExecResource being non-compliant. Output
     file size is limited to 100K bytes.
     """
-    script: NotRequired[pulumi.Input[_builtins.str]]
+    script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An inline script. The size of the script is limited to
     1024 characters.
@@ -4141,10 +4141,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgsDict(TypedD
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
     def __init__(__self__, *,
                  interpreter: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']] = None,
-                 output_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 file: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']] = None,
+                 output_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] interpreter: The script interpreter to use. Possible values
                are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
@@ -4185,7 +4185,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional arguments to pass to the source during
         execution.
@@ -4193,12 +4193,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']]:
         """
         A remote or local file. Structure is
         documented below.
@@ -4206,12 +4206,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter(name="outputFilePath")
-    def output_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only recorded for enforce Exec. Path to an
         output file (that is created by this Exec) whose content will be recorded in
@@ -4222,12 +4222,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
         return pulumi.get(self, "output_file_path")
 
     @output_file_path.setter
-    def output_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_file_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An inline script. The size of the script is limited to
         1024 characters.
@@ -4235,27 +4235,27 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script", value)
 
 
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are
     subject to validations based on the file type: Remote: A checksum must be
     specified. Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]]
     """
     A Cloud Storage object. Structure is
     documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]]
     """
     A generic remote file. Structure is
     documented below.
@@ -4264,10 +4264,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgsDict(Ty
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
@@ -4289,7 +4289,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are
         subject to validations based on the file type: Remote: A checksum must be
@@ -4298,12 +4298,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs:
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]:
         """
         A Cloud Storage object. Structure is
         documented below.
@@ -4311,24 +4311,24 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]:
         """
         A generic remote file. Structure is
         documented below.
@@ -4336,7 +4336,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -4349,7 +4349,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgsDict
     """
     Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.int]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -4359,7 +4359,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.int]] = None):
+                 generation: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Name of the Cloud Storage object.
@@ -4396,14 +4396,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "generation", value)
 
 
@@ -4413,7 +4413,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgsD
     URI from which to fetch the object. It should contain
     both the protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -4422,7 +4422,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgsD
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: URI from which to fetch the object. It should contain
                both the protocol and path following the format `{protocol}://{location}`.
@@ -4447,14 +4447,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs:
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -4468,17 +4468,17 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgsDict(TypedDict):
     Desired state of the file. Possible values are:
     `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
     """
-    content: NotRequired[pulumi.Input[_builtins.str]]
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A a file with this content. The size of the content
     is limited to 1024 characters.
     """
-    file: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']]]
     """
     A remote or local source. Structure is
     documented below.
     """
-    permissions: NotRequired[pulumi.Input[_builtins.str]]
+    permissions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Consists of three octal digits which represent, in
     order, the permissions of the owner, group, and other users for the file
@@ -4495,9 +4495,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
                  state: pulumi.Input[_builtins.str],
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 file: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']] = None,
-                 permissions: Optional[pulumi.Input[_builtins.str]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 file: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']] = None,
+                 permissions: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] path: The absolute path of the file within the VM.
         :param pulumi.Input[_builtins.str] state: Desired state of the file. Possible values are:
@@ -4551,7 +4551,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A a file with this content. The size of the content
         is limited to 1024 characters.
@@ -4559,12 +4559,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']]:
         """
         A remote or local source. Structure is
         documented below.
@@ -4572,12 +4572,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permissions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Consists of three octal digits which represent, in
         order, the permissions of the owner, group, and other users for the file
@@ -4591,27 +4591,27 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permissions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permissions", value)
 
 
 class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are
     subject to validations based on the file type: Remote: A checksum must be
     specified. Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs']]]
     """
     A Cloud Storage object. Structure is
     documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs']]]
     """
     A generic remote file. Structure is
     documented below.
@@ -4620,10 +4620,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgsDict(TypedDict)
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
@@ -4645,7 +4645,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are
         subject to validations based on the file type: Remote: A checksum must be
@@ -4654,12 +4654,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs:
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs']]:
         """
         A Cloud Storage object. Structure is
         documented below.
@@ -4667,24 +4667,24 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs']]:
         """
         A generic remote file. Structure is
         documented below.
@@ -4692,7 +4692,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -4705,7 +4705,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgsDict(TypedDi
     """
     Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.int]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -4715,7 +4715,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.int]] = None):
+                 generation: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Name of the Cloud Storage object.
@@ -4752,14 +4752,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "generation", value)
 
 
@@ -4769,7 +4769,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgsDict(Type
     URI from which to fetch the object. It should contain
     both the protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -4778,7 +4778,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgsDict(Type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: URI from which to fetch the object. It should contain
                both the protocol and path following the format `{protocol}://{location}`.
@@ -4803,14 +4803,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs:
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -4821,37 +4821,37 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgsDict(TypedDict):
     this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
     `REMOVED`.
     """
-    apt: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgsDict']]
+    apt: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']]]
     """
     A package managed by Apt. Structure is
     documented below.
     """
-    deb: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgsDict']]
+    deb: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs']]]
     """
     A deb package file. Structure is
     documented below.
     """
-    googet: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgsDict']]
+    googet: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs']]]
     """
     A package managed by GooGet. Structure is
     documented below.
     """
-    msi: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgsDict']]
+    msi: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs']]]
     """
     An MSI package. Structure is
     documented below.
     """
-    rpm: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgsDict']]
+    rpm: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs']]]
     """
     An rpm package file. Structure is
     documented below.
     """
-    yum: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgsDict']]
+    yum: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']]]
     """
     A package managed by YUM. Structure is
     documented below.
     """
-    zypper: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgsDict']]
+    zypper: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']]]
     """
     A package managed by Zypper. Structure is
     documented below.
@@ -4861,13 +4861,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgsDict(TypedDict):
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
     def __init__(__self__, *,
                  desired_state: pulumi.Input[_builtins.str],
-                 apt: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']] = None,
-                 deb: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs']] = None,
-                 googet: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs']] = None,
-                 msi: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs']] = None,
-                 rpm: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs']] = None,
-                 yum: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']] = None,
-                 zypper: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']] = None):
+                 apt: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']] = None,
+                 deb: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs']] = None,
+                 googet: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs']] = None,
+                 msi: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs']] = None,
+                 rpm: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs']] = None,
+                 yum: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']] = None,
+                 zypper: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] desired_state: The desired state the agent should maintain for
                this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
@@ -4919,7 +4919,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
 
     @_builtins.property
     @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']]:
+    def apt(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']]:
         """
         A package managed by Apt. Structure is
         documented below.
@@ -4927,12 +4927,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']]):
+    def apt(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']]):
         pulumi.set(self, "apt", value)
 
     @_builtins.property
     @pulumi.getter
-    def deb(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs']]:
+    def deb(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs']]:
         """
         A deb package file. Structure is
         documented below.
@@ -4940,12 +4940,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         return pulumi.get(self, "deb")
 
     @deb.setter
-    def deb(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs']]):
+    def deb(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs']]):
         pulumi.set(self, "deb", value)
 
     @_builtins.property
     @pulumi.getter
-    def googet(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs']]:
+    def googet(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs']]:
         """
         A package managed by GooGet. Structure is
         documented below.
@@ -4953,12 +4953,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         return pulumi.get(self, "googet")
 
     @googet.setter
-    def googet(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs']]):
+    def googet(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs']]):
         pulumi.set(self, "googet", value)
 
     @_builtins.property
     @pulumi.getter
-    def msi(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs']]:
+    def msi(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs']]:
         """
         An MSI package. Structure is
         documented below.
@@ -4966,12 +4966,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         return pulumi.get(self, "msi")
 
     @msi.setter
-    def msi(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs']]):
+    def msi(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs']]):
         pulumi.set(self, "msi", value)
 
     @_builtins.property
     @pulumi.getter
-    def rpm(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs']]:
+    def rpm(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs']]:
         """
         An rpm package file. Structure is
         documented below.
@@ -4979,12 +4979,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         return pulumi.get(self, "rpm")
 
     @rpm.setter
-    def rpm(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs']]):
+    def rpm(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs']]):
         pulumi.set(self, "rpm", value)
 
     @_builtins.property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']]:
+    def yum(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']]:
         """
         A package managed by YUM. Structure is
         documented below.
@@ -4992,12 +4992,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']]):
+    def yum(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']]):
         pulumi.set(self, "yum", value)
 
     @_builtins.property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']]:
+    def zypper(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']]:
         """
         A package managed by Zypper. Structure is
         documented below.
@@ -5005,7 +5005,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']]):
+    def zypper(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']]):
         pulumi.set(self, "zypper", value)
 
 
@@ -5043,7 +5043,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgsDict(TypedDict):
     A deb package. Structure is
     documented below.
     """
-    pull_deps: NotRequired[pulumi.Input[_builtins.bool]]
+    pull_deps: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether dependencies should also be installed. -
     install when false: `dpkg -i package` - install when true: `apt-get update
@@ -5054,7 +5054,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgsDict(TypedDict):
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
     def __init__(__self__, *,
                  source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs'],
-                 pull_deps: Optional[pulumi.Input[_builtins.bool]] = None):
+                 pull_deps: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs'] source: A deb package. Structure is
                documented below.
@@ -5081,7 +5081,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
 
     @_builtins.property
     @pulumi.getter(name="pullDeps")
-    def pull_deps(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pull_deps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether dependencies should also be installed. -
         install when false: `dpkg -i package` - install when true: `apt-get update
@@ -5090,27 +5090,27 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
         return pulumi.get(self, "pull_deps")
 
     @pull_deps.setter
-    def pull_deps(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pull_deps(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pull_deps", value)
 
 
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are
     subject to validations based on the file type: Remote: A checksum must be
     specified. Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]]
     """
     A Cloud Storage object. Structure is
     documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]]
     """
     A generic remote file. Structure is
     documented below.
@@ -5119,10 +5119,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgsDict(TypedD
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
@@ -5144,7 +5144,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are
         subject to validations based on the file type: Remote: A checksum must be
@@ -5153,12 +5153,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs:
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]:
         """
         A Cloud Storage object. Structure is
         documented below.
@@ -5166,24 +5166,24 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]:
         """
         A generic remote file. Structure is
         documented below.
@@ -5191,7 +5191,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -5204,7 +5204,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgsDict(Typ
     """
     Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.int]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -5214,7 +5214,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.int]] = None):
+                 generation: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Name of the Cloud Storage object.
@@ -5251,14 +5251,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "generation", value)
 
 
@@ -5268,7 +5268,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgsDict(
     URI from which to fetch the object. It should contain
     both the protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -5277,7 +5277,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgsDict(
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: URI from which to fetch the object. It should contain
                both the protocol and path following the format `{protocol}://{location}`.
@@ -5302,14 +5302,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs:
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -5347,7 +5347,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgsDict(TypedDict):
     The MSI package. Structure is
     documented below.
     """
-    properties: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Additional properties to use during installation.
     This should be in the format of Property=Setting. Appended to the defaults
@@ -5358,7 +5358,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgsDict(TypedDict):
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs:
     def __init__(__self__, *,
                  source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs'],
-                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 properties: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs'] source: The MSI package. Structure is
                documented below.
@@ -5385,7 +5385,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs:
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Additional properties to use during installation.
         This should be in the format of Property=Setting. Appended to the defaults
@@ -5394,27 +5394,27 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
 
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are
     subject to validations based on the file type: Remote: A checksum must be
     specified. Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]]
     """
     A Cloud Storage object. Structure is
     documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]]
     """
     A generic remote file. Structure is
     documented below.
@@ -5423,10 +5423,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgsDict(TypedD
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
@@ -5448,7 +5448,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are
         subject to validations based on the file type: Remote: A checksum must be
@@ -5457,12 +5457,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs:
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]:
         """
         A Cloud Storage object. Structure is
         documented below.
@@ -5470,24 +5470,24 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]:
         """
         A generic remote file. Structure is
         documented below.
@@ -5495,7 +5495,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -5508,7 +5508,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgsDict(Typ
     """
     Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.int]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -5518,7 +5518,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.int]] = None):
+                 generation: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Name of the Cloud Storage object.
@@ -5555,14 +5555,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "generation", value)
 
 
@@ -5572,7 +5572,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgsDict(
     URI from which to fetch the object. It should contain
     both the protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -5581,7 +5581,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgsDict(
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: URI from which to fetch the object. It should contain
                both the protocol and path following the format `{protocol}://{location}`.
@@ -5606,14 +5606,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs:
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -5623,7 +5623,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgsDict(TypedDict):
     An rpm package. Structure is
     documented below.
     """
-    pull_deps: NotRequired[pulumi.Input[_builtins.bool]]
+    pull_deps: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether dependencies should also be installed. -
     install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
@@ -5634,7 +5634,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgsDict(TypedDict):
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs:
     def __init__(__self__, *,
                  source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs'],
-                 pull_deps: Optional[pulumi.Input[_builtins.bool]] = None):
+                 pull_deps: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs'] source: An rpm package. Structure is
                documented below.
@@ -5661,7 +5661,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs:
 
     @_builtins.property
     @pulumi.getter(name="pullDeps")
-    def pull_deps(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pull_deps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether dependencies should also be installed. -
         install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
@@ -5670,27 +5670,27 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs:
         return pulumi.get(self, "pull_deps")
 
     @pull_deps.setter
-    def pull_deps(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pull_deps(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pull_deps", value)
 
 
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are
     subject to validations based on the file type: Remote: A checksum must be
     specified. Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]]
     """
     A Cloud Storage object. Structure is
     documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]]
     """
     A generic remote file. Structure is
     documented below.
@@ -5699,10 +5699,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgsDict(TypedD
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are
                subject to validations based on the file type: Remote: A checksum must be
@@ -5724,7 +5724,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are
         subject to validations based on the file type: Remote: A checksum must be
@@ -5733,12 +5733,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs:
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]:
         """
         A Cloud Storage object. Structure is
         documented below.
@@ -5746,24 +5746,24 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]:
         """
         A generic remote file. Structure is
         documented below.
@@ -5771,7 +5771,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -5784,7 +5784,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgsDict(Typ
     """
     Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.int]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -5794,7 +5794,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.int]] = None):
+                 generation: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Name of the Cloud Storage object.
@@ -5831,14 +5831,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "generation", value)
 
 
@@ -5848,7 +5848,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgsDict(
     URI from which to fetch the object. It should contain
     both the protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -5857,7 +5857,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgsDict(
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: URI from which to fetch the object. It should contain
                both the protocol and path following the format `{protocol}://{location}`.
@@ -5882,14 +5882,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs:
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -5950,22 +5950,22 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs:
 
 
 class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgsDict(TypedDict):
-    apt: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgsDict']]
+    apt: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs']]]
     """
     An Apt Repository. Structure is
     documented below.
     """
-    goo: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgsDict']]
+    goo: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs']]]
     """
     A Goo Repository. Structure is
     documented below.
     """
-    yum: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgsDict']]
+    yum: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs']]]
     """
     A Yum Repository. Structure is
     documented below.
     """
-    zypper: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgsDict']]
+    zypper: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']]]
     """
     A Zypper Repository. Structure is
     documented below.
@@ -5974,10 +5974,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgsDict(TypedDic
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
     def __init__(__self__, *,
-                 apt: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs']] = None,
-                 goo: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs']] = None,
-                 yum: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs']] = None,
-                 zypper: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']] = None):
+                 apt: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs']] = None,
+                 goo: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs']] = None,
+                 yum: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs']] = None,
+                 zypper: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']] = None):
         """
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs'] apt: An Apt Repository. Structure is
                documented below.
@@ -5999,7 +5999,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs']]:
+    def apt(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs']]:
         """
         An Apt Repository. Structure is
         documented below.
@@ -6007,12 +6007,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs']]):
+    def apt(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs']]):
         pulumi.set(self, "apt", value)
 
     @_builtins.property
     @pulumi.getter
-    def goo(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs']]:
+    def goo(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs']]:
         """
         A Goo Repository. Structure is
         documented below.
@@ -6020,12 +6020,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
         return pulumi.get(self, "goo")
 
     @goo.setter
-    def goo(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs']]):
+    def goo(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs']]):
         pulumi.set(self, "goo", value)
 
     @_builtins.property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs']]:
+    def yum(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs']]:
         """
         A Yum Repository. Structure is
         documented below.
@@ -6033,12 +6033,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs']]):
+    def yum(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs']]):
         pulumi.set(self, "yum", value)
 
     @_builtins.property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']]:
+    def zypper(self) -> pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']]:
         """
         A Zypper Repository. Structure is
         documented below.
@@ -6046,7 +6046,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']]):
+    def zypper(self, value: pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']]):
         pulumi.set(self, "zypper", value)
 
 
@@ -6069,7 +6069,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgsDict(Typed
     """
     URI for this repository.
     """
-    gpg_key: NotRequired[pulumi.Input[_builtins.str]]
+    gpg_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URI of the key file for this repository. The agent
     maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
@@ -6082,7 +6082,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs:
                  components: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  distribution: pulumi.Input[_builtins.str],
                  uri: pulumi.Input[_builtins.str],
-                 gpg_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 gpg_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] archive_type: Type of archive files in this repository.
                Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
@@ -6152,7 +6152,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs:
 
     @_builtins.property
     @pulumi.getter(name="gpgKey")
-    def gpg_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gpg_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI of the key file for this repository. The agent
         maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
@@ -6160,7 +6160,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs:
         return pulumi.get(self, "gpg_key")
 
     @gpg_key.setter
-    def gpg_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gpg_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gpg_key", value)
 
 
@@ -6223,11 +6223,11 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgsDict(Typed
     `display_name` is omitted. This id is also used as the unique identifier
     when checking for resource conflicts.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the repository.
     """
-    gpg_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    gpg_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     URIs of GPG keys.
     """
@@ -6237,8 +6237,8 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs:
     def __init__(__self__, *,
                  base_url: pulumi.Input[_builtins.str],
                  id: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpg_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] base_url: The location of the repository directory.
         :param pulumi.Input[_builtins.str] id: A one word, unique name for this repository. This is the
@@ -6284,26 +6284,26 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the repository.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gpgKeys")
-    def gpg_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def gpg_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
 
     @gpg_keys.setter
-    def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def gpg_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "gpg_keys", value)
 
 
@@ -6319,11 +6319,11 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgsDict(Ty
     `display_name` is omitted. This id is also used as the unique identifier
     when checking for GuestPolicy conflicts.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the repository.
     """
-    gpg_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    gpg_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     URIs of GPG keys.
     """
@@ -6333,8 +6333,8 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs:
     def __init__(__self__, *,
                  base_url: pulumi.Input[_builtins.str],
                  id: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpg_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] base_url: The location of the repository directory.
         :param pulumi.Input[_builtins.str] id: A one word, unique name for this repository. This is the
@@ -6380,26 +6380,26 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the repository.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gpgKeys")
-    def gpg_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def gpg_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
 
     @gpg_keys.setter
-    def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def gpg_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "gpg_keys", value)
 
 
@@ -6469,11 +6469,11 @@ class OsPolicyAssignmentRolloutArgs:
 
 
 class OsPolicyAssignmentRolloutDisruptionBudgetArgsDict(TypedDict):
-    fixed: NotRequired[pulumi.Input[_builtins.int]]
+    fixed: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies a fixed value.
     """
-    percent: NotRequired[pulumi.Input[_builtins.int]]
+    percent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies the relative value defined as a percentage,
     which will be multiplied by a reference value.
@@ -6484,8 +6484,8 @@ class OsPolicyAssignmentRolloutDisruptionBudgetArgsDict(TypedDict):
 @pulumi.input_type
 class OsPolicyAssignmentRolloutDisruptionBudgetArgs:
     def __init__(__self__, *,
-                 fixed: Optional[pulumi.Input[_builtins.int]] = None,
-                 percent: Optional[pulumi.Input[_builtins.int]] = None):
+                 fixed: pulumi.Input[Optional[_builtins.int]] = None,
+                 percent: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] fixed: Specifies a fixed value.
         :param pulumi.Input[_builtins.int] percent: Specifies the relative value defined as a percentage,
@@ -6500,19 +6500,19 @@ class OsPolicyAssignmentRolloutDisruptionBudgetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fixed(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fixed(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies a fixed value.
         """
         return pulumi.get(self, "fixed")
 
     @fixed.setter
-    def fixed(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fixed(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fixed", value)
 
     @_builtins.property
     @pulumi.getter
-    def percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the relative value defined as a percentage,
         which will be multiplied by a reference value.
@@ -6522,32 +6522,32 @@ class OsPolicyAssignmentRolloutDisruptionBudgetArgs:
         return pulumi.get(self, "percent")
 
     @percent.setter
-    def percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "percent", value)
 
 
 class PatchDeploymentInstanceFilterArgsDict(TypedDict):
-    all: NotRequired[pulumi.Input[_builtins.bool]]
+    all: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Target all VM instances in the project. If true, no other criteria is permitted.
     """
-    group_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgsDict']]]]
+    group_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]]]
     """
     Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
     Structure is documented below.
     """
-    instance_name_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    instance_name_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
     VMs when targeting configs, for example prefix="prod-".
     """
-    instances: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Targets any of the VM instances specified. Instances are specified by their URI in the `form zones/{{zone}}/instances/{{instance_name}}`,
     `projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`, or
     `https://www.googleapis.com/compute/v1/projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`
     """
-    zones: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    zones: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
     """
@@ -6555,11 +6555,11 @@ class PatchDeploymentInstanceFilterArgsDict(TypedDict):
 @pulumi.input_type
 class PatchDeploymentInstanceFilterArgs:
     def __init__(__self__, *,
-                 all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_labels: Optional[pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]] = None,
-                 instance_name_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_labels: pulumi.Input[Optional[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]] = None,
+                 instance_name_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] all: Target all VM instances in the project. If true, no other criteria is permitted.
         :param pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]] group_labels: Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
@@ -6584,19 +6584,19 @@ class PatchDeploymentInstanceFilterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Target all VM instances in the project. If true, no other criteria is permitted.
         """
         return pulumi.get(self, "all")
 
     @all.setter
-    def all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all", value)
 
     @_builtins.property
     @pulumi.getter(name="groupLabels")
-    def group_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]]:
+    def group_labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]]:
         """
         Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
         Structure is documented below.
@@ -6604,12 +6604,12 @@ class PatchDeploymentInstanceFilterArgs:
         return pulumi.get(self, "group_labels")
 
     @group_labels.setter
-    def group_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]]):
+    def group_labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]]):
         pulumi.set(self, "group_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceNamePrefixes")
-    def instance_name_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_name_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
         VMs when targeting configs, for example prefix="prod-".
@@ -6617,12 +6617,12 @@ class PatchDeploymentInstanceFilterArgs:
         return pulumi.get(self, "instance_name_prefixes")
 
     @instance_name_prefixes.setter
-    def instance_name_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_name_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_name_prefixes", value)
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Targets any of the VM instances specified. Instances are specified by their URI in the `form zones/{{zone}}/instances/{{instance_name}}`,
         `projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`, or
@@ -6631,19 +6631,19 @@ class PatchDeploymentInstanceFilterArgs:
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instances", value)
 
     @_builtins.property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
         """
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "zones", value)
 
 
@@ -6707,36 +6707,36 @@ class PatchDeploymentOneTimeScheduleArgs:
 
 
 class PatchDeploymentPatchConfigArgsDict(TypedDict):
-    apt: NotRequired[pulumi.Input['PatchDeploymentPatchConfigAptArgsDict']]
+    apt: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigAptArgs']]]
     """
     Apt update settings. Use this setting to override the default apt patch rules.
     Structure is documented below.
     """
-    goo: NotRequired[pulumi.Input['PatchDeploymentPatchConfigGooArgsDict']]
+    goo: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigGooArgs']]]
     """
     goo update settings. Use this setting to override the default goo patch rules.
     Structure is documented below.
     """
-    mig_instances_allowed: NotRequired[pulumi.Input[_builtins.bool]]
+    mig_instances_allowed: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Allows the patch job to run on Managed instance groups (MIGs).
     """
-    post_step: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPostStepArgsDict']]
+    post_step: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepArgs']]]
     """
     The ExecStep to run after the patch update.
     Structure is documented below.
     """
-    pre_step: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPreStepArgsDict']]
+    pre_step: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepArgs']]]
     """
     The ExecStep to run before the patch update.
     Structure is documented below.
     """
-    reboot_config: NotRequired[pulumi.Input[_builtins.str]]
+    reboot_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Post-patch reboot settings.
     Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
     """
-    skip_unpatchable_vms: NotRequired[pulumi.Input[_builtins.bool]]
+    skip_unpatchable_vms: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables enhanced reporting for the patch job:
     1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
@@ -6745,17 +6745,17 @@ class PatchDeploymentPatchConfigArgsDict(TypedDict):
     2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
     3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
     """
-    windows_update: NotRequired[pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArgsDict']]
+    windows_update: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigWindowsUpdateArgs']]]
     """
     Windows update settings. Use this setting to override the default Windows patch rules.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input['PatchDeploymentPatchConfigYumArgsDict']]
+    yum: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigYumArgs']]]
     """
     Yum update settings. Use this setting to override the default yum patch rules.
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input['PatchDeploymentPatchConfigZypperArgsDict']]
+    zypper: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigZypperArgs']]]
     """
     zypper update settings. Use this setting to override the default zypper patch rules.
     Structure is documented below.
@@ -6764,16 +6764,16 @@ class PatchDeploymentPatchConfigArgsDict(TypedDict):
 @pulumi.input_type
 class PatchDeploymentPatchConfigArgs:
     def __init__(__self__, *,
-                 apt: Optional[pulumi.Input['PatchDeploymentPatchConfigAptArgs']] = None,
-                 goo: Optional[pulumi.Input['PatchDeploymentPatchConfigGooArgs']] = None,
-                 mig_instances_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 post_step: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepArgs']] = None,
-                 pre_step: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepArgs']] = None,
-                 reboot_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_unpatchable_vms: Optional[pulumi.Input[_builtins.bool]] = None,
-                 windows_update: Optional[pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArgs']] = None,
-                 yum: Optional[pulumi.Input['PatchDeploymentPatchConfigYumArgs']] = None,
-                 zypper: Optional[pulumi.Input['PatchDeploymentPatchConfigZypperArgs']] = None):
+                 apt: pulumi.Input[Optional['PatchDeploymentPatchConfigAptArgs']] = None,
+                 goo: pulumi.Input[Optional['PatchDeploymentPatchConfigGooArgs']] = None,
+                 mig_instances_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 post_step: pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepArgs']] = None,
+                 pre_step: pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepArgs']] = None,
+                 reboot_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_unpatchable_vms: pulumi.Input[Optional[_builtins.bool]] = None,
+                 windows_update: pulumi.Input[Optional['PatchDeploymentPatchConfigWindowsUpdateArgs']] = None,
+                 yum: pulumi.Input[Optional['PatchDeploymentPatchConfigYumArgs']] = None,
+                 zypper: pulumi.Input[Optional['PatchDeploymentPatchConfigZypperArgs']] = None):
         """
         :param pulumi.Input['PatchDeploymentPatchConfigAptArgs'] apt: Apt update settings. Use this setting to override the default apt patch rules.
                Structure is documented below.
@@ -6822,7 +6822,7 @@ class PatchDeploymentPatchConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigAptArgs']]:
+    def apt(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigAptArgs']]:
         """
         Apt update settings. Use this setting to override the default apt patch rules.
         Structure is documented below.
@@ -6830,12 +6830,12 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigAptArgs']]):
+    def apt(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigAptArgs']]):
         pulumi.set(self, "apt", value)
 
     @_builtins.property
     @pulumi.getter
-    def goo(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigGooArgs']]:
+    def goo(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigGooArgs']]:
         """
         goo update settings. Use this setting to override the default goo patch rules.
         Structure is documented below.
@@ -6843,24 +6843,24 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "goo")
 
     @goo.setter
-    def goo(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigGooArgs']]):
+    def goo(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigGooArgs']]):
         pulumi.set(self, "goo", value)
 
     @_builtins.property
     @pulumi.getter(name="migInstancesAllowed")
-    def mig_instances_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mig_instances_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allows the patch job to run on Managed instance groups (MIGs).
         """
         return pulumi.get(self, "mig_instances_allowed")
 
     @mig_instances_allowed.setter
-    def mig_instances_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mig_instances_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mig_instances_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="postStep")
-    def post_step(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepArgs']]:
+    def post_step(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepArgs']]:
         """
         The ExecStep to run after the patch update.
         Structure is documented below.
@@ -6868,12 +6868,12 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "post_step")
 
     @post_step.setter
-    def post_step(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepArgs']]):
+    def post_step(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepArgs']]):
         pulumi.set(self, "post_step", value)
 
     @_builtins.property
     @pulumi.getter(name="preStep")
-    def pre_step(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepArgs']]:
+    def pre_step(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepArgs']]:
         """
         The ExecStep to run before the patch update.
         Structure is documented below.
@@ -6881,12 +6881,12 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "pre_step")
 
     @pre_step.setter
-    def pre_step(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepArgs']]):
+    def pre_step(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepArgs']]):
         pulumi.set(self, "pre_step", value)
 
     @_builtins.property
     @pulumi.getter(name="rebootConfig")
-    def reboot_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reboot_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Post-patch reboot settings.
         Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
@@ -6894,12 +6894,12 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "reboot_config")
 
     @reboot_config.setter
-    def reboot_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reboot_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reboot_config", value)
 
     @_builtins.property
     @pulumi.getter(name="skipUnpatchableVms")
-    def skip_unpatchable_vms(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_unpatchable_vms(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables enhanced reporting for the patch job:
         1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
@@ -6911,12 +6911,12 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "skip_unpatchable_vms")
 
     @skip_unpatchable_vms.setter
-    def skip_unpatchable_vms(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_unpatchable_vms(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_unpatchable_vms", value)
 
     @_builtins.property
     @pulumi.getter(name="windowsUpdate")
-    def windows_update(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArgs']]:
+    def windows_update(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigWindowsUpdateArgs']]:
         """
         Windows update settings. Use this setting to override the default Windows patch rules.
         Structure is documented below.
@@ -6924,12 +6924,12 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "windows_update")
 
     @windows_update.setter
-    def windows_update(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArgs']]):
+    def windows_update(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigWindowsUpdateArgs']]):
         pulumi.set(self, "windows_update", value)
 
     @_builtins.property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigYumArgs']]:
+    def yum(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigYumArgs']]:
         """
         Yum update settings. Use this setting to override the default yum patch rules.
         Structure is documented below.
@@ -6937,12 +6937,12 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigYumArgs']]):
+    def yum(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigYumArgs']]):
         pulumi.set(self, "yum", value)
 
     @_builtins.property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigZypperArgs']]:
+    def zypper(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigZypperArgs']]:
         """
         zypper update settings. Use this setting to override the default zypper patch rules.
         Structure is documented below.
@@ -6950,22 +6950,22 @@ class PatchDeploymentPatchConfigArgs:
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigZypperArgs']]):
+    def zypper(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigZypperArgs']]):
         pulumi.set(self, "zypper", value)
 
 
 class PatchDeploymentPatchConfigAptArgsDict(TypedDict):
-    excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    excludes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of packages to exclude from update. These packages will be excluded.
     """
-    exclusive_packages: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclusive_packages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     An exclusive list of packages to be updated. These are the only packages that will be updated.
     If these packages are not installed, they will be ignored. This field cannot be specified with
     any other patch configuration fields.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
     Possible values are: `DIST`, `UPGRADE`.
@@ -6974,9 +6974,9 @@ class PatchDeploymentPatchConfigAptArgsDict(TypedDict):
 @pulumi.input_type
 class PatchDeploymentPatchConfigAptArgs:
     def __init__(__self__, *,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exclusive_packages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exclusive_packages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludes: List of packages to exclude from update. These packages will be excluded.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclusive_packages: An exclusive list of packages to be updated. These are the only packages that will be updated.
@@ -6994,19 +6994,19 @@ class PatchDeploymentPatchConfigAptArgs:
 
     @_builtins.property
     @pulumi.getter
-    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def excludes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of packages to exclude from update. These packages will be excluded.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
-    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "excludes", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusivePackages")
-    def exclusive_packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclusive_packages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An exclusive list of packages to be updated. These are the only packages that will be updated.
         If these packages are not installed, they will be ignored. This field cannot be specified with
@@ -7015,12 +7015,12 @@ class PatchDeploymentPatchConfigAptArgs:
         return pulumi.get(self, "exclusive_packages")
 
     @exclusive_packages.setter
-    def exclusive_packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclusive_packages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclusive_packages", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
         Possible values are: `DIST`, `UPGRADE`.
@@ -7028,7 +7028,7 @@ class PatchDeploymentPatchConfigAptArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -7061,12 +7061,12 @@ class PatchDeploymentPatchConfigGooArgs:
 
 
 class PatchDeploymentPatchConfigPostStepArgsDict(TypedDict):
-    linux_exec_step_config: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgsDict']]
+    linux_exec_step_config: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs']]]
     """
     The ExecStepConfig for all Linux VMs targeted by the PatchJob.
     Structure is documented below.
     """
-    windows_exec_step_config: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgsDict']]
+    windows_exec_step_config: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs']]]
     """
     The ExecStepConfig for all Windows VMs targeted by the PatchJob.
     Structure is documented below.
@@ -7075,8 +7075,8 @@ class PatchDeploymentPatchConfigPostStepArgsDict(TypedDict):
 @pulumi.input_type
 class PatchDeploymentPatchConfigPostStepArgs:
     def __init__(__self__, *,
-                 linux_exec_step_config: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs']] = None,
-                 windows_exec_step_config: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs']] = None):
+                 linux_exec_step_config: pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs']] = None,
+                 windows_exec_step_config: pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs']] = None):
         """
         :param pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs'] linux_exec_step_config: The ExecStepConfig for all Linux VMs targeted by the PatchJob.
                Structure is documented below.
@@ -7090,7 +7090,7 @@ class PatchDeploymentPatchConfigPostStepArgs:
 
     @_builtins.property
     @pulumi.getter(name="linuxExecStepConfig")
-    def linux_exec_step_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs']]:
+    def linux_exec_step_config(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs']]:
         """
         The ExecStepConfig for all Linux VMs targeted by the PatchJob.
         Structure is documented below.
@@ -7098,12 +7098,12 @@ class PatchDeploymentPatchConfigPostStepArgs:
         return pulumi.get(self, "linux_exec_step_config")
 
     @linux_exec_step_config.setter
-    def linux_exec_step_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs']]):
+    def linux_exec_step_config(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs']]):
         pulumi.set(self, "linux_exec_step_config", value)
 
     @_builtins.property
     @pulumi.getter(name="windowsExecStepConfig")
-    def windows_exec_step_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs']]:
+    def windows_exec_step_config(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs']]:
         """
         The ExecStepConfig for all Windows VMs targeted by the PatchJob.
         Structure is documented below.
@@ -7111,27 +7111,27 @@ class PatchDeploymentPatchConfigPostStepArgs:
         return pulumi.get(self, "windows_exec_step_config")
 
     @windows_exec_step_config.setter
-    def windows_exec_step_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs']]):
+    def windows_exec_step_config(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs']]):
         pulumi.set(self, "windows_exec_step_config", value)
 
 
 class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgsDict(TypedDict):
-    allowed_success_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    allowed_success_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
     """
-    gcs_object: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgsDict']]
+    gcs_object: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs']]]
     """
     A Cloud Storage object containing the executable.
     Structure is documented below.
     """
-    interpreter: NotRequired[pulumi.Input[_builtins.str]]
+    interpreter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The script interpreter to use to run the script. If no interpreter is specified the script will
     be executed directly, which will likely only succeed for scripts with shebang lines.
     Possible values are: `SHELL`, `POWERSHELL`.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An absolute path to the executable on the VM.
     """
@@ -7139,10 +7139,10 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgsDict(TypedDict):
 @pulumi.input_type
 class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs:
     def __init__(__self__, *,
-                 allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs']] = None,
-                 interpreter: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_success_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 gcs_object: pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs']] = None,
+                 interpreter: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         :param pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs'] gcs_object: A Cloud Storage object containing the executable.
@@ -7163,19 +7163,19 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedSuccessCodes")
-    def allowed_success_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def allowed_success_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         """
         return pulumi.get(self, "allowed_success_codes")
 
     @allowed_success_codes.setter
-    def allowed_success_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def allowed_success_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "allowed_success_codes", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsObject")
-    def gcs_object(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs']]:
+    def gcs_object(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs']]:
         """
         A Cloud Storage object containing the executable.
         Structure is documented below.
@@ -7183,12 +7183,12 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs:
         return pulumi.get(self, "gcs_object")
 
     @gcs_object.setter
-    def gcs_object(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs']]):
+    def gcs_object(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs']]):
         pulumi.set(self, "gcs_object", value)
 
     @_builtins.property
     @pulumi.getter
-    def interpreter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interpreter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The script interpreter to use to run the script. If no interpreter is specified the script will
         be executed directly, which will likely only succeed for scripts with shebang lines.
@@ -7197,19 +7197,19 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs:
         return pulumi.get(self, "interpreter")
 
     @interpreter.setter
-    def interpreter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interpreter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interpreter", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An absolute path to the executable on the VM.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
 
@@ -7280,22 +7280,22 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs:
 
 
 class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgsDict(TypedDict):
-    allowed_success_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    allowed_success_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
     """
-    gcs_object: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgsDict']]
+    gcs_object: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs']]]
     """
     A Cloud Storage object containing the executable.
     Structure is documented below.
     """
-    interpreter: NotRequired[pulumi.Input[_builtins.str]]
+    interpreter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The script interpreter to use to run the script. If no interpreter is specified the script will
     be executed directly, which will likely only succeed for scripts with shebang lines.
     Possible values are: `SHELL`, `POWERSHELL`.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An absolute path to the executable on the VM.
     """
@@ -7303,10 +7303,10 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgsDict(TypedDict)
 @pulumi.input_type
 class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs:
     def __init__(__self__, *,
-                 allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs']] = None,
-                 interpreter: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_success_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 gcs_object: pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs']] = None,
+                 interpreter: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         :param pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs'] gcs_object: A Cloud Storage object containing the executable.
@@ -7327,19 +7327,19 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedSuccessCodes")
-    def allowed_success_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def allowed_success_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         """
         return pulumi.get(self, "allowed_success_codes")
 
     @allowed_success_codes.setter
-    def allowed_success_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def allowed_success_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "allowed_success_codes", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsObject")
-    def gcs_object(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs']]:
+    def gcs_object(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs']]:
         """
         A Cloud Storage object containing the executable.
         Structure is documented below.
@@ -7347,12 +7347,12 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs:
         return pulumi.get(self, "gcs_object")
 
     @gcs_object.setter
-    def gcs_object(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs']]):
+    def gcs_object(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs']]):
         pulumi.set(self, "gcs_object", value)
 
     @_builtins.property
     @pulumi.getter
-    def interpreter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interpreter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The script interpreter to use to run the script. If no interpreter is specified the script will
         be executed directly, which will likely only succeed for scripts with shebang lines.
@@ -7361,19 +7361,19 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs:
         return pulumi.get(self, "interpreter")
 
     @interpreter.setter
-    def interpreter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interpreter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interpreter", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An absolute path to the executable on the VM.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
 
@@ -7444,12 +7444,12 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs:
 
 
 class PatchDeploymentPatchConfigPreStepArgsDict(TypedDict):
-    linux_exec_step_config: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgsDict']]
+    linux_exec_step_config: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs']]]
     """
     The ExecStepConfig for all Linux VMs targeted by the PatchJob.
     Structure is documented below.
     """
-    windows_exec_step_config: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgsDict']]
+    windows_exec_step_config: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs']]]
     """
     The ExecStepConfig for all Windows VMs targeted by the PatchJob.
     Structure is documented below.
@@ -7458,8 +7458,8 @@ class PatchDeploymentPatchConfigPreStepArgsDict(TypedDict):
 @pulumi.input_type
 class PatchDeploymentPatchConfigPreStepArgs:
     def __init__(__self__, *,
-                 linux_exec_step_config: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs']] = None,
-                 windows_exec_step_config: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs']] = None):
+                 linux_exec_step_config: pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs']] = None,
+                 windows_exec_step_config: pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs']] = None):
         """
         :param pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs'] linux_exec_step_config: The ExecStepConfig for all Linux VMs targeted by the PatchJob.
                Structure is documented below.
@@ -7473,7 +7473,7 @@ class PatchDeploymentPatchConfigPreStepArgs:
 
     @_builtins.property
     @pulumi.getter(name="linuxExecStepConfig")
-    def linux_exec_step_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs']]:
+    def linux_exec_step_config(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs']]:
         """
         The ExecStepConfig for all Linux VMs targeted by the PatchJob.
         Structure is documented below.
@@ -7481,12 +7481,12 @@ class PatchDeploymentPatchConfigPreStepArgs:
         return pulumi.get(self, "linux_exec_step_config")
 
     @linux_exec_step_config.setter
-    def linux_exec_step_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs']]):
+    def linux_exec_step_config(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs']]):
         pulumi.set(self, "linux_exec_step_config", value)
 
     @_builtins.property
     @pulumi.getter(name="windowsExecStepConfig")
-    def windows_exec_step_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs']]:
+    def windows_exec_step_config(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs']]:
         """
         The ExecStepConfig for all Windows VMs targeted by the PatchJob.
         Structure is documented below.
@@ -7494,27 +7494,27 @@ class PatchDeploymentPatchConfigPreStepArgs:
         return pulumi.get(self, "windows_exec_step_config")
 
     @windows_exec_step_config.setter
-    def windows_exec_step_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs']]):
+    def windows_exec_step_config(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs']]):
         pulumi.set(self, "windows_exec_step_config", value)
 
 
 class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgsDict(TypedDict):
-    allowed_success_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    allowed_success_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
     """
-    gcs_object: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgsDict']]
+    gcs_object: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs']]]
     """
     A Cloud Storage object containing the executable.
     Structure is documented below.
     """
-    interpreter: NotRequired[pulumi.Input[_builtins.str]]
+    interpreter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The script interpreter to use to run the script. If no interpreter is specified the script will
     be executed directly, which will likely only succeed for scripts with shebang lines.
     Possible values are: `SHELL`, `POWERSHELL`.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An absolute path to the executable on the VM.
     """
@@ -7522,10 +7522,10 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgsDict(TypedDict):
 @pulumi.input_type
 class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs:
     def __init__(__self__, *,
-                 allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs']] = None,
-                 interpreter: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_success_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 gcs_object: pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs']] = None,
+                 interpreter: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         :param pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs'] gcs_object: A Cloud Storage object containing the executable.
@@ -7546,19 +7546,19 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedSuccessCodes")
-    def allowed_success_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def allowed_success_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         """
         return pulumi.get(self, "allowed_success_codes")
 
     @allowed_success_codes.setter
-    def allowed_success_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def allowed_success_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "allowed_success_codes", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsObject")
-    def gcs_object(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs']]:
+    def gcs_object(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs']]:
         """
         A Cloud Storage object containing the executable.
         Structure is documented below.
@@ -7566,12 +7566,12 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs:
         return pulumi.get(self, "gcs_object")
 
     @gcs_object.setter
-    def gcs_object(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs']]):
+    def gcs_object(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs']]):
         pulumi.set(self, "gcs_object", value)
 
     @_builtins.property
     @pulumi.getter
-    def interpreter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interpreter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The script interpreter to use to run the script. If no interpreter is specified the script will
         be executed directly, which will likely only succeed for scripts with shebang lines.
@@ -7580,19 +7580,19 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs:
         return pulumi.get(self, "interpreter")
 
     @interpreter.setter
-    def interpreter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interpreter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interpreter", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An absolute path to the executable on the VM.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
 
@@ -7663,22 +7663,22 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs:
 
 
 class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgsDict(TypedDict):
-    allowed_success_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    allowed_success_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
     """
-    gcs_object: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgsDict']]
+    gcs_object: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs']]]
     """
     A Cloud Storage object containing the executable.
     Structure is documented below.
     """
-    interpreter: NotRequired[pulumi.Input[_builtins.str]]
+    interpreter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The script interpreter to use to run the script. If no interpreter is specified the script will
     be executed directly, which will likely only succeed for scripts with shebang lines.
     Possible values are: `SHELL`, `POWERSHELL`.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An absolute path to the executable on the VM.
     """
@@ -7686,10 +7686,10 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgsDict(TypedDict):
 @pulumi.input_type
 class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs:
     def __init__(__self__, *,
-                 allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 gcs_object: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs']] = None,
-                 interpreter: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_success_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 gcs_object: pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs']] = None,
+                 interpreter: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         :param pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs'] gcs_object: A Cloud Storage object containing the executable.
@@ -7710,19 +7710,19 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedSuccessCodes")
-    def allowed_success_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def allowed_success_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         """
         return pulumi.get(self, "allowed_success_codes")
 
     @allowed_success_codes.setter
-    def allowed_success_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def allowed_success_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "allowed_success_codes", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsObject")
-    def gcs_object(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs']]:
+    def gcs_object(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs']]:
         """
         A Cloud Storage object containing the executable.
         Structure is documented below.
@@ -7730,12 +7730,12 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs:
         return pulumi.get(self, "gcs_object")
 
     @gcs_object.setter
-    def gcs_object(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs']]):
+    def gcs_object(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs']]):
         pulumi.set(self, "gcs_object", value)
 
     @_builtins.property
     @pulumi.getter
-    def interpreter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interpreter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The script interpreter to use to run the script. If no interpreter is specified the script will
         be executed directly, which will likely only succeed for scripts with shebang lines.
@@ -7744,19 +7744,19 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs:
         return pulumi.get(self, "interpreter")
 
     @interpreter.setter
-    def interpreter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interpreter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interpreter", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An absolute path to the executable on the VM.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
 
@@ -7827,16 +7827,16 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs:
 
 
 class PatchDeploymentPatchConfigWindowsUpdateArgsDict(TypedDict):
-    classifications: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    classifications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Only apply updates of these windows update classifications. If empty, all updates are applied.
     Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
     """
-    excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    excludes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of KBs to exclude from update.
     """
-    exclusive_patches: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclusive_patches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     An exclusive list of kbs to be updated. These are the only patches that will be updated.
     This field must not be used with other patch configurations.
@@ -7845,9 +7845,9 @@ class PatchDeploymentPatchConfigWindowsUpdateArgsDict(TypedDict):
 @pulumi.input_type
 class PatchDeploymentPatchConfigWindowsUpdateArgs:
     def __init__(__self__, *,
-                 classifications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exclusive_patches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 classifications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exclusive_patches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] classifications: Only apply updates of these windows update classifications. If empty, all updates are applied.
                Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
@@ -7864,7 +7864,7 @@ class PatchDeploymentPatchConfigWindowsUpdateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def classifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def classifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Only apply updates of these windows update classifications. If empty, all updates are applied.
         Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
@@ -7872,24 +7872,24 @@ class PatchDeploymentPatchConfigWindowsUpdateArgs:
         return pulumi.get(self, "classifications")
 
     @classifications.setter
-    def classifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def classifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "classifications", value)
 
     @_builtins.property
     @pulumi.getter
-    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def excludes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of KBs to exclude from update.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
-    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "excludes", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusivePatches")
-    def exclusive_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclusive_patches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An exclusive list of kbs to be updated. These are the only patches that will be updated.
         This field must not be used with other patch configurations.
@@ -7897,26 +7897,26 @@ class PatchDeploymentPatchConfigWindowsUpdateArgs:
         return pulumi.get(self, "exclusive_patches")
 
     @exclusive_patches.setter
-    def exclusive_patches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclusive_patches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclusive_patches", value)
 
 
 class PatchDeploymentPatchConfigYumArgsDict(TypedDict):
-    excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    excludes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of packages to exclude from update. These packages will be excluded.
     """
-    exclusive_packages: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclusive_packages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     An exclusive list of packages to be updated. These are the only packages that will be updated.
     If these packages are not installed, they will be ignored. This field cannot be specified with
     any other patch configuration fields.
     """
-    minimal: NotRequired[pulumi.Input[_builtins.bool]]
+    minimal: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Will cause patch to run yum update-minimal instead.
     """
-    security: NotRequired[pulumi.Input[_builtins.bool]]
+    security: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Adds the --security flag to yum update. Not supported on all platforms.
     """
@@ -7924,10 +7924,10 @@ class PatchDeploymentPatchConfigYumArgsDict(TypedDict):
 @pulumi.input_type
 class PatchDeploymentPatchConfigYumArgs:
     def __init__(__self__, *,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exclusive_packages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 minimal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security: Optional[pulumi.Input[_builtins.bool]] = None):
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exclusive_packages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 minimal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludes: List of packages to exclude from update. These packages will be excluded.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclusive_packages: An exclusive list of packages to be updated. These are the only packages that will be updated.
@@ -7947,19 +7947,19 @@ class PatchDeploymentPatchConfigYumArgs:
 
     @_builtins.property
     @pulumi.getter
-    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def excludes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of packages to exclude from update. These packages will be excluded.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
-    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "excludes", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusivePackages")
-    def exclusive_packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclusive_packages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An exclusive list of packages to be updated. These are the only packages that will be updated.
         If these packages are not installed, they will be ignored. This field cannot be specified with
@@ -7968,57 +7968,57 @@ class PatchDeploymentPatchConfigYumArgs:
         return pulumi.get(self, "exclusive_packages")
 
     @exclusive_packages.setter
-    def exclusive_packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclusive_packages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclusive_packages", value)
 
     @_builtins.property
     @pulumi.getter
-    def minimal(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def minimal(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Will cause patch to run yum update-minimal instead.
         """
         return pulumi.get(self, "minimal")
 
     @minimal.setter
-    def minimal(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def minimal(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "minimal", value)
 
     @_builtins.property
     @pulumi.getter
-    def security(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def security(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Adds the --security flag to yum update. Not supported on all platforms.
         """
         return pulumi.get(self, "security")
 
     @security.setter
-    def security(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def security(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "security", value)
 
 
 class PatchDeploymentPatchConfigZypperArgsDict(TypedDict):
-    categories: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    categories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Install only patches with these categories. Common categories include security, recommended, and feature.
     """
-    excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    excludes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of packages to exclude from update.
     """
-    exclusive_patches: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclusive_patches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command.
     This field must not be used with any other patch configuration fields.
     """
-    severities: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    severities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Install only patches with these severities. Common severities include critical, important, moderate, and low.
     """
-    with_optional: NotRequired[pulumi.Input[_builtins.bool]]
+    with_optional: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Adds the --with-optional flag to zypper patch.
     """
-    with_update: NotRequired[pulumi.Input[_builtins.bool]]
+    with_update: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Adds the --with-update flag, to zypper patch.
     """
@@ -8026,12 +8026,12 @@ class PatchDeploymentPatchConfigZypperArgsDict(TypedDict):
 @pulumi.input_type
 class PatchDeploymentPatchConfigZypperArgs:
     def __init__(__self__, *,
-                 categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exclusive_patches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 severities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 with_optional: Optional[pulumi.Input[_builtins.bool]] = None,
-                 with_update: Optional[pulumi.Input[_builtins.bool]] = None):
+                 categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exclusive_patches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 severities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 with_optional: pulumi.Input[Optional[_builtins.bool]] = None,
+                 with_update: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] categories: Install only patches with these categories. Common categories include security, recommended, and feature.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludes: List of packages to exclude from update.
@@ -8056,31 +8056,31 @@ class PatchDeploymentPatchConfigZypperArgs:
 
     @_builtins.property
     @pulumi.getter
-    def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def categories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Install only patches with these categories. Common categories include security, recommended, and feature.
         """
         return pulumi.get(self, "categories")
 
     @categories.setter
-    def categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def categories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "categories", value)
 
     @_builtins.property
     @pulumi.getter
-    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def excludes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of packages to exclude from update.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
-    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "excludes", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusivePatches")
-    def exclusive_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclusive_patches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command.
         This field must not be used with any other patch configuration fields.
@@ -8088,43 +8088,43 @@ class PatchDeploymentPatchConfigZypperArgs:
         return pulumi.get(self, "exclusive_patches")
 
     @exclusive_patches.setter
-    def exclusive_patches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclusive_patches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclusive_patches", value)
 
     @_builtins.property
     @pulumi.getter
-    def severities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def severities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Install only patches with these severities. Common severities include critical, important, moderate, and low.
         """
         return pulumi.get(self, "severities")
 
     @severities.setter
-    def severities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def severities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "severities", value)
 
     @_builtins.property
     @pulumi.getter(name="withOptional")
-    def with_optional(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def with_optional(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Adds the --with-optional flag to zypper patch.
         """
         return pulumi.get(self, "with_optional")
 
     @with_optional.setter
-    def with_optional(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def with_optional(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "with_optional", value)
 
     @_builtins.property
     @pulumi.getter(name="withUpdate")
-    def with_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def with_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Adds the --with-update flag, to zypper patch.
         """
         return pulumi.get(self, "with_update")
 
     @with_update.setter
-    def with_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def with_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "with_update", value)
 
 
@@ -8140,34 +8140,34 @@ class PatchDeploymentRecurringScheduleArgsDict(TypedDict):
     determined by the chosen time zone.
     Structure is documented below.
     """
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The end time at which a recurring patch deployment schedule is no longer active.
     A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
     """
-    last_execute_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_execute_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time the last patch job ran successfully.
     A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
     """
-    monthly: NotRequired[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyArgsDict']]
+    monthly: NotRequired[pulumi.Input[Optional['PatchDeploymentRecurringScheduleMonthlyArgs']]]
     """
     Schedule with monthly executions.
     Structure is documented below.
     """
-    next_execute_time: NotRequired[pulumi.Input[_builtins.str]]
+    next_execute_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time the next patch job is scheduled to run.
     A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
     A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
     """
-    weekly: NotRequired[pulumi.Input['PatchDeploymentRecurringScheduleWeeklyArgsDict']]
+    weekly: NotRequired[pulumi.Input[Optional['PatchDeploymentRecurringScheduleWeeklyArgs']]]
     """
     Schedule with weekly executions.
     Structure is documented below.
@@ -8178,12 +8178,12 @@ class PatchDeploymentRecurringScheduleArgs:
     def __init__(__self__, *,
                  time_of_day: pulumi.Input['PatchDeploymentRecurringScheduleTimeOfDayArgs'],
                  time_zone: pulumi.Input['PatchDeploymentRecurringScheduleTimeZoneArgs'],
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_execute_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 monthly: Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyArgs']] = None,
-                 next_execute_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 weekly: Optional[pulumi.Input['PatchDeploymentRecurringScheduleWeeklyArgs']] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_execute_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 monthly: pulumi.Input[Optional['PatchDeploymentRecurringScheduleMonthlyArgs']] = None,
+                 next_execute_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 weekly: pulumi.Input[Optional['PatchDeploymentRecurringScheduleWeeklyArgs']] = None):
         """
         :param pulumi.Input['PatchDeploymentRecurringScheduleTimeOfDayArgs'] time_of_day: Time of the day to run a recurring deployment.
                Structure is documented below.
@@ -8249,7 +8249,7 @@ class PatchDeploymentRecurringScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time at which a recurring patch deployment schedule is no longer active.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -8257,12 +8257,12 @@ class PatchDeploymentRecurringScheduleArgs:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lastExecuteTime")
-    def last_execute_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_execute_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time the last patch job ran successfully.
@@ -8271,12 +8271,12 @@ class PatchDeploymentRecurringScheduleArgs:
         return pulumi.get(self, "last_execute_time")
 
     @last_execute_time.setter
-    def last_execute_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_execute_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_execute_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def monthly(self) -> Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyArgs']]:
+    def monthly(self) -> pulumi.Input[Optional['PatchDeploymentRecurringScheduleMonthlyArgs']]:
         """
         Schedule with monthly executions.
         Structure is documented below.
@@ -8284,12 +8284,12 @@ class PatchDeploymentRecurringScheduleArgs:
         return pulumi.get(self, "monthly")
 
     @monthly.setter
-    def monthly(self, value: Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyArgs']]):
+    def monthly(self, value: pulumi.Input[Optional['PatchDeploymentRecurringScheduleMonthlyArgs']]):
         pulumi.set(self, "monthly", value)
 
     @_builtins.property
     @pulumi.getter(name="nextExecuteTime")
-    def next_execute_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_execute_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time the next patch job is scheduled to run.
@@ -8298,12 +8298,12 @@ class PatchDeploymentRecurringScheduleArgs:
         return pulumi.get(self, "next_execute_time")
 
     @next_execute_time.setter
-    def next_execute_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_execute_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_execute_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -8311,12 +8311,12 @@ class PatchDeploymentRecurringScheduleArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def weekly(self) -> Optional[pulumi.Input['PatchDeploymentRecurringScheduleWeeklyArgs']]:
+    def weekly(self) -> pulumi.Input[Optional['PatchDeploymentRecurringScheduleWeeklyArgs']]:
         """
         Schedule with weekly executions.
         Structure is documented below.
@@ -8324,18 +8324,18 @@ class PatchDeploymentRecurringScheduleArgs:
         return pulumi.get(self, "weekly")
 
     @weekly.setter
-    def weekly(self, value: Optional[pulumi.Input['PatchDeploymentRecurringScheduleWeeklyArgs']]):
+    def weekly(self, value: pulumi.Input[Optional['PatchDeploymentRecurringScheduleWeeklyArgs']]):
         pulumi.set(self, "weekly", value)
 
 
 class PatchDeploymentRecurringScheduleMonthlyArgsDict(TypedDict):
-    month_day: NotRequired[pulumi.Input[_builtins.int]]
+    month_day: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
     Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
     will not run in February, April, June, etc.
     """
-    week_day_of_month: NotRequired[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgsDict']]
+    week_day_of_month: NotRequired[pulumi.Input[Optional['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs']]]
     """
     Week day in a month.
     Structure is documented below.
@@ -8344,8 +8344,8 @@ class PatchDeploymentRecurringScheduleMonthlyArgsDict(TypedDict):
 @pulumi.input_type
 class PatchDeploymentRecurringScheduleMonthlyArgs:
     def __init__(__self__, *,
-                 month_day: Optional[pulumi.Input[_builtins.int]] = None,
-                 week_day_of_month: Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs']] = None):
+                 month_day: pulumi.Input[Optional[_builtins.int]] = None,
+                 week_day_of_month: pulumi.Input[Optional['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] month_day: One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
                Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
@@ -8360,7 +8360,7 @@ class PatchDeploymentRecurringScheduleMonthlyArgs:
 
     @_builtins.property
     @pulumi.getter(name="monthDay")
-    def month_day(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def month_day(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
         Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
@@ -8369,12 +8369,12 @@ class PatchDeploymentRecurringScheduleMonthlyArgs:
         return pulumi.get(self, "month_day")
 
     @month_day.setter
-    def month_day(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def month_day(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "month_day", value)
 
     @_builtins.property
     @pulumi.getter(name="weekDayOfMonth")
-    def week_day_of_month(self) -> Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs']]:
+    def week_day_of_month(self) -> pulumi.Input[Optional['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs']]:
         """
         Week day in a month.
         Structure is documented below.
@@ -8382,7 +8382,7 @@ class PatchDeploymentRecurringScheduleMonthlyArgs:
         return pulumi.get(self, "week_day_of_month")
 
     @week_day_of_month.setter
-    def week_day_of_month(self, value: Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs']]):
+    def week_day_of_month(self, value: pulumi.Input[Optional['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs']]):
         pulumi.set(self, "week_day_of_month", value)
 
 
@@ -8396,7 +8396,7 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgsDict(TypedDict):
     """
     Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
     """
-    day_offset: NotRequired[pulumi.Input[_builtins.int]]
+    day_offset: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
     """
@@ -8406,7 +8406,7 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs:
     def __init__(__self__, *,
                  day_of_week: pulumi.Input[_builtins.str],
                  week_ordinal: pulumi.Input[_builtins.int],
-                 day_offset: Optional[pulumi.Input[_builtins.int]] = None):
+                 day_offset: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] day_of_week: A day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
@@ -8445,32 +8445,32 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs:
 
     @_builtins.property
     @pulumi.getter(name="dayOffset")
-    def day_offset(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def day_offset(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
         """
         return pulumi.get(self, "day_offset")
 
     @day_offset.setter
-    def day_offset(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def day_offset(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "day_offset", value)
 
 
 class PatchDeploymentRecurringScheduleTimeOfDayArgsDict(TypedDict):
-    hours: NotRequired[pulumi.Input[_builtins.int]]
+    hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hours of day in 24 hour format. Should be from 0 to 23.
     An API may choose to allow the value "24:00:00" for scenarios like business closing time.
     """
-    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    minutes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minutes of hour of day. Must be from 0 to 59.
     """
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
     """
-    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
     """
@@ -8478,10 +8478,10 @@ class PatchDeploymentRecurringScheduleTimeOfDayArgsDict(TypedDict):
 @pulumi.input_type
 class PatchDeploymentRecurringScheduleTimeOfDayArgs:
     def __init__(__self__, *,
-                 hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
                An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -8500,7 +8500,7 @@ class PatchDeploymentRecurringScheduleTimeOfDayArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Hours of day in 24 hour format. Should be from 0 to 23.
         An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -8508,43 +8508,43 @@ class PatchDeploymentRecurringScheduleTimeOfDayArgs:
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minutes of hour of day. Must be from 0 to 59.
         """
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minutes", value)
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds", value)
 
 
@@ -8553,7 +8553,7 @@ class PatchDeploymentRecurringScheduleTimeZoneArgsDict(TypedDict):
     """
     IANA Time Zone Database time zone, e.g. "America/New_York".
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IANA Time Zone Database version number, e.g. "2019a".
     """
@@ -8562,7 +8562,7 @@ class PatchDeploymentRecurringScheduleTimeZoneArgsDict(TypedDict):
 class PatchDeploymentRecurringScheduleTimeZoneArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: IANA Time Zone Database time zone, e.g. "America/New_York".
         :param pulumi.Input[_builtins.str] version: IANA Time Zone Database version number, e.g. "2019a".
@@ -8585,14 +8585,14 @@ class PatchDeploymentRecurringScheduleTimeZoneArgs:
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IANA Time Zone Database version number, e.g. "2019a".
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -8693,11 +8693,11 @@ class PatchDeploymentRolloutArgs:
 
 
 class PatchDeploymentRolloutDisruptionBudgetArgsDict(TypedDict):
-    fixed: NotRequired[pulumi.Input[_builtins.int]]
+    fixed: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies a fixed value.
     """
-    percentage: NotRequired[pulumi.Input[_builtins.int]]
+    percentage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
     """
@@ -8705,8 +8705,8 @@ class PatchDeploymentRolloutDisruptionBudgetArgsDict(TypedDict):
 @pulumi.input_type
 class PatchDeploymentRolloutDisruptionBudgetArgs:
     def __init__(__self__, *,
-                 fixed: Optional[pulumi.Input[_builtins.int]] = None,
-                 percentage: Optional[pulumi.Input[_builtins.int]] = None):
+                 fixed: pulumi.Input[Optional[_builtins.int]] = None,
+                 percentage: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] fixed: Specifies a fixed value.
         :param pulumi.Input[_builtins.int] percentage: Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
@@ -8718,31 +8718,31 @@ class PatchDeploymentRolloutDisruptionBudgetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fixed(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fixed(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies a fixed value.
         """
         return pulumi.get(self, "fixed")
 
     @fixed.setter
-    def fixed(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fixed(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fixed", value)
 
     @_builtins.property
     @pulumi.getter
-    def percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
         """
         return pulumi.get(self, "percentage")
 
     @percentage.setter
-    def percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "percentage", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ID of the resource to be used while generating set of affected resources.
     For UPSERT action the value is auto-generated during PolicyOrchestrator
@@ -8759,7 +8759,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict(TypedDict):
 
     <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
     """
-    os_policy_assignment_v1_payload: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgsDict']]
+    os_policy_assignment_v1_payload: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]]
     """
     OS policy assignment is an API resource that is used to
     apply a set of OS policies to a dynamically targeted group of Compute Engine
@@ -8778,8 +8778,8 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict(TypedDict):
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestratedResourceArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_policy_assignment_v1_payload: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_policy_assignment_v1_payload: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] id: ID of the resource to be used while generating set of affected resources.
                For UPSERT action the value is auto-generated during PolicyOrchestrator
@@ -8815,7 +8815,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the resource to be used while generating set of affected resources.
         For UPSERT action the value is auto-generated during PolicyOrchestrator
@@ -8835,12 +8835,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="osPolicyAssignmentV1Payload")
-    def os_policy_assignment_v1_payload(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]:
+    def os_policy_assignment_v1_payload(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]:
         """
         OS policy assignment is an API resource that is used to
         apply a set of OS policies to a dynamically targeted group of Compute Engine
@@ -8858,7 +8858,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceArgs:
         return pulumi.get(self, "os_policy_assignment_v1_payload")
 
     @os_policy_assignment_v1_payload.setter
-    def os_policy_assignment_v1_payload(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]):
+    def os_policy_assignment_v1_payload(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]):
         pulumi.set(self, "os_policy_assignment_v1_payload", value)
 
 
@@ -8879,7 +8879,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     Message to configure the rollout at the zonal level for the OS policy
     assignment.
     """
-    baseline: NotRequired[pulumi.Input[_builtins.bool]]
+    baseline: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates that this revision has been successfully rolled out in this zone
     and new VMs will be assigned OS policies from this revision.
@@ -8887,43 +8887,43 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     For a given OS policy assignment, there is only one revision with a value
     of 'true' for this field.
     """
-    deleted: NotRequired[pulumi.Input[_builtins.bool]]
+    deleted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates that this revision deletes the OS policy assignment.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Freeform text describing the purpose of the resource.
     """
-    etag: NotRequired[pulumi.Input[_builtins.str]]
+    etag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This checksum is computed by the server based on the value of other
     fields, and may be sent on update and delete requests to ensure the
     client has an up-to-date value before proceeding.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Identifier. In form of
     * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
     * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
     * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
     """
-    reconciling: NotRequired[pulumi.Input[_builtins.bool]]
+    reconciling: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set to true, if the there are ongoing changes being applied by the
     orchestrator.
     """
-    revision_create_time: NotRequired[pulumi.Input[_builtins.str]]
+    revision_create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The timestamp that the revision was created.
     """
-    revision_id: NotRequired[pulumi.Input[_builtins.str]]
+    revision_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The assignment revision ID
     A new revision is committed whenever a rollout is triggered for a OS policy
     assignment
     """
-    rollout_state: NotRequired[pulumi.Input[_builtins.str]]
+    rollout_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     OS policy assignment rollout state
     Possible values:
@@ -8932,7 +8932,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     CANCELLED
     SUCCEEDED
     """
-    uid: NotRequired[pulumi.Input[_builtins.str]]
+    uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Server generated unique id for the OS policy assignment resource.
     """
@@ -8943,16 +8943,16 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
                  instance_filter: pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs'],
                  os_policies: pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArgs']]],
                  rollout: pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs'],
-                 baseline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deleted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 revision_create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 baseline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deleted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 revision_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs'] instance_filter: Filters to select target VMs for an assignment.
                
@@ -9055,7 +9055,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def baseline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def baseline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates that this revision has been successfully rolled out in this zone
         and new VMs will be assigned OS policies from this revision.
@@ -9066,36 +9066,36 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "baseline")
 
     @baseline.setter
-    def baseline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def baseline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "baseline", value)
 
     @_builtins.property
     @pulumi.getter
-    def deleted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deleted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates that this revision deletes the OS policy assignment.
         """
         return pulumi.get(self, "deleted")
 
     @deleted.setter
-    def deleted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deleted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deleted", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Freeform text describing the purpose of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This checksum is computed by the server based on the value of other
         fields, and may be sent on update and delete requests to ensure the
@@ -9104,12 +9104,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. In form of
         * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -9119,12 +9119,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true, if the there are ongoing changes being applied by the
         orchestrator.
@@ -9132,24 +9132,24 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionCreateTime")
-    def revision_create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp that the revision was created.
         """
         return pulumi.get(self, "revision_create_time")
 
     @revision_create_time.setter
-    def revision_create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionId")
-    def revision_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The assignment revision ID
         A new revision is committed whenever a rollout is triggered for a OS policy
@@ -9158,12 +9158,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "revision_id")
 
     @revision_id.setter
-    def revision_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutState")
-    def rollout_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OS policy assignment rollout state
         Possible values:
@@ -9175,43 +9175,43 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "rollout_state")
 
     @rollout_state.setter
-    def rollout_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server generated unique id for the OS policy assignment resource.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgsDict(TypedDict):
-    all: NotRequired[pulumi.Input[_builtins.bool]]
+    all: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Target all VMs in the project. If true, no other criteria is
     permitted.
     """
-    exclusion_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgsDict']]]]
+    exclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]]
     """
     List of label sets used for VM exclusion.
     If the list has more than one label set, the VM is excluded if any
     of the label sets are applicable for the VM.
     Structure is documented below.
     """
-    inclusion_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgsDict']]]]
+    inclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]]
     """
     List of label sets used for VM inclusion.
     If the list has more than one `LabelSet`, the VM is included if any
     of the label sets are applicable for the VM.
     Structure is documented below.
     """
-    inventories: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgsDict']]]]
+    inventories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]]
     """
     List of inventories to select VMs.
     A VM is selected if its inventory data matches at least one of the
@@ -9222,10 +9222,10 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs:
     def __init__(__self__, *,
-                 all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]] = None,
-                 inclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]] = None,
-                 inventories: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]] = None):
+                 all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclusion_labels: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]] = None,
+                 inclusion_labels: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]] = None,
+                 inventories: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] all: Target all VMs in the project. If true, no other criteria is
                permitted.
@@ -9253,7 +9253,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Target all VMs in the project. If true, no other criteria is
         permitted.
@@ -9261,12 +9261,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "all")
 
     @all.setter
-    def all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusionLabels")
-    def exclusion_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]:
+    def exclusion_labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]:
         """
         List of label sets used for VM exclusion.
         If the list has more than one label set, the VM is excluded if any
@@ -9276,12 +9276,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "exclusion_labels")
 
     @exclusion_labels.setter
-    def exclusion_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]):
+    def exclusion_labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]):
         pulumi.set(self, "exclusion_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="inclusionLabels")
-    def inclusion_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]:
+    def inclusion_labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]:
         """
         List of label sets used for VM inclusion.
         If the list has more than one `LabelSet`, the VM is included if any
@@ -9291,12 +9291,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "inclusion_labels")
 
     @inclusion_labels.setter
-    def inclusion_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]):
+    def inclusion_labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]):
         pulumi.set(self, "inclusion_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def inventories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]:
+    def inventories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]:
         """
         List of inventories to select VMs.
         A VM is selected if its inventory data matches at least one of the
@@ -9306,12 +9306,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "inventories")
 
     @inventories.setter
-    def inventories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]):
+    def inventories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]):
         pulumi.set(self, "inventories", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels are identified by key/value pairs in this map.
     A VM should contain all the key/value pairs specified in this
@@ -9321,7 +9321,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are identified by key/value pairs in this map.
                A VM should contain all the key/value pairs specified in this
@@ -9332,7 +9332,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are identified by key/value pairs in this map.
         A VM should contain all the key/value pairs specified in this
@@ -9341,12 +9341,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels are identified by key/value pairs in this map.
     A VM should contain all the key/value pairs specified in this
@@ -9356,7 +9356,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are identified by key/value pairs in this map.
                A VM should contain all the key/value pairs specified in this
@@ -9367,7 +9367,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are identified by key/value pairs in this map.
         A VM should contain all the key/value pairs specified in this
@@ -9376,7 +9376,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
 
@@ -9385,7 +9385,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     The OS short name
     """
-    os_version: NotRequired[pulumi.Input[_builtins.str]]
+    os_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OS version
     Prefix matches are supported if asterisk(*) is provided as the
@@ -9398,7 +9398,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs:
     def __init__(__self__, *,
                  os_short_name: pulumi.Input[_builtins.str],
-                 os_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 os_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] os_short_name: The OS short name
         :param pulumi.Input[_builtins.str] os_version: The OS version
@@ -9425,7 +9425,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="osVersion")
-    def os_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OS version
         Prefix matches are supported if asterisk(*) is provided as the
@@ -9436,7 +9436,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "os_version")
 
     @os_version.setter
-    def os_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_version", value)
 
 
@@ -9466,14 +9466,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     toggled by the flag `allow_no_resource_group_match`
     Structure is documented below.
     """
-    allow_no_resource_group_match: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_no_resource_group_match: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     This flag determines the OS policy compliance status when none of the
     resource groups within the policy are applicable for a VM. Set this value
     to `true` if the policy needs to be reported as compliant even if the
     policy has nothing to validate or enforce.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Policy description.
     Length of the description is limited to 1024 characters.
@@ -9485,8 +9485,8 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
                  id: pulumi.Input[_builtins.str],
                  mode: pulumi.Input[_builtins.str],
                  resource_groups: pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs']]],
-                 allow_no_resource_group_match: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_no_resource_group_match: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The id of the OS policy with the following restrictions:
                * Must contain only lowercase letters, numbers, and hyphens.
@@ -9570,7 +9570,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="allowNoResourceGroupMatch")
-    def allow_no_resource_group_match(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_no_resource_group_match(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This flag determines the OS policy compliance status when none of the
         resource groups within the policy are applicable for a VM. Set this value
@@ -9580,12 +9580,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "allow_no_resource_group_match")
 
     @allow_no_resource_group_match.setter
-    def allow_no_resource_group_match(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_no_resource_group_match(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_no_resource_group_match", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy description.
         Length of the description is limited to 1024 characters.
@@ -9593,7 +9593,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -9604,7 +9604,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     The resources are executed in the exact order specified here.
     Structure is documented below.
     """
-    inventory_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgsDict']]]]
+    inventory_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]]
     """
     List of inventory filters for the resource group.
     The resources in this resource group are applied to the target VM if it
@@ -9623,7 +9623,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs:
     def __init__(__self__, *,
                  resources: pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs']]],
-                 inventory_filters: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]] = None):
+                 inventory_filters: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs']]] resources: List of resources configured for this resource group.
                The resources are executed in the exact order specified here.
@@ -9660,7 +9660,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="inventoryFilters")
-    def inventory_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]:
+    def inventory_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]:
         """
         List of inventory filters for the resource group.
         The resources in this resource group are applied to the target VM if it
@@ -9677,7 +9677,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "inventory_filters")
 
     @inventory_filters.setter
-    def inventory_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]):
+    def inventory_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]):
         pulumi.set(self, "inventory_filters", value)
 
 
@@ -9686,7 +9686,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     The OS short name
     """
-    os_version: NotRequired[pulumi.Input[_builtins.str]]
+    os_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OS version
     Prefix matches are supported if asterisk(*) is provided as the
@@ -9699,7 +9699,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs:
     def __init__(__self__, *,
                  os_short_name: pulumi.Input[_builtins.str],
-                 os_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 os_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] os_short_name: The OS short name
         :param pulumi.Input[_builtins.str] os_version: The OS version
@@ -9726,7 +9726,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="osVersion")
-    def os_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OS version
         Prefix matches are supported if asterisk(*) is provided as the
@@ -9737,7 +9737,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "os_version")
 
     @os_version.setter
-    def os_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_version", value)
 
 
@@ -9751,7 +9751,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     * Must end with a number or a letter.
     * Must be unique within the OS policy.
     """
-    exec_: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgsDict']]
+    exec_: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]]
     """
     A resource that allows executing scripts on the VM.
     The `ExecResource` has 2 stages: `validate` and `enforce` and both stages
@@ -9777,17 +9777,17 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     were chosen.
     Structure is documented below.
     """
-    file: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]]
     """
     A resource that manages the state of a file.
     Structure is documented below.
     """
-    pkg: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgsDict']]
+    pkg: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]]
     """
     A resource that manages a system package.
     Structure is documented below.
     """
-    repository: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgsDict']]
+    repository: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]]
     """
     A resource that manages a package repository.
     Structure is documented below.
@@ -9797,10 +9797,10 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 exec_: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']] = None,
-                 file: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']] = None,
-                 pkg: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']] = None,
-                 repository: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']] = None):
+                 exec_: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']] = None,
+                 file: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']] = None,
+                 pkg: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']] = None,
+                 repository: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] id: The id of the resource with the following restrictions:
                * Must contain only lowercase letters, numbers, and hyphens.
@@ -9867,7 +9867,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="exec")
-    def exec_(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]:
+    def exec_(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]:
         """
         A resource that allows executing scripts on the VM.
         The `ExecResource` has 2 stages: `validate` and `enforce` and both stages
@@ -9896,12 +9896,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "exec_")
 
     @exec_.setter
-    def exec_(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]):
+    def exec_(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]):
         pulumi.set(self, "exec_", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]:
         """
         A resource that manages the state of a file.
         Structure is documented below.
@@ -9909,12 +9909,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter
-    def pkg(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]:
+    def pkg(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]:
         """
         A resource that manages a system package.
         Structure is documented below.
@@ -9922,12 +9922,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "pkg")
 
     @pkg.setter
-    def pkg(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]):
+    def pkg(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]):
         pulumi.set(self, "pkg", value)
 
     @_builtins.property
     @pulumi.getter
-    def repository(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]:
+    def repository(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]:
         """
         A resource that manages a package repository.
         Structure is documented below.
@@ -9935,7 +9935,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "repository")
 
     @repository.setter
-    def repository(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]):
+    def repository(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]):
         pulumi.set(self, "repository", value)
 
 
@@ -9945,7 +9945,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     A file or script to execute.
     Structure is documented below.
     """
-    enforce: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgsDict']]
+    enforce: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]]
     """
     A file or script to execute.
     Structure is documented below.
@@ -9955,7 +9955,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs:
     def __init__(__self__, *,
                  validate: pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs'],
-                 enforce: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']] = None):
+                 enforce: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs'] validate: A file or script to execute.
                Structure is documented below.
@@ -9981,7 +9981,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def enforce(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]:
+    def enforce(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]:
         """
         A file or script to execute.
         Structure is documented below.
@@ -9989,7 +9989,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "enforce")
 
     @enforce.setter
-    def enforce(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]):
+    def enforce(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]):
         pulumi.set(self, "enforce", value)
 
 
@@ -9999,16 +9999,16 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     The script interpreter to use.
     Possible values are: `NONE`, `SHELL`, `POWERSHELL`.
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional arguments to pass to the source during execution.
     """
-    file: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]]
     """
     A remote or local file.
     Structure is documented below.
     """
-    output_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    output_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Only recorded for enforce Exec.
     Path to an output file (that is created by this Exec) whose
@@ -10017,7 +10017,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     this ExecResource being non-compliant. Output file size is limited to
     500K bytes.
     """
-    script: NotRequired[pulumi.Input[_builtins.str]]
+    script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An inline script.
     The size of the script is limited to 32KiB.
@@ -10027,10 +10027,10 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs:
     def __init__(__self__, *,
                  interpreter: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 file: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']] = None,
-                 output_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 file: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']] = None,
+                 output_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] interpreter: The script interpreter to use.
                Possible values are: `NONE`, `SHELL`, `POWERSHELL`.
@@ -10071,19 +10071,19 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional arguments to pass to the source during execution.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]:
         """
         A remote or local file.
         Structure is documented below.
@@ -10091,12 +10091,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter(name="outputFilePath")
-    def output_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only recorded for enforce Exec.
         Path to an output file (that is created by this Exec) whose
@@ -10108,12 +10108,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "output_file_path")
 
     @output_file_path.setter
-    def output_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_file_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An inline script.
         The size of the script is limited to 32KiB.
@@ -10121,28 +10121,28 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -10151,10 +10151,10 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -10177,7 +10177,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -10187,12 +10187,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -10200,24 +10200,24 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -10225,7 +10225,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -10238,7 +10238,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -10248,7 +10248,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Name of the Cloud Storage object.
@@ -10285,14 +10285,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -10302,7 +10302,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -10311,7 +10311,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -10336,14 +10336,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -10353,16 +10353,16 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     The script interpreter to use.
     Possible values are: `NONE`, `SHELL`, `POWERSHELL`.
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional arguments to pass to the source during execution.
     """
-    file: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]]
     """
     A remote or local file.
     Structure is documented below.
     """
-    output_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    output_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Only recorded for enforce Exec.
     Path to an output file (that is created by this Exec) whose
@@ -10371,7 +10371,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     this ExecResource being non-compliant. Output file size is limited to
     500K bytes.
     """
-    script: NotRequired[pulumi.Input[_builtins.str]]
+    script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An inline script.
     The size of the script is limited to 32KiB.
@@ -10381,10 +10381,10 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs:
     def __init__(__self__, *,
                  interpreter: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 file: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']] = None,
-                 output_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 file: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']] = None,
+                 output_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] interpreter: The script interpreter to use.
                Possible values are: `NONE`, `SHELL`, `POWERSHELL`.
@@ -10425,19 +10425,19 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional arguments to pass to the source during execution.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]:
         """
         A remote or local file.
         Structure is documented below.
@@ -10445,12 +10445,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter(name="outputFilePath")
-    def output_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only recorded for enforce Exec.
         Path to an output file (that is created by this Exec) whose
@@ -10462,12 +10462,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "output_file_path")
 
     @output_file_path.setter
-    def output_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_file_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An inline script.
         The size of the script is limited to 32KiB.
@@ -10475,28 +10475,28 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -10505,10 +10505,10 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -10531,7 +10531,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -10541,12 +10541,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -10554,24 +10554,24 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -10579,7 +10579,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -10592,7 +10592,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -10602,7 +10602,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Name of the Cloud Storage object.
@@ -10639,14 +10639,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -10656,7 +10656,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -10665,7 +10665,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -10690,14 +10690,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -10711,17 +10711,17 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     Desired state of the file.
     Possible values are: `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
     """
-    content: NotRequired[pulumi.Input[_builtins.str]]
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A a file with this content.
     The size of the content is limited to 32KiB.
     """
-    file: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]]
     """
     A remote or local file.
     Structure is documented below.
     """
-    permissions: NotRequired[pulumi.Input[_builtins.str]]
+    permissions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Consists of three octal digits which represent, in
     order, the permissions of the owner, group, and other users for the
@@ -10742,9 +10742,9 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
                  state: pulumi.Input[_builtins.str],
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 file: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']] = None,
-                 permissions: Optional[pulumi.Input[_builtins.str]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 file: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']] = None,
+                 permissions: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] path: The absolute path of the file within the VM.
         :param pulumi.Input[_builtins.str] state: Desired state of the file.
@@ -10802,7 +10802,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A a file with this content.
         The size of the content is limited to 32KiB.
@@ -10810,12 +10810,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]:
         """
         A remote or local file.
         Structure is documented below.
@@ -10823,12 +10823,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permissions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Consists of three octal digits which represent, in
         order, the permissions of the owner, group, and other users for the
@@ -10846,28 +10846,28 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permissions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permissions", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -10876,10 +10876,10 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -10902,7 +10902,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -10912,12 +10912,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -10925,24 +10925,24 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -10950,7 +10950,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -10963,7 +10963,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -10973,7 +10973,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Name of the Cloud Storage object.
@@ -11010,14 +11010,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -11027,7 +11027,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -11036,7 +11036,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -11061,14 +11061,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -11078,43 +11078,43 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     The desired state the agent should maintain for this package.
     Possible values are: `INSTALLED`, `REMOVED`.
     """
-    apt: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgsDict']]
+    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]]
     """
     A package managed by APT.
     - install: `apt-get update && apt-get -y install [name]`
     - remove: `apt-get -y remove [name]`
     Structure is documented below.
     """
-    deb: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgsDict']]
+    deb: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]]
     """
     A deb package file. dpkg packages only support INSTALLED state.
     Structure is documented below.
     """
-    googet: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgsDict']]
+    googet: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]]
     """
     A package managed by GooGet.
     - install: `googet -noconfirm install package`
     - remove: `googet -noconfirm remove package`
     Structure is documented below.
     """
-    msi: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgsDict']]
+    msi: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]]
     """
     An MSI package. MSI packages only support INSTALLED state.
     Structure is documented below.
     """
-    rpm: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgsDict']]
+    rpm: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]]
     """
     An RPM package file. RPM packages only support INSTALLED state.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgsDict']]
+    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]]
     """
     A package managed by YUM.
     - install: `yum -y install package`
     - remove: `yum -y remove package`
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgsDict']]
+    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]]
     """
     A package managed by Zypper.
     - install: `zypper -y install package`
@@ -11126,13 +11126,13 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs:
     def __init__(__self__, *,
                  desired_state: pulumi.Input[_builtins.str],
-                 apt: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']] = None,
-                 deb: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']] = None,
-                 googet: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']] = None,
-                 msi: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']] = None,
-                 rpm: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']] = None,
-                 yum: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']] = None,
-                 zypper: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']] = None):
+                 apt: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']] = None,
+                 deb: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']] = None,
+                 googet: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']] = None,
+                 msi: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']] = None,
+                 rpm: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']] = None,
+                 yum: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']] = None,
+                 zypper: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] desired_state: The desired state the agent should maintain for this package.
                Possible values are: `INSTALLED`, `REMOVED`.
@@ -11190,7 +11190,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]:
+    def apt(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]:
         """
         A package managed by APT.
         - install: `apt-get update && apt-get -y install [name]`
@@ -11200,12 +11200,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]):
+    def apt(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]):
         pulumi.set(self, "apt", value)
 
     @_builtins.property
     @pulumi.getter
-    def deb(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]:
+    def deb(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]:
         """
         A deb package file. dpkg packages only support INSTALLED state.
         Structure is documented below.
@@ -11213,12 +11213,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "deb")
 
     @deb.setter
-    def deb(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]):
+    def deb(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]):
         pulumi.set(self, "deb", value)
 
     @_builtins.property
     @pulumi.getter
-    def googet(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]:
+    def googet(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]:
         """
         A package managed by GooGet.
         - install: `googet -noconfirm install package`
@@ -11228,12 +11228,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "googet")
 
     @googet.setter
-    def googet(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]):
+    def googet(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]):
         pulumi.set(self, "googet", value)
 
     @_builtins.property
     @pulumi.getter
-    def msi(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]:
+    def msi(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]:
         """
         An MSI package. MSI packages only support INSTALLED state.
         Structure is documented below.
@@ -11241,12 +11241,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "msi")
 
     @msi.setter
-    def msi(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]):
+    def msi(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]):
         pulumi.set(self, "msi", value)
 
     @_builtins.property
     @pulumi.getter
-    def rpm(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]:
+    def rpm(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]:
         """
         An RPM package file. RPM packages only support INSTALLED state.
         Structure is documented below.
@@ -11254,12 +11254,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "rpm")
 
     @rpm.setter
-    def rpm(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]):
+    def rpm(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]):
         pulumi.set(self, "rpm", value)
 
     @_builtins.property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]:
+    def yum(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]:
         """
         A package managed by YUM.
         - install: `yum -y install package`
@@ -11269,12 +11269,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]):
+    def yum(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]):
         pulumi.set(self, "yum", value)
 
     @_builtins.property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]:
+    def zypper(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]:
         """
         A package managed by Zypper.
         - install: `zypper -y install package`
@@ -11284,7 +11284,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]):
+    def zypper(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]):
         pulumi.set(self, "zypper", value)
 
 
@@ -11322,7 +11322,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     A remote or local file.
     Structure is documented below.
     """
-    pull_deps: NotRequired[pulumi.Input[_builtins.bool]]
+    pull_deps: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether dependencies should also be installed.
     - install when false: `dpkg -i package`
@@ -11334,7 +11334,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs:
     def __init__(__self__, *,
                  source: pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs'],
-                 pull_deps: Optional[pulumi.Input[_builtins.bool]] = None):
+                 pull_deps: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs'] source: A remote or local file.
                Structure is documented below.
@@ -11362,7 +11362,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="pullDeps")
-    def pull_deps(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pull_deps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether dependencies should also be installed.
         - install when false: `dpkg -i package`
@@ -11372,28 +11372,28 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "pull_deps")
 
     @pull_deps.setter
-    def pull_deps(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pull_deps(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pull_deps", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -11402,10 +11402,10 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -11428,7 +11428,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -11438,12 +11438,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -11451,24 +11451,24 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -11476,7 +11476,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -11489,7 +11489,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -11499,7 +11499,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Name of the Cloud Storage object.
@@ -11536,14 +11536,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -11553,7 +11553,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -11562,7 +11562,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -11587,14 +11587,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -11632,7 +11632,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     A remote or local file.
     Structure is documented below.
     """
-    properties: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Additional properties to use during installation.
     This should be in the format of Property=Setting.
@@ -11644,7 +11644,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs:
     def __init__(__self__, *,
                  source: pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs'],
-                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 properties: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs'] source: A remote or local file.
                Structure is documented below.
@@ -11672,7 +11672,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Additional properties to use during installation.
         This should be in the format of Property=Setting.
@@ -11682,28 +11682,28 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -11712,10 +11712,10 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -11738,7 +11738,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -11748,12 +11748,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -11761,24 +11761,24 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -11786,7 +11786,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -11799,7 +11799,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -11809,7 +11809,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Name of the Cloud Storage object.
@@ -11846,14 +11846,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -11863,7 +11863,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -11872,7 +11872,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -11897,14 +11897,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -11914,7 +11914,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     A remote or local file.
     Structure is documented below.
     """
-    pull_deps: NotRequired[pulumi.Input[_builtins.bool]]
+    pull_deps: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether dependencies should also be installed.
     - install when false: `rpm --upgrade --replacepkgs package.rpm`
@@ -11926,7 +11926,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs:
     def __init__(__self__, *,
                  source: pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs'],
-                 pull_deps: Optional[pulumi.Input[_builtins.bool]] = None):
+                 pull_deps: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs'] source: A remote or local file.
                Structure is documented below.
@@ -11954,7 +11954,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="pullDeps")
-    def pull_deps(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pull_deps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether dependencies should also be installed.
         - install when false: `rpm --upgrade --replacepkgs package.rpm`
@@ -11964,28 +11964,28 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "pull_deps")
 
     @pull_deps.setter
-    def pull_deps(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pull_deps(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pull_deps", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -11994,10 +11994,10 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -12020,7 +12020,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -12030,12 +12030,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -12043,24 +12043,24 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -12068,7 +12068,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -12081,7 +12081,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -12091,7 +12091,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Name of the Cloud Storage object.
@@ -12128,14 +12128,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -12145,7 +12145,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -12154,7 +12154,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -12179,14 +12179,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -12247,28 +12247,28 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
 
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgsDict(TypedDict):
-    apt: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgsDict']]
+    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]]
     """
     Represents a single apt package repository. These will be added to
     a repo file that will be managed at
     `/etc/apt/sources.list.d/google_osconfig.list`.
     Structure is documented below.
     """
-    goo: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgsDict']]
+    goo: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]]
     """
     Represents a Goo package repository. These are added to a repo file
     that is managed at
     `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgsDict']]
+    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]]
     """
     Represents a single yum package repository. These are added to a
     repo file that is managed at
     `/etc/yum.repos.d/google_osconfig.repo`.
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgsDict']]
+    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]]
     """
     Represents a single zypper package repository. These are added to a
     repo file that is managed at
@@ -12279,10 +12279,10 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs:
     def __init__(__self__, *,
-                 apt: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']] = None,
-                 goo: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']] = None,
-                 yum: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']] = None,
-                 zypper: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']] = None):
+                 apt: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']] = None,
+                 goo: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']] = None,
+                 yum: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']] = None,
+                 zypper: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs'] apt: Represents a single apt package repository. These will be added to
                a repo file that will be managed at
@@ -12312,7 +12312,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]:
+    def apt(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]:
         """
         Represents a single apt package repository. These will be added to
         a repo file that will be managed at
@@ -12322,12 +12322,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]):
+    def apt(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]):
         pulumi.set(self, "apt", value)
 
     @_builtins.property
     @pulumi.getter
-    def goo(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]:
+    def goo(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]:
         """
         Represents a Goo package repository. These are added to a repo file
         that is managed at
@@ -12337,12 +12337,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "goo")
 
     @goo.setter
-    def goo(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]):
+    def goo(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]):
         pulumi.set(self, "goo", value)
 
     @_builtins.property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]:
+    def yum(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]:
         """
         Represents a single yum package repository. These are added to a
         repo file that is managed at
@@ -12352,12 +12352,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]):
+    def yum(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]):
         pulumi.set(self, "yum", value)
 
     @_builtins.property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]:
+    def zypper(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]:
         """
         Represents a single zypper package repository. These are added to a
         repo file that is managed at
@@ -12367,7 +12367,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]):
+    def zypper(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]):
         pulumi.set(self, "zypper", value)
 
 
@@ -12390,7 +12390,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     URI for this repository.
     """
-    gpg_key: NotRequired[pulumi.Input[_builtins.str]]
+    gpg_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URI of the key file for this repository. The agent maintains a
     keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
@@ -12403,7 +12403,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
                  components: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  distribution: pulumi.Input[_builtins.str],
                  uri: pulumi.Input[_builtins.str],
-                 gpg_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 gpg_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] archive_type: Type of archive files in this repository.
                Possible values are: `DEB`, `DEB_SRC`.
@@ -12473,7 +12473,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="gpgKey")
-    def gpg_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gpg_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI of the key file for this repository. The agent maintains a
         keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
@@ -12481,7 +12481,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "gpg_key")
 
     @gpg_key.setter
-    def gpg_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gpg_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gpg_key", value)
 
 
@@ -12544,11 +12544,11 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     `display_name` is omitted. This id is also used as the unique
     identifier when checking for resource conflicts.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the repository.
     """
-    gpg_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    gpg_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     URIs of GPG keys.
     """
@@ -12558,8 +12558,8 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     def __init__(__self__, *,
                  base_url: pulumi.Input[_builtins.str],
                  id: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpg_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] base_url: The location of the repository directory.
         :param pulumi.Input[_builtins.str] id: A one word, unique name for this repository. This is  the `repo
@@ -12605,26 +12605,26 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the repository.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gpgKeys")
-    def gpg_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def gpg_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
 
     @gpg_keys.setter
-    def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def gpg_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "gpg_keys", value)
 
 
@@ -12640,11 +12640,11 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     `display_name` is omitted. This id is also used as the unique
     identifier when checking for GuestPolicy conflicts.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the repository.
     """
-    gpg_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    gpg_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     URIs of GPG keys.
     """
@@ -12654,8 +12654,8 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     def __init__(__self__, *,
                  base_url: pulumi.Input[_builtins.str],
                  id: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpg_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] base_url: The location of the repository directory.
         :param pulumi.Input[_builtins.str] id: A one word, unique name for this repository. This is the `repo
@@ -12701,26 +12701,26 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the repository.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gpgKeys")
-    def gpg_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def gpg_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
 
     @gpg_keys.setter
-    def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def gpg_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "gpg_keys", value)
 
 
@@ -12790,11 +12790,11 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
 
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgsDict(TypedDict):
-    fixed: NotRequired[pulumi.Input[_builtins.int]]
+    fixed: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies a fixed value.
     """
-    percent: NotRequired[pulumi.Input[_builtins.int]]
+    percent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies the relative value defined as a percentage, which will be
     multiplied by a reference value.
@@ -12803,8 +12803,8 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs:
     def __init__(__self__, *,
-                 fixed: Optional[pulumi.Input[_builtins.int]] = None,
-                 percent: Optional[pulumi.Input[_builtins.int]] = None):
+                 fixed: pulumi.Input[Optional[_builtins.int]] = None,
+                 percent: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] fixed: Specifies a fixed value.
         :param pulumi.Input[_builtins.int] percent: Specifies the relative value defined as a percentage, which will be
@@ -12817,19 +12817,19 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
     @_builtins.property
     @pulumi.getter
-    def fixed(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fixed(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies a fixed value.
         """
         return pulumi.get(self, "fixed")
 
     @fixed.setter
-    def fixed(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fixed(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fixed", value)
 
     @_builtins.property
     @pulumi.getter
-    def percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the relative value defined as a percentage, which will be
         multiplied by a reference value.
@@ -12837,12 +12837,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         return pulumi.get(self, "percent")
 
     @percent.setter
-    def percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "percent", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict(TypedDict):
-    selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgsDict']]]]
+    selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs']]]]]
     """
     Selectors of the orchestration scope. There is a logical AND between each
     selector defined.
@@ -12855,7 +12855,7 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict(TypedDict):
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestrationScopeArgs:
     def __init__(__self__, *,
-                 selectors: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs']]]] = None):
+                 selectors: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs']]] selectors: Selectors of the orchestration scope. There is a logical AND between each
                selector defined.
@@ -12869,7 +12869,7 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs']]]]:
+    def selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs']]]]:
         """
         Selectors of the orchestration scope. There is a logical AND between each
         selector defined.
@@ -12881,17 +12881,17 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeArgs:
         return pulumi.get(self, "selectors")
 
     @selectors.setter
-    def selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs']]]]):
+    def selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs']]]]):
         pulumi.set(self, "selectors", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgsDict(TypedDict):
-    location_selector: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgsDict']]
+    location_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs']]]
     """
     Selector containing locations in scope.
     Structure is documented below.
     """
-    resource_hierarchy_selector: NotRequired[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgsDict']]
+    resource_hierarchy_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs']]]
     """
     Selector containing Cloud Resource Manager resource hierarchy nodes.
     Structure is documented below.
@@ -12900,8 +12900,8 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgsDict(TypedDict)
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs:
     def __init__(__self__, *,
-                 location_selector: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs']] = None,
-                 resource_hierarchy_selector: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs']] = None):
+                 location_selector: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs']] = None,
+                 resource_hierarchy_selector: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs']] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs'] location_selector: Selector containing locations in scope.
                Structure is documented below.
@@ -12915,7 +12915,7 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="locationSelector")
-    def location_selector(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs']]:
+    def location_selector(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs']]:
         """
         Selector containing locations in scope.
         Structure is documented below.
@@ -12923,12 +12923,12 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs:
         return pulumi.get(self, "location_selector")
 
     @location_selector.setter
-    def location_selector(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs']]):
+    def location_selector(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs']]):
         pulumi.set(self, "location_selector", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceHierarchySelector")
-    def resource_hierarchy_selector(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs']]:
+    def resource_hierarchy_selector(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs']]:
         """
         Selector containing Cloud Resource Manager resource hierarchy nodes.
         Structure is documented below.
@@ -12936,12 +12936,12 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs:
         return pulumi.get(self, "resource_hierarchy_selector")
 
     @resource_hierarchy_selector.setter
-    def resource_hierarchy_selector(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs']]):
+    def resource_hierarchy_selector(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs']]):
         pulumi.set(self, "resource_hierarchy_selector", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgsDict(TypedDict):
-    included_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    included_locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Names of the locations in scope.
     Format: `us-central1-a`
@@ -12950,7 +12950,7 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArg
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs:
     def __init__(__self__, *,
-                 included_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 included_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_locations: Names of the locations in scope.
                Format: `us-central1-a`
@@ -12960,7 +12960,7 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArg
 
     @_builtins.property
     @pulumi.getter(name="includedLocations")
-    def included_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def included_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Names of the locations in scope.
         Format: `us-central1-a`
@@ -12968,17 +12968,17 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArg
         return pulumi.get(self, "included_locations")
 
     @included_locations.setter
-    def included_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def included_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "included_locations", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgsDict(TypedDict):
-    included_folders: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    included_folders: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Names of the folders in scope.
     Format: `folders/{folder_id}`
     """
-    included_projects: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    included_projects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Names of the projects in scope.
     Format: `projects/{project_number}`
@@ -12987,8 +12987,8 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySe
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs:
     def __init__(__self__, *,
-                 included_folders: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 included_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 included_folders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 included_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_folders: Names of the folders in scope.
                Format: `folders/{folder_id}`
@@ -13002,7 +13002,7 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySe
 
     @_builtins.property
     @pulumi.getter(name="includedFolders")
-    def included_folders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def included_folders(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Names of the folders in scope.
         Format: `folders/{folder_id}`
@@ -13010,12 +13010,12 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySe
         return pulumi.get(self, "included_folders")
 
     @included_folders.setter
-    def included_folders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def included_folders(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "included_folders", value)
 
     @_builtins.property
     @pulumi.getter(name="includedProjects")
-    def included_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def included_projects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Names of the projects in scope.
         Format: `projects/{project_number}`
@@ -13023,18 +13023,18 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySe
         return pulumi.get(self, "included_projects")
 
     @included_projects.setter
-    def included_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def included_projects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "included_projects", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestrationStateArgsDict(TypedDict):
-    current_iteration_states: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgsDict']]]]
+    current_iteration_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs']]]]]
     """
     (Output)
     Describes the state of a single iteration of the orchestrator.
     Structure is documented below.
     """
-    previous_iteration_states: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgsDict']]]]
+    previous_iteration_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs']]]]]
     """
     (Output)
     Describes the state of a single iteration of the orchestrator.
@@ -13044,8 +13044,8 @@ class V2PolicyOrchestratorForFolderOrchestrationStateArgsDict(TypedDict):
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestrationStateArgs:
     def __init__(__self__, *,
-                 current_iteration_states: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs']]]] = None,
-                 previous_iteration_states: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs']]]] = None):
+                 current_iteration_states: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs']]]] = None,
+                 previous_iteration_states: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs']]] current_iteration_states: (Output)
                Describes the state of a single iteration of the orchestrator.
@@ -13061,7 +13061,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStateArgs:
 
     @_builtins.property
     @pulumi.getter(name="currentIterationStates")
-    def current_iteration_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs']]]]:
+    def current_iteration_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs']]]]:
         """
         (Output)
         Describes the state of a single iteration of the orchestrator.
@@ -13070,12 +13070,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStateArgs:
         return pulumi.get(self, "current_iteration_states")
 
     @current_iteration_states.setter
-    def current_iteration_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs']]]]):
+    def current_iteration_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs']]]]):
         pulumi.set(self, "current_iteration_states", value)
 
     @_builtins.property
     @pulumi.getter(name="previousIterationStates")
-    def previous_iteration_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs']]]]:
+    def previous_iteration_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs']]]]:
         """
         (Output)
         Describes the state of a single iteration of the orchestrator.
@@ -13084,12 +13084,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStateArgs:
         return pulumi.get(self, "previous_iteration_states")
 
     @previous_iteration_states.setter
-    def previous_iteration_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs']]]]):
+    def previous_iteration_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs']]]]):
         pulumi.set(self, "previous_iteration_states", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgsDict(TypedDict):
-    errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgsDict']]]]
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs']]]]]
     """
     (Output)
     The `Status` type defines a logical error model that is suitable for
@@ -13100,39 +13100,39 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgsDi
     [API Design Guide](https://cloud.google.com/apis/design/errors).
     Structure is documented below.
     """
-    failed_actions: NotRequired[pulumi.Input[_builtins.str]]
+    failed_actions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Number of orchestration actions which failed so far. For more details,
     query the Cloud Logs.
     """
-    finish_time: NotRequired[pulumi.Input[_builtins.str]]
+    finish_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Finish time of the wave iteration.
     """
-    performed_actions: NotRequired[pulumi.Input[_builtins.str]]
+    performed_actions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Overall number of actions done by the orchestrator so far.
     """
-    progress: NotRequired[pulumi.Input[_builtins.float]]
+    progress: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     (Output)
     An estimated percentage of the progress. Number between 0 and 100.
     """
-    rollout_resource: NotRequired[pulumi.Input[_builtins.str]]
+    rollout_resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Handle to the Progressive Rollouts API rollout resource, which contains
     detailed information about a particular orchestration iteration.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Start time of the wave iteration.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     State of the orchestrator. Can be updated to change orchestrator behaviour.
     Allowed values:
@@ -13146,14 +13146,14 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgsDi
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs:
     def __init__(__self__, *,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs']]]] = None,
-                 failed_actions: Optional[pulumi.Input[_builtins.str]] = None,
-                 finish_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 performed_actions: Optional[pulumi.Input[_builtins.str]] = None,
-                 progress: Optional[pulumi.Input[_builtins.float]] = None,
-                 rollout_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs']]]] = None,
+                 failed_actions: pulumi.Input[Optional[_builtins.str]] = None,
+                 finish_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 performed_actions: pulumi.Input[Optional[_builtins.str]] = None,
+                 progress: pulumi.Input[Optional[_builtins.float]] = None,
+                 rollout_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs']]] errors: (Output)
                The `Status` type defines a logical error model that is suitable for
@@ -13204,7 +13204,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs']]]]:
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs']]]]:
         """
         (Output)
         The `Status` type defines a logical error model that is suitable for
@@ -13218,12 +13218,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs']]]]):
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs']]]]):
         pulumi.set(self, "errors", value)
 
     @_builtins.property
     @pulumi.getter(name="failedActions")
-    def failed_actions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failed_actions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Number of orchestration actions which failed so far. For more details,
@@ -13232,12 +13232,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "failed_actions")
 
     @failed_actions.setter
-    def failed_actions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failed_actions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failed_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="finishTime")
-    def finish_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def finish_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Finish time of the wave iteration.
@@ -13245,12 +13245,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "finish_time")
 
     @finish_time.setter
-    def finish_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def finish_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "finish_time", value)
 
     @_builtins.property
     @pulumi.getter(name="performedActions")
-    def performed_actions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performed_actions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Overall number of actions done by the orchestrator so far.
@@ -13258,12 +13258,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "performed_actions")
 
     @performed_actions.setter
-    def performed_actions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performed_actions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performed_actions", value)
 
     @_builtins.property
     @pulumi.getter
-    def progress(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def progress(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         (Output)
         An estimated percentage of the progress. Number between 0 and 100.
@@ -13271,12 +13271,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "progress")
 
     @progress.setter
-    def progress(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def progress(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "progress", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutResource")
-    def rollout_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Handle to the Progressive Rollouts API rollout resource, which contains
@@ -13285,12 +13285,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "rollout_resource")
 
     @rollout_resource.setter
-    def rollout_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Start time of the wave iteration.
@@ -13298,12 +13298,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the orchestrator. Can be updated to change orchestrator behaviour.
         Allowed values:
@@ -13316,24 +13316,24 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgsDict']]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]]
     """
     (Output)
     A list of messages that carry the error details.  There is a common set of
     message types for APIs to use.
     Structure is documented below.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A developer-facing error message, which should be in English. Any
@@ -13344,9 +13344,9 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorA
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs']]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs']]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
@@ -13368,7 +13368,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorA
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
@@ -13376,12 +13376,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorA
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]:
         """
         (Output)
         A list of messages that carry the error details.  There is a common set of
@@ -13391,12 +13391,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorA
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A developer-facing error message, which should be in English. Any
@@ -13406,17 +13406,17 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorA
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgsDict(TypedDict):
-    type_url: NotRequired[pulumi.Input[_builtins.str]]
+    type_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     """
@@ -13424,8 +13424,8 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorD
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs:
     def __init__(__self__, *,
-                 type_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 type_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type_url: (Output)
                A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
@@ -13438,7 +13438,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorD
 
     @_builtins.property
     @pulumi.getter(name="typeUrl")
-    def type_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
@@ -13446,24 +13446,24 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorD
         return pulumi.get(self, "type_url")
 
     @type_url.setter
-    def type_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgsDict(TypedDict):
-    errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgsDict']]]]
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs']]]]]
     """
     (Output)
     The `Status` type defines a logical error model that is suitable for
@@ -13474,39 +13474,39 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgsD
     [API Design Guide](https://cloud.google.com/apis/design/errors).
     Structure is documented below.
     """
-    failed_actions: NotRequired[pulumi.Input[_builtins.str]]
+    failed_actions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Number of orchestration actions which failed so far. For more details,
     query the Cloud Logs.
     """
-    finish_time: NotRequired[pulumi.Input[_builtins.str]]
+    finish_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Finish time of the wave iteration.
     """
-    performed_actions: NotRequired[pulumi.Input[_builtins.str]]
+    performed_actions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Overall number of actions done by the orchestrator so far.
     """
-    progress: NotRequired[pulumi.Input[_builtins.float]]
+    progress: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     (Output)
     An estimated percentage of the progress. Number between 0 and 100.
     """
-    rollout_resource: NotRequired[pulumi.Input[_builtins.str]]
+    rollout_resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Handle to the Progressive Rollouts API rollout resource, which contains
     detailed information about a particular orchestration iteration.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Start time of the wave iteration.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     State of the orchestrator. Can be updated to change orchestrator behaviour.
     Allowed values:
@@ -13520,14 +13520,14 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgsD
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs:
     def __init__(__self__, *,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs']]]] = None,
-                 failed_actions: Optional[pulumi.Input[_builtins.str]] = None,
-                 finish_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 performed_actions: Optional[pulumi.Input[_builtins.str]] = None,
-                 progress: Optional[pulumi.Input[_builtins.float]] = None,
-                 rollout_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs']]]] = None,
+                 failed_actions: pulumi.Input[Optional[_builtins.str]] = None,
+                 finish_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 performed_actions: pulumi.Input[Optional[_builtins.str]] = None,
+                 progress: pulumi.Input[Optional[_builtins.float]] = None,
+                 rollout_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs']]] errors: (Output)
                The `Status` type defines a logical error model that is suitable for
@@ -13578,7 +13578,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs']]]]:
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs']]]]:
         """
         (Output)
         The `Status` type defines a logical error model that is suitable for
@@ -13592,12 +13592,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs']]]]):
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs']]]]):
         pulumi.set(self, "errors", value)
 
     @_builtins.property
     @pulumi.getter(name="failedActions")
-    def failed_actions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failed_actions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Number of orchestration actions which failed so far. For more details,
@@ -13606,12 +13606,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "failed_actions")
 
     @failed_actions.setter
-    def failed_actions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failed_actions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failed_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="finishTime")
-    def finish_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def finish_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Finish time of the wave iteration.
@@ -13619,12 +13619,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "finish_time")
 
     @finish_time.setter
-    def finish_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def finish_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "finish_time", value)
 
     @_builtins.property
     @pulumi.getter(name="performedActions")
-    def performed_actions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performed_actions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Overall number of actions done by the orchestrator so far.
@@ -13632,12 +13632,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "performed_actions")
 
     @performed_actions.setter
-    def performed_actions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performed_actions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performed_actions", value)
 
     @_builtins.property
     @pulumi.getter
-    def progress(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def progress(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         (Output)
         An estimated percentage of the progress. Number between 0 and 100.
@@ -13645,12 +13645,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "progress")
 
     @progress.setter
-    def progress(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def progress(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "progress", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutResource")
-    def rollout_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Handle to the Progressive Rollouts API rollout resource, which contains
@@ -13659,12 +13659,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "rollout_resource")
 
     @rollout_resource.setter
-    def rollout_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Start time of the wave iteration.
@@ -13672,12 +13672,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the orchestrator. Can be updated to change orchestrator behaviour.
         Allowed values:
@@ -13690,24 +13690,24 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgsDict']]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]]
     """
     (Output)
     A list of messages that carry the error details.  There is a common set of
     message types for APIs to use.
     Structure is documented below.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A developer-facing error message, which should be in English. Any
@@ -13718,9 +13718,9 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs']]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs']]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
@@ -13742,7 +13742,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
@@ -13750,12 +13750,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]:
         """
         (Output)
         A list of messages that carry the error details.  There is a common set of
@@ -13765,12 +13765,12 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A developer-facing error message, which should be in English. Any
@@ -13780,17 +13780,17 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgsDict(TypedDict):
-    type_url: NotRequired[pulumi.Input[_builtins.str]]
+    type_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     """
@@ -13798,8 +13798,8 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError
 @pulumi.input_type
 class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs:
     def __init__(__self__, *,
-                 type_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 type_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type_url: (Output)
                A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
@@ -13812,7 +13812,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError
 
     @_builtins.property
     @pulumi.getter(name="typeUrl")
-    def type_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
@@ -13820,24 +13820,24 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError
         return pulumi.get(self, "type_url")
 
     @type_url.setter
-    def type_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. ID of the resource to be used while generating set of affected resources.
     For UPSERT action the value is auto-generated during PolicyOrchestrator
@@ -13854,7 +13854,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceArgsDict(TypedDict)
 
     <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
     """
-    os_policy_assignment_v1_payload: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadArgsDict']]
+    os_policy_assignment_v1_payload: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]]
     """
     OS policy assignment is an API resource that is used to
     apply a set of OS policies to a dynamically targeted group of Compute Engine
@@ -13873,8 +13873,8 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceArgsDict(TypedDict)
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_policy_assignment_v1_payload: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_policy_assignment_v1_payload: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] id: Optional. ID of the resource to be used while generating set of affected resources.
                For UPSERT action the value is auto-generated during PolicyOrchestrator
@@ -13910,7 +13910,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. ID of the resource to be used while generating set of affected resources.
         For UPSERT action the value is auto-generated during PolicyOrchestrator
@@ -13930,12 +13930,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="osPolicyAssignmentV1Payload")
-    def os_policy_assignment_v1_payload(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]:
+    def os_policy_assignment_v1_payload(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]:
         """
         OS policy assignment is an API resource that is used to
         apply a set of OS policies to a dynamically targeted group of Compute Engine
@@ -13953,7 +13953,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceArgs:
         return pulumi.get(self, "os_policy_assignment_v1_payload")
 
     @os_policy_assignment_v1_payload.setter
-    def os_policy_assignment_v1_payload(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]):
+    def os_policy_assignment_v1_payload(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]):
         pulumi.set(self, "os_policy_assignment_v1_payload", value)
 
 
@@ -13974,7 +13974,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Message to configure the rollout at the zonal level for the OS policy
     assignment.
     """
-    baseline: NotRequired[pulumi.Input[_builtins.bool]]
+    baseline: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Output only. Indicates that this revision has been successfully rolled out in this zone
     and new VMs will be assigned OS policies from this revision.
@@ -13982,43 +13982,43 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     For a given OS policy assignment, there is only one revision with a value
     of 'true' for this field.
     """
-    deleted: NotRequired[pulumi.Input[_builtins.bool]]
+    deleted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Output only. Indicates that this revision deletes the OS policy assignment.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Freeform text describing the purpose of the resource.
     """
-    etag: NotRequired[pulumi.Input[_builtins.str]]
+    etag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. This checksum is computed by the server based on the value of other
     fields, and may be sent on update and delete requests to ensure the
     client has an up-to-date value before proceeding.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Immutable. Identifier. In form of
     * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
     * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
     * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
     """
-    reconciling: NotRequired[pulumi.Input[_builtins.bool]]
+    reconciling: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Output only. Set to true, if the there are ongoing changes being applied by the
     orchestrator.
     """
-    revision_create_time: NotRequired[pulumi.Input[_builtins.str]]
+    revision_create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. The timestamp that the revision was created.
     """
-    revision_id: NotRequired[pulumi.Input[_builtins.str]]
+    revision_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. The assignment revision ID
     A new revision is committed whenever a rollout is triggered for a OS policy
     assignment
     """
-    rollout_state: NotRequired[pulumi.Input[_builtins.str]]
+    rollout_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. OS policy assignment rollout state
     Possible values:
@@ -14028,7 +14028,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     CANCELLED
     SUCCEEDED
     """
-    uid: NotRequired[pulumi.Input[_builtins.str]]
+    uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. Server generated unique id for the OS policy assignment resource.
     """
@@ -14039,16 +14039,16 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
                  instance_filter: pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs'],
                  os_policies: pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArgs']]],
                  rollout: pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs'],
-                 baseline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deleted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 revision_create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 baseline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deleted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 revision_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs'] instance_filter: Filters to select target VMs for an assignment.
                
@@ -14152,7 +14152,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def baseline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def baseline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. Indicates that this revision has been successfully rolled out in this zone
         and new VMs will be assigned OS policies from this revision.
@@ -14163,36 +14163,36 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "baseline")
 
     @baseline.setter
-    def baseline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def baseline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "baseline", value)
 
     @_builtins.property
     @pulumi.getter
-    def deleted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deleted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. Indicates that this revision deletes the OS policy assignment.
         """
         return pulumi.get(self, "deleted")
 
     @deleted.setter
-    def deleted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deleted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deleted", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Freeform text describing the purpose of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. This checksum is computed by the server based on the value of other
         fields, and may be sent on update and delete requests to ensure the
@@ -14201,12 +14201,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. Identifier. In form of
         * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -14216,12 +14216,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. Set to true, if the there are ongoing changes being applied by the
         orchestrator.
@@ -14229,24 +14229,24 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionCreateTime")
-    def revision_create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The timestamp that the revision was created.
         """
         return pulumi.get(self, "revision_create_time")
 
     @revision_create_time.setter
-    def revision_create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionId")
-    def revision_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The assignment revision ID
         A new revision is committed whenever a rollout is triggered for a OS policy
@@ -14255,12 +14255,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "revision_id")
 
     @revision_id.setter
-    def revision_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutState")
-    def rollout_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. OS policy assignment rollout state
         Possible values:
@@ -14273,43 +14273,43 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "rollout_state")
 
     @rollout_state.setter
-    def rollout_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Server generated unique id for the OS policy assignment resource.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgsDict(TypedDict):
-    all: NotRequired[pulumi.Input[_builtins.bool]]
+    all: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Target all VMs in the project. If true, no other criteria is
     permitted.
     """
-    exclusion_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgsDict']]]]
+    exclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]]
     """
     List of label sets used for VM exclusion.
     If the list has more than one label set, the VM is excluded if any
     of the label sets are applicable for the VM.
     Structure is documented below.
     """
-    inclusion_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgsDict']]]]
+    inclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]]
     """
     List of label sets used for VM inclusion.
     If the list has more than one `LabelSet`, the VM is included if any
     of the label sets are applicable for the VM.
     Structure is documented below.
     """
-    inventories: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgsDict']]]]
+    inventories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]]
     """
     List of inventories to select VMs.
     A VM is selected if its inventory data matches at least one of the
@@ -14320,10 +14320,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs:
     def __init__(__self__, *,
-                 all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]] = None,
-                 inclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]] = None,
-                 inventories: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]] = None):
+                 all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclusion_labels: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]] = None,
+                 inclusion_labels: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]] = None,
+                 inventories: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] all: Target all VMs in the project. If true, no other criteria is
                permitted.
@@ -14351,7 +14351,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Target all VMs in the project. If true, no other criteria is
         permitted.
@@ -14359,12 +14359,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "all")
 
     @all.setter
-    def all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusionLabels")
-    def exclusion_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]:
+    def exclusion_labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]:
         """
         List of label sets used for VM exclusion.
         If the list has more than one label set, the VM is excluded if any
@@ -14374,12 +14374,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "exclusion_labels")
 
     @exclusion_labels.setter
-    def exclusion_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]):
+    def exclusion_labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]):
         pulumi.set(self, "exclusion_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="inclusionLabels")
-    def inclusion_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]:
+    def inclusion_labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]:
         """
         List of label sets used for VM inclusion.
         If the list has more than one `LabelSet`, the VM is included if any
@@ -14389,12 +14389,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "inclusion_labels")
 
     @inclusion_labels.setter
-    def inclusion_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]):
+    def inclusion_labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]):
         pulumi.set(self, "inclusion_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def inventories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]:
+    def inventories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]:
         """
         List of inventories to select VMs.
         A VM is selected if its inventory data matches at least one of the
@@ -14404,12 +14404,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "inventories")
 
     @inventories.setter
-    def inventories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]):
+    def inventories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]):
         pulumi.set(self, "inventories", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels are identified by key/value pairs in this map.
     A VM should contain all the key/value pairs specified in this
@@ -14419,7 +14419,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are identified by key/value pairs in this map.
                A VM should contain all the key/value pairs specified in this
@@ -14430,7 +14430,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are identified by key/value pairs in this map.
         A VM should contain all the key/value pairs specified in this
@@ -14439,12 +14439,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels are identified by key/value pairs in this map.
     A VM should contain all the key/value pairs specified in this
@@ -14454,7 +14454,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are identified by key/value pairs in this map.
                A VM should contain all the key/value pairs specified in this
@@ -14465,7 +14465,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are identified by key/value pairs in this map.
         A VM should contain all the key/value pairs specified in this
@@ -14474,7 +14474,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
 
@@ -14483,7 +14483,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     Required. The OS short name
     """
-    os_version: NotRequired[pulumi.Input[_builtins.str]]
+    os_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OS version
     Prefix matches are supported if asterisk(*) is provided as the
@@ -14496,7 +14496,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs:
     def __init__(__self__, *,
                  os_short_name: pulumi.Input[_builtins.str],
-                 os_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 os_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] os_short_name: Required. The OS short name
         :param pulumi.Input[_builtins.str] os_version: The OS version
@@ -14523,7 +14523,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="osVersion")
-    def os_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OS version
         Prefix matches are supported if asterisk(*) is provided as the
@@ -14534,7 +14534,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "os_version")
 
     @os_version.setter
-    def os_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_version", value)
 
 
@@ -14567,14 +14567,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     toggled by the flag `allow_no_resource_group_match`
     Structure is documented below.
     """
-    allow_no_resource_group_match: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_no_resource_group_match: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     This flag determines the OS policy compliance status when none of the
     resource groups within the policy are applicable for a VM. Set this value
     to `true` if the policy needs to be reported as compliant even if the
     policy has nothing to validate or enforce.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Policy description.
     Length of the description is limited to 1024 characters.
@@ -14586,8 +14586,8 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
                  id: pulumi.Input[_builtins.str],
                  mode: pulumi.Input[_builtins.str],
                  resource_groups: pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs']]],
-                 allow_no_resource_group_match: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_no_resource_group_match: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: Required. The id of the OS policy with the following restrictions:
                * Must contain only lowercase letters, numbers, and hyphens.
@@ -14677,7 +14677,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="allowNoResourceGroupMatch")
-    def allow_no_resource_group_match(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_no_resource_group_match(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This flag determines the OS policy compliance status when none of the
         resource groups within the policy are applicable for a VM. Set this value
@@ -14687,12 +14687,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "allow_no_resource_group_match")
 
     @allow_no_resource_group_match.setter
-    def allow_no_resource_group_match(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_no_resource_group_match(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_no_resource_group_match", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy description.
         Length of the description is limited to 1024 characters.
@@ -14700,7 +14700,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -14711,7 +14711,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     The resources are executed in the exact order specified here.
     Structure is documented below.
     """
-    inventory_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgsDict']]]]
+    inventory_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]]
     """
     List of inventory filters for the resource group.
     The resources in this resource group are applied to the target VM if it
@@ -14730,7 +14730,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs:
     def __init__(__self__, *,
                  resources: pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs']]],
-                 inventory_filters: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]] = None):
+                 inventory_filters: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs']]] resources: Required. List of resources configured for this resource group.
                The resources are executed in the exact order specified here.
@@ -14767,7 +14767,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="inventoryFilters")
-    def inventory_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]:
+    def inventory_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]:
         """
         List of inventory filters for the resource group.
         The resources in this resource group are applied to the target VM if it
@@ -14784,7 +14784,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "inventory_filters")
 
     @inventory_filters.setter
-    def inventory_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]):
+    def inventory_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]):
         pulumi.set(self, "inventory_filters", value)
 
 
@@ -14793,7 +14793,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     Required. The OS short name
     """
-    os_version: NotRequired[pulumi.Input[_builtins.str]]
+    os_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OS version
     Prefix matches are supported if asterisk(*) is provided as the
@@ -14806,7 +14806,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs:
     def __init__(__self__, *,
                  os_short_name: pulumi.Input[_builtins.str],
-                 os_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 os_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] os_short_name: Required. The OS short name
         :param pulumi.Input[_builtins.str] os_version: The OS version
@@ -14833,7 +14833,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="osVersion")
-    def os_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OS version
         Prefix matches are supported if asterisk(*) is provided as the
@@ -14844,7 +14844,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "os_version")
 
     @os_version.setter
-    def os_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_version", value)
 
 
@@ -14858,7 +14858,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     * Must end with a number or a letter.
     * Must be unique within the OS policy.
     """
-    exec_: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgsDict']]
+    exec_: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]]
     """
     A resource that allows executing scripts on the VM.
     The `ExecResource` has 2 stages: `validate` and `enforce` and both stages
@@ -14884,17 +14884,17 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     were chosen.
     Structure is documented below.
     """
-    file: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]]
     """
     A resource that manages the state of a file.
     Structure is documented below.
     """
-    pkg: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgsDict']]
+    pkg: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]]
     """
     A resource that manages a system package.
     Structure is documented below.
     """
-    repository: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgsDict']]
+    repository: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]]
     """
     A resource that manages a package repository.
     Structure is documented below.
@@ -14904,10 +14904,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 exec_: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']] = None,
-                 file: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']] = None,
-                 pkg: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']] = None,
-                 repository: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']] = None):
+                 exec_: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']] = None,
+                 file: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']] = None,
+                 pkg: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']] = None,
+                 repository: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] id: Required. The id of the resource with the following restrictions:
                * Must contain only lowercase letters, numbers, and hyphens.
@@ -14974,7 +14974,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="exec")
-    def exec_(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]:
+    def exec_(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]:
         """
         A resource that allows executing scripts on the VM.
         The `ExecResource` has 2 stages: `validate` and `enforce` and both stages
@@ -15003,12 +15003,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "exec_")
 
     @exec_.setter
-    def exec_(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]):
+    def exec_(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]):
         pulumi.set(self, "exec_", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]:
         """
         A resource that manages the state of a file.
         Structure is documented below.
@@ -15016,12 +15016,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter
-    def pkg(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]:
+    def pkg(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]:
         """
         A resource that manages a system package.
         Structure is documented below.
@@ -15029,12 +15029,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "pkg")
 
     @pkg.setter
-    def pkg(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]):
+    def pkg(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]):
         pulumi.set(self, "pkg", value)
 
     @_builtins.property
     @pulumi.getter
-    def repository(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]:
+    def repository(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]:
         """
         A resource that manages a package repository.
         Structure is documented below.
@@ -15042,7 +15042,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "repository")
 
     @repository.setter
-    def repository(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]):
+    def repository(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]):
         pulumi.set(self, "repository", value)
 
 
@@ -15052,7 +15052,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     A file or script to execute.
     Structure is documented below.
     """
-    enforce: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgsDict']]
+    enforce: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]]
     """
     A file or script to execute.
     Structure is documented below.
@@ -15062,7 +15062,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs:
     def __init__(__self__, *,
                  validate: pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs'],
-                 enforce: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']] = None):
+                 enforce: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs'] validate: A file or script to execute.
                Structure is documented below.
@@ -15088,7 +15088,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def enforce(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]:
+    def enforce(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]:
         """
         A file or script to execute.
         Structure is documented below.
@@ -15096,7 +15096,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "enforce")
 
     @enforce.setter
-    def enforce(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]):
+    def enforce(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]):
         pulumi.set(self, "enforce", value)
 
 
@@ -15110,16 +15110,16 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     SHELL
     POWERSHELL
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional arguments to pass to the source during execution.
     """
-    file: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]]
     """
     A remote or local file.
     Structure is documented below.
     """
-    output_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    output_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Only recorded for enforce Exec.
     Path to an output file (that is created by this Exec) whose
@@ -15128,7 +15128,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     this ExecResource being non-compliant. Output file size is limited to
     500K bytes.
     """
-    script: NotRequired[pulumi.Input[_builtins.str]]
+    script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An inline script.
     The size of the script is limited to 32KiB.
@@ -15138,10 +15138,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs:
     def __init__(__self__, *,
                  interpreter: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 file: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']] = None,
-                 output_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 file: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']] = None,
+                 output_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] interpreter: Required. The script interpreter to use.
                Possible values:
@@ -15190,19 +15190,19 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional arguments to pass to the source during execution.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]:
         """
         A remote or local file.
         Structure is documented below.
@@ -15210,12 +15210,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter(name="outputFilePath")
-    def output_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only recorded for enforce Exec.
         Path to an output file (that is created by this Exec) whose
@@ -15227,12 +15227,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "output_file_path")
 
     @output_file_path.setter
-    def output_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_file_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An inline script.
         The size of the script is limited to 32KiB.
@@ -15240,28 +15240,28 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -15270,10 +15270,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -15296,7 +15296,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -15306,12 +15306,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -15319,24 +15319,24 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -15344,7 +15344,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -15357,7 +15357,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     Required. Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -15367,7 +15367,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Required. Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Required. Name of the Cloud Storage object.
@@ -15404,14 +15404,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -15421,7 +15421,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Required. URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -15430,7 +15430,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Required. URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -15455,14 +15455,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -15476,16 +15476,16 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     SHELL
     POWERSHELL
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional arguments to pass to the source during execution.
     """
-    file: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]]
     """
     A remote or local file.
     Structure is documented below.
     """
-    output_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    output_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Only recorded for enforce Exec.
     Path to an output file (that is created by this Exec) whose
@@ -15494,7 +15494,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     this ExecResource being non-compliant. Output file size is limited to
     500K bytes.
     """
-    script: NotRequired[pulumi.Input[_builtins.str]]
+    script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An inline script.
     The size of the script is limited to 32KiB.
@@ -15504,10 +15504,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs:
     def __init__(__self__, *,
                  interpreter: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 file: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']] = None,
-                 output_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 file: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']] = None,
+                 output_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] interpreter: Required. The script interpreter to use.
                Possible values:
@@ -15556,19 +15556,19 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional arguments to pass to the source during execution.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]:
         """
         A remote or local file.
         Structure is documented below.
@@ -15576,12 +15576,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter(name="outputFilePath")
-    def output_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only recorded for enforce Exec.
         Path to an output file (that is created by this Exec) whose
@@ -15593,12 +15593,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "output_file_path")
 
     @output_file_path.setter
-    def output_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_file_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An inline script.
         The size of the script is limited to 32KiB.
@@ -15606,28 +15606,28 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -15636,10 +15636,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -15662,7 +15662,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -15672,12 +15672,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -15685,24 +15685,24 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -15710,7 +15710,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -15723,7 +15723,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     Required. Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -15733,7 +15733,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Required. Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Required. Name of the Cloud Storage object.
@@ -15770,14 +15770,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -15787,7 +15787,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Required. URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -15796,7 +15796,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Required. URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -15821,14 +15821,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -15846,17 +15846,17 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     ABSENT
     CONTENTS_MATCH
     """
-    content: NotRequired[pulumi.Input[_builtins.str]]
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A a file with this content.
     The size of the content is limited to 32KiB.
     """
-    file: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]]
     """
     A remote or local file.
     Structure is documented below.
     """
-    permissions: NotRequired[pulumi.Input[_builtins.str]]
+    permissions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Consists of three octal digits which represent, in
     order, the permissions of the owner, group, and other users for the
@@ -15877,9 +15877,9 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
                  state: pulumi.Input[_builtins.str],
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 file: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']] = None,
-                 permissions: Optional[pulumi.Input[_builtins.str]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 file: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']] = None,
+                 permissions: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] path: Required. The absolute path of the file within the VM.
         :param pulumi.Input[_builtins.str] state: Required. Desired state of the file.
@@ -15945,7 +15945,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A a file with this content.
         The size of the content is limited to 32KiB.
@@ -15953,12 +15953,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]:
         """
         A remote or local file.
         Structure is documented below.
@@ -15966,12 +15966,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permissions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Consists of three octal digits which represent, in
         order, the permissions of the owner, group, and other users for the
@@ -15989,28 +15989,28 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permissions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permissions", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -16019,10 +16019,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -16045,7 +16045,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -16055,12 +16055,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -16068,24 +16068,24 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -16093,7 +16093,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -16106,7 +16106,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     Required. Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -16116,7 +16116,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Required. Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Required. Name of the Cloud Storage object.
@@ -16153,14 +16153,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -16170,7 +16170,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Required. URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -16179,7 +16179,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Required. URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -16204,14 +16204,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -16224,43 +16224,43 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     INSTALLED
     REMOVED
     """
-    apt: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgsDict']]
+    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]]
     """
     A package managed by APT.
     - install: `apt-get update && apt-get -y install [name]`
     - remove: `apt-get -y remove [name]`
     Structure is documented below.
     """
-    deb: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgsDict']]
+    deb: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]]
     """
     A deb package file. dpkg packages only support INSTALLED state.
     Structure is documented below.
     """
-    googet: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgsDict']]
+    googet: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]]
     """
     A package managed by GooGet.
     - install: `googet -noconfirm install package`
     - remove: `googet -noconfirm remove package`
     Structure is documented below.
     """
-    msi: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgsDict']]
+    msi: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]]
     """
     An MSI package. MSI packages only support INSTALLED state.
     Structure is documented below.
     """
-    rpm: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgsDict']]
+    rpm: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]]
     """
     An RPM package file. RPM packages only support INSTALLED state.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgsDict']]
+    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]]
     """
     A package managed by YUM.
     - install: `yum -y install package`
     - remove: `yum -y remove package`
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgsDict']]
+    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]]
     """
     A package managed by Zypper.
     - install: `zypper -y install package`
@@ -16272,13 +16272,13 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs:
     def __init__(__self__, *,
                  desired_state: pulumi.Input[_builtins.str],
-                 apt: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']] = None,
-                 deb: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']] = None,
-                 googet: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']] = None,
-                 msi: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']] = None,
-                 rpm: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']] = None,
-                 yum: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']] = None,
-                 zypper: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']] = None):
+                 apt: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']] = None,
+                 deb: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']] = None,
+                 googet: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']] = None,
+                 msi: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']] = None,
+                 rpm: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']] = None,
+                 yum: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']] = None,
+                 zypper: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] desired_state: Required. The desired state the agent should maintain for this package.
                Possible values:
@@ -16342,7 +16342,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]:
+    def apt(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]:
         """
         A package managed by APT.
         - install: `apt-get update && apt-get -y install [name]`
@@ -16352,12 +16352,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]):
+    def apt(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]):
         pulumi.set(self, "apt", value)
 
     @_builtins.property
     @pulumi.getter
-    def deb(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]:
+    def deb(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]:
         """
         A deb package file. dpkg packages only support INSTALLED state.
         Structure is documented below.
@@ -16365,12 +16365,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "deb")
 
     @deb.setter
-    def deb(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]):
+    def deb(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]):
         pulumi.set(self, "deb", value)
 
     @_builtins.property
     @pulumi.getter
-    def googet(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]:
+    def googet(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]:
         """
         A package managed by GooGet.
         - install: `googet -noconfirm install package`
@@ -16380,12 +16380,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "googet")
 
     @googet.setter
-    def googet(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]):
+    def googet(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]):
         pulumi.set(self, "googet", value)
 
     @_builtins.property
     @pulumi.getter
-    def msi(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]:
+    def msi(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]:
         """
         An MSI package. MSI packages only support INSTALLED state.
         Structure is documented below.
@@ -16393,12 +16393,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "msi")
 
     @msi.setter
-    def msi(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]):
+    def msi(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]):
         pulumi.set(self, "msi", value)
 
     @_builtins.property
     @pulumi.getter
-    def rpm(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]:
+    def rpm(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]:
         """
         An RPM package file. RPM packages only support INSTALLED state.
         Structure is documented below.
@@ -16406,12 +16406,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "rpm")
 
     @rpm.setter
-    def rpm(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]):
+    def rpm(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]):
         pulumi.set(self, "rpm", value)
 
     @_builtins.property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]:
+    def yum(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]:
         """
         A package managed by YUM.
         - install: `yum -y install package`
@@ -16421,12 +16421,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]):
+    def yum(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]):
         pulumi.set(self, "yum", value)
 
     @_builtins.property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]:
+    def zypper(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]:
         """
         A package managed by Zypper.
         - install: `zypper -y install package`
@@ -16436,7 +16436,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]):
+    def zypper(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]):
         pulumi.set(self, "zypper", value)
 
 
@@ -16474,7 +16474,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     A remote or local file.
     Structure is documented below.
     """
-    pull_deps: NotRequired[pulumi.Input[_builtins.bool]]
+    pull_deps: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether dependencies should also be installed.
     - install when false: `dpkg -i package`
@@ -16486,7 +16486,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs:
     def __init__(__self__, *,
                  source: pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs'],
-                 pull_deps: Optional[pulumi.Input[_builtins.bool]] = None):
+                 pull_deps: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs'] source: A remote or local file.
                Structure is documented below.
@@ -16514,7 +16514,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="pullDeps")
-    def pull_deps(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pull_deps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether dependencies should also be installed.
         - install when false: `dpkg -i package`
@@ -16524,28 +16524,28 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "pull_deps")
 
     @pull_deps.setter
-    def pull_deps(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pull_deps(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pull_deps", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -16554,10 +16554,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -16580,7 +16580,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -16590,12 +16590,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -16603,24 +16603,24 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -16628,7 +16628,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -16641,7 +16641,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     Required. Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -16651,7 +16651,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Required. Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Required. Name of the Cloud Storage object.
@@ -16688,14 +16688,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -16705,7 +16705,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Required. URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -16714,7 +16714,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Required. URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -16739,14 +16739,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -16784,7 +16784,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     A remote or local file.
     Structure is documented below.
     """
-    properties: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Additional properties to use during installation.
     This should be in the format of Property=Setting.
@@ -16796,7 +16796,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs:
     def __init__(__self__, *,
                  source: pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs'],
-                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 properties: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs'] source: A remote or local file.
                Structure is documented below.
@@ -16824,7 +16824,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Additional properties to use during installation.
         This should be in the format of Property=Setting.
@@ -16834,28 +16834,28 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -16864,10 +16864,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -16890,7 +16890,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -16900,12 +16900,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -16913,24 +16913,24 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -16938,7 +16938,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -16951,7 +16951,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     Required. Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -16961,7 +16961,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Required. Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Required. Name of the Cloud Storage object.
@@ -16998,14 +16998,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -17015,7 +17015,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Required. URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -17024,7 +17024,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Required. URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -17049,14 +17049,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -17066,7 +17066,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     A remote or local file.
     Structure is documented below.
     """
-    pull_deps: NotRequired[pulumi.Input[_builtins.bool]]
+    pull_deps: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether dependencies should also be installed.
     - install when false: `rpm --upgrade --replacepkgs package.rpm`
@@ -17078,7 +17078,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs:
     def __init__(__self__, *,
                  source: pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs'],
-                 pull_deps: Optional[pulumi.Input[_builtins.bool]] = None):
+                 pull_deps: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs'] source: A remote or local file.
                Structure is documented below.
@@ -17106,7 +17106,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="pullDeps")
-    def pull_deps(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pull_deps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether dependencies should also be installed.
         - install when false: `rpm --upgrade --replacepkgs package.rpm`
@@ -17116,28 +17116,28 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "pull_deps")
 
     @pull_deps.setter
-    def pull_deps(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pull_deps(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pull_deps", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -17146,10 +17146,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -17172,7 +17172,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -17182,12 +17182,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -17195,24 +17195,24 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -17220,7 +17220,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -17233,7 +17233,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     Required. Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -17243,7 +17243,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Required. Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Required. Name of the Cloud Storage object.
@@ -17280,14 +17280,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -17297,7 +17297,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Required. URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -17306,7 +17306,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Required. URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -17331,14 +17331,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -17399,28 +17399,28 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgsDict(TypedDict):
-    apt: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgsDict']]
+    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]]
     """
     Represents a single apt package repository. These will be added to
     a repo file that will be managed at
     `/etc/apt/sources.list.d/google_osconfig.list`.
     Structure is documented below.
     """
-    goo: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgsDict']]
+    goo: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]]
     """
     Represents a Goo package repository. These are added to a repo file
     that is managed at
     `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgsDict']]
+    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]]
     """
     Represents a single yum package repository. These are added to a
     repo file that is managed at
     `/etc/yum.repos.d/google_osconfig.repo`.
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgsDict']]
+    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]]
     """
     Represents a single zypper package repository. These are added to a
     repo file that is managed at
@@ -17431,10 +17431,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs:
     def __init__(__self__, *,
-                 apt: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']] = None,
-                 goo: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']] = None,
-                 yum: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']] = None,
-                 zypper: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']] = None):
+                 apt: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']] = None,
+                 goo: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']] = None,
+                 yum: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']] = None,
+                 zypper: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs'] apt: Represents a single apt package repository. These will be added to
                a repo file that will be managed at
@@ -17464,7 +17464,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]:
+    def apt(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]:
         """
         Represents a single apt package repository. These will be added to
         a repo file that will be managed at
@@ -17474,12 +17474,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]):
+    def apt(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]):
         pulumi.set(self, "apt", value)
 
     @_builtins.property
     @pulumi.getter
-    def goo(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]:
+    def goo(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]:
         """
         Represents a Goo package repository. These are added to a repo file
         that is managed at
@@ -17489,12 +17489,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "goo")
 
     @goo.setter
-    def goo(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]):
+    def goo(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]):
         pulumi.set(self, "goo", value)
 
     @_builtins.property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]:
+    def yum(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]:
         """
         Represents a single yum package repository. These are added to a
         repo file that is managed at
@@ -17504,12 +17504,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]):
+    def yum(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]):
         pulumi.set(self, "yum", value)
 
     @_builtins.property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]:
+    def zypper(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]:
         """
         Represents a single zypper package repository. These are added to a
         repo file that is managed at
@@ -17519,7 +17519,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]):
+    def zypper(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]):
         pulumi.set(self, "zypper", value)
 
 
@@ -17545,7 +17545,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     Required. URI for this repository.
     """
-    gpg_key: NotRequired[pulumi.Input[_builtins.str]]
+    gpg_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URI of the key file for this repository. The agent maintains a
     keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
@@ -17558,7 +17558,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
                  components: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  distribution: pulumi.Input[_builtins.str],
                  uri: pulumi.Input[_builtins.str],
-                 gpg_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 gpg_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] archive_type: Required. Type of archive files in this repository.
                Possible values:
@@ -17634,7 +17634,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="gpgKey")
-    def gpg_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gpg_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI of the key file for this repository. The agent maintains a
         keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
@@ -17642,7 +17642,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "gpg_key")
 
     @gpg_key.setter
-    def gpg_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gpg_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gpg_key", value)
 
 
@@ -17705,11 +17705,11 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     `display_name` is omitted. This id is also used as the unique
     identifier when checking for resource conflicts.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the repository.
     """
-    gpg_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    gpg_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     URIs of GPG keys.
     """
@@ -17719,8 +17719,8 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     def __init__(__self__, *,
                  base_url: pulumi.Input[_builtins.str],
                  id: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpg_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] base_url: Required. The location of the repository directory.
         :param pulumi.Input[_builtins.str] id: Required. A one word, unique name for this repository. This is  the `repo
@@ -17766,26 +17766,26 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the repository.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gpgKeys")
-    def gpg_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def gpg_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
 
     @gpg_keys.setter
-    def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def gpg_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "gpg_keys", value)
 
 
@@ -17801,11 +17801,11 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     `display_name` is omitted. This id is also used as the unique
     identifier when checking for GuestPolicy conflicts.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the repository.
     """
-    gpg_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    gpg_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     URIs of GPG keys.
     """
@@ -17815,8 +17815,8 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     def __init__(__self__, *,
                  base_url: pulumi.Input[_builtins.str],
                  id: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpg_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] base_url: Required. The location of the repository directory.
         :param pulumi.Input[_builtins.str] id: Required. A one word, unique name for this repository. This is the `repo
@@ -17862,26 +17862,26 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the repository.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gpgKeys")
-    def gpg_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def gpg_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
 
     @gpg_keys.setter
-    def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def gpg_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "gpg_keys", value)
 
 
@@ -17951,11 +17951,11 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgsDict(TypedDict):
-    fixed: NotRequired[pulumi.Input[_builtins.int]]
+    fixed: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies a fixed value.
     """
-    percent: NotRequired[pulumi.Input[_builtins.int]]
+    percent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies the relative value defined as a percentage, which will be
     multiplied by a reference value.
@@ -17964,8 +17964,8 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs:
     def __init__(__self__, *,
-                 fixed: Optional[pulumi.Input[_builtins.int]] = None,
-                 percent: Optional[pulumi.Input[_builtins.int]] = None):
+                 fixed: pulumi.Input[Optional[_builtins.int]] = None,
+                 percent: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] fixed: Specifies a fixed value.
         :param pulumi.Input[_builtins.int] percent: Specifies the relative value defined as a percentage, which will be
@@ -17978,19 +17978,19 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
     @_builtins.property
     @pulumi.getter
-    def fixed(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fixed(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies a fixed value.
         """
         return pulumi.get(self, "fixed")
 
     @fixed.setter
-    def fixed(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fixed(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fixed", value)
 
     @_builtins.property
     @pulumi.getter
-    def percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the relative value defined as a percentage, which will be
         multiplied by a reference value.
@@ -17998,12 +17998,12 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         return pulumi.get(self, "percent")
 
     @percent.setter
-    def percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "percent", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationScopeArgsDict(TypedDict):
-    selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgsDict']]]]
+    selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgs']]]]]
     """
     Optional. Selectors of the orchestration scope. There is a logical AND between each
     selector defined.
@@ -18016,7 +18016,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeArgsDict(TypedDict):
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestrationScopeArgs:
     def __init__(__self__, *,
-                 selectors: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgs']]]] = None):
+                 selectors: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgs']]] selectors: Optional. Selectors of the orchestration scope. There is a logical AND between each
                selector defined.
@@ -18030,7 +18030,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgs']]]]:
+    def selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgs']]]]:
         """
         Optional. Selectors of the orchestration scope. There is a logical AND between each
         selector defined.
@@ -18042,17 +18042,17 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeArgs:
         return pulumi.get(self, "selectors")
 
     @selectors.setter
-    def selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgs']]]]):
+    def selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgs']]]]):
         pulumi.set(self, "selectors", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgsDict(TypedDict):
-    location_selector: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelectorArgsDict']]
+    location_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelectorArgs']]]
     """
     Selector containing locations in scope.
     Structure is documented below.
     """
-    resource_hierarchy_selector: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelectorArgsDict']]
+    resource_hierarchy_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelectorArgs']]]
     """
     Selector containing Cloud Resource Manager resource hierarchy nodes.
     Structure is documented below.
@@ -18061,8 +18061,8 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgsDict(Type
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgs:
     def __init__(__self__, *,
-                 location_selector: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelectorArgs']] = None,
-                 resource_hierarchy_selector: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelectorArgs']] = None):
+                 location_selector: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelectorArgs']] = None,
+                 resource_hierarchy_selector: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelectorArgs']] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelectorArgs'] location_selector: Selector containing locations in scope.
                Structure is documented below.
@@ -18076,7 +18076,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="locationSelector")
-    def location_selector(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelectorArgs']]:
+    def location_selector(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelectorArgs']]:
         """
         Selector containing locations in scope.
         Structure is documented below.
@@ -18084,12 +18084,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgs:
         return pulumi.get(self, "location_selector")
 
     @location_selector.setter
-    def location_selector(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelectorArgs']]):
+    def location_selector(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelectorArgs']]):
         pulumi.set(self, "location_selector", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceHierarchySelector")
-    def resource_hierarchy_selector(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelectorArgs']]:
+    def resource_hierarchy_selector(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelectorArgs']]:
         """
         Selector containing Cloud Resource Manager resource hierarchy nodes.
         Structure is documented below.
@@ -18097,12 +18097,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgs:
         return pulumi.get(self, "resource_hierarchy_selector")
 
     @resource_hierarchy_selector.setter
-    def resource_hierarchy_selector(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelectorArgs']]):
+    def resource_hierarchy_selector(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelectorArgs']]):
         pulumi.set(self, "resource_hierarchy_selector", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelectorArgsDict(TypedDict):
-    included_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    included_locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional. Names of the locations in scope.
     Format: `us-central1-a`
@@ -18111,7 +18111,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelec
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelectorArgs:
     def __init__(__self__, *,
-                 included_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 included_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_locations: Optional. Names of the locations in scope.
                Format: `us-central1-a`
@@ -18121,7 +18121,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelec
 
     @_builtins.property
     @pulumi.getter(name="includedLocations")
-    def included_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def included_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Names of the locations in scope.
         Format: `us-central1-a`
@@ -18129,17 +18129,17 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelec
         return pulumi.get(self, "included_locations")
 
     @included_locations.setter
-    def included_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def included_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "included_locations", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelectorArgsDict(TypedDict):
-    included_folders: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    included_folders: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional. Names of the folders in scope.
     Format: `folders/{folder_id}`
     """
-    included_projects: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    included_projects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional. Names of the projects in scope.
     Format: `projects/{project_number}`
@@ -18148,8 +18148,8 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHiera
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelectorArgs:
     def __init__(__self__, *,
-                 included_folders: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 included_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 included_folders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 included_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_folders: Optional. Names of the folders in scope.
                Format: `folders/{folder_id}`
@@ -18163,7 +18163,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHiera
 
     @_builtins.property
     @pulumi.getter(name="includedFolders")
-    def included_folders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def included_folders(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Names of the folders in scope.
         Format: `folders/{folder_id}`
@@ -18171,12 +18171,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHiera
         return pulumi.get(self, "included_folders")
 
     @included_folders.setter
-    def included_folders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def included_folders(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "included_folders", value)
 
     @_builtins.property
     @pulumi.getter(name="includedProjects")
-    def included_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def included_projects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Names of the projects in scope.
         Format: `projects/{project_number}`
@@ -18184,18 +18184,18 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHiera
         return pulumi.get(self, "included_projects")
 
     @included_projects.setter
-    def included_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def included_projects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "included_projects", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationStateArgsDict(TypedDict):
-    current_iteration_states: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgsDict']]]]
+    current_iteration_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgs']]]]]
     """
     (Output)
     Describes the state of a single iteration of the orchestrator.
     Structure is documented below.
     """
-    previous_iteration_state: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateArgsDict']]
+    previous_iteration_state: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateArgs']]]
     """
     Describes the state of a single iteration of the orchestrator.
     Structure is documented below.
@@ -18204,8 +18204,8 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateArgsDict(TypedDict):
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestrationStateArgs:
     def __init__(__self__, *,
-                 current_iteration_states: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgs']]]] = None,
-                 previous_iteration_state: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateArgs']] = None):
+                 current_iteration_states: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgs']]]] = None,
+                 previous_iteration_state: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgs']]] current_iteration_states: (Output)
                Describes the state of a single iteration of the orchestrator.
@@ -18220,7 +18220,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateArgs:
 
     @_builtins.property
     @pulumi.getter(name="currentIterationStates")
-    def current_iteration_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgs']]]]:
+    def current_iteration_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgs']]]]:
         """
         (Output)
         Describes the state of a single iteration of the orchestrator.
@@ -18229,12 +18229,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateArgs:
         return pulumi.get(self, "current_iteration_states")
 
     @current_iteration_states.setter
-    def current_iteration_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgs']]]]):
+    def current_iteration_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgs']]]]):
         pulumi.set(self, "current_iteration_states", value)
 
     @_builtins.property
     @pulumi.getter(name="previousIterationState")
-    def previous_iteration_state(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateArgs']]:
+    def previous_iteration_state(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateArgs']]:
         """
         Describes the state of a single iteration of the orchestrator.
         Structure is documented below.
@@ -18242,12 +18242,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateArgs:
         return pulumi.get(self, "previous_iteration_state")
 
     @previous_iteration_state.setter
-    def previous_iteration_state(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateArgs']]):
+    def previous_iteration_state(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateArgs']]):
         pulumi.set(self, "previous_iteration_state", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgsDict(TypedDict):
-    error: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorArgsDict']]
+    error: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorArgs']]]
     """
     The `Status` type defines a logical error model that is suitable for
     different programming environments, including REST APIs and RPC APIs. It is
@@ -18257,39 +18257,39 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
     [API Design Guide](https://cloud.google.com/apis/design/errors).
     Structure is documented below.
     """
-    failed_actions: NotRequired[pulumi.Input[_builtins.str]]
+    failed_actions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Number of orchestration actions which failed so far. For more details,
     query the Cloud Logs.
     """
-    finish_time: NotRequired[pulumi.Input[_builtins.str]]
+    finish_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Finish time of the wave iteration.
     """
-    performed_actions: NotRequired[pulumi.Input[_builtins.str]]
+    performed_actions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Overall number of actions done by the orchestrator so far.
     """
-    progress: NotRequired[pulumi.Input[_builtins.float]]
+    progress: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     (Output)
     Output only. An estimated percentage of the progress. Number between 0 and 100.
     """
-    rollout_resource: NotRequired[pulumi.Input[_builtins.str]]
+    rollout_resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Handle to the Progressive Rollouts API rollout resource, which contains
     detailed information about a particular orchestration iteration.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Start time of the wave iteration.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
     Allowed values:
@@ -18303,14 +18303,14 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgs:
     def __init__(__self__, *,
-                 error: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorArgs']] = None,
-                 failed_actions: Optional[pulumi.Input[_builtins.str]] = None,
-                 finish_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 performed_actions: Optional[pulumi.Input[_builtins.str]] = None,
-                 progress: Optional[pulumi.Input[_builtins.float]] = None,
-                 rollout_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 error: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorArgs']] = None,
+                 failed_actions: pulumi.Input[Optional[_builtins.str]] = None,
+                 finish_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 performed_actions: pulumi.Input[Optional[_builtins.str]] = None,
+                 progress: pulumi.Input[Optional[_builtins.float]] = None,
+                 rollout_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorArgs'] error: The `Status` type defines a logical error model that is suitable for
                different programming environments, including REST APIs and RPC APIs. It is
@@ -18360,7 +18360,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
 
     @_builtins.property
     @pulumi.getter
-    def error(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorArgs']]:
+    def error(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorArgs']]:
         """
         The `Status` type defines a logical error model that is suitable for
         different programming environments, including REST APIs and RPC APIs. It is
@@ -18373,12 +18373,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
         return pulumi.get(self, "error")
 
     @error.setter
-    def error(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorArgs']]):
+    def error(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorArgs']]):
         pulumi.set(self, "error", value)
 
     @_builtins.property
     @pulumi.getter(name="failedActions")
-    def failed_actions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failed_actions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Number of orchestration actions which failed so far. For more details,
@@ -18387,12 +18387,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
         return pulumi.get(self, "failed_actions")
 
     @failed_actions.setter
-    def failed_actions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failed_actions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failed_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="finishTime")
-    def finish_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def finish_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Finish time of the wave iteration.
@@ -18400,12 +18400,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
         return pulumi.get(self, "finish_time")
 
     @finish_time.setter
-    def finish_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def finish_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "finish_time", value)
 
     @_builtins.property
     @pulumi.getter(name="performedActions")
-    def performed_actions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performed_actions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Overall number of actions done by the orchestrator so far.
@@ -18413,12 +18413,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
         return pulumi.get(self, "performed_actions")
 
     @performed_actions.setter
-    def performed_actions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performed_actions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performed_actions", value)
 
     @_builtins.property
     @pulumi.getter
-    def progress(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def progress(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         (Output)
         Output only. An estimated percentage of the progress. Number between 0 and 100.
@@ -18426,12 +18426,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
         return pulumi.get(self, "progress")
 
     @progress.setter
-    def progress(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def progress(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "progress", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutResource")
-    def rollout_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Handle to the Progressive Rollouts API rollout resource, which contains
@@ -18440,12 +18440,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
         return pulumi.get(self, "rollout_resource")
 
     @rollout_resource.setter
-    def rollout_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Start time of the wave iteration.
@@ -18453,12 +18453,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
         Allowed values:
@@ -18471,22 +18471,22 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetailArgsDict']]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]]
     """
     A list of messages that carry the error details.  There is a common set of
     message types for APIs to use.
     Structure is documented below.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A developer-facing error message, which should be in English. Any
     user-facing error message should be localized and sent in the
@@ -18496,9 +18496,9 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetailArgs']]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetailArgs']]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: The status code, which should be an enum value of google.rpc.Code.
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetailArgs']]] details: A list of messages that carry the error details.  There is a common set of
@@ -18517,19 +18517,19 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status code, which should be an enum value of google.rpc.Code.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]:
         """
         A list of messages that carry the error details.  There is a common set of
         message types for APIs to use.
@@ -18538,12 +18538,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A developer-facing error message, which should be in English. Any
         user-facing error message should be localized and sent in the
@@ -18552,16 +18552,16 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetailArgsDict(TypedDict):
-    type_url: NotRequired[pulumi.Input[_builtins.str]]
+    type_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -18569,8 +18569,8 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetailArgs:
     def __init__(__self__, *,
-                 type_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 type_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type_url: A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
         :param pulumi.Input[_builtins.str] value: (Optional)
@@ -18582,31 +18582,31 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
 
     @_builtins.property
     @pulumi.getter(name="typeUrl")
-    def type_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
         """
         return pulumi.get(self, "type_url")
 
     @type_url.setter
-    def type_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateArgsDict(TypedDict):
-    error: NotRequired[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorArgsDict']]
+    error: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorArgs']]]
     """
     The `Status` type defines a logical error model that is suitable for
     different programming environments, including REST APIs and RPC APIs. It is
@@ -18616,39 +18616,39 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
     [API Design Guide](https://cloud.google.com/apis/design/errors).
     Structure is documented below.
     """
-    failed_actions: NotRequired[pulumi.Input[_builtins.str]]
+    failed_actions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Number of orchestration actions which failed so far. For more details,
     query the Cloud Logs.
     """
-    finish_time: NotRequired[pulumi.Input[_builtins.str]]
+    finish_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Finish time of the wave iteration.
     """
-    performed_actions: NotRequired[pulumi.Input[_builtins.str]]
+    performed_actions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Overall number of actions done by the orchestrator so far.
     """
-    progress: NotRequired[pulumi.Input[_builtins.float]]
+    progress: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     (Output)
     Output only. An estimated percentage of the progress. Number between 0 and 100.
     """
-    rollout_resource: NotRequired[pulumi.Input[_builtins.str]]
+    rollout_resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Handle to the Progressive Rollouts API rollout resource, which contains
     detailed information about a particular orchestration iteration.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Start time of the wave iteration.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
     Allowed values:
@@ -18662,14 +18662,14 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateArgs:
     def __init__(__self__, *,
-                 error: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorArgs']] = None,
-                 failed_actions: Optional[pulumi.Input[_builtins.str]] = None,
-                 finish_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 performed_actions: Optional[pulumi.Input[_builtins.str]] = None,
-                 progress: Optional[pulumi.Input[_builtins.float]] = None,
-                 rollout_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 error: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorArgs']] = None,
+                 failed_actions: pulumi.Input[Optional[_builtins.str]] = None,
+                 finish_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 performed_actions: pulumi.Input[Optional[_builtins.str]] = None,
+                 progress: pulumi.Input[Optional[_builtins.float]] = None,
+                 rollout_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorArgs'] error: The `Status` type defines a logical error model that is suitable for
                different programming environments, including REST APIs and RPC APIs. It is
@@ -18719,7 +18719,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
 
     @_builtins.property
     @pulumi.getter
-    def error(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorArgs']]:
+    def error(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorArgs']]:
         """
         The `Status` type defines a logical error model that is suitable for
         different programming environments, including REST APIs and RPC APIs. It is
@@ -18732,12 +18732,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
         return pulumi.get(self, "error")
 
     @error.setter
-    def error(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorArgs']]):
+    def error(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorArgs']]):
         pulumi.set(self, "error", value)
 
     @_builtins.property
     @pulumi.getter(name="failedActions")
-    def failed_actions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failed_actions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Number of orchestration actions which failed so far. For more details,
@@ -18746,12 +18746,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
         return pulumi.get(self, "failed_actions")
 
     @failed_actions.setter
-    def failed_actions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failed_actions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failed_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="finishTime")
-    def finish_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def finish_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Finish time of the wave iteration.
@@ -18759,12 +18759,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
         return pulumi.get(self, "finish_time")
 
     @finish_time.setter
-    def finish_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def finish_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "finish_time", value)
 
     @_builtins.property
     @pulumi.getter(name="performedActions")
-    def performed_actions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performed_actions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Overall number of actions done by the orchestrator so far.
@@ -18772,12 +18772,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
         return pulumi.get(self, "performed_actions")
 
     @performed_actions.setter
-    def performed_actions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performed_actions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performed_actions", value)
 
     @_builtins.property
     @pulumi.getter
-    def progress(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def progress(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         (Output)
         Output only. An estimated percentage of the progress. Number between 0 and 100.
@@ -18785,12 +18785,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
         return pulumi.get(self, "progress")
 
     @progress.setter
-    def progress(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def progress(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "progress", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutResource")
-    def rollout_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Handle to the Progressive Rollouts API rollout resource, which contains
@@ -18799,12 +18799,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
         return pulumi.get(self, "rollout_resource")
 
     @rollout_resource.setter
-    def rollout_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Start time of the wave iteration.
@@ -18812,12 +18812,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
         Allowed values:
@@ -18830,22 +18830,22 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetailArgsDict']]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]]
     """
     A list of messages that carry the error details.  There is a common set of
     message types for APIs to use.
     Structure is documented below.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A developer-facing error message, which should be in English. Any
     user-facing error message should be localized and sent in the
@@ -18855,9 +18855,9 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetailArgs']]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetailArgs']]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: The status code, which should be an enum value of google.rpc.Code.
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetailArgs']]] details: A list of messages that carry the error details.  There is a common set of
@@ -18876,19 +18876,19 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status code, which should be an enum value of google.rpc.Code.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]:
         """
         A list of messages that carry the error details.  There is a common set of
         message types for APIs to use.
@@ -18897,12 +18897,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A developer-facing error message, which should be in English. Any
         user-facing error message should be localized and sent in the
@@ -18911,16 +18911,16 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetailArgsDict(TypedDict):
-    type_url: NotRequired[pulumi.Input[_builtins.str]]
+    type_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -18928,8 +18928,8 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
 @pulumi.input_type
 class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetailArgs:
     def __init__(__self__, *,
-                 type_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 type_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type_url: A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
         :param pulumi.Input[_builtins.str] value: (Optional)
@@ -18941,31 +18941,31 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
 
     @_builtins.property
     @pulumi.getter(name="typeUrl")
-    def type_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
         """
         return pulumi.get(self, "type_url")
 
     @type_url.setter
-    def type_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class V2PolicyOrchestratorOrchestratedResourceArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. ID of the resource to be used while generating set of affected resources.
     For UPSERT action the value is auto-generated during PolicyOrchestrator
@@ -18982,7 +18982,7 @@ class V2PolicyOrchestratorOrchestratedResourceArgsDict(TypedDict):
 
     <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
     """
-    os_policy_assignment_v1_payload: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgsDict']]
+    os_policy_assignment_v1_payload: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]]
     """
     OS policy assignment is an API resource that is used to
     apply a set of OS policies to a dynamically targeted group of Compute Engine
@@ -19001,8 +19001,8 @@ class V2PolicyOrchestratorOrchestratedResourceArgsDict(TypedDict):
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestratedResourceArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_policy_assignment_v1_payload: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_policy_assignment_v1_payload: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] id: Optional. ID of the resource to be used while generating set of affected resources.
                For UPSERT action the value is auto-generated during PolicyOrchestrator
@@ -19038,7 +19038,7 @@ class V2PolicyOrchestratorOrchestratedResourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. ID of the resource to be used while generating set of affected resources.
         For UPSERT action the value is auto-generated during PolicyOrchestrator
@@ -19058,12 +19058,12 @@ class V2PolicyOrchestratorOrchestratedResourceArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="osPolicyAssignmentV1Payload")
-    def os_policy_assignment_v1_payload(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]:
+    def os_policy_assignment_v1_payload(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]:
         """
         OS policy assignment is an API resource that is used to
         apply a set of OS policies to a dynamically targeted group of Compute Engine
@@ -19081,7 +19081,7 @@ class V2PolicyOrchestratorOrchestratedResourceArgs:
         return pulumi.get(self, "os_policy_assignment_v1_payload")
 
     @os_policy_assignment_v1_payload.setter
-    def os_policy_assignment_v1_payload(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]):
+    def os_policy_assignment_v1_payload(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]):
         pulumi.set(self, "os_policy_assignment_v1_payload", value)
 
 
@@ -19102,7 +19102,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgsDic
     Message to configure the rollout at the zonal level for the OS policy
     assignment.
     """
-    baseline: NotRequired[pulumi.Input[_builtins.bool]]
+    baseline: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Output only. Indicates that this revision has been successfully rolled out in this zone
     and new VMs will be assigned OS policies from this revision.
@@ -19110,37 +19110,37 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgsDic
     For a given OS policy assignment, there is only one revision with a value
     of 'true' for this field.
     """
-    deleted: NotRequired[pulumi.Input[_builtins.bool]]
+    deleted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Output only. Indicates that this revision deletes the OS policy assignment.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Freeform text describing the purpose of the resource.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Immutable. Identifier. In form of
     * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
     * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
     * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
     """
-    reconciling: NotRequired[pulumi.Input[_builtins.bool]]
+    reconciling: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Output only. Set to true, if the there are ongoing changes being applied by the
     orchestrator.
     """
-    revision_create_time: NotRequired[pulumi.Input[_builtins.str]]
+    revision_create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. The timestamp that the revision was created.
     """
-    revision_id: NotRequired[pulumi.Input[_builtins.str]]
+    revision_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. The assignment revision ID
     A new revision is committed whenever a rollout is triggered for a OS policy
     assignment
     """
-    rollout_state: NotRequired[pulumi.Input[_builtins.str]]
+    rollout_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. OS policy assignment rollout state
     Possible values:
@@ -19150,7 +19150,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgsDic
     CANCELLED
     SUCCEEDED
     """
-    uid: NotRequired[pulumi.Input[_builtins.str]]
+    uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. Server generated unique id for the OS policy assignment resource.
     """
@@ -19161,15 +19161,15 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs:
                  instance_filter: pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs'],
                  os_policies: pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArgs']]],
                  rollout: pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs'],
-                 baseline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deleted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 revision_create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 baseline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deleted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 revision_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs'] instance_filter: Filters to select target VMs for an assignment.
                
@@ -19268,7 +19268,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs:
 
     @_builtins.property
     @pulumi.getter
-    def baseline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def baseline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. Indicates that this revision has been successfully rolled out in this zone
         and new VMs will be assigned OS policies from this revision.
@@ -19279,36 +19279,36 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs:
         return pulumi.get(self, "baseline")
 
     @baseline.setter
-    def baseline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def baseline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "baseline", value)
 
     @_builtins.property
     @pulumi.getter
-    def deleted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deleted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. Indicates that this revision deletes the OS policy assignment.
         """
         return pulumi.get(self, "deleted")
 
     @deleted.setter
-    def deleted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deleted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deleted", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Freeform text describing the purpose of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. Identifier. In form of
         * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -19318,12 +19318,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. Set to true, if the there are ongoing changes being applied by the
         orchestrator.
@@ -19331,24 +19331,24 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs:
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionCreateTime")
-    def revision_create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The timestamp that the revision was created.
         """
         return pulumi.get(self, "revision_create_time")
 
     @revision_create_time.setter
-    def revision_create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionId")
-    def revision_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The assignment revision ID
         A new revision is committed whenever a rollout is triggered for a OS policy
@@ -19357,12 +19357,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs:
         return pulumi.get(self, "revision_id")
 
     @revision_id.setter
-    def revision_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutState")
-    def rollout_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. OS policy assignment rollout state
         Possible values:
@@ -19375,43 +19375,43 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs:
         return pulumi.get(self, "rollout_state")
 
     @rollout_state.setter
-    def rollout_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Server generated unique id for the OS policy assignment resource.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgsDict(TypedDict):
-    all: NotRequired[pulumi.Input[_builtins.bool]]
+    all: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Target all VMs in the project. If true, no other criteria is
     permitted.
     """
-    exclusion_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgsDict']]]]
+    exclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]]
     """
     List of label sets used for VM exclusion.
     If the list has more than one label set, the VM is excluded if any
     of the label sets are applicable for the VM.
     Structure is documented below.
     """
-    inclusion_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgsDict']]]]
+    inclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]]
     """
     List of label sets used for VM inclusion.
     If the list has more than one `LabelSet`, the VM is included if any
     of the label sets are applicable for the VM.
     Structure is documented below.
     """
-    inventories: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgsDict']]]]
+    inventories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]]
     """
     List of inventories to select VMs.
     A VM is selected if its inventory data matches at least one of the
@@ -19422,10 +19422,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs:
     def __init__(__self__, *,
-                 all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]] = None,
-                 inclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]] = None,
-                 inventories: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]] = None):
+                 all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclusion_labels: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]] = None,
+                 inclusion_labels: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]] = None,
+                 inventories: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] all: Target all VMs in the project. If true, no other criteria is
                permitted.
@@ -19453,7 +19453,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
 
     @_builtins.property
     @pulumi.getter
-    def all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Target all VMs in the project. If true, no other criteria is
         permitted.
@@ -19461,12 +19461,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
         return pulumi.get(self, "all")
 
     @all.setter
-    def all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusionLabels")
-    def exclusion_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]:
+    def exclusion_labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]:
         """
         List of label sets used for VM exclusion.
         If the list has more than one label set, the VM is excluded if any
@@ -19476,12 +19476,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
         return pulumi.get(self, "exclusion_labels")
 
     @exclusion_labels.setter
-    def exclusion_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]):
+    def exclusion_labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]):
         pulumi.set(self, "exclusion_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="inclusionLabels")
-    def inclusion_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]:
+    def inclusion_labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]:
         """
         List of label sets used for VM inclusion.
         If the list has more than one `LabelSet`, the VM is included if any
@@ -19491,12 +19491,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
         return pulumi.get(self, "inclusion_labels")
 
     @inclusion_labels.setter
-    def inclusion_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]):
+    def inclusion_labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]):
         pulumi.set(self, "inclusion_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def inventories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]:
+    def inventories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]:
         """
         List of inventories to select VMs.
         A VM is selected if its inventory data matches at least one of the
@@ -19506,12 +19506,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
         return pulumi.get(self, "inventories")
 
     @inventories.setter
-    def inventories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]):
+    def inventories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]):
         pulumi.set(self, "inventories", value)
 
 
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels are identified by key/value pairs in this map.
     A VM should contain all the key/value pairs specified in this
@@ -19521,7 +19521,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are identified by key/value pairs in this map.
                A VM should contain all the key/value pairs specified in this
@@ -19532,7 +19532,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are identified by key/value pairs in this map.
         A VM should contain all the key/value pairs specified in this
@@ -19541,12 +19541,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
 
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels are identified by key/value pairs in this map.
     A VM should contain all the key/value pairs specified in this
@@ -19556,7 +19556,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are identified by key/value pairs in this map.
                A VM should contain all the key/value pairs specified in this
@@ -19567,7 +19567,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are identified by key/value pairs in this map.
         A VM should contain all the key/value pairs specified in this
@@ -19576,7 +19576,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
 
@@ -19585,7 +19585,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
     """
     Required. The OS short name
     """
-    os_version: NotRequired[pulumi.Input[_builtins.str]]
+    os_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OS version
     Prefix matches are supported if asterisk(*) is provided as the
@@ -19598,7 +19598,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs:
     def __init__(__self__, *,
                  os_short_name: pulumi.Input[_builtins.str],
-                 os_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 os_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] os_short_name: Required. The OS short name
         :param pulumi.Input[_builtins.str] os_version: The OS version
@@ -19625,7 +19625,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
 
     @_builtins.property
     @pulumi.getter(name="osVersion")
-    def os_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OS version
         Prefix matches are supported if asterisk(*) is provided as the
@@ -19636,7 +19636,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
         return pulumi.get(self, "os_version")
 
     @os_version.setter
-    def os_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_version", value)
 
 
@@ -19669,14 +19669,14 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     toggled by the flag `allow_no_resource_group_match`
     Structure is documented below.
     """
-    allow_no_resource_group_match: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_no_resource_group_match: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     This flag determines the OS policy compliance status when none of the
     resource groups within the policy are applicable for a VM. Set this value
     to `true` if the policy needs to be reported as compliant even if the
     policy has nothing to validate or enforce.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Policy description.
     Length of the description is limited to 1024 characters.
@@ -19688,8 +19688,8 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
                  id: pulumi.Input[_builtins.str],
                  mode: pulumi.Input[_builtins.str],
                  resource_groups: pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs']]],
-                 allow_no_resource_group_match: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_no_resource_group_match: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: Required. The id of the OS policy with the following restrictions:
                * Must contain only lowercase letters, numbers, and hyphens.
@@ -19779,7 +19779,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="allowNoResourceGroupMatch")
-    def allow_no_resource_group_match(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_no_resource_group_match(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This flag determines the OS policy compliance status when none of the
         resource groups within the policy are applicable for a VM. Set this value
@@ -19789,12 +19789,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "allow_no_resource_group_match")
 
     @allow_no_resource_group_match.setter
-    def allow_no_resource_group_match(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_no_resource_group_match(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_no_resource_group_match", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy description.
         Length of the description is limited to 1024 characters.
@@ -19802,7 +19802,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -19813,7 +19813,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     The resources are executed in the exact order specified here.
     Structure is documented below.
     """
-    inventory_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgsDict']]]]
+    inventory_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]]
     """
     List of inventory filters for the resource group.
     The resources in this resource group are applied to the target VM if it
@@ -19832,7 +19832,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs:
     def __init__(__self__, *,
                  resources: pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs']]],
-                 inventory_filters: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]] = None):
+                 inventory_filters: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs']]] resources: Required. List of resources configured for this resource group.
                The resources are executed in the exact order specified here.
@@ -19869,7 +19869,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="inventoryFilters")
-    def inventory_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]:
+    def inventory_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]:
         """
         List of inventory filters for the resource group.
         The resources in this resource group are applied to the target VM if it
@@ -19886,7 +19886,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "inventory_filters")
 
     @inventory_filters.setter
-    def inventory_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]):
+    def inventory_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]):
         pulumi.set(self, "inventory_filters", value)
 
 
@@ -19895,7 +19895,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     Required. The OS short name
     """
-    os_version: NotRequired[pulumi.Input[_builtins.str]]
+    os_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OS version
     Prefix matches are supported if asterisk(*) is provided as the
@@ -19908,7 +19908,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs:
     def __init__(__self__, *,
                  os_short_name: pulumi.Input[_builtins.str],
-                 os_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 os_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] os_short_name: Required. The OS short name
         :param pulumi.Input[_builtins.str] os_version: The OS version
@@ -19935,7 +19935,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="osVersion")
-    def os_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OS version
         Prefix matches are supported if asterisk(*) is provided as the
@@ -19946,7 +19946,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "os_version")
 
     @os_version.setter
-    def os_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_version", value)
 
 
@@ -19960,7 +19960,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     * Must end with a number or a letter.
     * Must be unique within the OS policy.
     """
-    exec_: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgsDict']]
+    exec_: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]]
     """
     A resource that allows executing scripts on the VM.
     The `ExecResource` has 2 stages: `validate` and `enforce` and both stages
@@ -19986,17 +19986,17 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     were chosen.
     Structure is documented below.
     """
-    file: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]]
     """
     A resource that manages the state of a file.
     Structure is documented below.
     """
-    pkg: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgsDict']]
+    pkg: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]]
     """
     A resource that manages a system package.
     Structure is documented below.
     """
-    repository: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgsDict']]
+    repository: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]]
     """
     A resource that manages a package repository.
     Structure is documented below.
@@ -20006,10 +20006,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 exec_: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']] = None,
-                 file: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']] = None,
-                 pkg: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']] = None,
-                 repository: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']] = None):
+                 exec_: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']] = None,
+                 file: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']] = None,
+                 pkg: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']] = None,
+                 repository: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] id: Required. The id of the resource with the following restrictions:
                * Must contain only lowercase letters, numbers, and hyphens.
@@ -20076,7 +20076,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="exec")
-    def exec_(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]:
+    def exec_(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]:
         """
         A resource that allows executing scripts on the VM.
         The `ExecResource` has 2 stages: `validate` and `enforce` and both stages
@@ -20105,12 +20105,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "exec_")
 
     @exec_.setter
-    def exec_(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]):
+    def exec_(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]):
         pulumi.set(self, "exec_", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]:
         """
         A resource that manages the state of a file.
         Structure is documented below.
@@ -20118,12 +20118,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter
-    def pkg(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]:
+    def pkg(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]:
         """
         A resource that manages a system package.
         Structure is documented below.
@@ -20131,12 +20131,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "pkg")
 
     @pkg.setter
-    def pkg(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]):
+    def pkg(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]):
         pulumi.set(self, "pkg", value)
 
     @_builtins.property
     @pulumi.getter
-    def repository(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]:
+    def repository(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]:
         """
         A resource that manages a package repository.
         Structure is documented below.
@@ -20144,7 +20144,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "repository")
 
     @repository.setter
-    def repository(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]):
+    def repository(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]):
         pulumi.set(self, "repository", value)
 
 
@@ -20154,7 +20154,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     A file or script to execute.
     Structure is documented below.
     """
-    enforce: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgsDict']]
+    enforce: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]]
     """
     A file or script to execute.
     Structure is documented below.
@@ -20164,7 +20164,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs:
     def __init__(__self__, *,
                  validate: pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs'],
-                 enforce: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']] = None):
+                 enforce: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs'] validate: A file or script to execute.
                Structure is documented below.
@@ -20190,7 +20190,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter
-    def enforce(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]:
+    def enforce(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]:
         """
         A file or script to execute.
         Structure is documented below.
@@ -20198,7 +20198,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "enforce")
 
     @enforce.setter
-    def enforce(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]):
+    def enforce(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]):
         pulumi.set(self, "enforce", value)
 
 
@@ -20212,16 +20212,16 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     SHELL
     POWERSHELL
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional arguments to pass to the source during execution.
     """
-    file: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]]
     """
     A remote or local file.
     Structure is documented below.
     """
-    output_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    output_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Only recorded for enforce Exec.
     Path to an output file (that is created by this Exec) whose
@@ -20230,7 +20230,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     this ExecResource being non-compliant. Output file size is limited to
     500K bytes.
     """
-    script: NotRequired[pulumi.Input[_builtins.str]]
+    script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An inline script.
     The size of the script is limited to 32KiB.
@@ -20240,10 +20240,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs:
     def __init__(__self__, *,
                  interpreter: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 file: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']] = None,
-                 output_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 file: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']] = None,
+                 output_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] interpreter: Required. The script interpreter to use.
                Possible values:
@@ -20292,19 +20292,19 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional arguments to pass to the source during execution.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]:
         """
         A remote or local file.
         Structure is documented below.
@@ -20312,12 +20312,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter(name="outputFilePath")
-    def output_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only recorded for enforce Exec.
         Path to an output file (that is created by this Exec) whose
@@ -20329,12 +20329,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "output_file_path")
 
     @output_file_path.setter
-    def output_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_file_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An inline script.
         The size of the script is limited to 32KiB.
@@ -20342,28 +20342,28 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script", value)
 
 
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -20372,10 +20372,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -20398,7 +20398,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -20408,12 +20408,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -20421,24 +20421,24 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -20446,7 +20446,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -20459,7 +20459,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     Required. Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -20469,7 +20469,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Required. Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Required. Name of the Cloud Storage object.
@@ -20506,14 +20506,14 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -20523,7 +20523,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     Required. URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -20532,7 +20532,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Required. URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -20557,14 +20557,14 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -20578,16 +20578,16 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     SHELL
     POWERSHELL
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional arguments to pass to the source during execution.
     """
-    file: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]]
     """
     A remote or local file.
     Structure is documented below.
     """
-    output_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    output_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Only recorded for enforce Exec.
     Path to an output file (that is created by this Exec) whose
@@ -20596,7 +20596,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     this ExecResource being non-compliant. Output file size is limited to
     500K bytes.
     """
-    script: NotRequired[pulumi.Input[_builtins.str]]
+    script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An inline script.
     The size of the script is limited to 32KiB.
@@ -20606,10 +20606,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs:
     def __init__(__self__, *,
                  interpreter: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 file: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']] = None,
-                 output_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 file: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']] = None,
+                 output_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] interpreter: Required. The script interpreter to use.
                Possible values:
@@ -20658,19 +20658,19 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional arguments to pass to the source during execution.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]:
         """
         A remote or local file.
         Structure is documented below.
@@ -20678,12 +20678,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter(name="outputFilePath")
-    def output_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only recorded for enforce Exec.
         Path to an output file (that is created by this Exec) whose
@@ -20695,12 +20695,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "output_file_path")
 
     @output_file_path.setter
-    def output_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_file_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An inline script.
         The size of the script is limited to 32KiB.
@@ -20708,28 +20708,28 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script", value)
 
 
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -20738,10 +20738,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -20764,7 +20764,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -20774,12 +20774,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -20787,24 +20787,24 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -20812,7 +20812,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -20825,7 +20825,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     Required. Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -20835,7 +20835,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Required. Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Required. Name of the Cloud Storage object.
@@ -20872,14 +20872,14 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -20889,7 +20889,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     Required. URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -20898,7 +20898,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Required. URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -20923,14 +20923,14 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -20948,17 +20948,17 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     ABSENT
     CONTENTS_MATCH
     """
-    content: NotRequired[pulumi.Input[_builtins.str]]
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A a file with this content.
     The size of the content is limited to 32KiB.
     """
-    file: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgsDict']]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]]
     """
     A remote or local file.
     Structure is documented below.
     """
-    permissions: NotRequired[pulumi.Input[_builtins.str]]
+    permissions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Consists of three octal digits which represent, in
     order, the permissions of the owner, group, and other users for the
@@ -20979,9 +20979,9 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
                  state: pulumi.Input[_builtins.str],
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 file: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']] = None,
-                 permissions: Optional[pulumi.Input[_builtins.str]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 file: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']] = None,
+                 permissions: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] path: Required. The absolute path of the file within the VM.
         :param pulumi.Input[_builtins.str] state: Required. Desired state of the file.
@@ -21047,7 +21047,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A a file with this content.
         The size of the content is limited to 32KiB.
@@ -21055,12 +21055,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]:
+    def file(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]:
         """
         A remote or local file.
         Structure is documented below.
@@ -21068,12 +21068,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]):
+    def file(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permissions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Consists of three octal digits which represent, in
         order, the permissions of the owner, group, and other users for the
@@ -21091,28 +21091,28 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permissions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permissions", value)
 
 
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -21121,10 +21121,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -21147,7 +21147,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -21157,12 +21157,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -21170,24 +21170,24 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -21195,7 +21195,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -21208,7 +21208,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     Required. Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -21218,7 +21218,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Required. Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Required. Name of the Cloud Storage object.
@@ -21255,14 +21255,14 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -21272,7 +21272,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     Required. URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -21281,7 +21281,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Required. URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -21306,14 +21306,14 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -21326,43 +21326,43 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     INSTALLED
     REMOVED
     """
-    apt: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgsDict']]
+    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]]
     """
     A package managed by APT.
     - install: `apt-get update && apt-get -y install [name]`
     - remove: `apt-get -y remove [name]`
     Structure is documented below.
     """
-    deb: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgsDict']]
+    deb: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]]
     """
     A deb package file. dpkg packages only support INSTALLED state.
     Structure is documented below.
     """
-    googet: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgsDict']]
+    googet: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]]
     """
     A package managed by GooGet.
     - install: `googet -noconfirm install package`
     - remove: `googet -noconfirm remove package`
     Structure is documented below.
     """
-    msi: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgsDict']]
+    msi: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]]
     """
     An MSI package. MSI packages only support INSTALLED state.
     Structure is documented below.
     """
-    rpm: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgsDict']]
+    rpm: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]]
     """
     An RPM package file. RPM packages only support INSTALLED state.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgsDict']]
+    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]]
     """
     A package managed by YUM.
     - install: `yum -y install package`
     - remove: `yum -y remove package`
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgsDict']]
+    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]]
     """
     A package managed by Zypper.
     - install: `zypper -y install package`
@@ -21374,13 +21374,13 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs:
     def __init__(__self__, *,
                  desired_state: pulumi.Input[_builtins.str],
-                 apt: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']] = None,
-                 deb: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']] = None,
-                 googet: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']] = None,
-                 msi: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']] = None,
-                 rpm: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']] = None,
-                 yum: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']] = None,
-                 zypper: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']] = None):
+                 apt: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']] = None,
+                 deb: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']] = None,
+                 googet: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']] = None,
+                 msi: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']] = None,
+                 rpm: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']] = None,
+                 yum: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']] = None,
+                 zypper: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] desired_state: Required. The desired state the agent should maintain for this package.
                Possible values:
@@ -21444,7 +21444,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]:
+    def apt(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]:
         """
         A package managed by APT.
         - install: `apt-get update && apt-get -y install [name]`
@@ -21454,12 +21454,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]):
+    def apt(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]):
         pulumi.set(self, "apt", value)
 
     @_builtins.property
     @pulumi.getter
-    def deb(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]:
+    def deb(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]:
         """
         A deb package file. dpkg packages only support INSTALLED state.
         Structure is documented below.
@@ -21467,12 +21467,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "deb")
 
     @deb.setter
-    def deb(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]):
+    def deb(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]):
         pulumi.set(self, "deb", value)
 
     @_builtins.property
     @pulumi.getter
-    def googet(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]:
+    def googet(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]:
         """
         A package managed by GooGet.
         - install: `googet -noconfirm install package`
@@ -21482,12 +21482,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "googet")
 
     @googet.setter
-    def googet(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]):
+    def googet(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]):
         pulumi.set(self, "googet", value)
 
     @_builtins.property
     @pulumi.getter
-    def msi(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]:
+    def msi(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]:
         """
         An MSI package. MSI packages only support INSTALLED state.
         Structure is documented below.
@@ -21495,12 +21495,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "msi")
 
     @msi.setter
-    def msi(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]):
+    def msi(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]):
         pulumi.set(self, "msi", value)
 
     @_builtins.property
     @pulumi.getter
-    def rpm(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]:
+    def rpm(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]:
         """
         An RPM package file. RPM packages only support INSTALLED state.
         Structure is documented below.
@@ -21508,12 +21508,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "rpm")
 
     @rpm.setter
-    def rpm(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]):
+    def rpm(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]):
         pulumi.set(self, "rpm", value)
 
     @_builtins.property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]:
+    def yum(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]:
         """
         A package managed by YUM.
         - install: `yum -y install package`
@@ -21523,12 +21523,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]):
+    def yum(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]):
         pulumi.set(self, "yum", value)
 
     @_builtins.property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]:
+    def zypper(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]:
         """
         A package managed by Zypper.
         - install: `zypper -y install package`
@@ -21538,7 +21538,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]):
+    def zypper(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]):
         pulumi.set(self, "zypper", value)
 
 
@@ -21576,7 +21576,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     A remote or local file.
     Structure is documented below.
     """
-    pull_deps: NotRequired[pulumi.Input[_builtins.bool]]
+    pull_deps: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether dependencies should also be installed.
     - install when false: `dpkg -i package`
@@ -21588,7 +21588,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs:
     def __init__(__self__, *,
                  source: pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs'],
-                 pull_deps: Optional[pulumi.Input[_builtins.bool]] = None):
+                 pull_deps: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs'] source: A remote or local file.
                Structure is documented below.
@@ -21616,7 +21616,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="pullDeps")
-    def pull_deps(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pull_deps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether dependencies should also be installed.
         - install when false: `dpkg -i package`
@@ -21626,28 +21626,28 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "pull_deps")
 
     @pull_deps.setter
-    def pull_deps(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pull_deps(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pull_deps", value)
 
 
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -21656,10 +21656,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -21682,7 +21682,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -21692,12 +21692,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -21705,24 +21705,24 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -21730,7 +21730,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -21743,7 +21743,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     Required. Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -21753,7 +21753,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Required. Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Required. Name of the Cloud Storage object.
@@ -21790,14 +21790,14 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -21807,7 +21807,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     Required. URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -21816,7 +21816,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Required. URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -21841,14 +21841,14 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -21886,7 +21886,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     A remote or local file.
     Structure is documented below.
     """
-    properties: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Additional properties to use during installation.
     This should be in the format of Property=Setting.
@@ -21898,7 +21898,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs:
     def __init__(__self__, *,
                  source: pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs'],
-                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 properties: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs'] source: A remote or local file.
                Structure is documented below.
@@ -21926,7 +21926,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Additional properties to use during installation.
         This should be in the format of Property=Setting.
@@ -21936,28 +21936,28 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
 
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -21966,10 +21966,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -21992,7 +21992,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -22002,12 +22002,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -22015,24 +22015,24 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -22040,7 +22040,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -22053,7 +22053,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     Required. Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -22063,7 +22063,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Required. Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Required. Name of the Cloud Storage object.
@@ -22100,14 +22100,14 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -22117,7 +22117,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     Required. URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -22126,7 +22126,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Required. URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -22151,14 +22151,14 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -22168,7 +22168,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     A remote or local file.
     Structure is documented below.
     """
-    pull_deps: NotRequired[pulumi.Input[_builtins.bool]]
+    pull_deps: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether dependencies should also be installed.
     - install when false: `rpm --upgrade --replacepkgs package.rpm`
@@ -22180,7 +22180,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs:
     def __init__(__self__, *,
                  source: pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs'],
-                 pull_deps: Optional[pulumi.Input[_builtins.bool]] = None):
+                 pull_deps: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs'] source: A remote or local file.
                Structure is documented below.
@@ -22208,7 +22208,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="pullDeps")
-    def pull_deps(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pull_deps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether dependencies should also be installed.
         - install when false: `rpm --upgrade --replacepkgs package.rpm`
@@ -22218,28 +22218,28 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "pull_deps")
 
     @pull_deps.setter
-    def pull_deps(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pull_deps(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pull_deps", value)
 
 
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgsDict(TypedDict):
-    allow_insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defaults to false. When false, files are subject to validations
     based on the file type:
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
     """
-    local_path: NotRequired[pulumi.Input[_builtins.str]]
+    local_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -22248,10 +22248,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcs: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']] = None):
+                 allow_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcs: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_insecure: Defaults to false. When false, files are subject to validations
                based on the file type:
@@ -22274,7 +22274,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When false, files are subject to validations
         based on the file type:
@@ -22284,12 +22284,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "allow_insecure")
 
     @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]:
         """
         Specifies a file available as a Cloud Storage Object.
         Structure is documented below.
@@ -22297,24 +22297,24 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path within the VM to use.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]:
         """
         Specifies a file available via some URI.
         Structure is documented below.
@@ -22322,7 +22322,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
@@ -22335,7 +22335,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     Required. Name of the Cloud Storage object.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generation number of the Cloud Storage object.
     """
@@ -22345,7 +22345,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Required. Bucket of the Cloud Storage object.
         :param pulumi.Input[_builtins.str] object: Required. Name of the Cloud Storage object.
@@ -22382,14 +22382,14 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generation number of the Cloud Storage object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -22399,7 +22399,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     Required. URI from which to fetch the object. It should contain both the
     protocol and path following the format `{protocol}://{location}`.
     """
-    sha256_checksum: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA256 checksum of the remote file.
     """
@@ -22408,7 +22408,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 sha256_checksum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha256_checksum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Required. URI from which to fetch the object. It should contain both the
                protocol and path following the format `{protocol}://{location}`.
@@ -22433,14 +22433,14 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="sha256Checksum")
-    def sha256_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA256 checksum of the remote file.
         """
         return pulumi.get(self, "sha256_checksum")
 
     @sha256_checksum.setter
-    def sha256_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_checksum", value)
 
 
@@ -22501,28 +22501,28 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
 
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgsDict(TypedDict):
-    apt: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgsDict']]
+    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]]
     """
     Represents a single apt package repository. These will be added to
     a repo file that will be managed at
     `/etc/apt/sources.list.d/google_osconfig.list`.
     Structure is documented below.
     """
-    goo: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgsDict']]
+    goo: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]]
     """
     Represents a Goo package repository. These are added to a repo file
     that is managed at
     `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgsDict']]
+    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]]
     """
     Represents a single yum package repository. These are added to a
     repo file that is managed at
     `/etc/yum.repos.d/google_osconfig.repo`.
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgsDict']]
+    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]]
     """
     Represents a single zypper package repository. These are added to a
     repo file that is managed at
@@ -22533,10 +22533,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs:
     def __init__(__self__, *,
-                 apt: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']] = None,
-                 goo: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']] = None,
-                 yum: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']] = None,
-                 zypper: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']] = None):
+                 apt: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']] = None,
+                 goo: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']] = None,
+                 yum: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']] = None,
+                 zypper: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs'] apt: Represents a single apt package repository. These will be added to
                a repo file that will be managed at
@@ -22566,7 +22566,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]:
+    def apt(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]:
         """
         Represents a single apt package repository. These will be added to
         a repo file that will be managed at
@@ -22576,12 +22576,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]):
+    def apt(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]):
         pulumi.set(self, "apt", value)
 
     @_builtins.property
     @pulumi.getter
-    def goo(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]:
+    def goo(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]:
         """
         Represents a Goo package repository. These are added to a repo file
         that is managed at
@@ -22591,12 +22591,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "goo")
 
     @goo.setter
-    def goo(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]):
+    def goo(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]):
         pulumi.set(self, "goo", value)
 
     @_builtins.property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]:
+    def yum(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]:
         """
         Represents a single yum package repository. These are added to a
         repo file that is managed at
@@ -22606,12 +22606,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]):
+    def yum(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]):
         pulumi.set(self, "yum", value)
 
     @_builtins.property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]:
+    def zypper(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]:
         """
         Represents a single zypper package repository. These are added to a
         repo file that is managed at
@@ -22621,7 +22621,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]):
+    def zypper(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]):
         pulumi.set(self, "zypper", value)
 
 
@@ -22647,7 +22647,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     Required. URI for this repository.
     """
-    gpg_key: NotRequired[pulumi.Input[_builtins.str]]
+    gpg_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URI of the key file for this repository. The agent maintains a
     keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
@@ -22660,7 +22660,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
                  components: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  distribution: pulumi.Input[_builtins.str],
                  uri: pulumi.Input[_builtins.str],
-                 gpg_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 gpg_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] archive_type: Required. Type of archive files in this repository.
                Possible values:
@@ -22736,7 +22736,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="gpgKey")
-    def gpg_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gpg_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI of the key file for this repository. The agent maintains a
         keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
@@ -22744,7 +22744,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         return pulumi.get(self, "gpg_key")
 
     @gpg_key.setter
-    def gpg_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gpg_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gpg_key", value)
 
 
@@ -22807,11 +22807,11 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     `display_name` is omitted. This id is also used as the unique
     identifier when checking for resource conflicts.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the repository.
     """
-    gpg_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    gpg_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     URIs of GPG keys.
     """
@@ -22821,8 +22821,8 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     def __init__(__self__, *,
                  base_url: pulumi.Input[_builtins.str],
                  id: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpg_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] base_url: Required. The location of the repository directory.
         :param pulumi.Input[_builtins.str] id: Required. A one word, unique name for this repository. This is  the `repo
@@ -22868,26 +22868,26 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the repository.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gpgKeys")
-    def gpg_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def gpg_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
 
     @gpg_keys.setter
-    def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def gpg_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "gpg_keys", value)
 
 
@@ -22903,11 +22903,11 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     `display_name` is omitted. This id is also used as the unique
     identifier when checking for GuestPolicy conflicts.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the repository.
     """
-    gpg_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    gpg_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     URIs of GPG keys.
     """
@@ -22917,8 +22917,8 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     def __init__(__self__, *,
                  base_url: pulumi.Input[_builtins.str],
                  id: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpg_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] base_url: Required. The location of the repository directory.
         :param pulumi.Input[_builtins.str] id: Required. A one word, unique name for this repository. This is the `repo
@@ -22964,26 +22964,26 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the repository.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gpgKeys")
-    def gpg_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def gpg_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
 
     @gpg_keys.setter
-    def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def gpg_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "gpg_keys", value)
 
 
@@ -23053,11 +23053,11 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout
 
 
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgsDict(TypedDict):
-    fixed: NotRequired[pulumi.Input[_builtins.int]]
+    fixed: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies a fixed value.
     """
-    percent: NotRequired[pulumi.Input[_builtins.int]]
+    percent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies the relative value defined as a percentage, which will be
     multiplied by a reference value.
@@ -23066,8 +23066,8 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs:
     def __init__(__self__, *,
-                 fixed: Optional[pulumi.Input[_builtins.int]] = None,
-                 percent: Optional[pulumi.Input[_builtins.int]] = None):
+                 fixed: pulumi.Input[Optional[_builtins.int]] = None,
+                 percent: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] fixed: Specifies a fixed value.
         :param pulumi.Input[_builtins.int] percent: Specifies the relative value defined as a percentage, which will be
@@ -23080,19 +23080,19 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout
 
     @_builtins.property
     @pulumi.getter
-    def fixed(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fixed(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies a fixed value.
         """
         return pulumi.get(self, "fixed")
 
     @fixed.setter
-    def fixed(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fixed(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fixed", value)
 
     @_builtins.property
     @pulumi.getter
-    def percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the relative value defined as a percentage, which will be
         multiplied by a reference value.
@@ -23100,12 +23100,12 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout
         return pulumi.get(self, "percent")
 
     @percent.setter
-    def percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "percent", value)
 
 
 class V2PolicyOrchestratorOrchestrationScopeArgsDict(TypedDict):
-    selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorArgsDict']]]]
+    selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorArgs']]]]]
     """
     Optional. Selectors of the orchestration scope. There is a logical AND between each
     selector defined.
@@ -23118,7 +23118,7 @@ class V2PolicyOrchestratorOrchestrationScopeArgsDict(TypedDict):
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestrationScopeArgs:
     def __init__(__self__, *,
-                 selectors: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorArgs']]]] = None):
+                 selectors: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorArgs']]] selectors: Optional. Selectors of the orchestration scope. There is a logical AND between each
                selector defined.
@@ -23132,7 +23132,7 @@ class V2PolicyOrchestratorOrchestrationScopeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorArgs']]]]:
+    def selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorArgs']]]]:
         """
         Optional. Selectors of the orchestration scope. There is a logical AND between each
         selector defined.
@@ -23144,17 +23144,17 @@ class V2PolicyOrchestratorOrchestrationScopeArgs:
         return pulumi.get(self, "selectors")
 
     @selectors.setter
-    def selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorArgs']]]]):
+    def selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorArgs']]]]):
         pulumi.set(self, "selectors", value)
 
 
 class V2PolicyOrchestratorOrchestrationScopeSelectorArgsDict(TypedDict):
-    location_selector: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgsDict']]
+    location_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgs']]]
     """
     Selector containing locations in scope.
     Structure is documented below.
     """
-    resource_hierarchy_selector: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArgsDict']]
+    resource_hierarchy_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArgs']]]
     """
     Selector containing Cloud Resource Manager resource hierarchy nodes.
     Structure is documented below.
@@ -23163,8 +23163,8 @@ class V2PolicyOrchestratorOrchestrationScopeSelectorArgsDict(TypedDict):
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestrationScopeSelectorArgs:
     def __init__(__self__, *,
-                 location_selector: Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgs']] = None,
-                 resource_hierarchy_selector: Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArgs']] = None):
+                 location_selector: pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgs']] = None,
+                 resource_hierarchy_selector: pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArgs']] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgs'] location_selector: Selector containing locations in scope.
                Structure is documented below.
@@ -23178,7 +23178,7 @@ class V2PolicyOrchestratorOrchestrationScopeSelectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="locationSelector")
-    def location_selector(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgs']]:
+    def location_selector(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgs']]:
         """
         Selector containing locations in scope.
         Structure is documented below.
@@ -23186,12 +23186,12 @@ class V2PolicyOrchestratorOrchestrationScopeSelectorArgs:
         return pulumi.get(self, "location_selector")
 
     @location_selector.setter
-    def location_selector(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgs']]):
+    def location_selector(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgs']]):
         pulumi.set(self, "location_selector", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceHierarchySelector")
-    def resource_hierarchy_selector(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArgs']]:
+    def resource_hierarchy_selector(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArgs']]:
         """
         Selector containing Cloud Resource Manager resource hierarchy nodes.
         Structure is documented below.
@@ -23199,12 +23199,12 @@ class V2PolicyOrchestratorOrchestrationScopeSelectorArgs:
         return pulumi.get(self, "resource_hierarchy_selector")
 
     @resource_hierarchy_selector.setter
-    def resource_hierarchy_selector(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArgs']]):
+    def resource_hierarchy_selector(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArgs']]):
         pulumi.set(self, "resource_hierarchy_selector", value)
 
 
 class V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgsDict(TypedDict):
-    included_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    included_locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional. Names of the locations in scope.
     Format: `us-central1-a`
@@ -23213,7 +23213,7 @@ class V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgsDict(Typ
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgs:
     def __init__(__self__, *,
-                 included_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 included_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_locations: Optional. Names of the locations in scope.
                Format: `us-central1-a`
@@ -23223,7 +23223,7 @@ class V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="includedLocations")
-    def included_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def included_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Names of the locations in scope.
         Format: `us-central1-a`
@@ -23231,17 +23231,17 @@ class V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgs:
         return pulumi.get(self, "included_locations")
 
     @included_locations.setter
-    def included_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def included_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "included_locations", value)
 
 
 class V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArgsDict(TypedDict):
-    included_folders: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    included_folders: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional. Names of the folders in scope.
     Format: `folders/{folder_id}`
     """
-    included_projects: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    included_projects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional. Names of the projects in scope.
     Format: `projects/{project_number}`
@@ -23250,8 +23250,8 @@ class V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArg
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArgs:
     def __init__(__self__, *,
-                 included_folders: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 included_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 included_folders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 included_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_folders: Optional. Names of the folders in scope.
                Format: `folders/{folder_id}`
@@ -23265,7 +23265,7 @@ class V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArg
 
     @_builtins.property
     @pulumi.getter(name="includedFolders")
-    def included_folders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def included_folders(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Names of the folders in scope.
         Format: `folders/{folder_id}`
@@ -23273,12 +23273,12 @@ class V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArg
         return pulumi.get(self, "included_folders")
 
     @included_folders.setter
-    def included_folders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def included_folders(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "included_folders", value)
 
     @_builtins.property
     @pulumi.getter(name="includedProjects")
-    def included_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def included_projects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Names of the projects in scope.
         Format: `projects/{project_number}`
@@ -23286,18 +23286,18 @@ class V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArg
         return pulumi.get(self, "included_projects")
 
     @included_projects.setter
-    def included_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def included_projects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "included_projects", value)
 
 
 class V2PolicyOrchestratorOrchestrationStateArgsDict(TypedDict):
-    current_iteration_states: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgsDict']]]]
+    current_iteration_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs']]]]]
     """
     (Output)
     Describes the state of a single iteration of the orchestrator.
     Structure is documented below.
     """
-    previous_iteration_state: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgsDict']]
+    previous_iteration_state: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs']]]
     """
     Describes the state of a single iteration of the orchestrator.
     Structure is documented below.
@@ -23306,8 +23306,8 @@ class V2PolicyOrchestratorOrchestrationStateArgsDict(TypedDict):
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestrationStateArgs:
     def __init__(__self__, *,
-                 current_iteration_states: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs']]]] = None,
-                 previous_iteration_state: Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs']] = None):
+                 current_iteration_states: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs']]]] = None,
+                 previous_iteration_state: pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs']]] current_iteration_states: (Output)
                Describes the state of a single iteration of the orchestrator.
@@ -23322,7 +23322,7 @@ class V2PolicyOrchestratorOrchestrationStateArgs:
 
     @_builtins.property
     @pulumi.getter(name="currentIterationStates")
-    def current_iteration_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs']]]]:
+    def current_iteration_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs']]]]:
         """
         (Output)
         Describes the state of a single iteration of the orchestrator.
@@ -23331,12 +23331,12 @@ class V2PolicyOrchestratorOrchestrationStateArgs:
         return pulumi.get(self, "current_iteration_states")
 
     @current_iteration_states.setter
-    def current_iteration_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs']]]]):
+    def current_iteration_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs']]]]):
         pulumi.set(self, "current_iteration_states", value)
 
     @_builtins.property
     @pulumi.getter(name="previousIterationState")
-    def previous_iteration_state(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs']]:
+    def previous_iteration_state(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs']]:
         """
         Describes the state of a single iteration of the orchestrator.
         Structure is documented below.
@@ -23344,12 +23344,12 @@ class V2PolicyOrchestratorOrchestrationStateArgs:
         return pulumi.get(self, "previous_iteration_state")
 
     @previous_iteration_state.setter
-    def previous_iteration_state(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs']]):
+    def previous_iteration_state(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs']]):
         pulumi.set(self, "previous_iteration_state", value)
 
 
 class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgsDict(TypedDict):
-    error: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgsDict']]
+    error: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgs']]]
     """
     The `Status` type defines a logical error model that is suitable for
     different programming environments, including REST APIs and RPC APIs. It is
@@ -23359,39 +23359,39 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgsDict(TypedD
     [API Design Guide](https://cloud.google.com/apis/design/errors).
     Structure is documented below.
     """
-    failed_actions: NotRequired[pulumi.Input[_builtins.str]]
+    failed_actions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Number of orchestration actions which failed so far. For more details,
     query the Cloud Logs.
     """
-    finish_time: NotRequired[pulumi.Input[_builtins.str]]
+    finish_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Finish time of the wave iteration.
     """
-    performed_actions: NotRequired[pulumi.Input[_builtins.str]]
+    performed_actions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Overall number of actions done by the orchestrator so far.
     """
-    progress: NotRequired[pulumi.Input[_builtins.float]]
+    progress: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     (Output)
     Output only. An estimated percentage of the progress. Number between 0 and 100.
     """
-    rollout_resource: NotRequired[pulumi.Input[_builtins.str]]
+    rollout_resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Handle to the Progressive Rollouts API rollout resource, which contains
     detailed information about a particular orchestration iteration.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Start time of the wave iteration.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
     Allowed values:
@@ -23405,14 +23405,14 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgsDict(TypedD
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs:
     def __init__(__self__, *,
-                 error: Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgs']] = None,
-                 failed_actions: Optional[pulumi.Input[_builtins.str]] = None,
-                 finish_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 performed_actions: Optional[pulumi.Input[_builtins.str]] = None,
-                 progress: Optional[pulumi.Input[_builtins.float]] = None,
-                 rollout_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 error: pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgs']] = None,
+                 failed_actions: pulumi.Input[Optional[_builtins.str]] = None,
+                 finish_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 performed_actions: pulumi.Input[Optional[_builtins.str]] = None,
+                 progress: pulumi.Input[Optional[_builtins.float]] = None,
+                 rollout_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgs'] error: The `Status` type defines a logical error model that is suitable for
                different programming environments, including REST APIs and RPC APIs. It is
@@ -23462,7 +23462,7 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def error(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgs']]:
+    def error(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgs']]:
         """
         The `Status` type defines a logical error model that is suitable for
         different programming environments, including REST APIs and RPC APIs. It is
@@ -23475,12 +23475,12 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "error")
 
     @error.setter
-    def error(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgs']]):
+    def error(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgs']]):
         pulumi.set(self, "error", value)
 
     @_builtins.property
     @pulumi.getter(name="failedActions")
-    def failed_actions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failed_actions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Number of orchestration actions which failed so far. For more details,
@@ -23489,12 +23489,12 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "failed_actions")
 
     @failed_actions.setter
-    def failed_actions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failed_actions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failed_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="finishTime")
-    def finish_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def finish_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Finish time of the wave iteration.
@@ -23502,12 +23502,12 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "finish_time")
 
     @finish_time.setter
-    def finish_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def finish_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "finish_time", value)
 
     @_builtins.property
     @pulumi.getter(name="performedActions")
-    def performed_actions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performed_actions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Overall number of actions done by the orchestrator so far.
@@ -23515,12 +23515,12 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "performed_actions")
 
     @performed_actions.setter
-    def performed_actions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performed_actions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performed_actions", value)
 
     @_builtins.property
     @pulumi.getter
-    def progress(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def progress(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         (Output)
         Output only. An estimated percentage of the progress. Number between 0 and 100.
@@ -23528,12 +23528,12 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "progress")
 
     @progress.setter
-    def progress(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def progress(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "progress", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutResource")
-    def rollout_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Handle to the Progressive Rollouts API rollout resource, which contains
@@ -23542,12 +23542,12 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "rollout_resource")
 
     @rollout_resource.setter
-    def rollout_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Start time of the wave iteration.
@@ -23555,12 +23555,12 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
         Allowed values:
@@ -23573,22 +23573,22 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgsDict']]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]]
     """
     A list of messages that carry the error details.  There is a common set of
     message types for APIs to use.
     Structure is documented below.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A developer-facing error message, which should be in English. Any
     user-facing error message should be localized and sent in the
@@ -23598,9 +23598,9 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgsDict(T
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgs']]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgs']]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: The status code, which should be an enum value of google.rpc.Code.
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgs']]] details: A list of messages that carry the error details.  There is a common set of
@@ -23619,19 +23619,19 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status code, which should be an enum value of google.rpc.Code.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]:
         """
         A list of messages that carry the error details.  There is a common set of
         message types for APIs to use.
@@ -23640,12 +23640,12 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A developer-facing error message, which should be in English. Any
         user-facing error message should be localized and sent in the
@@ -23654,16 +23654,16 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgsDict(TypedDict):
-    type_url: NotRequired[pulumi.Input[_builtins.str]]
+    type_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -23671,8 +23671,8 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgs
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgs:
     def __init__(__self__, *,
-                 type_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 type_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type_url: A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
         :param pulumi.Input[_builtins.str] value: (Optional)
@@ -23684,31 +23684,31 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgs
 
     @_builtins.property
     @pulumi.getter(name="typeUrl")
-    def type_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
         """
         return pulumi.get(self, "type_url")
 
     @type_url.setter
-    def type_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgsDict(TypedDict):
-    error: NotRequired[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgsDict']]
+    error: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgs']]]
     """
     The `Status` type defines a logical error model that is suitable for
     different programming environments, including REST APIs and RPC APIs. It is
@@ -23718,39 +23718,39 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgsDict(Typed
     [API Design Guide](https://cloud.google.com/apis/design/errors).
     Structure is documented below.
     """
-    failed_actions: NotRequired[pulumi.Input[_builtins.str]]
+    failed_actions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Number of orchestration actions which failed so far. For more details,
     query the Cloud Logs.
     """
-    finish_time: NotRequired[pulumi.Input[_builtins.str]]
+    finish_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Finish time of the wave iteration.
     """
-    performed_actions: NotRequired[pulumi.Input[_builtins.str]]
+    performed_actions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Overall number of actions done by the orchestrator so far.
     """
-    progress: NotRequired[pulumi.Input[_builtins.float]]
+    progress: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     (Output)
     Output only. An estimated percentage of the progress. Number between 0 and 100.
     """
-    rollout_resource: NotRequired[pulumi.Input[_builtins.str]]
+    rollout_resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Handle to the Progressive Rollouts API rollout resource, which contains
     detailed information about a particular orchestration iteration.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Start time of the wave iteration.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
     Allowed values:
@@ -23764,14 +23764,14 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgsDict(Typed
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs:
     def __init__(__self__, *,
-                 error: Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgs']] = None,
-                 failed_actions: Optional[pulumi.Input[_builtins.str]] = None,
-                 finish_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 performed_actions: Optional[pulumi.Input[_builtins.str]] = None,
-                 progress: Optional[pulumi.Input[_builtins.float]] = None,
-                 rollout_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 error: pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgs']] = None,
+                 failed_actions: pulumi.Input[Optional[_builtins.str]] = None,
+                 finish_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 performed_actions: pulumi.Input[Optional[_builtins.str]] = None,
+                 progress: pulumi.Input[Optional[_builtins.float]] = None,
+                 rollout_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgs'] error: The `Status` type defines a logical error model that is suitable for
                different programming environments, including REST APIs and RPC APIs. It is
@@ -23821,7 +23821,7 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def error(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgs']]:
+    def error(self) -> pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgs']]:
         """
         The `Status` type defines a logical error model that is suitable for
         different programming environments, including REST APIs and RPC APIs. It is
@@ -23834,12 +23834,12 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "error")
 
     @error.setter
-    def error(self, value: Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgs']]):
+    def error(self, value: pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgs']]):
         pulumi.set(self, "error", value)
 
     @_builtins.property
     @pulumi.getter(name="failedActions")
-    def failed_actions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failed_actions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Number of orchestration actions which failed so far. For more details,
@@ -23848,12 +23848,12 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "failed_actions")
 
     @failed_actions.setter
-    def failed_actions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failed_actions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failed_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="finishTime")
-    def finish_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def finish_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Finish time of the wave iteration.
@@ -23861,12 +23861,12 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "finish_time")
 
     @finish_time.setter
-    def finish_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def finish_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "finish_time", value)
 
     @_builtins.property
     @pulumi.getter(name="performedActions")
-    def performed_actions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performed_actions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Overall number of actions done by the orchestrator so far.
@@ -23874,12 +23874,12 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "performed_actions")
 
     @performed_actions.setter
-    def performed_actions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performed_actions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performed_actions", value)
 
     @_builtins.property
     @pulumi.getter
-    def progress(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def progress(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         (Output)
         Output only. An estimated percentage of the progress. Number between 0 and 100.
@@ -23887,12 +23887,12 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "progress")
 
     @progress.setter
-    def progress(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def progress(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "progress", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutResource")
-    def rollout_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Handle to the Progressive Rollouts API rollout resource, which contains
@@ -23901,12 +23901,12 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "rollout_resource")
 
     @rollout_resource.setter
-    def rollout_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Start time of the wave iteration.
@@ -23914,12 +23914,12 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
         Allowed values:
@@ -23932,22 +23932,22 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArgsDict']]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]]
     """
     A list of messages that carry the error details.  There is a common set of
     message types for APIs to use.
     Structure is documented below.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A developer-facing error message, which should be in English. Any
     user-facing error message should be localized and sent in the
@@ -23957,9 +23957,9 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgsDict(
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArgs']]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArgs']]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: The status code, which should be an enum value of google.rpc.Code.
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArgs']]] details: A list of messages that carry the error details.  There is a common set of
@@ -23978,19 +23978,19 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status code, which should be an enum value of google.rpc.Code.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]:
         """
         A list of messages that carry the error details.  There is a common set of
         message types for APIs to use.
@@ -23999,12 +23999,12 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A developer-facing error message, which should be in English. Any
         user-facing error message should be localized and sent in the
@@ -24013,16 +24013,16 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArgsDict(TypedDict):
-    type_url: NotRequired[pulumi.Input[_builtins.str]]
+    type_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -24030,8 +24030,8 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArg
 @pulumi.input_type
 class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArgs:
     def __init__(__self__, *,
-                 type_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 type_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type_url: A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
         :param pulumi.Input[_builtins.str] value: (Optional)
@@ -24043,26 +24043,26 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArg
 
     @_builtins.property
     @pulumi.getter(name="typeUrl")
-    def type_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
         """
         return pulumi.get(self, "type_url")
 
     @type_url.setter
-    def type_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 

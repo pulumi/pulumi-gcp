@@ -255,43 +255,43 @@ export interface RegionNetworkEndpointState {
     /**
      * Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
      */
-    clientDestinationPort?: pulumi.Input<number>;
+    clientDestinationPort?: pulumi.Input<number | undefined>;
     /**
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      */
-    fqdn?: pulumi.Input<string>;
+    fqdn?: pulumi.Input<string | undefined>;
     /**
      * The name for a specific VM instance that the IP address belongs to.
      * This is required for network endpoints of type GCE_VM_IP_PORTMAP.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * IPv4 address external endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
-    networkEndpointId?: pulumi.Input<number>;
+    networkEndpointId?: pulumi.Input<number | undefined>;
     /**
      * Port number of network endpoint.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the containing network endpoint group is located.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The network endpoint group this endpoint is part of.
      */
-    regionNetworkEndpointGroup?: pulumi.Input<string>;
+    regionNetworkEndpointGroup?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -301,22 +301,22 @@ export interface RegionNetworkEndpointArgs {
     /**
      * Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
      */
-    clientDestinationPort?: pulumi.Input<number>;
+    clientDestinationPort?: pulumi.Input<number | undefined>;
     /**
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      */
-    fqdn?: pulumi.Input<string>;
+    fqdn?: pulumi.Input<string | undefined>;
     /**
      * The name for a specific VM instance that the IP address belongs to.
      * This is required for network endpoints of type GCE_VM_IP_PORTMAP.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * IPv4 address external endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * Port number of network endpoint.
      */
@@ -325,11 +325,11 @@ export interface RegionNetworkEndpointArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the containing network endpoint group is located.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The network endpoint group this endpoint is part of.
      */

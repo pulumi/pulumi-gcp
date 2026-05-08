@@ -166,9 +166,9 @@ def get_service(location: Optional[_builtins.str] = None,
         statuses=pulumi.get(__ret__, 'statuses'),
         templates=pulumi.get(__ret__, 'templates'),
         traffics=pulumi.get(__ret__, 'traffics'))
-def get_service_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                       name: Optional[pulumi.Input[_builtins.str]] = None,
-                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_service_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                       name: pulumi.Input[Optional[_builtins.str]] = None,
+                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceResult]:
     """
     Get information about a Google Cloud Run Service. For more information see

@@ -196,42 +196,42 @@ export interface LinkedDatasetState {
      * Views corresponding to the LogViews in the bucket.
      * Structure is documented below.
      */
-    bigqueryDatasets?: pulumi.Input<pulumi.Input<inputs.logging.LinkedDatasetBigqueryDataset>[]>;
+    bigqueryDatasets?: pulumi.Input<pulumi.Input<inputs.logging.LinkedDatasetBigqueryDataset>[] | undefined>;
     /**
      * The bucket to which the linked dataset is attached.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Output only. The creation timestamp of the link. A timestamp in RFC3339 UTC "Zulu" format,
      * with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
      * and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Describes this link. The maximum length of the description is 8000 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Output only. The linked dataset lifecycle state.
      */
-    lifecycleState?: pulumi.Input<string>;
+    lifecycleState?: pulumi.Input<string | undefined>;
     /**
      * The id of the linked dataset.
      */
-    linkId?: pulumi.Input<string>;
+    linkId?: pulumi.Input<string | undefined>;
     /**
      * The location of the linked dataset.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the linked dataset. The name can have up to 100 characters. A valid link id
      * (at the end of the link name) must only have alphanumeric characters and underscores within it.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent of the linked dataset.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -244,7 +244,7 @@ export interface LinkedDatasetArgs {
      * Views corresponding to the LogViews in the bucket.
      * Structure is documented below.
      */
-    bigqueryDatasets?: pulumi.Input<pulumi.Input<inputs.logging.LinkedDatasetBigqueryDataset>[]>;
+    bigqueryDatasets?: pulumi.Input<pulumi.Input<inputs.logging.LinkedDatasetBigqueryDataset>[] | undefined>;
     /**
      * The bucket to which the linked dataset is attached.
      */
@@ -252,7 +252,7 @@ export interface LinkedDatasetArgs {
     /**
      * Describes this link. The maximum length of the description is 8000 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The id of the linked dataset.
      */
@@ -260,9 +260,9 @@ export interface LinkedDatasetArgs {
     /**
      * The location of the linked dataset.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The parent of the linked dataset.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
 }

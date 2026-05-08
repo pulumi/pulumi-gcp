@@ -112,8 +112,8 @@ def get_static_ips(location: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         project=pulumi.get(__ret__, 'project'),
         static_ips=pulumi.get(__ret__, 'static_ips'))
-def get_static_ips_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                          project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_static_ips_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStaticIpsResult]:
     """
     Returns the list of IP addresses that Datastream connects from. For more information see

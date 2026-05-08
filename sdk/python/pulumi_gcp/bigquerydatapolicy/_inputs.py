@@ -24,12 +24,12 @@ __all__ = [
 ]
 
 class DataPolicyDataMaskingPolicyArgsDict(TypedDict):
-    predefined_expression: NotRequired[pulumi.Input[_builtins.str]]
+    predefined_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
     Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
     """
-    routine: NotRequired[pulumi.Input[_builtins.str]]
+    routine: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
     """
@@ -37,8 +37,8 @@ class DataPolicyDataMaskingPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class DataPolicyDataMaskingPolicyArgs:
     def __init__(__self__, *,
-                 predefined_expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 routine: Optional[pulumi.Input[_builtins.str]] = None):
+                 predefined_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 routine: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] predefined_expression: The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
                Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
@@ -51,7 +51,7 @@ class DataPolicyDataMaskingPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="predefinedExpression")
-    def predefined_expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def predefined_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
         Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
@@ -59,33 +59,33 @@ class DataPolicyDataMaskingPolicyArgs:
         return pulumi.get(self, "predefined_expression")
 
     @predefined_expression.setter
-    def predefined_expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def predefined_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "predefined_expression", value)
 
     @_builtins.property
     @pulumi.getter
-    def routine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def routine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
         """
         return pulumi.get(self, "routine")
 
     @routine.setter
-    def routine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def routine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "routine", value)
 
 
 class DataPolicyIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DataPolicyIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -111,25 +111,25 @@ class DataPolicyIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class DataPolicyIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DataPolicyIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -155,11 +155,11 @@ class DataPolicyIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 

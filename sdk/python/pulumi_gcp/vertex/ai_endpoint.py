@@ -23,17 +23,17 @@ class AiEndpointArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 dedicated_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiEndpointEncryptionSpecArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 predict_request_response_logging_config: Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigArgs']] = None,
-                 private_service_connect_config: Optional[pulumi.Input['AiEndpointPrivateServiceConnectConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_split: Optional[pulumi.Input[_builtins.str]] = None):
+                 dedicated_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiEndpointEncryptionSpecArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 predict_request_response_logging_config: pulumi.Input[Optional['AiEndpointPredictRequestResponseLoggingConfigArgs']] = None,
+                 private_service_connect_config: pulumi.Input[Optional['AiEndpointPrivateServiceConnectConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_split: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiEndpoint resource.
 
@@ -113,31 +113,31 @@ class AiEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="dedicatedEndpointEnabled")
-    def dedicated_endpoint_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dedicated_endpoint_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
         """
         return pulumi.get(self, "dedicated_endpoint_enabled")
 
     @dedicated_endpoint_enabled.setter
-    def dedicated_endpoint_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dedicated_endpoint_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dedicated_endpoint_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Endpoint.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiEndpointEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['AiEndpointEncryptionSpecArgs']]:
         """
         Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
         Structure is documented below.
@@ -145,12 +145,12 @@ class AiEndpointArgs:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiEndpointEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['AiEndpointEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -159,36 +159,36 @@ class AiEndpointArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="predictRequestResponseLoggingConfig")
-    def predict_request_response_logging_config(self) -> Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigArgs']]:
+    def predict_request_response_logging_config(self) -> pulumi.Input[Optional['AiEndpointPredictRequestResponseLoggingConfigArgs']]:
         """
         Configures the request-response logging for online prediction.
         Structure is documented below.
@@ -196,12 +196,12 @@ class AiEndpointArgs:
         return pulumi.get(self, "predict_request_response_logging_config")
 
     @predict_request_response_logging_config.setter
-    def predict_request_response_logging_config(self, value: Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigArgs']]):
+    def predict_request_response_logging_config(self, value: pulumi.Input[Optional['AiEndpointPredictRequestResponseLoggingConfigArgs']]):
         pulumi.set(self, "predict_request_response_logging_config", value)
 
     @_builtins.property
     @pulumi.getter(name="privateServiceConnectConfig")
-    def private_service_connect_config(self) -> Optional[pulumi.Input['AiEndpointPrivateServiceConnectConfigArgs']]:
+    def private_service_connect_config(self) -> pulumi.Input[Optional['AiEndpointPrivateServiceConnectConfigArgs']]:
         """
         Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
         Structure is documented below.
@@ -209,12 +209,12 @@ class AiEndpointArgs:
         return pulumi.get(self, "private_service_connect_config")
 
     @private_service_connect_config.setter
-    def private_service_connect_config(self, value: Optional[pulumi.Input['AiEndpointPrivateServiceConnectConfigArgs']]):
+    def private_service_connect_config(self, value: pulumi.Input[Optional['AiEndpointPrivateServiceConnectConfigArgs']]):
         pulumi.set(self, "private_service_connect_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -222,24 +222,24 @@ class AiEndpointArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region for the resource
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficSplit")
-    def traffic_split(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_split(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
         If a DeployedModel's id is not listed in this map, then it receives no traffic.
@@ -251,34 +251,34 @@ class AiEndpointArgs:
         return pulumi.get(self, "traffic_split")
 
     @traffic_split.setter
-    def traffic_split(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_split(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_split", value)
 
 
 @pulumi.input_type
 class _AiEndpointState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_endpoint_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deployed_models: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiEndpointEncryptionSpecArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_deployment_monitoring_job: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 predict_request_response_logging_config: Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigArgs']] = None,
-                 private_service_connect_config: Optional[pulumi.Input['AiEndpointPrivateServiceConnectConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_split: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_endpoint_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deployed_models: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiEndpointEncryptionSpecArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_deployment_monitoring_job: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 predict_request_response_logging_config: pulumi.Input[Optional['AiEndpointPredictRequestResponseLoggingConfigArgs']] = None,
+                 private_service_connect_config: pulumi.Input[Optional['AiEndpointPrivateServiceConnectConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_split: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiEndpoint resources.
 
@@ -363,7 +363,7 @@ class _AiEndpointState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Timestamp when the DeployedModel was created.
@@ -371,36 +371,36 @@ class _AiEndpointState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedEndpointDns")
-    def dedicated_endpoint_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_endpoint_dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
         """
         return pulumi.get(self, "dedicated_endpoint_dns")
 
     @dedicated_endpoint_dns.setter
-    def dedicated_endpoint_dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_endpoint_dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_endpoint_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedEndpointEnabled")
-    def dedicated_endpoint_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dedicated_endpoint_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
         """
         return pulumi.get(self, "dedicated_endpoint_enabled")
 
     @dedicated_endpoint_enabled.setter
-    def dedicated_endpoint_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dedicated_endpoint_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dedicated_endpoint_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="deployedModels")
-    def deployed_models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]]]:
+    def deployed_models(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]]]:
         """
         Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
         Structure is documented below.
@@ -408,48 +408,48 @@ class _AiEndpointState:
         return pulumi.get(self, "deployed_models")
 
     @deployed_models.setter
-    def deployed_models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]]]):
+    def deployed_models(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]]]):
         pulumi.set(self, "deployed_models", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Endpoint.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiEndpointEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['AiEndpointEncryptionSpecArgs']]:
         """
         Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
         Structure is documented below.
@@ -457,24 +457,24 @@ class _AiEndpointState:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiEndpointEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['AiEndpointEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -483,60 +483,60 @@ class _AiEndpointState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="modelDeploymentMonitoringJob")
-    def model_deployment_monitoring_job(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_deployment_monitoring_job(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
         """
         return pulumi.get(self, "model_deployment_monitoring_job")
 
     @model_deployment_monitoring_job.setter
-    def model_deployment_monitoring_job(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_deployment_monitoring_job(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_deployment_monitoring_job", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="predictRequestResponseLoggingConfig")
-    def predict_request_response_logging_config(self) -> Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigArgs']]:
+    def predict_request_response_logging_config(self) -> pulumi.Input[Optional['AiEndpointPredictRequestResponseLoggingConfigArgs']]:
         """
         Configures the request-response logging for online prediction.
         Structure is documented below.
@@ -544,12 +544,12 @@ class _AiEndpointState:
         return pulumi.get(self, "predict_request_response_logging_config")
 
     @predict_request_response_logging_config.setter
-    def predict_request_response_logging_config(self, value: Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigArgs']]):
+    def predict_request_response_logging_config(self, value: pulumi.Input[Optional['AiEndpointPredictRequestResponseLoggingConfigArgs']]):
         pulumi.set(self, "predict_request_response_logging_config", value)
 
     @_builtins.property
     @pulumi.getter(name="privateServiceConnectConfig")
-    def private_service_connect_config(self) -> Optional[pulumi.Input['AiEndpointPrivateServiceConnectConfigArgs']]:
+    def private_service_connect_config(self) -> pulumi.Input[Optional['AiEndpointPrivateServiceConnectConfigArgs']]:
         """
         Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
         Structure is documented below.
@@ -557,12 +557,12 @@ class _AiEndpointState:
         return pulumi.get(self, "private_service_connect_config")
 
     @private_service_connect_config.setter
-    def private_service_connect_config(self, value: Optional[pulumi.Input['AiEndpointPrivateServiceConnectConfigArgs']]):
+    def private_service_connect_config(self, value: pulumi.Input[Optional['AiEndpointPrivateServiceConnectConfigArgs']]):
         pulumi.set(self, "private_service_connect_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -570,12 +570,12 @@ class _AiEndpointState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -583,24 +583,24 @@ class _AiEndpointState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region for the resource
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficSplit")
-    def traffic_split(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_split(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
         If a DeployedModel's id is not listed in this map, then it receives no traffic.
@@ -612,19 +612,19 @@ class _AiEndpointState:
         return pulumi.get(self, "traffic_split")
 
     @traffic_split.setter
-    def traffic_split(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_split(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_split", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Timestamp when this Endpoint was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -634,19 +634,19 @@ class AiEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 predict_request_response_logging_config: Optional[pulumi.Input[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']]] = None,
-                 private_service_connect_config: Optional[pulumi.Input[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_split: Optional[pulumi.Input[_builtins.str]] = None,
+                 dedicated_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 predict_request_response_logging_config: pulumi.Input[Optional[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']]] = None,
+                 private_service_connect_config: pulumi.Input[Optional[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_split: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Models are deployed into it, and afterwards Endpoint is called to obtain predictions and explanations.
@@ -950,19 +950,19 @@ class AiEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 predict_request_response_logging_config: Optional[pulumi.Input[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']]] = None,
-                 private_service_connect_config: Optional[pulumi.Input[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_split: Optional[pulumi.Input[_builtins.str]] = None,
+                 dedicated_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 predict_request_response_logging_config: pulumi.Input[Optional[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']]] = None,
+                 private_service_connect_config: pulumi.Input[Optional[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_split: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1009,27 +1009,27 @@ class AiEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dedicated_endpoint_dns: Optional[pulumi.Input[_builtins.str]] = None,
-            dedicated_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            deployed_models: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiEndpointDeployedModelArgs', 'AiEndpointDeployedModelArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: Optional[pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            model_deployment_monitoring_job: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            predict_request_response_logging_config: Optional[pulumi.Input[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']]] = None,
-            private_service_connect_config: Optional[pulumi.Input[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            traffic_split: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiEndpoint':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_endpoint_dns: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            deployed_models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiEndpointDeployedModelArgs', 'AiEndpointDeployedModelArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            model_deployment_monitoring_job: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            predict_request_response_logging_config: pulumi.Input[Optional[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']]] = None,
+            private_service_connect_config: pulumi.Input[Optional[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_split: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiEndpoint':
         """
         Get an existing AiEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -21,25 +21,25 @@ __all__ = ['MetastoreServiceArgs', 'MetastoreService']
 @pulumi.input_type
 class MetastoreServiceArgs:
     def __init__(__self__, *,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']] = None,
-                 hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']] = None,
-                 metadata_integration: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
-                 scheduled_backup: Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None):
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_config: pulumi.Input[Optional['MetastoreServiceEncryptionConfigArgs']] = None,
+                 hive_metastore_config: pulumi.Input[Optional['MetastoreServiceHiveMetastoreConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window: pulumi.Input[Optional['MetastoreServiceMaintenanceWindowArgs']] = None,
+                 metadata_integration: pulumi.Input[Optional['MetastoreServiceMetadataIntegrationArgs']] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional['MetastoreServiceNetworkConfigArgs']] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_config: pulumi.Input[Optional['MetastoreServiceScalingConfigArgs']] = None,
+                 scheduled_backup: pulumi.Input[Optional['MetastoreServiceScheduledBackupArgs']] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 telemetry_config: pulumi.Input[Optional['MetastoreServiceTelemetryConfigArgs']] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MetastoreService resource.
 
@@ -129,7 +129,7 @@ class MetastoreServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="databaseType")
-    def database_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database type that the Metastore service stores its data.
         Default value is `MYSQL`.
@@ -138,24 +138,24 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "database_type")
 
     @database_type.setter
-    def database_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_type", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the dataproc metastore should be protected against accidental deletions.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']]:
+    def encryption_config(self) -> pulumi.Input[Optional['MetastoreServiceEncryptionConfigArgs']]:
         """
         Information used to configure the Dataproc Metastore service to encrypt
         customer data at rest.
@@ -164,12 +164,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']]):
+    def encryption_config(self, value: pulumi.Input[Optional['MetastoreServiceEncryptionConfigArgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @_builtins.property
     @pulumi.getter(name="hiveMetastoreConfig")
-    def hive_metastore_config(self) -> Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']]:
+    def hive_metastore_config(self) -> pulumi.Input[Optional['MetastoreServiceHiveMetastoreConfigArgs']]:
         """
         Configuration information specific to running Hive metastore software as the metastore service.
         Structure is documented below.
@@ -177,12 +177,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "hive_metastore_config")
 
     @hive_metastore_config.setter
-    def hive_metastore_config(self, value: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']]):
+    def hive_metastore_config(self, value: pulumi.Input[Optional['MetastoreServiceHiveMetastoreConfigArgs']]):
         pulumi.set(self, "hive_metastore_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined labels for the metastore service.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -191,12 +191,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location where the metastore service should reside.
         The default value is `global`.
@@ -204,12 +204,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']]:
+    def maintenance_window(self) -> pulumi.Input[Optional['MetastoreServiceMaintenanceWindowArgs']]:
         """
         The one hour maintenance window of the metastore service.
         This specifies when the service can be restarted for maintenance purposes in UTC time.
@@ -219,12 +219,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "maintenance_window")
 
     @maintenance_window.setter
-    def maintenance_window(self, value: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']]):
+    def maintenance_window(self, value: pulumi.Input[Optional['MetastoreServiceMaintenanceWindowArgs']]):
         pulumi.set(self, "maintenance_window", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataIntegration")
-    def metadata_integration(self) -> Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]:
+    def metadata_integration(self) -> pulumi.Input[Optional['MetastoreServiceMetadataIntegrationArgs']]:
         """
         The setting that defines how metastore metadata should be integrated with external services and systems.
         Structure is documented below.
@@ -232,12 +232,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "metadata_integration")
 
     @metadata_integration.setter
-    def metadata_integration(self, value: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]):
+    def metadata_integration(self, value: pulumi.Input[Optional['MetastoreServiceMetadataIntegrationArgs']]):
         pulumi.set(self, "metadata_integration", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         "projects/{projectNumber}/global/networks/{network_id}".
@@ -245,12 +245,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['MetastoreServiceNetworkConfigArgs']]:
         """
         The configuration specifying the network settings for the Dataproc Metastore service.
         Structure is documented below.
@@ -258,24 +258,24 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['MetastoreServiceNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The TCP port at which the metastore service is reached. Default: 9083.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -283,12 +283,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseChannel")
-    def release_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The release channel of the service. If unspecified, defaults to `STABLE`.
         Default value is `STABLE`.
@@ -297,12 +297,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "release_channel")
 
     @release_channel.setter
-    def release_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingConfig")
-    def scaling_config(self) -> Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']]:
+    def scaling_config(self) -> pulumi.Input[Optional['MetastoreServiceScalingConfigArgs']]:
         """
         Represents the scaling configuration of a metastore service.
         Structure is documented below.
@@ -310,12 +310,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "scaling_config")
 
     @scaling_config.setter
-    def scaling_config(self, value: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']]):
+    def scaling_config(self, value: pulumi.Input[Optional['MetastoreServiceScalingConfigArgs']]):
         pulumi.set(self, "scaling_config", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledBackup")
-    def scheduled_backup(self) -> Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']]:
+    def scheduled_backup(self) -> pulumi.Input[Optional['MetastoreServiceScheduledBackupArgs']]:
         """
         The configuration of scheduled backup for the metastore service.
         Structure is documented below.
@@ -323,12 +323,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "scheduled_backup")
 
     @scheduled_backup.setter
-    def scheduled_backup(self, value: Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']]):
+    def scheduled_backup(self, value: pulumi.Input[Optional['MetastoreServiceScheduledBackupArgs']]):
         pulumi.set(self, "scheduled_backup", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -337,12 +337,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of resource manager tags.
         Resource manager tag keys and values have the same definition as resource manager tags.
@@ -351,12 +351,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="telemetryConfig")
-    def telemetry_config(self) -> Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]:
+    def telemetry_config(self) -> pulumi.Input[Optional['MetastoreServiceTelemetryConfigArgs']]:
         """
         The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
         Structure is documented below.
@@ -364,12 +364,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "telemetry_config")
 
     @telemetry_config.setter
-    def telemetry_config(self, value: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]):
+    def telemetry_config(self, value: pulumi.Input[Optional['MetastoreServiceTelemetryConfigArgs']]):
         pulumi.set(self, "telemetry_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tier of the service.
         Possible values are: `DEVELOPER`, `ENTERPRISE`.
@@ -377,42 +377,42 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tier", value)
 
 
 @pulumi.input_type
 class _MetastoreServiceState:
     def __init__(__self__, *,
-                 artifact_gcs_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']] = None,
-                 endpoint_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']] = None,
-                 metadata_integration: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 release_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
-                 scheduled_backup: Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 artifact_gcs_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption_config: pulumi.Input[Optional['MetastoreServiceEncryptionConfigArgs']] = None,
+                 endpoint_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 hive_metastore_config: pulumi.Input[Optional['MetastoreServiceHiveMetastoreConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window: pulumi.Input[Optional['MetastoreServiceMaintenanceWindowArgs']] = None,
+                 metadata_integration: pulumi.Input[Optional['MetastoreServiceMetadataIntegrationArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional['MetastoreServiceNetworkConfigArgs']] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 release_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_config: pulumi.Input[Optional['MetastoreServiceScalingConfigArgs']] = None,
+                 scheduled_backup: pulumi.Input[Optional['MetastoreServiceScheduledBackupArgs']] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 telemetry_config: pulumi.Input[Optional['MetastoreServiceTelemetryConfigArgs']] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetastoreService resources.
 
@@ -533,31 +533,31 @@ class _MetastoreServiceState:
 
     @_builtins.property
     @pulumi.getter(name="artifactGcsUri")
-    def artifact_gcs_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def artifact_gcs_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
         """
         return pulumi.get(self, "artifact_gcs_uri")
 
     @artifact_gcs_uri.setter
-    def artifact_gcs_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def artifact_gcs_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "artifact_gcs_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time when the metastore service was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseType")
-    def database_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database type that the Metastore service stores its data.
         Default value is `MYSQL`.
@@ -566,36 +566,36 @@ class _MetastoreServiceState:
         return pulumi.get(self, "database_type")
 
     @database_type.setter
-    def database_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_type", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the dataproc metastore should be protected against accidental deletions.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']]:
+    def encryption_config(self) -> pulumi.Input[Optional['MetastoreServiceEncryptionConfigArgs']]:
         """
         Information used to configure the Dataproc Metastore service to encrypt
         customer data at rest.
@@ -604,24 +604,24 @@ class _MetastoreServiceState:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']]):
+    def encryption_config(self, value: pulumi.Input[Optional['MetastoreServiceEncryptionConfigArgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointUri")
-    def endpoint_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the endpoint used to access the metastore service.
         """
         return pulumi.get(self, "endpoint_uri")
 
     @endpoint_uri.setter
-    def endpoint_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="hiveMetastoreConfig")
-    def hive_metastore_config(self) -> Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']]:
+    def hive_metastore_config(self) -> pulumi.Input[Optional['MetastoreServiceHiveMetastoreConfigArgs']]:
         """
         Configuration information specific to running Hive metastore software as the metastore service.
         Structure is documented below.
@@ -629,12 +629,12 @@ class _MetastoreServiceState:
         return pulumi.get(self, "hive_metastore_config")
 
     @hive_metastore_config.setter
-    def hive_metastore_config(self, value: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']]):
+    def hive_metastore_config(self, value: pulumi.Input[Optional['MetastoreServiceHiveMetastoreConfigArgs']]):
         pulumi.set(self, "hive_metastore_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined labels for the metastore service.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -643,12 +643,12 @@ class _MetastoreServiceState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location where the metastore service should reside.
         The default value is `global`.
@@ -656,12 +656,12 @@ class _MetastoreServiceState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']]:
+    def maintenance_window(self) -> pulumi.Input[Optional['MetastoreServiceMaintenanceWindowArgs']]:
         """
         The one hour maintenance window of the metastore service.
         This specifies when the service can be restarted for maintenance purposes in UTC time.
@@ -671,12 +671,12 @@ class _MetastoreServiceState:
         return pulumi.get(self, "maintenance_window")
 
     @maintenance_window.setter
-    def maintenance_window(self, value: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']]):
+    def maintenance_window(self, value: pulumi.Input[Optional['MetastoreServiceMaintenanceWindowArgs']]):
         pulumi.set(self, "maintenance_window", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataIntegration")
-    def metadata_integration(self) -> Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]:
+    def metadata_integration(self) -> pulumi.Input[Optional['MetastoreServiceMetadataIntegrationArgs']]:
         """
         The setting that defines how metastore metadata should be integrated with external services and systems.
         Structure is documented below.
@@ -684,24 +684,24 @@ class _MetastoreServiceState:
         return pulumi.get(self, "metadata_integration")
 
     @metadata_integration.setter
-    def metadata_integration(self, value: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]):
+    def metadata_integration(self, value: pulumi.Input[Optional['MetastoreServiceMetadataIntegrationArgs']]):
         pulumi.set(self, "metadata_integration", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative resource name of the metastore service.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         "projects/{projectNumber}/global/networks/{network_id}".
@@ -709,12 +709,12 @@ class _MetastoreServiceState:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['MetastoreServiceNetworkConfigArgs']]:
         """
         The configuration specifying the network settings for the Dataproc Metastore service.
         Structure is documented below.
@@ -722,24 +722,24 @@ class _MetastoreServiceState:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['MetastoreServiceNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The TCP port at which the metastore service is reached. Default: 9083.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -747,12 +747,12 @@ class _MetastoreServiceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -760,12 +760,12 @@ class _MetastoreServiceState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseChannel")
-    def release_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The release channel of the service. If unspecified, defaults to `STABLE`.
         Default value is `STABLE`.
@@ -774,12 +774,12 @@ class _MetastoreServiceState:
         return pulumi.get(self, "release_channel")
 
     @release_channel.setter
-    def release_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingConfig")
-    def scaling_config(self) -> Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']]:
+    def scaling_config(self) -> pulumi.Input[Optional['MetastoreServiceScalingConfigArgs']]:
         """
         Represents the scaling configuration of a metastore service.
         Structure is documented below.
@@ -787,12 +787,12 @@ class _MetastoreServiceState:
         return pulumi.get(self, "scaling_config")
 
     @scaling_config.setter
-    def scaling_config(self, value: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']]):
+    def scaling_config(self, value: pulumi.Input[Optional['MetastoreServiceScalingConfigArgs']]):
         pulumi.set(self, "scaling_config", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledBackup")
-    def scheduled_backup(self) -> Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']]:
+    def scheduled_backup(self) -> pulumi.Input[Optional['MetastoreServiceScheduledBackupArgs']]:
         """
         The configuration of scheduled backup for the metastore service.
         Structure is documented below.
@@ -800,12 +800,12 @@ class _MetastoreServiceState:
         return pulumi.get(self, "scheduled_backup")
 
     @scheduled_backup.setter
-    def scheduled_backup(self, value: Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']]):
+    def scheduled_backup(self, value: pulumi.Input[Optional['MetastoreServiceScheduledBackupArgs']]):
         pulumi.set(self, "scheduled_backup", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -814,36 +814,36 @@ class _MetastoreServiceState:
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of the metastore service.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateMessage")
-    def state_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional information about the current state of the metastore service, if available.
         """
         return pulumi.get(self, "state_message")
 
     @state_message.setter
-    def state_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state_message", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of resource manager tags.
         Resource manager tag keys and values have the same definition as resource manager tags.
@@ -852,12 +852,12 @@ class _MetastoreServiceState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="telemetryConfig")
-    def telemetry_config(self) -> Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]:
+    def telemetry_config(self) -> pulumi.Input[Optional['MetastoreServiceTelemetryConfigArgs']]:
         """
         The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
         Structure is documented below.
@@ -865,12 +865,12 @@ class _MetastoreServiceState:
         return pulumi.get(self, "telemetry_config")
 
     @telemetry_config.setter
-    def telemetry_config(self, value: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]):
+    def telemetry_config(self, value: pulumi.Input[Optional['MetastoreServiceTelemetryConfigArgs']]):
         pulumi.set(self, "telemetry_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tier of the service.
         Possible values are: `DEVELOPER`, `ENTERPRISE`.
@@ -878,31 +878,31 @@ class _MetastoreServiceState:
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tier", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The globally unique resource identifier of the metastore service.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time when the metastore service was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -912,25 +912,25 @@ class MetastoreService(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_config: Optional[pulumi.Input[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']]] = None,
-                 hive_metastore_config: Optional[pulumi.Input[Union['MetastoreServiceHiveMetastoreConfigArgs', 'MetastoreServiceHiveMetastoreConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window: Optional[pulumi.Input[Union['MetastoreServiceMaintenanceWindowArgs', 'MetastoreServiceMaintenanceWindowArgsDict']]] = None,
-                 metadata_integration: Optional[pulumi.Input[Union['MetastoreServiceMetadataIntegrationArgs', 'MetastoreServiceMetadataIntegrationArgsDict']]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input[Union['MetastoreServiceNetworkConfigArgs', 'MetastoreServiceNetworkConfigArgsDict']]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_config: Optional[pulumi.Input[Union['MetastoreServiceScalingConfigArgs', 'MetastoreServiceScalingConfigArgsDict']]] = None,
-                 scheduled_backup: Optional[pulumi.Input[Union['MetastoreServiceScheduledBackupArgs', 'MetastoreServiceScheduledBackupArgsDict']]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 telemetry_config: Optional[pulumi.Input[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']]] = None,
+                 hive_metastore_config: pulumi.Input[Optional[Union['MetastoreServiceHiveMetastoreConfigArgs', 'MetastoreServiceHiveMetastoreConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window: pulumi.Input[Optional[Union['MetastoreServiceMaintenanceWindowArgs', 'MetastoreServiceMaintenanceWindowArgsDict']]] = None,
+                 metadata_integration: pulumi.Input[Optional[Union['MetastoreServiceMetadataIntegrationArgs', 'MetastoreServiceMetadataIntegrationArgsDict']]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional[Union['MetastoreServiceNetworkConfigArgs', 'MetastoreServiceNetworkConfigArgsDict']]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_config: pulumi.Input[Optional[Union['MetastoreServiceScalingConfigArgs', 'MetastoreServiceScalingConfigArgsDict']]] = None,
+                 scheduled_backup: pulumi.Input[Optional[Union['MetastoreServiceScheduledBackupArgs', 'MetastoreServiceScheduledBackupArgsDict']]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 telemetry_config: pulumi.Input[Optional[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A managed metastore service that serves metadata queries.
@@ -1098,7 +1098,7 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             },
             scaling_config={
-                "scaling_factor": 2,
+                "scaling_factor": float(2),
             })
         ```
         ### Dataproc Metastore Service Scheduled Backup
@@ -1149,7 +1149,7 @@ class MetastoreService(pulumi.CustomResource):
                 "autoscaling_config": {
                     "autoscaling_enabled": True,
                     "limit_config": {
-                        "max_scaling_factor": 1,
+                        "max_scaling_factor": float(1),
                     },
                 },
             })
@@ -1172,7 +1172,7 @@ class MetastoreService(pulumi.CustomResource):
                     "autoscaling_enabled": True,
                     "limit_config": {
                         "min_scaling_factor": 0.1,
-                        "max_scaling_factor": 1,
+                        "max_scaling_factor": float(1),
                     },
                 },
             })
@@ -1455,7 +1455,7 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             },
             scaling_config={
-                "scaling_factor": 2,
+                "scaling_factor": float(2),
             })
         ```
         ### Dataproc Metastore Service Scheduled Backup
@@ -1506,7 +1506,7 @@ class MetastoreService(pulumi.CustomResource):
                 "autoscaling_config": {
                     "autoscaling_enabled": True,
                     "limit_config": {
-                        "max_scaling_factor": 1,
+                        "max_scaling_factor": float(1),
                     },
                 },
             })
@@ -1529,7 +1529,7 @@ class MetastoreService(pulumi.CustomResource):
                     "autoscaling_enabled": True,
                     "limit_config": {
                         "min_scaling_factor": 0.1,
-                        "max_scaling_factor": 1,
+                        "max_scaling_factor": float(1),
                     },
                 },
             })
@@ -1608,25 +1608,25 @@ class MetastoreService(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_config: Optional[pulumi.Input[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']]] = None,
-                 hive_metastore_config: Optional[pulumi.Input[Union['MetastoreServiceHiveMetastoreConfigArgs', 'MetastoreServiceHiveMetastoreConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window: Optional[pulumi.Input[Union['MetastoreServiceMaintenanceWindowArgs', 'MetastoreServiceMaintenanceWindowArgsDict']]] = None,
-                 metadata_integration: Optional[pulumi.Input[Union['MetastoreServiceMetadataIntegrationArgs', 'MetastoreServiceMetadataIntegrationArgsDict']]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input[Union['MetastoreServiceNetworkConfigArgs', 'MetastoreServiceNetworkConfigArgsDict']]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_config: Optional[pulumi.Input[Union['MetastoreServiceScalingConfigArgs', 'MetastoreServiceScalingConfigArgsDict']]] = None,
-                 scheduled_backup: Optional[pulumi.Input[Union['MetastoreServiceScheduledBackupArgs', 'MetastoreServiceScheduledBackupArgsDict']]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 telemetry_config: Optional[pulumi.Input[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']]] = None,
+                 hive_metastore_config: pulumi.Input[Optional[Union['MetastoreServiceHiveMetastoreConfigArgs', 'MetastoreServiceHiveMetastoreConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window: pulumi.Input[Optional[Union['MetastoreServiceMaintenanceWindowArgs', 'MetastoreServiceMaintenanceWindowArgsDict']]] = None,
+                 metadata_integration: pulumi.Input[Optional[Union['MetastoreServiceMetadataIntegrationArgs', 'MetastoreServiceMetadataIntegrationArgsDict']]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional[Union['MetastoreServiceNetworkConfigArgs', 'MetastoreServiceNetworkConfigArgsDict']]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_config: pulumi.Input[Optional[Union['MetastoreServiceScalingConfigArgs', 'MetastoreServiceScalingConfigArgsDict']]] = None,
+                 scheduled_backup: pulumi.Input[Optional[Union['MetastoreServiceScheduledBackupArgs', 'MetastoreServiceScheduledBackupArgsDict']]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 telemetry_config: pulumi.Input[Optional[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1677,35 +1677,35 @@ class MetastoreService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            artifact_gcs_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            database_type: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_config: Optional[pulumi.Input[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']]] = None,
-            endpoint_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            hive_metastore_config: Optional[pulumi.Input[Union['MetastoreServiceHiveMetastoreConfigArgs', 'MetastoreServiceHiveMetastoreConfigArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance_window: Optional[pulumi.Input[Union['MetastoreServiceMaintenanceWindowArgs', 'MetastoreServiceMaintenanceWindowArgsDict']]] = None,
-            metadata_integration: Optional[pulumi.Input[Union['MetastoreServiceMetadataIntegrationArgs', 'MetastoreServiceMetadataIntegrationArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            network_config: Optional[pulumi.Input[Union['MetastoreServiceNetworkConfigArgs', 'MetastoreServiceNetworkConfigArgsDict']]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            release_channel: Optional[pulumi.Input[_builtins.str]] = None,
-            scaling_config: Optional[pulumi.Input[Union['MetastoreServiceScalingConfigArgs', 'MetastoreServiceScalingConfigArgsDict']]] = None,
-            scheduled_backup: Optional[pulumi.Input[Union['MetastoreServiceScheduledBackupArgs', 'MetastoreServiceScheduledBackupArgsDict']]] = None,
-            service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            state_message: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            telemetry_config: Optional[pulumi.Input[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']]] = None,
-            tier: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'MetastoreService':
+            artifact_gcs_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            database_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_config: pulumi.Input[Optional[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']]] = None,
+            endpoint_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            hive_metastore_config: pulumi.Input[Optional[Union['MetastoreServiceHiveMetastoreConfigArgs', 'MetastoreServiceHiveMetastoreConfigArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_window: pulumi.Input[Optional[Union['MetastoreServiceMaintenanceWindowArgs', 'MetastoreServiceMaintenanceWindowArgsDict']]] = None,
+            metadata_integration: pulumi.Input[Optional[Union['MetastoreServiceMetadataIntegrationArgs', 'MetastoreServiceMetadataIntegrationArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['MetastoreServiceNetworkConfigArgs', 'MetastoreServiceNetworkConfigArgsDict']]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            release_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_config: pulumi.Input[Optional[Union['MetastoreServiceScalingConfigArgs', 'MetastoreServiceScalingConfigArgsDict']]] = None,
+            scheduled_backup: pulumi.Input[Optional[Union['MetastoreServiceScheduledBackupArgs', 'MetastoreServiceScheduledBackupArgsDict']]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_message: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            telemetry_config: pulumi.Input[Optional[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']]] = None,
+            tier: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'MetastoreService':
         """
         Get an existing MetastoreService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

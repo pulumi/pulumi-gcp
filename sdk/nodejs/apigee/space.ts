@@ -165,27 +165,27 @@ export interface SpaceState {
     /**
      * Create timestamp of the space.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Space.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Identifier. Id of the space. This field is used as the resource name, and must follow AIP-122 guidelines.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee Space, in the format `organizations/{{org_name}}`.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Space ID of the Apigee Space.
      */
-    spaceId?: pulumi.Input<string>;
+    spaceId?: pulumi.Input<string | undefined>;
     /**
      * Last modified timestamp of the space.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**

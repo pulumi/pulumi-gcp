@@ -174,9 +174,9 @@ def get_membership(location: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'))
-def get_membership_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                          membership_id: Optional[pulumi.Input[_builtins.str]] = None,
-                          project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_membership_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                          membership_id: pulumi.Input[Optional[_builtins.str]] = None,
+                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMembershipResult]:
     """
     Retrieves the details of a specific GKE Hub Membership. Use this data source to retrieve the membership's configuration and state.

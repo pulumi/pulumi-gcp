@@ -63,7 +63,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+//			servicenetworking2, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //			})
 //			if err != nil {
@@ -73,7 +73,7 @@ import (
 //				Name:                  pulumi.String("my-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				servicenetworking,
+//				servicenetworking2,
 //			}))
 //			if err != nil {
 //				return err
@@ -95,7 +95,7 @@ import (
 //					workerRange.Name,
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				servicenetworking,
+//				servicenetworking2,
 //			}))
 //			if err != nil {
 //				return err

@@ -112,7 +112,7 @@ def get_fhir_store_iam_policy(fhir_store_id: Optional[_builtins.str] = None,
         fhir_store_id=pulumi.get(__ret__, 'fhir_store_id'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-def get_fhir_store_iam_policy_output(fhir_store_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_fhir_store_iam_policy_output(fhir_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFhirStoreIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.

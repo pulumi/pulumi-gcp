@@ -249,18 +249,18 @@ export interface AgentState {
      * * API_VERSION_V2_BETA_1: V2beta1 API.
      * Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
      */
-    apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string | undefined>;
     /**
      * The URI of the agent's avatar, which are used throughout the Dialogflow console. When an image URL is entered
      * into this field, the Dialogflow will save the image in the backend. The address of the backend image returned
      * from the API will be shown in the [avatarUriBackend] field.
      */
-    avatarUri?: pulumi.Input<string>;
+    avatarUri?: pulumi.Input<string | undefined>;
     /**
      * The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
      * the [avatarUri] field can be used.
      */
-    avatarUriBackend?: pulumi.Input<string>;
+    avatarUriBackend?: pulumi.Input<string | undefined>;
     /**
      * To filter out false positive results and still get variety in matched natural language inputs for your agent,
      * you can tune the machine learning classification threshold. If the returned score value is less than the threshold
@@ -268,24 +268,24 @@ export interface AgentState {
      * triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the
      * default of 0.3 is used.
      */
-    classificationThreshold?: pulumi.Input<number>;
+    classificationThreshold?: pulumi.Input<number | undefined>;
     /**
      * The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
      * for a list of the currently supported language codes. This field cannot be updated after creation.
      */
-    defaultLanguageCode?: pulumi.Input<string>;
+    defaultLanguageCode?: pulumi.Input<string | undefined>;
     /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of this agent.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Determines whether this agent should log conversation queries.
      */
-    enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean | undefined>;
     /**
      * Determines how intents are detected from user queries.
      * * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
@@ -294,16 +294,16 @@ export interface AgentState {
      * using @sys.any or very large developer entities.
      * Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      */
-    matchMode?: pulumi.Input<string>;
+    matchMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The list of all languages supported by this agent (except for the defaultLanguageCode).
      */
-    supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The agent tier. If not specified, TIER_STANDARD is assumed.
      * * TIER_STANDARD: Standard tier.
@@ -312,12 +312,12 @@ export interface AgentState {
      * NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
      * the the provider state and Dialogflow if the agent tier is changed outside of the provider.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -333,13 +333,13 @@ export interface AgentArgs {
      * * API_VERSION_V2_BETA_1: V2beta1 API.
      * Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
      */
-    apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string | undefined>;
     /**
      * The URI of the agent's avatar, which are used throughout the Dialogflow console. When an image URL is entered
      * into this field, the Dialogflow will save the image in the backend. The address of the backend image returned
      * from the API will be shown in the [avatarUriBackend] field.
      */
-    avatarUri?: pulumi.Input<string>;
+    avatarUri?: pulumi.Input<string | undefined>;
     /**
      * To filter out false positive results and still get variety in matched natural language inputs for your agent,
      * you can tune the machine learning classification threshold. If the returned score value is less than the threshold
@@ -347,7 +347,7 @@ export interface AgentArgs {
      * triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the
      * default of 0.3 is used.
      */
-    classificationThreshold?: pulumi.Input<number>;
+    classificationThreshold?: pulumi.Input<number | undefined>;
     /**
      * The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
      * for a list of the currently supported language codes. This field cannot be updated after creation.
@@ -356,7 +356,7 @@ export interface AgentArgs {
     /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of this agent.
      */
@@ -364,7 +364,7 @@ export interface AgentArgs {
     /**
      * Determines whether this agent should log conversation queries.
      */
-    enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean | undefined>;
     /**
      * Determines how intents are detected from user queries.
      * * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
@@ -373,16 +373,16 @@ export interface AgentArgs {
      * using @sys.any or very large developer entities.
      * Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      */
-    matchMode?: pulumi.Input<string>;
+    matchMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The list of all languages supported by this agent (except for the defaultLanguageCode).
      */
-    supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The agent tier. If not specified, TIER_STANDARD is assumed.
      * * TIER_STANDARD: Standard tier.
@@ -391,7 +391,7 @@ export interface AgentArgs {
      * NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
      * the the provider state and Dialogflow if the agent tier is changed outside of the provider.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.

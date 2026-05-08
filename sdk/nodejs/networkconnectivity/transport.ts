@@ -267,97 +267,97 @@ export interface TransportState {
     /**
      * Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
      */
-    adminEnabled?: pulumi.Input<boolean>;
+    adminEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
      */
-    advertisedRoutes?: pulumi.Input<pulumi.Input<string>[]>;
+    advertisedRoutes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      */
-    autoAccept?: pulumi.Input<boolean>;
+    autoAccept?: pulumi.Input<boolean | undefined>;
     /**
      * Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
      */
-    bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [Output only] Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state.
      */
-    generatedActivationKey?: pulumi.Input<string>;
+    generatedActivationKey?: pulumi.Input<string | undefined>;
     /**
      * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      */
-    hub?: pulumi.Input<string>;
+    hub?: pulumi.Input<string | undefined>;
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [Output only] The maximum transmission unit (MTU) of a packet that can be sent over this transport.
      */
-    mtuLimit?: pulumi.Input<number>;
+    mtuLimit?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource, see google.aip.dev/122 for resource naming.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * VPC Network URI that was created for the VPC Peering connection to the provided `network`. If VPC Peering is disconnected, this can be used to re-establish.
      */
-    peeringNetwork?: pulumi.Input<string>;
+    peeringNetwork?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
      */
-    providedActivationKey?: pulumi.Input<string>;
+    providedActivationKey?: pulumi.Input<string | undefined>;
     /**
      * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      */
-    pscRoutingEnabled?: pulumi.Input<boolean>;
+    pscRoutingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of this resource. This is required to construct the resource name, but is not sent to the API since the region is already contained in the parent field.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The user supplied account id for the CSP associated with the remote profile.
      */
-    remoteAccountId?: pulumi.Input<string>;
+    remoteAccountId?: pulumi.Input<string | undefined>;
     /**
      * Resource URL of the remoteTransportProfile that this Transport is
      * connecting to.
      */
-    remoteProfile?: pulumi.Input<string>;
+    remoteProfile?: pulumi.Input<string | undefined>;
     /**
      * IP version stack for the established connectivity.
      * Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
      */
-    stackType?: pulumi.Input<string>;
+    stackType?: pulumi.Input<string | undefined>;
     /**
      * [Output Only] State of the underlying connectivity.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -367,41 +367,41 @@ export interface TransportArgs {
     /**
      * Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
      */
-    adminEnabled?: pulumi.Input<boolean>;
+    adminEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
      */
-    advertisedRoutes?: pulumi.Input<pulumi.Input<string>[]>;
+    advertisedRoutes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      */
-    autoAccept?: pulumi.Input<boolean>;
+    autoAccept?: pulumi.Input<boolean | undefined>;
     /**
      * Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
      */
-    bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      */
-    hub?: pulumi.Input<string>;
+    hub?: pulumi.Input<string | undefined>;
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [Output only] The maximum transmission unit (MTU) of a packet that can be sent over this transport.
      */
-    mtuLimit?: pulumi.Input<number>;
+    mtuLimit?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource, see google.aip.dev/122 for resource naming.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
      */
@@ -410,15 +410,15 @@ export interface TransportArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
      */
-    providedActivationKey?: pulumi.Input<string>;
+    providedActivationKey?: pulumi.Input<string | undefined>;
     /**
      * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      */
-    pscRoutingEnabled?: pulumi.Input<boolean>;
+    pscRoutingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The region of this resource. This is required to construct the resource name, but is not sent to the API since the region is already contained in the parent field.
      */
@@ -426,7 +426,7 @@ export interface TransportArgs {
     /**
      * The user supplied account id for the CSP associated with the remote profile.
      */
-    remoteAccountId?: pulumi.Input<string>;
+    remoteAccountId?: pulumi.Input<string | undefined>;
     /**
      * Resource URL of the remoteTransportProfile that this Transport is
      * connecting to.
@@ -436,5 +436,5 @@ export interface TransportArgs {
      * IP version stack for the established connectivity.
      * Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
      */
-    stackType?: pulumi.Input<string>;
+    stackType?: pulumi.Input<string | undefined>;
 }

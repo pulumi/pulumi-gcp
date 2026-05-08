@@ -23,14 +23,14 @@ class BackupPlanArgs:
     def __init__(__self__, *,
                  cluster: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 backup_config: Optional[pulumi.Input['BackupPlanBackupConfigArgs']] = None,
-                 backup_schedule: Optional[pulumi.Input['BackupPlanBackupScheduleArgs']] = None,
-                 deactivated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']] = None):
+                 backup_config: pulumi.Input[Optional['BackupPlanBackupConfigArgs']] = None,
+                 backup_schedule: pulumi.Input[Optional['BackupPlanBackupScheduleArgs']] = None,
+                 deactivated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_policy: pulumi.Input[Optional['BackupPlanRetentionPolicyArgs']] = None):
         """
         The set of arguments for constructing a BackupPlan resource.
 
@@ -102,7 +102,7 @@ class BackupPlanArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupConfig")
-    def backup_config(self) -> Optional[pulumi.Input['BackupPlanBackupConfigArgs']]:
+    def backup_config(self) -> pulumi.Input[Optional['BackupPlanBackupConfigArgs']]:
         """
         Defines the configuration of Backups created via this BackupPlan.
         Structure is documented below.
@@ -110,12 +110,12 @@ class BackupPlanArgs:
         return pulumi.get(self, "backup_config")
 
     @backup_config.setter
-    def backup_config(self, value: Optional[pulumi.Input['BackupPlanBackupConfigArgs']]):
+    def backup_config(self, value: pulumi.Input[Optional['BackupPlanBackupConfigArgs']]):
         pulumi.set(self, "backup_config", value)
 
     @_builtins.property
     @pulumi.getter(name="backupSchedule")
-    def backup_schedule(self) -> Optional[pulumi.Input['BackupPlanBackupScheduleArgs']]:
+    def backup_schedule(self) -> pulumi.Input[Optional['BackupPlanBackupScheduleArgs']]:
         """
         Defines a schedule for automatic Backup creation via this BackupPlan.
         Structure is documented below.
@@ -123,12 +123,12 @@ class BackupPlanArgs:
         return pulumi.get(self, "backup_schedule")
 
     @backup_schedule.setter
-    def backup_schedule(self, value: Optional[pulumi.Input['BackupPlanBackupScheduleArgs']]):
+    def backup_schedule(self, value: pulumi.Input[Optional['BackupPlanBackupScheduleArgs']]):
         pulumi.set(self, "backup_schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def deactivated(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deactivated(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This flag indicates whether this BackupPlan has been deactivated.
         Setting this field to True locks the BackupPlan such that no further updates will be allowed
@@ -138,24 +138,24 @@ class BackupPlanArgs:
         return pulumi.get(self, "deactivated")
 
     @deactivated.setter
-    def deactivated(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deactivated(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deactivated", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User specified descriptive string for this BackupPlan.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Description: A set of custom labels supplied by the user.
         A list of key->value pairs.
@@ -167,24 +167,24 @@ class BackupPlanArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the BackupPlan Resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -192,12 +192,12 @@ class BackupPlanArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionPolicy")
-    def retention_policy(self) -> Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']]:
+    def retention_policy(self) -> pulumi.Input[Optional['BackupPlanRetentionPolicyArgs']]:
         """
         RetentionPolicy governs lifecycle of Backups created under this plan.
         Structure is documented below.
@@ -205,31 +205,31 @@ class BackupPlanArgs:
         return pulumi.get(self, "retention_policy")
 
     @retention_policy.setter
-    def retention_policy(self, value: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']]):
+    def retention_policy(self, value: pulumi.Input[Optional['BackupPlanRetentionPolicyArgs']]):
         pulumi.set(self, "retention_policy", value)
 
 
 @pulumi.input_type
 class _BackupPlanState:
     def __init__(__self__, *,
-                 backup_config: Optional[pulumi.Input['BackupPlanBackupConfigArgs']] = None,
-                 backup_schedule: Optional[pulumi.Input['BackupPlanBackupScheduleArgs']] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 deactivated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protected_namespace_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 protected_pod_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_config: pulumi.Input[Optional['BackupPlanBackupConfigArgs']] = None,
+                 backup_schedule: pulumi.Input[Optional['BackupPlanBackupScheduleArgs']] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 deactivated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected_namespace_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 protected_pod_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 retention_policy: pulumi.Input[Optional['BackupPlanRetentionPolicyArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupPlan resources.
 
@@ -309,7 +309,7 @@ class _BackupPlanState:
 
     @_builtins.property
     @pulumi.getter(name="backupConfig")
-    def backup_config(self) -> Optional[pulumi.Input['BackupPlanBackupConfigArgs']]:
+    def backup_config(self) -> pulumi.Input[Optional['BackupPlanBackupConfigArgs']]:
         """
         Defines the configuration of Backups created via this BackupPlan.
         Structure is documented below.
@@ -317,12 +317,12 @@ class _BackupPlanState:
         return pulumi.get(self, "backup_config")
 
     @backup_config.setter
-    def backup_config(self, value: Optional[pulumi.Input['BackupPlanBackupConfigArgs']]):
+    def backup_config(self, value: pulumi.Input[Optional['BackupPlanBackupConfigArgs']]):
         pulumi.set(self, "backup_config", value)
 
     @_builtins.property
     @pulumi.getter(name="backupSchedule")
-    def backup_schedule(self) -> Optional[pulumi.Input['BackupPlanBackupScheduleArgs']]:
+    def backup_schedule(self) -> pulumi.Input[Optional['BackupPlanBackupScheduleArgs']]:
         """
         Defines a schedule for automatic Backup creation via this BackupPlan.
         Structure is documented below.
@@ -330,24 +330,24 @@ class _BackupPlanState:
         return pulumi.get(self, "backup_schedule")
 
     @backup_schedule.setter
-    def backup_schedule(self, value: Optional[pulumi.Input['BackupPlanBackupScheduleArgs']]):
+    def backup_schedule(self, value: pulumi.Input[Optional['BackupPlanBackupScheduleArgs']]):
         pulumi.set(self, "backup_schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source cluster from which Backups will be created via this BackupPlan.
         """
         return pulumi.get(self, "cluster")
 
     @cluster.setter
-    def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter
-    def deactivated(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deactivated(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This flag indicates whether this BackupPlan has been deactivated.
         Setting this field to True locks the BackupPlan such that no further updates will be allowed
@@ -357,36 +357,36 @@ class _BackupPlanState:
         return pulumi.get(self, "deactivated")
 
     @deactivated.setter
-    def deactivated(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deactivated(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deactivated", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User specified descriptive string for this BackupPlan.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         etag is used for optimistic concurrency control as a way to help prevent simultaneous
         updates of a backup plan from overwriting each other. It is strongly suggested that
@@ -398,12 +398,12 @@ class _BackupPlanState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Description: A set of custom labels supplied by the user.
         A list of key->value pairs.
@@ -415,36 +415,36 @@ class _BackupPlanState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the Backup Plan.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the BackupPlan Resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -452,36 +452,36 @@ class _BackupPlanState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="protectedNamespaceCount")
-    def protected_namespace_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def protected_namespace_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
         """
         return pulumi.get(self, "protected_namespace_count")
 
     @protected_namespace_count.setter
-    def protected_namespace_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def protected_namespace_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "protected_namespace_count", value)
 
     @_builtins.property
     @pulumi.getter(name="protectedPodCount")
-    def protected_pod_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def protected_pod_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         """
         return pulumi.get(self, "protected_pod_count")
 
     @protected_pod_count.setter
-    def protected_pod_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def protected_pod_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "protected_pod_count", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -489,12 +489,12 @@ class _BackupPlanState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionPolicy")
-    def retention_policy(self) -> Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']]:
+    def retention_policy(self) -> pulumi.Input[Optional['BackupPlanRetentionPolicyArgs']]:
         """
         RetentionPolicy governs lifecycle of Backups created under this plan.
         Structure is documented below.
@@ -502,43 +502,43 @@ class _BackupPlanState:
         return pulumi.get(self, "retention_policy")
 
     @retention_policy.setter
-    def retention_policy(self, value: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']]):
+    def retention_policy(self, value: pulumi.Input[Optional['BackupPlanRetentionPolicyArgs']]):
         pulumi.set(self, "retention_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The State of the BackupPlan.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateReason")
-    def state_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Detailed description of why BackupPlan is in its current state.
         """
         return pulumi.get(self, "state_reason")
 
     @state_reason.setter
-    def state_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server generated, unique identifier of UUID format.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
@@ -548,16 +548,16 @@ class BackupPlan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_config: Optional[pulumi.Input[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']]] = None,
-                 backup_schedule: Optional[pulumi.Input[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']]] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 deactivated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_policy: Optional[pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']]] = None,
+                 backup_config: pulumi.Input[Optional[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']]] = None,
+                 backup_schedule: pulumi.Input[Optional[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']]] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 deactivated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_policy: pulumi.Input[Optional[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']]] = None,
                  __props__=None):
         """
         Represents a Backup Plan instance.
@@ -1435,16 +1435,16 @@ class BackupPlan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_config: Optional[pulumi.Input[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']]] = None,
-                 backup_schedule: Optional[pulumi.Input[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']]] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 deactivated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_policy: Optional[pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']]] = None,
+                 backup_config: pulumi.Input[Optional[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']]] = None,
+                 backup_schedule: pulumi.Input[Optional[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']]] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 deactivated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_policy: pulumi.Input[Optional[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1488,24 +1488,24 @@ class BackupPlan(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_config: Optional[pulumi.Input[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']]] = None,
-            backup_schedule: Optional[pulumi.Input[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']]] = None,
-            cluster: Optional[pulumi.Input[_builtins.str]] = None,
-            deactivated: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            protected_namespace_count: Optional[pulumi.Input[_builtins.int]] = None,
-            protected_pod_count: Optional[pulumi.Input[_builtins.int]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            retention_policy: Optional[pulumi.Input[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            state_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'BackupPlan':
+            backup_config: pulumi.Input[Optional[Union['BackupPlanBackupConfigArgs', 'BackupPlanBackupConfigArgsDict']]] = None,
+            backup_schedule: pulumi.Input[Optional[Union['BackupPlanBackupScheduleArgs', 'BackupPlanBackupScheduleArgsDict']]] = None,
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            deactivated: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protected_namespace_count: pulumi.Input[Optional[_builtins.int]] = None,
+            protected_pod_count: pulumi.Input[Optional[_builtins.int]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            retention_policy: pulumi.Input[Optional[Union['BackupPlanRetentionPolicyArgs', 'BackupPlanRetentionPolicyArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'BackupPlan':
         """
         Get an existing BackupPlan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

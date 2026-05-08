@@ -152,30 +152,30 @@ export interface ControlFolderIntelligenceConfigState {
     /**
      * Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
      */
-    editionConfig?: pulumi.Input<string>;
+    editionConfig?: pulumi.Input<string | undefined>;
     /**
      * The Intelligence config that is effective for the resource.
      * Structure is documented below.
      */
-    effectiveIntelligenceConfigs?: pulumi.Input<pulumi.Input<inputs.storage.ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>[]>;
+    effectiveIntelligenceConfigs?: pulumi.Input<pulumi.Input<inputs.storage.ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>[] | undefined>;
     /**
      * Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
      * Structure is documented below.
      */
-    filter?: pulumi.Input<inputs.storage.ControlFolderIntelligenceConfigFilter>;
+    filter?: pulumi.Input<inputs.storage.ControlFolderIntelligenceConfigFilter | undefined>;
     /**
      * Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The trial configuration of the Storage Intelligence resource.
      * Structure is documented below.
      */
-    trialConfigs?: pulumi.Input<pulumi.Input<inputs.storage.ControlFolderIntelligenceConfigTrialConfig>[]>;
+    trialConfigs?: pulumi.Input<pulumi.Input<inputs.storage.ControlFolderIntelligenceConfigTrialConfig>[] | undefined>;
     /**
      * The time at which the Storage Intelligence Config resource is last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,14 +185,14 @@ export interface ControlFolderIntelligenceConfigArgs {
     /**
      * Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
      */
-    editionConfig?: pulumi.Input<string>;
+    editionConfig?: pulumi.Input<string | undefined>;
     /**
      * Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
      * Structure is documented below.
      */
-    filter?: pulumi.Input<inputs.storage.ControlFolderIntelligenceConfigFilter>;
+    filter?: pulumi.Input<inputs.storage.ControlFolderIntelligenceConfigFilter | undefined>;
     /**
      * Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

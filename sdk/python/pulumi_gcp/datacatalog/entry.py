@@ -23,14 +23,14 @@ class EntryArgs:
     def __init__(__self__, *,
                  entry_group: pulumi.Input[_builtins.str],
                  entry_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcs_fileset_spec: Optional[pulumi.Input['EntryGcsFilesetSpecArgs']] = None,
-                 linked_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_specified_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_specified_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_fileset_spec: pulumi.Input[Optional['EntryGcsFilesetSpecArgs']] = None,
+                 linked_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_specified_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_specified_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Entry resource.
 
@@ -108,19 +108,19 @@ class EntryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Entry description, which can consist of several sentences or paragraphs that describe entry contents.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display information such as title and description. A short name to identify the entry,
         for example, "Analytics Data - Jan 2011".
@@ -128,12 +128,12 @@ class EntryArgs:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsFilesetSpec")
-    def gcs_fileset_spec(self) -> Optional[pulumi.Input['EntryGcsFilesetSpecArgs']]:
+    def gcs_fileset_spec(self) -> pulumi.Input[Optional['EntryGcsFilesetSpecArgs']]:
         """
         Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
         Structure is documented below.
@@ -141,12 +141,12 @@ class EntryArgs:
         return pulumi.get(self, "gcs_fileset_spec")
 
     @gcs_fileset_spec.setter
-    def gcs_fileset_spec(self, value: Optional[pulumi.Input['EntryGcsFilesetSpecArgs']]):
+    def gcs_fileset_spec(self, value: pulumi.Input[Optional['EntryGcsFilesetSpecArgs']]):
         pulumi.set(self, "gcs_fileset_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedResource")
-    def linked_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def linked_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource this metadata entry refers to.
         For Google Cloud Platform resources, linkedResource is the full name of the resource.
@@ -158,12 +158,12 @@ class EntryArgs:
         return pulumi.get(self, "linked_resource")
 
     @linked_resource.setter
-    def linked_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def linked_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "linked_resource", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
         attached to it. See
@@ -173,12 +173,12 @@ class EntryArgs:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the entry. Only used for Entries with types in the EntryType enum.
         Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
@@ -187,12 +187,12 @@ class EntryArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="userSpecifiedSystem")
-    def user_specified_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_specified_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field indicates the entry's source system that Data Catalog does not integrate with.
         userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
@@ -201,12 +201,12 @@ class EntryArgs:
         return pulumi.get(self, "user_specified_system")
 
     @user_specified_system.setter
-    def user_specified_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_specified_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_specified_system", value)
 
     @_builtins.property
     @pulumi.getter(name="userSpecifiedType")
-    def user_specified_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_specified_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
         When creating an entry, users should check the enum values first, if nothing matches the entry
@@ -217,27 +217,27 @@ class EntryArgs:
         return pulumi.get(self, "user_specified_type")
 
     @user_specified_type.setter
-    def user_specified_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_specified_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_specified_type", value)
 
 
 @pulumi.input_type
 class _EntryState:
     def __init__(__self__, *,
-                 bigquery_date_sharded_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryDateShardedSpecArgs']]]] = None,
-                 bigquery_table_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcs_fileset_spec: Optional[pulumi.Input['EntryGcsFilesetSpecArgs']] = None,
-                 integrated_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_specified_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_specified_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 bigquery_date_sharded_specs: pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryDateShardedSpecArgs']]]] = None,
+                 bigquery_table_specs: pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_fileset_spec: pulumi.Input[Optional['EntryGcsFilesetSpecArgs']] = None,
+                 integrated_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_specified_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_specified_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Entry resources.
 
@@ -310,7 +310,7 @@ class _EntryState:
 
     @_builtins.property
     @pulumi.getter(name="bigqueryDateShardedSpecs")
-    def bigquery_date_sharded_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryDateShardedSpecArgs']]]]:
+    def bigquery_date_sharded_specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryDateShardedSpecArgs']]]]:
         """
         Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
         Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
@@ -319,12 +319,12 @@ class _EntryState:
         return pulumi.get(self, "bigquery_date_sharded_specs")
 
     @bigquery_date_sharded_specs.setter
-    def bigquery_date_sharded_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryDateShardedSpecArgs']]]]):
+    def bigquery_date_sharded_specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryDateShardedSpecArgs']]]]):
         pulumi.set(self, "bigquery_date_sharded_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="bigqueryTableSpecs")
-    def bigquery_table_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecArgs']]]]:
+    def bigquery_table_specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecArgs']]]]:
         """
         Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
         Structure is documented below.
@@ -332,24 +332,24 @@ class _EntryState:
         return pulumi.get(self, "bigquery_table_specs")
 
     @bigquery_table_specs.setter
-    def bigquery_table_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecArgs']]]]):
+    def bigquery_table_specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecArgs']]]]):
         pulumi.set(self, "bigquery_table_specs", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Entry description, which can consist of several sentences or paragraphs that describe entry contents.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display information such as title and description. A short name to identify the entry,
         for example, "Analytics Data - Jan 2011".
@@ -357,36 +357,36 @@ class _EntryState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="entryGroup")
-    def entry_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the entry group this entry is in.
         """
         return pulumi.get(self, "entry_group")
 
     @entry_group.setter
-    def entry_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_group", value)
 
     @_builtins.property
     @pulumi.getter(name="entryId")
-    def entry_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the entry to create.
         """
         return pulumi.get(self, "entry_id")
 
     @entry_id.setter
-    def entry_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsFilesetSpec")
-    def gcs_fileset_spec(self) -> Optional[pulumi.Input['EntryGcsFilesetSpecArgs']]:
+    def gcs_fileset_spec(self) -> pulumi.Input[Optional['EntryGcsFilesetSpecArgs']]:
         """
         Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
         Structure is documented below.
@@ -394,24 +394,24 @@ class _EntryState:
         return pulumi.get(self, "gcs_fileset_spec")
 
     @gcs_fileset_spec.setter
-    def gcs_fileset_spec(self, value: Optional[pulumi.Input['EntryGcsFilesetSpecArgs']]):
+    def gcs_fileset_spec(self, value: pulumi.Input[Optional['EntryGcsFilesetSpecArgs']]):
         pulumi.set(self, "gcs_fileset_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="integratedSystem")
-    def integrated_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def integrated_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
         """
         return pulumi.get(self, "integrated_system")
 
     @integrated_system.setter
-    def integrated_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def integrated_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "integrated_system", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedResource")
-    def linked_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def linked_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource this metadata entry refers to.
         For Google Cloud Platform resources, linkedResource is the full name of the resource.
@@ -423,12 +423,12 @@ class _EntryState:
         return pulumi.get(self, "linked_resource")
 
     @linked_resource.setter
-    def linked_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def linked_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "linked_resource", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Data Catalog resource name of the entry in URL format.
         Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
@@ -437,12 +437,12 @@ class _EntryState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
         attached to it. See
@@ -452,12 +452,12 @@ class _EntryState:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the entry. Only used for Entries with types in the EntryType enum.
         Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
@@ -466,12 +466,12 @@ class _EntryState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="userSpecifiedSystem")
-    def user_specified_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_specified_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field indicates the entry's source system that Data Catalog does not integrate with.
         userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
@@ -480,12 +480,12 @@ class _EntryState:
         return pulumi.get(self, "user_specified_system")
 
     @user_specified_system.setter
-    def user_specified_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_specified_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_specified_system", value)
 
     @_builtins.property
     @pulumi.getter(name="userSpecifiedType")
-    def user_specified_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_specified_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
         When creating an entry, users should check the enum values first, if nothing matches the entry
@@ -496,7 +496,7 @@ class _EntryState:
         return pulumi.get(self, "user_specified_type")
 
     @user_specified_type.setter
-    def user_specified_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_specified_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_specified_type", value)
 
 
@@ -506,16 +506,16 @@ class Entry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcs_fileset_spec: Optional[pulumi.Input[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']]] = None,
-                 linked_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_specified_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_specified_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_fileset_spec: pulumi.Input[Optional[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']]] = None,
+                 linked_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_specified_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_specified_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Warning:** `datacatalog.Entry` is deprecated and will be removed in a future major release. Data Catalog is deprecated and will be discontinued on January 30, 2026. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
@@ -795,16 +795,16 @@ class Entry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcs_fileset_spec: Optional[pulumi.Input[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']]] = None,
-                 linked_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_specified_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_specified_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_fileset_spec: pulumi.Input[Optional[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']]] = None,
+                 linked_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_specified_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_specified_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -842,20 +842,20 @@ class Entry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigquery_date_sharded_specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryBigqueryDateShardedSpecArgs', 'EntryBigqueryDateShardedSpecArgsDict']]]]] = None,
-            bigquery_table_specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryBigqueryTableSpecArgs', 'EntryBigqueryTableSpecArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            entry_group: Optional[pulumi.Input[_builtins.str]] = None,
-            entry_id: Optional[pulumi.Input[_builtins.str]] = None,
-            gcs_fileset_spec: Optional[pulumi.Input[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']]] = None,
-            integrated_system: Optional[pulumi.Input[_builtins.str]] = None,
-            linked_resource: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            schema: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            user_specified_system: Optional[pulumi.Input[_builtins.str]] = None,
-            user_specified_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Entry':
+            bigquery_date_sharded_specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryBigqueryDateShardedSpecArgs', 'EntryBigqueryDateShardedSpecArgsDict']]]]] = None,
+            bigquery_table_specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryBigqueryTableSpecArgs', 'EntryBigqueryTableSpecArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_group: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gcs_fileset_spec: pulumi.Input[Optional[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']]] = None,
+            integrated_system: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_specified_system: pulumi.Input[Optional[_builtins.str]] = None,
+            user_specified_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Entry':
         """
         Get an existing Entry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

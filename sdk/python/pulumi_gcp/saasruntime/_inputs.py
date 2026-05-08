@@ -70,17 +70,17 @@ __all__ = [
 ]
 
 class ReleaseBlueprintArgsDict(TypedDict):
-    engine: NotRequired[pulumi.Input[_builtins.str]]
+    engine: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
     """
-    package: NotRequired[pulumi.Input[_builtins.str]]
+    package: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URI to a blueprint used by the Unit (required unless unitKind or release is
     set).
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Version metadata if present on the blueprint.
@@ -89,9 +89,9 @@ class ReleaseBlueprintArgsDict(TypedDict):
 @pulumi.input_type
 class ReleaseBlueprintArgs:
     def __init__(__self__, *,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 package: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 package: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] engine: (Output)
                Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
@@ -109,7 +109,7 @@ class ReleaseBlueprintArgs:
 
     @_builtins.property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
@@ -117,12 +117,12 @@ class ReleaseBlueprintArgs:
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter
-    def package(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI to a blueprint used by the Unit (required unless unitKind or release is
         set).
@@ -130,12 +130,12 @@ class ReleaseBlueprintArgs:
         return pulumi.get(self, "package")
 
     @package.setter
-    def package(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Version metadata if present on the blueprint.
@@ -143,7 +143,7 @@ class ReleaseBlueprintArgs:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -152,12 +152,12 @@ class ReleaseInputVariableArgsDict(TypedDict):
     """
     Name of the variable from actuation configs.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of a supported variable type. Supported types are STRING, INT, BOOL.
     Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String encoded value for the variable.
     """
@@ -166,8 +166,8 @@ class ReleaseInputVariableArgsDict(TypedDict):
 class ReleaseInputVariableArgs:
     def __init__(__self__, *,
                  variable: pulumi.Input[_builtins.str],
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] variable: Name of the variable from actuation configs.
         :param pulumi.Input[_builtins.str] type: Name of a supported variable type. Supported types are STRING, INT, BOOL.
@@ -194,7 +194,7 @@ class ReleaseInputVariableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of a supported variable type. Supported types are STRING, INT, BOOL.
         Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
@@ -202,19 +202,19 @@ class ReleaseInputVariableArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String encoded value for the variable.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -223,12 +223,12 @@ class ReleaseInputVariableDefaultArgsDict(TypedDict):
     """
     Name of the variable from actuation configs.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of a supported variable type. Supported types are STRING, INT, BOOL.
     Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String encoded value for the variable.
     """
@@ -237,8 +237,8 @@ class ReleaseInputVariableDefaultArgsDict(TypedDict):
 class ReleaseInputVariableDefaultArgs:
     def __init__(__self__, *,
                  variable: pulumi.Input[_builtins.str],
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] variable: Name of the variable from actuation configs.
         :param pulumi.Input[_builtins.str] type: Name of a supported variable type. Supported types are STRING, INT, BOOL.
@@ -265,7 +265,7 @@ class ReleaseInputVariableDefaultArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of a supported variable type. Supported types are STRING, INT, BOOL.
         Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
@@ -273,19 +273,19 @@ class ReleaseInputVariableDefaultArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String encoded value for the variable.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -294,12 +294,12 @@ class ReleaseOutputVariableArgsDict(TypedDict):
     """
     Name of the variable from actuation configs.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of a supported variable type. Supported types are STRING, INT, BOOL.
     Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String encoded value for the variable.
     """
@@ -308,8 +308,8 @@ class ReleaseOutputVariableArgsDict(TypedDict):
 class ReleaseOutputVariableArgs:
     def __init__(__self__, *,
                  variable: pulumi.Input[_builtins.str],
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] variable: Name of the variable from actuation configs.
         :param pulumi.Input[_builtins.str] type: Name of a supported variable type. Supported types are STRING, INT, BOOL.
@@ -336,7 +336,7 @@ class ReleaseOutputVariableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of a supported variable type. Supported types are STRING, INT, BOOL.
         Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
@@ -344,24 +344,24 @@ class ReleaseOutputVariableArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String encoded value for the variable.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class ReleaseReleaseRequirementsArgsDict(TypedDict):
-    upgradeable_from_releases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    upgradeable_from_releases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of releases from which a unit can be upgraded to this one
     (optional). If left empty no constraints will be applied. When provided,
@@ -372,7 +372,7 @@ class ReleaseReleaseRequirementsArgsDict(TypedDict):
 @pulumi.input_type
 class ReleaseReleaseRequirementsArgs:
     def __init__(__self__, *,
-                 upgradeable_from_releases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 upgradeable_from_releases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] upgradeable_from_releases: A list of releases from which a unit can be upgraded to this one
                (optional). If left empty no constraints will be applied. When provided,
@@ -384,7 +384,7 @@ class ReleaseReleaseRequirementsArgs:
 
     @_builtins.property
     @pulumi.getter(name="upgradeableFromReleases")
-    def upgradeable_from_releases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def upgradeable_from_releases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of releases from which a unit can be upgraded to this one
         (optional). If left empty no constraints will be applied. When provided,
@@ -394,17 +394,17 @@ class ReleaseReleaseRequirementsArgs:
         return pulumi.get(self, "upgradeable_from_releases")
 
     @upgradeable_from_releases.setter
-    def upgradeable_from_releases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def upgradeable_from_releases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "upgradeable_from_releases", value)
 
 
 class RolloutKindErrorBudgetArgsDict(TypedDict):
-    allowed_count: NotRequired[pulumi.Input[_builtins.int]]
+    allowed_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of failed units allowed in a location without pausing
     the rollout.
     """
-    allowed_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    allowed_percentage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum percentage of units allowed to fail (0, 100] within a location
     without pausing the rollout.
@@ -413,8 +413,8 @@ class RolloutKindErrorBudgetArgsDict(TypedDict):
 @pulumi.input_type
 class RolloutKindErrorBudgetArgs:
     def __init__(__self__, *,
-                 allowed_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 allowed_percentage: Optional[pulumi.Input[_builtins.int]] = None):
+                 allowed_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 allowed_percentage: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] allowed_count: The maximum number of failed units allowed in a location without pausing
                the rollout.
@@ -428,7 +428,7 @@ class RolloutKindErrorBudgetArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedCount")
-    def allowed_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def allowed_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of failed units allowed in a location without pausing
         the rollout.
@@ -436,12 +436,12 @@ class RolloutKindErrorBudgetArgs:
         return pulumi.get(self, "allowed_count")
 
     @allowed_count.setter
-    def allowed_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def allowed_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "allowed_count", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedPercentage")
-    def allowed_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def allowed_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum percentage of units allowed to fail (0, 100] within a location
         without pausing the rollout.
@@ -449,12 +449,12 @@ class RolloutKindErrorBudgetArgs:
         return pulumi.get(self, "allowed_percentage")
 
     @allowed_percentage.setter
-    def allowed_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def allowed_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "allowed_percentage", value)
 
 
 class SaaSLocationArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of location.
     """
@@ -462,7 +462,7 @@ class SaaSLocationArgsDict(TypedDict):
 @pulumi.input_type
 class SaaSLocationArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Name of location.
         """
@@ -471,14 +471,14 @@ class SaaSLocationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of location.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -611,12 +611,12 @@ class UnitConditionArgs:
 
 
 class UnitDependencyArgsDict(TypedDict):
-    alias: NotRequired[pulumi.Input[_builtins.str]]
+    alias: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Alias for the name of the dependency.
     """
-    unit: NotRequired[pulumi.Input[_builtins.str]]
+    unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A reference to the Unit object.
@@ -625,8 +625,8 @@ class UnitDependencyArgsDict(TypedDict):
 @pulumi.input_type
 class UnitDependencyArgs:
     def __init__(__self__, *,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] alias: (Output)
                Alias for the name of the dependency.
@@ -640,7 +640,7 @@ class UnitDependencyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Alias for the name of the dependency.
@@ -648,12 +648,12 @@ class UnitDependencyArgs:
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter
-    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A reference to the Unit object.
@@ -661,17 +661,17 @@ class UnitDependencyArgs:
         return pulumi.get(self, "unit")
 
     @unit.setter
-    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit", value)
 
 
 class UnitDependentArgsDict(TypedDict):
-    alias: NotRequired[pulumi.Input[_builtins.str]]
+    alias: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Alias for the name of the dependency.
     """
-    unit: NotRequired[pulumi.Input[_builtins.str]]
+    unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A reference to the Unit object.
@@ -680,8 +680,8 @@ class UnitDependentArgsDict(TypedDict):
 @pulumi.input_type
 class UnitDependentArgs:
     def __init__(__self__, *,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] alias: (Output)
                Alias for the name of the dependency.
@@ -695,7 +695,7 @@ class UnitDependentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Alias for the name of the dependency.
@@ -703,12 +703,12 @@ class UnitDependentArgs:
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter
-    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A reference to the Unit object.
@@ -716,7 +716,7 @@ class UnitDependentArgs:
         return pulumi.get(self, "unit")
 
     @unit.setter
-    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit", value)
 
 
@@ -725,7 +725,7 @@ class UnitInputVariableArgsDict(TypedDict):
     """
     Name of the variable from actuation configs.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of a supported variable type. Supported types are string, int, bool.
     Possible values:
@@ -733,7 +733,7 @@ class UnitInputVariableArgsDict(TypedDict):
     INT
     BOOL
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String encoded value for the variable.
     """
@@ -742,8 +742,8 @@ class UnitInputVariableArgsDict(TypedDict):
 class UnitInputVariableArgs:
     def __init__(__self__, *,
                  variable: pulumi.Input[_builtins.str],
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] variable: Name of the variable from actuation configs.
         :param pulumi.Input[_builtins.str] type: Name of a supported variable type. Supported types are string, int, bool.
@@ -773,7 +773,7 @@ class UnitInputVariableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of a supported variable type. Supported types are string, int, bool.
         Possible values:
@@ -784,19 +784,19 @@ class UnitInputVariableArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String encoded value for the variable.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -852,12 +852,12 @@ class UnitKindInputVariableMappingArgsDict(TypedDict):
     """
     name of the variable
     """
-    from_: NotRequired[pulumi.Input['UnitKindInputVariableMappingFromArgsDict']]
+    from_: NotRequired[pulumi.Input[Optional['UnitKindInputVariableMappingFromArgs']]]
     """
     Output variables whose values will be passed on to dependencies
     Structure is documented below.
     """
-    to: NotRequired[pulumi.Input['UnitKindInputVariableMappingToArgsDict']]
+    to: NotRequired[pulumi.Input[Optional['UnitKindInputVariableMappingToArgs']]]
     """
     Input variables whose values will be passed on to dependencies
     Structure is documented below.
@@ -867,8 +867,8 @@ class UnitKindInputVariableMappingArgsDict(TypedDict):
 class UnitKindInputVariableMappingArgs:
     def __init__(__self__, *,
                  variable: pulumi.Input[_builtins.str],
-                 from_: Optional[pulumi.Input['UnitKindInputVariableMappingFromArgs']] = None,
-                 to: Optional[pulumi.Input['UnitKindInputVariableMappingToArgs']] = None):
+                 from_: pulumi.Input[Optional['UnitKindInputVariableMappingFromArgs']] = None,
+                 to: pulumi.Input[Optional['UnitKindInputVariableMappingToArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] variable: name of the variable
         :param pulumi.Input['UnitKindInputVariableMappingFromArgs'] from_: Output variables whose values will be passed on to dependencies
@@ -896,7 +896,7 @@ class UnitKindInputVariableMappingArgs:
 
     @_builtins.property
     @pulumi.getter(name="from")
-    def from_(self) -> Optional[pulumi.Input['UnitKindInputVariableMappingFromArgs']]:
+    def from_(self) -> pulumi.Input[Optional['UnitKindInputVariableMappingFromArgs']]:
         """
         Output variables whose values will be passed on to dependencies
         Structure is documented below.
@@ -904,12 +904,12 @@ class UnitKindInputVariableMappingArgs:
         return pulumi.get(self, "from_")
 
     @from_.setter
-    def from_(self, value: Optional[pulumi.Input['UnitKindInputVariableMappingFromArgs']]):
+    def from_(self, value: pulumi.Input[Optional['UnitKindInputVariableMappingFromArgs']]):
         pulumi.set(self, "from_", value)
 
     @_builtins.property
     @pulumi.getter
-    def to(self) -> Optional[pulumi.Input['UnitKindInputVariableMappingToArgs']]:
+    def to(self) -> pulumi.Input[Optional['UnitKindInputVariableMappingToArgs']]:
         """
         Input variables whose values will be passed on to dependencies
         Structure is documented below.
@@ -917,7 +917,7 @@ class UnitKindInputVariableMappingArgs:
         return pulumi.get(self, "to")
 
     @to.setter
-    def to(self, value: Optional[pulumi.Input['UnitKindInputVariableMappingToArgs']]):
+    def to(self, value: pulumi.Input[Optional['UnitKindInputVariableMappingToArgs']]):
         pulumi.set(self, "to", value)
 
 
@@ -977,7 +977,7 @@ class UnitKindInputVariableMappingToArgsDict(TypedDict):
     """
     Name of the inputVariable on the dependency
     """
-    ignore_for_lookup: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_for_lookup: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Tells App Lifecycle Manager if this mapping should be used during lookup or not
     """
@@ -987,7 +987,7 @@ class UnitKindInputVariableMappingToArgs:
     def __init__(__self__, *,
                  dependency: pulumi.Input[_builtins.str],
                  input_variable: pulumi.Input[_builtins.str],
-                 ignore_for_lookup: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ignore_for_lookup: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] dependency: Alias of the dependency that the inputVariable will pass its value to
         :param pulumi.Input[_builtins.str] input_variable: Name of the inputVariable on the dependency
@@ -1024,14 +1024,14 @@ class UnitKindInputVariableMappingToArgs:
 
     @_builtins.property
     @pulumi.getter(name="ignoreForLookup")
-    def ignore_for_lookup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_for_lookup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Tells App Lifecycle Manager if this mapping should be used during lookup or not
         """
         return pulumi.get(self, "ignore_for_lookup")
 
     @ignore_for_lookup.setter
-    def ignore_for_lookup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_for_lookup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_for_lookup", value)
 
 
@@ -1040,12 +1040,12 @@ class UnitKindOutputVariableMappingArgsDict(TypedDict):
     """
     name of the variable
     """
-    from_: NotRequired[pulumi.Input['UnitKindOutputVariableMappingFromArgsDict']]
+    from_: NotRequired[pulumi.Input[Optional['UnitKindOutputVariableMappingFromArgs']]]
     """
     Output variables whose values will be passed on to dependencies
     Structure is documented below.
     """
-    to: NotRequired[pulumi.Input['UnitKindOutputVariableMappingToArgsDict']]
+    to: NotRequired[pulumi.Input[Optional['UnitKindOutputVariableMappingToArgs']]]
     """
     Input variables whose values will be passed on to dependencies
     Structure is documented below.
@@ -1055,8 +1055,8 @@ class UnitKindOutputVariableMappingArgsDict(TypedDict):
 class UnitKindOutputVariableMappingArgs:
     def __init__(__self__, *,
                  variable: pulumi.Input[_builtins.str],
-                 from_: Optional[pulumi.Input['UnitKindOutputVariableMappingFromArgs']] = None,
-                 to: Optional[pulumi.Input['UnitKindOutputVariableMappingToArgs']] = None):
+                 from_: pulumi.Input[Optional['UnitKindOutputVariableMappingFromArgs']] = None,
+                 to: pulumi.Input[Optional['UnitKindOutputVariableMappingToArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] variable: name of the variable
         :param pulumi.Input['UnitKindOutputVariableMappingFromArgs'] from_: Output variables whose values will be passed on to dependencies
@@ -1084,7 +1084,7 @@ class UnitKindOutputVariableMappingArgs:
 
     @_builtins.property
     @pulumi.getter(name="from")
-    def from_(self) -> Optional[pulumi.Input['UnitKindOutputVariableMappingFromArgs']]:
+    def from_(self) -> pulumi.Input[Optional['UnitKindOutputVariableMappingFromArgs']]:
         """
         Output variables whose values will be passed on to dependencies
         Structure is documented below.
@@ -1092,12 +1092,12 @@ class UnitKindOutputVariableMappingArgs:
         return pulumi.get(self, "from_")
 
     @from_.setter
-    def from_(self, value: Optional[pulumi.Input['UnitKindOutputVariableMappingFromArgs']]):
+    def from_(self, value: pulumi.Input[Optional['UnitKindOutputVariableMappingFromArgs']]):
         pulumi.set(self, "from_", value)
 
     @_builtins.property
     @pulumi.getter
-    def to(self) -> Optional[pulumi.Input['UnitKindOutputVariableMappingToArgs']]:
+    def to(self) -> pulumi.Input[Optional['UnitKindOutputVariableMappingToArgs']]:
         """
         Input variables whose values will be passed on to dependencies
         Structure is documented below.
@@ -1105,7 +1105,7 @@ class UnitKindOutputVariableMappingArgs:
         return pulumi.get(self, "to")
 
     @to.setter
-    def to(self, value: Optional[pulumi.Input['UnitKindOutputVariableMappingToArgs']]):
+    def to(self, value: pulumi.Input[Optional['UnitKindOutputVariableMappingToArgs']]):
         pulumi.set(self, "to", value)
 
 
@@ -1165,7 +1165,7 @@ class UnitKindOutputVariableMappingToArgsDict(TypedDict):
     """
     Name of the inputVariable on the dependency
     """
-    ignore_for_lookup: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_for_lookup: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Tells App Lifecycle Manager if this mapping should be used during lookup or not
     """
@@ -1175,7 +1175,7 @@ class UnitKindOutputVariableMappingToArgs:
     def __init__(__self__, *,
                  dependency: pulumi.Input[_builtins.str],
                  input_variable: pulumi.Input[_builtins.str],
-                 ignore_for_lookup: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ignore_for_lookup: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] dependency: Alias of the dependency that the inputVariable will pass its value to
         :param pulumi.Input[_builtins.str] input_variable: Name of the inputVariable on the dependency
@@ -1212,19 +1212,19 @@ class UnitKindOutputVariableMappingToArgs:
 
     @_builtins.property
     @pulumi.getter(name="ignoreForLookup")
-    def ignore_for_lookup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_for_lookup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Tells App Lifecycle Manager if this mapping should be used during lookup or not
         """
         return pulumi.get(self, "ignore_for_lookup")
 
     @ignore_for_lookup.setter
-    def ignore_for_lookup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_for_lookup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_for_lookup", value)
 
 
 class UnitMaintenanceArgsDict(TypedDict):
-    pinned_until_time: NotRequired[pulumi.Input[_builtins.str]]
+    pinned_until_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If present, it fixes the release on the unit until the given time; i.e.
     changes to the release field will be rejected. Rollouts should and will
@@ -1234,7 +1234,7 @@ class UnitMaintenanceArgsDict(TypedDict):
 @pulumi.input_type
 class UnitMaintenanceArgs:
     def __init__(__self__, *,
-                 pinned_until_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 pinned_until_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] pinned_until_time: If present, it fixes the release on the unit until the given time; i.e.
                changes to the release field will be rejected. Rollouts should and will
@@ -1245,7 +1245,7 @@ class UnitMaintenanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="pinnedUntilTime")
-    def pinned_until_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pinned_until_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If present, it fixes the release on the unit until the given time; i.e.
         changes to the release field will be rejected. Rollouts should and will
@@ -1254,27 +1254,27 @@ class UnitMaintenanceArgs:
         return pulumi.get(self, "pinned_until_time")
 
     @pinned_until_time.setter
-    def pinned_until_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pinned_until_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pinned_until_time", value)
 
 
 class UnitOperationConditionArgsDict(TypedDict):
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transited from one status to another.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human readable message indicating details about the last transition.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Brief reason for the condition's last transition.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Status of the condition.
@@ -1283,7 +1283,7 @@ class UnitOperationConditionArgsDict(TypedDict):
     STATUS_TRUE
     STATUS_FALSE
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Type of the condition.
@@ -1297,11 +1297,11 @@ class UnitOperationConditionArgsDict(TypedDict):
 @pulumi.input_type
 class UnitOperationConditionArgs:
     def __init__(__self__, *,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] last_transition_time: (Output)
                Last time the condition transited from one status to another.
@@ -1336,7 +1336,7 @@ class UnitOperationConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transited from one status to another.
@@ -1344,12 +1344,12 @@ class UnitOperationConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human readable message indicating details about the last transition.
@@ -1357,12 +1357,12 @@ class UnitOperationConditionArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Brief reason for the condition's last transition.
@@ -1370,12 +1370,12 @@ class UnitOperationConditionArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Status of the condition.
@@ -1387,12 +1387,12 @@ class UnitOperationConditionArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Type of the condition.
@@ -1405,7 +1405,7 @@ class UnitOperationConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -1419,12 +1419,12 @@ class UnitOperationDeprovisionArgs:
 
 
 class UnitOperationProvisionArgsDict(TypedDict):
-    input_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgsDict']]]]
+    input_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgs']]]]]
     """
     Set of input variables. Maximum 100. (optional)
     Structure is documented below.
     """
-    release: NotRequired[pulumi.Input[_builtins.str]]
+    release: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Reference to the Release object to use for the Unit. (optional).
     """
@@ -1432,8 +1432,8 @@ class UnitOperationProvisionArgsDict(TypedDict):
 @pulumi.input_type
 class UnitOperationProvisionArgs:
     def __init__(__self__, *,
-                 input_variables: Optional[pulumi.Input[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgs']]]] = None,
-                 release: Optional[pulumi.Input[_builtins.str]] = None):
+                 input_variables: pulumi.Input[Optional[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgs']]]] = None,
+                 release: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgs']]] input_variables: Set of input variables. Maximum 100. (optional)
                Structure is documented below.
@@ -1446,7 +1446,7 @@ class UnitOperationProvisionArgs:
 
     @_builtins.property
     @pulumi.getter(name="inputVariables")
-    def input_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgs']]]]:
+    def input_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgs']]]]:
         """
         Set of input variables. Maximum 100. (optional)
         Structure is documented below.
@@ -1454,19 +1454,19 @@ class UnitOperationProvisionArgs:
         return pulumi.get(self, "input_variables")
 
     @input_variables.setter
-    def input_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgs']]]]):
+    def input_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgs']]]]):
         pulumi.set(self, "input_variables", value)
 
     @_builtins.property
     @pulumi.getter
-    def release(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to the Release object to use for the Unit. (optional).
         """
         return pulumi.get(self, "release")
 
     @release.setter
-    def release(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release", value)
 
 
@@ -1475,7 +1475,7 @@ class UnitOperationProvisionInputVariableArgsDict(TypedDict):
     """
     Name of the variable from actuation configs.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of a supported variable type. Supported types are string, int, bool.
     Possible values:
@@ -1483,7 +1483,7 @@ class UnitOperationProvisionInputVariableArgsDict(TypedDict):
     INT
     BOOL
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String encoded value for the variable.
     """
@@ -1492,8 +1492,8 @@ class UnitOperationProvisionInputVariableArgsDict(TypedDict):
 class UnitOperationProvisionInputVariableArgs:
     def __init__(__self__, *,
                  variable: pulumi.Input[_builtins.str],
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] variable: Name of the variable from actuation configs.
         :param pulumi.Input[_builtins.str] type: Name of a supported variable type. Supported types are string, int, bool.
@@ -1523,7 +1523,7 @@ class UnitOperationProvisionInputVariableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of a supported variable type. Supported types are string, int, bool.
         Possible values:
@@ -1534,29 +1534,29 @@ class UnitOperationProvisionInputVariableArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String encoded value for the variable.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class UnitOperationUpgradeArgsDict(TypedDict):
-    input_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgsDict']]]]
+    input_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgs']]]]]
     """
     Set of input variables. Maximum 100. (optional)
     Structure is documented below.
     """
-    release: NotRequired[pulumi.Input[_builtins.str]]
+    release: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Reference to the Release object to use for the Unit. (optional).
     """
@@ -1564,8 +1564,8 @@ class UnitOperationUpgradeArgsDict(TypedDict):
 @pulumi.input_type
 class UnitOperationUpgradeArgs:
     def __init__(__self__, *,
-                 input_variables: Optional[pulumi.Input[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgs']]]] = None,
-                 release: Optional[pulumi.Input[_builtins.str]] = None):
+                 input_variables: pulumi.Input[Optional[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgs']]]] = None,
+                 release: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgs']]] input_variables: Set of input variables. Maximum 100. (optional)
                Structure is documented below.
@@ -1578,7 +1578,7 @@ class UnitOperationUpgradeArgs:
 
     @_builtins.property
     @pulumi.getter(name="inputVariables")
-    def input_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgs']]]]:
+    def input_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgs']]]]:
         """
         Set of input variables. Maximum 100. (optional)
         Structure is documented below.
@@ -1586,19 +1586,19 @@ class UnitOperationUpgradeArgs:
         return pulumi.get(self, "input_variables")
 
     @input_variables.setter
-    def input_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgs']]]]):
+    def input_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgs']]]]):
         pulumi.set(self, "input_variables", value)
 
     @_builtins.property
     @pulumi.getter
-    def release(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to the Release object to use for the Unit. (optional).
         """
         return pulumi.get(self, "release")
 
     @release.setter
-    def release(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release", value)
 
 
@@ -1607,7 +1607,7 @@ class UnitOperationUpgradeInputVariableArgsDict(TypedDict):
     """
     Name of the variable from actuation configs.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of a supported variable type. Supported types are string, int, bool.
     Possible values:
@@ -1615,7 +1615,7 @@ class UnitOperationUpgradeInputVariableArgsDict(TypedDict):
     INT
     BOOL
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String encoded value for the variable.
     """
@@ -1624,8 +1624,8 @@ class UnitOperationUpgradeInputVariableArgsDict(TypedDict):
 class UnitOperationUpgradeInputVariableArgs:
     def __init__(__self__, *,
                  variable: pulumi.Input[_builtins.str],
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] variable: Name of the variable from actuation configs.
         :param pulumi.Input[_builtins.str] type: Name of a supported variable type. Supported types are string, int, bool.
@@ -1655,7 +1655,7 @@ class UnitOperationUpgradeInputVariableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of a supported variable type. Supported types are string, int, bool.
         Possible values:
@@ -1666,19 +1666,19 @@ class UnitOperationUpgradeInputVariableArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String encoded value for the variable.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -1687,7 +1687,7 @@ class UnitOutputVariableArgsDict(TypedDict):
     """
     Name of the variable from actuation configs.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of a supported variable type. Supported types are string, int, bool.
     Possible values:
@@ -1695,7 +1695,7 @@ class UnitOutputVariableArgsDict(TypedDict):
     INT
     BOOL
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String encoded value for the variable.
     """
@@ -1704,8 +1704,8 @@ class UnitOutputVariableArgsDict(TypedDict):
 class UnitOutputVariableArgs:
     def __init__(__self__, *,
                  variable: pulumi.Input[_builtins.str],
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] variable: Name of the variable from actuation configs.
         :param pulumi.Input[_builtins.str] type: Name of a supported variable type. Supported types are string, int, bool.
@@ -1735,7 +1735,7 @@ class UnitOutputVariableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of a supported variable type. Supported types are string, int, bool.
         Possible values:
@@ -1746,19 +1746,19 @@ class UnitOutputVariableArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String encoded value for the variable.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 

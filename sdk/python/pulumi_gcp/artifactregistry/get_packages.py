@@ -139,10 +139,10 @@ def get_packages(filter: Optional[_builtins.str] = None,
         packages=pulumi.get(__ret__, 'packages'),
         project=pulumi.get(__ret__, 'project'),
         repository_id=pulumi.get(__ret__, 'repository_id'))
-def get_packages_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        location: Optional[pulumi.Input[_builtins.str]] = None,
-                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        repository_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_packages_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        location: pulumi.Input[Optional[_builtins.str]] = None,
+                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPackagesResult]:
     """
     Get information about Artifact Registry packages.

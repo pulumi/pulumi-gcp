@@ -106,5 +106,5 @@ export interface GetDefaultServiceAccountOutputArgs {
     /**
      * The project the unique service account was created for. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

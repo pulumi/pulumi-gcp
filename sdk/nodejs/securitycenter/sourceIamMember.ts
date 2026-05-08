@@ -135,23 +135,23 @@ export class SourceIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SourceIamMember resources.
  */
 export interface SourceIamMemberState {
-    condition?: pulumi.Input<inputs.securitycenter.SourceIamMemberCondition>;
-    etag?: pulumi.Input<string>;
-    member?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.securitycenter.SourceIamMemberCondition | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    member?: pulumi.Input<string | undefined>;
     /**
      * The organization whose Cloud Security Command Center the Source
      * lives in.
      */
-    organization?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a SourceIamMember resource.
  */
 export interface SourceIamMemberArgs {
-    condition?: pulumi.Input<inputs.securitycenter.SourceIamMemberCondition>;
+    condition?: pulumi.Input<inputs.securitycenter.SourceIamMemberCondition | undefined>;
     member: pulumi.Input<string>;
     /**
      * The organization whose Cloud Security Command Center the Source

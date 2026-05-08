@@ -25,10 +25,10 @@ class V2PolicyOrchestratorForFolderArgs:
                  folder_id: pulumi.Input[_builtins.str],
                  orchestrated_resource: pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceArgs'],
                  policy_orchestrator_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 orchestration_scope: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 orchestration_scope: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2PolicyOrchestratorForFolder resource.
 
@@ -136,19 +136,19 @@ class V2PolicyOrchestratorForFolderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Freeform text describing the purpose of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels as key value pairs
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -157,12 +157,12 @@ class V2PolicyOrchestratorForFolderArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="orchestrationScope")
-    def orchestration_scope(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeArgs']]:
+    def orchestration_scope(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeArgs']]:
         """
         Defines a set of selectors which drive which resources are in scope of policy
         orchestration.
@@ -171,12 +171,12 @@ class V2PolicyOrchestratorForFolderArgs:
         return pulumi.get(self, "orchestration_scope")
 
     @orchestration_scope.setter
-    def orchestration_scope(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeArgs']]):
+    def orchestration_scope(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeArgs']]):
         pulumi.set(self, "orchestration_scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the orchestrator. Can be updated to change orchestrator behaviour.
         Allowed values:
@@ -189,29 +189,29 @@ class V2PolicyOrchestratorForFolderArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 @pulumi.input_type
 class _V2PolicyOrchestratorForFolderState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 orchestrated_resource: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceArgs']] = None,
-                 orchestration_scope: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeArgs']] = None,
-                 orchestration_states: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateArgs']]]] = None,
-                 policy_orchestrator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 orchestrated_resource: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceArgs']] = None,
+                 orchestration_scope: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeArgs']] = None,
+                 orchestration_states: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateArgs']]]] = None,
+                 policy_orchestrator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V2PolicyOrchestratorForFolder resources.
 
@@ -296,7 +296,7 @@ class _V2PolicyOrchestratorForFolderState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Action to be done by the orchestrator in
         `projects/{project_id}/zones/{zone_id}` locations defined by the
@@ -307,48 +307,48 @@ class _V2PolicyOrchestratorForFolderState:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the policy orchestrator resource was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Freeform text describing the purpose of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This checksum is computed by the server based on the value of other
         fields, and may be sent on update and delete requests to ensure the
@@ -357,24 +357,24 @@ class _V2PolicyOrchestratorForFolderState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="folderId")
-    def folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent resource name in the form of `folders/{folder_id}/locations/global`.
         """
         return pulumi.get(self, "folder_id")
 
     @folder_id.setter
-    def folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels as key value pairs
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -383,12 +383,12 @@ class _V2PolicyOrchestratorForFolderState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. In form of
         * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -398,12 +398,12 @@ class _V2PolicyOrchestratorForFolderState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orchestratedResource")
-    def orchestrated_resource(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceArgs']]:
+    def orchestrated_resource(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceArgs']]:
         """
         Represents a resource that is being orchestrated by the policy orchestrator.
         Structure is documented below.
@@ -411,12 +411,12 @@ class _V2PolicyOrchestratorForFolderState:
         return pulumi.get(self, "orchestrated_resource")
 
     @orchestrated_resource.setter
-    def orchestrated_resource(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceArgs']]):
+    def orchestrated_resource(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceArgs']]):
         pulumi.set(self, "orchestrated_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="orchestrationScope")
-    def orchestration_scope(self) -> Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeArgs']]:
+    def orchestration_scope(self) -> pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeArgs']]:
         """
         Defines a set of selectors which drive which resources are in scope of policy
         orchestration.
@@ -425,12 +425,12 @@ class _V2PolicyOrchestratorForFolderState:
         return pulumi.get(self, "orchestration_scope")
 
     @orchestration_scope.setter
-    def orchestration_scope(self, value: Optional[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeArgs']]):
+    def orchestration_scope(self, value: pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeArgs']]):
         pulumi.set(self, "orchestration_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="orchestrationStates")
-    def orchestration_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateArgs']]]]:
+    def orchestration_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateArgs']]]]:
         """
         Describes the state of the orchestration process.
         Structure is documented below.
@@ -438,12 +438,12 @@ class _V2PolicyOrchestratorForFolderState:
         return pulumi.get(self, "orchestration_states")
 
     @orchestration_states.setter
-    def orchestration_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateArgs']]]]):
+    def orchestration_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateArgs']]]]):
         pulumi.set(self, "orchestration_states", value)
 
     @_builtins.property
     @pulumi.getter(name="policyOrchestratorId")
-    def policy_orchestrator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_orchestrator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logical identifier of the policy orchestrator, with the following
         restrictions:
@@ -456,12 +456,12 @@ class _V2PolicyOrchestratorForFolderState:
         return pulumi.get(self, "policy_orchestrator_id")
 
     @policy_orchestrator_id.setter
-    def policy_orchestrator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_orchestrator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_orchestrator_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -469,12 +469,12 @@ class _V2PolicyOrchestratorForFolderState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true, if the there are ongoing changes being applied by the
         orchestrator.
@@ -482,12 +482,12 @@ class _V2PolicyOrchestratorForFolderState:
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the orchestrator. Can be updated to change orchestrator behaviour.
         Allowed values:
@@ -500,19 +500,19 @@ class _V2PolicyOrchestratorForFolderState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the policy orchestrator resource was last modified.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -522,14 +522,14 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 orchestrated_resource: Optional[pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict']]] = None,
-                 orchestration_scope: Optional[pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict']]] = None,
-                 policy_orchestrator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 orchestrated_resource: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict']]] = None,
+                 orchestration_scope: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict']]] = None,
+                 policy_orchestrator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         PolicyOrchestrator helps managing project+zone level policy resources (e.g.
@@ -802,14 +802,14 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 orchestrated_resource: Optional[pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict']]] = None,
-                 orchestration_scope: Optional[pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict']]] = None,
-                 policy_orchestrator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 orchestrated_resource: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict']]] = None,
+                 orchestration_scope: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict']]] = None,
+                 policy_orchestrator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -855,22 +855,22 @@ class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            orchestrated_resource: Optional[pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict']]] = None,
-            orchestration_scope: Optional[pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict']]] = None,
-            orchestration_states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestrationStateArgs', 'V2PolicyOrchestratorForFolderOrchestrationStateArgsDict']]]]] = None,
-            policy_orchestrator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'V2PolicyOrchestratorForFolder':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            orchestrated_resource: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestratedResourceArgs', 'V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict']]] = None,
+            orchestration_scope: pulumi.Input[Optional[Union['V2PolicyOrchestratorForFolderOrchestrationScopeArgs', 'V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict']]] = None,
+            orchestration_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2PolicyOrchestratorForFolderOrchestrationStateArgs', 'V2PolicyOrchestratorForFolderOrchestrationStateArgsDict']]]]] = None,
+            policy_orchestrator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'V2PolicyOrchestratorForFolder':
         """
         Get an existing V2PolicyOrchestratorForFolder resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

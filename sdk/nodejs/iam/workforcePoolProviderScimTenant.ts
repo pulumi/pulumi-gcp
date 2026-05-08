@@ -245,60 +245,60 @@ export interface WorkforcePoolProviderScimTenantState {
      * Format:
      * https://iamscim.googleapis.com/{version}/{tenant_id}/
      */
-    baseUri?: pulumi.Input<string>;
+    baseUri?: pulumi.Input<string | undefined>;
     /**
      * Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
      */
-    claimMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    claimMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A user-specified description of the provider. Cannot exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A user-specified display name for the scim tenant. Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Deletes the SCIM tenant immediately. This operation cannot be undone.
      */
-    hardDelete?: pulumi.Input<boolean>;
+    hardDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The location for the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the scim tenant.
      * Format: `locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the provider.
      */
-    providerId?: pulumi.Input<string>;
+    providerId?: pulumi.Input<string | undefined>;
     /**
      * The timestamp that represents the time when the SCIM tenant is purged.
      */
-    purgeTime?: pulumi.Input<string>;
+    purgeTime?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      */
-    scimTenantId?: pulumi.Input<string>;
+    scimTenantId?: pulumi.Input<string | undefined>;
     /**
      * Service Agent created by SCIM Tenant API. SCIM tokens created under
      * this tenant will be attached to this service agent.
      */
-    serviceAgent?: pulumi.Input<string>;
+    serviceAgent?: pulumi.Input<string | undefined>;
     /**
      * The current state of the scim tenant.
      * * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
      * * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
      * deleted after approximately 30 days.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The ID of the workforce pool.
      */
-    workforcePoolId?: pulumi.Input<string>;
+    workforcePoolId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -308,19 +308,19 @@ export interface WorkforcePoolProviderScimTenantArgs {
     /**
      * Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
      */
-    claimMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    claimMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A user-specified description of the provider. Cannot exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A user-specified display name for the scim tenant. Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Deletes the SCIM tenant immediately. This operation cannot be undone.
      */
-    hardDelete?: pulumi.Input<boolean>;
+    hardDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The location for the resource.
      */

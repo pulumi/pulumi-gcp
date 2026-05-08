@@ -22,7 +22,7 @@ class HostProjectRegistrationArgs:
                  gcp_project: pulumi.Input[_builtins.str],
                  host_project_registration_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostProjectRegistration resource.
 
@@ -86,7 +86,7 @@ class HostProjectRegistrationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -94,19 +94,19 @@ class HostProjectRegistrationArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _HostProjectRegistrationState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcp_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_project_registration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcp_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_project_registration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostProjectRegistration resources.
 
@@ -140,19 +140,19 @@ class _HostProjectRegistrationState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time at which the host project registration was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpProject")
-    def gcp_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcp_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Immutable. Google cloud project name in the format: "projects/abc" or "projects/123".
         As input, project name with either project id or number are accepted.
@@ -161,12 +161,12 @@ class _HostProjectRegistrationState:
         return pulumi.get(self, "gcp_project")
 
     @gcp_project.setter
-    def gcp_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcp_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcp_project", value)
 
     @_builtins.property
     @pulumi.getter(name="hostProjectRegistrationId")
-    def host_project_registration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_project_registration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The ID to use for the Host Project Registration, which will become the
         final component of the host project registration's resource name. The ID
@@ -176,24 +176,24 @@ class _HostProjectRegistrationState:
         return pulumi.get(self, "host_project_registration_id")
 
     @host_project_registration_id.setter
-    def host_project_registration_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_project_registration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_project_registration_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Part of `parent`. See documentation of `projectsId`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The name of the host project registration.
         Format:
@@ -202,12 +202,12 @@ class _HostProjectRegistrationState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -215,7 +215,7 @@ class _HostProjectRegistrationState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -225,10 +225,10 @@ class HostProjectRegistration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 gcp_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_project_registration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 gcp_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_project_registration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Host project registration refers to the registration of a Google cloud project with API hub as a host project.
@@ -370,10 +370,10 @@ class HostProjectRegistration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 gcp_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_project_registration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 gcp_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_project_registration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -405,12 +405,12 @@ class HostProjectRegistration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            gcp_project: Optional[pulumi.Input[_builtins.str]] = None,
-            host_project_registration_id: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'HostProjectRegistration':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            gcp_project: pulumi.Input[Optional[_builtins.str]] = None,
+            host_project_registration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'HostProjectRegistration':
         """
         Get an existing HostProjectRegistration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

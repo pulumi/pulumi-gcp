@@ -166,10 +166,10 @@ def get_account_id_token(delegates: Optional[Sequence[_builtins.str]] = None,
         include_email=pulumi.get(__ret__, 'include_email'),
         target_audience=pulumi.get(__ret__, 'target_audience'),
         target_service_account=pulumi.get(__ret__, 'target_service_account'))
-def get_account_id_token_output(delegates: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                include_email: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                target_audience: Optional[pulumi.Input[_builtins.str]] = None,
-                                target_service_account: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_account_id_token_output(delegates: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                include_email: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                target_audience: pulumi.Input[Optional[_builtins.str]] = None,
+                                target_service_account: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIdTokenResult]:
     """
     This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).

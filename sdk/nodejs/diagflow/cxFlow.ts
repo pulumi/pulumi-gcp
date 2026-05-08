@@ -687,15 +687,15 @@ export interface CxFlowState {
      * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
      * Structure is documented below.
      */
-    advancedSettings?: pulumi.Input<inputs.diagflow.CxFlowAdvancedSettings>;
+    advancedSettings?: pulumi.Input<inputs.diagflow.CxFlowAdvancedSettings | undefined>;
     /**
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the flow.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * A flow's event handlers serve two purposes:
      * They are responsible for handling events (e.g. no match, webhook errors) in the flow.
@@ -703,19 +703,19 @@ export interface CxFlowState {
      * Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
      * Structure is documented below.
      */
-    eventHandlers?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowEventHandler>[]>;
+    eventHandlers?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowEventHandler>[] | undefined>;
     /**
      * Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
      * The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
      *
      * > Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
      */
-    isDefaultStartFlow?: pulumi.Input<boolean>;
+    isDefaultStartFlow?: pulumi.Input<boolean | undefined>;
     /**
      * Knowledge connector configuration.
      * Structure is documented below.
      */
-    knowledgeConnectorSettings?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettings>;
+    knowledgeConnectorSettings?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettings | undefined>;
     /**
      * The language of the following fields in flow:
      * Flow.event_handlers.trigger_fulfillment.messages
@@ -724,29 +724,29 @@ export interface CxFlowState {
      * Flow.transition_routes.trigger_fulfillment.conditional_cases
      * If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
      */
-    languageCode?: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the flow.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * NLU related settings of the flow.
      * Structure is documented below.
      */
-    nluSettings?: pulumi.Input<inputs.diagflow.CxFlowNluSettings>;
+    nluSettings?: pulumi.Input<inputs.diagflow.CxFlowNluSettings | undefined>;
     /**
      * The agent to create a flow for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * A flow's transition route group serve two purposes:
      * They are responsible for matching the user's first utterances in the flow.
      * They are inherited by every page's [transition route groups][Page.transition_route_groups]. Transition route groups defined in the page have higher priority than those defined in the flow.
      * Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
      */
-    transitionRouteGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    transitionRouteGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A flow's transition routes serve two purposes:
      * They are responsible for matching the user's first utterances in the flow.
@@ -757,7 +757,7 @@ export interface CxFlowState {
      * TransitionRoutes with intent specified are inherited by pages in the flow.
      * Structure is documented below.
      */
-    transitionRoutes?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowTransitionRoute>[]>;
+    transitionRoutes?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowTransitionRoute>[] | undefined>;
 }
 
 /**
@@ -769,11 +769,11 @@ export interface CxFlowArgs {
      * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
      * Structure is documented below.
      */
-    advancedSettings?: pulumi.Input<inputs.diagflow.CxFlowAdvancedSettings>;
+    advancedSettings?: pulumi.Input<inputs.diagflow.CxFlowAdvancedSettings | undefined>;
     /**
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the flow.
      */
@@ -785,19 +785,19 @@ export interface CxFlowArgs {
      * Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
      * Structure is documented below.
      */
-    eventHandlers?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowEventHandler>[]>;
+    eventHandlers?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowEventHandler>[] | undefined>;
     /**
      * Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
      * The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
      *
      * > Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
      */
-    isDefaultStartFlow?: pulumi.Input<boolean>;
+    isDefaultStartFlow?: pulumi.Input<boolean | undefined>;
     /**
      * Knowledge connector configuration.
      * Structure is documented below.
      */
-    knowledgeConnectorSettings?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettings>;
+    knowledgeConnectorSettings?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettings | undefined>;
     /**
      * The language of the following fields in flow:
      * Flow.event_handlers.trigger_fulfillment.messages
@@ -806,24 +806,24 @@ export interface CxFlowArgs {
      * Flow.transition_routes.trigger_fulfillment.conditional_cases
      * If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
      */
-    languageCode?: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string | undefined>;
     /**
      * NLU related settings of the flow.
      * Structure is documented below.
      */
-    nluSettings?: pulumi.Input<inputs.diagflow.CxFlowNluSettings>;
+    nluSettings?: pulumi.Input<inputs.diagflow.CxFlowNluSettings | undefined>;
     /**
      * The agent to create a flow for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * A flow's transition route group serve two purposes:
      * They are responsible for matching the user's first utterances in the flow.
      * They are inherited by every page's [transition route groups][Page.transition_route_groups]. Transition route groups defined in the page have higher priority than those defined in the flow.
      * Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
      */
-    transitionRouteGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    transitionRouteGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A flow's transition routes serve two purposes:
      * They are responsible for matching the user's first utterances in the flow.
@@ -834,5 +834,5 @@ export interface CxFlowArgs {
      * TransitionRoutes with intent specified are inherited by pages in the flow.
      * Structure is documented below.
      */
-    transitionRoutes?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowTransitionRoute>[]>;
+    transitionRoutes?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowTransitionRoute>[] | undefined>;
 }

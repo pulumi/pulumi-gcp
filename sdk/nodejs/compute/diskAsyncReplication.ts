@@ -117,13 +117,13 @@ export interface DiskAsyncReplicationState {
     /**
      * The primary disk (source of replication).
      */
-    primaryDisk?: pulumi.Input<string>;
+    primaryDisk?: pulumi.Input<string | undefined>;
     /**
      * The secondary disk (target of replication). You can specify only one value. Structure is documented below.
      *
      * The `secondaryDisk` block includes:
      */
-    secondaryDisk?: pulumi.Input<inputs.compute.DiskAsyncReplicationSecondaryDisk>;
+    secondaryDisk?: pulumi.Input<inputs.compute.DiskAsyncReplicationSecondaryDisk | undefined>;
 }
 
 /**

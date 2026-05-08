@@ -112,14 +112,14 @@ export interface GetZonesOutputArgs {
     /**
      * Project from which to list available zones. Defaults to project declared in the provider.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region from which to list available zones. Defaults to region declared in the provider.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Allows to filter list of zones based on their current status. Status can be either `UP` or `DOWN`.
      * Defaults to no filtering (all available zones - both `UP` and `DOWN`).
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

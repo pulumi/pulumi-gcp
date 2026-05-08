@@ -23,7 +23,7 @@ class SubnetArgs:
     def __init__(__self__, *,
                  ip_cidr_range: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Subnet resource.
 
@@ -67,7 +67,7 @@ class SubnetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
         where n ranges from 1 to 5.
@@ -75,26 +75,26 @@ class SubnetArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _SubnetState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_address_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetDhcpAddressRangeArgs']]]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 standard_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['SubnetDhcpAddressRangeArgs']]]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 standard_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Subnet resources.
 
@@ -150,7 +150,7 @@ class _SubnetState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time of this resource.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -159,12 +159,12 @@ class _SubnetState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpAddressRanges")
-    def dhcp_address_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetDhcpAddressRangeArgs']]]]:
+    def dhcp_address_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SubnetDhcpAddressRangeArgs']]]]:
         """
         DHCP address ranges.
         Structure is documented below.
@@ -172,48 +172,48 @@ class _SubnetState:
         return pulumi.get(self, "dhcp_address_ranges")
 
     @dhcp_address_ranges.setter
-    def dhcp_address_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetDhcpAddressRangeArgs']]]]):
+    def dhcp_address_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SubnetDhcpAddressRangeArgs']]]]):
         pulumi.set(self, "dhcp_address_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
-    def gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The canonical identifier of the logical router that this subnet is attached to.
         """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
-    def gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayIp")
-    def gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the gateway of this subnet. Must fall within the IP prefix defined above.
         """
         return pulumi.get(self, "gateway_ip")
 
     @gateway_ip.setter
-    def gateway_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="ipCidrRange")
-    def ip_cidr_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_cidr_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address range of the subnet in CIDR format.
         """
         return pulumi.get(self, "ip_cidr_range")
 
     @ip_cidr_range.setter
-    def ip_cidr_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_cidr_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_cidr_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
         where n ranges from 1 to 5.
@@ -221,12 +221,12 @@ class _SubnetState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the private cloud to create a new subnet in.
         Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -235,12 +235,12 @@ class _SubnetState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="standardConfig")
-    def standard_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def standard_config(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the NSX-T configuration in the backend follows the standard configuration supported by Google Cloud.
         If false, the subnet cannot be modified through Google Cloud, only through NSX-T directly.
@@ -248,48 +248,48 @@ class _SubnetState:
         return pulumi.get(self, "standard_config")
 
     @standard_config.setter
-    def standard_config(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def standard_config(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "standard_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the subnet.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the subnet.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System-generated unique identifier for the resource.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last updated time of this resource.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -298,19 +298,19 @@ class _SubnetState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VLAN ID of the VLAN on which the subnet is configured.
         """
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
-    def vlan_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan_id", value)
 
 
@@ -320,9 +320,9 @@ class Subnet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Subnet in a private cloud. A Private Cloud contains two types of subnets: `management` subnets (such as vMotion) that
@@ -466,9 +466,9 @@ class Subnet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -505,19 +505,19 @@ class Subnet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dhcp_address_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetDhcpAddressRangeArgs', 'SubnetDhcpAddressRangeArgsDict']]]]] = None,
-            gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            standard_config: Optional[pulumi.Input[_builtins.bool]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            vlan_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'Subnet':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dhcp_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetDhcpAddressRangeArgs', 'SubnetDhcpAddressRangeArgsDict']]]]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            standard_config: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'Subnet':
         """
         Get an existing Subnet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

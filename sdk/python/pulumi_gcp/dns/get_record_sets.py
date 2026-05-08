@@ -151,10 +151,10 @@ def get_record_sets(managed_zone: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         rrsets=pulumi.get(__ret__, 'rrsets'),
         type=pulumi.get(__ret__, 'type'))
-def get_record_sets_output(managed_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                           name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_record_sets_output(managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                           name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRecordSetsResult]:
     """
     Get a list of DNS record sets within a Google Cloud DNS managed zone. This data source allows you to list all record sets or filter them by name and type.

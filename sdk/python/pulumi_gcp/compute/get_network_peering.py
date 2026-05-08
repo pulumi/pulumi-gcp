@@ -204,8 +204,8 @@ def get_network_peering(name: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         state_details=pulumi.get(__ret__, 'state_details'),
         update_strategy=pulumi.get(__ret__, 'update_strategy'))
-def get_network_peering_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                               network: Optional[pulumi.Input[_builtins.str]] = None,
+def get_network_peering_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                               network: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkPeeringResult]:
     """
     Get information of a specified compute network peering. For more information see

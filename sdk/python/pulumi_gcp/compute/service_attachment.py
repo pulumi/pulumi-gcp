@@ -25,18 +25,18 @@ class ServiceAttachmentArgs:
                  enable_proxy_protocol: pulumi.Input[_builtins.bool],
                  nat_subnets: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  target_service: pulumi.Input[_builtins.str],
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]] = None,
-                 consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 propagated_connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 reconcile_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 show_nat_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tunneling_config: Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']] = None):
+                 consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]] = None,
+                 consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 propagated_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 reconcile_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_propagated_connection_limit_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 show_nat_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunneling_config: pulumi.Input[Optional['ServiceAttachmentTunnelingConfigArgs']] = None):
         """
         The set of arguments for constructing a ServiceAttachment resource.
 
@@ -167,7 +167,7 @@ class ServiceAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="consumerAcceptLists")
-    def consumer_accept_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]]:
+    def consumer_accept_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]]:
         """
         An array of projects that are allowed to connect to this service
         attachment.
@@ -176,12 +176,12 @@ class ServiceAttachmentArgs:
         return pulumi.get(self, "consumer_accept_lists")
 
     @consumer_accept_lists.setter
-    def consumer_accept_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]]):
+    def consumer_accept_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]]):
         pulumi.set(self, "consumer_accept_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerRejectLists")
-    def consumer_reject_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def consumer_reject_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of projects that are not allowed to connect to this service
         attachment.
@@ -189,24 +189,24 @@ class ServiceAttachmentArgs:
         return pulumi.get(self, "consumer_reject_lists")
 
     @consumer_reject_lists.setter
-    def consumer_reject_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def consumer_reject_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "consumer_reject_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="domainNames")
-    def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domain_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If specified, the domain name will be used during the integration between
         the PSC connected endpoints and the Cloud DNS. For example, this is a
@@ -216,12 +216,12 @@ class ServiceAttachmentArgs:
         return pulumi.get(self, "domain_names")
 
     @domain_names.setter
-    def domain_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domain_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_names", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. The name must be 1-63 characters long, and
         comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -233,12 +233,12 @@ class ServiceAttachmentArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -246,12 +246,12 @@ class ServiceAttachmentArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="propagatedConnectionLimit")
-    def propagated_connection_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def propagated_connection_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
         This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
@@ -262,12 +262,12 @@ class ServiceAttachmentArgs:
         return pulumi.get(self, "propagated_connection_limit")
 
     @propagated_connection_limit.setter
-    def propagated_connection_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def propagated_connection_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "propagated_connection_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="reconcileConnections")
-    def reconcile_connections(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconcile_connections(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
         If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
@@ -276,24 +276,24 @@ class ServiceAttachmentArgs:
         return pulumi.get(self, "reconcile_connections")
 
     @reconcile_connections.setter
-    def reconcile_connections(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconcile_connections(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconcile_connections", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the region where the resource resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="sendPropagatedConnectionLimitIfZero")
-    def send_propagated_connection_limit_if_zero(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_propagated_connection_limit_if_zero(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls the behavior of propagated_connection_limit.
         When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
@@ -303,12 +303,12 @@ class ServiceAttachmentArgs:
         return pulumi.get(self, "send_propagated_connection_limit_if_zero")
 
     @send_propagated_connection_limit_if_zero.setter
-    def send_propagated_connection_limit_if_zero(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_propagated_connection_limit_if_zero(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_propagated_connection_limit_if_zero", value)
 
     @_builtins.property
     @pulumi.getter(name="showNatIps")
-    def show_nat_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_nat_ips(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         NOTE: This field is temporarily non-functional due to an underlying API issue.
         Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
@@ -317,12 +317,12 @@ class ServiceAttachmentArgs:
         return pulumi.get(self, "show_nat_ips")
 
     @show_nat_ips.setter
-    def show_nat_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_nat_ips(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_nat_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelingConfig")
-    def tunneling_config(self) -> Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']]:
+    def tunneling_config(self) -> pulumi.Input[Optional['ServiceAttachmentTunnelingConfigArgs']]:
         """
         (Optional, Beta)
         Tunneling configuration for this service attachment.
@@ -331,33 +331,33 @@ class ServiceAttachmentArgs:
         return pulumi.get(self, "tunneling_config")
 
     @tunneling_config.setter
-    def tunneling_config(self, value: Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']]):
+    def tunneling_config(self, value: pulumi.Input[Optional['ServiceAttachmentTunnelingConfigArgs']]):
         pulumi.set(self, "tunneling_config", value)
 
 
 @pulumi.input_type
 class _ServiceAttachmentState:
     def __init__(__self__, *,
-                 connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]]] = None,
-                 connection_preference: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]] = None,
-                 consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enable_proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 propagated_connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 psc_service_attachment_ids: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentPscServiceAttachmentIdArgs']]]] = None,
-                 reconcile_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 show_nat_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 target_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunneling_config: Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']] = None):
+                 connected_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]]] = None,
+                 connection_preference: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]] = None,
+                 consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 propagated_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 psc_service_attachment_ids: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttachmentPscServiceAttachmentIdArgs']]]] = None,
+                 reconcile_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_propagated_connection_limit_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 show_nat_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 target_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunneling_config: pulumi.Input[Optional['ServiceAttachmentTunnelingConfigArgs']] = None):
         """
         Input properties used for looking up and filtering ServiceAttachment resources.
 
@@ -457,7 +457,7 @@ class _ServiceAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="connectedEndpoints")
-    def connected_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]]]:
+    def connected_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]]]:
         """
         An array of the consumer forwarding rules connected to this service
         attachment.
@@ -466,12 +466,12 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "connected_endpoints")
 
     @connected_endpoints.setter
-    def connected_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]]]):
+    def connected_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]]]):
         pulumi.set(self, "connected_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionPreference")
-    def connection_preference(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_preference(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection preference to use for this service attachment. Valid
         values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
@@ -479,12 +479,12 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "connection_preference")
 
     @connection_preference.setter
-    def connection_preference(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_preference(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_preference", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerAcceptLists")
-    def consumer_accept_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]]:
+    def consumer_accept_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]]:
         """
         An array of projects that are allowed to connect to this service
         attachment.
@@ -493,12 +493,12 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "consumer_accept_lists")
 
     @consumer_accept_lists.setter
-    def consumer_accept_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]]):
+    def consumer_accept_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]]]):
         pulumi.set(self, "consumer_accept_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerRejectLists")
-    def consumer_reject_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def consumer_reject_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of projects that are not allowed to connect to this service
         attachment.
@@ -506,24 +506,24 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "consumer_reject_lists")
 
     @consumer_reject_lists.setter
-    def consumer_reject_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def consumer_reject_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "consumer_reject_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="domainNames")
-    def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domain_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If specified, the domain name will be used during the integration between
         the PSC connected endpoints and the Cloud DNS. For example, this is a
@@ -533,12 +533,12 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "domain_names")
 
     @domain_names.setter
-    def domain_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domain_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_names", value)
 
     @_builtins.property
     @pulumi.getter(name="enableProxyProtocol")
-    def enable_proxy_protocol(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_proxy_protocol(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, enable the proxy protocol which is for supplying client TCP/IP
         address data in TCP connections that traverse proxies on their way to
@@ -547,12 +547,12 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "enable_proxy_protocol")
 
     @enable_proxy_protocol.setter
-    def enable_proxy_protocol(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_proxy_protocol(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_proxy_protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fingerprint of this resource. This field is used internally during
         updates of this resource.
@@ -560,12 +560,12 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. The name must be 1-63 characters long, and
         comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -577,24 +577,24 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="natSubnets")
-    def nat_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nat_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of subnets that is provided for NAT in this service attachment.
         """
         return pulumi.get(self, "nat_subnets")
 
     @nat_subnets.setter
-    def nat_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nat_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nat_subnets", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -602,12 +602,12 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="propagatedConnectionLimit")
-    def propagated_connection_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def propagated_connection_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
         This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
@@ -618,12 +618,12 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "propagated_connection_limit")
 
     @propagated_connection_limit.setter
-    def propagated_connection_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def propagated_connection_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "propagated_connection_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="pscServiceAttachmentIds")
-    def psc_service_attachment_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentPscServiceAttachmentIdArgs']]]]:
+    def psc_service_attachment_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttachmentPscServiceAttachmentIdArgs']]]]:
         """
         An 128-bit global unique ID of the PSC service attachment.
         Structure is documented below.
@@ -631,12 +631,12 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "psc_service_attachment_ids")
 
     @psc_service_attachment_ids.setter
-    def psc_service_attachment_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentPscServiceAttachmentIdArgs']]]]):
+    def psc_service_attachment_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttachmentPscServiceAttachmentIdArgs']]]]):
         pulumi.set(self, "psc_service_attachment_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="reconcileConnections")
-    def reconcile_connections(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconcile_connections(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
         If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
@@ -645,36 +645,36 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "reconcile_connections")
 
     @reconcile_connections.setter
-    def reconcile_connections(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconcile_connections(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconcile_connections", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the region where the resource resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="sendPropagatedConnectionLimitIfZero")
-    def send_propagated_connection_limit_if_zero(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_propagated_connection_limit_if_zero(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls the behavior of propagated_connection_limit.
         When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
@@ -684,12 +684,12 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "send_propagated_connection_limit_if_zero")
 
     @send_propagated_connection_limit_if_zero.setter
-    def send_propagated_connection_limit_if_zero(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_propagated_connection_limit_if_zero(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_propagated_connection_limit_if_zero", value)
 
     @_builtins.property
     @pulumi.getter(name="showNatIps")
-    def show_nat_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_nat_ips(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         NOTE: This field is temporarily non-functional due to an underlying API issue.
         Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
@@ -698,24 +698,24 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "show_nat_ips")
 
     @show_nat_ips.setter
-    def show_nat_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_nat_ips(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_nat_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="targetService")
-    def target_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of a service serving the endpoint identified by this service attachment.
         """
         return pulumi.get(self, "target_service")
 
     @target_service.setter
-    def target_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_service", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelingConfig")
-    def tunneling_config(self) -> Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']]:
+    def tunneling_config(self) -> pulumi.Input[Optional['ServiceAttachmentTunnelingConfigArgs']]:
         """
         (Optional, Beta)
         Tunneling configuration for this service attachment.
@@ -724,7 +724,7 @@ class _ServiceAttachmentState:
         return pulumi.get(self, "tunneling_config")
 
     @tunneling_config.setter
-    def tunneling_config(self, value: Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']]):
+    def tunneling_config(self, value: pulumi.Input[Optional['ServiceAttachmentTunnelingConfigArgs']]):
         pulumi.set(self, "tunneling_config", value)
 
 
@@ -734,22 +734,22 @@ class ServiceAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_preference: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
-                 consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enable_proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 propagated_connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 reconcile_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 show_nat_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 target_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunneling_config: Optional[pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None,
+                 connection_preference: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
+                 consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 propagated_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 reconcile_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_propagated_connection_limit_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 show_nat_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 target_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunneling_config: pulumi.Input[Optional[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None,
                  __props__=None):
         """
         Represents a ServiceAttachment resource.
@@ -1633,22 +1633,22 @@ class ServiceAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_preference: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
-                 consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enable_proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 propagated_connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 reconcile_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 show_nat_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 target_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunneling_config: Optional[pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None,
+                 connection_preference: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
+                 consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 propagated_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 reconcile_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_propagated_connection_limit_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 show_nat_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 target_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunneling_config: pulumi.Input[Optional[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1696,26 +1696,26 @@ class ServiceAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connected_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConnectedEndpointArgs', 'ServiceAttachmentConnectedEndpointArgsDict']]]]] = None,
-            connection_preference: Optional[pulumi.Input[_builtins.str]] = None,
-            consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
-            consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            enable_proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            propagated_connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            psc_service_attachment_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentPscServiceAttachmentIdArgs', 'ServiceAttachmentPscServiceAttachmentIdArgsDict']]]]] = None,
-            reconcile_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-            show_nat_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-            target_service: Optional[pulumi.Input[_builtins.str]] = None,
-            tunneling_config: Optional[pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None) -> 'ServiceAttachment':
+            connected_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConnectedEndpointArgs', 'ServiceAttachmentConnectedEndpointArgsDict']]]]] = None,
+            connection_preference: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerAcceptListArgs', 'ServiceAttachmentConsumerAcceptListArgsDict']]]]] = None,
+            consumer_reject_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            propagated_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            psc_service_attachment_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAttachmentPscServiceAttachmentIdArgs', 'ServiceAttachmentPscServiceAttachmentIdArgsDict']]]]] = None,
+            reconcile_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            send_propagated_connection_limit_if_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+            show_nat_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+            target_service: pulumi.Input[Optional[_builtins.str]] = None,
+            tunneling_config: pulumi.Input[Optional[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None) -> 'ServiceAttachment':
         """
         Get an existing ServiceAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

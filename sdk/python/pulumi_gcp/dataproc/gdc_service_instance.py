@@ -23,12 +23,12 @@ class GdcServiceInstanceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  service_instance_id: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gdce_cluster: Optional[pulumi.Input['GdcServiceInstanceGdceClusterArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_service_instance_config: Optional[pulumi.Input['GdcServiceInstanceSparkServiceInstanceConfigArgs']] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gdce_cluster: pulumi.Input[Optional['GdcServiceInstanceGdceClusterArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_service_instance_config: pulumi.Input[Optional['GdcServiceInstanceSparkServiceInstanceConfigArgs']] = None):
         """
         The set of arguments for constructing a GdcServiceInstance resource.
 
@@ -86,19 +86,19 @@ class GdcServiceInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided human-readable name to be used in user interfaces.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gdceCluster")
-    def gdce_cluster(self) -> Optional[pulumi.Input['GdcServiceInstanceGdceClusterArgs']]:
+    def gdce_cluster(self) -> pulumi.Input[Optional['GdcServiceInstanceGdceClusterArgs']]:
         """
         Gdce cluster information.
         Structure is documented below.
@@ -106,12 +106,12 @@ class GdcServiceInstanceArgs:
         return pulumi.get(self, "gdce_cluster")
 
     @gdce_cluster.setter
-    def gdce_cluster(self, value: Optional[pulumi.Input['GdcServiceInstanceGdceClusterArgs']]):
+    def gdce_cluster(self, value: pulumi.Input[Optional['GdcServiceInstanceGdceClusterArgs']]):
         pulumi.set(self, "gdce_cluster", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -120,12 +120,12 @@ class GdcServiceInstanceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -133,56 +133,56 @@ class GdcServiceInstanceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Requested service account to associate with ServiceInstance.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkServiceInstanceConfig")
-    def spark_service_instance_config(self) -> Optional[pulumi.Input['GdcServiceInstanceSparkServiceInstanceConfigArgs']]:
+    def spark_service_instance_config(self) -> pulumi.Input[Optional['GdcServiceInstanceSparkServiceInstanceConfigArgs']]:
         """
         Spark-specific service instance configuration.
         """
         return pulumi.get(self, "spark_service_instance_config")
 
     @spark_service_instance_config.setter
-    def spark_service_instance_config(self, value: Optional[pulumi.Input['GdcServiceInstanceSparkServiceInstanceConfigArgs']]):
+    def spark_service_instance_config(self, value: pulumi.Input[Optional['GdcServiceInstanceSparkServiceInstanceConfigArgs']]):
         pulumi.set(self, "spark_service_instance_config", value)
 
 
 @pulumi.input_type
 class _GdcServiceInstanceState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 gdce_cluster: Optional[pulumi.Input['GdcServiceInstanceGdceClusterArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 requested_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_service_instance_config: Optional[pulumi.Input['GdcServiceInstanceSparkServiceInstanceConfigArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 gdce_cluster: pulumi.Input[Optional['GdcServiceInstanceGdceClusterArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 requested_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_service_instance_config: pulumi.Input[Optional['GdcServiceInstanceSparkServiceInstanceConfigArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GdcServiceInstance resources.
 
@@ -270,55 +270,55 @@ class _GdcServiceInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided human-readable name to be used in user interfaces.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveServiceAccount")
-    def effective_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Effective service account associated with ServiceInstance. This will be the service_account if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
         """
         return pulumi.get(self, "effective_service_account")
 
     @effective_service_account.setter
-    def effective_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="gdceCluster")
-    def gdce_cluster(self) -> Optional[pulumi.Input['GdcServiceInstanceGdceClusterArgs']]:
+    def gdce_cluster(self) -> pulumi.Input[Optional['GdcServiceInstanceGdceClusterArgs']]:
         """
         Gdce cluster information.
         Structure is documented below.
@@ -326,12 +326,12 @@ class _GdcServiceInstanceState:
         return pulumi.get(self, "gdce_cluster")
 
     @gdce_cluster.setter
-    def gdce_cluster(self, value: Optional[pulumi.Input['GdcServiceInstanceGdceClusterArgs']]):
+    def gdce_cluster(self, value: pulumi.Input[Optional['GdcServiceInstanceGdceClusterArgs']]):
         pulumi.set(self, "gdce_cluster", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -340,36 +340,36 @@ class _GdcServiceInstanceState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location of the resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The name of the service instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -377,12 +377,12 @@ class _GdcServiceInstanceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -390,24 +390,24 @@ class _GdcServiceInstanceState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the service instance is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
         """
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter(name="requestedState")
-    def requested_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def requested_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The intended state to which the service instance is reconciling. Possible values:
         * `CREATING`
@@ -423,48 +423,48 @@ class _GdcServiceInstanceState:
         return pulumi.get(self, "requested_state")
 
     @requested_state.setter
-    def requested_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def requested_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "requested_state", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Requested service account to associate with ServiceInstance.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceInstanceId")
-    def service_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the service instance.
         """
         return pulumi.get(self, "service_instance_id")
 
     @service_instance_id.setter
-    def service_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkServiceInstanceConfig")
-    def spark_service_instance_config(self) -> Optional[pulumi.Input['GdcServiceInstanceSparkServiceInstanceConfigArgs']]:
+    def spark_service_instance_config(self) -> pulumi.Input[Optional['GdcServiceInstanceSparkServiceInstanceConfigArgs']]:
         """
         Spark-specific service instance configuration.
         """
         return pulumi.get(self, "spark_service_instance_config")
 
     @spark_service_instance_config.setter
-    def spark_service_instance_config(self, value: Optional[pulumi.Input['GdcServiceInstanceSparkServiceInstanceConfigArgs']]):
+    def spark_service_instance_config(self, value: pulumi.Input[Optional['GdcServiceInstanceSparkServiceInstanceConfigArgs']]):
         pulumi.set(self, "spark_service_instance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state. Possible values:
         * `CREATING`
@@ -480,43 +480,43 @@ class _GdcServiceInstanceState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateMessage")
-    def state_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A message explaining the current state.
         """
         return pulumi.get(self, "state_message")
 
     @state_message.setter
-    def state_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state_message", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System generated unique identifier for this service instance, formatted as UUID4.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was most recently updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -526,14 +526,14 @@ class GdcServiceInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gdce_cluster: Optional[pulumi.Input[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_service_instance_config: Optional[pulumi.Input[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gdce_cluster: pulumi.Input[Optional[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_service_instance_config: pulumi.Input[Optional[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict']]] = None,
                  __props__=None):
         """
         A service instance is an instance of the Dataproc operator running on a GDC cluster.
@@ -667,14 +667,14 @@ class GdcServiceInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gdce_cluster: Optional[pulumi.Input[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_service_instance_config: Optional[pulumi.Input[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gdce_cluster: pulumi.Input[Optional[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_service_instance_config: pulumi.Input[Optional[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -719,25 +719,25 @@ class GdcServiceInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            gdce_cluster: Optional[pulumi.Input[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            requested_state: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            service_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            spark_service_instance_config: Optional[pulumi.Input[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            state_message: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'GdcServiceInstance':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            gdce_cluster: pulumi.Input[Optional[Union['GdcServiceInstanceGdceClusterArgs', 'GdcServiceInstanceGdceClusterArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            requested_state: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            service_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spark_service_instance_config: pulumi.Input[Optional[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_message: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'GdcServiceInstance':
         """
         Get an existing GdcServiceInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

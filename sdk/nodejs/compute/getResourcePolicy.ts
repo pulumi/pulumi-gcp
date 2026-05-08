@@ -110,9 +110,9 @@ export interface GetResourcePolicyOutputArgs {
     /**
      * Project from which to list the Resource Policy. Defaults to project declared in the provider.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the Resource Policy resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -147,20 +147,20 @@ export interface GetSnapshotOutputArgs {
      * If multiple compute snapshot match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
      * If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Example `sourceDisk eq '.*(.*&#47;data-disk$).*'`
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
      *
      * - - -
      */
-    mostRecent?: pulumi.Input<boolean>;
+    mostRecent?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the compute snapshot. One of `name` or `filter` must be provided.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

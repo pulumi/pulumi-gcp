@@ -21,25 +21,25 @@ __all__ = ['ImageArgs', 'Image']
 @pulumi.input_type
 class ImageArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 family: Optional[pulumi.Input[_builtins.str]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]] = None,
-                 image_encryption_key: Optional[pulumi.Input['ImageImageEncryptionKeyArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['ImageParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
-                 shielded_instance_initial_state: Optional[pulumi.Input['ImageShieldedInstanceInitialStateArgs']] = None,
-                 source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk_encryption_key: Optional[pulumi.Input['ImageSourceDiskEncryptionKeyArgs']] = None,
-                 source_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_image_encryption_key: Optional[pulumi.Input['ImageSourceImageEncryptionKeyArgs']] = None,
-                 source_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input['ImageSourceSnapshotEncryptionKeyArgs']] = None,
-                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 family: pulumi.Input[Optional[_builtins.str]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]] = None,
+                 image_encryption_key: pulumi.Input[Optional['ImageImageEncryptionKeyArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['ImageParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 raw_disk: pulumi.Input[Optional['ImageRawDiskArgs']] = None,
+                 shielded_instance_initial_state: pulumi.Input[Optional['ImageShieldedInstanceInitialStateArgs']] = None,
+                 source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk_encryption_key: pulumi.Input[Optional['ImageSourceDiskEncryptionKeyArgs']] = None,
+                 source_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_image_encryption_key: pulumi.Input[Optional['ImageSourceImageEncryptionKeyArgs']] = None,
+                 source_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot_encryption_key: pulumi.Input[Optional['ImageSourceSnapshotEncryptionKeyArgs']] = None,
+                 storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Image resource.
 
@@ -148,7 +148,7 @@ class ImageArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -156,24 +156,24 @@ class ImageArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of the image when restored onto a persistent disk (in GB).
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter
-    def family(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def family(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image family to which this image belongs. You can
         create disks by specifying an image family instead of a specific
@@ -184,12 +184,12 @@ class ImageArgs:
         return pulumi.get(self, "family")
 
     @family.setter
-    def family(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def family(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "family", value)
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")
-    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]]:
+    def guest_os_features(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]]:
         """
         A list of features to enable on the guest operating system.
         Applicable only for bootable images.
@@ -198,12 +198,12 @@ class ImageArgs:
         return pulumi.get(self, "guest_os_features")
 
     @guest_os_features.setter
-    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]]):
+    def guest_os_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]]):
         pulumi.set(self, "guest_os_features", value)
 
     @_builtins.property
     @pulumi.getter(name="imageEncryptionKey")
-    def image_encryption_key(self) -> Optional[pulumi.Input['ImageImageEncryptionKeyArgs']]:
+    def image_encryption_key(self) -> pulumi.Input[Optional['ImageImageEncryptionKeyArgs']]:
         """
         Encrypts the image using a customer-supplied encryption key.
         After you encrypt an image with a customer-supplied key, you must
@@ -214,12 +214,12 @@ class ImageArgs:
         return pulumi.get(self, "image_encryption_key")
 
     @image_encryption_key.setter
-    def image_encryption_key(self, value: Optional[pulumi.Input['ImageImageEncryptionKeyArgs']]):
+    def image_encryption_key(self, value: pulumi.Input[Optional['ImageImageEncryptionKeyArgs']]):
         pulumi.set(self, "image_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this Image.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -228,24 +228,24 @@ class ImageArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def licenses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Any applicable license URI.
         """
         return pulumi.get(self, "licenses")
 
     @licenses.setter
-    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def licenses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "licenses", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource; provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -258,12 +258,12 @@ class ImageArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['ImageParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['ImageParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload.
         Structure is documented below.
@@ -271,12 +271,12 @@ class ImageArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['ImageParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['ImageParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -284,12 +284,12 @@ class ImageArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="rawDisk")
-    def raw_disk(self) -> Optional[pulumi.Input['ImageRawDiskArgs']]:
+    def raw_disk(self) -> pulumi.Input[Optional['ImageRawDiskArgs']]:
         """
         The parameters of the raw disk image.
         Structure is documented below.
@@ -297,12 +297,12 @@ class ImageArgs:
         return pulumi.get(self, "raw_disk")
 
     @raw_disk.setter
-    def raw_disk(self, value: Optional[pulumi.Input['ImageRawDiskArgs']]):
+    def raw_disk(self, value: pulumi.Input[Optional['ImageRawDiskArgs']]):
         pulumi.set(self, "raw_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceInitialState")
-    def shielded_instance_initial_state(self) -> Optional[pulumi.Input['ImageShieldedInstanceInitialStateArgs']]:
+    def shielded_instance_initial_state(self) -> pulumi.Input[Optional['ImageShieldedInstanceInitialStateArgs']]:
         """
         Set the secure boot keys of shielded instance.
         Structure is documented below.
@@ -310,12 +310,12 @@ class ImageArgs:
         return pulumi.get(self, "shielded_instance_initial_state")
 
     @shielded_instance_initial_state.setter
-    def shielded_instance_initial_state(self, value: Optional[pulumi.Input['ImageShieldedInstanceInitialStateArgs']]):
+    def shielded_instance_initial_state(self, value: pulumi.Input[Optional['ImageShieldedInstanceInitialStateArgs']]):
         pulumi.set(self, "shielded_instance_initial_state", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDisk")
-    def source_disk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_disk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source disk to create this image based on.
         You must provide either this property or the
@@ -324,12 +324,12 @@ class ImageArgs:
         return pulumi.get(self, "source_disk")
 
     @source_disk.setter
-    def source_disk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_disk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDiskEncryptionKey")
-    def source_disk_encryption_key(self) -> Optional[pulumi.Input['ImageSourceDiskEncryptionKeyArgs']]:
+    def source_disk_encryption_key(self) -> pulumi.Input[Optional['ImageSourceDiskEncryptionKeyArgs']]:
         """
         The customer-supplied encryption key of the source disk. Required if
         the source disk is protected by a customer-supplied encryption key.
@@ -338,12 +338,12 @@ class ImageArgs:
         return pulumi.get(self, "source_disk_encryption_key")
 
     @source_disk_encryption_key.setter
-    def source_disk_encryption_key(self, value: Optional[pulumi.Input['ImageSourceDiskEncryptionKeyArgs']]):
+    def source_disk_encryption_key(self, value: pulumi.Input[Optional['ImageSourceDiskEncryptionKeyArgs']]):
         pulumi.set(self, "source_disk_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceImage")
-    def source_image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the source image used to create this image. In order to create an image, you must provide the full or partial
         URL of one of the following:
@@ -355,12 +355,12 @@ class ImageArgs:
         return pulumi.get(self, "source_image")
 
     @source_image.setter
-    def source_image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_image", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceImageEncryptionKey")
-    def source_image_encryption_key(self) -> Optional[pulumi.Input['ImageSourceImageEncryptionKeyArgs']]:
+    def source_image_encryption_key(self) -> pulumi.Input[Optional['ImageSourceImageEncryptionKeyArgs']]:
         """
         The customer-supplied encryption key of the source image. Required if
         the source image is protected by a customer-supplied encryption key.
@@ -369,12 +369,12 @@ class ImageArgs:
         return pulumi.get(self, "source_image_encryption_key")
 
     @source_image_encryption_key.setter
-    def source_image_encryption_key(self, value: Optional[pulumi.Input['ImageSourceImageEncryptionKeyArgs']]):
+    def source_image_encryption_key(self, value: pulumi.Input[Optional['ImageSourceImageEncryptionKeyArgs']]):
         pulumi.set(self, "source_image_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSnapshot")
-    def source_snapshot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_snapshot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the source snapshot used to create this image.
         In order to create an image, you must provide the full or partial URL of one of the following:
@@ -387,12 +387,12 @@ class ImageArgs:
         return pulumi.get(self, "source_snapshot")
 
     @source_snapshot.setter
-    def source_snapshot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_snapshot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_snapshot", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")
-    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['ImageSourceSnapshotEncryptionKeyArgs']]:
+    def source_snapshot_encryption_key(self) -> pulumi.Input[Optional['ImageSourceSnapshotEncryptionKeyArgs']]:
         """
         The customer-supplied encryption key of the source snapshot. Required if
         the source snapshot is protected by a customer-supplied encryption key.
@@ -401,12 +401,12 @@ class ImageArgs:
         return pulumi.get(self, "source_snapshot_encryption_key")
 
     @source_snapshot_encryption_key.setter
-    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['ImageSourceSnapshotEncryptionKeyArgs']]):
+    def source_snapshot_encryption_key(self, value: pulumi.Input[Optional['ImageSourceSnapshotEncryptionKeyArgs']]):
         pulumi.set(self, "source_snapshot_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocations")
-    def storage_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def storage_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Cloud Storage bucket storage location of the image
         (regional or multi-regional).
@@ -415,38 +415,38 @@ class ImageArgs:
         return pulumi.get(self, "storage_locations")
 
     @storage_locations.setter
-    def storage_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def storage_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "storage_locations", value)
 
 
 @pulumi.input_type
 class _ImageState:
     def __init__(__self__, *,
-                 archive_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 family: Optional[pulumi.Input[_builtins.str]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]] = None,
-                 image_encryption_key: Optional[pulumi.Input['ImageImageEncryptionKeyArgs']] = None,
-                 label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['ImageParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 shielded_instance_initial_state: Optional[pulumi.Input['ImageShieldedInstanceInitialStateArgs']] = None,
-                 source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk_encryption_key: Optional[pulumi.Input['ImageSourceDiskEncryptionKeyArgs']] = None,
-                 source_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_image_encryption_key: Optional[pulumi.Input['ImageSourceImageEncryptionKeyArgs']] = None,
-                 source_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input['ImageSourceSnapshotEncryptionKeyArgs']] = None,
-                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 archive_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 family: pulumi.Input[Optional[_builtins.str]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]] = None,
+                 image_encryption_key: pulumi.Input[Optional['ImageImageEncryptionKeyArgs']] = None,
+                 label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['ImageParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 raw_disk: pulumi.Input[Optional['ImageRawDiskArgs']] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 shielded_instance_initial_state: pulumi.Input[Optional['ImageShieldedInstanceInitialStateArgs']] = None,
+                 source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk_encryption_key: pulumi.Input[Optional['ImageSourceDiskEncryptionKeyArgs']] = None,
+                 source_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_image_encryption_key: pulumi.Input[Optional['ImageSourceImageEncryptionKeyArgs']] = None,
+                 source_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot_encryption_key: pulumi.Input[Optional['ImageSourceSnapshotEncryptionKeyArgs']] = None,
+                 storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Image resources.
 
@@ -576,7 +576,7 @@ class _ImageState:
 
     @_builtins.property
     @pulumi.getter(name="archiveSizeBytes")
-    def archive_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def archive_size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of the image tar.gz archive stored in Google Cloud Storage (in
         bytes).
@@ -584,24 +584,24 @@ class _ImageState:
         return pulumi.get(self, "archive_size_bytes")
 
     @archive_size_bytes.setter
-    def archive_size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def archive_size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "archive_size_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -609,36 +609,36 @@ class _ImageState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of the image when restored onto a persistent disk (in GB).
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def family(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def family(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image family to which this image belongs. You can
         create disks by specifying an image family instead of a specific
@@ -649,12 +649,12 @@ class _ImageState:
         return pulumi.get(self, "family")
 
     @family.setter
-    def family(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def family(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "family", value)
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")
-    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]]:
+    def guest_os_features(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]]:
         """
         A list of features to enable on the guest operating system.
         Applicable only for bootable images.
@@ -663,12 +663,12 @@ class _ImageState:
         return pulumi.get(self, "guest_os_features")
 
     @guest_os_features.setter
-    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]]):
+    def guest_os_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]]):
         pulumi.set(self, "guest_os_features", value)
 
     @_builtins.property
     @pulumi.getter(name="imageEncryptionKey")
-    def image_encryption_key(self) -> Optional[pulumi.Input['ImageImageEncryptionKeyArgs']]:
+    def image_encryption_key(self) -> pulumi.Input[Optional['ImageImageEncryptionKeyArgs']]:
         """
         Encrypts the image using a customer-supplied encryption key.
         After you encrypt an image with a customer-supplied key, you must
@@ -679,12 +679,12 @@ class _ImageState:
         return pulumi.get(self, "image_encryption_key")
 
     @image_encryption_key.setter
-    def image_encryption_key(self, value: Optional[pulumi.Input['ImageImageEncryptionKeyArgs']]):
+    def image_encryption_key(self, value: pulumi.Input[Optional['ImageImageEncryptionKeyArgs']]):
         pulumi.set(self, "image_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fingerprint used for optimistic locking of this resource. Used
         internally during updates.
@@ -692,12 +692,12 @@ class _ImageState:
         return pulumi.get(self, "label_fingerprint")
 
     @label_fingerprint.setter
-    def label_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this Image.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -706,24 +706,24 @@ class _ImageState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def licenses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Any applicable license URI.
         """
         return pulumi.get(self, "licenses")
 
     @licenses.setter
-    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def licenses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "licenses", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource; provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -736,12 +736,12 @@ class _ImageState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['ImageParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['ImageParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload.
         Structure is documented below.
@@ -749,12 +749,12 @@ class _ImageState:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['ImageParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['ImageParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -762,12 +762,12 @@ class _ImageState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -775,12 +775,12 @@ class _ImageState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="rawDisk")
-    def raw_disk(self) -> Optional[pulumi.Input['ImageRawDiskArgs']]:
+    def raw_disk(self) -> pulumi.Input[Optional['ImageRawDiskArgs']]:
         """
         The parameters of the raw disk image.
         Structure is documented below.
@@ -788,24 +788,24 @@ class _ImageState:
         return pulumi.get(self, "raw_disk")
 
     @raw_disk.setter
-    def raw_disk(self, value: Optional[pulumi.Input['ImageRawDiskArgs']]):
+    def raw_disk(self, value: pulumi.Input[Optional['ImageRawDiskArgs']]):
         pulumi.set(self, "raw_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceInitialState")
-    def shielded_instance_initial_state(self) -> Optional[pulumi.Input['ImageShieldedInstanceInitialStateArgs']]:
+    def shielded_instance_initial_state(self) -> pulumi.Input[Optional['ImageShieldedInstanceInitialStateArgs']]:
         """
         Set the secure boot keys of shielded instance.
         Structure is documented below.
@@ -813,12 +813,12 @@ class _ImageState:
         return pulumi.get(self, "shielded_instance_initial_state")
 
     @shielded_instance_initial_state.setter
-    def shielded_instance_initial_state(self, value: Optional[pulumi.Input['ImageShieldedInstanceInitialStateArgs']]):
+    def shielded_instance_initial_state(self, value: pulumi.Input[Optional['ImageShieldedInstanceInitialStateArgs']]):
         pulumi.set(self, "shielded_instance_initial_state", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDisk")
-    def source_disk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_disk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source disk to create this image based on.
         You must provide either this property or the
@@ -827,12 +827,12 @@ class _ImageState:
         return pulumi.get(self, "source_disk")
 
     @source_disk.setter
-    def source_disk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_disk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDiskEncryptionKey")
-    def source_disk_encryption_key(self) -> Optional[pulumi.Input['ImageSourceDiskEncryptionKeyArgs']]:
+    def source_disk_encryption_key(self) -> pulumi.Input[Optional['ImageSourceDiskEncryptionKeyArgs']]:
         """
         The customer-supplied encryption key of the source disk. Required if
         the source disk is protected by a customer-supplied encryption key.
@@ -841,12 +841,12 @@ class _ImageState:
         return pulumi.get(self, "source_disk_encryption_key")
 
     @source_disk_encryption_key.setter
-    def source_disk_encryption_key(self, value: Optional[pulumi.Input['ImageSourceDiskEncryptionKeyArgs']]):
+    def source_disk_encryption_key(self, value: pulumi.Input[Optional['ImageSourceDiskEncryptionKeyArgs']]):
         pulumi.set(self, "source_disk_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceImage")
-    def source_image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the source image used to create this image. In order to create an image, you must provide the full or partial
         URL of one of the following:
@@ -858,12 +858,12 @@ class _ImageState:
         return pulumi.get(self, "source_image")
 
     @source_image.setter
-    def source_image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_image", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceImageEncryptionKey")
-    def source_image_encryption_key(self) -> Optional[pulumi.Input['ImageSourceImageEncryptionKeyArgs']]:
+    def source_image_encryption_key(self) -> pulumi.Input[Optional['ImageSourceImageEncryptionKeyArgs']]:
         """
         The customer-supplied encryption key of the source image. Required if
         the source image is protected by a customer-supplied encryption key.
@@ -872,12 +872,12 @@ class _ImageState:
         return pulumi.get(self, "source_image_encryption_key")
 
     @source_image_encryption_key.setter
-    def source_image_encryption_key(self, value: Optional[pulumi.Input['ImageSourceImageEncryptionKeyArgs']]):
+    def source_image_encryption_key(self, value: pulumi.Input[Optional['ImageSourceImageEncryptionKeyArgs']]):
         pulumi.set(self, "source_image_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSnapshot")
-    def source_snapshot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_snapshot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the source snapshot used to create this image.
         In order to create an image, you must provide the full or partial URL of one of the following:
@@ -890,12 +890,12 @@ class _ImageState:
         return pulumi.get(self, "source_snapshot")
 
     @source_snapshot.setter
-    def source_snapshot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_snapshot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_snapshot", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")
-    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['ImageSourceSnapshotEncryptionKeyArgs']]:
+    def source_snapshot_encryption_key(self) -> pulumi.Input[Optional['ImageSourceSnapshotEncryptionKeyArgs']]:
         """
         The customer-supplied encryption key of the source snapshot. Required if
         the source snapshot is protected by a customer-supplied encryption key.
@@ -904,12 +904,12 @@ class _ImageState:
         return pulumi.get(self, "source_snapshot_encryption_key")
 
     @source_snapshot_encryption_key.setter
-    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['ImageSourceSnapshotEncryptionKeyArgs']]):
+    def source_snapshot_encryption_key(self, value: pulumi.Input[Optional['ImageSourceSnapshotEncryptionKeyArgs']]):
         pulumi.set(self, "source_snapshot_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocations")
-    def storage_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def storage_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Cloud Storage bucket storage location of the image
         (regional or multi-regional).
@@ -918,7 +918,7 @@ class _ImageState:
         return pulumi.get(self, "storage_locations")
 
     @storage_locations.setter
-    def storage_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def storage_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "storage_locations", value)
 
 
@@ -928,25 +928,25 @@ class Image(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 family: Optional[pulumi.Input[_builtins.str]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]]] = None,
-                 image_encryption_key: Optional[pulumi.Input[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['ImageParamsArgs', 'ImageParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 raw_disk: Optional[pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
-                 shielded_instance_initial_state: Optional[pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
-                 source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk_encryption_key: Optional[pulumi.Input[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']]] = None,
-                 source_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_image_encryption_key: Optional[pulumi.Input[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']]] = None,
-                 source_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']]] = None,
-                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 family: pulumi.Input[Optional[_builtins.str]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]]] = None,
+                 image_encryption_key: pulumi.Input[Optional[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['ImageParamsArgs', 'ImageParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 raw_disk: pulumi.Input[Optional[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
+                 shielded_instance_initial_state: pulumi.Input[Optional[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
+                 source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk_encryption_key: pulumi.Input[Optional[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']]] = None,
+                 source_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_image_encryption_key: pulumi.Input[Optional[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']]] = None,
+                 source_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot_encryption_key: pulumi.Input[Optional[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']]] = None,
+                 storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Represents an Image resource.
@@ -1267,25 +1267,25 @@ class Image(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 family: Optional[pulumi.Input[_builtins.str]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]]] = None,
-                 image_encryption_key: Optional[pulumi.Input[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['ImageParamsArgs', 'ImageParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 raw_disk: Optional[pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
-                 shielded_instance_initial_state: Optional[pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
-                 source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk_encryption_key: Optional[pulumi.Input[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']]] = None,
-                 source_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_image_encryption_key: Optional[pulumi.Input[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']]] = None,
-                 source_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']]] = None,
-                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 family: pulumi.Input[Optional[_builtins.str]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]]] = None,
+                 image_encryption_key: pulumi.Input[Optional[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['ImageParamsArgs', 'ImageParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 raw_disk: pulumi.Input[Optional[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
+                 shielded_instance_initial_state: pulumi.Input[Optional[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
+                 source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk_encryption_key: pulumi.Input[Optional[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']]] = None,
+                 source_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_image_encryption_key: pulumi.Input[Optional[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']]] = None,
+                 source_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot_encryption_key: pulumi.Input[Optional[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']]] = None,
+                 storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1332,31 +1332,31 @@ class Image(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            archive_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            family: Optional[pulumi.Input[_builtins.str]] = None,
-            guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]]] = None,
-            image_encryption_key: Optional[pulumi.Input[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']]] = None,
-            label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[Union['ImageParamsArgs', 'ImageParamsArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            raw_disk: Optional[pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            shielded_instance_initial_state: Optional[pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
-            source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-            source_disk_encryption_key: Optional[pulumi.Input[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']]] = None,
-            source_image: Optional[pulumi.Input[_builtins.str]] = None,
-            source_image_encryption_key: Optional[pulumi.Input[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']]] = None,
-            source_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-            source_snapshot_encryption_key: Optional[pulumi.Input[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']]] = None,
-            storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Image':
+            archive_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            family: pulumi.Input[Optional[_builtins.str]] = None,
+            guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageGuestOsFeatureArgs', 'ImageGuestOsFeatureArgsDict']]]]] = None,
+            image_encryption_key: pulumi.Input[Optional[Union['ImageImageEncryptionKeyArgs', 'ImageImageEncryptionKeyArgsDict']]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['ImageParamsArgs', 'ImageParamsArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            raw_disk: pulumi.Input[Optional[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            shielded_instance_initial_state: pulumi.Input[Optional[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
+            source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+            source_disk_encryption_key: pulumi.Input[Optional[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']]] = None,
+            source_image: pulumi.Input[Optional[_builtins.str]] = None,
+            source_image_encryption_key: pulumi.Input[Optional[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']]] = None,
+            source_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+            source_snapshot_encryption_key: pulumi.Input[Optional[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']]] = None,
+            storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

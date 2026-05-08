@@ -218,7 +218,7 @@ export interface DeploymentState {
      * Default value is `CREATE_OR_ACQUIRE`.
      * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      */
-    createPolicy?: pulumi.Input<string>;
+    createPolicy?: pulumi.Input<string | undefined>;
     /**
      * Set the policy to use for deleting new resources on update/delete.
      * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
@@ -229,29 +229,29 @@ export interface DeploymentState {
      * Default value is `DELETE`.
      * Possible values are: `ABANDON`, `DELETE`.
      */
-    deletePolicy?: pulumi.Input<string>;
+    deletePolicy?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for deployment. Output only.
      */
-    deploymentId?: pulumi.Input<string>;
+    deploymentId?: pulumi.Input<string | undefined>;
     /**
      * Optional user-provided description of deployment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Key-value pairs to apply to this labels.
      * Structure is documented below.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.DeploymentLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.DeploymentLabel>[] | undefined>;
     /**
      * Output only. URL of the manifest representing the last manifest that
      * was successfully deployed.
      */
-    manifest?: pulumi.Input<string>;
+    manifest?: pulumi.Input<string | undefined>;
     /**
      * Unique name for the deployment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * If set to true, a deployment is created with "shell" resources
      * that are not actually instantiated. This allows you to preview a
@@ -262,22 +262,22 @@ export interface DeploymentState {
      * the provider will force-recreate deployments if either preview is updated
      * to true or if other fields are updated while preview is true.
      */
-    preview?: pulumi.Input<boolean>;
+    preview?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. Server defined URL for the resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Parameters that define your deployment, including the deployment
      * configuration and relevant templates.
      * Structure is documented below.
      */
-    target?: pulumi.Input<inputs.deploymentmanager.DeploymentTarget>;
+    target?: pulumi.Input<inputs.deploymentmanager.DeploymentTarget | undefined>;
 }
 
 /**
@@ -293,7 +293,7 @@ export interface DeploymentArgs {
      * Default value is `CREATE_OR_ACQUIRE`.
      * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      */
-    createPolicy?: pulumi.Input<string>;
+    createPolicy?: pulumi.Input<string | undefined>;
     /**
      * Set the policy to use for deleting new resources on update/delete.
      * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
@@ -304,20 +304,20 @@ export interface DeploymentArgs {
      * Default value is `DELETE`.
      * Possible values are: `ABANDON`, `DELETE`.
      */
-    deletePolicy?: pulumi.Input<string>;
+    deletePolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional user-provided description of deployment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Key-value pairs to apply to this labels.
      * Structure is documented below.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.DeploymentLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.DeploymentLabel>[] | undefined>;
     /**
      * Unique name for the deployment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * If set to true, a deployment is created with "shell" resources
      * that are not actually instantiated. This allows you to preview a
@@ -328,12 +328,12 @@ export interface DeploymentArgs {
      * the provider will force-recreate deployments if either preview is updated
      * to true or if other fields are updated while preview is true.
      */
-    preview?: pulumi.Input<boolean>;
+    preview?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Parameters that define your deployment, including the deployment
      * configuration and relevant templates.

@@ -286,59 +286,59 @@ export interface ServerTlsPolicyState {
      * Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
      * Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
      */
-    allowOpen?: pulumi.Input<boolean>;
+    allowOpen?: pulumi.Input<boolean | undefined>;
     /**
      * Time the ServerTlsPolicy was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Set of label tags associated with the ServerTlsPolicy resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the server tls policy.
      * The default value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director.
      * Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections.
      * Structure is documented below.
      */
-    mtlsPolicy?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyMtlsPolicy>;
+    mtlsPolicy?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyMtlsPolicy | undefined>;
     /**
      * Name of the ServerTlsPolicy resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
      * Structure is documented below.
      */
-    serverCertificate?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyServerCertificate>;
+    serverCertificate?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyServerCertificate | undefined>;
     /**
      * Time the ServerTlsPolicy was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -350,40 +350,40 @@ export interface ServerTlsPolicyArgs {
      * Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
      * Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
      */
-    allowOpen?: pulumi.Input<boolean>;
+    allowOpen?: pulumi.Input<boolean | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Set of label tags associated with the ServerTlsPolicy resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the server tls policy.
      * The default value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director.
      * Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections.
      * Structure is documented below.
      */
-    mtlsPolicy?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyMtlsPolicy>;
+    mtlsPolicy?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyMtlsPolicy | undefined>;
     /**
      * Name of the ServerTlsPolicy resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
      * Structure is documented below.
      */
-    serverCertificate?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyServerCertificate>;
+    serverCertificate?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyServerCertificate | undefined>;
 }

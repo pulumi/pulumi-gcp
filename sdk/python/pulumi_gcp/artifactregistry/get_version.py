@@ -220,12 +220,12 @@ def get_version(location: Optional[_builtins.str] = None,
         update_time=pulumi.get(__ret__, 'update_time'),
         version_name=pulumi.get(__ret__, 'version_name'),
         view=pulumi.get(__ret__, 'view'))
-def get_version_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                       package_name: Optional[pulumi.Input[_builtins.str]] = None,
-                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       repository_id: Optional[pulumi.Input[_builtins.str]] = None,
-                       version_name: Optional[pulumi.Input[_builtins.str]] = None,
-                       view: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_version_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                       package_name: pulumi.Input[Optional[_builtins.str]] = None,
+                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+                       version_name: pulumi.Input[Optional[_builtins.str]] = None,
+                       view: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVersionResult]:
     """
     This data source fetches information of a version from a provided Artifact Registry repository.

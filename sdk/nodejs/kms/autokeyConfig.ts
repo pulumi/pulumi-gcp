@@ -193,22 +193,22 @@ export interface AutokeyConfigState {
     /**
      * The etag of the AutokeyConfig for optimistic concurrency control.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The folder for which to retrieve config.
      */
-    folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string | undefined>;
     /**
      * The target key project for a given folder where KMS Autokey will provision a
      * CryptoKey for any new KeyHandle the Developer creates. Should have the form
      * `projects/<project_id_or_number>`.
      */
-    keyProject?: pulumi.Input<string>;
+    keyProject?: pulumi.Input<string | undefined>;
     /**
      * How Autokey determines which project to use when provisioning CMEK keys.
      * Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
      */
-    keyProjectResolutionMode?: pulumi.Input<string>;
+    keyProjectResolutionMode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -224,10 +224,10 @@ export interface AutokeyConfigArgs {
      * CryptoKey for any new KeyHandle the Developer creates. Should have the form
      * `projects/<project_id_or_number>`.
      */
-    keyProject?: pulumi.Input<string>;
+    keyProject?: pulumi.Input<string | undefined>;
     /**
      * How Autokey determines which project to use when provisioning CMEK keys.
      * Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
      */
-    keyProjectResolutionMode?: pulumi.Input<string>;
+    keyProjectResolutionMode?: pulumi.Input<string | undefined>;
 }

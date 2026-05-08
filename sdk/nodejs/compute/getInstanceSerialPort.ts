@@ -59,11 +59,11 @@ import * as utilities from "../utilities";
  *         ],
  *     },
  * });
- * const serial = pulumi.all([windows.name, windows.zone]).apply(([name, zone]) => gcp.compute.getInstanceSerialPortOutput({
- *     instance: name,
- *     zone: zone,
+ * const serial = gcp.compute.getInstanceSerialPortOutput({
+ *     instance: windows.name,
+ *     zone: windows.zone,
  *     port: 4,
- * }));
+ * });
  * export const serialOut = serial.apply(serial => serial.contents);
  * ```
  */
@@ -175,11 +175,11 @@ export interface GetInstanceSerialPortResult {
  *         ],
  *     },
  * });
- * const serial = pulumi.all([windows.name, windows.zone]).apply(([name, zone]) => gcp.compute.getInstanceSerialPortOutput({
- *     instance: name,
- *     zone: zone,
+ * const serial = gcp.compute.getInstanceSerialPortOutput({
+ *     instance: windows.name,
+ *     zone: windows.zone,
  *     port: 4,
- * }));
+ * });
  * export const serialOut = serial.apply(serial => serial.contents);
  * ```
  */
@@ -211,10 +211,10 @@ export interface GetInstanceSerialPortOutputArgs {
      * The project in which the Compute Instance exists. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The zone in which the Compute Instance exists.
      * If it is not provided, the provider zone is used.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

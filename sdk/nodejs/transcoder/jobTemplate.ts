@@ -645,40 +645,40 @@ export interface JobTemplateState {
      * The configuration for this template.
      * Structure is documented below.
      */
-    config?: pulumi.Input<inputs.transcoder.JobTemplateConfig>;
+    config?: pulumi.Input<inputs.transcoder.JobTemplateConfig | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ID to use for the Transcoding job template.
      */
-    jobTemplateId?: pulumi.Input<string>;
+    jobTemplateId?: pulumi.Input<string | undefined>;
     /**
      * The labels associated with this job template. You can use these to organize and group your job templates.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the transcoding job template resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the job template.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -689,7 +689,7 @@ export interface JobTemplateArgs {
      * The configuration for this template.
      * Structure is documented below.
      */
-    config?: pulumi.Input<inputs.transcoder.JobTemplateConfig>;
+    config?: pulumi.Input<inputs.transcoder.JobTemplateConfig | undefined>;
     /**
      * ID to use for the Transcoding job template.
      */
@@ -700,7 +700,7 @@ export interface JobTemplateArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the transcoding job template resource.
      */
@@ -709,5 +709,5 @@ export interface JobTemplateArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

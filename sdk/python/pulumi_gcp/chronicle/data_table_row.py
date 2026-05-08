@@ -23,8 +23,8 @@ class DataTableRowArgs:
                  instance: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 row_time_to_live: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 row_time_to_live: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataTableRow resource.
 
@@ -97,7 +97,7 @@ class DataTableRowArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -105,35 +105,35 @@ class DataTableRowArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="rowTimeToLive")
-    def row_time_to_live(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def row_time_to_live(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided TTL of the data table row.
         """
         return pulumi.get(self, "row_time_to_live")
 
     @row_time_to_live.setter
-    def row_time_to_live(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def row_time_to_live(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "row_time_to_live", value)
 
 
 @pulumi.input_type
 class _DataTableRowState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_table_row: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 row_time_to_live: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_table_row: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 row_time_to_live: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DataTableRow resources.
 
@@ -175,67 +175,67 @@ class _DataTableRowState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DataTableRow create time
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataTableId")
-    def data_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the parent DataTable.
         """
         return pulumi.get(self, "data_table_id")
 
     @data_table_id.setter
-    def data_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_table_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dataTableRow")
-    def data_table_row(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_table_row(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the DataTable Row.
         """
         return pulumi.get(self, "data_table_row")
 
     @data_table_row.setter
-    def data_table_row(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_table_row(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_table_row", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Chronicle instance ID.
         """
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCP location of the Chronicle instance.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name of the data table row.
         Format:
@@ -244,12 +244,12 @@ class _DataTableRowState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -257,36 +257,36 @@ class _DataTableRowState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="rowTimeToLive")
-    def row_time_to_live(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def row_time_to_live(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided TTL of the data table row.
         """
         return pulumi.get(self, "row_time_to_live")
 
     @row_time_to_live.setter
-    def row_time_to_live(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def row_time_to_live(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "row_time_to_live", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DataTableRow update time
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         All column values for a single row. The values should be in the same order
         as the columns of the data tables.
@@ -294,7 +294,7 @@ class _DataTableRowState:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "values", value)
 
 
@@ -304,12 +304,12 @@ class DataTableRow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 row_time_to_live: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 row_time_to_live: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Represents a single row in a data table.
@@ -477,12 +477,12 @@ class DataTableRow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 row_time_to_live: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 row_time_to_live: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -520,16 +520,16 @@ class DataTableRow(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            data_table_row: Optional[pulumi.Input[_builtins.str]] = None,
-            instance: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            row_time_to_live: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DataTableRow':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_table_row: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            row_time_to_live: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DataTableRow':
         """
         Get an existing DataTableRow resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

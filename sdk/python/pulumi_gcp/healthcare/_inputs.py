@@ -90,14 +90,14 @@ __all__ = [
 class ConsentStoreIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ConsentStoreIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -123,25 +123,25 @@ class ConsentStoreIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ConsentStoreIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ConsentStoreIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -167,16 +167,16 @@ class ConsentStoreIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class DatasetEncryptionSpecArgsDict(TypedDict):
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
     encryption and the dataset must be in the same location. If empty, the default Google encryption
@@ -187,7 +187,7 @@ class DatasetEncryptionSpecArgsDict(TypedDict):
 @pulumi.input_type
 class DatasetEncryptionSpecArgs:
     def __init__(__self__, *,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
                encryption and the dataset must be in the same location. If empty, the default Google encryption
@@ -199,7 +199,7 @@ class DatasetEncryptionSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
         encryption and the dataset must be in the same location. If empty, the default Google encryption
@@ -209,21 +209,21 @@ class DatasetEncryptionSpecArgs:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
 
 class DatasetIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DatasetIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -249,25 +249,25 @@ class DatasetIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class DatasetIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DatasetIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -293,25 +293,25 @@ class DatasetIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class DicomStoreIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DicomStoreIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -337,25 +337,25 @@ class DicomStoreIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class DicomStoreIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DicomStoreIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -381,11 +381,11 @@ class DicomStoreIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -399,7 +399,7 @@ class DicomStoreNotificationConfigArgsDict(TypedDict):
     project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
     Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
     """
-    send_for_bulk_import: NotRequired[pulumi.Input[_builtins.bool]]
+    send_for_bulk_import: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
     """
@@ -408,7 +408,7 @@ class DicomStoreNotificationConfigArgsDict(TypedDict):
 class DicomStoreNotificationConfigArgs:
     def __init__(__self__, *,
                  pubsub_topic: pulumi.Input[_builtins.str],
-                 send_for_bulk_import: Optional[pulumi.Input[_builtins.bool]] = None):
+                 send_for_bulk_import: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] pubsub_topic: The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
@@ -441,14 +441,14 @@ class DicomStoreNotificationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="sendForBulkImport")
-    def send_for_bulk_import(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_for_bulk_import(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
         """
         return pulumi.get(self, "send_for_bulk_import")
 
     @send_for_bulk_import.setter
-    def send_for_bulk_import(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_for_bulk_import(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_for_bulk_import", value)
 
 
@@ -517,21 +517,21 @@ class FhirStoreConsentConfigArgsDict(TypedDict):
     Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either [fhirStores.create][] or [fhirStores.patch][]. After that, you must call [fhirStores.applyConsents][] to change the version.
     Possible values are: `CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED`, `V1`.
     """
-    access_determination_log_config: NotRequired[pulumi.Input['FhirStoreConsentConfigAccessDeterminationLogConfigArgsDict']]
+    access_determination_log_config: NotRequired[pulumi.Input[Optional['FhirStoreConsentConfigAccessDeterminationLogConfigArgs']]]
     """
     Specifies how the server logs the consent-aware requests. If not specified, the AccessDeterminationLogConfig.LogLevel.MINIMUM option is used.
     Structure is documented below.
     """
-    access_enforced: NotRequired[pulumi.Input[_builtins.bool]]
+    access_enforced: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     The default value is false. If set to true, when accessing FHIR resources, the consent headers will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
     """
-    consent_header_handling: NotRequired[pulumi.Input['FhirStoreConsentConfigConsentHeaderHandlingArgsDict']]
+    consent_header_handling: NotRequired[pulumi.Input[Optional['FhirStoreConsentConfigConsentHeaderHandlingArgs']]]
     """
     Different options to configure the behaviour of the server when handling the X-Consent-Scope header.
     Structure is documented below.
     """
-    enforced_admin_consents: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    enforced_admin_consents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     The versioned names of the enforced admin Consent resource(s), in the format projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}/_history/{version_id}. For FHIR stores with disableResourceVersioning=true, the format is projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}. This field can only be updated using [fhirStores.applyAdminConsents][].
@@ -541,10 +541,10 @@ class FhirStoreConsentConfigArgsDict(TypedDict):
 class FhirStoreConsentConfigArgs:
     def __init__(__self__, *,
                  version: pulumi.Input[_builtins.str],
-                 access_determination_log_config: Optional[pulumi.Input['FhirStoreConsentConfigAccessDeterminationLogConfigArgs']] = None,
-                 access_enforced: Optional[pulumi.Input[_builtins.bool]] = None,
-                 consent_header_handling: Optional[pulumi.Input['FhirStoreConsentConfigConsentHeaderHandlingArgs']] = None,
-                 enforced_admin_consents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 access_determination_log_config: pulumi.Input[Optional['FhirStoreConsentConfigAccessDeterminationLogConfigArgs']] = None,
+                 access_enforced: pulumi.Input[Optional[_builtins.bool]] = None,
+                 consent_header_handling: pulumi.Input[Optional['FhirStoreConsentConfigConsentHeaderHandlingArgs']] = None,
+                 enforced_admin_consents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] version: Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either [fhirStores.create][] or [fhirStores.patch][]. After that, you must call [fhirStores.applyConsents][] to change the version.
                Possible values are: `CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED`, `V1`.
@@ -581,7 +581,7 @@ class FhirStoreConsentConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessDeterminationLogConfig")
-    def access_determination_log_config(self) -> Optional[pulumi.Input['FhirStoreConsentConfigAccessDeterminationLogConfigArgs']]:
+    def access_determination_log_config(self) -> pulumi.Input[Optional['FhirStoreConsentConfigAccessDeterminationLogConfigArgs']]:
         """
         Specifies how the server logs the consent-aware requests. If not specified, the AccessDeterminationLogConfig.LogLevel.MINIMUM option is used.
         Structure is documented below.
@@ -589,24 +589,24 @@ class FhirStoreConsentConfigArgs:
         return pulumi.get(self, "access_determination_log_config")
 
     @access_determination_log_config.setter
-    def access_determination_log_config(self, value: Optional[pulumi.Input['FhirStoreConsentConfigAccessDeterminationLogConfigArgs']]):
+    def access_determination_log_config(self, value: pulumi.Input[Optional['FhirStoreConsentConfigAccessDeterminationLogConfigArgs']]):
         pulumi.set(self, "access_determination_log_config", value)
 
     @_builtins.property
     @pulumi.getter(name="accessEnforced")
-    def access_enforced(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def access_enforced(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The default value is false. If set to true, when accessing FHIR resources, the consent headers will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
         """
         return pulumi.get(self, "access_enforced")
 
     @access_enforced.setter
-    def access_enforced(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def access_enforced(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "access_enforced", value)
 
     @_builtins.property
     @pulumi.getter(name="consentHeaderHandling")
-    def consent_header_handling(self) -> Optional[pulumi.Input['FhirStoreConsentConfigConsentHeaderHandlingArgs']]:
+    def consent_header_handling(self) -> pulumi.Input[Optional['FhirStoreConsentConfigConsentHeaderHandlingArgs']]:
         """
         Different options to configure the behaviour of the server when handling the X-Consent-Scope header.
         Structure is documented below.
@@ -614,12 +614,12 @@ class FhirStoreConsentConfigArgs:
         return pulumi.get(self, "consent_header_handling")
 
     @consent_header_handling.setter
-    def consent_header_handling(self, value: Optional[pulumi.Input['FhirStoreConsentConfigConsentHeaderHandlingArgs']]):
+    def consent_header_handling(self, value: pulumi.Input[Optional['FhirStoreConsentConfigConsentHeaderHandlingArgs']]):
         pulumi.set(self, "consent_header_handling", value)
 
     @_builtins.property
     @pulumi.getter(name="enforcedAdminConsents")
-    def enforced_admin_consents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def enforced_admin_consents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         The versioned names of the enforced admin Consent resource(s), in the format projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}/_history/{version_id}. For FHIR stores with disableResourceVersioning=true, the format is projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}. This field can only be updated using [fhirStores.applyAdminConsents][].
@@ -627,12 +627,12 @@ class FhirStoreConsentConfigArgs:
         return pulumi.get(self, "enforced_admin_consents")
 
     @enforced_admin_consents.setter
-    def enforced_admin_consents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def enforced_admin_consents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "enforced_admin_consents", value)
 
 
 class FhirStoreConsentConfigAccessDeterminationLogConfigArgsDict(TypedDict):
-    log_level: NotRequired[pulumi.Input[_builtins.str]]
+    log_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Controls the amount of detail to include as part of the audit logs.
     Default value is `MINIMUM`.
@@ -642,7 +642,7 @@ class FhirStoreConsentConfigAccessDeterminationLogConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FhirStoreConsentConfigAccessDeterminationLogConfigArgs:
     def __init__(__self__, *,
-                 log_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 log_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] log_level: Controls the amount of detail to include as part of the audit logs.
                Default value is `MINIMUM`.
@@ -653,7 +653,7 @@ class FhirStoreConsentConfigAccessDeterminationLogConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="logLevel")
-    def log_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the amount of detail to include as part of the audit logs.
         Default value is `MINIMUM`.
@@ -662,12 +662,12 @@ class FhirStoreConsentConfigAccessDeterminationLogConfigArgs:
         return pulumi.get(self, "log_level")
 
     @log_level.setter
-    def log_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_level", value)
 
 
 class FhirStoreConsentConfigConsentHeaderHandlingArgsDict(TypedDict):
-    profile: NotRequired[pulumi.Input[_builtins.str]]
+    profile: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the default server behavior when the header is empty. If not specified, the ScopeProfile.PERMIT_EMPTY_SCOPE option is used.
     Default value is `PERMIT_EMPTY_SCOPE`.
@@ -677,7 +677,7 @@ class FhirStoreConsentConfigConsentHeaderHandlingArgsDict(TypedDict):
 @pulumi.input_type
 class FhirStoreConsentConfigConsentHeaderHandlingArgs:
     def __init__(__self__, *,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None):
+                 profile: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] profile: Specifies the default server behavior when the header is empty. If not specified, the ScopeProfile.PERMIT_EMPTY_SCOPE option is used.
                Default value is `PERMIT_EMPTY_SCOPE`.
@@ -688,7 +688,7 @@ class FhirStoreConsentConfigConsentHeaderHandlingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the default server behavior when the header is empty. If not specified, the ScopeProfile.PERMIT_EMPTY_SCOPE option is used.
         Default value is `PERMIT_EMPTY_SCOPE`.
@@ -697,21 +697,21 @@ class FhirStoreConsentConfigConsentHeaderHandlingArgs:
         return pulumi.get(self, "profile")
 
     @profile.setter
-    def profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile", value)
 
 
 class FhirStoreIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class FhirStoreIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -737,25 +737,25 @@ class FhirStoreIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class FhirStoreIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class FhirStoreIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -781,11 +781,11 @@ class FhirStoreIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -799,7 +799,7 @@ class FhirStoreNotificationConfigArgsDict(TypedDict):
     project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
     Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
     """
-    send_full_resource: NotRequired[pulumi.Input[_builtins.bool]]
+    send_full_resource: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
     Note that setting this to true does not guarantee that all resources will be sent in the format of
@@ -807,7 +807,7 @@ class FhirStoreNotificationConfigArgsDict(TypedDict):
     sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether
     it needs to fetch the full resource as a separate operation.
     """
-    send_previous_resource_on_delete: NotRequired[pulumi.Input[_builtins.bool]]
+    send_previous_resource_on_delete: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to
     true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a
@@ -820,8 +820,8 @@ class FhirStoreNotificationConfigArgsDict(TypedDict):
 class FhirStoreNotificationConfigArgs:
     def __init__(__self__, *,
                  pubsub_topic: pulumi.Input[_builtins.str],
-                 send_full_resource: Optional[pulumi.Input[_builtins.bool]] = None,
-                 send_previous_resource_on_delete: Optional[pulumi.Input[_builtins.bool]] = None):
+                 send_full_resource: pulumi.Input[Optional[_builtins.bool]] = None,
+                 send_previous_resource_on_delete: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] pubsub_topic: The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
@@ -865,7 +865,7 @@ class FhirStoreNotificationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="sendFullResource")
-    def send_full_resource(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_full_resource(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
         Note that setting this to true does not guarantee that all resources will be sent in the format of
@@ -876,12 +876,12 @@ class FhirStoreNotificationConfigArgs:
         return pulumi.get(self, "send_full_resource")
 
     @send_full_resource.setter
-    def send_full_resource(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_full_resource(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_full_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="sendPreviousResourceOnDelete")
-    def send_previous_resource_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_previous_resource_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to
         true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a
@@ -892,7 +892,7 @@ class FhirStoreNotificationConfigArgs:
         return pulumi.get(self, "send_previous_resource_on_delete")
 
     @send_previous_resource_on_delete.setter
-    def send_previous_resource_on_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_previous_resource_on_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_previous_resource_on_delete", value)
 
 
@@ -906,7 +906,7 @@ class FhirStoreStreamConfigArgsDict(TypedDict):
     See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.
     Structure is documented below.
     """
-    resource_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resource_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Supply a FHIR resource type (such as "Patient" or "Observation"). See
     https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
@@ -917,7 +917,7 @@ class FhirStoreStreamConfigArgsDict(TypedDict):
 class FhirStoreStreamConfigArgs:
     def __init__(__self__, *,
                  bigquery_destination: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArgs'],
-                 resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArgs'] bigquery_destination: The destination BigQuery structure that contains both the dataset location and corresponding schema config.
                The output is organized in one table per resource type. The server reuses the existing tables (if any) that
@@ -952,7 +952,7 @@ class FhirStoreStreamConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceTypes")
-    def resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Supply a FHIR resource type (such as "Patient" or "Observation"). See
         https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
@@ -961,7 +961,7 @@ class FhirStoreStreamConfigArgs:
         return pulumi.get(self, "resource_types")
 
     @resource_types.setter
-    def resource_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_types", value)
 
 
@@ -1023,12 +1023,12 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgsDict(TypedDict):
     concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
     value 2. The maximum depth allowed is 5.
     """
-    last_updated_partition_config: NotRequired[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgsDict']]
+    last_updated_partition_config: NotRequired[pulumi.Input[Optional['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']]]
     """
     The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
     Structure is documented below.
     """
-    schema_type: NotRequired[pulumi.Input[_builtins.str]]
+    schema_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the output schema type.
     * ANALYTICS: Analytics schema defined by the FHIR community.
@@ -1043,8 +1043,8 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgsDict(TypedDict):
 class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
     def __init__(__self__, *,
                  recursive_structure_depth: pulumi.Input[_builtins.int],
-                 last_updated_partition_config: Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']] = None,
-                 schema_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 last_updated_partition_config: pulumi.Input[Optional['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']] = None,
+                 schema_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] recursive_structure_depth: The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
                resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
@@ -1083,7 +1083,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="lastUpdatedPartitionConfig")
-    def last_updated_partition_config(self) -> Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']]:
+    def last_updated_partition_config(self) -> pulumi.Input[Optional['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']]:
         """
         The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
         Structure is documented below.
@@ -1091,12 +1091,12 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
         return pulumi.get(self, "last_updated_partition_config")
 
     @last_updated_partition_config.setter
-    def last_updated_partition_config(self, value: Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']]):
+    def last_updated_partition_config(self, value: pulumi.Input[Optional['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']]):
         pulumi.set(self, "last_updated_partition_config", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaType")
-    def schema_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the output schema type.
         * ANALYTICS: Analytics schema defined by the FHIR community.
@@ -1109,7 +1109,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
         return pulumi.get(self, "schema_type")
 
     @schema_type.setter
-    def schema_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_type", value)
 
 
@@ -1119,7 +1119,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionCo
     Type of partitioning.
     Possible values are: `PARTITION_TYPE_UNSPECIFIED`, `HOUR`, `DAY`, `MONTH`, `YEAR`.
     """
-    expiration_ms: NotRequired[pulumi.Input[_builtins.str]]
+    expiration_ms: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Number of milliseconds for which to keep the storage for a partition.
     """
@@ -1128,7 +1128,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionCo
 class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 expiration_ms: Optional[pulumi.Input[_builtins.str]] = None):
+                 expiration_ms: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: Type of partitioning.
                Possible values are: `PARTITION_TYPE_UNSPECIFIED`, `HOUR`, `DAY`, `MONTH`, `YEAR`.
@@ -1153,35 +1153,35 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionCo
 
     @_builtins.property
     @pulumi.getter(name="expirationMs")
-    def expiration_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of milliseconds for which to keep the storage for a partition.
         """
         return pulumi.get(self, "expiration_ms")
 
     @expiration_ms.setter
-    def expiration_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_ms", value)
 
 
 class FhirStoreValidationConfigArgsDict(TypedDict):
-    disable_fhirpath_validation: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_fhirpath_validation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to disable FHIRPath validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
     """
-    disable_profile_validation: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_profile_validation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to disable profile validation for this FHIR store. The default value is false. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
     """
-    disable_reference_type_validation: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_reference_type_validation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to disable reference type validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
     """
-    disable_required_field_validation: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_required_field_validation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to disable required fields validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
     """
-    enabled_implementation_guides: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    enabled_implementation_guides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation.
     When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
@@ -1199,11 +1199,11 @@ class FhirStoreValidationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FhirStoreValidationConfigArgs:
     def __init__(__self__, *,
-                 disable_fhirpath_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_profile_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_reference_type_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_required_field_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_implementation_guides: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 disable_fhirpath_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_profile_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_reference_type_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_required_field_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_implementation_guides: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] disable_fhirpath_validation: Whether to disable FHIRPath validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
         :param pulumi.Input[_builtins.bool] disable_profile_validation: Whether to disable profile validation for this FHIR store. The default value is false. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
@@ -1234,55 +1234,55 @@ class FhirStoreValidationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="disableFhirpathValidation")
-    def disable_fhirpath_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_fhirpath_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable FHIRPath validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
         """
         return pulumi.get(self, "disable_fhirpath_validation")
 
     @disable_fhirpath_validation.setter
-    def disable_fhirpath_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_fhirpath_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_fhirpath_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="disableProfileValidation")
-    def disable_profile_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_profile_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable profile validation for this FHIR store. The default value is false. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
         """
         return pulumi.get(self, "disable_profile_validation")
 
     @disable_profile_validation.setter
-    def disable_profile_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_profile_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_profile_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="disableReferenceTypeValidation")
-    def disable_reference_type_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_reference_type_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable reference type validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
         """
         return pulumi.get(self, "disable_reference_type_validation")
 
     @disable_reference_type_validation.setter
-    def disable_reference_type_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_reference_type_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_reference_type_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="disableRequiredFieldValidation")
-    def disable_required_field_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_required_field_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable required fields validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
         """
         return pulumi.get(self, "disable_required_field_validation")
 
     @disable_required_field_validation.setter
-    def disable_required_field_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_required_field_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_required_field_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledImplementationGuides")
-    def enabled_implementation_guides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def enabled_implementation_guides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation.
         When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
@@ -1299,21 +1299,21 @@ class FhirStoreValidationConfigArgs:
         return pulumi.get(self, "enabled_implementation_guides")
 
     @enabled_implementation_guides.setter
-    def enabled_implementation_guides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def enabled_implementation_guides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "enabled_implementation_guides", value)
 
 
 class Hl7StoreIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class Hl7StoreIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1339,25 +1339,25 @@ class Hl7StoreIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class Hl7StoreIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class Hl7StoreIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1383,11 +1383,11 @@ class Hl7StoreIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -1445,7 +1445,7 @@ class Hl7StoreNotificationConfigsArgsDict(TypedDict):
     Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
     If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
     """
-    filter: NotRequired[pulumi.Input[_builtins.str]]
+    filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Restricts notifications sent for messages matching a filter. If this is empty, all messages
     are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
@@ -1462,7 +1462,7 @@ class Hl7StoreNotificationConfigsArgsDict(TypedDict):
 class Hl7StoreNotificationConfigsArgs:
     def __init__(__self__, *,
                  pubsub_topic: pulumi.Input[_builtins.str],
-                 filter: Optional[pulumi.Input[_builtins.str]] = None):
+                 filter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] pubsub_topic: The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
@@ -1505,7 +1505,7 @@ class Hl7StoreNotificationConfigsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Restricts notifications sent for messages matching a filter. If this is empty, all messages
         are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
@@ -1520,26 +1520,26 @@ class Hl7StoreNotificationConfigsArgs:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
 
 class Hl7StoreParserConfigArgsDict(TypedDict):
-    allow_null_header: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_null_header: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Determines whether messages with no header are allowed.
     """
-    schema: NotRequired[pulumi.Input[_builtins.str]]
+    schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     JSON encoded string for schemas used to parse messages in this
     store if schematized parsing is desired.
     """
-    segment_terminator: NotRequired[pulumi.Input[_builtins.str]]
+    segment_terminator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Byte(s) to be used as the segment terminator. If this is unset, '\\r' will be used as segment terminator.
     A base64-encoded string.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version of the unschematized parser to be used when a custom `schema` is not set.
     Default value is `V1`.
@@ -1549,10 +1549,10 @@ class Hl7StoreParserConfigArgsDict(TypedDict):
 @pulumi.input_type
 class Hl7StoreParserConfigArgs:
     def __init__(__self__, *,
-                 allow_null_header: Optional[pulumi.Input[_builtins.bool]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 segment_terminator: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_null_header: pulumi.Input[Optional[_builtins.bool]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 segment_terminator: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_null_header: Determines whether messages with no header are allowed.
         :param pulumi.Input[_builtins.str] schema: JSON encoded string for schemas used to parse messages in this
@@ -1574,19 +1574,19 @@ class Hl7StoreParserConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowNullHeader")
-    def allow_null_header(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_null_header(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether messages with no header are allowed.
         """
         return pulumi.get(self, "allow_null_header")
 
     @allow_null_header.setter
-    def allow_null_header(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_null_header(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_null_header", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         JSON encoded string for schemas used to parse messages in this
         store if schematized parsing is desired.
@@ -1594,12 +1594,12 @@ class Hl7StoreParserConfigArgs:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentTerminator")
-    def segment_terminator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def segment_terminator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Byte(s) to be used as the segment terminator. If this is unset, '\\r' will be used as segment terminator.
         A base64-encoded string.
@@ -1607,12 +1607,12 @@ class Hl7StoreParserConfigArgs:
         return pulumi.get(self, "segment_terminator")
 
     @segment_terminator.setter
-    def segment_terminator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def segment_terminator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "segment_terminator", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the unschematized parser to be used when a custom `schema` is not set.
         Default value is `V1`.
@@ -1621,12 +1621,12 @@ class Hl7StoreParserConfigArgs:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class PipelineJobBackfillPipelineJobArgsDict(TypedDict):
-    mapping_pipeline_job: NotRequired[pulumi.Input[_builtins.str]]
+    mapping_pipeline_job: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the mapping pipeline job to backfill, the name format
     should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
@@ -1635,7 +1635,7 @@ class PipelineJobBackfillPipelineJobArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineJobBackfillPipelineJobArgs:
     def __init__(__self__, *,
-                 mapping_pipeline_job: Optional[pulumi.Input[_builtins.str]] = None):
+                 mapping_pipeline_job: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mapping_pipeline_job: Specifies the mapping pipeline job to backfill, the name format
                should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
@@ -1645,7 +1645,7 @@ class PipelineJobBackfillPipelineJobArgs:
 
     @_builtins.property
     @pulumi.getter(name="mappingPipelineJob")
-    def mapping_pipeline_job(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mapping_pipeline_job(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the mapping pipeline job to backfill, the name format
         should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
@@ -1653,7 +1653,7 @@ class PipelineJobBackfillPipelineJobArgs:
         return pulumi.get(self, "mapping_pipeline_job")
 
     @mapping_pipeline_job.setter
-    def mapping_pipeline_job(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mapping_pipeline_job(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mapping_pipeline_job", value)
 
 
@@ -1663,7 +1663,7 @@ class PipelineJobMappingPipelineJobArgsDict(TypedDict):
     The location of the mapping configuration.
     Structure is documented below.
     """
-    fhir_store_destination: NotRequired[pulumi.Input[_builtins.str]]
+    fhir_store_destination: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If set, the mapping pipeline will write snapshots to this
     FHIR store without assigning stable IDs. You must
@@ -1675,12 +1675,12 @@ class PipelineJobMappingPipelineJobArgsDict(TypedDict):
     to true. The destination store must use FHIR version R4.
     Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
     """
-    fhir_streaming_source: NotRequired[pulumi.Input['PipelineJobMappingPipelineJobFhirStreamingSourceArgsDict']]
+    fhir_streaming_source: NotRequired[pulumi.Input[Optional['PipelineJobMappingPipelineJobFhirStreamingSourceArgs']]]
     """
     A streaming FHIR data source.
     Structure is documented below.
     """
-    reconciliation_destination: NotRequired[pulumi.Input[_builtins.bool]]
+    reconciliation_destination: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to true, a mapping pipeline will send output snapshots
     to the reconciliation pipeline in its dataset. A reconciliation
@@ -1692,9 +1692,9 @@ class PipelineJobMappingPipelineJobArgsDict(TypedDict):
 class PipelineJobMappingPipelineJobArgs:
     def __init__(__self__, *,
                  mapping_config: pulumi.Input['PipelineJobMappingPipelineJobMappingConfigArgs'],
-                 fhir_store_destination: Optional[pulumi.Input[_builtins.str]] = None,
-                 fhir_streaming_source: Optional[pulumi.Input['PipelineJobMappingPipelineJobFhirStreamingSourceArgs']] = None,
-                 reconciliation_destination: Optional[pulumi.Input[_builtins.bool]] = None):
+                 fhir_store_destination: pulumi.Input[Optional[_builtins.str]] = None,
+                 fhir_streaming_source: pulumi.Input[Optional['PipelineJobMappingPipelineJobFhirStreamingSourceArgs']] = None,
+                 reconciliation_destination: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input['PipelineJobMappingPipelineJobMappingConfigArgs'] mapping_config: The location of the mapping configuration.
                Structure is documented below.
@@ -1737,7 +1737,7 @@ class PipelineJobMappingPipelineJobArgs:
 
     @_builtins.property
     @pulumi.getter(name="fhirStoreDestination")
-    def fhir_store_destination(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fhir_store_destination(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set, the mapping pipeline will write snapshots to this
         FHIR store without assigning stable IDs. You must
@@ -1752,12 +1752,12 @@ class PipelineJobMappingPipelineJobArgs:
         return pulumi.get(self, "fhir_store_destination")
 
     @fhir_store_destination.setter
-    def fhir_store_destination(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fhir_store_destination(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fhir_store_destination", value)
 
     @_builtins.property
     @pulumi.getter(name="fhirStreamingSource")
-    def fhir_streaming_source(self) -> Optional[pulumi.Input['PipelineJobMappingPipelineJobFhirStreamingSourceArgs']]:
+    def fhir_streaming_source(self) -> pulumi.Input[Optional['PipelineJobMappingPipelineJobFhirStreamingSourceArgs']]:
         """
         A streaming FHIR data source.
         Structure is documented below.
@@ -1765,12 +1765,12 @@ class PipelineJobMappingPipelineJobArgs:
         return pulumi.get(self, "fhir_streaming_source")
 
     @fhir_streaming_source.setter
-    def fhir_streaming_source(self, value: Optional[pulumi.Input['PipelineJobMappingPipelineJobFhirStreamingSourceArgs']]):
+    def fhir_streaming_source(self, value: pulumi.Input[Optional['PipelineJobMappingPipelineJobFhirStreamingSourceArgs']]):
         pulumi.set(self, "fhir_streaming_source", value)
 
     @_builtins.property
     @pulumi.getter(name="reconciliationDestination")
-    def reconciliation_destination(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciliation_destination(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, a mapping pipeline will send output snapshots
         to the reconciliation pipeline in its dataset. A reconciliation
@@ -1780,7 +1780,7 @@ class PipelineJobMappingPipelineJobArgs:
         return pulumi.get(self, "reconciliation_destination")
 
     @reconciliation_destination.setter
-    def reconciliation_destination(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciliation_destination(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciliation_destination", value)
 
 
@@ -1789,7 +1789,7 @@ class PipelineJobMappingPipelineJobFhirStreamingSourceArgsDict(TypedDict):
     """
     The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Describes the streaming FHIR data source.
     """
@@ -1798,7 +1798,7 @@ class PipelineJobMappingPipelineJobFhirStreamingSourceArgsDict(TypedDict):
 class PipelineJobMappingPipelineJobFhirStreamingSourceArgs:
     def __init__(__self__, *,
                  fhir_store: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] fhir_store: The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
         :param pulumi.Input[_builtins.str] description: Describes the streaming FHIR data source.
@@ -1821,23 +1821,23 @@ class PipelineJobMappingPipelineJobFhirStreamingSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes the streaming FHIR data source.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class PipelineJobMappingPipelineJobMappingConfigArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Describes the mapping configuration.
     """
-    whistle_config_source: NotRequired[pulumi.Input['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgsDict']]
+    whistle_config_source: NotRequired[pulumi.Input[Optional['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs']]]
     """
     Specifies the path to the mapping configuration for harmonization pipeline.
     Structure is documented below.
@@ -1846,8 +1846,8 @@ class PipelineJobMappingPipelineJobMappingConfigArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineJobMappingPipelineJobMappingConfigArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 whistle_config_source: Optional[pulumi.Input['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 whistle_config_source: pulumi.Input[Optional['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] description: Describes the mapping configuration.
         :param pulumi.Input['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs'] whistle_config_source: Specifies the path to the mapping configuration for harmonization pipeline.
@@ -1860,19 +1860,19 @@ class PipelineJobMappingPipelineJobMappingConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes the mapping configuration.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="whistleConfigSource")
-    def whistle_config_source(self) -> Optional[pulumi.Input['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs']]:
+    def whistle_config_source(self) -> pulumi.Input[Optional['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs']]:
         """
         Specifies the path to the mapping configuration for harmonization pipeline.
         Structure is documented below.
@@ -1880,7 +1880,7 @@ class PipelineJobMappingPipelineJobMappingConfigArgs:
         return pulumi.get(self, "whistle_config_source")
 
     @whistle_config_source.setter
-    def whistle_config_source(self, value: Optional[pulumi.Input['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs']]):
+    def whistle_config_source(self, value: pulumi.Input[Optional['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs']]):
         pulumi.set(self, "whistle_config_source", value)
 
 
@@ -1950,7 +1950,7 @@ class PipelineJobReconciliationPipelineJobArgsDict(TypedDict):
     Specifies the location of the reconciliation configuration.
     Structure is documented below.
     """
-    fhir_store_destination: NotRequired[pulumi.Input[_builtins.str]]
+    fhir_store_destination: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The harmonized FHIR store to write harmonized FHIR resources to,
     in the format of: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{id}
@@ -1961,7 +1961,7 @@ class PipelineJobReconciliationPipelineJobArgs:
     def __init__(__self__, *,
                  matching_uri_prefix: pulumi.Input[_builtins.str],
                  merge_config: pulumi.Input['PipelineJobReconciliationPipelineJobMergeConfigArgs'],
-                 fhir_store_destination: Optional[pulumi.Input[_builtins.str]] = None):
+                 fhir_store_destination: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] matching_uri_prefix: Specifies the top level directory of the matching configs used
                in all mapping pipelines, which extract properties for resources
@@ -2007,7 +2007,7 @@ class PipelineJobReconciliationPipelineJobArgs:
 
     @_builtins.property
     @pulumi.getter(name="fhirStoreDestination")
-    def fhir_store_destination(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fhir_store_destination(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The harmonized FHIR store to write harmonized FHIR resources to,
         in the format of: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{id}
@@ -2015,7 +2015,7 @@ class PipelineJobReconciliationPipelineJobArgs:
         return pulumi.get(self, "fhir_store_destination")
 
     @fhir_store_destination.setter
-    def fhir_store_destination(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fhir_store_destination(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fhir_store_destination", value)
 
 
@@ -2025,7 +2025,7 @@ class PipelineJobReconciliationPipelineJobMergeConfigArgsDict(TypedDict):
     Specifies the path to the mapping configuration for harmonization pipeline.
     Structure is documented below.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Describes the mapping configuration.
     """
@@ -2034,7 +2034,7 @@ class PipelineJobReconciliationPipelineJobMergeConfigArgsDict(TypedDict):
 class PipelineJobReconciliationPipelineJobMergeConfigArgs:
     def __init__(__self__, *,
                  whistle_config_source: pulumi.Input['PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs'] whistle_config_source: Specifies the path to the mapping configuration for harmonization pipeline.
                Structure is documented below.
@@ -2059,14 +2059,14 @@ class PipelineJobReconciliationPipelineJobMergeConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes the mapping configuration.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 

@@ -143,9 +143,9 @@ def get_autoscaling_policy_iam_policy(location: Optional[_builtins.str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         policy_id=pulumi.get(__ret__, 'policy_id'),
         project=pulumi.get(__ret__, 'project'))
-def get_autoscaling_policy_iam_policy_output(location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                             policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                             project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_autoscaling_policy_iam_policy_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                             project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAutoscalingPolicyIamPolicyResult]:
     """
     Retrieves the current IAM policy data for autoscalingpolicy

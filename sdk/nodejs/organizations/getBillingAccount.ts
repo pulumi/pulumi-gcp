@@ -122,20 +122,20 @@ export interface GetBillingAccountOutputArgs {
     /**
      * The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
      */
-    billingAccount?: pulumi.Input<string>;
+    billingAccount?: pulumi.Input<string | undefined>;
     /**
      * The display name of the billing account.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * `true` if projects associated with the billing account should be read, `false` if this step
      * should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
      *
      * > **NOTE:** One of `billingAccount` or `displayName` must be specified.
      */
-    lookupProjects?: pulumi.Input<boolean>;
+    lookupProjects?: pulumi.Input<boolean | undefined>;
     /**
      * `true` if the billing account is open, `false` if the billing account is closed.
      */
-    open?: pulumi.Input<boolean>;
+    open?: pulumi.Input<boolean | undefined>;
 }

@@ -295,11 +295,11 @@ export class RepositoryIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RepositoryIamBinding resources.
  */
 export interface RepositoryIamBindingState {
-    condition?: pulumi.Input<inputs.artifactregistry.RepositoryIamBindingCondition>;
+    condition?: pulumi.Input<inputs.artifactregistry.RepositoryIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The name of the repository's location. In addition to specific regions,
      * special values for multi-region locations are `asia`, `europe`, and `us`.
@@ -310,7 +310,7 @@ export interface RepositoryIamBindingState {
      * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
      * location is specified, it is taken from the provider configuration.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -325,29 +325,29 @@ export interface RepositoryIamBindingState {
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    repository?: pulumi.Input<string>;
+    repository?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.artifactregistry.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a RepositoryIamBinding resource.
  */
 export interface RepositoryIamBindingArgs {
-    condition?: pulumi.Input<inputs.artifactregistry.RepositoryIamBindingCondition>;
+    condition?: pulumi.Input<inputs.artifactregistry.RepositoryIamBindingCondition | undefined>;
     /**
      * The name of the repository's location. In addition to specific regions,
      * special values for multi-region locations are `asia`, `europe`, and `us`.
@@ -358,7 +358,7 @@ export interface RepositoryIamBindingArgs {
      * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
      * location is specified, it is taken from the provider configuration.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -378,7 +378,7 @@ export interface RepositoryIamBindingArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */

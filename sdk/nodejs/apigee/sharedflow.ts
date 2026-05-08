@@ -147,36 +147,36 @@ export interface SharedflowState {
      *
      * - - -
      */
-    configBundle?: pulumi.Input<string>;
+    configBundle?: pulumi.Input<string | undefined>;
     /**
      * (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
      */
-    detectMd5hash?: pulumi.Input<string>;
+    detectMd5hash?: pulumi.Input<string | undefined>;
     /**
      * The id of the most recently created revision for this shared flow.
      */
-    latestRevisionId?: pulumi.Input<string>;
+    latestRevisionId?: pulumi.Input<string | undefined>;
     /**
      * (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
      */
-    md5hash?: pulumi.Input<string>;
+    md5hash?: pulumi.Input<string | undefined>;
     /**
      * Metadata describing the shared flow.
      * Structure is documented below.
      */
-    metaDatas?: pulumi.Input<pulumi.Input<inputs.apigee.SharedflowMetaData>[]>;
+    metaDatas?: pulumi.Input<pulumi.Input<inputs.apigee.SharedflowMetaData>[] | undefined>;
     /**
      * The ID of the shared flow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization name associated with the Apigee instance.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * A list of revisions of this shared flow.
      */
-    revisions?: pulumi.Input<pulumi.Input<string>[]>;
+    revisions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -192,11 +192,11 @@ export interface SharedflowArgs {
     /**
      * (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
      */
-    detectMd5hash?: pulumi.Input<string>;
+    detectMd5hash?: pulumi.Input<string | undefined>;
     /**
      * The ID of the shared flow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization name associated with the Apigee instance.
      */

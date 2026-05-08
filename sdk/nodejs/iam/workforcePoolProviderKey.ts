@@ -201,42 +201,42 @@ export interface WorkforcePoolProviderKeyState {
      * The time after which the key will be permanently deleted and cannot be recovered.
      * Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Immutable. Public half of the asymmetric key.
      * Structure is documented below.
      */
-    keyData?: pulumi.Input<inputs.iam.WorkforcePoolProviderKeyKeyData>;
+    keyData?: pulumi.Input<inputs.iam.WorkforcePoolProviderKeyKeyData | undefined>;
     /**
      * The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the key.
      * Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}/keys/{keyId}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the provider.
      */
-    providerId?: pulumi.Input<string>;
+    providerId?: pulumi.Input<string | undefined>;
     /**
      * The state of the key.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The purpose of the key.
      * Possible values are: `ENCRYPTION`.
      */
-    use?: pulumi.Input<string>;
+    use?: pulumi.Input<string | undefined>;
     /**
      * The ID of the workforce pool.
      */
-    workforcePoolId?: pulumi.Input<string>;
+    workforcePoolId?: pulumi.Input<string | undefined>;
 }
 
 /**

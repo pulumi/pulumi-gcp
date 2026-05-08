@@ -173,25 +173,25 @@ export interface InstanceGroupNamedPortState {
     /**
      * The name of the instance group.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The name for this named port. The name must be 1-63 characters
      * long, and comply with RFC1035.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The port number, which can be a value between 1 and 65535.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The zone of the instance group.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -206,7 +206,7 @@ export interface InstanceGroupNamedPortArgs {
      * The name for this named port. The name must be 1-63 characters
      * long, and comply with RFC1035.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The port number, which can be a value between 1 and 65535.
      */
@@ -215,9 +215,9 @@ export interface InstanceGroupNamedPortArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The zone of the instance group.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

@@ -62,10 +62,10 @@ class ClientArgs:
 @pulumi.input_type
 class _ClientState:
     def __init__(__self__, *,
-                 brand: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 brand: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Client resources.
 
@@ -88,7 +88,7 @@ class _ClientState:
 
     @_builtins.property
     @pulumi.getter
-    def brand(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def brand(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the brand to which this client
         is attached to. The format is
@@ -97,36 +97,36 @@ class _ClientState:
         return pulumi.get(self, "brand")
 
     @brand.setter
-    def brand(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def brand(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "brand", value)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Unique identifier of the OAuth client.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-friendly name given to the OAuth client.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Client secret of the OAuth client.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -134,7 +134,7 @@ class _ClientState:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
 
@@ -144,8 +144,8 @@ class Client(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 brand: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 brand: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Warning:** This resource is deprecated on Jan 22, 2025. After Jan 19, 2026 the `iap.Client` Terraform resource will no longer function as intended due to the deprecation of the IAP OAuth Admin APIs. New projects will not be able to use these APIs. March 19, 2026 The IAP OAuth Admin APIs will be permanently shut down. Access to this feature will no longer be available.
@@ -285,8 +285,8 @@ class Client(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 brand: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 brand: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -316,10 +316,10 @@ class Client(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            brand: Optional[pulumi.Input[_builtins.str]] = None,
-            client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            secret: Optional[pulumi.Input[_builtins.str]] = None) -> 'Client':
+            brand: pulumi.Input[Optional[_builtins.str]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None) -> 'Client':
         """
         Get an existing Client resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

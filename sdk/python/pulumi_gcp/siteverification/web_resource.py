@@ -66,10 +66,10 @@ class WebResourceArgs:
 @pulumi.input_type
 class _WebResourceState:
     def __init__(__self__, *,
-                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 site: Optional[pulumi.Input['WebResourceSiteArgs']] = None,
-                 verification_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_resource_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 site: pulumi.Input[Optional['WebResourceSiteArgs']] = None,
+                 verification_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_resource_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebResource resources.
 
@@ -93,7 +93,7 @@ class _WebResourceState:
 
     @_builtins.property
     @pulumi.getter
-    def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def owners(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The email addresses of all direct, verified owners of this exact property. Indirect owners —
         for example verified owners of the containing domain—are not included in this list.
@@ -101,12 +101,12 @@ class _WebResourceState:
         return pulumi.get(self, "owners")
 
     @owners.setter
-    def owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def owners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "owners", value)
 
     @_builtins.property
     @pulumi.getter
-    def site(self) -> Optional[pulumi.Input['WebResourceSiteArgs']]:
+    def site(self) -> pulumi.Input[Optional['WebResourceSiteArgs']]:
         """
         Container for the address and type of a site for which a verification token will be verified.
         Structure is documented below.
@@ -114,12 +114,12 @@ class _WebResourceState:
         return pulumi.get(self, "site")
 
     @site.setter
-    def site(self, value: Optional[pulumi.Input['WebResourceSiteArgs']]):
+    def site(self, value: pulumi.Input[Optional['WebResourceSiteArgs']]):
         pulumi.set(self, "site", value)
 
     @_builtins.property
     @pulumi.getter(name="verificationMethod")
-    def verification_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def verification_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The verification method for the Site Verification system to use to verify
         this site or domain.
@@ -128,19 +128,19 @@ class _WebResourceState:
         return pulumi.get(self, "verification_method")
 
     @verification_method.setter
-    def verification_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def verification_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "verification_method", value)
 
     @_builtins.property
     @pulumi.getter(name="webResourceId")
-    def web_resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def web_resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string used to identify this web resource.
         """
         return pulumi.get(self, "web_resource_id")
 
     @web_resource_id.setter
-    def web_resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def web_resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "web_resource_id", value)
 
 
@@ -150,8 +150,8 @@ class WebResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 site: Optional[pulumi.Input[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict']]] = None,
-                 verification_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 site: pulumi.Input[Optional[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict']]] = None,
+                 verification_method: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A web resource is a website or domain with verified ownership. Once your
@@ -298,8 +298,8 @@ class WebResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 site: Optional[pulumi.Input[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict']]] = None,
-                 verification_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 site: pulumi.Input[Optional[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict']]] = None,
+                 verification_method: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -327,10 +327,10 @@ class WebResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            site: Optional[pulumi.Input[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict']]] = None,
-            verification_method: Optional[pulumi.Input[_builtins.str]] = None,
-            web_resource_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WebResource':
+            owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            site: pulumi.Input[Optional[Union['WebResourceSiteArgs', 'WebResourceSiteArgsDict']]] = None,
+            verification_method: pulumi.Input[Optional[_builtins.str]] = None,
+            web_resource_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WebResource':
         """
         Get an existing WebResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

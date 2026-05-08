@@ -365,15 +365,15 @@ export interface DatasetIamMemberState {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.bigquery.DatasetIamMemberCondition>;
+    condition?: pulumi.Input<inputs.bigquery.DatasetIamMemberCondition | undefined>;
     /**
      * The dataset ID.
      */
-    datasetId?: pulumi.Input<string>;
+    datasetId?: pulumi.Input<string | undefined>;
     /**
      * (Computed) The etag of the dataset's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -388,18 +388,18 @@ export interface DatasetIamMemberState {
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      */
-    member?: pulumi.Input<string>;
+    member?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -410,7 +410,7 @@ export interface DatasetIamMemberArgs {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.bigquery.DatasetIamMemberCondition>;
+    condition?: pulumi.Input<inputs.bigquery.DatasetIamMemberCondition | undefined>;
     /**
      * The dataset ID.
      */
@@ -434,7 +434,7 @@ export interface DatasetIamMemberArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format

@@ -149,21 +149,21 @@ export interface PolicyState {
     /**
      * The customer that the Policy belongs to. Format: `customers/{customer_id}`.
      */
-    customer?: pulumi.Input<string>;
+    customer?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the Policy. Format: `policies/{policy_id}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The PolicyQuery the Setting applies to.
      * Structure is documented below.
      */
-    policyQuery?: pulumi.Input<inputs.cloudidentity.PolicyPolicyQuery>;
+    policyQuery?: pulumi.Input<inputs.cloudidentity.PolicyPolicyQuery | undefined>;
     /**
      * The Setting configured by this Policy.
      * Structure is documented below.
      */
-    setting?: pulumi.Input<inputs.cloudidentity.PolicySetting>;
+    setting?: pulumi.Input<inputs.cloudidentity.PolicySetting | undefined>;
 }
 
 /**

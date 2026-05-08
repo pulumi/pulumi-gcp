@@ -122,7 +122,7 @@ def get_autokey_config(folder: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         key_project=pulumi.get(__ret__, 'key_project'),
         key_project_resolution_mode=pulumi.get(__ret__, 'key_project_resolution_mode'))
-def get_autokey_config_output(folder: Optional[pulumi.Input[_builtins.str]] = None,
+def get_autokey_config_output(folder: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAutokeyConfigResult]:
     """
     Provides access to Google Cloud Platform KMS AutokeyConfig. A AutokeyConfig is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.

@@ -257,12 +257,12 @@ export interface RegionalSecretVersionState {
     /**
      * The time at which the regional secret version was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The customer-managed encryption configuration of the regional secret.
      * Structure is documented below.
      */
-    customerManagedEncryptions?: pulumi.Input<pulumi.Input<inputs.secretmanager.RegionalSecretVersionCustomerManagedEncryption>[]>;
+    customerManagedEncryptions?: pulumi.Input<pulumi.Input<inputs.secretmanager.RegionalSecretVersionCustomerManagedEncryption>[] | undefined>;
     /**
      * The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
      * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
@@ -271,41 +271,41 @@ export interface RegionalSecretVersionState {
      * * DISABLE
      * * ABANDON
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The time at which the regional secret version was destroyed. Only present if state is DESTROYED.
      */
-    destroyTime?: pulumi.Input<string>;
+    destroyTime?: pulumi.Input<string | undefined>;
     /**
      * The current state of the regional secret version.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
      */
-    isSecretDataBase64?: pulumi.Input<boolean>;
+    isSecretDataBase64?: pulumi.Input<boolean | undefined>;
     /**
      * Location of Secret Manager regional secret resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the regional secret version. Format:
      * `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Secret Manager regional secret resource.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    secretData?: pulumi.Input<string>;
+    secretData?: pulumi.Input<string | undefined>;
     /**
      * The version of the Regional Secret.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -320,15 +320,15 @@ export interface RegionalSecretVersionArgs {
      * * DISABLE
      * * ABANDON
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The current state of the regional secret version.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
      */
-    isSecretDataBase64?: pulumi.Input<boolean>;
+    isSecretDataBase64?: pulumi.Input<boolean | undefined>;
     /**
      * Secret Manager regional secret resource.
      */

@@ -587,145 +587,145 @@ export interface MetastoreServiceState {
     /**
      * A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
      */
-    artifactGcsUri?: pulumi.Input<string>;
+    artifactGcsUri?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time when the metastore service was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The database type that the Metastore service stores its data.
      * Default value is `MYSQL`.
      * Possible values are: `MYSQL`, `SPANNER`.
      */
-    databaseType?: pulumi.Input<string>;
+    databaseType?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the dataproc metastore should be protected against accidental deletions.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Information used to configure the Dataproc Metastore service to encrypt
      * customer data at rest.
      * Structure is documented below.
      */
-    encryptionConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceEncryptionConfig | undefined>;
     /**
      * The URI of the endpoint used to access the metastore service.
      */
-    endpointUri?: pulumi.Input<string>;
+    endpointUri?: pulumi.Input<string | undefined>;
     /**
      * Configuration information specific to running Hive metastore software as the metastore service.
      * Structure is documented below.
      */
-    hiveMetastoreConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceHiveMetastoreConfig>;
+    hiveMetastoreConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceHiveMetastoreConfig | undefined>;
     /**
      * User-defined labels for the metastore service.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where the metastore service should reside.
      * The default value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The one hour maintenance window of the metastore service.
      * This specifies when the service can be restarted for maintenance purposes in UTC time.
      * Maintenance window is not needed for services with the `SPANNER` database type.
      * Structure is documented below.
      */
-    maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow | undefined>;
     /**
      * The setting that defines how metastore metadata should be integrated with external services and systems.
      * Structure is documented below.
      */
-    metadataIntegration?: pulumi.Input<inputs.dataproc.MetastoreServiceMetadataIntegration>;
+    metadataIntegration?: pulumi.Input<inputs.dataproc.MetastoreServiceMetadataIntegration | undefined>;
     /**
      * The relative resource name of the metastore service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * "projects/{projectNumber}/global/networks/{network_id}".
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The configuration specifying the network settings for the Dataproc Metastore service.
      * Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceNetworkConfig | undefined>;
     /**
      * The TCP port at which the metastore service is reached. Default: 9083.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The release channel of the service. If unspecified, defaults to `STABLE`.
      * Default value is `STABLE`.
      * Possible values are: `CANARY`, `STABLE`.
      */
-    releaseChannel?: pulumi.Input<string>;
+    releaseChannel?: pulumi.Input<string | undefined>;
     /**
      * Represents the scaling configuration of a metastore service.
      * Structure is documented below.
      */
-    scalingConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceScalingConfig>;
+    scalingConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceScalingConfig | undefined>;
     /**
      * The configuration of scheduled backup for the metastore service.
      * Structure is documented below.
      */
-    scheduledBackup?: pulumi.Input<inputs.dataproc.MetastoreServiceScheduledBackup>;
+    scheduledBackup?: pulumi.Input<inputs.dataproc.MetastoreServiceScheduledBackup | undefined>;
     /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * The current state of the metastore service.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Additional information about the current state of the metastore service, if available.
      */
-    stateMessage?: pulumi.Input<string>;
+    stateMessage?: pulumi.Input<string | undefined>;
     /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
      * Structure is documented below.
      */
-    telemetryConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceTelemetryConfig>;
+    telemetryConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceTelemetryConfig | undefined>;
     /**
      * The tier of the service.
      * Possible values are: `DEVELOPER`, `ENTERPRISE`.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
     /**
      * The globally unique resource identifier of the metastore service.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time when the metastore service was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -737,100 +737,100 @@ export interface MetastoreServiceArgs {
      * Default value is `MYSQL`.
      * Possible values are: `MYSQL`, `SPANNER`.
      */
-    databaseType?: pulumi.Input<string>;
+    databaseType?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the dataproc metastore should be protected against accidental deletions.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Information used to configure the Dataproc Metastore service to encrypt
      * customer data at rest.
      * Structure is documented below.
      */
-    encryptionConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceEncryptionConfig | undefined>;
     /**
      * Configuration information specific to running Hive metastore software as the metastore service.
      * Structure is documented below.
      */
-    hiveMetastoreConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceHiveMetastoreConfig>;
+    hiveMetastoreConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceHiveMetastoreConfig | undefined>;
     /**
      * User-defined labels for the metastore service.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where the metastore service should reside.
      * The default value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The one hour maintenance window of the metastore service.
      * This specifies when the service can be restarted for maintenance purposes in UTC time.
      * Maintenance window is not needed for services with the `SPANNER` database type.
      * Structure is documented below.
      */
-    maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow | undefined>;
     /**
      * The setting that defines how metastore metadata should be integrated with external services and systems.
      * Structure is documented below.
      */
-    metadataIntegration?: pulumi.Input<inputs.dataproc.MetastoreServiceMetadataIntegration>;
+    metadataIntegration?: pulumi.Input<inputs.dataproc.MetastoreServiceMetadataIntegration | undefined>;
     /**
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * "projects/{projectNumber}/global/networks/{network_id}".
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The configuration specifying the network settings for the Dataproc Metastore service.
      * Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceNetworkConfig | undefined>;
     /**
      * The TCP port at which the metastore service is reached. Default: 9083.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The release channel of the service. If unspecified, defaults to `STABLE`.
      * Default value is `STABLE`.
      * Possible values are: `CANARY`, `STABLE`.
      */
-    releaseChannel?: pulumi.Input<string>;
+    releaseChannel?: pulumi.Input<string | undefined>;
     /**
      * Represents the scaling configuration of a metastore service.
      * Structure is documented below.
      */
-    scalingConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceScalingConfig>;
+    scalingConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceScalingConfig | undefined>;
     /**
      * The configuration of scheduled backup for the metastore service.
      * Structure is documented below.
      */
-    scheduledBackup?: pulumi.Input<inputs.dataproc.MetastoreServiceScheduledBackup>;
+    scheduledBackup?: pulumi.Input<inputs.dataproc.MetastoreServiceScheduledBackup | undefined>;
     /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
      * Structure is documented below.
      */
-    telemetryConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceTelemetryConfig>;
+    telemetryConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceTelemetryConfig | undefined>;
     /**
      * The tier of the service.
      * Possible values are: `DEVELOPER`, `ENTERPRISE`.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }

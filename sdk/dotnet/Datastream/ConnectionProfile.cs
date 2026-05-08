@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.Index.Password("pwd", new()
+    ///     var pwd = new Random.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -309,7 +309,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.Index.Password("pwd", new()
+    ///     var pwd = new Random.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -444,7 +444,7 @@ namespace Pulumi.Gcp.Datastream
     ///             Tier = "db-f1-micro",
     ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
     ///             {
-    ///                 AuthorizedNetworks = Std.Index.Format.Invoke(new()
+    ///                 AuthorizedNetworks = Std.Format.Invoke(new()
     ///                 {
     ///                     Input = "datastream-%d",
     ///                     Args = new[]
@@ -465,7 +465,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.Index.Password("pwd", new()
+    ///     var pwd = new Random.Password("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,

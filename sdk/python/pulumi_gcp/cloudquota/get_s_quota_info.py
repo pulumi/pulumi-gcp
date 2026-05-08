@@ -294,9 +294,9 @@ def get_s_quota_info(parent: Optional[_builtins.str] = None,
         refresh_interval=pulumi.get(__ret__, 'refresh_interval'),
         service=pulumi.get(__ret__, 'service'),
         service_request_quota_uri=pulumi.get(__ret__, 'service_request_quota_uri'))
-def get_s_quota_info_output(parent: Optional[pulumi.Input[_builtins.str]] = None,
-                            quota_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            service: Optional[pulumi.Input[_builtins.str]] = None,
+def get_s_quota_info_output(parent: pulumi.Input[Optional[_builtins.str]] = None,
+                            quota_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            service: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSQuotaInfoResult]:
     """
     Provides information about a particular quota for a given project, folder or organization.

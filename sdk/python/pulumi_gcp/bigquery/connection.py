@@ -21,19 +21,19 @@ __all__ = ['ConnectionArgs', 'Connection']
 @pulumi.input_type
 class ConnectionArgs:
     def __init__(__self__, *,
-                 aws: Optional[pulumi.Input['ConnectionAwsArgs']] = None,
-                 azure: Optional[pulumi.Input['ConnectionAzureArgs']] = None,
-                 cloud_resource: Optional[pulumi.Input['ConnectionCloudResourceArgs']] = None,
-                 cloud_spanner: Optional[pulumi.Input['ConnectionCloudSpannerArgs']] = None,
-                 cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArgs']] = None,
-                 configuration: Optional[pulumi.Input['ConnectionConfigurationArgs']] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark: Optional[pulumi.Input['ConnectionSparkArgs']] = None):
+                 aws: pulumi.Input[Optional['ConnectionAwsArgs']] = None,
+                 azure: pulumi.Input[Optional['ConnectionAzureArgs']] = None,
+                 cloud_resource: pulumi.Input[Optional['ConnectionCloudResourceArgs']] = None,
+                 cloud_spanner: pulumi.Input[Optional['ConnectionCloudSpannerArgs']] = None,
+                 cloud_sql: pulumi.Input[Optional['ConnectionCloudSqlArgs']] = None,
+                 configuration: pulumi.Input[Optional['ConnectionConfigurationArgs']] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark: pulumi.Input[Optional['ConnectionSparkArgs']] = None):
         """
         The set of arguments for constructing a Connection resource.
 
@@ -97,7 +97,7 @@ class ConnectionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def aws(self) -> Optional[pulumi.Input['ConnectionAwsArgs']]:
+    def aws(self) -> pulumi.Input[Optional['ConnectionAwsArgs']]:
         """
         Connection properties specific to Amazon Web Services.
         Structure is documented below.
@@ -105,12 +105,12 @@ class ConnectionArgs:
         return pulumi.get(self, "aws")
 
     @aws.setter
-    def aws(self, value: Optional[pulumi.Input['ConnectionAwsArgs']]):
+    def aws(self, value: pulumi.Input[Optional['ConnectionAwsArgs']]):
         pulumi.set(self, "aws", value)
 
     @_builtins.property
     @pulumi.getter
-    def azure(self) -> Optional[pulumi.Input['ConnectionAzureArgs']]:
+    def azure(self) -> pulumi.Input[Optional['ConnectionAzureArgs']]:
         """
         Container for connection properties specific to Azure.
         Structure is documented below.
@@ -118,12 +118,12 @@ class ConnectionArgs:
         return pulumi.get(self, "azure")
 
     @azure.setter
-    def azure(self, value: Optional[pulumi.Input['ConnectionAzureArgs']]):
+    def azure(self, value: pulumi.Input[Optional['ConnectionAzureArgs']]):
         pulumi.set(self, "azure", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudResource")
-    def cloud_resource(self) -> Optional[pulumi.Input['ConnectionCloudResourceArgs']]:
+    def cloud_resource(self) -> pulumi.Input[Optional['ConnectionCloudResourceArgs']]:
         """
         Container for connection properties for delegation of access to GCP resources.
         Structure is documented below.
@@ -131,12 +131,12 @@ class ConnectionArgs:
         return pulumi.get(self, "cloud_resource")
 
     @cloud_resource.setter
-    def cloud_resource(self, value: Optional[pulumi.Input['ConnectionCloudResourceArgs']]):
+    def cloud_resource(self, value: pulumi.Input[Optional['ConnectionCloudResourceArgs']]):
         pulumi.set(self, "cloud_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudSpanner")
-    def cloud_spanner(self) -> Optional[pulumi.Input['ConnectionCloudSpannerArgs']]:
+    def cloud_spanner(self) -> pulumi.Input[Optional['ConnectionCloudSpannerArgs']]:
         """
         Connection properties specific to Cloud Spanner
         Structure is documented below.
@@ -144,12 +144,12 @@ class ConnectionArgs:
         return pulumi.get(self, "cloud_spanner")
 
     @cloud_spanner.setter
-    def cloud_spanner(self, value: Optional[pulumi.Input['ConnectionCloudSpannerArgs']]):
+    def cloud_spanner(self, value: pulumi.Input[Optional['ConnectionCloudSpannerArgs']]):
         pulumi.set(self, "cloud_spanner", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudSql")
-    def cloud_sql(self) -> Optional[pulumi.Input['ConnectionCloudSqlArgs']]:
+    def cloud_sql(self) -> pulumi.Input[Optional['ConnectionCloudSqlArgs']]:
         """
         Connection properties specific to the Cloud SQL.
         Structure is documented below.
@@ -157,12 +157,12 @@ class ConnectionArgs:
         return pulumi.get(self, "cloud_sql")
 
     @cloud_sql.setter
-    def cloud_sql(self, value: Optional[pulumi.Input['ConnectionCloudSqlArgs']]):
+    def cloud_sql(self, value: pulumi.Input[Optional['ConnectionCloudSqlArgs']]):
         pulumi.set(self, "cloud_sql", value)
 
     @_builtins.property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input['ConnectionConfigurationArgs']]:
+    def configuration(self) -> pulumi.Input[Optional['ConnectionConfigurationArgs']]:
         """
         Connector configuration. This is a generic configuration that is used to connect to
         external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
@@ -172,48 +172,48 @@ class ConnectionArgs:
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input['ConnectionConfigurationArgs']]):
+    def configuration(self, value: pulumi.Input[Optional['ConnectionConfigurationArgs']]):
         pulumi.set(self, "configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
-    def connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional connection id that should be assigned to the created connection.
         """
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
-    def connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A descriptive description for the connection
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="friendlyName")
-    def friendly_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def friendly_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A descriptive name for the connection
         """
         return pulumi.get(self, "friendly_name")
 
     @friendly_name.setter
-    def friendly_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def friendly_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "friendly_name", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The Cloud KMS key that is used for encryption.
         Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
@@ -221,12 +221,12 @@ class ConnectionArgs:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location where the connection should reside.
         Cloud SQL instance must be in the same location as the connection
@@ -239,12 +239,12 @@ class ConnectionArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -252,12 +252,12 @@ class ConnectionArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def spark(self) -> Optional[pulumi.Input['ConnectionSparkArgs']]:
+    def spark(self) -> pulumi.Input[Optional['ConnectionSparkArgs']]:
         """
         Container for connection properties to execute stored procedures for Apache Spark. resources.
         Structure is documented below.
@@ -265,28 +265,28 @@ class ConnectionArgs:
         return pulumi.get(self, "spark")
 
     @spark.setter
-    def spark(self, value: Optional[pulumi.Input['ConnectionSparkArgs']]):
+    def spark(self, value: pulumi.Input[Optional['ConnectionSparkArgs']]):
         pulumi.set(self, "spark", value)
 
 
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
-                 aws: Optional[pulumi.Input['ConnectionAwsArgs']] = None,
-                 azure: Optional[pulumi.Input['ConnectionAzureArgs']] = None,
-                 cloud_resource: Optional[pulumi.Input['ConnectionCloudResourceArgs']] = None,
-                 cloud_spanner: Optional[pulumi.Input['ConnectionCloudSpannerArgs']] = None,
-                 cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArgs']] = None,
-                 configuration: Optional[pulumi.Input['ConnectionConfigurationArgs']] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 has_credential: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark: Optional[pulumi.Input['ConnectionSparkArgs']] = None):
+                 aws: pulumi.Input[Optional['ConnectionAwsArgs']] = None,
+                 azure: pulumi.Input[Optional['ConnectionAzureArgs']] = None,
+                 cloud_resource: pulumi.Input[Optional['ConnectionCloudResourceArgs']] = None,
+                 cloud_spanner: pulumi.Input[Optional['ConnectionCloudSpannerArgs']] = None,
+                 cloud_sql: pulumi.Input[Optional['ConnectionCloudSqlArgs']] = None,
+                 configuration: pulumi.Input[Optional['ConnectionConfigurationArgs']] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 has_credential: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark: pulumi.Input[Optional['ConnectionSparkArgs']] = None):
         """
         Input properties used for looking up and filtering Connection resources.
 
@@ -357,7 +357,7 @@ class _ConnectionState:
 
     @_builtins.property
     @pulumi.getter
-    def aws(self) -> Optional[pulumi.Input['ConnectionAwsArgs']]:
+    def aws(self) -> pulumi.Input[Optional['ConnectionAwsArgs']]:
         """
         Connection properties specific to Amazon Web Services.
         Structure is documented below.
@@ -365,12 +365,12 @@ class _ConnectionState:
         return pulumi.get(self, "aws")
 
     @aws.setter
-    def aws(self, value: Optional[pulumi.Input['ConnectionAwsArgs']]):
+    def aws(self, value: pulumi.Input[Optional['ConnectionAwsArgs']]):
         pulumi.set(self, "aws", value)
 
     @_builtins.property
     @pulumi.getter
-    def azure(self) -> Optional[pulumi.Input['ConnectionAzureArgs']]:
+    def azure(self) -> pulumi.Input[Optional['ConnectionAzureArgs']]:
         """
         Container for connection properties specific to Azure.
         Structure is documented below.
@@ -378,12 +378,12 @@ class _ConnectionState:
         return pulumi.get(self, "azure")
 
     @azure.setter
-    def azure(self, value: Optional[pulumi.Input['ConnectionAzureArgs']]):
+    def azure(self, value: pulumi.Input[Optional['ConnectionAzureArgs']]):
         pulumi.set(self, "azure", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudResource")
-    def cloud_resource(self) -> Optional[pulumi.Input['ConnectionCloudResourceArgs']]:
+    def cloud_resource(self) -> pulumi.Input[Optional['ConnectionCloudResourceArgs']]:
         """
         Container for connection properties for delegation of access to GCP resources.
         Structure is documented below.
@@ -391,12 +391,12 @@ class _ConnectionState:
         return pulumi.get(self, "cloud_resource")
 
     @cloud_resource.setter
-    def cloud_resource(self, value: Optional[pulumi.Input['ConnectionCloudResourceArgs']]):
+    def cloud_resource(self, value: pulumi.Input[Optional['ConnectionCloudResourceArgs']]):
         pulumi.set(self, "cloud_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudSpanner")
-    def cloud_spanner(self) -> Optional[pulumi.Input['ConnectionCloudSpannerArgs']]:
+    def cloud_spanner(self) -> pulumi.Input[Optional['ConnectionCloudSpannerArgs']]:
         """
         Connection properties specific to Cloud Spanner
         Structure is documented below.
@@ -404,12 +404,12 @@ class _ConnectionState:
         return pulumi.get(self, "cloud_spanner")
 
     @cloud_spanner.setter
-    def cloud_spanner(self, value: Optional[pulumi.Input['ConnectionCloudSpannerArgs']]):
+    def cloud_spanner(self, value: pulumi.Input[Optional['ConnectionCloudSpannerArgs']]):
         pulumi.set(self, "cloud_spanner", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudSql")
-    def cloud_sql(self) -> Optional[pulumi.Input['ConnectionCloudSqlArgs']]:
+    def cloud_sql(self) -> pulumi.Input[Optional['ConnectionCloudSqlArgs']]:
         """
         Connection properties specific to the Cloud SQL.
         Structure is documented below.
@@ -417,12 +417,12 @@ class _ConnectionState:
         return pulumi.get(self, "cloud_sql")
 
     @cloud_sql.setter
-    def cloud_sql(self, value: Optional[pulumi.Input['ConnectionCloudSqlArgs']]):
+    def cloud_sql(self, value: pulumi.Input[Optional['ConnectionCloudSqlArgs']]):
         pulumi.set(self, "cloud_sql", value)
 
     @_builtins.property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input['ConnectionConfigurationArgs']]:
+    def configuration(self) -> pulumi.Input[Optional['ConnectionConfigurationArgs']]:
         """
         Connector configuration. This is a generic configuration that is used to connect to
         external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
@@ -432,60 +432,60 @@ class _ConnectionState:
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input['ConnectionConfigurationArgs']]):
+    def configuration(self, value: pulumi.Input[Optional['ConnectionConfigurationArgs']]):
         pulumi.set(self, "configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
-    def connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional connection id that should be assigned to the created connection.
         """
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
-    def connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A descriptive description for the connection
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="friendlyName")
-    def friendly_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def friendly_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A descriptive name for the connection
         """
         return pulumi.get(self, "friendly_name")
 
     @friendly_name.setter
-    def friendly_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def friendly_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "friendly_name", value)
 
     @_builtins.property
     @pulumi.getter(name="hasCredential")
-    def has_credential(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def has_credential(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the connection has credential assigned.
         """
         return pulumi.get(self, "has_credential")
 
     @has_credential.setter
-    def has_credential(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def has_credential(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "has_credential", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The Cloud KMS key that is used for encryption.
         Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
@@ -493,12 +493,12 @@ class _ConnectionState:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location where the connection should reside.
         Cloud SQL instance must be in the same location as the connection
@@ -511,12 +511,12 @@ class _ConnectionState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the connection in the form of:
         "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
@@ -524,12 +524,12 @@ class _ConnectionState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -537,12 +537,12 @@ class _ConnectionState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def spark(self) -> Optional[pulumi.Input['ConnectionSparkArgs']]:
+    def spark(self) -> pulumi.Input[Optional['ConnectionSparkArgs']]:
         """
         Container for connection properties to execute stored procedures for Apache Spark. resources.
         Structure is documented below.
@@ -550,7 +550,7 @@ class _ConnectionState:
         return pulumi.get(self, "spark")
 
     @spark.setter
-    def spark(self, value: Optional[pulumi.Input['ConnectionSparkArgs']]):
+    def spark(self, value: pulumi.Input[Optional['ConnectionSparkArgs']]):
         pulumi.set(self, "spark", value)
 
 
@@ -560,19 +560,19 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws: Optional[pulumi.Input[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']]] = None,
-                 azure: Optional[pulumi.Input[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']]] = None,
-                 cloud_resource: Optional[pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
-                 cloud_spanner: Optional[pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
-                 cloud_sql: Optional[pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
-                 configuration: Optional[pulumi.Input[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark: Optional[pulumi.Input[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']]] = None,
+                 aws: pulumi.Input[Optional[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']]] = None,
+                 azure: pulumi.Input[Optional[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']]] = None,
+                 cloud_resource: pulumi.Input[Optional[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
+                 cloud_spanner: pulumi.Input[Optional[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
+                 cloud_sql: pulumi.Input[Optional[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
+                 configuration: pulumi.Input[Optional[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark: pulumi.Input[Optional[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']]] = None,
                  __props__=None):
         """
         A connection allows BigQuery connections to external data sources..
@@ -1258,19 +1258,19 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws: Optional[pulumi.Input[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']]] = None,
-                 azure: Optional[pulumi.Input[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']]] = None,
-                 cloud_resource: Optional[pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
-                 cloud_spanner: Optional[pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
-                 cloud_sql: Optional[pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
-                 configuration: Optional[pulumi.Input[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark: Optional[pulumi.Input[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']]] = None,
+                 aws: pulumi.Input[Optional[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']]] = None,
+                 azure: pulumi.Input[Optional[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']]] = None,
+                 cloud_resource: pulumi.Input[Optional[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
+                 cloud_spanner: pulumi.Input[Optional[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
+                 cloud_sql: pulumi.Input[Optional[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
+                 configuration: pulumi.Input[Optional[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark: pulumi.Input[Optional[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1305,21 +1305,21 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aws: Optional[pulumi.Input[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']]] = None,
-            azure: Optional[pulumi.Input[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']]] = None,
-            cloud_resource: Optional[pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
-            cloud_spanner: Optional[pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
-            cloud_sql: Optional[pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
-            configuration: Optional[pulumi.Input[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
-            connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
-            has_credential: Optional[pulumi.Input[_builtins.bool]] = None,
-            kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            spark: Optional[pulumi.Input[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']]] = None) -> 'Connection':
+            aws: pulumi.Input[Optional[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']]] = None,
+            azure: pulumi.Input[Optional[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']]] = None,
+            cloud_resource: pulumi.Input[Optional[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
+            cloud_spanner: pulumi.Input[Optional[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
+            cloud_sql: pulumi.Input[Optional[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
+            configuration: pulumi.Input[Optional[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+            has_credential: pulumi.Input[Optional[_builtins.bool]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            spark: pulumi.Input[Optional[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

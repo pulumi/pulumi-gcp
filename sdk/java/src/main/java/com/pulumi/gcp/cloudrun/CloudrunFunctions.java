@@ -41,8 +41,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -86,8 +86,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -131,8 +131,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -176,8 +176,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -221,8 +221,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -266,8 +266,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -311,8 +311,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -352,8 +352,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -395,8 +395,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -438,8 +438,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -481,8 +481,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -524,8 +524,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -565,8 +565,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -607,8 +607,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -649,8 +649,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -691,8 +691,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -733,8 +733,8 @@ public final class CloudrunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
      * import com.pulumi.gcp.cloudrun.inputs.GetServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -22,11 +22,11 @@ __all__ = ['FeatureArgs', 'Feature']
 class FeatureArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 fleet_default_member_config: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['FeatureSpecArgs']] = None):
+                 fleet_default_member_config: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional['FeatureSpecArgs']] = None):
         """
         The set of arguments for constructing a Feature resource.
 
@@ -68,7 +68,7 @@ class FeatureArgs:
 
     @_builtins.property
     @pulumi.getter(name="fleetDefaultMemberConfig")
-    def fleet_default_member_config(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigArgs']]:
+    def fleet_default_member_config(self) -> pulumi.Input[Optional['FeatureFleetDefaultMemberConfigArgs']]:
         """
         Optional. Fleet Default Membership Configuration.
         Structure is documented below.
@@ -76,12 +76,12 @@ class FeatureArgs:
         return pulumi.get(self, "fleet_default_member_config")
 
     @fleet_default_member_config.setter
-    def fleet_default_member_config(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigArgs']]):
+    def fleet_default_member_config(self, value: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigArgs']]):
         pulumi.set(self, "fleet_default_member_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         GCP labels for this Feature.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -90,24 +90,24 @@ class FeatureArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full, unique name of this Feature resource
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -115,12 +115,12 @@ class FeatureArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['FeatureSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['FeatureSpecArgs']]:
         """
         Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
         Structure is documented below.
@@ -128,26 +128,26 @@ class FeatureArgs:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['FeatureSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['FeatureSpecArgs']]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
 class _FeatureState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 fleet_default_member_config: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resource_states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureResourceStateArgs']]]] = None,
-                 spec: Optional[pulumi.Input['FeatureSpecArgs']] = None,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 fleet_default_member_config: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 resource_states: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureResourceStateArgs']]]] = None,
+                 spec: pulumi.Input[Optional['FeatureSpecArgs']] = None,
+                 states: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureStateArgs']]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Feature resources.
 
@@ -204,43 +204,43 @@ class _FeatureState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. When the Feature resource was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. When the Feature resource was deleted.
         """
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="fleetDefaultMemberConfig")
-    def fleet_default_member_config(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigArgs']]:
+    def fleet_default_member_config(self) -> pulumi.Input[Optional['FeatureFleetDefaultMemberConfigArgs']]:
         """
         Optional. Fleet Default Membership Configuration.
         Structure is documented below.
@@ -248,12 +248,12 @@ class _FeatureState:
         return pulumi.get(self, "fleet_default_member_config")
 
     @fleet_default_member_config.setter
-    def fleet_default_member_config(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigArgs']]):
+    def fleet_default_member_config(self, value: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigArgs']]):
         pulumi.set(self, "fleet_default_member_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         GCP labels for this Feature.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -262,36 +262,36 @@ class _FeatureState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full, unique name of this Feature resource
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -299,12 +299,12 @@ class _FeatureState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -312,12 +312,12 @@ class _FeatureState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceStates")
-    def resource_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureResourceStateArgs']]]]:
+    def resource_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureResourceStateArgs']]]]:
         """
         State of the Feature resource itself.
         Structure is documented below.
@@ -325,12 +325,12 @@ class _FeatureState:
         return pulumi.get(self, "resource_states")
 
     @resource_states.setter
-    def resource_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureResourceStateArgs']]]]):
+    def resource_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureResourceStateArgs']]]]):
         pulumi.set(self, "resource_states", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['FeatureSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['FeatureSpecArgs']]:
         """
         Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
         Structure is documented below.
@@ -338,12 +338,12 @@ class _FeatureState:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['FeatureSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['FeatureSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]]]:
+    def states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureStateArgs']]]]:
         """
         (Output)
         Output only. The "running state" of the Feature in this Hub.
@@ -352,12 +352,12 @@ class _FeatureState:
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]]]):
+    def states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureStateArgs']]]]):
         pulumi.set(self, "states", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
@@ -365,7 +365,7 @@ class _FeatureState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -375,12 +375,12 @@ class Feature(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 fleet_default_member_config: Optional[pulumi.Input[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']]] = None,
+                 fleet_default_member_config: pulumi.Input[Optional[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']]] = None,
                  __props__=None):
         """
         Feature represents the settings and status of any Hub Feature.
@@ -1123,12 +1123,12 @@ class Feature(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 fleet_default_member_config: Optional[pulumi.Input[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']]] = None,
+                 fleet_default_member_config: pulumi.Input[Optional[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1165,19 +1165,19 @@ class Feature(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            fleet_default_member_config: Optional[pulumi.Input[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            resource_states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureResourceStateArgs', 'FeatureResourceStateArgsDict']]]]] = None,
-            spec: Optional[pulumi.Input[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureStateArgs', 'FeatureStateArgsDict']]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Feature':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            fleet_default_member_config: pulumi.Input[Optional[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            resource_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureResourceStateArgs', 'FeatureResourceStateArgsDict']]]]] = None,
+            spec: pulumi.Input[Optional[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureStateArgs', 'FeatureStateArgsDict']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Feature':
         """
         Get an existing Feature resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

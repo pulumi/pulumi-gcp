@@ -254,47 +254,47 @@ export interface SavedQueryState {
     /**
      * Output only. The creation timestamp of the saved query.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A description of the saved query.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The user-visible display name of the saved query.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource see
      * [supported regions](https://docs.cloud.google.com/logging/docs/region-support#bucket-regions).
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The contents of the saved query.
      * Structure is documented below.
      */
-    loggingQuery?: pulumi.Input<inputs.logging.SavedQueryLoggingQuery>;
+    loggingQuery?: pulumi.Input<inputs.logging.SavedQueryLoggingQuery | undefined>;
     /**
      * The name of the saved query. For example: `my-saved-query`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The contents of the saved query.
      * Structure is documented below.
      */
-    opsAnalyticsQuery?: pulumi.Input<inputs.logging.SavedQueryOpsAnalyticsQuery>;
+    opsAnalyticsQuery?: pulumi.Input<inputs.logging.SavedQueryOpsAnalyticsQuery | undefined>;
     /**
      * The parent of the resource.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Output only. The last update timestamp of the saved query.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The visibility of the saved query.
      * Possible values are: `SHARED`, `PRIVATE`.
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -304,7 +304,7 @@ export interface SavedQueryArgs {
     /**
      * A description of the saved query.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The user-visible display name of the saved query.
      */
@@ -318,16 +318,16 @@ export interface SavedQueryArgs {
      * The contents of the saved query.
      * Structure is documented below.
      */
-    loggingQuery?: pulumi.Input<inputs.logging.SavedQueryLoggingQuery>;
+    loggingQuery?: pulumi.Input<inputs.logging.SavedQueryLoggingQuery | undefined>;
     /**
      * The name of the saved query. For example: `my-saved-query`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The contents of the saved query.
      * Structure is documented below.
      */
-    opsAnalyticsQuery?: pulumi.Input<inputs.logging.SavedQueryOpsAnalyticsQuery>;
+    opsAnalyticsQuery?: pulumi.Input<inputs.logging.SavedQueryOpsAnalyticsQuery | undefined>;
     /**
      * The parent of the resource.
      */

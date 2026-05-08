@@ -337,7 +337,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     config: {
  *         nodeConfig: {
- *             composerNetworkAttachment: projects / example_project / regions / us_central1 / networkAttachments / example_network_attachment,
+ *             composerNetworkAttachment: String(Number(projects) / Number(example_project) / Number(regions) / Number(us_central1) / Number(networkAttachments) / Number(example_network_attachment)),
  *         },
  *     },
  * });
@@ -697,38 +697,38 @@ export interface EnvironmentState {
     /**
      * Configuration parameters for this environment.
      */
-    config?: pulumi.Input<inputs.composer.EnvironmentConfig>;
+    config?: pulumi.Input<inputs.composer.EnvironmentConfig | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
      *
      * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the environment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location or Compute Engine region for the environment.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Configuration options for storage used by Composer environment.
      */
-    storageConfig?: pulumi.Input<inputs.composer.EnvironmentStorageConfig>;
+    storageConfig?: pulumi.Input<inputs.composer.EnvironmentStorageConfig | undefined>;
 }
 
 /**
@@ -738,28 +738,28 @@ export interface EnvironmentArgs {
     /**
      * Configuration parameters for this environment.
      */
-    config?: pulumi.Input<inputs.composer.EnvironmentConfig>;
+    config?: pulumi.Input<inputs.composer.EnvironmentConfig | undefined>;
     /**
      * User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
      *
      * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the environment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The location or Compute Engine region for the environment.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Configuration options for storage used by Composer environment.
      */
-    storageConfig?: pulumi.Input<inputs.composer.EnvironmentStorageConfig>;
+    storageConfig?: pulumi.Input<inputs.composer.EnvironmentStorageConfig | undefined>;
 }

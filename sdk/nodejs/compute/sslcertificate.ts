@@ -197,23 +197,23 @@ export interface SSLCertificateState {
      * The chain must include at least one intermediate cert.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the resource.
      */
-    certificateId?: pulumi.Input<number>;
+    certificateId?: pulumi.Input<number | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Expire time of the certificate in RFC3339 text format.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -224,7 +224,7 @@ export interface SSLCertificateState {
      * character, which cannot be a dash.
      * These are in the same namespace as the managed SSL certificates.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Creates a unique name beginning with the
      * specified prefix. Conflicts with `name`. Max length is 54 characters.
@@ -235,12 +235,12 @@ export interface SSLCertificateState {
      * Resulting name for a `namePrefix` 38 - 54 characters:
      * `namePrefix` + YYmmdd + 3 digit incremental counter
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * (Optional, Write-Only)
@@ -249,20 +249,20 @@ export interface SSLCertificateState {
      *
      * > **Note:** One of `privateKey` or `privateKeyWo` can only be set.
      */
-    privateKeyWo?: pulumi.Input<string>;
+    privateKeyWo?: pulumi.Input<string | undefined>;
     /**
      * Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      */
-    privateKeyWoVersion?: pulumi.Input<string>;
+    privateKeyWoVersion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -279,7 +279,7 @@ export interface SSLCertificateArgs {
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -290,7 +290,7 @@ export interface SSLCertificateArgs {
      * character, which cannot be a dash.
      * These are in the same namespace as the managed SSL certificates.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Creates a unique name beginning with the
      * specified prefix. Conflicts with `name`. Max length is 54 characters.
@@ -301,12 +301,12 @@ export interface SSLCertificateArgs {
      * Resulting name for a `namePrefix` 38 - 54 characters:
      * `namePrefix` + YYmmdd + 3 digit incremental counter
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * (Optional, Write-Only)
@@ -315,14 +315,14 @@ export interface SSLCertificateArgs {
      *
      * > **Note:** One of `privateKey` or `privateKeyWo` can only be set.
      */
-    privateKeyWo?: pulumi.Input<string>;
+    privateKeyWo?: pulumi.Input<string | undefined>;
     /**
      * Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      */
-    privateKeyWoVersion?: pulumi.Input<string>;
+    privateKeyWoVersion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

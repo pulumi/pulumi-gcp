@@ -427,10 +427,10 @@ def get_region_instance_group_manager(name: Optional[_builtins.str] = None,
         versions=pulumi.get(__ret__, 'versions'),
         wait_for_instances=pulumi.get(__ret__, 'wait_for_instances'),
         wait_for_instances_status=pulumi.get(__ret__, 'wait_for_instances_status'))
-def get_region_instance_group_manager_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                             project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                             region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                             self_link: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_region_instance_group_manager_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             self_link: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionInstanceGroupManagerResult]:
     """
     Get a Compute Region Instance Group Manager within GCE.

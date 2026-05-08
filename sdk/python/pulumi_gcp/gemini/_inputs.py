@@ -36,17 +36,17 @@ class CodeToolsSettingEnabledToolArgsDict(TypedDict):
     """
     Link to the Tool
     """
-    account_connector: NotRequired[pulumi.Input[_builtins.str]]
+    account_connector: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Link to the Dev Connect Account Connector that holds the user credentials.
     projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
     """
-    configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['CodeToolsSettingEnabledToolConfigArgsDict']]]]
+    configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CodeToolsSettingEnabledToolConfigArgs']]]]]
     """
     Configuration parameters for the tool.
     Structure is documented below.
     """
-    uri_override: NotRequired[pulumi.Input[_builtins.str]]
+    uri_override: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Overridden URI, if allowed by Tool.
     """
@@ -56,9 +56,9 @@ class CodeToolsSettingEnabledToolArgs:
     def __init__(__self__, *,
                  handle: pulumi.Input[_builtins.str],
                  tool: pulumi.Input[_builtins.str],
-                 account_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['CodeToolsSettingEnabledToolConfigArgs']]]] = None,
-                 uri_override: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input['CodeToolsSettingEnabledToolConfigArgs']]]] = None,
+                 uri_override: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] handle: Handle used to invoke the tool.
         :param pulumi.Input[_builtins.str] tool: Link to the Tool
@@ -103,7 +103,7 @@ class CodeToolsSettingEnabledToolArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountConnector")
-    def account_connector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_connector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Link to the Dev Connect Account Connector that holds the user credentials.
         projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
@@ -111,12 +111,12 @@ class CodeToolsSettingEnabledToolArgs:
         return pulumi.get(self, "account_connector")
 
     @account_connector.setter
-    def account_connector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_connector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_connector", value)
 
     @_builtins.property
     @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CodeToolsSettingEnabledToolConfigArgs']]]]:
+    def configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CodeToolsSettingEnabledToolConfigArgs']]]]:
         """
         Configuration parameters for the tool.
         Structure is documented below.
@@ -124,19 +124,19 @@ class CodeToolsSettingEnabledToolArgs:
         return pulumi.get(self, "configs")
 
     @configs.setter
-    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CodeToolsSettingEnabledToolConfigArgs']]]]):
+    def configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CodeToolsSettingEnabledToolConfigArgs']]]]):
         pulumi.set(self, "configs", value)
 
     @_builtins.property
     @pulumi.getter(name="uriOverride")
-    def uri_override(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri_override(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Overridden URI, if allowed by Tool.
         """
         return pulumi.get(self, "uri_override")
 
     @uri_override.setter
-    def uri_override(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri_override(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri_override", value)
 
 
@@ -190,14 +190,14 @@ class CodeToolsSettingEnabledToolConfigArgs:
 class RepositoryGroupIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RepositoryGroupIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -223,25 +223,25 @@ class RepositoryGroupIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RepositoryGroupIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RepositoryGroupIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -267,11 +267,11 @@ class RepositoryGroupIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 

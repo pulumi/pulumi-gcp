@@ -131,8 +131,8 @@ def get_config(location: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         parent=pulumi.get(__ret__, 'parent'))
-def get_config_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                      parent: Optional[pulumi.Input[_builtins.str]] = None,
+def get_config_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                      parent: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConfigResult]:
     """
     Get a configuration for Data Lineage.

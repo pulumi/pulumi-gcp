@@ -171,35 +171,35 @@ export interface LiteTopicState {
     /**
      * Name of the topic.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The settings for this topic's partitions.
      * Structure is documented below.
      */
-    partitionConfig?: pulumi.Input<inputs.pubsub.LiteTopicPartitionConfig>;
+    partitionConfig?: pulumi.Input<inputs.pubsub.LiteTopicPartitionConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the pubsub lite topic.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The settings for this topic's Reservation usage.
      * Structure is documented below.
      */
-    reservationConfig?: pulumi.Input<inputs.pubsub.LiteTopicReservationConfig>;
+    reservationConfig?: pulumi.Input<inputs.pubsub.LiteTopicReservationConfig | undefined>;
     /**
      * The settings for a topic's message retention.
      * Structure is documented below.
      */
-    retentionConfig?: pulumi.Input<inputs.pubsub.LiteTopicRetentionConfig>;
+    retentionConfig?: pulumi.Input<inputs.pubsub.LiteTopicRetentionConfig | undefined>;
     /**
      * The zone of the pubsub lite topic.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -209,33 +209,33 @@ export interface LiteTopicArgs {
     /**
      * Name of the topic.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The settings for this topic's partitions.
      * Structure is documented below.
      */
-    partitionConfig?: pulumi.Input<inputs.pubsub.LiteTopicPartitionConfig>;
+    partitionConfig?: pulumi.Input<inputs.pubsub.LiteTopicPartitionConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the pubsub lite topic.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The settings for this topic's Reservation usage.
      * Structure is documented below.
      */
-    reservationConfig?: pulumi.Input<inputs.pubsub.LiteTopicReservationConfig>;
+    reservationConfig?: pulumi.Input<inputs.pubsub.LiteTopicReservationConfig | undefined>;
     /**
      * The settings for a topic's message retention.
      * Structure is documented below.
      */
-    retentionConfig?: pulumi.Input<inputs.pubsub.LiteTopicRetentionConfig>;
+    retentionConfig?: pulumi.Input<inputs.pubsub.LiteTopicRetentionConfig | undefined>;
     /**
      * The zone of the pubsub lite topic.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

@@ -217,9 +217,9 @@ def get_cloud_exadata_infrastructure(cloud_exadata_infrastructure_id: Optional[_
         project=pulumi.get(__ret__, 'project'),
         properties=pulumi.get(__ret__, 'properties'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'))
-def get_cloud_exadata_infrastructure_output(cloud_exadata_infrastructure_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                            location: Optional[pulumi.Input[_builtins.str]] = None,
-                                            project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_cloud_exadata_infrastructure_output(cloud_exadata_infrastructure_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                            location: pulumi.Input[Optional[_builtins.str]] = None,
+                                            project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudExadataInfrastructureResult]:
     """
     Get information about an ExadataInfrastructure.

@@ -148,22 +148,22 @@ __all__ = [
 ]
 
 class AlertPolicyAlertStrategyArgsDict(TypedDict):
-    auto_close: NotRequired[pulumi.Input[_builtins.str]]
+    auto_close: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If an alert policy that was active has no data for this long, any open incidents will close.
     """
-    notification_channel_strategies: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgsDict']]]]
+    notification_channel_strategies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgs']]]]]
     """
     Control over how the notification channels in `notification_channels`
     are notified when this alert fires, on a per-channel basis.
     Structure is documented below.
     """
-    notification_prompts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    notification_prompts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Control when notifications will be sent out.
     Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
     """
-    notification_rate_limit: NotRequired[pulumi.Input['AlertPolicyAlertStrategyNotificationRateLimitArgsDict']]
+    notification_rate_limit: NotRequired[pulumi.Input[Optional['AlertPolicyAlertStrategyNotificationRateLimitArgs']]]
     """
     Required for alert policies with a LogMatch condition.
     This limit is not implemented for alert policies that are not log-based.
@@ -173,10 +173,10 @@ class AlertPolicyAlertStrategyArgsDict(TypedDict):
 @pulumi.input_type
 class AlertPolicyAlertStrategyArgs:
     def __init__(__self__, *,
-                 auto_close: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_channel_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgs']]]] = None,
-                 notification_prompts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notification_rate_limit: Optional[pulumi.Input['AlertPolicyAlertStrategyNotificationRateLimitArgs']] = None):
+                 auto_close: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_channel_strategies: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgs']]]] = None,
+                 notification_prompts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notification_rate_limit: pulumi.Input[Optional['AlertPolicyAlertStrategyNotificationRateLimitArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] auto_close: If an alert policy that was active has no data for this long, any open incidents will close.
         :param pulumi.Input[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgs']]] notification_channel_strategies: Control over how the notification channels in `notification_channels`
@@ -199,19 +199,19 @@ class AlertPolicyAlertStrategyArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoClose")
-    def auto_close(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_close(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If an alert policy that was active has no data for this long, any open incidents will close.
         """
         return pulumi.get(self, "auto_close")
 
     @auto_close.setter
-    def auto_close(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_close(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_close", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationChannelStrategies")
-    def notification_channel_strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgs']]]]:
+    def notification_channel_strategies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgs']]]]:
         """
         Control over how the notification channels in `notification_channels`
         are notified when this alert fires, on a per-channel basis.
@@ -220,12 +220,12 @@ class AlertPolicyAlertStrategyArgs:
         return pulumi.get(self, "notification_channel_strategies")
 
     @notification_channel_strategies.setter
-    def notification_channel_strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgs']]]]):
+    def notification_channel_strategies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgs']]]]):
         pulumi.set(self, "notification_channel_strategies", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationPrompts")
-    def notification_prompts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notification_prompts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Control when notifications will be sent out.
         Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
@@ -233,12 +233,12 @@ class AlertPolicyAlertStrategyArgs:
         return pulumi.get(self, "notification_prompts")
 
     @notification_prompts.setter
-    def notification_prompts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notification_prompts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notification_prompts", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationRateLimit")
-    def notification_rate_limit(self) -> Optional[pulumi.Input['AlertPolicyAlertStrategyNotificationRateLimitArgs']]:
+    def notification_rate_limit(self) -> pulumi.Input[Optional['AlertPolicyAlertStrategyNotificationRateLimitArgs']]:
         """
         Required for alert policies with a LogMatch condition.
         This limit is not implemented for alert policies that are not log-based.
@@ -247,19 +247,19 @@ class AlertPolicyAlertStrategyArgs:
         return pulumi.get(self, "notification_rate_limit")
 
     @notification_rate_limit.setter
-    def notification_rate_limit(self, value: Optional[pulumi.Input['AlertPolicyAlertStrategyNotificationRateLimitArgs']]):
+    def notification_rate_limit(self, value: pulumi.Input[Optional['AlertPolicyAlertStrategyNotificationRateLimitArgs']]):
         pulumi.set(self, "notification_rate_limit", value)
 
 
 class AlertPolicyAlertStrategyNotificationChannelStrategyArgsDict(TypedDict):
-    notification_channel_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    notification_channel_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The notification channels that these settings apply to. Each of these
     correspond to the name field in one of the NotificationChannel objects
     referenced in the notification_channels field of this AlertPolicy. The format is
     `projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]`
     """
-    renotify_interval: NotRequired[pulumi.Input[_builtins.str]]
+    renotify_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The frequency at which to send reminder notifications for open incidents.
     """
@@ -267,8 +267,8 @@ class AlertPolicyAlertStrategyNotificationChannelStrategyArgsDict(TypedDict):
 @pulumi.input_type
 class AlertPolicyAlertStrategyNotificationChannelStrategyArgs:
     def __init__(__self__, *,
-                 notification_channel_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 renotify_interval: Optional[pulumi.Input[_builtins.str]] = None):
+                 notification_channel_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 renotify_interval: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_channel_names: The notification channels that these settings apply to. Each of these
                correspond to the name field in one of the NotificationChannel objects
@@ -283,7 +283,7 @@ class AlertPolicyAlertStrategyNotificationChannelStrategyArgs:
 
     @_builtins.property
     @pulumi.getter(name="notificationChannelNames")
-    def notification_channel_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notification_channel_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The notification channels that these settings apply to. Each of these
         correspond to the name field in one of the NotificationChannel objects
@@ -293,24 +293,24 @@ class AlertPolicyAlertStrategyNotificationChannelStrategyArgs:
         return pulumi.get(self, "notification_channel_names")
 
     @notification_channel_names.setter
-    def notification_channel_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notification_channel_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notification_channel_names", value)
 
     @_builtins.property
     @pulumi.getter(name="renotifyInterval")
-    def renotify_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renotify_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The frequency at which to send reminder notifications for open incidents.
         """
         return pulumi.get(self, "renotify_interval")
 
     @renotify_interval.setter
-    def renotify_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renotify_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renotify_interval", value)
 
 
 class AlertPolicyAlertStrategyNotificationRateLimitArgsDict(TypedDict):
-    period: NotRequired[pulumi.Input[_builtins.str]]
+    period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Not more than one notification per period.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
@@ -319,7 +319,7 @@ class AlertPolicyAlertStrategyNotificationRateLimitArgsDict(TypedDict):
 @pulumi.input_type
 class AlertPolicyAlertStrategyNotificationRateLimitArgs:
     def __init__(__self__, *,
-                 period: Optional[pulumi.Input[_builtins.str]] = None):
+                 period: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] period: Not more than one notification per period.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
@@ -329,7 +329,7 @@ class AlertPolicyAlertStrategyNotificationRateLimitArgs:
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Not more than one notification per period.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
@@ -337,7 +337,7 @@ class AlertPolicyAlertStrategyNotificationRateLimitArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
 
@@ -350,24 +350,24 @@ class AlertPolicyConditionArgsDict(TypedDict):
     display name for multiple conditions in the same
     policy.
     """
-    condition_absent: NotRequired[pulumi.Input['AlertPolicyConditionConditionAbsentArgsDict']]
+    condition_absent: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionAbsentArgs']]]
     """
     A condition that checks that a time series
     continues to receive new data points.
     Structure is documented below.
     """
-    condition_matched_log: NotRequired[pulumi.Input['AlertPolicyConditionConditionMatchedLogArgsDict']]
+    condition_matched_log: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionMatchedLogArgs']]]
     """
     A condition that checks for log messages matching given constraints.
     If set, no other conditions can be present.
     Structure is documented below.
     """
-    condition_monitoring_query_language: NotRequired[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageArgsDict']]
+    condition_monitoring_query_language: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionMonitoringQueryLanguageArgs']]]
     """
     A Monitoring Query Language query that outputs a boolean stream
     Structure is documented below.
     """
-    condition_prometheus_query_language: NotRequired[pulumi.Input['AlertPolicyConditionConditionPrometheusQueryLanguageArgsDict']]
+    condition_prometheus_query_language: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionPrometheusQueryLanguageArgs']]]
     """
     A condition type that allows alert policies to be defined using
     Prometheus Query Language (PromQL).
@@ -375,20 +375,20 @@ class AlertPolicyConditionArgsDict(TypedDict):
     from a Prometheus alerting rule and its associated rule group.
     Structure is documented below.
     """
-    condition_sql: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlArgsDict']]
+    condition_sql: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlArgs']]]
     """
     A condition that allows alerting policies to be defined using GoogleSQL.
     SQL conditions examine a sliding window of logs using GoogleSQL.
     Alert policies with SQL conditions may incur additional billing.
     Structure is documented below.
     """
-    condition_threshold: NotRequired[pulumi.Input['AlertPolicyConditionConditionThresholdArgsDict']]
+    condition_threshold: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionThresholdArgs']]]
     """
     A condition that compares a time series against a
     threshold.
     Structure is documented below.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The unique resource name for this condition.
@@ -403,13 +403,13 @@ class AlertPolicyConditionArgsDict(TypedDict):
 class AlertPolicyConditionArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
-                 condition_absent: Optional[pulumi.Input['AlertPolicyConditionConditionAbsentArgs']] = None,
-                 condition_matched_log: Optional[pulumi.Input['AlertPolicyConditionConditionMatchedLogArgs']] = None,
-                 condition_monitoring_query_language: Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageArgs']] = None,
-                 condition_prometheus_query_language: Optional[pulumi.Input['AlertPolicyConditionConditionPrometheusQueryLanguageArgs']] = None,
-                 condition_sql: Optional[pulumi.Input['AlertPolicyConditionConditionSqlArgs']] = None,
-                 condition_threshold: Optional[pulumi.Input['AlertPolicyConditionConditionThresholdArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition_absent: pulumi.Input[Optional['AlertPolicyConditionConditionAbsentArgs']] = None,
+                 condition_matched_log: pulumi.Input[Optional['AlertPolicyConditionConditionMatchedLogArgs']] = None,
+                 condition_monitoring_query_language: pulumi.Input[Optional['AlertPolicyConditionConditionMonitoringQueryLanguageArgs']] = None,
+                 condition_prometheus_query_language: pulumi.Input[Optional['AlertPolicyConditionConditionPrometheusQueryLanguageArgs']] = None,
+                 condition_sql: pulumi.Input[Optional['AlertPolicyConditionConditionSqlArgs']] = None,
+                 condition_threshold: pulumi.Input[Optional['AlertPolicyConditionConditionThresholdArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] display_name: A short name or phrase used to identify the
                condition in dashboards, notifications, and
@@ -478,7 +478,7 @@ class AlertPolicyConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="conditionAbsent")
-    def condition_absent(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionAbsentArgs']]:
+    def condition_absent(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionAbsentArgs']]:
         """
         A condition that checks that a time series
         continues to receive new data points.
@@ -487,12 +487,12 @@ class AlertPolicyConditionArgs:
         return pulumi.get(self, "condition_absent")
 
     @condition_absent.setter
-    def condition_absent(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionAbsentArgs']]):
+    def condition_absent(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionAbsentArgs']]):
         pulumi.set(self, "condition_absent", value)
 
     @_builtins.property
     @pulumi.getter(name="conditionMatchedLog")
-    def condition_matched_log(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionMatchedLogArgs']]:
+    def condition_matched_log(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionMatchedLogArgs']]:
         """
         A condition that checks for log messages matching given constraints.
         If set, no other conditions can be present.
@@ -501,12 +501,12 @@ class AlertPolicyConditionArgs:
         return pulumi.get(self, "condition_matched_log")
 
     @condition_matched_log.setter
-    def condition_matched_log(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionMatchedLogArgs']]):
+    def condition_matched_log(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionMatchedLogArgs']]):
         pulumi.set(self, "condition_matched_log", value)
 
     @_builtins.property
     @pulumi.getter(name="conditionMonitoringQueryLanguage")
-    def condition_monitoring_query_language(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageArgs']]:
+    def condition_monitoring_query_language(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionMonitoringQueryLanguageArgs']]:
         """
         A Monitoring Query Language query that outputs a boolean stream
         Structure is documented below.
@@ -514,12 +514,12 @@ class AlertPolicyConditionArgs:
         return pulumi.get(self, "condition_monitoring_query_language")
 
     @condition_monitoring_query_language.setter
-    def condition_monitoring_query_language(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageArgs']]):
+    def condition_monitoring_query_language(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionMonitoringQueryLanguageArgs']]):
         pulumi.set(self, "condition_monitoring_query_language", value)
 
     @_builtins.property
     @pulumi.getter(name="conditionPrometheusQueryLanguage")
-    def condition_prometheus_query_language(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionPrometheusQueryLanguageArgs']]:
+    def condition_prometheus_query_language(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionPrometheusQueryLanguageArgs']]:
         """
         A condition type that allows alert policies to be defined using
         Prometheus Query Language (PromQL).
@@ -530,12 +530,12 @@ class AlertPolicyConditionArgs:
         return pulumi.get(self, "condition_prometheus_query_language")
 
     @condition_prometheus_query_language.setter
-    def condition_prometheus_query_language(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionPrometheusQueryLanguageArgs']]):
+    def condition_prometheus_query_language(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionPrometheusQueryLanguageArgs']]):
         pulumi.set(self, "condition_prometheus_query_language", value)
 
     @_builtins.property
     @pulumi.getter(name="conditionSql")
-    def condition_sql(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlArgs']]:
+    def condition_sql(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionSqlArgs']]:
         """
         A condition that allows alerting policies to be defined using GoogleSQL.
         SQL conditions examine a sliding window of logs using GoogleSQL.
@@ -545,12 +545,12 @@ class AlertPolicyConditionArgs:
         return pulumi.get(self, "condition_sql")
 
     @condition_sql.setter
-    def condition_sql(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionSqlArgs']]):
+    def condition_sql(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionSqlArgs']]):
         pulumi.set(self, "condition_sql", value)
 
     @_builtins.property
     @pulumi.getter(name="conditionThreshold")
-    def condition_threshold(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionThresholdArgs']]:
+    def condition_threshold(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionThresholdArgs']]:
         """
         A condition that compares a time series against a
         threshold.
@@ -559,12 +559,12 @@ class AlertPolicyConditionArgs:
         return pulumi.get(self, "condition_threshold")
 
     @condition_threshold.setter
-    def condition_threshold(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionThresholdArgs']]):
+    def condition_threshold(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionThresholdArgs']]):
         pulumi.set(self, "condition_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The unique resource name for this condition.
@@ -577,7 +577,7 @@ class AlertPolicyConditionArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -590,7 +590,7 @@ class AlertPolicyConditionConditionAbsentArgsDict(TypedDict):
     multiple of a minute--e.g. 60s, 120s, or 300s
     --are supported.
     """
-    aggregations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgsDict']]]]
+    aggregations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]]]
     """
     Specifies the alignment of data points in
     individual time series as well as how to
@@ -603,7 +603,7 @@ class AlertPolicyConditionConditionAbsentArgsDict(TypedDict):
     order specified.
     Structure is documented below.
     """
-    filter: NotRequired[pulumi.Input[_builtins.str]]
+    filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A filter that identifies which time series
     should be compared with the threshold.The
@@ -618,7 +618,7 @@ class AlertPolicyConditionConditionAbsentArgsDict(TypedDict):
     field may not exceed 2048 Unicode characters
     in length.
     """
-    trigger: NotRequired[pulumi.Input['AlertPolicyConditionConditionAbsentTriggerArgsDict']]
+    trigger: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionAbsentTriggerArgs']]]
     """
     The number/percent of time series for which
     the comparison must hold in order for the
@@ -633,9 +633,9 @@ class AlertPolicyConditionConditionAbsentArgsDict(TypedDict):
 class AlertPolicyConditionConditionAbsentArgs:
     def __init__(__self__, *,
                  duration: pulumi.Input[_builtins.str],
-                 aggregations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger: Optional[pulumi.Input['AlertPolicyConditionConditionAbsentTriggerArgs']] = None):
+                 aggregations: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger: pulumi.Input[Optional['AlertPolicyConditionConditionAbsentTriggerArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] duration: The amount of time that a time series must
                fail to report new data to be considered
@@ -698,7 +698,7 @@ class AlertPolicyConditionConditionAbsentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def aggregations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]]:
+    def aggregations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]]:
         """
         Specifies the alignment of data points in
         individual time series as well as how to
@@ -714,12 +714,12 @@ class AlertPolicyConditionConditionAbsentArgs:
         return pulumi.get(self, "aggregations")
 
     @aggregations.setter
-    def aggregations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]]):
+    def aggregations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]]):
         pulumi.set(self, "aggregations", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A filter that identifies which time series
         should be compared with the threshold.The
@@ -737,12 +737,12 @@ class AlertPolicyConditionConditionAbsentArgs:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def trigger(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionAbsentTriggerArgs']]:
+    def trigger(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionAbsentTriggerArgs']]:
         """
         The number/percent of time series for which
         the comparison must hold in order for the
@@ -755,12 +755,12 @@ class AlertPolicyConditionConditionAbsentArgs:
         return pulumi.get(self, "trigger")
 
     @trigger.setter
-    def trigger(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionAbsentTriggerArgs']]):
+    def trigger(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionAbsentTriggerArgs']]):
         pulumi.set(self, "trigger", value)
 
 
 class AlertPolicyConditionConditionAbsentAggregationArgsDict(TypedDict):
-    alignment_period: NotRequired[pulumi.Input[_builtins.str]]
+    alignment_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alignment period for per-time
     series alignment. If present,
@@ -777,7 +777,7 @@ class AlertPolicyConditionConditionAbsentAggregationArgsDict(TypedDict):
     this field must be defined;
     otherwise an error is returned.
     """
-    cross_series_reducer: NotRequired[pulumi.Input[_builtins.str]]
+    cross_series_reducer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The approach to be used to combine
     time series. Not all reducer
@@ -798,7 +798,7 @@ class AlertPolicyConditionConditionAbsentAggregationArgsDict(TypedDict):
     returned.
     Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
     """
-    group_by_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    group_by_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of fields to preserve when
     crossSeriesReducer is specified.
@@ -826,7 +826,7 @@ class AlertPolicyConditionConditionAbsentAggregationArgsDict(TypedDict):
     is not defined, this field is
     ignored.
     """
-    per_series_aligner: NotRequired[pulumi.Input[_builtins.str]]
+    per_series_aligner: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The approach to be used to align
     individual time series. Not all
@@ -851,10 +851,10 @@ class AlertPolicyConditionConditionAbsentAggregationArgsDict(TypedDict):
 @pulumi.input_type
 class AlertPolicyConditionConditionAbsentAggregationArgs:
     def __init__(__self__, *,
-                 alignment_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_series_reducer: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 per_series_aligner: Optional[pulumi.Input[_builtins.str]] = None):
+                 alignment_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_series_reducer: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_by_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 per_series_aligner: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] alignment_period: The alignment period for per-time
                series alignment. If present,
@@ -943,7 +943,7 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
 
     @_builtins.property
     @pulumi.getter(name="alignmentPeriod")
-    def alignment_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alignment_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alignment period for per-time
         series alignment. If present,
@@ -963,12 +963,12 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
         return pulumi.get(self, "alignment_period")
 
     @alignment_period.setter
-    def alignment_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alignment_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alignment_period", value)
 
     @_builtins.property
     @pulumi.getter(name="crossSeriesReducer")
-    def cross_series_reducer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_series_reducer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The approach to be used to combine
         time series. Not all reducer
@@ -992,12 +992,12 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
         return pulumi.get(self, "cross_series_reducer")
 
     @cross_series_reducer.setter
-    def cross_series_reducer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_series_reducer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_series_reducer", value)
 
     @_builtins.property
     @pulumi.getter(name="groupByFields")
-    def group_by_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def group_by_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of fields to preserve when
         crossSeriesReducer is specified.
@@ -1028,12 +1028,12 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
         return pulumi.get(self, "group_by_fields")
 
     @group_by_fields.setter
-    def group_by_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def group_by_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "group_by_fields", value)
 
     @_builtins.property
     @pulumi.getter(name="perSeriesAligner")
-    def per_series_aligner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def per_series_aligner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The approach to be used to align
         individual time series. Not all
@@ -1057,18 +1057,18 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
         return pulumi.get(self, "per_series_aligner")
 
     @per_series_aligner.setter
-    def per_series_aligner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def per_series_aligner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "per_series_aligner", value)
 
 
 class AlertPolicyConditionConditionAbsentTriggerArgsDict(TypedDict):
-    count: NotRequired[pulumi.Input[_builtins.int]]
+    count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The absolute number of time series
     that must fail the predicate for the
     condition to be triggered.
     """
-    percent: NotRequired[pulumi.Input[_builtins.float]]
+    percent: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The percentage of time series that
     must fail the predicate for the
@@ -1078,8 +1078,8 @@ class AlertPolicyConditionConditionAbsentTriggerArgsDict(TypedDict):
 @pulumi.input_type
 class AlertPolicyConditionConditionAbsentTriggerArgs:
     def __init__(__self__, *,
-                 count: Optional[pulumi.Input[_builtins.int]] = None,
-                 percent: Optional[pulumi.Input[_builtins.float]] = None):
+                 count: pulumi.Input[Optional[_builtins.int]] = None,
+                 percent: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.int] count: The absolute number of time series
                that must fail the predicate for the
@@ -1095,7 +1095,7 @@ class AlertPolicyConditionConditionAbsentTriggerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The absolute number of time series
         that must fail the predicate for the
@@ -1104,12 +1104,12 @@ class AlertPolicyConditionConditionAbsentTriggerArgs:
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "count", value)
 
     @_builtins.property
     @pulumi.getter
-    def percent(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def percent(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The percentage of time series that
         must fail the predicate for the
@@ -1118,7 +1118,7 @@ class AlertPolicyConditionConditionAbsentTriggerArgs:
         return pulumi.get(self, "percent")
 
     @percent.setter
-    def percent(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def percent(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "percent", value)
 
 
@@ -1127,7 +1127,7 @@ class AlertPolicyConditionConditionMatchedLogArgsDict(TypedDict):
     """
     A logs-based filter.
     """
-    label_extractors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    label_extractors: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     A map from a label key to an extractor expression, which is used to
     extract the value for this label key. Each entry in this map is
@@ -1142,7 +1142,7 @@ class AlertPolicyConditionConditionMatchedLogArgsDict(TypedDict):
 class AlertPolicyConditionConditionMatchedLogArgs:
     def __init__(__self__, *,
                  filter: pulumi.Input[_builtins.str],
-                 label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 label_extractors: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] filter: A logs-based filter.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] label_extractors: A map from a label key to an extractor expression, which is used to
@@ -1171,7 +1171,7 @@ class AlertPolicyConditionConditionMatchedLogArgs:
 
     @_builtins.property
     @pulumi.getter(name="labelExtractors")
-    def label_extractors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def label_extractors(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map from a label key to an extractor expression, which is used to
         extract the value for this label key. Each entry in this map is
@@ -1184,7 +1184,7 @@ class AlertPolicyConditionConditionMatchedLogArgs:
         return pulumi.get(self, "label_extractors")
 
     @label_extractors.setter
-    def label_extractors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def label_extractors(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "label_extractors", value)
 
 
@@ -1211,14 +1211,14 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageArgsDict(TypedDict):
     """
     Monitoring Query Language query that outputs a boolean stream.
     """
-    evaluation_missing_data: NotRequired[pulumi.Input[_builtins.str]]
+    evaluation_missing_data: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A condition control that determines how
     metric-threshold conditions are evaluated when
     data stops arriving.
     Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
     """
-    trigger: NotRequired[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgsDict']]
+    trigger: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs']]]
     """
     The number/percent of time series for which
     the comparison must hold in order for the
@@ -1236,8 +1236,8 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageArgs:
     def __init__(__self__, *,
                  duration: pulumi.Input[_builtins.str],
                  query: pulumi.Input[_builtins.str],
-                 evaluation_missing_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger: Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs']] = None):
+                 evaluation_missing_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger: pulumi.Input[Optional['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] duration: The amount of time that a time series must
                violate the threshold to be considered
@@ -1316,7 +1316,7 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageArgs:
 
     @_builtins.property
     @pulumi.getter(name="evaluationMissingData")
-    def evaluation_missing_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def evaluation_missing_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A condition control that determines how
         metric-threshold conditions are evaluated when
@@ -1326,12 +1326,12 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageArgs:
         return pulumi.get(self, "evaluation_missing_data")
 
     @evaluation_missing_data.setter
-    def evaluation_missing_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def evaluation_missing_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "evaluation_missing_data", value)
 
     @_builtins.property
     @pulumi.getter
-    def trigger(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs']]:
+    def trigger(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs']]:
         """
         The number/percent of time series for which
         the comparison must hold in order for the
@@ -1346,18 +1346,18 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageArgs:
         return pulumi.get(self, "trigger")
 
     @trigger.setter
-    def trigger(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs']]):
+    def trigger(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs']]):
         pulumi.set(self, "trigger", value)
 
 
 class AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgsDict(TypedDict):
-    count: NotRequired[pulumi.Input[_builtins.int]]
+    count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The absolute number of time series
     that must fail the predicate for the
     condition to be triggered.
     """
-    percent: NotRequired[pulumi.Input[_builtins.float]]
+    percent: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The percentage of time series that
     must fail the predicate for the
@@ -1367,8 +1367,8 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgsDict(TypedD
 @pulumi.input_type
 class AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs:
     def __init__(__self__, *,
-                 count: Optional[pulumi.Input[_builtins.int]] = None,
-                 percent: Optional[pulumi.Input[_builtins.float]] = None):
+                 count: pulumi.Input[Optional[_builtins.int]] = None,
+                 percent: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.int] count: The absolute number of time series
                that must fail the predicate for the
@@ -1384,7 +1384,7 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The absolute number of time series
         that must fail the predicate for the
@@ -1393,12 +1393,12 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs:
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "count", value)
 
     @_builtins.property
     @pulumi.getter
-    def percent(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def percent(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The percentage of time series that
         must fail the predicate for the
@@ -1407,7 +1407,7 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs:
         return pulumi.get(self, "percent")
 
     @percent.setter
-    def percent(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def percent(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "percent", value)
 
 
@@ -1418,7 +1418,7 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgsDict(TypedDict):
     expression is evaluated at the current time, and all resultant time
     series become pending/firing alerts. This field must not be empty.
     """
-    alert_rule: NotRequired[pulumi.Input[_builtins.str]]
+    alert_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alerting rule name of this alert in the corresponding Prometheus
     configuration file.
@@ -1430,7 +1430,7 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgsDict(TypedDict):
     This field is optional. If this field is not empty, then it must be a
     valid Prometheus label name.
     """
-    disable_metric_validation: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_metric_validation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to disable metric existence validation for this condition.
     This allows alerting policies to be defined on metrics that do not yet
@@ -1439,14 +1439,14 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgsDict(TypedDict):
     Users with the `monitoring.alertPolicyViewer` role are able to see the
     name of the non-existent metric in the alerting policy condition.
     """
-    duration: NotRequired[pulumi.Input[_builtins.str]]
+    duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Alerts are considered firing once their PromQL expression evaluated
     to be "true" for this long. Alerts whose PromQL expression was not
     evaluated to be "true" for long enough are considered pending. The
     default value is zero. Must be zero or positive.
     """
-    evaluation_interval: NotRequired[pulumi.Input[_builtins.str]]
+    evaluation_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     How often this rule should be evaluated. Must be a positive multiple
     of 30 seconds or missing. The default value is 30 seconds. If this
@@ -1454,7 +1454,7 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgsDict(TypedDict):
     alerting rule, then this value should be taken from the enclosing
     rule group.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels to add to or overwrite in the PromQL query result. Label names
     must be valid.
@@ -1464,7 +1464,7 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgsDict(TypedDict):
     internal use. "labels" may be empty. This field is intended to be used
     for organizing and identifying the AlertPolicy.
     """
-    rule_group: NotRequired[pulumi.Input[_builtins.str]]
+    rule_group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The rule group name of this alert in the corresponding Prometheus
     configuration file.
@@ -1479,12 +1479,12 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgsDict(TypedDict):
 class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
     def __init__(__self__, *,
                  query: pulumi.Input[_builtins.str],
-                 alert_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_metric_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 rule_group: Optional[pulumi.Input[_builtins.str]] = None):
+                 alert_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_metric_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 rule_group: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] query: The PromQL expression to evaluate. Every evaluation cycle this
                expression is evaluated at the current time, and all resultant time
@@ -1558,7 +1558,7 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
 
     @_builtins.property
     @pulumi.getter(name="alertRule")
-    def alert_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alerting rule name of this alert in the corresponding Prometheus
         configuration file.
@@ -1573,12 +1573,12 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
         return pulumi.get(self, "alert_rule")
 
     @alert_rule.setter
-    def alert_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="disableMetricValidation")
-    def disable_metric_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_metric_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable metric existence validation for this condition.
         This allows alerting policies to be defined on metrics that do not yet
@@ -1590,12 +1590,12 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
         return pulumi.get(self, "disable_metric_validation")
 
     @disable_metric_validation.setter
-    def disable_metric_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_metric_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_metric_validation", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alerts are considered firing once their PromQL expression evaluated
         to be "true" for this long. Alerts whose PromQL expression was not
@@ -1605,12 +1605,12 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="evaluationInterval")
-    def evaluation_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def evaluation_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How often this rule should be evaluated. Must be a positive multiple
         of 30 seconds or missing. The default value is 30 seconds. If this
@@ -1621,12 +1621,12 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
         return pulumi.get(self, "evaluation_interval")
 
     @evaluation_interval.setter
-    def evaluation_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def evaluation_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "evaluation_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to add to or overwrite in the PromQL query result. Label names
         must be valid.
@@ -1639,12 +1639,12 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleGroup")
-    def rule_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule group name of this alert in the corresponding Prometheus
         configuration file.
@@ -1657,7 +1657,7 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
         return pulumi.get(self, "rule_group")
 
     @rule_group.setter
-    def rule_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_group", value)
 
 
@@ -1670,27 +1670,27 @@ class AlertPolicyConditionConditionSqlArgsDict(TypedDict):
     to filter the input so that the query receives all rows received
     since the last time the query was run.
     """
-    boolean_test: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgsDict']]
+    boolean_test: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlBooleanTestArgs']]]
     """
     A test that uses an alerting result in a boolean column produced by the SQL query.
     Structure is documented below.
     """
-    daily: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlDailyArgsDict']]
+    daily: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlDailyArgs']]]
     """
     Used to schedule the query to run every so many days.
     Structure is documented below.
     """
-    hourly: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlHourlyArgsDict']]
+    hourly: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlHourlyArgs']]]
     """
     Used to schedule the query to run every so many hours.
     Structure is documented below.
     """
-    minutes: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlMinutesArgsDict']]
+    minutes: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlMinutesArgs']]]
     """
     Used to schedule the query to run every so many minutes.
     Structure is documented below.
     """
-    row_count_test: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgsDict']]
+    row_count_test: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlRowCountTestArgs']]]
     """
     A test that checks if the number of rows in the result set violates some threshold.
     Structure is documented below.
@@ -1700,11 +1700,11 @@ class AlertPolicyConditionConditionSqlArgsDict(TypedDict):
 class AlertPolicyConditionConditionSqlArgs:
     def __init__(__self__, *,
                  query: pulumi.Input[_builtins.str],
-                 boolean_test: Optional[pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgs']] = None,
-                 daily: Optional[pulumi.Input['AlertPolicyConditionConditionSqlDailyArgs']] = None,
-                 hourly: Optional[pulumi.Input['AlertPolicyConditionConditionSqlHourlyArgs']] = None,
-                 minutes: Optional[pulumi.Input['AlertPolicyConditionConditionSqlMinutesArgs']] = None,
-                 row_count_test: Optional[pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgs']] = None):
+                 boolean_test: pulumi.Input[Optional['AlertPolicyConditionConditionSqlBooleanTestArgs']] = None,
+                 daily: pulumi.Input[Optional['AlertPolicyConditionConditionSqlDailyArgs']] = None,
+                 hourly: pulumi.Input[Optional['AlertPolicyConditionConditionSqlHourlyArgs']] = None,
+                 minutes: pulumi.Input[Optional['AlertPolicyConditionConditionSqlMinutesArgs']] = None,
+                 row_count_test: pulumi.Input[Optional['AlertPolicyConditionConditionSqlRowCountTestArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] query: The Log Analytics SQL query to run, as a string.  The query must
                conform to the required shape. Specifically, the query must not try to
@@ -1752,7 +1752,7 @@ class AlertPolicyConditionConditionSqlArgs:
 
     @_builtins.property
     @pulumi.getter(name="booleanTest")
-    def boolean_test(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgs']]:
+    def boolean_test(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionSqlBooleanTestArgs']]:
         """
         A test that uses an alerting result in a boolean column produced by the SQL query.
         Structure is documented below.
@@ -1760,12 +1760,12 @@ class AlertPolicyConditionConditionSqlArgs:
         return pulumi.get(self, "boolean_test")
 
     @boolean_test.setter
-    def boolean_test(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionSqlBooleanTestArgs']]):
+    def boolean_test(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionSqlBooleanTestArgs']]):
         pulumi.set(self, "boolean_test", value)
 
     @_builtins.property
     @pulumi.getter
-    def daily(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlDailyArgs']]:
+    def daily(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionSqlDailyArgs']]:
         """
         Used to schedule the query to run every so many days.
         Structure is documented below.
@@ -1773,12 +1773,12 @@ class AlertPolicyConditionConditionSqlArgs:
         return pulumi.get(self, "daily")
 
     @daily.setter
-    def daily(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionSqlDailyArgs']]):
+    def daily(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionSqlDailyArgs']]):
         pulumi.set(self, "daily", value)
 
     @_builtins.property
     @pulumi.getter
-    def hourly(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlHourlyArgs']]:
+    def hourly(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionSqlHourlyArgs']]:
         """
         Used to schedule the query to run every so many hours.
         Structure is documented below.
@@ -1786,12 +1786,12 @@ class AlertPolicyConditionConditionSqlArgs:
         return pulumi.get(self, "hourly")
 
     @hourly.setter
-    def hourly(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionSqlHourlyArgs']]):
+    def hourly(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionSqlHourlyArgs']]):
         pulumi.set(self, "hourly", value)
 
     @_builtins.property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlMinutesArgs']]:
+    def minutes(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionSqlMinutesArgs']]:
         """
         Used to schedule the query to run every so many minutes.
         Structure is documented below.
@@ -1799,12 +1799,12 @@ class AlertPolicyConditionConditionSqlArgs:
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionSqlMinutesArgs']]):
+    def minutes(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionSqlMinutesArgs']]):
         pulumi.set(self, "minutes", value)
 
     @_builtins.property
     @pulumi.getter(name="rowCountTest")
-    def row_count_test(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgs']]:
+    def row_count_test(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionSqlRowCountTestArgs']]:
         """
         A test that checks if the number of rows in the result set violates some threshold.
         Structure is documented below.
@@ -1812,7 +1812,7 @@ class AlertPolicyConditionConditionSqlArgs:
         return pulumi.get(self, "row_count_test")
 
     @row_count_test.setter
-    def row_count_test(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionSqlRowCountTestArgs']]):
+    def row_count_test(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionSqlRowCountTestArgs']]):
         pulumi.set(self, "row_count_test", value)
 
 
@@ -1853,7 +1853,7 @@ class AlertPolicyConditionConditionSqlDailyArgsDict(TypedDict):
     The number of days between runs. Must be greater than or equal
     to 1 day and less than or equal to 30 days.
     """
-    execution_time: NotRequired[pulumi.Input['AlertPolicyConditionConditionSqlDailyExecutionTimeArgsDict']]
+    execution_time: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlDailyExecutionTimeArgs']]]
     """
     The time of day (in UTC) at which the query should run. If left
     unspecified, the server picks an arbitrary time of day and runs
@@ -1865,7 +1865,7 @@ class AlertPolicyConditionConditionSqlDailyArgsDict(TypedDict):
 class AlertPolicyConditionConditionSqlDailyArgs:
     def __init__(__self__, *,
                  periodicity: pulumi.Input[_builtins.int],
-                 execution_time: Optional[pulumi.Input['AlertPolicyConditionConditionSqlDailyExecutionTimeArgs']] = None):
+                 execution_time: pulumi.Input[Optional['AlertPolicyConditionConditionSqlDailyExecutionTimeArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] periodicity: The number of days between runs. Must be greater than or equal
                to 1 day and less than or equal to 30 days.
@@ -1893,7 +1893,7 @@ class AlertPolicyConditionConditionSqlDailyArgs:
 
     @_builtins.property
     @pulumi.getter(name="executionTime")
-    def execution_time(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionSqlDailyExecutionTimeArgs']]:
+    def execution_time(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionSqlDailyExecutionTimeArgs']]:
         """
         The time of day (in UTC) at which the query should run. If left
         unspecified, the server picks an arbitrary time of day and runs
@@ -1903,29 +1903,29 @@ class AlertPolicyConditionConditionSqlDailyArgs:
         return pulumi.get(self, "execution_time")
 
     @execution_time.setter
-    def execution_time(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionSqlDailyExecutionTimeArgs']]):
+    def execution_time(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionSqlDailyExecutionTimeArgs']]):
         pulumi.set(self, "execution_time", value)
 
 
 class AlertPolicyConditionConditionSqlDailyExecutionTimeArgsDict(TypedDict):
-    hours: NotRequired[pulumi.Input[_builtins.int]]
+    hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hours of a day in 24 hour format. Must be greater than or equal
     to 0 and typically must be less than or equal to 23. An API may
     choose to allow the value "24:00:00" for scenarios like business
     closing time.
     """
-    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    minutes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minutes of an hour. Must be greater than or equal to 0 and
     less than or equal to 59.
     """
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Fractions of seconds, in nanoseconds. Must be greater than or
     equal to 0 and less than or equal to 999,999,999.
     """
-    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Seconds of a minute. Must be greater than or equal to 0 and
     typically must be less than or equal to 59. An API may allow the
@@ -1935,10 +1935,10 @@ class AlertPolicyConditionConditionSqlDailyExecutionTimeArgsDict(TypedDict):
 @pulumi.input_type
 class AlertPolicyConditionConditionSqlDailyExecutionTimeArgs:
     def __init__(__self__, *,
-                 hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] hours: Hours of a day in 24 hour format. Must be greater than or equal
                to 0 and typically must be less than or equal to 23. An API may
@@ -1963,7 +1963,7 @@ class AlertPolicyConditionConditionSqlDailyExecutionTimeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Hours of a day in 24 hour format. Must be greater than or equal
         to 0 and typically must be less than or equal to 23. An API may
@@ -1973,12 +1973,12 @@ class AlertPolicyConditionConditionSqlDailyExecutionTimeArgs:
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minutes of an hour. Must be greater than or equal to 0 and
         less than or equal to 59.
@@ -1986,12 +1986,12 @@ class AlertPolicyConditionConditionSqlDailyExecutionTimeArgs:
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minutes", value)
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Fractions of seconds, in nanoseconds. Must be greater than or
         equal to 0 and less than or equal to 999,999,999.
@@ -1999,12 +1999,12 @@ class AlertPolicyConditionConditionSqlDailyExecutionTimeArgs:
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds of a minute. Must be greater than or equal to 0 and
         typically must be less than or equal to 59. An API may allow the
@@ -2013,7 +2013,7 @@ class AlertPolicyConditionConditionSqlDailyExecutionTimeArgs:
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds", value)
 
 
@@ -2023,7 +2023,7 @@ class AlertPolicyConditionConditionSqlHourlyArgsDict(TypedDict):
     Number of hours between runs. The interval must be greater than or
     equal to 1 hour and less than or equal to 48 hours.
     """
-    minute_offset: NotRequired[pulumi.Input[_builtins.int]]
+    minute_offset: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of minutes after the hour (in UTC) to run the query.
     Must be greater than or equal to 0 minutes and less than or equal to
@@ -2034,7 +2034,7 @@ class AlertPolicyConditionConditionSqlHourlyArgsDict(TypedDict):
 class AlertPolicyConditionConditionSqlHourlyArgs:
     def __init__(__self__, *,
                  periodicity: pulumi.Input[_builtins.int],
-                 minute_offset: Optional[pulumi.Input[_builtins.int]] = None):
+                 minute_offset: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] periodicity: Number of hours between runs. The interval must be greater than or
                equal to 1 hour and less than or equal to 48 hours.
@@ -2061,7 +2061,7 @@ class AlertPolicyConditionConditionSqlHourlyArgs:
 
     @_builtins.property
     @pulumi.getter(name="minuteOffset")
-    def minute_offset(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minute_offset(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of minutes after the hour (in UTC) to run the query.
         Must be greater than or equal to 0 minutes and less than or equal to
@@ -2070,7 +2070,7 @@ class AlertPolicyConditionConditionSqlHourlyArgs:
         return pulumi.get(self, "minute_offset")
 
     @minute_offset.setter
-    def minute_offset(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minute_offset(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minute_offset", value)
 
 
@@ -2207,7 +2207,7 @@ class AlertPolicyConditionConditionThresholdArgsDict(TypedDict):
     that unhealthy states are detected and
     alerted on quickly.
     """
-    aggregations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgsDict']]]]
+    aggregations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]]]
     """
     Specifies the alignment of data points in
     individual time series as well as how to
@@ -2224,7 +2224,7 @@ class AlertPolicyConditionConditionThresholdArgsDict(TypedDict):
     field.
     Structure is documented below.
     """
-    denominator_aggregations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgsDict']]]]
+    denominator_aggregations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]]]
     """
     Specifies the alignment of data points in
     individual time series selected by
@@ -2244,7 +2244,7 @@ class AlertPolicyConditionConditionThresholdArgsDict(TypedDict):
     method when debugging this field.
     Structure is documented below.
     """
-    denominator_filter: NotRequired[pulumi.Input[_builtins.str]]
+    denominator_filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A filter that identifies a time series that
     should be used as the denominator of a ratio
@@ -2262,14 +2262,14 @@ class AlertPolicyConditionConditionThresholdArgsDict(TypedDict):
     field may not exceed 2048 Unicode characters
     in length.
     """
-    evaluation_missing_data: NotRequired[pulumi.Input[_builtins.str]]
+    evaluation_missing_data: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A condition control that determines how
     metric-threshold conditions are evaluated when
     data stops arriving.
     Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
     """
-    filter: NotRequired[pulumi.Input[_builtins.str]]
+    filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A filter that identifies which time series
     should be compared with the threshold.The
@@ -2284,7 +2284,7 @@ class AlertPolicyConditionConditionThresholdArgsDict(TypedDict):
     field may not exceed 2048 Unicode characters
     in length.
     """
-    forecast_options: NotRequired[pulumi.Input['AlertPolicyConditionConditionThresholdForecastOptionsArgsDict']]
+    forecast_options: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionThresholdForecastOptionsArgs']]]
     """
     When this field is present, the `MetricThreshold`
     condition forecasts whether the time series is
@@ -2294,12 +2294,12 @@ class AlertPolicyConditionConditionThresholdArgsDict(TypedDict):
     timeseries against the threshold.
     Structure is documented below.
     """
-    threshold_value: NotRequired[pulumi.Input[_builtins.float]]
+    threshold_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     A value against which to compare the time
     series.
     """
-    trigger: NotRequired[pulumi.Input['AlertPolicyConditionConditionThresholdTriggerArgsDict']]
+    trigger: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionThresholdTriggerArgs']]]
     """
     The number/percent of time series for which
     the comparison must hold in order for the
@@ -2317,14 +2317,14 @@ class AlertPolicyConditionConditionThresholdArgs:
     def __init__(__self__, *,
                  comparison: pulumi.Input[_builtins.str],
                  duration: pulumi.Input[_builtins.str],
-                 aggregations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]] = None,
-                 denominator_aggregations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]] = None,
-                 denominator_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation_missing_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 forecast_options: Optional[pulumi.Input['AlertPolicyConditionConditionThresholdForecastOptionsArgs']] = None,
-                 threshold_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 trigger: Optional[pulumi.Input['AlertPolicyConditionConditionThresholdTriggerArgs']] = None):
+                 aggregations: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]] = None,
+                 denominator_aggregations: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]] = None,
+                 denominator_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_missing_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 forecast_options: pulumi.Input[Optional['AlertPolicyConditionConditionThresholdForecastOptionsArgs']] = None,
+                 threshold_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 trigger: pulumi.Input[Optional['AlertPolicyConditionConditionThresholdTriggerArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] comparison: The comparison to apply between the time
                series (indicated by filter and aggregation)
@@ -2498,7 +2498,7 @@ class AlertPolicyConditionConditionThresholdArgs:
 
     @_builtins.property
     @pulumi.getter
-    def aggregations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]]:
+    def aggregations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]]:
         """
         Specifies the alignment of data points in
         individual time series as well as how to
@@ -2518,12 +2518,12 @@ class AlertPolicyConditionConditionThresholdArgs:
         return pulumi.get(self, "aggregations")
 
     @aggregations.setter
-    def aggregations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]]):
+    def aggregations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]]):
         pulumi.set(self, "aggregations", value)
 
     @_builtins.property
     @pulumi.getter(name="denominatorAggregations")
-    def denominator_aggregations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]]:
+    def denominator_aggregations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]]:
         """
         Specifies the alignment of data points in
         individual time series selected by
@@ -2546,12 +2546,12 @@ class AlertPolicyConditionConditionThresholdArgs:
         return pulumi.get(self, "denominator_aggregations")
 
     @denominator_aggregations.setter
-    def denominator_aggregations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]]):
+    def denominator_aggregations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]]):
         pulumi.set(self, "denominator_aggregations", value)
 
     @_builtins.property
     @pulumi.getter(name="denominatorFilter")
-    def denominator_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def denominator_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A filter that identifies a time series that
         should be used as the denominator of a ratio
@@ -2572,12 +2572,12 @@ class AlertPolicyConditionConditionThresholdArgs:
         return pulumi.get(self, "denominator_filter")
 
     @denominator_filter.setter
-    def denominator_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def denominator_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "denominator_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="evaluationMissingData")
-    def evaluation_missing_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def evaluation_missing_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A condition control that determines how
         metric-threshold conditions are evaluated when
@@ -2587,12 +2587,12 @@ class AlertPolicyConditionConditionThresholdArgs:
         return pulumi.get(self, "evaluation_missing_data")
 
     @evaluation_missing_data.setter
-    def evaluation_missing_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def evaluation_missing_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "evaluation_missing_data", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A filter that identifies which time series
         should be compared with the threshold.The
@@ -2610,12 +2610,12 @@ class AlertPolicyConditionConditionThresholdArgs:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="forecastOptions")
-    def forecast_options(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionThresholdForecastOptionsArgs']]:
+    def forecast_options(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionThresholdForecastOptionsArgs']]:
         """
         When this field is present, the `MetricThreshold`
         condition forecasts whether the time series is
@@ -2628,12 +2628,12 @@ class AlertPolicyConditionConditionThresholdArgs:
         return pulumi.get(self, "forecast_options")
 
     @forecast_options.setter
-    def forecast_options(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionThresholdForecastOptionsArgs']]):
+    def forecast_options(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionThresholdForecastOptionsArgs']]):
         pulumi.set(self, "forecast_options", value)
 
     @_builtins.property
     @pulumi.getter(name="thresholdValue")
-    def threshold_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def threshold_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         A value against which to compare the time
         series.
@@ -2641,12 +2641,12 @@ class AlertPolicyConditionConditionThresholdArgs:
         return pulumi.get(self, "threshold_value")
 
     @threshold_value.setter
-    def threshold_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def threshold_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "threshold_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def trigger(self) -> Optional[pulumi.Input['AlertPolicyConditionConditionThresholdTriggerArgs']]:
+    def trigger(self) -> pulumi.Input[Optional['AlertPolicyConditionConditionThresholdTriggerArgs']]:
         """
         The number/percent of time series for which
         the comparison must hold in order for the
@@ -2661,12 +2661,12 @@ class AlertPolicyConditionConditionThresholdArgs:
         return pulumi.get(self, "trigger")
 
     @trigger.setter
-    def trigger(self, value: Optional[pulumi.Input['AlertPolicyConditionConditionThresholdTriggerArgs']]):
+    def trigger(self, value: pulumi.Input[Optional['AlertPolicyConditionConditionThresholdTriggerArgs']]):
         pulumi.set(self, "trigger", value)
 
 
 class AlertPolicyConditionConditionThresholdAggregationArgsDict(TypedDict):
-    alignment_period: NotRequired[pulumi.Input[_builtins.str]]
+    alignment_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alignment period for per-time
     series alignment. If present,
@@ -2683,7 +2683,7 @@ class AlertPolicyConditionConditionThresholdAggregationArgsDict(TypedDict):
     this field must be defined;
     otherwise an error is returned.
     """
-    cross_series_reducer: NotRequired[pulumi.Input[_builtins.str]]
+    cross_series_reducer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The approach to be used to combine
     time series. Not all reducer
@@ -2704,7 +2704,7 @@ class AlertPolicyConditionConditionThresholdAggregationArgsDict(TypedDict):
     returned.
     Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
     """
-    group_by_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    group_by_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of fields to preserve when
     crossSeriesReducer is specified.
@@ -2732,7 +2732,7 @@ class AlertPolicyConditionConditionThresholdAggregationArgsDict(TypedDict):
     is not defined, this field is
     ignored.
     """
-    per_series_aligner: NotRequired[pulumi.Input[_builtins.str]]
+    per_series_aligner: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The approach to be used to align
     individual time series. Not all
@@ -2757,10 +2757,10 @@ class AlertPolicyConditionConditionThresholdAggregationArgsDict(TypedDict):
 @pulumi.input_type
 class AlertPolicyConditionConditionThresholdAggregationArgs:
     def __init__(__self__, *,
-                 alignment_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_series_reducer: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 per_series_aligner: Optional[pulumi.Input[_builtins.str]] = None):
+                 alignment_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_series_reducer: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_by_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 per_series_aligner: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] alignment_period: The alignment period for per-time
                series alignment. If present,
@@ -2849,7 +2849,7 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
 
     @_builtins.property
     @pulumi.getter(name="alignmentPeriod")
-    def alignment_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alignment_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alignment period for per-time
         series alignment. If present,
@@ -2869,12 +2869,12 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
         return pulumi.get(self, "alignment_period")
 
     @alignment_period.setter
-    def alignment_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alignment_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alignment_period", value)
 
     @_builtins.property
     @pulumi.getter(name="crossSeriesReducer")
-    def cross_series_reducer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_series_reducer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The approach to be used to combine
         time series. Not all reducer
@@ -2898,12 +2898,12 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
         return pulumi.get(self, "cross_series_reducer")
 
     @cross_series_reducer.setter
-    def cross_series_reducer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_series_reducer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_series_reducer", value)
 
     @_builtins.property
     @pulumi.getter(name="groupByFields")
-    def group_by_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def group_by_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of fields to preserve when
         crossSeriesReducer is specified.
@@ -2934,12 +2934,12 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
         return pulumi.get(self, "group_by_fields")
 
     @group_by_fields.setter
-    def group_by_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def group_by_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "group_by_fields", value)
 
     @_builtins.property
     @pulumi.getter(name="perSeriesAligner")
-    def per_series_aligner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def per_series_aligner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The approach to be used to align
         individual time series. Not all
@@ -2963,12 +2963,12 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
         return pulumi.get(self, "per_series_aligner")
 
     @per_series_aligner.setter
-    def per_series_aligner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def per_series_aligner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "per_series_aligner", value)
 
 
 class AlertPolicyConditionConditionThresholdDenominatorAggregationArgsDict(TypedDict):
-    alignment_period: NotRequired[pulumi.Input[_builtins.str]]
+    alignment_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alignment period for per-time
     series alignment. If present,
@@ -2985,7 +2985,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgsDict(Typed
     this field must be defined;
     otherwise an error is returned.
     """
-    cross_series_reducer: NotRequired[pulumi.Input[_builtins.str]]
+    cross_series_reducer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The approach to be used to combine
     time series. Not all reducer
@@ -3006,7 +3006,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgsDict(Typed
     returned.
     Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
     """
-    group_by_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    group_by_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of fields to preserve when
     crossSeriesReducer is specified.
@@ -3034,7 +3034,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgsDict(Typed
     is not defined, this field is
     ignored.
     """
-    per_series_aligner: NotRequired[pulumi.Input[_builtins.str]]
+    per_series_aligner: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The approach to be used to align
     individual time series. Not all
@@ -3059,10 +3059,10 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgsDict(Typed
 @pulumi.input_type
 class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
     def __init__(__self__, *,
-                 alignment_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_series_reducer: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 per_series_aligner: Optional[pulumi.Input[_builtins.str]] = None):
+                 alignment_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_series_reducer: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_by_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 per_series_aligner: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] alignment_period: The alignment period for per-time
                series alignment. If present,
@@ -3151,7 +3151,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
 
     @_builtins.property
     @pulumi.getter(name="alignmentPeriod")
-    def alignment_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alignment_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alignment period for per-time
         series alignment. If present,
@@ -3171,12 +3171,12 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
         return pulumi.get(self, "alignment_period")
 
     @alignment_period.setter
-    def alignment_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alignment_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alignment_period", value)
 
     @_builtins.property
     @pulumi.getter(name="crossSeriesReducer")
-    def cross_series_reducer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_series_reducer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The approach to be used to combine
         time series. Not all reducer
@@ -3200,12 +3200,12 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
         return pulumi.get(self, "cross_series_reducer")
 
     @cross_series_reducer.setter
-    def cross_series_reducer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_series_reducer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_series_reducer", value)
 
     @_builtins.property
     @pulumi.getter(name="groupByFields")
-    def group_by_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def group_by_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of fields to preserve when
         crossSeriesReducer is specified.
@@ -3236,12 +3236,12 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
         return pulumi.get(self, "group_by_fields")
 
     @group_by_fields.setter
-    def group_by_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def group_by_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "group_by_fields", value)
 
     @_builtins.property
     @pulumi.getter(name="perSeriesAligner")
-    def per_series_aligner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def per_series_aligner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The approach to be used to align
         individual time series. Not all
@@ -3265,7 +3265,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
         return pulumi.get(self, "per_series_aligner")
 
     @per_series_aligner.setter
-    def per_series_aligner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def per_series_aligner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "per_series_aligner", value)
 
 
@@ -3313,13 +3313,13 @@ class AlertPolicyConditionConditionThresholdForecastOptionsArgs:
 
 
 class AlertPolicyConditionConditionThresholdTriggerArgsDict(TypedDict):
-    count: NotRequired[pulumi.Input[_builtins.int]]
+    count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The absolute number of time series
     that must fail the predicate for the
     condition to be triggered.
     """
-    percent: NotRequired[pulumi.Input[_builtins.float]]
+    percent: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The percentage of time series that
     must fail the predicate for the
@@ -3329,8 +3329,8 @@ class AlertPolicyConditionConditionThresholdTriggerArgsDict(TypedDict):
 @pulumi.input_type
 class AlertPolicyConditionConditionThresholdTriggerArgs:
     def __init__(__self__, *,
-                 count: Optional[pulumi.Input[_builtins.int]] = None,
-                 percent: Optional[pulumi.Input[_builtins.float]] = None):
+                 count: pulumi.Input[Optional[_builtins.int]] = None,
+                 percent: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.int] count: The absolute number of time series
                that must fail the predicate for the
@@ -3346,7 +3346,7 @@ class AlertPolicyConditionConditionThresholdTriggerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The absolute number of time series
         that must fail the predicate for the
@@ -3355,12 +3355,12 @@ class AlertPolicyConditionConditionThresholdTriggerArgs:
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "count", value)
 
     @_builtins.property
     @pulumi.getter
-    def percent(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def percent(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The percentage of time series that
         must fail the predicate for the
@@ -3369,17 +3369,17 @@ class AlertPolicyConditionConditionThresholdTriggerArgs:
         return pulumi.get(self, "percent")
 
     @percent.setter
-    def percent(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def percent(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "percent", value)
 
 
 class AlertPolicyCreationRecordArgsDict(TypedDict):
-    mutate_time: NotRequired[pulumi.Input[_builtins.str]]
+    mutate_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     When the change occurred.
     """
-    mutated_by: NotRequired[pulumi.Input[_builtins.str]]
+    mutated_by: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The email address of the user making the change.
@@ -3388,8 +3388,8 @@ class AlertPolicyCreationRecordArgsDict(TypedDict):
 @pulumi.input_type
 class AlertPolicyCreationRecordArgs:
     def __init__(__self__, *,
-                 mutate_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 mutated_by: Optional[pulumi.Input[_builtins.str]] = None):
+                 mutate_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 mutated_by: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mutate_time: (Output)
                When the change occurred.
@@ -3403,7 +3403,7 @@ class AlertPolicyCreationRecordArgs:
 
     @_builtins.property
     @pulumi.getter(name="mutateTime")
-    def mutate_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mutate_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         When the change occurred.
@@ -3411,12 +3411,12 @@ class AlertPolicyCreationRecordArgs:
         return pulumi.get(self, "mutate_time")
 
     @mutate_time.setter
-    def mutate_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mutate_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mutate_time", value)
 
     @_builtins.property
     @pulumi.getter(name="mutatedBy")
-    def mutated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mutated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The email address of the user making the change.
@@ -3424,29 +3424,29 @@ class AlertPolicyCreationRecordArgs:
         return pulumi.get(self, "mutated_by")
 
     @mutated_by.setter
-    def mutated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mutated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mutated_by", value)
 
 
 class AlertPolicyDocumentationArgsDict(TypedDict):
-    content: NotRequired[pulumi.Input[_builtins.str]]
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The text of the documentation, interpreted according to mimeType.
     The content may not exceed 8,192 Unicode characters and may not
     exceed more than 10,240 bytes when encoded in UTF-8 format,
     whichever is smaller.
     """
-    links: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgsDict']]]]
+    links: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgs']]]]]
     """
     Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
     Structure is documented below.
     """
-    mime_type: NotRequired[pulumi.Input[_builtins.str]]
+    mime_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The format of the content field. Presently, only the value
     "text/markdown" is supported.
     """
-    subject: NotRequired[pulumi.Input[_builtins.str]]
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The subject line of the notification. The subject line may not
     exceed 10,240 bytes. In notifications generated by this policy the contents
@@ -3457,10 +3457,10 @@ class AlertPolicyDocumentationArgsDict(TypedDict):
 @pulumi.input_type
 class AlertPolicyDocumentationArgs:
     def __init__(__self__, *,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 links: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgs']]]] = None,
-                 mime_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 links: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgs']]]] = None,
+                 mime_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] content: The text of the documentation, interpreted according to mimeType.
                The content may not exceed 8,192 Unicode characters and may not
@@ -3486,7 +3486,7 @@ class AlertPolicyDocumentationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The text of the documentation, interpreted according to mimeType.
         The content may not exceed 8,192 Unicode characters and may not
@@ -3496,12 +3496,12 @@ class AlertPolicyDocumentationArgs:
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgs']]]]:
+    def links(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgs']]]]:
         """
         Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
         Structure is documented below.
@@ -3509,12 +3509,12 @@ class AlertPolicyDocumentationArgs:
         return pulumi.get(self, "links")
 
     @links.setter
-    def links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgs']]]]):
+    def links(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgs']]]]):
         pulumi.set(self, "links", value)
 
     @_builtins.property
     @pulumi.getter(name="mimeType")
-    def mime_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mime_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The format of the content field. Presently, only the value
         "text/markdown" is supported.
@@ -3522,12 +3522,12 @@ class AlertPolicyDocumentationArgs:
         return pulumi.get(self, "mime_type")
 
     @mime_type.setter
-    def mime_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mime_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mime_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subject line of the notification. The subject line may not
         exceed 10,240 bytes. In notifications generated by this policy the contents
@@ -3537,16 +3537,16 @@ class AlertPolicyDocumentationArgs:
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
 
 class AlertPolicyDocumentationLinkArgsDict(TypedDict):
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook".
     """
-    url: NotRequired[pulumi.Input[_builtins.str]]
+    url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}".
     """
@@ -3554,8 +3554,8 @@ class AlertPolicyDocumentationLinkArgsDict(TypedDict):
 @pulumi.input_type
 class AlertPolicyDocumentationLinkArgs:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] display_name: A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook".
         :param pulumi.Input[_builtins.str] url: The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}".
@@ -3567,31 +3567,31 @@ class AlertPolicyDocumentationLinkArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook".
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}".
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
 class CustomServiceTelemetryArgsDict(TypedDict):
-    resource_name: NotRequired[pulumi.Input[_builtins.str]]
+    resource_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The full name of the resource that defines this service.
     Formatted as described in
@@ -3601,7 +3601,7 @@ class CustomServiceTelemetryArgsDict(TypedDict):
 @pulumi.input_type
 class CustomServiceTelemetryArgs:
     def __init__(__self__, *,
-                 resource_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_name: The full name of the resource that defines this service.
                Formatted as described in
@@ -3612,7 +3612,7 @@ class CustomServiceTelemetryArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceName")
-    def resource_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the resource that defines this service.
         Formatted as described in
@@ -3621,17 +3621,17 @@ class CustomServiceTelemetryArgs:
         return pulumi.get(self, "resource_name")
 
     @resource_name.setter
-    def resource_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_name", value)
 
 
 class GenericServiceBasicServiceArgsDict(TypedDict):
-    service_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    service_labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels that specify the resource that emits the monitoring data
     which is used for SLO reporting of this `Service`.
     """
-    service_type: NotRequired[pulumi.Input[_builtins.str]]
+    service_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of service that this basic service defines, e.g.
     APP_ENGINE service type
@@ -3640,8 +3640,8 @@ class GenericServiceBasicServiceArgsDict(TypedDict):
 @pulumi.input_type
 class GenericServiceBasicServiceArgs:
     def __init__(__self__, *,
-                 service_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 service_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 service_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 service_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] service_labels: Labels that specify the resource that emits the monitoring data
                which is used for SLO reporting of this `Service`.
@@ -3655,7 +3655,7 @@ class GenericServiceBasicServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceLabels")
-    def service_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def service_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels that specify the resource that emits the monitoring data
         which is used for SLO reporting of this `Service`.
@@ -3663,12 +3663,12 @@ class GenericServiceBasicServiceArgs:
         return pulumi.get(self, "service_labels")
 
     @service_labels.setter
-    def service_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def service_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceType")
-    def service_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of service that this basic service defines, e.g.
         APP_ENGINE service type
@@ -3676,12 +3676,12 @@ class GenericServiceBasicServiceArgs:
         return pulumi.get(self, "service_type")
 
     @service_type.setter
-    def service_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_type", value)
 
 
 class GenericServiceTelemetryArgsDict(TypedDict):
-    resource_name: NotRequired[pulumi.Input[_builtins.str]]
+    resource_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The full name of the resource that defines this service.
     Formatted as described in
@@ -3691,7 +3691,7 @@ class GenericServiceTelemetryArgsDict(TypedDict):
 @pulumi.input_type
 class GenericServiceTelemetryArgs:
     def __init__(__self__, *,
-                 resource_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_name: The full name of the resource that defines this service.
                Formatted as described in
@@ -3702,7 +3702,7 @@ class GenericServiceTelemetryArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceName")
-    def resource_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the resource that defines this service.
         Formatted as described in
@@ -3711,7 +3711,7 @@ class GenericServiceTelemetryArgs:
         return pulumi.get(self, "resource_name")
 
     @resource_name.setter
-    def resource_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_name", value)
 
 
@@ -3720,11 +3720,11 @@ class MetricDescriptorLabelArgsDict(TypedDict):
     """
     The key for this label. The key must not exceed 100 characters. The first character of the key must be an upper- or lower-case letter, the remaining characters must be letters, digits or underscores, and the key must match the regular expression [a-zA-Z][a-zA-Z0-9_]*
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A human-readable description for the label.
     """
-    value_type: NotRequired[pulumi.Input[_builtins.str]]
+    value_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of data that can be assigned to the label.
     Default value is `STRING`.
@@ -3735,8 +3735,8 @@ class MetricDescriptorLabelArgsDict(TypedDict):
 class MetricDescriptorLabelArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The key for this label. The key must not exceed 100 characters. The first character of the key must be an upper- or lower-case letter, the remaining characters must be letters, digits or underscores, and the key must match the regular expression [a-zA-Z][a-zA-Z0-9_]*
         :param pulumi.Input[_builtins.str] description: A human-readable description for the label.
@@ -3764,19 +3764,19 @@ class MetricDescriptorLabelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description for the label.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of data that can be assigned to the label.
         Default value is `STRING`.
@@ -3785,16 +3785,16 @@ class MetricDescriptorLabelArgs:
         return pulumi.get(self, "value_type")
 
     @value_type.setter
-    def value_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value_type", value)
 
 
 class MetricDescriptorMetadataArgsDict(TypedDict):
-    ingest_delay: NotRequired[pulumi.Input[_builtins.str]]
+    ingest_delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
     """
-    sample_period: NotRequired[pulumi.Input[_builtins.str]]
+    sample_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
     """
@@ -3802,8 +3802,8 @@ class MetricDescriptorMetadataArgsDict(TypedDict):
 @pulumi.input_type
 class MetricDescriptorMetadataArgs:
     def __init__(__self__, *,
-                 ingest_delay: Optional[pulumi.Input[_builtins.str]] = None,
-                 sample_period: Optional[pulumi.Input[_builtins.str]] = None):
+                 ingest_delay: pulumi.Input[Optional[_builtins.str]] = None,
+                 sample_period: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ingest_delay: The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
         :param pulumi.Input[_builtins.str] sample_period: The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
@@ -3815,36 +3815,36 @@ class MetricDescriptorMetadataArgs:
 
     @_builtins.property
     @pulumi.getter(name="ingestDelay")
-    def ingest_delay(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingest_delay(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
         """
         return pulumi.get(self, "ingest_delay")
 
     @ingest_delay.setter
-    def ingest_delay(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingest_delay(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingest_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="samplePeriod")
-    def sample_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sample_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
         """
         return pulumi.get(self, "sample_period")
 
     @sample_period.setter
-    def sample_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sample_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sample_period", value)
 
 
 class NotificationChannelSensitiveLabelsArgsDict(TypedDict):
-    auth_token: NotRequired[pulumi.Input[_builtins.str]]
+    auth_token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An authorization token for a notification channel. Channel types that support this field include: slack
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    auth_token_wo: NotRequired[pulumi.Input[_builtins.str]]
+    auth_token_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
     (Optional, Write-Only)
@@ -3853,16 +3853,16 @@ class NotificationChannelSensitiveLabelsArgsDict(TypedDict):
 
     > **Note:** One of `auth_token` or `auth_token_wo` can only be set.
     """
-    auth_token_wo_version: NotRequired[pulumi.Input[_builtins.str]]
+    auth_token_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Triggers update of `auth_token_wo` write-only. Increment this value when an update to `auth_token_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An password for a notification channel. Channel types that support this field include: webhook_basicauth
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    password_wo: NotRequired[pulumi.Input[_builtins.str]]
+    password_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
     (Optional, Write-Only)
@@ -3871,16 +3871,16 @@ class NotificationChannelSensitiveLabelsArgsDict(TypedDict):
 
     > **Note:** One of `password` or `password_wo` can only be set.
     """
-    password_wo_version: NotRequired[pulumi.Input[_builtins.str]]
+    password_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
     """
-    service_key: NotRequired[pulumi.Input[_builtins.str]]
+    service_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An servicekey token for a notification channel. Channel types that support this field include: pagerduty
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    service_key_wo: NotRequired[pulumi.Input[_builtins.str]]
+    service_key_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
     (Optional, Write-Only)
@@ -3889,7 +3889,7 @@ class NotificationChannelSensitiveLabelsArgsDict(TypedDict):
 
     > **Note:** One of `service_key` or `service_key_wo` can only be set.
     """
-    service_key_wo_version: NotRequired[pulumi.Input[_builtins.str]]
+    service_key_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Triggers update of `service_key_wo` write-only. Increment this value when an update to `service_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
     """
@@ -3897,15 +3897,15 @@ class NotificationChannelSensitiveLabelsArgsDict(TypedDict):
 @pulumi.input_type
 class NotificationChannelSensitiveLabelsArgs:
     def __init__(__self__, *,
-                 auth_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_token_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_token_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_key_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_key_wo_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_token_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_key_wo_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_token: An authorization token for a notification channel. Channel types that support this field include: slack
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -3956,7 +3956,7 @@ class NotificationChannelSensitiveLabelsArgs:
 
     @_builtins.property
     @pulumi.getter(name="authToken")
-    def auth_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An authorization token for a notification channel. Channel types that support this field include: slack
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -3964,12 +3964,12 @@ class NotificationChannelSensitiveLabelsArgs:
         return pulumi.get(self, "auth_token")
 
     @auth_token.setter
-    def auth_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_token", value)
 
     @_builtins.property
     @pulumi.getter(name="authTokenWo")
-    def auth_token_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_token_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         (Optional, Write-Only)
@@ -3981,24 +3981,24 @@ class NotificationChannelSensitiveLabelsArgs:
         return pulumi.get(self, "auth_token_wo")
 
     @auth_token_wo.setter
-    def auth_token_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_token_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_token_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="authTokenWoVersion")
-    def auth_token_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_token_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Triggers update of `auth_token_wo` write-only. Increment this value when an update to `auth_token_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "auth_token_wo_version")
 
     @auth_token_wo_version.setter
-    def auth_token_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_token_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_token_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An password for a notification channel. Channel types that support this field include: webhook_basicauth
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -4006,12 +4006,12 @@ class NotificationChannelSensitiveLabelsArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWo")
-    def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         (Optional, Write-Only)
@@ -4023,24 +4023,24 @@ class NotificationChannelSensitiveLabelsArgs:
         return pulumi.get(self, "password_wo")
 
     @password_wo.setter
-    def password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWoVersion")
-    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "password_wo_version")
 
     @password_wo_version.setter
-    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceKey")
-    def service_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An servicekey token for a notification channel. Channel types that support this field include: pagerduty
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -4048,12 +4048,12 @@ class NotificationChannelSensitiveLabelsArgs:
         return pulumi.get(self, "service_key")
 
     @service_key.setter
-    def service_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_key", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceKeyWo")
-    def service_key_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_key_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         (Optional, Write-Only)
@@ -4065,34 +4065,34 @@ class NotificationChannelSensitiveLabelsArgs:
         return pulumi.get(self, "service_key_wo")
 
     @service_key_wo.setter
-    def service_key_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_key_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_key_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceKeyWoVersion")
-    def service_key_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_key_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Triggers update of `service_key_wo` write-only. Increment this value when an update to `service_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "service_key_wo_version")
 
     @service_key_wo_version.setter
-    def service_key_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_key_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_key_wo_version", value)
 
 
 class SloBasicSliArgsDict(TypedDict):
-    availability: NotRequired[pulumi.Input['SloBasicSliAvailabilityArgsDict']]
+    availability: NotRequired[pulumi.Input[Optional['SloBasicSliAvailabilityArgs']]]
     """
     Availability based SLI, dervied from count of requests made to this service that return successfully.
     Structure is documented below.
     """
-    latency: NotRequired[pulumi.Input['SloBasicSliLatencyArgsDict']]
+    latency: NotRequired[pulumi.Input[Optional['SloBasicSliLatencyArgs']]]
     """
     Parameters for a latency threshold SLI.
     Structure is documented below.
     """
-    locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     An optional set of locations to which this SLI is relevant.
     Telemetry from other locations will not be used to calculate
@@ -4101,7 +4101,7 @@ class SloBasicSliArgsDict(TypedDict):
     that don't support breaking down by location, setting this
     field will result in an error.
     """
-    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     An optional set of RPCs to which this SLI is relevant.
     Telemetry from other methods will not be used to calculate
@@ -4110,7 +4110,7 @@ class SloBasicSliArgsDict(TypedDict):
     breaking down by method, setting this field will result in an
     error.
     """
-    versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of API versions to which this SLI is relevant.
     Telemetry from other API versions will not be used to
@@ -4123,11 +4123,11 @@ class SloBasicSliArgsDict(TypedDict):
 @pulumi.input_type
 class SloBasicSliArgs:
     def __init__(__self__, *,
-                 availability: Optional[pulumi.Input['SloBasicSliAvailabilityArgs']] = None,
-                 latency: Optional[pulumi.Input['SloBasicSliLatencyArgs']] = None,
-                 locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 availability: pulumi.Input[Optional['SloBasicSliAvailabilityArgs']] = None,
+                 latency: pulumi.Input[Optional['SloBasicSliLatencyArgs']] = None,
+                 locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['SloBasicSliAvailabilityArgs'] availability: Availability based SLI, dervied from count of requests made to this service that return successfully.
                Structure is documented below.
@@ -4165,7 +4165,7 @@ class SloBasicSliArgs:
 
     @_builtins.property
     @pulumi.getter
-    def availability(self) -> Optional[pulumi.Input['SloBasicSliAvailabilityArgs']]:
+    def availability(self) -> pulumi.Input[Optional['SloBasicSliAvailabilityArgs']]:
         """
         Availability based SLI, dervied from count of requests made to this service that return successfully.
         Structure is documented below.
@@ -4173,12 +4173,12 @@ class SloBasicSliArgs:
         return pulumi.get(self, "availability")
 
     @availability.setter
-    def availability(self, value: Optional[pulumi.Input['SloBasicSliAvailabilityArgs']]):
+    def availability(self, value: pulumi.Input[Optional['SloBasicSliAvailabilityArgs']]):
         pulumi.set(self, "availability", value)
 
     @_builtins.property
     @pulumi.getter
-    def latency(self) -> Optional[pulumi.Input['SloBasicSliLatencyArgs']]:
+    def latency(self) -> pulumi.Input[Optional['SloBasicSliLatencyArgs']]:
         """
         Parameters for a latency threshold SLI.
         Structure is documented below.
@@ -4186,12 +4186,12 @@ class SloBasicSliArgs:
         return pulumi.get(self, "latency")
 
     @latency.setter
-    def latency(self, value: Optional[pulumi.Input['SloBasicSliLatencyArgs']]):
+    def latency(self, value: pulumi.Input[Optional['SloBasicSliLatencyArgs']]):
         pulumi.set(self, "latency", value)
 
     @_builtins.property
     @pulumi.getter
-    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An optional set of locations to which this SLI is relevant.
         Telemetry from other locations will not be used to calculate
@@ -4203,12 +4203,12 @@ class SloBasicSliArgs:
         return pulumi.get(self, "locations")
 
     @locations.setter
-    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "locations", value)
 
     @_builtins.property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def methods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An optional set of RPCs to which this SLI is relevant.
         Telemetry from other methods will not be used to calculate
@@ -4220,12 +4220,12 @@ class SloBasicSliArgs:
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def methods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "methods", value)
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of API versions to which this SLI is relevant.
         Telemetry from other API versions will not be used to
@@ -4237,12 +4237,12 @@ class SloBasicSliArgs:
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "versions", value)
 
 
 class SloBasicSliAvailabilityArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
     """
@@ -4250,7 +4250,7 @@ class SloBasicSliAvailabilityArgsDict(TypedDict):
 @pulumi.input_type
 class SloBasicSliAvailabilityArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
         """
@@ -4259,14 +4259,14 @@ class SloBasicSliAvailabilityArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
@@ -4305,7 +4305,7 @@ class SloBasicSliLatencyArgs:
 
 
 class SloRequestBasedSliArgsDict(TypedDict):
-    distribution_cut: NotRequired[pulumi.Input['SloRequestBasedSliDistributionCutArgsDict']]
+    distribution_cut: NotRequired[pulumi.Input[Optional['SloRequestBasedSliDistributionCutArgs']]]
     """
     Used when good_service is defined by a count of values aggregated in a
     Distribution that fall into a good range. The total_service is the
@@ -4315,7 +4315,7 @@ class SloRequestBasedSliArgsDict(TypedDict):
     Exactly one of `distribution_cut` or `good_total_ratio` can be set.
     Structure is documented below.
     """
-    good_total_ratio: NotRequired[pulumi.Input['SloRequestBasedSliGoodTotalRatioArgsDict']]
+    good_total_ratio: NotRequired[pulumi.Input[Optional['SloRequestBasedSliGoodTotalRatioArgs']]]
     """
     A means to compute a ratio of `good_service` to `total_service`.
     Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
@@ -4329,8 +4329,8 @@ class SloRequestBasedSliArgsDict(TypedDict):
 @pulumi.input_type
 class SloRequestBasedSliArgs:
     def __init__(__self__, *,
-                 distribution_cut: Optional[pulumi.Input['SloRequestBasedSliDistributionCutArgs']] = None,
-                 good_total_ratio: Optional[pulumi.Input['SloRequestBasedSliGoodTotalRatioArgs']] = None):
+                 distribution_cut: pulumi.Input[Optional['SloRequestBasedSliDistributionCutArgs']] = None,
+                 good_total_ratio: pulumi.Input[Optional['SloRequestBasedSliGoodTotalRatioArgs']] = None):
         """
         :param pulumi.Input['SloRequestBasedSliDistributionCutArgs'] distribution_cut: Used when good_service is defined by a count of values aggregated in a
                Distribution that fall into a good range. The total_service is the
@@ -4354,7 +4354,7 @@ class SloRequestBasedSliArgs:
 
     @_builtins.property
     @pulumi.getter(name="distributionCut")
-    def distribution_cut(self) -> Optional[pulumi.Input['SloRequestBasedSliDistributionCutArgs']]:
+    def distribution_cut(self) -> pulumi.Input[Optional['SloRequestBasedSliDistributionCutArgs']]:
         """
         Used when good_service is defined by a count of values aggregated in a
         Distribution that fall into a good range. The total_service is the
@@ -4367,12 +4367,12 @@ class SloRequestBasedSliArgs:
         return pulumi.get(self, "distribution_cut")
 
     @distribution_cut.setter
-    def distribution_cut(self, value: Optional[pulumi.Input['SloRequestBasedSliDistributionCutArgs']]):
+    def distribution_cut(self, value: pulumi.Input[Optional['SloRequestBasedSliDistributionCutArgs']]):
         pulumi.set(self, "distribution_cut", value)
 
     @_builtins.property
     @pulumi.getter(name="goodTotalRatio")
-    def good_total_ratio(self) -> Optional[pulumi.Input['SloRequestBasedSliGoodTotalRatioArgs']]:
+    def good_total_ratio(self) -> pulumi.Input[Optional['SloRequestBasedSliGoodTotalRatioArgs']]:
         """
         A means to compute a ratio of `good_service` to `total_service`.
         Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
@@ -4385,7 +4385,7 @@ class SloRequestBasedSliArgs:
         return pulumi.get(self, "good_total_ratio")
 
     @good_total_ratio.setter
-    def good_total_ratio(self, value: Optional[pulumi.Input['SloRequestBasedSliGoodTotalRatioArgs']]):
+    def good_total_ratio(self, value: pulumi.Input[Optional['SloRequestBasedSliGoodTotalRatioArgs']]):
         pulumi.set(self, "good_total_ratio", value)
 
 
@@ -4461,13 +4461,13 @@ class SloRequestBasedSliDistributionCutArgs:
 
 
 class SloRequestBasedSliDistributionCutRangeArgsDict(TypedDict):
-    max: NotRequired[pulumi.Input[_builtins.float]]
+    max: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     max value for the range (inclusive). If not given,
     will be set to "infinity", defining an open range
     ">= range.min"
     """
-    min: NotRequired[pulumi.Input[_builtins.float]]
+    min: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Min value for the range (inclusive). If not given,
     will be set to "-infinity", defining an open range
@@ -4477,8 +4477,8 @@ class SloRequestBasedSliDistributionCutRangeArgsDict(TypedDict):
 @pulumi.input_type
 class SloRequestBasedSliDistributionCutRangeArgs:
     def __init__(__self__, *,
-                 max: Optional[pulumi.Input[_builtins.float]] = None,
-                 min: Optional[pulumi.Input[_builtins.float]] = None):
+                 max: pulumi.Input[Optional[_builtins.float]] = None,
+                 min: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.float] max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
@@ -4494,7 +4494,7 @@ class SloRequestBasedSliDistributionCutRangeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def max(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -4503,12 +4503,12 @@ class SloRequestBasedSliDistributionCutRangeArgs:
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def max(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "max", value)
 
     @_builtins.property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def min(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -4517,12 +4517,12 @@ class SloRequestBasedSliDistributionCutRangeArgs:
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def min(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "min", value)
 
 
 class SloRequestBasedSliGoodTotalRatioArgsDict(TypedDict):
-    bad_service_filter: NotRequired[pulumi.Input[_builtins.str]]
+    bad_service_filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
     quantifying bad service provided, either demanded service that
@@ -4533,7 +4533,7 @@ class SloRequestBasedSliGoodTotalRatioArgsDict(TypedDict):
     Must have ValueType = DOUBLE or ValueType = INT64 and
     must have MetricKind = DELTA or MetricKind = CUMULATIVE.
     """
-    good_service_filter: NotRequired[pulumi.Input[_builtins.str]]
+    good_service_filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
     quantifying good service provided. Exactly two of
@@ -4542,7 +4542,7 @@ class SloRequestBasedSliGoodTotalRatioArgsDict(TypedDict):
     Must have ValueType = DOUBLE or ValueType = INT64 and
     must have MetricKind = DELTA or MetricKind = CUMULATIVE.
     """
-    total_service_filter: NotRequired[pulumi.Input[_builtins.str]]
+    total_service_filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
     quantifying total demanded service. Exactly two of
@@ -4555,9 +4555,9 @@ class SloRequestBasedSliGoodTotalRatioArgsDict(TypedDict):
 @pulumi.input_type
 class SloRequestBasedSliGoodTotalRatioArgs:
     def __init__(__self__, *,
-                 bad_service_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 good_service_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_service_filter: Optional[pulumi.Input[_builtins.str]] = None):
+                 bad_service_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 good_service_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_service_filter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bad_service_filter: A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
                quantifying bad service provided, either demanded service that
@@ -4589,7 +4589,7 @@ class SloRequestBasedSliGoodTotalRatioArgs:
 
     @_builtins.property
     @pulumi.getter(name="badServiceFilter")
-    def bad_service_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bad_service_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
         quantifying bad service provided, either demanded service that
@@ -4603,12 +4603,12 @@ class SloRequestBasedSliGoodTotalRatioArgs:
         return pulumi.get(self, "bad_service_filter")
 
     @bad_service_filter.setter
-    def bad_service_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bad_service_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bad_service_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="goodServiceFilter")
-    def good_service_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def good_service_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
         quantifying good service provided. Exactly two of
@@ -4620,12 +4620,12 @@ class SloRequestBasedSliGoodTotalRatioArgs:
         return pulumi.get(self, "good_service_filter")
 
     @good_service_filter.setter
-    def good_service_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def good_service_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "good_service_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="totalServiceFilter")
-    def total_service_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def total_service_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
         quantifying total demanded service. Exactly two of
@@ -4637,12 +4637,12 @@ class SloRequestBasedSliGoodTotalRatioArgs:
         return pulumi.get(self, "total_service_filter")
 
     @total_service_filter.setter
-    def total_service_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def total_service_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "total_service_filter", value)
 
 
 class SloWindowsBasedSliArgsDict(TypedDict):
-    good_bad_metric_filter: NotRequired[pulumi.Input[_builtins.str]]
+    good_bad_metric_filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
     with ValueType = BOOL. The window is good if any true values
@@ -4650,7 +4650,7 @@ class SloWindowsBasedSliArgsDict(TypedDict):
     `good_total_ratio_threshold`, `metric_mean_in_range`,
     `metric_sum_in_range` must be set for `windows_based_sli`.
     """
-    good_total_ratio_threshold: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdArgsDict']]
+    good_total_ratio_threshold: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdArgs']]]
     """
     Criterion that describes a window as good if its performance is
     high enough. One of `good_bad_metric_filter`,
@@ -4658,7 +4658,7 @@ class SloWindowsBasedSliArgsDict(TypedDict):
     `metric_sum_in_range` must be set for `windows_based_sli`.
     Structure is documented below.
     """
-    metric_mean_in_range: NotRequired[pulumi.Input['SloWindowsBasedSliMetricMeanInRangeArgsDict']]
+    metric_mean_in_range: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliMetricMeanInRangeArgs']]]
     """
     Criterion that describes a window as good if the metric's value
     is in a good range, *averaged* across returned streams.
@@ -4669,7 +4669,7 @@ class SloWindowsBasedSliArgsDict(TypedDict):
     `range.min <= X <= range.max` for a good window.
     Structure is documented below.
     """
-    metric_sum_in_range: NotRequired[pulumi.Input['SloWindowsBasedSliMetricSumInRangeArgsDict']]
+    metric_sum_in_range: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliMetricSumInRangeArgs']]]
     """
     Criterion that describes a window as good if the metric's value
     is in a good range, *summed* across returned streams.
@@ -4680,7 +4680,7 @@ class SloWindowsBasedSliArgsDict(TypedDict):
     `metric_sum_in_range` must be set for `windows_based_sli`.
     Structure is documented below.
     """
-    window_period: NotRequired[pulumi.Input[_builtins.str]]
+    window_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Duration over which window quality is evaluated, given as a
     duration string "{X}s" representing X seconds. Must be an
@@ -4690,11 +4690,11 @@ class SloWindowsBasedSliArgsDict(TypedDict):
 @pulumi.input_type
 class SloWindowsBasedSliArgs:
     def __init__(__self__, *,
-                 good_bad_metric_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 good_total_ratio_threshold: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdArgs']] = None,
-                 metric_mean_in_range: Optional[pulumi.Input['SloWindowsBasedSliMetricMeanInRangeArgs']] = None,
-                 metric_sum_in_range: Optional[pulumi.Input['SloWindowsBasedSliMetricSumInRangeArgs']] = None,
-                 window_period: Optional[pulumi.Input[_builtins.str]] = None):
+                 good_bad_metric_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 good_total_ratio_threshold: pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdArgs']] = None,
+                 metric_mean_in_range: pulumi.Input[Optional['SloWindowsBasedSliMetricMeanInRangeArgs']] = None,
+                 metric_sum_in_range: pulumi.Input[Optional['SloWindowsBasedSliMetricSumInRangeArgs']] = None,
+                 window_period: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] good_bad_metric_filter: A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
                with ValueType = BOOL. The window is good if any true values
@@ -4739,7 +4739,7 @@ class SloWindowsBasedSliArgs:
 
     @_builtins.property
     @pulumi.getter(name="goodBadMetricFilter")
-    def good_bad_metric_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def good_bad_metric_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
         with ValueType = BOOL. The window is good if any true values
@@ -4750,12 +4750,12 @@ class SloWindowsBasedSliArgs:
         return pulumi.get(self, "good_bad_metric_filter")
 
     @good_bad_metric_filter.setter
-    def good_bad_metric_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def good_bad_metric_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "good_bad_metric_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="goodTotalRatioThreshold")
-    def good_total_ratio_threshold(self) -> Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdArgs']]:
+    def good_total_ratio_threshold(self) -> pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdArgs']]:
         """
         Criterion that describes a window as good if its performance is
         high enough. One of `good_bad_metric_filter`,
@@ -4766,12 +4766,12 @@ class SloWindowsBasedSliArgs:
         return pulumi.get(self, "good_total_ratio_threshold")
 
     @good_total_ratio_threshold.setter
-    def good_total_ratio_threshold(self, value: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdArgs']]):
+    def good_total_ratio_threshold(self, value: pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdArgs']]):
         pulumi.set(self, "good_total_ratio_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="metricMeanInRange")
-    def metric_mean_in_range(self) -> Optional[pulumi.Input['SloWindowsBasedSliMetricMeanInRangeArgs']]:
+    def metric_mean_in_range(self) -> pulumi.Input[Optional['SloWindowsBasedSliMetricMeanInRangeArgs']]:
         """
         Criterion that describes a window as good if the metric's value
         is in a good range, *averaged* across returned streams.
@@ -4785,12 +4785,12 @@ class SloWindowsBasedSliArgs:
         return pulumi.get(self, "metric_mean_in_range")
 
     @metric_mean_in_range.setter
-    def metric_mean_in_range(self, value: Optional[pulumi.Input['SloWindowsBasedSliMetricMeanInRangeArgs']]):
+    def metric_mean_in_range(self, value: pulumi.Input[Optional['SloWindowsBasedSliMetricMeanInRangeArgs']]):
         pulumi.set(self, "metric_mean_in_range", value)
 
     @_builtins.property
     @pulumi.getter(name="metricSumInRange")
-    def metric_sum_in_range(self) -> Optional[pulumi.Input['SloWindowsBasedSliMetricSumInRangeArgs']]:
+    def metric_sum_in_range(self) -> pulumi.Input[Optional['SloWindowsBasedSliMetricSumInRangeArgs']]:
         """
         Criterion that describes a window as good if the metric's value
         is in a good range, *summed* across returned streams.
@@ -4804,12 +4804,12 @@ class SloWindowsBasedSliArgs:
         return pulumi.get(self, "metric_sum_in_range")
 
     @metric_sum_in_range.setter
-    def metric_sum_in_range(self, value: Optional[pulumi.Input['SloWindowsBasedSliMetricSumInRangeArgs']]):
+    def metric_sum_in_range(self, value: pulumi.Input[Optional['SloWindowsBasedSliMetricSumInRangeArgs']]):
         pulumi.set(self, "metric_sum_in_range", value)
 
     @_builtins.property
     @pulumi.getter(name="windowPeriod")
-    def window_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def window_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Duration over which window quality is evaluated, given as a
         duration string "{X}s" representing X seconds. Must be an
@@ -4818,22 +4818,22 @@ class SloWindowsBasedSliArgs:
         return pulumi.get(self, "window_period")
 
     @window_period.setter
-    def window_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def window_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "window_period", value)
 
 
 class SloWindowsBasedSliGoodTotalRatioThresholdArgsDict(TypedDict):
-    basic_sli_performance: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgsDict']]
+    basic_sli_performance: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs']]]
     """
     Basic SLI to evaluate to judge window quality.
     Structure is documented below.
     """
-    performance: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgsDict']]
+    performance: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs']]]
     """
     Request-based SLI to evaluate to judge window quality.
     Structure is documented below.
     """
-    threshold: NotRequired[pulumi.Input[_builtins.float]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     If window performance >= threshold, the window is counted
     as good.
@@ -4842,9 +4842,9 @@ class SloWindowsBasedSliGoodTotalRatioThresholdArgsDict(TypedDict):
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdArgs:
     def __init__(__self__, *,
-                 basic_sli_performance: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs']] = None,
-                 performance: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs']] = None,
-                 threshold: Optional[pulumi.Input[_builtins.float]] = None):
+                 basic_sli_performance: pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs']] = None,
+                 performance: pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs']] = None,
+                 threshold: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs'] basic_sli_performance: Basic SLI to evaluate to judge window quality.
                Structure is documented below.
@@ -4862,7 +4862,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdArgs:
 
     @_builtins.property
     @pulumi.getter(name="basicSliPerformance")
-    def basic_sli_performance(self) -> Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs']]:
+    def basic_sli_performance(self) -> pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs']]:
         """
         Basic SLI to evaluate to judge window quality.
         Structure is documented below.
@@ -4870,12 +4870,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdArgs:
         return pulumi.get(self, "basic_sli_performance")
 
     @basic_sli_performance.setter
-    def basic_sli_performance(self, value: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs']]):
+    def basic_sli_performance(self, value: pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs']]):
         pulumi.set(self, "basic_sli_performance", value)
 
     @_builtins.property
     @pulumi.getter
-    def performance(self) -> Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs']]:
+    def performance(self) -> pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs']]:
         """
         Request-based SLI to evaluate to judge window quality.
         Structure is documented below.
@@ -4883,12 +4883,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdArgs:
         return pulumi.get(self, "performance")
 
     @performance.setter
-    def performance(self, value: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs']]):
+    def performance(self, value: pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs']]):
         pulumi.set(self, "performance", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         If window performance >= threshold, the window is counted
         as good.
@@ -4896,22 +4896,22 @@ class SloWindowsBasedSliGoodTotalRatioThresholdArgs:
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "threshold", value)
 
 
 class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgsDict(TypedDict):
-    availability: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgsDict']]
+    availability: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs']]]
     """
     Availability based SLI, dervied from count of requests made to this service that return successfully.
     Structure is documented below.
     """
-    latency: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgsDict']]
+    latency: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs']]]
     """
     Parameters for a latency threshold SLI.
     Structure is documented below.
     """
-    locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     An optional set of locations to which this SLI is relevant.
     Telemetry from other locations will not be used to calculate
@@ -4920,7 +4920,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgsDict(Typed
     that don't support breaking down by location, setting this
     field will result in an error.
     """
-    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     An optional set of RPCs to which this SLI is relevant.
     Telemetry from other methods will not be used to calculate
@@ -4929,7 +4929,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgsDict(Typed
     breaking down by method, setting this field will result in an
     error.
     """
-    versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of API versions to which this SLI is relevant.
     Telemetry from other API versions will not be used to
@@ -4942,11 +4942,11 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgsDict(Typed
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
     def __init__(__self__, *,
-                 availability: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs']] = None,
-                 latency: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs']] = None,
-                 locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 availability: pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs']] = None,
+                 latency: pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs']] = None,
+                 locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs'] availability: Availability based SLI, dervied from count of requests made to this service that return successfully.
                Structure is documented below.
@@ -4984,7 +4984,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def availability(self) -> Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs']]:
+    def availability(self) -> pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs']]:
         """
         Availability based SLI, dervied from count of requests made to this service that return successfully.
         Structure is documented below.
@@ -4992,12 +4992,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
         return pulumi.get(self, "availability")
 
     @availability.setter
-    def availability(self, value: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs']]):
+    def availability(self, value: pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs']]):
         pulumi.set(self, "availability", value)
 
     @_builtins.property
     @pulumi.getter
-    def latency(self) -> Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs']]:
+    def latency(self) -> pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs']]:
         """
         Parameters for a latency threshold SLI.
         Structure is documented below.
@@ -5005,12 +5005,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
         return pulumi.get(self, "latency")
 
     @latency.setter
-    def latency(self, value: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs']]):
+    def latency(self, value: pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs']]):
         pulumi.set(self, "latency", value)
 
     @_builtins.property
     @pulumi.getter
-    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An optional set of locations to which this SLI is relevant.
         Telemetry from other locations will not be used to calculate
@@ -5022,12 +5022,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
         return pulumi.get(self, "locations")
 
     @locations.setter
-    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "locations", value)
 
     @_builtins.property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def methods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An optional set of RPCs to which this SLI is relevant.
         Telemetry from other methods will not be used to calculate
@@ -5039,12 +5039,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def methods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "methods", value)
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of API versions to which this SLI is relevant.
         Telemetry from other API versions will not be used to
@@ -5056,12 +5056,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs:
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "versions", value)
 
 
 class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
     """
@@ -5069,7 +5069,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityAr
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
         """
@@ -5078,14 +5078,14 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityAr
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
@@ -5124,7 +5124,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs:
 
 
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgsDict(TypedDict):
-    distribution_cut: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgsDict']]
+    distribution_cut: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs']]]
     """
     Used when good_service is defined by a count of values aggregated in a
     Distribution that fall into a good range. The total_service is the
@@ -5133,7 +5133,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgsDict(TypedDict):
     measuring good service and total service.
     Structure is documented below.
     """
-    good_total_ratio: NotRequired[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgsDict']]
+    good_total_ratio: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs']]]
     """
     A means to compute a ratio of `good_service` to `total_service`.
     Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
@@ -5146,8 +5146,8 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgsDict(TypedDict):
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs:
     def __init__(__self__, *,
-                 distribution_cut: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs']] = None,
-                 good_total_ratio: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs']] = None):
+                 distribution_cut: pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs']] = None,
+                 good_total_ratio: pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs']] = None):
         """
         :param pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs'] distribution_cut: Used when good_service is defined by a count of values aggregated in a
                Distribution that fall into a good range. The total_service is the
@@ -5169,7 +5169,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="distributionCut")
-    def distribution_cut(self) -> Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs']]:
+    def distribution_cut(self) -> pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs']]:
         """
         Used when good_service is defined by a count of values aggregated in a
         Distribution that fall into a good range. The total_service is the
@@ -5181,12 +5181,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs:
         return pulumi.get(self, "distribution_cut")
 
     @distribution_cut.setter
-    def distribution_cut(self, value: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs']]):
+    def distribution_cut(self, value: pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs']]):
         pulumi.set(self, "distribution_cut", value)
 
     @_builtins.property
     @pulumi.getter(name="goodTotalRatio")
-    def good_total_ratio(self) -> Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs']]:
+    def good_total_ratio(self) -> pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs']]:
         """
         A means to compute a ratio of `good_service` to `total_service`.
         Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
@@ -5198,7 +5198,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs:
         return pulumi.get(self, "good_total_ratio")
 
     @good_total_ratio.setter
-    def good_total_ratio(self, value: Optional[pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs']]):
+    def good_total_ratio(self, value: pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs']]):
         pulumi.set(self, "good_total_ratio", value)
 
 
@@ -5274,13 +5274,13 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs:
 
 
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgsDict(TypedDict):
-    max: NotRequired[pulumi.Input[_builtins.float]]
+    max: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     max value for the range (inclusive). If not given,
     will be set to "infinity", defining an open range
     ">= range.min"
     """
-    min: NotRequired[pulumi.Input[_builtins.float]]
+    min: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Min value for the range (inclusive). If not given,
     will be set to "-infinity", defining an open range
@@ -5290,8 +5290,8 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeAr
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs:
     def __init__(__self__, *,
-                 max: Optional[pulumi.Input[_builtins.float]] = None,
-                 min: Optional[pulumi.Input[_builtins.float]] = None):
+                 max: pulumi.Input[Optional[_builtins.float]] = None,
+                 min: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.float] max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
@@ -5307,7 +5307,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeAr
 
     @_builtins.property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def max(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -5316,12 +5316,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeAr
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def max(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "max", value)
 
     @_builtins.property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def min(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -5330,12 +5330,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeAr
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def min(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "min", value)
 
 
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgsDict(TypedDict):
-    bad_service_filter: NotRequired[pulumi.Input[_builtins.str]]
+    bad_service_filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
     quantifying bad service provided, either demanded service that
@@ -5346,7 +5346,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgsDict
     Must have ValueType = DOUBLE or ValueType = INT64 and
     must have MetricKind = DELTA or MetricKind = CUMULATIVE.
     """
-    good_service_filter: NotRequired[pulumi.Input[_builtins.str]]
+    good_service_filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
     quantifying good service provided. Exactly two of
@@ -5355,7 +5355,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgsDict
     Must have ValueType = DOUBLE or ValueType = INT64 and
     must have MetricKind = DELTA or MetricKind = CUMULATIVE.
     """
-    total_service_filter: NotRequired[pulumi.Input[_builtins.str]]
+    total_service_filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
     quantifying total demanded service. Exactly two of
@@ -5368,9 +5368,9 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgsDict
 @pulumi.input_type
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs:
     def __init__(__self__, *,
-                 bad_service_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 good_service_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_service_filter: Optional[pulumi.Input[_builtins.str]] = None):
+                 bad_service_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 good_service_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_service_filter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bad_service_filter: A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
                quantifying bad service provided, either demanded service that
@@ -5402,7 +5402,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs:
 
     @_builtins.property
     @pulumi.getter(name="badServiceFilter")
-    def bad_service_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bad_service_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
         quantifying bad service provided, either demanded service that
@@ -5416,12 +5416,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs:
         return pulumi.get(self, "bad_service_filter")
 
     @bad_service_filter.setter
-    def bad_service_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bad_service_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bad_service_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="goodServiceFilter")
-    def good_service_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def good_service_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
         quantifying good service provided. Exactly two of
@@ -5433,12 +5433,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs:
         return pulumi.get(self, "good_service_filter")
 
     @good_service_filter.setter
-    def good_service_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def good_service_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "good_service_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="totalServiceFilter")
-    def total_service_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def total_service_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
         quantifying total demanded service. Exactly two of
@@ -5450,7 +5450,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs:
         return pulumi.get(self, "total_service_filter")
 
     @total_service_filter.setter
-    def total_service_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def total_service_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "total_service_filter", value)
 
 
@@ -5538,13 +5538,13 @@ class SloWindowsBasedSliMetricMeanInRangeArgs:
 
 
 class SloWindowsBasedSliMetricMeanInRangeRangeArgsDict(TypedDict):
-    max: NotRequired[pulumi.Input[_builtins.float]]
+    max: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     max value for the range (inclusive). If not given,
     will be set to "infinity", defining an open range
     ">= range.min"
     """
-    min: NotRequired[pulumi.Input[_builtins.float]]
+    min: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Min value for the range (inclusive). If not given,
     will be set to "-infinity", defining an open range
@@ -5554,8 +5554,8 @@ class SloWindowsBasedSliMetricMeanInRangeRangeArgsDict(TypedDict):
 @pulumi.input_type
 class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
     def __init__(__self__, *,
-                 max: Optional[pulumi.Input[_builtins.float]] = None,
-                 min: Optional[pulumi.Input[_builtins.float]] = None):
+                 max: pulumi.Input[Optional[_builtins.float]] = None,
+                 min: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.float] max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
@@ -5571,7 +5571,7 @@ class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def max(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -5580,12 +5580,12 @@ class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def max(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "max", value)
 
     @_builtins.property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def min(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -5594,7 +5594,7 @@ class SloWindowsBasedSliMetricMeanInRangeRangeArgs:
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def min(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "min", value)
 
 
@@ -5682,13 +5682,13 @@ class SloWindowsBasedSliMetricSumInRangeArgs:
 
 
 class SloWindowsBasedSliMetricSumInRangeRangeArgsDict(TypedDict):
-    max: NotRequired[pulumi.Input[_builtins.float]]
+    max: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     max value for the range (inclusive). If not given,
     will be set to "infinity", defining an open range
     ">= range.min"
     """
-    min: NotRequired[pulumi.Input[_builtins.float]]
+    min: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Min value for the range (inclusive). If not given,
     will be set to "-infinity", defining an open range
@@ -5698,8 +5698,8 @@ class SloWindowsBasedSliMetricSumInRangeRangeArgsDict(TypedDict):
 @pulumi.input_type
 class SloWindowsBasedSliMetricSumInRangeRangeArgs:
     def __init__(__self__, *,
-                 max: Optional[pulumi.Input[_builtins.float]] = None,
-                 min: Optional[pulumi.Input[_builtins.float]] = None):
+                 max: pulumi.Input[Optional[_builtins.float]] = None,
+                 min: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.float] max: max value for the range (inclusive). If not given,
                will be set to "infinity", defining an open range
@@ -5715,7 +5715,7 @@ class SloWindowsBasedSliMetricSumInRangeRangeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def max(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         max value for the range (inclusive). If not given,
         will be set to "infinity", defining an open range
@@ -5724,12 +5724,12 @@ class SloWindowsBasedSliMetricSumInRangeRangeArgs:
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def max(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "max", value)
 
     @_builtins.property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def min(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Min value for the range (inclusive). If not given,
         will be set to "-infinity", defining an open range
@@ -5738,7 +5738,7 @@ class SloWindowsBasedSliMetricSumInRangeRangeArgs:
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def min(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "min", value)
 
 
@@ -5747,12 +5747,12 @@ class UptimeCheckConfigContentMatcherArgsDict(TypedDict):
     """
     String or regex content to match (max 1024 bytes)
     """
-    json_path_matcher: NotRequired[pulumi.Input['UptimeCheckConfigContentMatcherJsonPathMatcherArgsDict']]
+    json_path_matcher: NotRequired[pulumi.Input[Optional['UptimeCheckConfigContentMatcherJsonPathMatcherArgs']]]
     """
     Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
     Structure is documented below.
     """
-    matcher: NotRequired[pulumi.Input[_builtins.str]]
+    matcher: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
     Default value is `CONTAINS_STRING`.
@@ -5763,8 +5763,8 @@ class UptimeCheckConfigContentMatcherArgsDict(TypedDict):
 class UptimeCheckConfigContentMatcherArgs:
     def __init__(__self__, *,
                  content: pulumi.Input[_builtins.str],
-                 json_path_matcher: Optional[pulumi.Input['UptimeCheckConfigContentMatcherJsonPathMatcherArgs']] = None,
-                 matcher: Optional[pulumi.Input[_builtins.str]] = None):
+                 json_path_matcher: pulumi.Input[Optional['UptimeCheckConfigContentMatcherJsonPathMatcherArgs']] = None,
+                 matcher: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] content: String or regex content to match (max 1024 bytes)
         :param pulumi.Input['UptimeCheckConfigContentMatcherJsonPathMatcherArgs'] json_path_matcher: Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
@@ -5793,7 +5793,7 @@ class UptimeCheckConfigContentMatcherArgs:
 
     @_builtins.property
     @pulumi.getter(name="jsonPathMatcher")
-    def json_path_matcher(self) -> Optional[pulumi.Input['UptimeCheckConfigContentMatcherJsonPathMatcherArgs']]:
+    def json_path_matcher(self) -> pulumi.Input[Optional['UptimeCheckConfigContentMatcherJsonPathMatcherArgs']]:
         """
         Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
         Structure is documented below.
@@ -5801,12 +5801,12 @@ class UptimeCheckConfigContentMatcherArgs:
         return pulumi.get(self, "json_path_matcher")
 
     @json_path_matcher.setter
-    def json_path_matcher(self, value: Optional[pulumi.Input['UptimeCheckConfigContentMatcherJsonPathMatcherArgs']]):
+    def json_path_matcher(self, value: pulumi.Input[Optional['UptimeCheckConfigContentMatcherJsonPathMatcherArgs']]):
         pulumi.set(self, "json_path_matcher", value)
 
     @_builtins.property
     @pulumi.getter
-    def matcher(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def matcher(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         Default value is `CONTAINS_STRING`.
@@ -5815,7 +5815,7 @@ class UptimeCheckConfigContentMatcherArgs:
         return pulumi.get(self, "matcher")
 
     @matcher.setter
-    def matcher(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def matcher(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "matcher", value)
 
 
@@ -5824,7 +5824,7 @@ class UptimeCheckConfigContentMatcherJsonPathMatcherArgsDict(TypedDict):
     """
     JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
     """
-    json_matcher: NotRequired[pulumi.Input[_builtins.str]]
+    json_matcher: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Options to perform JSONPath content matching.
     Default value is `EXACT_MATCH`.
@@ -5835,7 +5835,7 @@ class UptimeCheckConfigContentMatcherJsonPathMatcherArgsDict(TypedDict):
 class UptimeCheckConfigContentMatcherJsonPathMatcherArgs:
     def __init__(__self__, *,
                  json_path: pulumi.Input[_builtins.str],
-                 json_matcher: Optional[pulumi.Input[_builtins.str]] = None):
+                 json_matcher: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] json_path: JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
         :param pulumi.Input[_builtins.str] json_matcher: Options to perform JSONPath content matching.
@@ -5860,7 +5860,7 @@ class UptimeCheckConfigContentMatcherJsonPathMatcherArgs:
 
     @_builtins.property
     @pulumi.getter(name="jsonMatcher")
-    def json_matcher(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json_matcher(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Options to perform JSONPath content matching.
         Default value is `EXACT_MATCH`.
@@ -5869,71 +5869,71 @@ class UptimeCheckConfigContentMatcherJsonPathMatcherArgs:
         return pulumi.get(self, "json_matcher")
 
     @json_matcher.setter
-    def json_matcher(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json_matcher(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json_matcher", value)
 
 
 class UptimeCheckConfigHttpCheckArgsDict(TypedDict):
-    accepted_response_status_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgsDict']]]]
+    accepted_response_status_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs']]]]]
     """
     If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
     Structure is documented below.
     """
-    auth_info: NotRequired[pulumi.Input['UptimeCheckConfigHttpCheckAuthInfoArgsDict']]
+    auth_info: NotRequired[pulumi.Input[Optional['UptimeCheckConfigHttpCheckAuthInfoArgs']]]
     """
     The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
     Structure is documented below.
     """
-    body: NotRequired[pulumi.Input[_builtins.str]]
+    body: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
     """
-    content_type: NotRequired[pulumi.Input[_builtins.str]]
+    content_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The content type to use for the check.
     Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
     """
-    custom_content_type: NotRequired[pulumi.Input[_builtins.str]]
+    custom_content_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type` is `URL_ENCODED` and `custom_content_type` is set. 2. `content_type` is `USER_PROVIDED` and `custom_content_type` is not set.
     """
-    headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    headers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described in [RFC 2616 (page 31)](https://www.w3.org/Protocols/rfc2616/rfc2616.txt). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
     """
-    mask_headers: NotRequired[pulumi.Input[_builtins.bool]]
+    mask_headers: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `mask_headers` is set to `true` then the headers will be obscured with `******`.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with `/`, a `/` will be prepended automatically. Optional (defaults to `/`).
     """
-    ping_config: NotRequired[pulumi.Input['UptimeCheckConfigHttpCheckPingConfigArgsDict']]
+    ping_config: NotRequired[pulumi.Input[Optional['UptimeCheckConfigHttpCheckPingConfigArgs']]]
     """
     Contains information needed to add pings to an HTTP check.
     Structure is documented below.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The port to the page to run the check against. Will be combined with `host` (specified within the `monitored_resource`) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
     """
-    request_method: NotRequired[pulumi.Input[_builtins.str]]
+    request_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `request_method` defaults to `GET`.
     Default value is `GET`.
     Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
     """
-    service_agent_authentication: NotRequired[pulumi.Input['UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgsDict']]
+    service_agent_authentication: NotRequired[pulumi.Input[Optional['UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs']]]
     """
     The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
     Structure is documented below.
     """
-    use_ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    use_ssl: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, use HTTPS instead of HTTP to run the check.
     """
-    validate_ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    validate_ssl: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`, setting `validate_ssl` to `true` has no effect.
     """
@@ -5941,20 +5941,20 @@ class UptimeCheckConfigHttpCheckArgsDict(TypedDict):
 @pulumi.input_type
 class UptimeCheckConfigHttpCheckArgs:
     def __init__(__self__, *,
-                 accepted_response_status_codes: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs']]]] = None,
-                 auth_info: Optional[pulumi.Input['UptimeCheckConfigHttpCheckAuthInfoArgs']] = None,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mask_headers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 ping_config: Optional[pulumi.Input['UptimeCheckConfigHttpCheckPingConfigArgs']] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 request_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_agent_authentication: Optional[pulumi.Input['UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs']] = None,
-                 use_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 validate_ssl: Optional[pulumi.Input[_builtins.bool]] = None):
+                 accepted_response_status_codes: pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs']]]] = None,
+                 auth_info: pulumi.Input[Optional['UptimeCheckConfigHttpCheckAuthInfoArgs']] = None,
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mask_headers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 ping_config: pulumi.Input[Optional['UptimeCheckConfigHttpCheckPingConfigArgs']] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 request_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_agent_authentication: pulumi.Input[Optional['UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs']] = None,
+                 use_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 validate_ssl: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs']]] accepted_response_status_codes: If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
                Structure is documented below.
@@ -6009,7 +6009,7 @@ class UptimeCheckConfigHttpCheckArgs:
 
     @_builtins.property
     @pulumi.getter(name="acceptedResponseStatusCodes")
-    def accepted_response_status_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs']]]]:
+    def accepted_response_status_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs']]]]:
         """
         If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
         Structure is documented below.
@@ -6017,12 +6017,12 @@ class UptimeCheckConfigHttpCheckArgs:
         return pulumi.get(self, "accepted_response_status_codes")
 
     @accepted_response_status_codes.setter
-    def accepted_response_status_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs']]]]):
+    def accepted_response_status_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs']]]]):
         pulumi.set(self, "accepted_response_status_codes", value)
 
     @_builtins.property
     @pulumi.getter(name="authInfo")
-    def auth_info(self) -> Optional[pulumi.Input['UptimeCheckConfigHttpCheckAuthInfoArgs']]:
+    def auth_info(self) -> pulumi.Input[Optional['UptimeCheckConfigHttpCheckAuthInfoArgs']]:
         """
         The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
         Structure is documented below.
@@ -6030,24 +6030,24 @@ class UptimeCheckConfigHttpCheckArgs:
         return pulumi.get(self, "auth_info")
 
     @auth_info.setter
-    def auth_info(self, value: Optional[pulumi.Input['UptimeCheckConfigHttpCheckAuthInfoArgs']]):
+    def auth_info(self, value: pulumi.Input[Optional['UptimeCheckConfigHttpCheckAuthInfoArgs']]):
         pulumi.set(self, "auth_info", value)
 
     @_builtins.property
     @pulumi.getter
-    def body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
         """
         return pulumi.get(self, "body")
 
     @body.setter
-    def body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "body", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content type to use for the check.
         Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
@@ -6055,60 +6055,60 @@ class UptimeCheckConfigHttpCheckArgs:
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="customContentType")
-    def custom_content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type` is `URL_ENCODED` and `custom_content_type` is set. 2. `content_type` is `USER_PROVIDED` and `custom_content_type` is not set.
         """
         return pulumi.get(self, "custom_content_type")
 
     @custom_content_type.setter
-    def custom_content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_content_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described in [RFC 2616 (page 31)](https://www.w3.org/Protocols/rfc2616/rfc2616.txt). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         """
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "headers", value)
 
     @_builtins.property
     @pulumi.getter(name="maskHeaders")
-    def mask_headers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mask_headers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `mask_headers` is set to `true` then the headers will be obscured with `******`.
         """
         return pulumi.get(self, "mask_headers")
 
     @mask_headers.setter
-    def mask_headers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mask_headers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mask_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with `/`, a `/` will be prepended automatically. Optional (defaults to `/`).
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="pingConfig")
-    def ping_config(self) -> Optional[pulumi.Input['UptimeCheckConfigHttpCheckPingConfigArgs']]:
+    def ping_config(self) -> pulumi.Input[Optional['UptimeCheckConfigHttpCheckPingConfigArgs']]:
         """
         Contains information needed to add pings to an HTTP check.
         Structure is documented below.
@@ -6116,24 +6116,24 @@ class UptimeCheckConfigHttpCheckArgs:
         return pulumi.get(self, "ping_config")
 
     @ping_config.setter
-    def ping_config(self, value: Optional[pulumi.Input['UptimeCheckConfigHttpCheckPingConfigArgs']]):
+    def ping_config(self, value: pulumi.Input[Optional['UptimeCheckConfigHttpCheckPingConfigArgs']]):
         pulumi.set(self, "ping_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port to the page to run the check against. Will be combined with `host` (specified within the `monitored_resource`) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="requestMethod")
-    def request_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `request_method` defaults to `GET`.
         Default value is `GET`.
@@ -6142,12 +6142,12 @@ class UptimeCheckConfigHttpCheckArgs:
         return pulumi.get(self, "request_method")
 
     @request_method.setter
-    def request_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_method", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAgentAuthentication")
-    def service_agent_authentication(self) -> Optional[pulumi.Input['UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs']]:
+    def service_agent_authentication(self) -> pulumi.Input[Optional['UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs']]:
         """
         The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
         Structure is documented below.
@@ -6155,41 +6155,41 @@ class UptimeCheckConfigHttpCheckArgs:
         return pulumi.get(self, "service_agent_authentication")
 
     @service_agent_authentication.setter
-    def service_agent_authentication(self, value: Optional[pulumi.Input['UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs']]):
+    def service_agent_authentication(self, value: pulumi.Input[Optional['UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs']]):
         pulumi.set(self, "service_agent_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="useSsl")
-    def use_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, use HTTPS instead of HTTP to run the check.
         """
         return pulumi.get(self, "use_ssl")
 
     @use_ssl.setter
-    def use_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="validateSsl")
-    def validate_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def validate_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`, setting `validate_ssl` to `true` has no effect.
         """
         return pulumi.get(self, "validate_ssl")
 
     @validate_ssl.setter
-    def validate_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def validate_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "validate_ssl", value)
 
 
 class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgsDict(TypedDict):
-    status_class: NotRequired[pulumi.Input[_builtins.str]]
+    status_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A class of status codes to accept.
     Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
     """
-    status_value: NotRequired[pulumi.Input[_builtins.int]]
+    status_value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     A status code to accept.
     """
@@ -6197,8 +6197,8 @@ class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgsDict(TypedDict):
 @pulumi.input_type
 class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs:
     def __init__(__self__, *,
-                 status_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 status_value: Optional[pulumi.Input[_builtins.int]] = None):
+                 status_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 status_value: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] status_class: A class of status codes to accept.
                Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
@@ -6211,7 +6211,7 @@ class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="statusClass")
-    def status_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A class of status codes to accept.
         Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
@@ -6219,19 +6219,19 @@ class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs:
         return pulumi.get(self, "status_class")
 
     @status_class.setter
-    def status_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status_class", value)
 
     @_builtins.property
     @pulumi.getter(name="statusValue")
-    def status_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A status code to accept.
         """
         return pulumi.get(self, "status_value")
 
     @status_value.setter
-    def status_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status_value", value)
 
 
@@ -6240,12 +6240,12 @@ class UptimeCheckConfigHttpCheckAuthInfoArgsDict(TypedDict):
     """
     The username to authenticate.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The password to authenticate.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    password_wo: NotRequired[pulumi.Input[_builtins.str]]
+    password_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
     (Optional, Write-Only)
@@ -6254,7 +6254,7 @@ class UptimeCheckConfigHttpCheckAuthInfoArgsDict(TypedDict):
 
     > **Note:** One of `password` or `password_wo` can only be set.
     """
-    password_wo_version: NotRequired[pulumi.Input[_builtins.str]]
+    password_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The password write-only version.
     """
@@ -6263,9 +6263,9 @@ class UptimeCheckConfigHttpCheckAuthInfoArgsDict(TypedDict):
 class UptimeCheckConfigHttpCheckAuthInfoArgs:
     def __init__(__self__, *,
                  username: pulumi.Input[_builtins.str],
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] username: The username to authenticate.
         :param pulumi.Input[_builtins.str] password: The password to authenticate.
@@ -6300,7 +6300,7 @@ class UptimeCheckConfigHttpCheckAuthInfoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password to authenticate.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -6308,12 +6308,12 @@ class UptimeCheckConfigHttpCheckAuthInfoArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWo")
-    def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         (Optional, Write-Only)
@@ -6325,19 +6325,19 @@ class UptimeCheckConfigHttpCheckAuthInfoArgs:
         return pulumi.get(self, "password_wo")
 
     @password_wo.setter
-    def password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWoVersion")
-    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password write-only version.
         """
         return pulumi.get(self, "password_wo_version")
 
     @password_wo_version.setter
-    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_wo_version", value)
 
 
@@ -6370,7 +6370,7 @@ class UptimeCheckConfigHttpCheckPingConfigArgs:
 
 
 class UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgsDict(TypedDict):
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of authentication to use.
     Possible values are: `SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED`, `OIDC_TOKEN`.
@@ -6379,7 +6379,7 @@ class UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: The type of authentication to use.
                Possible values are: `SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED`, `OIDC_TOKEN`.
@@ -6389,7 +6389,7 @@ class UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of authentication to use.
         Possible values are: `SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED`, `OIDC_TOKEN`.
@@ -6397,7 +6397,7 @@ class UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -6449,11 +6449,11 @@ class UptimeCheckConfigMonitoredResourceArgs:
 
 
 class UptimeCheckConfigResourceGroupArgsDict(TypedDict):
-    group_id: NotRequired[pulumi.Input[_builtins.str]]
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The group of resources being monitored. Should be the `name` of a group
     """
-    resource_type: NotRequired[pulumi.Input[_builtins.str]]
+    resource_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource type of the group members.
     Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
@@ -6462,8 +6462,8 @@ class UptimeCheckConfigResourceGroupArgsDict(TypedDict):
 @pulumi.input_type
 class UptimeCheckConfigResourceGroupArgs:
     def __init__(__self__, *,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] group_id: The group of resources being monitored. Should be the `name` of a group
         :param pulumi.Input[_builtins.str] resource_type: The resource type of the group members.
@@ -6476,19 +6476,19 @@ class UptimeCheckConfigResourceGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group of resources being monitored. Should be the `name` of a group
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource type of the group members.
         Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
@@ -6496,7 +6496,7 @@ class UptimeCheckConfigResourceGroupArgs:
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
 
@@ -6573,7 +6573,7 @@ class UptimeCheckConfigTcpCheckArgsDict(TypedDict):
     """
     The port to the page to run the check against. Will be combined with host (specified within the `monitored_resource`) to construct the full URL.
     """
-    ping_config: NotRequired[pulumi.Input['UptimeCheckConfigTcpCheckPingConfigArgsDict']]
+    ping_config: NotRequired[pulumi.Input[Optional['UptimeCheckConfigTcpCheckPingConfigArgs']]]
     """
     Contains information needed to add pings to a TCP check.
     Structure is documented below.
@@ -6583,7 +6583,7 @@ class UptimeCheckConfigTcpCheckArgsDict(TypedDict):
 class UptimeCheckConfigTcpCheckArgs:
     def __init__(__self__, *,
                  port: pulumi.Input[_builtins.int],
-                 ping_config: Optional[pulumi.Input['UptimeCheckConfigTcpCheckPingConfigArgs']] = None):
+                 ping_config: pulumi.Input[Optional['UptimeCheckConfigTcpCheckPingConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] port: The port to the page to run the check against. Will be combined with host (specified within the `monitored_resource`) to construct the full URL.
         :param pulumi.Input['UptimeCheckConfigTcpCheckPingConfigArgs'] ping_config: Contains information needed to add pings to a TCP check.
@@ -6607,7 +6607,7 @@ class UptimeCheckConfigTcpCheckArgs:
 
     @_builtins.property
     @pulumi.getter(name="pingConfig")
-    def ping_config(self) -> Optional[pulumi.Input['UptimeCheckConfigTcpCheckPingConfigArgs']]:
+    def ping_config(self) -> pulumi.Input[Optional['UptimeCheckConfigTcpCheckPingConfigArgs']]:
         """
         Contains information needed to add pings to a TCP check.
         Structure is documented below.
@@ -6615,7 +6615,7 @@ class UptimeCheckConfigTcpCheckArgs:
         return pulumi.get(self, "ping_config")
 
     @ping_config.setter
-    def ping_config(self, value: Optional[pulumi.Input['UptimeCheckConfigTcpCheckPingConfigArgs']]):
+    def ping_config(self, value: pulumi.Input[Optional['UptimeCheckConfigTcpCheckPingConfigArgs']]):
         pulumi.set(self, "ping_config", value)
 
 

@@ -152,9 +152,9 @@ def get_resources_search_all(asset_types: Optional[Sequence[_builtins.str]] = No
         query=pulumi.get(__ret__, 'query'),
         results=pulumi.get(__ret__, 'results'),
         scope=pulumi.get(__ret__, 'scope'))
-def get_resources_search_all_output(asset_types: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                    query: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    scope: Optional[pulumi.Input[_builtins.str]] = None,
+def get_resources_search_all_output(asset_types: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                    query: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    scope: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourcesSearchAllResult]:
     """
     Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the

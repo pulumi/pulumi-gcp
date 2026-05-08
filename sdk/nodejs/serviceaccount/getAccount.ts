@@ -176,5 +176,5 @@ export interface GetAccountOutputArgs {
      * The ID of the project that the service account is present in.
      * Defaults to the provider project configuration.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

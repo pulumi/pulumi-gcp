@@ -23,13 +23,13 @@ class AccountConnectorArgs:
     def __init__(__self__, *,
                  account_connector_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 custom_oauth_config: Optional[pulumi.Input['AccountConnectorCustomOauthConfigArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_oauth_config: Optional[pulumi.Input['AccountConnectorProviderOauthConfigArgs']] = None,
-                 proxy_config: Optional[pulumi.Input['AccountConnectorProxyConfigArgs']] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 custom_oauth_config: pulumi.Input[Optional['AccountConnectorCustomOauthConfigArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_oauth_config: pulumi.Input[Optional['AccountConnectorProviderOauthConfigArgs']] = None,
+                 proxy_config: pulumi.Input[Optional['AccountConnectorProxyConfigArgs']] = None):
         """
         The set of arguments for constructing a AccountConnector resource.
 
@@ -102,7 +102,7 @@ class AccountConnectorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Allows users to store small amounts of arbitrary data.
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -111,12 +111,12 @@ class AccountConnectorArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="customOauthConfig")
-    def custom_oauth_config(self) -> Optional[pulumi.Input['AccountConnectorCustomOauthConfigArgs']]:
+    def custom_oauth_config(self) -> pulumi.Input[Optional['AccountConnectorCustomOauthConfigArgs']]:
         """
         Message for a customized OAuth config.
         Structure is documented below.
@@ -124,12 +124,12 @@ class AccountConnectorArgs:
         return pulumi.get(self, "custom_oauth_config")
 
     @custom_oauth_config.setter
-    def custom_oauth_config(self, value: Optional[pulumi.Input['AccountConnectorCustomOauthConfigArgs']]):
+    def custom_oauth_config(self, value: pulumi.Input[Optional['AccountConnectorCustomOauthConfigArgs']]):
         pulumi.set(self, "custom_oauth_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This checksum is computed by the server based on the value of other
         fields, and may be sent on update and delete requests to ensure the
@@ -138,12 +138,12 @@ class AccountConnectorArgs:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels as key value pairs
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -152,12 +152,12 @@ class AccountConnectorArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -165,12 +165,12 @@ class AccountConnectorArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="providerOauthConfig")
-    def provider_oauth_config(self) -> Optional[pulumi.Input['AccountConnectorProviderOauthConfigArgs']]:
+    def provider_oauth_config(self) -> pulumi.Input[Optional['AccountConnectorProviderOauthConfigArgs']]:
         """
         ProviderOAuthConfig is the OAuth config for a provider.
         Structure is documented below.
@@ -178,12 +178,12 @@ class AccountConnectorArgs:
         return pulumi.get(self, "provider_oauth_config")
 
     @provider_oauth_config.setter
-    def provider_oauth_config(self, value: Optional[pulumi.Input['AccountConnectorProviderOauthConfigArgs']]):
+    def provider_oauth_config(self, value: pulumi.Input[Optional['AccountConnectorProviderOauthConfigArgs']]):
         pulumi.set(self, "provider_oauth_config", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyConfig")
-    def proxy_config(self) -> Optional[pulumi.Input['AccountConnectorProxyConfigArgs']]:
+    def proxy_config(self) -> pulumi.Input[Optional['AccountConnectorProxyConfigArgs']]:
         """
         The proxy configuration.
         Structure is documented below.
@@ -191,29 +191,29 @@ class AccountConnectorArgs:
         return pulumi.get(self, "proxy_config")
 
     @proxy_config.setter
-    def proxy_config(self, value: Optional[pulumi.Input['AccountConnectorProxyConfigArgs']]):
+    def proxy_config(self, value: pulumi.Input[Optional['AccountConnectorProxyConfigArgs']]):
         pulumi.set(self, "proxy_config", value)
 
 
 @pulumi.input_type
 class _AccountConnectorState:
     def __init__(__self__, *,
-                 account_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_oauth_config: Optional[pulumi.Input['AccountConnectorCustomOauthConfigArgs']] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_start_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_oauth_config: Optional[pulumi.Input['AccountConnectorProviderOauthConfigArgs']] = None,
-                 proxy_config: Optional[pulumi.Input['AccountConnectorProxyConfigArgs']] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_oauth_config: pulumi.Input[Optional['AccountConnectorCustomOauthConfigArgs']] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_start_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_oauth_config: pulumi.Input[Optional['AccountConnectorProviderOauthConfigArgs']] = None,
+                 proxy_config: pulumi.Input[Optional['AccountConnectorProxyConfigArgs']] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountConnector resources.
 
@@ -284,7 +284,7 @@ class _AccountConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="accountConnectorId")
-    def account_connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the AccountConnector, which will become the final
         component of the AccountConnector's resource name. Its format should adhere
@@ -294,12 +294,12 @@ class _AccountConnectorState:
         return pulumi.get(self, "account_connector_id")
 
     @account_connector_id.setter
-    def account_connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_connector_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Allows users to store small amounts of arbitrary data.
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -308,24 +308,24 @@ class _AccountConnectorState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the accountConnector was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customOauthConfig")
-    def custom_oauth_config(self) -> Optional[pulumi.Input['AccountConnectorCustomOauthConfigArgs']]:
+    def custom_oauth_config(self) -> pulumi.Input[Optional['AccountConnectorCustomOauthConfigArgs']]:
         """
         Message for a customized OAuth config.
         Structure is documented below.
@@ -333,36 +333,36 @@ class _AccountConnectorState:
         return pulumi.get(self, "custom_oauth_config")
 
     @custom_oauth_config.setter
-    def custom_oauth_config(self, value: Optional[pulumi.Input['AccountConnectorCustomOauthConfigArgs']]):
+    def custom_oauth_config(self, value: pulumi.Input[Optional['AccountConnectorCustomOauthConfigArgs']]):
         pulumi.set(self, "custom_oauth_config", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This checksum is computed by the server based on the value of other
         fields, and may be sent on update and delete requests to ensure the
@@ -371,12 +371,12 @@ class _AccountConnectorState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels as key value pairs
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -385,24 +385,24 @@ class _AccountConnectorState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name of the accountConnector, in the format
         `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
@@ -410,24 +410,24 @@ class _AccountConnectorState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthStartUri")
-    def oauth_start_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_start_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Start OAuth flow by clicking on this URL.
         """
         return pulumi.get(self, "oauth_start_uri")
 
     @oauth_start_uri.setter
-    def oauth_start_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_start_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_start_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -435,12 +435,12 @@ class _AccountConnectorState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="providerOauthConfig")
-    def provider_oauth_config(self) -> Optional[pulumi.Input['AccountConnectorProviderOauthConfigArgs']]:
+    def provider_oauth_config(self) -> pulumi.Input[Optional['AccountConnectorProviderOauthConfigArgs']]:
         """
         ProviderOAuthConfig is the OAuth config for a provider.
         Structure is documented below.
@@ -448,12 +448,12 @@ class _AccountConnectorState:
         return pulumi.get(self, "provider_oauth_config")
 
     @provider_oauth_config.setter
-    def provider_oauth_config(self, value: Optional[pulumi.Input['AccountConnectorProviderOauthConfigArgs']]):
+    def provider_oauth_config(self, value: pulumi.Input[Optional['AccountConnectorProviderOauthConfigArgs']]):
         pulumi.set(self, "provider_oauth_config", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyConfig")
-    def proxy_config(self) -> Optional[pulumi.Input['AccountConnectorProxyConfigArgs']]:
+    def proxy_config(self) -> pulumi.Input[Optional['AccountConnectorProxyConfigArgs']]:
         """
         The proxy configuration.
         Structure is documented below.
@@ -461,12 +461,12 @@ class _AccountConnectorState:
         return pulumi.get(self, "proxy_config")
 
     @proxy_config.setter
-    def proxy_config(self, value: Optional[pulumi.Input['AccountConnectorProxyConfigArgs']]):
+    def proxy_config(self, value: pulumi.Input[Optional['AccountConnectorProxyConfigArgs']]):
         pulumi.set(self, "proxy_config", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -474,19 +474,19 @@ class _AccountConnectorState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the accountConnector was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -496,15 +496,15 @@ class AccountConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 custom_oauth_config: Optional[pulumi.Input[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict']]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_oauth_config: Optional[pulumi.Input[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict']]] = None,
-                 proxy_config: Optional[pulumi.Input[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict']]] = None,
+                 account_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 custom_oauth_config: pulumi.Input[Optional[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict']]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_oauth_config: pulumi.Input[Optional[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict']]] = None,
+                 proxy_config: pulumi.Input[Optional[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict']]] = None,
                  __props__=None):
         """
         Description
@@ -864,15 +864,15 @@ class AccountConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 custom_oauth_config: Optional[pulumi.Input[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict']]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_oauth_config: Optional[pulumi.Input[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict']]] = None,
-                 proxy_config: Optional[pulumi.Input[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict']]] = None,
+                 account_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 custom_oauth_config: pulumi.Input[Optional[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict']]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_oauth_config: pulumi.Input[Optional[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict']]] = None,
+                 proxy_config: pulumi.Input[Optional[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -914,22 +914,22 @@ class AccountConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_oauth_config: Optional[pulumi.Input[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict']]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth_start_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_oauth_config: Optional[pulumi.Input[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict']]] = None,
-            proxy_config: Optional[pulumi.Input[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict']]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccountConnector':
+            account_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_oauth_config: pulumi.Input[Optional[Union['AccountConnectorCustomOauthConfigArgs', 'AccountConnectorCustomOauthConfigArgsDict']]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_start_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_oauth_config: pulumi.Input[Optional[Union['AccountConnectorProviderOauthConfigArgs', 'AccountConnectorProviderOauthConfigArgsDict']]] = None,
+            proxy_config: pulumi.Input[Optional[Union['AccountConnectorProxyConfigArgs', 'AccountConnectorProxyConfigArgsDict']]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountConnector':
         """
         Get an existing AccountConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

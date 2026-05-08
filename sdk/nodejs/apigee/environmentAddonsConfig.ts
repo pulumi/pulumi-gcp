@@ -100,12 +100,12 @@ export interface EnvironmentAddonsConfigState {
     /**
      * Flag to enable/disable Analytics.
      */
-    analyticsEnabled?: pulumi.Input<boolean>;
+    analyticsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      */
-    envId?: pulumi.Input<string>;
+    envId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -115,7 +115,7 @@ export interface EnvironmentAddonsConfigArgs {
     /**
      * Flag to enable/disable Analytics.
      */
-    analyticsEnabled?: pulumi.Input<boolean>;
+    analyticsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.

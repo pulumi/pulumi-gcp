@@ -106,7 +106,7 @@ export interface GetPackagesOutputArgs {
     /**
      * An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are `name` and `annotations`. Further information can be found in the [REST API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages/list#query-parameters).
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The location of the Artifact Registry repository.
      */
@@ -114,7 +114,7 @@ export interface GetPackagesOutputArgs {
     /**
      * The project ID in which the resource belongs. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The last part of the repository name to fetch from.
      */

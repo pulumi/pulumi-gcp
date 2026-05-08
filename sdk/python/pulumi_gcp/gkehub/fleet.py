@@ -21,9 +21,9 @@ __all__ = ['FleetArgs', 'Fleet']
 @pulumi.input_type
 class FleetArgs:
     def __init__(__self__, *,
-                 default_cluster_config: Optional[pulumi.Input['FleetDefaultClusterConfigArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_cluster_config: pulumi.Input[Optional['FleetDefaultClusterConfigArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Fleet resource.
 
@@ -43,7 +43,7 @@ class FleetArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultClusterConfig")
-    def default_cluster_config(self) -> Optional[pulumi.Input['FleetDefaultClusterConfigArgs']]:
+    def default_cluster_config(self) -> pulumi.Input[Optional['FleetDefaultClusterConfigArgs']]:
         """
         The default cluster configurations to apply across the fleet.
         Structure is documented below.
@@ -51,12 +51,12 @@ class FleetArgs:
         return pulumi.get(self, "default_cluster_config")
 
     @default_cluster_config.setter
-    def default_cluster_config(self, value: Optional[pulumi.Input['FleetDefaultClusterConfigArgs']]):
+    def default_cluster_config(self, value: pulumi.Input[Optional['FleetDefaultClusterConfigArgs']]):
         pulumi.set(self, "default_cluster_config", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
         Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
@@ -64,12 +64,12 @@ class FleetArgs:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -77,21 +77,21 @@ class FleetArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _FleetState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_cluster_config: Optional[pulumi.Input['FleetDefaultClusterConfigArgs']] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['FleetStateArgs']]]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_cluster_config: pulumi.Input[Optional['FleetDefaultClusterConfigArgs']] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 states: pulumi.Input[Optional[Sequence[pulumi.Input['FleetStateArgs']]]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Fleet resources.
 
@@ -129,19 +129,19 @@ class _FleetState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the fleet was created, in RFC3339 text format.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultClusterConfig")
-    def default_cluster_config(self) -> Optional[pulumi.Input['FleetDefaultClusterConfigArgs']]:
+    def default_cluster_config(self) -> pulumi.Input[Optional['FleetDefaultClusterConfigArgs']]:
         """
         The default cluster configurations to apply across the fleet.
         Structure is documented below.
@@ -149,24 +149,24 @@ class _FleetState:
         return pulumi.get(self, "default_cluster_config")
 
     @default_cluster_config.setter
-    def default_cluster_config(self, value: Optional[pulumi.Input['FleetDefaultClusterConfigArgs']]):
+    def default_cluster_config(self, value: pulumi.Input[Optional['FleetDefaultClusterConfigArgs']]):
         pulumi.set(self, "default_cluster_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the fleet was deleted, in RFC3339 text format.
         """
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
         Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
@@ -174,12 +174,12 @@ class _FleetState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -187,12 +187,12 @@ class _FleetState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FleetStateArgs']]]]:
+    def states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FleetStateArgs']]]]:
         """
         The state of the fleet resource.
         Structure is documented below.
@@ -200,12 +200,12 @@ class _FleetState:
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FleetStateArgs']]]]):
+    def states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FleetStateArgs']]]]):
         pulumi.set(self, "states", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Google-generated UUID for this resource. This is unique across all
         Fleet resources. If a Fleet resource is deleted and another
@@ -214,19 +214,19 @@ class _FleetState:
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the fleet was last updated, in RFC3339 text format.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -236,9 +236,9 @@ class Fleet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_cluster_config: Optional[pulumi.Input[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_cluster_config: pulumi.Input[Optional[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Fleet contains information about a group of clusters.
@@ -354,9 +354,9 @@ class Fleet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_cluster_config: Optional[pulumi.Input[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_cluster_config: pulumi.Input[Optional[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -384,14 +384,14 @@ class Fleet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            default_cluster_config: Optional[pulumi.Input[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FleetStateArgs', 'FleetStateArgsDict']]]]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Fleet':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            default_cluster_config: pulumi.Input[Optional[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FleetStateArgs', 'FleetStateArgsDict']]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Fleet':
         """
         Get an existing Fleet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

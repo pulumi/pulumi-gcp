@@ -201,21 +201,21 @@ export interface AttachedDiskState {
      * to this disk, in the form persistent-disks-x, where x is a number
      * assigned by Google Compute Engine.
      */
-    deviceName?: pulumi.Input<string>;
+    deviceName?: pulumi.Input<string | undefined>;
     /**
      * `name` or `selfLink` of the disk that will be attached.
      *
      *
      * - - -
      */
-    disk?: pulumi.Input<string>;
+    disk?: pulumi.Input<string | undefined>;
     /**
      * `name` or `selfLink` of the compute instance that the disk will be attached to.
      * If the `selfLink` is provided then `zone` and `project` are extracted from the
      * self link. If only the name is used then `zone` and `project` must be defined
      * as properties on the resource or provider.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The disk interface used for attaching this disk.
      *
@@ -227,7 +227,7 @@ export interface AttachedDiskState {
      * "SCSI"
      * "NVME"
      */
-    interface?: pulumi.Input<string>;
+    interface?: pulumi.Input<string | undefined>;
     /**
      * The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in
@@ -237,17 +237,17 @@ export interface AttachedDiskState {
      * "READ_ONLY"
      * "READ_WRITE"
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The project that the referenced compute instance is a part of. If `instance` is referenced by its
      * `selfLink` the project defined in the link will take precedence.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The zone that the referenced compute instance is located within. If `instance` is referenced by its
      * `selfLink` the zone defined in the link will take precedence.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -265,7 +265,7 @@ export interface AttachedDiskArgs {
      * to this disk, in the form persistent-disks-x, where x is a number
      * assigned by Google Compute Engine.
      */
-    deviceName?: pulumi.Input<string>;
+    deviceName?: pulumi.Input<string | undefined>;
     /**
      * `name` or `selfLink` of the disk that will be attached.
      *
@@ -291,7 +291,7 @@ export interface AttachedDiskArgs {
      * "SCSI"
      * "NVME"
      */
-    interface?: pulumi.Input<string>;
+    interface?: pulumi.Input<string | undefined>;
     /**
      * The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in
@@ -301,15 +301,15 @@ export interface AttachedDiskArgs {
      * "READ_ONLY"
      * "READ_WRITE"
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The project that the referenced compute instance is a part of. If `instance` is referenced by its
      * `selfLink` the project defined in the link will take precedence.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The zone that the referenced compute instance is located within. If `instance` is referenced by its
      * `selfLink` the zone defined in the link will take precedence.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

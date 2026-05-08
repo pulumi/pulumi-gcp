@@ -303,43 +303,43 @@ export interface DatasetAccessState {
     /**
      * If true, represents that that the iamMember in the config was translated to a different member type by the API, and is stored in state as a different member type
      */
-    apiUpdatedMember?: pulumi.Input<boolean>;
+    apiUpdatedMember?: pulumi.Input<boolean | undefined>;
     /**
      * Grants all resources of particular types in a particular dataset read access to the current dataset.
      * Structure is documented below.
      */
-    authorizedDataset?: pulumi.Input<inputs.bigquery.DatasetAccessAuthorizedDataset>;
+    authorizedDataset?: pulumi.Input<inputs.bigquery.DatasetAccessAuthorizedDataset | undefined>;
     /**
      * Condition for the binding. If CEL expression in this field is true, this
      * access binding will be considered.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.bigquery.DatasetAccessCondition>;
+    condition?: pulumi.Input<inputs.bigquery.DatasetAccessCondition | undefined>;
     /**
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
      */
-    datasetId?: pulumi.Input<string>;
+    datasetId?: pulumi.Input<string | undefined>;
     /**
      * A domain to grant access to. Any users signed in with the
      * domain specified will be granted the specified access
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * An email address of a Google Group to grant access to.
      */
-    groupByEmail?: pulumi.Input<string>;
+    groupByEmail?: pulumi.Input<string | undefined>;
     /**
      * Some other type of member that appears in the IAM Policy but isn't a user,
      * group, domain, or special group. For example: `allUsers`
      */
-    iamMember?: pulumi.Input<string>;
+    iamMember?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Describes the rights granted to the user specified by the other
      * member of the access object. Basic, predefined, and custom roles are
@@ -348,7 +348,7 @@ export interface DatasetAccessState {
      * post-create. See
      * [official docs](https://cloud.google.com/bigquery/docs/access-control).
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * A routine from a different dataset to grant access to. Queries
      * executed against that routine will have read access to tables in
@@ -357,7 +357,7 @@ export interface DatasetAccessState {
      * needs to be granted again via an update operation.
      * Structure is documented below.
      */
-    routine?: pulumi.Input<inputs.bigquery.DatasetAccessRoutine>;
+    routine?: pulumi.Input<inputs.bigquery.DatasetAccessRoutine | undefined>;
     /**
      * A special group to grant access to. Possible values include:
      * * `projectOwners`: Owners of the enclosing project.
@@ -365,12 +365,12 @@ export interface DatasetAccessState {
      * * `projectWriters`: Writers of the enclosing project.
      * * `allAuthenticatedUsers`: All authenticated BigQuery users.
      */
-    specialGroup?: pulumi.Input<string>;
+    specialGroup?: pulumi.Input<string | undefined>;
     /**
      * An email address of a user to grant access to. For example:
      * fred@example.com
      */
-    userByEmail?: pulumi.Input<string>;
+    userByEmail?: pulumi.Input<string | undefined>;
     /**
      * A view from a different dataset to grant access to. Queries
      * executed against that view will have read access to tables in
@@ -379,7 +379,7 @@ export interface DatasetAccessState {
      * needs to be granted again via an update operation.
      * Structure is documented below.
      */
-    view?: pulumi.Input<inputs.bigquery.DatasetAccessView>;
+    view?: pulumi.Input<inputs.bigquery.DatasetAccessView | undefined>;
 }
 
 /**
@@ -390,13 +390,13 @@ export interface DatasetAccessArgs {
      * Grants all resources of particular types in a particular dataset read access to the current dataset.
      * Structure is documented below.
      */
-    authorizedDataset?: pulumi.Input<inputs.bigquery.DatasetAccessAuthorizedDataset>;
+    authorizedDataset?: pulumi.Input<inputs.bigquery.DatasetAccessAuthorizedDataset | undefined>;
     /**
      * Condition for the binding. If CEL expression in this field is true, this
      * access binding will be considered.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.bigquery.DatasetAccessCondition>;
+    condition?: pulumi.Input<inputs.bigquery.DatasetAccessCondition | undefined>;
     /**
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
@@ -407,21 +407,21 @@ export interface DatasetAccessArgs {
      * A domain to grant access to. Any users signed in with the
      * domain specified will be granted the specified access
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * An email address of a Google Group to grant access to.
      */
-    groupByEmail?: pulumi.Input<string>;
+    groupByEmail?: pulumi.Input<string | undefined>;
     /**
      * Some other type of member that appears in the IAM Policy but isn't a user,
      * group, domain, or special group. For example: `allUsers`
      */
-    iamMember?: pulumi.Input<string>;
+    iamMember?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Describes the rights granted to the user specified by the other
      * member of the access object. Basic, predefined, and custom roles are
@@ -430,7 +430,7 @@ export interface DatasetAccessArgs {
      * post-create. See
      * [official docs](https://cloud.google.com/bigquery/docs/access-control).
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * A routine from a different dataset to grant access to. Queries
      * executed against that routine will have read access to tables in
@@ -439,7 +439,7 @@ export interface DatasetAccessArgs {
      * needs to be granted again via an update operation.
      * Structure is documented below.
      */
-    routine?: pulumi.Input<inputs.bigquery.DatasetAccessRoutine>;
+    routine?: pulumi.Input<inputs.bigquery.DatasetAccessRoutine | undefined>;
     /**
      * A special group to grant access to. Possible values include:
      * * `projectOwners`: Owners of the enclosing project.
@@ -447,12 +447,12 @@ export interface DatasetAccessArgs {
      * * `projectWriters`: Writers of the enclosing project.
      * * `allAuthenticatedUsers`: All authenticated BigQuery users.
      */
-    specialGroup?: pulumi.Input<string>;
+    specialGroup?: pulumi.Input<string | undefined>;
     /**
      * An email address of a user to grant access to. For example:
      * fred@example.com
      */
-    userByEmail?: pulumi.Input<string>;
+    userByEmail?: pulumi.Input<string | undefined>;
     /**
      * A view from a different dataset to grant access to. Queries
      * executed against that view will have read access to tables in
@@ -461,5 +461,5 @@ export interface DatasetAccessArgs {
      * needs to be granted again via an update operation.
      * Structure is documented below.
      */
-    view?: pulumi.Input<inputs.bigquery.DatasetAccessView>;
+    view?: pulumi.Input<inputs.bigquery.DatasetAccessView | undefined>;
 }

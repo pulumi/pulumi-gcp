@@ -375,23 +375,23 @@ export interface ServicePerimeterState {
     /**
      * Time the AccessPolicy was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the ServicePerimeter and its use. Does not affect
      * behavior.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Specifies the type of the Perimeter. There are two types: regular and
      * bridge. Regular Service Perimeter contains resources, access levels,
@@ -410,7 +410,7 @@ export interface ServicePerimeterState {
      * Default value is `PERIMETER_TYPE_REGULAR`.
      * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
      */
-    perimeterType?: pulumi.Input<string>;
+    perimeterType?: pulumi.Input<string | undefined>;
     /**
      * Proposed (or dry run) ServicePerimeter configuration.
      * This configuration allows to specify and test ServicePerimeter configuration
@@ -418,22 +418,22 @@ export interface ServicePerimeterState {
      * the `useExplicitDryRunSpec` flag is set.
      * Structure is documented below.
      */
-    spec?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpec>;
+    spec?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpec | undefined>;
     /**
      * ServicePerimeter configuration. Specifies sets of resources,
      * restricted services and access levels that determine
      * perimeter content and boundaries.
      * Structure is documented below.
      */
-    status?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatus>;
+    status?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatus | undefined>;
     /**
      * Human readable title. Must be unique within the Policy.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * Time the AccessPolicy was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
      * for all Service Perimeters, and that spec is identical to the status for those
@@ -445,7 +445,7 @@ export interface ServicePerimeterState {
      * between currently enforced and suggested restrictions. useExplicitDryRunSpec must
      * bet set to True if any of the fields in the spec are set to non-default values.
      */
-    useExplicitDryRunSpec?: pulumi.Input<boolean>;
+    useExplicitDryRunSpec?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -456,13 +456,13 @@ export interface ServicePerimeterArgs {
      * Description of the ServicePerimeter and its use. Does not affect
      * behavior.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
@@ -486,7 +486,7 @@ export interface ServicePerimeterArgs {
      * Default value is `PERIMETER_TYPE_REGULAR`.
      * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
      */
-    perimeterType?: pulumi.Input<string>;
+    perimeterType?: pulumi.Input<string | undefined>;
     /**
      * Proposed (or dry run) ServicePerimeter configuration.
      * This configuration allows to specify and test ServicePerimeter configuration
@@ -494,14 +494,14 @@ export interface ServicePerimeterArgs {
      * the `useExplicitDryRunSpec` flag is set.
      * Structure is documented below.
      */
-    spec?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpec>;
+    spec?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpec | undefined>;
     /**
      * ServicePerimeter configuration. Specifies sets of resources,
      * restricted services and access levels that determine
      * perimeter content and boundaries.
      * Structure is documented below.
      */
-    status?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatus>;
+    status?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatus | undefined>;
     /**
      * Human readable title. Must be unique within the Policy.
      */
@@ -517,5 +517,5 @@ export interface ServicePerimeterArgs {
      * between currently enforced and suggested restrictions. useExplicitDryRunSpec must
      * bet set to True if any of the fields in the spec are set to non-default values.
      */
-    useExplicitDryRunSpec?: pulumi.Input<boolean>;
+    useExplicitDryRunSpec?: pulumi.Input<boolean | undefined>;
 }

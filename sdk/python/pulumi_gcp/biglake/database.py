@@ -24,7 +24,7 @@ class DatabaseArgs:
                  catalog: pulumi.Input[_builtins.str],
                  hive_options: pulumi.Input['DatabaseHiveOptionsArgs'],
                  type: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
 
@@ -79,28 +79,28 @@ class DatabaseArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _DatabaseState:
     def __init__(__self__, *,
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 hive_options: Optional[pulumi.Input['DatabaseHiveOptionsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 hive_options: pulumi.Input[Optional['DatabaseHiveOptionsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
 
@@ -145,19 +145,19 @@ class _DatabaseState:
 
     @_builtins.property
     @pulumi.getter
-    def catalog(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent catalog.
         """
         return pulumi.get(self, "catalog")
 
     @catalog.setter
-    def catalog(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The creation time of the database. A timestamp in RFC3339
         UTC "Zulu" format, with nanosecond resolution and up to nine fractional
@@ -167,12 +167,12 @@ class _DatabaseState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The deletion time of the database. Only set after the
         database is deleted. A timestamp in RFC3339 UTC "Zulu" format, with
@@ -182,12 +182,12 @@ class _DatabaseState:
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time when this database is considered expired. Only set
         after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
@@ -197,12 +197,12 @@ class _DatabaseState:
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="hiveOptions")
-    def hive_options(self) -> Optional[pulumi.Input['DatabaseHiveOptionsArgs']]:
+    def hive_options(self) -> pulumi.Input[Optional['DatabaseHiveOptionsArgs']]:
         """
         Options of a Hive database.
         Structure is documented below.
@@ -210,36 +210,36 @@ class _DatabaseState:
         return pulumi.get(self, "hive_options")
 
     @hive_options.setter
-    def hive_options(self, value: Optional[pulumi.Input['DatabaseHiveOptionsArgs']]):
+    def hive_options(self, value: pulumi.Input[Optional['DatabaseHiveOptionsArgs']]):
         pulumi.set(self, "hive_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database type.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The last modification time of the database. A timestamp in
         RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -249,7 +249,7 @@ class _DatabaseState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -259,10 +259,10 @@ class Database(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 hive_options: Optional[pulumi.Input[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 hive_options: pulumi.Input[Optional[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Databases are containers of tables.
@@ -409,10 +409,10 @@ class Database(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 hive_options: Optional[pulumi.Input[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 hive_options: pulumi.Input[Optional[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -446,14 +446,14 @@ class Database(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            catalog: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-            hive_options: Optional[pulumi.Input[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Database':
+            catalog: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            hive_options: pulumi.Input[Optional[Union['DatabaseHiveOptionsArgs', 'DatabaseHiveOptionsArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Database':
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

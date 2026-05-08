@@ -25,9 +25,9 @@ class TenantInboundSamlConfigArgs:
                  idp_config: pulumi.Input['TenantInboundSamlConfigIdpConfigArgs'],
                  sp_config: pulumi.Input['TenantInboundSamlConfigSpConfigArgs'],
                  tenant: pulumi.Input[_builtins.str],
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TenantInboundSamlConfig resource.
 
@@ -109,19 +109,19 @@ class TenantInboundSamlConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this config allows users to sign in with the provider.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
         hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
@@ -130,12 +130,12 @@ class TenantInboundSamlConfigArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -143,20 +143,20 @@ class TenantInboundSamlConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _TenantInboundSamlConfigState:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idp_config: Optional[pulumi.Input['TenantInboundSamlConfigIdpConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sp_config: Optional[pulumi.Input['TenantInboundSamlConfigSpConfigArgs']] = None,
-                 tenant: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idp_config: pulumi.Input[Optional['TenantInboundSamlConfigIdpConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sp_config: pulumi.Input[Optional['TenantInboundSamlConfigSpConfigArgs']] = None,
+                 tenant: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TenantInboundSamlConfig resources.
 
@@ -191,31 +191,31 @@ class _TenantInboundSamlConfigState:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human friendly display name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this config allows users to sign in with the provider.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="idpConfig")
-    def idp_config(self) -> Optional[pulumi.Input['TenantInboundSamlConfigIdpConfigArgs']]:
+    def idp_config(self) -> pulumi.Input[Optional['TenantInboundSamlConfigIdpConfigArgs']]:
         """
         SAML IdP configuration when the project acts as the relying party
         Structure is documented below.
@@ -223,12 +223,12 @@ class _TenantInboundSamlConfigState:
         return pulumi.get(self, "idp_config")
 
     @idp_config.setter
-    def idp_config(self, value: Optional[pulumi.Input['TenantInboundSamlConfigIdpConfigArgs']]):
+    def idp_config(self, value: pulumi.Input[Optional['TenantInboundSamlConfigIdpConfigArgs']]):
         pulumi.set(self, "idp_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
         hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
@@ -237,12 +237,12 @@ class _TenantInboundSamlConfigState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -250,12 +250,12 @@ class _TenantInboundSamlConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="spConfig")
-    def sp_config(self) -> Optional[pulumi.Input['TenantInboundSamlConfigSpConfigArgs']]:
+    def sp_config(self) -> pulumi.Input[Optional['TenantInboundSamlConfigSpConfigArgs']]:
         """
         SAML SP (Service Provider) configuration when the project acts as the relying party to receive
         and accept an authentication assertion issued by a SAML identity provider.
@@ -264,19 +264,19 @@ class _TenantInboundSamlConfigState:
         return pulumi.get(self, "sp_config")
 
     @sp_config.setter
-    def sp_config(self, value: Optional[pulumi.Input['TenantInboundSamlConfigSpConfigArgs']]):
+    def sp_config(self, value: pulumi.Input[Optional['TenantInboundSamlConfigSpConfigArgs']]):
         pulumi.set(self, "sp_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tenant(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the tenant where this inbound SAML config resource exists
         """
         return pulumi.get(self, "tenant")
 
     @tenant.setter
-    def tenant(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant", value)
 
 
@@ -286,13 +286,13 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idp_config: Optional[pulumi.Input[Union['TenantInboundSamlConfigIdpConfigArgs', 'TenantInboundSamlConfigIdpConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sp_config: Optional[pulumi.Input[Union['TenantInboundSamlConfigSpConfigArgs', 'TenantInboundSamlConfigSpConfigArgsDict']]] = None,
-                 tenant: Optional[pulumi.Input[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idp_config: pulumi.Input[Optional[Union['TenantInboundSamlConfigIdpConfigArgs', 'TenantInboundSamlConfigIdpConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sp_config: pulumi.Input[Optional[Union['TenantInboundSamlConfigSpConfigArgs', 'TenantInboundSamlConfigSpConfigArgsDict']]] = None,
+                 tenant: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Inbound SAML configuration for a Identity Toolkit tenant.
@@ -435,13 +435,13 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idp_config: Optional[pulumi.Input[Union['TenantInboundSamlConfigIdpConfigArgs', 'TenantInboundSamlConfigIdpConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sp_config: Optional[pulumi.Input[Union['TenantInboundSamlConfigSpConfigArgs', 'TenantInboundSamlConfigSpConfigArgsDict']]] = None,
-                 tenant: Optional[pulumi.Input[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idp_config: pulumi.Input[Optional[Union['TenantInboundSamlConfigIdpConfigArgs', 'TenantInboundSamlConfigIdpConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sp_config: pulumi.Input[Optional[Union['TenantInboundSamlConfigSpConfigArgs', 'TenantInboundSamlConfigSpConfigArgsDict']]] = None,
+                 tenant: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -476,13 +476,13 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            idp_config: Optional[pulumi.Input[Union['TenantInboundSamlConfigIdpConfigArgs', 'TenantInboundSamlConfigIdpConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            sp_config: Optional[pulumi.Input[Union['TenantInboundSamlConfigSpConfigArgs', 'TenantInboundSamlConfigSpConfigArgsDict']]] = None,
-            tenant: Optional[pulumi.Input[_builtins.str]] = None) -> 'TenantInboundSamlConfig':
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            idp_config: pulumi.Input[Optional[Union['TenantInboundSamlConfigIdpConfigArgs', 'TenantInboundSamlConfigIdpConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            sp_config: pulumi.Input[Optional[Union['TenantInboundSamlConfigSpConfigArgs', 'TenantInboundSamlConfigSpConfigArgsDict']]] = None,
+            tenant: pulumi.Input[Optional[_builtins.str]] = None) -> 'TenantInboundSamlConfig':
         """
         Get an existing TenantInboundSamlConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.CloudScheduler
     ///         PubsubTarget = new Gcp.CloudScheduler.Inputs.JobPubsubTargetArgs
     ///         {
     ///             TopicName = topic.Id,
-    ///             Data = Std.Index.Base64encode.Invoke(new()
+    ///             Data = Std.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "test",
     ///             }).Apply(invoke =&gt; invoke.Result),
@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.CloudScheduler
     ///         {
     ///             HttpMethod = "POST",
     ///             Uri = "https://example.com/",
-    ///             Body = Std.Index.Base64encode.Invoke(new()
+    ///             Body = Std.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "{\"foo\":\"bar\"}",
     ///             }).Apply(invoke =&gt; invoke.Result),
@@ -120,7 +120,7 @@ namespace Pulumi.Gcp.CloudScheduler
     ///         {
     ///             HttpMethod = "POST",
     ///             Uri = "https://example.com/ping",
-    ///             Body = Std.Index.Base64encode.Invoke(new()
+    ///             Body = Std.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "{\"foo\":\"bar\"}",
     ///             }).Apply(invoke =&gt; invoke.Result),

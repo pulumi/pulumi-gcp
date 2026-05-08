@@ -216,21 +216,21 @@ export interface TargetSSLProxyState {
     /**
      * A reference to the BackendService resource.
      */
-    backendService?: pulumi.Input<string>;
+    backendService?: pulumi.Input<string | undefined>;
     /**
      * A reference to the CertificateMap resource uri that identifies a certificate map
      * associated with the given target proxy. This field can only be set for global target proxies.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
      */
-    certificateMap?: pulumi.Input<string>;
+    certificateMap?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -240,39 +240,39 @@ export interface TargetSSLProxyState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies the type of proxy header to append before sending data to
      * the backend.
      * Default value is `NONE`.
      * Possible values are: `NONE`, `PROXY_V1`.
      */
-    proxyHeader?: pulumi.Input<string>;
+    proxyHeader?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the resource.
      */
-    proxyId?: pulumi.Input<number>;
+    proxyId?: pulumi.Input<number | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * A list of SslCertificate resources that are used to authenticate
      * connections between users and the load balancer. At least one
      * SSL certificate must be specified.
      */
-    sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+    sslCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A reference to the SslPolicy resource that will be associated with
      * the TargetSslProxy resource. If not set, the TargetSslProxy
      * resource will not have any SSL policy configured.
      */
-    sslPolicy?: pulumi.Input<string>;
+    sslPolicy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -288,11 +288,11 @@ export interface TargetSSLProxyArgs {
      * associated with the given target proxy. This field can only be set for global target proxies.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
      */
-    certificateMap?: pulumi.Input<string>;
+    certificateMap?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -302,29 +302,29 @@ export interface TargetSSLProxyArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies the type of proxy header to append before sending data to
      * the backend.
      * Default value is `NONE`.
      * Possible values are: `NONE`, `PROXY_V1`.
      */
-    proxyHeader?: pulumi.Input<string>;
+    proxyHeader?: pulumi.Input<string | undefined>;
     /**
      * A list of SslCertificate resources that are used to authenticate
      * connections between users and the load balancer. At least one
      * SSL certificate must be specified.
      */
-    sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+    sslCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A reference to the SslPolicy resource that will be associated with
      * the TargetSslProxy resource. If not set, the TargetSslProxy
      * resource will not have any SSL policy configured.
      */
-    sslPolicy?: pulumi.Input<string>;
+    sslPolicy?: pulumi.Input<string | undefined>;
 }

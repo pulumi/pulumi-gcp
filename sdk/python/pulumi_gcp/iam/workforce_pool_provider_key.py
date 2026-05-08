@@ -124,15 +124,15 @@ class WorkforcePoolProviderKeyArgs:
 @pulumi.input_type
 class _WorkforcePoolProviderKeyState:
     def __init__(__self__, *,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_data: Optional[pulumi.Input['WorkforcePoolProviderKeyKeyDataArgs']] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 use: Optional[pulumi.Input[_builtins.str]] = None,
-                 workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_data: pulumi.Input[Optional['WorkforcePoolProviderKeyKeyDataArgs']] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 use: pulumi.Input[Optional[_builtins.str]] = None,
+                 workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkforcePoolProviderKey resources.
 
@@ -171,7 +171,7 @@ class _WorkforcePoolProviderKeyState:
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time after which the key will be permanently deleted and cannot be recovered.
         Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
@@ -179,12 +179,12 @@ class _WorkforcePoolProviderKeyState:
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="keyData")
-    def key_data(self) -> Optional[pulumi.Input['WorkforcePoolProviderKeyKeyDataArgs']]:
+    def key_data(self) -> pulumi.Input[Optional['WorkforcePoolProviderKeyKeyDataArgs']]:
         """
         Immutable. Public half of the asymmetric key.
         Structure is documented below.
@@ -192,36 +192,36 @@ class _WorkforcePoolProviderKeyState:
         return pulumi.get(self, "key_data")
 
     @key_data.setter
-    def key_data(self, value: Optional[pulumi.Input['WorkforcePoolProviderKeyKeyDataArgs']]):
+    def key_data(self, value: pulumi.Input[Optional['WorkforcePoolProviderKeyKeyDataArgs']]):
         pulumi.set(self, "key_data", value)
 
     @_builtins.property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         """
         return pulumi.get(self, "key_id")
 
     @key_id.setter
-    def key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name of the key.
         Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}/keys/{keyId}`
@@ -229,36 +229,36 @@ class _WorkforcePoolProviderKeyState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerId")
-    def provider_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provider_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the provider.
         """
         return pulumi.get(self, "provider_id")
 
     @provider_id.setter
-    def provider_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provider_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provider_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the key.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def use(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def use(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The purpose of the key.
         Possible values are: `ENCRYPTION`.
@@ -266,19 +266,19 @@ class _WorkforcePoolProviderKeyState:
         return pulumi.get(self, "use")
 
     @use.setter
-    def use(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def use(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "use", value)
 
     @_builtins.property
     @pulumi.getter(name="workforcePoolId")
-    def workforce_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workforce_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the workforce pool.
         """
         return pulumi.get(self, "workforce_pool_id")
 
     @workforce_pool_id.setter
-    def workforce_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workforce_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workforce_pool_id", value)
 
 
@@ -288,12 +288,12 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key_data: Optional[pulumi.Input[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 use: Optional[pulumi.Input[_builtins.str]] = None,
-                 workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_data: pulumi.Input[Optional[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 use: pulumi.Input[Optional[_builtins.str]] = None,
+                 workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a public key configuration for a Workforce Pool Provider. The key can be configured in your identity provider to encrypt SAML assertions.
@@ -445,12 +445,12 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key_data: Optional[pulumi.Input[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 use: Optional[pulumi.Input[_builtins.str]] = None,
-                 workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_data: pulumi.Input[Optional[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 use: pulumi.Input[Optional[_builtins.str]] = None,
+                 workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -491,15 +491,15 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-            key_data: Optional[pulumi.Input[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']]] = None,
-            key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            use: Optional[pulumi.Input[_builtins.str]] = None,
-            workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkforcePoolProviderKey':
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            key_data: pulumi.Input[Optional[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']]] = None,
+            key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            use: pulumi.Input[Optional[_builtins.str]] = None,
+            workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkforcePoolProviderKey':
         """
         Get an existing WorkforcePoolProviderKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

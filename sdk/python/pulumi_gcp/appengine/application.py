@@ -22,13 +22,13 @@ __all__ = ['ApplicationArgs', 'Application']
 class ApplicationArgs:
     def __init__(__self__, *,
                  location_id: pulumi.Input[_builtins.str],
-                 auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_settings: Optional[pulumi.Input['ApplicationFeatureSettingsArgs']] = None,
-                 iap: Optional[pulumi.Input['ApplicationIapArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 serving_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_settings: pulumi.Input[Optional['ApplicationFeatureSettingsArgs']] = None,
+                 iap: pulumi.Input[Optional['ApplicationIapArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 serving_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Application resource.
 
@@ -80,19 +80,19 @@ class ApplicationArgs:
 
     @_builtins.property
     @pulumi.getter(name="authDomain")
-    def auth_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain to authenticate users with when using App Engine's User API.
         """
         return pulumi.get(self, "auth_domain")
 
     @auth_domain.setter
-    def auth_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseType")
-    def database_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Cloud Firestore or Cloud Datastore database associated with this application.
         Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
@@ -104,36 +104,36 @@ class ApplicationArgs:
         return pulumi.get(self, "database_type")
 
     @database_type.setter
-    def database_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_type", value)
 
     @_builtins.property
     @pulumi.getter(name="featureSettings")
-    def feature_settings(self) -> Optional[pulumi.Input['ApplicationFeatureSettingsArgs']]:
+    def feature_settings(self) -> pulumi.Input[Optional['ApplicationFeatureSettingsArgs']]:
         """
         A block of optional settings to configure specific App Engine features:
         """
         return pulumi.get(self, "feature_settings")
 
     @feature_settings.setter
-    def feature_settings(self, value: Optional[pulumi.Input['ApplicationFeatureSettingsArgs']]):
+    def feature_settings(self, value: pulumi.Input[Optional['ApplicationFeatureSettingsArgs']]):
         pulumi.set(self, "feature_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def iap(self) -> Optional[pulumi.Input['ApplicationIapArgs']]:
+    def iap(self) -> pulumi.Input[Optional['ApplicationIapArgs']]:
         """
         Settings for enabling Cloud Identity Aware Proxy
         """
         return pulumi.get(self, "iap")
 
     @iap.setter
-    def iap(self, value: Optional[pulumi.Input['ApplicationIapArgs']]):
+    def iap(self, value: pulumi.Input[Optional['ApplicationIapArgs']]):
         pulumi.set(self, "iap", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID to create the application under.
         ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
@@ -142,52 +142,52 @@ class ApplicationArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="servingStatus")
-    def serving_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serving_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The serving status of the app.
         """
         return pulumi.get(self, "serving_status")
 
     @serving_status.setter
-    def serving_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serving_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serving_status", value)
 
     @_builtins.property
     @pulumi.getter(name="sslPolicy")
-    def ssl_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
         """
         return pulumi.get(self, "ssl_policy")
 
     @ssl_policy.setter
-    def ssl_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_policy", value)
 
 
 @pulumi.input_type
 class _ApplicationState:
     def __init__(__self__, *,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_settings: Optional[pulumi.Input['ApplicationFeatureSettingsArgs']] = None,
-                 gcr_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 iap: Optional[pulumi.Input['ApplicationIapArgs']] = None,
-                 location_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 serving_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRuleArgs']]]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_settings: pulumi.Input[Optional['ApplicationFeatureSettingsArgs']] = None,
+                 gcr_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 iap: pulumi.Input[Optional['ApplicationIapArgs']] = None,
+                 location_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 serving_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_dispatch_rules: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationUrlDispatchRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering Application resources.
 
@@ -248,43 +248,43 @@ class _ApplicationState:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the app, usually `{PROJECT_ID}`
         """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="authDomain")
-    def auth_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain to authenticate users with when using App Engine's User API.
         """
         return pulumi.get(self, "auth_domain")
 
     @auth_domain.setter
-    def auth_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="codeBucket")
-    def code_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCS bucket code is being stored in for this app.
         """
         return pulumi.get(self, "code_bucket")
 
     @code_bucket.setter
-    def code_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseType")
-    def database_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Cloud Firestore or Cloud Datastore database associated with this application.
         Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
@@ -296,72 +296,72 @@ class _ApplicationState:
         return pulumi.get(self, "database_type")
 
     @database_type.setter
-    def database_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_type", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBucket")
-    def default_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCS bucket content is being stored in for this app.
         """
         return pulumi.get(self, "default_bucket")
 
     @default_bucket.setter
-    def default_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultHostname")
-    def default_hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default hostname for this app.
         """
         return pulumi.get(self, "default_hostname")
 
     @default_hostname.setter
-    def default_hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="featureSettings")
-    def feature_settings(self) -> Optional[pulumi.Input['ApplicationFeatureSettingsArgs']]:
+    def feature_settings(self) -> pulumi.Input[Optional['ApplicationFeatureSettingsArgs']]:
         """
         A block of optional settings to configure specific App Engine features:
         """
         return pulumi.get(self, "feature_settings")
 
     @feature_settings.setter
-    def feature_settings(self, value: Optional[pulumi.Input['ApplicationFeatureSettingsArgs']]):
+    def feature_settings(self, value: pulumi.Input[Optional['ApplicationFeatureSettingsArgs']]):
         pulumi.set(self, "feature_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="gcrDomain")
-    def gcr_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcr_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCR domain used for storing managed Docker images for this app.
         """
         return pulumi.get(self, "gcr_domain")
 
     @gcr_domain.setter
-    def gcr_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcr_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcr_domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def iap(self) -> Optional[pulumi.Input['ApplicationIapArgs']]:
+    def iap(self) -> pulumi.Input[Optional['ApplicationIapArgs']]:
         """
         Settings for enabling Cloud Identity Aware Proxy
         """
         return pulumi.get(self, "iap")
 
     @iap.setter
-    def iap(self, value: Optional[pulumi.Input['ApplicationIapArgs']]):
+    def iap(self, value: pulumi.Input[Optional['ApplicationIapArgs']]):
         pulumi.set(self, "iap", value)
 
     @_builtins.property
     @pulumi.getter(name="locationId")
-    def location_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [location](https://cloud.google.com/appengine/docs/locations)
         to serve the app from.
@@ -369,24 +369,24 @@ class _ApplicationState:
         return pulumi.get(self, "location_id")
 
     @location_id.setter
-    def location_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique name of the app, usually `apps/{PROJECT_ID}`
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID to create the application under.
         ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
@@ -395,43 +395,43 @@ class _ApplicationState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="servingStatus")
-    def serving_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serving_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The serving status of the app.
         """
         return pulumi.get(self, "serving_status")
 
     @serving_status.setter
-    def serving_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serving_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serving_status", value)
 
     @_builtins.property
     @pulumi.getter(name="sslPolicy")
-    def ssl_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
         """
         return pulumi.get(self, "ssl_policy")
 
     @ssl_policy.setter
-    def ssl_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="urlDispatchRules")
-    def url_dispatch_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRuleArgs']]]]:
+    def url_dispatch_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationUrlDispatchRuleArgs']]]]:
         """
         A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
         """
         return pulumi.get(self, "url_dispatch_rules")
 
     @url_dispatch_rules.setter
-    def url_dispatch_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUrlDispatchRuleArgs']]]]):
+    def url_dispatch_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationUrlDispatchRuleArgs']]]]):
         pulumi.set(self, "url_dispatch_rules", value)
 
 
@@ -441,14 +441,14 @@ class Application(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_settings: Optional[pulumi.Input[Union['ApplicationFeatureSettingsArgs', 'ApplicationFeatureSettingsArgsDict']]] = None,
-                 iap: Optional[pulumi.Input[Union['ApplicationIapArgs', 'ApplicationIapArgsDict']]] = None,
-                 location_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 serving_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_settings: pulumi.Input[Optional[Union['ApplicationFeatureSettingsArgs', 'ApplicationFeatureSettingsArgsDict']]] = None,
+                 iap: pulumi.Input[Optional[Union['ApplicationIapArgs', 'ApplicationIapArgsDict']]] = None,
+                 location_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 serving_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Allows creation and management of an App Engine application.
@@ -562,14 +562,14 @@ class Application(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_settings: Optional[pulumi.Input[Union['ApplicationFeatureSettingsArgs', 'ApplicationFeatureSettingsArgsDict']]] = None,
-                 iap: Optional[pulumi.Input[Union['ApplicationIapArgs', 'ApplicationIapArgsDict']]] = None,
-                 location_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 serving_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_settings: pulumi.Input[Optional[Union['ApplicationFeatureSettingsArgs', 'ApplicationFeatureSettingsArgsDict']]] = None,
+                 iap: pulumi.Input[Optional[Union['ApplicationIapArgs', 'ApplicationIapArgsDict']]] = None,
+                 location_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 serving_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -606,21 +606,21 @@ class Application(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            code_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            database_type: Optional[pulumi.Input[_builtins.str]] = None,
-            default_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            default_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            feature_settings: Optional[pulumi.Input[Union['ApplicationFeatureSettingsArgs', 'ApplicationFeatureSettingsArgsDict']]] = None,
-            gcr_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            iap: Optional[pulumi.Input[Union['ApplicationIapArgs', 'ApplicationIapArgsDict']]] = None,
-            location_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            serving_status: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            url_dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRuleArgs', 'ApplicationUrlDispatchRuleArgsDict']]]]] = None) -> 'Application':
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            code_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            database_type: pulumi.Input[Optional[_builtins.str]] = None,
+            default_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            default_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            feature_settings: pulumi.Input[Optional[Union['ApplicationFeatureSettingsArgs', 'ApplicationFeatureSettingsArgsDict']]] = None,
+            gcr_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            iap: pulumi.Input[Optional[Union['ApplicationIapArgs', 'ApplicationIapArgsDict']]] = None,
+            location_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            serving_status: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            url_dispatch_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRuleArgs', 'ApplicationUrlDispatchRuleArgsDict']]]]] = None) -> 'Application':
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

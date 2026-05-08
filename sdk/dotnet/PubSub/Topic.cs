@@ -448,7 +448,7 @@ namespace Pulumi.Gcp.PubSub
     ///         Member = geminiQueryServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
-    ///     var wait120Seconds = new Time.Index.Sleep("wait_120_seconds", new()
+    ///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
     ///     {
     ///         CreateDuration = "120s",
     ///     }, new CustomResourceOptions

@@ -348,7 +348,7 @@ __all__ = [
 ]
 
 class BareMetalAdminClusterClusterOperationsArgsDict(TypedDict):
-    enable_application_logs: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_application_logs: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
     """
@@ -356,7 +356,7 @@ class BareMetalAdminClusterClusterOperationsArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalAdminClusterClusterOperationsArgs:
     def __init__(__self__, *,
-                 enable_application_logs: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_application_logs: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_application_logs: Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
         """
@@ -365,14 +365,14 @@ class BareMetalAdminClusterClusterOperationsArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableApplicationLogs")
-    def enable_application_logs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_application_logs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
         """
         return pulumi.get(self, "enable_application_logs")
 
     @enable_application_logs.setter
-    def enable_application_logs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_application_logs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_application_logs", value)
 
 
@@ -382,7 +382,7 @@ class BareMetalAdminClusterControlPlaneArgsDict(TypedDict):
     Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
     Structure is documented below.
     """
-    api_server_args: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgsDict']]]]
+    api_server_args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgs']]]]]
     """
     Customizes the default API server args. Only a subset of
     customized flags are supported. Please refer to the API server
@@ -395,7 +395,7 @@ class BareMetalAdminClusterControlPlaneArgsDict(TypedDict):
 class BareMetalAdminClusterControlPlaneArgs:
     def __init__(__self__, *,
                  control_plane_node_pool_config: pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs'],
-                 api_server_args: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgs']]]] = None):
+                 api_server_args: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgs']]]] = None):
         """
         :param pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs'] control_plane_node_pool_config: Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
                Structure is documented below.
@@ -424,7 +424,7 @@ class BareMetalAdminClusterControlPlaneArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiServerArgs")
-    def api_server_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgs']]]]:
+    def api_server_args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgs']]]]:
         """
         Customizes the default API server args. Only a subset of
         customized flags are supported. Please refer to the API server
@@ -435,7 +435,7 @@ class BareMetalAdminClusterControlPlaneArgs:
         return pulumi.get(self, "api_server_args")
 
     @api_server_args.setter
-    def api_server_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgs']]]]):
+    def api_server_args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgs']]]]):
         pulumi.set(self, "api_server_args", value)
 
 
@@ -518,22 +518,22 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs:
 
 
 class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The labels assigned to nodes of this node pool.
     An object containing a list of key/value pairs.
     Example:
     { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
+    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]]
     """
     Structure is documented below.
     """
-    operating_system: NotRequired[pulumi.Input[_builtins.str]]
+    operating_system: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The available Operating Systems to be run in a Node.
     """
-    taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict']]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]]
     """
     Structure is documented below.
     """
@@ -541,10 +541,10 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
 @pulumi.input_type
 class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
-                 operating_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_configs: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
+                 operating_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels assigned to nodes of this node pool.
                An object containing a list of key/value pairs.
@@ -565,7 +565,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels assigned to nodes of this node pool.
         An object containing a list of key/value pairs.
@@ -575,55 +575,55 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeConfigs")
-    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
+    def node_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "node_configs")
 
     @node_configs.setter
-    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
+    def node_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
         pulumi.set(self, "node_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="operatingSystem")
-    def operating_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operating_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The available Operating Systems to be run in a Node.
         """
         return pulumi.get(self, "operating_system")
 
     @operating_system.setter
-    def operating_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operating_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operating_system", value)
 
     @_builtins.property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]:
+    def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]):
+    def taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
 
 class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The labels assigned to nodes of this node pool.
     An object containing a list of key/value pairs.
     Example:
     { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_ip: NotRequired[pulumi.Input[_builtins.str]]
+    node_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -631,8 +631,8 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
 @pulumi.input_type
 class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels assigned to nodes of this node pool.
                An object containing a list of key/value pairs.
@@ -647,7 +647,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels assigned to nodes of this node pool.
         An object containing a list of key/value pairs.
@@ -657,32 +657,32 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeIp")
-    def node_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "node_ip")
 
     @node_ip.setter
-    def node_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_ip", value)
 
 
 class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict(TypedDict):
-    effect: NotRequired[pulumi.Input[_builtins.str]]
+    effect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Available taint effects.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -690,9 +690,9 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigT
 @pulumi.input_type
 class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs:
     def __init__(__self__, *,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Available taint effects.
         :param pulumi.Input[_builtins.str] key: (Optional)
@@ -707,43 +707,43 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigT
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available taint effects.
         """
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class BareMetalAdminClusterFleetArgsDict(TypedDict):
-    membership: NotRequired[pulumi.Input[_builtins.str]]
+    membership: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The name of the managed Hub Membership resource associated to this cluster.
@@ -754,7 +754,7 @@ class BareMetalAdminClusterFleetArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalAdminClusterFleetArgs:
     def __init__(__self__, *,
-                 membership: Optional[pulumi.Input[_builtins.str]] = None):
+                 membership: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] membership: (Output)
                The name of the managed Hub Membership resource associated to this cluster.
@@ -766,7 +766,7 @@ class BareMetalAdminClusterFleetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def membership(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def membership(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the managed Hub Membership resource associated to this cluster.
@@ -776,7 +776,7 @@ class BareMetalAdminClusterFleetArgs:
         return pulumi.get(self, "membership")
 
     @membership.setter
-    def membership(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def membership(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "membership", value)
 
 
@@ -791,12 +791,12 @@ class BareMetalAdminClusterLoadBalancerArgsDict(TypedDict):
     Specified the Bare Metal Load Balancer Config
     Structure is documented below.
     """
-    bgp_lb_config: NotRequired[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigArgsDict']]
+    bgp_lb_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    manual_lb_config: NotRequired[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgsDict']]
+    manual_lb_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -807,8 +807,8 @@ class BareMetalAdminClusterLoadBalancerArgs:
     def __init__(__self__, *,
                  port_config: pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArgs'],
                  vip_config: pulumi.Input['BareMetalAdminClusterLoadBalancerVipConfigArgs'],
-                 bgp_lb_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigArgs']] = None,
-                 manual_lb_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']] = None):
+                 bgp_lb_config: pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigArgs']] = None,
+                 manual_lb_config: pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']] = None):
         """
         :param pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArgs'] port_config: Specifies the load balancer ports.
                Structure is documented below.
@@ -854,7 +854,7 @@ class BareMetalAdminClusterLoadBalancerArgs:
 
     @_builtins.property
     @pulumi.getter(name="bgpLbConfig")
-    def bgp_lb_config(self) -> Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigArgs']]:
+    def bgp_lb_config(self) -> pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -862,12 +862,12 @@ class BareMetalAdminClusterLoadBalancerArgs:
         return pulumi.get(self, "bgp_lb_config")
 
     @bgp_lb_config.setter
-    def bgp_lb_config(self, value: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigArgs']]):
+    def bgp_lb_config(self, value: pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigArgs']]):
         pulumi.set(self, "bgp_lb_config", value)
 
     @_builtins.property
     @pulumi.getter(name="manualLbConfig")
-    def manual_lb_config(self) -> Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']]:
+    def manual_lb_config(self) -> pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -875,27 +875,27 @@ class BareMetalAdminClusterLoadBalancerArgs:
         return pulumi.get(self, "manual_lb_config")
 
     @manual_lb_config.setter
-    def manual_lb_config(self, value: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']]):
+    def manual_lb_config(self, value: pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']]):
         pulumi.set(self, "manual_lb_config", value)
 
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigArgsDict(TypedDict):
-    address_pools: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgsDict']]]]
+    address_pools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs']]]]]
     """
     a list of non-overlapping IP pools used
     by load balancer typed services.
     Structure is documented below.
     """
-    asn: NotRequired[pulumi.Input[_builtins.int]]
+    asn: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     BGP autonomous system number (ASN) of the cluster.
     """
-    bgp_peer_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgsDict']]]]
+    bgp_peer_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]]]]
     """
     BGP autonomous system number (ASN) of the cluster.
     Structure is documented below.
     """
-    load_balancer_node_pool_config: NotRequired[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict']]
+    load_balancer_node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -904,10 +904,10 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalAdminClusterLoadBalancerBgpLbConfigArgs:
     def __init__(__self__, *,
-                 address_pools: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs']]]] = None,
-                 asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgp_peer_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]]] = None,
-                 load_balancer_node_pool_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']] = None):
+                 address_pools: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs']]]] = None,
+                 asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgp_peer_configs: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]]] = None,
+                 load_balancer_node_pool_config: pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs']]] address_pools: a list of non-overlapping IP pools used
                by load balancer typed services.
@@ -929,7 +929,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="addressPools")
-    def address_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs']]]]:
+    def address_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs']]]]:
         """
         a list of non-overlapping IP pools used
         by load balancer typed services.
@@ -938,24 +938,24 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigArgs:
         return pulumi.get(self, "address_pools")
 
     @address_pools.setter
-    def address_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs']]]]):
+    def address_pools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs']]]]):
         pulumi.set(self, "address_pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def asn(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def asn(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         BGP autonomous system number (ASN) of the cluster.
         """
         return pulumi.get(self, "asn")
 
     @asn.setter
-    def asn(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def asn(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "asn", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpPeerConfigs")
-    def bgp_peer_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]]]:
+    def bgp_peer_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]]]:
         """
         BGP autonomous system number (ASN) of the cluster.
         Structure is documented below.
@@ -963,12 +963,12 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigArgs:
         return pulumi.get(self, "bgp_peer_configs")
 
     @bgp_peer_configs.setter
-    def bgp_peer_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]]]):
+    def bgp_peer_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]]]):
         pulumi.set(self, "bgp_peer_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerNodePoolConfig")
-    def load_balancer_node_pool_config(self) -> Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]:
+    def load_balancer_node_pool_config(self) -> pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -976,25 +976,25 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigArgs:
         return pulumi.get(self, "load_balancer_node_pool_config")
 
     @load_balancer_node_pool_config.setter
-    def load_balancer_node_pool_config(self, value: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]):
+    def load_balancer_node_pool_config(self, value: pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]):
         pulumi.set(self, "load_balancer_node_pool_config", value)
 
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgsDict(TypedDict):
-    addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The addresses that are part of this pool.
     """
-    avoid_buggy_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    avoid_buggy_ips: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     This avoids buggy consumer devices mistakenly
     dropping IPv4 traffic for those special IP addresses.
     """
-    manual_assign: NotRequired[pulumi.Input[_builtins.bool]]
+    manual_assign: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, prevent IP addresses from being automatically assigned.
     """
-    pool: NotRequired[pulumi.Input[_builtins.str]]
+    pool: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -1002,10 +1002,10 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgsDict(TypedDict)
 @pulumi.input_type
 class BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs:
     def __init__(__self__, *,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 avoid_buggy_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 manual_assign: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pool: Optional[pulumi.Input[_builtins.str]] = None):
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 avoid_buggy_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 manual_assign: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pool: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: The addresses that are part of this pool.
         :param pulumi.Input[_builtins.bool] avoid_buggy_ips: This avoids buggy consumer devices mistakenly
@@ -1024,19 +1024,19 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs:
 
     @_builtins.property
     @pulumi.getter
-    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The addresses that are part of this pool.
         """
         return pulumi.get(self, "addresses")
 
     @addresses.setter
-    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="avoidBuggyIps")
-    def avoid_buggy_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def avoid_buggy_ips(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This avoids buggy consumer devices mistakenly
         dropping IPv4 traffic for those special IP addresses.
@@ -1044,45 +1044,45 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs:
         return pulumi.get(self, "avoid_buggy_ips")
 
     @avoid_buggy_ips.setter
-    def avoid_buggy_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def avoid_buggy_ips(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "avoid_buggy_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="manualAssign")
-    def manual_assign(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def manual_assign(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, prevent IP addresses from being automatically assigned.
         """
         return pulumi.get(self, "manual_assign")
 
     @manual_assign.setter
-    def manual_assign(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def manual_assign(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "manual_assign", value)
 
     @_builtins.property
     @pulumi.getter
-    def pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "pool")
 
     @pool.setter
-    def pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool", value)
 
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgsDict(TypedDict):
-    asn: NotRequired[pulumi.Input[_builtins.int]]
+    asn: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    control_plane_nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    control_plane_nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The IP address of the control plane node that
     connects to the external peer.
     """
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -1090,9 +1090,9 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgsDict(TypedDic
 @pulumi.input_type
 class BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs:
     def __init__(__self__, *,
-                 asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 control_plane_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None):
+                 asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 control_plane_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] asn: (Optional)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] control_plane_nodes: The IP address of the control plane node that
@@ -1108,19 +1108,19 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def asn(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def asn(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "asn")
 
     @asn.setter
-    def asn(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def asn(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "asn", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneNodes")
-    def control_plane_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def control_plane_nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IP address of the control plane node that
         connects to the external peer.
@@ -1128,24 +1128,24 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs:
         return pulumi.get(self, "control_plane_nodes")
 
     @control_plane_nodes.setter
-    def control_plane_nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def control_plane_nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "control_plane_nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict(TypedDict):
-    node_pool_config: NotRequired[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict']]
+    node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1154,7 +1154,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs
 @pulumi.input_type
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs:
     def __init__(__self__, *,
-                 node_pool_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']] = None):
+                 node_pool_config: pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']] = None):
         """
         :param pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs'] node_pool_config: A nested object resource.
                Structure is documented below.
@@ -1164,7 +1164,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs
 
     @_builtins.property
     @pulumi.getter(name="nodePoolConfig")
-    def node_pool_config(self) -> Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]:
+    def node_pool_config(self) -> pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1172,32 +1172,32 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs
         return pulumi.get(self, "node_pool_config")
 
     @node_pool_config.setter
-    def node_pool_config(self, value: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]):
+    def node_pool_config(self, value: pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]):
         pulumi.set(self, "node_pool_config", value)
 
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict(TypedDict):
-    kubelet_config: NotRequired[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgsDict']]
+    kubelet_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The labels assigned to nodes of this node pool.
     An object containing a list of key/value pairs.
     Example:
     { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
+    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]]
     """
     Structure is documented below.
     """
-    operating_system: NotRequired[pulumi.Input[_builtins.str]]
+    operating_system: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The available Operating Systems to be run in a Node.
     """
-    taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict']]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]]
     """
     Structure is documented below.
     """
@@ -1205,11 +1205,11 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
 @pulumi.input_type
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs:
     def __init__(__self__, *,
-                 kubelet_config: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
-                 operating_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
+                 kubelet_config: pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_configs: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
+                 operating_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
         """
         :param pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs'] kubelet_config: A nested object resource.
                Structure is documented below.
@@ -1234,7 +1234,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
 
     @_builtins.property
     @pulumi.getter(name="kubeletConfig")
-    def kubelet_config(self) -> Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]:
+    def kubelet_config(self) -> pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1242,12 +1242,12 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
         return pulumi.get(self, "kubelet_config")
 
     @kubelet_config.setter
-    def kubelet_config(self, value: Optional[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]):
+    def kubelet_config(self, value: pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]):
         pulumi.set(self, "kubelet_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels assigned to nodes of this node pool.
         An object containing a list of key/value pairs.
@@ -1257,56 +1257,56 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeConfigs")
-    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
+    def node_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "node_configs")
 
     @node_configs.setter
-    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
+    def node_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
         pulumi.set(self, "node_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="operatingSystem")
-    def operating_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operating_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The available Operating Systems to be run in a Node.
         """
         return pulumi.get(self, "operating_system")
 
     @operating_system.setter
-    def operating_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operating_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operating_system", value)
 
     @_builtins.property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]:
+    def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]):
+    def taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgsDict(TypedDict):
-    registry_burst: NotRequired[pulumi.Input[_builtins.int]]
+    registry_burst: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    registry_pull_qps: NotRequired[pulumi.Input[_builtins.int]]
+    registry_pull_qps: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    serialize_image_pulls_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    serialize_image_pulls_disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
@@ -1314,9 +1314,9 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
 @pulumi.input_type
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs:
     def __init__(__self__, *,
-                 registry_burst: Optional[pulumi.Input[_builtins.int]] = None,
-                 registry_pull_qps: Optional[pulumi.Input[_builtins.int]] = None,
-                 serialize_image_pulls_disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 registry_burst: pulumi.Input[Optional[_builtins.int]] = None,
+                 registry_pull_qps: pulumi.Input[Optional[_builtins.int]] = None,
+                 serialize_image_pulls_disabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.int] registry_burst: (Optional)
         :param pulumi.Input[_builtins.int] registry_pull_qps: (Optional)
@@ -1331,50 +1331,50 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
 
     @_builtins.property
     @pulumi.getter(name="registryBurst")
-    def registry_burst(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def registry_burst(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "registry_burst")
 
     @registry_burst.setter
-    def registry_burst(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def registry_burst(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "registry_burst", value)
 
     @_builtins.property
     @pulumi.getter(name="registryPullQps")
-    def registry_pull_qps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def registry_pull_qps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "registry_pull_qps")
 
     @registry_pull_qps.setter
-    def registry_pull_qps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def registry_pull_qps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "registry_pull_qps", value)
 
     @_builtins.property
     @pulumi.getter(name="serializeImagePullsDisabled")
-    def serialize_image_pulls_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def serialize_image_pulls_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "serialize_image_pulls_disabled")
 
     @serialize_image_pulls_disabled.setter
-    def serialize_image_pulls_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def serialize_image_pulls_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "serialize_image_pulls_disabled", value)
 
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The labels assigned to nodes of this node pool.
     An object containing a list of key/value pairs.
     Example:
     { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_ip: NotRequired[pulumi.Input[_builtins.str]]
+    node_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -1382,8 +1382,8 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
 @pulumi.input_type
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels assigned to nodes of this node pool.
                An object containing a list of key/value pairs.
@@ -1398,7 +1398,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels assigned to nodes of this node pool.
         An object containing a list of key/value pairs.
@@ -1408,32 +1408,32 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeIp")
-    def node_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "node_ip")
 
     @node_ip.setter
-    def node_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_ip", value)
 
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict(TypedDict):
-    effect: NotRequired[pulumi.Input[_builtins.str]]
+    effect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Available taint effects.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -1441,9 +1441,9 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
 @pulumi.input_type
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs:
     def __init__(__self__, *,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Available taint effects.
         :param pulumi.Input[_builtins.str] key: (Optional)
@@ -1458,38 +1458,38 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available taint effects.
         """
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -1615,16 +1615,16 @@ class BareMetalAdminClusterMaintenanceConfigArgs:
 
 
 class BareMetalAdminClusterNetworkConfigArgsDict(TypedDict):
-    advanced_networking: NotRequired[pulumi.Input[_builtins.bool]]
+    advanced_networking: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables the use of advanced Anthos networking features.
     """
-    island_mode_cidr: NotRequired[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgsDict']]
+    island_mode_cidr: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    multiple_network_interfaces_config: NotRequired[pulumi.Input['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict']]
+    multiple_network_interfaces_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]]
     """
     Configuration for multiple network interfaces.
     Structure is documented below.
@@ -1633,9 +1633,9 @@ class BareMetalAdminClusterNetworkConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalAdminClusterNetworkConfigArgs:
     def __init__(__self__, *,
-                 advanced_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 island_mode_cidr: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']] = None,
-                 multiple_network_interfaces_config: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']] = None):
+                 advanced_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 island_mode_cidr: pulumi.Input[Optional['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']] = None,
+                 multiple_network_interfaces_config: pulumi.Input[Optional['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] advanced_networking: Enables the use of advanced Anthos networking features.
         :param pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs'] island_mode_cidr: A nested object resource.
@@ -1652,19 +1652,19 @@ class BareMetalAdminClusterNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="advancedNetworking")
-    def advanced_networking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advanced_networking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables the use of advanced Anthos networking features.
         """
         return pulumi.get(self, "advanced_networking")
 
     @advanced_networking.setter
-    def advanced_networking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advanced_networking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advanced_networking", value)
 
     @_builtins.property
     @pulumi.getter(name="islandModeCidr")
-    def island_mode_cidr(self) -> Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']]:
+    def island_mode_cidr(self) -> pulumi.Input[Optional['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1672,12 +1672,12 @@ class BareMetalAdminClusterNetworkConfigArgs:
         return pulumi.get(self, "island_mode_cidr")
 
     @island_mode_cidr.setter
-    def island_mode_cidr(self, value: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']]):
+    def island_mode_cidr(self, value: pulumi.Input[Optional['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']]):
         pulumi.set(self, "island_mode_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="multipleNetworkInterfacesConfig")
-    def multiple_network_interfaces_config(self) -> Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]:
+    def multiple_network_interfaces_config(self) -> pulumi.Input[Optional['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]:
         """
         Configuration for multiple network interfaces.
         Structure is documented below.
@@ -1685,7 +1685,7 @@ class BareMetalAdminClusterNetworkConfigArgs:
         return pulumi.get(self, "multiple_network_interfaces_config")
 
     @multiple_network_interfaces_config.setter
-    def multiple_network_interfaces_config(self, value: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]):
+    def multiple_network_interfaces_config(self, value: pulumi.Input[Optional['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]):
         pulumi.set(self, "multiple_network_interfaces_config", value)
 
 
@@ -1737,7 +1737,7 @@ class BareMetalAdminClusterNetworkConfigIslandModeCidrArgs:
 
 
 class BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When set network_config.advanced_networking is automatically
     set to true.
@@ -1746,7 +1746,7 @@ class BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict(
 @pulumi.input_type
 class BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: When set network_config.advanced_networking is automatically
                set to true.
@@ -1756,7 +1756,7 @@ class BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set network_config.advanced_networking is automatically
         set to true.
@@ -1764,12 +1764,12 @@ class BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
 class BareMetalAdminClusterNodeAccessConfigArgsDict(TypedDict):
-    login_user: NotRequired[pulumi.Input[_builtins.str]]
+    login_user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     LoginUser is the user name used to access node machines.
     It defaults to "root" if not set.
@@ -1778,7 +1778,7 @@ class BareMetalAdminClusterNodeAccessConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalAdminClusterNodeAccessConfigArgs:
     def __init__(__self__, *,
-                 login_user: Optional[pulumi.Input[_builtins.str]] = None):
+                 login_user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] login_user: LoginUser is the user name used to access node machines.
                It defaults to "root" if not set.
@@ -1788,7 +1788,7 @@ class BareMetalAdminClusterNodeAccessConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="loginUser")
-    def login_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LoginUser is the user name used to access node machines.
         It defaults to "root" if not set.
@@ -1796,12 +1796,12 @@ class BareMetalAdminClusterNodeAccessConfigArgs:
         return pulumi.get(self, "login_user")
 
     @login_user.setter
-    def login_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_user", value)
 
 
 class BareMetalAdminClusterNodeConfigArgsDict(TypedDict):
-    max_pods_per_node: NotRequired[pulumi.Input[_builtins.int]]
+    max_pods_per_node: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of pods a node can run. The size of the CIDR range
     assigned to the node will be derived from this parameter.
@@ -1810,7 +1810,7 @@ class BareMetalAdminClusterNodeConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalAdminClusterNodeConfigArgs:
     def __init__(__self__, *,
-                 max_pods_per_node: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods a node can run. The size of the CIDR range
                assigned to the node will be derived from this parameter.
@@ -1820,7 +1820,7 @@ class BareMetalAdminClusterNodeConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxPodsPerNode")
-    def max_pods_per_node(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_pods_per_node(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of pods a node can run. The size of the CIDR range
         assigned to the node will be derived from this parameter.
@@ -1828,7 +1828,7 @@ class BareMetalAdminClusterNodeConfigArgs:
         return pulumi.get(self, "max_pods_per_node")
 
     @max_pods_per_node.setter
-    def max_pods_per_node(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_pods_per_node(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_pods_per_node", value)
 
 
@@ -1840,7 +1840,7 @@ class BareMetalAdminClusterProxyArgsDict(TypedDict):
     WARNING: Do not provide credentials in the format
     of http://(username:password@)domain these will be rejected by the server.
     """
-    no_proxies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    no_proxies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of IPs, hostnames, and domains that should skip the proxy.
     For example: ["127.0.0.1", "example.com", ".corp", "localhost"].
@@ -1850,7 +1850,7 @@ class BareMetalAdminClusterProxyArgsDict(TypedDict):
 class BareMetalAdminClusterProxyArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 no_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 no_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Specifies the address of your proxy server.
                For Example: http://domain
@@ -1880,7 +1880,7 @@ class BareMetalAdminClusterProxyArgs:
 
     @_builtins.property
     @pulumi.getter(name="noProxies")
-    def no_proxies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def no_proxies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of IPs, hostnames, and domains that should skip the proxy.
         For example: ["127.0.0.1", "example.com", ".corp", "localhost"].
@@ -1888,12 +1888,12 @@ class BareMetalAdminClusterProxyArgs:
         return pulumi.get(self, "no_proxies")
 
     @no_proxies.setter
-    def no_proxies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def no_proxies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "no_proxies", value)
 
 
 class BareMetalAdminClusterSecurityConfigArgsDict(TypedDict):
-    authorization: NotRequired[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArgsDict']]
+    authorization: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterSecurityConfigAuthorizationArgs']]]
     """
     Configures user access to the Bare Metal User cluster.
     Structure is documented below.
@@ -1902,7 +1902,7 @@ class BareMetalAdminClusterSecurityConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalAdminClusterSecurityConfigArgs:
     def __init__(__self__, *,
-                 authorization: Optional[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArgs']] = None):
+                 authorization: pulumi.Input[Optional['BareMetalAdminClusterSecurityConfigAuthorizationArgs']] = None):
         """
         :param pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArgs'] authorization: Configures user access to the Bare Metal User cluster.
                Structure is documented below.
@@ -1912,7 +1912,7 @@ class BareMetalAdminClusterSecurityConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authorization(self) -> Optional[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArgs']]:
+    def authorization(self) -> pulumi.Input[Optional['BareMetalAdminClusterSecurityConfigAuthorizationArgs']]:
         """
         Configures user access to the Bare Metal User cluster.
         Structure is documented below.
@@ -1920,7 +1920,7 @@ class BareMetalAdminClusterSecurityConfigArgs:
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: Optional[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArgs']]):
+    def authorization(self, value: pulumi.Input[Optional['BareMetalAdminClusterSecurityConfigAuthorizationArgs']]):
         pulumi.set(self, "authorization", value)
 
 
@@ -1984,13 +1984,13 @@ class BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs:
 
 
 class BareMetalAdminClusterStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgsDict']]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgs']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
     Structure is documented below.
     """
-    error_message: NotRequired[pulumi.Input[_builtins.str]]
+    error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human-friendly representation of the error message from the admin cluster
@@ -2003,8 +2003,8 @@ class BareMetalAdminClusterStatusArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalAdminClusterStatusArgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgs']]]] = None,
-                 error_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgs']]]] = None,
+                 error_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgs']]] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
@@ -2023,7 +2023,7 @@ class BareMetalAdminClusterStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgs']]]]:
         """
         (Output)
         ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
@@ -2032,12 +2032,12 @@ class BareMetalAdminClusterStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human-friendly representation of the error message from the admin cluster
@@ -2049,31 +2049,31 @@ class BareMetalAdminClusterStatusArgs:
         return pulumi.get(self, "error_message")
 
     @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_message", value)
 
 
 class BareMetalAdminClusterStatusConditionArgsDict(TypedDict):
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transit from one status to another.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Human-readable message indicating details about last transition.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A human-readable message of the check failure.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The lifecycle state of the condition.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of the condition.
     (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
@@ -2082,11 +2082,11 @@ class BareMetalAdminClusterStatusConditionArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalAdminClusterStatusConditionArgs:
     def __init__(__self__, *,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] last_transition_time: (Output)
                Last time the condition transit from one status to another.
@@ -2111,7 +2111,7 @@ class BareMetalAdminClusterStatusConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transit from one status to another.
@@ -2119,24 +2119,24 @@ class BareMetalAdminClusterStatusConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable message indicating details about last transition.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A human-readable message of the check failure.
@@ -2144,12 +2144,12 @@ class BareMetalAdminClusterStatusConditionArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The lifecycle state of the condition.
@@ -2157,12 +2157,12 @@ class BareMetalAdminClusterStatusConditionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the condition.
         (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
@@ -2170,7 +2170,7 @@ class BareMetalAdminClusterStatusConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -2292,7 +2292,7 @@ class BareMetalAdminClusterStorageLvpShareConfigArgsDict(TypedDict):
     Defines the machine path and storage class for the LVP Share.
     Structure is documented below.
     """
-    shared_path_pv_count: NotRequired[pulumi.Input[_builtins.int]]
+    shared_path_pv_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of subdirectories to create under path.
     """
@@ -2301,7 +2301,7 @@ class BareMetalAdminClusterStorageLvpShareConfigArgsDict(TypedDict):
 class BareMetalAdminClusterStorageLvpShareConfigArgs:
     def __init__(__self__, *,
                  lvp_config: pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs'],
-                 shared_path_pv_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 shared_path_pv_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs'] lvp_config: Defines the machine path and storage class for the LVP Share.
                Structure is documented below.
@@ -2326,14 +2326,14 @@ class BareMetalAdminClusterStorageLvpShareConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="sharedPathPvCount")
-    def shared_path_pv_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shared_path_pv_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of subdirectories to create under path.
         """
         return pulumi.get(self, "shared_path_pv_count")
 
     @shared_path_pv_count.setter
-    def shared_path_pv_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shared_path_pv_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shared_path_pv_count", value)
 
 
@@ -2385,17 +2385,17 @@ class BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs:
 
 
 class BareMetalAdminClusterValidationCheckArgsDict(TypedDict):
-    options: NotRequired[pulumi.Input[_builtins.str]]
+    options: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Options used for the validation check.
     """
-    scenario: NotRequired[pulumi.Input[_builtins.str]]
+    scenario: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The scenario when the preflight checks were run..
     """
-    statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgsDict']]]]
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgs']]]]]
     """
     (Output)
     Specifies the detailed validation check status
@@ -2405,9 +2405,9 @@ class BareMetalAdminClusterValidationCheckArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalAdminClusterValidationCheckArgs:
     def __init__(__self__, *,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 scenario: Optional[pulumi.Input[_builtins.str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgs']]]] = None):
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenario: pulumi.Input[Optional[_builtins.str]] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] options: (Output)
                Options used for the validation check.
@@ -2426,7 +2426,7 @@ class BareMetalAdminClusterValidationCheckArgs:
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Options used for the validation check.
@@ -2434,12 +2434,12 @@ class BareMetalAdminClusterValidationCheckArgs:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def scenario(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scenario(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The scenario when the preflight checks were run..
@@ -2447,12 +2447,12 @@ class BareMetalAdminClusterValidationCheckArgs:
         return pulumi.get(self, "scenario")
 
     @scenario.setter
-    def scenario(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scenario(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scenario", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgs']]]]:
         """
         (Output)
         Specifies the detailed validation check status
@@ -2461,12 +2461,12 @@ class BareMetalAdminClusterValidationCheckArgs:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
 
 class BareMetalAdminClusterValidationCheckStatusArgsDict(TypedDict):
-    results: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgsDict']]]]
+    results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]]]]
     """
     (Output)
     Individual checks which failed as part of the Preflight check execution.
@@ -2476,7 +2476,7 @@ class BareMetalAdminClusterValidationCheckStatusArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalAdminClusterValidationCheckStatusArgs:
     def __init__(__self__, *,
-                 results: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]]] = None):
+                 results: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]] results: (Output)
                Individual checks which failed as part of the Preflight check execution.
@@ -2487,7 +2487,7 @@ class BareMetalAdminClusterValidationCheckStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]]]:
+    def results(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]]]:
         """
         (Output)
         Individual checks which failed as part of the Preflight check execution.
@@ -2496,31 +2496,31 @@ class BareMetalAdminClusterValidationCheckStatusArgs:
         return pulumi.get(self, "results")
 
     @results.setter
-    def results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]]]):
+    def results(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]]]):
         pulumi.set(self, "results", value)
 
 
 class BareMetalAdminClusterValidationCheckStatusResultArgsDict(TypedDict):
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The category of the validation.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A human readable description of this Bare Metal Admin Cluster.
     """
-    details: NotRequired[pulumi.Input[_builtins.str]]
+    details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Detailed failure information, which might be unformatted.
     """
-    options: NotRequired[pulumi.Input[_builtins.str]]
+    options: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Options used for the validation check.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A human-readable message of the check failure.
@@ -2529,11 +2529,11 @@ class BareMetalAdminClusterValidationCheckStatusResultArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalAdminClusterValidationCheckStatusResultArgs:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 details: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 details: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] category: (Output)
                The category of the validation.
@@ -2558,7 +2558,7 @@ class BareMetalAdminClusterValidationCheckStatusResultArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The category of the validation.
@@ -2566,24 +2566,24 @@ class BareMetalAdminClusterValidationCheckStatusResultArgs:
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human readable description of this Bare Metal Admin Cluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def details(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Detailed failure information, which might be unformatted.
@@ -2591,12 +2591,12 @@ class BareMetalAdminClusterValidationCheckStatusResultArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def details(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Options used for the validation check.
@@ -2604,12 +2604,12 @@ class BareMetalAdminClusterValidationCheckStatusResultArgs:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A human-readable message of the check failure.
@@ -2617,12 +2617,12 @@ class BareMetalAdminClusterValidationCheckStatusResultArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
 
 class BareMetalClusterBinaryAuthorizationArgsDict(TypedDict):
-    evaluation_mode: NotRequired[pulumi.Input[_builtins.str]]
+    evaluation_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Mode of operation for binauthz policy evaluation. If unspecified,
     defaults to DISABLED.
@@ -2632,7 +2632,7 @@ class BareMetalClusterBinaryAuthorizationArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalClusterBinaryAuthorizationArgs:
     def __init__(__self__, *,
-                 evaluation_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] evaluation_mode: Mode of operation for binauthz policy evaluation. If unspecified,
                defaults to DISABLED.
@@ -2643,7 +2643,7 @@ class BareMetalClusterBinaryAuthorizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="evaluationMode")
-    def evaluation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def evaluation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mode of operation for binauthz policy evaluation. If unspecified,
         defaults to DISABLED.
@@ -2652,12 +2652,12 @@ class BareMetalClusterBinaryAuthorizationArgs:
         return pulumi.get(self, "evaluation_mode")
 
     @evaluation_mode.setter
-    def evaluation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def evaluation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "evaluation_mode", value)
 
 
 class BareMetalClusterClusterOperationsArgsDict(TypedDict):
-    enable_application_logs: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_application_logs: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
     """
@@ -2665,7 +2665,7 @@ class BareMetalClusterClusterOperationsArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalClusterClusterOperationsArgs:
     def __init__(__self__, *,
-                 enable_application_logs: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_application_logs: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_application_logs: Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
         """
@@ -2674,14 +2674,14 @@ class BareMetalClusterClusterOperationsArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableApplicationLogs")
-    def enable_application_logs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_application_logs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
         """
         return pulumi.get(self, "enable_application_logs")
 
     @enable_application_logs.setter
-    def enable_application_logs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_application_logs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_application_logs", value)
 
 
@@ -2691,7 +2691,7 @@ class BareMetalClusterControlPlaneArgsDict(TypedDict):
     Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
     Structure is documented below.
     """
-    api_server_args: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgsDict']]]]
+    api_server_args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgs']]]]]
     """
     Customizes the default API server args. Only a subset of
     customized flags are supported. Please refer to the API server
@@ -2704,7 +2704,7 @@ class BareMetalClusterControlPlaneArgsDict(TypedDict):
 class BareMetalClusterControlPlaneArgs:
     def __init__(__self__, *,
                  control_plane_node_pool_config: pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs'],
-                 api_server_args: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgs']]]] = None):
+                 api_server_args: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgs']]]] = None):
         """
         :param pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs'] control_plane_node_pool_config: Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
                Structure is documented below.
@@ -2733,7 +2733,7 @@ class BareMetalClusterControlPlaneArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiServerArgs")
-    def api_server_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgs']]]]:
+    def api_server_args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgs']]]]:
         """
         Customizes the default API server args. Only a subset of
         customized flags are supported. Please refer to the API server
@@ -2744,7 +2744,7 @@ class BareMetalClusterControlPlaneArgs:
         return pulumi.get(self, "api_server_args")
 
     @api_server_args.setter
-    def api_server_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgs']]]]):
+    def api_server_args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgs']]]]):
         pulumi.set(self, "api_server_args", value)
 
 
@@ -2827,7 +2827,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs:
 
 
 class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The map of Kubernetes labels (key/value pairs) to be applied to
     each node. These will added in addition to any default label(s)
@@ -2840,16 +2840,16 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDi
     An object containing a list of "key": value pairs.
     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
+    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]]
     """
     The list of machine addresses in the Bare Metal Node Pool.
     Structure is documented below.
     """
-    operating_system: NotRequired[pulumi.Input[_builtins.str]]
+    operating_system: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the nodes operating system (default: LINUX).
     """
-    taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict']]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]]
     """
     The initial taints assigned to nodes of this node pool.
     Structure is documented below.
@@ -2858,10 +2858,10 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDi
 @pulumi.input_type
 class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
-                 operating_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_configs: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
+                 operating_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to
                each node. These will added in addition to any default label(s)
@@ -2890,7 +2890,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The map of Kubernetes labels (key/value pairs) to be applied to
         each node. These will added in addition to any default label(s)
@@ -2906,12 +2906,12 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeConfigs")
-    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
+    def node_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
         """
         The list of machine addresses in the Bare Metal Node Pool.
         Structure is documented below.
@@ -2919,24 +2919,24 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
         return pulumi.get(self, "node_configs")
 
     @node_configs.setter
-    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
+    def node_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
         pulumi.set(self, "node_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="operatingSystem")
-    def operating_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operating_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the nodes operating system (default: LINUX).
         """
         return pulumi.get(self, "operating_system")
 
     @operating_system.setter
-    def operating_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operating_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operating_system", value)
 
     @_builtins.property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]:
+    def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]:
         """
         The initial taints assigned to nodes of this node pool.
         Structure is documented below.
@@ -2944,12 +2944,12 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]):
+    def taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
 
 class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The map of Kubernetes labels (key/value pairs) to be applied to
     each node. These will added in addition to any default label(s)
@@ -2962,7 +2962,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCo
     An object containing a list of "key": value pairs.
     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_ip: NotRequired[pulumi.Input[_builtins.str]]
+    node_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The default IPv4 address for SSH access and Kubernetes node.
     Example: 192.168.0.1
@@ -2971,8 +2971,8 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCo
 @pulumi.input_type
 class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to
                each node. These will added in addition to any default label(s)
@@ -2994,7 +2994,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCo
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The map of Kubernetes labels (key/value pairs) to be applied to
         each node. These will added in addition to any default label(s)
@@ -3010,12 +3010,12 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCo
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeIp")
-    def node_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default IPv4 address for SSH access and Kubernetes node.
         Example: 192.168.0.1
@@ -3023,21 +3023,21 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCo
         return pulumi.get(self, "node_ip")
 
     @node_ip.setter
-    def node_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_ip", value)
 
 
 class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict(TypedDict):
-    effect: NotRequired[pulumi.Input[_builtins.str]]
+    effect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the nodes operating system (default: LINUX).
     Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key associated with the effect.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value associated with the effect.
     """
@@ -3045,9 +3045,9 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintA
 @pulumi.input_type
 class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs:
     def __init__(__self__, *,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Specifies the nodes operating system (default: LINUX).
                Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
@@ -3063,7 +3063,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintA
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the nodes operating system (default: LINUX).
         Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
@@ -3071,36 +3071,36 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintA
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key associated with the effect.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value associated with the effect.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class BareMetalClusterFleetArgsDict(TypedDict):
-    membership: NotRequired[pulumi.Input[_builtins.str]]
+    membership: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The name of the managed Hub Membership resource associated to this cluster.
@@ -3111,7 +3111,7 @@ class BareMetalClusterFleetArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalClusterFleetArgs:
     def __init__(__self__, *,
-                 membership: Optional[pulumi.Input[_builtins.str]] = None):
+                 membership: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] membership: (Output)
                The name of the managed Hub Membership resource associated to this cluster.
@@ -3123,7 +3123,7 @@ class BareMetalClusterFleetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def membership(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def membership(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the managed Hub Membership resource associated to this cluster.
@@ -3133,7 +3133,7 @@ class BareMetalClusterFleetArgs:
         return pulumi.get(self, "membership")
 
     @membership.setter
-    def membership(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def membership(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "membership", value)
 
 
@@ -3148,17 +3148,17 @@ class BareMetalClusterLoadBalancerArgsDict(TypedDict):
     Specified the Bare Metal Load Balancer Config
     Structure is documented below.
     """
-    bgp_lb_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigArgsDict']]
+    bgp_lb_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigArgs']]]
     """
     Configuration for BGP typed load balancers.
     Structure is documented below.
     """
-    manual_lb_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerManualLbConfigArgsDict']]
+    manual_lb_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerManualLbConfigArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    metal_lb_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigArgsDict']]
+    metal_lb_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -3169,9 +3169,9 @@ class BareMetalClusterLoadBalancerArgs:
     def __init__(__self__, *,
                  port_config: pulumi.Input['BareMetalClusterLoadBalancerPortConfigArgs'],
                  vip_config: pulumi.Input['BareMetalClusterLoadBalancerVipConfigArgs'],
-                 bgp_lb_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigArgs']] = None,
-                 manual_lb_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerManualLbConfigArgs']] = None,
-                 metal_lb_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigArgs']] = None):
+                 bgp_lb_config: pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigArgs']] = None,
+                 manual_lb_config: pulumi.Input[Optional['BareMetalClusterLoadBalancerManualLbConfigArgs']] = None,
+                 metal_lb_config: pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigArgs']] = None):
         """
         :param pulumi.Input['BareMetalClusterLoadBalancerPortConfigArgs'] port_config: Specifies the load balancer ports.
                Structure is documented below.
@@ -3221,7 +3221,7 @@ class BareMetalClusterLoadBalancerArgs:
 
     @_builtins.property
     @pulumi.getter(name="bgpLbConfig")
-    def bgp_lb_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigArgs']]:
+    def bgp_lb_config(self) -> pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigArgs']]:
         """
         Configuration for BGP typed load balancers.
         Structure is documented below.
@@ -3229,12 +3229,12 @@ class BareMetalClusterLoadBalancerArgs:
         return pulumi.get(self, "bgp_lb_config")
 
     @bgp_lb_config.setter
-    def bgp_lb_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigArgs']]):
+    def bgp_lb_config(self, value: pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigArgs']]):
         pulumi.set(self, "bgp_lb_config", value)
 
     @_builtins.property
     @pulumi.getter(name="manualLbConfig")
-    def manual_lb_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerManualLbConfigArgs']]:
+    def manual_lb_config(self) -> pulumi.Input[Optional['BareMetalClusterLoadBalancerManualLbConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -3242,12 +3242,12 @@ class BareMetalClusterLoadBalancerArgs:
         return pulumi.get(self, "manual_lb_config")
 
     @manual_lb_config.setter
-    def manual_lb_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerManualLbConfigArgs']]):
+    def manual_lb_config(self, value: pulumi.Input[Optional['BareMetalClusterLoadBalancerManualLbConfigArgs']]):
         pulumi.set(self, "manual_lb_config", value)
 
     @_builtins.property
     @pulumi.getter(name="metalLbConfig")
-    def metal_lb_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigArgs']]:
+    def metal_lb_config(self) -> pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -3255,7 +3255,7 @@ class BareMetalClusterLoadBalancerArgs:
         return pulumi.get(self, "metal_lb_config")
 
     @metal_lb_config.setter
-    def metal_lb_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigArgs']]):
+    def metal_lb_config(self, value: pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigArgs']]):
         pulumi.set(self, "metal_lb_config", value)
 
 
@@ -3281,7 +3281,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigArgsDict(TypedDict):
     This field can be updated after cluster creation.
     Structure is documented below.
     """
-    load_balancer_node_pool_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict']]
+    load_balancer_node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]]
     """
     Specifies the node pool running data plane load balancing. L2 connectivity
     is required among nodes in this pool. If missing, the control plane node
@@ -3295,7 +3295,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigArgs:
                  address_pools: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs']]],
                  asn: pulumi.Input[_builtins.int],
                  bgp_peer_configs: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]],
-                 load_balancer_node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']] = None):
+                 load_balancer_node_pool_config: pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs']]] address_pools: AddressPools is a list of non-overlapping IP pools used by load balancer
                typed services. All addresses must be routable to load balancer nodes.
@@ -3367,7 +3367,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerNodePoolConfig")
-    def load_balancer_node_pool_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]:
+    def load_balancer_node_pool_config(self) -> pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]:
         """
         Specifies the node pool running data plane load balancing. L2 connectivity
         is required among nodes in this pool. If missing, the control plane node
@@ -3377,7 +3377,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigArgs:
         return pulumi.get(self, "load_balancer_node_pool_config")
 
     @load_balancer_node_pool_config.setter
-    def load_balancer_node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]):
+    def load_balancer_node_pool_config(self, value: pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]):
         pulumi.set(self, "load_balancer_node_pool_config", value)
 
 
@@ -3390,12 +3390,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgsDict(TypedDict):
     """
     The name of the address pool.
     """
-    avoid_buggy_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    avoid_buggy_ips: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, avoid using IPs ending in .0 or .255.
     This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
     """
-    manual_assign: NotRequired[pulumi.Input[_builtins.bool]]
+    manual_assign: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, prevent IP addresses from being automatically assigned.
     """
@@ -3405,8 +3405,8 @@ class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs:
     def __init__(__self__, *,
                  addresses: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  pool: pulumi.Input[_builtins.str],
-                 avoid_buggy_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 manual_assign: Optional[pulumi.Input[_builtins.bool]] = None):
+                 avoid_buggy_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 manual_assign: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
         :param pulumi.Input[_builtins.str] pool: The name of the address pool.
@@ -3447,7 +3447,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="avoidBuggyIps")
-    def avoid_buggy_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def avoid_buggy_ips(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, avoid using IPs ending in .0 or .255.
         This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
@@ -3455,19 +3455,19 @@ class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs:
         return pulumi.get(self, "avoid_buggy_ips")
 
     @avoid_buggy_ips.setter
-    def avoid_buggy_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def avoid_buggy_ips(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "avoid_buggy_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="manualAssign")
-    def manual_assign(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def manual_assign(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, prevent IP addresses from being automatically assigned.
         """
         return pulumi.get(self, "manual_assign")
 
     @manual_assign.setter
-    def manual_assign(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def manual_assign(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "manual_assign", value)
 
 
@@ -3481,7 +3481,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgsDict(TypedDict):
     """
     The IP address of the external peer device.
     """
-    control_plane_nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    control_plane_nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The IP address of the control plane node that connects to the external
     peer.
@@ -3495,7 +3495,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs:
     def __init__(__self__, *,
                  asn: pulumi.Input[_builtins.int],
                  ip_address: pulumi.Input[_builtins.str],
-                 control_plane_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 control_plane_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.int] asn: BGP autonomous system number (ASN) for the network that contains the
                external peer device.
@@ -3538,7 +3538,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneNodes")
-    def control_plane_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def control_plane_nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IP address of the control plane node that connects to the external
         peer.
@@ -3549,12 +3549,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs:
         return pulumi.get(self, "control_plane_nodes")
 
     @control_plane_nodes.setter
-    def control_plane_nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def control_plane_nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "control_plane_nodes", value)
 
 
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict(TypedDict):
-    node_pool_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict']]
+    node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]]
     """
     The generic configuration for a node pool running a load balancer.
     Structure is documented below.
@@ -3563,7 +3563,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict(
 @pulumi.input_type
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs:
     def __init__(__self__, *,
-                 node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']] = None):
+                 node_pool_config: pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']] = None):
         """
         :param pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs'] node_pool_config: The generic configuration for a node pool running a load balancer.
                Structure is documented below.
@@ -3573,7 +3573,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="nodePoolConfig")
-    def node_pool_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]:
+    def node_pool_config(self) -> pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]:
         """
         The generic configuration for a node pool running a load balancer.
         Structure is documented below.
@@ -3581,17 +3581,17 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs:
         return pulumi.get(self, "node_pool_config")
 
     @node_pool_config.setter
-    def node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]):
+    def node_pool_config(self, value: pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]):
         pulumi.set(self, "node_pool_config", value)
 
 
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict(TypedDict):
-    kubelet_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgsDict']]
+    kubelet_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]]
     """
     The modifiable kubelet configurations for the baremetal machines.
     Structure is documented below.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The map of Kubernetes labels (key/value pairs) to be applied to
     each node. These will added in addition to any default label(s)
@@ -3604,16 +3604,16 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
     An object containing a list of "key": value pairs.
     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
+    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]]
     """
     The list of machine addresses in the Bare Metal Node Pool.
     Structure is documented below.
     """
-    operating_system: NotRequired[pulumi.Input[_builtins.str]]
+    operating_system: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the nodes operating system (default: LINUX).
     """
-    taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict']]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]]
     """
     The initial taints assigned to nodes of this node pool.
     Structure is documented below.
@@ -3622,11 +3622,11 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 @pulumi.input_type
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs:
     def __init__(__self__, *,
-                 kubelet_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
-                 operating_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
+                 kubelet_config: pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_configs: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
+                 operating_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
         """
         :param pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs'] kubelet_config: The modifiable kubelet configurations for the baremetal machines.
                Structure is documented below.
@@ -3659,7 +3659,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 
     @_builtins.property
     @pulumi.getter(name="kubeletConfig")
-    def kubelet_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]:
+    def kubelet_config(self) -> pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]:
         """
         The modifiable kubelet configurations for the baremetal machines.
         Structure is documented below.
@@ -3667,12 +3667,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         return pulumi.get(self, "kubelet_config")
 
     @kubelet_config.setter
-    def kubelet_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]):
+    def kubelet_config(self, value: pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]):
         pulumi.set(self, "kubelet_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The map of Kubernetes labels (key/value pairs) to be applied to
         each node. These will added in addition to any default label(s)
@@ -3688,12 +3688,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeConfigs")
-    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
+    def node_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
         """
         The list of machine addresses in the Bare Metal Node Pool.
         Structure is documented below.
@@ -3701,24 +3701,24 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         return pulumi.get(self, "node_configs")
 
     @node_configs.setter
-    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
+    def node_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
         pulumi.set(self, "node_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="operatingSystem")
-    def operating_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operating_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the nodes operating system (default: LINUX).
         """
         return pulumi.get(self, "operating_system")
 
     @operating_system.setter
-    def operating_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operating_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operating_system", value)
 
     @_builtins.property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]:
+    def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]:
         """
         The initial taints assigned to nodes of this node pool.
         Structure is documented below.
@@ -3726,12 +3726,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]):
+    def taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
 
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgsDict(TypedDict):
-    registry_burst: NotRequired[pulumi.Input[_builtins.int]]
+    registry_burst: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum size of bursty pulls, temporarily allows pulls to burst to this
     number, while still not exceeding registry_pull_qps.
@@ -3740,7 +3740,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
     traffic produced by image pulls.
     Defaults to 10.
     """
-    registry_pull_qps: NotRequired[pulumi.Input[_builtins.int]]
+    registry_pull_qps: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The limit of registry pulls per second.
     Setting this value to 0 means no limit.
@@ -3748,7 +3748,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
     traffic produced by image pulls.
     Defaults to 5.
     """
-    serialize_image_pulls_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    serialize_image_pulls_disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Prevents the Kubelet from pulling multiple images at a time.
     We recommend *not* changing the default value on nodes that run docker
@@ -3760,9 +3760,9 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 @pulumi.input_type
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs:
     def __init__(__self__, *,
-                 registry_burst: Optional[pulumi.Input[_builtins.int]] = None,
-                 registry_pull_qps: Optional[pulumi.Input[_builtins.int]] = None,
-                 serialize_image_pulls_disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 registry_burst: pulumi.Input[Optional[_builtins.int]] = None,
+                 registry_pull_qps: pulumi.Input[Optional[_builtins.int]] = None,
+                 serialize_image_pulls_disabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.int] registry_burst: The maximum size of bursty pulls, temporarily allows pulls to burst to this
                number, while still not exceeding registry_pull_qps.
@@ -3790,7 +3790,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 
     @_builtins.property
     @pulumi.getter(name="registryBurst")
-    def registry_burst(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def registry_burst(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum size of bursty pulls, temporarily allows pulls to burst to this
         number, while still not exceeding registry_pull_qps.
@@ -3802,12 +3802,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         return pulumi.get(self, "registry_burst")
 
     @registry_burst.setter
-    def registry_burst(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def registry_burst(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "registry_burst", value)
 
     @_builtins.property
     @pulumi.getter(name="registryPullQps")
-    def registry_pull_qps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def registry_pull_qps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The limit of registry pulls per second.
         Setting this value to 0 means no limit.
@@ -3818,12 +3818,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         return pulumi.get(self, "registry_pull_qps")
 
     @registry_pull_qps.setter
-    def registry_pull_qps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def registry_pull_qps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "registry_pull_qps", value)
 
     @_builtins.property
     @pulumi.getter(name="serializeImagePullsDisabled")
-    def serialize_image_pulls_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def serialize_image_pulls_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevents the Kubelet from pulling multiple images at a time.
         We recommend *not* changing the default value on nodes that run docker
@@ -3834,12 +3834,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         return pulumi.get(self, "serialize_image_pulls_disabled")
 
     @serialize_image_pulls_disabled.setter
-    def serialize_image_pulls_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def serialize_image_pulls_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "serialize_image_pulls_disabled", value)
 
 
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The map of Kubernetes labels (key/value pairs) to be applied to
     each node. These will added in addition to any default label(s)
@@ -3852,7 +3852,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
     An object containing a list of "key": value pairs.
     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_ip: NotRequired[pulumi.Input[_builtins.str]]
+    node_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The default IPv4 address for SSH access and Kubernetes node.
     Example: 192.168.0.1
@@ -3861,8 +3861,8 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 @pulumi.input_type
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to
                each node. These will added in addition to any default label(s)
@@ -3884,7 +3884,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The map of Kubernetes labels (key/value pairs) to be applied to
         each node. These will added in addition to any default label(s)
@@ -3900,12 +3900,12 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeIp")
-    def node_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default IPv4 address for SSH access and Kubernetes node.
         Example: 192.168.0.1
@@ -3913,21 +3913,21 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         return pulumi.get(self, "node_ip")
 
     @node_ip.setter
-    def node_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_ip", value)
 
 
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict(TypedDict):
-    effect: NotRequired[pulumi.Input[_builtins.str]]
+    effect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the nodes operating system (default: LINUX).
     Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key associated with the effect.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value associated with the effect.
     """
@@ -3935,9 +3935,9 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 @pulumi.input_type
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs:
     def __init__(__self__, *,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Specifies the nodes operating system (default: LINUX).
                Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
@@ -3953,7 +3953,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the nodes operating system (default: LINUX).
         Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
@@ -3961,31 +3961,31 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key associated with the effect.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value associated with the effect.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -4025,7 +4025,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigArgsDict(TypedDict):
     IngressVIP must be included in the pools.
     Structure is documented below.
     """
-    load_balancer_node_pool_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgsDict']]
+    load_balancer_node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs']]]
     """
     Specifies the load balancer's node pool configuration.
     Structure is documented below.
@@ -4035,7 +4035,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigArgsDict(TypedDict):
 class BareMetalClusterLoadBalancerMetalLbConfigArgs:
     def __init__(__self__, *,
                  address_pools: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs']]],
-                 load_balancer_node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs']] = None):
+                 load_balancer_node_pool_config: pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs']]] address_pools: AddressPools is a list of non-overlapping IP pools used by load balancer
                typed services. All addresses must be routable to load balancer nodes.
@@ -4065,7 +4065,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerNodePoolConfig")
-    def load_balancer_node_pool_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs']]:
+    def load_balancer_node_pool_config(self) -> pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs']]:
         """
         Specifies the load balancer's node pool configuration.
         Structure is documented below.
@@ -4073,7 +4073,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigArgs:
         return pulumi.get(self, "load_balancer_node_pool_config")
 
     @load_balancer_node_pool_config.setter
-    def load_balancer_node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs']]):
+    def load_balancer_node_pool_config(self, value: pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs']]):
         pulumi.set(self, "load_balancer_node_pool_config", value)
 
 
@@ -4086,12 +4086,12 @@ class BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgsDict(TypedDict):
     """
     The name of the address pool.
     """
-    avoid_buggy_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    avoid_buggy_ips: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, avoid using IPs ending in .0 or .255.
     This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
     """
-    manual_assign: NotRequired[pulumi.Input[_builtins.bool]]
+    manual_assign: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, prevent IP addresses from being automatically assigned.
     """
@@ -4101,8 +4101,8 @@ class BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs:
     def __init__(__self__, *,
                  addresses: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  pool: pulumi.Input[_builtins.str],
-                 avoid_buggy_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 manual_assign: Optional[pulumi.Input[_builtins.bool]] = None):
+                 avoid_buggy_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 manual_assign: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
         :param pulumi.Input[_builtins.str] pool: The name of the address pool.
@@ -4143,7 +4143,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="avoidBuggyIps")
-    def avoid_buggy_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def avoid_buggy_ips(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, avoid using IPs ending in .0 or .255.
         This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
@@ -4151,24 +4151,24 @@ class BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs:
         return pulumi.get(self, "avoid_buggy_ips")
 
     @avoid_buggy_ips.setter
-    def avoid_buggy_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def avoid_buggy_ips(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "avoid_buggy_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="manualAssign")
-    def manual_assign(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def manual_assign(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, prevent IP addresses from being automatically assigned.
         """
         return pulumi.get(self, "manual_assign")
 
     @manual_assign.setter
-    def manual_assign(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def manual_assign(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "manual_assign", value)
 
 
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgsDict(TypedDict):
-    node_pool_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict']]
+    node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]]
     """
     The generic configuration for a node pool running a load balancer.
     Structure is documented below.
@@ -4177,7 +4177,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgsDic
 @pulumi.input_type
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs:
     def __init__(__self__, *,
-                 node_pool_config: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']] = None):
+                 node_pool_config: pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']] = None):
         """
         :param pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs'] node_pool_config: The generic configuration for a node pool running a load balancer.
                Structure is documented below.
@@ -4187,7 +4187,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="nodePoolConfig")
-    def node_pool_config(self) -> Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]:
+    def node_pool_config(self) -> pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]:
         """
         The generic configuration for a node pool running a load balancer.
         Structure is documented below.
@@ -4195,12 +4195,12 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs:
         return pulumi.get(self, "node_pool_config")
 
     @node_pool_config.setter
-    def node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]):
+    def node_pool_config(self, value: pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]):
         pulumi.set(self, "node_pool_config", value)
 
 
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The map of Kubernetes labels (key/value pairs) to be applied to
     each node. These will added in addition to any default label(s)
@@ -4213,16 +4213,16 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
     An object containing a list of "key": value pairs.
     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
+    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]]
     """
     The list of machine addresses in the Bare Metal Node Pool.
     Structure is documented below.
     """
-    operating_system: NotRequired[pulumi.Input[_builtins.str]]
+    operating_system: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the nodes operating system (default: LINUX).
     """
-    taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict']]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]]
     """
     The initial taints assigned to nodes of this node pool.
     Structure is documented below.
@@ -4231,10 +4231,10 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 @pulumi.input_type
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
-                 operating_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_configs: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]] = None,
+                 operating_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to
                each node. These will added in addition to any default label(s)
@@ -4263,7 +4263,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The map of Kubernetes labels (key/value pairs) to be applied to
         each node. These will added in addition to any default label(s)
@@ -4279,12 +4279,12 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeConfigs")
-    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
+    def node_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]:
         """
         The list of machine addresses in the Bare Metal Node Pool.
         Structure is documented below.
@@ -4292,24 +4292,24 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         return pulumi.get(self, "node_configs")
 
     @node_configs.setter
-    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
+    def node_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]):
         pulumi.set(self, "node_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="operatingSystem")
-    def operating_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operating_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the nodes operating system (default: LINUX).
         """
         return pulumi.get(self, "operating_system")
 
     @operating_system.setter
-    def operating_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operating_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operating_system", value)
 
     @_builtins.property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]:
+    def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]:
         """
         The initial taints assigned to nodes of this node pool.
         Structure is documented below.
@@ -4317,12 +4317,12 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]):
+    def taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
 
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The map of Kubernetes labels (key/value pairs) to be applied to
     each node. These will added in addition to any default label(s)
@@ -4335,7 +4335,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
     An object containing a list of "key": value pairs.
     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_ip: NotRequired[pulumi.Input[_builtins.str]]
+    node_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The default IPv4 address for SSH access and Kubernetes node.
     Example: 192.168.0.1
@@ -4344,8 +4344,8 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 @pulumi.input_type
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to
                each node. These will added in addition to any default label(s)
@@ -4367,7 +4367,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The map of Kubernetes labels (key/value pairs) to be applied to
         each node. These will added in addition to any default label(s)
@@ -4383,12 +4383,12 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeIp")
-    def node_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default IPv4 address for SSH access and Kubernetes node.
         Example: 192.168.0.1
@@ -4396,21 +4396,21 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         return pulumi.get(self, "node_ip")
 
     @node_ip.setter
-    def node_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_ip", value)
 
 
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict(TypedDict):
-    effect: NotRequired[pulumi.Input[_builtins.str]]
+    effect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the nodes operating system (default: LINUX).
     Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key associated with the effect.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value associated with the effect.
     """
@@ -4418,9 +4418,9 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 @pulumi.input_type
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs:
     def __init__(__self__, *,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Specifies the nodes operating system (default: LINUX).
                Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
@@ -4436,7 +4436,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the nodes operating system (default: LINUX).
         Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
@@ -4444,31 +4444,31 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key associated with the effect.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value associated with the effect.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -4585,24 +4585,24 @@ class BareMetalClusterMaintenanceConfigArgs:
 
 
 class BareMetalClusterNetworkConfigArgsDict(TypedDict):
-    advanced_networking: NotRequired[pulumi.Input[_builtins.bool]]
+    advanced_networking: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables the use of advanced Anthos networking features, such as Bundled
     Load Balancing with BGP or the egress NAT gateway.
     Setting configuration for advanced networking features will automatically
     set this flag.
     """
-    island_mode_cidr: NotRequired[pulumi.Input['BareMetalClusterNetworkConfigIslandModeCidrArgsDict']]
+    island_mode_cidr: NotRequired[pulumi.Input[Optional['BareMetalClusterNetworkConfigIslandModeCidrArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    multiple_network_interfaces_config: NotRequired[pulumi.Input['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict']]
+    multiple_network_interfaces_config: NotRequired[pulumi.Input[Optional['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]]
     """
     Configuration for multiple network interfaces.
     Structure is documented below.
     """
-    sr_iov_config: NotRequired[pulumi.Input['BareMetalClusterNetworkConfigSrIovConfigArgsDict']]
+    sr_iov_config: NotRequired[pulumi.Input[Optional['BareMetalClusterNetworkConfigSrIovConfigArgs']]]
     """
     Configuration for SR-IOV.
     Structure is documented below.
@@ -4611,10 +4611,10 @@ class BareMetalClusterNetworkConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalClusterNetworkConfigArgs:
     def __init__(__self__, *,
-                 advanced_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 island_mode_cidr: Optional[pulumi.Input['BareMetalClusterNetworkConfigIslandModeCidrArgs']] = None,
-                 multiple_network_interfaces_config: Optional[pulumi.Input['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']] = None,
-                 sr_iov_config: Optional[pulumi.Input['BareMetalClusterNetworkConfigSrIovConfigArgs']] = None):
+                 advanced_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 island_mode_cidr: pulumi.Input[Optional['BareMetalClusterNetworkConfigIslandModeCidrArgs']] = None,
+                 multiple_network_interfaces_config: pulumi.Input[Optional['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']] = None,
+                 sr_iov_config: pulumi.Input[Optional['BareMetalClusterNetworkConfigSrIovConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] advanced_networking: Enables the use of advanced Anthos networking features, such as Bundled
                Load Balancing with BGP or the egress NAT gateway.
@@ -4638,7 +4638,7 @@ class BareMetalClusterNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="advancedNetworking")
-    def advanced_networking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advanced_networking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables the use of advanced Anthos networking features, such as Bundled
         Load Balancing with BGP or the egress NAT gateway.
@@ -4648,12 +4648,12 @@ class BareMetalClusterNetworkConfigArgs:
         return pulumi.get(self, "advanced_networking")
 
     @advanced_networking.setter
-    def advanced_networking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advanced_networking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advanced_networking", value)
 
     @_builtins.property
     @pulumi.getter(name="islandModeCidr")
-    def island_mode_cidr(self) -> Optional[pulumi.Input['BareMetalClusterNetworkConfigIslandModeCidrArgs']]:
+    def island_mode_cidr(self) -> pulumi.Input[Optional['BareMetalClusterNetworkConfigIslandModeCidrArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -4661,12 +4661,12 @@ class BareMetalClusterNetworkConfigArgs:
         return pulumi.get(self, "island_mode_cidr")
 
     @island_mode_cidr.setter
-    def island_mode_cidr(self, value: Optional[pulumi.Input['BareMetalClusterNetworkConfigIslandModeCidrArgs']]):
+    def island_mode_cidr(self, value: pulumi.Input[Optional['BareMetalClusterNetworkConfigIslandModeCidrArgs']]):
         pulumi.set(self, "island_mode_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="multipleNetworkInterfacesConfig")
-    def multiple_network_interfaces_config(self) -> Optional[pulumi.Input['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]:
+    def multiple_network_interfaces_config(self) -> pulumi.Input[Optional['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]:
         """
         Configuration for multiple network interfaces.
         Structure is documented below.
@@ -4674,12 +4674,12 @@ class BareMetalClusterNetworkConfigArgs:
         return pulumi.get(self, "multiple_network_interfaces_config")
 
     @multiple_network_interfaces_config.setter
-    def multiple_network_interfaces_config(self, value: Optional[pulumi.Input['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]):
+    def multiple_network_interfaces_config(self, value: pulumi.Input[Optional['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]):
         pulumi.set(self, "multiple_network_interfaces_config", value)
 
     @_builtins.property
     @pulumi.getter(name="srIovConfig")
-    def sr_iov_config(self) -> Optional[pulumi.Input['BareMetalClusterNetworkConfigSrIovConfigArgs']]:
+    def sr_iov_config(self) -> pulumi.Input[Optional['BareMetalClusterNetworkConfigSrIovConfigArgs']]:
         """
         Configuration for SR-IOV.
         Structure is documented below.
@@ -4687,7 +4687,7 @@ class BareMetalClusterNetworkConfigArgs:
         return pulumi.get(self, "sr_iov_config")
 
     @sr_iov_config.setter
-    def sr_iov_config(self, value: Optional[pulumi.Input['BareMetalClusterNetworkConfigSrIovConfigArgs']]):
+    def sr_iov_config(self, value: pulumi.Input[Optional['BareMetalClusterNetworkConfigSrIovConfigArgs']]):
         pulumi.set(self, "sr_iov_config", value)
 
 
@@ -4739,7 +4739,7 @@ class BareMetalClusterNetworkConfigIslandModeCidrArgs:
 
 
 class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable multiple network interfaces for your pods.
     When set network_config.advanced_networking is automatically
@@ -4749,7 +4749,7 @@ class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict(Typed
 @pulumi.input_type
 class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable multiple network interfaces for your pods.
                When set network_config.advanced_networking is automatically
@@ -4760,7 +4760,7 @@ class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable multiple network interfaces for your pods.
         When set network_config.advanced_networking is automatically
@@ -4769,12 +4769,12 @@ class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
 class BareMetalClusterNetworkConfigSrIovConfigArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to install the SR-IOV operator.
     """
@@ -4782,7 +4782,7 @@ class BareMetalClusterNetworkConfigSrIovConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalClusterNetworkConfigSrIovConfigArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Whether to install the SR-IOV operator.
         """
@@ -4791,19 +4791,19 @@ class BareMetalClusterNetworkConfigSrIovConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to install the SR-IOV operator.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
 class BareMetalClusterNodeAccessConfigArgsDict(TypedDict):
-    login_user: NotRequired[pulumi.Input[_builtins.str]]
+    login_user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     LoginUser is the user name used to access node machines.
     It defaults to "root" if not set.
@@ -4812,7 +4812,7 @@ class BareMetalClusterNodeAccessConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalClusterNodeAccessConfigArgs:
     def __init__(__self__, *,
-                 login_user: Optional[pulumi.Input[_builtins.str]] = None):
+                 login_user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] login_user: LoginUser is the user name used to access node machines.
                It defaults to "root" if not set.
@@ -4822,7 +4822,7 @@ class BareMetalClusterNodeAccessConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="loginUser")
-    def login_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LoginUser is the user name used to access node machines.
         It defaults to "root" if not set.
@@ -4830,17 +4830,17 @@ class BareMetalClusterNodeAccessConfigArgs:
         return pulumi.get(self, "login_user")
 
     @login_user.setter
-    def login_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_user", value)
 
 
 class BareMetalClusterNodeConfigArgsDict(TypedDict):
-    container_runtime: NotRequired[pulumi.Input[_builtins.str]]
+    container_runtime: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The available runtimes that can be used to run containers in a Bare Metal User Cluster.
     Possible values are: `CONTAINER_RUNTIME_UNSPECIFIED`, `DOCKER`, `CONTAINERD`.
     """
-    max_pods_per_node: NotRequired[pulumi.Input[_builtins.int]]
+    max_pods_per_node: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of pods a node can run. The size of the CIDR range
     assigned to the node will be derived from this parameter.
@@ -4849,8 +4849,8 @@ class BareMetalClusterNodeConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalClusterNodeConfigArgs:
     def __init__(__self__, *,
-                 container_runtime: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_pods_per_node: Optional[pulumi.Input[_builtins.int]] = None):
+                 container_runtime: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] container_runtime: The available runtimes that can be used to run containers in a Bare Metal User Cluster.
                Possible values are: `CONTAINER_RUNTIME_UNSPECIFIED`, `DOCKER`, `CONTAINERD`.
@@ -4864,7 +4864,7 @@ class BareMetalClusterNodeConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="containerRuntime")
-    def container_runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_runtime(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The available runtimes that can be used to run containers in a Bare Metal User Cluster.
         Possible values are: `CONTAINER_RUNTIME_UNSPECIFIED`, `DOCKER`, `CONTAINERD`.
@@ -4872,12 +4872,12 @@ class BareMetalClusterNodeConfigArgs:
         return pulumi.get(self, "container_runtime")
 
     @container_runtime.setter
-    def container_runtime(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_runtime(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_runtime", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPodsPerNode")
-    def max_pods_per_node(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_pods_per_node(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of pods a node can run. The size of the CIDR range
         assigned to the node will be derived from this parameter.
@@ -4885,7 +4885,7 @@ class BareMetalClusterNodeConfigArgs:
         return pulumi.get(self, "max_pods_per_node")
 
     @max_pods_per_node.setter
-    def max_pods_per_node(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_pods_per_node(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_pods_per_node", value)
 
 
@@ -4928,7 +4928,7 @@ class BareMetalClusterProxyArgsDict(TypedDict):
     WARNING: Do not provide credentials in the format
     of http://(username:password@)domain these will be rejected by the server.
     """
-    no_proxies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    no_proxies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of IPs, hostnames, and domains that should skip the proxy.
     For example ["127.0.0.1", "example.com", ".corp", "localhost"].
@@ -4938,7 +4938,7 @@ class BareMetalClusterProxyArgsDict(TypedDict):
 class BareMetalClusterProxyArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 no_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 no_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Specifies the address of your proxy server.
                For example: http://domain
@@ -4968,7 +4968,7 @@ class BareMetalClusterProxyArgs:
 
     @_builtins.property
     @pulumi.getter(name="noProxies")
-    def no_proxies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def no_proxies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of IPs, hostnames, and domains that should skip the proxy.
         For example ["127.0.0.1", "example.com", ".corp", "localhost"].
@@ -4976,12 +4976,12 @@ class BareMetalClusterProxyArgs:
         return pulumi.get(self, "no_proxies")
 
     @no_proxies.setter
-    def no_proxies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def no_proxies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "no_proxies", value)
 
 
 class BareMetalClusterSecurityConfigArgsDict(TypedDict):
-    authorization: NotRequired[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArgsDict']]
+    authorization: NotRequired[pulumi.Input[Optional['BareMetalClusterSecurityConfigAuthorizationArgs']]]
     """
     Configures user access to the Bare Metal User cluster.
     Structure is documented below.
@@ -4990,7 +4990,7 @@ class BareMetalClusterSecurityConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalClusterSecurityConfigArgs:
     def __init__(__self__, *,
-                 authorization: Optional[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArgs']] = None):
+                 authorization: pulumi.Input[Optional['BareMetalClusterSecurityConfigAuthorizationArgs']] = None):
         """
         :param pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArgs'] authorization: Configures user access to the Bare Metal User cluster.
                Structure is documented below.
@@ -5000,7 +5000,7 @@ class BareMetalClusterSecurityConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authorization(self) -> Optional[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArgs']]:
+    def authorization(self) -> pulumi.Input[Optional['BareMetalClusterSecurityConfigAuthorizationArgs']]:
         """
         Configures user access to the Bare Metal User cluster.
         Structure is documented below.
@@ -5008,7 +5008,7 @@ class BareMetalClusterSecurityConfigArgs:
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: Optional[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArgs']]):
+    def authorization(self, value: pulumi.Input[Optional['BareMetalClusterSecurityConfigAuthorizationArgs']]):
         pulumi.set(self, "authorization", value)
 
 
@@ -5072,13 +5072,13 @@ class BareMetalClusterSecurityConfigAuthorizationAdminUserArgs:
 
 
 class BareMetalClusterStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgsDict']]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgs']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
     Structure is documented below.
     """
-    error_message: NotRequired[pulumi.Input[_builtins.str]]
+    error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human-friendly representation of the error message from the user cluster
@@ -5091,8 +5091,8 @@ class BareMetalClusterStatusArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalClusterStatusArgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgs']]]] = None,
-                 error_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgs']]]] = None,
+                 error_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgs']]] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -5111,7 +5111,7 @@ class BareMetalClusterStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgs']]]]:
         """
         (Output)
         ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -5120,12 +5120,12 @@ class BareMetalClusterStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human-friendly representation of the error message from the user cluster
@@ -5137,31 +5137,31 @@ class BareMetalClusterStatusArgs:
         return pulumi.get(self, "error_message")
 
     @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_message", value)
 
 
 class BareMetalClusterStatusConditionArgsDict(TypedDict):
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transit from one status to another.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Human-readable message indicating details about last transition.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A human-readable message of the check failure.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The lifecycle state of the condition.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of the condition.
     (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
@@ -5170,11 +5170,11 @@ class BareMetalClusterStatusConditionArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalClusterStatusConditionArgs:
     def __init__(__self__, *,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] last_transition_time: (Output)
                Last time the condition transit from one status to another.
@@ -5199,7 +5199,7 @@ class BareMetalClusterStatusConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transit from one status to another.
@@ -5207,24 +5207,24 @@ class BareMetalClusterStatusConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable message indicating details about last transition.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A human-readable message of the check failure.
@@ -5232,12 +5232,12 @@ class BareMetalClusterStatusConditionArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The lifecycle state of the condition.
@@ -5245,12 +5245,12 @@ class BareMetalClusterStatusConditionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the condition.
         (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
@@ -5258,7 +5258,7 @@ class BareMetalClusterStatusConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -5380,7 +5380,7 @@ class BareMetalClusterStorageLvpShareConfigArgsDict(TypedDict):
     Defines the machine path and storage class for the LVP Share.
     Structure is documented below.
     """
-    shared_path_pv_count: NotRequired[pulumi.Input[_builtins.int]]
+    shared_path_pv_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of subdirectories to create under path.
     """
@@ -5389,7 +5389,7 @@ class BareMetalClusterStorageLvpShareConfigArgsDict(TypedDict):
 class BareMetalClusterStorageLvpShareConfigArgs:
     def __init__(__self__, *,
                  lvp_config: pulumi.Input['BareMetalClusterStorageLvpShareConfigLvpConfigArgs'],
-                 shared_path_pv_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 shared_path_pv_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['BareMetalClusterStorageLvpShareConfigLvpConfigArgs'] lvp_config: Defines the machine path and storage class for the LVP Share.
                Structure is documented below.
@@ -5414,14 +5414,14 @@ class BareMetalClusterStorageLvpShareConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="sharedPathPvCount")
-    def shared_path_pv_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shared_path_pv_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of subdirectories to create under path.
         """
         return pulumi.get(self, "shared_path_pv_count")
 
     @shared_path_pv_count.setter
-    def shared_path_pv_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shared_path_pv_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shared_path_pv_count", value)
 
 
@@ -5473,7 +5473,7 @@ class BareMetalClusterStorageLvpShareConfigLvpConfigArgs:
 
 
 class BareMetalClusterUpgradePolicyArgsDict(TypedDict):
-    policy: NotRequired[pulumi.Input[_builtins.str]]
+    policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies which upgrade policy to use.
     Possible values are: `SERIAL`, `CONCURRENT`.
@@ -5482,7 +5482,7 @@ class BareMetalClusterUpgradePolicyArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalClusterUpgradePolicyArgs:
     def __init__(__self__, *,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] policy: Specifies which upgrade policy to use.
                Possible values are: `SERIAL`, `CONCURRENT`.
@@ -5492,7 +5492,7 @@ class BareMetalClusterUpgradePolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies which upgrade policy to use.
         Possible values are: `SERIAL`, `CONCURRENT`.
@@ -5500,22 +5500,22 @@ class BareMetalClusterUpgradePolicyArgs:
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
 
 class BareMetalClusterValidationCheckArgsDict(TypedDict):
-    options: NotRequired[pulumi.Input[_builtins.str]]
+    options: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Options used for the validation check.
     """
-    scenario: NotRequired[pulumi.Input[_builtins.str]]
+    scenario: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The scenario when the preflight checks were run..
     """
-    statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgsDict']]]]
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgs']]]]]
     """
     (Output)
     Specifies the detailed validation check status
@@ -5525,9 +5525,9 @@ class BareMetalClusterValidationCheckArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalClusterValidationCheckArgs:
     def __init__(__self__, *,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 scenario: Optional[pulumi.Input[_builtins.str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgs']]]] = None):
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenario: pulumi.Input[Optional[_builtins.str]] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] options: (Output)
                Options used for the validation check.
@@ -5546,7 +5546,7 @@ class BareMetalClusterValidationCheckArgs:
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Options used for the validation check.
@@ -5554,12 +5554,12 @@ class BareMetalClusterValidationCheckArgs:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def scenario(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scenario(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The scenario when the preflight checks were run..
@@ -5567,12 +5567,12 @@ class BareMetalClusterValidationCheckArgs:
         return pulumi.get(self, "scenario")
 
     @scenario.setter
-    def scenario(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scenario(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scenario", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgs']]]]:
         """
         (Output)
         Specifies the detailed validation check status
@@ -5581,12 +5581,12 @@ class BareMetalClusterValidationCheckArgs:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
 
 class BareMetalClusterValidationCheckStatusArgsDict(TypedDict):
-    results: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgsDict']]]]
+    results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]]]]
     """
     (Output)
     Individual checks which failed as part of the Preflight check execution.
@@ -5596,7 +5596,7 @@ class BareMetalClusterValidationCheckStatusArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalClusterValidationCheckStatusArgs:
     def __init__(__self__, *,
-                 results: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]]] = None):
+                 results: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]] results: (Output)
                Individual checks which failed as part of the Preflight check execution.
@@ -5607,7 +5607,7 @@ class BareMetalClusterValidationCheckStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]]]:
+    def results(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]]]:
         """
         (Output)
         Individual checks which failed as part of the Preflight check execution.
@@ -5616,31 +5616,31 @@ class BareMetalClusterValidationCheckStatusArgs:
         return pulumi.get(self, "results")
 
     @results.setter
-    def results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]]]):
+    def results(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]]]):
         pulumi.set(self, "results", value)
 
 
 class BareMetalClusterValidationCheckStatusResultArgsDict(TypedDict):
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The category of the validation.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A human readable description of this Bare Metal User Cluster.
     """
-    details: NotRequired[pulumi.Input[_builtins.str]]
+    details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Detailed failure information, which might be unformatted.
     """
-    options: NotRequired[pulumi.Input[_builtins.str]]
+    options: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Options used for the validation check.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A human-readable message of the check failure.
@@ -5649,11 +5649,11 @@ class BareMetalClusterValidationCheckStatusResultArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalClusterValidationCheckStatusResultArgs:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 details: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 details: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] category: (Output)
                The category of the validation.
@@ -5678,7 +5678,7 @@ class BareMetalClusterValidationCheckStatusResultArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The category of the validation.
@@ -5686,24 +5686,24 @@ class BareMetalClusterValidationCheckStatusResultArgs:
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human readable description of this Bare Metal User Cluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def details(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Detailed failure information, which might be unformatted.
@@ -5711,12 +5711,12 @@ class BareMetalClusterValidationCheckStatusResultArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def details(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Options used for the validation check.
@@ -5724,12 +5724,12 @@ class BareMetalClusterValidationCheckStatusResultArgs:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A human-readable message of the check failure.
@@ -5737,7 +5737,7 @@ class BareMetalClusterValidationCheckStatusResultArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
 
@@ -5747,7 +5747,7 @@ class BareMetalNodePoolNodePoolConfigArgsDict(TypedDict):
     The list of machine addresses in the Bare Metal Node Pool.
     Structure is documented below.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The map of Kubernetes labels (key/value pairs) to be applied to
     each node. These will added in addition to any default label(s)
@@ -5760,11 +5760,11 @@ class BareMetalNodePoolNodePoolConfigArgsDict(TypedDict):
     An object containing a list of "key": value pairs.
     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    operating_system: NotRequired[pulumi.Input[_builtins.str]]
+    operating_system: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the nodes operating system (default: LINUX).
     """
-    taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgsDict']]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgs']]]]]
     """
     The initial taints assigned to nodes of this node pool.
     Structure is documented below.
@@ -5774,9 +5774,9 @@ class BareMetalNodePoolNodePoolConfigArgsDict(TypedDict):
 class BareMetalNodePoolNodePoolConfigArgs:
     def __init__(__self__, *,
                  node_configs: pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigNodeConfigArgs']]],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 operating_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgs']]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 operating_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
                Structure is documented below.
@@ -5817,7 +5817,7 @@ class BareMetalNodePoolNodePoolConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The map of Kubernetes labels (key/value pairs) to be applied to
         each node. These will added in addition to any default label(s)
@@ -5833,24 +5833,24 @@ class BareMetalNodePoolNodePoolConfigArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="operatingSystem")
-    def operating_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operating_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the nodes operating system (default: LINUX).
         """
         return pulumi.get(self, "operating_system")
 
     @operating_system.setter
-    def operating_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operating_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operating_system", value)
 
     @_builtins.property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgs']]]]:
+    def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgs']]]]:
         """
         The initial taints assigned to nodes of this node pool.
         Structure is documented below.
@@ -5858,12 +5858,12 @@ class BareMetalNodePoolNodePoolConfigArgs:
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgs']]]]):
+    def taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
 
 class BareMetalNodePoolNodePoolConfigNodeConfigArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The map of Kubernetes labels (key/value pairs) to be applied to
     each node. These will added in addition to any default label(s)
@@ -5876,7 +5876,7 @@ class BareMetalNodePoolNodePoolConfigNodeConfigArgsDict(TypedDict):
     An object containing a list of "key": value pairs.
     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_ip: NotRequired[pulumi.Input[_builtins.str]]
+    node_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The default IPv4 address for SSH access and Kubernetes node.
     Example: 192.168.0.1
@@ -5885,8 +5885,8 @@ class BareMetalNodePoolNodePoolConfigNodeConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalNodePoolNodePoolConfigNodeConfigArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to
                each node. These will added in addition to any default label(s)
@@ -5908,7 +5908,7 @@ class BareMetalNodePoolNodePoolConfigNodeConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The map of Kubernetes labels (key/value pairs) to be applied to
         each node. These will added in addition to any default label(s)
@@ -5924,12 +5924,12 @@ class BareMetalNodePoolNodePoolConfigNodeConfigArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeIp")
-    def node_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default IPv4 address for SSH access and Kubernetes node.
         Example: 192.168.0.1
@@ -5937,21 +5937,21 @@ class BareMetalNodePoolNodePoolConfigNodeConfigArgs:
         return pulumi.get(self, "node_ip")
 
     @node_ip.setter
-    def node_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_ip", value)
 
 
 class BareMetalNodePoolNodePoolConfigTaintArgsDict(TypedDict):
-    effect: NotRequired[pulumi.Input[_builtins.str]]
+    effect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the nodes operating system (default: LINUX).
     Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key associated with the effect.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value associated with the effect.
     """
@@ -5959,9 +5959,9 @@ class BareMetalNodePoolNodePoolConfigTaintArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalNodePoolNodePoolConfigTaintArgs:
     def __init__(__self__, *,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Specifies the nodes operating system (default: LINUX).
                Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
@@ -5977,7 +5977,7 @@ class BareMetalNodePoolNodePoolConfigTaintArgs:
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the nodes operating system (default: LINUX).
         Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
@@ -5985,42 +5985,42 @@ class BareMetalNodePoolNodePoolConfigTaintArgs:
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key associated with the effect.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value associated with the effect.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class BareMetalNodePoolStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgsDict']]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgs']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
     Structure is documented below.
     """
-    error_message: NotRequired[pulumi.Input[_builtins.str]]
+    error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human-friendly representation of the error message from the user cluster
@@ -6033,8 +6033,8 @@ class BareMetalNodePoolStatusArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalNodePoolStatusArgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgs']]]] = None,
-                 error_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgs']]]] = None,
+                 error_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgs']]] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -6053,7 +6053,7 @@ class BareMetalNodePoolStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgs']]]]:
         """
         (Output)
         ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -6062,12 +6062,12 @@ class BareMetalNodePoolStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human-friendly representation of the error message from the user cluster
@@ -6079,30 +6079,30 @@ class BareMetalNodePoolStatusArgs:
         return pulumi.get(self, "error_message")
 
     @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_message", value)
 
 
 class BareMetalNodePoolStatusConditionArgsDict(TypedDict):
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transit from one status to another.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Human-readable message indicating details about last transition.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Machine-readable message indicating details about last transition.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The lifecycle state of the condition.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of the condition.
     (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
@@ -6111,11 +6111,11 @@ class BareMetalNodePoolStatusConditionArgsDict(TypedDict):
 @pulumi.input_type
 class BareMetalNodePoolStatusConditionArgs:
     def __init__(__self__, *,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] last_transition_time: (Output)
                Last time the condition transit from one status to another.
@@ -6139,7 +6139,7 @@ class BareMetalNodePoolStatusConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transit from one status to another.
@@ -6147,36 +6147,36 @@ class BareMetalNodePoolStatusConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable message indicating details about last transition.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Machine-readable message indicating details about last transition.
         """
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The lifecycle state of the condition.
@@ -6184,12 +6184,12 @@ class BareMetalNodePoolStatusConditionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the condition.
         (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
@@ -6197,7 +6197,7 @@ class BareMetalNodePoolStatusConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -6236,7 +6236,7 @@ class VMwareClusterAntiAffinityGroupsArgs:
 
 
 class VMwareClusterAuthorizationArgsDict(TypedDict):
-    admin_users: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgsDict']]]]
+    admin_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgs']]]]]
     """
     Users that will be granted the cluster-admin role on the cluster, providing
     full access to the cluster.
@@ -6246,7 +6246,7 @@ class VMwareClusterAuthorizationArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterAuthorizationArgs:
     def __init__(__self__, *,
-                 admin_users: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgs']]]] = None):
+                 admin_users: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgs']]] admin_users: Users that will be granted the cluster-admin role on the cluster, providing
                full access to the cluster.
@@ -6257,7 +6257,7 @@ class VMwareClusterAuthorizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminUsers")
-    def admin_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgs']]]]:
+    def admin_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgs']]]]:
         """
         Users that will be granted the cluster-admin role on the cluster, providing
         full access to the cluster.
@@ -6266,7 +6266,7 @@ class VMwareClusterAuthorizationArgs:
         return pulumi.get(self, "admin_users")
 
     @admin_users.setter
-    def admin_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgs']]]]):
+    def admin_users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgs']]]]):
         pulumi.set(self, "admin_users", value)
 
 
@@ -6327,27 +6327,27 @@ class VMwareClusterAutoRepairConfigArgs:
 
 
 class VMwareClusterControlPlaneNodeArgsDict(TypedDict):
-    auto_resize_config: NotRequired[pulumi.Input['VMwareClusterControlPlaneNodeAutoResizeConfigArgsDict']]
+    auto_resize_config: NotRequired[pulumi.Input[Optional['VMwareClusterControlPlaneNodeAutoResizeConfigArgs']]]
     """
     AutoResizeConfig provides auto resizing configurations.
     Structure is documented below.
     """
-    cpus: NotRequired[pulumi.Input[_builtins.int]]
+    cpus: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPUs for each admin cluster node that serve as control planes
     for this VMware User Cluster. (default: 4 CPUs)
     """
-    memory: NotRequired[pulumi.Input[_builtins.int]]
+    memory: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The megabytes of memory for each admin cluster node that serves as a
     control plane for this VMware User Cluster (default: 8192 MB memory).
     """
-    replicas: NotRequired[pulumi.Input[_builtins.int]]
+    replicas: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of control plane nodes for this VMware User Cluster.
     (default: 1 replica).
     """
-    vsphere_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgsDict']]]]
+    vsphere_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgs']]]]]
     """
     (Output)
     Vsphere-specific config.
@@ -6357,11 +6357,11 @@ class VMwareClusterControlPlaneNodeArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterControlPlaneNodeArgs:
     def __init__(__self__, *,
-                 auto_resize_config: Optional[pulumi.Input['VMwareClusterControlPlaneNodeAutoResizeConfigArgs']] = None,
-                 cpus: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 vsphere_configs: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgs']]]] = None):
+                 auto_resize_config: pulumi.Input[Optional['VMwareClusterControlPlaneNodeAutoResizeConfigArgs']] = None,
+                 cpus: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 vsphere_configs: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgs']]]] = None):
         """
         :param pulumi.Input['VMwareClusterControlPlaneNodeAutoResizeConfigArgs'] auto_resize_config: AutoResizeConfig provides auto resizing configurations.
                Structure is documented below.
@@ -6388,7 +6388,7 @@ class VMwareClusterControlPlaneNodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoResizeConfig")
-    def auto_resize_config(self) -> Optional[pulumi.Input['VMwareClusterControlPlaneNodeAutoResizeConfigArgs']]:
+    def auto_resize_config(self) -> pulumi.Input[Optional['VMwareClusterControlPlaneNodeAutoResizeConfigArgs']]:
         """
         AutoResizeConfig provides auto resizing configurations.
         Structure is documented below.
@@ -6396,12 +6396,12 @@ class VMwareClusterControlPlaneNodeArgs:
         return pulumi.get(self, "auto_resize_config")
 
     @auto_resize_config.setter
-    def auto_resize_config(self, value: Optional[pulumi.Input['VMwareClusterControlPlaneNodeAutoResizeConfigArgs']]):
+    def auto_resize_config(self, value: pulumi.Input[Optional['VMwareClusterControlPlaneNodeAutoResizeConfigArgs']]):
         pulumi.set(self, "auto_resize_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpus(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpus(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPUs for each admin cluster node that serve as control planes
         for this VMware User Cluster. (default: 4 CPUs)
@@ -6409,12 +6409,12 @@ class VMwareClusterControlPlaneNodeArgs:
         return pulumi.get(self, "cpus")
 
     @cpus.setter
-    def cpus(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpus(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpus", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The megabytes of memory for each admin cluster node that serves as a
         control plane for this VMware User Cluster (default: 8192 MB memory).
@@ -6422,12 +6422,12 @@ class VMwareClusterControlPlaneNodeArgs:
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter
-    def replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of control plane nodes for this VMware User Cluster.
         (default: 1 replica).
@@ -6435,12 +6435,12 @@ class VMwareClusterControlPlaneNodeArgs:
         return pulumi.get(self, "replicas")
 
     @replicas.setter
-    def replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replicas", value)
 
     @_builtins.property
     @pulumi.getter(name="vsphereConfigs")
-    def vsphere_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgs']]]]:
+    def vsphere_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgs']]]]:
         """
         (Output)
         Vsphere-specific config.
@@ -6449,7 +6449,7 @@ class VMwareClusterControlPlaneNodeArgs:
         return pulumi.get(self, "vsphere_configs")
 
     @vsphere_configs.setter
-    def vsphere_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgs']]]]):
+    def vsphere_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgs']]]]):
         pulumi.set(self, "vsphere_configs", value)
 
 
@@ -6488,11 +6488,11 @@ class VMwareClusterControlPlaneNodeAutoResizeConfigArgs:
 
 
 class VMwareClusterControlPlaneNodeVsphereConfigArgsDict(TypedDict):
-    datastore: NotRequired[pulumi.Input[_builtins.str]]
+    datastore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Vsphere datastore used by the Control Plane Node.
     """
-    storage_policy_name: NotRequired[pulumi.Input[_builtins.str]]
+    storage_policy_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Vsphere storage policy used by the control plane Node.
     """
@@ -6500,8 +6500,8 @@ class VMwareClusterControlPlaneNodeVsphereConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterControlPlaneNodeVsphereConfigArgs:
     def __init__(__self__, *,
-                 datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_policy_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_policy_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] datastore: The Vsphere datastore used by the Control Plane Node.
         :param pulumi.Input[_builtins.str] storage_policy_name: The Vsphere storage policy used by the control plane Node.
@@ -6513,39 +6513,39 @@ class VMwareClusterControlPlaneNodeVsphereConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def datastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Vsphere datastore used by the Control Plane Node.
         """
         return pulumi.get(self, "datastore")
 
     @datastore.setter
-    def datastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePolicyName")
-    def storage_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Vsphere storage policy used by the control plane Node.
         """
         return pulumi.get(self, "storage_policy_name")
 
     @storage_policy_name.setter
-    def storage_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_policy_name", value)
 
 
 class VMwareClusterDataplaneV2ArgsDict(TypedDict):
-    advanced_networking: NotRequired[pulumi.Input[_builtins.bool]]
+    advanced_networking: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable advanced networking which requires dataplane_v2_enabled to be set true.
     """
-    dataplane_v2_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    dataplane_v2_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables Dataplane V2.
     """
-    windows_dataplane_v2_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    windows_dataplane_v2_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable Dataplane V2 for clusters with Windows nodes.
     """
@@ -6553,9 +6553,9 @@ class VMwareClusterDataplaneV2ArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterDataplaneV2Args:
     def __init__(__self__, *,
-                 advanced_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dataplane_v2_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 windows_dataplane_v2_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 advanced_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dataplane_v2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 windows_dataplane_v2_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] advanced_networking: Enable advanced networking which requires dataplane_v2_enabled to be set true.
         :param pulumi.Input[_builtins.bool] dataplane_v2_enabled: Enables Dataplane V2.
@@ -6570,43 +6570,43 @@ class VMwareClusterDataplaneV2Args:
 
     @_builtins.property
     @pulumi.getter(name="advancedNetworking")
-    def advanced_networking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advanced_networking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable advanced networking which requires dataplane_v2_enabled to be set true.
         """
         return pulumi.get(self, "advanced_networking")
 
     @advanced_networking.setter
-    def advanced_networking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advanced_networking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advanced_networking", value)
 
     @_builtins.property
     @pulumi.getter(name="dataplaneV2Enabled")
-    def dataplane_v2_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dataplane_v2_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables Dataplane V2.
         """
         return pulumi.get(self, "dataplane_v2_enabled")
 
     @dataplane_v2_enabled.setter
-    def dataplane_v2_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dataplane_v2_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dataplane_v2_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="windowsDataplaneV2Enabled")
-    def windows_dataplane_v2_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def windows_dataplane_v2_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Dataplane V2 for clusters with Windows nodes.
         """
         return pulumi.get(self, "windows_dataplane_v2_enabled")
 
     @windows_dataplane_v2_enabled.setter
-    def windows_dataplane_v2_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def windows_dataplane_v2_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "windows_dataplane_v2_enabled", value)
 
 
 class VMwareClusterFleetArgsDict(TypedDict):
-    membership: NotRequired[pulumi.Input[_builtins.str]]
+    membership: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The name of the managed Hub Membership resource associated to this cluster.
@@ -6617,7 +6617,7 @@ class VMwareClusterFleetArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterFleetArgs:
     def __init__(__self__, *,
-                 membership: Optional[pulumi.Input[_builtins.str]] = None):
+                 membership: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] membership: (Output)
                The name of the managed Hub Membership resource associated to this cluster.
@@ -6629,7 +6629,7 @@ class VMwareClusterFleetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def membership(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def membership(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the managed Hub Membership resource associated to this cluster.
@@ -6639,27 +6639,27 @@ class VMwareClusterFleetArgs:
         return pulumi.get(self, "membership")
 
     @membership.setter
-    def membership(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def membership(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "membership", value)
 
 
 class VMwareClusterLoadBalancerArgsDict(TypedDict):
-    f5_config: NotRequired[pulumi.Input['VMwareClusterLoadBalancerF5ConfigArgsDict']]
+    f5_config: NotRequired[pulumi.Input[Optional['VMwareClusterLoadBalancerF5ConfigArgs']]]
     """
     Configuration for F5 Big IP typed load balancers.
     Structure is documented below.
     """
-    manual_lb_config: NotRequired[pulumi.Input['VMwareClusterLoadBalancerManualLbConfigArgsDict']]
+    manual_lb_config: NotRequired[pulumi.Input[Optional['VMwareClusterLoadBalancerManualLbConfigArgs']]]
     """
     Manually configured load balancers.
     Structure is documented below.
     """
-    metal_lb_config: NotRequired[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigArgsDict']]
+    metal_lb_config: NotRequired[pulumi.Input[Optional['VMwareClusterLoadBalancerMetalLbConfigArgs']]]
     """
     Configuration for MetalLB typed load balancers.
     Structure is documented below.
     """
-    vip_config: NotRequired[pulumi.Input['VMwareClusterLoadBalancerVipConfigArgsDict']]
+    vip_config: NotRequired[pulumi.Input[Optional['VMwareClusterLoadBalancerVipConfigArgs']]]
     """
     The VIPs used by the load balancer.
     Structure is documented below.
@@ -6668,10 +6668,10 @@ class VMwareClusterLoadBalancerArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterLoadBalancerArgs:
     def __init__(__self__, *,
-                 f5_config: Optional[pulumi.Input['VMwareClusterLoadBalancerF5ConfigArgs']] = None,
-                 manual_lb_config: Optional[pulumi.Input['VMwareClusterLoadBalancerManualLbConfigArgs']] = None,
-                 metal_lb_config: Optional[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigArgs']] = None,
-                 vip_config: Optional[pulumi.Input['VMwareClusterLoadBalancerVipConfigArgs']] = None):
+                 f5_config: pulumi.Input[Optional['VMwareClusterLoadBalancerF5ConfigArgs']] = None,
+                 manual_lb_config: pulumi.Input[Optional['VMwareClusterLoadBalancerManualLbConfigArgs']] = None,
+                 metal_lb_config: pulumi.Input[Optional['VMwareClusterLoadBalancerMetalLbConfigArgs']] = None,
+                 vip_config: pulumi.Input[Optional['VMwareClusterLoadBalancerVipConfigArgs']] = None):
         """
         :param pulumi.Input['VMwareClusterLoadBalancerF5ConfigArgs'] f5_config: Configuration for F5 Big IP typed load balancers.
                Structure is documented below.
@@ -6693,7 +6693,7 @@ class VMwareClusterLoadBalancerArgs:
 
     @_builtins.property
     @pulumi.getter(name="f5Config")
-    def f5_config(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerF5ConfigArgs']]:
+    def f5_config(self) -> pulumi.Input[Optional['VMwareClusterLoadBalancerF5ConfigArgs']]:
         """
         Configuration for F5 Big IP typed load balancers.
         Structure is documented below.
@@ -6701,12 +6701,12 @@ class VMwareClusterLoadBalancerArgs:
         return pulumi.get(self, "f5_config")
 
     @f5_config.setter
-    def f5_config(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerF5ConfigArgs']]):
+    def f5_config(self, value: pulumi.Input[Optional['VMwareClusterLoadBalancerF5ConfigArgs']]):
         pulumi.set(self, "f5_config", value)
 
     @_builtins.property
     @pulumi.getter(name="manualLbConfig")
-    def manual_lb_config(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerManualLbConfigArgs']]:
+    def manual_lb_config(self) -> pulumi.Input[Optional['VMwareClusterLoadBalancerManualLbConfigArgs']]:
         """
         Manually configured load balancers.
         Structure is documented below.
@@ -6714,12 +6714,12 @@ class VMwareClusterLoadBalancerArgs:
         return pulumi.get(self, "manual_lb_config")
 
     @manual_lb_config.setter
-    def manual_lb_config(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerManualLbConfigArgs']]):
+    def manual_lb_config(self, value: pulumi.Input[Optional['VMwareClusterLoadBalancerManualLbConfigArgs']]):
         pulumi.set(self, "manual_lb_config", value)
 
     @_builtins.property
     @pulumi.getter(name="metalLbConfig")
-    def metal_lb_config(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigArgs']]:
+    def metal_lb_config(self) -> pulumi.Input[Optional['VMwareClusterLoadBalancerMetalLbConfigArgs']]:
         """
         Configuration for MetalLB typed load balancers.
         Structure is documented below.
@@ -6727,12 +6727,12 @@ class VMwareClusterLoadBalancerArgs:
         return pulumi.get(self, "metal_lb_config")
 
     @metal_lb_config.setter
-    def metal_lb_config(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigArgs']]):
+    def metal_lb_config(self, value: pulumi.Input[Optional['VMwareClusterLoadBalancerMetalLbConfigArgs']]):
         pulumi.set(self, "metal_lb_config", value)
 
     @_builtins.property
     @pulumi.getter(name="vipConfig")
-    def vip_config(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerVipConfigArgs']]:
+    def vip_config(self) -> pulumi.Input[Optional['VMwareClusterLoadBalancerVipConfigArgs']]:
         """
         The VIPs used by the load balancer.
         Structure is documented below.
@@ -6740,22 +6740,22 @@ class VMwareClusterLoadBalancerArgs:
         return pulumi.get(self, "vip_config")
 
     @vip_config.setter
-    def vip_config(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerVipConfigArgs']]):
+    def vip_config(self, value: pulumi.Input[Optional['VMwareClusterLoadBalancerVipConfigArgs']]):
         pulumi.set(self, "vip_config", value)
 
 
 class VMwareClusterLoadBalancerF5ConfigArgsDict(TypedDict):
-    address: NotRequired[pulumi.Input[_builtins.str]]
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The load balancer's IP address.
     """
-    partition: NotRequired[pulumi.Input[_builtins.str]]
+    partition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     he preexisting partition to be used by the load balancer. T
     his partition is usually created for the admin cluster for example:
     'my-f5-admin-partition'.
     """
-    snat_pool: NotRequired[pulumi.Input[_builtins.str]]
+    snat_pool: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The pool name. Only necessary, if using SNAT.
     """
@@ -6763,9 +6763,9 @@ class VMwareClusterLoadBalancerF5ConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterLoadBalancerF5ConfigArgs:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat_pool: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat_pool: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The load balancer's IP address.
         :param pulumi.Input[_builtins.str] partition: he preexisting partition to be used by the load balancer. T
@@ -6782,19 +6782,19 @@ class VMwareClusterLoadBalancerF5ConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The load balancer's IP address.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         he preexisting partition to be used by the load balancer. T
         his partition is usually created for the admin cluster for example:
@@ -6803,39 +6803,39 @@ class VMwareClusterLoadBalancerF5ConfigArgs:
         return pulumi.get(self, "partition")
 
     @partition.setter
-    def partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partition", value)
 
     @_builtins.property
     @pulumi.getter(name="snatPool")
-    def snat_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snat_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pool name. Only necessary, if using SNAT.
         """
         return pulumi.get(self, "snat_pool")
 
     @snat_pool.setter
-    def snat_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snat_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snat_pool", value)
 
 
 class VMwareClusterLoadBalancerManualLbConfigArgsDict(TypedDict):
-    control_plane_node_port: NotRequired[pulumi.Input[_builtins.int]]
+    control_plane_node_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     NodePort for control plane service. The Kubernetes API server in the admin
     cluster is implemented as a Service of type NodePort (ex. 30968).
     """
-    ingress_http_node_port: NotRequired[pulumi.Input[_builtins.int]]
+    ingress_http_node_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     NodePort for ingress service's http. The ingress service in the admin
     cluster is implemented as a Service of type NodePort (ex. 32527).
     """
-    ingress_https_node_port: NotRequired[pulumi.Input[_builtins.int]]
+    ingress_https_node_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     NodePort for ingress service's https. The ingress service in the admin
     cluster is implemented as a Service of type NodePort (ex. 30139).
     """
-    konnectivity_server_node_port: NotRequired[pulumi.Input[_builtins.int]]
+    konnectivity_server_node_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     NodePort for konnectivity server service running as a sidecar in each
     kube-apiserver pod (ex. 30564).
@@ -6844,10 +6844,10 @@ class VMwareClusterLoadBalancerManualLbConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterLoadBalancerManualLbConfigArgs:
     def __init__(__self__, *,
-                 control_plane_node_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 ingress_http_node_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 ingress_https_node_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 konnectivity_server_node_port: Optional[pulumi.Input[_builtins.int]] = None):
+                 control_plane_node_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 ingress_http_node_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 ingress_https_node_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 konnectivity_server_node_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] control_plane_node_port: NodePort for control plane service. The Kubernetes API server in the admin
                cluster is implemented as a Service of type NodePort (ex. 30968).
@@ -6869,7 +6869,7 @@ class VMwareClusterLoadBalancerManualLbConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneNodePort")
-    def control_plane_node_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def control_plane_node_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         NodePort for control plane service. The Kubernetes API server in the admin
         cluster is implemented as a Service of type NodePort (ex. 30968).
@@ -6877,12 +6877,12 @@ class VMwareClusterLoadBalancerManualLbConfigArgs:
         return pulumi.get(self, "control_plane_node_port")
 
     @control_plane_node_port.setter
-    def control_plane_node_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def control_plane_node_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "control_plane_node_port", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressHttpNodePort")
-    def ingress_http_node_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ingress_http_node_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         NodePort for ingress service's http. The ingress service in the admin
         cluster is implemented as a Service of type NodePort (ex. 32527).
@@ -6890,12 +6890,12 @@ class VMwareClusterLoadBalancerManualLbConfigArgs:
         return pulumi.get(self, "ingress_http_node_port")
 
     @ingress_http_node_port.setter
-    def ingress_http_node_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ingress_http_node_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ingress_http_node_port", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressHttpsNodePort")
-    def ingress_https_node_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ingress_https_node_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         NodePort for ingress service's https. The ingress service in the admin
         cluster is implemented as a Service of type NodePort (ex. 30139).
@@ -6903,12 +6903,12 @@ class VMwareClusterLoadBalancerManualLbConfigArgs:
         return pulumi.get(self, "ingress_https_node_port")
 
     @ingress_https_node_port.setter
-    def ingress_https_node_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ingress_https_node_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ingress_https_node_port", value)
 
     @_builtins.property
     @pulumi.getter(name="konnectivityServerNodePort")
-    def konnectivity_server_node_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def konnectivity_server_node_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         NodePort for konnectivity server service running as a sidecar in each
         kube-apiserver pod (ex. 30564).
@@ -6916,7 +6916,7 @@ class VMwareClusterLoadBalancerManualLbConfigArgs:
         return pulumi.get(self, "konnectivity_server_node_port")
 
     @konnectivity_server_node_port.setter
-    def konnectivity_server_node_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def konnectivity_server_node_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "konnectivity_server_node_port", value)
 
 
@@ -6968,13 +6968,13 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgsDict(TypedDict):
     """
     The name of the address pool.
     """
-    avoid_buggy_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    avoid_buggy_ips: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, avoid using IPs ending in .0 or .255.
     This avoids buggy consumer devices mistakenly dropping IPv4 traffic for
     those special IP addresses.
     """
-    manual_assign: NotRequired[pulumi.Input[_builtins.bool]]
+    manual_assign: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, prevent IP addresses from being automatically assigned.
 
@@ -6986,8 +6986,8 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs:
     def __init__(__self__, *,
                  addresses: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  pool: pulumi.Input[_builtins.str],
-                 avoid_buggy_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 manual_assign: Optional[pulumi.Input[_builtins.bool]] = None):
+                 avoid_buggy_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 manual_assign: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: The addresses that are part of this pool. Each address
                must be either in the CIDR form (1.2.3.0/24) or range
@@ -7035,7 +7035,7 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="avoidBuggyIps")
-    def avoid_buggy_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def avoid_buggy_ips(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, avoid using IPs ending in .0 or .255.
         This avoids buggy consumer devices mistakenly dropping IPv4 traffic for
@@ -7044,12 +7044,12 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs:
         return pulumi.get(self, "avoid_buggy_ips")
 
     @avoid_buggy_ips.setter
-    def avoid_buggy_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def avoid_buggy_ips(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "avoid_buggy_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="manualAssign")
-    def manual_assign(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def manual_assign(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, prevent IP addresses from being automatically assigned.
 
@@ -7058,16 +7058,16 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs:
         return pulumi.get(self, "manual_assign")
 
     @manual_assign.setter
-    def manual_assign(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def manual_assign(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "manual_assign", value)
 
 
 class VMwareClusterLoadBalancerVipConfigArgsDict(TypedDict):
-    control_plane_vip: NotRequired[pulumi.Input[_builtins.str]]
+    control_plane_vip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VIP which you previously set aside for the Kubernetes API of this cluster.
     """
-    ingress_vip: NotRequired[pulumi.Input[_builtins.str]]
+    ingress_vip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VIP which you previously set aside for ingress traffic into this cluster.
 
@@ -7077,8 +7077,8 @@ class VMwareClusterLoadBalancerVipConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterLoadBalancerVipConfigArgs:
     def __init__(__self__, *,
-                 control_plane_vip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_vip: Optional[pulumi.Input[_builtins.str]] = None):
+                 control_plane_vip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_vip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] control_plane_vip: The VIP which you previously set aside for the Kubernetes API of this cluster.
         :param pulumi.Input[_builtins.str] ingress_vip: The VIP which you previously set aside for ingress traffic into this cluster.
@@ -7092,19 +7092,19 @@ class VMwareClusterLoadBalancerVipConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneVip")
-    def control_plane_vip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def control_plane_vip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VIP which you previously set aside for the Kubernetes API of this cluster.
         """
         return pulumi.get(self, "control_plane_vip")
 
     @control_plane_vip.setter
-    def control_plane_vip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def control_plane_vip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_plane_vip", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressVip")
-    def ingress_vip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress_vip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VIP which you previously set aside for ingress traffic into this cluster.
 
@@ -7113,7 +7113,7 @@ class VMwareClusterLoadBalancerVipConfigArgs:
         return pulumi.get(self, "ingress_vip")
 
     @ingress_vip.setter
-    def ingress_vip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress_vip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress_vip", value)
 
 
@@ -7129,27 +7129,27 @@ class VMwareClusterNetworkConfigArgsDict(TypedDict):
     from these ranges. Only a single range is supported.. This field
     cannot be changed after creation.
     """
-    control_plane_v2_config: NotRequired[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigArgsDict']]
+    control_plane_v2_config: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigControlPlaneV2ConfigArgs']]]
     """
     Configuration for control plane V2 mode.
     Structure is documented below.
     """
-    dhcp_ip_config: NotRequired[pulumi.Input['VMwareClusterNetworkConfigDhcpIpConfigArgsDict']]
+    dhcp_ip_config: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigDhcpIpConfigArgs']]]
     """
     Configuration settings for a DHCP IP configuration.
     Structure is documented below.
     """
-    host_config: NotRequired[pulumi.Input['VMwareClusterNetworkConfigHostConfigArgsDict']]
+    host_config: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigHostConfigArgs']]]
     """
     Represents common network settings irrespective of the host's IP address.
     Structure is documented below.
     """
-    static_ip_config: NotRequired[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigArgsDict']]
+    static_ip_config: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigStaticIpConfigArgs']]]
     """
     Configuration settings for a static IP configuration.
     Structure is documented below.
     """
-    vcenter_network: NotRequired[pulumi.Input[_builtins.str]]
+    vcenter_network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     vcenter_network specifies vCenter network name. Inherited from the admin cluster.
     """
@@ -7159,11 +7159,11 @@ class VMwareClusterNetworkConfigArgs:
     def __init__(__self__, *,
                  pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 control_plane_v2_config: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigArgs']] = None,
-                 dhcp_ip_config: Optional[pulumi.Input['VMwareClusterNetworkConfigDhcpIpConfigArgs']] = None,
-                 host_config: Optional[pulumi.Input['VMwareClusterNetworkConfigHostConfigArgs']] = None,
-                 static_ip_config: Optional[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigArgs']] = None,
-                 vcenter_network: Optional[pulumi.Input[_builtins.str]] = None):
+                 control_plane_v2_config: pulumi.Input[Optional['VMwareClusterNetworkConfigControlPlaneV2ConfigArgs']] = None,
+                 dhcp_ip_config: pulumi.Input[Optional['VMwareClusterNetworkConfigDhcpIpConfigArgs']] = None,
+                 host_config: pulumi.Input[Optional['VMwareClusterNetworkConfigHostConfigArgs']] = None,
+                 static_ip_config: pulumi.Input[Optional['VMwareClusterNetworkConfigStaticIpConfigArgs']] = None,
+                 vcenter_network: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_address_cidr_blocks: All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
                Only a single range is supported. This field cannot be changed after creation.
@@ -7222,7 +7222,7 @@ class VMwareClusterNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneV2Config")
-    def control_plane_v2_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigArgs']]:
+    def control_plane_v2_config(self) -> pulumi.Input[Optional['VMwareClusterNetworkConfigControlPlaneV2ConfigArgs']]:
         """
         Configuration for control plane V2 mode.
         Structure is documented below.
@@ -7230,12 +7230,12 @@ class VMwareClusterNetworkConfigArgs:
         return pulumi.get(self, "control_plane_v2_config")
 
     @control_plane_v2_config.setter
-    def control_plane_v2_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigArgs']]):
+    def control_plane_v2_config(self, value: pulumi.Input[Optional['VMwareClusterNetworkConfigControlPlaneV2ConfigArgs']]):
         pulumi.set(self, "control_plane_v2_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpIpConfig")
-    def dhcp_ip_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigDhcpIpConfigArgs']]:
+    def dhcp_ip_config(self) -> pulumi.Input[Optional['VMwareClusterNetworkConfigDhcpIpConfigArgs']]:
         """
         Configuration settings for a DHCP IP configuration.
         Structure is documented below.
@@ -7243,12 +7243,12 @@ class VMwareClusterNetworkConfigArgs:
         return pulumi.get(self, "dhcp_ip_config")
 
     @dhcp_ip_config.setter
-    def dhcp_ip_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigDhcpIpConfigArgs']]):
+    def dhcp_ip_config(self, value: pulumi.Input[Optional['VMwareClusterNetworkConfigDhcpIpConfigArgs']]):
         pulumi.set(self, "dhcp_ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="hostConfig")
-    def host_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigHostConfigArgs']]:
+    def host_config(self) -> pulumi.Input[Optional['VMwareClusterNetworkConfigHostConfigArgs']]:
         """
         Represents common network settings irrespective of the host's IP address.
         Structure is documented below.
@@ -7256,12 +7256,12 @@ class VMwareClusterNetworkConfigArgs:
         return pulumi.get(self, "host_config")
 
     @host_config.setter
-    def host_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigHostConfigArgs']]):
+    def host_config(self, value: pulumi.Input[Optional['VMwareClusterNetworkConfigHostConfigArgs']]):
         pulumi.set(self, "host_config", value)
 
     @_builtins.property
     @pulumi.getter(name="staticIpConfig")
-    def static_ip_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigArgs']]:
+    def static_ip_config(self) -> pulumi.Input[Optional['VMwareClusterNetworkConfigStaticIpConfigArgs']]:
         """
         Configuration settings for a static IP configuration.
         Structure is documented below.
@@ -7269,24 +7269,24 @@ class VMwareClusterNetworkConfigArgs:
         return pulumi.get(self, "static_ip_config")
 
     @static_ip_config.setter
-    def static_ip_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigArgs']]):
+    def static_ip_config(self, value: pulumi.Input[Optional['VMwareClusterNetworkConfigStaticIpConfigArgs']]):
         pulumi.set(self, "static_ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="vcenterNetwork")
-    def vcenter_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vcenter_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         vcenter_network specifies vCenter network name. Inherited from the admin cluster.
         """
         return pulumi.get(self, "vcenter_network")
 
     @vcenter_network.setter
-    def vcenter_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vcenter_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vcenter_network", value)
 
 
 class VMwareClusterNetworkConfigControlPlaneV2ConfigArgsDict(TypedDict):
-    control_plane_ip_block: NotRequired[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgsDict']]
+    control_plane_ip_block: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs']]]
     """
     Static IP addresses for the control plane nodes.
     """
@@ -7294,7 +7294,7 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterNetworkConfigControlPlaneV2ConfigArgs:
     def __init__(__self__, *,
-                 control_plane_ip_block: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs']] = None):
+                 control_plane_ip_block: pulumi.Input[Optional['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs']] = None):
         """
         :param pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs'] control_plane_ip_block: Static IP addresses for the control plane nodes.
         """
@@ -7303,28 +7303,28 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneIpBlock")
-    def control_plane_ip_block(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs']]:
+    def control_plane_ip_block(self) -> pulumi.Input[Optional['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs']]:
         """
         Static IP addresses for the control plane nodes.
         """
         return pulumi.get(self, "control_plane_ip_block")
 
     @control_plane_ip_block.setter
-    def control_plane_ip_block(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs']]):
+    def control_plane_ip_block(self, value: pulumi.Input[Optional['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs']]):
         pulumi.set(self, "control_plane_ip_block", value)
 
 
 class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgsDict(TypedDict):
-    gateway: NotRequired[pulumi.Input[_builtins.str]]
+    gateway: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The network gateway used by the VMware User Cluster.
     """
-    ips: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgsDict']]]]
+    ips: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs']]]]]
     """
     The node's network configurations used by the VMware User Cluster.
     Structure is documented below.
     """
-    netmask: NotRequired[pulumi.Input[_builtins.str]]
+    netmask: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The netmask used by the VMware User Cluster.
     """
@@ -7332,9 +7332,9 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgsDict(
 @pulumi.input_type
 class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs:
     def __init__(__self__, *,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 ips: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs']]]] = None,
-                 netmask: Optional[pulumi.Input[_builtins.str]] = None):
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 ips: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs']]]] = None,
+                 netmask: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] gateway: The network gateway used by the VMware User Cluster.
         :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs']]] ips: The node's network configurations used by the VMware User Cluster.
@@ -7350,19 +7350,19 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs:
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network gateway used by the VMware User Cluster.
         """
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs']]]]:
+    def ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs']]]]:
         """
         The node's network configurations used by the VMware User Cluster.
         Structure is documented below.
@@ -7370,28 +7370,28 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs:
         return pulumi.get(self, "ips")
 
     @ips.setter
-    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs']]]]):
+    def ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs']]]]):
         pulumi.set(self, "ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def netmask(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def netmask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The netmask used by the VMware User Cluster.
         """
         return pulumi.get(self, "netmask")
 
     @netmask.setter
-    def netmask(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def netmask(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "netmask", value)
 
 
 class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgsDict(TypedDict):
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Hostname of the machine. VM's name will be used if this field is empty.
     """
-    ip: NotRequired[pulumi.Input[_builtins.str]]
+    ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
     """
@@ -7399,8 +7399,8 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgsDic
 @pulumi.input_type
 class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs:
     def __init__(__self__, *,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] hostname: Hostname of the machine. VM's name will be used if this field is empty.
         :param pulumi.Input[_builtins.str] ip: IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
@@ -7412,26 +7412,26 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hostname of the machine. VM's name will be used if this field is empty.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
 
@@ -7467,17 +7467,17 @@ class VMwareClusterNetworkConfigDhcpIpConfigArgs:
 
 
 class VMwareClusterNetworkConfigHostConfigArgsDict(TypedDict):
-    dns_search_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    dns_search_domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     DNS search domains.
 
     <a name="nested_network_config_control_plane_v2_config"></a>The `control_plane_v2_config` block supports:
     """
-    dns_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    dns_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     DNS servers.
     """
-    ntp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ntp_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     NTP servers.
     """
@@ -7485,9 +7485,9 @@ class VMwareClusterNetworkConfigHostConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterNetworkConfigHostConfigArgs:
     def __init__(__self__, *,
-                 dns_search_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 dns_search_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_search_domains: DNS search domains.
                
@@ -7504,7 +7504,7 @@ class VMwareClusterNetworkConfigHostConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dnsSearchDomains")
-    def dns_search_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_search_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         DNS search domains.
 
@@ -7513,31 +7513,31 @@ class VMwareClusterNetworkConfigHostConfigArgs:
         return pulumi.get(self, "dns_search_domains")
 
     @dns_search_domains.setter
-    def dns_search_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_search_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_search_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         DNS servers.
         """
         return pulumi.get(self, "dns_servers")
 
     @dns_servers.setter
-    def dns_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
-    def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         NTP servers.
         """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
-    def ntp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ntp_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ntp_servers", value)
 
 
@@ -7646,7 +7646,7 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgsDict(TypedDict):
     """
     IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Hostname of the machine. VM's name will be used if this field is empty.
     """
@@ -7655,7 +7655,7 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgsDict(TypedDict):
 class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
     def __init__(__self__, *,
                  ip: pulumi.Input[_builtins.str],
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ip: IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
         :param pulumi.Input[_builtins.str] hostname: Hostname of the machine. VM's name will be used if this field is empty.
@@ -7678,25 +7678,25 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hostname of the machine. VM's name will be used if this field is empty.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class VMwareClusterStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArgsDict']]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterStatusConditionArgs']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
     Structure is documented below.
     """
-    error_message: NotRequired[pulumi.Input[_builtins.str]]
+    error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human-friendly representation of the error message from the user cluster
@@ -7709,8 +7709,8 @@ class VMwareClusterStatusArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterStatusArgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArgs']]]] = None,
-                 error_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterStatusConditionArgs']]]] = None,
+                 error_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArgs']]] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -7729,7 +7729,7 @@ class VMwareClusterStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterStatusConditionArgs']]]]:
         """
         (Output)
         ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -7738,12 +7738,12 @@ class VMwareClusterStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterStatusConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human-friendly representation of the error message from the user cluster
@@ -7755,32 +7755,32 @@ class VMwareClusterStatusArgs:
         return pulumi.get(self, "error_message")
 
     @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_message", value)
 
 
 class VMwareClusterStatusConditionArgsDict(TypedDict):
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transit from one status to another.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human-readable message indicating details about last transition.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Machine-readable message indicating details about last transition.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The lifecycle state of the condition.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Type of the condition.
@@ -7790,11 +7790,11 @@ class VMwareClusterStatusConditionArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterStatusConditionArgs:
     def __init__(__self__, *,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] last_transition_time: (Output)
                Last time the condition transit from one status to another.
@@ -7821,7 +7821,7 @@ class VMwareClusterStatusConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transit from one status to another.
@@ -7829,12 +7829,12 @@ class VMwareClusterStatusConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human-readable message indicating details about last transition.
@@ -7842,12 +7842,12 @@ class VMwareClusterStatusConditionArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Machine-readable message indicating details about last transition.
@@ -7855,12 +7855,12 @@ class VMwareClusterStatusConditionArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The lifecycle state of the condition.
@@ -7868,12 +7868,12 @@ class VMwareClusterStatusConditionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Type of the condition.
@@ -7882,7 +7882,7 @@ class VMwareClusterStatusConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -7918,7 +7918,7 @@ class VMwareClusterStorageArgs:
 
 
 class VMwareClusterUpgradePolicyArgsDict(TypedDict):
-    control_plane_only: NotRequired[pulumi.Input[_builtins.bool]]
+    control_plane_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Controls whether the upgrade applies to the control plane only.
     """
@@ -7926,7 +7926,7 @@ class VMwareClusterUpgradePolicyArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterUpgradePolicyArgs:
     def __init__(__self__, *,
-                 control_plane_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 control_plane_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] control_plane_only: Controls whether the upgrade applies to the control plane only.
         """
@@ -7935,29 +7935,29 @@ class VMwareClusterUpgradePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneOnly")
-    def control_plane_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def control_plane_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether the upgrade applies to the control plane only.
         """
         return pulumi.get(self, "control_plane_only")
 
     @control_plane_only.setter
-    def control_plane_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def control_plane_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "control_plane_only", value)
 
 
 class VMwareClusterValidationCheckArgsDict(TypedDict):
-    options: NotRequired[pulumi.Input[_builtins.str]]
+    options: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Options used for the validation check.
     """
-    scenario: NotRequired[pulumi.Input[_builtins.str]]
+    scenario: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The scenario when the preflight checks were run..
     """
-    statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgsDict']]]]
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgs']]]]]
     """
     (Output)
     Specifies the detailed validation check status
@@ -7967,9 +7967,9 @@ class VMwareClusterValidationCheckArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterValidationCheckArgs:
     def __init__(__self__, *,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 scenario: Optional[pulumi.Input[_builtins.str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgs']]]] = None):
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenario: pulumi.Input[Optional[_builtins.str]] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] options: (Output)
                Options used for the validation check.
@@ -7988,7 +7988,7 @@ class VMwareClusterValidationCheckArgs:
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Options used for the validation check.
@@ -7996,12 +7996,12 @@ class VMwareClusterValidationCheckArgs:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def scenario(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scenario(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The scenario when the preflight checks were run..
@@ -8009,12 +8009,12 @@ class VMwareClusterValidationCheckArgs:
         return pulumi.get(self, "scenario")
 
     @scenario.setter
-    def scenario(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scenario(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scenario", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgs']]]]:
         """
         (Output)
         Specifies the detailed validation check status
@@ -8023,12 +8023,12 @@ class VMwareClusterValidationCheckArgs:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
 
 class VMwareClusterValidationCheckStatusArgsDict(TypedDict):
-    results: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgsDict']]]]
+    results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]]]]
     """
     (Output)
     Individual checks which failed as part of the Preflight check execution.
@@ -8038,7 +8038,7 @@ class VMwareClusterValidationCheckStatusArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterValidationCheckStatusArgs:
     def __init__(__self__, *,
-                 results: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]]] = None):
+                 results: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]] results: (Output)
                Individual checks which failed as part of the Preflight check execution.
@@ -8049,7 +8049,7 @@ class VMwareClusterValidationCheckStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]]]:
+    def results(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]]]:
         """
         (Output)
         Individual checks which failed as part of the Preflight check execution.
@@ -8058,31 +8058,31 @@ class VMwareClusterValidationCheckStatusArgs:
         return pulumi.get(self, "results")
 
     @results.setter
-    def results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]]]):
+    def results(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]]]):
         pulumi.set(self, "results", value)
 
 
 class VMwareClusterValidationCheckStatusResultArgsDict(TypedDict):
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The category of the validation.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A human readable description of this VMware User Cluster.
     """
-    details: NotRequired[pulumi.Input[_builtins.str]]
+    details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Detailed failure information, which might be unformatted.
     """
-    options: NotRequired[pulumi.Input[_builtins.str]]
+    options: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Options used for the validation check.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Machine-readable message indicating details about last transition.
@@ -8091,11 +8091,11 @@ class VMwareClusterValidationCheckStatusResultArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterValidationCheckStatusResultArgs:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 details: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 details: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] category: (Output)
                The category of the validation.
@@ -8120,7 +8120,7 @@ class VMwareClusterValidationCheckStatusResultArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The category of the validation.
@@ -8128,24 +8128,24 @@ class VMwareClusterValidationCheckStatusResultArgs:
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human readable description of this VMware User Cluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def details(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Detailed failure information, which might be unformatted.
@@ -8153,12 +8153,12 @@ class VMwareClusterValidationCheckStatusResultArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def details(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Options used for the validation check.
@@ -8166,12 +8166,12 @@ class VMwareClusterValidationCheckStatusResultArgs:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Machine-readable message indicating details about last transition.
@@ -8179,41 +8179,41 @@ class VMwareClusterValidationCheckStatusResultArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
 
 class VMwareClusterVcenterArgsDict(TypedDict):
-    address: NotRequired[pulumi.Input[_builtins.str]]
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The vCenter IP address.
     """
-    ca_cert_data: NotRequired[pulumi.Input[_builtins.str]]
+    ca_cert_data: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Contains the vCenter CA certificate public key for SSL verification.
     """
-    cluster: NotRequired[pulumi.Input[_builtins.str]]
+    cluster: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the vCenter cluster for the user cluster.
     """
-    datacenter: NotRequired[pulumi.Input[_builtins.str]]
+    datacenter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the vCenter datacenter for the user cluster.
     """
-    datastore: NotRequired[pulumi.Input[_builtins.str]]
+    datastore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the vCenter datastore for the user cluster.
     """
-    folder: NotRequired[pulumi.Input[_builtins.str]]
+    folder: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the vCenter folder for the user cluster.
     """
-    resource_pool: NotRequired[pulumi.Input[_builtins.str]]
+    resource_pool: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the vCenter resource pool for the user cluster.
     """
-    storage_policy_name: NotRequired[pulumi.Input[_builtins.str]]
+    storage_policy_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the vCenter storage policy for the user cluster.
     """
@@ -8221,14 +8221,14 @@ class VMwareClusterVcenterArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareClusterVcenterArgs:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_cert_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_policy_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_cert_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_policy_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: (Output)
                The vCenter IP address.
@@ -8259,7 +8259,7 @@ class VMwareClusterVcenterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The vCenter IP address.
@@ -8267,91 +8267,91 @@ class VMwareClusterVcenterArgs:
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter(name="caCertData")
-    def ca_cert_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Contains the vCenter CA certificate public key for SSL verification.
         """
         return pulumi.get(self, "ca_cert_data")
 
     @ca_cert_data.setter
-    def ca_cert_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert_data", value)
 
     @_builtins.property
     @pulumi.getter
-    def cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vCenter cluster for the user cluster.
         """
         return pulumi.get(self, "cluster")
 
     @cluster.setter
-    def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vCenter datacenter for the user cluster.
         """
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter
-    def datastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vCenter datastore for the user cluster.
         """
         return pulumi.get(self, "datastore")
 
     @datastore.setter
-    def datastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vCenter folder for the user cluster.
         """
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePool")
-    def resource_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vCenter resource pool for the user cluster.
         """
         return pulumi.get(self, "resource_pool")
 
     @resource_pool.setter
-    def resource_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePolicyName")
-    def storage_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vCenter storage policy for the user cluster.
         """
         return pulumi.get(self, "storage_policy_name")
 
     @storage_policy_name.setter
-    def storage_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_policy_name", value)
 
 
@@ -8361,24 +8361,24 @@ class VMwareNodePoolConfigArgsDict(TypedDict):
     The OS image to be used for each node in a node pool.
     Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
     """
-    boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     VMware disk size to be used during creation.
     """
-    cpus: NotRequired[pulumi.Input[_builtins.int]]
+    cpus: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPUs for each node in the node pool.
     """
-    enable_load_balancer: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_load_balancer: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Allow node pool traffic to be load balanced. Only works for clusters with
     MetalLB load balancers.
     """
-    image: NotRequired[pulumi.Input[_builtins.str]]
+    image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OS image name in vCenter, only valid when using Windows.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The map of Kubernetes labels (key/value pairs) to be applied to each node.
     These will added in addition to any default label(s) that
@@ -8387,20 +8387,20 @@ class VMwareNodePoolConfigArgsDict(TypedDict):
     the Kubernetes version -- it's best to assume the behavior is undefined
     and conflicts should be avoided.
     """
-    memory_mb: NotRequired[pulumi.Input[_builtins.int]]
+    memory_mb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The megabytes of memory for each node in the node pool.
     """
-    replicas: NotRequired[pulumi.Input[_builtins.int]]
+    replicas: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of nodes in the node pool.
     """
-    taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgsDict']]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]]]]
     """
     The initial taints assigned to nodes of this node pool.
     Structure is documented below.
     """
-    vsphere_config: NotRequired[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgsDict']]
+    vsphere_config: NotRequired[pulumi.Input[Optional['VMwareNodePoolConfigVsphereConfigArgs']]]
     """
     Specifies the vSphere config for node pool.
     Structure is documented below.
@@ -8410,15 +8410,15 @@ class VMwareNodePoolConfigArgsDict(TypedDict):
 class VMwareNodePoolConfigArgs:
     def __init__(__self__, *,
                  image_type: pulumi.Input[_builtins.str],
-                 boot_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpus: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_load_balancer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 memory_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]]] = None,
-                 vsphere_config: Optional[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']] = None):
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpus: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_load_balancer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 memory_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]]] = None,
+                 vsphere_config: pulumi.Input[Optional['VMwareNodePoolConfigVsphereConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] image_type: The OS image to be used for each node in a node pool.
                Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
@@ -8475,31 +8475,31 @@ class VMwareNodePoolConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="bootDiskSizeGb")
-    def boot_disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VMware disk size to be used during creation.
         """
         return pulumi.get(self, "boot_disk_size_gb")
 
     @boot_disk_size_gb.setter
-    def boot_disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "boot_disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpus(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpus(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPUs for each node in the node pool.
         """
         return pulumi.get(self, "cpus")
 
     @cpus.setter
-    def cpus(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpus(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpus", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLoadBalancer")
-    def enable_load_balancer(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_load_balancer(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow node pool traffic to be load balanced. Only works for clusters with
         MetalLB load balancers.
@@ -8507,24 +8507,24 @@ class VMwareNodePoolConfigArgs:
         return pulumi.get(self, "enable_load_balancer")
 
     @enable_load_balancer.setter
-    def enable_load_balancer(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_load_balancer(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_load_balancer", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OS image name in vCenter, only valid when using Windows.
         """
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The map of Kubernetes labels (key/value pairs) to be applied to each node.
         These will added in addition to any default label(s) that
@@ -8536,36 +8536,36 @@ class VMwareNodePoolConfigArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryMb")
-    def memory_mb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_mb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The megabytes of memory for each node in the node pool.
         """
         return pulumi.get(self, "memory_mb")
 
     @memory_mb.setter
-    def memory_mb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_mb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_mb", value)
 
     @_builtins.property
     @pulumi.getter
-    def replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes in the node pool.
         """
         return pulumi.get(self, "replicas")
 
     @replicas.setter
-    def replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replicas", value)
 
     @_builtins.property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]]]:
+    def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]]]:
         """
         The initial taints assigned to nodes of this node pool.
         Structure is documented below.
@@ -8573,12 +8573,12 @@ class VMwareNodePoolConfigArgs:
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]]]):
+    def taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
     @_builtins.property
     @pulumi.getter(name="vsphereConfig")
-    def vsphere_config(self) -> Optional[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']]:
+    def vsphere_config(self) -> pulumi.Input[Optional['VMwareNodePoolConfigVsphereConfigArgs']]:
         """
         Specifies the vSphere config for node pool.
         Structure is documented below.
@@ -8586,7 +8586,7 @@ class VMwareNodePoolConfigArgs:
         return pulumi.get(self, "vsphere_config")
 
     @vsphere_config.setter
-    def vsphere_config(self, value: Optional[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']]):
+    def vsphere_config(self, value: pulumi.Input[Optional['VMwareNodePoolConfigVsphereConfigArgs']]):
         pulumi.set(self, "vsphere_config", value)
 
 
@@ -8599,7 +8599,7 @@ class VMwareNodePoolConfigTaintArgsDict(TypedDict):
     """
     Value associated with the effect.
     """
-    effect: NotRequired[pulumi.Input[_builtins.str]]
+    effect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Available taint effects.
     Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
@@ -8610,7 +8610,7 @@ class VMwareNodePoolConfigTaintArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 effect: Optional[pulumi.Input[_builtins.str]] = None):
+                 effect: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key associated with the effect.
         :param pulumi.Input[_builtins.str] value: Value associated with the effect.
@@ -8648,7 +8648,7 @@ class VMwareNodePoolConfigTaintArgs:
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available taint effects.
         Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
@@ -8656,20 +8656,20 @@ class VMwareNodePoolConfigTaintArgs:
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
 
 class VMwareNodePoolConfigVsphereConfigArgsDict(TypedDict):
-    datastore: NotRequired[pulumi.Input[_builtins.str]]
+    datastore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the vCenter datastore. Inherited from the user cluster.
     """
-    host_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    host_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Vsphere host groups to apply to all VMs in the node pool
     """
-    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgsDict']]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgs']]]]]
     """
     Tags to apply to VMs.
     Structure is documented below.
@@ -8678,9 +8678,9 @@ class VMwareNodePoolConfigVsphereConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareNodePoolConfigVsphereConfigArgs:
     def __init__(__self__, *,
-                 datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgs']]]] = None):
+                 datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] datastore: The name of the vCenter datastore. Inherited from the user cluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_groups: Vsphere host groups to apply to all VMs in the node pool
@@ -8696,31 +8696,31 @@ class VMwareNodePoolConfigVsphereConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def datastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vCenter datastore. Inherited from the user cluster.
         """
         return pulumi.get(self, "datastore")
 
     @datastore.setter
-    def datastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore", value)
 
     @_builtins.property
     @pulumi.getter(name="hostGroups")
-    def host_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def host_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Vsphere host groups to apply to all VMs in the node pool
         """
         return pulumi.get(self, "host_groups")
 
     @host_groups.setter
-    def host_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def host_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "host_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgs']]]]:
         """
         Tags to apply to VMs.
         Structure is documented below.
@@ -8728,16 +8728,16 @@ class VMwareNodePoolConfigVsphereConfigArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
 
 class VMwareNodePoolConfigVsphereConfigTagArgsDict(TypedDict):
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Vsphere tag category.
     """
-    tag: NotRequired[pulumi.Input[_builtins.str]]
+    tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Vsphere tag name.
     """
@@ -8745,8 +8745,8 @@ class VMwareNodePoolConfigVsphereConfigTagArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareNodePoolConfigVsphereConfigTagArgs:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] category: The Vsphere tag category.
         :param pulumi.Input[_builtins.str] tag: The Vsphere tag name.
@@ -8758,26 +8758,26 @@ class VMwareNodePoolConfigVsphereConfigTagArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Vsphere tag category.
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Vsphere tag name.
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag", value)
 
 
@@ -8829,13 +8829,13 @@ class VMwareNodePoolNodePoolAutoscalingArgs:
 
 
 class VMwareNodePoolStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgsDict']]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgs']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
     Structure is documented below.
     """
-    error_message: NotRequired[pulumi.Input[_builtins.str]]
+    error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human-friendly representation of the error message from the user cluster
@@ -8848,8 +8848,8 @@ class VMwareNodePoolStatusArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareNodePoolStatusArgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgs']]]] = None,
-                 error_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgs']]]] = None,
+                 error_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgs']]] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -8868,7 +8868,7 @@ class VMwareNodePoolStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgs']]]]:
         """
         (Output)
         ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -8877,12 +8877,12 @@ class VMwareNodePoolStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human-friendly representation of the error message from the user cluster
@@ -8894,32 +8894,32 @@ class VMwareNodePoolStatusArgs:
         return pulumi.get(self, "error_message")
 
     @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_message", value)
 
 
 class VMwareNodePoolStatusConditionArgsDict(TypedDict):
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transit from one status to another.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human-readable message indicating details about last transition.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Machine-readable message indicating details about last transition.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The lifecycle state of the condition.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Type of the condition.
@@ -8929,11 +8929,11 @@ class VMwareNodePoolStatusConditionArgsDict(TypedDict):
 @pulumi.input_type
 class VMwareNodePoolStatusConditionArgs:
     def __init__(__self__, *,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] last_transition_time: (Output)
                Last time the condition transit from one status to another.
@@ -8960,7 +8960,7 @@ class VMwareNodePoolStatusConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transit from one status to another.
@@ -8968,12 +8968,12 @@ class VMwareNodePoolStatusConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human-readable message indicating details about last transition.
@@ -8981,12 +8981,12 @@ class VMwareNodePoolStatusConditionArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Machine-readable message indicating details about last transition.
@@ -8994,12 +8994,12 @@ class VMwareNodePoolStatusConditionArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The lifecycle state of the condition.
@@ -9007,12 +9007,12 @@ class VMwareNodePoolStatusConditionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Type of the condition.
@@ -9021,12 +9021,12 @@ class VMwareNodePoolStatusConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class VmwareAdminClusterAddonNodeArgsDict(TypedDict):
-    auto_resize_config: NotRequired[pulumi.Input['VmwareAdminClusterAddonNodeAutoResizeConfigArgsDict']]
+    auto_resize_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterAddonNodeAutoResizeConfigArgs']]]
     """
     Specifies auto resize config.
     Structure is documented below.
@@ -9035,7 +9035,7 @@ class VmwareAdminClusterAddonNodeArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterAddonNodeArgs:
     def __init__(__self__, *,
-                 auto_resize_config: Optional[pulumi.Input['VmwareAdminClusterAddonNodeAutoResizeConfigArgs']] = None):
+                 auto_resize_config: pulumi.Input[Optional['VmwareAdminClusterAddonNodeAutoResizeConfigArgs']] = None):
         """
         :param pulumi.Input['VmwareAdminClusterAddonNodeAutoResizeConfigArgs'] auto_resize_config: Specifies auto resize config.
                Structure is documented below.
@@ -9045,7 +9045,7 @@ class VmwareAdminClusterAddonNodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoResizeConfig")
-    def auto_resize_config(self) -> Optional[pulumi.Input['VmwareAdminClusterAddonNodeAutoResizeConfigArgs']]:
+    def auto_resize_config(self) -> pulumi.Input[Optional['VmwareAdminClusterAddonNodeAutoResizeConfigArgs']]:
         """
         Specifies auto resize config.
         Structure is documented below.
@@ -9053,7 +9053,7 @@ class VmwareAdminClusterAddonNodeArgs:
         return pulumi.get(self, "auto_resize_config")
 
     @auto_resize_config.setter
-    def auto_resize_config(self, value: Optional[pulumi.Input['VmwareAdminClusterAddonNodeAutoResizeConfigArgs']]):
+    def auto_resize_config(self, value: pulumi.Input[Optional['VmwareAdminClusterAddonNodeAutoResizeConfigArgs']]):
         pulumi.set(self, "auto_resize_config", value)
 
 
@@ -9120,7 +9120,7 @@ class VmwareAdminClusterAntiAffinityGroupsArgs:
 
 
 class VmwareAdminClusterAuthorizationArgsDict(TypedDict):
-    viewer_users: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgsDict']]]]
+    viewer_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgs']]]]]
     """
     Users that will be granted the cluster-admin role on the cluster, providing
     full access to the cluster.
@@ -9130,7 +9130,7 @@ class VmwareAdminClusterAuthorizationArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterAuthorizationArgs:
     def __init__(__self__, *,
-                 viewer_users: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgs']]]] = None):
+                 viewer_users: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgs']]] viewer_users: Users that will be granted the cluster-admin role on the cluster, providing
                full access to the cluster.
@@ -9141,7 +9141,7 @@ class VmwareAdminClusterAuthorizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="viewerUsers")
-    def viewer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgs']]]]:
+    def viewer_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgs']]]]:
         """
         Users that will be granted the cluster-admin role on the cluster, providing
         full access to the cluster.
@@ -9150,7 +9150,7 @@ class VmwareAdminClusterAuthorizationArgs:
         return pulumi.get(self, "viewer_users")
 
     @viewer_users.setter
-    def viewer_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgs']]]]):
+    def viewer_users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgs']]]]):
         pulumi.set(self, "viewer_users", value)
 
 
@@ -9211,15 +9211,15 @@ class VmwareAdminClusterAutoRepairConfigArgs:
 
 
 class VmwareAdminClusterControlPlaneNodeArgsDict(TypedDict):
-    cpus: NotRequired[pulumi.Input[_builtins.int]]
+    cpus: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of vCPUs for the control-plane node of the admin cluster.
     """
-    memory: NotRequired[pulumi.Input[_builtins.int]]
+    memory: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of mebibytes of memory for the control-plane node of the admin cluster.
     """
-    replicas: NotRequired[pulumi.Input[_builtins.int]]
+    replicas: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of control plane nodes for this VMware admin cluster.
     """
@@ -9227,9 +9227,9 @@ class VmwareAdminClusterControlPlaneNodeArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterControlPlaneNodeArgs:
     def __init__(__self__, *,
-                 cpus: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 replicas: Optional[pulumi.Input[_builtins.int]] = None):
+                 cpus: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] cpus: The number of vCPUs for the control-plane node of the admin cluster.
         :param pulumi.Input[_builtins.int] memory: The number of mebibytes of memory for the control-plane node of the admin cluster.
@@ -9244,43 +9244,43 @@ class VmwareAdminClusterControlPlaneNodeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cpus(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpus(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of vCPUs for the control-plane node of the admin cluster.
         """
         return pulumi.get(self, "cpus")
 
     @cpus.setter
-    def cpus(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpus(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpus", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of mebibytes of memory for the control-plane node of the admin cluster.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter
-    def replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of control plane nodes for this VMware admin cluster.
         """
         return pulumi.get(self, "replicas")
 
     @replicas.setter
-    def replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replicas", value)
 
 
 class VmwareAdminClusterFleetArgsDict(TypedDict):
-    membership: NotRequired[pulumi.Input[_builtins.str]]
+    membership: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The name of the managed Fleet Membership resource associated to this cluster.
@@ -9291,7 +9291,7 @@ class VmwareAdminClusterFleetArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterFleetArgs:
     def __init__(__self__, *,
-                 membership: Optional[pulumi.Input[_builtins.str]] = None):
+                 membership: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] membership: (Output)
                The name of the managed Fleet Membership resource associated to this cluster.
@@ -9303,7 +9303,7 @@ class VmwareAdminClusterFleetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def membership(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def membership(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the managed Fleet Membership resource associated to this cluster.
@@ -9313,7 +9313,7 @@ class VmwareAdminClusterFleetArgs:
         return pulumi.get(self, "membership")
 
     @membership.setter
-    def membership(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def membership(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "membership", value)
 
 
@@ -9323,17 +9323,17 @@ class VmwareAdminClusterLoadBalancerArgsDict(TypedDict):
     Specified the VMware Load Balancer Config
     Structure is documented below.
     """
-    f5_config: NotRequired[pulumi.Input['VmwareAdminClusterLoadBalancerF5ConfigArgsDict']]
+    f5_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterLoadBalancerF5ConfigArgs']]]
     """
     Configuration for F5 Big IP typed load balancers.
     Structure is documented below.
     """
-    manual_lb_config: NotRequired[pulumi.Input['VmwareAdminClusterLoadBalancerManualLbConfigArgsDict']]
+    manual_lb_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterLoadBalancerManualLbConfigArgs']]]
     """
     Manually configured load balancers.
     Structure is documented below.
     """
-    metal_lb_config: NotRequired[pulumi.Input['VmwareAdminClusterLoadBalancerMetalLbConfigArgsDict']]
+    metal_lb_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterLoadBalancerMetalLbConfigArgs']]]
     """
     Metal LB load balancers.
     Structure is documented below.
@@ -9343,9 +9343,9 @@ class VmwareAdminClusterLoadBalancerArgsDict(TypedDict):
 class VmwareAdminClusterLoadBalancerArgs:
     def __init__(__self__, *,
                  vip_config: pulumi.Input['VmwareAdminClusterLoadBalancerVipConfigArgs'],
-                 f5_config: Optional[pulumi.Input['VmwareAdminClusterLoadBalancerF5ConfigArgs']] = None,
-                 manual_lb_config: Optional[pulumi.Input['VmwareAdminClusterLoadBalancerManualLbConfigArgs']] = None,
-                 metal_lb_config: Optional[pulumi.Input['VmwareAdminClusterLoadBalancerMetalLbConfigArgs']] = None):
+                 f5_config: pulumi.Input[Optional['VmwareAdminClusterLoadBalancerF5ConfigArgs']] = None,
+                 manual_lb_config: pulumi.Input[Optional['VmwareAdminClusterLoadBalancerManualLbConfigArgs']] = None,
+                 metal_lb_config: pulumi.Input[Optional['VmwareAdminClusterLoadBalancerMetalLbConfigArgs']] = None):
         """
         :param pulumi.Input['VmwareAdminClusterLoadBalancerVipConfigArgs'] vip_config: Specified the VMware Load Balancer Config
                Structure is documented below.
@@ -9379,7 +9379,7 @@ class VmwareAdminClusterLoadBalancerArgs:
 
     @_builtins.property
     @pulumi.getter(name="f5Config")
-    def f5_config(self) -> Optional[pulumi.Input['VmwareAdminClusterLoadBalancerF5ConfigArgs']]:
+    def f5_config(self) -> pulumi.Input[Optional['VmwareAdminClusterLoadBalancerF5ConfigArgs']]:
         """
         Configuration for F5 Big IP typed load balancers.
         Structure is documented below.
@@ -9387,12 +9387,12 @@ class VmwareAdminClusterLoadBalancerArgs:
         return pulumi.get(self, "f5_config")
 
     @f5_config.setter
-    def f5_config(self, value: Optional[pulumi.Input['VmwareAdminClusterLoadBalancerF5ConfigArgs']]):
+    def f5_config(self, value: pulumi.Input[Optional['VmwareAdminClusterLoadBalancerF5ConfigArgs']]):
         pulumi.set(self, "f5_config", value)
 
     @_builtins.property
     @pulumi.getter(name="manualLbConfig")
-    def manual_lb_config(self) -> Optional[pulumi.Input['VmwareAdminClusterLoadBalancerManualLbConfigArgs']]:
+    def manual_lb_config(self) -> pulumi.Input[Optional['VmwareAdminClusterLoadBalancerManualLbConfigArgs']]:
         """
         Manually configured load balancers.
         Structure is documented below.
@@ -9400,12 +9400,12 @@ class VmwareAdminClusterLoadBalancerArgs:
         return pulumi.get(self, "manual_lb_config")
 
     @manual_lb_config.setter
-    def manual_lb_config(self, value: Optional[pulumi.Input['VmwareAdminClusterLoadBalancerManualLbConfigArgs']]):
+    def manual_lb_config(self, value: pulumi.Input[Optional['VmwareAdminClusterLoadBalancerManualLbConfigArgs']]):
         pulumi.set(self, "manual_lb_config", value)
 
     @_builtins.property
     @pulumi.getter(name="metalLbConfig")
-    def metal_lb_config(self) -> Optional[pulumi.Input['VmwareAdminClusterLoadBalancerMetalLbConfigArgs']]:
+    def metal_lb_config(self) -> pulumi.Input[Optional['VmwareAdminClusterLoadBalancerMetalLbConfigArgs']]:
         """
         Metal LB load balancers.
         Structure is documented below.
@@ -9413,22 +9413,22 @@ class VmwareAdminClusterLoadBalancerArgs:
         return pulumi.get(self, "metal_lb_config")
 
     @metal_lb_config.setter
-    def metal_lb_config(self, value: Optional[pulumi.Input['VmwareAdminClusterLoadBalancerMetalLbConfigArgs']]):
+    def metal_lb_config(self, value: pulumi.Input[Optional['VmwareAdminClusterLoadBalancerMetalLbConfigArgs']]):
         pulumi.set(self, "metal_lb_config", value)
 
 
 class VmwareAdminClusterLoadBalancerF5ConfigArgsDict(TypedDict):
-    address: NotRequired[pulumi.Input[_builtins.str]]
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The load balancer's IP address.
     """
-    partition: NotRequired[pulumi.Input[_builtins.str]]
+    partition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     he preexisting partition to be used by the load balancer. T
     his partition is usually created for the admin cluster for example:
     'my-f5-admin-partition'.
     """
-    snat_pool: NotRequired[pulumi.Input[_builtins.str]]
+    snat_pool: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The pool name. Only necessary, if using SNAT.
     """
@@ -9436,9 +9436,9 @@ class VmwareAdminClusterLoadBalancerF5ConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterLoadBalancerF5ConfigArgs:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat_pool: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat_pool: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The load balancer's IP address.
         :param pulumi.Input[_builtins.str] partition: he preexisting partition to be used by the load balancer. T
@@ -9455,19 +9455,19 @@ class VmwareAdminClusterLoadBalancerF5ConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The load balancer's IP address.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         he preexisting partition to be used by the load balancer. T
         his partition is usually created for the admin cluster for example:
@@ -9476,43 +9476,43 @@ class VmwareAdminClusterLoadBalancerF5ConfigArgs:
         return pulumi.get(self, "partition")
 
     @partition.setter
-    def partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partition", value)
 
     @_builtins.property
     @pulumi.getter(name="snatPool")
-    def snat_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snat_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pool name. Only necessary, if using SNAT.
         """
         return pulumi.get(self, "snat_pool")
 
     @snat_pool.setter
-    def snat_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snat_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snat_pool", value)
 
 
 class VmwareAdminClusterLoadBalancerManualLbConfigArgsDict(TypedDict):
-    addons_node_port: NotRequired[pulumi.Input[_builtins.int]]
+    addons_node_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     NodePort for add-ons server in the admin cluster.
     """
-    control_plane_node_port: NotRequired[pulumi.Input[_builtins.int]]
+    control_plane_node_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     NodePort for control plane service. The Kubernetes API server in the admin
     cluster is implemented as a Service of type NodePort (ex. 30968).
     """
-    ingress_http_node_port: NotRequired[pulumi.Input[_builtins.int]]
+    ingress_http_node_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     NodePort for ingress service's http. The ingress service in the admin
     cluster is implemented as a Service of type NodePort (ex. 32527).
     """
-    ingress_https_node_port: NotRequired[pulumi.Input[_builtins.int]]
+    ingress_https_node_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     NodePort for ingress service's https. The ingress service in the admin
     cluster is implemented as a Service of type NodePort (ex. 30139).
     """
-    konnectivity_server_node_port: NotRequired[pulumi.Input[_builtins.int]]
+    konnectivity_server_node_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     NodePort for konnectivity server service running as a sidecar in each
     kube-apiserver pod (ex. 30564).
@@ -9521,11 +9521,11 @@ class VmwareAdminClusterLoadBalancerManualLbConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterLoadBalancerManualLbConfigArgs:
     def __init__(__self__, *,
-                 addons_node_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 control_plane_node_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 ingress_http_node_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 ingress_https_node_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 konnectivity_server_node_port: Optional[pulumi.Input[_builtins.int]] = None):
+                 addons_node_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 control_plane_node_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 ingress_http_node_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 ingress_https_node_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 konnectivity_server_node_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] addons_node_port: NodePort for add-ons server in the admin cluster.
         :param pulumi.Input[_builtins.int] control_plane_node_port: NodePort for control plane service. The Kubernetes API server in the admin
@@ -9550,19 +9550,19 @@ class VmwareAdminClusterLoadBalancerManualLbConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="addonsNodePort")
-    def addons_node_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def addons_node_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         NodePort for add-ons server in the admin cluster.
         """
         return pulumi.get(self, "addons_node_port")
 
     @addons_node_port.setter
-    def addons_node_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def addons_node_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "addons_node_port", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneNodePort")
-    def control_plane_node_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def control_plane_node_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         NodePort for control plane service. The Kubernetes API server in the admin
         cluster is implemented as a Service of type NodePort (ex. 30968).
@@ -9570,12 +9570,12 @@ class VmwareAdminClusterLoadBalancerManualLbConfigArgs:
         return pulumi.get(self, "control_plane_node_port")
 
     @control_plane_node_port.setter
-    def control_plane_node_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def control_plane_node_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "control_plane_node_port", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressHttpNodePort")
-    def ingress_http_node_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ingress_http_node_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         NodePort for ingress service's http. The ingress service in the admin
         cluster is implemented as a Service of type NodePort (ex. 32527).
@@ -9583,12 +9583,12 @@ class VmwareAdminClusterLoadBalancerManualLbConfigArgs:
         return pulumi.get(self, "ingress_http_node_port")
 
     @ingress_http_node_port.setter
-    def ingress_http_node_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ingress_http_node_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ingress_http_node_port", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressHttpsNodePort")
-    def ingress_https_node_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ingress_https_node_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         NodePort for ingress service's https. The ingress service in the admin
         cluster is implemented as a Service of type NodePort (ex. 30139).
@@ -9596,12 +9596,12 @@ class VmwareAdminClusterLoadBalancerManualLbConfigArgs:
         return pulumi.get(self, "ingress_https_node_port")
 
     @ingress_https_node_port.setter
-    def ingress_https_node_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ingress_https_node_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ingress_https_node_port", value)
 
     @_builtins.property
     @pulumi.getter(name="konnectivityServerNodePort")
-    def konnectivity_server_node_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def konnectivity_server_node_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         NodePort for konnectivity server service running as a sidecar in each
         kube-apiserver pod (ex. 30564).
@@ -9609,12 +9609,12 @@ class VmwareAdminClusterLoadBalancerManualLbConfigArgs:
         return pulumi.get(self, "konnectivity_server_node_port")
 
     @konnectivity_server_node_port.setter
-    def konnectivity_server_node_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def konnectivity_server_node_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "konnectivity_server_node_port", value)
 
 
 class VmwareAdminClusterLoadBalancerMetalLbConfigArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Metal LB is enabled.
     """
@@ -9622,7 +9622,7 @@ class VmwareAdminClusterLoadBalancerMetalLbConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterLoadBalancerMetalLbConfigArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Metal LB is enabled.
         """
@@ -9631,14 +9631,14 @@ class VmwareAdminClusterLoadBalancerMetalLbConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Metal LB is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
@@ -9648,7 +9648,7 @@ class VmwareAdminClusterLoadBalancerVipConfigArgsDict(TypedDict):
     The VIP which you previously set aside for the Kubernetes
     API of this VMware Admin Cluster.
     """
-    addons_vip: NotRequired[pulumi.Input[_builtins.str]]
+    addons_vip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VIP to configure the load balancer for add-ons.
 
@@ -9659,7 +9659,7 @@ class VmwareAdminClusterLoadBalancerVipConfigArgsDict(TypedDict):
 class VmwareAdminClusterLoadBalancerVipConfigArgs:
     def __init__(__self__, *,
                  control_plane_vip: pulumi.Input[_builtins.str],
-                 addons_vip: Optional[pulumi.Input[_builtins.str]] = None):
+                 addons_vip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] control_plane_vip: The VIP which you previously set aside for the Kubernetes
                API of this VMware Admin Cluster.
@@ -9686,7 +9686,7 @@ class VmwareAdminClusterLoadBalancerVipConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="addonsVip")
-    def addons_vip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def addons_vip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VIP to configure the load balancer for add-ons.
 
@@ -9695,7 +9695,7 @@ class VmwareAdminClusterLoadBalancerVipConfigArgs:
         return pulumi.get(self, "addons_vip")
 
     @addons_vip.setter
-    def addons_vip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def addons_vip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "addons_vip", value)
 
 
@@ -9711,27 +9711,27 @@ class VmwareAdminClusterNetworkConfigArgsDict(TypedDict):
     from these ranges. Only a single range is supported.. This field
     cannot be changed after creation.
     """
-    dhcp_ip_config: NotRequired[pulumi.Input['VmwareAdminClusterNetworkConfigDhcpIpConfigArgsDict']]
+    dhcp_ip_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigDhcpIpConfigArgs']]]
     """
     Configuration settings for a DHCP IP configuration.
     Structure is documented below.
     """
-    ha_control_plane_config: NotRequired[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgsDict']]
+    ha_control_plane_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs']]]
     """
     Configuration for HA admin cluster control plane.
     Structure is documented below.
     """
-    host_config: NotRequired[pulumi.Input['VmwareAdminClusterNetworkConfigHostConfigArgsDict']]
+    host_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHostConfigArgs']]]
     """
     Represents common network settings irrespective of the host's IP address.
     Structure is documented below.
     """
-    static_ip_config: NotRequired[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigArgsDict']]
+    static_ip_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigStaticIpConfigArgs']]]
     """
     Configuration settings for a static IP configuration.
     Structure is documented below.
     """
-    vcenter_network: NotRequired[pulumi.Input[_builtins.str]]
+    vcenter_network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     vcenter_network specifies vCenter network name.
     """
@@ -9741,11 +9741,11 @@ class VmwareAdminClusterNetworkConfigArgs:
     def __init__(__self__, *,
                  pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 dhcp_ip_config: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigDhcpIpConfigArgs']] = None,
-                 ha_control_plane_config: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs']] = None,
-                 host_config: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHostConfigArgs']] = None,
-                 static_ip_config: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigArgs']] = None,
-                 vcenter_network: Optional[pulumi.Input[_builtins.str]] = None):
+                 dhcp_ip_config: pulumi.Input[Optional['VmwareAdminClusterNetworkConfigDhcpIpConfigArgs']] = None,
+                 ha_control_plane_config: pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs']] = None,
+                 host_config: pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHostConfigArgs']] = None,
+                 static_ip_config: pulumi.Input[Optional['VmwareAdminClusterNetworkConfigStaticIpConfigArgs']] = None,
+                 vcenter_network: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_address_cidr_blocks: All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
                Only a single range is supported. This field cannot be changed after creation.
@@ -9804,7 +9804,7 @@ class VmwareAdminClusterNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dhcpIpConfig")
-    def dhcp_ip_config(self) -> Optional[pulumi.Input['VmwareAdminClusterNetworkConfigDhcpIpConfigArgs']]:
+    def dhcp_ip_config(self) -> pulumi.Input[Optional['VmwareAdminClusterNetworkConfigDhcpIpConfigArgs']]:
         """
         Configuration settings for a DHCP IP configuration.
         Structure is documented below.
@@ -9812,12 +9812,12 @@ class VmwareAdminClusterNetworkConfigArgs:
         return pulumi.get(self, "dhcp_ip_config")
 
     @dhcp_ip_config.setter
-    def dhcp_ip_config(self, value: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigDhcpIpConfigArgs']]):
+    def dhcp_ip_config(self, value: pulumi.Input[Optional['VmwareAdminClusterNetworkConfigDhcpIpConfigArgs']]):
         pulumi.set(self, "dhcp_ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="haControlPlaneConfig")
-    def ha_control_plane_config(self) -> Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs']]:
+    def ha_control_plane_config(self) -> pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs']]:
         """
         Configuration for HA admin cluster control plane.
         Structure is documented below.
@@ -9825,12 +9825,12 @@ class VmwareAdminClusterNetworkConfigArgs:
         return pulumi.get(self, "ha_control_plane_config")
 
     @ha_control_plane_config.setter
-    def ha_control_plane_config(self, value: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs']]):
+    def ha_control_plane_config(self, value: pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs']]):
         pulumi.set(self, "ha_control_plane_config", value)
 
     @_builtins.property
     @pulumi.getter(name="hostConfig")
-    def host_config(self) -> Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHostConfigArgs']]:
+    def host_config(self) -> pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHostConfigArgs']]:
         """
         Represents common network settings irrespective of the host's IP address.
         Structure is documented below.
@@ -9838,12 +9838,12 @@ class VmwareAdminClusterNetworkConfigArgs:
         return pulumi.get(self, "host_config")
 
     @host_config.setter
-    def host_config(self, value: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHostConfigArgs']]):
+    def host_config(self, value: pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHostConfigArgs']]):
         pulumi.set(self, "host_config", value)
 
     @_builtins.property
     @pulumi.getter(name="staticIpConfig")
-    def static_ip_config(self) -> Optional[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigArgs']]:
+    def static_ip_config(self) -> pulumi.Input[Optional['VmwareAdminClusterNetworkConfigStaticIpConfigArgs']]:
         """
         Configuration settings for a static IP configuration.
         Structure is documented below.
@@ -9851,19 +9851,19 @@ class VmwareAdminClusterNetworkConfigArgs:
         return pulumi.get(self, "static_ip_config")
 
     @static_ip_config.setter
-    def static_ip_config(self, value: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigArgs']]):
+    def static_ip_config(self, value: pulumi.Input[Optional['VmwareAdminClusterNetworkConfigStaticIpConfigArgs']]):
         pulumi.set(self, "static_ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="vcenterNetwork")
-    def vcenter_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vcenter_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         vcenter_network specifies vCenter network name.
         """
         return pulumi.get(self, "vcenter_network")
 
     @vcenter_network.setter
-    def vcenter_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vcenter_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vcenter_network", value)
 
 
@@ -9899,7 +9899,7 @@ class VmwareAdminClusterNetworkConfigDhcpIpConfigArgs:
 
 
 class VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgsDict(TypedDict):
-    control_plane_ip_block: NotRequired[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgsDict']]
+    control_plane_ip_block: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs']]]
     """
     Static IP addresses for the control plane nodes.
     Structure is documented below.
@@ -9908,7 +9908,7 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs:
     def __init__(__self__, *,
-                 control_plane_ip_block: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs']] = None):
+                 control_plane_ip_block: pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs']] = None):
         """
         :param pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs'] control_plane_ip_block: Static IP addresses for the control plane nodes.
                Structure is documented below.
@@ -9918,7 +9918,7 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneIpBlock")
-    def control_plane_ip_block(self) -> Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs']]:
+    def control_plane_ip_block(self) -> pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs']]:
         """
         Static IP addresses for the control plane nodes.
         Structure is documented below.
@@ -9926,7 +9926,7 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs:
         return pulumi.get(self, "control_plane_ip_block")
 
     @control_plane_ip_block.setter
-    def control_plane_ip_block(self, value: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs']]):
+    def control_plane_ip_block(self, value: pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs']]):
         pulumi.set(self, "control_plane_ip_block", value)
 
 
@@ -10004,7 +10004,7 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpAr
     """
     IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Hostname of the machine. VM's name will be used if this field is empty.
     """
@@ -10013,7 +10013,7 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpAr
 class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs:
     def __init__(__self__, *,
                  ip: pulumi.Input[_builtins.str],
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ip: IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
         :param pulumi.Input[_builtins.str] hostname: Hostname of the machine. VM's name will be used if this field is empty.
@@ -10036,27 +10036,27 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpAr
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hostname of the machine. VM's name will be used if this field is empty.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class VmwareAdminClusterNetworkConfigHostConfigArgsDict(TypedDict):
-    dns_search_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    dns_search_domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     DNS search domains.
     """
-    dns_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    dns_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     DNS servers.
     """
-    ntp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ntp_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     NTP servers.
     """
@@ -10064,9 +10064,9 @@ class VmwareAdminClusterNetworkConfigHostConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterNetworkConfigHostConfigArgs:
     def __init__(__self__, *,
-                 dns_search_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 dns_search_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_search_domains: DNS search domains.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers.
@@ -10081,43 +10081,43 @@ class VmwareAdminClusterNetworkConfigHostConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dnsSearchDomains")
-    def dns_search_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_search_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         DNS search domains.
         """
         return pulumi.get(self, "dns_search_domains")
 
     @dns_search_domains.setter
-    def dns_search_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_search_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_search_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         DNS servers.
         """
         return pulumi.get(self, "dns_servers")
 
     @dns_servers.setter
-    def dns_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
-    def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         NTP servers.
         """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
-    def ntp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ntp_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ntp_servers", value)
 
 
 class VmwareAdminClusterNetworkConfigStaticIpConfigArgsDict(TypedDict):
-    ip_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgsDict']]]]
+    ip_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs']]]]]
     """
     Represents the configuration values for static IP allocation to nodes.
     Structure is documented below.
@@ -10126,7 +10126,7 @@ class VmwareAdminClusterNetworkConfigStaticIpConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterNetworkConfigStaticIpConfigArgs:
     def __init__(__self__, *,
-                 ip_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs']]]] = None):
+                 ip_blocks: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs']]] ip_blocks: Represents the configuration values for static IP allocation to nodes.
                Structure is documented below.
@@ -10136,7 +10136,7 @@ class VmwareAdminClusterNetworkConfigStaticIpConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipBlocks")
-    def ip_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs']]]]:
+    def ip_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs']]]]:
         """
         Represents the configuration values for static IP allocation to nodes.
         Structure is documented below.
@@ -10144,7 +10144,7 @@ class VmwareAdminClusterNetworkConfigStaticIpConfigArgs:
         return pulumi.get(self, "ip_blocks")
 
     @ip_blocks.setter
-    def ip_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs']]]]):
+    def ip_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs']]]]):
         pulumi.set(self, "ip_blocks", value)
 
 
@@ -10222,7 +10222,7 @@ class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgsDict(TypedDict):
     """
     IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Hostname of the machine. VM's name will be used if this field is empty.
     """
@@ -10231,7 +10231,7 @@ class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgsDict(TypedDict):
 class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
     def __init__(__self__, *,
                  ip: pulumi.Input[_builtins.str],
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ip: IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
         :param pulumi.Input[_builtins.str] hostname: Hostname of the machine. VM's name will be used if this field is empty.
@@ -10254,30 +10254,30 @@ class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hostname of the machine. VM's name will be used if this field is empty.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class VmwareAdminClusterPlatformConfigArgsDict(TypedDict):
-    bundles: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgsDict']]]]
+    bundles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgs']]]]]
     """
     (Output)
     The list of bundles installed in the admin cluster.
     Structure is documented below.
     """
-    platform_version: NotRequired[pulumi.Input[_builtins.str]]
+    platform_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The platform version e.g. 1.13.2.
     """
-    required_platform_version: NotRequired[pulumi.Input[_builtins.str]]
+    required_platform_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The required platform version e.g. 1.13.1.
     If the current platform version is lower than the target version,
@@ -10285,7 +10285,7 @@ class VmwareAdminClusterPlatformConfigArgsDict(TypedDict):
     If the target version is not installed in the platform
     (bundle versions), download the target version bundle.
     """
-    statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgsDict']]]]
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgs']]]]]
     """
     (Output)
     ResourceStatus representing detailed cluster state.
@@ -10298,10 +10298,10 @@ class VmwareAdminClusterPlatformConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterPlatformConfigArgs:
     def __init__(__self__, *,
-                 bundles: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgs']]]] = None,
-                 platform_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 required_platform_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgs']]]] = None):
+                 bundles: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgs']]]] = None,
+                 platform_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 required_platform_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgs']]] bundles: (Output)
                The list of bundles installed in the admin cluster.
@@ -10331,7 +10331,7 @@ class VmwareAdminClusterPlatformConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bundles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgs']]]]:
+    def bundles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgs']]]]:
         """
         (Output)
         The list of bundles installed in the admin cluster.
@@ -10340,12 +10340,12 @@ class VmwareAdminClusterPlatformConfigArgs:
         return pulumi.get(self, "bundles")
 
     @bundles.setter
-    def bundles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgs']]]]):
+    def bundles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgs']]]]):
         pulumi.set(self, "bundles", value)
 
     @_builtins.property
     @pulumi.getter(name="platformVersion")
-    def platform_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The platform version e.g. 1.13.2.
@@ -10353,12 +10353,12 @@ class VmwareAdminClusterPlatformConfigArgs:
         return pulumi.get(self, "platform_version")
 
     @platform_version.setter
-    def platform_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform_version", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredPlatformVersion")
-    def required_platform_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def required_platform_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The required platform version e.g. 1.13.1.
         If the current platform version is lower than the target version,
@@ -10369,12 +10369,12 @@ class VmwareAdminClusterPlatformConfigArgs:
         return pulumi.get(self, "required_platform_version")
 
     @required_platform_version.setter
-    def required_platform_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def required_platform_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "required_platform_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgs']]]]:
         """
         (Output)
         ResourceStatus representing detailed cluster state.
@@ -10386,17 +10386,17 @@ class VmwareAdminClusterPlatformConfigArgs:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
 
 class VmwareAdminClusterPlatformConfigBundleArgsDict(TypedDict):
-    statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgsDict']]]]
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgs']]]]]
     """
     ResourceStatus representing detailed cluster state.
     Structure is documented below.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version of the bundle.
     """
@@ -10404,8 +10404,8 @@ class VmwareAdminClusterPlatformConfigBundleArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterPlatformConfigBundleArgs:
     def __init__(__self__, *,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgs']]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgs']]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgs']]] statuses: ResourceStatus representing detailed cluster state.
                Structure is documented below.
@@ -10418,7 +10418,7 @@ class VmwareAdminClusterPlatformConfigBundleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgs']]]]:
         """
         ResourceStatus representing detailed cluster state.
         Structure is documented below.
@@ -10426,30 +10426,30 @@ class VmwareAdminClusterPlatformConfigBundleArgs:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the bundle.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class VmwareAdminClusterPlatformConfigBundleStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgsDict']]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgs']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
     Structure is documented below.
     """
-    error_message: NotRequired[pulumi.Input[_builtins.str]]
+    error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human-friendly representation of the error message from the admin cluster
@@ -10462,8 +10462,8 @@ class VmwareAdminClusterPlatformConfigBundleStatusArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterPlatformConfigBundleStatusArgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgs']]]] = None,
-                 error_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgs']]]] = None,
+                 error_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgs']]] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
@@ -10482,7 +10482,7 @@ class VmwareAdminClusterPlatformConfigBundleStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgs']]]]:
         """
         (Output)
         ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
@@ -10491,12 +10491,12 @@ class VmwareAdminClusterPlatformConfigBundleStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human-friendly representation of the error message from the admin cluster
@@ -10508,32 +10508,32 @@ class VmwareAdminClusterPlatformConfigBundleStatusArgs:
         return pulumi.get(self, "error_message")
 
     @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_message", value)
 
 
 class VmwareAdminClusterPlatformConfigBundleStatusConditionArgsDict(TypedDict):
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transit from one status to another.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human-readable message indicating details about last transition.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Machine-readable message indicating details about last transition.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The lifecycle state of the condition.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Type of the condition.
@@ -10543,11 +10543,11 @@ class VmwareAdminClusterPlatformConfigBundleStatusConditionArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterPlatformConfigBundleStatusConditionArgs:
     def __init__(__self__, *,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] last_transition_time: (Output)
                Last time the condition transit from one status to another.
@@ -10574,7 +10574,7 @@ class VmwareAdminClusterPlatformConfigBundleStatusConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transit from one status to another.
@@ -10582,12 +10582,12 @@ class VmwareAdminClusterPlatformConfigBundleStatusConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human-readable message indicating details about last transition.
@@ -10595,12 +10595,12 @@ class VmwareAdminClusterPlatformConfigBundleStatusConditionArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Machine-readable message indicating details about last transition.
@@ -10608,12 +10608,12 @@ class VmwareAdminClusterPlatformConfigBundleStatusConditionArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The lifecycle state of the condition.
@@ -10621,12 +10621,12 @@ class VmwareAdminClusterPlatformConfigBundleStatusConditionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Type of the condition.
@@ -10635,18 +10635,18 @@ class VmwareAdminClusterPlatformConfigBundleStatusConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class VmwareAdminClusterPlatformConfigStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgsDict']]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgs']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
     Structure is documented below.
     """
-    error_message: NotRequired[pulumi.Input[_builtins.str]]
+    error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human-friendly representation of the error message from the admin cluster
@@ -10659,8 +10659,8 @@ class VmwareAdminClusterPlatformConfigStatusArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterPlatformConfigStatusArgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgs']]]] = None,
-                 error_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgs']]]] = None,
+                 error_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgs']]] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
@@ -10679,7 +10679,7 @@ class VmwareAdminClusterPlatformConfigStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgs']]]]:
         """
         (Output)
         ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
@@ -10688,12 +10688,12 @@ class VmwareAdminClusterPlatformConfigStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human-friendly representation of the error message from the admin cluster
@@ -10705,32 +10705,32 @@ class VmwareAdminClusterPlatformConfigStatusArgs:
         return pulumi.get(self, "error_message")
 
     @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_message", value)
 
 
 class VmwareAdminClusterPlatformConfigStatusConditionArgsDict(TypedDict):
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transit from one status to another.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human-readable message indicating details about last transition.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Machine-readable message indicating details about last transition.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The lifecycle state of the condition.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Type of the condition.
@@ -10740,11 +10740,11 @@ class VmwareAdminClusterPlatformConfigStatusConditionArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterPlatformConfigStatusConditionArgs:
     def __init__(__self__, *,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] last_transition_time: (Output)
                Last time the condition transit from one status to another.
@@ -10771,7 +10771,7 @@ class VmwareAdminClusterPlatformConfigStatusConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transit from one status to another.
@@ -10779,12 +10779,12 @@ class VmwareAdminClusterPlatformConfigStatusConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human-readable message indicating details about last transition.
@@ -10792,12 +10792,12 @@ class VmwareAdminClusterPlatformConfigStatusConditionArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Machine-readable message indicating details about last transition.
@@ -10805,12 +10805,12 @@ class VmwareAdminClusterPlatformConfigStatusConditionArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The lifecycle state of the condition.
@@ -10818,12 +10818,12 @@ class VmwareAdminClusterPlatformConfigStatusConditionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Type of the condition.
@@ -10832,16 +10832,16 @@ class VmwareAdminClusterPlatformConfigStatusConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class VmwareAdminClusterPrivateRegistryConfigArgsDict(TypedDict):
-    address: NotRequired[pulumi.Input[_builtins.str]]
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The registry address.
     """
-    ca_cert: NotRequired[pulumi.Input[_builtins.str]]
+    ca_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CA certificate public key for private registry.
     """
@@ -10849,8 +10849,8 @@ class VmwareAdminClusterPrivateRegistryConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterPrivateRegistryConfigArgs:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The registry address.
         :param pulumi.Input[_builtins.str] ca_cert: The CA certificate public key for private registry.
@@ -10862,26 +10862,26 @@ class VmwareAdminClusterPrivateRegistryConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The registry address.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter(name="caCert")
-    def ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CA certificate public key for private registry.
         """
         return pulumi.get(self, "ca_cert")
 
     @ca_cert.setter
-    def ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert", value)
 
 
@@ -10890,7 +10890,7 @@ class VmwareAdminClusterProxyArgsDict(TypedDict):
     """
     The proxy url.
     """
-    no_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    no_proxy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A comma-separated list of IP addresses, IP address ranges,
     host names, and domain names that should not go through the proxy server.
@@ -10900,7 +10900,7 @@ class VmwareAdminClusterProxyArgsDict(TypedDict):
 class VmwareAdminClusterProxyArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[_builtins.str],
-                 no_proxy: Optional[pulumi.Input[_builtins.str]] = None):
+                 no_proxy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] url: The proxy url.
         :param pulumi.Input[_builtins.str] no_proxy: A comma-separated list of IP addresses, IP address ranges,
@@ -10924,7 +10924,7 @@ class VmwareAdminClusterProxyArgs:
 
     @_builtins.property
     @pulumi.getter(name="noProxy")
-    def no_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def no_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A comma-separated list of IP addresses, IP address ranges,
         host names, and domain names that should not go through the proxy server.
@@ -10932,18 +10932,18 @@ class VmwareAdminClusterProxyArgs:
         return pulumi.get(self, "no_proxy")
 
     @no_proxy.setter
-    def no_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def no_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "no_proxy", value)
 
 
 class VmwareAdminClusterStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgsDict']]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgs']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
     Structure is documented below.
     """
-    error_message: NotRequired[pulumi.Input[_builtins.str]]
+    error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human-friendly representation of the error message from the admin cluster
@@ -10956,8 +10956,8 @@ class VmwareAdminClusterStatusArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterStatusArgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgs']]]] = None,
-                 error_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgs']]]] = None,
+                 error_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgs']]] conditions: (Output)
                ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
@@ -10976,7 +10976,7 @@ class VmwareAdminClusterStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgs']]]]:
         """
         (Output)
         ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
@@ -10985,12 +10985,12 @@ class VmwareAdminClusterStatusArgs:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human-friendly representation of the error message from the admin cluster
@@ -11002,32 +11002,32 @@ class VmwareAdminClusterStatusArgs:
         return pulumi.get(self, "error_message")
 
     @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_message", value)
 
 
 class VmwareAdminClusterStatusConditionArgsDict(TypedDict):
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transit from one status to another.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human-readable message indicating details about last transition.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Machine-readable message indicating details about last transition.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The lifecycle state of the condition.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Type of the condition.
@@ -11037,11 +11037,11 @@ class VmwareAdminClusterStatusConditionArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterStatusConditionArgs:
     def __init__(__self__, *,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] last_transition_time: (Output)
                Last time the condition transit from one status to another.
@@ -11068,7 +11068,7 @@ class VmwareAdminClusterStatusConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transit from one status to another.
@@ -11076,12 +11076,12 @@ class VmwareAdminClusterStatusConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human-readable message indicating details about last transition.
@@ -11089,12 +11089,12 @@ class VmwareAdminClusterStatusConditionArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Machine-readable message indicating details about last transition.
@@ -11102,12 +11102,12 @@ class VmwareAdminClusterStatusConditionArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The lifecycle state of the condition.
@@ -11115,12 +11115,12 @@ class VmwareAdminClusterStatusConditionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Type of the condition.
@@ -11129,44 +11129,44 @@ class VmwareAdminClusterStatusConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class VmwareAdminClusterVcenterArgsDict(TypedDict):
-    address: NotRequired[pulumi.Input[_builtins.str]]
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The vCenter IP address.
     """
-    ca_cert_data: NotRequired[pulumi.Input[_builtins.str]]
+    ca_cert_data: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Contains the vCenter CA certificate public key for SSL verification.
     """
-    cluster: NotRequired[pulumi.Input[_builtins.str]]
+    cluster: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the vCenter cluster for the admin cluster.
     """
-    data_disk: NotRequired[pulumi.Input[_builtins.str]]
+    data_disk: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the virtual machine disk (VMDK) for the admin cluster.
     """
-    datacenter: NotRequired[pulumi.Input[_builtins.str]]
+    datacenter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the vCenter datacenter for the admin cluster.
     """
-    datastore: NotRequired[pulumi.Input[_builtins.str]]
+    datastore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the vCenter datastore for the admin cluster.
     """
-    folder: NotRequired[pulumi.Input[_builtins.str]]
+    folder: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the vCenter folder for the admin cluster.
     """
-    resource_pool: NotRequired[pulumi.Input[_builtins.str]]
+    resource_pool: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the vCenter resource pool for the admin cluster.
     """
-    storage_policy_name: NotRequired[pulumi.Input[_builtins.str]]
+    storage_policy_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the vCenter storage policy for the user cluster.
     """
@@ -11174,15 +11174,15 @@ class VmwareAdminClusterVcenterArgsDict(TypedDict):
 @pulumi.input_type
 class VmwareAdminClusterVcenterArgs:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_cert_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_policy_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_cert_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_policy_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The vCenter IP address.
         :param pulumi.Input[_builtins.str] ca_cert_data: Contains the vCenter CA certificate public key for SSL verification.
@@ -11215,110 +11215,110 @@ class VmwareAdminClusterVcenterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vCenter IP address.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter(name="caCertData")
-    def ca_cert_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Contains the vCenter CA certificate public key for SSL verification.
         """
         return pulumi.get(self, "ca_cert_data")
 
     @ca_cert_data.setter
-    def ca_cert_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert_data", value)
 
     @_builtins.property
     @pulumi.getter
-    def cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vCenter cluster for the admin cluster.
         """
         return pulumi.get(self, "cluster")
 
     @cluster.setter
-    def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisk")
-    def data_disk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_disk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the virtual machine disk (VMDK) for the admin cluster.
         """
         return pulumi.get(self, "data_disk")
 
     @data_disk.setter
-    def data_disk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_disk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_disk", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vCenter datacenter for the admin cluster.
         """
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter
-    def datastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vCenter datastore for the admin cluster.
         """
         return pulumi.get(self, "datastore")
 
     @datastore.setter
-    def datastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vCenter folder for the admin cluster.
         """
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePool")
-    def resource_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vCenter resource pool for the admin cluster.
         """
         return pulumi.get(self, "resource_pool")
 
     @resource_pool.setter
-    def resource_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePolicyName")
-    def storage_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vCenter storage policy for the user cluster.
         """
         return pulumi.get(self, "storage_policy_name")
 
     @storage_policy_name.setter
-    def storage_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_policy_name", value)
 
 

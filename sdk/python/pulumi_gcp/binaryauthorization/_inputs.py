@@ -44,7 +44,7 @@ class AttestorAttestationAuthorityNoteArgsDict(TypedDict):
     ATTESTATION_AUTHORITY Occurrence that names a container image
     and that links to this Note.
     """
-    delegation_service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    delegation_service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     This field will contain the service account email address that
@@ -57,7 +57,7 @@ class AttestorAttestationAuthorityNoteArgsDict(TypedDict):
     account email; future versions may use an email based on a
     different naming pattern.
     """
-    public_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgsDict']]]]
+    public_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgs']]]]]
     """
     Public keys that verify attestations signed by this attestor. This
     field may be updated.
@@ -73,8 +73,8 @@ class AttestorAttestationAuthorityNoteArgsDict(TypedDict):
 class AttestorAttestationAuthorityNoteArgs:
     def __init__(__self__, *,
                  note_reference: pulumi.Input[_builtins.str],
-                 delegation_service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgs']]]] = None):
+                 delegation_service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_keys: pulumi.Input[Optional[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] note_reference: The resource name of a ATTESTATION_AUTHORITY Note, created by the
                user. If the Note is in a different project from the Attestor, it
@@ -128,7 +128,7 @@ class AttestorAttestationAuthorityNoteArgs:
 
     @_builtins.property
     @pulumi.getter(name="delegationServiceAccountEmail")
-    def delegation_service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delegation_service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         This field will contain the service account email address that
@@ -144,12 +144,12 @@ class AttestorAttestationAuthorityNoteArgs:
         return pulumi.get(self, "delegation_service_account_email")
 
     @delegation_service_account_email.setter
-    def delegation_service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delegation_service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delegation_service_account_email", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKeys")
-    def public_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgs']]]]:
+    def public_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgs']]]]:
         """
         Public keys that verify attestations signed by this attestor. This
         field may be updated.
@@ -163,12 +163,12 @@ class AttestorAttestationAuthorityNoteArgs:
         return pulumi.get(self, "public_keys")
 
     @public_keys.setter
-    def public_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgs']]]]):
+    def public_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgs']]]]):
         pulumi.set(self, "public_keys", value)
 
 
 class AttestorAttestationAuthorityNotePublicKeyArgsDict(TypedDict):
-    ascii_armored_pgp_public_key: NotRequired[pulumi.Input[_builtins.str]]
+    ascii_armored_pgp_public_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ASCII-armored representation of a PGP public key, as the
     entire output by the command
@@ -180,11 +180,11 @@ class AttestorAttestationAuthorityNotePublicKeyArgsDict(TypedDict):
     upper-case hex. If id is provided by the caller, it will
     be overwritten by the API-calculated ID.
     """
-    comment: NotRequired[pulumi.Input[_builtins.str]]
+    comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A descriptive comment. This field may be updated.
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of this public key. Signatures verified by BinAuthz
     must include the ID of the public key that can be used to
@@ -193,7 +193,7 @@ class AttestorAttestationAuthorityNotePublicKeyArgsDict(TypedDict):
     be imposed based on which public key type is encapsulated.
     See the documentation on publicKey cases below for details.
     """
-    pkix_public_key: NotRequired[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgsDict']]
+    pkix_public_key: NotRequired[pulumi.Input[Optional['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs']]]
     """
     A raw PKIX SubjectPublicKeyInfo format public key.
     NOTE: id may be explicitly provided by the caller when using this
@@ -206,10 +206,10 @@ class AttestorAttestationAuthorityNotePublicKeyArgsDict(TypedDict):
 @pulumi.input_type
 class AttestorAttestationAuthorityNotePublicKeyArgs:
     def __init__(__self__, *,
-                 ascii_armored_pgp_public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pkix_public_key: Optional[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs']] = None):
+                 ascii_armored_pgp_public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pkix_public_key: pulumi.Input[Optional['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] ascii_armored_pgp_public_key: ASCII-armored representation of a PGP public key, as the
                entire output by the command
@@ -245,7 +245,7 @@ class AttestorAttestationAuthorityNotePublicKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="asciiArmoredPgpPublicKey")
-    def ascii_armored_pgp_public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ascii_armored_pgp_public_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ASCII-armored representation of a PGP public key, as the
         entire output by the command
@@ -260,24 +260,24 @@ class AttestorAttestationAuthorityNotePublicKeyArgs:
         return pulumi.get(self, "ascii_armored_pgp_public_key")
 
     @ascii_armored_pgp_public_key.setter
-    def ascii_armored_pgp_public_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ascii_armored_pgp_public_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ascii_armored_pgp_public_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A descriptive comment. This field may be updated.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of this public key. Signatures verified by BinAuthz
         must include the ID of the public key that can be used to
@@ -289,12 +289,12 @@ class AttestorAttestationAuthorityNotePublicKeyArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="pkixPublicKey")
-    def pkix_public_key(self) -> Optional[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs']]:
+    def pkix_public_key(self) -> pulumi.Input[Optional['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs']]:
         """
         A raw PKIX SubjectPublicKeyInfo format public key.
         NOTE: id may be explicitly provided by the caller when using this
@@ -306,17 +306,17 @@ class AttestorAttestationAuthorityNotePublicKeyArgs:
         return pulumi.get(self, "pkix_public_key")
 
     @pkix_public_key.setter
-    def pkix_public_key(self, value: Optional[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs']]):
+    def pkix_public_key(self, value: pulumi.Input[Optional['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs']]):
         pulumi.set(self, "pkix_public_key", value)
 
 
 class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgsDict(TypedDict):
-    public_key_pem: NotRequired[pulumi.Input[_builtins.str]]
+    public_key_pem: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A PEM-encoded public key, as described in
     `https://tools.ietf.org/html/rfc7468#section-13`
     """
-    signature_algorithm: NotRequired[pulumi.Input[_builtins.str]]
+    signature_algorithm: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The signature algorithm used to verify a message against
     a signature using this key. These signature algorithm must
@@ -328,8 +328,8 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgsDict(TypedDict):
 @pulumi.input_type
 class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs:
     def __init__(__self__, *,
-                 public_key_pem: Optional[pulumi.Input[_builtins.str]] = None,
-                 signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None):
+                 public_key_pem: pulumi.Input[Optional[_builtins.str]] = None,
+                 signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] public_key_pem: A PEM-encoded public key, as described in
                `https://tools.ietf.org/html/rfc7468#section-13`
@@ -346,7 +346,7 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="publicKeyPem")
-    def public_key_pem(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_key_pem(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A PEM-encoded public key, as described in
         `https://tools.ietf.org/html/rfc7468#section-13`
@@ -354,12 +354,12 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs:
         return pulumi.get(self, "public_key_pem")
 
     @public_key_pem.setter
-    def public_key_pem(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_key_pem(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_key_pem", value)
 
     @_builtins.property
     @pulumi.getter(name="signatureAlgorithm")
-    def signature_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def signature_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The signature algorithm used to verify a message against
         a signature using this key. These signature algorithm must
@@ -370,21 +370,21 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs:
         return pulumi.get(self, "signature_algorithm")
 
     @signature_algorithm.setter
-    def signature_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def signature_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signature_algorithm", value)
 
 
 class AttestorIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AttestorIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -410,25 +410,25 @@ class AttestorIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AttestorIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AttestorIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -454,11 +454,11 @@ class AttestorIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -514,7 +514,7 @@ class PolicyClusterAdmissionRuleArgsDict(TypedDict):
     How this admission rule will be evaluated.
     Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
     """
-    require_attestations_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    require_attestations_bies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The resource names of the attestors that must attest to a
     container image. If the attestor is in a different project from the
@@ -532,7 +532,7 @@ class PolicyClusterAdmissionRuleArgs:
                  cluster: pulumi.Input[_builtins.str],
                  enforcement_mode: pulumi.Input[_builtins.str],
                  evaluation_mode: pulumi.Input[_builtins.str],
-                 require_attestations_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 require_attestations_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] enforcement_mode: The action when a pod creation is denied by the admission rule.
@@ -594,7 +594,7 @@ class PolicyClusterAdmissionRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="requireAttestationsBies")
-    def require_attestations_bies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def require_attestations_bies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The resource names of the attestors that must attest to a
         container image. If the attestor is in a different project from the
@@ -608,7 +608,7 @@ class PolicyClusterAdmissionRuleArgs:
         return pulumi.get(self, "require_attestations_bies")
 
     @require_attestations_bies.setter
-    def require_attestations_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def require_attestations_bies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "require_attestations_bies", value)
 
 
@@ -623,7 +623,7 @@ class PolicyDefaultAdmissionRuleArgsDict(TypedDict):
     How this admission rule will be evaluated.
     Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
     """
-    require_attestations_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    require_attestations_bies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The resource names of the attestors that must attest to a
     container image. If the attestor is in a different project from the
@@ -640,7 +640,7 @@ class PolicyDefaultAdmissionRuleArgs:
     def __init__(__self__, *,
                  enforcement_mode: pulumi.Input[_builtins.str],
                  evaluation_mode: pulumi.Input[_builtins.str],
-                 require_attestations_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 require_attestations_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] enforcement_mode: The action when a pod creation is denied by the admission rule.
                Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
@@ -688,7 +688,7 @@ class PolicyDefaultAdmissionRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="requireAttestationsBies")
-    def require_attestations_bies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def require_attestations_bies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The resource names of the attestors that must attest to a
         container image. If the attestor is in a different project from the
@@ -702,7 +702,7 @@ class PolicyDefaultAdmissionRuleArgs:
         return pulumi.get(self, "require_attestations_bies")
 
     @require_attestations_bies.setter
-    def require_attestations_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def require_attestations_bies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "require_attestations_bies", value)
 
 

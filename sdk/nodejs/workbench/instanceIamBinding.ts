@@ -87,23 +87,23 @@ export class InstanceIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceIamBinding resources.
  */
 export interface InstanceIamBindingState {
-    condition?: pulumi.Input<inputs.workbench.InstanceIamBindingCondition>;
-    etag?: pulumi.Input<string>;
-    location?: pulumi.Input<string>;
-    members?: pulumi.Input<pulumi.Input<string>[]>;
-    name?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.workbench.InstanceIamBindingCondition | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    location?: pulumi.Input<string | undefined>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a InstanceIamBinding resource.
  */
 export interface InstanceIamBindingArgs {
-    condition?: pulumi.Input<inputs.workbench.InstanceIamBindingCondition>;
-    location?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.workbench.InstanceIamBindingCondition | undefined>;
+    location?: pulumi.Input<string | undefined>;
     members: pulumi.Input<pulumi.Input<string>[]>;
-    name?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
     role: pulumi.Input<string>;
 }

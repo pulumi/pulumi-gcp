@@ -119,11 +119,11 @@ export interface GetImagesOutputArgs {
      *
      * - - -
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The project in which the resource belongs. If it is not
      * provided, the provider project is used. If you are using a
      * [public base image][pubimg], be sure to specify the correct Image Project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

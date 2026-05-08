@@ -1648,7 +1648,7 @@ export interface URLMapState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
      * This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
@@ -1660,7 +1660,7 @@ export interface URLMapState {
      * defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
      * Structure is documented below.
      */
-    defaultCustomErrorResponsePolicy?: pulumi.Input<inputs.compute.URLMapDefaultCustomErrorResponsePolicy>;
+    defaultCustomErrorResponsePolicy?: pulumi.Input<inputs.compute.URLMapDefaultCustomErrorResponsePolicy | undefined>;
     /**
      * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
      * like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
@@ -1669,44 +1669,44 @@ export interface URLMapState {
      * Only one of defaultRouteAction or defaultUrlRedirect must be set.
      * Structure is documented below.
      */
-    defaultRouteAction?: pulumi.Input<inputs.compute.URLMapDefaultRouteAction>;
+    defaultRouteAction?: pulumi.Input<inputs.compute.URLMapDefaultRouteAction | undefined>;
     /**
      * The backend service or backend bucket to use when none of the given rules match.
      */
-    defaultService?: pulumi.Input<string>;
+    defaultService?: pulumi.Input<string | undefined>;
     /**
      * When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
      * defaultRouteAction must not be set.
      * Structure is documented below.
      */
-    defaultUrlRedirect?: pulumi.Input<inputs.compute.URLMapDefaultUrlRedirect>;
+    defaultUrlRedirect?: pulumi.Input<inputs.compute.URLMapDefaultUrlRedirect | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create
      * the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This
      * field is used in optimistic locking.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * Specifies changes to request and response headers that need to take effect for
      * the selected backendService. The headerAction specified here take effect after
      * headerAction specified under pathMatcher.
      * Structure is documented below.
      */
-    headerAction?: pulumi.Input<inputs.compute.URLMapHeaderAction>;
+    headerAction?: pulumi.Input<inputs.compute.URLMapHeaderAction | undefined>;
     /**
      * The list of HostRules to use against the URL.
      * Structure is documented below.
      */
-    hostRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHostRule>[]>;
+    hostRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHostRule>[] | undefined>;
     /**
      * The unique identifier for the resource.
      */
-    mapId?: pulumi.Input<number>;
+    mapId?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The
      * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -1715,28 +1715,28 @@ export interface URLMapState {
      * letter, and all following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of named PathMatchers to use against the URL.
      * Structure is documented below.
      */
-    pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcher>[]>;
+    pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcher>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The list of expected URL mapping tests. Request to update this UrlMap will
      * succeed only if all of the test cases pass. You can specify a maximum of 100
      * tests per UrlMap.
      * Structure is documented below.
      */
-    tests?: pulumi.Input<pulumi.Input<inputs.compute.URLMapTest>[]>;
+    tests?: pulumi.Input<pulumi.Input<inputs.compute.URLMapTest>[] | undefined>;
 }
 
 /**
@@ -1754,7 +1754,7 @@ export interface URLMapArgs {
      * defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
      * Structure is documented below.
      */
-    defaultCustomErrorResponsePolicy?: pulumi.Input<inputs.compute.URLMapDefaultCustomErrorResponsePolicy>;
+    defaultCustomErrorResponsePolicy?: pulumi.Input<inputs.compute.URLMapDefaultCustomErrorResponsePolicy | undefined>;
     /**
      * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
      * like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
@@ -1763,35 +1763,35 @@ export interface URLMapArgs {
      * Only one of defaultRouteAction or defaultUrlRedirect must be set.
      * Structure is documented below.
      */
-    defaultRouteAction?: pulumi.Input<inputs.compute.URLMapDefaultRouteAction>;
+    defaultRouteAction?: pulumi.Input<inputs.compute.URLMapDefaultRouteAction | undefined>;
     /**
      * The backend service or backend bucket to use when none of the given rules match.
      */
-    defaultService?: pulumi.Input<string>;
+    defaultService?: pulumi.Input<string | undefined>;
     /**
      * When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
      * defaultRouteAction must not be set.
      * Structure is documented below.
      */
-    defaultUrlRedirect?: pulumi.Input<inputs.compute.URLMapDefaultUrlRedirect>;
+    defaultUrlRedirect?: pulumi.Input<inputs.compute.URLMapDefaultUrlRedirect | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create
      * the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies changes to request and response headers that need to take effect for
      * the selected backendService. The headerAction specified here take effect after
      * headerAction specified under pathMatcher.
      * Structure is documented below.
      */
-    headerAction?: pulumi.Input<inputs.compute.URLMapHeaderAction>;
+    headerAction?: pulumi.Input<inputs.compute.URLMapHeaderAction | undefined>;
     /**
      * The list of HostRules to use against the URL.
      * Structure is documented below.
      */
-    hostRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHostRule>[]>;
+    hostRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHostRule>[] | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The
      * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -1800,22 +1800,22 @@ export interface URLMapArgs {
      * letter, and all following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of named PathMatchers to use against the URL.
      * Structure is documented below.
      */
-    pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcher>[]>;
+    pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcher>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The list of expected URL mapping tests. Request to update this UrlMap will
      * succeed only if all of the test cases pass. You can specify a maximum of 100
      * tests per UrlMap.
      * Structure is documented below.
      */
-    tests?: pulumi.Input<pulumi.Input<inputs.compute.URLMapTest>[]>;
+    tests?: pulumi.Input<pulumi.Input<inputs.compute.URLMapTest>[] | undefined>;
 }

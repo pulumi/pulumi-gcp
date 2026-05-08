@@ -223,54 +223,54 @@ export interface AuthorizationPolicyState {
      * The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
      * Possible values are: `ALLOW`, `DENY`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Time the AuthorizationPolicy was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Set of label tags associated with the AuthorizationPolicy resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the authorization policy.
      * The default value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the AuthorizationPolicy resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
      * A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
      * Structure is documented below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthorizationPolicyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthorizationPolicyRule>[] | undefined>;
     /**
      * Time the AuthorizationPolicy was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -285,31 +285,31 @@ export interface AuthorizationPolicyArgs {
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Set of label tags associated with the AuthorizationPolicy resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the authorization policy.
      * The default value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the AuthorizationPolicy resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
      * A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
      * Structure is documented below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthorizationPolicyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthorizationPolicyRule>[] | undefined>;
 }

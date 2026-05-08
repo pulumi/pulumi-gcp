@@ -21,27 +21,27 @@ __all__ = ['VPNTunnelArgs', 'VPNTunnel']
 @pulumi.input_type
 class VPNTunnelArgs:
     def __init__(__self__, *,
-                 cipher_suite: Optional[pulumi.Input['VPNTunnelCipherSuiteArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ike_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['VPNTunnelParamsArgs']] = None,
-                 peer_external_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_external_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_gcp_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_secret_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_secret_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None):
+                 cipher_suite: pulumi.Input[Optional['VPNTunnelCipherSuiteArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ike_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['VPNTunnelParamsArgs']] = None,
+                 peer_external_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_external_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_gcp_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_secret_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_vpn_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a VPNTunnel resource.
 
@@ -145,7 +145,7 @@ class VPNTunnelArgs:
 
     @_builtins.property
     @pulumi.getter(name="cipherSuite")
-    def cipher_suite(self) -> Optional[pulumi.Input['VPNTunnelCipherSuiteArgs']]:
+    def cipher_suite(self) -> pulumi.Input[Optional['VPNTunnelCipherSuiteArgs']]:
         """
         User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
         Structure is documented below.
@@ -153,24 +153,24 @@ class VPNTunnelArgs:
         return pulumi.get(self, "cipher_suite")
 
     @cipher_suite.setter
-    def cipher_suite(self, value: Optional[pulumi.Input['VPNTunnelCipherSuiteArgs']]):
+    def cipher_suite(self, value: pulumi.Input[Optional['VPNTunnelCipherSuiteArgs']]):
         pulumi.set(self, "cipher_suite", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ikeVersion")
-    def ike_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ike_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IKE protocol version to use when establishing the VPN tunnel with
         peer VPN gateway.
@@ -179,12 +179,12 @@ class VPNTunnelArgs:
         return pulumi.get(self, "ike_version")
 
     @ike_version.setter
-    def ike_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ike_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ike_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this VpnTunnel.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -193,12 +193,12 @@ class VPNTunnelArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="localTrafficSelectors")
-    def local_traffic_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def local_traffic_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Local traffic selector to use when establishing the VPN tunnel with
         peer VPN gateway. The value should be a CIDR formatted string,
@@ -208,12 +208,12 @@ class VPNTunnelArgs:
         return pulumi.get(self, "local_traffic_selectors")
 
     @local_traffic_selectors.setter
-    def local_traffic_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def local_traffic_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "local_traffic_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. The name must be 1-63 characters long, and
         comply with RFC1035. Specifically, the name must be 1-63
@@ -226,12 +226,12 @@ class VPNTunnelArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['VPNTunnelParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['VPNTunnelParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -239,36 +239,36 @@ class VPNTunnelArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['VPNTunnelParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['VPNTunnelParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter(name="peerExternalGateway")
-    def peer_external_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_external_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         """
         return pulumi.get(self, "peer_external_gateway")
 
     @peer_external_gateway.setter
-    def peer_external_gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_external_gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_external_gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="peerExternalGatewayInterface")
-    def peer_external_gateway_interface(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def peer_external_gateway_interface(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interface ID of the external VPN gateway to which this VPN tunnel is connected.
         """
         return pulumi.get(self, "peer_external_gateway_interface")
 
     @peer_external_gateway_interface.setter
-    def peer_external_gateway_interface(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def peer_external_gateway_interface(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "peer_external_gateway_interface", value)
 
     @_builtins.property
     @pulumi.getter(name="peerGcpGateway")
-    def peer_gcp_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_gcp_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
         If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
@@ -278,24 +278,24 @@ class VPNTunnelArgs:
         return pulumi.get(self, "peer_gcp_gateway")
 
     @peer_gcp_gateway.setter
-    def peer_gcp_gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_gcp_gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_gcp_gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIp")
-    def peer_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address of the peer VPN gateway. Only IPv4 is supported.
         """
         return pulumi.get(self, "peer_ip")
 
     @peer_ip.setter
-    def peer_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -303,24 +303,24 @@ class VPNTunnelArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteTrafficSelectors")
-    def remote_traffic_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def remote_traffic_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Remote traffic selector to use when establishing the VPN tunnel with
         peer VPN gateway. The value should be a CIDR formatted string,
@@ -330,24 +330,24 @@ class VPNTunnelArgs:
         return pulumi.get(self, "remote_traffic_selectors")
 
     @remote_traffic_selectors.setter
-    def remote_traffic_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def remote_traffic_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "remote_traffic_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def router(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of router resource to be used for dynamic routing.
         """
         return pulumi.get(self, "router")
 
     @router.setter
-    def router(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedSecret")
-    def shared_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Shared secret used to set the secure session between the Cloud VPN
         gateway and the peer VPN gateway.
@@ -356,12 +356,12 @@ class VPNTunnelArgs:
         return pulumi.get(self, "shared_secret")
 
     @shared_secret.setter
-    def shared_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedSecretWo")
-    def shared_secret_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_secret_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         (Optional, Write-Only)
@@ -374,24 +374,24 @@ class VPNTunnelArgs:
         return pulumi.get(self, "shared_secret_wo")
 
     @shared_secret_wo.setter
-    def shared_secret_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_secret_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_secret_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedSecretWoVersion")
-    def shared_secret_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_secret_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Triggers update of `shared_secret_wo` write-only. Increment this value when an update to `shared_secret_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "shared_secret_wo_version")
 
     @shared_secret_wo_version.setter
-    def shared_secret_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_secret_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_secret_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="targetVpnGateway")
-    def target_vpn_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_vpn_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the Target VPN gateway with which this VPN tunnel is
         associated.
@@ -399,12 +399,12 @@ class VPNTunnelArgs:
         return pulumi.get(self, "target_vpn_gateway")
 
     @target_vpn_gateway.setter
-    def target_vpn_gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_vpn_gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_vpn_gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnGateway")
-    def vpn_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the VPN gateway with which this VPN tunnel is associated.
         This must be used if a High Availability VPN gateway resource is created.
@@ -413,54 +413,54 @@ class VPNTunnelArgs:
         return pulumi.get(self, "vpn_gateway")
 
     @vpn_gateway.setter
-    def vpn_gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnGatewayInterface")
-    def vpn_gateway_interface(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vpn_gateway_interface(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interface ID of the VPN gateway with which this VPN tunnel is associated.
         """
         return pulumi.get(self, "vpn_gateway_interface")
 
     @vpn_gateway_interface.setter
-    def vpn_gateway_interface(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vpn_gateway_interface(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vpn_gateway_interface", value)
 
 
 @pulumi.input_type
 class _VPNTunnelState:
     def __init__(__self__, *,
-                 cipher_suite: Optional[pulumi.Input['VPNTunnelCipherSuiteArgs']] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detailed_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ike_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['VPNTunnelParamsArgs']] = None,
-                 peer_external_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_external_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_gcp_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_secret_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_secret_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_secret_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None):
+                 cipher_suite: pulumi.Input[Optional['VPNTunnelCipherSuiteArgs']] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detailed_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ike_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['VPNTunnelParamsArgs']] = None,
+                 peer_external_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_external_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_gcp_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_secret_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_secret_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_vpn_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering VPNTunnel resources.
 
@@ -590,7 +590,7 @@ class _VPNTunnelState:
 
     @_builtins.property
     @pulumi.getter(name="cipherSuite")
-    def cipher_suite(self) -> Optional[pulumi.Input['VPNTunnelCipherSuiteArgs']]:
+    def cipher_suite(self) -> pulumi.Input[Optional['VPNTunnelCipherSuiteArgs']]:
         """
         User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
         Structure is documented below.
@@ -598,60 +598,60 @@ class _VPNTunnelState:
         return pulumi.get(self, "cipher_suite")
 
     @cipher_suite.setter
-    def cipher_suite(self, value: Optional[pulumi.Input['VPNTunnelCipherSuiteArgs']]):
+    def cipher_suite(self, value: pulumi.Input[Optional['VPNTunnelCipherSuiteArgs']]):
         pulumi.set(self, "cipher_suite", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="detailedStatus")
-    def detailed_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detailed_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Detailed status message for the VPN tunnel.
         """
         return pulumi.get(self, "detailed_status")
 
     @detailed_status.setter
-    def detailed_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detailed_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detailed_status", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="ikeVersion")
-    def ike_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ike_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IKE protocol version to use when establishing the VPN tunnel with
         peer VPN gateway.
@@ -660,12 +660,12 @@ class _VPNTunnelState:
         return pulumi.get(self, "ike_version")
 
     @ike_version.setter
-    def ike_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ike_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ike_version", value)
 
     @_builtins.property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fingerprint used for optimistic locking of this resource.  Used
         internally during updates.
@@ -673,12 +673,12 @@ class _VPNTunnelState:
         return pulumi.get(self, "label_fingerprint")
 
     @label_fingerprint.setter
-    def label_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this VpnTunnel.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -687,12 +687,12 @@ class _VPNTunnelState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="localTrafficSelectors")
-    def local_traffic_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def local_traffic_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Local traffic selector to use when establishing the VPN tunnel with
         peer VPN gateway. The value should be a CIDR formatted string,
@@ -702,12 +702,12 @@ class _VPNTunnelState:
         return pulumi.get(self, "local_traffic_selectors")
 
     @local_traffic_selectors.setter
-    def local_traffic_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def local_traffic_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "local_traffic_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. The name must be 1-63 characters long, and
         comply with RFC1035. Specifically, the name must be 1-63
@@ -720,12 +720,12 @@ class _VPNTunnelState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['VPNTunnelParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['VPNTunnelParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -733,36 +733,36 @@ class _VPNTunnelState:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['VPNTunnelParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['VPNTunnelParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter(name="peerExternalGateway")
-    def peer_external_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_external_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         """
         return pulumi.get(self, "peer_external_gateway")
 
     @peer_external_gateway.setter
-    def peer_external_gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_external_gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_external_gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="peerExternalGatewayInterface")
-    def peer_external_gateway_interface(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def peer_external_gateway_interface(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interface ID of the external VPN gateway to which this VPN tunnel is connected.
         """
         return pulumi.get(self, "peer_external_gateway_interface")
 
     @peer_external_gateway_interface.setter
-    def peer_external_gateway_interface(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def peer_external_gateway_interface(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "peer_external_gateway_interface", value)
 
     @_builtins.property
     @pulumi.getter(name="peerGcpGateway")
-    def peer_gcp_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_gcp_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
         If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
@@ -772,24 +772,24 @@ class _VPNTunnelState:
         return pulumi.get(self, "peer_gcp_gateway")
 
     @peer_gcp_gateway.setter
-    def peer_gcp_gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_gcp_gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_gcp_gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIp")
-    def peer_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address of the peer VPN gateway. Only IPv4 is supported.
         """
         return pulumi.get(self, "peer_ip")
 
     @peer_ip.setter
-    def peer_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -797,12 +797,12 @@ class _VPNTunnelState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -810,24 +810,24 @@ class _VPNTunnelState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteTrafficSelectors")
-    def remote_traffic_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def remote_traffic_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Remote traffic selector to use when establishing the VPN tunnel with
         peer VPN gateway. The value should be a CIDR formatted string,
@@ -837,36 +837,36 @@ class _VPNTunnelState:
         return pulumi.get(self, "remote_traffic_selectors")
 
     @remote_traffic_selectors.setter
-    def remote_traffic_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def remote_traffic_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "remote_traffic_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def router(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of router resource to be used for dynamic routing.
         """
         return pulumi.get(self, "router")
 
     @router.setter
-    def router(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedSecret")
-    def shared_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Shared secret used to set the secure session between the Cloud VPN
         gateway and the peer VPN gateway.
@@ -875,24 +875,24 @@ class _VPNTunnelState:
         return pulumi.get(self, "shared_secret")
 
     @shared_secret.setter
-    def shared_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedSecretHash")
-    def shared_secret_hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_secret_hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hash of the shared secret.
         """
         return pulumi.get(self, "shared_secret_hash")
 
     @shared_secret_hash.setter
-    def shared_secret_hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_secret_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_secret_hash", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedSecretWo")
-    def shared_secret_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_secret_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         (Optional, Write-Only)
@@ -905,24 +905,24 @@ class _VPNTunnelState:
         return pulumi.get(self, "shared_secret_wo")
 
     @shared_secret_wo.setter
-    def shared_secret_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_secret_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_secret_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedSecretWoVersion")
-    def shared_secret_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_secret_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Triggers update of `shared_secret_wo` write-only. Increment this value when an update to `shared_secret_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "shared_secret_wo_version")
 
     @shared_secret_wo_version.setter
-    def shared_secret_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_secret_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_secret_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="targetVpnGateway")
-    def target_vpn_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_vpn_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the Target VPN gateway with which this VPN tunnel is
         associated.
@@ -930,24 +930,24 @@ class _VPNTunnelState:
         return pulumi.get(self, "target_vpn_gateway")
 
     @target_vpn_gateway.setter
-    def target_vpn_gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_vpn_gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_vpn_gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelId")
-    def tunnel_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tunnel_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the resource. This identifier is defined by the server.
         """
         return pulumi.get(self, "tunnel_id")
 
     @tunnel_id.setter
-    def tunnel_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tunnel_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tunnel_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnGateway")
-    def vpn_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the VPN gateway with which this VPN tunnel is associated.
         This must be used if a High Availability VPN gateway resource is created.
@@ -956,19 +956,19 @@ class _VPNTunnelState:
         return pulumi.get(self, "vpn_gateway")
 
     @vpn_gateway.setter
-    def vpn_gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnGatewayInterface")
-    def vpn_gateway_interface(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vpn_gateway_interface(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interface ID of the VPN gateway with which this VPN tunnel is associated.
         """
         return pulumi.get(self, "vpn_gateway_interface")
 
     @vpn_gateway_interface.setter
-    def vpn_gateway_interface(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vpn_gateway_interface(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vpn_gateway_interface", value)
 
 
@@ -978,27 +978,27 @@ class VPNTunnel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cipher_suite: Optional[pulumi.Input[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ike_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']]] = None,
-                 peer_external_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_external_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_gcp_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_secret_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_secret_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None,
+                 cipher_suite: pulumi.Input[Optional[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ike_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']]] = None,
+                 peer_external_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_external_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_gcp_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_secret_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_vpn_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         VPN tunnel resource.
@@ -1366,27 +1366,27 @@ class VPNTunnel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cipher_suite: Optional[pulumi.Input[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ike_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']]] = None,
-                 peer_external_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_external_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_gcp_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_secret_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_secret_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None,
+                 cipher_suite: pulumi.Input[Optional[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ike_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']]] = None,
+                 peer_external_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_external_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_gcp_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_secret_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_vpn_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1437,35 +1437,35 @@ class VPNTunnel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cipher_suite: Optional[pulumi.Input[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            detailed_status: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ike_version: Optional[pulumi.Input[_builtins.int]] = None,
-            label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            local_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']]] = None,
-            peer_external_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_external_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None,
-            peer_gcp_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            remote_traffic_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            router: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            shared_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            shared_secret_hash: Optional[pulumi.Input[_builtins.str]] = None,
-            shared_secret_wo: Optional[pulumi.Input[_builtins.str]] = None,
-            shared_secret_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
-            target_vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-            tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpn_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-            vpn_gateway_interface: Optional[pulumi.Input[_builtins.int]] = None) -> 'VPNTunnel':
+            cipher_suite: pulumi.Input[Optional[Union['VPNTunnelCipherSuiteArgs', 'VPNTunnelCipherSuiteArgsDict']]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            detailed_status: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ike_version: pulumi.Input[Optional[_builtins.int]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            local_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['VPNTunnelParamsArgs', 'VPNTunnelParamsArgsDict']]] = None,
+            peer_external_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_external_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None,
+            peer_gcp_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_traffic_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            router: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_secret_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_secret_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+            target_vpn_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_gateway_interface: pulumi.Input[Optional[_builtins.int]] = None) -> 'VPNTunnel':
         """
         Get an existing VPNTunnel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

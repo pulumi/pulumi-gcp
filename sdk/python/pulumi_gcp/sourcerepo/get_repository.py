@@ -140,8 +140,8 @@ def get_repository(name: Optional[_builtins.str] = None,
         pubsub_configs=pulumi.get(__ret__, 'pubsub_configs'),
         size=pulumi.get(__ret__, 'size'),
         url=pulumi.get(__ret__, 'url'))
-def get_repository_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                          project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_repository_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryResult]:
     """
     Get infomation about an existing Google Cloud Source Repository.

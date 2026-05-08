@@ -26,11 +26,11 @@ __all__ = [
 ]
 
 class DeploymentLabelArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key for label.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value of label.
     """
@@ -38,8 +38,8 @@ class DeploymentLabelArgsDict(TypedDict):
 @pulumi.input_type
 class DeploymentLabelArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key for label.
         :param pulumi.Input[_builtins.str] value: Value of label.
@@ -51,26 +51,26 @@ class DeploymentLabelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key for label.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value of label.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -80,7 +80,7 @@ class DeploymentTargetArgsDict(TypedDict):
     The root configuration file to use for this deployment.
     Structure is documented below.
     """
-    imports: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgsDict']]]]
+    imports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]]]
     """
     Specifies import files for this configuration. This can be
     used to import templates or other files. For example, you might
@@ -92,7 +92,7 @@ class DeploymentTargetArgsDict(TypedDict):
 class DeploymentTargetArgs:
     def __init__(__self__, *,
                  config: pulumi.Input['DeploymentTargetConfigArgs'],
-                 imports: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]] = None):
+                 imports: pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]] = None):
         """
         :param pulumi.Input['DeploymentTargetConfigArgs'] config: The root configuration file to use for this deployment.
                Structure is documented below.
@@ -120,7 +120,7 @@ class DeploymentTargetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def imports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]]:
+    def imports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]]:
         """
         Specifies import files for this configuration. This can be
         used to import templates or other files. For example, you might
@@ -130,7 +130,7 @@ class DeploymentTargetArgs:
         return pulumi.get(self, "imports")
 
     @imports.setter
-    def imports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]]):
+    def imports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]]):
         pulumi.set(self, "imports", value)
 
 
@@ -163,11 +163,11 @@ class DeploymentTargetConfigArgs:
 
 
 class DeploymentTargetImportArgsDict(TypedDict):
-    content: NotRequired[pulumi.Input[_builtins.str]]
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The full contents of the template that you want to import.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the template to import, as declared in the YAML
     configuration.
@@ -176,8 +176,8 @@ class DeploymentTargetImportArgsDict(TypedDict):
 @pulumi.input_type
 class DeploymentTargetImportArgs:
     def __init__(__self__, *,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] content: The full contents of the template that you want to import.
         :param pulumi.Input[_builtins.str] name: The name of the template to import, as declared in the YAML
@@ -190,19 +190,19 @@ class DeploymentTargetImportArgs:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full contents of the template that you want to import.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the template to import, as declared in the YAML
         configuration.
@@ -210,7 +210,7 @@ class DeploymentTargetImportArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 

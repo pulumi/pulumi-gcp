@@ -133,16 +133,16 @@ export interface GetRegionInstanceGroupManagerOutputArgs {
     /**
      * The name of the instance group. Either `name` or `selfLink` must be provided.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      *
      * * `Region` - (Optional) The region where the managed instance group resides. If not provided, the provider region is used.
      */
-    project?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The self link of the instance group. Either `name` or `selfLink` must be provided.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
 }

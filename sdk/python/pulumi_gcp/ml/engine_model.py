@@ -21,14 +21,14 @@ __all__ = ['EngineModelArgs', 'EngineModel']
 @pulumi.input_type
 class EngineModelArgs:
     def __init__(__self__, *,
-                 default_version: Optional[pulumi.Input['EngineModelDefaultVersionArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 online_prediction_console_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 online_prediction_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 regions: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_version: pulumi.Input[Optional['EngineModelDefaultVersionArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 online_prediction_console_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 online_prediction_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 regions: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EngineModel resource.
 
@@ -66,7 +66,7 @@ class EngineModelArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultVersion")
-    def default_version(self) -> Optional[pulumi.Input['EngineModelDefaultVersionArgs']]:
+    def default_version(self) -> pulumi.Input[Optional['EngineModelDefaultVersionArgs']]:
         """
         The default version of the model. This version will be used to handle
         prediction requests that do not specify a version.
@@ -75,24 +75,24 @@ class EngineModelArgs:
         return pulumi.get(self, "default_version")
 
     @default_version.setter
-    def default_version(self, value: Optional[pulumi.Input['EngineModelDefaultVersionArgs']]):
+    def default_version(self, value: pulumi.Input[Optional['EngineModelDefaultVersionArgs']]):
         pulumi.set(self, "default_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description specified for the model when it was created.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         One or more labels that you can add, to organize your models.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -101,48 +101,48 @@ class EngineModelArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name specified for the model.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="onlinePredictionConsoleLogging")
-    def online_prediction_console_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def online_prediction_console_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         """
         return pulumi.get(self, "online_prediction_console_logging")
 
     @online_prediction_console_logging.setter
-    def online_prediction_console_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def online_prediction_console_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "online_prediction_console_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="onlinePredictionLogging")
-    def online_prediction_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def online_prediction_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, online prediction access logs are sent to StackDriver Logging.
         """
         return pulumi.get(self, "online_prediction_logging")
 
     @online_prediction_logging.setter
-    def online_prediction_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def online_prediction_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "online_prediction_logging", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -150,12 +150,12 @@ class EngineModelArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def regions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def regions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of regions where the model is going to be deployed.
         Currently only one region per model is supported
@@ -163,23 +163,23 @@ class EngineModelArgs:
         return pulumi.get(self, "regions")
 
     @regions.setter
-    def regions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def regions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "regions", value)
 
 
 @pulumi.input_type
 class _EngineModelState:
     def __init__(__self__, *,
-                 default_version: Optional[pulumi.Input['EngineModelDefaultVersionArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 online_prediction_console_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 online_prediction_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 regions: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_version: pulumi.Input[Optional['EngineModelDefaultVersionArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 online_prediction_console_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 online_prediction_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 regions: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EngineModel resources.
 
@@ -224,7 +224,7 @@ class _EngineModelState:
 
     @_builtins.property
     @pulumi.getter(name="defaultVersion")
-    def default_version(self) -> Optional[pulumi.Input['EngineModelDefaultVersionArgs']]:
+    def default_version(self) -> pulumi.Input[Optional['EngineModelDefaultVersionArgs']]:
         """
         The default version of the model. This version will be used to handle
         prediction requests that do not specify a version.
@@ -233,36 +233,36 @@ class _EngineModelState:
         return pulumi.get(self, "default_version")
 
     @default_version.setter
-    def default_version(self, value: Optional[pulumi.Input['EngineModelDefaultVersionArgs']]):
+    def default_version(self, value: pulumi.Input[Optional['EngineModelDefaultVersionArgs']]):
         pulumi.set(self, "default_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description specified for the model when it was created.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         One or more labels that you can add, to organize your models.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -271,48 +271,48 @@ class _EngineModelState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name specified for the model.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="onlinePredictionConsoleLogging")
-    def online_prediction_console_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def online_prediction_console_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         """
         return pulumi.get(self, "online_prediction_console_logging")
 
     @online_prediction_console_logging.setter
-    def online_prediction_console_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def online_prediction_console_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "online_prediction_console_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="onlinePredictionLogging")
-    def online_prediction_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def online_prediction_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, online prediction access logs are sent to StackDriver Logging.
         """
         return pulumi.get(self, "online_prediction_logging")
 
     @online_prediction_logging.setter
-    def online_prediction_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def online_prediction_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "online_prediction_logging", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -320,12 +320,12 @@ class _EngineModelState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -333,12 +333,12 @@ class _EngineModelState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def regions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def regions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of regions where the model is going to be deployed.
         Currently only one region per model is supported
@@ -346,7 +346,7 @@ class _EngineModelState:
         return pulumi.get(self, "regions")
 
     @regions.setter
-    def regions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def regions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "regions", value)
 
 
@@ -356,14 +356,14 @@ class EngineModel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_version: Optional[pulumi.Input[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 online_prediction_console_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 online_prediction_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 regions: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_version: pulumi.Input[Optional[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 online_prediction_console_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 online_prediction_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 regions: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Warning:** This resource is deprecated at the API level and will be removed in a future version of Terraform.
@@ -525,14 +525,14 @@ class EngineModel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_version: Optional[pulumi.Input[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 online_prediction_console_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 online_prediction_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 regions: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_version: pulumi.Input[Optional[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 online_prediction_console_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 online_prediction_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 regions: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -564,16 +564,16 @@ class EngineModel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_version: Optional[pulumi.Input[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            online_prediction_console_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-            online_prediction_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            regions: Optional[pulumi.Input[_builtins.str]] = None) -> 'EngineModel':
+            default_version: pulumi.Input[Optional[Union['EngineModelDefaultVersionArgs', 'EngineModelDefaultVersionArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            online_prediction_console_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            online_prediction_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            regions: pulumi.Input[Optional[_builtins.str]] = None) -> 'EngineModel':
         """
         Get an existing EngineModel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

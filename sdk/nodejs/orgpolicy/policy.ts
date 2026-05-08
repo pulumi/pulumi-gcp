@@ -280,24 +280,24 @@ export interface PolicyState {
      * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
      * Structure is documented below.
      */
-    dryRunSpec?: pulumi.Input<inputs.orgpolicy.PolicyDryRunSpec>;
+    dryRunSpec?: pulumi.Input<inputs.orgpolicy.PolicyDryRunSpec | undefined>;
     /**
      * Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent of the resource.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Basic information about the Organization Policy.
      * Structure is documented below.
      */
-    spec?: pulumi.Input<inputs.orgpolicy.PolicySpec>;
+    spec?: pulumi.Input<inputs.orgpolicy.PolicySpec | undefined>;
 }
 
 /**
@@ -308,11 +308,11 @@ export interface PolicyArgs {
      * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
      * Structure is documented below.
      */
-    dryRunSpec?: pulumi.Input<inputs.orgpolicy.PolicyDryRunSpec>;
+    dryRunSpec?: pulumi.Input<inputs.orgpolicy.PolicyDryRunSpec | undefined>;
     /**
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent of the resource.
      */
@@ -321,5 +321,5 @@ export interface PolicyArgs {
      * Basic information about the Organization Policy.
      * Structure is documented below.
      */
-    spec?: pulumi.Input<inputs.orgpolicy.PolicySpec>;
+    spec?: pulumi.Input<inputs.orgpolicy.PolicySpec | undefined>;
 }

@@ -98,7 +98,7 @@ export interface GetSecretOutputArgs {
     /**
      * The ID of the project in which the resource belongs.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the secret.
      */

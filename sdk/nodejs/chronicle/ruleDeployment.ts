@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *     }), std.split({
  *         separator: "/",
  *         text: googleChronicleRule["my-rule"].name,
- *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]),
+ *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
  *     enabled: true,
  *     alerting: true,
  *     archived: false,
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *     }), std.split({
  *         separator: "/",
  *         text: googleChronicleRule["my-rule"].name,
- *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]),
+ *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
  *     enabled: false,
  *     runFrequency: "LIVE",
  * });
@@ -90,7 +90,7 @@ import * as utilities from "../utilities";
  *     }), std.split({
  *         separator: "/",
  *         text: googleChronicleRule["my-rule"].name,
- *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]),
+ *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
  *     enabled: true,
  *     alerting: true,
  *     archived: false,
@@ -291,11 +291,11 @@ export interface RuleDeploymentState {
      * Whether detections resulting from this deployment should be considered
      * alerts.
      */
-    alerting?: pulumi.Input<boolean>;
+    alerting?: pulumi.Input<boolean | undefined>;
     /**
      * Output only. The timestamp when the rule deployment archive state was last set to true. If the rule deployment's current archive state is not set to true, the field will be empty.
      */
-    archiveTime?: pulumi.Input<string>;
+    archiveTime?: pulumi.Input<string | undefined>;
     /**
      * The archive state of the rule deployment.
      * Cannot be set to true unless enabled is set to false i.e.
@@ -305,18 +305,18 @@ export interface RuleDeploymentState {
      * If currently set to true, enabled, alerting, and runFrequency cannot be
      * updated.
      */
-    archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean | undefined>;
     /**
      * Output only. The names of the associated/chained consumer rules. Rules are considered
      * consumers of this rule if their rule text explicitly filters on this rule's ruleid.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
      */
-    consumerRules?: pulumi.Input<pulumi.Input<string>[]>;
+    consumerRules?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the rule is currently deployed continuously against incoming data.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The execution state of the rule deployment.
      * Possible values:
@@ -324,19 +324,19 @@ export interface RuleDeploymentState {
      * LIMITED
      * PAUSED
      */
-    executionState?: pulumi.Input<string>;
+    executionState?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * Output only. The timestamp when the rule deployment alert state was lastly changed. This is filled regardless of the current alert state.E.g. if the current alert status is false, this timestamp will be the timestamp when the alert status was changed to false.
      */
-    lastAlertStatusChangeTime?: pulumi.Input<string>;
+    lastAlertStatusChangeTime?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the rule deployment.
      * Note that RuleDeployment is a child of the overall Rule, not any individual
@@ -345,23 +345,23 @@ export interface RuleDeploymentState {
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/rules/{rule}/deployment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Output only. The names of the associated/chained producer rules. Rules are considered
      * producers for this rule if this rule explicitly filters on their ruleid.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
      */
-    producerRules?: pulumi.Input<pulumi.Input<string>[]>;
+    producerRules?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Rule ID of the rule.
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * The run frequency of the rule deployment.
      * Possible values:
@@ -369,7 +369,7 @@ export interface RuleDeploymentState {
      * HOURLY
      * DAILY
      */
-    runFrequency?: pulumi.Input<string>;
+    runFrequency?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -380,7 +380,7 @@ export interface RuleDeploymentArgs {
      * Whether detections resulting from this deployment should be considered
      * alerts.
      */
-    alerting?: pulumi.Input<boolean>;
+    alerting?: pulumi.Input<boolean | undefined>;
     /**
      * The archive state of the rule deployment.
      * Cannot be set to true unless enabled is set to false i.e.
@@ -390,11 +390,11 @@ export interface RuleDeploymentArgs {
      * If currently set to true, enabled, alerting, and runFrequency cannot be
      * updated.
      */
-    archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the rule is currently deployed continuously against incoming data.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
@@ -407,7 +407,7 @@ export interface RuleDeploymentArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Rule ID of the rule.
      */
@@ -419,5 +419,5 @@ export interface RuleDeploymentArgs {
      * HOURLY
      * DAILY
      */
-    runFrequency?: pulumi.Input<string>;
+    runFrequency?: pulumi.Input<string | undefined>;
 }

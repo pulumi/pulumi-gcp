@@ -22,14 +22,14 @@ class InstanceArgs:
                  capacity_gib: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_stripe_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_stripe_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
+                 deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -156,7 +156,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="deploymentType")
-    def deployment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Parallelstore Instance deployment type.
         Possible values:
@@ -167,24 +167,24 @@ class InstanceArgs:
         return pulumi.get(self, "deployment_type")
 
     @deployment_type.setter
-    def deployment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the instance. 2048 characters or less.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryStripeLevel")
-    def directory_stripe_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_stripe_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Stripe level for directories.
         MIN when directory has a small number of files.
@@ -198,12 +198,12 @@ class InstanceArgs:
         return pulumi.get(self, "directory_stripe_level")
 
     @directory_stripe_level.setter
-    def directory_stripe_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_stripe_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_stripe_level", value)
 
     @_builtins.property
     @pulumi.getter(name="fileStripeLevel")
-    def file_stripe_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_stripe_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Stripe level for files.
         MIN better suited for small size files.
@@ -217,12 +217,12 @@ class InstanceArgs:
         return pulumi.get(self, "file_stripe_level")
 
     @file_stripe_level.setter
-    def file_stripe_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_stripe_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_stripe_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Cloud Labels are a flexible and lightweight mechanism for
         organizing cloud resources into groups that reflect a customer's organizational
@@ -249,12 +249,12 @@ class InstanceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
         to which the instance is connected.
@@ -262,12 +262,12 @@ class InstanceArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -275,12 +275,12 @@ class InstanceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedIpRange")
-    def reserved_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserved_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. Contains the id of the allocated IP address range
         associated with the private service access connection for example, \\"test-default\\"
@@ -290,33 +290,33 @@ class InstanceArgs:
         return pulumi.get(self, "reserved_ip_range")
 
     @reserved_ip_range.setter
-    def reserved_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserved_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserved_ip_range", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 access_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 daos_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_stripe_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_stripe_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 daos_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -445,7 +445,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="accessPoints")
-    def access_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def access_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Output only. List of access_points.
         Contains a list of IPv4 addresses used for client side configuration.
@@ -453,48 +453,48 @@ class _InstanceState:
         return pulumi.get(self, "access_points")
 
     @access_points.setter
-    def access_points(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def access_points(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "access_points", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityGib")
-    def capacity_gib(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def capacity_gib(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         """
         return pulumi.get(self, "capacity_gib")
 
     @capacity_gib.setter
-    def capacity_gib(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def capacity_gib(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "capacity_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the instance was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="daosVersion")
-    def daos_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def daos_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of DAOS software running in the instance.
         """
         return pulumi.get(self, "daos_version")
 
     @daos_version.setter
-    def daos_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def daos_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "daos_version", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentType")
-    def deployment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Parallelstore Instance deployment type.
         Possible values:
@@ -505,24 +505,24 @@ class _InstanceState:
         return pulumi.get(self, "deployment_type")
 
     @deployment_type.setter
-    def deployment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the instance. 2048 characters or less.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryStripeLevel")
-    def directory_stripe_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_stripe_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Stripe level for directories.
         MIN when directory has a small number of files.
@@ -536,24 +536,24 @@ class _InstanceState:
         return pulumi.get(self, "directory_stripe_level")
 
     @directory_stripe_level.setter
-    def directory_stripe_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_stripe_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_stripe_level", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveReservedIpRange")
-    def effective_reserved_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_reserved_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. Contains the id of the allocated IP address
         range associated with the private service access connection for example, \\"test-default\\"
@@ -563,12 +563,12 @@ class _InstanceState:
         return pulumi.get(self, "effective_reserved_ip_range")
 
     @effective_reserved_ip_range.setter
-    def effective_reserved_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_reserved_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_reserved_ip_range", value)
 
     @_builtins.property
     @pulumi.getter(name="fileStripeLevel")
-    def file_stripe_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_stripe_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Stripe level for files.
         MIN better suited for small size files.
@@ -582,12 +582,12 @@ class _InstanceState:
         return pulumi.get(self, "file_stripe_level")
 
     @file_stripe_level.setter
-    def file_stripe_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_stripe_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_stripe_level", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logical name of the Parallelstore instance in the user project with the following restrictions:
         * Must contain only lowercase letters, numbers, and hyphens.
@@ -599,12 +599,12 @@ class _InstanceState:
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Cloud Labels are a flexible and lightweight mechanism for
         organizing cloud resources into groups that reflect a customer's organizational
@@ -631,24 +631,24 @@ class _InstanceState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Part of `parent`. See documentation of `projectsId`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name of the instance, in the format
         `projects/{project}/locations/{location}/instances/{instance_id}`
@@ -656,12 +656,12 @@ class _InstanceState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
         to which the instance is connected.
@@ -669,12 +669,12 @@ class _InstanceState:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -682,12 +682,12 @@ class _InstanceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -695,12 +695,12 @@ class _InstanceState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedIpRange")
-    def reserved_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserved_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. Contains the id of the allocated IP address range
         associated with the private service access connection for example, \\"test-default\\"
@@ -710,12 +710,12 @@ class _InstanceState:
         return pulumi.get(self, "reserved_ip_range")
 
     @reserved_ip_range.setter
-    def reserved_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserved_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserved_ip_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance state.
         Possible values:
@@ -729,19 +729,19 @@ class _InstanceState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the instance was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -751,17 +751,17 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_stripe_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_stripe_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Parallelstore Instance.
@@ -1036,17 +1036,17 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_stripe_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_stripe_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1094,26 +1094,26 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            daos_version: Optional[pulumi.Input[_builtins.str]] = None,
-            deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            directory_stripe_level: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-            file_stripe_level: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            access_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            daos_version: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            file_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

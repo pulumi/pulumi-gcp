@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.serviceaccount.Key;
  * import com.pulumi.gcp.serviceaccount.KeyArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  * import com.pulumiverse.time.RotatingArgs;
  * import com.pulumi.gcp.serviceaccount.Key;
  * import com.pulumi.gcp.serviceaccount.KeyArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -135,8 +135,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.kubernetes.SecretArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.Base64decodeArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
- *             .metadata(List.of(Map.of("name", "google-application-credentials")))
+ *             .metadata(Arrays.asList(Map.of("name", "google-application-credentials")))
  *             .data(Map.of("credentials.json", StdFunctions.base64decode(Base64decodeArgs.builder()
  *                 .input(mykey.privateKey())
  *                 .build()).result()))

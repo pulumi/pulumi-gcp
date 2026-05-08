@@ -22,10 +22,10 @@ __all__ = ['BackupScheduleArgs', 'BackupSchedule']
 class BackupScheduleArgs:
     def __init__(__self__, *,
                  retention: pulumi.Input[_builtins.str],
-                 daily_recurrence: Optional[pulumi.Input['BackupScheduleDailyRecurrenceArgs']] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 weekly_recurrence: Optional[pulumi.Input['BackupScheduleWeeklyRecurrenceArgs']] = None):
+                 daily_recurrence: pulumi.Input[Optional['BackupScheduleDailyRecurrenceArgs']] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 weekly_recurrence: pulumi.Input[Optional['BackupScheduleWeeklyRecurrenceArgs']] = None):
         """
         The set of arguments for constructing a BackupSchedule resource.
 
@@ -65,31 +65,31 @@ class BackupScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="dailyRecurrence")
-    def daily_recurrence(self) -> Optional[pulumi.Input['BackupScheduleDailyRecurrenceArgs']]:
+    def daily_recurrence(self) -> pulumi.Input[Optional['BackupScheduleDailyRecurrenceArgs']]:
         """
         For a schedule that runs daily.
         """
         return pulumi.get(self, "daily_recurrence")
 
     @daily_recurrence.setter
-    def daily_recurrence(self, value: Optional[pulumi.Input['BackupScheduleDailyRecurrenceArgs']]):
+    def daily_recurrence(self, value: pulumi.Input[Optional['BackupScheduleDailyRecurrenceArgs']]):
         pulumi.set(self, "daily_recurrence", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Firestore database id. Defaults to `"(default)"`.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -97,12 +97,12 @@ class BackupScheduleArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="weeklyRecurrence")
-    def weekly_recurrence(self) -> Optional[pulumi.Input['BackupScheduleWeeklyRecurrenceArgs']]:
+    def weekly_recurrence(self) -> pulumi.Input[Optional['BackupScheduleWeeklyRecurrenceArgs']]:
         """
         For a schedule that runs weekly on a specific day.
         Structure is documented below.
@@ -110,19 +110,19 @@ class BackupScheduleArgs:
         return pulumi.get(self, "weekly_recurrence")
 
     @weekly_recurrence.setter
-    def weekly_recurrence(self, value: Optional[pulumi.Input['BackupScheduleWeeklyRecurrenceArgs']]):
+    def weekly_recurrence(self, value: pulumi.Input[Optional['BackupScheduleWeeklyRecurrenceArgs']]):
         pulumi.set(self, "weekly_recurrence", value)
 
 
 @pulumi.input_type
 class _BackupScheduleState:
     def __init__(__self__, *,
-                 daily_recurrence: Optional[pulumi.Input['BackupScheduleDailyRecurrenceArgs']] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input[_builtins.str]] = None,
-                 weekly_recurrence: Optional[pulumi.Input['BackupScheduleWeeklyRecurrenceArgs']] = None):
+                 daily_recurrence: pulumi.Input[Optional['BackupScheduleDailyRecurrenceArgs']] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional[_builtins.str]] = None,
+                 weekly_recurrence: pulumi.Input[Optional['BackupScheduleWeeklyRecurrenceArgs']] = None):
         """
         Input properties used for looking up and filtering BackupSchedule resources.
 
@@ -153,31 +153,31 @@ class _BackupScheduleState:
 
     @_builtins.property
     @pulumi.getter(name="dailyRecurrence")
-    def daily_recurrence(self) -> Optional[pulumi.Input['BackupScheduleDailyRecurrenceArgs']]:
+    def daily_recurrence(self) -> pulumi.Input[Optional['BackupScheduleDailyRecurrenceArgs']]:
         """
         For a schedule that runs daily.
         """
         return pulumi.get(self, "daily_recurrence")
 
     @daily_recurrence.setter
-    def daily_recurrence(self, value: Optional[pulumi.Input['BackupScheduleDailyRecurrenceArgs']]):
+    def daily_recurrence(self, value: pulumi.Input[Optional['BackupScheduleDailyRecurrenceArgs']]):
         pulumi.set(self, "daily_recurrence", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Firestore database id. Defaults to `"(default)"`.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique backup schedule identifier across all locations and databases for the given project. Format:
         `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
@@ -185,12 +185,12 @@ class _BackupScheduleState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -198,12 +198,12 @@ class _BackupScheduleState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retention(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -212,12 +212,12 @@ class _BackupScheduleState:
         return pulumi.get(self, "retention")
 
     @retention.setter
-    def retention(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retention(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retention", value)
 
     @_builtins.property
     @pulumi.getter(name="weeklyRecurrence")
-    def weekly_recurrence(self) -> Optional[pulumi.Input['BackupScheduleWeeklyRecurrenceArgs']]:
+    def weekly_recurrence(self) -> pulumi.Input[Optional['BackupScheduleWeeklyRecurrenceArgs']]:
         """
         For a schedule that runs weekly on a specific day.
         Structure is documented below.
@@ -225,7 +225,7 @@ class _BackupScheduleState:
         return pulumi.get(self, "weekly_recurrence")
 
     @weekly_recurrence.setter
-    def weekly_recurrence(self, value: Optional[pulumi.Input['BackupScheduleWeeklyRecurrenceArgs']]):
+    def weekly_recurrence(self, value: pulumi.Input[Optional['BackupScheduleWeeklyRecurrenceArgs']]):
         pulumi.set(self, "weekly_recurrence", value)
 
 
@@ -235,11 +235,11 @@ class BackupSchedule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 daily_recurrence: Optional[pulumi.Input[Union['BackupScheduleDailyRecurrenceArgs', 'BackupScheduleDailyRecurrenceArgsDict']]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input[_builtins.str]] = None,
-                 weekly_recurrence: Optional[pulumi.Input[Union['BackupScheduleWeeklyRecurrenceArgs', 'BackupScheduleWeeklyRecurrenceArgsDict']]] = None,
+                 daily_recurrence: pulumi.Input[Optional[Union['BackupScheduleDailyRecurrenceArgs', 'BackupScheduleDailyRecurrenceArgsDict']]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional[_builtins.str]] = None,
+                 weekly_recurrence: pulumi.Input[Optional[Union['BackupScheduleWeeklyRecurrenceArgs', 'BackupScheduleWeeklyRecurrenceArgsDict']]] = None,
                  __props__=None):
         """
         A backup schedule for a Cloud Firestore Database.
@@ -426,11 +426,11 @@ class BackupSchedule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 daily_recurrence: Optional[pulumi.Input[Union['BackupScheduleDailyRecurrenceArgs', 'BackupScheduleDailyRecurrenceArgsDict']]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input[_builtins.str]] = None,
-                 weekly_recurrence: Optional[pulumi.Input[Union['BackupScheduleWeeklyRecurrenceArgs', 'BackupScheduleWeeklyRecurrenceArgsDict']]] = None,
+                 daily_recurrence: pulumi.Input[Optional[Union['BackupScheduleDailyRecurrenceArgs', 'BackupScheduleDailyRecurrenceArgsDict']]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional[_builtins.str]] = None,
+                 weekly_recurrence: pulumi.Input[Optional[Union['BackupScheduleWeeklyRecurrenceArgs', 'BackupScheduleWeeklyRecurrenceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -458,12 +458,12 @@ class BackupSchedule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            daily_recurrence: Optional[pulumi.Input[Union['BackupScheduleDailyRecurrenceArgs', 'BackupScheduleDailyRecurrenceArgsDict']]] = None,
-            database: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            retention: Optional[pulumi.Input[_builtins.str]] = None,
-            weekly_recurrence: Optional[pulumi.Input[Union['BackupScheduleWeeklyRecurrenceArgs', 'BackupScheduleWeeklyRecurrenceArgsDict']]] = None) -> 'BackupSchedule':
+            daily_recurrence: pulumi.Input[Optional[Union['BackupScheduleDailyRecurrenceArgs', 'BackupScheduleDailyRecurrenceArgsDict']]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            retention: pulumi.Input[Optional[_builtins.str]] = None,
+            weekly_recurrence: pulumi.Input[Optional[Union['BackupScheduleWeeklyRecurrenceArgs', 'BackupScheduleWeeklyRecurrenceArgsDict']]] = None) -> 'BackupSchedule':
         """
         Get an existing BackupSchedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

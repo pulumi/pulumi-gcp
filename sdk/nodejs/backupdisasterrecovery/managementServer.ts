@@ -168,36 +168,36 @@ export interface ManagementServerState {
     /**
      * The location for the management server (management console)
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The management console URI
      * Structure is documented below.
      */
-    managementUris?: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.ManagementServerManagementUri>[]>;
+    managementUris?: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.ManagementServerManagementUri>[] | undefined>;
     /**
      * The name of management server (management console)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network details to create management server (management console).
      * Structure is documented below.
      */
-    networks?: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.ManagementServerNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.ManagementServerNetwork>[] | undefined>;
     /**
      * The oauth2ClientId of management console.
      */
-    oauth2ClientId?: pulumi.Input<string>;
+    oauth2ClientId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of management server (management console).
      * Default value is `BACKUP_RESTORE`.
      * Possible values are: `BACKUP_RESTORE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -211,21 +211,21 @@ export interface ManagementServerArgs {
     /**
      * The name of management server (management console)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network details to create management server (management console).
      * Structure is documented below.
      */
-    networks?: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.ManagementServerNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.ManagementServerNetwork>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of management server (management console).
      * Default value is `BACKUP_RESTORE`.
      * Possible values are: `BACKUP_RESTORE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

@@ -137,21 +137,21 @@ export interface InstanceSettingsState {
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The metadata key/value pairs assigned to all the instances in the corresponding scope.
      * Structure is documented below.
      */
-    metadata?: pulumi.Input<inputs.compute.InstanceSettingsMetadata>;
+    metadata?: pulumi.Input<inputs.compute.InstanceSettingsMetadata | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the zone where the machine resides.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,12 +162,12 @@ export interface InstanceSettingsArgs {
      * The metadata key/value pairs assigned to all the instances in the corresponding scope.
      * Structure is documented below.
      */
-    metadata?: pulumi.Input<inputs.compute.InstanceSettingsMetadata>;
+    metadata?: pulumi.Input<inputs.compute.InstanceSettingsMetadata | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the zone where the machine resides.
      */

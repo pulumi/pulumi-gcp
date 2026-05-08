@@ -250,93 +250,93 @@ export interface AuthConfigState {
     /**
      * Certificate id for client certificate.
      */
-    certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * Raw client certificate
      * Structure is documented below.
      */
-    clientCertificate?: pulumi.Input<inputs.applicationintegration.AuthConfigClientCertificate>;
+    clientCertificate?: pulumi.Input<inputs.applicationintegration.AuthConfigClientCertificate | undefined>;
     /**
      * The timestamp when the auth config is created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
      */
-    creatorEmail?: pulumi.Input<string>;
+    creatorEmail?: pulumi.Input<string | undefined>;
     /**
      * Credential type of the encrypted credential.
      */
-    credentialType?: pulumi.Input<string>;
+    credentialType?: pulumi.Input<string | undefined>;
     /**
      * Raw auth credentials.
      * Structure is documented below.
      */
-    decryptedCredential?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredential>;
+    decryptedCredential?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredential | undefined>;
     /**
      * A description of the auth config.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the auth config.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
      * A base64-encoded string.
      */
-    encryptedCredential?: pulumi.Input<string>;
+    encryptedCredential?: pulumi.Input<string | undefined>;
     /**
      * User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    expiryNotificationDurations?: pulumi.Input<pulumi.Input<string>[]>;
+    expiryNotificationDurations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
      */
-    lastModifierEmail?: pulumi.Input<string>;
+    lastModifierEmail?: pulumi.Input<string | undefined>;
     /**
      * Location in which client needs to be provisioned.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Resource name of the auth config.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    overrideValidTime?: pulumi.Input<string>;
+    overrideValidTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The reason / details of the current status.
      */
-    reason?: pulumi.Input<string>;
+    reason?: pulumi.Input<string | undefined>;
     /**
      * The status of the auth config.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the auth config is modified.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The time until the auth config is valid. Empty or max value is considered the auth config won't expire.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    validTime?: pulumi.Input<string>;
+    validTime?: pulumi.Input<string | undefined>;
     /**
      * The visibility of the auth config.
      * Possible values are: `PRIVATE`, `CLIENT_VISIBLE`.
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -347,16 +347,16 @@ export interface AuthConfigArgs {
      * Raw client certificate
      * Structure is documented below.
      */
-    clientCertificate?: pulumi.Input<inputs.applicationintegration.AuthConfigClientCertificate>;
+    clientCertificate?: pulumi.Input<inputs.applicationintegration.AuthConfigClientCertificate | undefined>;
     /**
      * Raw auth credentials.
      * Structure is documented below.
      */
-    decryptedCredential?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredential>;
+    decryptedCredential?: pulumi.Input<inputs.applicationintegration.AuthConfigDecryptedCredential | undefined>;
     /**
      * A description of the auth config.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the auth config.
      */
@@ -365,7 +365,7 @@ export interface AuthConfigArgs {
      * User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    expiryNotificationDurations?: pulumi.Input<pulumi.Input<string>[]>;
+    expiryNotificationDurations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Location in which client needs to be provisioned.
      */
@@ -374,15 +374,15 @@ export interface AuthConfigArgs {
      * User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    overrideValidTime?: pulumi.Input<string>;
+    overrideValidTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The visibility of the auth config.
      * Possible values are: `PRIVATE`, `CLIENT_VISIBLE`.
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
 }

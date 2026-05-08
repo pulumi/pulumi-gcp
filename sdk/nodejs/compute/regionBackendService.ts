@@ -1010,29 +1010,29 @@ export interface RegionBackendServiceState {
      * maximum allowed value for TTL is one day.
      * When the load balancing scheme is INTERNAL, this field is not used.
      */
-    affinityCookieTtlSec?: pulumi.Input<number>;
+    affinityCookieTtlSec?: pulumi.Input<number | undefined>;
     /**
      * The set of backends that serve this RegionBackendService.
      * Structure is documented below.
      */
-    backends?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceBackend>[]>;
+    backends?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceBackend>[] | undefined>;
     /**
      * Cloud CDN configuration for this BackendService.
      * Structure is documented below.
      */
-    cdnPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceCdnPolicy>;
+    cdnPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceCdnPolicy | undefined>;
     /**
      * Settings controlling the volume of connections to a backend service. This field
      * is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
      * and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      */
-    circuitBreakers?: pulumi.Input<inputs.compute.RegionBackendServiceCircuitBreakers>;
+    circuitBreakers?: pulumi.Input<inputs.compute.RegionBackendServiceCircuitBreakers | undefined>;
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
      */
-    connectionDrainingTimeoutSec?: pulumi.Input<number>;
+    connectionDrainingTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
@@ -1040,7 +1040,7 @@ export interface RegionBackendServiceState {
      * Network Load Balancing.
      * Structure is documented below.
      */
-    connectionTrackingPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceConnectionTrackingPolicy>;
+    connectionTrackingPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceConnectionTrackingPolicy | undefined>;
     /**
      * Consistent Hash-based load balancing can be used to provide soft session
      * affinity based on HTTP headers, cookies or other properties. This load balancing
@@ -1050,45 +1050,45 @@ export interface RegionBackendServiceState {
      * hashing.
      * This field only applies when all of the following are true -
      */
-    consistentHash?: pulumi.Input<inputs.compute.RegionBackendServiceConsistentHash>;
+    consistentHash?: pulumi.Input<inputs.compute.RegionBackendServiceConsistentHash | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
      * Structure is documented below.
      */
-    customMetrics?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceCustomMetric>[]>;
+    customMetrics?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceCustomMetric>[] | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
      */
-    dynamicForwarding?: pulumi.Input<inputs.compute.RegionBackendServiceDynamicForwarding>;
+    dynamicForwarding?: pulumi.Input<inputs.compute.RegionBackendServiceDynamicForwarding | undefined>;
     /**
      * If true, enable Cloud CDN for this RegionBackendService.
      */
-    enableCdn?: pulumi.Input<boolean>;
+    enableCdn?: pulumi.Input<boolean | undefined>;
     /**
      * Policy for failovers.
      * Structure is documented below.
      */
-    failoverPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceFailoverPolicy>;
+    failoverPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceFailoverPolicy | undefined>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this
      * object. This field is used in optimistic locking.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    generatedId?: pulumi.Input<number>;
+    generatedId?: pulumi.Input<number | undefined>;
     /**
      * Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
      * The backends of this regional backend service must only specify zonal network endpoint groups
@@ -1100,7 +1100,7 @@ export interface RegionBackendServiceState {
      * Passthrough Network Load Balancers.
      * Structure is documented below.
      */
-    haPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceHaPolicy>;
+    haPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceHaPolicy | undefined>;
     /**
      * The set of URLs to HealthCheck resources for health checking
      * this RegionBackendService. Currently at most one health
@@ -1108,18 +1108,18 @@ export interface RegionBackendServiceState {
      * A health check must be specified unless the backend service uses an internet
      * or serverless NEG as a backend.
      */
-    healthChecks?: pulumi.Input<string>;
+    healthChecks?: pulumi.Input<string | undefined>;
     /**
      * Settings for enabling Cloud Identity Aware Proxy.
      * If OAuth client is not set, Google-managed OAuth client is used.
      * Structure is documented below.
      */
-    iap?: pulumi.Input<inputs.compute.RegionBackendServiceIap>;
+    iap?: pulumi.Input<inputs.compute.RegionBackendServiceIap | undefined>;
     /**
      * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
      * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
      */
-    ipAddressSelectionPolicy?: pulumi.Input<string>;
+    ipAddressSelectionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
@@ -1128,7 +1128,7 @@ export interface RegionBackendServiceState {
      * Default value is `INTERNAL`.
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
-    loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
      * The load balancing algorithm used within the scope of the locality.
      * The possible values are:
@@ -1183,13 +1183,13 @@ export interface RegionBackendServiceState {
      * field set to true.
      * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
      */
-    localityLbPolicy?: pulumi.Input<string>;
+    localityLbPolicy?: pulumi.Input<string | undefined>;
     /**
      * This field denotes the logging options for the load balancer traffic served by this backend service.
      * If logging is enabled, logs will be exported to Stackdriver.
      * Structure is documented below.
      */
-    logConfig?: pulumi.Input<inputs.compute.RegionBackendServiceLogConfig>;
+    logConfig?: pulumi.Input<inputs.compute.RegionBackendServiceLogConfig | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -1199,31 +1199,31 @@ export interface RegionBackendServiceState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of the network to which this backend service belongs.
      * This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
      * This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
      * Changes to this field force recreation of the resource.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      */
-    networkPassThroughLbTrafficPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceNetworkPassThroughLbTrafficPolicy>;
+    networkPassThroughLbTrafficPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceNetworkPassThroughLbTrafficPolicy | undefined>;
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the `loadBalancingScheme` is set
      * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      */
-    outlierDetection?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetection>;
+    outlierDetection?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetection | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.RegionBackendServiceParams>;
+    params?: pulumi.Input<inputs.compute.RegionBackendServiceParams | undefined>;
     /**
      * A named port on a backend instance group representing the port for
      * communication to the backend VMs in that group. Required when the
@@ -1233,12 +1233,12 @@ export interface RegionBackendServiceState {
      * default of "http" if not given.
      * Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
      */
-    portName?: pulumi.Input<string>;
+    portName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
@@ -1246,49 +1246,49 @@ export interface RegionBackendServiceState {
      * for more information.
      * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The Region in which the created backend service should reside.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The security policy associated with this backend service.
      */
-    securityPolicy?: pulumi.Input<string>;
+    securityPolicy?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
      * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
      */
-    sessionAffinity?: pulumi.Input<string>;
+    sessionAffinity?: pulumi.Input<string | undefined>;
     /**
      * Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
      * Structure is documented below.
      */
-    strongSessionAffinityCookie?: pulumi.Input<inputs.compute.RegionBackendServiceStrongSessionAffinityCookie>;
+    strongSessionAffinityCookie?: pulumi.Input<inputs.compute.RegionBackendServiceStrongSessionAffinityCookie | undefined>;
     /**
      * (Optional, Beta)
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      */
-    subsetting?: pulumi.Input<inputs.compute.RegionBackendServiceSubsetting>;
+    subsetting?: pulumi.Input<inputs.compute.RegionBackendServiceSubsetting | undefined>;
     /**
      * The backend service timeout has a different meaning depending on the type of load balancer.
      * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
      * The default is 30 seconds.
      * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
-    timeoutSec?: pulumi.Input<number>;
+    timeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
      * Structure is documented below.
      */
-    tlsSettings?: pulumi.Input<inputs.compute.RegionBackendServiceTlsSettings>;
+    tlsSettings?: pulumi.Input<inputs.compute.RegionBackendServiceTlsSettings | undefined>;
 }
 
 /**
@@ -1302,29 +1302,29 @@ export interface RegionBackendServiceArgs {
      * maximum allowed value for TTL is one day.
      * When the load balancing scheme is INTERNAL, this field is not used.
      */
-    affinityCookieTtlSec?: pulumi.Input<number>;
+    affinityCookieTtlSec?: pulumi.Input<number | undefined>;
     /**
      * The set of backends that serve this RegionBackendService.
      * Structure is documented below.
      */
-    backends?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceBackend>[]>;
+    backends?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceBackend>[] | undefined>;
     /**
      * Cloud CDN configuration for this BackendService.
      * Structure is documented below.
      */
-    cdnPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceCdnPolicy>;
+    cdnPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceCdnPolicy | undefined>;
     /**
      * Settings controlling the volume of connections to a backend service. This field
      * is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
      * and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      */
-    circuitBreakers?: pulumi.Input<inputs.compute.RegionBackendServiceCircuitBreakers>;
+    circuitBreakers?: pulumi.Input<inputs.compute.RegionBackendServiceCircuitBreakers | undefined>;
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
      */
-    connectionDrainingTimeoutSec?: pulumi.Input<number>;
+    connectionDrainingTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
@@ -1332,7 +1332,7 @@ export interface RegionBackendServiceArgs {
      * Network Load Balancing.
      * Structure is documented below.
      */
-    connectionTrackingPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceConnectionTrackingPolicy>;
+    connectionTrackingPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceConnectionTrackingPolicy | undefined>;
     /**
      * Consistent Hash-based load balancing can be used to provide soft session
      * affinity based on HTTP headers, cookies or other properties. This load balancing
@@ -1342,32 +1342,32 @@ export interface RegionBackendServiceArgs {
      * hashing.
      * This field only applies when all of the following are true -
      */
-    consistentHash?: pulumi.Input<inputs.compute.RegionBackendServiceConsistentHash>;
+    consistentHash?: pulumi.Input<inputs.compute.RegionBackendServiceConsistentHash | undefined>;
     /**
      * List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
      * Structure is documented below.
      */
-    customMetrics?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceCustomMetric>[]>;
+    customMetrics?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceCustomMetric>[] | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
      */
-    dynamicForwarding?: pulumi.Input<inputs.compute.RegionBackendServiceDynamicForwarding>;
+    dynamicForwarding?: pulumi.Input<inputs.compute.RegionBackendServiceDynamicForwarding | undefined>;
     /**
      * If true, enable Cloud CDN for this RegionBackendService.
      */
-    enableCdn?: pulumi.Input<boolean>;
+    enableCdn?: pulumi.Input<boolean | undefined>;
     /**
      * Policy for failovers.
      * Structure is documented below.
      */
-    failoverPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceFailoverPolicy>;
+    failoverPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceFailoverPolicy | undefined>;
     /**
      * Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
      * The backends of this regional backend service must only specify zonal network endpoint groups
@@ -1379,7 +1379,7 @@ export interface RegionBackendServiceArgs {
      * Passthrough Network Load Balancers.
      * Structure is documented below.
      */
-    haPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceHaPolicy>;
+    haPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceHaPolicy | undefined>;
     /**
      * The set of URLs to HealthCheck resources for health checking
      * this RegionBackendService. Currently at most one health
@@ -1387,18 +1387,18 @@ export interface RegionBackendServiceArgs {
      * A health check must be specified unless the backend service uses an internet
      * or serverless NEG as a backend.
      */
-    healthChecks?: pulumi.Input<string>;
+    healthChecks?: pulumi.Input<string | undefined>;
     /**
      * Settings for enabling Cloud Identity Aware Proxy.
      * If OAuth client is not set, Google-managed OAuth client is used.
      * Structure is documented below.
      */
-    iap?: pulumi.Input<inputs.compute.RegionBackendServiceIap>;
+    iap?: pulumi.Input<inputs.compute.RegionBackendServiceIap | undefined>;
     /**
      * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
      * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
      */
-    ipAddressSelectionPolicy?: pulumi.Input<string>;
+    ipAddressSelectionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
@@ -1407,7 +1407,7 @@ export interface RegionBackendServiceArgs {
      * Default value is `INTERNAL`.
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
-    loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
      * The load balancing algorithm used within the scope of the locality.
      * The possible values are:
@@ -1462,13 +1462,13 @@ export interface RegionBackendServiceArgs {
      * field set to true.
      * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
      */
-    localityLbPolicy?: pulumi.Input<string>;
+    localityLbPolicy?: pulumi.Input<string | undefined>;
     /**
      * This field denotes the logging options for the load balancer traffic served by this backend service.
      * If logging is enabled, logs will be exported to Stackdriver.
      * Structure is documented below.
      */
-    logConfig?: pulumi.Input<inputs.compute.RegionBackendServiceLogConfig>;
+    logConfig?: pulumi.Input<inputs.compute.RegionBackendServiceLogConfig | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -1478,31 +1478,31 @@ export interface RegionBackendServiceArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of the network to which this backend service belongs.
      * This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
      * This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
      * Changes to this field force recreation of the resource.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      */
-    networkPassThroughLbTrafficPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceNetworkPassThroughLbTrafficPolicy>;
+    networkPassThroughLbTrafficPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceNetworkPassThroughLbTrafficPolicy | undefined>;
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the `loadBalancingScheme` is set
      * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      */
-    outlierDetection?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetection>;
+    outlierDetection?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetection | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.RegionBackendServiceParams>;
+    params?: pulumi.Input<inputs.compute.RegionBackendServiceParams | undefined>;
     /**
      * A named port on a backend instance group representing the port for
      * communication to the backend VMs in that group. Required when the
@@ -1512,12 +1512,12 @@ export interface RegionBackendServiceArgs {
      * default of "http" if not given.
      * Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
      */
-    portName?: pulumi.Input<string>;
+    portName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
@@ -1525,43 +1525,43 @@ export interface RegionBackendServiceArgs {
      * for more information.
      * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The Region in which the created backend service should reside.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The security policy associated with this backend service.
      */
-    securityPolicy?: pulumi.Input<string>;
+    securityPolicy?: pulumi.Input<string | undefined>;
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
      * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
      */
-    sessionAffinity?: pulumi.Input<string>;
+    sessionAffinity?: pulumi.Input<string | undefined>;
     /**
      * Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
      * Structure is documented below.
      */
-    strongSessionAffinityCookie?: pulumi.Input<inputs.compute.RegionBackendServiceStrongSessionAffinityCookie>;
+    strongSessionAffinityCookie?: pulumi.Input<inputs.compute.RegionBackendServiceStrongSessionAffinityCookie | undefined>;
     /**
      * (Optional, Beta)
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      */
-    subsetting?: pulumi.Input<inputs.compute.RegionBackendServiceSubsetting>;
+    subsetting?: pulumi.Input<inputs.compute.RegionBackendServiceSubsetting | undefined>;
     /**
      * The backend service timeout has a different meaning depending on the type of load balancer.
      * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
      * The default is 30 seconds.
      * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
-    timeoutSec?: pulumi.Input<number>;
+    timeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
      * Structure is documented below.
      */
-    tlsSettings?: pulumi.Input<inputs.compute.RegionBackendServiceTlsSettings>;
+    tlsSettings?: pulumi.Input<inputs.compute.RegionBackendServiceTlsSettings | undefined>;
 }

@@ -161,31 +161,31 @@ export interface RolloutPlanState {
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The location scope of the rollout plan.
      * Possible values are: `LOCATION_SCOPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      */
-    locationScope?: pulumi.Input<string>;
+    locationScope?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created.
      * The name must be 1-63 characters long, and comply with RFC1035.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The waves included in this rollout plan.
      * Structure is documented below.
      */
-    waves?: pulumi.Input<pulumi.Input<inputs.compute.RolloutPlanWave>[]>;
+    waves?: pulumi.Input<pulumi.Input<inputs.compute.RolloutPlanWave>[] | undefined>;
 }
 
 /**
@@ -195,22 +195,22 @@ export interface RolloutPlanArgs {
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The location scope of the rollout plan.
      * Possible values are: `LOCATION_SCOPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      */
-    locationScope?: pulumi.Input<string>;
+    locationScope?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created.
      * The name must be 1-63 characters long, and comply with RFC1035.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The waves included in this rollout plan.
      * Structure is documented below.

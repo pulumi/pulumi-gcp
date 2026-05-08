@@ -22,8 +22,8 @@ __all__ = ['AiRagEngineConfigArgs', 'AiRagEngineConfig']
 class AiRagEngineConfigArgs:
     def __init__(__self__, *,
                  rag_managed_db_config: pulumi.Input['AiRagEngineConfigRagManagedDbConfigArgs'],
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiRagEngineConfig resource.
 
@@ -54,7 +54,7 @@ class AiRagEngineConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -62,29 +62,29 @@ class AiRagEngineConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the RagEngineConfig. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _AiRagEngineConfigState:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rag_managed_db_config: Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigArgs']] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rag_managed_db_config: pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigArgs']] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiRagEngineConfig resources.
 
@@ -106,19 +106,19 @@ class _AiRagEngineConfigState:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Dataset. This value is set by Google.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -126,12 +126,12 @@ class _AiRagEngineConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="ragManagedDbConfig")
-    def rag_managed_db_config(self) -> Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigArgs']]:
+    def rag_managed_db_config(self) -> pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigArgs']]:
         """
         Required. The config of the RagManagedDb used by RagEngine.
         Structure is documented below.
@@ -139,19 +139,19 @@ class _AiRagEngineConfigState:
         return pulumi.get(self, "rag_managed_db_config")
 
     @rag_managed_db_config.setter
-    def rag_managed_db_config(self, value: Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigArgs']]):
+    def rag_managed_db_config(self, value: pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigArgs']]):
         pulumi.set(self, "rag_managed_db_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the RagEngineConfig. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -161,9 +161,9 @@ class AiRagEngineConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rag_managed_db_config: Optional[pulumi.Input[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict']]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rag_managed_db_config: pulumi.Input[Optional[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict']]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Vertex AI RAG Engine lets you scale your RagManagedDb instance based on your usage and performance requirements using a choice of two tiers, and optionally, lets you delete your Vertex AI RAG Engine data using a third tier. The tier is a project-level setting that's available in the RagEngineConfig resource that impacts all RAG corpora using RagManagedDb. The following tiers are available in RagEngineConfig: Basic, Scaled and Unprovisioned.
@@ -250,9 +250,9 @@ class AiRagEngineConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rag_managed_db_config: Optional[pulumi.Input[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict']]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rag_managed_db_config: pulumi.Input[Optional[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict']]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -278,10 +278,10 @@ class AiRagEngineConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            rag_managed_db_config: Optional[pulumi.Input[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict']]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiRagEngineConfig':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rag_managed_db_config: pulumi.Input[Optional[Union['AiRagEngineConfigRagManagedDbConfigArgs', 'AiRagEngineConfigRagManagedDbConfigArgsDict']]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiRagEngineConfig':
         """
         Get an existing AiRagEngineConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

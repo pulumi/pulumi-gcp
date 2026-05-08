@@ -22,13 +22,13 @@ __all__ = ['RepositoryWorkflowConfigArgs', 'RepositoryWorkflowConfig']
 class RepositoryWorkflowConfigArgs:
     def __init__(__self__, *,
                  release_config: pulumi.Input[_builtins.str],
-                 cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 invocation_config: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 invocation_config: pulumi.Input[Optional['RepositoryWorkflowConfigInvocationConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RepositoryWorkflowConfig resource.
 
@@ -73,19 +73,19 @@ class RepositoryWorkflowConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         """
         return pulumi.get(self, "cron_schedule")
 
     @cron_schedule.setter
-    def cron_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="invocationConfig")
-    def invocation_config(self) -> Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']]:
+    def invocation_config(self) -> pulumi.Input[Optional['RepositoryWorkflowConfigInvocationConfigArgs']]:
         """
         Optional. If left unset, a default InvocationConfig will be used.
         Structure is documented below.
@@ -93,24 +93,24 @@ class RepositoryWorkflowConfigArgs:
         return pulumi.get(self, "invocation_config")
 
     @invocation_config.setter
-    def invocation_config(self, value: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']]):
+    def invocation_config(self, value: pulumi.Input[Optional['RepositoryWorkflowConfigInvocationConfigArgs']]):
         pulumi.set(self, "invocation_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The workflow's name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -118,58 +118,58 @@ class RepositoryWorkflowConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the region
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def repository(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the Dataform repository
         """
         return pulumi.get(self, "repository")
 
     @repository.setter
-    def repository(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
         """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
 
 @pulumi.input_type
 class _RepositoryWorkflowConfigState:
     def __init__(__self__, *,
-                 cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 invocation_config: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recent_scheduled_execution_records: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs']]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 invocation_config: pulumi.Input[Optional['RepositoryWorkflowConfigInvocationConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recent_scheduled_execution_records: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs']]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RepositoryWorkflowConfig resources.
 
@@ -207,19 +207,19 @@ class _RepositoryWorkflowConfigState:
 
     @_builtins.property
     @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         """
         return pulumi.get(self, "cron_schedule")
 
     @cron_schedule.setter
-    def cron_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="invocationConfig")
-    def invocation_config(self) -> Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']]:
+    def invocation_config(self) -> pulumi.Input[Optional['RepositoryWorkflowConfigInvocationConfigArgs']]:
         """
         Optional. If left unset, a default InvocationConfig will be used.
         Structure is documented below.
@@ -227,24 +227,24 @@ class _RepositoryWorkflowConfigState:
         return pulumi.get(self, "invocation_config")
 
     @invocation_config.setter
-    def invocation_config(self, value: Optional[pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs']]):
+    def invocation_config(self, value: pulumi.Input[Optional['RepositoryWorkflowConfigInvocationConfigArgs']]):
         pulumi.set(self, "invocation_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The workflow's name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -252,12 +252,12 @@ class _RepositoryWorkflowConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="recentScheduledExecutionRecords")
-    def recent_scheduled_execution_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs']]]]:
+    def recent_scheduled_execution_records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs']]]]:
         """
         Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule.
         Structure is documented below.
@@ -265,55 +265,55 @@ class _RepositoryWorkflowConfigState:
         return pulumi.get(self, "recent_scheduled_execution_records")
 
     @recent_scheduled_execution_records.setter
-    def recent_scheduled_execution_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs']]]]):
+    def recent_scheduled_execution_records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs']]]]):
         pulumi.set(self, "recent_scheduled_execution_records", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the region
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseConfig")
-    def release_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
         """
         return pulumi.get(self, "release_config")
 
     @release_config.setter
-    def release_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def repository(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the Dataform repository
         """
         return pulumi.get(self, "repository")
 
     @repository.setter
-    def repository(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
         """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
 
@@ -323,14 +323,14 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 invocation_config: Optional[pulumi.Input[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A resource represents a Dataform workflow configuration
@@ -592,14 +592,14 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 invocation_config: Optional[pulumi.Input[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -630,15 +630,15 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-            invocation_config: Optional[pulumi.Input[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            recent_scheduled_execution_records: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs', 'RepositoryWorkflowConfigRecentScheduledExecutionRecordArgsDict']]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            release_config: Optional[pulumi.Input[_builtins.str]] = None,
-            repository: Optional[pulumi.Input[_builtins.str]] = None,
-            time_zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'RepositoryWorkflowConfig':
+            cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            invocation_config: pulumi.Input[Optional[Union['RepositoryWorkflowConfigInvocationConfigArgs', 'RepositoryWorkflowConfigInvocationConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            recent_scheduled_execution_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs', 'RepositoryWorkflowConfigRecentScheduledExecutionRecordArgsDict']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            release_config: pulumi.Input[Optional[_builtins.str]] = None,
+            repository: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'RepositoryWorkflowConfig':
         """
         Get an existing RepositoryWorkflowConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

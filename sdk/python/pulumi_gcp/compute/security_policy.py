@@ -21,15 +21,15 @@ __all__ = ['SecurityPolicyArgs', 'SecurityPolicy']
 @pulumi.input_type
 class SecurityPolicyArgs:
     def __init__(__self__, *,
-                 adaptive_protection_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
-                 advanced_options_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recaptcha_options_config: Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 adaptive_protection_config: pulumi.Input[Optional['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
+                 advanced_options_config: pulumi.Input[Optional['SecurityPolicyAdvancedOptionsConfigArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recaptcha_options_config: pulumi.Input[Optional['SecurityPolicyRecaptchaOptionsConfigArgs']] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityPolicy resource.
 
@@ -79,19 +79,19 @@ class SecurityPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="adaptiveProtectionConfig")
-    def adaptive_protection_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']]:
+    def adaptive_protection_config(self) -> pulumi.Input[Optional['SecurityPolicyAdaptiveProtectionConfigArgs']]:
         """
         Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         """
         return pulumi.get(self, "adaptive_protection_config")
 
     @adaptive_protection_config.setter
-    def adaptive_protection_config(self, value: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']]):
+    def adaptive_protection_config(self, value: pulumi.Input[Optional['SecurityPolicyAdaptiveProtectionConfigArgs']]):
         pulumi.set(self, "adaptive_protection_config", value)
 
     @_builtins.property
     @pulumi.getter(name="advancedOptionsConfig")
-    def advanced_options_config(self) -> Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']]:
+    def advanced_options_config(self) -> pulumi.Input[Optional['SecurityPolicyAdvancedOptionsConfigArgs']]:
         """
         [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
         Structure is documented below.
@@ -99,24 +99,24 @@ class SecurityPolicyArgs:
         return pulumi.get(self, "advanced_options_config")
 
     @advanced_options_config.setter
-    def advanced_options_config(self, value: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']]):
+    def advanced_options_config(self, value: pulumi.Input[Optional['SecurityPolicyAdvancedOptionsConfigArgs']]):
         pulumi.set(self, "advanced_options_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this security policy. Max size is 2048.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this address. A list of key->value pairs.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -125,12 +125,12 @@ class SecurityPolicyArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the security policy.
 
@@ -139,12 +139,12 @@ class SecurityPolicyArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -152,24 +152,24 @@ class SecurityPolicyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="recaptchaOptionsConfig")
-    def recaptcha_options_config(self) -> Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']]:
+    def recaptcha_options_config(self) -> pulumi.Input[Optional['SecurityPolicyRecaptchaOptionsConfigArgs']]:
         """
         [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
         """
         return pulumi.get(self, "recaptcha_options_config")
 
     @recaptcha_options_config.setter
-    def recaptcha_options_config(self, value: Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']]):
+    def recaptcha_options_config(self, value: pulumi.Input[Optional['SecurityPolicyRecaptchaOptionsConfigArgs']]):
         pulumi.set(self, "recaptcha_options_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]:
         """
         The set of rules that belong to this policy. There must always be a default
         rule (rule with priority 2147483647 and match "\\*"). If no rules are provided when creating a
@@ -178,12 +178,12 @@ class SecurityPolicyArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type indicates the intended use of the security policy. This field can be set only at resource creation time.
         * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
@@ -197,27 +197,27 @@ class SecurityPolicyArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _SecurityPolicyState:
     def __init__(__self__, *,
-                 adaptive_protection_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
-                 advanced_options_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 recaptcha_options_config: Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 adaptive_protection_config: pulumi.Input[Optional['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
+                 advanced_options_config: pulumi.Input[Optional['SecurityPolicyAdvancedOptionsConfigArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 recaptcha_options_config: pulumi.Input[Optional['SecurityPolicyRecaptchaOptionsConfigArgs']] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityPolicy resources.
 
@@ -282,19 +282,19 @@ class _SecurityPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="adaptiveProtectionConfig")
-    def adaptive_protection_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']]:
+    def adaptive_protection_config(self) -> pulumi.Input[Optional['SecurityPolicyAdaptiveProtectionConfigArgs']]:
         """
         Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         """
         return pulumi.get(self, "adaptive_protection_config")
 
     @adaptive_protection_config.setter
-    def adaptive_protection_config(self, value: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']]):
+    def adaptive_protection_config(self, value: pulumi.Input[Optional['SecurityPolicyAdaptiveProtectionConfigArgs']]):
         pulumi.set(self, "adaptive_protection_config", value)
 
     @_builtins.property
     @pulumi.getter(name="advancedOptionsConfig")
-    def advanced_options_config(self) -> Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']]:
+    def advanced_options_config(self) -> pulumi.Input[Optional['SecurityPolicyAdvancedOptionsConfigArgs']]:
         """
         [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
         Structure is documented below.
@@ -302,60 +302,60 @@ class _SecurityPolicyState:
         return pulumi.get(self, "advanced_options_config")
 
     @advanced_options_config.setter
-    def advanced_options_config(self, value: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']]):
+    def advanced_options_config(self, value: pulumi.Input[Optional['SecurityPolicyAdvancedOptionsConfigArgs']]):
         pulumi.set(self, "advanced_options_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this security policy. Max size is 2048.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fingerprint of this resource.
         """
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique fingerprint of the labels.
         """
         return pulumi.get(self, "label_fingerprint")
 
     @label_fingerprint.setter
-    def label_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this address. A list of key->value pairs.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -364,12 +364,12 @@ class _SecurityPolicyState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the security policy.
 
@@ -378,12 +378,12 @@ class _SecurityPolicyState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -391,36 +391,36 @@ class _SecurityPolicyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="recaptchaOptionsConfig")
-    def recaptcha_options_config(self) -> Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']]:
+    def recaptcha_options_config(self) -> pulumi.Input[Optional['SecurityPolicyRecaptchaOptionsConfigArgs']]:
         """
         [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
         """
         return pulumi.get(self, "recaptcha_options_config")
 
     @recaptcha_options_config.setter
-    def recaptcha_options_config(self, value: Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']]):
+    def recaptcha_options_config(self, value: pulumi.Input[Optional['SecurityPolicyRecaptchaOptionsConfigArgs']]):
         pulumi.set(self, "recaptcha_options_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]:
         """
         The set of rules that belong to this policy. There must always be a default
         rule (rule with priority 2147483647 and match "\\*"). If no rules are provided when creating a
@@ -429,24 +429,24 @@ class _SecurityPolicyState:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type indicates the intended use of the security policy. This field can be set only at resource creation time.
         * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
@@ -460,7 +460,7 @@ class _SecurityPolicyState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -470,15 +470,15 @@ class SecurityPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adaptive_protection_config: Optional[pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
-                 advanced_options_config: Optional[pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recaptcha_options_config: Optional[pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 adaptive_protection_config: pulumi.Input[Optional[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
+                 advanced_options_config: pulumi.Input[Optional[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recaptcha_options_config: pulumi.Input[Optional[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
@@ -914,15 +914,15 @@ class SecurityPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adaptive_protection_config: Optional[pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
-                 advanced_options_config: Optional[pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recaptcha_options_config: Optional[pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 adaptive_protection_config: pulumi.Input[Optional[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
+                 advanced_options_config: pulumi.Input[Optional[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recaptcha_options_config: pulumi.Input[Optional[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -958,20 +958,20 @@ class SecurityPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            adaptive_protection_config: Optional[pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
-            advanced_options_config: Optional[pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            recaptcha_options_config: Optional[pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecurityPolicy':
+            adaptive_protection_config: pulumi.Input[Optional[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
+            advanced_options_config: pulumi.Input[Optional[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            recaptcha_options_config: pulumi.Input[Optional[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityPolicy':
         """
         Get an existing SecurityPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

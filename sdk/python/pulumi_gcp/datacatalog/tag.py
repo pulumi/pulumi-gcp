@@ -23,8 +23,8 @@ class TagArgs:
     def __init__(__self__, *,
                  fields: pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]],
                  template: pulumi.Input[_builtins.str],
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None):
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Tag resource.
 
@@ -78,7 +78,7 @@ class TagArgs:
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
         individual column based on that schema.
@@ -88,12 +88,12 @@ class TagArgs:
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
         all entries in that group.
@@ -101,19 +101,19 @@ class TagArgs:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
 
 @pulumi.input_type
 class _TagState:
     def __init__(__self__, *,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_displayname: Optional[pulumi.Input[_builtins.str]] = None):
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input['TagFieldArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_displayname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tag resources.
 
@@ -150,7 +150,7 @@ class _TagState:
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
         individual column based on that schema.
@@ -160,12 +160,12 @@ class _TagState:
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]]]:
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TagFieldArgs']]]]:
         """
         This maps the ID of a tag field to the value of and additional information about that field.
         Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
@@ -174,12 +174,12 @@ class _TagState:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]]]):
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TagFieldArgs']]]]):
         pulumi.set(self, "fields", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the tag in URL format. Example:
         projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
@@ -189,12 +189,12 @@ class _TagState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
         all entries in that group.
@@ -202,12 +202,12 @@ class _TagState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the tag template that this tag uses. Example:
         projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
@@ -216,19 +216,19 @@ class _TagState:
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template", value)
 
     @_builtins.property
     @pulumi.getter(name="templateDisplayname")
-    def template_displayname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_displayname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the tag template.
         """
         return pulumi.get(self, "template_displayname")
 
     @template_displayname.setter
-    def template_displayname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_displayname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_displayname", value)
 
 
@@ -238,10 +238,10 @@ class Tag(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None,
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Warning:** `datacatalog.Tag` is deprecated and will be removed in a future major release. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
@@ -485,7 +485,7 @@ class Tag(pulumi.CustomResource):
                 },
                 {
                     "field_name": "num_rows",
-                    "double_value": 5,
+                    "double_value": float(5),
                 },
                 {
                     "field_name": "pii_type",
@@ -785,7 +785,7 @@ class Tag(pulumi.CustomResource):
                 },
                 {
                     "field_name": "num_rows",
-                    "double_value": 5,
+                    "double_value": float(5),
                 },
                 {
                     "field_name": "pii_type",
@@ -837,10 +837,10 @@ class Tag(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None,
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -870,12 +870,12 @@ class Tag(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            column: Optional[pulumi.Input[_builtins.str]] = None,
-            fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            template: Optional[pulumi.Input[_builtins.str]] = None,
-            template_displayname: Optional[pulumi.Input[_builtins.str]] = None) -> 'Tag':
+            column: pulumi.Input[Optional[_builtins.str]] = None,
+            fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagFieldArgs', 'TagFieldArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            template: pulumi.Input[Optional[_builtins.str]] = None,
+            template_displayname: pulumi.Input[Optional[_builtins.str]] = None) -> 'Tag':
         """
         Get an existing Tag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

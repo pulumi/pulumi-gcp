@@ -102,7 +102,7 @@ def get_project(filter: Optional[_builtins.str] = None,
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         projects=pulumi.get(__ret__, 'projects'))
-def get_project_output(filter: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_output(filter: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
     Retrieve information about a set of projects based on a filter. See the

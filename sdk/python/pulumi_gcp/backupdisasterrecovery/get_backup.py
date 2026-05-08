@@ -174,10 +174,10 @@ def get_backup(backup_vault_id: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'))
-def get_backup_output(backup_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
-                      data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                      location: Optional[pulumi.Input[_builtins.str]] = None,
-                      project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_backup_output(backup_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
+                      data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                      location: pulumi.Input[Optional[_builtins.str]] = None,
+                      project: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupResult]:
     """
     A Backup and DR Backup.

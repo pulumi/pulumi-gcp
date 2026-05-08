@@ -121,9 +121,9 @@ export interface GetBucketObjectContentsOutputArgs {
     /**
      * A glob pattern used to filter results (for example, `foo*bar`).
      */
-    matchGlob?: pulumi.Input<string>;
+    matchGlob?: pulumi.Input<string | undefined>;
     /**
      * Filter results to include only objects whose names begin with this prefix.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
 }

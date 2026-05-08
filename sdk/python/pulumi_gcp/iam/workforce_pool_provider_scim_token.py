@@ -24,7 +24,7 @@ class WorkforcePoolProviderScimTokenArgs:
                  scim_tenant_id: pulumi.Input[_builtins.str],
                  scim_token_id: pulumi.Input[_builtins.str],
                  workforce_pool_id: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkforcePoolProviderScimToken resource.
 
@@ -105,29 +105,29 @@ class WorkforcePoolProviderScimTokenArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-specified display name for the scim token. Cannot exceed 32 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
 
 @pulumi.input_type
 class _WorkforcePoolProviderScimTokenState:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scim_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scim_token_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scim_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scim_token_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkforcePoolProviderScimToken resources.
 
@@ -165,31 +165,31 @@ class _WorkforcePoolProviderScimTokenState:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-specified display name for the scim token. Cannot exceed 32 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name of the scim token.
         Format: `locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}/tokens/{scim_token_id}`
@@ -197,60 +197,60 @@ class _WorkforcePoolProviderScimTokenState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerId")
-    def provider_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provider_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Provider.
         """
         return pulumi.get(self, "provider_id")
 
     @provider_id.setter
-    def provider_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provider_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provider_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scimTenantId")
-    def scim_tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scim_tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the SCIM Tenant.
         """
         return pulumi.get(self, "scim_tenant_id")
 
     @scim_tenant_id.setter
-    def scim_tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scim_tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scim_tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scimTokenId")
-    def scim_token_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scim_token_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
         """
         return pulumi.get(self, "scim_token_id")
 
     @scim_token_id.setter
-    def scim_token_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scim_token_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scim_token_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityToken")
-    def security_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The token string provided to the IdP for authentication and will be set only during creation.
         """
         return pulumi.get(self, "security_token")
 
     @security_token.setter
-    def security_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of the scim token.
         * ACTIVE: The token is active and may be used to provision users and groups.
@@ -259,19 +259,19 @@ class _WorkforcePoolProviderScimTokenState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="workforcePoolId")
-    def workforce_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workforce_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Workforce Pool.
         """
         return pulumi.get(self, "workforce_pool_id")
 
     @workforce_pool_id.setter
-    def workforce_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workforce_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workforce_pool_id", value)
 
 
@@ -281,12 +281,12 @@ class WorkforcePoolProviderScimToken(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scim_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scim_token_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scim_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scim_token_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a SCIM Token for a Workforce Pool Provider Scim Tenant.
@@ -490,12 +490,12 @@ class WorkforcePoolProviderScimToken(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scim_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scim_token_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scim_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scim_token_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -534,15 +534,15 @@ class WorkforcePoolProviderScimToken(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scim_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scim_token_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_token: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkforcePoolProviderScimToken':
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scim_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scim_token_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_token: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkforcePoolProviderScimToken':
         """
         Get an existing WorkforcePoolProviderScimToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

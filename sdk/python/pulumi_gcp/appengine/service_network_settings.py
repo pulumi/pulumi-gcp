@@ -23,7 +23,7 @@ class ServiceNetworkSettingsArgs:
     def __init__(__self__, *,
                  network_settings: pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs'],
                  service: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceNetworkSettings resource.
 
@@ -65,7 +65,7 @@ class ServiceNetworkSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -73,16 +73,16 @@ class ServiceNetworkSettingsArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ServiceNetworkSettingsState:
     def __init__(__self__, *,
-                 network_settings: Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 network_settings: pulumi.Input[Optional['ServiceNetworkSettingsNetworkSettingsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceNetworkSettings resources.
 
@@ -101,7 +101,7 @@ class _ServiceNetworkSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="networkSettings")
-    def network_settings(self) -> Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs']]:
+    def network_settings(self) -> pulumi.Input[Optional['ServiceNetworkSettingsNetworkSettingsArgs']]:
         """
         Ingress settings for this service. Will apply to all versions.
         Structure is documented below.
@@ -109,12 +109,12 @@ class _ServiceNetworkSettingsState:
         return pulumi.get(self, "network_settings")
 
     @network_settings.setter
-    def network_settings(self, value: Optional[pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs']]):
+    def network_settings(self, value: pulumi.Input[Optional['ServiceNetworkSettingsNetworkSettingsArgs']]):
         pulumi.set(self, "network_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -122,19 +122,19 @@ class _ServiceNetworkSettingsState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service these settings apply to.
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
@@ -144,9 +144,9 @@ class ServiceNetworkSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_settings: Optional[pulumi.Input[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_settings: pulumi.Input[Optional[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A NetworkSettings resource is a container for ingress settings for a version or service.
@@ -309,9 +309,9 @@ class ServiceNetworkSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_settings: Optional[pulumi.Input[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_settings: pulumi.Input[Optional[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -338,9 +338,9 @@ class ServiceNetworkSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            network_settings: Optional[pulumi.Input[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceNetworkSettings':
+            network_settings: pulumi.Input[Optional[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceNetworkSettings':
         """
         Get an existing ServiceNetworkSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

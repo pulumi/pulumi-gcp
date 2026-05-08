@@ -50,8 +50,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAttachedInstallManifestArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -94,8 +94,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAttachedInstallManifestArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -138,8 +138,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAttachedInstallManifestArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -182,8 +182,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAttachedInstallManifestArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -226,8 +226,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAttachedInstallManifestArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -270,8 +270,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAttachedVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -312,8 +312,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAttachedVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -354,8 +354,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAttachedVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -396,8 +396,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAttachedVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -438,8 +438,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAttachedVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -480,8 +480,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -522,8 +522,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -564,8 +564,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -606,8 +606,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -648,8 +648,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -690,8 +690,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -732,8 +732,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -774,8 +774,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -816,8 +816,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -858,8 +858,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -900,8 +900,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -942,8 +942,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -984,8 +984,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1026,8 +1026,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1068,8 +1068,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1108,8 +1108,8 @@ public final class ContainerFunctions {
      * import com.pulumi.gcp.serviceaccount.AccountArgs;
      * import com.pulumi.gcp.container.Cluster;
      * import com.pulumi.gcp.container.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1155,8 +1155,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1195,8 +1195,8 @@ public final class ContainerFunctions {
      * import com.pulumi.gcp.serviceaccount.AccountArgs;
      * import com.pulumi.gcp.container.Cluster;
      * import com.pulumi.gcp.container.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1242,8 +1242,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1282,8 +1282,8 @@ public final class ContainerFunctions {
      * import com.pulumi.gcp.serviceaccount.AccountArgs;
      * import com.pulumi.gcp.container.Cluster;
      * import com.pulumi.gcp.container.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1329,8 +1329,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1369,8 +1369,8 @@ public final class ContainerFunctions {
      * import com.pulumi.gcp.serviceaccount.AccountArgs;
      * import com.pulumi.gcp.container.Cluster;
      * import com.pulumi.gcp.container.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1416,8 +1416,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1456,8 +1456,8 @@ public final class ContainerFunctions {
      * import com.pulumi.gcp.serviceaccount.AccountArgs;
      * import com.pulumi.gcp.container.Cluster;
      * import com.pulumi.gcp.container.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1514,8 +1514,8 @@ public final class ContainerFunctions {
      * import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
      * import com.pulumi.gcp.container.Cluster;
      * import com.pulumi.gcp.container.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1575,8 +1575,8 @@ public final class ContainerFunctions {
      * import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
      * import com.pulumi.gcp.container.Cluster;
      * import com.pulumi.gcp.container.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1636,8 +1636,8 @@ public final class ContainerFunctions {
      * import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
      * import com.pulumi.gcp.container.Cluster;
      * import com.pulumi.gcp.container.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1697,8 +1697,8 @@ public final class ContainerFunctions {
      * import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
      * import com.pulumi.gcp.container.Cluster;
      * import com.pulumi.gcp.container.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1758,8 +1758,8 @@ public final class ContainerFunctions {
      * import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
      * import com.pulumi.gcp.container.Cluster;
      * import com.pulumi.gcp.container.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1819,8 +1819,8 @@ public final class ContainerFunctions {
      * import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
      * import com.pulumi.gcp.container.Cluster;
      * import com.pulumi.gcp.container.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1880,8 +1880,8 @@ public final class ContainerFunctions {
      * import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
      * import com.pulumi.gcp.container.Cluster;
      * import com.pulumi.gcp.container.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1934,8 +1934,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetRegistryImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1979,8 +1979,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetRegistryImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2024,8 +2024,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetRegistryImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2069,8 +2069,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetRegistryImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2114,8 +2114,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetRegistryImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2159,8 +2159,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2203,8 +2203,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2247,8 +2247,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2291,8 +2291,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2335,8 +2335,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2379,8 +2379,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2423,8 +2423,8 @@ public final class ContainerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.container.ContainerFunctions;
      * import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

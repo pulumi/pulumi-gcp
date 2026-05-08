@@ -158,11 +158,11 @@ export interface EnvironmentKeyvaluemapsState {
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      */
-    envId?: pulumi.Input<string>;
+    envId?: pulumi.Input<string | undefined>;
     /**
      * Required. ID of the key value map.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -177,5 +177,5 @@ export interface EnvironmentKeyvaluemapsArgs {
     /**
      * Required. ID of the key value map.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

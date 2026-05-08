@@ -24,7 +24,7 @@ class CryptoKeyIAMBindingArgs:
                  crypto_key_id: pulumi.Input[_builtins.str],
                  members: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  role: pulumi.Input[_builtins.str],
-                 condition: Optional[pulumi.Input['CryptoKeyIAMBindingConditionArgs']] = None):
+                 condition: pulumi.Input[Optional['CryptoKeyIAMBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a CryptoKeyIAMBinding resource.
 
@@ -100,7 +100,7 @@ class CryptoKeyIAMBindingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['CryptoKeyIAMBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['CryptoKeyIAMBindingConditionArgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -108,18 +108,18 @@ class CryptoKeyIAMBindingArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['CryptoKeyIAMBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['CryptoKeyIAMBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
 class _CryptoKeyIAMBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['CryptoKeyIAMBindingConditionArgs']] = None,
-                 crypto_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['CryptoKeyIAMBindingConditionArgs']] = None,
+                 crypto_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CryptoKeyIAMBinding resources.
 
@@ -154,7 +154,7 @@ class _CryptoKeyIAMBindingState:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['CryptoKeyIAMBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['CryptoKeyIAMBindingConditionArgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -162,12 +162,12 @@ class _CryptoKeyIAMBindingState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['CryptoKeyIAMBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['CryptoKeyIAMBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="cryptoKeyId")
-    def crypto_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crypto_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The crypto key ID, in the form
         `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -177,24 +177,24 @@ class _CryptoKeyIAMBindingState:
         return pulumi.get(self, "crypto_key_id")
 
     @crypto_key_id.setter
-    def crypto_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crypto_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crypto_key_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the project's IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -208,12 +208,12 @@ class _CryptoKeyIAMBindingState:
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -221,7 +221,7 @@ class _CryptoKeyIAMBindingState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
 
@@ -231,10 +231,10 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['CryptoKeyIAMBindingConditionArgs', 'CryptoKeyIAMBindingConditionArgsDict']]] = None,
-                 crypto_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['CryptoKeyIAMBindingConditionArgs', 'CryptoKeyIAMBindingConditionArgsDict']]] = None,
+                 crypto_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
@@ -486,10 +486,10 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['CryptoKeyIAMBindingConditionArgs', 'CryptoKeyIAMBindingConditionArgsDict']]] = None,
-                 crypto_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['CryptoKeyIAMBindingConditionArgs', 'CryptoKeyIAMBindingConditionArgsDict']]] = None,
+                 crypto_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -520,11 +520,11 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[Union['CryptoKeyIAMBindingConditionArgs', 'CryptoKeyIAMBindingConditionArgsDict']]] = None,
-            crypto_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None) -> 'CryptoKeyIAMBinding':
+            condition: pulumi.Input[Optional[Union['CryptoKeyIAMBindingConditionArgs', 'CryptoKeyIAMBindingConditionArgsDict']]] = None,
+            crypto_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> 'CryptoKeyIAMBinding':
         """
         Get an existing CryptoKeyIAMBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

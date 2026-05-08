@@ -204,52 +204,52 @@ export interface DeploymentState {
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    app?: pulumi.Input<string>;
+    app?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the app version to deploy.
      * Format:
      * projects/{project}/locations/{location}/apps/{app}/versions/{version}
      */
-    appVersion?: pulumi.Input<string>;
+    appVersion?: pulumi.Input<string | undefined>;
     /**
      * A ChannelProfile configures the agent's behavior for a specific communication
      * channel, such as web UI or telephony.
      * Structure is documented below.
      */
-    channelProfile?: pulumi.Input<inputs.ces.DeploymentChannelProfile>;
+    channelProfile?: pulumi.Input<inputs.ces.DeploymentChannelProfile | undefined>;
     /**
      * Timestamp when this deployment was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Display name of the deployment.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Etag used to ensure the object hasn't changed during a read-modify-write
      * operation. If the etag is empty, the update will overwrite any concurrent
      * changes.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the deployment.
      * Format:
      * projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when this deployment was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -284,5 +284,5 @@ export interface DeploymentArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

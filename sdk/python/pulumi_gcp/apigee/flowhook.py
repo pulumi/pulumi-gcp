@@ -23,8 +23,8 @@ class FlowhookArgs:
                  flow_hook_point: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  sharedflow: pulumi.Input[_builtins.str],
-                 continue_on_error: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 continue_on_error: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Flowhook resource.
 
@@ -94,38 +94,38 @@ class FlowhookArgs:
 
     @_builtins.property
     @pulumi.getter(name="continueOnError")
-    def continue_on_error(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def continue_on_error(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
         """
         return pulumi.get(self, "continue_on_error")
 
     @continue_on_error.setter
-    def continue_on_error(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def continue_on_error(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "continue_on_error", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the flow hook.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _FlowhookState:
     def __init__(__self__, *,
-                 continue_on_error: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 flow_hook_point: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sharedflow: Optional[pulumi.Input[_builtins.str]] = None):
+                 continue_on_error: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 flow_hook_point: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sharedflow: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Flowhook resources.
 
@@ -151,74 +151,74 @@ class _FlowhookState:
 
     @_builtins.property
     @pulumi.getter(name="continueOnError")
-    def continue_on_error(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def continue_on_error(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
         """
         return pulumi.get(self, "continue_on_error")
 
     @continue_on_error.setter
-    def continue_on_error(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def continue_on_error(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "continue_on_error", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the flow hook.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource ID of the environment.
         """
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment", value)
 
     @_builtins.property
     @pulumi.getter(name="flowHookPoint")
-    def flow_hook_point(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flow_hook_point(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Where in the API call flow the flow hook is invoked. Must be one of PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook, or PostTargetFlowHook.
         """
         return pulumi.get(self, "flow_hook_point")
 
     @flow_hook_point.setter
-    def flow_hook_point(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flow_hook_point(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flow_hook_point", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Apigee Organization associated with the environment
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def sharedflow(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sharedflow(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the Sharedflow attaching to a flowhook point.
         """
         return pulumi.get(self, "sharedflow")
 
     @sharedflow.setter
-    def sharedflow(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sharedflow(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sharedflow", value)
 
 
@@ -228,12 +228,12 @@ class Flowhook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 continue_on_error: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 flow_hook_point: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sharedflow: Optional[pulumi.Input[_builtins.str]] = None,
+                 continue_on_error: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 flow_hook_point: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sharedflow: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a sharedflow attachment to a flowhook point.
@@ -313,12 +313,12 @@ class Flowhook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 continue_on_error: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 flow_hook_point: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sharedflow: Optional[pulumi.Input[_builtins.str]] = None,
+                 continue_on_error: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 flow_hook_point: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sharedflow: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -352,12 +352,12 @@ class Flowhook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            continue_on_error: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            environment: Optional[pulumi.Input[_builtins.str]] = None,
-            flow_hook_point: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sharedflow: Optional[pulumi.Input[_builtins.str]] = None) -> 'Flowhook':
+            continue_on_error: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            flow_hook_point: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sharedflow: pulumi.Input[Optional[_builtins.str]] = None) -> 'Flowhook':
         """
         Get an existing Flowhook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -23,9 +23,9 @@ class EnvironmentApiRevisionDeploymentArgs:
                  environment: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  revision: pulumi.Input[_builtins.int],
-                 override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sequenced_rollout: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None):
+                 override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sequenced_rollout: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvironmentApiRevisionDeployment resource.
 
@@ -98,54 +98,54 @@ class EnvironmentApiRevisionDeploymentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, replaces other deployed revisions of this proxy in the environment.
         """
         return pulumi.get(self, "override")
 
     @override.setter
-    def override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def override(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "override", value)
 
     @_builtins.property
     @pulumi.getter(name="sequencedRollout")
-    def sequenced_rollout(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sequenced_rollout(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, enables sequenced rollout for safe traffic switching.
         """
         return pulumi.get(self, "sequenced_rollout")
 
     @sequenced_rollout.setter
-    def sequenced_rollout(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sequenced_rollout(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sequenced_rollout", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional service account the deployed proxy runs as.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
 
 @pulumi.input_type
 class _EnvironmentApiRevisionDeploymentState:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 basepaths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deploy_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 revision: Optional[pulumi.Input[_builtins.int]] = None,
-                 sequenced_rollout: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 basepaths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deploy_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 revision: pulumi.Input[Optional[_builtins.int]] = None,
+                 sequenced_rollout: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvironmentApiRevisionDeployment resources.
 
@@ -183,122 +183,122 @@ class _EnvironmentApiRevisionDeploymentState:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Apigee API proxy name.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter
-    def basepaths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def basepaths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Basepaths associated with the deployed proxy.
         """
         return pulumi.get(self, "basepaths")
 
     @basepaths.setter
-    def basepaths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def basepaths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "basepaths", value)
 
     @_builtins.property
     @pulumi.getter(name="deployStartTime")
-    def deploy_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deploy_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RFC3339 timestamp when deployment started.
         """
         return pulumi.get(self, "deploy_start_time")
 
     @deploy_start_time.setter
-    def deploy_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deploy_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deploy_start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Apigee environment name.
         """
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Apigee organization ID.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, replaces other deployed revisions of this proxy in the environment.
         """
         return pulumi.get(self, "override")
 
     @override.setter
-    def override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def override(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "override", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         API proxy revision number to deploy.
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter(name="sequencedRollout")
-    def sequenced_rollout(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sequenced_rollout(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, enables sequenced rollout for safe traffic switching.
         """
         return pulumi.get(self, "sequenced_rollout")
 
     @sequenced_rollout.setter
-    def sequenced_rollout(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sequenced_rollout(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sequenced_rollout", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional service account the deployed proxy runs as.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deployment state reported by Apigee.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -308,13 +308,13 @@ class EnvironmentApiRevisionDeployment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 revision: Optional[pulumi.Input[_builtins.int]] = None,
-                 sequenced_rollout: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 revision: pulumi.Input[Optional[_builtins.int]] = None,
+                 sequenced_rollout: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Deploys a specific Apigee API Proxy revision to a given Apigee environment.
@@ -433,13 +433,13 @@ class EnvironmentApiRevisionDeployment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 revision: Optional[pulumi.Input[_builtins.int]] = None,
-                 sequenced_rollout: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 revision: pulumi.Input[Optional[_builtins.int]] = None,
+                 sequenced_rollout: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -477,16 +477,16 @@ class EnvironmentApiRevisionDeployment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api: Optional[pulumi.Input[_builtins.str]] = None,
-            basepaths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            deploy_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            environment: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            override: Optional[pulumi.Input[_builtins.bool]] = None,
-            revision: Optional[pulumi.Input[_builtins.int]] = None,
-            sequenced_rollout: Optional[pulumi.Input[_builtins.bool]] = None,
-            service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnvironmentApiRevisionDeployment':
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            basepaths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deploy_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            override: pulumi.Input[Optional[_builtins.bool]] = None,
+            revision: pulumi.Input[Optional[_builtins.int]] = None,
+            sequenced_rollout: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnvironmentApiRevisionDeployment':
         """
         Get an existing EnvironmentApiRevisionDeployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

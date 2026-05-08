@@ -228,54 +228,54 @@ export interface PrincipalAccessBoundaryPolicyState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. The time when the principal access boundary policy was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Principal access boundary policy details
      * Structure is documented below.
      */
-    details?: pulumi.Input<inputs.iam.PrincipalAccessBoundaryPolicyDetails>;
+    details?: pulumi.Input<inputs.iam.PrincipalAccessBoundaryPolicyDetails | undefined>;
     /**
      * The description of the principal access boundary policy. Must be less than or equal to 63 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The etag for the principal access boundary. If this is provided on update, it must match the server's etag.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The location the principal access boundary policy is in.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the principal access boundary policy.  The following format is supported:
      * `organizations/{organization_id}/locations/{location}/principalAccessBoundaryPolicies/{policy_id}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent organization of the principal access boundary policy.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * The ID to use to create the principal access boundary policy.
      * This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
      */
-    principalAccessBoundaryPolicyId?: pulumi.Input<string>;
+    principalAccessBoundaryPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Output only. The globally unique ID of the principal access boundary policy.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time when the principal access boundary policy was most recently updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -289,16 +289,16 @@ export interface PrincipalAccessBoundaryPolicyArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Principal access boundary policy details
      * Structure is documented below.
      */
-    details?: pulumi.Input<inputs.iam.PrincipalAccessBoundaryPolicyDetails>;
+    details?: pulumi.Input<inputs.iam.PrincipalAccessBoundaryPolicyDetails | undefined>;
     /**
      * The description of the principal access boundary policy. Must be less than or equal to 63 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The location the principal access boundary policy is in.
      */

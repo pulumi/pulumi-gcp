@@ -163,35 +163,35 @@ export interface ManagedFolderState {
     /**
      * The name of the bucket that contains the managed folder.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The timestamp at which this managed folder was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Allows the deletion of a managed folder even if contains
      * objects. If a non-empty managed folder is deleted, any objects
      * within the folder will remain in a simulated folder with the
      * same name.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The metadata generation of the managed folder.
      */
-    metageneration?: pulumi.Input<string>;
+    metageneration?: pulumi.Input<string | undefined>;
     /**
      * The name of the managed folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The timestamp at which this managed folder was most recently updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,10 +208,10 @@ export interface ManagedFolderArgs {
      * within the folder will remain in a simulated folder with the
      * same name.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the managed folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

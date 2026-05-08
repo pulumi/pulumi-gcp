@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.Dataform
     ///     });
     /// 
     ///     // Add a sleep to wait for IAM propagation after API enablement
-    ///     var waitForDataformApi = new Time.Index.Sleep("wait_for_dataform_api", new()
+    ///     var waitForDataformApi = new Time.Sleep("wait_for_dataform_api", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions
@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.Dataform
     ///     });
     /// 
     ///     // Add a sleep to wait for IAM propagation after API enablement
-    ///     var waitForDataformApi = new Time.Index.Sleep("wait_for_dataform_api", new()
+    ///     var waitForDataformApi = new Time.Sleep("wait_for_dataform_api", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions

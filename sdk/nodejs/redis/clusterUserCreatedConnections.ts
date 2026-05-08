@@ -380,20 +380,20 @@ export interface ClusterUserCreatedConnectionsState {
      * A list of cluster endpoints
      * Structure is documented below.
      */
-    clusterEndpoints?: pulumi.Input<pulumi.Input<inputs.redis.ClusterUserCreatedConnectionsClusterEndpoint>[]>;
+    clusterEndpoints?: pulumi.Input<pulumi.Input<inputs.redis.ClusterUserCreatedConnectionsClusterEndpoint>[] | undefined>;
     /**
      * The name of the Redis cluster these endpoints should be added to.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the region of the Redis cluster these endpoints should be added to.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -404,16 +404,16 @@ export interface ClusterUserCreatedConnectionsArgs {
      * A list of cluster endpoints
      * Structure is documented below.
      */
-    clusterEndpoints?: pulumi.Input<pulumi.Input<inputs.redis.ClusterUserCreatedConnectionsClusterEndpoint>[]>;
+    clusterEndpoints?: pulumi.Input<pulumi.Input<inputs.redis.ClusterUserCreatedConnectionsClusterEndpoint>[] | undefined>;
     /**
      * The name of the Redis cluster these endpoints should be added to.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the region of the Redis cluster these endpoints should be added to.
      */

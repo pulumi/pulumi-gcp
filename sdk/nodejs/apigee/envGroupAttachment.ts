@@ -112,15 +112,15 @@ export interface EnvGroupAttachmentState {
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
      */
-    envgroupId?: pulumi.Input<string>;
+    envgroupId?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the environment.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The name of the newly created  attachment (output parameter).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**

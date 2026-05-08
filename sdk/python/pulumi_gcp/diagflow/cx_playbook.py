@@ -23,11 +23,11 @@ class CxPlaybookArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  goal: pulumi.Input[_builtins.str],
-                 instruction: Optional[pulumi.Input['CxPlaybookInstructionArgs']] = None,
-                 llm_model_settings: Optional[pulumi.Input['CxPlaybookLlmModelSettingsArgs']] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 playbook_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 referenced_tools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 instruction: pulumi.Input[Optional['CxPlaybookInstructionArgs']] = None,
+                 llm_model_settings: pulumi.Input[Optional['CxPlaybookLlmModelSettingsArgs']] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 playbook_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 referenced_tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CxPlaybook resource.
 
@@ -82,7 +82,7 @@ class CxPlaybookArgs:
 
     @_builtins.property
     @pulumi.getter
-    def instruction(self) -> Optional[pulumi.Input['CxPlaybookInstructionArgs']]:
+    def instruction(self) -> pulumi.Input[Optional['CxPlaybookInstructionArgs']]:
         """
         Instruction to accomplish target goal.
         Structure is documented below.
@@ -90,12 +90,12 @@ class CxPlaybookArgs:
         return pulumi.get(self, "instruction")
 
     @instruction.setter
-    def instruction(self, value: Optional[pulumi.Input['CxPlaybookInstructionArgs']]):
+    def instruction(self, value: pulumi.Input[Optional['CxPlaybookInstructionArgs']]):
         pulumi.set(self, "instruction", value)
 
     @_builtins.property
     @pulumi.getter(name="llmModelSettings")
-    def llm_model_settings(self) -> Optional[pulumi.Input['CxPlaybookLlmModelSettingsArgs']]:
+    def llm_model_settings(self) -> pulumi.Input[Optional['CxPlaybookLlmModelSettingsArgs']]:
         """
         Llm model settings for the playbook.
         Structure is documented below.
@@ -103,12 +103,12 @@ class CxPlaybookArgs:
         return pulumi.get(self, "llm_model_settings")
 
     @llm_model_settings.setter
-    def llm_model_settings(self, value: Optional[pulumi.Input['CxPlaybookLlmModelSettingsArgs']]):
+    def llm_model_settings(self, value: pulumi.Input[Optional['CxPlaybookLlmModelSettingsArgs']]):
         pulumi.set(self, "llm_model_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The agent to create a Playbook for.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -116,12 +116,12 @@ class CxPlaybookArgs:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="playbookType")
-    def playbook_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def playbook_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the playbook.
         Possible values are: `PLAYBOOK_TYPE_UNSPECIFIED`, `TASK`, `ROUTINE`.
@@ -129,38 +129,38 @@ class CxPlaybookArgs:
         return pulumi.get(self, "playbook_type")
 
     @playbook_type.setter
-    def playbook_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def playbook_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "playbook_type", value)
 
     @_builtins.property
     @pulumi.getter(name="referencedTools")
-    def referenced_tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def referenced_tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The resource name of tools referenced by the current playbook in the instructions. If not provided explicitly, they are will be implied using the tool being referenced in goal and steps.
         """
         return pulumi.get(self, "referenced_tools")
 
     @referenced_tools.setter
-    def referenced_tools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def referenced_tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "referenced_tools", value)
 
 
 @pulumi.input_type
 class _CxPlaybookState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 goal: Optional[pulumi.Input[_builtins.str]] = None,
-                 instruction: Optional[pulumi.Input['CxPlaybookInstructionArgs']] = None,
-                 llm_model_settings: Optional[pulumi.Input['CxPlaybookLlmModelSettingsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 playbook_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 referenced_flows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 referenced_playbooks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 referenced_tools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 token_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 goal: pulumi.Input[Optional[_builtins.str]] = None,
+                 instruction: pulumi.Input[Optional['CxPlaybookInstructionArgs']] = None,
+                 llm_model_settings: pulumi.Input[Optional['CxPlaybookLlmModelSettingsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 playbook_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 referenced_flows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 referenced_playbooks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 referenced_tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 token_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CxPlaybook resources.
 
@@ -214,7 +214,7 @@ class _CxPlaybookState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of initial playbook creation.
         Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
@@ -222,36 +222,36 @@ class _CxPlaybookState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable name of the playbook, unique within an agent.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def goal(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def goal(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
         """
         return pulumi.get(self, "goal")
 
     @goal.setter
-    def goal(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def goal(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "goal", value)
 
     @_builtins.property
     @pulumi.getter
-    def instruction(self) -> Optional[pulumi.Input['CxPlaybookInstructionArgs']]:
+    def instruction(self) -> pulumi.Input[Optional['CxPlaybookInstructionArgs']]:
         """
         Instruction to accomplish target goal.
         Structure is documented below.
@@ -259,12 +259,12 @@ class _CxPlaybookState:
         return pulumi.get(self, "instruction")
 
     @instruction.setter
-    def instruction(self, value: Optional[pulumi.Input['CxPlaybookInstructionArgs']]):
+    def instruction(self, value: pulumi.Input[Optional['CxPlaybookInstructionArgs']]):
         pulumi.set(self, "instruction", value)
 
     @_builtins.property
     @pulumi.getter(name="llmModelSettings")
-    def llm_model_settings(self) -> Optional[pulumi.Input['CxPlaybookLlmModelSettingsArgs']]:
+    def llm_model_settings(self) -> pulumi.Input[Optional['CxPlaybookLlmModelSettingsArgs']]:
         """
         Llm model settings for the playbook.
         Structure is documented below.
@@ -272,12 +272,12 @@ class _CxPlaybookState:
         return pulumi.get(self, "llm_model_settings")
 
     @llm_model_settings.setter
-    def llm_model_settings(self, value: Optional[pulumi.Input['CxPlaybookLlmModelSettingsArgs']]):
+    def llm_model_settings(self, value: pulumi.Input[Optional['CxPlaybookLlmModelSettingsArgs']]):
         pulumi.set(self, "llm_model_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the Playbook.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/playbooks/<Playbook ID>.
@@ -285,12 +285,12 @@ class _CxPlaybookState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The agent to create a Playbook for.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -298,12 +298,12 @@ class _CxPlaybookState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="playbookType")
-    def playbook_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def playbook_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the playbook.
         Possible values are: `PLAYBOOK_TYPE_UNSPECIFIED`, `TASK`, `ROUTINE`.
@@ -311,60 +311,60 @@ class _CxPlaybookState:
         return pulumi.get(self, "playbook_type")
 
     @playbook_type.setter
-    def playbook_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def playbook_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "playbook_type", value)
 
     @_builtins.property
     @pulumi.getter(name="referencedFlows")
-    def referenced_flows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def referenced_flows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The resource name of flows referenced by the current playbook in the instructions.
         """
         return pulumi.get(self, "referenced_flows")
 
     @referenced_flows.setter
-    def referenced_flows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def referenced_flows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "referenced_flows", value)
 
     @_builtins.property
     @pulumi.getter(name="referencedPlaybooks")
-    def referenced_playbooks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def referenced_playbooks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The resource name of other playbooks referenced by the current playbook in the instructions.
         """
         return pulumi.get(self, "referenced_playbooks")
 
     @referenced_playbooks.setter
-    def referenced_playbooks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def referenced_playbooks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "referenced_playbooks", value)
 
     @_builtins.property
     @pulumi.getter(name="referencedTools")
-    def referenced_tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def referenced_tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The resource name of tools referenced by the current playbook in the instructions. If not provided explicitly, they are will be implied using the tool being referenced in goal and steps.
         """
         return pulumi.get(self, "referenced_tools")
 
     @referenced_tools.setter
-    def referenced_tools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def referenced_tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "referenced_tools", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenCount")
-    def token_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Estimated number of tokes current playbook takes when sent to the LLM.
         """
         return pulumi.get(self, "token_count")
 
     @token_count.setter
-    def token_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_count", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last time the playbook version was updated.
         Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
@@ -372,7 +372,7 @@ class _CxPlaybookState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -382,13 +382,13 @@ class CxPlaybook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 goal: Optional[pulumi.Input[_builtins.str]] = None,
-                 instruction: Optional[pulumi.Input[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']]] = None,
-                 llm_model_settings: Optional[pulumi.Input[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict']]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 playbook_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 referenced_tools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 goal: pulumi.Input[Optional[_builtins.str]] = None,
+                 instruction: pulumi.Input[Optional[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']]] = None,
+                 llm_model_settings: pulumi.Input[Optional[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 playbook_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 referenced_tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Playbook is the basic building block to instruct the LLM how to execute a certain task.
@@ -747,13 +747,13 @@ class CxPlaybook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 goal: Optional[pulumi.Input[_builtins.str]] = None,
-                 instruction: Optional[pulumi.Input[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']]] = None,
-                 llm_model_settings: Optional[pulumi.Input[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict']]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 playbook_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 referenced_tools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 goal: pulumi.Input[Optional[_builtins.str]] = None,
+                 instruction: pulumi.Input[Optional[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']]] = None,
+                 llm_model_settings: pulumi.Input[Optional[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 playbook_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 referenced_tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -790,19 +790,19 @@ class CxPlaybook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            goal: Optional[pulumi.Input[_builtins.str]] = None,
-            instruction: Optional[pulumi.Input[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']]] = None,
-            llm_model_settings: Optional[pulumi.Input[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            playbook_type: Optional[pulumi.Input[_builtins.str]] = None,
-            referenced_flows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            referenced_playbooks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            referenced_tools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            token_count: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'CxPlaybook':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            goal: pulumi.Input[Optional[_builtins.str]] = None,
+            instruction: pulumi.Input[Optional[Union['CxPlaybookInstructionArgs', 'CxPlaybookInstructionArgsDict']]] = None,
+            llm_model_settings: pulumi.Input[Optional[Union['CxPlaybookLlmModelSettingsArgs', 'CxPlaybookLlmModelSettingsArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            playbook_type: pulumi.Input[Optional[_builtins.str]] = None,
+            referenced_flows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            referenced_playbooks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            referenced_tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            token_count: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'CxPlaybook':
         """
         Get an existing CxPlaybook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

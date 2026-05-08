@@ -335,7 +335,7 @@ export interface InstanceState {
      * define the root user squash configuration.
      * Structure is documented below.
      */
-    accessRulesOptions?: pulumi.Input<inputs.lustre.InstanceAccessRulesOptions>;
+    accessRulesOptions?: pulumi.Input<inputs.lustre.InstanceAccessRulesOptions | undefined>;
     /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
      * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
@@ -343,35 +343,35 @@ export interface InstanceState {
      * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
      * for specific minimums, maximums, and step sizes for each performance tier.
      */
-    capacityGib?: pulumi.Input<string>;
+    capacityGib?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the instance was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A user-readable description of the instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Dynamic tier options for a Managed Lustre instance.
      * Structure is documented below.
      */
-    dynamicTierOptions?: pulumi.Input<inputs.lustre.InstanceDynamicTierOptions>;
+    dynamicTierOptions?: pulumi.Input<inputs.lustre.InstanceDynamicTierOptions | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The filesystem name for this instance. This name is used by client-side
      * tools, including when mounting the instance. Must be eight characters or
      * less and can only contain letters and numbers.
      */
-    filesystem?: pulumi.Input<string>;
+    filesystem?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether you want to enable support for GKE clients. By default,
      * GKE clients are not supported.
      */
-    gkeSupportEnabled?: pulumi.Input<boolean>;
+    gkeSupportEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Managed Lustre instance.
      * * Must contain only lowercase letters, numbers, and hyphens.
@@ -379,7 +379,7 @@ export interface InstanceState {
      * * Must be between 1-63 characters.
      * * Must end with a number or a letter.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The Cloud KMS key name to use for data encryption.
      * If not set, the instance will use Google-managed encryption keys.
@@ -388,36 +388,36 @@ export interface InstanceState {
      * The key format is:
      * projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Defines a maintenance policy for a resource.
      * Structure is documented below.
      */
-    maintenancePolicy?: pulumi.Input<inputs.lustre.InstanceMaintenancePolicy>;
+    maintenancePolicy?: pulumi.Input<inputs.lustre.InstanceMaintenancePolicy | undefined>;
     /**
      * Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
      */
-    mountPoint?: pulumi.Input<string>;
+    mountPoint?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The name of the instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The full name of the VPC network to which the instance is connected.
      * Must be in the format
      * `projects/{project_id}/global/networks/{network_name}`.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The throughput of the instance in MBps per TiB. Valid values are 125, 250,
      * 500, 1000.
@@ -427,22 +427,22 @@ export interface InstanceState {
      * If the instance is using the Dynamic tier, this field must not be set or
      * must be set to zero.
      */
-    perUnitStorageThroughput?: pulumi.Input<string>;
+    perUnitStorageThroughput?: pulumi.Input<string | undefined>;
     /**
      * The placement policy name for the instance in the format of
      * projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
      */
-    placementPolicy?: pulumi.Input<string>;
+    placementPolicy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The state of the instance.
      * Possible values:
@@ -455,26 +455,26 @@ export interface InstanceState {
      * UPDATING
      * SUSPENDED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The reason why the instance is in a certain state (e.g. SUSPENDED).
      */
-    stateReason?: pulumi.Input<string>;
+    stateReason?: pulumi.Input<string | undefined>;
     /**
      * Unique ID of the resource.
      * This is unrelated to the access rules which allow specifying the root
      * squash uid.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Represents a scheduled maintenance event.
      * Structure is documented below.
      */
-    upcomingMaintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.lustre.InstanceUpcomingMaintenanceSchedule>[]>;
+    upcomingMaintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.lustre.InstanceUpcomingMaintenanceSchedule>[] | undefined>;
     /**
      * Timestamp when the instance was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -486,7 +486,7 @@ export interface InstanceArgs {
      * define the root user squash configuration.
      * Structure is documented below.
      */
-    accessRulesOptions?: pulumi.Input<inputs.lustre.InstanceAccessRulesOptions>;
+    accessRulesOptions?: pulumi.Input<inputs.lustre.InstanceAccessRulesOptions | undefined>;
     /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
      * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
@@ -498,12 +498,12 @@ export interface InstanceArgs {
     /**
      * A user-readable description of the instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Dynamic tier options for a Managed Lustre instance.
      * Structure is documented below.
      */
-    dynamicTierOptions?: pulumi.Input<inputs.lustre.InstanceDynamicTierOptions>;
+    dynamicTierOptions?: pulumi.Input<inputs.lustre.InstanceDynamicTierOptions | undefined>;
     /**
      * The filesystem name for this instance. This name is used by client-side
      * tools, including when mounting the instance. Must be eight characters or
@@ -514,7 +514,7 @@ export interface InstanceArgs {
      * Indicates whether you want to enable support for GKE clients. By default,
      * GKE clients are not supported.
      */
-    gkeSupportEnabled?: pulumi.Input<boolean>;
+    gkeSupportEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Managed Lustre instance.
      * * Must contain only lowercase letters, numbers, and hyphens.
@@ -531,13 +531,13 @@ export interface InstanceArgs {
      * The key format is:
      * projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -546,7 +546,7 @@ export interface InstanceArgs {
      * Defines a maintenance policy for a resource.
      * Structure is documented below.
      */
-    maintenancePolicy?: pulumi.Input<inputs.lustre.InstanceMaintenancePolicy>;
+    maintenancePolicy?: pulumi.Input<inputs.lustre.InstanceMaintenancePolicy | undefined>;
     /**
      * The full name of the VPC network to which the instance is connected.
      * Must be in the format
@@ -562,15 +562,15 @@ export interface InstanceArgs {
      * If the instance is using the Dynamic tier, this field must not be set or
      * must be set to zero.
      */
-    perUnitStorageThroughput?: pulumi.Input<string>;
+    perUnitStorageThroughput?: pulumi.Input<string | undefined>;
     /**
      * The placement policy name for the instance in the format of
      * projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
      */
-    placementPolicy?: pulumi.Input<string>;
+    placementPolicy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

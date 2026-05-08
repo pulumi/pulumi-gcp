@@ -50,16 +50,16 @@ class RepositoryGitRemoteSettingsArgsDict(TypedDict):
     """
     The Git remote's URL.
     """
-    authentication_token_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    authentication_token_secret_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*/secrets/*/versions/*.
     """
-    ssh_authentication_config: NotRequired[pulumi.Input['RepositoryGitRemoteSettingsSshAuthenticationConfigArgsDict']]
+    ssh_authentication_config: NotRequired[pulumi.Input[Optional['RepositoryGitRemoteSettingsSshAuthenticationConfigArgs']]]
     """
     Authentication fields for remote uris using SSH protocol.
     Structure is documented below.
     """
-    token_status: NotRequired[pulumi.Input[_builtins.str]]
+    token_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
@@ -70,9 +70,9 @@ class RepositoryGitRemoteSettingsArgs:
     def __init__(__self__, *,
                  default_branch: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
-                 authentication_token_secret_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_authentication_config: Optional[pulumi.Input['RepositoryGitRemoteSettingsSshAuthenticationConfigArgs']] = None,
-                 token_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication_token_secret_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_authentication_config: pulumi.Input[Optional['RepositoryGitRemoteSettingsSshAuthenticationConfigArgs']] = None,
+                 token_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] default_branch: The Git remote's default branch name.
         :param pulumi.Input[_builtins.str] url: The Git remote's URL.
@@ -117,19 +117,19 @@ class RepositoryGitRemoteSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="authenticationTokenSecretVersion")
-    def authentication_token_secret_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authentication_token_secret_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*/secrets/*/versions/*.
         """
         return pulumi.get(self, "authentication_token_secret_version")
 
     @authentication_token_secret_version.setter
-    def authentication_token_secret_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authentication_token_secret_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authentication_token_secret_version", value)
 
     @_builtins.property
     @pulumi.getter(name="sshAuthenticationConfig")
-    def ssh_authentication_config(self) -> Optional[pulumi.Input['RepositoryGitRemoteSettingsSshAuthenticationConfigArgs']]:
+    def ssh_authentication_config(self) -> pulumi.Input[Optional['RepositoryGitRemoteSettingsSshAuthenticationConfigArgs']]:
         """
         Authentication fields for remote uris using SSH protocol.
         Structure is documented below.
@@ -137,12 +137,12 @@ class RepositoryGitRemoteSettingsArgs:
         return pulumi.get(self, "ssh_authentication_config")
 
     @ssh_authentication_config.setter
-    def ssh_authentication_config(self, value: Optional[pulumi.Input['RepositoryGitRemoteSettingsSshAuthenticationConfigArgs']]):
+    def ssh_authentication_config(self, value: pulumi.Input[Optional['RepositoryGitRemoteSettingsSshAuthenticationConfigArgs']]):
         pulumi.set(self, "ssh_authentication_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenStatus")
-    def token_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
@@ -150,7 +150,7 @@ class RepositoryGitRemoteSettingsArgs:
         return pulumi.get(self, "token_status")
 
     @token_status.setter
-    def token_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_status", value)
 
 
@@ -204,14 +204,14 @@ class RepositoryGitRemoteSettingsSshAuthenticationConfigArgs:
 class RepositoryIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RepositoryIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -237,25 +237,25 @@ class RepositoryIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RepositoryIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RepositoryIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -281,45 +281,45 @@ class RepositoryIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RepositoryReleaseConfigCodeCompilationConfigArgsDict(TypedDict):
-    assertion_schema: NotRequired[pulumi.Input[_builtins.str]]
+    assertion_schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The default schema (BigQuery dataset ID) for assertions.
     """
-    database_suffix: NotRequired[pulumi.Input[_builtins.str]]
+    database_suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
     """
-    default_database: NotRequired[pulumi.Input[_builtins.str]]
+    default_database: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The default database (Google Cloud project ID).
     """
-    default_location: NotRequired[pulumi.Input[_builtins.str]]
+    default_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The default BigQuery location to use. Defaults to "US".
     See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
     """
-    default_schema: NotRequired[pulumi.Input[_builtins.str]]
+    default_schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The default schema (BigQuery dataset ID).
     """
-    schema_suffix: NotRequired[pulumi.Input[_builtins.str]]
+    schema_suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
     """
-    table_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    table_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The prefix that should be prepended to all table names.
     """
-    vars: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    vars: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Optional. User-defined variables that are made available to project code during compilation.
     An object containing a list of "key": value pairs.
@@ -329,14 +329,14 @@ class RepositoryReleaseConfigCodeCompilationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryReleaseConfigCodeCompilationConfigArgs:
     def __init__(__self__, *,
-                 assertion_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_database: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 assertion_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_database: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] assertion_schema: Optional. The default schema (BigQuery dataset ID) for assertions.
         :param pulumi.Input[_builtins.str] database_suffix: Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
@@ -369,43 +369,43 @@ class RepositoryReleaseConfigCodeCompilationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="assertionSchema")
-    def assertion_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assertion_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The default schema (BigQuery dataset ID) for assertions.
         """
         return pulumi.get(self, "assertion_schema")
 
     @assertion_schema.setter
-    def assertion_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assertion_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assertion_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseSuffix")
-    def database_suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
         """
         return pulumi.get(self, "database_suffix")
 
     @database_suffix.setter
-    def database_suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_suffix", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultDatabase")
-    def default_database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The default database (Google Cloud project ID).
         """
         return pulumi.get(self, "default_database")
 
     @default_database.setter
-    def default_database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_database", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultLocation")
-    def default_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The default BigQuery location to use. Defaults to "US".
         See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
@@ -413,48 +413,48 @@ class RepositoryReleaseConfigCodeCompilationConfigArgs:
         return pulumi.get(self, "default_location")
 
     @default_location.setter
-    def default_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_location", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSchema")
-    def default_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The default schema (BigQuery dataset ID).
         """
         return pulumi.get(self, "default_schema")
 
     @default_schema.setter
-    def default_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaSuffix")
-    def schema_suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
         """
         return pulumi.get(self, "schema_suffix")
 
     @schema_suffix.setter
-    def schema_suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_suffix", value)
 
     @_builtins.property
     @pulumi.getter(name="tablePrefix")
-    def table_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The prefix that should be prepended to all table names.
         """
         return pulumi.get(self, "table_prefix")
 
     @table_prefix.setter
-    def table_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. User-defined variables that are made available to project code during compilation.
         An object containing a list of "key": value pairs.
@@ -463,23 +463,23 @@ class RepositoryReleaseConfigCodeCompilationConfigArgs:
         return pulumi.get(self, "vars")
 
     @vars.setter
-    def vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def vars(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vars", value)
 
 
 class RepositoryReleaseConfigRecentScheduledReleaseRecordArgsDict(TypedDict):
-    compilation_result: NotRequired[pulumi.Input[_builtins.str]]
+    compilation_result: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The name of the created compilation result, if one was successfully created. Must be in the format projects/*/locations/*/repositories/*/compilationResults/*.
     """
-    error_statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgsDict']]]]
+    error_statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]]]
     """
     (Output)
     The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
     Structure is documented below.
     """
-    release_time: NotRequired[pulumi.Input[_builtins.str]]
+    release_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The timestamp of this release attempt.
@@ -488,9 +488,9 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs:
     def __init__(__self__, *,
-                 compilation_result: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]] = None,
-                 release_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 compilation_result: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]] = None,
+                 release_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] compilation_result: (Output)
                The name of the created compilation result, if one was successfully created. Must be in the format projects/*/locations/*/repositories/*/compilationResults/*.
@@ -509,7 +509,7 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs:
 
     @_builtins.property
     @pulumi.getter(name="compilationResult")
-    def compilation_result(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compilation_result(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the created compilation result, if one was successfully created. Must be in the format projects/*/locations/*/repositories/*/compilationResults/*.
@@ -517,12 +517,12 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs:
         return pulumi.get(self, "compilation_result")
 
     @compilation_result.setter
-    def compilation_result(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compilation_result(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compilation_result", value)
 
     @_builtins.property
     @pulumi.getter(name="errorStatuses")
-    def error_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]]:
+    def error_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]]:
         """
         (Output)
         The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
@@ -531,12 +531,12 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs:
         return pulumi.get(self, "error_statuses")
 
     @error_statuses.setter
-    def error_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]]):
+    def error_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]]):
         pulumi.set(self, "error_statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseTime")
-    def release_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The timestamp of this release attempt.
@@ -544,17 +544,17 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs:
         return pulumi.get(self, "release_time")
 
     @release_time.setter
-    def release_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release_time", value)
 
 
 class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -563,8 +563,8 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgsDict(Typ
 @pulumi.input_type
 class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
@@ -578,7 +578,7 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
@@ -586,12 +586,12 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -599,33 +599,33 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class RepositoryWorkflowConfigInvocationConfigArgsDict(TypedDict):
-    fully_refresh_incremental_tables_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    fully_refresh_incremental_tables_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. When set to true, any incremental tables will be fully refreshed.
     """
-    included_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    included_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional. The set of tags to include.
     """
-    included_targets: NotRequired[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgsDict']]]]
+    included_targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]]]]
     """
     Optional. The set of action identifiers to include.
     Structure is documented below.
     """
-    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The service account to run workflow invocations under.
     """
-    transitive_dependencies_included: NotRequired[pulumi.Input[_builtins.bool]]
+    transitive_dependencies_included: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. When set to true, transitive dependencies of included actions will be executed.
     """
-    transitive_dependents_included: NotRequired[pulumi.Input[_builtins.bool]]
+    transitive_dependents_included: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. When set to true, transitive dependents of included actions will be executed.
     """
@@ -633,12 +633,12 @@ class RepositoryWorkflowConfigInvocationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryWorkflowConfigInvocationConfigArgs:
     def __init__(__self__, *,
-                 fully_refresh_incremental_tables_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 included_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 included_targets: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 transitive_dependencies_included: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transitive_dependents_included: Optional[pulumi.Input[_builtins.bool]] = None):
+                 fully_refresh_incremental_tables_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 included_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 included_targets: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 transitive_dependencies_included: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transitive_dependents_included: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] fully_refresh_incremental_tables_enabled: Optional. When set to true, any incremental tables will be fully refreshed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_tags: Optional. The set of tags to include.
@@ -663,31 +663,31 @@ class RepositoryWorkflowConfigInvocationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="fullyRefreshIncrementalTablesEnabled")
-    def fully_refresh_incremental_tables_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fully_refresh_incremental_tables_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. When set to true, any incremental tables will be fully refreshed.
         """
         return pulumi.get(self, "fully_refresh_incremental_tables_enabled")
 
     @fully_refresh_incremental_tables_enabled.setter
-    def fully_refresh_incremental_tables_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fully_refresh_incremental_tables_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fully_refresh_incremental_tables_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="includedTags")
-    def included_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def included_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. The set of tags to include.
         """
         return pulumi.get(self, "included_tags")
 
     @included_tags.setter
-    def included_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def included_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "included_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="includedTargets")
-    def included_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]]]:
+    def included_targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]]]:
         """
         Optional. The set of action identifiers to include.
         Structure is documented below.
@@ -695,56 +695,56 @@ class RepositoryWorkflowConfigInvocationConfigArgs:
         return pulumi.get(self, "included_targets")
 
     @included_targets.setter
-    def included_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]]]):
+    def included_targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]]]):
         pulumi.set(self, "included_targets", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The service account to run workflow invocations under.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="transitiveDependenciesIncluded")
-    def transitive_dependencies_included(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def transitive_dependencies_included(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. When set to true, transitive dependencies of included actions will be executed.
         """
         return pulumi.get(self, "transitive_dependencies_included")
 
     @transitive_dependencies_included.setter
-    def transitive_dependencies_included(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def transitive_dependencies_included(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "transitive_dependencies_included", value)
 
     @_builtins.property
     @pulumi.getter(name="transitiveDependentsIncluded")
-    def transitive_dependents_included(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def transitive_dependents_included(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. When set to true, transitive dependents of included actions will be executed.
         """
         return pulumi.get(self, "transitive_dependents_included")
 
     @transitive_dependents_included.setter
-    def transitive_dependents_included(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def transitive_dependents_included(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "transitive_dependents_included", value)
 
 
 class RepositoryWorkflowConfigInvocationConfigIncludedTargetArgsDict(TypedDict):
-    database: NotRequired[pulumi.Input[_builtins.str]]
+    database: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The action's database (Google Cloud project ID).
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The action's name, within database and schema.
     """
-    schema: NotRequired[pulumi.Input[_builtins.str]]
+    schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The action's schema (BigQuery dataset ID), within database.
     """
@@ -752,9 +752,9 @@ class RepositoryWorkflowConfigInvocationConfigIncludedTargetArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs:
     def __init__(__self__, *,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None):
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] database: The action's database (Google Cloud project ID).
         :param pulumi.Input[_builtins.str] name: The action's name, within database and schema.
@@ -769,54 +769,54 @@ class RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action's database (Google Cloud project ID).
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action's name, within database and schema.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action's schema (BigQuery dataset ID), within database.
         """
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
 
 class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgsDict(TypedDict):
-    error_statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgsDict']]]]
+    error_statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]]]
     """
     (Output)
     The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
     Structure is documented below.
     """
-    execution_time: NotRequired[pulumi.Input[_builtins.str]]
+    execution_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The timestamp of this workflow attempt.
     """
-    workflow_invocation: NotRequired[pulumi.Input[_builtins.str]]
+    workflow_invocation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The name of the created workflow invocation, if one was successfully created. In the format projects/*/locations/*/repositories/*/workflowInvocations/*.
@@ -825,9 +825,9 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs:
     def __init__(__self__, *,
-                 error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]] = None,
-                 execution_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 workflow_invocation: Optional[pulumi.Input[_builtins.str]] = None):
+                 error_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]] = None,
+                 execution_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 workflow_invocation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]] error_statuses: (Output)
                The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
@@ -846,7 +846,7 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs:
 
     @_builtins.property
     @pulumi.getter(name="errorStatuses")
-    def error_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]]:
+    def error_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]]:
         """
         (Output)
         The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
@@ -855,12 +855,12 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs:
         return pulumi.get(self, "error_statuses")
 
     @error_statuses.setter
-    def error_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]]):
+    def error_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]]):
         pulumi.set(self, "error_statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="executionTime")
-    def execution_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The timestamp of this workflow attempt.
@@ -868,12 +868,12 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs:
         return pulumi.get(self, "execution_time")
 
     @execution_time.setter
-    def execution_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_time", value)
 
     @_builtins.property
     @pulumi.getter(name="workflowInvocation")
-    def workflow_invocation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workflow_invocation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the created workflow invocation, if one was successfully created. In the format projects/*/locations/*/repositories/*/workflowInvocations/*.
@@ -881,17 +881,17 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs:
         return pulumi.get(self, "workflow_invocation")
 
     @workflow_invocation.setter
-    def workflow_invocation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workflow_invocation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workflow_invocation", value)
 
 
 class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -900,8 +900,8 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgsDict(
 @pulumi.input_type
 class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
@@ -915,7 +915,7 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
@@ -923,12 +923,12 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -936,20 +936,20 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class RepositoryWorkspaceCompilationOverridesArgsDict(TypedDict):
-    default_database: NotRequired[pulumi.Input[_builtins.str]]
+    default_database: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The default database (Google Cloud project ID).
     """
-    schema_suffix: NotRequired[pulumi.Input[_builtins.str]]
+    schema_suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The suffix that should be appended to all schema (BigQuery dataset ID) names.
     """
-    table_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    table_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The prefix that should be prepended to all table names.
     """
@@ -957,9 +957,9 @@ class RepositoryWorkspaceCompilationOverridesArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryWorkspaceCompilationOverridesArgs:
     def __init__(__self__, *,
-                 default_database: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_database: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] default_database: The default database (Google Cloud project ID).
         :param pulumi.Input[_builtins.str] schema_suffix: The suffix that should be appended to all schema (BigQuery dataset ID) names.
@@ -974,38 +974,38 @@ class RepositoryWorkspaceCompilationOverridesArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultDatabase")
-    def default_database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default database (Google Cloud project ID).
         """
         return pulumi.get(self, "default_database")
 
     @default_database.setter
-    def default_database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_database", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaSuffix")
-    def schema_suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The suffix that should be appended to all schema (BigQuery dataset ID) names.
         """
         return pulumi.get(self, "schema_suffix")
 
     @schema_suffix.setter
-    def schema_suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_suffix", value)
 
     @_builtins.property
     @pulumi.getter(name="tablePrefix")
-    def table_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix that should be prepended to all table names.
         """
         return pulumi.get(self, "table_prefix")
 
     @table_prefix.setter
-    def table_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_prefix", value)
 
 

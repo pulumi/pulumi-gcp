@@ -85,5 +85,5 @@ export interface GetSOutputArgs {
     /**
      * An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
 }

@@ -122,13 +122,13 @@ export interface SnapshotSettingsState {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Policy of which storage location is going to be resolved, and additional data
      * that particularizes how the policy is going to be carried out
      * Structure is documented below.
      */
-    storageLocation?: pulumi.Input<inputs.compute.SnapshotSettingsStorageLocation>;
+    storageLocation?: pulumi.Input<inputs.compute.SnapshotSettingsStorageLocation | undefined>;
 }
 
 /**
@@ -139,7 +139,7 @@ export interface SnapshotSettingsArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Policy of which storage location is going to be resolved, and additional data
      * that particularizes how the policy is going to be carried out

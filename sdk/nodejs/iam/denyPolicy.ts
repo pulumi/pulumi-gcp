@@ -176,24 +176,24 @@ export interface DenyPolicyState {
     /**
      * The display name of the rule.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The hash of the resource. Used internally during updates.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The name of the policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The attachment point is identified by its URL-encoded full resource name.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Rules to be applied.
      * Structure is documented below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.iam.DenyPolicyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.iam.DenyPolicyRule>[] | undefined>;
 }
 
 /**
@@ -203,11 +203,11 @@ export interface DenyPolicyArgs {
     /**
      * The display name of the rule.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The attachment point is identified by its URL-encoded full resource name.
      */

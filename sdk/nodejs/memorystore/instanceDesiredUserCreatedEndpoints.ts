@@ -379,20 +379,20 @@ export interface InstanceDesiredUserCreatedEndpointsState {
      * A list of desired user endpoints
      * Structure is documented below.
      */
-    desiredUserCreatedEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>[]>;
+    desiredUserCreatedEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>[] | undefined>;
     /**
      * The name of the Memorystore instance these endpoints should be added to.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the region of the Memorystore instance these endpoints should be added to.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -403,16 +403,16 @@ export interface InstanceDesiredUserCreatedEndpointsArgs {
      * A list of desired user endpoints
      * Structure is documented below.
      */
-    desiredUserCreatedEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>[]>;
+    desiredUserCreatedEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>[] | undefined>;
     /**
      * The name of the Memorystore instance these endpoints should be added to.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the region of the Memorystore instance these endpoints should be added to.
      */

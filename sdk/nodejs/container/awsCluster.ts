@@ -469,87 +469,87 @@ export interface AwsClusterState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration related to the cluster RBAC settings.
      */
-    authorization?: pulumi.Input<inputs.container.AwsClusterAuthorization>;
+    authorization?: pulumi.Input<inputs.container.AwsClusterAuthorization | undefined>;
     /**
      * The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
      */
-    awsRegion?: pulumi.Input<string>;
+    awsRegion?: pulumi.Input<string | undefined>;
     /**
      * Configuration options for the Binary Authorization feature.
      */
-    binaryAuthorization?: pulumi.Input<inputs.container.AwsClusterBinaryAuthorization>;
+    binaryAuthorization?: pulumi.Input<inputs.container.AwsClusterBinaryAuthorization | undefined>;
     /**
      * Configuration related to the cluster control plane.
      */
-    controlPlane?: pulumi.Input<inputs.container.AwsClusterControlPlane>;
+    controlPlane?: pulumi.Input<inputs.container.AwsClusterControlPlane | undefined>;
     /**
      * Output only. The time at which this cluster was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. The endpoint of the cluster's API server.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Fleet configuration.
      */
-    fleet?: pulumi.Input<inputs.container.AwsClusterFleet>;
+    fleet?: pulumi.Input<inputs.container.AwsClusterFleet | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Logging configuration.
      */
-    loggingConfig?: pulumi.Input<inputs.container.AwsClusterLoggingConfig>;
+    loggingConfig?: pulumi.Input<inputs.container.AwsClusterLoggingConfig | undefined>;
     /**
      * The name of this resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Cluster-wide networking configuration.
      */
-    networking?: pulumi.Input<inputs.container.AwsClusterNetworking>;
+    networking?: pulumi.Input<inputs.container.AwsClusterNetworking | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. If set, there are currently changes in flight to the cluster.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. A globally unique identifier for the cluster.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time at which this cluster was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. Workload Identity settings.
      */
-    workloadIdentityConfigs?: pulumi.Input<pulumi.Input<inputs.container.AwsClusterWorkloadIdentityConfig>[]>;
+    workloadIdentityConfigs?: pulumi.Input<pulumi.Input<inputs.container.AwsClusterWorkloadIdentityConfig>[] | undefined>;
 }
 
 /**
@@ -562,7 +562,7 @@ export interface AwsClusterArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration related to the cluster RBAC settings.
      */
@@ -574,7 +574,7 @@ export interface AwsClusterArgs {
     /**
      * Configuration options for the Binary Authorization feature.
      */
-    binaryAuthorization?: pulumi.Input<inputs.container.AwsClusterBinaryAuthorization>;
+    binaryAuthorization?: pulumi.Input<inputs.container.AwsClusterBinaryAuthorization | undefined>;
     /**
      * Configuration related to the cluster control plane.
      */
@@ -582,7 +582,7 @@ export interface AwsClusterArgs {
     /**
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Fleet configuration.
      */
@@ -594,11 +594,11 @@ export interface AwsClusterArgs {
     /**
      * Logging configuration.
      */
-    loggingConfig?: pulumi.Input<inputs.container.AwsClusterLoggingConfig>;
+    loggingConfig?: pulumi.Input<inputs.container.AwsClusterLoggingConfig | undefined>;
     /**
      * The name of this resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Cluster-wide networking configuration.
      */
@@ -606,5 +606,5 @@ export interface AwsClusterArgs {
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

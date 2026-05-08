@@ -110,7 +110,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			firebase, err := projects.NewService(ctx, "firebase", &projects.ServiceArgs{
+//			firebase2, err := projects.NewService(ctx, "firebase", &projects.ServiceArgs{
 //				Project: _default.ProjectId,
 //				Service: pulumi.String("firebase.googleapis.com"),
 //			})
@@ -120,7 +120,7 @@ import (
 //			defaultProject, err := firebase.NewProject(ctx, "default", &firebase.ProjectArgs{
 //				Project: _default.ProjectId,
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				firebase,
+//				firebase2,
 //			}))
 //			if err != nil {
 //				return err

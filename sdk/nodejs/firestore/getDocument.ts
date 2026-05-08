@@ -127,5 +127,5 @@ export interface GetDocumentOutputArgs {
     /**
      * The project in which the database resides.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

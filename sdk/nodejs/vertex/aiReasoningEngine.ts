@@ -614,35 +614,35 @@ export interface AiReasoningEngineState {
      * Optional. Configuration for how Agent Engine sub-resources should manage context.
      * Structure is documented below.
      */
-    contextSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpec>;
+    contextSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpec | undefined>;
     /**
      * The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
      * with nanosecond resolution and up to nine fractional digits.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the ReasoningEngine.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the ReasoningEngine.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. Customer-managed encryption key spec for a ReasoningEngine.
      * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
      * will be secured by this key.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineEncryptionSpec | undefined>;
     /**
      * The labels associated with this ReasoningEngine. You can use these to
      * organize and group your ReasoningEngines.
@@ -650,36 +650,36 @@ export interface AiReasoningEngineState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The generated name of the ReasoningEngine, in the format
      * projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of the reasoning engine. eg us-central1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Optional. Configurations of the ReasoningEngine.
      * Structure is documented below.
      */
-    spec?: pulumi.Input<inputs.vertex.AiReasoningEngineSpec>;
+    spec?: pulumi.Input<inputs.vertex.AiReasoningEngineSpec | undefined>;
     /**
      * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
      * format, with nanosecond resolution and up to nine fractional digits.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -691,15 +691,15 @@ export interface AiReasoningEngineArgs {
      * Optional. Configuration for how Agent Engine sub-resources should manage context.
      * Structure is documented below.
      */
-    contextSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpec>;
+    contextSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpec | undefined>;
     /**
      * Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the ReasoningEngine.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the ReasoningEngine.
      */
@@ -710,7 +710,7 @@ export interface AiReasoningEngineArgs {
      * will be secured by this key.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineEncryptionSpec | undefined>;
     /**
      * The labels associated with this ReasoningEngine. You can use these to
      * organize and group your ReasoningEngines.
@@ -718,19 +718,19 @@ export interface AiReasoningEngineArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the reasoning engine. eg us-central1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Optional. Configurations of the ReasoningEngine.
      * Structure is documented below.
      */
-    spec?: pulumi.Input<inputs.vertex.AiReasoningEngineSpec>;
+    spec?: pulumi.Input<inputs.vertex.AiReasoningEngineSpec | undefined>;
 }

@@ -172,27 +172,27 @@ export interface ProvisionScriptState {
      * a database. You can create and use a database in the script or explicitly reference a
      * google_sql_database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * The deletion policy for the resources created by the script. The
      * default is "ABANDON". It must be "ABANDON" to allow Terraform to abandon the resources. If you
      * want to delete resources, add statements in the script such as `drop … if exists`.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the provision script.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud SQL instance. Changing this forces the script to
      * be run on the new instance.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it is not provided,
      * the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The SQL script to provision database resources. Its execution time limit
      * is 30 s and it will be canceled if it takes longer than 30 s. You can use patterns like
@@ -200,7 +200,7 @@ export interface ProvisionScriptState {
      * errors. If it's not possible to make a statement idempotent, you can run it once and then remove
      * it from this script.
      */
-    script?: pulumi.Input<string>;
+    script?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -214,17 +214,17 @@ export interface ProvisionScriptArgs {
      * a database. You can create and use a database in the script or explicitly reference a
      * google_sql_database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * The deletion policy for the resources created by the script. The
      * default is "ABANDON". It must be "ABANDON" to allow Terraform to abandon the resources. If you
      * want to delete resources, add statements in the script such as `drop … if exists`.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the provision script.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud SQL instance. Changing this forces the script to
      * be run on the new instance.
@@ -234,7 +234,7 @@ export interface ProvisionScriptArgs {
      * The ID of the project in which the resource belongs. If it is not provided,
      * the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The SQL script to provision database resources. Its execution time limit
      * is 30 s and it will be canceled if it takes longer than 30 s. You can use patterns like

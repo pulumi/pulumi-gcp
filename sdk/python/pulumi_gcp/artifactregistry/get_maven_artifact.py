@@ -196,11 +196,11 @@ def get_maven_artifact(artifact_id: Optional[_builtins.str] = None,
         repository_id=pulumi.get(__ret__, 'repository_id'),
         update_time=pulumi.get(__ret__, 'update_time'),
         version=pulumi.get(__ret__, 'version'))
-def get_maven_artifact_output(artifact_id: Optional[pulumi.Input[_builtins.str]] = None,
-                              group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                              location: Optional[pulumi.Input[_builtins.str]] = None,
-                              project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              repository_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_maven_artifact_output(artifact_id: pulumi.Input[Optional[_builtins.str]] = None,
+                              group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                              location: pulumi.Input[Optional[_builtins.str]] = None,
+                              project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMavenArtifactResult]:
     """
     This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.

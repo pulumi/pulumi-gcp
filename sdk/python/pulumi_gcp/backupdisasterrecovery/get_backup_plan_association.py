@@ -192,9 +192,9 @@ def get_backup_plan_association(backup_plan_association_id: Optional[_builtins.s
         resource_type=pulumi.get(__ret__, 'resource_type'),
         rules_config_infos=pulumi.get(__ret__, 'rules_config_infos'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_backup_plan_association_output(backup_plan_association_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                       location: Optional[pulumi.Input[_builtins.str]] = None,
-                                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_backup_plan_association_output(backup_plan_association_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                       location: pulumi.Input[Optional[_builtins.str]] = None,
+                                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPlanAssociationResult]:
     """
     A Backup and DR BackupPlanAssociation.

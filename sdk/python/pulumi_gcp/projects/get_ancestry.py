@@ -137,7 +137,7 @@ def get_ancestry(project: Optional[_builtins.str] = None,
         parent_id=pulumi.get(__ret__, 'parent_id'),
         parent_type=pulumi.get(__ret__, 'parent_type'),
         project=pulumi.get(__ret__, 'project'))
-def get_ancestry_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ancestry_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAncestryResult]:
     """
     Retrieve the ancestors for a project.

@@ -24,9 +24,9 @@ class ConnectorArgs:
                  connect_cluster: pulumi.Input[_builtins.str],
                  connector_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_restart_policy: Optional[pulumi.Input['ConnectorTaskRestartPolicyArgs']] = None):
+                 configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_restart_policy: pulumi.Input[Optional['ConnectorTaskRestartPolicyArgs']] = None):
         """
         The set of arguments for constructing a Connector resource.
 
@@ -87,19 +87,19 @@ class ConnectorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.
         """
         return pulumi.get(self, "configs")
 
     @configs.setter
-    def configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -107,12 +107,12 @@ class ConnectorArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="taskRestartPolicy")
-    def task_restart_policy(self) -> Optional[pulumi.Input['ConnectorTaskRestartPolicyArgs']]:
+    def task_restart_policy(self) -> pulumi.Input[Optional['ConnectorTaskRestartPolicyArgs']]:
         """
         A policy that specifies how to restart the failed connectors/tasks in a Cluster resource. If not set, the failed connectors/tasks won't be restarted.
         Structure is documented below.
@@ -120,21 +120,21 @@ class ConnectorArgs:
         return pulumi.get(self, "task_restart_policy")
 
     @task_restart_policy.setter
-    def task_restart_policy(self, value: Optional[pulumi.Input['ConnectorTaskRestartPolicyArgs']]):
+    def task_restart_policy(self, value: pulumi.Input[Optional['ConnectorTaskRestartPolicyArgs']]):
         pulumi.set(self, "task_restart_policy", value)
 
 
 @pulumi.input_type
 class _ConnectorState:
     def __init__(__self__, *,
-                 configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 connect_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_restart_policy: Optional[pulumi.Input['ConnectorTaskRestartPolicyArgs']] = None):
+                 configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 connect_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_restart_policy: pulumi.Input[Optional['ConnectorTaskRestartPolicyArgs']] = None):
         """
         Input properties used for looking up and filtering Connector resources.
 
@@ -168,67 +168,67 @@ class _ConnectorState:
 
     @_builtins.property
     @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.
         """
         return pulumi.get(self, "configs")
 
     @configs.setter
-    def configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "configs", value)
 
     @_builtins.property
     @pulumi.getter(name="connectCluster")
-    def connect_cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connect_cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connect cluster name.
         """
         return pulumi.get(self, "connect_cluster")
 
     @connect_cluster.setter
-    def connect_cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connect_cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connect_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorId")
-    def connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
         """
         return pulumi.get(self, "connector_id")
 
     @connector_id.setter
-    def connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the connector. The `connector` segment is used when connecting directly to the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER/connectors/CONNECTOR_ID`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -236,24 +236,24 @@ class _ConnectorState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of the connect. Possible values: `STATE_UNSPECIFIED`, `UNASSIGNED`, `RUNNING`, `PAUSED`, `FAILED`, `RESTARTING`, and `STOPPED`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="taskRestartPolicy")
-    def task_restart_policy(self) -> Optional[pulumi.Input['ConnectorTaskRestartPolicyArgs']]:
+    def task_restart_policy(self) -> pulumi.Input[Optional['ConnectorTaskRestartPolicyArgs']]:
         """
         A policy that specifies how to restart the failed connectors/tasks in a Cluster resource. If not set, the failed connectors/tasks won't be restarted.
         Structure is documented below.
@@ -261,7 +261,7 @@ class _ConnectorState:
         return pulumi.get(self, "task_restart_policy")
 
     @task_restart_policy.setter
-    def task_restart_policy(self, value: Optional[pulumi.Input['ConnectorTaskRestartPolicyArgs']]):
+    def task_restart_policy(self, value: pulumi.Input[Optional['ConnectorTaskRestartPolicyArgs']]):
         pulumi.set(self, "task_restart_policy", value)
 
 
@@ -271,12 +271,12 @@ class Connector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 connect_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_restart_policy: Optional[pulumi.Input[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict']]] = None,
+                 configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 connect_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_restart_policy: pulumi.Input[Optional[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict']]] = None,
                  __props__=None):
         """
         A Managed Service for Kafka Connect Connectors.
@@ -508,12 +508,12 @@ class Connector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 connect_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_restart_policy: Optional[pulumi.Input[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict']]] = None,
+                 configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 connect_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_restart_policy: pulumi.Input[Optional[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -547,14 +547,14 @@ class Connector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            connect_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-            connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            task_restart_policy: Optional[pulumi.Input[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict']]] = None) -> 'Connector':
+            configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            connect_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            task_restart_policy: pulumi.Input[Optional[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict']]] = None) -> 'Connector':
         """
         Get an existing Connector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

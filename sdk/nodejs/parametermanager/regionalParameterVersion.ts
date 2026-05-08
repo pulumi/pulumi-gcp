@@ -245,42 +245,42 @@ export interface RegionalParameterVersionState {
     /**
      * The time at which the Regional Parameter Version was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
      * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
      */
-    kmsKeyVersion?: pulumi.Input<string>;
+    kmsKeyVersion?: pulumi.Input<string | undefined>;
     /**
      * Location of Parameter Manager Regional parameter resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the Regional Parameter Version. Format:
      * `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parameter Manager Regional Parameter resource.
      */
-    parameter?: pulumi.Input<string>;
+    parameter?: pulumi.Input<string | undefined>;
     /**
      * The Regional Parameter data.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    parameterData?: pulumi.Input<string>;
+    parameterData?: pulumi.Input<string | undefined>;
     /**
      * Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
      */
-    parameterVersionId?: pulumi.Input<string>;
+    parameterVersionId?: pulumi.Input<string | undefined>;
     /**
      * The time at which the Regional Parameter Version was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -290,7 +290,7 @@ export interface RegionalParameterVersionArgs {
     /**
      * The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Parameter Manager Regional Parameter resource.
      */

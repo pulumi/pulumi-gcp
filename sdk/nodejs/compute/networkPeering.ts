@@ -184,49 +184,49 @@ export interface NetworkPeeringState {
     /**
      * Whether to export the custom routes to the peer network. Defaults to `false`.
      */
-    exportCustomRoutes?: pulumi.Input<boolean>;
+    exportCustomRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
      */
-    exportSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
+    exportSubnetRoutesWithPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to import the custom routes from the peer network. Defaults to `false`.
      */
-    importCustomRoutes?: pulumi.Input<boolean>;
+    importCustomRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
      */
-    importSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
+    importSubnetRoutesWithPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the peering.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The primary network of the peering.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The peer network in the peering. The peer network
      * may belong to a different project.
      */
-    peerNetwork?: pulumi.Input<string>;
+    peerNetwork?: pulumi.Input<string | undefined>;
     /**
      * Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
      */
-    stackType?: pulumi.Input<string>;
+    stackType?: pulumi.Input<string | undefined>;
     /**
      * State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
      * `ACTIVE` when there's a matching configuration in the peer network.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Details about the current state of the peering.
      */
-    stateDetails?: pulumi.Input<string>;
+    stateDetails?: pulumi.Input<string | undefined>;
     /**
      * The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
      */
-    updateStrategy?: pulumi.Input<string>;
+    updateStrategy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -236,23 +236,23 @@ export interface NetworkPeeringArgs {
     /**
      * Whether to export the custom routes to the peer network. Defaults to `false`.
      */
-    exportCustomRoutes?: pulumi.Input<boolean>;
+    exportCustomRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
      */
-    exportSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
+    exportSubnetRoutesWithPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to import the custom routes from the peer network. Defaults to `false`.
      */
-    importCustomRoutes?: pulumi.Input<boolean>;
+    importCustomRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
      */
-    importSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
+    importSubnetRoutesWithPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the peering.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The primary network of the peering.
      */
@@ -265,9 +265,9 @@ export interface NetworkPeeringArgs {
     /**
      * Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
      */
-    stackType?: pulumi.Input<string>;
+    stackType?: pulumi.Input<string | undefined>;
     /**
      * The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
      */
-    updateStrategy?: pulumi.Input<string>;
+    updateStrategy?: pulumi.Input<string | undefined>;
 }

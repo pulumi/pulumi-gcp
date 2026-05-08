@@ -39,20 +39,20 @@ class InstanceMaintenancePolicyArgsDict(TypedDict):
     is expected to be one.
     Structure is documented below.
     """
-    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The time when the policy was created.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Description of what this policy is for.
     Create/Update methods return INVALID_ARGUMENT if the
     length is greater than 512.
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The time when the policy was updated.
@@ -64,9 +64,9 @@ class InstanceMaintenancePolicyArgsDict(TypedDict):
 class InstanceMaintenancePolicyArgs:
     def __init__(__self__, *,
                  weekly_maintenance_windows: pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]],
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]] weekly_maintenance_windows: Required. Maintenance window that is applied to resources covered by this policy.
                Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
@@ -109,7 +109,7 @@ class InstanceMaintenancePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The time when the policy was created.
@@ -119,12 +119,12 @@ class InstanceMaintenancePolicyArgs:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Description of what this policy is for.
         Create/Update methods return INVALID_ARGUMENT if the
@@ -133,12 +133,12 @@ class InstanceMaintenancePolicyArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The time when the policy was updated.
@@ -148,7 +148,7 @@ class InstanceMaintenancePolicyArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -255,20 +255,20 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
 
 
 class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict(TypedDict):
-    hours: NotRequired[pulumi.Input[_builtins.int]]
+    hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hours of day in 24 hour format. Should be from 0 to 23.
     An API may choose to allow the value "24:00:00" for scenarios like business closing time.
     """
-    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    minutes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minutes of hour of day. Must be from 0 to 59.
     """
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
     """
-    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Seconds of minutes of the time. Must normally be from 0 to 59.
     An API may allow the value 60 if it allows leap-seconds.
@@ -277,10 +277,10 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict(TypedDic
 @pulumi.input_type
 class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
     def __init__(__self__, *,
-                 hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
                An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -300,7 +300,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Hours of day in 24 hour format. Should be from 0 to 23.
         An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -308,36 +308,36 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minutes of hour of day. Must be from 0 to 59.
         """
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minutes", value)
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds of minutes of the time. Must normally be from 0 to 59.
         An API may allow the value 60 if it allows leap-seconds.
@@ -345,19 +345,19 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds", value)
 
 
 class InstanceMaintenanceScheduleArgsDict(TypedDict):
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The end time of any upcoming scheduled maintenance for this instance.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    schedule_deadline_time: NotRequired[pulumi.Input[_builtins.str]]
+    schedule_deadline_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The deadline that the maintenance schedule start time
@@ -365,7 +365,7 @@ class InstanceMaintenanceScheduleArgsDict(TypedDict):
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The start time of any upcoming scheduled maintenance for this instance.
@@ -376,9 +376,9 @@ class InstanceMaintenanceScheduleArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceMaintenanceScheduleArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_deadline_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_deadline_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end_time: (Output)
                Output only. The end time of any upcoming scheduled maintenance for this instance.
@@ -403,7 +403,7 @@ class InstanceMaintenanceScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The end time of any upcoming scheduled maintenance for this instance.
@@ -413,12 +413,12 @@ class InstanceMaintenanceScheduleArgs:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleDeadlineTime")
-    def schedule_deadline_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_deadline_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The deadline that the maintenance schedule start time
@@ -429,12 +429,12 @@ class InstanceMaintenanceScheduleArgs:
         return pulumi.get(self, "schedule_deadline_time")
 
     @schedule_deadline_time.setter
-    def schedule_deadline_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_deadline_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_deadline_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The start time of any upcoming scheduled maintenance for this instance.
@@ -444,32 +444,32 @@ class InstanceMaintenanceScheduleArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
 class InstanceMemcacheNodeArgsDict(TypedDict):
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
     """
-    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    node_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The port number of the Memcached server on this node.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Current state of the Memcached node.
     """
-    zone: NotRequired[pulumi.Input[_builtins.str]]
+    zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Location (GCP Zone) for the Memcached node.
@@ -478,11 +478,11 @@ class InstanceMemcacheNodeArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceMemcacheNodeArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host: (Output)
                Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
@@ -508,7 +508,7 @@ class InstanceMemcacheNodeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
@@ -516,12 +516,12 @@ class InstanceMemcacheNodeArgs:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
@@ -529,12 +529,12 @@ class InstanceMemcacheNodeArgs:
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The port number of the Memcached server on this node.
@@ -542,12 +542,12 @@ class InstanceMemcacheNodeArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Current state of the Memcached node.
@@ -555,12 +555,12 @@ class InstanceMemcacheNodeArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Location (GCP Zone) for the Memcached node.
@@ -568,17 +568,17 @@ class InstanceMemcacheNodeArgs:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 class InstanceMemcacheParametersArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     This is a unique ID associated with this set of parameters.
     """
-    params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    params: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     User-defined set of parameters to use in the memcache process.
     """
@@ -586,8 +586,8 @@ class InstanceMemcacheParametersArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceMemcacheParametersArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] id: (Output)
                This is a unique ID associated with this set of parameters.
@@ -600,7 +600,7 @@ class InstanceMemcacheParametersArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         This is a unique ID associated with this set of parameters.
@@ -608,19 +608,19 @@ class InstanceMemcacheParametersArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def params(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined set of parameters to use in the memcache process.
         """
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def params(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "params", value)
 
 

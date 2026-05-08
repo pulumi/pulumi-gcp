@@ -194,17 +194,17 @@ export interface GetNotificationChannelOutputArgs {
     /**
      * The display name for this notification channel.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Labels (corresponding to the
      * NotificationChannelDescriptor schema) to filter the notification channels by.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of the notification channel.
      *
@@ -212,9 +212,9 @@ export interface GetNotificationChannelOutputArgs {
      *
      * Other optional fields include:
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * User-provided key-value labels to filter by.
      */
-    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

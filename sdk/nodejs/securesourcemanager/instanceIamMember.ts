@@ -90,23 +90,23 @@ export class InstanceIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceIamMember resources.
  */
 export interface InstanceIamMemberState {
-    condition?: pulumi.Input<inputs.securesourcemanager.InstanceIamMemberCondition>;
-    etag?: pulumi.Input<string>;
-    instanceId?: pulumi.Input<string>;
-    location?: pulumi.Input<string>;
-    member?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.securesourcemanager.InstanceIamMemberCondition | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    instanceId?: pulumi.Input<string | undefined>;
+    location?: pulumi.Input<string | undefined>;
+    member?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a InstanceIamMember resource.
  */
 export interface InstanceIamMemberArgs {
-    condition?: pulumi.Input<inputs.securesourcemanager.InstanceIamMemberCondition>;
+    condition?: pulumi.Input<inputs.securesourcemanager.InstanceIamMemberCondition | undefined>;
     instanceId: pulumi.Input<string>;
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     member: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     role: pulumi.Input<string>;
 }

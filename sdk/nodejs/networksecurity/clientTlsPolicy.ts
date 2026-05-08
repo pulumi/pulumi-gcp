@@ -212,57 +212,57 @@ export interface ClientTlsPolicyState {
      * Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
      * Structure is documented below.
      */
-    clientCertificate?: pulumi.Input<inputs.networksecurity.ClientTlsPolicyClientCertificate>;
+    clientCertificate?: pulumi.Input<inputs.networksecurity.ClientTlsPolicyClientCertificate | undefined>;
     /**
      * Time the ClientTlsPolicy was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Set of label tags associated with the ClientTlsPolicy resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the client tls policy.
      * The default value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the ClientTlsPolicy resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
      * Structure is documented below.
      */
-    serverValidationCas?: pulumi.Input<pulumi.Input<inputs.networksecurity.ClientTlsPolicyServerValidationCa>[]>;
+    serverValidationCas?: pulumi.Input<pulumi.Input<inputs.networksecurity.ClientTlsPolicyServerValidationCa>[] | undefined>;
     /**
      * Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
      */
-    sni?: pulumi.Input<string>;
+    sni?: pulumi.Input<string | undefined>;
     /**
      * Time the ClientTlsPolicy was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -273,38 +273,38 @@ export interface ClientTlsPolicyArgs {
      * Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
      * Structure is documented below.
      */
-    clientCertificate?: pulumi.Input<inputs.networksecurity.ClientTlsPolicyClientCertificate>;
+    clientCertificate?: pulumi.Input<inputs.networksecurity.ClientTlsPolicyClientCertificate | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Set of label tags associated with the ClientTlsPolicy resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the client tls policy.
      * The default value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the ClientTlsPolicy resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
      * Structure is documented below.
      */
-    serverValidationCas?: pulumi.Input<pulumi.Input<inputs.networksecurity.ClientTlsPolicyServerValidationCa>[]>;
+    serverValidationCas?: pulumi.Input<pulumi.Input<inputs.networksecurity.ClientTlsPolicyServerValidationCa>[] | undefined>;
     /**
      * Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
      */
-    sni?: pulumi.Input<string>;
+    sni?: pulumi.Input<string | undefined>;
 }

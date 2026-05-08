@@ -25,11 +25,11 @@ class GatewaySecurityPolicyRuleArgs:
                  location: pulumi.Input[_builtins.str],
                  priority: pulumi.Input[_builtins.int],
                  session_matcher: pulumi.Input[_builtins.str],
-                 application_matcher: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_inspection_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 application_matcher: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_inspection_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GatewaySecurityPolicyRule resource.
 
@@ -141,31 +141,31 @@ class GatewaySecurityPolicyRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationMatcher")
-    def application_matcher(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_matcher(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CEL expression for matching on L7/application level criteria.
         """
         return pulumi.get(self, "application_matcher")
 
     @application_matcher.setter
-    def application_matcher(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_matcher(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_matcher", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Free-text description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
         rule should match the pattern: (^a-z?$).
@@ -173,12 +173,12 @@ class GatewaySecurityPolicyRuleArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -186,12 +186,12 @@ class GatewaySecurityPolicyRuleArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsInspectionEnabled")
-    def tls_inspection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tls_inspection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to enable TLS inspection of traffic matching on. Can only be true if the
         parent GatewaySecurityPolicy references a TLSInspectionConfig.
@@ -199,27 +199,27 @@ class GatewaySecurityPolicyRuleArgs:
         return pulumi.get(self, "tls_inspection_enabled")
 
     @tls_inspection_enabled.setter
-    def tls_inspection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tls_inspection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tls_inspection_enabled", value)
 
 
 @pulumi.input_type
 class _GatewaySecurityPolicyRuleState:
     def __init__(__self__, *,
-                 application_matcher: Optional[pulumi.Input[_builtins.str]] = None,
-                 basic_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_matcher: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_inspection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_matcher: pulumi.Input[Optional[_builtins.str]] = None,
+                 basic_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_matcher: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_inspection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewaySecurityPolicyRule resources.
 
@@ -277,19 +277,19 @@ class _GatewaySecurityPolicyRuleState:
 
     @_builtins.property
     @pulumi.getter(name="applicationMatcher")
-    def application_matcher(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_matcher(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CEL expression for matching on L7/application level criteria.
         """
         return pulumi.get(self, "application_matcher")
 
     @application_matcher.setter
-    def application_matcher(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_matcher(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_matcher", value)
 
     @_builtins.property
     @pulumi.getter(name="basicProfile")
-    def basic_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def basic_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Profile which tells what the primitive action should be. Possible values are: * ALLOW * DENY.
         Possible values are: `BASIC_PROFILE_UNSPECIFIED`, `ALLOW`, `DENY`.
@@ -297,12 +297,12 @@ class _GatewaySecurityPolicyRuleState:
         return pulumi.get(self, "basic_profile")
 
     @basic_profile.setter
-    def basic_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def basic_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "basic_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -311,60 +311,60 @@ class _GatewaySecurityPolicyRuleState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Free-text description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the rule is enforced.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewaySecurityPolicy")
-    def gateway_security_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_security_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the gatewat security policy this rule belongs to.
         """
         return pulumi.get(self, "gateway_security_policy")
 
     @gateway_security_policy.setter
-    def gateway_security_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_security_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the gateway security policy.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
         rule should match the pattern: (^a-z?$).
@@ -372,24 +372,24 @@ class _GatewaySecurityPolicyRuleState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Priority of the rule. Lower number corresponds to higher precedence.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -397,36 +397,36 @@ class _GatewaySecurityPolicyRuleState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server-defined URL of this resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionMatcher")
-    def session_matcher(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_matcher(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CEL expression for matching on session criteria.
         """
         return pulumi.get(self, "session_matcher")
 
     @session_matcher.setter
-    def session_matcher(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_matcher(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_matcher", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsInspectionEnabled")
-    def tls_inspection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tls_inspection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to enable TLS inspection of traffic matching on. Can only be true if the
         parent GatewaySecurityPolicy references a TLSInspectionConfig.
@@ -434,12 +434,12 @@ class _GatewaySecurityPolicyRuleState:
         return pulumi.get(self, "tls_inspection_enabled")
 
     @tls_inspection_enabled.setter
-    def tls_inspection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tls_inspection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tls_inspection_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was updated.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -448,7 +448,7 @@ class _GatewaySecurityPolicyRuleState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -458,17 +458,17 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_matcher: Optional[pulumi.Input[_builtins.str]] = None,
-                 basic_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_matcher: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_inspection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 application_matcher: pulumi.Input[Optional[_builtins.str]] = None,
+                 basic_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_matcher: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_inspection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The GatewaySecurityPolicyRule resource is in a nested collection within a GatewaySecurityPolicy and represents
@@ -649,17 +649,17 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_matcher: Optional[pulumi.Input[_builtins.str]] = None,
-                 basic_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_matcher: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_inspection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 application_matcher: pulumi.Input[Optional[_builtins.str]] = None,
+                 basic_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_matcher: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_inspection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -705,20 +705,20 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_matcher: Optional[pulumi.Input[_builtins.str]] = None,
-            basic_profile: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            gateway_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            session_matcher: Optional[pulumi.Input[_builtins.str]] = None,
-            tls_inspection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'GatewaySecurityPolicyRule':
+            application_matcher: pulumi.Input[Optional[_builtins.str]] = None,
+            basic_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            session_matcher: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_inspection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'GatewaySecurityPolicyRule':
         """
         Get an existing GatewaySecurityPolicyRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

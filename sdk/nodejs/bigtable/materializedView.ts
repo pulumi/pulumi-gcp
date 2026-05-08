@@ -165,28 +165,28 @@ export interface MaterializedViewState {
     /**
      * Set to true to make the MaterializedView protected against deletion.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the instance to create the materialized view within.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
      */
-    materializedViewId?: pulumi.Input<string>;
+    materializedViewId?: pulumi.Input<string | undefined>;
     /**
      * The unique name of the requested materialized view. Values are of the form `projects/<project>/instances/<instance>/materializedViews/<materializedViewId>`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The materialized view's select query.
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -196,11 +196,11 @@ export interface MaterializedViewArgs {
     /**
      * Set to true to make the MaterializedView protected against deletion.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the instance to create the materialized view within.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
      */
@@ -209,7 +209,7 @@ export interface MaterializedViewArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The materialized view's select query.
      */

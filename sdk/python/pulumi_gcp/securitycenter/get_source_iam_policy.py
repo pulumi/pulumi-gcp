@@ -122,8 +122,8 @@ def get_source_iam_policy(organization: Optional[_builtins.str] = None,
         organization=pulumi.get(__ret__, 'organization'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         source=pulumi.get(__ret__, 'source'))
-def get_source_iam_policy_output(organization: Optional[pulumi.Input[_builtins.str]] = None,
-                                 source: Optional[pulumi.Input[_builtins.str]] = None,
+def get_source_iam_policy_output(organization: pulumi.Input[Optional[_builtins.str]] = None,
+                                 source: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSourceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for source

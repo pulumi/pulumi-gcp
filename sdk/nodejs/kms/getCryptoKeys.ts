@@ -90,7 +90,7 @@ export interface GetCryptoKeysOutputArgs {
      *
      * [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
      */

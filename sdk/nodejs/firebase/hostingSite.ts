@@ -179,11 +179,11 @@ export interface HostingSiteState {
      * Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
      * associated with the Hosting site.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The default URL for the site in the form of https://{name}.web.app
      */
-    defaultUrl?: pulumi.Input<string>;
+    defaultUrl?: pulumi.Input<string | undefined>;
     /**
      * Output only. The fully-qualified resource name of the Hosting site, in
      * the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
@@ -193,22 +193,22 @@ export interface HostingSiteState {
      * Learn more about using project identifiers in Google's
      * [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
      * used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid
      * domain name label.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -219,16 +219,16 @@ export interface HostingSiteArgs {
      * Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
      * associated with the Hosting site.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
      * used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid
      * domain name label.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
 }

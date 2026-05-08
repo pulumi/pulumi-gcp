@@ -127,5 +127,5 @@ export interface GetInsightsDatasetConfigOutputArgs {
     /**
      * The name of the GCP project in which dataset config exists. Can be configured through config as well.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

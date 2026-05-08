@@ -23,13 +23,13 @@ class PatchDeploymentArgs:
     def __init__(__self__, *,
                  instance_filter: pulumi.Input['PatchDeploymentInstanceFilterArgs'],
                  patch_deployment_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 one_time_schedule: Optional[pulumi.Input['PatchDeploymentOneTimeScheduleArgs']] = None,
-                 patch_config: Optional[pulumi.Input['PatchDeploymentPatchConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurring_schedule: Optional[pulumi.Input['PatchDeploymentRecurringScheduleArgs']] = None,
-                 rollout: Optional[pulumi.Input['PatchDeploymentRolloutArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 one_time_schedule: pulumi.Input[Optional['PatchDeploymentOneTimeScheduleArgs']] = None,
+                 patch_config: pulumi.Input[Optional['PatchDeploymentPatchConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurring_schedule: pulumi.Input[Optional['PatchDeploymentRecurringScheduleArgs']] = None,
+                 rollout: pulumi.Input[Optional['PatchDeploymentRolloutArgs']] = None):
         """
         The set of arguments for constructing a PatchDeployment resource.
 
@@ -104,19 +104,19 @@ class PatchDeploymentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the patch deployment. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Duration of the patch. After the duration ends, the patch times out.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
@@ -124,12 +124,12 @@ class PatchDeploymentArgs:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="oneTimeSchedule")
-    def one_time_schedule(self) -> Optional[pulumi.Input['PatchDeploymentOneTimeScheduleArgs']]:
+    def one_time_schedule(self) -> pulumi.Input[Optional['PatchDeploymentOneTimeScheduleArgs']]:
         """
         Schedule a one-time execution.
         Structure is documented below.
@@ -137,12 +137,12 @@ class PatchDeploymentArgs:
         return pulumi.get(self, "one_time_schedule")
 
     @one_time_schedule.setter
-    def one_time_schedule(self, value: Optional[pulumi.Input['PatchDeploymentOneTimeScheduleArgs']]):
+    def one_time_schedule(self, value: pulumi.Input[Optional['PatchDeploymentOneTimeScheduleArgs']]):
         pulumi.set(self, "one_time_schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="patchConfig")
-    def patch_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigArgs']]:
+    def patch_config(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigArgs']]:
         """
         Patch configuration that is applied.
         Structure is documented below.
@@ -150,12 +150,12 @@ class PatchDeploymentArgs:
         return pulumi.get(self, "patch_config")
 
     @patch_config.setter
-    def patch_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigArgs']]):
+    def patch_config(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigArgs']]):
         pulumi.set(self, "patch_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -163,12 +163,12 @@ class PatchDeploymentArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="recurringSchedule")
-    def recurring_schedule(self) -> Optional[pulumi.Input['PatchDeploymentRecurringScheduleArgs']]:
+    def recurring_schedule(self) -> pulumi.Input[Optional['PatchDeploymentRecurringScheduleArgs']]:
         """
         Schedule recurring executions.
         Structure is documented below.
@@ -176,12 +176,12 @@ class PatchDeploymentArgs:
         return pulumi.get(self, "recurring_schedule")
 
     @recurring_schedule.setter
-    def recurring_schedule(self, value: Optional[pulumi.Input['PatchDeploymentRecurringScheduleArgs']]):
+    def recurring_schedule(self, value: pulumi.Input[Optional['PatchDeploymentRecurringScheduleArgs']]):
         pulumi.set(self, "recurring_schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def rollout(self) -> Optional[pulumi.Input['PatchDeploymentRolloutArgs']]:
+    def rollout(self) -> pulumi.Input[Optional['PatchDeploymentRolloutArgs']]:
         """
         Rollout strategy of the patch job.
         Structure is documented below.
@@ -189,26 +189,26 @@ class PatchDeploymentArgs:
         return pulumi.get(self, "rollout")
 
     @rollout.setter
-    def rollout(self, value: Optional[pulumi.Input['PatchDeploymentRolloutArgs']]):
+    def rollout(self, value: pulumi.Input[Optional['PatchDeploymentRolloutArgs']]):
         pulumi.set(self, "rollout", value)
 
 
 @pulumi.input_type
 class _PatchDeploymentState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_filter: Optional[pulumi.Input['PatchDeploymentInstanceFilterArgs']] = None,
-                 last_execute_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 one_time_schedule: Optional[pulumi.Input['PatchDeploymentOneTimeScheduleArgs']] = None,
-                 patch_config: Optional[pulumi.Input['PatchDeploymentPatchConfigArgs']] = None,
-                 patch_deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurring_schedule: Optional[pulumi.Input['PatchDeploymentRecurringScheduleArgs']] = None,
-                 rollout: Optional[pulumi.Input['PatchDeploymentRolloutArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_filter: pulumi.Input[Optional['PatchDeploymentInstanceFilterArgs']] = None,
+                 last_execute_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 one_time_schedule: pulumi.Input[Optional['PatchDeploymentOneTimeScheduleArgs']] = None,
+                 patch_config: pulumi.Input[Optional['PatchDeploymentPatchConfigArgs']] = None,
+                 patch_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurring_schedule: pulumi.Input[Optional['PatchDeploymentRecurringScheduleArgs']] = None,
+                 rollout: pulumi.Input[Optional['PatchDeploymentRolloutArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PatchDeployment resources.
 
@@ -271,7 +271,7 @@ class _PatchDeploymentState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time the patch deployment was created. Timestamp is in RFC3339 text format.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -279,24 +279,24 @@ class _PatchDeploymentState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the patch deployment. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Duration of the patch. After the duration ends, the patch times out.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
@@ -304,12 +304,12 @@ class _PatchDeploymentState:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceFilter")
-    def instance_filter(self) -> Optional[pulumi.Input['PatchDeploymentInstanceFilterArgs']]:
+    def instance_filter(self) -> pulumi.Input[Optional['PatchDeploymentInstanceFilterArgs']]:
         """
         VM instances to patch.
         Structure is documented below.
@@ -317,12 +317,12 @@ class _PatchDeploymentState:
         return pulumi.get(self, "instance_filter")
 
     @instance_filter.setter
-    def instance_filter(self, value: Optional[pulumi.Input['PatchDeploymentInstanceFilterArgs']]):
+    def instance_filter(self, value: pulumi.Input[Optional['PatchDeploymentInstanceFilterArgs']]):
         pulumi.set(self, "instance_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="lastExecuteTime")
-    def last_execute_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_execute_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -330,12 +330,12 @@ class _PatchDeploymentState:
         return pulumi.get(self, "last_execute_time")
 
     @last_execute_time.setter
-    def last_execute_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_execute_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_execute_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique name for the patch deployment resource in a project.
         The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
@@ -343,12 +343,12 @@ class _PatchDeploymentState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oneTimeSchedule")
-    def one_time_schedule(self) -> Optional[pulumi.Input['PatchDeploymentOneTimeScheduleArgs']]:
+    def one_time_schedule(self) -> pulumi.Input[Optional['PatchDeploymentOneTimeScheduleArgs']]:
         """
         Schedule a one-time execution.
         Structure is documented below.
@@ -356,12 +356,12 @@ class _PatchDeploymentState:
         return pulumi.get(self, "one_time_schedule")
 
     @one_time_schedule.setter
-    def one_time_schedule(self, value: Optional[pulumi.Input['PatchDeploymentOneTimeScheduleArgs']]):
+    def one_time_schedule(self, value: pulumi.Input[Optional['PatchDeploymentOneTimeScheduleArgs']]):
         pulumi.set(self, "one_time_schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="patchConfig")
-    def patch_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigArgs']]:
+    def patch_config(self) -> pulumi.Input[Optional['PatchDeploymentPatchConfigArgs']]:
         """
         Patch configuration that is applied.
         Structure is documented below.
@@ -369,12 +369,12 @@ class _PatchDeploymentState:
         return pulumi.get(self, "patch_config")
 
     @patch_config.setter
-    def patch_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigArgs']]):
+    def patch_config(self, value: pulumi.Input[Optional['PatchDeploymentPatchConfigArgs']]):
         pulumi.set(self, "patch_config", value)
 
     @_builtins.property
     @pulumi.getter(name="patchDeploymentId")
-    def patch_deployment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def patch_deployment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the patch deployment in the project. When creating a name the following rules apply:
         * Must contain only lowercase letters, numbers, and hyphens.
@@ -386,12 +386,12 @@ class _PatchDeploymentState:
         return pulumi.get(self, "patch_deployment_id")
 
     @patch_deployment_id.setter
-    def patch_deployment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def patch_deployment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "patch_deployment_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -399,12 +399,12 @@ class _PatchDeploymentState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="recurringSchedule")
-    def recurring_schedule(self) -> Optional[pulumi.Input['PatchDeploymentRecurringScheduleArgs']]:
+    def recurring_schedule(self) -> pulumi.Input[Optional['PatchDeploymentRecurringScheduleArgs']]:
         """
         Schedule recurring executions.
         Structure is documented below.
@@ -412,12 +412,12 @@ class _PatchDeploymentState:
         return pulumi.get(self, "recurring_schedule")
 
     @recurring_schedule.setter
-    def recurring_schedule(self, value: Optional[pulumi.Input['PatchDeploymentRecurringScheduleArgs']]):
+    def recurring_schedule(self, value: pulumi.Input[Optional['PatchDeploymentRecurringScheduleArgs']]):
         pulumi.set(self, "recurring_schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def rollout(self) -> Optional[pulumi.Input['PatchDeploymentRolloutArgs']]:
+    def rollout(self) -> pulumi.Input[Optional['PatchDeploymentRolloutArgs']]:
         """
         Rollout strategy of the patch job.
         Structure is documented below.
@@ -425,12 +425,12 @@ class _PatchDeploymentState:
         return pulumi.get(self, "rollout")
 
     @rollout.setter
-    def rollout(self, value: Optional[pulumi.Input['PatchDeploymentRolloutArgs']]):
+    def rollout(self, value: pulumi.Input[Optional['PatchDeploymentRolloutArgs']]):
         pulumi.set(self, "rollout", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -438,7 +438,7 @@ class _PatchDeploymentState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -448,15 +448,15 @@ class PatchDeployment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_filter: Optional[pulumi.Input[Union['PatchDeploymentInstanceFilterArgs', 'PatchDeploymentInstanceFilterArgsDict']]] = None,
-                 one_time_schedule: Optional[pulumi.Input[Union['PatchDeploymentOneTimeScheduleArgs', 'PatchDeploymentOneTimeScheduleArgsDict']]] = None,
-                 patch_config: Optional[pulumi.Input[Union['PatchDeploymentPatchConfigArgs', 'PatchDeploymentPatchConfigArgsDict']]] = None,
-                 patch_deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurring_schedule: Optional[pulumi.Input[Union['PatchDeploymentRecurringScheduleArgs', 'PatchDeploymentRecurringScheduleArgsDict']]] = None,
-                 rollout: Optional[pulumi.Input[Union['PatchDeploymentRolloutArgs', 'PatchDeploymentRolloutArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_filter: pulumi.Input[Optional[Union['PatchDeploymentInstanceFilterArgs', 'PatchDeploymentInstanceFilterArgsDict']]] = None,
+                 one_time_schedule: pulumi.Input[Optional[Union['PatchDeploymentOneTimeScheduleArgs', 'PatchDeploymentOneTimeScheduleArgsDict']]] = None,
+                 patch_config: pulumi.Input[Optional[Union['PatchDeploymentPatchConfigArgs', 'PatchDeploymentPatchConfigArgsDict']]] = None,
+                 patch_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurring_schedule: pulumi.Input[Optional[Union['PatchDeploymentRecurringScheduleArgs', 'PatchDeploymentRecurringScheduleArgsDict']]] = None,
+                 rollout: pulumi.Input[Optional[Union['PatchDeploymentRolloutArgs', 'PatchDeploymentRolloutArgsDict']]] = None,
                  __props__=None):
         """
         Patch deployments are configurations that individual patch jobs use to complete a patch.
@@ -1013,15 +1013,15 @@ class PatchDeployment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_filter: Optional[pulumi.Input[Union['PatchDeploymentInstanceFilterArgs', 'PatchDeploymentInstanceFilterArgsDict']]] = None,
-                 one_time_schedule: Optional[pulumi.Input[Union['PatchDeploymentOneTimeScheduleArgs', 'PatchDeploymentOneTimeScheduleArgsDict']]] = None,
-                 patch_config: Optional[pulumi.Input[Union['PatchDeploymentPatchConfigArgs', 'PatchDeploymentPatchConfigArgsDict']]] = None,
-                 patch_deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurring_schedule: Optional[pulumi.Input[Union['PatchDeploymentRecurringScheduleArgs', 'PatchDeploymentRecurringScheduleArgsDict']]] = None,
-                 rollout: Optional[pulumi.Input[Union['PatchDeploymentRolloutArgs', 'PatchDeploymentRolloutArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_filter: pulumi.Input[Optional[Union['PatchDeploymentInstanceFilterArgs', 'PatchDeploymentInstanceFilterArgsDict']]] = None,
+                 one_time_schedule: pulumi.Input[Optional[Union['PatchDeploymentOneTimeScheduleArgs', 'PatchDeploymentOneTimeScheduleArgsDict']]] = None,
+                 patch_config: pulumi.Input[Optional[Union['PatchDeploymentPatchConfigArgs', 'PatchDeploymentPatchConfigArgsDict']]] = None,
+                 patch_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurring_schedule: pulumi.Input[Optional[Union['PatchDeploymentRecurringScheduleArgs', 'PatchDeploymentRecurringScheduleArgsDict']]] = None,
+                 rollout: pulumi.Input[Optional[Union['PatchDeploymentRolloutArgs', 'PatchDeploymentRolloutArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1058,19 +1058,19 @@ class PatchDeployment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            duration: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_filter: Optional[pulumi.Input[Union['PatchDeploymentInstanceFilterArgs', 'PatchDeploymentInstanceFilterArgsDict']]] = None,
-            last_execute_time: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            one_time_schedule: Optional[pulumi.Input[Union['PatchDeploymentOneTimeScheduleArgs', 'PatchDeploymentOneTimeScheduleArgsDict']]] = None,
-            patch_config: Optional[pulumi.Input[Union['PatchDeploymentPatchConfigArgs', 'PatchDeploymentPatchConfigArgsDict']]] = None,
-            patch_deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            recurring_schedule: Optional[pulumi.Input[Union['PatchDeploymentRecurringScheduleArgs', 'PatchDeploymentRecurringScheduleArgsDict']]] = None,
-            rollout: Optional[pulumi.Input[Union['PatchDeploymentRolloutArgs', 'PatchDeploymentRolloutArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'PatchDeployment':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_filter: pulumi.Input[Optional[Union['PatchDeploymentInstanceFilterArgs', 'PatchDeploymentInstanceFilterArgsDict']]] = None,
+            last_execute_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            one_time_schedule: pulumi.Input[Optional[Union['PatchDeploymentOneTimeScheduleArgs', 'PatchDeploymentOneTimeScheduleArgsDict']]] = None,
+            patch_config: pulumi.Input[Optional[Union['PatchDeploymentPatchConfigArgs', 'PatchDeploymentPatchConfigArgsDict']]] = None,
+            patch_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            recurring_schedule: pulumi.Input[Optional[Union['PatchDeploymentRecurringScheduleArgs', 'PatchDeploymentRecurringScheduleArgsDict']]] = None,
+            rollout: pulumi.Input[Optional[Union['PatchDeploymentRolloutArgs', 'PatchDeploymentRolloutArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PatchDeployment':
         """
         Get an existing PatchDeployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -126,8 +126,8 @@ def get_ai_featurestore_entitytype_iam_policy(entitytype: Optional[_builtins.str
         featurestore=pulumi.get(__ret__, 'featurestore'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-def get_ai_featurestore_entitytype_iam_policy_output(entitytype: Optional[pulumi.Input[_builtins.str]] = None,
-                                                     featurestore: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ai_featurestore_entitytype_iam_policy_output(entitytype: pulumi.Input[Optional[_builtins.str]] = None,
+                                                     featurestore: pulumi.Input[Optional[_builtins.str]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiFeaturestoreEntitytypeIamPolicyResult]:
     """
     Retrieves the current IAM policy data for featurestoreentitytype

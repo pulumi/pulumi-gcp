@@ -564,11 +564,11 @@ class DashboardChartChartLayoutArgsDict(TypedDict):
     """
     (Required)
     """
-    start_x: NotRequired[pulumi.Input[_builtins.int]]
+    start_x: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    start_y: NotRequired[pulumi.Input[_builtins.int]]
+    start_y: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
@@ -578,8 +578,8 @@ class DashboardChartChartLayoutArgs:
     def __init__(__self__, *,
                  span_x: pulumi.Input[_builtins.int],
                  span_y: pulumi.Input[_builtins.int],
-                 start_x: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_y: Optional[pulumi.Input[_builtins.int]] = None):
+                 start_x: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_y: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] span_x: (Required)
         :param pulumi.Input[_builtins.int] span_y: (Required)
@@ -619,26 +619,26 @@ class DashboardChartChartLayoutArgs:
 
     @_builtins.property
     @pulumi.getter(name="startX")
-    def start_x(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_x(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "start_x")
 
     @start_x.setter
-    def start_x(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_x(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_x", value)
 
     @_builtins.property
     @pulumi.getter(name="startY")
-    def start_y(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_y(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "start_y")
 
     @start_y.setter
-    def start_y(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_y(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_y", value)
 
 
@@ -652,31 +652,31 @@ class DashboardChartDashboardChartArgsDict(TypedDict):
     Visualization config for a chart.
     Structure is documented below.
     """
-    chart_datasource: NotRequired[pulumi.Input['DashboardChartDashboardChartChartDatasourceArgsDict']]
+    chart_datasource: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartChartDatasourceArgs']]]
     """
     Query and datasource used in the chart.
     Structure is documented below.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the dashboardChart.
     """
-    drill_down_config: NotRequired[pulumi.Input['DashboardChartDashboardChartDrillDownConfigArgsDict']]
+    drill_down_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigArgs']]]
     """
     Drill down configuration.
     Structure is documented below.
     """
-    etag: NotRequired[pulumi.Input[_builtins.str]]
+    etag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     This checksum is computed by the server.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The resource name of the DashboardChart.
     """
-    tile_type: NotRequired[pulumi.Input[_builtins.str]]
+    tile_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of tile (e.g., visualization, button, markdown).
     Possible values are: `TILE_TYPE_UNSPECIFIED`, `TILE_TYPE_VISUALIZATION`, `TILE_TYPE_BUTTON`, `TILE_TYPE_MARKDOWN`.
@@ -687,12 +687,12 @@ class DashboardChartDashboardChartArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  visualization: pulumi.Input['DashboardChartDashboardChartVisualizationArgs'],
-                 chart_datasource: Optional[pulumi.Input['DashboardChartDashboardChartChartDatasourceArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 drill_down_config: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tile_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 chart_datasource: pulumi.Input[Optional['DashboardChartDashboardChartChartDatasourceArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 drill_down_config: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tile_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] display_name: Display name/Title of the dashboardChart visible to users.
         :param pulumi.Input['DashboardChartDashboardChartVisualizationArgs'] visualization: Visualization config for a chart.
@@ -751,7 +751,7 @@ class DashboardChartDashboardChartArgs:
 
     @_builtins.property
     @pulumi.getter(name="chartDatasource")
-    def chart_datasource(self) -> Optional[pulumi.Input['DashboardChartDashboardChartChartDatasourceArgs']]:
+    def chart_datasource(self) -> pulumi.Input[Optional['DashboardChartDashboardChartChartDatasourceArgs']]:
         """
         Query and datasource used in the chart.
         Structure is documented below.
@@ -759,24 +759,24 @@ class DashboardChartDashboardChartArgs:
         return pulumi.get(self, "chart_datasource")
 
     @chart_datasource.setter
-    def chart_datasource(self, value: Optional[pulumi.Input['DashboardChartDashboardChartChartDatasourceArgs']]):
+    def chart_datasource(self, value: pulumi.Input[Optional['DashboardChartDashboardChartChartDatasourceArgs']]):
         pulumi.set(self, "chart_datasource", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the dashboardChart.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="drillDownConfig")
-    def drill_down_config(self) -> Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigArgs']]:
+    def drill_down_config(self) -> pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigArgs']]:
         """
         Drill down configuration.
         Structure is documented below.
@@ -784,12 +784,12 @@ class DashboardChartDashboardChartArgs:
         return pulumi.get(self, "drill_down_config")
 
     @drill_down_config.setter
-    def drill_down_config(self, value: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigArgs']]):
+    def drill_down_config(self, value: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigArgs']]):
         pulumi.set(self, "drill_down_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         This checksum is computed by the server.
@@ -797,12 +797,12 @@ class DashboardChartDashboardChartArgs:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The resource name of the DashboardChart.
@@ -810,12 +810,12 @@ class DashboardChartDashboardChartArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="tileType")
-    def tile_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tile_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of tile (e.g., visualization, button, markdown).
         Possible values are: `TILE_TYPE_UNSPECIFIED`, `TILE_TYPE_VISUALIZATION`, `TILE_TYPE_BUTTON`, `TILE_TYPE_MARKDOWN`.
@@ -823,17 +823,17 @@ class DashboardChartDashboardChartArgs:
         return pulumi.get(self, "tile_type")
 
     @tile_type.setter
-    def tile_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tile_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tile_type", value)
 
 
 class DashboardChartDashboardChartChartDatasourceArgsDict(TypedDict):
-    dashboard_query: NotRequired[pulumi.Input[_builtins.str]]
+    dashboard_query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The unique system ID of the query linked to this chart.
     """
-    data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    data_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Name(s) of the datasource used in the chart. Available values include:
     'UDM', 'ENTITY', 'INGESTION_METRICS', 'RULE_DETECTIONS', 'RULESETS',
@@ -844,8 +844,8 @@ class DashboardChartDashboardChartChartDatasourceArgsDict(TypedDict):
 @pulumi.input_type
 class DashboardChartDashboardChartChartDatasourceArgs:
     def __init__(__self__, *,
-                 dashboard_query: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 dashboard_query: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] dashboard_query: (Output)
                The unique system ID of the query linked to this chart.
@@ -861,7 +861,7 @@ class DashboardChartDashboardChartChartDatasourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="dashboardQuery")
-    def dashboard_query(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_query(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The unique system ID of the query linked to this chart.
@@ -869,12 +869,12 @@ class DashboardChartDashboardChartChartDatasourceArgs:
         return pulumi.get(self, "dashboard_query")
 
     @dashboard_query.setter
-    def dashboard_query(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_query", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSources")
-    def data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def data_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Name(s) of the datasource used in the chart. Available values include:
         'UDM', 'ENTITY', 'INGESTION_METRICS', 'RULE_DETECTIONS', 'RULESETS',
@@ -884,16 +884,16 @@ class DashboardChartDashboardChartChartDatasourceArgs:
         return pulumi.get(self, "data_sources")
 
     @data_sources.setter
-    def data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def data_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_sources", value)
 
 
 class DashboardChartDashboardChartDrillDownConfigArgsDict(TypedDict):
-    left_drill_downs: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgsDict']]]]
+    left_drill_downs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs']]]]]
     """
     Structure is documented below.
     """
-    right_drill_downs: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownArgsDict']]]]
+    right_drill_downs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownArgs']]]]]
     """
     Structure is documented below.
     """
@@ -901,8 +901,8 @@ class DashboardChartDashboardChartDrillDownConfigArgsDict(TypedDict):
 @pulumi.input_type
 class DashboardChartDashboardChartDrillDownConfigArgs:
     def __init__(__self__, *,
-                 left_drill_downs: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs']]]] = None,
-                 right_drill_downs: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownArgs']]]] = None):
+                 left_drill_downs: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs']]]] = None,
+                 right_drill_downs: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs']]] left_drill_downs: Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownArgs']]] right_drill_downs: Structure is documented below.
@@ -914,26 +914,26 @@ class DashboardChartDashboardChartDrillDownConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="leftDrillDowns")
-    def left_drill_downs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs']]]]:
+    def left_drill_downs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "left_drill_downs")
 
     @left_drill_downs.setter
-    def left_drill_downs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs']]]]):
+    def left_drill_downs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs']]]]):
         pulumi.set(self, "left_drill_downs", value)
 
     @_builtins.property
     @pulumi.getter(name="rightDrillDowns")
-    def right_drill_downs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownArgs']]]]:
+    def right_drill_downs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "right_drill_downs")
 
     @right_drill_downs.setter
-    def right_drill_downs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownArgs']]]]):
+    def right_drill_downs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownArgs']]]]):
         pulumi.set(self, "right_drill_downs", value)
 
 
@@ -946,12 +946,12 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgsDict(TypedDict
     """
     (Required)
     """
-    custom_settings: NotRequired[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgsDict']]
+    custom_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    default_settings: NotRequired[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownDefaultSettingsArgsDict']]
+    default_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownDefaultSettingsArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -962,8 +962,8 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  id: pulumi.Input[_builtins.str],
-                 custom_settings: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs']] = None,
-                 default_settings: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownDefaultSettingsArgs']] = None):
+                 custom_settings: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs']] = None,
+                 default_settings: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownDefaultSettingsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] display_name: (Required)
         :param pulumi.Input[_builtins.str] id: (Required)
@@ -1005,7 +1005,7 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs:
 
     @_builtins.property
     @pulumi.getter(name="customSettings")
-    def custom_settings(self) -> Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs']]:
+    def custom_settings(self) -> pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1013,12 +1013,12 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs:
         return pulumi.get(self, "custom_settings")
 
     @custom_settings.setter
-    def custom_settings(self, value: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs']]):
+    def custom_settings(self, value: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs']]):
         pulumi.set(self, "custom_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSettings")
-    def default_settings(self) -> Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownDefaultSettingsArgs']]:
+    def default_settings(self) -> pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownDefaultSettingsArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1026,7 +1026,7 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs:
         return pulumi.get(self, "default_settings")
 
     @default_settings.setter
-    def default_settings(self, value: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownDefaultSettingsArgs']]):
+    def default_settings(self, value: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownDefaultSettingsArgs']]):
         pulumi.set(self, "default_settings", value)
 
 
@@ -1035,21 +1035,21 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs
     """
     (Required)
     """
-    external_link: NotRequired[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLinkArgsDict']]
+    external_link: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLinkArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    filter: NotRequired[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilterArgsDict']]
+    filter: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilterArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    left_click_column: NotRequired[pulumi.Input[_builtins.str]]
+    left_click_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    query: NotRequired[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsQueryArgsDict']]
+    query: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsQueryArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1059,10 +1059,10 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs
 class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs:
     def __init__(__self__, *,
                  new_tab: pulumi.Input[_builtins.bool],
-                 external_link: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLinkArgs']] = None,
-                 filter: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilterArgs']] = None,
-                 left_click_column: Optional[pulumi.Input[_builtins.str]] = None,
-                 query: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsQueryArgs']] = None):
+                 external_link: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLinkArgs']] = None,
+                 filter: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilterArgs']] = None,
+                 left_click_column: pulumi.Input[Optional[_builtins.str]] = None,
+                 query: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsQueryArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] new_tab: (Required)
         :param pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLinkArgs'] external_link: A nested object resource.
@@ -1097,7 +1097,7 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs
 
     @_builtins.property
     @pulumi.getter(name="externalLink")
-    def external_link(self) -> Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLinkArgs']]:
+    def external_link(self) -> pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLinkArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1105,12 +1105,12 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs
         return pulumi.get(self, "external_link")
 
     @external_link.setter
-    def external_link(self, value: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLinkArgs']]):
+    def external_link(self, value: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLinkArgs']]):
         pulumi.set(self, "external_link", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilterArgs']]:
+    def filter(self) -> pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilterArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1118,24 +1118,24 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilterArgs']]):
+    def filter(self, value: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilterArgs']]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="leftClickColumn")
-    def left_click_column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def left_click_column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "left_click_column")
 
     @left_click_column.setter
-    def left_click_column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def left_click_column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "left_click_column", value)
 
     @_builtins.property
     @pulumi.getter
-    def query(self) -> Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsQueryArgs']]:
+    def query(self) -> pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsQueryArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1143,7 +1143,7 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs
         return pulumi.get(self, "query")
 
     @query.setter
-    def query(self, value: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsQueryArgs']]):
+    def query(self, value: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsQueryArgs']]):
         pulumi.set(self, "query", value)
 
 
@@ -1152,7 +1152,7 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExte
     """
     (Required)
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -1161,7 +1161,7 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExte
 class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLinkArgs:
     def __init__(__self__, *,
                  link: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] link: (Required)
         :param pulumi.Input[_builtins.str] description: (Optional)
@@ -1184,14 +1184,14 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExte
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -1271,11 +1271,11 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilt
 
 
 class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilterDashboardFilterFilterOperatorAndValueArgsDict(TypedDict):
-    field_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    field_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Optional)
     """
-    filter_operator: NotRequired[pulumi.Input[_builtins.str]]
+    filter_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
     """
@@ -1283,8 +1283,8 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilt
 @pulumi.input_type
 class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilterDashboardFilterFilterOperatorAndValueArgs:
     def __init__(__self__, *,
-                 field_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 filter_operator: Optional[pulumi.Input[_builtins.str]] = None):
+                 field_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filter_operator: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] field_values: (Optional)
         :param pulumi.Input[_builtins.str] filter_operator: Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
@@ -1296,26 +1296,26 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilt
 
     @_builtins.property
     @pulumi.getter(name="fieldValues")
-    def field_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def field_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional)
         """
         return pulumi.get(self, "field_values")
 
     @field_values.setter
-    def field_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def field_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "field_values", value)
 
     @_builtins.property
     @pulumi.getter(name="filterOperator")
-    def filter_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
         """
         return pulumi.get(self, "filter_operator")
 
     @filter_operator.setter
-    def filter_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_operator", value)
 
 
@@ -1384,12 +1384,12 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownArgsDict(TypedDic
     """
     (Required)
     """
-    custom_settings: NotRequired[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArgsDict']]
+    custom_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    default_settings: NotRequired[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownDefaultSettingsArgsDict']]
+    default_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownDefaultSettingsArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1400,8 +1400,8 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  id: pulumi.Input[_builtins.str],
-                 custom_settings: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArgs']] = None,
-                 default_settings: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownDefaultSettingsArgs']] = None):
+                 custom_settings: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArgs']] = None,
+                 default_settings: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownDefaultSettingsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] display_name: (Required)
         :param pulumi.Input[_builtins.str] id: (Required)
@@ -1443,7 +1443,7 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownArgs:
 
     @_builtins.property
     @pulumi.getter(name="customSettings")
-    def custom_settings(self) -> Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArgs']]:
+    def custom_settings(self) -> pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1451,12 +1451,12 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownArgs:
         return pulumi.get(self, "custom_settings")
 
     @custom_settings.setter
-    def custom_settings(self, value: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArgs']]):
+    def custom_settings(self, value: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArgs']]):
         pulumi.set(self, "custom_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSettings")
-    def default_settings(self) -> Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownDefaultSettingsArgs']]:
+    def default_settings(self) -> pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownDefaultSettingsArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1464,7 +1464,7 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownArgs:
         return pulumi.get(self, "default_settings")
 
     @default_settings.setter
-    def default_settings(self, value: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownDefaultSettingsArgs']]):
+    def default_settings(self, value: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownDefaultSettingsArgs']]):
         pulumi.set(self, "default_settings", value)
 
 
@@ -1473,17 +1473,17 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArg
     """
     (Required)
     """
-    external_link: NotRequired[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExternalLinkArgsDict']]
+    external_link: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExternalLinkArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    filter: NotRequired[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFilterArgsDict']]
+    filter: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFilterArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    query: NotRequired[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsQueryArgsDict']]
+    query: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsQueryArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1493,9 +1493,9 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArg
 class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArgs:
     def __init__(__self__, *,
                  new_tab: pulumi.Input[_builtins.bool],
-                 external_link: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExternalLinkArgs']] = None,
-                 filter: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFilterArgs']] = None,
-                 query: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsQueryArgs']] = None):
+                 external_link: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExternalLinkArgs']] = None,
+                 filter: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFilterArgs']] = None,
+                 query: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsQueryArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] new_tab: (Required)
         :param pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExternalLinkArgs'] external_link: A nested object resource.
@@ -1527,7 +1527,7 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArg
 
     @_builtins.property
     @pulumi.getter(name="externalLink")
-    def external_link(self) -> Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExternalLinkArgs']]:
+    def external_link(self) -> pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExternalLinkArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1535,12 +1535,12 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArg
         return pulumi.get(self, "external_link")
 
     @external_link.setter
-    def external_link(self, value: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExternalLinkArgs']]):
+    def external_link(self, value: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExternalLinkArgs']]):
         pulumi.set(self, "external_link", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFilterArgs']]:
+    def filter(self) -> pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFilterArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1548,12 +1548,12 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArg
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFilterArgs']]):
+    def filter(self, value: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFilterArgs']]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def query(self) -> Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsQueryArgs']]:
+    def query(self) -> pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsQueryArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1561,7 +1561,7 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArg
         return pulumi.get(self, "query")
 
     @query.setter
-    def query(self, value: Optional[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsQueryArgs']]):
+    def query(self, value: pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsQueryArgs']]):
         pulumi.set(self, "query", value)
 
 
@@ -1570,7 +1570,7 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExt
     """
     (Required)
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -1579,7 +1579,7 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExt
 class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExternalLinkArgs:
     def __init__(__self__, *,
                  link: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] link: (Required)
         :param pulumi.Input[_builtins.str] description: (Optional)
@@ -1602,14 +1602,14 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExt
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -1689,11 +1689,11 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFil
 
 
 class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFilterDashboardFilterFilterOperatorAndValueArgsDict(TypedDict):
-    field_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    field_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Optional)
     """
-    filter_operator: NotRequired[pulumi.Input[_builtins.str]]
+    filter_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
     """
@@ -1701,8 +1701,8 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFil
 @pulumi.input_type
 class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFilterDashboardFilterFilterOperatorAndValueArgs:
     def __init__(__self__, *,
-                 field_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 filter_operator: Optional[pulumi.Input[_builtins.str]] = None):
+                 field_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filter_operator: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] field_values: (Optional)
         :param pulumi.Input[_builtins.str] filter_operator: Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
@@ -1714,26 +1714,26 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFil
 
     @_builtins.property
     @pulumi.getter(name="fieldValues")
-    def field_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def field_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional)
         """
         return pulumi.get(self, "field_values")
 
     @field_values.setter
-    def field_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def field_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "field_values", value)
 
     @_builtins.property
     @pulumi.getter(name="filterOperator")
-    def filter_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
         """
         return pulumi.get(self, "filter_operator")
 
     @filter_operator.setter
-    def filter_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_operator", value)
 
 
@@ -1794,64 +1794,64 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownDefaultSettingsAr
 
 
 class DashboardChartDashboardChartVisualizationArgsDict(TypedDict):
-    button: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationButtonArgsDict']]
+    button: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationButtonArgs']]]
     """
     Button config if tileType is TILE_TYPE_BUTTON.
     Structure is documented below.
     """
-    column_defs: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationColumnDefArgsDict']]]]
+    column_defs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationColumnDefArgs']]]]]
     """
     Structure is documented below.
     """
-    google_maps_config: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigArgsDict']]
+    google_maps_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    grouping_type: NotRequired[pulumi.Input[_builtins.str]]
+    grouping_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    legends: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationLegendArgsDict']]]]
+    legends: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationLegendArgs']]]]]
     """
     Structure is documented below.
     """
-    markdown: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationMarkdownArgsDict']]
+    markdown: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationMarkdownArgs']]]
     """
     Markdown config if tileType is TILE_TYPE_MARKDOWN.
     Structure is documented below.
     """
-    series: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesArgsDict']]]]
+    series: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesArgs']]]]]
     """
     Structure is documented below.
     """
-    series_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    series_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Optional)
     """
-    table_config: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigArgsDict']]
+    table_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationTableConfigArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    threshold_coloring_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    threshold_coloring_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
-    tooltip: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationTooltipArgsDict']]
+    tooltip: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationTooltipArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    visual_maps: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapArgsDict']]]]
+    visual_maps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapArgs']]]]]
     """
     Structure is documented below.
     """
-    x_axes: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationXAxisArgsDict']]]]
+    x_axes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationXAxisArgs']]]]]
     """
     Structure is documented below.
     """
-    y_axes: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationYAxisArgsDict']]]]
+    y_axes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationYAxisArgs']]]]]
     """
     Structure is documented below.
     """
@@ -1859,20 +1859,20 @@ class DashboardChartDashboardChartVisualizationArgsDict(TypedDict):
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationArgs:
     def __init__(__self__, *,
-                 button: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationButtonArgs']] = None,
-                 column_defs: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationColumnDefArgs']]]] = None,
-                 google_maps_config: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigArgs']] = None,
-                 grouping_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 legends: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationLegendArgs']]]] = None,
-                 markdown: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationMarkdownArgs']] = None,
-                 series: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesArgs']]]] = None,
-                 series_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 table_config: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigArgs']] = None,
-                 threshold_coloring_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tooltip: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationTooltipArgs']] = None,
-                 visual_maps: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapArgs']]]] = None,
-                 x_axes: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationXAxisArgs']]]] = None,
-                 y_axes: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationYAxisArgs']]]] = None):
+                 button: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationButtonArgs']] = None,
+                 column_defs: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationColumnDefArgs']]]] = None,
+                 google_maps_config: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigArgs']] = None,
+                 grouping_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 legends: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationLegendArgs']]]] = None,
+                 markdown: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationMarkdownArgs']] = None,
+                 series: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesArgs']]]] = None,
+                 series_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 table_config: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationTableConfigArgs']] = None,
+                 threshold_coloring_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tooltip: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationTooltipArgs']] = None,
+                 visual_maps: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapArgs']]]] = None,
+                 x_axes: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationXAxisArgs']]]] = None,
+                 y_axes: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationYAxisArgs']]]] = None):
         """
         :param pulumi.Input['DashboardChartDashboardChartVisualizationButtonArgs'] button: Button config if tileType is TILE_TYPE_BUTTON.
                Structure is documented below.
@@ -1925,7 +1925,7 @@ class DashboardChartDashboardChartVisualizationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def button(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationButtonArgs']]:
+    def button(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationButtonArgs']]:
         """
         Button config if tileType is TILE_TYPE_BUTTON.
         Structure is documented below.
@@ -1933,24 +1933,24 @@ class DashboardChartDashboardChartVisualizationArgs:
         return pulumi.get(self, "button")
 
     @button.setter
-    def button(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationButtonArgs']]):
+    def button(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationButtonArgs']]):
         pulumi.set(self, "button", value)
 
     @_builtins.property
     @pulumi.getter(name="columnDefs")
-    def column_defs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationColumnDefArgs']]]]:
+    def column_defs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationColumnDefArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "column_defs")
 
     @column_defs.setter
-    def column_defs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationColumnDefArgs']]]]):
+    def column_defs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationColumnDefArgs']]]]):
         pulumi.set(self, "column_defs", value)
 
     @_builtins.property
     @pulumi.getter(name="googleMapsConfig")
-    def google_maps_config(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigArgs']]:
+    def google_maps_config(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1958,36 +1958,36 @@ class DashboardChartDashboardChartVisualizationArgs:
         return pulumi.get(self, "google_maps_config")
 
     @google_maps_config.setter
-    def google_maps_config(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigArgs']]):
+    def google_maps_config(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigArgs']]):
         pulumi.set(self, "google_maps_config", value)
 
     @_builtins.property
     @pulumi.getter(name="groupingType")
-    def grouping_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grouping_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "grouping_type")
 
     @grouping_type.setter
-    def grouping_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grouping_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grouping_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def legends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationLegendArgs']]]]:
+    def legends(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationLegendArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "legends")
 
     @legends.setter
-    def legends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationLegendArgs']]]]):
+    def legends(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationLegendArgs']]]]):
         pulumi.set(self, "legends", value)
 
     @_builtins.property
     @pulumi.getter
-    def markdown(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationMarkdownArgs']]:
+    def markdown(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationMarkdownArgs']]:
         """
         Markdown config if tileType is TILE_TYPE_MARKDOWN.
         Structure is documented below.
@@ -1995,36 +1995,36 @@ class DashboardChartDashboardChartVisualizationArgs:
         return pulumi.get(self, "markdown")
 
     @markdown.setter
-    def markdown(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationMarkdownArgs']]):
+    def markdown(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationMarkdownArgs']]):
         pulumi.set(self, "markdown", value)
 
     @_builtins.property
     @pulumi.getter
-    def series(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesArgs']]]]:
+    def series(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "series")
 
     @series.setter
-    def series(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesArgs']]]]):
+    def series(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesArgs']]]]):
         pulumi.set(self, "series", value)
 
     @_builtins.property
     @pulumi.getter(name="seriesColumns")
-    def series_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def series_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional)
         """
         return pulumi.get(self, "series_columns")
 
     @series_columns.setter
-    def series_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def series_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "series_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="tableConfig")
-    def table_config(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigArgs']]:
+    def table_config(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationTableConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -2032,24 +2032,24 @@ class DashboardChartDashboardChartVisualizationArgs:
         return pulumi.get(self, "table_config")
 
     @table_config.setter
-    def table_config(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigArgs']]):
+    def table_config(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationTableConfigArgs']]):
         pulumi.set(self, "table_config", value)
 
     @_builtins.property
     @pulumi.getter(name="thresholdColoringEnabled")
-    def threshold_coloring_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def threshold_coloring_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "threshold_coloring_enabled")
 
     @threshold_coloring_enabled.setter
-    def threshold_coloring_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def threshold_coloring_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "threshold_coloring_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def tooltip(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationTooltipArgs']]:
+    def tooltip(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationTooltipArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -2057,43 +2057,43 @@ class DashboardChartDashboardChartVisualizationArgs:
         return pulumi.get(self, "tooltip")
 
     @tooltip.setter
-    def tooltip(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationTooltipArgs']]):
+    def tooltip(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationTooltipArgs']]):
         pulumi.set(self, "tooltip", value)
 
     @_builtins.property
     @pulumi.getter(name="visualMaps")
-    def visual_maps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapArgs']]]]:
+    def visual_maps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "visual_maps")
 
     @visual_maps.setter
-    def visual_maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapArgs']]]]):
+    def visual_maps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapArgs']]]]):
         pulumi.set(self, "visual_maps", value)
 
     @_builtins.property
     @pulumi.getter(name="xAxes")
-    def x_axes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationXAxisArgs']]]]:
+    def x_axes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationXAxisArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "x_axes")
 
     @x_axes.setter
-    def x_axes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationXAxisArgs']]]]):
+    def x_axes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationXAxisArgs']]]]):
         pulumi.set(self, "x_axes", value)
 
     @_builtins.property
     @pulumi.getter(name="yAxes")
-    def y_axes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationYAxisArgs']]]]:
+    def y_axes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationYAxisArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "y_axes")
 
     @y_axes.setter
-    def y_axes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationYAxisArgs']]]]):
+    def y_axes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationYAxisArgs']]]]):
         pulumi.set(self, "y_axes", value)
 
 
@@ -2106,15 +2106,15 @@ class DashboardChartDashboardChartVisualizationButtonArgsDict(TypedDict):
     """
     (Required)
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    new_tab: NotRequired[pulumi.Input[_builtins.bool]]
+    new_tab: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
-    properties: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationButtonPropertiesArgsDict']]
+    properties: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationButtonPropertiesArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -2125,9 +2125,9 @@ class DashboardChartDashboardChartVisualizationButtonArgs:
     def __init__(__self__, *,
                  hyperlink: pulumi.Input[_builtins.str],
                  label: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_tab: Optional[pulumi.Input[_builtins.bool]] = None,
-                 properties: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationButtonPropertiesArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_tab: pulumi.Input[Optional[_builtins.bool]] = None,
+                 properties: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationButtonPropertiesArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] hyperlink: (Required)
         :param pulumi.Input[_builtins.str] label: (Required)
@@ -2171,31 +2171,31 @@ class DashboardChartDashboardChartVisualizationButtonArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="newTab")
-    def new_tab(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def new_tab(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "new_tab")
 
     @new_tab.setter
-    def new_tab(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def new_tab(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "new_tab", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationButtonPropertiesArgs']]:
+    def properties(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationButtonPropertiesArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -2203,16 +2203,16 @@ class DashboardChartDashboardChartVisualizationButtonArgs:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationButtonPropertiesArgs']]):
+    def properties(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationButtonPropertiesArgs']]):
         pulumi.set(self, "properties", value)
 
 
 class DashboardChartDashboardChartVisualizationButtonPropertiesArgsDict(TypedDict):
-    button_style: NotRequired[pulumi.Input[_builtins.str]]
+    button_style: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `BUTTON_STYLE_UNSPECIFIED`, `BUTTON_STYLE_FILLED`, `BUTTON_STYLE_OUTLINED`, `BUTTON_STYLE_TRANSPARENT`.
     """
-    color: NotRequired[pulumi.Input[_builtins.str]]
+    color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -2220,8 +2220,8 @@ class DashboardChartDashboardChartVisualizationButtonPropertiesArgsDict(TypedDic
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationButtonPropertiesArgs:
     def __init__(__self__, *,
-                 button_style: Optional[pulumi.Input[_builtins.str]] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None):
+                 button_style: pulumi.Input[Optional[_builtins.str]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] button_style: Possible values are: `BUTTON_STYLE_UNSPECIFIED`, `BUTTON_STYLE_FILLED`, `BUTTON_STYLE_OUTLINED`, `BUTTON_STYLE_TRANSPARENT`.
         :param pulumi.Input[_builtins.str] color: (Optional)
@@ -2233,35 +2233,35 @@ class DashboardChartDashboardChartVisualizationButtonPropertiesArgs:
 
     @_builtins.property
     @pulumi.getter(name="buttonStyle")
-    def button_style(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def button_style(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `BUTTON_STYLE_UNSPECIFIED`, `BUTTON_STYLE_FILLED`, `BUTTON_STYLE_OUTLINED`, `BUTTON_STYLE_TRANSPARENT`.
         """
         return pulumi.get(self, "button_style")
 
     @button_style.setter
-    def button_style(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def button_style(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "button_style", value)
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
 
 class DashboardChartDashboardChartVisualizationColumnDefArgsDict(TypedDict):
-    field: NotRequired[pulumi.Input[_builtins.str]]
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    header: NotRequired[pulumi.Input[_builtins.str]]
+    header: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -2269,8 +2269,8 @@ class DashboardChartDashboardChartVisualizationColumnDefArgsDict(TypedDict):
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationColumnDefArgs:
     def __init__(__self__, *,
-                 field: Optional[pulumi.Input[_builtins.str]] = None,
-                 header: Optional[pulumi.Input[_builtins.str]] = None):
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 header: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] field: (Optional)
         :param pulumi.Input[_builtins.str] header: (Optional)
@@ -2282,45 +2282,45 @@ class DashboardChartDashboardChartVisualizationColumnDefArgs:
 
     @_builtins.property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field", value)
 
     @_builtins.property
     @pulumi.getter
-    def header(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def header(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "header")
 
     @header.setter
-    def header(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def header(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "header", value)
 
 
 class DashboardChartDashboardChartVisualizationGoogleMapsConfigArgsDict(TypedDict):
-    data_settings: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgsDict']]
+    data_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    map_position: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPositionArgsDict']]
+    map_position: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPositionArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    plot_mode: NotRequired[pulumi.Input[_builtins.str]]
+    plot_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `PLOT_MODE_UNSPECIFIED`, `PLOT_MODE_POINTS`, `PLOT_MODE_HEATMAP`, `PLOT_MODE_BOTH`.
     """
-    point_settings: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettingsArgsDict']]
+    point_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettingsArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -2329,10 +2329,10 @@ class DashboardChartDashboardChartVisualizationGoogleMapsConfigArgsDict(TypedDic
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationGoogleMapsConfigArgs:
     def __init__(__self__, *,
-                 data_settings: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgs']] = None,
-                 map_position: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPositionArgs']] = None,
-                 plot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 point_settings: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettingsArgs']] = None):
+                 data_settings: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgs']] = None,
+                 map_position: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPositionArgs']] = None,
+                 plot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 point_settings: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettingsArgs']] = None):
         """
         :param pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgs'] data_settings: A nested object resource.
                Structure is documented below.
@@ -2353,7 +2353,7 @@ class DashboardChartDashboardChartVisualizationGoogleMapsConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataSettings")
-    def data_settings(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgs']]:
+    def data_settings(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -2361,12 +2361,12 @@ class DashboardChartDashboardChartVisualizationGoogleMapsConfigArgs:
         return pulumi.get(self, "data_settings")
 
     @data_settings.setter
-    def data_settings(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgs']]):
+    def data_settings(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgs']]):
         pulumi.set(self, "data_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="mapPosition")
-    def map_position(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPositionArgs']]:
+    def map_position(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPositionArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -2374,24 +2374,24 @@ class DashboardChartDashboardChartVisualizationGoogleMapsConfigArgs:
         return pulumi.get(self, "map_position")
 
     @map_position.setter
-    def map_position(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPositionArgs']]):
+    def map_position(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPositionArgs']]):
         pulumi.set(self, "map_position", value)
 
     @_builtins.property
     @pulumi.getter(name="plotMode")
-    def plot_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plot_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `PLOT_MODE_UNSPECIFIED`, `PLOT_MODE_POINTS`, `PLOT_MODE_HEATMAP`, `PLOT_MODE_BOTH`.
         """
         return pulumi.get(self, "plot_mode")
 
     @plot_mode.setter
-    def plot_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plot_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plot_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="pointSettings")
-    def point_settings(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettingsArgs']]:
+    def point_settings(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettingsArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -2399,20 +2399,20 @@ class DashboardChartDashboardChartVisualizationGoogleMapsConfigArgs:
         return pulumi.get(self, "point_settings")
 
     @point_settings.setter
-    def point_settings(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettingsArgs']]):
+    def point_settings(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettingsArgs']]):
         pulumi.set(self, "point_settings", value)
 
 
 class DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgsDict(TypedDict):
-    count_column: NotRequired[pulumi.Input[_builtins.str]]
+    count_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    latitude_column: NotRequired[pulumi.Input[_builtins.str]]
+    latitude_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    longitude_column: NotRequired[pulumi.Input[_builtins.str]]
+    longitude_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -2420,9 +2420,9 @@ class DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgsD
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgs:
     def __init__(__self__, *,
-                 count_column: Optional[pulumi.Input[_builtins.str]] = None,
-                 latitude_column: Optional[pulumi.Input[_builtins.str]] = None,
-                 longitude_column: Optional[pulumi.Input[_builtins.str]] = None):
+                 count_column: pulumi.Input[Optional[_builtins.str]] = None,
+                 latitude_column: pulumi.Input[Optional[_builtins.str]] = None,
+                 longitude_column: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] count_column: (Optional)
         :param pulumi.Input[_builtins.str] latitude_column: (Optional)
@@ -2437,55 +2437,55 @@ class DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="countColumn")
-    def count_column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def count_column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "count_column")
 
     @count_column.setter
-    def count_column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def count_column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "count_column", value)
 
     @_builtins.property
     @pulumi.getter(name="latitudeColumn")
-    def latitude_column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def latitude_column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "latitude_column")
 
     @latitude_column.setter
-    def latitude_column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def latitude_column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "latitude_column", value)
 
     @_builtins.property
     @pulumi.getter(name="longitudeColumn")
-    def longitude_column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def longitude_column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "longitude_column")
 
     @longitude_column.setter
-    def longitude_column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def longitude_column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "longitude_column", value)
 
 
 class DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPositionArgsDict(TypedDict):
-    fit_data: NotRequired[pulumi.Input[_builtins.bool]]
+    fit_data: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
-    latitude_value: NotRequired[pulumi.Input[_builtins.float]]
+    latitude_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     (Optional)
     """
-    longitude_value: NotRequired[pulumi.Input[_builtins.float]]
+    longitude_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     (Optional)
     """
-    zoom_scale_value: NotRequired[pulumi.Input[_builtins.float]]
+    zoom_scale_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     (Optional)
     """
@@ -2493,10 +2493,10 @@ class DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPositionArgsDi
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPositionArgs:
     def __init__(__self__, *,
-                 fit_data: Optional[pulumi.Input[_builtins.bool]] = None,
-                 latitude_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 longitude_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 zoom_scale_value: Optional[pulumi.Input[_builtins.float]] = None):
+                 fit_data: pulumi.Input[Optional[_builtins.bool]] = None,
+                 latitude_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 longitude_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 zoom_scale_value: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.bool] fit_data: (Optional)
         :param pulumi.Input[_builtins.float] latitude_value: (Optional)
@@ -2514,59 +2514,59 @@ class DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPositionArgs:
 
     @_builtins.property
     @pulumi.getter(name="fitData")
-    def fit_data(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fit_data(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "fit_data")
 
     @fit_data.setter
-    def fit_data(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fit_data(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fit_data", value)
 
     @_builtins.property
     @pulumi.getter(name="latitudeValue")
-    def latitude_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def latitude_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         (Optional)
         """
         return pulumi.get(self, "latitude_value")
 
     @latitude_value.setter
-    def latitude_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def latitude_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "latitude_value", value)
 
     @_builtins.property
     @pulumi.getter(name="longitudeValue")
-    def longitude_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def longitude_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         (Optional)
         """
         return pulumi.get(self, "longitude_value")
 
     @longitude_value.setter
-    def longitude_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def longitude_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "longitude_value", value)
 
     @_builtins.property
     @pulumi.getter(name="zoomScaleValue")
-    def zoom_scale_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def zoom_scale_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         (Optional)
         """
         return pulumi.get(self, "zoom_scale_value")
 
     @zoom_scale_value.setter
-    def zoom_scale_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def zoom_scale_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "zoom_scale_value", value)
 
 
 class DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettingsArgsDict(TypedDict):
-    color: NotRequired[pulumi.Input[_builtins.str]]
+    color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    point_size_type: NotRequired[pulumi.Input[_builtins.str]]
+    point_size_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `POINT_SIZE_TYPE_UNSPECIFIED`, `POINT_SIZE_TYPE_FIXED`, `POINT_SIZE_TYPE_PROPORTIONAL_TO_SIZE`.
     """
@@ -2574,8 +2574,8 @@ class DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettingsArgs
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettingsArgs:
     def __init__(__self__, *,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 point_size_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 point_size_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] color: (Optional)
         :param pulumi.Input[_builtins.str] point_size_type: Possible values are: `POINT_SIZE_TYPE_UNSPECIFIED`, `POINT_SIZE_TYPE_FIXED`, `POINT_SIZE_TYPE_PROPORTIONAL_TO_SIZE`.
@@ -2587,71 +2587,71 @@ class DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettingsArgs
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter(name="pointSizeType")
-    def point_size_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def point_size_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `POINT_SIZE_TYPE_UNSPECIFIED`, `POINT_SIZE_TYPE_FIXED`, `POINT_SIZE_TYPE_PROPORTIONAL_TO_SIZE`.
         """
         return pulumi.get(self, "point_size_type")
 
     @point_size_type.setter
-    def point_size_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def point_size_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "point_size_type", value)
 
 
 class DashboardChartDashboardChartVisualizationLegendArgsDict(TypedDict):
-    bottom: NotRequired[pulumi.Input[_builtins.int]]
+    bottom: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    left: NotRequired[pulumi.Input[_builtins.int]]
+    left: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    legend_align: NotRequired[pulumi.Input[_builtins.str]]
+    legend_align: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `AUTO`, `LEFT`, `RIGHT`.
     """
-    legend_orient: NotRequired[pulumi.Input[_builtins.str]]
+    legend_orient: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `VERTICAL`, `HORIZONTAL`.
     """
-    paddings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    paddings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     (Optional)
     """
-    right: NotRequired[pulumi.Input[_builtins.int]]
+    right: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    show: NotRequired[pulumi.Input[_builtins.bool]]
+    show: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
-    top: NotRequired[pulumi.Input[_builtins.int]]
+    top: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    z: NotRequired[pulumi.Input[_builtins.int]]
+    z: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    z_level: NotRequired[pulumi.Input[_builtins.int]]
+    z_level: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
@@ -2659,17 +2659,17 @@ class DashboardChartDashboardChartVisualizationLegendArgsDict(TypedDict):
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationLegendArgs:
     def __init__(__self__, *,
-                 bottom: Optional[pulumi.Input[_builtins.int]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 left: Optional[pulumi.Input[_builtins.int]] = None,
-                 legend_align: Optional[pulumi.Input[_builtins.str]] = None,
-                 legend_orient: Optional[pulumi.Input[_builtins.str]] = None,
-                 paddings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 right: Optional[pulumi.Input[_builtins.int]] = None,
-                 show: Optional[pulumi.Input[_builtins.bool]] = None,
-                 top: Optional[pulumi.Input[_builtins.int]] = None,
-                 z: Optional[pulumi.Input[_builtins.int]] = None,
-                 z_level: Optional[pulumi.Input[_builtins.int]] = None):
+                 bottom: pulumi.Input[Optional[_builtins.int]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 left: pulumi.Input[Optional[_builtins.int]] = None,
+                 legend_align: pulumi.Input[Optional[_builtins.str]] = None,
+                 legend_orient: pulumi.Input[Optional[_builtins.str]] = None,
+                 paddings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 right: pulumi.Input[Optional[_builtins.int]] = None,
+                 show: pulumi.Input[Optional[_builtins.bool]] = None,
+                 top: pulumi.Input[Optional[_builtins.int]] = None,
+                 z: pulumi.Input[Optional[_builtins.int]] = None,
+                 z_level: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] bottom: (Optional)
         :param pulumi.Input[_builtins.str] id: (Optional)
@@ -2708,134 +2708,134 @@ class DashboardChartDashboardChartVisualizationLegendArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bottom(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bottom(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "bottom")
 
     @bottom.setter
-    def bottom(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bottom(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bottom", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def left(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def left(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "left")
 
     @left.setter
-    def left(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def left(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "left", value)
 
     @_builtins.property
     @pulumi.getter(name="legendAlign")
-    def legend_align(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def legend_align(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `AUTO`, `LEFT`, `RIGHT`.
         """
         return pulumi.get(self, "legend_align")
 
     @legend_align.setter
-    def legend_align(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def legend_align(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "legend_align", value)
 
     @_builtins.property
     @pulumi.getter(name="legendOrient")
-    def legend_orient(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def legend_orient(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `VERTICAL`, `HORIZONTAL`.
         """
         return pulumi.get(self, "legend_orient")
 
     @legend_orient.setter
-    def legend_orient(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def legend_orient(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "legend_orient", value)
 
     @_builtins.property
     @pulumi.getter
-    def paddings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def paddings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         (Optional)
         """
         return pulumi.get(self, "paddings")
 
     @paddings.setter
-    def paddings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def paddings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "paddings", value)
 
     @_builtins.property
     @pulumi.getter
-    def right(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def right(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "right")
 
     @right.setter
-    def right(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def right(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "right", value)
 
     @_builtins.property
     @pulumi.getter
-    def show(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "show")
 
     @show.setter
-    def show(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show", value)
 
     @_builtins.property
     @pulumi.getter
-    def top(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def top(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "top")
 
     @top.setter
-    def top(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def top(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "top", value)
 
     @_builtins.property
     @pulumi.getter
-    def z(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def z(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "z")
 
     @z.setter
-    def z(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def z(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "z", value)
 
     @_builtins.property
     @pulumi.getter(name="zLevel")
-    def z_level(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def z_level(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "z_level")
 
     @z_level.setter
-    def z_level(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def z_level(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "z_level", value)
 
 
@@ -2844,7 +2844,7 @@ class DashboardChartDashboardChartVisualizationMarkdownArgsDict(TypedDict):
     """
     (Required)
     """
-    properties: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationMarkdownPropertiesArgsDict']]
+    properties: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationMarkdownPropertiesArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -2854,7 +2854,7 @@ class DashboardChartDashboardChartVisualizationMarkdownArgsDict(TypedDict):
 class DashboardChartDashboardChartVisualizationMarkdownArgs:
     def __init__(__self__, *,
                  content: pulumi.Input[_builtins.str],
-                 properties: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationMarkdownPropertiesArgs']] = None):
+                 properties: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationMarkdownPropertiesArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] content: (Required)
         :param pulumi.Input['DashboardChartDashboardChartVisualizationMarkdownPropertiesArgs'] properties: A nested object resource.
@@ -2878,7 +2878,7 @@ class DashboardChartDashboardChartVisualizationMarkdownArgs:
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationMarkdownPropertiesArgs']]:
+    def properties(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationMarkdownPropertiesArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -2886,12 +2886,12 @@ class DashboardChartDashboardChartVisualizationMarkdownArgs:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationMarkdownPropertiesArgs']]):
+    def properties(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationMarkdownPropertiesArgs']]):
         pulumi.set(self, "properties", value)
 
 
 class DashboardChartDashboardChartVisualizationMarkdownPropertiesArgsDict(TypedDict):
-    background_color: NotRequired[pulumi.Input[_builtins.str]]
+    background_color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -2899,7 +2899,7 @@ class DashboardChartDashboardChartVisualizationMarkdownPropertiesArgsDict(TypedD
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationMarkdownPropertiesArgs:
     def __init__(__self__, *,
-                 background_color: Optional[pulumi.Input[_builtins.str]] = None):
+                 background_color: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] background_color: (Optional)
         """
@@ -2908,90 +2908,90 @@ class DashboardChartDashboardChartVisualizationMarkdownPropertiesArgs:
 
     @_builtins.property
     @pulumi.getter(name="backgroundColor")
-    def background_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def background_color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "background_color")
 
     @background_color.setter
-    def background_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def background_color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "background_color", value)
 
 
 class DashboardChartDashboardChartVisualizationSeriesArgsDict(TypedDict):
-    area_style: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesAreaStyleArgsDict']]
+    area_style: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesAreaStyleArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    data_label: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesDataLabelArgsDict']]
+    data_label: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesDataLabelArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    encode: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesEncodeArgsDict']]
+    encode: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesEncodeArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    field: NotRequired[pulumi.Input[_builtins.str]]
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    gauge_config: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgsDict']]
+    gauge_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    item_colors: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsArgsDict']]
+    item_colors: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemColorsArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    item_style: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemStyleArgsDict']]
+    item_style: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemStyleArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    label: NotRequired[pulumi.Input[_builtins.str]]
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    metric_trend_config: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgsDict']]
+    metric_trend_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    radii: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    radii: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Optional)
     """
-    series_name: NotRequired[pulumi.Input[_builtins.str]]
+    series_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     User specified series label.
     """
-    series_stack_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    series_stack_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `SAMESIGN`, `ALL`, `POSITIVE`, `NEGATIVE`.
     """
-    series_type: NotRequired[pulumi.Input[_builtins.str]]
+    series_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `LINE`, `BAR`, `PIE`, `TEXT`, `MAP`, `GAUGE`, `SCATTERPLOT`.
     """
-    series_unique_value: NotRequired[pulumi.Input[_builtins.str]]
+    series_unique_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    show_background: NotRequired[pulumi.Input[_builtins.bool]]
+    show_background: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
-    show_symbol: NotRequired[pulumi.Input[_builtins.bool]]
+    show_symbol: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
-    stack: NotRequired[pulumi.Input[_builtins.str]]
+    stack: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -2999,23 +2999,23 @@ class DashboardChartDashboardChartVisualizationSeriesArgsDict(TypedDict):
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationSeriesArgs:
     def __init__(__self__, *,
-                 area_style: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesAreaStyleArgs']] = None,
-                 data_label: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesDataLabelArgs']] = None,
-                 encode: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesEncodeArgs']] = None,
-                 field: Optional[pulumi.Input[_builtins.str]] = None,
-                 gauge_config: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgs']] = None,
-                 item_colors: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsArgs']] = None,
-                 item_style: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemStyleArgs']] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_trend_config: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgs']] = None,
-                 radii: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 series_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 series_stack_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 series_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 series_unique_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 show_background: Optional[pulumi.Input[_builtins.bool]] = None,
-                 show_symbol: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stack: Optional[pulumi.Input[_builtins.str]] = None):
+                 area_style: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesAreaStyleArgs']] = None,
+                 data_label: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesDataLabelArgs']] = None,
+                 encode: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesEncodeArgs']] = None,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 gauge_config: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgs']] = None,
+                 item_colors: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemColorsArgs']] = None,
+                 item_style: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemStyleArgs']] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_trend_config: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgs']] = None,
+                 radii: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 series_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 series_stack_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 series_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 series_unique_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 show_background: pulumi.Input[Optional[_builtins.bool]] = None,
+                 show_symbol: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stack: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['DashboardChartDashboardChartVisualizationSeriesAreaStyleArgs'] area_style: A nested object resource.
                Structure is documented below.
@@ -3079,7 +3079,7 @@ class DashboardChartDashboardChartVisualizationSeriesArgs:
 
     @_builtins.property
     @pulumi.getter(name="areaStyle")
-    def area_style(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesAreaStyleArgs']]:
+    def area_style(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesAreaStyleArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -3087,12 +3087,12 @@ class DashboardChartDashboardChartVisualizationSeriesArgs:
         return pulumi.get(self, "area_style")
 
     @area_style.setter
-    def area_style(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesAreaStyleArgs']]):
+    def area_style(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesAreaStyleArgs']]):
         pulumi.set(self, "area_style", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLabel")
-    def data_label(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesDataLabelArgs']]:
+    def data_label(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesDataLabelArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -3100,12 +3100,12 @@ class DashboardChartDashboardChartVisualizationSeriesArgs:
         return pulumi.get(self, "data_label")
 
     @data_label.setter
-    def data_label(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesDataLabelArgs']]):
+    def data_label(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesDataLabelArgs']]):
         pulumi.set(self, "data_label", value)
 
     @_builtins.property
     @pulumi.getter
-    def encode(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesEncodeArgs']]:
+    def encode(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesEncodeArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -3113,24 +3113,24 @@ class DashboardChartDashboardChartVisualizationSeriesArgs:
         return pulumi.get(self, "encode")
 
     @encode.setter
-    def encode(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesEncodeArgs']]):
+    def encode(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesEncodeArgs']]):
         pulumi.set(self, "encode", value)
 
     @_builtins.property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field", value)
 
     @_builtins.property
     @pulumi.getter(name="gaugeConfig")
-    def gauge_config(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgs']]:
+    def gauge_config(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -3138,12 +3138,12 @@ class DashboardChartDashboardChartVisualizationSeriesArgs:
         return pulumi.get(self, "gauge_config")
 
     @gauge_config.setter
-    def gauge_config(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgs']]):
+    def gauge_config(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgs']]):
         pulumi.set(self, "gauge_config", value)
 
     @_builtins.property
     @pulumi.getter(name="itemColors")
-    def item_colors(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsArgs']]:
+    def item_colors(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemColorsArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -3151,12 +3151,12 @@ class DashboardChartDashboardChartVisualizationSeriesArgs:
         return pulumi.get(self, "item_colors")
 
     @item_colors.setter
-    def item_colors(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsArgs']]):
+    def item_colors(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemColorsArgs']]):
         pulumi.set(self, "item_colors", value)
 
     @_builtins.property
     @pulumi.getter(name="itemStyle")
-    def item_style(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemStyleArgs']]:
+    def item_style(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemStyleArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -3164,24 +3164,24 @@ class DashboardChartDashboardChartVisualizationSeriesArgs:
         return pulumi.get(self, "item_style")
 
     @item_style.setter
-    def item_style(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemStyleArgs']]):
+    def item_style(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemStyleArgs']]):
         pulumi.set(self, "item_style", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter(name="metricTrendConfig")
-    def metric_trend_config(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgs']]:
+    def metric_trend_config(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -3189,132 +3189,132 @@ class DashboardChartDashboardChartVisualizationSeriesArgs:
         return pulumi.get(self, "metric_trend_config")
 
     @metric_trend_config.setter
-    def metric_trend_config(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgs']]):
+    def metric_trend_config(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgs']]):
         pulumi.set(self, "metric_trend_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def radii(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def radii(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional)
         """
         return pulumi.get(self, "radii")
 
     @radii.setter
-    def radii(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def radii(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "radii", value)
 
     @_builtins.property
     @pulumi.getter(name="seriesName")
-    def series_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def series_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User specified series label.
         """
         return pulumi.get(self, "series_name")
 
     @series_name.setter
-    def series_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def series_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "series_name", value)
 
     @_builtins.property
     @pulumi.getter(name="seriesStackStrategy")
-    def series_stack_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def series_stack_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `SAMESIGN`, `ALL`, `POSITIVE`, `NEGATIVE`.
         """
         return pulumi.get(self, "series_stack_strategy")
 
     @series_stack_strategy.setter
-    def series_stack_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def series_stack_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "series_stack_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="seriesType")
-    def series_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def series_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `LINE`, `BAR`, `PIE`, `TEXT`, `MAP`, `GAUGE`, `SCATTERPLOT`.
         """
         return pulumi.get(self, "series_type")
 
     @series_type.setter
-    def series_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def series_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "series_type", value)
 
     @_builtins.property
     @pulumi.getter(name="seriesUniqueValue")
-    def series_unique_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def series_unique_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "series_unique_value")
 
     @series_unique_value.setter
-    def series_unique_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def series_unique_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "series_unique_value", value)
 
     @_builtins.property
     @pulumi.getter(name="showBackground")
-    def show_background(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_background(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "show_background")
 
     @show_background.setter
-    def show_background(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_background(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_background", value)
 
     @_builtins.property
     @pulumi.getter(name="showSymbol")
-    def show_symbol(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_symbol(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "show_symbol")
 
     @show_symbol.setter
-    def show_symbol(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_symbol(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_symbol", value)
 
     @_builtins.property
     @pulumi.getter
-    def stack(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "stack")
 
     @stack.setter
-    def stack(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack", value)
 
 
 class DashboardChartDashboardChartVisualizationSeriesAreaStyleArgsDict(TypedDict):
-    color: NotRequired[pulumi.Input[_builtins.str]]
+    color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    opacity: NotRequired[pulumi.Input[_builtins.int]]
+    opacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    origin: NotRequired[pulumi.Input[_builtins.str]]
+    origin: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    shadow_blur: NotRequired[pulumi.Input[_builtins.int]]
+    shadow_blur: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    shadow_color: NotRequired[pulumi.Input[_builtins.str]]
+    shadow_color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    shadow_offset_x: NotRequired[pulumi.Input[_builtins.int]]
+    shadow_offset_x: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    shadow_offset_y: NotRequired[pulumi.Input[_builtins.int]]
+    shadow_offset_y: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
@@ -3322,13 +3322,13 @@ class DashboardChartDashboardChartVisualizationSeriesAreaStyleArgsDict(TypedDict
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationSeriesAreaStyleArgs:
     def __init__(__self__, *,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 opacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 shadow_blur: Optional[pulumi.Input[_builtins.int]] = None,
-                 shadow_color: Optional[pulumi.Input[_builtins.str]] = None,
-                 shadow_offset_x: Optional[pulumi.Input[_builtins.int]] = None,
-                 shadow_offset_y: Optional[pulumi.Input[_builtins.int]] = None):
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 opacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 shadow_blur: pulumi.Input[Optional[_builtins.int]] = None,
+                 shadow_color: pulumi.Input[Optional[_builtins.str]] = None,
+                 shadow_offset_x: pulumi.Input[Optional[_builtins.int]] = None,
+                 shadow_offset_y: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] color: (Optional)
         :param pulumi.Input[_builtins.int] opacity: (Optional)
@@ -3355,91 +3355,91 @@ class DashboardChartDashboardChartVisualizationSeriesAreaStyleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter
-    def opacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def opacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "opacity")
 
     @opacity.setter
-    def opacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def opacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "opacity", value)
 
     @_builtins.property
     @pulumi.getter
-    def origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "origin")
 
     @origin.setter
-    def origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "origin", value)
 
     @_builtins.property
     @pulumi.getter(name="shadowBlur")
-    def shadow_blur(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shadow_blur(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "shadow_blur")
 
     @shadow_blur.setter
-    def shadow_blur(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shadow_blur(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shadow_blur", value)
 
     @_builtins.property
     @pulumi.getter(name="shadowColor")
-    def shadow_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shadow_color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "shadow_color")
 
     @shadow_color.setter
-    def shadow_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shadow_color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shadow_color", value)
 
     @_builtins.property
     @pulumi.getter(name="shadowOffsetX")
-    def shadow_offset_x(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shadow_offset_x(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "shadow_offset_x")
 
     @shadow_offset_x.setter
-    def shadow_offset_x(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shadow_offset_x(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shadow_offset_x", value)
 
     @_builtins.property
     @pulumi.getter(name="shadowOffsetY")
-    def shadow_offset_y(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shadow_offset_y(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "shadow_offset_y")
 
     @shadow_offset_y.setter
-    def shadow_offset_y(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shadow_offset_y(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shadow_offset_y", value)
 
 
 class DashboardChartDashboardChartVisualizationSeriesDataLabelArgsDict(TypedDict):
-    show: NotRequired[pulumi.Input[_builtins.bool]]
+    show: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to show data label.
     """
@@ -3447,7 +3447,7 @@ class DashboardChartDashboardChartVisualizationSeriesDataLabelArgsDict(TypedDict
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationSeriesDataLabelArgs:
     def __init__(__self__, *,
-                 show: Optional[pulumi.Input[_builtins.bool]] = None):
+                 show: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] show: Whether to show data label.
         """
@@ -3456,31 +3456,31 @@ class DashboardChartDashboardChartVisualizationSeriesDataLabelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def show(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to show data label.
         """
         return pulumi.get(self, "show")
 
     @show.setter
-    def show(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show", value)
 
 
 class DashboardChartDashboardChartVisualizationSeriesEncodeArgsDict(TypedDict):
-    item_name: NotRequired[pulumi.Input[_builtins.str]]
+    item_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    x: NotRequired[pulumi.Input[_builtins.str]]
+    x: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    y: NotRequired[pulumi.Input[_builtins.str]]
+    y: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -3488,10 +3488,10 @@ class DashboardChartDashboardChartVisualizationSeriesEncodeArgsDict(TypedDict):
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationSeriesEncodeArgs:
     def __init__(__self__, *,
-                 item_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 x: Optional[pulumi.Input[_builtins.str]] = None,
-                 y: Optional[pulumi.Input[_builtins.str]] = None):
+                 item_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 x: pulumi.Input[Optional[_builtins.str]] = None,
+                 y: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] item_name: (Optional)
         :param pulumi.Input[_builtins.str] value: (Optional)
@@ -3509,65 +3509,65 @@ class DashboardChartDashboardChartVisualizationSeriesEncodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="itemName")
-    def item_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def item_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "item_name")
 
     @item_name.setter
-    def item_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def item_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "item_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def x(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def x(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "x")
 
     @x.setter
-    def x(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def x(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "x", value)
 
     @_builtins.property
     @pulumi.getter
-    def y(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def y(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "y")
 
     @y.setter
-    def y(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def y(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "y", value)
 
 
 class DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgsDict(TypedDict):
-    base_value: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgsDict']]
+    base_value: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    limit_value: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValueArgsDict']]
+    limit_value: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValueArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    threshold_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueArgsDict']]]]
+    threshold_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueArgs']]]]]
     """
     Structure is documented below.
     """
@@ -3575,9 +3575,9 @@ class DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgsDict(TypedDi
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgs:
     def __init__(__self__, *,
-                 base_value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgs']] = None,
-                 limit_value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValueArgs']] = None,
-                 threshold_values: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueArgs']]]] = None):
+                 base_value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgs']] = None,
+                 limit_value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValueArgs']] = None,
+                 threshold_values: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueArgs']]]] = None):
         """
         :param pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgs'] base_value: A nested object resource.
                Structure is documented below.
@@ -3594,7 +3594,7 @@ class DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="baseValue")
-    def base_value(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgs']]:
+    def base_value(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -3602,12 +3602,12 @@ class DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgs:
         return pulumi.get(self, "base_value")
 
     @base_value.setter
-    def base_value(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgs']]):
+    def base_value(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgs']]):
         pulumi.set(self, "base_value", value)
 
     @_builtins.property
     @pulumi.getter(name="limitValue")
-    def limit_value(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValueArgs']]:
+    def limit_value(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValueArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -3615,28 +3615,28 @@ class DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgs:
         return pulumi.get(self, "limit_value")
 
     @limit_value.setter
-    def limit_value(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValueArgs']]):
+    def limit_value(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValueArgs']]):
         pulumi.set(self, "limit_value", value)
 
     @_builtins.property
     @pulumi.getter(name="thresholdValues")
-    def threshold_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueArgs']]]]:
+    def threshold_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "threshold_values")
 
     @threshold_values.setter
-    def threshold_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueArgs']]]]):
+    def threshold_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueArgs']]]]):
         pulumi.set(self, "threshold_values", value)
 
 
 class DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgsDict(TypedDict):
-    color: NotRequired[pulumi.Input[_builtins.str]]
+    color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    value: NotRequired[pulumi.Input[_builtins.int]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
@@ -3644,8 +3644,8 @@ class DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgsDic
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgs:
     def __init__(__self__, *,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.int]] = None):
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] color: (Optional)
         :param pulumi.Input[_builtins.int] value: (Optional)
@@ -3657,35 +3657,35 @@ class DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "value", value)
 
 
 class DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValueArgsDict(TypedDict):
-    color: NotRequired[pulumi.Input[_builtins.str]]
+    color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    value: NotRequired[pulumi.Input[_builtins.int]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
@@ -3693,8 +3693,8 @@ class DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValueArgsDi
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValueArgs:
     def __init__(__self__, *,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.int]] = None):
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] color: (Optional)
         :param pulumi.Input[_builtins.int] value: (Optional)
@@ -3706,35 +3706,35 @@ class DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "value", value)
 
 
 class DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueArgsDict(TypedDict):
-    color: NotRequired[pulumi.Input[_builtins.str]]
+    color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    value: NotRequired[pulumi.Input[_builtins.int]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
@@ -3742,8 +3742,8 @@ class DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueAr
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueArgs:
     def __init__(__self__, *,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.int]] = None):
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] color: (Optional)
         :param pulumi.Input[_builtins.int] value: (Optional)
@@ -3755,31 +3755,31 @@ class DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueAr
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "value", value)
 
 
 class DashboardChartDashboardChartVisualizationSeriesItemColorsArgsDict(TypedDict):
-    colors: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgsDict']]]]
+    colors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgs']]]]]
     """
     Structure is documented below.
     """
@@ -3787,7 +3787,7 @@ class DashboardChartDashboardChartVisualizationSeriesItemColorsArgsDict(TypedDic
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationSeriesItemColorsArgs:
     def __init__(__self__, *,
-                 colors: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgs']]]] = None):
+                 colors: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgs']]] colors: Structure is documented below.
         """
@@ -3796,23 +3796,23 @@ class DashboardChartDashboardChartVisualizationSeriesItemColorsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def colors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgs']]]]:
+    def colors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "colors")
 
     @colors.setter
-    def colors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgs']]]]):
+    def colors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgs']]]]):
         pulumi.set(self, "colors", value)
 
 
 class DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    value: NotRequired[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgsDict']]
+    value: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -3821,8 +3821,8 @@ class DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgsDict(Typ
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgs']] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] key: (Optional)
         :param pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgs'] value: A nested object resource.
@@ -3835,19 +3835,19 @@ class DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgs']]:
+    def value(self) -> pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -3855,16 +3855,16 @@ class DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgs']]):
+    def value(self, value: pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgs']]):
         pulumi.set(self, "value", value)
 
 
 class DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgsDict(TypedDict):
-    color: NotRequired[pulumi.Input[_builtins.str]]
+    color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    label: NotRequired[pulumi.Input[_builtins.str]]
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -3872,8 +3872,8 @@ class DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgsDic
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgs:
     def __init__(__self__, *,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None):
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] color: (Optional)
         :param pulumi.Input[_builtins.str] label: (Optional)
@@ -3885,39 +3885,39 @@ class DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
 
 class DashboardChartDashboardChartVisualizationSeriesItemStyleArgsDict(TypedDict):
-    border_color: NotRequired[pulumi.Input[_builtins.str]]
+    border_color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    border_width: NotRequired[pulumi.Input[_builtins.int]]
+    border_width: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    color: NotRequired[pulumi.Input[_builtins.str]]
+    color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -3925,9 +3925,9 @@ class DashboardChartDashboardChartVisualizationSeriesItemStyleArgsDict(TypedDict
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationSeriesItemStyleArgs:
     def __init__(__self__, *,
-                 border_color: Optional[pulumi.Input[_builtins.str]] = None,
-                 border_width: Optional[pulumi.Input[_builtins.int]] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None):
+                 border_color: pulumi.Input[Optional[_builtins.str]] = None,
+                 border_width: pulumi.Input[Optional[_builtins.int]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] border_color: (Optional)
         :param pulumi.Input[_builtins.int] border_width: (Optional)
@@ -3942,55 +3942,55 @@ class DashboardChartDashboardChartVisualizationSeriesItemStyleArgs:
 
     @_builtins.property
     @pulumi.getter(name="borderColor")
-    def border_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def border_color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "border_color")
 
     @border_color.setter
-    def border_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def border_color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "border_color", value)
 
     @_builtins.property
     @pulumi.getter(name="borderWidth")
-    def border_width(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def border_width(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "border_width")
 
     @border_width.setter
-    def border_width(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def border_width(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "border_width", value)
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
 
 class DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgsDict(TypedDict):
-    metric_display_trend: NotRequired[pulumi.Input[_builtins.str]]
+    metric_display_trend: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `METRIC_DISPLAY_TREND_UNSPECIFIED`, `METRIC_DISPLAY_TREND_ABSOLUTE_VALUE`, `METRIC_DISPLAY_TREND_PERCENTAGE`, `METRIC_DISPLAY_TREND_ABSOLUTE_VALUE_AND_PERCENTAGE`.
     """
-    metric_format: NotRequired[pulumi.Input[_builtins.str]]
+    metric_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `METRIC_FORMAT_UNSPECIFIED`, `METRIC_FORMAT_NUMBER`, `METRIC_FORMAT_PLAIN_TEXT`.
     """
-    metric_trend_type: NotRequired[pulumi.Input[_builtins.str]]
+    metric_trend_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `METRIC_TREND_TYPE_UNSPECIFIED`, `METRIC_TREND_TYPE_REGULAR`, `METRIC_TREND_TYPE_INVERSE`.
     """
-    show_metric_trend: NotRequired[pulumi.Input[_builtins.bool]]
+    show_metric_trend: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
@@ -3998,10 +3998,10 @@ class DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgsDict(T
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgs:
     def __init__(__self__, *,
-                 metric_display_trend: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_trend_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 show_metric_trend: Optional[pulumi.Input[_builtins.bool]] = None):
+                 metric_display_trend: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_trend_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 show_metric_trend: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] metric_display_trend: Possible values are: `METRIC_DISPLAY_TREND_UNSPECIFIED`, `METRIC_DISPLAY_TREND_ABSOLUTE_VALUE`, `METRIC_DISPLAY_TREND_PERCENTAGE`, `METRIC_DISPLAY_TREND_ABSOLUTE_VALUE_AND_PERCENTAGE`.
         :param pulumi.Input[_builtins.str] metric_format: Possible values are: `METRIC_FORMAT_UNSPECIFIED`, `METRIC_FORMAT_NUMBER`, `METRIC_FORMAT_PLAIN_TEXT`.
@@ -4019,63 +4019,63 @@ class DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="metricDisplayTrend")
-    def metric_display_trend(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_display_trend(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `METRIC_DISPLAY_TREND_UNSPECIFIED`, `METRIC_DISPLAY_TREND_ABSOLUTE_VALUE`, `METRIC_DISPLAY_TREND_PERCENTAGE`, `METRIC_DISPLAY_TREND_ABSOLUTE_VALUE_AND_PERCENTAGE`.
         """
         return pulumi.get(self, "metric_display_trend")
 
     @metric_display_trend.setter
-    def metric_display_trend(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_display_trend(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_display_trend", value)
 
     @_builtins.property
     @pulumi.getter(name="metricFormat")
-    def metric_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `METRIC_FORMAT_UNSPECIFIED`, `METRIC_FORMAT_NUMBER`, `METRIC_FORMAT_PLAIN_TEXT`.
         """
         return pulumi.get(self, "metric_format")
 
     @metric_format.setter
-    def metric_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_format", value)
 
     @_builtins.property
     @pulumi.getter(name="metricTrendType")
-    def metric_trend_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_trend_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `METRIC_TREND_TYPE_UNSPECIFIED`, `METRIC_TREND_TYPE_REGULAR`, `METRIC_TREND_TYPE_INVERSE`.
         """
         return pulumi.get(self, "metric_trend_type")
 
     @metric_trend_type.setter
-    def metric_trend_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_trend_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_trend_type", value)
 
     @_builtins.property
     @pulumi.getter(name="showMetricTrend")
-    def show_metric_trend(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_metric_trend(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "show_metric_trend")
 
     @show_metric_trend.setter
-    def show_metric_trend(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_metric_trend(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_metric_trend", value)
 
 
 class DashboardChartDashboardChartVisualizationTableConfigArgsDict(TypedDict):
-    column_render_type_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettingArgsDict']]]]
+    column_render_type_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettingArgs']]]]]
     """
     Structure is documented below.
     """
-    column_tooltip_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingArgsDict']]]]
+    column_tooltip_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingArgs']]]]]
     """
     Structure is documented below.
     """
-    enable_text_wrap: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_text_wrap: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
@@ -4083,9 +4083,9 @@ class DashboardChartDashboardChartVisualizationTableConfigArgsDict(TypedDict):
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationTableConfigArgs:
     def __init__(__self__, *,
-                 column_render_type_settings: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettingArgs']]]] = None,
-                 column_tooltip_settings: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingArgs']]]] = None,
-                 enable_text_wrap: Optional[pulumi.Input[_builtins.bool]] = None):
+                 column_render_type_settings: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettingArgs']]]] = None,
+                 column_tooltip_settings: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingArgs']]]] = None,
+                 enable_text_wrap: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettingArgs']]] column_render_type_settings: Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingArgs']]] column_tooltip_settings: Structure is documented below.
@@ -4100,47 +4100,47 @@ class DashboardChartDashboardChartVisualizationTableConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="columnRenderTypeSettings")
-    def column_render_type_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettingArgs']]]]:
+    def column_render_type_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettingArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "column_render_type_settings")
 
     @column_render_type_settings.setter
-    def column_render_type_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettingArgs']]]]):
+    def column_render_type_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettingArgs']]]]):
         pulumi.set(self, "column_render_type_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="columnTooltipSettings")
-    def column_tooltip_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingArgs']]]]:
+    def column_tooltip_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "column_tooltip_settings")
 
     @column_tooltip_settings.setter
-    def column_tooltip_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingArgs']]]]):
+    def column_tooltip_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingArgs']]]]):
         pulumi.set(self, "column_tooltip_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="enableTextWrap")
-    def enable_text_wrap(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_text_wrap(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "enable_text_wrap")
 
     @enable_text_wrap.setter
-    def enable_text_wrap(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_text_wrap(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_text_wrap", value)
 
 
 class DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettingArgsDict(TypedDict):
-    column_render_type: NotRequired[pulumi.Input[_builtins.str]]
+    column_render_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `RENDER_TYPE_UNSPECIFIED`, `RENDER_TYPE_TEXT`, `RENDER_TYPE_ICON`, `RENDER_TYPE_ICON_AND_TEXT`.
     """
-    field: NotRequired[pulumi.Input[_builtins.str]]
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -4148,8 +4148,8 @@ class DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettin
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettingArgs:
     def __init__(__self__, *,
-                 column_render_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 field: Optional[pulumi.Input[_builtins.str]] = None):
+                 column_render_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 field: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] column_render_type: Possible values are: `RENDER_TYPE_UNSPECIFIED`, `RENDER_TYPE_TEXT`, `RENDER_TYPE_ICON`, `RENDER_TYPE_ICON_AND_TEXT`.
         :param pulumi.Input[_builtins.str] field: (Optional)
@@ -4161,26 +4161,26 @@ class DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettin
 
     @_builtins.property
     @pulumi.getter(name="columnRenderType")
-    def column_render_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column_render_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `RENDER_TYPE_UNSPECIFIED`, `RENDER_TYPE_TEXT`, `RENDER_TYPE_ICON`, `RENDER_TYPE_ICON_AND_TEXT`.
         """
         return pulumi.get(self, "column_render_type")
 
     @column_render_type.setter
-    def column_render_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column_render_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column_render_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field", value)
 
 
@@ -4189,11 +4189,11 @@ class DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingAr
     """
     (Required)
     """
-    cell_tooltip_text: NotRequired[pulumi.Input[_builtins.str]]
+    cell_tooltip_text: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    header_tooltip_text: NotRequired[pulumi.Input[_builtins.str]]
+    header_tooltip_text: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -4202,8 +4202,8 @@ class DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingAr
 class DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingArgs:
     def __init__(__self__, *,
                  field: pulumi.Input[_builtins.str],
-                 cell_tooltip_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 header_tooltip_text: Optional[pulumi.Input[_builtins.str]] = None):
+                 cell_tooltip_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 header_tooltip_text: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] field: (Required)
         :param pulumi.Input[_builtins.str] cell_tooltip_text: (Optional)
@@ -4229,35 +4229,35 @@ class DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingAr
 
     @_builtins.property
     @pulumi.getter(name="cellTooltipText")
-    def cell_tooltip_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cell_tooltip_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "cell_tooltip_text")
 
     @cell_tooltip_text.setter
-    def cell_tooltip_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cell_tooltip_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cell_tooltip_text", value)
 
     @_builtins.property
     @pulumi.getter(name="headerTooltipText")
-    def header_tooltip_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def header_tooltip_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "header_tooltip_text")
 
     @header_tooltip_text.setter
-    def header_tooltip_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def header_tooltip_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "header_tooltip_text", value)
 
 
 class DashboardChartDashboardChartVisualizationTooltipArgsDict(TypedDict):
-    show: NotRequired[pulumi.Input[_builtins.bool]]
+    show: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
-    tooltip_trigger: NotRequired[pulumi.Input[_builtins.str]]
+    tooltip_trigger: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `TOOLTIP_TRIGGER_UNSPECIFIED`, `TOOLTIP_TRIGGER_NONE`, `TOOLTIP_TRIGGER_ITEM`, `TOOLTIP_TRIGGER_AXIS`.
     """
@@ -4265,8 +4265,8 @@ class DashboardChartDashboardChartVisualizationTooltipArgsDict(TypedDict):
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationTooltipArgs:
     def __init__(__self__, *,
-                 show: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tooltip_trigger: Optional[pulumi.Input[_builtins.str]] = None):
+                 show: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tooltip_trigger: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] show: (Optional)
         :param pulumi.Input[_builtins.str] tooltip_trigger: Possible values are: `TOOLTIP_TRIGGER_UNSPECIFIED`, `TOOLTIP_TRIGGER_NONE`, `TOOLTIP_TRIGGER_ITEM`, `TOOLTIP_TRIGGER_AXIS`.
@@ -4278,35 +4278,35 @@ class DashboardChartDashboardChartVisualizationTooltipArgs:
 
     @_builtins.property
     @pulumi.getter
-    def show(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "show")
 
     @show.setter
-    def show(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show", value)
 
     @_builtins.property
     @pulumi.getter(name="tooltipTrigger")
-    def tooltip_trigger(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tooltip_trigger(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `TOOLTIP_TRIGGER_UNSPECIFIED`, `TOOLTIP_TRIGGER_NONE`, `TOOLTIP_TRIGGER_ITEM`, `TOOLTIP_TRIGGER_AXIS`.
         """
         return pulumi.get(self, "tooltip_trigger")
 
     @tooltip_trigger.setter
-    def tooltip_trigger(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tooltip_trigger(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tooltip_trigger", value)
 
 
 class DashboardChartDashboardChartVisualizationVisualMapArgsDict(TypedDict):
-    pieces: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapPieceArgsDict']]]]
+    pieces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapPieceArgs']]]]]
     """
     Structure is documented below.
     """
-    visual_map_type: NotRequired[pulumi.Input[_builtins.str]]
+    visual_map_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `VISUAL_MAP_TYPE_UNSPECIFIED`, `CONTINUOUS`, `PIECEWISE`.
     """
@@ -4314,8 +4314,8 @@ class DashboardChartDashboardChartVisualizationVisualMapArgsDict(TypedDict):
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationVisualMapArgs:
     def __init__(__self__, *,
-                 pieces: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapPieceArgs']]]] = None,
-                 visual_map_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 pieces: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapPieceArgs']]]] = None,
+                 visual_map_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapPieceArgs']]] pieces: Structure is documented below.
         :param pulumi.Input[_builtins.str] visual_map_type: Possible values are: `VISUAL_MAP_TYPE_UNSPECIFIED`, `CONTINUOUS`, `PIECEWISE`.
@@ -4327,43 +4327,43 @@ class DashboardChartDashboardChartVisualizationVisualMapArgs:
 
     @_builtins.property
     @pulumi.getter
-    def pieces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapPieceArgs']]]]:
+    def pieces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapPieceArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "pieces")
 
     @pieces.setter
-    def pieces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapPieceArgs']]]]):
+    def pieces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapPieceArgs']]]]):
         pulumi.set(self, "pieces", value)
 
     @_builtins.property
     @pulumi.getter(name="visualMapType")
-    def visual_map_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visual_map_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `VISUAL_MAP_TYPE_UNSPECIFIED`, `CONTINUOUS`, `PIECEWISE`.
         """
         return pulumi.get(self, "visual_map_type")
 
     @visual_map_type.setter
-    def visual_map_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visual_map_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visual_map_type", value)
 
 
 class DashboardChartDashboardChartVisualizationVisualMapPieceArgsDict(TypedDict):
-    color: NotRequired[pulumi.Input[_builtins.str]]
+    color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    label: NotRequired[pulumi.Input[_builtins.str]]
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    max: NotRequired[pulumi.Input[_builtins.int]]
+    max: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    min: NotRequired[pulumi.Input[_builtins.int]]
+    min: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
@@ -4371,10 +4371,10 @@ class DashboardChartDashboardChartVisualizationVisualMapPieceArgsDict(TypedDict)
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationVisualMapPieceArgs:
     def __init__(__self__, *,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 max: Optional[pulumi.Input[_builtins.int]] = None,
-                 min: Optional[pulumi.Input[_builtins.int]] = None):
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 max: pulumi.Input[Optional[_builtins.int]] = None,
+                 min: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] color: (Optional)
         :param pulumi.Input[_builtins.str] label: (Optional)
@@ -4392,67 +4392,67 @@ class DashboardChartDashboardChartVisualizationVisualMapPieceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max", value)
 
     @_builtins.property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min", value)
 
 
 class DashboardChartDashboardChartVisualizationXAxisArgsDict(TypedDict):
-    axis_type: NotRequired[pulumi.Input[_builtins.str]]
+    axis_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `VALUE`, `CATEGORY`, `TIME`, `LOG`.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    max: NotRequired[pulumi.Input[_builtins.int]]
+    max: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    min: NotRequired[pulumi.Input[_builtins.int]]
+    min: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
@@ -4460,10 +4460,10 @@ class DashboardChartDashboardChartVisualizationXAxisArgsDict(TypedDict):
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationXAxisArgs:
     def __init__(__self__, *,
-                 axis_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max: Optional[pulumi.Input[_builtins.int]] = None,
-                 min: Optional[pulumi.Input[_builtins.int]] = None):
+                 axis_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max: pulumi.Input[Optional[_builtins.int]] = None,
+                 min: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] axis_type: Possible values are: `VALUE`, `CATEGORY`, `TIME`, `LOG`.
         :param pulumi.Input[_builtins.str] display_name: (Optional)
@@ -4481,67 +4481,67 @@ class DashboardChartDashboardChartVisualizationXAxisArgs:
 
     @_builtins.property
     @pulumi.getter(name="axisType")
-    def axis_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def axis_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `VALUE`, `CATEGORY`, `TIME`, `LOG`.
         """
         return pulumi.get(self, "axis_type")
 
     @axis_type.setter
-    def axis_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def axis_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "axis_type", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max", value)
 
     @_builtins.property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min", value)
 
 
 class DashboardChartDashboardChartVisualizationYAxisArgsDict(TypedDict):
-    axis_type: NotRequired[pulumi.Input[_builtins.str]]
+    axis_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `VALUE`, `CATEGORY`, `TIME`, `LOG`.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    max: NotRequired[pulumi.Input[_builtins.int]]
+    max: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    min: NotRequired[pulumi.Input[_builtins.int]]
+    min: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
@@ -4549,10 +4549,10 @@ class DashboardChartDashboardChartVisualizationYAxisArgsDict(TypedDict):
 @pulumi.input_type
 class DashboardChartDashboardChartVisualizationYAxisArgs:
     def __init__(__self__, *,
-                 axis_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max: Optional[pulumi.Input[_builtins.int]] = None,
-                 min: Optional[pulumi.Input[_builtins.int]] = None):
+                 axis_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max: pulumi.Input[Optional[_builtins.int]] = None,
+                 min: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] axis_type: Possible values are: `VALUE`, `CATEGORY`, `TIME`, `LOG`.
         :param pulumi.Input[_builtins.str] display_name: (Optional)
@@ -4570,50 +4570,50 @@ class DashboardChartDashboardChartVisualizationYAxisArgs:
 
     @_builtins.property
     @pulumi.getter(name="axisType")
-    def axis_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def axis_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `VALUE`, `CATEGORY`, `TIME`, `LOG`.
         """
         return pulumi.get(self, "axis_type")
 
     @axis_type.setter
-    def axis_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def axis_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "axis_type", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max", value)
 
     @_builtins.property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min", value)
 
 
@@ -4622,17 +4622,17 @@ class DashboardChartDashboardQueryArgsDict(TypedDict):
     """
     The raw query string.
     """
-    etag: NotRequired[pulumi.Input[_builtins.str]]
+    etag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     This checksum is computed by the server.
     """
-    input: NotRequired[pulumi.Input['DashboardChartDashboardQueryInputArgsDict']]
+    input: NotRequired[pulumi.Input[Optional['DashboardChartDashboardQueryInputArgs']]]
     """
     Input parameters for the query, such as time windows.
     Structure is documented below.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     name of the query.
@@ -4642,9 +4642,9 @@ class DashboardChartDashboardQueryArgsDict(TypedDict):
 class DashboardChartDashboardQueryArgs:
     def __init__(__self__, *,
                  query: pulumi.Input[_builtins.str],
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 input: Optional[pulumi.Input['DashboardChartDashboardQueryInputArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 input: pulumi.Input[Optional['DashboardChartDashboardQueryInputArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] query: The raw query string.
         :param pulumi.Input[_builtins.str] etag: (Output)
@@ -4676,7 +4676,7 @@ class DashboardChartDashboardQueryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         This checksum is computed by the server.
@@ -4684,12 +4684,12 @@ class DashboardChartDashboardQueryArgs:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def input(self) -> Optional[pulumi.Input['DashboardChartDashboardQueryInputArgs']]:
+    def input(self) -> pulumi.Input[Optional['DashboardChartDashboardQueryInputArgs']]:
         """
         Input parameters for the query, such as time windows.
         Structure is documented below.
@@ -4697,12 +4697,12 @@ class DashboardChartDashboardQueryArgs:
         return pulumi.get(self, "input")
 
     @input.setter
-    def input(self, value: Optional[pulumi.Input['DashboardChartDashboardQueryInputArgs']]):
+    def input(self, value: pulumi.Input[Optional['DashboardChartDashboardQueryInputArgs']]):
         pulumi.set(self, "input", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         name of the query.
@@ -4710,17 +4710,17 @@ class DashboardChartDashboardQueryArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class DashboardChartDashboardQueryInputArgsDict(TypedDict):
-    relative_time: NotRequired[pulumi.Input['DashboardChartDashboardQueryInputRelativeTimeArgsDict']]
+    relative_time: NotRequired[pulumi.Input[Optional['DashboardChartDashboardQueryInputRelativeTimeArgs']]]
     """
     Relative time range.
     Structure is documented below.
     """
-    time_window: NotRequired[pulumi.Input['DashboardChartDashboardQueryInputTimeWindowArgsDict']]
+    time_window: NotRequired[pulumi.Input[Optional['DashboardChartDashboardQueryInputTimeWindowArgs']]]
     """
     Specific start and end times.
     Structure is documented below.
@@ -4729,8 +4729,8 @@ class DashboardChartDashboardQueryInputArgsDict(TypedDict):
 @pulumi.input_type
 class DashboardChartDashboardQueryInputArgs:
     def __init__(__self__, *,
-                 relative_time: Optional[pulumi.Input['DashboardChartDashboardQueryInputRelativeTimeArgs']] = None,
-                 time_window: Optional[pulumi.Input['DashboardChartDashboardQueryInputTimeWindowArgs']] = None):
+                 relative_time: pulumi.Input[Optional['DashboardChartDashboardQueryInputRelativeTimeArgs']] = None,
+                 time_window: pulumi.Input[Optional['DashboardChartDashboardQueryInputTimeWindowArgs']] = None):
         """
         :param pulumi.Input['DashboardChartDashboardQueryInputRelativeTimeArgs'] relative_time: Relative time range.
                Structure is documented below.
@@ -4744,7 +4744,7 @@ class DashboardChartDashboardQueryInputArgs:
 
     @_builtins.property
     @pulumi.getter(name="relativeTime")
-    def relative_time(self) -> Optional[pulumi.Input['DashboardChartDashboardQueryInputRelativeTimeArgs']]:
+    def relative_time(self) -> pulumi.Input[Optional['DashboardChartDashboardQueryInputRelativeTimeArgs']]:
         """
         Relative time range.
         Structure is documented below.
@@ -4752,12 +4752,12 @@ class DashboardChartDashboardQueryInputArgs:
         return pulumi.get(self, "relative_time")
 
     @relative_time.setter
-    def relative_time(self, value: Optional[pulumi.Input['DashboardChartDashboardQueryInputRelativeTimeArgs']]):
+    def relative_time(self, value: pulumi.Input[Optional['DashboardChartDashboardQueryInputRelativeTimeArgs']]):
         pulumi.set(self, "relative_time", value)
 
     @_builtins.property
     @pulumi.getter(name="timeWindow")
-    def time_window(self) -> Optional[pulumi.Input['DashboardChartDashboardQueryInputTimeWindowArgs']]:
+    def time_window(self) -> pulumi.Input[Optional['DashboardChartDashboardQueryInputTimeWindowArgs']]:
         """
         Specific start and end times.
         Structure is documented below.
@@ -4765,7 +4765,7 @@ class DashboardChartDashboardQueryInputArgs:
         return pulumi.get(self, "time_window")
 
     @time_window.setter
-    def time_window(self, value: Optional[pulumi.Input['DashboardChartDashboardQueryInputTimeWindowArgs']]):
+    def time_window(self, value: pulumi.Input[Optional['DashboardChartDashboardQueryInputTimeWindowArgs']]):
         pulumi.set(self, "time_window", value)
 
 
@@ -4820,11 +4820,11 @@ class DashboardChartDashboardQueryInputRelativeTimeArgs:
 
 
 class DashboardChartDashboardQueryInputTimeWindowArgsDict(TypedDict):
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -4832,8 +4832,8 @@ class DashboardChartDashboardQueryInputTimeWindowArgsDict(TypedDict):
 @pulumi.input_type
 class DashboardChartDashboardQueryInputTimeWindowArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end_time: (Optional)
         :param pulumi.Input[_builtins.str] start_time: (Optional)
@@ -4845,40 +4845,40 @@ class DashboardChartDashboardQueryInputTimeWindowArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
 class DataAccessScopeAllowedDataAccessLabelArgsDict(TypedDict):
-    asset_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    asset_namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The asset namespace configured in the forwarder
     of the customer's events.
     """
-    data_access_label: NotRequired[pulumi.Input[_builtins.str]]
+    data_access_label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the data access label.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The display name of the label.
@@ -4887,12 +4887,12 @@ class DataAccessScopeAllowedDataAccessLabelArgsDict(TypedDict):
     The asset namespace will match the namespace itself.
     The ingestion key value pair will match the key of the tuple.
     """
-    ingestion_label: NotRequired[pulumi.Input['DataAccessScopeAllowedDataAccessLabelIngestionLabelArgsDict']]
+    ingestion_label: NotRequired[pulumi.Input[Optional['DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs']]]
     """
     Representation of an ingestion label type.
     Structure is documented below.
     """
-    log_type: NotRequired[pulumi.Input[_builtins.str]]
+    log_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the log type.
     """
@@ -4900,11 +4900,11 @@ class DataAccessScopeAllowedDataAccessLabelArgsDict(TypedDict):
 @pulumi.input_type
 class DataAccessScopeAllowedDataAccessLabelArgs:
     def __init__(__self__, *,
-                 asset_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_access_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingestion_label: Optional[pulumi.Input['DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs']] = None,
-                 log_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 asset_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_access_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingestion_label: pulumi.Input[Optional['DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs']] = None,
+                 log_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] asset_namespace: The asset namespace configured in the forwarder
                of the customer's events.
@@ -4932,7 +4932,7 @@ class DataAccessScopeAllowedDataAccessLabelArgs:
 
     @_builtins.property
     @pulumi.getter(name="assetNamespace")
-    def asset_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def asset_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The asset namespace configured in the forwarder
         of the customer's events.
@@ -4940,24 +4940,24 @@ class DataAccessScopeAllowedDataAccessLabelArgs:
         return pulumi.get(self, "asset_namespace")
 
     @asset_namespace.setter
-    def asset_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def asset_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "asset_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="dataAccessLabel")
-    def data_access_label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_access_label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the data access label.
         """
         return pulumi.get(self, "data_access_label")
 
     @data_access_label.setter
-    def data_access_label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_access_label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_access_label", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The display name of the label.
@@ -4969,12 +4969,12 @@ class DataAccessScopeAllowedDataAccessLabelArgs:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ingestionLabel")
-    def ingestion_label(self) -> Optional[pulumi.Input['DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs']]:
+    def ingestion_label(self) -> pulumi.Input[Optional['DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs']]:
         """
         Representation of an ingestion label type.
         Structure is documented below.
@@ -4982,19 +4982,19 @@ class DataAccessScopeAllowedDataAccessLabelArgs:
         return pulumi.get(self, "ingestion_label")
 
     @ingestion_label.setter
-    def ingestion_label(self, value: Optional[pulumi.Input['DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs']]):
+    def ingestion_label(self, value: pulumi.Input[Optional['DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs']]):
         pulumi.set(self, "ingestion_label", value)
 
     @_builtins.property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the log type.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_type", value)
 
 
@@ -5003,7 +5003,7 @@ class DataAccessScopeAllowedDataAccessLabelIngestionLabelArgsDict(TypedDict):
     """
     Required. The key of the ingestion label. Always required.
     """
-    ingestion_label_value: NotRequired[pulumi.Input[_builtins.str]]
+    ingestion_label_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The value of the ingestion label. Optional. An object
     with no provided value and some key provided would match
@@ -5014,7 +5014,7 @@ class DataAccessScopeAllowedDataAccessLabelIngestionLabelArgsDict(TypedDict):
 class DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs:
     def __init__(__self__, *,
                  ingestion_label_key: pulumi.Input[_builtins.str],
-                 ingestion_label_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 ingestion_label_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ingestion_label_key: Required. The key of the ingestion label. Always required.
         :param pulumi.Input[_builtins.str] ingestion_label_value: Optional. The value of the ingestion label. Optional. An object
@@ -5039,7 +5039,7 @@ class DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs:
 
     @_builtins.property
     @pulumi.getter(name="ingestionLabelValue")
-    def ingestion_label_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingestion_label_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The value of the ingestion label. Optional. An object
         with no provided value and some key provided would match
@@ -5048,21 +5048,21 @@ class DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs:
         return pulumi.get(self, "ingestion_label_value")
 
     @ingestion_label_value.setter
-    def ingestion_label_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingestion_label_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingestion_label_value", value)
 
 
 class DataAccessScopeDeniedDataAccessLabelArgsDict(TypedDict):
-    asset_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    asset_namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The asset namespace configured in the forwarder
     of the customer's events.
     """
-    data_access_label: NotRequired[pulumi.Input[_builtins.str]]
+    data_access_label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the data access label.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The display name of the label.
@@ -5071,12 +5071,12 @@ class DataAccessScopeDeniedDataAccessLabelArgsDict(TypedDict):
     The asset namespace will match the namespace itself.
     The ingestion key value pair will match the key of the tuple.
     """
-    ingestion_label: NotRequired[pulumi.Input['DataAccessScopeDeniedDataAccessLabelIngestionLabelArgsDict']]
+    ingestion_label: NotRequired[pulumi.Input[Optional['DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs']]]
     """
     Representation of an ingestion label type.
     Structure is documented below.
     """
-    log_type: NotRequired[pulumi.Input[_builtins.str]]
+    log_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the log type.
     """
@@ -5084,11 +5084,11 @@ class DataAccessScopeDeniedDataAccessLabelArgsDict(TypedDict):
 @pulumi.input_type
 class DataAccessScopeDeniedDataAccessLabelArgs:
     def __init__(__self__, *,
-                 asset_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_access_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingestion_label: Optional[pulumi.Input['DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs']] = None,
-                 log_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 asset_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_access_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingestion_label: pulumi.Input[Optional['DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs']] = None,
+                 log_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] asset_namespace: The asset namespace configured in the forwarder
                of the customer's events.
@@ -5116,7 +5116,7 @@ class DataAccessScopeDeniedDataAccessLabelArgs:
 
     @_builtins.property
     @pulumi.getter(name="assetNamespace")
-    def asset_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def asset_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The asset namespace configured in the forwarder
         of the customer's events.
@@ -5124,24 +5124,24 @@ class DataAccessScopeDeniedDataAccessLabelArgs:
         return pulumi.get(self, "asset_namespace")
 
     @asset_namespace.setter
-    def asset_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def asset_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "asset_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="dataAccessLabel")
-    def data_access_label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_access_label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the data access label.
         """
         return pulumi.get(self, "data_access_label")
 
     @data_access_label.setter
-    def data_access_label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_access_label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_access_label", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The display name of the label.
@@ -5153,12 +5153,12 @@ class DataAccessScopeDeniedDataAccessLabelArgs:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ingestionLabel")
-    def ingestion_label(self) -> Optional[pulumi.Input['DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs']]:
+    def ingestion_label(self) -> pulumi.Input[Optional['DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs']]:
         """
         Representation of an ingestion label type.
         Structure is documented below.
@@ -5166,19 +5166,19 @@ class DataAccessScopeDeniedDataAccessLabelArgs:
         return pulumi.get(self, "ingestion_label")
 
     @ingestion_label.setter
-    def ingestion_label(self, value: Optional[pulumi.Input['DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs']]):
+    def ingestion_label(self, value: pulumi.Input[Optional['DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs']]):
         pulumi.set(self, "ingestion_label", value)
 
     @_builtins.property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the log type.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_type", value)
 
 
@@ -5187,7 +5187,7 @@ class DataAccessScopeDeniedDataAccessLabelIngestionLabelArgsDict(TypedDict):
     """
     Required. The key of the ingestion label. Always required.
     """
-    ingestion_label_value: NotRequired[pulumi.Input[_builtins.str]]
+    ingestion_label_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The value of the ingestion label. Optional. An object
     with no provided value and some key provided would match
@@ -5198,7 +5198,7 @@ class DataAccessScopeDeniedDataAccessLabelIngestionLabelArgsDict(TypedDict):
 class DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs:
     def __init__(__self__, *,
                  ingestion_label_key: pulumi.Input[_builtins.str],
-                 ingestion_label_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 ingestion_label_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ingestion_label_key: Required. The key of the ingestion label. Always required.
         :param pulumi.Input[_builtins.str] ingestion_label_value: Optional. The value of the ingestion label. Optional. An object
@@ -5223,7 +5223,7 @@ class DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs:
 
     @_builtins.property
     @pulumi.getter(name="ingestionLabelValue")
-    def ingestion_label_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingestion_label_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The value of the ingestion label. Optional. An object
         with no provided value and some key provided would match
@@ -5232,7 +5232,7 @@ class DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs:
         return pulumi.get(self, "ingestion_label_value")
 
     @ingestion_label_value.setter
-    def ingestion_label_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingestion_label_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingestion_label_value", value)
 
 
@@ -5250,7 +5250,7 @@ class DataTableColumnInfoArgsDict(TypedDict):
     - Contains only letters, numbers and underscore.
     - Must be unique and has length < 256
     """
-    column_type: NotRequired[pulumi.Input[_builtins.str]]
+    column_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column type can be STRING, CIDR (Ex- 10.1.1.0/24), REGEX
     Possible values:
@@ -5260,17 +5260,17 @@ class DataTableColumnInfoArgsDict(TypedDict):
     NUMBER
     Possible values are: `STRING`, `REGEX`, `CIDR`, `NUMBER`.
     """
-    key_column: NotRequired[pulumi.Input[_builtins.bool]]
+    key_column: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to include this column in the calculation of the row ID.
     If no columns have key_column = true, all columns will be included in the
     calculation of the row ID.
     """
-    mapped_column_path: NotRequired[pulumi.Input[_builtins.str]]
+    mapped_column_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Entity proto field path that the column is mapped to
     """
-    repeated_values: NotRequired[pulumi.Input[_builtins.bool]]
+    repeated_values: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the column is a repeated values column.
     """
@@ -5280,10 +5280,10 @@ class DataTableColumnInfoArgs:
     def __init__(__self__, *,
                  column_index: pulumi.Input[_builtins.int],
                  original_column: pulumi.Input[_builtins.str],
-                 column_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_column: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mapped_column_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeated_values: Optional[pulumi.Input[_builtins.bool]] = None):
+                 column_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_column: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mapped_column_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeated_values: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.int] column_index: Column Index. 0,1,2...
         :param pulumi.Input[_builtins.str] original_column: Original column name of the Data Table (present in the CSV header in case
@@ -5347,7 +5347,7 @@ class DataTableColumnInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="columnType")
-    def column_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column type can be STRING, CIDR (Ex- 10.1.1.0/24), REGEX
         Possible values:
@@ -5360,12 +5360,12 @@ class DataTableColumnInfoArgs:
         return pulumi.get(self, "column_type")
 
     @column_type.setter
-    def column_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column_type", value)
 
     @_builtins.property
     @pulumi.getter(name="keyColumn")
-    def key_column(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def key_column(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to include this column in the calculation of the row ID.
         If no columns have key_column = true, all columns will be included in the
@@ -5374,31 +5374,31 @@ class DataTableColumnInfoArgs:
         return pulumi.get(self, "key_column")
 
     @key_column.setter
-    def key_column(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def key_column(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "key_column", value)
 
     @_builtins.property
     @pulumi.getter(name="mappedColumnPath")
-    def mapped_column_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mapped_column_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Entity proto field path that the column is mapped to
         """
         return pulumi.get(self, "mapped_column_path")
 
     @mapped_column_path.setter
-    def mapped_column_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mapped_column_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mapped_column_path", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatedValues")
-    def repeated_values(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def repeated_values(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the column is a repeated values column.
         """
         return pulumi.get(self, "repeated_values")
 
     @repeated_values.setter
-    def repeated_values(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def repeated_values(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "repeated_values", value)
 
 
@@ -5446,130 +5446,130 @@ class FeedDetailsArgsDict(TypedDict):
     Format:
     projects/{project}/locations/{location}/instances/{instance}/logTypes/{log_type}
     """
-    amazon_kinesis_firehose_settings: NotRequired[pulumi.Input['FeedDetailsAmazonKinesisFirehoseSettingsArgsDict']]
+    amazon_kinesis_firehose_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonKinesisFirehoseSettingsArgs']]]
     """
     Settings required by Amazon Kinesis Firehose Feeds(HTTP-Push).
     """
-    amazon_s3_settings: NotRequired[pulumi.Input['FeedDetailsAmazonS3SettingsArgsDict']]
+    amazon_s3_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3SettingsArgs']]]
     """
     Amazon S3 settings.
     Structure is documented below.
     """
-    amazon_s3_v2_settings: NotRequired[pulumi.Input['FeedDetailsAmazonS3V2SettingsArgsDict']]
+    amazon_s3_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsArgs']]]
     """
     AmazonS3V2Settings is the settings proto for Omniflow S3 feeds.
     Structure is documented below.
     """
-    amazon_sqs_settings: NotRequired[pulumi.Input['FeedDetailsAmazonSqsSettingsArgsDict']]
+    amazon_sqs_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsArgs']]]
     """
     Amazon SQS settings.
     Structure is documented below.
     """
-    amazon_sqs_v2_settings: NotRequired[pulumi.Input['FeedDetailsAmazonSqsV2SettingsArgsDict']]
+    amazon_sqs_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsV2SettingsArgs']]]
     """
     AmazonSQSV2Settings is the settings proto for Omniflow SQS feeds.
     Structure is documented below.
     """
-    anomali_settings: NotRequired[pulumi.Input['FeedDetailsAnomaliSettingsArgsDict']]
+    anomali_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAnomaliSettingsArgs']]]
     """
     Anomali IOC settings.
     Structure is documented below.
     """
-    asset_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    asset_namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The asset namespace to apply to all logs ingested through this feed.
     """
-    aws_ec2_hosts_settings: NotRequired[pulumi.Input['FeedDetailsAwsEc2HostsSettingsArgsDict']]
+    aws_ec2_hosts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2HostsSettingsArgs']]]
     """
     AWS EC2 Hosts Settings.
     Structure is documented below.
     """
-    aws_ec2_instances_settings: NotRequired[pulumi.Input['FeedDetailsAwsEc2InstancesSettingsArgsDict']]
+    aws_ec2_instances_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2InstancesSettingsArgs']]]
     """
     AWS EC2 Instances Settings.
     Structure is documented below.
     """
-    aws_ec2_vpcs_settings: NotRequired[pulumi.Input['FeedDetailsAwsEc2VpcsSettingsArgsDict']]
+    aws_ec2_vpcs_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2VpcsSettingsArgs']]]
     """
     AWS EC2 Vpcs Settings.
     Structure is documented below.
     """
-    aws_iam_settings: NotRequired[pulumi.Input['FeedDetailsAwsIamSettingsArgsDict']]
+    aws_iam_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAwsIamSettingsArgs']]]
     """
     AWSIAMSettings contains details needed for creating an AWS IAM feed.
     Structure is documented below.
     """
-    azure_ad_audit_settings: NotRequired[pulumi.Input['FeedDetailsAzureAdAuditSettingsArgsDict']]
+    azure_ad_audit_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdAuditSettingsArgs']]]
     """
     Azure AD Audit settings.
     Structure is documented below.
     """
-    azure_ad_context_settings: NotRequired[pulumi.Input['FeedDetailsAzureAdContextSettingsArgsDict']]
+    azure_ad_context_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdContextSettingsArgs']]]
     """
     Azure AD Context settings.
     Structure is documented below.
     """
-    azure_ad_settings: NotRequired[pulumi.Input['FeedDetailsAzureAdSettingsArgsDict']]
+    azure_ad_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdSettingsArgs']]]
     """
     Azure AD settings.
     Structure is documented below.
     """
-    azure_blob_store_settings: NotRequired[pulumi.Input['FeedDetailsAzureBlobStoreSettingsArgsDict']]
+    azure_blob_store_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureBlobStoreSettingsArgs']]]
     """
     Azure Blob Storage settings.
     Structure is documented below.
     """
-    azure_blob_store_v2_settings: NotRequired[pulumi.Input['FeedDetailsAzureBlobStoreV2SettingsArgsDict']]
+    azure_blob_store_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureBlobStoreV2SettingsArgs']]]
     """
     AzureBlobStoreV2Settings is the settings proto for Azure Blob Storage feeds.
     Structure is documented below.
     """
-    azure_event_hub_settings: NotRequired[pulumi.Input['FeedDetailsAzureEventHubSettingsArgsDict']]
+    azure_event_hub_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureEventHubSettingsArgs']]]
     """
     Settings required by Azure Event Hub Feeds.
     Structure is documented below.
     """
-    azure_mdm_intune_settings: NotRequired[pulumi.Input['FeedDetailsAzureMdmIntuneSettingsArgsDict']]
+    azure_mdm_intune_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureMdmIntuneSettingsArgs']]]
     """
     Azure MDM Intune settings.
     Structure is documented below.
     """
-    cloud_passage_settings: NotRequired[pulumi.Input['FeedDetailsCloudPassageSettingsArgsDict']]
+    cloud_passage_settings: NotRequired[pulumi.Input[Optional['FeedDetailsCloudPassageSettingsArgs']]]
     """
     CloudPassage settings.
     Structure is documented below.
     """
-    cortex_xdr_settings: NotRequired[pulumi.Input['FeedDetailsCortexXdrSettingsArgsDict']]
+    cortex_xdr_settings: NotRequired[pulumi.Input[Optional['FeedDetailsCortexXdrSettingsArgs']]]
     """
     PAN Cortex XDR settings.
     Structure is documented below.
     """
-    crowdstrike_alerts_settings: NotRequired[pulumi.Input['FeedDetailsCrowdstrikeAlertsSettingsArgsDict']]
+    crowdstrike_alerts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsCrowdstrikeAlertsSettingsArgs']]]
     """
     CrowdStrike Alerts settings.
     Structure is documented below.
     """
-    crowdstrike_detects_settings: NotRequired[pulumi.Input['FeedDetailsCrowdstrikeDetectsSettingsArgsDict']]
+    crowdstrike_detects_settings: NotRequired[pulumi.Input[Optional['FeedDetailsCrowdstrikeDetectsSettingsArgs']]]
     """
     CrowdStrike Detects settings.
     Structure is documented below.
     """
-    dummy_log_type_settings: NotRequired[pulumi.Input['FeedDetailsDummyLogTypeSettingsArgsDict']]
+    dummy_log_type_settings: NotRequired[pulumi.Input[Optional['FeedDetailsDummyLogTypeSettingsArgs']]]
     """
     Settings required by Feeds of DummyLogType(used for testing purposes).
     Structure is documented below.
     """
-    duo_auth_settings: NotRequired[pulumi.Input['FeedDetailsDuoAuthSettingsArgsDict']]
+    duo_auth_settings: NotRequired[pulumi.Input[Optional['FeedDetailsDuoAuthSettingsArgs']]]
     """
     Duo Authentication settings.
     Structure is documented below.
     """
-    duo_user_context_settings: NotRequired[pulumi.Input['FeedDetailsDuoUserContextSettingsArgsDict']]
+    duo_user_context_settings: NotRequired[pulumi.Input[Optional['FeedDetailsDuoUserContextSettingsArgs']]]
     """
     Duo User Context settings.
     Structure is documented below.
     """
-    feed_source_type: NotRequired[pulumi.Input[_builtins.str]]
+    feed_source_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Source Type of the feed.
     Possible values:
@@ -5594,189 +5594,189 @@ class FeedDetailsArgsDict(TypedDict):
     GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN
     Possible values are: `GOOGLE_CLOUD_STORAGE`, `HTTP`, `SFTP`, `AMAZON_S3`, `AZURE_BLOBSTORE`, `API`, `AMAZON_SQS`, `PUBSUB`, `AMAZON_KINESIS_FIREHOSE`, `WEBHOOK`, `HTTPS_PUSH_GOOGLE_CLOUD_PUBSUB`, `HTTPS_PUSH_AMAZON_KINESIS_FIREHOSE`, `HTTPS_PUSH_WEBHOOK`, `AZURE_EVENT_HUB`, `GOOGLE_CLOUD_STORAGE_V2`, `AMAZON_S3_V2`, `AMAZON_SQS_V2`, `AZURE_BLOBSTORE_V2`, `GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN`.
     """
-    fox_it_stix_settings: NotRequired[pulumi.Input['FeedDetailsFoxItStixSettingsArgsDict']]
+    fox_it_stix_settings: NotRequired[pulumi.Input[Optional['FeedDetailsFoxItStixSettingsArgs']]]
     """
     Fox-IT STIX settings.
     Structure is documented below.
     """
-    gcs_settings: NotRequired[pulumi.Input['FeedDetailsGcsSettingsArgsDict']]
+    gcs_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGcsSettingsArgs']]]
     """
     Google Cloud Storage settings.
     Structure is documented below.
     """
-    gcs_v2_settings: NotRequired[pulumi.Input['FeedDetailsGcsV2SettingsArgsDict']]
+    gcs_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGcsV2SettingsArgs']]]
     """
     GoogleCloudStorageV2Settings is the settings proto for Omniflow Google Cloud
     Storage feeds.
     Structure is documented below.
     """
-    google_cloud_identity_device_users_settings: NotRequired[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgsDict']]
+    google_cloud_identity_device_users_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgs']]]
     """
     Google Cloud Identity Device Users settings.
     Structure is documented below.
     """
-    google_cloud_identity_devices_settings: NotRequired[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsArgsDict']]
+    google_cloud_identity_devices_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsArgs']]]
     """
     Google Cloud Identity Devices settings.
     Structure is documented below.
     """
-    google_cloud_storage_event_driven_settings: NotRequired[pulumi.Input['FeedDetailsGoogleCloudStorageEventDrivenSettingsArgsDict']]
+    google_cloud_storage_event_driven_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudStorageEventDrivenSettingsArgs']]]
     """
     GoogleCloudStorageEventDrivenSettings is the settings proto for Omniflow
     Google Cloud Storage feeds driven by pubsub events.
     Structure is documented below.
     """
-    http_settings: NotRequired[pulumi.Input['FeedDetailsHttpSettingsArgsDict']]
+    http_settings: NotRequired[pulumi.Input[Optional['FeedDetailsHttpSettingsArgs']]]
     """
     HTTP settings.
     Structure is documented below.
     """
-    https_push_amazon_kinesis_firehose_settings: NotRequired[pulumi.Input['FeedDetailsHttpsPushAmazonKinesisFirehoseSettingsArgsDict']]
+    https_push_amazon_kinesis_firehose_settings: NotRequired[pulumi.Input[Optional['FeedDetailsHttpsPushAmazonKinesisFirehoseSettingsArgs']]]
     """
     Settings required by Amazon Kinesis Firehose Feeds(HTTPS-Push V2).
     Structure is documented below.
     """
-    https_push_google_cloud_pubsub_settings: NotRequired[pulumi.Input['FeedDetailsHttpsPushGoogleCloudPubsubSettingsArgsDict']]
+    https_push_google_cloud_pubsub_settings: NotRequired[pulumi.Input[Optional['FeedDetailsHttpsPushGoogleCloudPubsubSettingsArgs']]]
     """
     Settings required by Google Cloud Platform Pub/Sub Feeds(HTTPS-Push V2).
     Structure is documented below.
     """
-    https_push_webhook_settings: NotRequired[pulumi.Input['FeedDetailsHttpsPushWebhookSettingsArgsDict']]
+    https_push_webhook_settings: NotRequired[pulumi.Input[Optional['FeedDetailsHttpsPushWebhookSettingsArgs']]]
     """
     Settings required by Webhook Feeds(HTTPS-Push V2).
     Structure is documented below.
     """
-    imperva_waf_settings: NotRequired[pulumi.Input['FeedDetailsImpervaWafSettingsArgsDict']]
+    imperva_waf_settings: NotRequired[pulumi.Input[Optional['FeedDetailsImpervaWafSettingsArgs']]]
     """
     Imperva WAF settings.
     Structure is documented below.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The ingestion metadata labels to apply to all logs ingested through this
     feed, and the resulting normalized data.
     """
-    mandiant_ioc_settings: NotRequired[pulumi.Input['FeedDetailsMandiantIocSettingsArgsDict']]
+    mandiant_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMandiantIocSettingsArgs']]]
     """
     Mandiant IOC settings.
     Structure is documented below.
     """
-    microsoft_graph_alert_settings: NotRequired[pulumi.Input['FeedDetailsMicrosoftGraphAlertSettingsArgsDict']]
+    microsoft_graph_alert_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMicrosoftGraphAlertSettingsArgs']]]
     """
     Microsoft Graph Alert settings.
     Structure is documented below.
     """
-    microsoft_security_center_alert_settings: NotRequired[pulumi.Input['FeedDetailsMicrosoftSecurityCenterAlertSettingsArgsDict']]
+    microsoft_security_center_alert_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMicrosoftSecurityCenterAlertSettingsArgs']]]
     """
     Microsoft Security Center alert settings.
     Structure is documented below.
     """
-    mimecast_mail_settings: NotRequired[pulumi.Input['FeedDetailsMimecastMailSettingsArgsDict']]
+    mimecast_mail_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMimecastMailSettingsArgs']]]
     """
     Mimecast Mail settings.
     Structure is documented below.
     """
-    mimecast_mail_v2_settings: NotRequired[pulumi.Input['FeedDetailsMimecastMailV2SettingsArgsDict']]
+    mimecast_mail_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMimecastMailV2SettingsArgs']]]
     """
     Mimecast Mail V2 Settings.
     Structure is documented below.
     """
-    netskope_alert_settings: NotRequired[pulumi.Input['FeedDetailsNetskopeAlertSettingsArgsDict']]
+    netskope_alert_settings: NotRequired[pulumi.Input[Optional['FeedDetailsNetskopeAlertSettingsArgs']]]
     """
     Netskope Alert settings.
     Structure is documented below.
     """
-    netskope_alert_v2_settings: NotRequired[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsArgsDict']]
+    netskope_alert_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsNetskopeAlertV2SettingsArgs']]]
     """
     Netskope Alert V2 settings.
     Structure is documented below.
     """
-    office365_settings: NotRequired[pulumi.Input['FeedDetailsOffice365SettingsArgsDict']]
+    office365_settings: NotRequired[pulumi.Input[Optional['FeedDetailsOffice365SettingsArgs']]]
     """
     Office 365 settings.
     Structure is documented below.
     """
-    okta_settings: NotRequired[pulumi.Input['FeedDetailsOktaSettingsArgsDict']]
+    okta_settings: NotRequired[pulumi.Input[Optional['FeedDetailsOktaSettingsArgs']]]
     """
     Okta settings.
     Structure is documented below.
     """
-    okta_user_context_settings: NotRequired[pulumi.Input['FeedDetailsOktaUserContextSettingsArgsDict']]
+    okta_user_context_settings: NotRequired[pulumi.Input[Optional['FeedDetailsOktaUserContextSettingsArgs']]]
     """
     Okta user context settings.
     Structure is documented below.
     """
-    pan_ioc_settings: NotRequired[pulumi.Input['FeedDetailsPanIocSettingsArgsDict']]
+    pan_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsPanIocSettingsArgs']]]
     """
     PAN IOC settings.
     Structure is documented below.
     """
-    pan_prisma_cloud_settings: NotRequired[pulumi.Input['FeedDetailsPanPrismaCloudSettingsArgsDict']]
+    pan_prisma_cloud_settings: NotRequired[pulumi.Input[Optional['FeedDetailsPanPrismaCloudSettingsArgs']]]
     """
     PAN Prisma Cloud settings.
     Structure is documented below.
     """
-    proofpoint_mail_settings: NotRequired[pulumi.Input['FeedDetailsProofpointMailSettingsArgsDict']]
+    proofpoint_mail_settings: NotRequired[pulumi.Input[Optional['FeedDetailsProofpointMailSettingsArgs']]]
     """
     Proofpoint Mail settings.
     Structure is documented below.
     """
-    proofpoint_on_demand_settings: NotRequired[pulumi.Input['FeedDetailsProofpointOnDemandSettingsArgsDict']]
+    proofpoint_on_demand_settings: NotRequired[pulumi.Input[Optional['FeedDetailsProofpointOnDemandSettingsArgs']]]
     """
     Proofpoint On-demand settings.
     Structure is documented below.
     """
-    pubsub_settings: NotRequired[pulumi.Input['FeedDetailsPubsubSettingsArgsDict']]
+    pubsub_settings: NotRequired[pulumi.Input[Optional['FeedDetailsPubsubSettingsArgs']]]
     """
     Settings required by Google Cloud Pub/Sub Feeds(HTTP-Push).
     Structure is documented below.
     """
-    qualys_scan_settings: NotRequired[pulumi.Input['FeedDetailsQualysScanSettingsArgsDict']]
+    qualys_scan_settings: NotRequired[pulumi.Input[Optional['FeedDetailsQualysScanSettingsArgs']]]
     """
     Qualys Scan settings.
     Structure is documented below.
     """
-    qualys_vm_settings: NotRequired[pulumi.Input['FeedDetailsQualysVmSettingsArgsDict']]
+    qualys_vm_settings: NotRequired[pulumi.Input[Optional['FeedDetailsQualysVmSettingsArgs']]]
     """
     Qualys VM settings.
     Structure is documented below.
     """
-    rapid7_insight_settings: NotRequired[pulumi.Input['FeedDetailsRapid7InsightSettingsArgsDict']]
+    rapid7_insight_settings: NotRequired[pulumi.Input[Optional['FeedDetailsRapid7InsightSettingsArgs']]]
     """
     Rapid7 Insight settings.
     Structure is documented below.
     """
-    recorded_future_ioc_settings: NotRequired[pulumi.Input['FeedDetailsRecordedFutureIocSettingsArgsDict']]
+    recorded_future_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsRecordedFutureIocSettingsArgs']]]
     """
     Recorded Future IOC settings.
     Structure is documented below.
     """
-    rh_isac_ioc_settings: NotRequired[pulumi.Input['FeedDetailsRhIsacIocSettingsArgsDict']]
+    rh_isac_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsRhIsacIocSettingsArgs']]]
     """
     RH-ISAC settings.
     Structure is documented below.
     """
-    salesforce_settings: NotRequired[pulumi.Input['FeedDetailsSalesforceSettingsArgsDict']]
+    salesforce_settings: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsArgs']]]
     """
     Salesforce settings.
     Structure is documented below.
     """
-    sentinelone_alert_settings: NotRequired[pulumi.Input['FeedDetailsSentineloneAlertSettingsArgsDict']]
+    sentinelone_alert_settings: NotRequired[pulumi.Input[Optional['FeedDetailsSentineloneAlertSettingsArgs']]]
     """
     SentinelOne Alert settings.
     Structure is documented below.
     """
-    service_now_cmdb_settings: NotRequired[pulumi.Input['FeedDetailsServiceNowCmdbSettingsArgsDict']]
+    service_now_cmdb_settings: NotRequired[pulumi.Input[Optional['FeedDetailsServiceNowCmdbSettingsArgs']]]
     """
     ServiceNow CMDB settings.
     Structure is documented below.
     """
-    sftp_settings: NotRequired[pulumi.Input['FeedDetailsSftpSettingsArgsDict']]
+    sftp_settings: NotRequired[pulumi.Input[Optional['FeedDetailsSftpSettingsArgs']]]
     """
     SFTP settings.
     Structure is documented below.
     """
-    sts_migration_readiness: NotRequired[pulumi.Input[_builtins.str]]
+    sts_migration_readiness: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The status of the feed's migration to STS.
@@ -5785,81 +5785,81 @@ class FeedDetailsArgsDict(TypedDict):
     READY
     AUTH_RECONFIG_REQUIRED
     """
-    symantec_event_export_settings: NotRequired[pulumi.Input['FeedDetailsSymantecEventExportSettingsArgsDict']]
+    symantec_event_export_settings: NotRequired[pulumi.Input[Optional['FeedDetailsSymantecEventExportSettingsArgs']]]
     """
     Symantec Event Export settings.
     Structure is documented below.
     """
-    thinkst_canary_settings: NotRequired[pulumi.Input['FeedDetailsThinkstCanarySettingsArgsDict']]
+    thinkst_canary_settings: NotRequired[pulumi.Input[Optional['FeedDetailsThinkstCanarySettingsArgs']]]
     """
     Thinkst Canary settings.
     Structure is documented below.
     """
-    threat_connect_ioc_settings: NotRequired[pulumi.Input['FeedDetailsThreatConnectIocSettingsArgsDict']]
+    threat_connect_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsThreatConnectIocSettingsArgs']]]
     """
     ThreatConnect IOC Settings.
     Structure is documented below.
     """
-    threat_connect_ioc_v3_settings: NotRequired[pulumi.Input['FeedDetailsThreatConnectIocV3SettingsArgsDict']]
+    threat_connect_ioc_v3_settings: NotRequired[pulumi.Input[Optional['FeedDetailsThreatConnectIocV3SettingsArgs']]]
     """
     ThreatConnectIoCV3Settings
     Structure is documented below.
     """
-    trellix_hx_alerts_settings: NotRequired[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsArgsDict']]
+    trellix_hx_alerts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsArgs']]]
     """
     Settings required by Feeds of TrellixHxAlerts.
     Structure is documented below.
     """
-    trellix_hx_bulk_acqs_settings: NotRequired[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsArgsDict']]
+    trellix_hx_bulk_acqs_settings: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsArgs']]]
     """
     Settings required by Feeds of TrellixHxBulkAcqs.
     Structure is documented below.
     """
-    trellix_hx_hosts_settings: NotRequired[pulumi.Input['FeedDetailsTrellixHxHostsSettingsArgsDict']]
+    trellix_hx_hosts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsArgs']]]
     """
     Settings required by Feeds of TrellixHxHosts.
     Structure is documented below.
     """
-    webhook_settings: NotRequired[pulumi.Input['FeedDetailsWebhookSettingsArgsDict']]
+    webhook_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWebhookSettingsArgs']]]
     """
     Settings required by Webhook Feeds(HTTP-Push).
     """
-    workday_settings: NotRequired[pulumi.Input['FeedDetailsWorkdaySettingsArgsDict']]
+    workday_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkdaySettingsArgs']]]
     """
     Workday settings.
     Structure is documented below.
     """
-    workspace_activity_settings: NotRequired[pulumi.Input['FeedDetailsWorkspaceActivitySettingsArgsDict']]
+    workspace_activity_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsArgs']]]
     """
     Workspace Activity settings.
     Structure is documented below.
     """
-    workspace_alerts_settings: NotRequired[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsArgsDict']]
+    workspace_alerts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsArgs']]]
     """
     Workspace Alert settings.
     Structure is documented below.
     """
-    workspace_chrome_os_settings: NotRequired[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsArgsDict']]
+    workspace_chrome_os_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsArgs']]]
     """
     Workspace Chrome OS settings.
     Structure is documented below.
     """
-    workspace_groups_settings: NotRequired[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsArgsDict']]
+    workspace_groups_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsArgs']]]
     """
     Workspace Groups settings.
     Structure is documented below.
     """
-    workspace_mobile_settings: NotRequired[pulumi.Input['FeedDetailsWorkspaceMobileSettingsArgsDict']]
+    workspace_mobile_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsArgs']]]
     """
     Workspace Mobile settings.
     Structure is documented below.
     """
-    workspace_privileges_settings: NotRequired[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsArgsDict']]
+    workspace_privileges_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsArgs']]]
     """
     Workspace Privileges settings.
     Structure is documented below.
     """
-    workspace_users_settings: NotRequired[pulumi.Input['FeedDetailsWorkspaceUsersSettingsArgsDict']]
+    workspace_users_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsArgs']]]
     """
     Workspace Users settings.
     Structure is documented below.
@@ -5872,85 +5872,85 @@ class FeedDetailsArgsDict(TypedDict):
 class FeedDetailsArgs:
     def __init__(__self__, *,
                  log_type: pulumi.Input[_builtins.str],
-                 amazon_kinesis_firehose_settings: Optional[pulumi.Input['FeedDetailsAmazonKinesisFirehoseSettingsArgs']] = None,
-                 amazon_s3_settings: Optional[pulumi.Input['FeedDetailsAmazonS3SettingsArgs']] = None,
-                 amazon_s3_v2_settings: Optional[pulumi.Input['FeedDetailsAmazonS3V2SettingsArgs']] = None,
-                 amazon_sqs_settings: Optional[pulumi.Input['FeedDetailsAmazonSqsSettingsArgs']] = None,
-                 amazon_sqs_v2_settings: Optional[pulumi.Input['FeedDetailsAmazonSqsV2SettingsArgs']] = None,
-                 anomali_settings: Optional[pulumi.Input['FeedDetailsAnomaliSettingsArgs']] = None,
-                 asset_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_ec2_hosts_settings: Optional[pulumi.Input['FeedDetailsAwsEc2HostsSettingsArgs']] = None,
-                 aws_ec2_instances_settings: Optional[pulumi.Input['FeedDetailsAwsEc2InstancesSettingsArgs']] = None,
-                 aws_ec2_vpcs_settings: Optional[pulumi.Input['FeedDetailsAwsEc2VpcsSettingsArgs']] = None,
-                 aws_iam_settings: Optional[pulumi.Input['FeedDetailsAwsIamSettingsArgs']] = None,
-                 azure_ad_audit_settings: Optional[pulumi.Input['FeedDetailsAzureAdAuditSettingsArgs']] = None,
-                 azure_ad_context_settings: Optional[pulumi.Input['FeedDetailsAzureAdContextSettingsArgs']] = None,
-                 azure_ad_settings: Optional[pulumi.Input['FeedDetailsAzureAdSettingsArgs']] = None,
-                 azure_blob_store_settings: Optional[pulumi.Input['FeedDetailsAzureBlobStoreSettingsArgs']] = None,
-                 azure_blob_store_v2_settings: Optional[pulumi.Input['FeedDetailsAzureBlobStoreV2SettingsArgs']] = None,
-                 azure_event_hub_settings: Optional[pulumi.Input['FeedDetailsAzureEventHubSettingsArgs']] = None,
-                 azure_mdm_intune_settings: Optional[pulumi.Input['FeedDetailsAzureMdmIntuneSettingsArgs']] = None,
-                 cloud_passage_settings: Optional[pulumi.Input['FeedDetailsCloudPassageSettingsArgs']] = None,
-                 cortex_xdr_settings: Optional[pulumi.Input['FeedDetailsCortexXdrSettingsArgs']] = None,
-                 crowdstrike_alerts_settings: Optional[pulumi.Input['FeedDetailsCrowdstrikeAlertsSettingsArgs']] = None,
-                 crowdstrike_detects_settings: Optional[pulumi.Input['FeedDetailsCrowdstrikeDetectsSettingsArgs']] = None,
-                 dummy_log_type_settings: Optional[pulumi.Input['FeedDetailsDummyLogTypeSettingsArgs']] = None,
-                 duo_auth_settings: Optional[pulumi.Input['FeedDetailsDuoAuthSettingsArgs']] = None,
-                 duo_user_context_settings: Optional[pulumi.Input['FeedDetailsDuoUserContextSettingsArgs']] = None,
-                 feed_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 fox_it_stix_settings: Optional[pulumi.Input['FeedDetailsFoxItStixSettingsArgs']] = None,
-                 gcs_settings: Optional[pulumi.Input['FeedDetailsGcsSettingsArgs']] = None,
-                 gcs_v2_settings: Optional[pulumi.Input['FeedDetailsGcsV2SettingsArgs']] = None,
-                 google_cloud_identity_device_users_settings: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgs']] = None,
-                 google_cloud_identity_devices_settings: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsArgs']] = None,
-                 google_cloud_storage_event_driven_settings: Optional[pulumi.Input['FeedDetailsGoogleCloudStorageEventDrivenSettingsArgs']] = None,
-                 http_settings: Optional[pulumi.Input['FeedDetailsHttpSettingsArgs']] = None,
-                 https_push_amazon_kinesis_firehose_settings: Optional[pulumi.Input['FeedDetailsHttpsPushAmazonKinesisFirehoseSettingsArgs']] = None,
-                 https_push_google_cloud_pubsub_settings: Optional[pulumi.Input['FeedDetailsHttpsPushGoogleCloudPubsubSettingsArgs']] = None,
-                 https_push_webhook_settings: Optional[pulumi.Input['FeedDetailsHttpsPushWebhookSettingsArgs']] = None,
-                 imperva_waf_settings: Optional[pulumi.Input['FeedDetailsImpervaWafSettingsArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mandiant_ioc_settings: Optional[pulumi.Input['FeedDetailsMandiantIocSettingsArgs']] = None,
-                 microsoft_graph_alert_settings: Optional[pulumi.Input['FeedDetailsMicrosoftGraphAlertSettingsArgs']] = None,
-                 microsoft_security_center_alert_settings: Optional[pulumi.Input['FeedDetailsMicrosoftSecurityCenterAlertSettingsArgs']] = None,
-                 mimecast_mail_settings: Optional[pulumi.Input['FeedDetailsMimecastMailSettingsArgs']] = None,
-                 mimecast_mail_v2_settings: Optional[pulumi.Input['FeedDetailsMimecastMailV2SettingsArgs']] = None,
-                 netskope_alert_settings: Optional[pulumi.Input['FeedDetailsNetskopeAlertSettingsArgs']] = None,
-                 netskope_alert_v2_settings: Optional[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsArgs']] = None,
-                 office365_settings: Optional[pulumi.Input['FeedDetailsOffice365SettingsArgs']] = None,
-                 okta_settings: Optional[pulumi.Input['FeedDetailsOktaSettingsArgs']] = None,
-                 okta_user_context_settings: Optional[pulumi.Input['FeedDetailsOktaUserContextSettingsArgs']] = None,
-                 pan_ioc_settings: Optional[pulumi.Input['FeedDetailsPanIocSettingsArgs']] = None,
-                 pan_prisma_cloud_settings: Optional[pulumi.Input['FeedDetailsPanPrismaCloudSettingsArgs']] = None,
-                 proofpoint_mail_settings: Optional[pulumi.Input['FeedDetailsProofpointMailSettingsArgs']] = None,
-                 proofpoint_on_demand_settings: Optional[pulumi.Input['FeedDetailsProofpointOnDemandSettingsArgs']] = None,
-                 pubsub_settings: Optional[pulumi.Input['FeedDetailsPubsubSettingsArgs']] = None,
-                 qualys_scan_settings: Optional[pulumi.Input['FeedDetailsQualysScanSettingsArgs']] = None,
-                 qualys_vm_settings: Optional[pulumi.Input['FeedDetailsQualysVmSettingsArgs']] = None,
-                 rapid7_insight_settings: Optional[pulumi.Input['FeedDetailsRapid7InsightSettingsArgs']] = None,
-                 recorded_future_ioc_settings: Optional[pulumi.Input['FeedDetailsRecordedFutureIocSettingsArgs']] = None,
-                 rh_isac_ioc_settings: Optional[pulumi.Input['FeedDetailsRhIsacIocSettingsArgs']] = None,
-                 salesforce_settings: Optional[pulumi.Input['FeedDetailsSalesforceSettingsArgs']] = None,
-                 sentinelone_alert_settings: Optional[pulumi.Input['FeedDetailsSentineloneAlertSettingsArgs']] = None,
-                 service_now_cmdb_settings: Optional[pulumi.Input['FeedDetailsServiceNowCmdbSettingsArgs']] = None,
-                 sftp_settings: Optional[pulumi.Input['FeedDetailsSftpSettingsArgs']] = None,
-                 sts_migration_readiness: Optional[pulumi.Input[_builtins.str]] = None,
-                 symantec_event_export_settings: Optional[pulumi.Input['FeedDetailsSymantecEventExportSettingsArgs']] = None,
-                 thinkst_canary_settings: Optional[pulumi.Input['FeedDetailsThinkstCanarySettingsArgs']] = None,
-                 threat_connect_ioc_settings: Optional[pulumi.Input['FeedDetailsThreatConnectIocSettingsArgs']] = None,
-                 threat_connect_ioc_v3_settings: Optional[pulumi.Input['FeedDetailsThreatConnectIocV3SettingsArgs']] = None,
-                 trellix_hx_alerts_settings: Optional[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsArgs']] = None,
-                 trellix_hx_bulk_acqs_settings: Optional[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsArgs']] = None,
-                 trellix_hx_hosts_settings: Optional[pulumi.Input['FeedDetailsTrellixHxHostsSettingsArgs']] = None,
-                 webhook_settings: Optional[pulumi.Input['FeedDetailsWebhookSettingsArgs']] = None,
-                 workday_settings: Optional[pulumi.Input['FeedDetailsWorkdaySettingsArgs']] = None,
-                 workspace_activity_settings: Optional[pulumi.Input['FeedDetailsWorkspaceActivitySettingsArgs']] = None,
-                 workspace_alerts_settings: Optional[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsArgs']] = None,
-                 workspace_chrome_os_settings: Optional[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsArgs']] = None,
-                 workspace_groups_settings: Optional[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsArgs']] = None,
-                 workspace_mobile_settings: Optional[pulumi.Input['FeedDetailsWorkspaceMobileSettingsArgs']] = None,
-                 workspace_privileges_settings: Optional[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsArgs']] = None,
-                 workspace_users_settings: Optional[pulumi.Input['FeedDetailsWorkspaceUsersSettingsArgs']] = None):
+                 amazon_kinesis_firehose_settings: pulumi.Input[Optional['FeedDetailsAmazonKinesisFirehoseSettingsArgs']] = None,
+                 amazon_s3_settings: pulumi.Input[Optional['FeedDetailsAmazonS3SettingsArgs']] = None,
+                 amazon_s3_v2_settings: pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsArgs']] = None,
+                 amazon_sqs_settings: pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsArgs']] = None,
+                 amazon_sqs_v2_settings: pulumi.Input[Optional['FeedDetailsAmazonSqsV2SettingsArgs']] = None,
+                 anomali_settings: pulumi.Input[Optional['FeedDetailsAnomaliSettingsArgs']] = None,
+                 asset_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_ec2_hosts_settings: pulumi.Input[Optional['FeedDetailsAwsEc2HostsSettingsArgs']] = None,
+                 aws_ec2_instances_settings: pulumi.Input[Optional['FeedDetailsAwsEc2InstancesSettingsArgs']] = None,
+                 aws_ec2_vpcs_settings: pulumi.Input[Optional['FeedDetailsAwsEc2VpcsSettingsArgs']] = None,
+                 aws_iam_settings: pulumi.Input[Optional['FeedDetailsAwsIamSettingsArgs']] = None,
+                 azure_ad_audit_settings: pulumi.Input[Optional['FeedDetailsAzureAdAuditSettingsArgs']] = None,
+                 azure_ad_context_settings: pulumi.Input[Optional['FeedDetailsAzureAdContextSettingsArgs']] = None,
+                 azure_ad_settings: pulumi.Input[Optional['FeedDetailsAzureAdSettingsArgs']] = None,
+                 azure_blob_store_settings: pulumi.Input[Optional['FeedDetailsAzureBlobStoreSettingsArgs']] = None,
+                 azure_blob_store_v2_settings: pulumi.Input[Optional['FeedDetailsAzureBlobStoreV2SettingsArgs']] = None,
+                 azure_event_hub_settings: pulumi.Input[Optional['FeedDetailsAzureEventHubSettingsArgs']] = None,
+                 azure_mdm_intune_settings: pulumi.Input[Optional['FeedDetailsAzureMdmIntuneSettingsArgs']] = None,
+                 cloud_passage_settings: pulumi.Input[Optional['FeedDetailsCloudPassageSettingsArgs']] = None,
+                 cortex_xdr_settings: pulumi.Input[Optional['FeedDetailsCortexXdrSettingsArgs']] = None,
+                 crowdstrike_alerts_settings: pulumi.Input[Optional['FeedDetailsCrowdstrikeAlertsSettingsArgs']] = None,
+                 crowdstrike_detects_settings: pulumi.Input[Optional['FeedDetailsCrowdstrikeDetectsSettingsArgs']] = None,
+                 dummy_log_type_settings: pulumi.Input[Optional['FeedDetailsDummyLogTypeSettingsArgs']] = None,
+                 duo_auth_settings: pulumi.Input[Optional['FeedDetailsDuoAuthSettingsArgs']] = None,
+                 duo_user_context_settings: pulumi.Input[Optional['FeedDetailsDuoUserContextSettingsArgs']] = None,
+                 feed_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 fox_it_stix_settings: pulumi.Input[Optional['FeedDetailsFoxItStixSettingsArgs']] = None,
+                 gcs_settings: pulumi.Input[Optional['FeedDetailsGcsSettingsArgs']] = None,
+                 gcs_v2_settings: pulumi.Input[Optional['FeedDetailsGcsV2SettingsArgs']] = None,
+                 google_cloud_identity_device_users_settings: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgs']] = None,
+                 google_cloud_identity_devices_settings: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsArgs']] = None,
+                 google_cloud_storage_event_driven_settings: pulumi.Input[Optional['FeedDetailsGoogleCloudStorageEventDrivenSettingsArgs']] = None,
+                 http_settings: pulumi.Input[Optional['FeedDetailsHttpSettingsArgs']] = None,
+                 https_push_amazon_kinesis_firehose_settings: pulumi.Input[Optional['FeedDetailsHttpsPushAmazonKinesisFirehoseSettingsArgs']] = None,
+                 https_push_google_cloud_pubsub_settings: pulumi.Input[Optional['FeedDetailsHttpsPushGoogleCloudPubsubSettingsArgs']] = None,
+                 https_push_webhook_settings: pulumi.Input[Optional['FeedDetailsHttpsPushWebhookSettingsArgs']] = None,
+                 imperva_waf_settings: pulumi.Input[Optional['FeedDetailsImpervaWafSettingsArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mandiant_ioc_settings: pulumi.Input[Optional['FeedDetailsMandiantIocSettingsArgs']] = None,
+                 microsoft_graph_alert_settings: pulumi.Input[Optional['FeedDetailsMicrosoftGraphAlertSettingsArgs']] = None,
+                 microsoft_security_center_alert_settings: pulumi.Input[Optional['FeedDetailsMicrosoftSecurityCenterAlertSettingsArgs']] = None,
+                 mimecast_mail_settings: pulumi.Input[Optional['FeedDetailsMimecastMailSettingsArgs']] = None,
+                 mimecast_mail_v2_settings: pulumi.Input[Optional['FeedDetailsMimecastMailV2SettingsArgs']] = None,
+                 netskope_alert_settings: pulumi.Input[Optional['FeedDetailsNetskopeAlertSettingsArgs']] = None,
+                 netskope_alert_v2_settings: pulumi.Input[Optional['FeedDetailsNetskopeAlertV2SettingsArgs']] = None,
+                 office365_settings: pulumi.Input[Optional['FeedDetailsOffice365SettingsArgs']] = None,
+                 okta_settings: pulumi.Input[Optional['FeedDetailsOktaSettingsArgs']] = None,
+                 okta_user_context_settings: pulumi.Input[Optional['FeedDetailsOktaUserContextSettingsArgs']] = None,
+                 pan_ioc_settings: pulumi.Input[Optional['FeedDetailsPanIocSettingsArgs']] = None,
+                 pan_prisma_cloud_settings: pulumi.Input[Optional['FeedDetailsPanPrismaCloudSettingsArgs']] = None,
+                 proofpoint_mail_settings: pulumi.Input[Optional['FeedDetailsProofpointMailSettingsArgs']] = None,
+                 proofpoint_on_demand_settings: pulumi.Input[Optional['FeedDetailsProofpointOnDemandSettingsArgs']] = None,
+                 pubsub_settings: pulumi.Input[Optional['FeedDetailsPubsubSettingsArgs']] = None,
+                 qualys_scan_settings: pulumi.Input[Optional['FeedDetailsQualysScanSettingsArgs']] = None,
+                 qualys_vm_settings: pulumi.Input[Optional['FeedDetailsQualysVmSettingsArgs']] = None,
+                 rapid7_insight_settings: pulumi.Input[Optional['FeedDetailsRapid7InsightSettingsArgs']] = None,
+                 recorded_future_ioc_settings: pulumi.Input[Optional['FeedDetailsRecordedFutureIocSettingsArgs']] = None,
+                 rh_isac_ioc_settings: pulumi.Input[Optional['FeedDetailsRhIsacIocSettingsArgs']] = None,
+                 salesforce_settings: pulumi.Input[Optional['FeedDetailsSalesforceSettingsArgs']] = None,
+                 sentinelone_alert_settings: pulumi.Input[Optional['FeedDetailsSentineloneAlertSettingsArgs']] = None,
+                 service_now_cmdb_settings: pulumi.Input[Optional['FeedDetailsServiceNowCmdbSettingsArgs']] = None,
+                 sftp_settings: pulumi.Input[Optional['FeedDetailsSftpSettingsArgs']] = None,
+                 sts_migration_readiness: pulumi.Input[Optional[_builtins.str]] = None,
+                 symantec_event_export_settings: pulumi.Input[Optional['FeedDetailsSymantecEventExportSettingsArgs']] = None,
+                 thinkst_canary_settings: pulumi.Input[Optional['FeedDetailsThinkstCanarySettingsArgs']] = None,
+                 threat_connect_ioc_settings: pulumi.Input[Optional['FeedDetailsThreatConnectIocSettingsArgs']] = None,
+                 threat_connect_ioc_v3_settings: pulumi.Input[Optional['FeedDetailsThreatConnectIocV3SettingsArgs']] = None,
+                 trellix_hx_alerts_settings: pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsArgs']] = None,
+                 trellix_hx_bulk_acqs_settings: pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsArgs']] = None,
+                 trellix_hx_hosts_settings: pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsArgs']] = None,
+                 webhook_settings: pulumi.Input[Optional['FeedDetailsWebhookSettingsArgs']] = None,
+                 workday_settings: pulumi.Input[Optional['FeedDetailsWorkdaySettingsArgs']] = None,
+                 workspace_activity_settings: pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsArgs']] = None,
+                 workspace_alerts_settings: pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsArgs']] = None,
+                 workspace_chrome_os_settings: pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsArgs']] = None,
+                 workspace_groups_settings: pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsArgs']] = None,
+                 workspace_mobile_settings: pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsArgs']] = None,
+                 workspace_privileges_settings: pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsArgs']] = None,
+                 workspace_users_settings: pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] log_type: LogType.
                Format:
@@ -6316,19 +6316,19 @@ class FeedDetailsArgs:
 
     @_builtins.property
     @pulumi.getter(name="amazonKinesisFirehoseSettings")
-    def amazon_kinesis_firehose_settings(self) -> Optional[pulumi.Input['FeedDetailsAmazonKinesisFirehoseSettingsArgs']]:
+    def amazon_kinesis_firehose_settings(self) -> pulumi.Input[Optional['FeedDetailsAmazonKinesisFirehoseSettingsArgs']]:
         """
         Settings required by Amazon Kinesis Firehose Feeds(HTTP-Push).
         """
         return pulumi.get(self, "amazon_kinesis_firehose_settings")
 
     @amazon_kinesis_firehose_settings.setter
-    def amazon_kinesis_firehose_settings(self, value: Optional[pulumi.Input['FeedDetailsAmazonKinesisFirehoseSettingsArgs']]):
+    def amazon_kinesis_firehose_settings(self, value: pulumi.Input[Optional['FeedDetailsAmazonKinesisFirehoseSettingsArgs']]):
         pulumi.set(self, "amazon_kinesis_firehose_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonS3Settings")
-    def amazon_s3_settings(self) -> Optional[pulumi.Input['FeedDetailsAmazonS3SettingsArgs']]:
+    def amazon_s3_settings(self) -> pulumi.Input[Optional['FeedDetailsAmazonS3SettingsArgs']]:
         """
         Amazon S3 settings.
         Structure is documented below.
@@ -6336,12 +6336,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "amazon_s3_settings")
 
     @amazon_s3_settings.setter
-    def amazon_s3_settings(self, value: Optional[pulumi.Input['FeedDetailsAmazonS3SettingsArgs']]):
+    def amazon_s3_settings(self, value: pulumi.Input[Optional['FeedDetailsAmazonS3SettingsArgs']]):
         pulumi.set(self, "amazon_s3_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonS3V2Settings")
-    def amazon_s3_v2_settings(self) -> Optional[pulumi.Input['FeedDetailsAmazonS3V2SettingsArgs']]:
+    def amazon_s3_v2_settings(self) -> pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsArgs']]:
         """
         AmazonS3V2Settings is the settings proto for Omniflow S3 feeds.
         Structure is documented below.
@@ -6349,12 +6349,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "amazon_s3_v2_settings")
 
     @amazon_s3_v2_settings.setter
-    def amazon_s3_v2_settings(self, value: Optional[pulumi.Input['FeedDetailsAmazonS3V2SettingsArgs']]):
+    def amazon_s3_v2_settings(self, value: pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsArgs']]):
         pulumi.set(self, "amazon_s3_v2_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonSqsSettings")
-    def amazon_sqs_settings(self) -> Optional[pulumi.Input['FeedDetailsAmazonSqsSettingsArgs']]:
+    def amazon_sqs_settings(self) -> pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsArgs']]:
         """
         Amazon SQS settings.
         Structure is documented below.
@@ -6362,12 +6362,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "amazon_sqs_settings")
 
     @amazon_sqs_settings.setter
-    def amazon_sqs_settings(self, value: Optional[pulumi.Input['FeedDetailsAmazonSqsSettingsArgs']]):
+    def amazon_sqs_settings(self, value: pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsArgs']]):
         pulumi.set(self, "amazon_sqs_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonSqsV2Settings")
-    def amazon_sqs_v2_settings(self) -> Optional[pulumi.Input['FeedDetailsAmazonSqsV2SettingsArgs']]:
+    def amazon_sqs_v2_settings(self) -> pulumi.Input[Optional['FeedDetailsAmazonSqsV2SettingsArgs']]:
         """
         AmazonSQSV2Settings is the settings proto for Omniflow SQS feeds.
         Structure is documented below.
@@ -6375,12 +6375,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "amazon_sqs_v2_settings")
 
     @amazon_sqs_v2_settings.setter
-    def amazon_sqs_v2_settings(self, value: Optional[pulumi.Input['FeedDetailsAmazonSqsV2SettingsArgs']]):
+    def amazon_sqs_v2_settings(self, value: pulumi.Input[Optional['FeedDetailsAmazonSqsV2SettingsArgs']]):
         pulumi.set(self, "amazon_sqs_v2_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="anomaliSettings")
-    def anomali_settings(self) -> Optional[pulumi.Input['FeedDetailsAnomaliSettingsArgs']]:
+    def anomali_settings(self) -> pulumi.Input[Optional['FeedDetailsAnomaliSettingsArgs']]:
         """
         Anomali IOC settings.
         Structure is documented below.
@@ -6388,24 +6388,24 @@ class FeedDetailsArgs:
         return pulumi.get(self, "anomali_settings")
 
     @anomali_settings.setter
-    def anomali_settings(self, value: Optional[pulumi.Input['FeedDetailsAnomaliSettingsArgs']]):
+    def anomali_settings(self, value: pulumi.Input[Optional['FeedDetailsAnomaliSettingsArgs']]):
         pulumi.set(self, "anomali_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="assetNamespace")
-    def asset_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def asset_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The asset namespace to apply to all logs ingested through this feed.
         """
         return pulumi.get(self, "asset_namespace")
 
     @asset_namespace.setter
-    def asset_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def asset_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "asset_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="awsEc2HostsSettings")
-    def aws_ec2_hosts_settings(self) -> Optional[pulumi.Input['FeedDetailsAwsEc2HostsSettingsArgs']]:
+    def aws_ec2_hosts_settings(self) -> pulumi.Input[Optional['FeedDetailsAwsEc2HostsSettingsArgs']]:
         """
         AWS EC2 Hosts Settings.
         Structure is documented below.
@@ -6413,12 +6413,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "aws_ec2_hosts_settings")
 
     @aws_ec2_hosts_settings.setter
-    def aws_ec2_hosts_settings(self, value: Optional[pulumi.Input['FeedDetailsAwsEc2HostsSettingsArgs']]):
+    def aws_ec2_hosts_settings(self, value: pulumi.Input[Optional['FeedDetailsAwsEc2HostsSettingsArgs']]):
         pulumi.set(self, "aws_ec2_hosts_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="awsEc2InstancesSettings")
-    def aws_ec2_instances_settings(self) -> Optional[pulumi.Input['FeedDetailsAwsEc2InstancesSettingsArgs']]:
+    def aws_ec2_instances_settings(self) -> pulumi.Input[Optional['FeedDetailsAwsEc2InstancesSettingsArgs']]:
         """
         AWS EC2 Instances Settings.
         Structure is documented below.
@@ -6426,12 +6426,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "aws_ec2_instances_settings")
 
     @aws_ec2_instances_settings.setter
-    def aws_ec2_instances_settings(self, value: Optional[pulumi.Input['FeedDetailsAwsEc2InstancesSettingsArgs']]):
+    def aws_ec2_instances_settings(self, value: pulumi.Input[Optional['FeedDetailsAwsEc2InstancesSettingsArgs']]):
         pulumi.set(self, "aws_ec2_instances_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="awsEc2VpcsSettings")
-    def aws_ec2_vpcs_settings(self) -> Optional[pulumi.Input['FeedDetailsAwsEc2VpcsSettingsArgs']]:
+    def aws_ec2_vpcs_settings(self) -> pulumi.Input[Optional['FeedDetailsAwsEc2VpcsSettingsArgs']]:
         """
         AWS EC2 Vpcs Settings.
         Structure is documented below.
@@ -6439,12 +6439,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "aws_ec2_vpcs_settings")
 
     @aws_ec2_vpcs_settings.setter
-    def aws_ec2_vpcs_settings(self, value: Optional[pulumi.Input['FeedDetailsAwsEc2VpcsSettingsArgs']]):
+    def aws_ec2_vpcs_settings(self, value: pulumi.Input[Optional['FeedDetailsAwsEc2VpcsSettingsArgs']]):
         pulumi.set(self, "aws_ec2_vpcs_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="awsIamSettings")
-    def aws_iam_settings(self) -> Optional[pulumi.Input['FeedDetailsAwsIamSettingsArgs']]:
+    def aws_iam_settings(self) -> pulumi.Input[Optional['FeedDetailsAwsIamSettingsArgs']]:
         """
         AWSIAMSettings contains details needed for creating an AWS IAM feed.
         Structure is documented below.
@@ -6452,12 +6452,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "aws_iam_settings")
 
     @aws_iam_settings.setter
-    def aws_iam_settings(self, value: Optional[pulumi.Input['FeedDetailsAwsIamSettingsArgs']]):
+    def aws_iam_settings(self, value: pulumi.Input[Optional['FeedDetailsAwsIamSettingsArgs']]):
         pulumi.set(self, "aws_iam_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="azureAdAuditSettings")
-    def azure_ad_audit_settings(self) -> Optional[pulumi.Input['FeedDetailsAzureAdAuditSettingsArgs']]:
+    def azure_ad_audit_settings(self) -> pulumi.Input[Optional['FeedDetailsAzureAdAuditSettingsArgs']]:
         """
         Azure AD Audit settings.
         Structure is documented below.
@@ -6465,12 +6465,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "azure_ad_audit_settings")
 
     @azure_ad_audit_settings.setter
-    def azure_ad_audit_settings(self, value: Optional[pulumi.Input['FeedDetailsAzureAdAuditSettingsArgs']]):
+    def azure_ad_audit_settings(self, value: pulumi.Input[Optional['FeedDetailsAzureAdAuditSettingsArgs']]):
         pulumi.set(self, "azure_ad_audit_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="azureAdContextSettings")
-    def azure_ad_context_settings(self) -> Optional[pulumi.Input['FeedDetailsAzureAdContextSettingsArgs']]:
+    def azure_ad_context_settings(self) -> pulumi.Input[Optional['FeedDetailsAzureAdContextSettingsArgs']]:
         """
         Azure AD Context settings.
         Structure is documented below.
@@ -6478,12 +6478,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "azure_ad_context_settings")
 
     @azure_ad_context_settings.setter
-    def azure_ad_context_settings(self, value: Optional[pulumi.Input['FeedDetailsAzureAdContextSettingsArgs']]):
+    def azure_ad_context_settings(self, value: pulumi.Input[Optional['FeedDetailsAzureAdContextSettingsArgs']]):
         pulumi.set(self, "azure_ad_context_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="azureAdSettings")
-    def azure_ad_settings(self) -> Optional[pulumi.Input['FeedDetailsAzureAdSettingsArgs']]:
+    def azure_ad_settings(self) -> pulumi.Input[Optional['FeedDetailsAzureAdSettingsArgs']]:
         """
         Azure AD settings.
         Structure is documented below.
@@ -6491,12 +6491,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "azure_ad_settings")
 
     @azure_ad_settings.setter
-    def azure_ad_settings(self, value: Optional[pulumi.Input['FeedDetailsAzureAdSettingsArgs']]):
+    def azure_ad_settings(self, value: pulumi.Input[Optional['FeedDetailsAzureAdSettingsArgs']]):
         pulumi.set(self, "azure_ad_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="azureBlobStoreSettings")
-    def azure_blob_store_settings(self) -> Optional[pulumi.Input['FeedDetailsAzureBlobStoreSettingsArgs']]:
+    def azure_blob_store_settings(self) -> pulumi.Input[Optional['FeedDetailsAzureBlobStoreSettingsArgs']]:
         """
         Azure Blob Storage settings.
         Structure is documented below.
@@ -6504,12 +6504,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "azure_blob_store_settings")
 
     @azure_blob_store_settings.setter
-    def azure_blob_store_settings(self, value: Optional[pulumi.Input['FeedDetailsAzureBlobStoreSettingsArgs']]):
+    def azure_blob_store_settings(self, value: pulumi.Input[Optional['FeedDetailsAzureBlobStoreSettingsArgs']]):
         pulumi.set(self, "azure_blob_store_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="azureBlobStoreV2Settings")
-    def azure_blob_store_v2_settings(self) -> Optional[pulumi.Input['FeedDetailsAzureBlobStoreV2SettingsArgs']]:
+    def azure_blob_store_v2_settings(self) -> pulumi.Input[Optional['FeedDetailsAzureBlobStoreV2SettingsArgs']]:
         """
         AzureBlobStoreV2Settings is the settings proto for Azure Blob Storage feeds.
         Structure is documented below.
@@ -6517,12 +6517,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "azure_blob_store_v2_settings")
 
     @azure_blob_store_v2_settings.setter
-    def azure_blob_store_v2_settings(self, value: Optional[pulumi.Input['FeedDetailsAzureBlobStoreV2SettingsArgs']]):
+    def azure_blob_store_v2_settings(self, value: pulumi.Input[Optional['FeedDetailsAzureBlobStoreV2SettingsArgs']]):
         pulumi.set(self, "azure_blob_store_v2_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="azureEventHubSettings")
-    def azure_event_hub_settings(self) -> Optional[pulumi.Input['FeedDetailsAzureEventHubSettingsArgs']]:
+    def azure_event_hub_settings(self) -> pulumi.Input[Optional['FeedDetailsAzureEventHubSettingsArgs']]:
         """
         Settings required by Azure Event Hub Feeds.
         Structure is documented below.
@@ -6530,12 +6530,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "azure_event_hub_settings")
 
     @azure_event_hub_settings.setter
-    def azure_event_hub_settings(self, value: Optional[pulumi.Input['FeedDetailsAzureEventHubSettingsArgs']]):
+    def azure_event_hub_settings(self, value: pulumi.Input[Optional['FeedDetailsAzureEventHubSettingsArgs']]):
         pulumi.set(self, "azure_event_hub_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="azureMdmIntuneSettings")
-    def azure_mdm_intune_settings(self) -> Optional[pulumi.Input['FeedDetailsAzureMdmIntuneSettingsArgs']]:
+    def azure_mdm_intune_settings(self) -> pulumi.Input[Optional['FeedDetailsAzureMdmIntuneSettingsArgs']]:
         """
         Azure MDM Intune settings.
         Structure is documented below.
@@ -6543,12 +6543,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "azure_mdm_intune_settings")
 
     @azure_mdm_intune_settings.setter
-    def azure_mdm_intune_settings(self, value: Optional[pulumi.Input['FeedDetailsAzureMdmIntuneSettingsArgs']]):
+    def azure_mdm_intune_settings(self, value: pulumi.Input[Optional['FeedDetailsAzureMdmIntuneSettingsArgs']]):
         pulumi.set(self, "azure_mdm_intune_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudPassageSettings")
-    def cloud_passage_settings(self) -> Optional[pulumi.Input['FeedDetailsCloudPassageSettingsArgs']]:
+    def cloud_passage_settings(self) -> pulumi.Input[Optional['FeedDetailsCloudPassageSettingsArgs']]:
         """
         CloudPassage settings.
         Structure is documented below.
@@ -6556,12 +6556,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "cloud_passage_settings")
 
     @cloud_passage_settings.setter
-    def cloud_passage_settings(self, value: Optional[pulumi.Input['FeedDetailsCloudPassageSettingsArgs']]):
+    def cloud_passage_settings(self, value: pulumi.Input[Optional['FeedDetailsCloudPassageSettingsArgs']]):
         pulumi.set(self, "cloud_passage_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="cortexXdrSettings")
-    def cortex_xdr_settings(self) -> Optional[pulumi.Input['FeedDetailsCortexXdrSettingsArgs']]:
+    def cortex_xdr_settings(self) -> pulumi.Input[Optional['FeedDetailsCortexXdrSettingsArgs']]:
         """
         PAN Cortex XDR settings.
         Structure is documented below.
@@ -6569,12 +6569,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "cortex_xdr_settings")
 
     @cortex_xdr_settings.setter
-    def cortex_xdr_settings(self, value: Optional[pulumi.Input['FeedDetailsCortexXdrSettingsArgs']]):
+    def cortex_xdr_settings(self, value: pulumi.Input[Optional['FeedDetailsCortexXdrSettingsArgs']]):
         pulumi.set(self, "cortex_xdr_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="crowdstrikeAlertsSettings")
-    def crowdstrike_alerts_settings(self) -> Optional[pulumi.Input['FeedDetailsCrowdstrikeAlertsSettingsArgs']]:
+    def crowdstrike_alerts_settings(self) -> pulumi.Input[Optional['FeedDetailsCrowdstrikeAlertsSettingsArgs']]:
         """
         CrowdStrike Alerts settings.
         Structure is documented below.
@@ -6582,12 +6582,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "crowdstrike_alerts_settings")
 
     @crowdstrike_alerts_settings.setter
-    def crowdstrike_alerts_settings(self, value: Optional[pulumi.Input['FeedDetailsCrowdstrikeAlertsSettingsArgs']]):
+    def crowdstrike_alerts_settings(self, value: pulumi.Input[Optional['FeedDetailsCrowdstrikeAlertsSettingsArgs']]):
         pulumi.set(self, "crowdstrike_alerts_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="crowdstrikeDetectsSettings")
-    def crowdstrike_detects_settings(self) -> Optional[pulumi.Input['FeedDetailsCrowdstrikeDetectsSettingsArgs']]:
+    def crowdstrike_detects_settings(self) -> pulumi.Input[Optional['FeedDetailsCrowdstrikeDetectsSettingsArgs']]:
         """
         CrowdStrike Detects settings.
         Structure is documented below.
@@ -6595,12 +6595,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "crowdstrike_detects_settings")
 
     @crowdstrike_detects_settings.setter
-    def crowdstrike_detects_settings(self, value: Optional[pulumi.Input['FeedDetailsCrowdstrikeDetectsSettingsArgs']]):
+    def crowdstrike_detects_settings(self, value: pulumi.Input[Optional['FeedDetailsCrowdstrikeDetectsSettingsArgs']]):
         pulumi.set(self, "crowdstrike_detects_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="dummyLogTypeSettings")
-    def dummy_log_type_settings(self) -> Optional[pulumi.Input['FeedDetailsDummyLogTypeSettingsArgs']]:
+    def dummy_log_type_settings(self) -> pulumi.Input[Optional['FeedDetailsDummyLogTypeSettingsArgs']]:
         """
         Settings required by Feeds of DummyLogType(used for testing purposes).
         Structure is documented below.
@@ -6608,12 +6608,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "dummy_log_type_settings")
 
     @dummy_log_type_settings.setter
-    def dummy_log_type_settings(self, value: Optional[pulumi.Input['FeedDetailsDummyLogTypeSettingsArgs']]):
+    def dummy_log_type_settings(self, value: pulumi.Input[Optional['FeedDetailsDummyLogTypeSettingsArgs']]):
         pulumi.set(self, "dummy_log_type_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="duoAuthSettings")
-    def duo_auth_settings(self) -> Optional[pulumi.Input['FeedDetailsDuoAuthSettingsArgs']]:
+    def duo_auth_settings(self) -> pulumi.Input[Optional['FeedDetailsDuoAuthSettingsArgs']]:
         """
         Duo Authentication settings.
         Structure is documented below.
@@ -6621,12 +6621,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "duo_auth_settings")
 
     @duo_auth_settings.setter
-    def duo_auth_settings(self, value: Optional[pulumi.Input['FeedDetailsDuoAuthSettingsArgs']]):
+    def duo_auth_settings(self, value: pulumi.Input[Optional['FeedDetailsDuoAuthSettingsArgs']]):
         pulumi.set(self, "duo_auth_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="duoUserContextSettings")
-    def duo_user_context_settings(self) -> Optional[pulumi.Input['FeedDetailsDuoUserContextSettingsArgs']]:
+    def duo_user_context_settings(self) -> pulumi.Input[Optional['FeedDetailsDuoUserContextSettingsArgs']]:
         """
         Duo User Context settings.
         Structure is documented below.
@@ -6634,12 +6634,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "duo_user_context_settings")
 
     @duo_user_context_settings.setter
-    def duo_user_context_settings(self, value: Optional[pulumi.Input['FeedDetailsDuoUserContextSettingsArgs']]):
+    def duo_user_context_settings(self, value: pulumi.Input[Optional['FeedDetailsDuoUserContextSettingsArgs']]):
         pulumi.set(self, "duo_user_context_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="feedSourceType")
-    def feed_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feed_source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source Type of the feed.
         Possible values:
@@ -6667,12 +6667,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "feed_source_type")
 
     @feed_source_type.setter
-    def feed_source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feed_source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feed_source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="foxItStixSettings")
-    def fox_it_stix_settings(self) -> Optional[pulumi.Input['FeedDetailsFoxItStixSettingsArgs']]:
+    def fox_it_stix_settings(self) -> pulumi.Input[Optional['FeedDetailsFoxItStixSettingsArgs']]:
         """
         Fox-IT STIX settings.
         Structure is documented below.
@@ -6680,12 +6680,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "fox_it_stix_settings")
 
     @fox_it_stix_settings.setter
-    def fox_it_stix_settings(self, value: Optional[pulumi.Input['FeedDetailsFoxItStixSettingsArgs']]):
+    def fox_it_stix_settings(self, value: pulumi.Input[Optional['FeedDetailsFoxItStixSettingsArgs']]):
         pulumi.set(self, "fox_it_stix_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsSettings")
-    def gcs_settings(self) -> Optional[pulumi.Input['FeedDetailsGcsSettingsArgs']]:
+    def gcs_settings(self) -> pulumi.Input[Optional['FeedDetailsGcsSettingsArgs']]:
         """
         Google Cloud Storage settings.
         Structure is documented below.
@@ -6693,12 +6693,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "gcs_settings")
 
     @gcs_settings.setter
-    def gcs_settings(self, value: Optional[pulumi.Input['FeedDetailsGcsSettingsArgs']]):
+    def gcs_settings(self, value: pulumi.Input[Optional['FeedDetailsGcsSettingsArgs']]):
         pulumi.set(self, "gcs_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsV2Settings")
-    def gcs_v2_settings(self) -> Optional[pulumi.Input['FeedDetailsGcsV2SettingsArgs']]:
+    def gcs_v2_settings(self) -> pulumi.Input[Optional['FeedDetailsGcsV2SettingsArgs']]:
         """
         GoogleCloudStorageV2Settings is the settings proto for Omniflow Google Cloud
         Storage feeds.
@@ -6707,12 +6707,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "gcs_v2_settings")
 
     @gcs_v2_settings.setter
-    def gcs_v2_settings(self, value: Optional[pulumi.Input['FeedDetailsGcsV2SettingsArgs']]):
+    def gcs_v2_settings(self, value: pulumi.Input[Optional['FeedDetailsGcsV2SettingsArgs']]):
         pulumi.set(self, "gcs_v2_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="googleCloudIdentityDeviceUsersSettings")
-    def google_cloud_identity_device_users_settings(self) -> Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgs']]:
+    def google_cloud_identity_device_users_settings(self) -> pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgs']]:
         """
         Google Cloud Identity Device Users settings.
         Structure is documented below.
@@ -6720,12 +6720,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "google_cloud_identity_device_users_settings")
 
     @google_cloud_identity_device_users_settings.setter
-    def google_cloud_identity_device_users_settings(self, value: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgs']]):
+    def google_cloud_identity_device_users_settings(self, value: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgs']]):
         pulumi.set(self, "google_cloud_identity_device_users_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="googleCloudIdentityDevicesSettings")
-    def google_cloud_identity_devices_settings(self) -> Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsArgs']]:
+    def google_cloud_identity_devices_settings(self) -> pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsArgs']]:
         """
         Google Cloud Identity Devices settings.
         Structure is documented below.
@@ -6733,12 +6733,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "google_cloud_identity_devices_settings")
 
     @google_cloud_identity_devices_settings.setter
-    def google_cloud_identity_devices_settings(self, value: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsArgs']]):
+    def google_cloud_identity_devices_settings(self, value: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsArgs']]):
         pulumi.set(self, "google_cloud_identity_devices_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="googleCloudStorageEventDrivenSettings")
-    def google_cloud_storage_event_driven_settings(self) -> Optional[pulumi.Input['FeedDetailsGoogleCloudStorageEventDrivenSettingsArgs']]:
+    def google_cloud_storage_event_driven_settings(self) -> pulumi.Input[Optional['FeedDetailsGoogleCloudStorageEventDrivenSettingsArgs']]:
         """
         GoogleCloudStorageEventDrivenSettings is the settings proto for Omniflow
         Google Cloud Storage feeds driven by pubsub events.
@@ -6747,12 +6747,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "google_cloud_storage_event_driven_settings")
 
     @google_cloud_storage_event_driven_settings.setter
-    def google_cloud_storage_event_driven_settings(self, value: Optional[pulumi.Input['FeedDetailsGoogleCloudStorageEventDrivenSettingsArgs']]):
+    def google_cloud_storage_event_driven_settings(self, value: pulumi.Input[Optional['FeedDetailsGoogleCloudStorageEventDrivenSettingsArgs']]):
         pulumi.set(self, "google_cloud_storage_event_driven_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="httpSettings")
-    def http_settings(self) -> Optional[pulumi.Input['FeedDetailsHttpSettingsArgs']]:
+    def http_settings(self) -> pulumi.Input[Optional['FeedDetailsHttpSettingsArgs']]:
         """
         HTTP settings.
         Structure is documented below.
@@ -6760,12 +6760,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "http_settings")
 
     @http_settings.setter
-    def http_settings(self, value: Optional[pulumi.Input['FeedDetailsHttpSettingsArgs']]):
+    def http_settings(self, value: pulumi.Input[Optional['FeedDetailsHttpSettingsArgs']]):
         pulumi.set(self, "http_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsPushAmazonKinesisFirehoseSettings")
-    def https_push_amazon_kinesis_firehose_settings(self) -> Optional[pulumi.Input['FeedDetailsHttpsPushAmazonKinesisFirehoseSettingsArgs']]:
+    def https_push_amazon_kinesis_firehose_settings(self) -> pulumi.Input[Optional['FeedDetailsHttpsPushAmazonKinesisFirehoseSettingsArgs']]:
         """
         Settings required by Amazon Kinesis Firehose Feeds(HTTPS-Push V2).
         Structure is documented below.
@@ -6773,12 +6773,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "https_push_amazon_kinesis_firehose_settings")
 
     @https_push_amazon_kinesis_firehose_settings.setter
-    def https_push_amazon_kinesis_firehose_settings(self, value: Optional[pulumi.Input['FeedDetailsHttpsPushAmazonKinesisFirehoseSettingsArgs']]):
+    def https_push_amazon_kinesis_firehose_settings(self, value: pulumi.Input[Optional['FeedDetailsHttpsPushAmazonKinesisFirehoseSettingsArgs']]):
         pulumi.set(self, "https_push_amazon_kinesis_firehose_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsPushGoogleCloudPubsubSettings")
-    def https_push_google_cloud_pubsub_settings(self) -> Optional[pulumi.Input['FeedDetailsHttpsPushGoogleCloudPubsubSettingsArgs']]:
+    def https_push_google_cloud_pubsub_settings(self) -> pulumi.Input[Optional['FeedDetailsHttpsPushGoogleCloudPubsubSettingsArgs']]:
         """
         Settings required by Google Cloud Platform Pub/Sub Feeds(HTTPS-Push V2).
         Structure is documented below.
@@ -6786,12 +6786,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "https_push_google_cloud_pubsub_settings")
 
     @https_push_google_cloud_pubsub_settings.setter
-    def https_push_google_cloud_pubsub_settings(self, value: Optional[pulumi.Input['FeedDetailsHttpsPushGoogleCloudPubsubSettingsArgs']]):
+    def https_push_google_cloud_pubsub_settings(self, value: pulumi.Input[Optional['FeedDetailsHttpsPushGoogleCloudPubsubSettingsArgs']]):
         pulumi.set(self, "https_push_google_cloud_pubsub_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsPushWebhookSettings")
-    def https_push_webhook_settings(self) -> Optional[pulumi.Input['FeedDetailsHttpsPushWebhookSettingsArgs']]:
+    def https_push_webhook_settings(self) -> pulumi.Input[Optional['FeedDetailsHttpsPushWebhookSettingsArgs']]:
         """
         Settings required by Webhook Feeds(HTTPS-Push V2).
         Structure is documented below.
@@ -6799,12 +6799,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "https_push_webhook_settings")
 
     @https_push_webhook_settings.setter
-    def https_push_webhook_settings(self, value: Optional[pulumi.Input['FeedDetailsHttpsPushWebhookSettingsArgs']]):
+    def https_push_webhook_settings(self, value: pulumi.Input[Optional['FeedDetailsHttpsPushWebhookSettingsArgs']]):
         pulumi.set(self, "https_push_webhook_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="impervaWafSettings")
-    def imperva_waf_settings(self) -> Optional[pulumi.Input['FeedDetailsImpervaWafSettingsArgs']]:
+    def imperva_waf_settings(self) -> pulumi.Input[Optional['FeedDetailsImpervaWafSettingsArgs']]:
         """
         Imperva WAF settings.
         Structure is documented below.
@@ -6812,12 +6812,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "imperva_waf_settings")
 
     @imperva_waf_settings.setter
-    def imperva_waf_settings(self, value: Optional[pulumi.Input['FeedDetailsImpervaWafSettingsArgs']]):
+    def imperva_waf_settings(self, value: pulumi.Input[Optional['FeedDetailsImpervaWafSettingsArgs']]):
         pulumi.set(self, "imperva_waf_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The ingestion metadata labels to apply to all logs ingested through this
         feed, and the resulting normalized data.
@@ -6825,12 +6825,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="mandiantIocSettings")
-    def mandiant_ioc_settings(self) -> Optional[pulumi.Input['FeedDetailsMandiantIocSettingsArgs']]:
+    def mandiant_ioc_settings(self) -> pulumi.Input[Optional['FeedDetailsMandiantIocSettingsArgs']]:
         """
         Mandiant IOC settings.
         Structure is documented below.
@@ -6838,12 +6838,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "mandiant_ioc_settings")
 
     @mandiant_ioc_settings.setter
-    def mandiant_ioc_settings(self, value: Optional[pulumi.Input['FeedDetailsMandiantIocSettingsArgs']]):
+    def mandiant_ioc_settings(self, value: pulumi.Input[Optional['FeedDetailsMandiantIocSettingsArgs']]):
         pulumi.set(self, "mandiant_ioc_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="microsoftGraphAlertSettings")
-    def microsoft_graph_alert_settings(self) -> Optional[pulumi.Input['FeedDetailsMicrosoftGraphAlertSettingsArgs']]:
+    def microsoft_graph_alert_settings(self) -> pulumi.Input[Optional['FeedDetailsMicrosoftGraphAlertSettingsArgs']]:
         """
         Microsoft Graph Alert settings.
         Structure is documented below.
@@ -6851,12 +6851,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "microsoft_graph_alert_settings")
 
     @microsoft_graph_alert_settings.setter
-    def microsoft_graph_alert_settings(self, value: Optional[pulumi.Input['FeedDetailsMicrosoftGraphAlertSettingsArgs']]):
+    def microsoft_graph_alert_settings(self, value: pulumi.Input[Optional['FeedDetailsMicrosoftGraphAlertSettingsArgs']]):
         pulumi.set(self, "microsoft_graph_alert_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="microsoftSecurityCenterAlertSettings")
-    def microsoft_security_center_alert_settings(self) -> Optional[pulumi.Input['FeedDetailsMicrosoftSecurityCenterAlertSettingsArgs']]:
+    def microsoft_security_center_alert_settings(self) -> pulumi.Input[Optional['FeedDetailsMicrosoftSecurityCenterAlertSettingsArgs']]:
         """
         Microsoft Security Center alert settings.
         Structure is documented below.
@@ -6864,12 +6864,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "microsoft_security_center_alert_settings")
 
     @microsoft_security_center_alert_settings.setter
-    def microsoft_security_center_alert_settings(self, value: Optional[pulumi.Input['FeedDetailsMicrosoftSecurityCenterAlertSettingsArgs']]):
+    def microsoft_security_center_alert_settings(self, value: pulumi.Input[Optional['FeedDetailsMicrosoftSecurityCenterAlertSettingsArgs']]):
         pulumi.set(self, "microsoft_security_center_alert_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="mimecastMailSettings")
-    def mimecast_mail_settings(self) -> Optional[pulumi.Input['FeedDetailsMimecastMailSettingsArgs']]:
+    def mimecast_mail_settings(self) -> pulumi.Input[Optional['FeedDetailsMimecastMailSettingsArgs']]:
         """
         Mimecast Mail settings.
         Structure is documented below.
@@ -6877,12 +6877,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "mimecast_mail_settings")
 
     @mimecast_mail_settings.setter
-    def mimecast_mail_settings(self, value: Optional[pulumi.Input['FeedDetailsMimecastMailSettingsArgs']]):
+    def mimecast_mail_settings(self, value: pulumi.Input[Optional['FeedDetailsMimecastMailSettingsArgs']]):
         pulumi.set(self, "mimecast_mail_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="mimecastMailV2Settings")
-    def mimecast_mail_v2_settings(self) -> Optional[pulumi.Input['FeedDetailsMimecastMailV2SettingsArgs']]:
+    def mimecast_mail_v2_settings(self) -> pulumi.Input[Optional['FeedDetailsMimecastMailV2SettingsArgs']]:
         """
         Mimecast Mail V2 Settings.
         Structure is documented below.
@@ -6890,12 +6890,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "mimecast_mail_v2_settings")
 
     @mimecast_mail_v2_settings.setter
-    def mimecast_mail_v2_settings(self, value: Optional[pulumi.Input['FeedDetailsMimecastMailV2SettingsArgs']]):
+    def mimecast_mail_v2_settings(self, value: pulumi.Input[Optional['FeedDetailsMimecastMailV2SettingsArgs']]):
         pulumi.set(self, "mimecast_mail_v2_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="netskopeAlertSettings")
-    def netskope_alert_settings(self) -> Optional[pulumi.Input['FeedDetailsNetskopeAlertSettingsArgs']]:
+    def netskope_alert_settings(self) -> pulumi.Input[Optional['FeedDetailsNetskopeAlertSettingsArgs']]:
         """
         Netskope Alert settings.
         Structure is documented below.
@@ -6903,12 +6903,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "netskope_alert_settings")
 
     @netskope_alert_settings.setter
-    def netskope_alert_settings(self, value: Optional[pulumi.Input['FeedDetailsNetskopeAlertSettingsArgs']]):
+    def netskope_alert_settings(self, value: pulumi.Input[Optional['FeedDetailsNetskopeAlertSettingsArgs']]):
         pulumi.set(self, "netskope_alert_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="netskopeAlertV2Settings")
-    def netskope_alert_v2_settings(self) -> Optional[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsArgs']]:
+    def netskope_alert_v2_settings(self) -> pulumi.Input[Optional['FeedDetailsNetskopeAlertV2SettingsArgs']]:
         """
         Netskope Alert V2 settings.
         Structure is documented below.
@@ -6916,12 +6916,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "netskope_alert_v2_settings")
 
     @netskope_alert_v2_settings.setter
-    def netskope_alert_v2_settings(self, value: Optional[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsArgs']]):
+    def netskope_alert_v2_settings(self, value: pulumi.Input[Optional['FeedDetailsNetskopeAlertV2SettingsArgs']]):
         pulumi.set(self, "netskope_alert_v2_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="office365Settings")
-    def office365_settings(self) -> Optional[pulumi.Input['FeedDetailsOffice365SettingsArgs']]:
+    def office365_settings(self) -> pulumi.Input[Optional['FeedDetailsOffice365SettingsArgs']]:
         """
         Office 365 settings.
         Structure is documented below.
@@ -6929,12 +6929,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "office365_settings")
 
     @office365_settings.setter
-    def office365_settings(self, value: Optional[pulumi.Input['FeedDetailsOffice365SettingsArgs']]):
+    def office365_settings(self, value: pulumi.Input[Optional['FeedDetailsOffice365SettingsArgs']]):
         pulumi.set(self, "office365_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="oktaSettings")
-    def okta_settings(self) -> Optional[pulumi.Input['FeedDetailsOktaSettingsArgs']]:
+    def okta_settings(self) -> pulumi.Input[Optional['FeedDetailsOktaSettingsArgs']]:
         """
         Okta settings.
         Structure is documented below.
@@ -6942,12 +6942,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "okta_settings")
 
     @okta_settings.setter
-    def okta_settings(self, value: Optional[pulumi.Input['FeedDetailsOktaSettingsArgs']]):
+    def okta_settings(self, value: pulumi.Input[Optional['FeedDetailsOktaSettingsArgs']]):
         pulumi.set(self, "okta_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="oktaUserContextSettings")
-    def okta_user_context_settings(self) -> Optional[pulumi.Input['FeedDetailsOktaUserContextSettingsArgs']]:
+    def okta_user_context_settings(self) -> pulumi.Input[Optional['FeedDetailsOktaUserContextSettingsArgs']]:
         """
         Okta user context settings.
         Structure is documented below.
@@ -6955,12 +6955,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "okta_user_context_settings")
 
     @okta_user_context_settings.setter
-    def okta_user_context_settings(self, value: Optional[pulumi.Input['FeedDetailsOktaUserContextSettingsArgs']]):
+    def okta_user_context_settings(self, value: pulumi.Input[Optional['FeedDetailsOktaUserContextSettingsArgs']]):
         pulumi.set(self, "okta_user_context_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="panIocSettings")
-    def pan_ioc_settings(self) -> Optional[pulumi.Input['FeedDetailsPanIocSettingsArgs']]:
+    def pan_ioc_settings(self) -> pulumi.Input[Optional['FeedDetailsPanIocSettingsArgs']]:
         """
         PAN IOC settings.
         Structure is documented below.
@@ -6968,12 +6968,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "pan_ioc_settings")
 
     @pan_ioc_settings.setter
-    def pan_ioc_settings(self, value: Optional[pulumi.Input['FeedDetailsPanIocSettingsArgs']]):
+    def pan_ioc_settings(self, value: pulumi.Input[Optional['FeedDetailsPanIocSettingsArgs']]):
         pulumi.set(self, "pan_ioc_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="panPrismaCloudSettings")
-    def pan_prisma_cloud_settings(self) -> Optional[pulumi.Input['FeedDetailsPanPrismaCloudSettingsArgs']]:
+    def pan_prisma_cloud_settings(self) -> pulumi.Input[Optional['FeedDetailsPanPrismaCloudSettingsArgs']]:
         """
         PAN Prisma Cloud settings.
         Structure is documented below.
@@ -6981,12 +6981,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "pan_prisma_cloud_settings")
 
     @pan_prisma_cloud_settings.setter
-    def pan_prisma_cloud_settings(self, value: Optional[pulumi.Input['FeedDetailsPanPrismaCloudSettingsArgs']]):
+    def pan_prisma_cloud_settings(self, value: pulumi.Input[Optional['FeedDetailsPanPrismaCloudSettingsArgs']]):
         pulumi.set(self, "pan_prisma_cloud_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="proofpointMailSettings")
-    def proofpoint_mail_settings(self) -> Optional[pulumi.Input['FeedDetailsProofpointMailSettingsArgs']]:
+    def proofpoint_mail_settings(self) -> pulumi.Input[Optional['FeedDetailsProofpointMailSettingsArgs']]:
         """
         Proofpoint Mail settings.
         Structure is documented below.
@@ -6994,12 +6994,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "proofpoint_mail_settings")
 
     @proofpoint_mail_settings.setter
-    def proofpoint_mail_settings(self, value: Optional[pulumi.Input['FeedDetailsProofpointMailSettingsArgs']]):
+    def proofpoint_mail_settings(self, value: pulumi.Input[Optional['FeedDetailsProofpointMailSettingsArgs']]):
         pulumi.set(self, "proofpoint_mail_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="proofpointOnDemandSettings")
-    def proofpoint_on_demand_settings(self) -> Optional[pulumi.Input['FeedDetailsProofpointOnDemandSettingsArgs']]:
+    def proofpoint_on_demand_settings(self) -> pulumi.Input[Optional['FeedDetailsProofpointOnDemandSettingsArgs']]:
         """
         Proofpoint On-demand settings.
         Structure is documented below.
@@ -7007,12 +7007,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "proofpoint_on_demand_settings")
 
     @proofpoint_on_demand_settings.setter
-    def proofpoint_on_demand_settings(self, value: Optional[pulumi.Input['FeedDetailsProofpointOnDemandSettingsArgs']]):
+    def proofpoint_on_demand_settings(self, value: pulumi.Input[Optional['FeedDetailsProofpointOnDemandSettingsArgs']]):
         pulumi.set(self, "proofpoint_on_demand_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubSettings")
-    def pubsub_settings(self) -> Optional[pulumi.Input['FeedDetailsPubsubSettingsArgs']]:
+    def pubsub_settings(self) -> pulumi.Input[Optional['FeedDetailsPubsubSettingsArgs']]:
         """
         Settings required by Google Cloud Pub/Sub Feeds(HTTP-Push).
         Structure is documented below.
@@ -7020,12 +7020,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "pubsub_settings")
 
     @pubsub_settings.setter
-    def pubsub_settings(self, value: Optional[pulumi.Input['FeedDetailsPubsubSettingsArgs']]):
+    def pubsub_settings(self, value: pulumi.Input[Optional['FeedDetailsPubsubSettingsArgs']]):
         pulumi.set(self, "pubsub_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="qualysScanSettings")
-    def qualys_scan_settings(self) -> Optional[pulumi.Input['FeedDetailsQualysScanSettingsArgs']]:
+    def qualys_scan_settings(self) -> pulumi.Input[Optional['FeedDetailsQualysScanSettingsArgs']]:
         """
         Qualys Scan settings.
         Structure is documented below.
@@ -7033,12 +7033,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "qualys_scan_settings")
 
     @qualys_scan_settings.setter
-    def qualys_scan_settings(self, value: Optional[pulumi.Input['FeedDetailsQualysScanSettingsArgs']]):
+    def qualys_scan_settings(self, value: pulumi.Input[Optional['FeedDetailsQualysScanSettingsArgs']]):
         pulumi.set(self, "qualys_scan_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="qualysVmSettings")
-    def qualys_vm_settings(self) -> Optional[pulumi.Input['FeedDetailsQualysVmSettingsArgs']]:
+    def qualys_vm_settings(self) -> pulumi.Input[Optional['FeedDetailsQualysVmSettingsArgs']]:
         """
         Qualys VM settings.
         Structure is documented below.
@@ -7046,12 +7046,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "qualys_vm_settings")
 
     @qualys_vm_settings.setter
-    def qualys_vm_settings(self, value: Optional[pulumi.Input['FeedDetailsQualysVmSettingsArgs']]):
+    def qualys_vm_settings(self, value: pulumi.Input[Optional['FeedDetailsQualysVmSettingsArgs']]):
         pulumi.set(self, "qualys_vm_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="rapid7InsightSettings")
-    def rapid7_insight_settings(self) -> Optional[pulumi.Input['FeedDetailsRapid7InsightSettingsArgs']]:
+    def rapid7_insight_settings(self) -> pulumi.Input[Optional['FeedDetailsRapid7InsightSettingsArgs']]:
         """
         Rapid7 Insight settings.
         Structure is documented below.
@@ -7059,12 +7059,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "rapid7_insight_settings")
 
     @rapid7_insight_settings.setter
-    def rapid7_insight_settings(self, value: Optional[pulumi.Input['FeedDetailsRapid7InsightSettingsArgs']]):
+    def rapid7_insight_settings(self, value: pulumi.Input[Optional['FeedDetailsRapid7InsightSettingsArgs']]):
         pulumi.set(self, "rapid7_insight_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="recordedFutureIocSettings")
-    def recorded_future_ioc_settings(self) -> Optional[pulumi.Input['FeedDetailsRecordedFutureIocSettingsArgs']]:
+    def recorded_future_ioc_settings(self) -> pulumi.Input[Optional['FeedDetailsRecordedFutureIocSettingsArgs']]:
         """
         Recorded Future IOC settings.
         Structure is documented below.
@@ -7072,12 +7072,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "recorded_future_ioc_settings")
 
     @recorded_future_ioc_settings.setter
-    def recorded_future_ioc_settings(self, value: Optional[pulumi.Input['FeedDetailsRecordedFutureIocSettingsArgs']]):
+    def recorded_future_ioc_settings(self, value: pulumi.Input[Optional['FeedDetailsRecordedFutureIocSettingsArgs']]):
         pulumi.set(self, "recorded_future_ioc_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="rhIsacIocSettings")
-    def rh_isac_ioc_settings(self) -> Optional[pulumi.Input['FeedDetailsRhIsacIocSettingsArgs']]:
+    def rh_isac_ioc_settings(self) -> pulumi.Input[Optional['FeedDetailsRhIsacIocSettingsArgs']]:
         """
         RH-ISAC settings.
         Structure is documented below.
@@ -7085,12 +7085,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "rh_isac_ioc_settings")
 
     @rh_isac_ioc_settings.setter
-    def rh_isac_ioc_settings(self, value: Optional[pulumi.Input['FeedDetailsRhIsacIocSettingsArgs']]):
+    def rh_isac_ioc_settings(self, value: pulumi.Input[Optional['FeedDetailsRhIsacIocSettingsArgs']]):
         pulumi.set(self, "rh_isac_ioc_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="salesforceSettings")
-    def salesforce_settings(self) -> Optional[pulumi.Input['FeedDetailsSalesforceSettingsArgs']]:
+    def salesforce_settings(self) -> pulumi.Input[Optional['FeedDetailsSalesforceSettingsArgs']]:
         """
         Salesforce settings.
         Structure is documented below.
@@ -7098,12 +7098,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "salesforce_settings")
 
     @salesforce_settings.setter
-    def salesforce_settings(self, value: Optional[pulumi.Input['FeedDetailsSalesforceSettingsArgs']]):
+    def salesforce_settings(self, value: pulumi.Input[Optional['FeedDetailsSalesforceSettingsArgs']]):
         pulumi.set(self, "salesforce_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="sentineloneAlertSettings")
-    def sentinelone_alert_settings(self) -> Optional[pulumi.Input['FeedDetailsSentineloneAlertSettingsArgs']]:
+    def sentinelone_alert_settings(self) -> pulumi.Input[Optional['FeedDetailsSentineloneAlertSettingsArgs']]:
         """
         SentinelOne Alert settings.
         Structure is documented below.
@@ -7111,12 +7111,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "sentinelone_alert_settings")
 
     @sentinelone_alert_settings.setter
-    def sentinelone_alert_settings(self, value: Optional[pulumi.Input['FeedDetailsSentineloneAlertSettingsArgs']]):
+    def sentinelone_alert_settings(self, value: pulumi.Input[Optional['FeedDetailsSentineloneAlertSettingsArgs']]):
         pulumi.set(self, "sentinelone_alert_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceNowCmdbSettings")
-    def service_now_cmdb_settings(self) -> Optional[pulumi.Input['FeedDetailsServiceNowCmdbSettingsArgs']]:
+    def service_now_cmdb_settings(self) -> pulumi.Input[Optional['FeedDetailsServiceNowCmdbSettingsArgs']]:
         """
         ServiceNow CMDB settings.
         Structure is documented below.
@@ -7124,12 +7124,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "service_now_cmdb_settings")
 
     @service_now_cmdb_settings.setter
-    def service_now_cmdb_settings(self, value: Optional[pulumi.Input['FeedDetailsServiceNowCmdbSettingsArgs']]):
+    def service_now_cmdb_settings(self, value: pulumi.Input[Optional['FeedDetailsServiceNowCmdbSettingsArgs']]):
         pulumi.set(self, "service_now_cmdb_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="sftpSettings")
-    def sftp_settings(self) -> Optional[pulumi.Input['FeedDetailsSftpSettingsArgs']]:
+    def sftp_settings(self) -> pulumi.Input[Optional['FeedDetailsSftpSettingsArgs']]:
         """
         SFTP settings.
         Structure is documented below.
@@ -7137,12 +7137,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "sftp_settings")
 
     @sftp_settings.setter
-    def sftp_settings(self, value: Optional[pulumi.Input['FeedDetailsSftpSettingsArgs']]):
+    def sftp_settings(self, value: pulumi.Input[Optional['FeedDetailsSftpSettingsArgs']]):
         pulumi.set(self, "sftp_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="stsMigrationReadiness")
-    def sts_migration_readiness(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sts_migration_readiness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The status of the feed's migration to STS.
@@ -7154,12 +7154,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "sts_migration_readiness")
 
     @sts_migration_readiness.setter
-    def sts_migration_readiness(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sts_migration_readiness(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sts_migration_readiness", value)
 
     @_builtins.property
     @pulumi.getter(name="symantecEventExportSettings")
-    def symantec_event_export_settings(self) -> Optional[pulumi.Input['FeedDetailsSymantecEventExportSettingsArgs']]:
+    def symantec_event_export_settings(self) -> pulumi.Input[Optional['FeedDetailsSymantecEventExportSettingsArgs']]:
         """
         Symantec Event Export settings.
         Structure is documented below.
@@ -7167,12 +7167,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "symantec_event_export_settings")
 
     @symantec_event_export_settings.setter
-    def symantec_event_export_settings(self, value: Optional[pulumi.Input['FeedDetailsSymantecEventExportSettingsArgs']]):
+    def symantec_event_export_settings(self, value: pulumi.Input[Optional['FeedDetailsSymantecEventExportSettingsArgs']]):
         pulumi.set(self, "symantec_event_export_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="thinkstCanarySettings")
-    def thinkst_canary_settings(self) -> Optional[pulumi.Input['FeedDetailsThinkstCanarySettingsArgs']]:
+    def thinkst_canary_settings(self) -> pulumi.Input[Optional['FeedDetailsThinkstCanarySettingsArgs']]:
         """
         Thinkst Canary settings.
         Structure is documented below.
@@ -7180,12 +7180,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "thinkst_canary_settings")
 
     @thinkst_canary_settings.setter
-    def thinkst_canary_settings(self, value: Optional[pulumi.Input['FeedDetailsThinkstCanarySettingsArgs']]):
+    def thinkst_canary_settings(self, value: pulumi.Input[Optional['FeedDetailsThinkstCanarySettingsArgs']]):
         pulumi.set(self, "thinkst_canary_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="threatConnectIocSettings")
-    def threat_connect_ioc_settings(self) -> Optional[pulumi.Input['FeedDetailsThreatConnectIocSettingsArgs']]:
+    def threat_connect_ioc_settings(self) -> pulumi.Input[Optional['FeedDetailsThreatConnectIocSettingsArgs']]:
         """
         ThreatConnect IOC Settings.
         Structure is documented below.
@@ -7193,12 +7193,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "threat_connect_ioc_settings")
 
     @threat_connect_ioc_settings.setter
-    def threat_connect_ioc_settings(self, value: Optional[pulumi.Input['FeedDetailsThreatConnectIocSettingsArgs']]):
+    def threat_connect_ioc_settings(self, value: pulumi.Input[Optional['FeedDetailsThreatConnectIocSettingsArgs']]):
         pulumi.set(self, "threat_connect_ioc_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="threatConnectIocV3Settings")
-    def threat_connect_ioc_v3_settings(self) -> Optional[pulumi.Input['FeedDetailsThreatConnectIocV3SettingsArgs']]:
+    def threat_connect_ioc_v3_settings(self) -> pulumi.Input[Optional['FeedDetailsThreatConnectIocV3SettingsArgs']]:
         """
         ThreatConnectIoCV3Settings
         Structure is documented below.
@@ -7206,12 +7206,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "threat_connect_ioc_v3_settings")
 
     @threat_connect_ioc_v3_settings.setter
-    def threat_connect_ioc_v3_settings(self, value: Optional[pulumi.Input['FeedDetailsThreatConnectIocV3SettingsArgs']]):
+    def threat_connect_ioc_v3_settings(self, value: pulumi.Input[Optional['FeedDetailsThreatConnectIocV3SettingsArgs']]):
         pulumi.set(self, "threat_connect_ioc_v3_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="trellixHxAlertsSettings")
-    def trellix_hx_alerts_settings(self) -> Optional[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsArgs']]:
+    def trellix_hx_alerts_settings(self) -> pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsArgs']]:
         """
         Settings required by Feeds of TrellixHxAlerts.
         Structure is documented below.
@@ -7219,12 +7219,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "trellix_hx_alerts_settings")
 
     @trellix_hx_alerts_settings.setter
-    def trellix_hx_alerts_settings(self, value: Optional[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsArgs']]):
+    def trellix_hx_alerts_settings(self, value: pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsArgs']]):
         pulumi.set(self, "trellix_hx_alerts_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="trellixHxBulkAcqsSettings")
-    def trellix_hx_bulk_acqs_settings(self) -> Optional[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsArgs']]:
+    def trellix_hx_bulk_acqs_settings(self) -> pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsArgs']]:
         """
         Settings required by Feeds of TrellixHxBulkAcqs.
         Structure is documented below.
@@ -7232,12 +7232,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "trellix_hx_bulk_acqs_settings")
 
     @trellix_hx_bulk_acqs_settings.setter
-    def trellix_hx_bulk_acqs_settings(self, value: Optional[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsArgs']]):
+    def trellix_hx_bulk_acqs_settings(self, value: pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsArgs']]):
         pulumi.set(self, "trellix_hx_bulk_acqs_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="trellixHxHostsSettings")
-    def trellix_hx_hosts_settings(self) -> Optional[pulumi.Input['FeedDetailsTrellixHxHostsSettingsArgs']]:
+    def trellix_hx_hosts_settings(self) -> pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsArgs']]:
         """
         Settings required by Feeds of TrellixHxHosts.
         Structure is documented below.
@@ -7245,24 +7245,24 @@ class FeedDetailsArgs:
         return pulumi.get(self, "trellix_hx_hosts_settings")
 
     @trellix_hx_hosts_settings.setter
-    def trellix_hx_hosts_settings(self, value: Optional[pulumi.Input['FeedDetailsTrellixHxHostsSettingsArgs']]):
+    def trellix_hx_hosts_settings(self, value: pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsArgs']]):
         pulumi.set(self, "trellix_hx_hosts_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookSettings")
-    def webhook_settings(self) -> Optional[pulumi.Input['FeedDetailsWebhookSettingsArgs']]:
+    def webhook_settings(self) -> pulumi.Input[Optional['FeedDetailsWebhookSettingsArgs']]:
         """
         Settings required by Webhook Feeds(HTTP-Push).
         """
         return pulumi.get(self, "webhook_settings")
 
     @webhook_settings.setter
-    def webhook_settings(self, value: Optional[pulumi.Input['FeedDetailsWebhookSettingsArgs']]):
+    def webhook_settings(self, value: pulumi.Input[Optional['FeedDetailsWebhookSettingsArgs']]):
         pulumi.set(self, "webhook_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="workdaySettings")
-    def workday_settings(self) -> Optional[pulumi.Input['FeedDetailsWorkdaySettingsArgs']]:
+    def workday_settings(self) -> pulumi.Input[Optional['FeedDetailsWorkdaySettingsArgs']]:
         """
         Workday settings.
         Structure is documented below.
@@ -7270,12 +7270,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "workday_settings")
 
     @workday_settings.setter
-    def workday_settings(self, value: Optional[pulumi.Input['FeedDetailsWorkdaySettingsArgs']]):
+    def workday_settings(self, value: pulumi.Input[Optional['FeedDetailsWorkdaySettingsArgs']]):
         pulumi.set(self, "workday_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceActivitySettings")
-    def workspace_activity_settings(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceActivitySettingsArgs']]:
+    def workspace_activity_settings(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsArgs']]:
         """
         Workspace Activity settings.
         Structure is documented below.
@@ -7283,12 +7283,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "workspace_activity_settings")
 
     @workspace_activity_settings.setter
-    def workspace_activity_settings(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceActivitySettingsArgs']]):
+    def workspace_activity_settings(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsArgs']]):
         pulumi.set(self, "workspace_activity_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceAlertsSettings")
-    def workspace_alerts_settings(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsArgs']]:
+    def workspace_alerts_settings(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsArgs']]:
         """
         Workspace Alert settings.
         Structure is documented below.
@@ -7296,12 +7296,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "workspace_alerts_settings")
 
     @workspace_alerts_settings.setter
-    def workspace_alerts_settings(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsArgs']]):
+    def workspace_alerts_settings(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsArgs']]):
         pulumi.set(self, "workspace_alerts_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceChromeOsSettings")
-    def workspace_chrome_os_settings(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsArgs']]:
+    def workspace_chrome_os_settings(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsArgs']]:
         """
         Workspace Chrome OS settings.
         Structure is documented below.
@@ -7309,12 +7309,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "workspace_chrome_os_settings")
 
     @workspace_chrome_os_settings.setter
-    def workspace_chrome_os_settings(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsArgs']]):
+    def workspace_chrome_os_settings(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsArgs']]):
         pulumi.set(self, "workspace_chrome_os_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceGroupsSettings")
-    def workspace_groups_settings(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsArgs']]:
+    def workspace_groups_settings(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsArgs']]:
         """
         Workspace Groups settings.
         Structure is documented below.
@@ -7322,12 +7322,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "workspace_groups_settings")
 
     @workspace_groups_settings.setter
-    def workspace_groups_settings(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsArgs']]):
+    def workspace_groups_settings(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsArgs']]):
         pulumi.set(self, "workspace_groups_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceMobileSettings")
-    def workspace_mobile_settings(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceMobileSettingsArgs']]:
+    def workspace_mobile_settings(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsArgs']]:
         """
         Workspace Mobile settings.
         Structure is documented below.
@@ -7335,12 +7335,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "workspace_mobile_settings")
 
     @workspace_mobile_settings.setter
-    def workspace_mobile_settings(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceMobileSettingsArgs']]):
+    def workspace_mobile_settings(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsArgs']]):
         pulumi.set(self, "workspace_mobile_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="workspacePrivilegesSettings")
-    def workspace_privileges_settings(self) -> Optional[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsArgs']]:
+    def workspace_privileges_settings(self) -> pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsArgs']]:
         """
         Workspace Privileges settings.
         Structure is documented below.
@@ -7348,12 +7348,12 @@ class FeedDetailsArgs:
         return pulumi.get(self, "workspace_privileges_settings")
 
     @workspace_privileges_settings.setter
-    def workspace_privileges_settings(self, value: Optional[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsArgs']]):
+    def workspace_privileges_settings(self, value: pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsArgs']]):
         pulumi.set(self, "workspace_privileges_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceUsersSettings")
-    def workspace_users_settings(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceUsersSettingsArgs']]:
+    def workspace_users_settings(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsArgs']]:
         """
         Workspace Users settings.
         Structure is documented below.
@@ -7364,7 +7364,7 @@ class FeedDetailsArgs:
         return pulumi.get(self, "workspace_users_settings")
 
     @workspace_users_settings.setter
-    def workspace_users_settings(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceUsersSettingsArgs']]):
+    def workspace_users_settings(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsArgs']]):
         pulumi.set(self, "workspace_users_settings", value)
 
 
@@ -7396,7 +7396,7 @@ class FeedDetailsAmazonS3SettingsArgsDict(TypedDict):
     FOLDERS
     FOLDERS_RECURSIVE
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsAmazonS3SettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3SettingsAuthenticationArgs']]]
     """
     Amazon S3 auth.
     """
@@ -7407,7 +7407,7 @@ class FeedDetailsAmazonS3SettingsArgs:
                  s3_uri: pulumi.Input[_builtins.str],
                  source_deletion_option: pulumi.Input[_builtins.str],
                  source_type: pulumi.Input[_builtins.str],
-                 authentication: Optional[pulumi.Input['FeedDetailsAmazonS3SettingsAuthenticationArgs']] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsAmazonS3SettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] s3_uri: S3 URI.
         :param pulumi.Input[_builtins.str] source_deletion_option: Possible values:
@@ -7470,14 +7470,14 @@ class FeedDetailsAmazonS3SettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsAmazonS3SettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsAmazonS3SettingsAuthenticationArgs']]:
         """
         Amazon S3 auth.
         """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsAmazonS3SettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsAmazonS3SettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
@@ -7519,25 +7519,25 @@ class FeedDetailsAmazonS3SettingsAuthenticationArgsDict(TypedDict):
     IL_CENTRAL_1
     ME_CENTRAL_1
     """
-    access_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    access_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Access key ID.
     """
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client Secret.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    refresh_uri: NotRequired[pulumi.Input[_builtins.str]]
+    refresh_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Refresh URI. Used when using OAuth auth.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    secret_access_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Secret access key.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -7547,11 +7547,11 @@ class FeedDetailsAmazonS3SettingsAuthenticationArgsDict(TypedDict):
 class FeedDetailsAmazonS3SettingsAuthenticationArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[_builtins.str],
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_access_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_access_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] region: Possible values:
                US_EAST_1
@@ -7655,31 +7655,31 @@ class FeedDetailsAmazonS3SettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessKeyId")
-    def access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access key ID.
         """
         return pulumi.get(self, "access_key_id")
 
     @access_key_id.setter
-    def access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Secret.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -7687,12 +7687,12 @@ class FeedDetailsAmazonS3SettingsAuthenticationArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshUri")
-    def refresh_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def refresh_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Refresh URI. Used when using OAuth auth.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -7700,12 +7700,12 @@ class FeedDetailsAmazonS3SettingsAuthenticationArgs:
         return pulumi.get(self, "refresh_uri")
 
     @refresh_uri.setter
-    def refresh_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def refresh_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "refresh_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKey")
-    def secret_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secret access key.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -7713,7 +7713,7 @@ class FeedDetailsAmazonS3SettingsAuthenticationArgs:
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
-    def secret_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_access_key", value)
 
 
@@ -7726,16 +7726,16 @@ class FeedDetailsAmazonS3V2SettingsArgsDict(TypedDict):
     """
     S3 URI.
     """
-    chronicle_service_account: NotRequired[pulumi.Input[_builtins.str]]
+    chronicle_service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SA that will read data, this is Storage Transfer Service SA of Customer's
     Tenancy Project.
     """
-    max_lookback_days: NotRequired[pulumi.Input[_builtins.int]]
+    max_lookback_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum File Age to ingest in days.
     """
-    source_deletion_option: NotRequired[pulumi.Input[_builtins.str]]
+    source_deletion_option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     NEVER
@@ -7747,9 +7747,9 @@ class FeedDetailsAmazonS3V2SettingsArgs:
     def __init__(__self__, *,
                  authentication: pulumi.Input['FeedDetailsAmazonS3V2SettingsAuthenticationArgs'],
                  s3_uri: pulumi.Input[_builtins.str],
-                 chronicle_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_lookback_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_deletion_option: Optional[pulumi.Input[_builtins.str]] = None):
+                 chronicle_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_lookback_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_deletion_option: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsAmazonS3V2SettingsAuthenticationArgs'] authentication: A message containing fields used to authenticate with Amazon S3.
         :param pulumi.Input[_builtins.str] s3_uri: S3 URI.
@@ -7795,7 +7795,7 @@ class FeedDetailsAmazonS3V2SettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="chronicleServiceAccount")
-    def chronicle_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chronicle_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SA that will read data, this is Storage Transfer Service SA of Customer's
         Tenancy Project.
@@ -7803,24 +7803,24 @@ class FeedDetailsAmazonS3V2SettingsArgs:
         return pulumi.get(self, "chronicle_service_account")
 
     @chronicle_service_account.setter
-    def chronicle_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chronicle_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chronicle_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLookbackDays")
-    def max_lookback_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_lookback_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum File Age to ingest in days.
         """
         return pulumi.get(self, "max_lookback_days")
 
     @max_lookback_days.setter
-    def max_lookback_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_lookback_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_lookback_days", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDeletionOption")
-    def source_deletion_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_deletion_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         NEVER
@@ -7829,17 +7829,17 @@ class FeedDetailsAmazonS3V2SettingsArgs:
         return pulumi.get(self, "source_deletion_option")
 
     @source_deletion_option.setter
-    def source_deletion_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_deletion_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_deletion_option", value)
 
 
 class FeedDetailsAmazonS3V2SettingsAuthenticationArgsDict(TypedDict):
-    access_key_secret_auth: NotRequired[pulumi.Input['FeedDetailsAmazonS3V2SettingsAuthenticationAccessKeySecretAuthArgsDict']]
+    access_key_secret_auth: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsAuthenticationAccessKeySecretAuthArgs']]]
     """
     S3 V2 access key and secret auth.
     Structure is documented below.
     """
-    aws_iam_role_auth: NotRequired[pulumi.Input['FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgsDict']]
+    aws_iam_role_auth: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgs']]]
     """
     AWS IAM Role Auth for SQS V2.
     Structure is documented below.
@@ -7848,8 +7848,8 @@ class FeedDetailsAmazonS3V2SettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAmazonS3V2SettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 access_key_secret_auth: Optional[pulumi.Input['FeedDetailsAmazonS3V2SettingsAuthenticationAccessKeySecretAuthArgs']] = None,
-                 aws_iam_role_auth: Optional[pulumi.Input['FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgs']] = None):
+                 access_key_secret_auth: pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsAuthenticationAccessKeySecretAuthArgs']] = None,
+                 aws_iam_role_auth: pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsAmazonS3V2SettingsAuthenticationAccessKeySecretAuthArgs'] access_key_secret_auth: S3 V2 access key and secret auth.
                Structure is documented below.
@@ -7863,7 +7863,7 @@ class FeedDetailsAmazonS3V2SettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessKeySecretAuth")
-    def access_key_secret_auth(self) -> Optional[pulumi.Input['FeedDetailsAmazonS3V2SettingsAuthenticationAccessKeySecretAuthArgs']]:
+    def access_key_secret_auth(self) -> pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsAuthenticationAccessKeySecretAuthArgs']]:
         """
         S3 V2 access key and secret auth.
         Structure is documented below.
@@ -7871,12 +7871,12 @@ class FeedDetailsAmazonS3V2SettingsAuthenticationArgs:
         return pulumi.get(self, "access_key_secret_auth")
 
     @access_key_secret_auth.setter
-    def access_key_secret_auth(self, value: Optional[pulumi.Input['FeedDetailsAmazonS3V2SettingsAuthenticationAccessKeySecretAuthArgs']]):
+    def access_key_secret_auth(self, value: pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsAuthenticationAccessKeySecretAuthArgs']]):
         pulumi.set(self, "access_key_secret_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="awsIamRoleAuth")
-    def aws_iam_role_auth(self) -> Optional[pulumi.Input['FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgs']]:
+    def aws_iam_role_auth(self) -> pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgs']]:
         """
         AWS IAM Role Auth for SQS V2.
         Structure is documented below.
@@ -7884,7 +7884,7 @@ class FeedDetailsAmazonS3V2SettingsAuthenticationArgs:
         return pulumi.get(self, "aws_iam_role_auth")
 
     @aws_iam_role_auth.setter
-    def aws_iam_role_auth(self, value: Optional[pulumi.Input['FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgs']]):
+    def aws_iam_role_auth(self, value: pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgs']]):
         pulumi.set(self, "aws_iam_role_auth", value)
 
 
@@ -7939,11 +7939,11 @@ class FeedDetailsAmazonS3V2SettingsAuthenticationAccessKeySecretAuthArgs:
 
 
 class FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgsDict(TypedDict):
-    aws_iam_role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    aws_iam_role_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     AWS IAM Role for Identity Federation.
     """
-    subject_id: NotRequired[pulumi.Input[_builtins.str]]
+    subject_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subject ID to use for SQS.
 
@@ -7953,8 +7953,8 @@ class FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgsDict(TypedDic
 @pulumi.input_type
 class FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgs:
     def __init__(__self__, *,
-                 aws_iam_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 aws_iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] aws_iam_role_arn: AWS IAM Role for Identity Federation.
         :param pulumi.Input[_builtins.str] subject_id: Subject ID to use for SQS.
@@ -7968,19 +7968,19 @@ class FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgs:
 
     @_builtins.property
     @pulumi.getter(name="awsIamRoleArn")
-    def aws_iam_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_iam_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS IAM Role for Identity Federation.
         """
         return pulumi.get(self, "aws_iam_role_arn")
 
     @aws_iam_role_arn.setter
-    def aws_iam_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_iam_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_iam_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="subjectId")
-    def subject_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subject ID to use for SQS.
 
@@ -7989,25 +7989,25 @@ class FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgs:
         return pulumi.get(self, "subject_id")
 
     @subject_id.setter
-    def subject_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject_id", value)
 
 
 class FeedDetailsAmazonSqsSettingsArgsDict(TypedDict):
-    account_number: NotRequired[pulumi.Input[_builtins.str]]
+    account_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Account number of the owner of the queue.
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationArgs']]]
     """
     Amazon SQS auth.
     Structure is documented below.
     """
-    queue: NotRequired[pulumi.Input[_builtins.str]]
+    queue: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the queue.
     """
-    region: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     US_EAST_1
@@ -8044,7 +8044,7 @@ class FeedDetailsAmazonSqsSettingsArgsDict(TypedDict):
     IL_CENTRAL_1
     ME_CENTRAL_1
     """
-    source_deletion_option: NotRequired[pulumi.Input[_builtins.str]]
+    source_deletion_option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     SOURCE_DELETION_NEVER
@@ -8055,11 +8055,11 @@ class FeedDetailsAmazonSqsSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAmazonSqsSettingsArgs:
     def __init__(__self__, *,
-                 account_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationArgs']] = None,
-                 queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_deletion_option: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationArgs']] = None,
+                 queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_deletion_option: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] account_number: Account number of the owner of the queue.
         :param pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationArgs'] authentication: Amazon SQS auth.
@@ -8117,19 +8117,19 @@ class FeedDetailsAmazonSqsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountNumber")
-    def account_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account number of the owner of the queue.
         """
         return pulumi.get(self, "account_number")
 
     @account_number.setter
-    def account_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationArgs']]:
         """
         Amazon SQS auth.
         Structure is documented below.
@@ -8137,24 +8137,24 @@ class FeedDetailsAmazonSqsSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def queue(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the queue.
         """
         return pulumi.get(self, "queue")
 
     @queue.setter
-    def queue(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         US_EAST_1
@@ -8194,12 +8194,12 @@ class FeedDetailsAmazonSqsSettingsArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDeletionOption")
-    def source_deletion_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_deletion_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         SOURCE_DELETION_NEVER
@@ -8209,17 +8209,17 @@ class FeedDetailsAmazonSqsSettingsArgs:
         return pulumi.get(self, "source_deletion_option")
 
     @source_deletion_option.setter
-    def source_deletion_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_deletion_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_deletion_option", value)
 
 
 class FeedDetailsAmazonSqsSettingsAuthenticationArgsDict(TypedDict):
-    additional_s3_access_key_secret_auth: NotRequired[pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthArgsDict']]
+    additional_s3_access_key_secret_auth: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthArgs']]]
     """
     Additional S3 access key secret auth.
     Structure is documented below.
     """
-    sqs_access_key_secret_auth: NotRequired[pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgsDict']]
+    sqs_access_key_secret_auth: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgs']]]
     """
     Amazon SQS access key and secret auth.
     Structure is documented below.
@@ -8231,8 +8231,8 @@ class FeedDetailsAmazonSqsSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAmazonSqsSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 additional_s3_access_key_secret_auth: Optional[pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthArgs']] = None,
-                 sqs_access_key_secret_auth: Optional[pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgs']] = None):
+                 additional_s3_access_key_secret_auth: pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthArgs']] = None,
+                 sqs_access_key_secret_auth: pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthArgs'] additional_s3_access_key_secret_auth: Additional S3 access key secret auth.
                Structure is documented below.
@@ -8249,7 +8249,7 @@ class FeedDetailsAmazonSqsSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalS3AccessKeySecretAuth")
-    def additional_s3_access_key_secret_auth(self) -> Optional[pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthArgs']]:
+    def additional_s3_access_key_secret_auth(self) -> pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthArgs']]:
         """
         Additional S3 access key secret auth.
         Structure is documented below.
@@ -8257,12 +8257,12 @@ class FeedDetailsAmazonSqsSettingsAuthenticationArgs:
         return pulumi.get(self, "additional_s3_access_key_secret_auth")
 
     @additional_s3_access_key_secret_auth.setter
-    def additional_s3_access_key_secret_auth(self, value: Optional[pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthArgs']]):
+    def additional_s3_access_key_secret_auth(self, value: pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthArgs']]):
         pulumi.set(self, "additional_s3_access_key_secret_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="sqsAccessKeySecretAuth")
-    def sqs_access_key_secret_auth(self) -> Optional[pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgs']]:
+    def sqs_access_key_secret_auth(self) -> pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgs']]:
         """
         Amazon SQS access key and secret auth.
         Structure is documented below.
@@ -8273,16 +8273,16 @@ class FeedDetailsAmazonSqsSettingsAuthenticationArgs:
         return pulumi.get(self, "sqs_access_key_secret_auth")
 
     @sqs_access_key_secret_auth.setter
-    def sqs_access_key_secret_auth(self, value: Optional[pulumi.Input['FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgs']]):
+    def sqs_access_key_secret_auth(self, value: pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgs']]):
         pulumi.set(self, "sqs_access_key_secret_auth", value)
 
 
 class FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthArgsDict(TypedDict):
-    access_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    access_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Access key ID.
     """
-    secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    secret_access_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Secret access key.
     """
@@ -8290,8 +8290,8 @@ class FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthA
 @pulumi.input_type
 class FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthArgs:
     def __init__(__self__, *,
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_access_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_access_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_key_id: Access key ID.
         :param pulumi.Input[_builtins.str] secret_access_key: Secret access key.
@@ -8303,35 +8303,35 @@ class FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthA
 
     @_builtins.property
     @pulumi.getter(name="accessKeyId")
-    def access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access key ID.
         """
         return pulumi.get(self, "access_key_id")
 
     @access_key_id.setter
-    def access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKey")
-    def secret_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secret access key.
         """
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
-    def secret_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_access_key", value)
 
 
 class FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgsDict(TypedDict):
-    access_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    access_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Access key ID.
     """
-    secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    secret_access_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Secret access key.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -8342,8 +8342,8 @@ class FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgsDict(T
 @pulumi.input_type
 class FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgs:
     def __init__(__self__, *,
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_access_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_access_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_key_id: Access key ID.
         :param pulumi.Input[_builtins.str] secret_access_key: Secret access key.
@@ -8358,19 +8358,19 @@ class FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessKeyId")
-    def access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access key ID.
         """
         return pulumi.get(self, "access_key_id")
 
     @access_key_id.setter
-    def access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKey")
-    def secret_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secret access key.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -8380,7 +8380,7 @@ class FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgs:
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
-    def secret_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_access_key", value)
 
 
@@ -8397,16 +8397,16 @@ class FeedDetailsAmazonSqsV2SettingsArgsDict(TypedDict):
     """
     S3 URI.
     """
-    chronicle_service_account: NotRequired[pulumi.Input[_builtins.str]]
+    chronicle_service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SA that will read data, this is Storage Transfer Service SA of Customer's
     Tenancy Project.
     """
-    max_lookback_days: NotRequired[pulumi.Input[_builtins.int]]
+    max_lookback_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum File Age to ingest in days.
     """
-    source_deletion_option: NotRequired[pulumi.Input[_builtins.str]]
+    source_deletion_option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     NEVER
@@ -8419,9 +8419,9 @@ class FeedDetailsAmazonSqsV2SettingsArgs:
                  authentication: pulumi.Input['FeedDetailsAmazonSqsV2SettingsAuthenticationArgs'],
                  queue: pulumi.Input[_builtins.str],
                  s3_uri: pulumi.Input[_builtins.str],
-                 chronicle_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_lookback_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_deletion_option: Optional[pulumi.Input[_builtins.str]] = None):
+                 chronicle_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_lookback_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_deletion_option: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsAmazonSqsV2SettingsAuthenticationArgs'] authentication: A message containing fields used to authenticate with Amazon SQS.
         :param pulumi.Input[_builtins.str] queue: Amazon Resource Name(ARN) of the queue.
@@ -8481,7 +8481,7 @@ class FeedDetailsAmazonSqsV2SettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="chronicleServiceAccount")
-    def chronicle_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chronicle_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SA that will read data, this is Storage Transfer Service SA of Customer's
         Tenancy Project.
@@ -8489,24 +8489,24 @@ class FeedDetailsAmazonSqsV2SettingsArgs:
         return pulumi.get(self, "chronicle_service_account")
 
     @chronicle_service_account.setter
-    def chronicle_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chronicle_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chronicle_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLookbackDays")
-    def max_lookback_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_lookback_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum File Age to ingest in days.
         """
         return pulumi.get(self, "max_lookback_days")
 
     @max_lookback_days.setter
-    def max_lookback_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_lookback_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_lookback_days", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDeletionOption")
-    def source_deletion_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_deletion_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         NEVER
@@ -8515,7 +8515,7 @@ class FeedDetailsAmazonSqsV2SettingsArgs:
         return pulumi.get(self, "source_deletion_option")
 
     @source_deletion_option.setter
-    def source_deletion_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_deletion_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_deletion_option", value)
 
 
@@ -8573,11 +8573,11 @@ class FeedDetailsAmazonSqsV2SettingsAuthenticationArgs:
 
 
 class FeedDetailsAmazonSqsV2SettingsAuthenticationAwsIamRoleAuthArgsDict(TypedDict):
-    aws_iam_role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    aws_iam_role_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     AWS IAM Role for Identity Federation.
     """
-    subject_id: NotRequired[pulumi.Input[_builtins.str]]
+    subject_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subject ID to use for SQS.
 
@@ -8587,8 +8587,8 @@ class FeedDetailsAmazonSqsV2SettingsAuthenticationAwsIamRoleAuthArgsDict(TypedDi
 @pulumi.input_type
 class FeedDetailsAmazonSqsV2SettingsAuthenticationAwsIamRoleAuthArgs:
     def __init__(__self__, *,
-                 aws_iam_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 aws_iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] aws_iam_role_arn: AWS IAM Role for Identity Federation.
         :param pulumi.Input[_builtins.str] subject_id: Subject ID to use for SQS.
@@ -8602,19 +8602,19 @@ class FeedDetailsAmazonSqsV2SettingsAuthenticationAwsIamRoleAuthArgs:
 
     @_builtins.property
     @pulumi.getter(name="awsIamRoleArn")
-    def aws_iam_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_iam_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS IAM Role for Identity Federation.
         """
         return pulumi.get(self, "aws_iam_role_arn")
 
     @aws_iam_role_arn.setter
-    def aws_iam_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_iam_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_iam_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="subjectId")
-    def subject_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subject ID to use for SQS.
 
@@ -8623,16 +8623,16 @@ class FeedDetailsAmazonSqsV2SettingsAuthenticationAwsIamRoleAuthArgs:
         return pulumi.get(self, "subject_id")
 
     @subject_id.setter
-    def subject_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject_id", value)
 
 
 class FeedDetailsAmazonSqsV2SettingsAuthenticationSqsV2AccessKeySecretAuthArgsDict(TypedDict):
-    access_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    access_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Access key ID of the S3 bucket.  Ex: AKIABCDEFGHIJKL.
     """
-    secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    secret_access_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Secret access key to access the S3 bucket.
     """
@@ -8640,8 +8640,8 @@ class FeedDetailsAmazonSqsV2SettingsAuthenticationSqsV2AccessKeySecretAuthArgsDi
 @pulumi.input_type
 class FeedDetailsAmazonSqsV2SettingsAuthenticationSqsV2AccessKeySecretAuthArgs:
     def __init__(__self__, *,
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_access_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_access_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_key_id: Access key ID of the S3 bucket.  Ex: AKIABCDEFGHIJKL.
         :param pulumi.Input[_builtins.str] secret_access_key: Secret access key to access the S3 bucket.
@@ -8653,31 +8653,31 @@ class FeedDetailsAmazonSqsV2SettingsAuthenticationSqsV2AccessKeySecretAuthArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessKeyId")
-    def access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access key ID of the S3 bucket.  Ex: AKIABCDEFGHIJKL.
         """
         return pulumi.get(self, "access_key_id")
 
     @access_key_id.setter
-    def access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKey")
-    def secret_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secret access key to access the S3 bucket.
         """
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
-    def secret_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_access_key", value)
 
 
 class FeedDetailsAnomaliSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsAnomaliSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAnomaliSettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
@@ -8686,7 +8686,7 @@ class FeedDetailsAnomaliSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAnomaliSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsAnomaliSettingsAuthenticationArgs']] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsAnomaliSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsAnomaliSettingsAuthenticationArgs'] authentication: Info for username and secret based authentication.
                Structure is documented below.
@@ -8696,7 +8696,7 @@ class FeedDetailsAnomaliSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsAnomaliSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsAnomaliSettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         Structure is documented below.
@@ -8704,12 +8704,12 @@ class FeedDetailsAnomaliSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsAnomaliSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsAnomaliSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsAnomaliSettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -8718,7 +8718,7 @@ class FeedDetailsAnomaliSettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -8728,8 +8728,8 @@ class FeedDetailsAnomaliSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAnomaliSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -8748,7 +8748,7 @@ class FeedDetailsAnomaliSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -8760,12 +8760,12 @@ class FeedDetailsAnomaliSettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -8774,12 +8774,12 @@ class FeedDetailsAnomaliSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsAwsEc2HostsSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsAwsEc2HostsSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2HostsSettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     """
@@ -8787,7 +8787,7 @@ class FeedDetailsAwsEc2HostsSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAwsEc2HostsSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsAwsEc2HostsSettingsAuthenticationArgs']] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsAwsEc2HostsSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsAwsEc2HostsSettingsAuthenticationArgs'] authentication: Info for username and secret based authentication.
         """
@@ -8796,19 +8796,19 @@ class FeedDetailsAwsEc2HostsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsAwsEc2HostsSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsAwsEc2HostsSettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsAwsEc2HostsSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsAwsEc2HostsSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsAwsEc2HostsSettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -8817,7 +8817,7 @@ class FeedDetailsAwsEc2HostsSettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -8827,8 +8827,8 @@ class FeedDetailsAwsEc2HostsSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAwsEc2HostsSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -8847,7 +8847,7 @@ class FeedDetailsAwsEc2HostsSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -8859,12 +8859,12 @@ class FeedDetailsAwsEc2HostsSettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -8873,12 +8873,12 @@ class FeedDetailsAwsEc2HostsSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsAwsEc2InstancesSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsAwsEc2InstancesSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2InstancesSettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     """
@@ -8886,7 +8886,7 @@ class FeedDetailsAwsEc2InstancesSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAwsEc2InstancesSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsAwsEc2InstancesSettingsAuthenticationArgs']] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsAwsEc2InstancesSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsAwsEc2InstancesSettingsAuthenticationArgs'] authentication: Info for username and secret based authentication.
         """
@@ -8895,19 +8895,19 @@ class FeedDetailsAwsEc2InstancesSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsAwsEc2InstancesSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsAwsEc2InstancesSettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsAwsEc2InstancesSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsAwsEc2InstancesSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsAwsEc2InstancesSettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -8916,7 +8916,7 @@ class FeedDetailsAwsEc2InstancesSettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -8926,8 +8926,8 @@ class FeedDetailsAwsEc2InstancesSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAwsEc2InstancesSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -8946,7 +8946,7 @@ class FeedDetailsAwsEc2InstancesSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -8958,12 +8958,12 @@ class FeedDetailsAwsEc2InstancesSettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -8972,12 +8972,12 @@ class FeedDetailsAwsEc2InstancesSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsAwsEc2VpcsSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsAwsEc2VpcsSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2VpcsSettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     """
@@ -8985,7 +8985,7 @@ class FeedDetailsAwsEc2VpcsSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAwsEc2VpcsSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsAwsEc2VpcsSettingsAuthenticationArgs']] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsAwsEc2VpcsSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsAwsEc2VpcsSettingsAuthenticationArgs'] authentication: Info for username and secret based authentication.
         """
@@ -8994,19 +8994,19 @@ class FeedDetailsAwsEc2VpcsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsAwsEc2VpcsSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsAwsEc2VpcsSettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsAwsEc2VpcsSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsAwsEc2VpcsSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsAwsEc2VpcsSettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -9015,7 +9015,7 @@ class FeedDetailsAwsEc2VpcsSettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -9025,8 +9025,8 @@ class FeedDetailsAwsEc2VpcsSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAwsEc2VpcsSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -9045,7 +9045,7 @@ class FeedDetailsAwsEc2VpcsSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -9057,12 +9057,12 @@ class FeedDetailsAwsEc2VpcsSettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -9071,12 +9071,12 @@ class FeedDetailsAwsEc2VpcsSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsAwsIamSettingsArgsDict(TypedDict):
-    api_type: NotRequired[pulumi.Input[_builtins.str]]
+    api_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Supported AWS IAM api type.
     Possible values:
@@ -9084,7 +9084,7 @@ class FeedDetailsAwsIamSettingsArgsDict(TypedDict):
     ROLES
     GROUPS
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsAwsIamSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAwsIamSettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
@@ -9093,8 +9093,8 @@ class FeedDetailsAwsIamSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAwsIamSettingsArgs:
     def __init__(__self__, *,
-                 api_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input['FeedDetailsAwsIamSettingsAuthenticationArgs']] = None):
+                 api_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional['FeedDetailsAwsIamSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] api_type: Supported AWS IAM api type.
                Possible values:
@@ -9111,7 +9111,7 @@ class FeedDetailsAwsIamSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiType")
-    def api_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Supported AWS IAM api type.
         Possible values:
@@ -9122,12 +9122,12 @@ class FeedDetailsAwsIamSettingsArgs:
         return pulumi.get(self, "api_type")
 
     @api_type.setter
-    def api_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsAwsIamSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsAwsIamSettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         Structure is documented below.
@@ -9135,12 +9135,12 @@ class FeedDetailsAwsIamSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsAwsIamSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsAwsIamSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsAwsIamSettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -9149,7 +9149,7 @@ class FeedDetailsAwsIamSettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -9159,8 +9159,8 @@ class FeedDetailsAwsIamSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAwsIamSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -9179,7 +9179,7 @@ class FeedDetailsAwsIamSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -9191,12 +9191,12 @@ class FeedDetailsAwsIamSettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -9205,25 +9205,25 @@ class FeedDetailsAwsIamSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsAzureAdAuditSettingsArgsDict(TypedDict):
-    auth_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    auth_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Auth Endpoint.
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsAzureAdAuditSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdAuditSettingsAuthenticationArgs']]]
     """
     Microsoft OAuth 2.0 client credentials grant.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
-    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tenant ID.
     """
@@ -9231,10 +9231,10 @@ class FeedDetailsAzureAdAuditSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAzureAdAuditSettingsArgs:
     def __init__(__self__, *,
-                 auth_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input['FeedDetailsAzureAdAuditSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional['FeedDetailsAzureAdAuditSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_endpoint: API Auth Endpoint.
         :param pulumi.Input['FeedDetailsAzureAdAuditSettingsAuthenticationArgs'] authentication: Microsoft OAuth 2.0 client credentials grant.
@@ -9253,19 +9253,19 @@ class FeedDetailsAzureAdAuditSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="authEndpoint")
-    def auth_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Auth Endpoint.
         """
         return pulumi.get(self, "auth_endpoint")
 
     @auth_endpoint.setter
-    def auth_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsAzureAdAuditSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsAzureAdAuditSettingsAuthenticationArgs']]:
         """
         Microsoft OAuth 2.0 client credentials grant.
         Structure is documented below.
@@ -9273,40 +9273,40 @@ class FeedDetailsAzureAdAuditSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsAzureAdAuditSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsAzureAdAuditSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tenant ID.
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 class FeedDetailsAzureAdAuditSettingsAuthenticationArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client Secret.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -9315,8 +9315,8 @@ class FeedDetailsAzureAdAuditSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAzureAdAuditSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID.
         :param pulumi.Input[_builtins.str] client_secret: Client Secret.
@@ -9329,19 +9329,19 @@ class FeedDetailsAzureAdAuditSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Secret.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -9349,33 +9349,33 @@ class FeedDetailsAzureAdAuditSettingsAuthenticationArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
 
 class FeedDetailsAzureAdContextSettingsArgsDict(TypedDict):
-    auth_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    auth_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Auth Endpoint.
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsAzureAdContextSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdContextSettingsAuthenticationArgs']]]
     """
     Microsoft OAuth 2.0 client credentials grant.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
-    retrieve_devices: NotRequired[pulumi.Input[_builtins.bool]]
+    retrieve_devices: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to retrieve device information in user context.
     """
-    retrieve_groups: NotRequired[pulumi.Input[_builtins.bool]]
+    retrieve_groups: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to retrieve group information in user context.
     """
-    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tenant ID.
     """
@@ -9383,12 +9383,12 @@ class FeedDetailsAzureAdContextSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAzureAdContextSettingsArgs:
     def __init__(__self__, *,
-                 auth_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input['FeedDetailsAzureAdContextSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 retrieve_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retrieve_groups: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional['FeedDetailsAzureAdContextSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 retrieve_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retrieve_groups: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_endpoint: API Auth Endpoint.
         :param pulumi.Input['FeedDetailsAzureAdContextSettingsAuthenticationArgs'] authentication: Microsoft OAuth 2.0 client credentials grant.
@@ -9413,19 +9413,19 @@ class FeedDetailsAzureAdContextSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="authEndpoint")
-    def auth_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Auth Endpoint.
         """
         return pulumi.get(self, "auth_endpoint")
 
     @auth_endpoint.setter
-    def auth_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsAzureAdContextSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsAzureAdContextSettingsAuthenticationArgs']]:
         """
         Microsoft OAuth 2.0 client credentials grant.
         Structure is documented below.
@@ -9433,64 +9433,64 @@ class FeedDetailsAzureAdContextSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsAzureAdContextSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsAzureAdContextSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="retrieveDevices")
-    def retrieve_devices(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def retrieve_devices(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to retrieve device information in user context.
         """
         return pulumi.get(self, "retrieve_devices")
 
     @retrieve_devices.setter
-    def retrieve_devices(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def retrieve_devices(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "retrieve_devices", value)
 
     @_builtins.property
     @pulumi.getter(name="retrieveGroups")
-    def retrieve_groups(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def retrieve_groups(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to retrieve group information in user context.
         """
         return pulumi.get(self, "retrieve_groups")
 
     @retrieve_groups.setter
-    def retrieve_groups(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def retrieve_groups(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "retrieve_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tenant ID.
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 class FeedDetailsAzureAdContextSettingsAuthenticationArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client Secret.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -9499,8 +9499,8 @@ class FeedDetailsAzureAdContextSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAzureAdContextSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID.
         :param pulumi.Input[_builtins.str] client_secret: Client Secret.
@@ -9513,19 +9513,19 @@ class FeedDetailsAzureAdContextSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Secret.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -9533,25 +9533,25 @@ class FeedDetailsAzureAdContextSettingsAuthenticationArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
 
 class FeedDetailsAzureAdSettingsArgsDict(TypedDict):
-    auth_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    auth_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Auth Endpoint.
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsAzureAdSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdSettingsAuthenticationArgs']]]
     """
     Microsoft OAuth 2.0 client credentials grant.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
-    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tenant ID.
     """
@@ -9559,10 +9559,10 @@ class FeedDetailsAzureAdSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAzureAdSettingsArgs:
     def __init__(__self__, *,
-                 auth_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input['FeedDetailsAzureAdSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional['FeedDetailsAzureAdSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_endpoint: API Auth Endpoint.
         :param pulumi.Input['FeedDetailsAzureAdSettingsAuthenticationArgs'] authentication: Microsoft OAuth 2.0 client credentials grant.
@@ -9581,19 +9581,19 @@ class FeedDetailsAzureAdSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="authEndpoint")
-    def auth_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Auth Endpoint.
         """
         return pulumi.get(self, "auth_endpoint")
 
     @auth_endpoint.setter
-    def auth_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsAzureAdSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsAzureAdSettingsAuthenticationArgs']]:
         """
         Microsoft OAuth 2.0 client credentials grant.
         Structure is documented below.
@@ -9601,40 +9601,40 @@ class FeedDetailsAzureAdSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsAzureAdSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsAzureAdSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tenant ID.
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 class FeedDetailsAzureAdSettingsAuthenticationArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client Secret.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -9643,8 +9643,8 @@ class FeedDetailsAzureAdSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAzureAdSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID.
         :param pulumi.Input[_builtins.str] client_secret: Client Secret.
@@ -9657,19 +9657,19 @@ class FeedDetailsAzureAdSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Secret.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -9677,28 +9677,28 @@ class FeedDetailsAzureAdSettingsAuthenticationArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
 
 class FeedDetailsAzureBlobStoreSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsAzureBlobStoreSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureBlobStoreSettingsAuthenticationArgs']]]
     """
     Azure auth.
     Structure is documented below.
     """
-    azure_uri: NotRequired[pulumi.Input[_builtins.str]]
+    azure_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Azure URI.
     """
-    source_deletion_option: NotRequired[pulumi.Input[_builtins.str]]
+    source_deletion_option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     SOURCE_DELETION_NEVER
     SOURCE_DELETION_ON_SUCCESS
     SOURCE_DELETION_ON_SUCCESS_FILES_ONLY
     """
-    source_type: NotRequired[pulumi.Input[_builtins.str]]
+    source_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     FILES
@@ -9709,10 +9709,10 @@ class FeedDetailsAzureBlobStoreSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAzureBlobStoreSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsAzureBlobStoreSettingsAuthenticationArgs']] = None,
-                 azure_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_deletion_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsAzureBlobStoreSettingsAuthenticationArgs']] = None,
+                 azure_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_deletion_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsAzureBlobStoreSettingsAuthenticationArgs'] authentication: Azure auth.
                Structure is documented below.
@@ -9737,7 +9737,7 @@ class FeedDetailsAzureBlobStoreSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsAzureBlobStoreSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsAzureBlobStoreSettingsAuthenticationArgs']]:
         """
         Azure auth.
         Structure is documented below.
@@ -9745,24 +9745,24 @@ class FeedDetailsAzureBlobStoreSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsAzureBlobStoreSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsAzureBlobStoreSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="azureUri")
-    def azure_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def azure_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Azure URI.
         """
         return pulumi.get(self, "azure_uri")
 
     @azure_uri.setter
-    def azure_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def azure_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "azure_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDeletionOption")
-    def source_deletion_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_deletion_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         SOURCE_DELETION_NEVER
@@ -9772,12 +9772,12 @@ class FeedDetailsAzureBlobStoreSettingsArgs:
         return pulumi.get(self, "source_deletion_option")
 
     @source_deletion_option.setter
-    def source_deletion_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_deletion_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_deletion_option", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         FILES
@@ -9787,12 +9787,12 @@ class FeedDetailsAzureBlobStoreSettingsArgs:
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
 
 class FeedDetailsAzureBlobStoreSettingsAuthenticationArgsDict(TypedDict):
-    sas_token: NotRequired[pulumi.Input[_builtins.str]]
+    sas_token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SAS Token.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -9800,7 +9800,7 @@ class FeedDetailsAzureBlobStoreSettingsAuthenticationArgsDict(TypedDict):
 
     <a name="nested_details_azure_blob_store_v2_settings_authentication_azure_v2_workload_identity_federation"></a>The `azure_v2_workload_identity_federation` block supports:
     """
-    shared_key: NotRequired[pulumi.Input[_builtins.str]]
+    shared_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Shared Key.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -9811,8 +9811,8 @@ class FeedDetailsAzureBlobStoreSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAzureBlobStoreSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 sas_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 sas_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] sas_token: SAS Token.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -9831,7 +9831,7 @@ class FeedDetailsAzureBlobStoreSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="sasToken")
-    def sas_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SAS Token.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -9842,12 +9842,12 @@ class FeedDetailsAzureBlobStoreSettingsAuthenticationArgs:
         return pulumi.get(self, "sas_token")
 
     @sas_token.setter
-    def sas_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_token", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedKey")
-    def shared_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Shared Key.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -9857,7 +9857,7 @@ class FeedDetailsAzureBlobStoreSettingsAuthenticationArgs:
         return pulumi.get(self, "shared_key")
 
     @shared_key.setter
-    def shared_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_key", value)
 
 
@@ -9870,16 +9870,16 @@ class FeedDetailsAzureBlobStoreV2SettingsArgsDict(TypedDict):
     """
     Azure URI.
     """
-    chronicle_service_account: NotRequired[pulumi.Input[_builtins.str]]
+    chronicle_service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SA that will read data, this is Storage Transfer Service SA of Customer's
     Tenancy Project.
     """
-    max_lookback_days: NotRequired[pulumi.Input[_builtins.int]]
+    max_lookback_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum File Age to ingest in days.
     """
-    source_deletion_option: NotRequired[pulumi.Input[_builtins.str]]
+    source_deletion_option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     NEVER
@@ -9891,9 +9891,9 @@ class FeedDetailsAzureBlobStoreV2SettingsArgs:
     def __init__(__self__, *,
                  authentication: pulumi.Input['FeedDetailsAzureBlobStoreV2SettingsAuthenticationArgs'],
                  azure_uri: pulumi.Input[_builtins.str],
-                 chronicle_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_lookback_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_deletion_option: Optional[pulumi.Input[_builtins.str]] = None):
+                 chronicle_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_lookback_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_deletion_option: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsAzureBlobStoreV2SettingsAuthenticationArgs'] authentication: A message containing fields used to authenticate with Azure Blob Storage.
         :param pulumi.Input[_builtins.str] azure_uri: Azure URI.
@@ -9939,7 +9939,7 @@ class FeedDetailsAzureBlobStoreV2SettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="chronicleServiceAccount")
-    def chronicle_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chronicle_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SA that will read data, this is Storage Transfer Service SA of Customer's
         Tenancy Project.
@@ -9947,24 +9947,24 @@ class FeedDetailsAzureBlobStoreV2SettingsArgs:
         return pulumi.get(self, "chronicle_service_account")
 
     @chronicle_service_account.setter
-    def chronicle_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chronicle_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chronicle_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLookbackDays")
-    def max_lookback_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_lookback_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum File Age to ingest in days.
         """
         return pulumi.get(self, "max_lookback_days")
 
     @max_lookback_days.setter
-    def max_lookback_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_lookback_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_lookback_days", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDeletionOption")
-    def source_deletion_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_deletion_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         NEVER
@@ -9973,7 +9973,7 @@ class FeedDetailsAzureBlobStoreV2SettingsArgs:
         return pulumi.get(self, "source_deletion_option")
 
     @source_deletion_option.setter
-    def source_deletion_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_deletion_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_deletion_option", value)
 
 
@@ -10140,20 +10140,20 @@ class FeedDetailsAzureEventHubSettingsArgsDict(TypedDict):
     """
     Event hub to read from.
     """
-    azure_sas_token: NotRequired[pulumi.Input[_builtins.str]]
+    azure_sas_token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SAS token
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    azure_storage_connection_string: NotRequired[pulumi.Input[_builtins.str]]
+    azure_storage_connection_string: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Blob store connection string for authentication.
     """
-    azure_storage_container: NotRequired[pulumi.Input[_builtins.str]]
+    azure_storage_container: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Blob storage container name.
     """
-    event_hub_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    event_hub_namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Event hub namespace
@@ -10165,10 +10165,10 @@ class FeedDetailsAzureEventHubSettingsArgs:
                  consumer_group: pulumi.Input[_builtins.str],
                  event_hub_connection_string: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 azure_sas_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_storage_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_storage_container: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_hub_namespace: Optional[pulumi.Input[_builtins.str]] = None):
+                 azure_sas_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_storage_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_storage_container: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_hub_namespace: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] consumer_group: Event hub consumer group to read from.
         :param pulumi.Input[_builtins.str] event_hub_connection_string: Event hub connection string for authentication.
@@ -10230,7 +10230,7 @@ class FeedDetailsAzureEventHubSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="azureSasToken")
-    def azure_sas_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def azure_sas_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SAS token
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -10238,36 +10238,36 @@ class FeedDetailsAzureEventHubSettingsArgs:
         return pulumi.get(self, "azure_sas_token")
 
     @azure_sas_token.setter
-    def azure_sas_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def azure_sas_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "azure_sas_token", value)
 
     @_builtins.property
     @pulumi.getter(name="azureStorageConnectionString")
-    def azure_storage_connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def azure_storage_connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Blob store connection string for authentication.
         """
         return pulumi.get(self, "azure_storage_connection_string")
 
     @azure_storage_connection_string.setter
-    def azure_storage_connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def azure_storage_connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "azure_storage_connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="azureStorageContainer")
-    def azure_storage_container(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def azure_storage_container(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Blob storage container name.
         """
         return pulumi.get(self, "azure_storage_container")
 
     @azure_storage_container.setter
-    def azure_storage_container(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def azure_storage_container(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "azure_storage_container", value)
 
     @_builtins.property
     @pulumi.getter(name="eventHubNamespace")
-    def event_hub_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_hub_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Event hub namespace
@@ -10275,25 +10275,25 @@ class FeedDetailsAzureEventHubSettingsArgs:
         return pulumi.get(self, "event_hub_namespace")
 
     @event_hub_namespace.setter
-    def event_hub_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_hub_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_hub_namespace", value)
 
 
 class FeedDetailsAzureMdmIntuneSettingsArgsDict(TypedDict):
-    auth_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    auth_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Auth Endpoint.
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsAzureMdmIntuneSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureMdmIntuneSettingsAuthenticationArgs']]]
     """
     Microsoft OAuth 2.0 client credentials grant.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
-    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tenant ID.
     """
@@ -10301,10 +10301,10 @@ class FeedDetailsAzureMdmIntuneSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAzureMdmIntuneSettingsArgs:
     def __init__(__self__, *,
-                 auth_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input['FeedDetailsAzureMdmIntuneSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional['FeedDetailsAzureMdmIntuneSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_endpoint: API Auth Endpoint.
         :param pulumi.Input['FeedDetailsAzureMdmIntuneSettingsAuthenticationArgs'] authentication: Microsoft OAuth 2.0 client credentials grant.
@@ -10323,19 +10323,19 @@ class FeedDetailsAzureMdmIntuneSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="authEndpoint")
-    def auth_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Auth Endpoint.
         """
         return pulumi.get(self, "auth_endpoint")
 
     @auth_endpoint.setter
-    def auth_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsAzureMdmIntuneSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsAzureMdmIntuneSettingsAuthenticationArgs']]:
         """
         Microsoft OAuth 2.0 client credentials grant.
         Structure is documented below.
@@ -10343,40 +10343,40 @@ class FeedDetailsAzureMdmIntuneSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsAzureMdmIntuneSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsAzureMdmIntuneSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tenant ID.
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 class FeedDetailsAzureMdmIntuneSettingsAuthenticationArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client Secret.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -10385,8 +10385,8 @@ class FeedDetailsAzureMdmIntuneSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsAzureMdmIntuneSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID.
         :param pulumi.Input[_builtins.str] client_secret: Client Secret.
@@ -10399,19 +10399,19 @@ class FeedDetailsAzureMdmIntuneSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Secret.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -10419,17 +10419,17 @@ class FeedDetailsAzureMdmIntuneSettingsAuthenticationArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
 
 class FeedDetailsCloudPassageSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsCloudPassageSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsCloudPassageSettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
     """
-    event_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    event_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Event types filter for the events API.
     """
@@ -10437,8 +10437,8 @@ class FeedDetailsCloudPassageSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsCloudPassageSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsCloudPassageSettingsAuthenticationArgs']] = None,
-                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsCloudPassageSettingsAuthenticationArgs']] = None,
+                 event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['FeedDetailsCloudPassageSettingsAuthenticationArgs'] authentication: Info for username and secret based authentication.
                Structure is documented below.
@@ -10451,7 +10451,7 @@ class FeedDetailsCloudPassageSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsCloudPassageSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsCloudPassageSettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         Structure is documented below.
@@ -10459,24 +10459,24 @@ class FeedDetailsCloudPassageSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsCloudPassageSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsCloudPassageSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="eventTypes")
-    def event_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def event_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Event types filter for the events API.
         """
         return pulumi.get(self, "event_types")
 
     @event_types.setter
-    def event_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def event_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "event_types", value)
 
 
 class FeedDetailsCloudPassageSettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -10485,7 +10485,7 @@ class FeedDetailsCloudPassageSettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -10495,8 +10495,8 @@ class FeedDetailsCloudPassageSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsCloudPassageSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -10515,7 +10515,7 @@ class FeedDetailsCloudPassageSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -10527,12 +10527,12 @@ class FeedDetailsCloudPassageSettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -10541,21 +10541,21 @@ class FeedDetailsCloudPassageSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsCortexXdrSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsCortexXdrSettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     Structure is documented below.
     """
-    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Endpoint.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
@@ -10563,9 +10563,9 @@ class FeedDetailsCortexXdrSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsCortexXdrSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationArgs']] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsCortexXdrSettingsAuthenticationArgs']] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationArgs'] authentication: HTTP header based authentication.
                Structure is documented below.
@@ -10581,7 +10581,7 @@ class FeedDetailsCortexXdrSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsCortexXdrSettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         Structure is documented below.
@@ -10589,36 +10589,36 @@ class FeedDetailsCortexXdrSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsCortexXdrSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Endpoint.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class FeedDetailsCortexXdrSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -10627,7 +10627,7 @@ class FeedDetailsCortexXdrSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsCortexXdrSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -10637,7 +10637,7 @@ class FeedDetailsCortexXdrSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -10645,16 +10645,16 @@ class FeedDetailsCortexXdrSettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -10663,8 +10663,8 @@ class FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict
 @pulumi.input_type
 class FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -10677,19 +10677,19 @@ class FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -10697,7 +10697,7 @@ class FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -10711,7 +10711,7 @@ class FeedDetailsCrowdstrikeAlertsSettingsArgsDict(TypedDict):
     """
     API Hostname.
     """
-    ingestion_type: NotRequired[pulumi.Input[_builtins.str]]
+    ingestion_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Ingestion Type.
     Possible values:
@@ -10724,7 +10724,7 @@ class FeedDetailsCrowdstrikeAlertsSettingsArgs:
     def __init__(__self__, *,
                  authentication: pulumi.Input['FeedDetailsCrowdstrikeAlertsSettingsAuthenticationArgs'],
                  hostname: pulumi.Input[_builtins.str],
-                 ingestion_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 ingestion_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsCrowdstrikeAlertsSettingsAuthenticationArgs'] authentication: OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
                Structure is documented below.
@@ -10766,7 +10766,7 @@ class FeedDetailsCrowdstrikeAlertsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="ingestionType")
-    def ingestion_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingestion_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ingestion Type.
         Possible values:
@@ -10776,21 +10776,21 @@ class FeedDetailsCrowdstrikeAlertsSettingsArgs:
         return pulumi.get(self, "ingestion_type")
 
     @ingestion_type.setter
-    def ingestion_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingestion_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingestion_type", value)
 
 
 class FeedDetailsCrowdstrikeAlertsSettingsAuthenticationArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client Secret.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
@@ -10798,9 +10798,9 @@ class FeedDetailsCrowdstrikeAlertsSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsCrowdstrikeAlertsSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID.
         :param pulumi.Input[_builtins.str] client_secret: Client Secret.
@@ -10816,19 +10816,19 @@ class FeedDetailsCrowdstrikeAlertsSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Secret.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -10836,33 +10836,33 @@ class FeedDetailsCrowdstrikeAlertsSettingsAuthenticationArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class FeedDetailsCrowdstrikeDetectsSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgs']]]
     """
     OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
-    ingestion_type: NotRequired[pulumi.Input[_builtins.str]]
+    ingestion_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Ingestion Type.
     Possible values:
@@ -10873,9 +10873,9 @@ class FeedDetailsCrowdstrikeDetectsSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsCrowdstrikeDetectsSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingestion_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingestion_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgs'] authentication: OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
                Structure is documented below.
@@ -10894,7 +10894,7 @@ class FeedDetailsCrowdstrikeDetectsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgs']]:
         """
         OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
         Structure is documented below.
@@ -10902,24 +10902,24 @@ class FeedDetailsCrowdstrikeDetectsSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="ingestionType")
-    def ingestion_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingestion_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ingestion Type.
         Possible values:
@@ -10929,21 +10929,21 @@ class FeedDetailsCrowdstrikeDetectsSettingsArgs:
         return pulumi.get(self, "ingestion_type")
 
     @ingestion_type.setter
-    def ingestion_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingestion_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingestion_type", value)
 
 
 class FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client Secret.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
@@ -10951,9 +10951,9 @@ class FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID.
         :param pulumi.Input[_builtins.str] client_secret: Client Secret.
@@ -10969,19 +10969,19 @@ class FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Secret.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -10989,28 +10989,28 @@ class FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class FeedDetailsDummyLogTypeSettingsArgsDict(TypedDict):
-    api_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    api_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Full API Endpoint.
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsDummyLogTypeSettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -11019,8 +11019,8 @@ class FeedDetailsDummyLogTypeSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsDummyLogTypeSettingsArgs:
     def __init__(__self__, *,
-                 api_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationArgs']] = None):
+                 api_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional['FeedDetailsDummyLogTypeSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] api_endpoint: Full API Endpoint.
         :param pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationArgs'] authentication: HTTP header based authentication.
@@ -11033,19 +11033,19 @@ class FeedDetailsDummyLogTypeSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiEndpoint")
-    def api_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full API Endpoint.
         """
         return pulumi.get(self, "api_endpoint")
 
     @api_endpoint.setter
-    def api_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsDummyLogTypeSettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         Structure is documented below.
@@ -11053,12 +11053,12 @@ class FeedDetailsDummyLogTypeSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsDummyLogTypeSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsDummyLogTypeSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -11067,7 +11067,7 @@ class FeedDetailsDummyLogTypeSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsDummyLogTypeSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -11077,7 +11077,7 @@ class FeedDetailsDummyLogTypeSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -11085,16 +11085,16 @@ class FeedDetailsDummyLogTypeSettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -11103,8 +11103,8 @@ class FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgsDict(TypedD
 @pulumi.input_type
 class FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -11117,19 +11117,19 @@ class FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -11137,17 +11137,17 @@ class FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeedDetailsDuoAuthSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsDuoAuthSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsDuoAuthSettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
@@ -11155,8 +11155,8 @@ class FeedDetailsDuoAuthSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsDuoAuthSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsDuoAuthSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsDuoAuthSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsDuoAuthSettingsAuthenticationArgs'] authentication: Info for username and secret based authentication.
                Structure is documented below.
@@ -11169,7 +11169,7 @@ class FeedDetailsDuoAuthSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsDuoAuthSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsDuoAuthSettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         Structure is documented below.
@@ -11177,24 +11177,24 @@ class FeedDetailsDuoAuthSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsDuoAuthSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsDuoAuthSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class FeedDetailsDuoAuthSettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -11203,7 +11203,7 @@ class FeedDetailsDuoAuthSettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -11213,8 +11213,8 @@ class FeedDetailsDuoAuthSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsDuoAuthSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -11233,7 +11233,7 @@ class FeedDetailsDuoAuthSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -11245,12 +11245,12 @@ class FeedDetailsDuoAuthSettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -11259,17 +11259,17 @@ class FeedDetailsDuoAuthSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsDuoUserContextSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsDuoUserContextSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsDuoUserContextSettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API hostname.
     """
@@ -11277,8 +11277,8 @@ class FeedDetailsDuoUserContextSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsDuoUserContextSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsDuoUserContextSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsDuoUserContextSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsDuoUserContextSettingsAuthenticationArgs'] authentication: Info for username and secret based authentication.
                Structure is documented below.
@@ -11291,7 +11291,7 @@ class FeedDetailsDuoUserContextSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsDuoUserContextSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsDuoUserContextSettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         Structure is documented below.
@@ -11299,24 +11299,24 @@ class FeedDetailsDuoUserContextSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsDuoUserContextSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsDuoUserContextSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class FeedDetailsDuoUserContextSettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -11325,7 +11325,7 @@ class FeedDetailsDuoUserContextSettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -11335,8 +11335,8 @@ class FeedDetailsDuoUserContextSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsDuoUserContextSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -11355,7 +11355,7 @@ class FeedDetailsDuoUserContextSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -11367,12 +11367,12 @@ class FeedDetailsDuoUserContextSettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -11381,25 +11381,25 @@ class FeedDetailsDuoUserContextSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsFoxItStixSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsFoxItStixSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsFoxItStixSettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
     """
-    collection: NotRequired[pulumi.Input[_builtins.str]]
+    collection: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Collection available at the poll service.
     """
-    poll_service_uri: NotRequired[pulumi.Input[_builtins.str]]
+    poll_service_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     TAXII poll service URI.
     """
-    ssl: NotRequired[pulumi.Input['FeedDetailsFoxItStixSettingsSslArgsDict']]
+    ssl: NotRequired[pulumi.Input[Optional['FeedDetailsFoxItStixSettingsSslArgs']]]
     """
     An SSL client certificate keypair.
     Structure is documented below.
@@ -11408,10 +11408,10 @@ class FeedDetailsFoxItStixSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsFoxItStixSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsFoxItStixSettingsAuthenticationArgs']] = None,
-                 collection: Optional[pulumi.Input[_builtins.str]] = None,
-                 poll_service_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl: Optional[pulumi.Input['FeedDetailsFoxItStixSettingsSslArgs']] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsFoxItStixSettingsAuthenticationArgs']] = None,
+                 collection: pulumi.Input[Optional[_builtins.str]] = None,
+                 poll_service_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl: pulumi.Input[Optional['FeedDetailsFoxItStixSettingsSslArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsFoxItStixSettingsAuthenticationArgs'] authentication: Info for username and secret based authentication.
                Structure is documented below.
@@ -11431,7 +11431,7 @@ class FeedDetailsFoxItStixSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsFoxItStixSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsFoxItStixSettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         Structure is documented below.
@@ -11439,36 +11439,36 @@ class FeedDetailsFoxItStixSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsFoxItStixSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsFoxItStixSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def collection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Collection available at the poll service.
         """
         return pulumi.get(self, "collection")
 
     @collection.setter
-    def collection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collection", value)
 
     @_builtins.property
     @pulumi.getter(name="pollServiceUri")
-    def poll_service_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def poll_service_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TAXII poll service URI.
         """
         return pulumi.get(self, "poll_service_uri")
 
     @poll_service_uri.setter
-    def poll_service_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def poll_service_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "poll_service_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input['FeedDetailsFoxItStixSettingsSslArgs']]:
+    def ssl(self) -> pulumi.Input[Optional['FeedDetailsFoxItStixSettingsSslArgs']]:
         """
         An SSL client certificate keypair.
         Structure is documented below.
@@ -11476,12 +11476,12 @@ class FeedDetailsFoxItStixSettingsArgs:
         return pulumi.get(self, "ssl")
 
     @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input['FeedDetailsFoxItStixSettingsSslArgs']]):
+    def ssl(self, value: pulumi.Input[Optional['FeedDetailsFoxItStixSettingsSslArgs']]):
         pulumi.set(self, "ssl", value)
 
 
 class FeedDetailsFoxItStixSettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -11490,7 +11490,7 @@ class FeedDetailsFoxItStixSettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -11500,8 +11500,8 @@ class FeedDetailsFoxItStixSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsFoxItStixSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -11520,7 +11520,7 @@ class FeedDetailsFoxItStixSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -11532,12 +11532,12 @@ class FeedDetailsFoxItStixSettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -11546,12 +11546,12 @@ class FeedDetailsFoxItStixSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsFoxItStixSettingsSslArgsDict(TypedDict):
-    encoded_private_key: NotRequired[pulumi.Input[_builtins.str]]
+    encoded_private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The encoded private key. The string should be a private key in PEM format,
     and should include the begin header and end footer lines. It may also
@@ -11564,7 +11564,7 @@ class FeedDetailsFoxItStixSettingsSslArgsDict(TypedDict):
     -----END RSA PRIVATE KEY-----
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    ssl_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The encoded SSL certificate. The string should be an SSL certificate in
     PEM format, and should include the begin header and end footer lines. It
@@ -11578,8 +11578,8 @@ class FeedDetailsFoxItStixSettingsSslArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsFoxItStixSettingsSslArgs:
     def __init__(__self__, *,
-                 encoded_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_certificate: Optional[pulumi.Input[_builtins.str]] = None):
+                 encoded_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_certificate: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] encoded_private_key: The encoded private key. The string should be a private key in PEM format,
                and should include the begin header and end footer lines. It may also
@@ -11606,7 +11606,7 @@ class FeedDetailsFoxItStixSettingsSslArgs:
 
     @_builtins.property
     @pulumi.getter(name="encodedPrivateKey")
-    def encoded_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoded_private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encoded private key. The string should be a private key in PEM format,
         and should include the begin header and end footer lines. It may also
@@ -11622,12 +11622,12 @@ class FeedDetailsFoxItStixSettingsSslArgs:
         return pulumi.get(self, "encoded_private_key")
 
     @encoded_private_key.setter
-    def encoded_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoded_private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoded_private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCertificate")
-    def ssl_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encoded SSL certificate. The string should be an SSL certificate in
         PEM format, and should include the begin header and end footer lines. It
@@ -11640,28 +11640,28 @@ class FeedDetailsFoxItStixSettingsSslArgs:
         return pulumi.get(self, "ssl_certificate")
 
     @ssl_certificate.setter
-    def ssl_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_certificate", value)
 
 
 class FeedDetailsGcsSettingsArgsDict(TypedDict):
-    bucket_uri: NotRequired[pulumi.Input[_builtins.str]]
+    bucket_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Google Cloud Storage Bucket URI for the feed.
     """
-    chronicle_service_account: NotRequired[pulumi.Input[_builtins.str]]
+    chronicle_service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     SA that will read data, this is Storage Transfer Service SA of Customer's
     Tenancy Project.
     """
-    source_deletion_option: NotRequired[pulumi.Input[_builtins.str]]
+    source_deletion_option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     NEVER
     ON_SUCCESS
     """
-    source_type: NotRequired[pulumi.Input[_builtins.str]]
+    source_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     FILES
@@ -11674,10 +11674,10 @@ class FeedDetailsGcsSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsGcsSettingsArgs:
     def __init__(__self__, *,
-                 bucket_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 chronicle_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_deletion_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 chronicle_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_deletion_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_uri: Google Cloud Storage Bucket URI for the feed.
         :param pulumi.Input[_builtins.str] chronicle_service_account: (Output)
@@ -11704,19 +11704,19 @@ class FeedDetailsGcsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="bucketUri")
-    def bucket_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Google Cloud Storage Bucket URI for the feed.
         """
         return pulumi.get(self, "bucket_uri")
 
     @bucket_uri.setter
-    def bucket_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="chronicleServiceAccount")
-    def chronicle_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chronicle_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         SA that will read data, this is Storage Transfer Service SA of Customer's
@@ -11725,12 +11725,12 @@ class FeedDetailsGcsSettingsArgs:
         return pulumi.get(self, "chronicle_service_account")
 
     @chronicle_service_account.setter
-    def chronicle_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chronicle_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chronicle_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDeletionOption")
-    def source_deletion_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_deletion_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         NEVER
@@ -11739,12 +11739,12 @@ class FeedDetailsGcsSettingsArgs:
         return pulumi.get(self, "source_deletion_option")
 
     @source_deletion_option.setter
-    def source_deletion_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_deletion_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_deletion_option", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         FILES
@@ -11756,7 +11756,7 @@ class FeedDetailsGcsSettingsArgs:
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
 
@@ -11765,16 +11765,16 @@ class FeedDetailsGcsV2SettingsArgsDict(TypedDict):
     """
     Google Cloud Storage Bucket URI for the feed.
     """
-    chronicle_service_account: NotRequired[pulumi.Input[_builtins.str]]
+    chronicle_service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SA that will read data, this is Storage Transfer Service SA of Customer's
     Tenancy Project.
     """
-    max_lookback_days: NotRequired[pulumi.Input[_builtins.int]]
+    max_lookback_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum File Age to ingest in days.
     """
-    source_deletion_option: NotRequired[pulumi.Input[_builtins.str]]
+    source_deletion_option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     NEVER
@@ -11785,9 +11785,9 @@ class FeedDetailsGcsV2SettingsArgsDict(TypedDict):
 class FeedDetailsGcsV2SettingsArgs:
     def __init__(__self__, *,
                  bucket_uri: pulumi.Input[_builtins.str],
-                 chronicle_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_lookback_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_deletion_option: Optional[pulumi.Input[_builtins.str]] = None):
+                 chronicle_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_lookback_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_deletion_option: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_uri: Google Cloud Storage Bucket URI for the feed.
         :param pulumi.Input[_builtins.str] chronicle_service_account: SA that will read data, this is Storage Transfer Service SA of Customer's
@@ -11819,7 +11819,7 @@ class FeedDetailsGcsV2SettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="chronicleServiceAccount")
-    def chronicle_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chronicle_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SA that will read data, this is Storage Transfer Service SA of Customer's
         Tenancy Project.
@@ -11827,24 +11827,24 @@ class FeedDetailsGcsV2SettingsArgs:
         return pulumi.get(self, "chronicle_service_account")
 
     @chronicle_service_account.setter
-    def chronicle_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chronicle_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chronicle_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLookbackDays")
-    def max_lookback_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_lookback_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum File Age to ingest in days.
         """
         return pulumi.get(self, "max_lookback_days")
 
     @max_lookback_days.setter
-    def max_lookback_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_lookback_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_lookback_days", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDeletionOption")
-    def source_deletion_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_deletion_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         NEVER
@@ -11853,12 +11853,12 @@ class FeedDetailsGcsV2SettingsArgs:
         return pulumi.get(self, "source_deletion_option")
 
     @source_deletion_option.setter
-    def source_deletion_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_deletion_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_deletion_option", value)
 
 
 class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgs']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
@@ -11867,7 +11867,7 @@ class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgs']] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgs'] authentication: OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
                Structure is documented below.
@@ -11877,7 +11877,7 @@ class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgs']]:
         """
         OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
         Structure is documented below.
@@ -11885,22 +11885,22 @@ class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgsDict']]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgs']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentialsArgsDict']]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentialsArgs']]]
     """
     RS credentials.
     Structure is documented below.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
@@ -11908,9 +11908,9 @@ class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgsDict(Ty
 @pulumi.input_type
 class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 claims: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgs']] = None,
-                 rs_credentials: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentialsArgs']] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 claims: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgs']] = None,
+                 rs_credentials: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentialsArgs']] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgs'] claims: Claims identifying a specific customer.
                Structure is documented below.
@@ -11927,7 +11927,7 @@ class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def claims(self) -> Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgs']]:
+    def claims(self) -> pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgs']]:
         """
         Claims identifying a specific customer.
         Structure is documented below.
@@ -11935,12 +11935,12 @@ class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgs:
         return pulumi.get(self, "claims")
 
     @claims.setter
-    def claims(self, value: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgs']]):
+    def claims(self, value: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgs']]):
         pulumi.set(self, "claims", value)
 
     @_builtins.property
     @pulumi.getter(name="rsCredentials")
-    def rs_credentials(self) -> Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentialsArgs']]:
+    def rs_credentials(self) -> pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentialsArgs']]:
         """
         RS credentials.
         Structure is documented below.
@@ -11948,32 +11948,32 @@ class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgs:
         return pulumi.get(self, "rs_credentials")
 
     @rs_credentials.setter
-    def rs_credentials(self, value: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentialsArgs']]):
+    def rs_credentials(self, value: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentialsArgs']]):
         pulumi.set(self, "rs_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgsDict(TypedDict):
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience.
     """
-    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    issuer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Issuer. Usually the client_id.
     """
-    subject: NotRequired[pulumi.Input[_builtins.str]]
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subject. Usually the email.
     """
@@ -11981,9 +11981,9 @@ class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgsD
 @pulumi.input_type
 class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgs:
     def __init__(__self__, *,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] audience: Audience.
         :param pulumi.Input[_builtins.str] issuer: Issuer. Usually the client_id.
@@ -11998,43 +11998,43 @@ class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience.
         """
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Issuer. Usually the client_id.
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subject. Usually the email.
         """
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
 
 class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentialsArgsDict(TypedDict):
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Private key in PEM format.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -12043,7 +12043,7 @@ class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentia
 @pulumi.input_type
 class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentialsArgs:
     def __init__(__self__, *,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] private_key: Private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -12053,7 +12053,7 @@ class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentia
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key in PEM format.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -12061,16 +12061,16 @@ class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentia
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
 class FeedDetailsGoogleCloudIdentityDevicesSettingsArgsDict(TypedDict):
-    api_version: NotRequired[pulumi.Input[_builtins.str]]
+    api_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Version
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgs']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
@@ -12079,8 +12079,8 @@ class FeedDetailsGoogleCloudIdentityDevicesSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsGoogleCloudIdentityDevicesSettingsArgs:
     def __init__(__self__, *,
-                 api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgs']] = None):
+                 api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] api_version: API Version
         :param pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgs'] authentication: OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
@@ -12093,19 +12093,19 @@ class FeedDetailsGoogleCloudIdentityDevicesSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiVersion")
-    def api_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Version
         """
         return pulumi.get(self, "api_version")
 
     @api_version.setter
-    def api_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgs']]:
         """
         OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
         Structure is documented below.
@@ -12113,22 +12113,22 @@ class FeedDetailsGoogleCloudIdentityDevicesSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgsDict']]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgs']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsArgsDict']]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsArgs']]]
     """
     RS credentials.
     Structure is documented below.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
@@ -12136,9 +12136,9 @@ class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgsDict(TypedD
 @pulumi.input_type
 class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 claims: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgs']] = None,
-                 rs_credentials: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsArgs']] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 claims: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgs']] = None,
+                 rs_credentials: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsArgs']] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgs'] claims: Claims identifying a specific customer.
                Structure is documented below.
@@ -12155,7 +12155,7 @@ class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def claims(self) -> Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgs']]:
+    def claims(self) -> pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgs']]:
         """
         Claims identifying a specific customer.
         Structure is documented below.
@@ -12163,12 +12163,12 @@ class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgs:
         return pulumi.get(self, "claims")
 
     @claims.setter
-    def claims(self, value: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgs']]):
+    def claims(self, value: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgs']]):
         pulumi.set(self, "claims", value)
 
     @_builtins.property
     @pulumi.getter(name="rsCredentials")
-    def rs_credentials(self) -> Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsArgs']]:
+    def rs_credentials(self) -> pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsArgs']]:
         """
         RS credentials.
         Structure is documented below.
@@ -12176,32 +12176,32 @@ class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgs:
         return pulumi.get(self, "rs_credentials")
 
     @rs_credentials.setter
-    def rs_credentials(self, value: Optional[pulumi.Input['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsArgs']]):
+    def rs_credentials(self, value: pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsArgs']]):
         pulumi.set(self, "rs_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgsDict(TypedDict):
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience.
     """
-    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    issuer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Issuer. Usually the client_id.
     """
-    subject: NotRequired[pulumi.Input[_builtins.str]]
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subject. Usually the email.
     """
@@ -12209,9 +12209,9 @@ class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgsDict(
 @pulumi.input_type
 class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgs:
     def __init__(__self__, *,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] audience: Audience.
         :param pulumi.Input[_builtins.str] issuer: Issuer. Usually the client_id.
@@ -12226,43 +12226,43 @@ class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience.
         """
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Issuer. Usually the client_id.
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subject. Usually the email.
         """
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
 
 class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsArgsDict(TypedDict):
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Private key in PEM format.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -12271,7 +12271,7 @@ class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsAr
 @pulumi.input_type
 class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsArgs:
     def __init__(__self__, *,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] private_key: Private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -12281,7 +12281,7 @@ class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsAr
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key in PEM format.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -12289,7 +12289,7 @@ class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsAr
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
@@ -12302,17 +12302,17 @@ class FeedDetailsGoogleCloudStorageEventDrivenSettingsArgsDict(TypedDict):
     """
     Subscription name for pubsub topic.
     """
-    chronicle_service_account: NotRequired[pulumi.Input[_builtins.str]]
+    chronicle_service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     SA that will read data, this is Storage Transfer Service SA of Customer's
     Tenancy Project.
     """
-    max_lookback_days: NotRequired[pulumi.Input[_builtins.int]]
+    max_lookback_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum File Age to ingest in days.
     """
-    source_deletion_option: NotRequired[pulumi.Input[_builtins.str]]
+    source_deletion_option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     NEVER
@@ -12324,9 +12324,9 @@ class FeedDetailsGoogleCloudStorageEventDrivenSettingsArgs:
     def __init__(__self__, *,
                  bucket_uri: pulumi.Input[_builtins.str],
                  pubsub_subscription: pulumi.Input[_builtins.str],
-                 chronicle_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_lookback_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_deletion_option: Optional[pulumi.Input[_builtins.str]] = None):
+                 chronicle_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_lookback_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_deletion_option: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_uri: Google Cloud Storage Bucket URI for the feed.
         :param pulumi.Input[_builtins.str] pubsub_subscription: Subscription name for pubsub topic.
@@ -12373,7 +12373,7 @@ class FeedDetailsGoogleCloudStorageEventDrivenSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="chronicleServiceAccount")
-    def chronicle_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chronicle_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         SA that will read data, this is Storage Transfer Service SA of Customer's
@@ -12382,24 +12382,24 @@ class FeedDetailsGoogleCloudStorageEventDrivenSettingsArgs:
         return pulumi.get(self, "chronicle_service_account")
 
     @chronicle_service_account.setter
-    def chronicle_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chronicle_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chronicle_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLookbackDays")
-    def max_lookback_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_lookback_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum File Age to ingest in days.
         """
         return pulumi.get(self, "max_lookback_days")
 
     @max_lookback_days.setter
-    def max_lookback_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_lookback_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_lookback_days", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDeletionOption")
-    def source_deletion_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_deletion_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         NEVER
@@ -12408,26 +12408,26 @@ class FeedDetailsGoogleCloudStorageEventDrivenSettingsArgs:
         return pulumi.get(self, "source_deletion_option")
 
     @source_deletion_option.setter
-    def source_deletion_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_deletion_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_deletion_option", value)
 
 
 class FeedDetailsHttpSettingsArgsDict(TypedDict):
-    source_deletion_option: NotRequired[pulumi.Input[_builtins.str]]
+    source_deletion_option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     SOURCE_DELETION_NEVER
     SOURCE_DELETION_ON_SUCCESS
     SOURCE_DELETION_ON_SUCCESS_FILES_ONLY
     """
-    source_type: NotRequired[pulumi.Input[_builtins.str]]
+    source_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     FILES
     FOLDERS
     FOLDERS_RECURSIVE
     """
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     HTTP URI.
     """
@@ -12435,9 +12435,9 @@ class FeedDetailsHttpSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsHttpSettingsArgs:
     def __init__(__self__, *,
-                 source_deletion_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 source_deletion_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] source_deletion_option: Possible values:
                SOURCE_DELETION_NEVER
@@ -12458,7 +12458,7 @@ class FeedDetailsHttpSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="sourceDeletionOption")
-    def source_deletion_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_deletion_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         SOURCE_DELETION_NEVER
@@ -12468,12 +12468,12 @@ class FeedDetailsHttpSettingsArgs:
         return pulumi.get(self, "source_deletion_option")
 
     @source_deletion_option.setter
-    def source_deletion_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_deletion_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_deletion_option", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         FILES
@@ -12483,24 +12483,24 @@ class FeedDetailsHttpSettingsArgs:
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTTP URI.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class FeedDetailsHttpsPushAmazonKinesisFirehoseSettingsArgsDict(TypedDict):
-    split_delimiter: NotRequired[pulumi.Input[_builtins.str]]
+    split_delimiter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Delimiter to split on for the feed.
     """
@@ -12508,7 +12508,7 @@ class FeedDetailsHttpsPushAmazonKinesisFirehoseSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsHttpsPushAmazonKinesisFirehoseSettingsArgs:
     def __init__(__self__, *,
-                 split_delimiter: Optional[pulumi.Input[_builtins.str]] = None):
+                 split_delimiter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] split_delimiter: Delimiter to split on for the feed.
         """
@@ -12517,19 +12517,19 @@ class FeedDetailsHttpsPushAmazonKinesisFirehoseSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="splitDelimiter")
-    def split_delimiter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def split_delimiter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delimiter to split on for the feed.
         """
         return pulumi.get(self, "split_delimiter")
 
     @split_delimiter.setter
-    def split_delimiter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def split_delimiter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "split_delimiter", value)
 
 
 class FeedDetailsHttpsPushGoogleCloudPubsubSettingsArgsDict(TypedDict):
-    split_delimiter: NotRequired[pulumi.Input[_builtins.str]]
+    split_delimiter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Delimiter to split on for the feed.
     """
@@ -12537,7 +12537,7 @@ class FeedDetailsHttpsPushGoogleCloudPubsubSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsHttpsPushGoogleCloudPubsubSettingsArgs:
     def __init__(__self__, *,
-                 split_delimiter: Optional[pulumi.Input[_builtins.str]] = None):
+                 split_delimiter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] split_delimiter: Delimiter to split on for the feed.
         """
@@ -12546,19 +12546,19 @@ class FeedDetailsHttpsPushGoogleCloudPubsubSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="splitDelimiter")
-    def split_delimiter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def split_delimiter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delimiter to split on for the feed.
         """
         return pulumi.get(self, "split_delimiter")
 
     @split_delimiter.setter
-    def split_delimiter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def split_delimiter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "split_delimiter", value)
 
 
 class FeedDetailsHttpsPushWebhookSettingsArgsDict(TypedDict):
-    split_delimiter: NotRequired[pulumi.Input[_builtins.str]]
+    split_delimiter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Delimiter to split on for the feed.
     """
@@ -12566,7 +12566,7 @@ class FeedDetailsHttpsPushWebhookSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsHttpsPushWebhookSettingsArgs:
     def __init__(__self__, *,
-                 split_delimiter: Optional[pulumi.Input[_builtins.str]] = None):
+                 split_delimiter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] split_delimiter: Delimiter to split on for the feed.
         """
@@ -12575,19 +12575,19 @@ class FeedDetailsHttpsPushWebhookSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="splitDelimiter")
-    def split_delimiter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def split_delimiter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delimiter to split on for the feed.
         """
         return pulumi.get(self, "split_delimiter")
 
     @split_delimiter.setter
-    def split_delimiter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def split_delimiter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "split_delimiter", value)
 
 
 class FeedDetailsImpervaWafSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsImpervaWafSettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -12596,7 +12596,7 @@ class FeedDetailsImpervaWafSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsImpervaWafSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationArgs']] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsImpervaWafSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationArgs'] authentication: HTTP header based authentication.
                Structure is documented below.
@@ -12606,7 +12606,7 @@ class FeedDetailsImpervaWafSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsImpervaWafSettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         Structure is documented below.
@@ -12614,12 +12614,12 @@ class FeedDetailsImpervaWafSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsImpervaWafSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsImpervaWafSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -12628,7 +12628,7 @@ class FeedDetailsImpervaWafSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsImpervaWafSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -12638,7 +12638,7 @@ class FeedDetailsImpervaWafSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -12646,16 +12646,16 @@ class FeedDetailsImpervaWafSettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -12664,8 +12664,8 @@ class FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgsDict(TypedDic
 @pulumi.input_type
 class FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -12678,19 +12678,19 @@ class FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -12698,17 +12698,17 @@ class FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeedDetailsMandiantIocSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsMandiantIocSettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     Structure is documented below.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     time since when to start fetching the IOCs
     """
@@ -12716,8 +12716,8 @@ class FeedDetailsMandiantIocSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsMandiantIocSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationArgs']] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsMandiantIocSettingsAuthenticationArgs']] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationArgs'] authentication: HTTP header based authentication.
                Structure is documented below.
@@ -12730,7 +12730,7 @@ class FeedDetailsMandiantIocSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsMandiantIocSettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         Structure is documented below.
@@ -12738,24 +12738,24 @@ class FeedDetailsMandiantIocSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsMandiantIocSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         time since when to start fetching the IOCs
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
 class FeedDetailsMandiantIocSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -12764,7 +12764,7 @@ class FeedDetailsMandiantIocSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsMandiantIocSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -12774,7 +12774,7 @@ class FeedDetailsMandiantIocSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -12782,16 +12782,16 @@ class FeedDetailsMandiantIocSettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -12800,8 +12800,8 @@ class FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgsDict(TypedDi
 @pulumi.input_type
 class FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -12814,19 +12814,19 @@ class FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -12834,25 +12834,25 @@ class FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeedDetailsMicrosoftGraphAlertSettingsArgsDict(TypedDict):
-    auth_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    auth_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Auth Endpoint.
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgs']]]
     """
     Microsoft OAuth 2.0 client credentials grant.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
-    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tenant ID.
     """
@@ -12860,10 +12860,10 @@ class FeedDetailsMicrosoftGraphAlertSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsMicrosoftGraphAlertSettingsArgs:
     def __init__(__self__, *,
-                 auth_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input['FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional['FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_endpoint: API Auth Endpoint.
         :param pulumi.Input['FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgs'] authentication: Microsoft OAuth 2.0 client credentials grant.
@@ -12882,19 +12882,19 @@ class FeedDetailsMicrosoftGraphAlertSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="authEndpoint")
-    def auth_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Auth Endpoint.
         """
         return pulumi.get(self, "auth_endpoint")
 
     @auth_endpoint.setter
-    def auth_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgs']]:
         """
         Microsoft OAuth 2.0 client credentials grant.
         Structure is documented below.
@@ -12902,40 +12902,40 @@ class FeedDetailsMicrosoftGraphAlertSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tenant ID.
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 class FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client Secret.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -12944,8 +12944,8 @@ class FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID.
         :param pulumi.Input[_builtins.str] client_secret: Client Secret.
@@ -12958,19 +12958,19 @@ class FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Secret.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -12978,29 +12978,29 @@ class FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
 
 class FeedDetailsMicrosoftSecurityCenterAlertSettingsArgsDict(TypedDict):
-    auth_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    auth_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Auth Endpoint.
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgs']]]
     """
     Microsoft OAuth 2.0 client credentials grant.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
-    subscription_id: NotRequired[pulumi.Input[_builtins.str]]
+    subscription_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subscription ID of the Microsoft security center alert settings alert.
     """
-    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tenant ID.
     """
@@ -13008,11 +13008,11 @@ class FeedDetailsMicrosoftSecurityCenterAlertSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsMicrosoftSecurityCenterAlertSettingsArgs:
     def __init__(__self__, *,
-                 auth_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input['FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional['FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_endpoint: API Auth Endpoint.
         :param pulumi.Input['FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgs'] authentication: Microsoft OAuth 2.0 client credentials grant.
@@ -13034,19 +13034,19 @@ class FeedDetailsMicrosoftSecurityCenterAlertSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="authEndpoint")
-    def auth_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Auth Endpoint.
         """
         return pulumi.get(self, "auth_endpoint")
 
     @auth_endpoint.setter
-    def auth_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgs']]:
         """
         Microsoft OAuth 2.0 client credentials grant.
         Structure is documented below.
@@ -13054,52 +13054,52 @@ class FeedDetailsMicrosoftSecurityCenterAlertSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionId")
-    def subscription_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subscription ID of the Microsoft security center alert settings alert.
         """
         return pulumi.get(self, "subscription_id")
 
     @subscription_id.setter
-    def subscription_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tenant ID.
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 class FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client Secret.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -13108,8 +13108,8 @@ class FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgsDict(Type
 @pulumi.input_type
 class FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID.
         :param pulumi.Input[_builtins.str] client_secret: Client Secret.
@@ -13122,19 +13122,19 @@ class FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Secret.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -13142,17 +13142,17 @@ class FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
 
 class FeedDetailsMimecastMailSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsMimecastMailSettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
@@ -13160,8 +13160,8 @@ class FeedDetailsMimecastMailSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsMimecastMailSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsMimecastMailSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationArgs'] authentication: HTTP header based authentication.
                Structure is documented below.
@@ -13174,7 +13174,7 @@ class FeedDetailsMimecastMailSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsMimecastMailSettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         Structure is documented below.
@@ -13182,24 +13182,24 @@ class FeedDetailsMimecastMailSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsMimecastMailSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class FeedDetailsMimecastMailSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -13208,7 +13208,7 @@ class FeedDetailsMimecastMailSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsMimecastMailSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -13218,7 +13218,7 @@ class FeedDetailsMimecastMailSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -13226,16 +13226,16 @@ class FeedDetailsMimecastMailSettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -13244,8 +13244,8 @@ class FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgsDict(TypedD
 @pulumi.input_type
 class FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -13258,19 +13258,19 @@ class FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -13278,12 +13278,12 @@ class FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeedDetailsMimecastMailV2SettingsArgsDict(TypedDict):
-    auth_credentials: NotRequired[pulumi.Input['FeedDetailsMimecastMailV2SettingsAuthCredentialsArgsDict']]
+    auth_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsMimecastMailV2SettingsAuthCredentialsArgs']]]
     """
     OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
     NEXT TAG: 3
@@ -13292,7 +13292,7 @@ class FeedDetailsMimecastMailV2SettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsMimecastMailV2SettingsArgs:
     def __init__(__self__, *,
-                 auth_credentials: Optional[pulumi.Input['FeedDetailsMimecastMailV2SettingsAuthCredentialsArgs']] = None):
+                 auth_credentials: pulumi.Input[Optional['FeedDetailsMimecastMailV2SettingsAuthCredentialsArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsMimecastMailV2SettingsAuthCredentialsArgs'] auth_credentials: OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
                NEXT TAG: 3
@@ -13302,7 +13302,7 @@ class FeedDetailsMimecastMailV2SettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="authCredentials")
-    def auth_credentials(self) -> Optional[pulumi.Input['FeedDetailsMimecastMailV2SettingsAuthCredentialsArgs']]:
+    def auth_credentials(self) -> pulumi.Input[Optional['FeedDetailsMimecastMailV2SettingsAuthCredentialsArgs']]:
         """
         OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
         NEXT TAG: 3
@@ -13310,16 +13310,16 @@ class FeedDetailsMimecastMailV2SettingsArgs:
         return pulumi.get(self, "auth_credentials")
 
     @auth_credentials.setter
-    def auth_credentials(self, value: Optional[pulumi.Input['FeedDetailsMimecastMailV2SettingsAuthCredentialsArgs']]):
+    def auth_credentials(self, value: pulumi.Input[Optional['FeedDetailsMimecastMailV2SettingsAuthCredentialsArgs']]):
         pulumi.set(self, "auth_credentials", value)
 
 
 class FeedDetailsMimecastMailV2SettingsAuthCredentialsArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client Secret.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -13328,8 +13328,8 @@ class FeedDetailsMimecastMailV2SettingsAuthCredentialsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsMimecastMailV2SettingsAuthCredentialsArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID.
         :param pulumi.Input[_builtins.str] client_secret: Client Secret.
@@ -13342,19 +13342,19 @@ class FeedDetailsMimecastMailV2SettingsAuthCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Secret.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -13362,25 +13362,25 @@ class FeedDetailsMimecastMailV2SettingsAuthCredentialsArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
 
 class FeedDetailsNetskopeAlertSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsNetskopeAlertSettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     Structure is documented below.
     """
-    content_type: NotRequired[pulumi.Input[_builtins.str]]
+    content_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Content type.
     """
-    feedname: NotRequired[pulumi.Input[_builtins.str]]
+    feedname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Feedname.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
@@ -13388,10 +13388,10 @@ class FeedDetailsNetskopeAlertSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsNetskopeAlertSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationArgs']] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 feedname: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsNetskopeAlertSettingsAuthenticationArgs']] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 feedname: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationArgs'] authentication: HTTP header based authentication.
                Structure is documented below.
@@ -13410,7 +13410,7 @@ class FeedDetailsNetskopeAlertSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsNetskopeAlertSettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         Structure is documented below.
@@ -13418,48 +13418,48 @@ class FeedDetailsNetskopeAlertSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsNetskopeAlertSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content type.
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def feedname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feedname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Feedname.
         """
         return pulumi.get(self, "feedname")
 
     @feedname.setter
-    def feedname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feedname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feedname", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class FeedDetailsNetskopeAlertSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -13468,7 +13468,7 @@ class FeedDetailsNetskopeAlertSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsNetskopeAlertSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -13478,7 +13478,7 @@ class FeedDetailsNetskopeAlertSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -13486,16 +13486,16 @@ class FeedDetailsNetskopeAlertSettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -13504,8 +13504,8 @@ class FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgsDict(Typed
 @pulumi.input_type
 class FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -13518,19 +13518,19 @@ class FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -13538,24 +13538,24 @@ class FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeedDetailsNetskopeAlertV2SettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsNetskopeAlertV2SettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     """
-    content_category: NotRequired[pulumi.Input[_builtins.str]]
+    content_category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Content Category.
     """
-    content_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    content_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Content type.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
@@ -13563,10 +13563,10 @@ class FeedDetailsNetskopeAlertV2SettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsNetskopeAlertV2SettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationArgs']] = None,
-                 content_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsNetskopeAlertV2SettingsAuthenticationArgs']] = None,
+                 content_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationArgs'] authentication: HTTP header based authentication.
         :param pulumi.Input[_builtins.str] content_category: Content Category.
@@ -13584,55 +13584,55 @@ class FeedDetailsNetskopeAlertV2SettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsNetskopeAlertV2SettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsNetskopeAlertV2SettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="contentCategory")
-    def content_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content Category.
         """
         return pulumi.get(self, "content_category")
 
     @content_category.setter
-    def content_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_category", value)
 
     @_builtins.property
     @pulumi.getter(name="contentTypes")
-    def content_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def content_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Content type.
         """
         return pulumi.get(self, "content_types")
 
     @content_types.setter
-    def content_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def content_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "content_types", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class FeedDetailsNetskopeAlertV2SettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -13641,7 +13641,7 @@ class FeedDetailsNetskopeAlertV2SettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsNetskopeAlertV2SettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -13651,7 +13651,7 @@ class FeedDetailsNetskopeAlertV2SettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -13659,16 +13659,16 @@ class FeedDetailsNetskopeAlertV2SettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -13677,8 +13677,8 @@ class FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgsDict(Typ
 @pulumi.input_type
 class FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -13691,19 +13691,19 @@ class FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -13711,20 +13711,20 @@ class FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeedDetailsOffice365SettingsArgsDict(TypedDict):
-    auth_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    auth_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Auth Endpoint.
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsOffice365SettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsOffice365SettingsAuthenticationArgs']]]
     """
     Microsoft OAuth 2.0 client credentials grant.
     """
-    content_type: NotRequired[pulumi.Input[_builtins.str]]
+    content_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Supported office 365 content type.
     Possible values:
@@ -13734,11 +13734,11 @@ class FeedDetailsOffice365SettingsArgsDict(TypedDict):
     AUDIT_GENERAL
     DLP_ALL
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
-    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tenant ID.
     """
@@ -13746,11 +13746,11 @@ class FeedDetailsOffice365SettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsOffice365SettingsArgs:
     def __init__(__self__, *,
-                 auth_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input['FeedDetailsOffice365SettingsAuthenticationArgs']] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional['FeedDetailsOffice365SettingsAuthenticationArgs']] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_endpoint: API Auth Endpoint.
         :param pulumi.Input['FeedDetailsOffice365SettingsAuthenticationArgs'] authentication: Microsoft OAuth 2.0 client credentials grant.
@@ -13777,31 +13777,31 @@ class FeedDetailsOffice365SettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="authEndpoint")
-    def auth_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Auth Endpoint.
         """
         return pulumi.get(self, "auth_endpoint")
 
     @auth_endpoint.setter
-    def auth_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsOffice365SettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsOffice365SettingsAuthenticationArgs']]:
         """
         Microsoft OAuth 2.0 client credentials grant.
         """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsOffice365SettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsOffice365SettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Supported office 365 content type.
         Possible values:
@@ -13814,40 +13814,40 @@ class FeedDetailsOffice365SettingsArgs:
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tenant ID.
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 class FeedDetailsOffice365SettingsAuthenticationArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client Secret.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -13856,8 +13856,8 @@ class FeedDetailsOffice365SettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsOffice365SettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID.
         :param pulumi.Input[_builtins.str] client_secret: Client Secret.
@@ -13870,19 +13870,19 @@ class FeedDetailsOffice365SettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Secret.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -13890,17 +13890,17 @@ class FeedDetailsOffice365SettingsAuthenticationArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
 
 class FeedDetailsOktaSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsOktaSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsOktaSettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
@@ -13908,8 +13908,8 @@ class FeedDetailsOktaSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsOktaSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsOktaSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsOktaSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsOktaSettingsAuthenticationArgs'] authentication: HTTP header based authentication.
                Structure is documented below.
@@ -13922,7 +13922,7 @@ class FeedDetailsOktaSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsOktaSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsOktaSettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         Structure is documented below.
@@ -13930,24 +13930,24 @@ class FeedDetailsOktaSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsOktaSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsOktaSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class FeedDetailsOktaSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -13956,7 +13956,7 @@ class FeedDetailsOktaSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsOktaSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -13966,7 +13966,7 @@ class FeedDetailsOktaSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -13974,16 +13974,16 @@ class FeedDetailsOktaSettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -13992,8 +13992,8 @@ class FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -14006,19 +14006,19 @@ class FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -14026,21 +14026,21 @@ class FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeedDetailsOktaUserContextSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsOktaUserContextSettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
-    manager_id_reference_field: NotRequired[pulumi.Input[_builtins.str]]
+    manager_id_reference_field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Manager id reference field.
     """
@@ -14048,9 +14048,9 @@ class FeedDetailsOktaUserContextSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsOktaUserContextSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 manager_id_reference_field: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsOktaUserContextSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 manager_id_reference_field: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationArgs'] authentication: HTTP header based authentication.
                Structure is documented below.
@@ -14066,7 +14066,7 @@ class FeedDetailsOktaUserContextSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsOktaUserContextSettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         Structure is documented below.
@@ -14074,36 +14074,36 @@ class FeedDetailsOktaUserContextSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsOktaUserContextSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="managerIdReferenceField")
-    def manager_id_reference_field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def manager_id_reference_field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Manager id reference field.
         """
         return pulumi.get(self, "manager_id_reference_field")
 
     @manager_id_reference_field.setter
-    def manager_id_reference_field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def manager_id_reference_field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "manager_id_reference_field", value)
 
 
 class FeedDetailsOktaUserContextSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -14112,7 +14112,7 @@ class FeedDetailsOktaUserContextSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsOktaUserContextSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -14122,7 +14122,7 @@ class FeedDetailsOktaUserContextSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -14130,16 +14130,16 @@ class FeedDetailsOktaUserContextSettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -14148,8 +14148,8 @@ class FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgsDict(Typ
 @pulumi.input_type
 class FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -14162,19 +14162,19 @@ class FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -14182,21 +14182,21 @@ class FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeedDetailsPanIocSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsPanIocSettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     Structure is documented below.
     """
-    feed: NotRequired[pulumi.Input[_builtins.str]]
+    feed: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PAN IOC feed name.
     """
-    feed_id: NotRequired[pulumi.Input[_builtins.str]]
+    feed_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PAN IOC feed ID.
     """
@@ -14204,9 +14204,9 @@ class FeedDetailsPanIocSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsPanIocSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationArgs']] = None,
-                 feed: Optional[pulumi.Input[_builtins.str]] = None,
-                 feed_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsPanIocSettingsAuthenticationArgs']] = None,
+                 feed: pulumi.Input[Optional[_builtins.str]] = None,
+                 feed_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsPanIocSettingsAuthenticationArgs'] authentication: HTTP header based authentication.
                Structure is documented below.
@@ -14222,7 +14222,7 @@ class FeedDetailsPanIocSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsPanIocSettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         Structure is documented below.
@@ -14230,36 +14230,36 @@ class FeedDetailsPanIocSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsPanIocSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def feed(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feed(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PAN IOC feed name.
         """
         return pulumi.get(self, "feed")
 
     @feed.setter
-    def feed(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feed(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feed", value)
 
     @_builtins.property
     @pulumi.getter(name="feedId")
-    def feed_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feed_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PAN IOC feed ID.
         """
         return pulumi.get(self, "feed_id")
 
     @feed_id.setter
-    def feed_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feed_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feed_id", value)
 
 
 class FeedDetailsPanIocSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -14268,7 +14268,7 @@ class FeedDetailsPanIocSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsPanIocSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -14278,7 +14278,7 @@ class FeedDetailsPanIocSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -14286,16 +14286,16 @@ class FeedDetailsPanIocSettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -14304,8 +14304,8 @@ class FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -14318,19 +14318,19 @@ class FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -14338,17 +14338,17 @@ class FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeedDetailsPanPrismaCloudSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsPanPrismaCloudSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsPanPrismaCloudSettingsAuthenticationArgs']]]
     """
     PAN Prisma Cloud auth.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
@@ -14356,8 +14356,8 @@ class FeedDetailsPanPrismaCloudSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsPanPrismaCloudSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsPanPrismaCloudSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsPanPrismaCloudSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsPanPrismaCloudSettingsAuthenticationArgs'] authentication: PAN Prisma Cloud auth.
                Structure is documented below.
@@ -14370,7 +14370,7 @@ class FeedDetailsPanPrismaCloudSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsPanPrismaCloudSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsPanPrismaCloudSettingsAuthenticationArgs']]:
         """
         PAN Prisma Cloud auth.
         Structure is documented below.
@@ -14378,29 +14378,29 @@ class FeedDetailsPanPrismaCloudSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsPanPrismaCloudSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsPanPrismaCloudSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class FeedDetailsPanPrismaCloudSettingsAuthenticationArgsDict(TypedDict):
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password. Used for username and password authentication.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -14410,8 +14410,8 @@ class FeedDetailsPanPrismaCloudSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsPanPrismaCloudSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] password: Password. Used for username and password authentication.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -14426,7 +14426,7 @@ class FeedDetailsPanPrismaCloudSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password. Used for username and password authentication.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -14434,12 +14434,12 @@ class FeedDetailsPanPrismaCloudSettingsAuthenticationArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -14448,12 +14448,12 @@ class FeedDetailsPanPrismaCloudSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsProofpointMailSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsProofpointMailSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsProofpointMailSettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
@@ -14462,7 +14462,7 @@ class FeedDetailsProofpointMailSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsProofpointMailSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsProofpointMailSettingsAuthenticationArgs']] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsProofpointMailSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsProofpointMailSettingsAuthenticationArgs'] authentication: Info for username and secret based authentication.
                Structure is documented below.
@@ -14472,7 +14472,7 @@ class FeedDetailsProofpointMailSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsProofpointMailSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsProofpointMailSettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         Structure is documented below.
@@ -14480,12 +14480,12 @@ class FeedDetailsProofpointMailSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsProofpointMailSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsProofpointMailSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsProofpointMailSettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -14494,7 +14494,7 @@ class FeedDetailsProofpointMailSettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -14504,8 +14504,8 @@ class FeedDetailsProofpointMailSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsProofpointMailSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -14524,7 +14524,7 @@ class FeedDetailsProofpointMailSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -14536,12 +14536,12 @@ class FeedDetailsProofpointMailSettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -14550,17 +14550,17 @@ class FeedDetailsProofpointMailSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsProofpointOnDemandSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsProofpointOnDemandSettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     Structure is documented below.
     """
-    cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    cluster_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cluster ID.
     """
@@ -14568,8 +14568,8 @@ class FeedDetailsProofpointOnDemandSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsProofpointOnDemandSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationArgs']] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsProofpointOnDemandSettingsAuthenticationArgs']] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationArgs'] authentication: HTTP header based authentication.
                Structure is documented below.
@@ -14582,7 +14582,7 @@ class FeedDetailsProofpointOnDemandSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsProofpointOnDemandSettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         Structure is documented below.
@@ -14590,24 +14590,24 @@ class FeedDetailsProofpointOnDemandSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsProofpointOnDemandSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
 
 class FeedDetailsProofpointOnDemandSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -14616,7 +14616,7 @@ class FeedDetailsProofpointOnDemandSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsProofpointOnDemandSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -14626,7 +14626,7 @@ class FeedDetailsProofpointOnDemandSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -14634,16 +14634,16 @@ class FeedDetailsProofpointOnDemandSettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -14652,8 +14652,8 @@ class FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgsDict(
 @pulumi.input_type
 class FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -14666,19 +14666,19 @@ class FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -14686,12 +14686,12 @@ class FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeedDetailsPubsubSettingsArgsDict(TypedDict):
-    google_service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    google_service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Google Service Account Email.
     """
@@ -14699,7 +14699,7 @@ class FeedDetailsPubsubSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsPubsubSettingsArgs:
     def __init__(__self__, *,
-                 google_service_account_email: Optional[pulumi.Input[_builtins.str]] = None):
+                 google_service_account_email: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] google_service_account_email: Google Service Account Email.
         """
@@ -14708,19 +14708,19 @@ class FeedDetailsPubsubSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="googleServiceAccountEmail")
-    def google_service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def google_service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Google Service Account Email.
         """
         return pulumi.get(self, "google_service_account_email")
 
     @google_service_account_email.setter
-    def google_service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def google_service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "google_service_account_email", value)
 
 
 class FeedDetailsQualysScanSettingsArgsDict(TypedDict):
-    api_type: NotRequired[pulumi.Input[_builtins.str]]
+    api_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Supported Qualys Scan api type.
     Possible values:
@@ -14728,12 +14728,12 @@ class FeedDetailsQualysScanSettingsArgsDict(TypedDict):
     SCAN_COMPLIANCE_OUTPUT
     SCAN_COMPLIANCE_CONTROL_OUTPUT
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsQualysScanSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsQualysScanSettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Hostname.
     """
@@ -14741,9 +14741,9 @@ class FeedDetailsQualysScanSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsQualysScanSettingsArgs:
     def __init__(__self__, *,
-                 api_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input['FeedDetailsQualysScanSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional['FeedDetailsQualysScanSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] api_type: Supported Qualys Scan api type.
                Possible values:
@@ -14763,7 +14763,7 @@ class FeedDetailsQualysScanSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiType")
-    def api_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Supported Qualys Scan api type.
         Possible values:
@@ -14774,12 +14774,12 @@ class FeedDetailsQualysScanSettingsArgs:
         return pulumi.get(self, "api_type")
 
     @api_type.setter
-    def api_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsQualysScanSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsQualysScanSettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         Structure is documented below.
@@ -14787,24 +14787,24 @@ class FeedDetailsQualysScanSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsQualysScanSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsQualysScanSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class FeedDetailsQualysScanSettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -14813,7 +14813,7 @@ class FeedDetailsQualysScanSettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -14823,8 +14823,8 @@ class FeedDetailsQualysScanSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsQualysScanSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -14843,7 +14843,7 @@ class FeedDetailsQualysScanSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -14855,12 +14855,12 @@ class FeedDetailsQualysScanSettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -14869,17 +14869,17 @@ class FeedDetailsQualysScanSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsQualysVmSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsQualysVmSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsQualysVmSettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
@@ -14887,8 +14887,8 @@ class FeedDetailsQualysVmSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsQualysVmSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsQualysVmSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsQualysVmSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsQualysVmSettingsAuthenticationArgs'] authentication: Info for username and secret based authentication.
                Structure is documented below.
@@ -14901,7 +14901,7 @@ class FeedDetailsQualysVmSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsQualysVmSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsQualysVmSettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         Structure is documented below.
@@ -14909,24 +14909,24 @@ class FeedDetailsQualysVmSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsQualysVmSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsQualysVmSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class FeedDetailsQualysVmSettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -14935,7 +14935,7 @@ class FeedDetailsQualysVmSettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -14945,8 +14945,8 @@ class FeedDetailsQualysVmSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsQualysVmSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -14965,7 +14965,7 @@ class FeedDetailsQualysVmSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -14977,12 +14977,12 @@ class FeedDetailsQualysVmSettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -14991,20 +14991,20 @@ class FeedDetailsQualysVmSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsRapid7InsightSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsRapid7InsightSettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     """
-    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Rapid7 API endpoint. Should be "vulnerabilities" or "assets".
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
@@ -15012,9 +15012,9 @@ class FeedDetailsRapid7InsightSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsRapid7InsightSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationArgs']] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsRapid7InsightSettingsAuthenticationArgs']] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationArgs'] authentication: HTTP header based authentication.
         :param pulumi.Input[_builtins.str] endpoint: Rapid7 API endpoint. Should be "vulnerabilities" or "assets".
@@ -15029,43 +15029,43 @@ class FeedDetailsRapid7InsightSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsRapid7InsightSettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsRapid7InsightSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rapid7 API endpoint. Should be "vulnerabilities" or "assets".
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class FeedDetailsRapid7InsightSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -15074,7 +15074,7 @@ class FeedDetailsRapid7InsightSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsRapid7InsightSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -15084,7 +15084,7 @@ class FeedDetailsRapid7InsightSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -15092,16 +15092,16 @@ class FeedDetailsRapid7InsightSettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -15110,8 +15110,8 @@ class FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgsDict(Typed
 @pulumi.input_type
 class FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -15124,19 +15124,19 @@ class FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -15144,12 +15144,12 @@ class FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeedDetailsRecordedFutureIocSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsRecordedFutureIocSettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -15158,7 +15158,7 @@ class FeedDetailsRecordedFutureIocSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsRecordedFutureIocSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationArgs']] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsRecordedFutureIocSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationArgs'] authentication: HTTP header based authentication.
                Structure is documented below.
@@ -15168,7 +15168,7 @@ class FeedDetailsRecordedFutureIocSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsRecordedFutureIocSettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         Structure is documented below.
@@ -15176,12 +15176,12 @@ class FeedDetailsRecordedFutureIocSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsRecordedFutureIocSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsRecordedFutureIocSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -15190,7 +15190,7 @@ class FeedDetailsRecordedFutureIocSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsRecordedFutureIocSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -15200,7 +15200,7 @@ class FeedDetailsRecordedFutureIocSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -15208,16 +15208,16 @@ class FeedDetailsRecordedFutureIocSettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -15226,8 +15226,8 @@ class FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgsDict(T
 @pulumi.input_type
 class FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -15240,19 +15240,19 @@ class FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -15260,12 +15260,12 @@ class FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeedDetailsRhIsacIocSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsRhIsacIocSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsRhIsacIocSettingsAuthenticationArgs']]]
     """
     OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
     Structure is documented below.
@@ -15274,7 +15274,7 @@ class FeedDetailsRhIsacIocSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsRhIsacIocSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsRhIsacIocSettingsAuthenticationArgs']] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsRhIsacIocSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsRhIsacIocSettingsAuthenticationArgs'] authentication: OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
                Structure is documented below.
@@ -15284,7 +15284,7 @@ class FeedDetailsRhIsacIocSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsRhIsacIocSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsRhIsacIocSettingsAuthenticationArgs']]:
         """
         OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
         Structure is documented below.
@@ -15292,21 +15292,21 @@ class FeedDetailsRhIsacIocSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsRhIsacIocSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsRhIsacIocSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsRhIsacIocSettingsAuthenticationArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client Secret.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
@@ -15314,9 +15314,9 @@ class FeedDetailsRhIsacIocSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsRhIsacIocSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID.
         :param pulumi.Input[_builtins.str] client_secret: Client Secret.
@@ -15332,19 +15332,19 @@ class FeedDetailsRhIsacIocSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Secret.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -15352,33 +15352,33 @@ class FeedDetailsRhIsacIocSettingsAuthenticationArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class FeedDetailsSalesforceSettingsArgsDict(TypedDict):
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API hostname.
     """
-    oauth_jwt_credentials: NotRequired[pulumi.Input['FeedDetailsSalesforceSettingsOauthJwtCredentialsArgsDict']]
+    oauth_jwt_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsArgs']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
     """
-    oauth_password_grant_auth: NotRequired[pulumi.Input['FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgsDict']]
+    oauth_password_grant_auth: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgs']]]
     """
     OAuth 2.0 password grant. See https://tools.ietf.org/html/rfc6749.
     Structure is documented below.
@@ -15387,9 +15387,9 @@ class FeedDetailsSalesforceSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsSalesforceSettingsArgs:
     def __init__(__self__, *,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_jwt_credentials: Optional[pulumi.Input['FeedDetailsSalesforceSettingsOauthJwtCredentialsArgs']] = None,
-                 oauth_password_grant_auth: Optional[pulumi.Input['FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgs']] = None):
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_jwt_credentials: pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsArgs']] = None,
+                 oauth_password_grant_auth: pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] hostname: API hostname.
         :param pulumi.Input['FeedDetailsSalesforceSettingsOauthJwtCredentialsArgs'] oauth_jwt_credentials: OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
@@ -15406,19 +15406,19 @@ class FeedDetailsSalesforceSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthJwtCredentials")
-    def oauth_jwt_credentials(self) -> Optional[pulumi.Input['FeedDetailsSalesforceSettingsOauthJwtCredentialsArgs']]:
+    def oauth_jwt_credentials(self) -> pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsArgs']]:
         """
         OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
         Structure is documented below.
@@ -15426,12 +15426,12 @@ class FeedDetailsSalesforceSettingsArgs:
         return pulumi.get(self, "oauth_jwt_credentials")
 
     @oauth_jwt_credentials.setter
-    def oauth_jwt_credentials(self, value: Optional[pulumi.Input['FeedDetailsSalesforceSettingsOauthJwtCredentialsArgs']]):
+    def oauth_jwt_credentials(self, value: pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsArgs']]):
         pulumi.set(self, "oauth_jwt_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthPasswordGrantAuth")
-    def oauth_password_grant_auth(self) -> Optional[pulumi.Input['FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgs']]:
+    def oauth_password_grant_auth(self) -> pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgs']]:
         """
         OAuth 2.0 password grant. See https://tools.ietf.org/html/rfc6749.
         Structure is documented below.
@@ -15439,22 +15439,22 @@ class FeedDetailsSalesforceSettingsArgs:
         return pulumi.get(self, "oauth_password_grant_auth")
 
     @oauth_password_grant_auth.setter
-    def oauth_password_grant_auth(self, value: Optional[pulumi.Input['FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgs']]):
+    def oauth_password_grant_auth(self, value: pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgs']]):
         pulumi.set(self, "oauth_password_grant_auth", value)
 
 
 class FeedDetailsSalesforceSettingsOauthJwtCredentialsArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input['FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgsDict']]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgs']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input['FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgsDict']]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgs']]]
     """
     RS credentials.
     Structure is documented below.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
@@ -15462,9 +15462,9 @@ class FeedDetailsSalesforceSettingsOauthJwtCredentialsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsSalesforceSettingsOauthJwtCredentialsArgs:
     def __init__(__self__, *,
-                 claims: Optional[pulumi.Input['FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgs']] = None,
-                 rs_credentials: Optional[pulumi.Input['FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgs']] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 claims: pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgs']] = None,
+                 rs_credentials: pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgs']] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgs'] claims: Claims identifying a specific customer.
                Structure is documented below.
@@ -15481,7 +15481,7 @@ class FeedDetailsSalesforceSettingsOauthJwtCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def claims(self) -> Optional[pulumi.Input['FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgs']]:
+    def claims(self) -> pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgs']]:
         """
         Claims identifying a specific customer.
         Structure is documented below.
@@ -15489,12 +15489,12 @@ class FeedDetailsSalesforceSettingsOauthJwtCredentialsArgs:
         return pulumi.get(self, "claims")
 
     @claims.setter
-    def claims(self, value: Optional[pulumi.Input['FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgs']]):
+    def claims(self, value: pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgs']]):
         pulumi.set(self, "claims", value)
 
     @_builtins.property
     @pulumi.getter(name="rsCredentials")
-    def rs_credentials(self) -> Optional[pulumi.Input['FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgs']]:
+    def rs_credentials(self) -> pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgs']]:
         """
         RS credentials.
         Structure is documented below.
@@ -15502,32 +15502,32 @@ class FeedDetailsSalesforceSettingsOauthJwtCredentialsArgs:
         return pulumi.get(self, "rs_credentials")
 
     @rs_credentials.setter
-    def rs_credentials(self, value: Optional[pulumi.Input['FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgs']]):
+    def rs_credentials(self, value: pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgs']]):
         pulumi.set(self, "rs_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgsDict(TypedDict):
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience.
     """
-    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    issuer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Issuer. Usually the client_id.
     """
-    subject: NotRequired[pulumi.Input[_builtins.str]]
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subject. Usually the email.
     """
@@ -15535,9 +15535,9 @@ class FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgs:
     def __init__(__self__, *,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] audience: Audience.
         :param pulumi.Input[_builtins.str] issuer: Issuer. Usually the client_id.
@@ -15552,43 +15552,43 @@ class FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience.
         """
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Issuer. Usually the client_id.
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subject. Usually the email.
         """
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
 
 class FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgsDict(TypedDict):
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Private key in PEM format.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -15597,7 +15597,7 @@ class FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgsDict(Type
 @pulumi.input_type
 class FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgs:
     def __init__(__self__, *,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] private_key: Private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -15607,7 +15607,7 @@ class FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key in PEM format.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -15615,28 +15615,28 @@ class FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgs:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
 class FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client secret.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username.
     """
@@ -15644,11 +15644,11 @@ class FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID.
         :param pulumi.Input[_builtins.str] client_secret: Client secret.
@@ -15669,80 +15669,80 @@ class FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client secret.
         """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username.
         """
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsSentineloneAlertSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsSentineloneAlertSettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Hostname of SentinelOne alert settings.
     """
-    initial_start_time: NotRequired[pulumi.Input[_builtins.str]]
+    initial_start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     initialStartTime from when to fetch the alerts
     """
-    is_alert_api_subscribed: NotRequired[pulumi.Input[_builtins.bool]]
+    is_alert_api_subscribed: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Is the customer subscribed to Alerts Api
     """
@@ -15750,10 +15750,10 @@ class FeedDetailsSentineloneAlertSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsSentineloneAlertSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_alert_api_subscribed: Optional[pulumi.Input[_builtins.bool]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsSentineloneAlertSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_alert_api_subscribed: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationArgs'] authentication: HTTP header based authentication.
                Structure is documented below.
@@ -15772,7 +15772,7 @@ class FeedDetailsSentineloneAlertSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsSentineloneAlertSettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         Structure is documented below.
@@ -15780,48 +15780,48 @@ class FeedDetailsSentineloneAlertSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsSentineloneAlertSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hostname of SentinelOne alert settings.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="initialStartTime")
-    def initial_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initial_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         initialStartTime from when to fetch the alerts
         """
         return pulumi.get(self, "initial_start_time")
 
     @initial_start_time.setter
-    def initial_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initial_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initial_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="isAlertApiSubscribed")
-    def is_alert_api_subscribed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_alert_api_subscribed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is the customer subscribed to Alerts Api
         """
         return pulumi.get(self, "is_alert_api_subscribed")
 
     @is_alert_api_subscribed.setter
-    def is_alert_api_subscribed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_alert_api_subscribed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_alert_api_subscribed", value)
 
 
 class FeedDetailsSentineloneAlertSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -15830,7 +15830,7 @@ class FeedDetailsSentineloneAlertSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsSentineloneAlertSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -15840,7 +15840,7 @@ class FeedDetailsSentineloneAlertSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -15848,16 +15848,16 @@ class FeedDetailsSentineloneAlertSettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -15866,8 +15866,8 @@ class FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgsDict(Ty
 @pulumi.input_type
 class FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -15880,19 +15880,19 @@ class FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -15900,21 +15900,21 @@ class FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeedDetailsServiceNowCmdbSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsServiceNowCmdbSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsServiceNowCmdbSettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
     """
-    feedname: NotRequired[pulumi.Input[_builtins.str]]
+    feedname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Feedname.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
@@ -15922,9 +15922,9 @@ class FeedDetailsServiceNowCmdbSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsServiceNowCmdbSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsServiceNowCmdbSettingsAuthenticationArgs']] = None,
-                 feedname: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsServiceNowCmdbSettingsAuthenticationArgs']] = None,
+                 feedname: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsServiceNowCmdbSettingsAuthenticationArgs'] authentication: Info for username and secret based authentication.
                Structure is documented below.
@@ -15940,7 +15940,7 @@ class FeedDetailsServiceNowCmdbSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsServiceNowCmdbSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsServiceNowCmdbSettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         Structure is documented below.
@@ -15948,36 +15948,36 @@ class FeedDetailsServiceNowCmdbSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsServiceNowCmdbSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsServiceNowCmdbSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def feedname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feedname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Feedname.
         """
         return pulumi.get(self, "feedname")
 
     @feedname.setter
-    def feedname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feedname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feedname", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class FeedDetailsServiceNowCmdbSettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -15986,7 +15986,7 @@ class FeedDetailsServiceNowCmdbSettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -15996,8 +15996,8 @@ class FeedDetailsServiceNowCmdbSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsServiceNowCmdbSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -16016,7 +16016,7 @@ class FeedDetailsServiceNowCmdbSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -16028,12 +16028,12 @@ class FeedDetailsServiceNowCmdbSettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -16042,31 +16042,31 @@ class FeedDetailsServiceNowCmdbSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsSftpSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsSftpSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsSftpSettingsAuthenticationArgs']]]
     """
     SFTP Auth.
     Structure is documented below.
     """
-    source_deletion_option: NotRequired[pulumi.Input[_builtins.str]]
+    source_deletion_option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     SOURCE_DELETION_NEVER
     SOURCE_DELETION_ON_SUCCESS
     SOURCE_DELETION_ON_SUCCESS_FILES_ONLY
     """
-    source_type: NotRequired[pulumi.Input[_builtins.str]]
+    source_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     FILES
     FOLDERS
     FOLDERS_RECURSIVE
     """
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SFTP URI.
     """
@@ -16074,10 +16074,10 @@ class FeedDetailsSftpSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsSftpSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsSftpSettingsAuthenticationArgs']] = None,
-                 source_deletion_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsSftpSettingsAuthenticationArgs']] = None,
+                 source_deletion_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsSftpSettingsAuthenticationArgs'] authentication: SFTP Auth.
                Structure is documented below.
@@ -16102,7 +16102,7 @@ class FeedDetailsSftpSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsSftpSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsSftpSettingsAuthenticationArgs']]:
         """
         SFTP Auth.
         Structure is documented below.
@@ -16110,12 +16110,12 @@ class FeedDetailsSftpSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsSftpSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsSftpSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDeletionOption")
-    def source_deletion_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_deletion_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         SOURCE_DELETION_NEVER
@@ -16125,12 +16125,12 @@ class FeedDetailsSftpSettingsArgs:
         return pulumi.get(self, "source_deletion_option")
 
     @source_deletion_option.setter
-    def source_deletion_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_deletion_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_deletion_option", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         FILES
@@ -16140,38 +16140,38 @@ class FeedDetailsSftpSettingsArgs:
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SFTP URI.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class FeedDetailsSftpSettingsAuthenticationArgsDict(TypedDict):
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password. Used for username and password authentication.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Private key. Used for private key authentication.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    private_key_passphrase: NotRequired[pulumi.Input[_builtins.str]]
+    private_key_passphrase: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Private key passphrase. Used for private key authentication.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. Used for username and password authentication.
     """
@@ -16179,10 +16179,10 @@ class FeedDetailsSftpSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsSftpSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] password: Password. Used for username and password authentication.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -16202,7 +16202,7 @@ class FeedDetailsSftpSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password. Used for username and password authentication.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -16210,12 +16210,12 @@ class FeedDetailsSftpSettingsAuthenticationArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key. Used for private key authentication.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -16223,36 +16223,36 @@ class FeedDetailsSftpSettingsAuthenticationArgs:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKeyPassphrase")
-    def private_key_passphrase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key_passphrase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key passphrase. Used for private key authentication.
         """
         return pulumi.get(self, "private_key_passphrase")
 
     @private_key_passphrase.setter
-    def private_key_passphrase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key_passphrase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key_passphrase", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. Used for username and password authentication.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
 class FeedDetailsSymantecEventExportSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsSymantecEventExportSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsSymantecEventExportSettingsAuthenticationArgs']]]
     """
     OAuth 2.0 refresh token grant. See https://tools.ietf.org/html/rfc6749.
     Structure is documented below.
@@ -16261,7 +16261,7 @@ class FeedDetailsSymantecEventExportSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsSymantecEventExportSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsSymantecEventExportSettingsAuthenticationArgs']] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsSymantecEventExportSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsSymantecEventExportSettingsAuthenticationArgs'] authentication: OAuth 2.0 refresh token grant. See https://tools.ietf.org/html/rfc6749.
                Structure is documented below.
@@ -16271,7 +16271,7 @@ class FeedDetailsSymantecEventExportSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsSymantecEventExportSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsSymantecEventExportSettingsAuthenticationArgs']]:
         """
         OAuth 2.0 refresh token grant. See https://tools.ietf.org/html/rfc6749.
         Structure is documented below.
@@ -16279,25 +16279,25 @@ class FeedDetailsSymantecEventExportSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsSymantecEventExportSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsSymantecEventExportSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsSymantecEventExportSettingsAuthenticationArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client Secret.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    refresh_token: NotRequired[pulumi.Input[_builtins.str]]
+    refresh_token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Refresh Token.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
@@ -16305,10 +16305,10 @@ class FeedDetailsSymantecEventExportSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsSymantecEventExportSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID.
         :param pulumi.Input[_builtins.str] client_secret: Client Secret.
@@ -16327,19 +16327,19 @@ class FeedDetailsSymantecEventExportSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Secret.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -16347,41 +16347,41 @@ class FeedDetailsSymantecEventExportSettingsAuthenticationArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshToken")
-    def refresh_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def refresh_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Refresh Token.
         """
         return pulumi.get(self, "refresh_token")
 
     @refresh_token.setter
-    def refresh_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def refresh_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "refresh_token", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class FeedDetailsThinkstCanarySettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsThinkstCanarySettingsAuthenticationArgs']]]
     """
     HTTP header based authentication.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
@@ -16389,8 +16389,8 @@ class FeedDetailsThinkstCanarySettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsThinkstCanarySettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsThinkstCanarySettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationArgs'] authentication: HTTP header based authentication.
                Structure is documented below.
@@ -16403,7 +16403,7 @@ class FeedDetailsThinkstCanarySettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsThinkstCanarySettingsAuthenticationArgs']]:
         """
         HTTP header based authentication.
         Structure is documented below.
@@ -16411,24 +16411,24 @@ class FeedDetailsThinkstCanarySettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsThinkstCanarySettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
 
 class FeedDetailsThinkstCanarySettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgsDict']]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgs']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -16437,7 +16437,7 @@ class FeedDetailsThinkstCanarySettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsThinkstCanarySettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 header_key_values: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgs']]]] = None):
+                 header_key_values: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgs']]] header_key_values: Header key-value pairs.
                Structure is documented below.
@@ -16447,7 +16447,7 @@ class FeedDetailsThinkstCanarySettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerKeyValues")
-    def header_key_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgs']]]]:
+    def header_key_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgs']]]]:
         """
         Header key-value pairs.
         Structure is documented below.
@@ -16455,16 +16455,16 @@ class FeedDetailsThinkstCanarySettingsAuthenticationArgs:
         return pulumi.get(self, "header_key_values")
 
     @header_key_values.setter
-    def header_key_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgs']]]]):
+    def header_key_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgs']]]]):
         pulumi.set(self, "header_key_values", value)
 
 
 class FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -16473,8 +16473,8 @@ class FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgsDict(Typed
 @pulumi.input_type
 class FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key.
         :param pulumi.Input[_builtins.str] value: Value.
@@ -16487,19 +16487,19 @@ class FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -16507,21 +16507,21 @@ class FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeedDetailsThreatConnectIocSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsThreatConnectIocSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsThreatConnectIocSettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
-    owners: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Owners.
     """
@@ -16529,9 +16529,9 @@ class FeedDetailsThreatConnectIocSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsThreatConnectIocSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsThreatConnectIocSettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsThreatConnectIocSettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['FeedDetailsThreatConnectIocSettingsAuthenticationArgs'] authentication: Info for username and secret based authentication.
                Structure is documented below.
@@ -16547,7 +16547,7 @@ class FeedDetailsThreatConnectIocSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsThreatConnectIocSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsThreatConnectIocSettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         Structure is documented below.
@@ -16555,36 +16555,36 @@ class FeedDetailsThreatConnectIocSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsThreatConnectIocSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsThreatConnectIocSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter
-    def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def owners(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Owners.
         """
         return pulumi.get(self, "owners")
 
     @owners.setter
-    def owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def owners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "owners", value)
 
 
 class FeedDetailsThreatConnectIocSettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -16593,7 +16593,7 @@ class FeedDetailsThreatConnectIocSettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -16603,8 +16603,8 @@ class FeedDetailsThreatConnectIocSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsThreatConnectIocSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -16623,7 +16623,7 @@ class FeedDetailsThreatConnectIocSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -16635,12 +16635,12 @@ class FeedDetailsThreatConnectIocSettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -16649,32 +16649,32 @@ class FeedDetailsThreatConnectIocSettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsThreatConnectIocV3SettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsThreatConnectIocV3SettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsThreatConnectIocV3SettingsAuthenticationArgs']]]
     """
     Info for username and secret based authentication.
     """
-    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Fields
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     hostname.
     """
-    owners: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Owners.
     """
-    schedule: NotRequired[pulumi.Input[_builtins.int]]
+    schedule: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Schedule
     """
-    tql_query: NotRequired[pulumi.Input[_builtins.str]]
+    tql_query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ThreatConnect Query Language filter.
     """
@@ -16682,12 +16682,12 @@ class FeedDetailsThreatConnectIocV3SettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsThreatConnectIocV3SettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsThreatConnectIocV3SettingsAuthenticationArgs']] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.int]] = None,
-                 tql_query: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsThreatConnectIocV3SettingsAuthenticationArgs']] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.int]] = None,
+                 tql_query: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsThreatConnectIocV3SettingsAuthenticationArgs'] authentication: Info for username and secret based authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fields: Fields
@@ -16711,79 +16711,79 @@ class FeedDetailsThreatConnectIocV3SettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsThreatConnectIocV3SettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsThreatConnectIocV3SettingsAuthenticationArgs']]:
         """
         Info for username and secret based authentication.
         """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsThreatConnectIocV3SettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsThreatConnectIocV3SettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Fields
         """
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "fields", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter
-    def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def owners(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Owners.
         """
         return pulumi.get(self, "owners")
 
     @owners.setter
-    def owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def owners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "owners", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Schedule
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="tqlQuery")
-    def tql_query(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tql_query(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ThreatConnect Query Language filter.
         """
         return pulumi.get(self, "tql_query")
 
     @tql_query.setter
-    def tql_query(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tql_query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tql_query", value)
 
 
 class FeedDetailsThreatConnectIocV3SettingsAuthenticationArgsDict(TypedDict):
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -16792,7 +16792,7 @@ class FeedDetailsThreatConnectIocV3SettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -16802,8 +16802,8 @@ class FeedDetailsThreatConnectIocV3SettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsThreatConnectIocV3SettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The access token used to authenticate against Workday. This field is called
                "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -16822,7 +16822,7 @@ class FeedDetailsThreatConnectIocV3SettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -16834,12 +16834,12 @@ class FeedDetailsThreatConnectIocV3SettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -16848,18 +16848,18 @@ class FeedDetailsThreatConnectIocV3SettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsTrellixHxAlertsSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationArgs']]]
     """
     TrellixStarXAuthentication contains a oneof with all of the authentication
     types supported by Trellix *X devices.
     Structure is documented below.
     """
-    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Trellix HX Device URL.
     This must be a valid URL with an http or https scheme. It has no default.
@@ -16872,8 +16872,8 @@ class FeedDetailsTrellixHxAlertsSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsTrellixHxAlertsSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsAuthenticationArgs']] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationArgs']] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsTrellixHxAlertsSettingsAuthenticationArgs'] authentication: TrellixStarXAuthentication contains a oneof with all of the authentication
                types supported by Trellix *X devices.
@@ -16892,7 +16892,7 @@ class FeedDetailsTrellixHxAlertsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationArgs']]:
         """
         TrellixStarXAuthentication contains a oneof with all of the authentication
         types supported by Trellix *X devices.
@@ -16901,12 +16901,12 @@ class FeedDetailsTrellixHxAlertsSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Trellix HX Device URL.
         This must be a valid URL with an http or https scheme. It has no default.
@@ -16918,18 +16918,18 @@ class FeedDetailsTrellixHxAlertsSettingsArgs:
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
 
 class FeedDetailsTrellixHxAlertsSettingsAuthenticationArgsDict(TypedDict):
-    msso: NotRequired[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgsDict']]
+    msso: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgs']]]
     """
     Info for MssoAuthentication using a username, password, and login api
     endpoint.
     Structure is documented below.
     """
-    trellix_iam: NotRequired[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgsDict']]
+    trellix_iam: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgs']]]
     """
     Settings for TrellixIAMAuthentication.
     Structure is documented below.
@@ -16938,8 +16938,8 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsTrellixHxAlertsSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 msso: Optional[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgs']] = None,
-                 trellix_iam: Optional[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgs']] = None):
+                 msso: pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgs']] = None,
+                 trellix_iam: pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgs'] msso: Info for MssoAuthentication using a username, password, and login api
                endpoint.
@@ -16954,7 +16954,7 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def msso(self) -> Optional[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgs']]:
+    def msso(self) -> pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgs']]:
         """
         Info for MssoAuthentication using a username, password, and login api
         endpoint.
@@ -16963,12 +16963,12 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationArgs:
         return pulumi.get(self, "msso")
 
     @msso.setter
-    def msso(self, value: Optional[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgs']]):
+    def msso(self, value: pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgs']]):
         pulumi.set(self, "msso", value)
 
     @_builtins.property
     @pulumi.getter(name="trellixIam")
-    def trellix_iam(self) -> Optional[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgs']]:
+    def trellix_iam(self) -> pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgs']]:
         """
         Settings for TrellixIAMAuthentication.
         Structure is documented below.
@@ -16976,17 +16976,17 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationArgs:
         return pulumi.get(self, "trellix_iam")
 
     @trellix_iam.setter
-    def trellix_iam(self, value: Optional[pulumi.Input['FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgs']]):
+    def trellix_iam(self, value: pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgs']]):
         pulumi.set(self, "trellix_iam", value)
 
 
 class FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgsDict(TypedDict):
-    api_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    api_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The login api endpoint url.
     This must be a valid URL with an http or https scheme. It has no default.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password of the account identified by username.
     There are no restrictions on the format of the password. It has no default,
@@ -16996,7 +16996,7 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgsDict(TypedDict):
     authentication requirements / validation.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username for MSSO authentication.
     There are no restrictions on the format of the username. It has no default,
@@ -17009,9 +17009,9 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgs:
     def __init__(__self__, *,
-                 api_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] api_endpoint: The login api endpoint url.
                This must be a valid URL with an http or https scheme. It has no default.
@@ -17038,7 +17038,7 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiEndpoint")
-    def api_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The login api endpoint url.
         This must be a valid URL with an http or https scheme. It has no default.
@@ -17046,12 +17046,12 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgs:
         return pulumi.get(self, "api_endpoint")
 
     @api_endpoint.setter
-    def api_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password of the account identified by username.
         There are no restrictions on the format of the password. It has no default,
@@ -17064,12 +17064,12 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username for MSSO authentication.
         There are no restrictions on the format of the username. It has no default,
@@ -17081,12 +17081,12 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
 class FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID generated in Trellix IAM.
     This is a unique identifier for the user that is generated in Trellix IAM.
@@ -17094,7 +17094,7 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgsDict(TypedDi
     It is assumed that the Client ID generated in Trellix IAM is internally
     consistent with Trellix IAM authentication requirements / validation.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Secret associated with the Client ID.
     This is the secret generated in Trellix IAM for the Client ID. It has no
@@ -17103,7 +17103,7 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgsDict(TypedDi
     consistent with Trellix IAM authentication requirements / validation.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    scope: NotRequired[pulumi.Input[_builtins.str]]
+    scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     OAUTH 2 scope to request for the authentication token.
     This is the OAUTH 2 scope to request for the authentication token. It has
@@ -17115,9 +17115,9 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgsDict(TypedDi
 @pulumi.input_type
 class FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID generated in Trellix IAM.
                This is a unique identifier for the user that is generated in Trellix IAM.
@@ -17145,7 +17145,7 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID generated in Trellix IAM.
         This is a unique identifier for the user that is generated in Trellix IAM.
@@ -17156,12 +17156,12 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgs:
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secret associated with the Client ID.
         This is the secret generated in Trellix IAM for the Client ID. It has no
@@ -17173,12 +17173,12 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OAUTH 2 scope to request for the authentication token.
         This is the OAUTH 2 scope to request for the authentication token. It has
@@ -17189,7 +17189,7 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgs:
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
 
@@ -17203,7 +17203,7 @@ class FeedDetailsTrellixHxBulkAcqsSettingsArgsDict(TypedDict):
     - or -
     https://htapdeviceproxy.md.mandiant.net/dphb/hx//
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgs']]]
     """
     TrellixStarXAuthentication contains a oneof with all of the authentication
     types supported by Trellix *X devices.
@@ -17214,7 +17214,7 @@ class FeedDetailsTrellixHxBulkAcqsSettingsArgsDict(TypedDict):
 class FeedDetailsTrellixHxBulkAcqsSettingsArgs:
     def __init__(__self__, *,
                  endpoint: pulumi.Input[_builtins.str],
-                 authentication: Optional[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgs']] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] endpoint: Trellix HX Device URL.
                This must be a valid URL with an http or https scheme. It has no default.
@@ -17249,7 +17249,7 @@ class FeedDetailsTrellixHxBulkAcqsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgs']]:
         """
         TrellixStarXAuthentication contains a oneof with all of the authentication
         types supported by Trellix *X devices.
@@ -17258,18 +17258,18 @@ class FeedDetailsTrellixHxBulkAcqsSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgsDict(TypedDict):
-    msso: NotRequired[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationMssoArgsDict']]
+    msso: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationMssoArgs']]]
     """
     Info for MssoAuthentication using a username, password, and login api
     endpoint.
     Structure is documented below.
     """
-    trellix_iam: NotRequired[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationTrellixIamArgsDict']]
+    trellix_iam: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationTrellixIamArgs']]]
     """
     Settings for TrellixIAMAuthentication.
     Structure is documented below.
@@ -17278,8 +17278,8 @@ class FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 msso: Optional[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationMssoArgs']] = None,
-                 trellix_iam: Optional[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationTrellixIamArgs']] = None):
+                 msso: pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationMssoArgs']] = None,
+                 trellix_iam: pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationTrellixIamArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationMssoArgs'] msso: Info for MssoAuthentication using a username, password, and login api
                endpoint.
@@ -17294,7 +17294,7 @@ class FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def msso(self) -> Optional[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationMssoArgs']]:
+    def msso(self) -> pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationMssoArgs']]:
         """
         Info for MssoAuthentication using a username, password, and login api
         endpoint.
@@ -17303,12 +17303,12 @@ class FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgs:
         return pulumi.get(self, "msso")
 
     @msso.setter
-    def msso(self, value: Optional[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationMssoArgs']]):
+    def msso(self, value: pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationMssoArgs']]):
         pulumi.set(self, "msso", value)
 
     @_builtins.property
     @pulumi.getter(name="trellixIam")
-    def trellix_iam(self) -> Optional[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationTrellixIamArgs']]:
+    def trellix_iam(self) -> pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationTrellixIamArgs']]:
         """
         Settings for TrellixIAMAuthentication.
         Structure is documented below.
@@ -17316,7 +17316,7 @@ class FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgs:
         return pulumi.get(self, "trellix_iam")
 
     @trellix_iam.setter
-    def trellix_iam(self, value: Optional[pulumi.Input['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationTrellixIamArgs']]):
+    def trellix_iam(self, value: pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationTrellixIamArgs']]):
         pulumi.set(self, "trellix_iam", value)
 
 
@@ -17537,7 +17537,7 @@ class FeedDetailsTrellixHxHostsSettingsArgsDict(TypedDict):
     - or -
     https://htapdeviceproxy.md.mandiant.net/dphb/hx//
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsTrellixHxHostsSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationArgs']]]
     """
     TrellixStarXAuthentication contains a oneof with all of the authentication
     types supported by Trellix *X devices.
@@ -17548,7 +17548,7 @@ class FeedDetailsTrellixHxHostsSettingsArgsDict(TypedDict):
 class FeedDetailsTrellixHxHostsSettingsArgs:
     def __init__(__self__, *,
                  endpoint: pulumi.Input[_builtins.str],
-                 authentication: Optional[pulumi.Input['FeedDetailsTrellixHxHostsSettingsAuthenticationArgs']] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] endpoint: Trellix HX Device URL.
                This must be a valid URL with an http or https scheme. It has no default.
@@ -17583,7 +17583,7 @@ class FeedDetailsTrellixHxHostsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsTrellixHxHostsSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationArgs']]:
         """
         TrellixStarXAuthentication contains a oneof with all of the authentication
         types supported by Trellix *X devices.
@@ -17592,18 +17592,18 @@ class FeedDetailsTrellixHxHostsSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsTrellixHxHostsSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
 
 class FeedDetailsTrellixHxHostsSettingsAuthenticationArgsDict(TypedDict):
-    msso: NotRequired[pulumi.Input['FeedDetailsTrellixHxHostsSettingsAuthenticationMssoArgsDict']]
+    msso: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationMssoArgs']]]
     """
     Info for MssoAuthentication using a username, password, and login api
     endpoint.
     Structure is documented below.
     """
-    trellix_iam: NotRequired[pulumi.Input['FeedDetailsTrellixHxHostsSettingsAuthenticationTrellixIamArgsDict']]
+    trellix_iam: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationTrellixIamArgs']]]
     """
     Settings for TrellixIAMAuthentication.
     Structure is documented below.
@@ -17612,8 +17612,8 @@ class FeedDetailsTrellixHxHostsSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsTrellixHxHostsSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 msso: Optional[pulumi.Input['FeedDetailsTrellixHxHostsSettingsAuthenticationMssoArgs']] = None,
-                 trellix_iam: Optional[pulumi.Input['FeedDetailsTrellixHxHostsSettingsAuthenticationTrellixIamArgs']] = None):
+                 msso: pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationMssoArgs']] = None,
+                 trellix_iam: pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationTrellixIamArgs']] = None):
         """
         :param pulumi.Input['FeedDetailsTrellixHxHostsSettingsAuthenticationMssoArgs'] msso: Info for MssoAuthentication using a username, password, and login api
                endpoint.
@@ -17628,7 +17628,7 @@ class FeedDetailsTrellixHxHostsSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def msso(self) -> Optional[pulumi.Input['FeedDetailsTrellixHxHostsSettingsAuthenticationMssoArgs']]:
+    def msso(self) -> pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationMssoArgs']]:
         """
         Info for MssoAuthentication using a username, password, and login api
         endpoint.
@@ -17637,12 +17637,12 @@ class FeedDetailsTrellixHxHostsSettingsAuthenticationArgs:
         return pulumi.get(self, "msso")
 
     @msso.setter
-    def msso(self, value: Optional[pulumi.Input['FeedDetailsTrellixHxHostsSettingsAuthenticationMssoArgs']]):
+    def msso(self, value: pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationMssoArgs']]):
         pulumi.set(self, "msso", value)
 
     @_builtins.property
     @pulumi.getter(name="trellixIam")
-    def trellix_iam(self) -> Optional[pulumi.Input['FeedDetailsTrellixHxHostsSettingsAuthenticationTrellixIamArgs']]:
+    def trellix_iam(self) -> pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationTrellixIamArgs']]:
         """
         Settings for TrellixIAMAuthentication.
         Structure is documented below.
@@ -17650,7 +17650,7 @@ class FeedDetailsTrellixHxHostsSettingsAuthenticationArgs:
         return pulumi.get(self, "trellix_iam")
 
     @trellix_iam.setter
-    def trellix_iam(self, value: Optional[pulumi.Input['FeedDetailsTrellixHxHostsSettingsAuthenticationTrellixIamArgs']]):
+    def trellix_iam(self, value: pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationTrellixIamArgs']]):
         pulumi.set(self, "trellix_iam", value)
 
 
@@ -17871,16 +17871,16 @@ class FeedDetailsWebhookSettingsArgs:
 
 
 class FeedDetailsWorkdaySettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsWorkdaySettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkdaySettingsAuthenticationArgs']]]
     """
     Authentication for Workday.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Hostname.
     """
-    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tenant ID.
     """
@@ -17888,9 +17888,9 @@ class FeedDetailsWorkdaySettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkdaySettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsWorkdaySettingsAuthenticationArgs']] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsWorkdaySettingsAuthenticationArgs']] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsWorkdaySettingsAuthenticationArgs'] authentication: Authentication for Workday.
                Structure is documented below.
@@ -17906,7 +17906,7 @@ class FeedDetailsWorkdaySettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsWorkdaySettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsWorkdaySettingsAuthenticationArgs']]:
         """
         Authentication for Workday.
         Structure is documented below.
@@ -17914,49 +17914,49 @@ class FeedDetailsWorkdaySettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsWorkdaySettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsWorkdaySettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Hostname.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tenant ID.
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 class FeedDetailsWorkdaySettingsAuthenticationArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client Secret.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    refresh_token: NotRequired[pulumi.Input[_builtins.str]]
+    refresh_token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Refresh Token.
     """
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access token used to authenticate against Workday. This field is called
     "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -17965,11 +17965,11 @@ class FeedDetailsWorkdaySettingsAuthenticationArgsDict(TypedDict):
     specified.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
-    user: NotRequired[pulumi.Input[_builtins.str]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username. This is unused: Workday feeds were originally configured using a
     username and secret authentication method, but only the secret field was
@@ -17979,12 +17979,12 @@ class FeedDetailsWorkdaySettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkdaySettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID.
         :param pulumi.Input[_builtins.str] client_secret: Client Secret.
@@ -18016,19 +18016,19 @@ class FeedDetailsWorkdaySettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Secret.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -18036,24 +18036,24 @@ class FeedDetailsWorkdaySettingsAuthenticationArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshToken")
-    def refresh_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def refresh_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Refresh Token.
         """
         return pulumi.get(self, "refresh_token")
 
     @refresh_token.setter
-    def refresh_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def refresh_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "refresh_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token used to authenticate against Workday. This field is called
         "secret" to maintain backwards compatibility. Workday was (only) configured
@@ -18065,24 +18065,24 @@ class FeedDetailsWorkdaySettingsAuthenticationArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username. This is unused: Workday feeds were originally configured using a
         username and secret authentication method, but only the secret field was
@@ -18091,21 +18091,21 @@ class FeedDetailsWorkdaySettingsAuthenticationArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 class FeedDetailsWorkspaceActivitySettingsArgsDict(TypedDict):
-    applications: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    applications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Applications.
     """
-    authentication: NotRequired[pulumi.Input['FeedDetailsWorkspaceActivitySettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationArgs']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
     """
-    workspace_customer_id: NotRequired[pulumi.Input[_builtins.str]]
+    workspace_customer_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Customer ID.
     """
@@ -18113,9 +18113,9 @@ class FeedDetailsWorkspaceActivitySettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceActivitySettingsArgs:
     def __init__(__self__, *,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authentication: Optional[pulumi.Input['FeedDetailsWorkspaceActivitySettingsAuthenticationArgs']] = None,
-                 workspace_customer_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authentication: pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationArgs']] = None,
+                 workspace_customer_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applications: Applications.
         :param pulumi.Input['FeedDetailsWorkspaceActivitySettingsAuthenticationArgs'] authentication: OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
@@ -18131,19 +18131,19 @@ class FeedDetailsWorkspaceActivitySettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def applications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Applications.
         """
         return pulumi.get(self, "applications")
 
     @applications.setter
-    def applications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def applications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "applications", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceActivitySettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationArgs']]:
         """
         OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
         Structure is documented below.
@@ -18151,34 +18151,34 @@ class FeedDetailsWorkspaceActivitySettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceActivitySettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceCustomerId")
-    def workspace_customer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_customer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customer ID.
         """
         return pulumi.get(self, "workspace_customer_id")
 
     @workspace_customer_id.setter
-    def workspace_customer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_customer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_customer_id", value)
 
 
 class FeedDetailsWorkspaceActivitySettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input['FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgsDict']]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgs']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input['FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgsDict']]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgs']]]
     """
     RS credentials.
     Structure is documented below.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
@@ -18186,9 +18186,9 @@ class FeedDetailsWorkspaceActivitySettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceActivitySettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 claims: Optional[pulumi.Input['FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgs']] = None,
-                 rs_credentials: Optional[pulumi.Input['FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgs']] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 claims: pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgs']] = None,
+                 rs_credentials: pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgs']] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgs'] claims: Claims identifying a specific customer.
                Structure is documented below.
@@ -18205,7 +18205,7 @@ class FeedDetailsWorkspaceActivitySettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def claims(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgs']]:
+    def claims(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgs']]:
         """
         Claims identifying a specific customer.
         Structure is documented below.
@@ -18213,12 +18213,12 @@ class FeedDetailsWorkspaceActivitySettingsAuthenticationArgs:
         return pulumi.get(self, "claims")
 
     @claims.setter
-    def claims(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgs']]):
+    def claims(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgs']]):
         pulumi.set(self, "claims", value)
 
     @_builtins.property
     @pulumi.getter(name="rsCredentials")
-    def rs_credentials(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgs']]:
+    def rs_credentials(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgs']]:
         """
         RS credentials.
         Structure is documented below.
@@ -18226,32 +18226,32 @@ class FeedDetailsWorkspaceActivitySettingsAuthenticationArgs:
         return pulumi.get(self, "rs_credentials")
 
     @rs_credentials.setter
-    def rs_credentials(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgs']]):
+    def rs_credentials(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgs']]):
         pulumi.set(self, "rs_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgsDict(TypedDict):
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience.
     """
-    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    issuer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Issuer. Usually the client_id.
     """
-    subject: NotRequired[pulumi.Input[_builtins.str]]
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subject. Usually the email.
     """
@@ -18259,9 +18259,9 @@ class FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgsDict(TypedDict
 @pulumi.input_type
 class FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgs:
     def __init__(__self__, *,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] audience: Audience.
         :param pulumi.Input[_builtins.str] issuer: Issuer. Usually the client_id.
@@ -18276,43 +18276,43 @@ class FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience.
         """
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Issuer. Usually the client_id.
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subject. Usually the email.
         """
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
 
 class FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgsDict(TypedDict):
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Private key in PEM format.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -18321,7 +18321,7 @@ class FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgsDict(Ty
 @pulumi.input_type
 class FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgs:
     def __init__(__self__, *,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] private_key: Private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -18331,7 +18331,7 @@ class FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key in PEM format.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -18339,17 +18339,17 @@ class FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgs:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
 class FeedDetailsWorkspaceAlertsSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationArgs']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
     """
-    workspace_customer_id: NotRequired[pulumi.Input[_builtins.str]]
+    workspace_customer_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Customer ID.
     """
@@ -18357,8 +18357,8 @@ class FeedDetailsWorkspaceAlertsSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceAlertsSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsAuthenticationArgs']] = None,
-                 workspace_customer_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationArgs']] = None,
+                 workspace_customer_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsWorkspaceAlertsSettingsAuthenticationArgs'] authentication: OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
                Structure is documented below.
@@ -18371,7 +18371,7 @@ class FeedDetailsWorkspaceAlertsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationArgs']]:
         """
         OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
         Structure is documented below.
@@ -18379,34 +18379,34 @@ class FeedDetailsWorkspaceAlertsSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceCustomerId")
-    def workspace_customer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_customer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customer ID.
         """
         return pulumi.get(self, "workspace_customer_id")
 
     @workspace_customer_id.setter
-    def workspace_customer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_customer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_customer_id", value)
 
 
 class FeedDetailsWorkspaceAlertsSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgsDict']]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgs']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgsDict']]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgs']]]
     """
     RS credentials.
     Structure is documented below.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
@@ -18414,9 +18414,9 @@ class FeedDetailsWorkspaceAlertsSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceAlertsSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 claims: Optional[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgs']] = None,
-                 rs_credentials: Optional[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgs']] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 claims: pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgs']] = None,
+                 rs_credentials: pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgs']] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgs'] claims: Claims identifying a specific customer.
                Structure is documented below.
@@ -18433,7 +18433,7 @@ class FeedDetailsWorkspaceAlertsSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def claims(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgs']]:
+    def claims(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgs']]:
         """
         Claims identifying a specific customer.
         Structure is documented below.
@@ -18441,12 +18441,12 @@ class FeedDetailsWorkspaceAlertsSettingsAuthenticationArgs:
         return pulumi.get(self, "claims")
 
     @claims.setter
-    def claims(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgs']]):
+    def claims(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgs']]):
         pulumi.set(self, "claims", value)
 
     @_builtins.property
     @pulumi.getter(name="rsCredentials")
-    def rs_credentials(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgs']]:
+    def rs_credentials(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgs']]:
         """
         RS credentials.
         Structure is documented below.
@@ -18454,32 +18454,32 @@ class FeedDetailsWorkspaceAlertsSettingsAuthenticationArgs:
         return pulumi.get(self, "rs_credentials")
 
     @rs_credentials.setter
-    def rs_credentials(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgs']]):
+    def rs_credentials(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgs']]):
         pulumi.set(self, "rs_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgsDict(TypedDict):
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience.
     """
-    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    issuer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Issuer. Usually the client_id.
     """
-    subject: NotRequired[pulumi.Input[_builtins.str]]
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subject. Usually the email.
     """
@@ -18487,9 +18487,9 @@ class FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgs:
     def __init__(__self__, *,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] audience: Audience.
         :param pulumi.Input[_builtins.str] issuer: Issuer. Usually the client_id.
@@ -18504,43 +18504,43 @@ class FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience.
         """
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Issuer. Usually the client_id.
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subject. Usually the email.
         """
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
 
 class FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgsDict(TypedDict):
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Private key in PEM format.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -18549,7 +18549,7 @@ class FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgsDict(Type
 @pulumi.input_type
 class FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgs:
     def __init__(__self__, *,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] private_key: Private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -18559,7 +18559,7 @@ class FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key in PEM format.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -18567,17 +18567,17 @@ class FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgs:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
 class FeedDetailsWorkspaceChromeOsSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgs']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
     """
-    workspace_customer_id: NotRequired[pulumi.Input[_builtins.str]]
+    workspace_customer_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Customer ID.
     """
@@ -18585,8 +18585,8 @@ class FeedDetailsWorkspaceChromeOsSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceChromeOsSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgs']] = None,
-                 workspace_customer_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgs']] = None,
+                 workspace_customer_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgs'] authentication: OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
                Structure is documented below.
@@ -18599,7 +18599,7 @@ class FeedDetailsWorkspaceChromeOsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgs']]:
         """
         OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
         Structure is documented below.
@@ -18607,34 +18607,34 @@ class FeedDetailsWorkspaceChromeOsSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceCustomerId")
-    def workspace_customer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_customer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customer ID.
         """
         return pulumi.get(self, "workspace_customer_id")
 
     @workspace_customer_id.setter
-    def workspace_customer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_customer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_customer_id", value)
 
 
 class FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgsDict']]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgs']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgsDict']]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgs']]]
     """
     RS credentials.
     Structure is documented below.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
@@ -18642,9 +18642,9 @@ class FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 claims: Optional[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgs']] = None,
-                 rs_credentials: Optional[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgs']] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 claims: pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgs']] = None,
+                 rs_credentials: pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgs']] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgs'] claims: Claims identifying a specific customer.
                Structure is documented below.
@@ -18661,7 +18661,7 @@ class FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def claims(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgs']]:
+    def claims(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgs']]:
         """
         Claims identifying a specific customer.
         Structure is documented below.
@@ -18669,12 +18669,12 @@ class FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgs:
         return pulumi.get(self, "claims")
 
     @claims.setter
-    def claims(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgs']]):
+    def claims(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgs']]):
         pulumi.set(self, "claims", value)
 
     @_builtins.property
     @pulumi.getter(name="rsCredentials")
-    def rs_credentials(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgs']]:
+    def rs_credentials(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgs']]:
         """
         RS credentials.
         Structure is documented below.
@@ -18682,32 +18682,32 @@ class FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgs:
         return pulumi.get(self, "rs_credentials")
 
     @rs_credentials.setter
-    def rs_credentials(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgs']]):
+    def rs_credentials(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgs']]):
         pulumi.set(self, "rs_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgsDict(TypedDict):
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience.
     """
-    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    issuer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Issuer. Usually the client_id.
     """
-    subject: NotRequired[pulumi.Input[_builtins.str]]
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subject. Usually the email.
     """
@@ -18715,9 +18715,9 @@ class FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgsDict(TypedDict
 @pulumi.input_type
 class FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgs:
     def __init__(__self__, *,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] audience: Audience.
         :param pulumi.Input[_builtins.str] issuer: Issuer. Usually the client_id.
@@ -18732,43 +18732,43 @@ class FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience.
         """
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Issuer. Usually the client_id.
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subject. Usually the email.
         """
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
 
 class FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgsDict(TypedDict):
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Private key in PEM format.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -18777,7 +18777,7 @@ class FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgsDict(Ty
 @pulumi.input_type
 class FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgs:
     def __init__(__self__, *,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] private_key: Private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -18787,7 +18787,7 @@ class FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key in PEM format.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -18795,17 +18795,17 @@ class FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgs:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
 class FeedDetailsWorkspaceGroupsSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationArgs']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
     """
-    workspace_customer_id: NotRequired[pulumi.Input[_builtins.str]]
+    workspace_customer_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Customer ID.
     """
@@ -18813,8 +18813,8 @@ class FeedDetailsWorkspaceGroupsSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceGroupsSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsAuthenticationArgs']] = None,
-                 workspace_customer_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationArgs']] = None,
+                 workspace_customer_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsWorkspaceGroupsSettingsAuthenticationArgs'] authentication: OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
                Structure is documented below.
@@ -18827,7 +18827,7 @@ class FeedDetailsWorkspaceGroupsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationArgs']]:
         """
         OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
         Structure is documented below.
@@ -18835,34 +18835,34 @@ class FeedDetailsWorkspaceGroupsSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceCustomerId")
-    def workspace_customer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_customer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customer ID.
         """
         return pulumi.get(self, "workspace_customer_id")
 
     @workspace_customer_id.setter
-    def workspace_customer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_customer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_customer_id", value)
 
 
 class FeedDetailsWorkspaceGroupsSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgsDict']]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgs']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgsDict']]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgs']]]
     """
     RS credentials.
     Structure is documented below.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
@@ -18870,9 +18870,9 @@ class FeedDetailsWorkspaceGroupsSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceGroupsSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 claims: Optional[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgs']] = None,
-                 rs_credentials: Optional[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgs']] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 claims: pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgs']] = None,
+                 rs_credentials: pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgs']] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgs'] claims: Claims identifying a specific customer.
                Structure is documented below.
@@ -18889,7 +18889,7 @@ class FeedDetailsWorkspaceGroupsSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def claims(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgs']]:
+    def claims(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgs']]:
         """
         Claims identifying a specific customer.
         Structure is documented below.
@@ -18897,12 +18897,12 @@ class FeedDetailsWorkspaceGroupsSettingsAuthenticationArgs:
         return pulumi.get(self, "claims")
 
     @claims.setter
-    def claims(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgs']]):
+    def claims(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgs']]):
         pulumi.set(self, "claims", value)
 
     @_builtins.property
     @pulumi.getter(name="rsCredentials")
-    def rs_credentials(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgs']]:
+    def rs_credentials(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgs']]:
         """
         RS credentials.
         Structure is documented below.
@@ -18910,32 +18910,32 @@ class FeedDetailsWorkspaceGroupsSettingsAuthenticationArgs:
         return pulumi.get(self, "rs_credentials")
 
     @rs_credentials.setter
-    def rs_credentials(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgs']]):
+    def rs_credentials(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgs']]):
         pulumi.set(self, "rs_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgsDict(TypedDict):
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience.
     """
-    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    issuer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Issuer. Usually the client_id.
     """
-    subject: NotRequired[pulumi.Input[_builtins.str]]
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subject. Usually the email.
     """
@@ -18943,9 +18943,9 @@ class FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgs:
     def __init__(__self__, *,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] audience: Audience.
         :param pulumi.Input[_builtins.str] issuer: Issuer. Usually the client_id.
@@ -18960,43 +18960,43 @@ class FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience.
         """
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Issuer. Usually the client_id.
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subject. Usually the email.
         """
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
 
 class FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgsDict(TypedDict):
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Private key in PEM format.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -19005,7 +19005,7 @@ class FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgsDict(Type
 @pulumi.input_type
 class FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgs:
     def __init__(__self__, *,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] private_key: Private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -19015,7 +19015,7 @@ class FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key in PEM format.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -19023,17 +19023,17 @@ class FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgs:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
 class FeedDetailsWorkspaceMobileSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsWorkspaceMobileSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationArgs']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
     """
-    workspace_customer_id: NotRequired[pulumi.Input[_builtins.str]]
+    workspace_customer_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Customer ID.
     """
@@ -19041,8 +19041,8 @@ class FeedDetailsWorkspaceMobileSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceMobileSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsWorkspaceMobileSettingsAuthenticationArgs']] = None,
-                 workspace_customer_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationArgs']] = None,
+                 workspace_customer_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsWorkspaceMobileSettingsAuthenticationArgs'] authentication: OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
                Structure is documented below.
@@ -19055,7 +19055,7 @@ class FeedDetailsWorkspaceMobileSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceMobileSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationArgs']]:
         """
         OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
         Structure is documented below.
@@ -19063,34 +19063,34 @@ class FeedDetailsWorkspaceMobileSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceMobileSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceCustomerId")
-    def workspace_customer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_customer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customer ID.
         """
         return pulumi.get(self, "workspace_customer_id")
 
     @workspace_customer_id.setter
-    def workspace_customer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_customer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_customer_id", value)
 
 
 class FeedDetailsWorkspaceMobileSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input['FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgsDict']]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgs']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input['FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgsDict']]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgs']]]
     """
     RS credentials.
     Structure is documented below.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
@@ -19098,9 +19098,9 @@ class FeedDetailsWorkspaceMobileSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceMobileSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 claims: Optional[pulumi.Input['FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgs']] = None,
-                 rs_credentials: Optional[pulumi.Input['FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgs']] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 claims: pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgs']] = None,
+                 rs_credentials: pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgs']] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgs'] claims: Claims identifying a specific customer.
                Structure is documented below.
@@ -19117,7 +19117,7 @@ class FeedDetailsWorkspaceMobileSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def claims(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgs']]:
+    def claims(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgs']]:
         """
         Claims identifying a specific customer.
         Structure is documented below.
@@ -19125,12 +19125,12 @@ class FeedDetailsWorkspaceMobileSettingsAuthenticationArgs:
         return pulumi.get(self, "claims")
 
     @claims.setter
-    def claims(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgs']]):
+    def claims(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgs']]):
         pulumi.set(self, "claims", value)
 
     @_builtins.property
     @pulumi.getter(name="rsCredentials")
-    def rs_credentials(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgs']]:
+    def rs_credentials(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgs']]:
         """
         RS credentials.
         Structure is documented below.
@@ -19138,32 +19138,32 @@ class FeedDetailsWorkspaceMobileSettingsAuthenticationArgs:
         return pulumi.get(self, "rs_credentials")
 
     @rs_credentials.setter
-    def rs_credentials(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgs']]):
+    def rs_credentials(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgs']]):
         pulumi.set(self, "rs_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgsDict(TypedDict):
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience.
     """
-    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    issuer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Issuer. Usually the client_id.
     """
-    subject: NotRequired[pulumi.Input[_builtins.str]]
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subject. Usually the email.
     """
@@ -19171,9 +19171,9 @@ class FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgs:
     def __init__(__self__, *,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] audience: Audience.
         :param pulumi.Input[_builtins.str] issuer: Issuer. Usually the client_id.
@@ -19188,43 +19188,43 @@ class FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience.
         """
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Issuer. Usually the client_id.
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subject. Usually the email.
         """
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
 
 class FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgsDict(TypedDict):
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Private key in PEM format.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -19233,7 +19233,7 @@ class FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgsDict(Type
 @pulumi.input_type
 class FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgs:
     def __init__(__self__, *,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] private_key: Private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -19243,7 +19243,7 @@ class FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key in PEM format.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -19251,17 +19251,17 @@ class FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgs:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
 class FeedDetailsWorkspacePrivilegesSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgs']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
     """
-    workspace_customer_id: NotRequired[pulumi.Input[_builtins.str]]
+    workspace_customer_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Customer ID.
     """
@@ -19269,8 +19269,8 @@ class FeedDetailsWorkspacePrivilegesSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspacePrivilegesSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgs']] = None,
-                 workspace_customer_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgs']] = None,
+                 workspace_customer_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgs'] authentication: OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
                Structure is documented below.
@@ -19283,7 +19283,7 @@ class FeedDetailsWorkspacePrivilegesSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgs']]:
         """
         OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
         Structure is documented below.
@@ -19291,34 +19291,34 @@ class FeedDetailsWorkspacePrivilegesSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceCustomerId")
-    def workspace_customer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_customer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customer ID.
         """
         return pulumi.get(self, "workspace_customer_id")
 
     @workspace_customer_id.setter
-    def workspace_customer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_customer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_customer_id", value)
 
 
 class FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgsDict']]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgs']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgsDict']]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgs']]]
     """
     RS credentials.
     Structure is documented below.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
@@ -19326,9 +19326,9 @@ class FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 claims: Optional[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgs']] = None,
-                 rs_credentials: Optional[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgs']] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 claims: pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgs']] = None,
+                 rs_credentials: pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgs']] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgs'] claims: Claims identifying a specific customer.
                Structure is documented below.
@@ -19345,7 +19345,7 @@ class FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def claims(self) -> Optional[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgs']]:
+    def claims(self) -> pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgs']]:
         """
         Claims identifying a specific customer.
         Structure is documented below.
@@ -19353,12 +19353,12 @@ class FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgs:
         return pulumi.get(self, "claims")
 
     @claims.setter
-    def claims(self, value: Optional[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgs']]):
+    def claims(self, value: pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgs']]):
         pulumi.set(self, "claims", value)
 
     @_builtins.property
     @pulumi.getter(name="rsCredentials")
-    def rs_credentials(self) -> Optional[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgs']]:
+    def rs_credentials(self) -> pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgs']]:
         """
         RS credentials.
         Structure is documented below.
@@ -19366,32 +19366,32 @@ class FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgs:
         return pulumi.get(self, "rs_credentials")
 
     @rs_credentials.setter
-    def rs_credentials(self, value: Optional[pulumi.Input['FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgs']]):
+    def rs_credentials(self, value: pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgs']]):
         pulumi.set(self, "rs_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgsDict(TypedDict):
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience.
     """
-    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    issuer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Issuer. Usually the client_id.
     """
-    subject: NotRequired[pulumi.Input[_builtins.str]]
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subject. Usually the email.
     """
@@ -19399,9 +19399,9 @@ class FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgsDict(TypedDi
 @pulumi.input_type
 class FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgs:
     def __init__(__self__, *,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] audience: Audience.
         :param pulumi.Input[_builtins.str] issuer: Issuer. Usually the client_id.
@@ -19416,43 +19416,43 @@ class FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience.
         """
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Issuer. Usually the client_id.
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subject. Usually the email.
         """
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
 
 class FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgsDict(TypedDict):
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Private key in PEM format.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -19461,7 +19461,7 @@ class FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgsDict(
 @pulumi.input_type
 class FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgs:
     def __init__(__self__, *,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] private_key: Private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -19471,7 +19471,7 @@ class FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key in PEM format.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -19479,24 +19479,24 @@ class FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgs:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
 class FeedDetailsWorkspaceUsersSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input['FeedDetailsWorkspaceUsersSettingsAuthenticationArgsDict']]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationArgs']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
     """
-    projection_type: NotRequired[pulumi.Input[_builtins.str]]
+    projection_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Projection Type.
     Possible values:
     BASIC_PROJECTION
     FULL_PROJECTION
     """
-    workspace_customer_id: NotRequired[pulumi.Input[_builtins.str]]
+    workspace_customer_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Customer ID.
     """
@@ -19504,9 +19504,9 @@ class FeedDetailsWorkspaceUsersSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceUsersSettingsArgs:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['FeedDetailsWorkspaceUsersSettingsAuthenticationArgs']] = None,
-                 projection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_customer_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationArgs']] = None,
+                 projection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_customer_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsWorkspaceUsersSettingsAuthenticationArgs'] authentication: OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
                Structure is documented below.
@@ -19525,7 +19525,7 @@ class FeedDetailsWorkspaceUsersSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceUsersSettingsAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationArgs']]:
         """
         OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
         Structure is documented below.
@@ -19533,12 +19533,12 @@ class FeedDetailsWorkspaceUsersSettingsArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceUsersSettingsAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="projectionType")
-    def projection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def projection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Projection Type.
         Possible values:
@@ -19548,34 +19548,34 @@ class FeedDetailsWorkspaceUsersSettingsArgs:
         return pulumi.get(self, "projection_type")
 
     @projection_type.setter
-    def projection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def projection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "projection_type", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceCustomerId")
-    def workspace_customer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_customer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customer ID.
         """
         return pulumi.get(self, "workspace_customer_id")
 
     @workspace_customer_id.setter
-    def workspace_customer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_customer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_customer_id", value)
 
 
 class FeedDetailsWorkspaceUsersSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input['FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgsDict']]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgs']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input['FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgsDict']]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgs']]]
     """
     RS credentials.
     Structure is documented below.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Token endpoint to get the OAuth token from.
     """
@@ -19583,9 +19583,9 @@ class FeedDetailsWorkspaceUsersSettingsAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceUsersSettingsAuthenticationArgs:
     def __init__(__self__, *,
-                 claims: Optional[pulumi.Input['FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgs']] = None,
-                 rs_credentials: Optional[pulumi.Input['FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgs']] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 claims: pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgs']] = None,
+                 rs_credentials: pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgs']] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgs'] claims: Claims identifying a specific customer.
                Structure is documented below.
@@ -19602,7 +19602,7 @@ class FeedDetailsWorkspaceUsersSettingsAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def claims(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgs']]:
+    def claims(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgs']]:
         """
         Claims identifying a specific customer.
         Structure is documented below.
@@ -19610,12 +19610,12 @@ class FeedDetailsWorkspaceUsersSettingsAuthenticationArgs:
         return pulumi.get(self, "claims")
 
     @claims.setter
-    def claims(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgs']]):
+    def claims(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgs']]):
         pulumi.set(self, "claims", value)
 
     @_builtins.property
     @pulumi.getter(name="rsCredentials")
-    def rs_credentials(self) -> Optional[pulumi.Input['FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgs']]:
+    def rs_credentials(self) -> pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgs']]:
         """
         RS credentials.
         Structure is documented below.
@@ -19623,32 +19623,32 @@ class FeedDetailsWorkspaceUsersSettingsAuthenticationArgs:
         return pulumi.get(self, "rs_credentials")
 
     @rs_credentials.setter
-    def rs_credentials(self, value: Optional[pulumi.Input['FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgs']]):
+    def rs_credentials(self, value: pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgs']]):
         pulumi.set(self, "rs_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token endpoint to get the OAuth token from.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgsDict(TypedDict):
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience.
     """
-    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    issuer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Issuer. Usually the client_id.
     """
-    subject: NotRequired[pulumi.Input[_builtins.str]]
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subject. Usually the email.
     """
@@ -19656,9 +19656,9 @@ class FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgs:
     def __init__(__self__, *,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] audience: Audience.
         :param pulumi.Input[_builtins.str] issuer: Issuer. Usually the client_id.
@@ -19673,43 +19673,43 @@ class FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience.
         """
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Issuer. Usually the client_id.
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subject. Usually the email.
         """
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
 
 class FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgsDict(TypedDict):
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Private key in PEM format.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -19718,7 +19718,7 @@ class FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgsDict(Typed
 @pulumi.input_type
 class FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgs:
     def __init__(__self__, *,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] private_key: Private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -19728,7 +19728,7 @@ class FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key in PEM format.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -19736,29 +19736,29 @@ class FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgs:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
 class FeedFailureDetailsArgsDict(TypedDict):
-    error_action: NotRequired[pulumi.Input[_builtins.str]]
+    error_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     error_action contains the user action prescribed for remediation of feed
     error.
     """
-    error_cause: NotRequired[pulumi.Input[_builtins.str]]
+    error_cause: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     error_cause contains the information regarding the failure cause.
     """
-    error_code: NotRequired[pulumi.Input[_builtins.str]]
+    error_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     error_code contains the error code for the feed. The field is populated for
     the feeds with failed status.
     """
-    http_error_code: NotRequired[pulumi.Input[_builtins.int]]
+    http_error_code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     http_error_code contains the HTTP error code for the feed failure.
@@ -19768,10 +19768,10 @@ class FeedFailureDetailsArgsDict(TypedDict):
 @pulumi.input_type
 class FeedFailureDetailsArgs:
     def __init__(__self__, *,
-                 error_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_cause: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_error_code: Optional[pulumi.Input[_builtins.int]] = None):
+                 error_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_cause: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_error_code: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] error_action: (Output)
                error_action contains the user action prescribed for remediation of feed
@@ -19796,7 +19796,7 @@ class FeedFailureDetailsArgs:
 
     @_builtins.property
     @pulumi.getter(name="errorAction")
-    def error_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         error_action contains the user action prescribed for remediation of feed
@@ -19805,12 +19805,12 @@ class FeedFailureDetailsArgs:
         return pulumi.get(self, "error_action")
 
     @error_action.setter
-    def error_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_action", value)
 
     @_builtins.property
     @pulumi.getter(name="errorCause")
-    def error_cause(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_cause(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         error_cause contains the information regarding the failure cause.
@@ -19818,12 +19818,12 @@ class FeedFailureDetailsArgs:
         return pulumi.get(self, "error_cause")
 
     @error_cause.setter
-    def error_cause(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_cause(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_cause", value)
 
     @_builtins.property
     @pulumi.getter(name="errorCode")
-    def error_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         error_code contains the error code for the feed. The field is populated for
@@ -19832,12 +19832,12 @@ class FeedFailureDetailsArgs:
         return pulumi.get(self, "error_code")
 
     @error_code.setter
-    def error_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_code", value)
 
     @_builtins.property
     @pulumi.getter(name="httpErrorCode")
-    def http_error_code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_error_code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         http_error_code contains the HTTP error code for the feed failure.
@@ -19846,21 +19846,21 @@ class FeedFailureDetailsArgs:
         return pulumi.get(self, "http_error_code")
 
     @http_error_code.setter
-    def http_error_code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_error_code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_error_code", value)
 
 
 class NativeDashboardChartArgsDict(TypedDict):
-    chart_layout: NotRequired[pulumi.Input['NativeDashboardChartChartLayoutArgsDict']]
+    chart_layout: NotRequired[pulumi.Input[Optional['NativeDashboardChartChartLayoutArgs']]]
     """
     The visual layout parameters of this chart within the dashboard.
     Structure is documented below.
     """
-    dashboard_chart: NotRequired[pulumi.Input[_builtins.str]]
+    dashboard_chart: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name of the associated DashboardChart.
     """
-    filters_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    filters_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of dashboard filter IDs applied to this chart.
     """
@@ -19868,9 +19868,9 @@ class NativeDashboardChartArgsDict(TypedDict):
 @pulumi.input_type
 class NativeDashboardChartArgs:
     def __init__(__self__, *,
-                 chart_layout: Optional[pulumi.Input['NativeDashboardChartChartLayoutArgs']] = None,
-                 dashboard_chart: Optional[pulumi.Input[_builtins.str]] = None,
-                 filters_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 chart_layout: pulumi.Input[Optional['NativeDashboardChartChartLayoutArgs']] = None,
+                 dashboard_chart: pulumi.Input[Optional[_builtins.str]] = None,
+                 filters_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['NativeDashboardChartChartLayoutArgs'] chart_layout: The visual layout parameters of this chart within the dashboard.
                Structure is documented below.
@@ -19886,7 +19886,7 @@ class NativeDashboardChartArgs:
 
     @_builtins.property
     @pulumi.getter(name="chartLayout")
-    def chart_layout(self) -> Optional[pulumi.Input['NativeDashboardChartChartLayoutArgs']]:
+    def chart_layout(self) -> pulumi.Input[Optional['NativeDashboardChartChartLayoutArgs']]:
         """
         The visual layout parameters of this chart within the dashboard.
         Structure is documented below.
@@ -19894,31 +19894,31 @@ class NativeDashboardChartArgs:
         return pulumi.get(self, "chart_layout")
 
     @chart_layout.setter
-    def chart_layout(self, value: Optional[pulumi.Input['NativeDashboardChartChartLayoutArgs']]):
+    def chart_layout(self, value: pulumi.Input[Optional['NativeDashboardChartChartLayoutArgs']]):
         pulumi.set(self, "chart_layout", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardChart")
-    def dashboard_chart(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_chart(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the associated DashboardChart.
         """
         return pulumi.get(self, "dashboard_chart")
 
     @dashboard_chart.setter
-    def dashboard_chart(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_chart(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_chart", value)
 
     @_builtins.property
     @pulumi.getter(name="filtersIds")
-    def filters_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def filters_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of dashboard filter IDs applied to this chart.
         """
         return pulumi.get(self, "filters_ids")
 
     @filters_ids.setter
-    def filters_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def filters_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "filters_ids", value)
 
 
@@ -19931,11 +19931,11 @@ class NativeDashboardChartChartLayoutArgsDict(TypedDict):
     """
     The number of rows the chart spans.
     """
-    start_x: NotRequired[pulumi.Input[_builtins.int]]
+    start_x: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The starting X coordinate.
     """
-    start_y: NotRequired[pulumi.Input[_builtins.int]]
+    start_y: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The starting Y coordinate.
     """
@@ -19945,8 +19945,8 @@ class NativeDashboardChartChartLayoutArgs:
     def __init__(__self__, *,
                  span_x: pulumi.Input[_builtins.int],
                  span_y: pulumi.Input[_builtins.int],
-                 start_x: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_y: Optional[pulumi.Input[_builtins.int]] = None):
+                 start_x: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_y: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] span_x: The number of columns the chart spans.
         :param pulumi.Input[_builtins.int] span_y: The number of rows the chart spans.
@@ -19986,35 +19986,35 @@ class NativeDashboardChartChartLayoutArgs:
 
     @_builtins.property
     @pulumi.getter(name="startX")
-    def start_x(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_x(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The starting X coordinate.
         """
         return pulumi.get(self, "start_x")
 
     @start_x.setter
-    def start_x(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_x(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_x", value)
 
     @_builtins.property
     @pulumi.getter(name="startY")
-    def start_y(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_y(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The starting Y coordinate.
         """
         return pulumi.get(self, "start_y")
 
     @start_y.setter
-    def start_y(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_y(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_y", value)
 
 
 class NativeDashboardFilterArgsDict(TypedDict):
-    chart_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    chart_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The IDs of charts that this filter applies to.
     """
-    data_source: NotRequired[pulumi.Input[_builtins.str]]
+    data_source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The data source for the filter.
     Possible values:
@@ -20022,32 +20022,32 @@ class NativeDashboardFilterArgsDict(TypedDict):
     IOC_MATCHES, RULES, SOAR_CASES, SOAR_PLAYBOOKS, SOAR_CASE_HISTORY,
     DATA_TABLE, INVESTIGATION, INVESTIGATION_FEEDBACK
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the filter.
     """
-    field_path: NotRequired[pulumi.Input[_builtins.str]]
+    field_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The UDM field path being filtered.
     """
-    filter_operator_and_field_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgsDict']]]]
+    filter_operator_and_field_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgs']]]]]
     """
     The specific operator and value set for the filter.
     Structure is documented below.
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The unique ID of the filter.
     """
-    is_mandatory: NotRequired[pulumi.Input[_builtins.bool]]
+    is_mandatory: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the filter is mandatory for the dashboard consumer.
     """
-    is_standard_time_range_filter: NotRequired[pulumi.Input[_builtins.bool]]
+    is_standard_time_range_filter: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the filter is a standard time range filter.
     """
-    is_standard_time_range_filter_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    is_standard_time_range_filter_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the standard time range filter is currently enabled.
     """
@@ -20055,15 +20055,15 @@ class NativeDashboardFilterArgsDict(TypedDict):
 @pulumi.input_type
 class NativeDashboardFilterArgs:
     def __init__(__self__, *,
-                 chart_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 data_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 field_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_operator_and_field_values: Optional[pulumi.Input[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgs']]]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_standard_time_range_filter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_standard_time_range_filter_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 chart_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_operator_and_field_values: pulumi.Input[Optional[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgs']]]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_standard_time_range_filter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_standard_time_range_filter_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] chart_ids: The IDs of charts that this filter applies to.
         :param pulumi.Input[_builtins.str] data_source: The data source for the filter.
@@ -20101,19 +20101,19 @@ class NativeDashboardFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="chartIds")
-    def chart_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def chart_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of charts that this filter applies to.
         """
         return pulumi.get(self, "chart_ids")
 
     @chart_ids.setter
-    def chart_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def chart_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "chart_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSource")
-    def data_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source for the filter.
         Possible values:
@@ -20124,36 +20124,36 @@ class NativeDashboardFilterArgs:
         return pulumi.get(self, "data_source")
 
     @data_source.setter
-    def data_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the filter.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="fieldPath")
-    def field_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UDM field path being filtered.
         """
         return pulumi.get(self, "field_path")
 
     @field_path.setter
-    def field_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_path", value)
 
     @_builtins.property
     @pulumi.getter(name="filterOperatorAndFieldValues")
-    def filter_operator_and_field_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgs']]]]:
+    def filter_operator_and_field_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgs']]]]:
         """
         The specific operator and value set for the filter.
         Structure is documented below.
@@ -20161,65 +20161,65 @@ class NativeDashboardFilterArgs:
         return pulumi.get(self, "filter_operator_and_field_values")
 
     @filter_operator_and_field_values.setter
-    def filter_operator_and_field_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgs']]]]):
+    def filter_operator_and_field_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgs']]]]):
         pulumi.set(self, "filter_operator_and_field_values", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique ID of the filter.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="isMandatory")
-    def is_mandatory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_mandatory(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the filter is mandatory for the dashboard consumer.
         """
         return pulumi.get(self, "is_mandatory")
 
     @is_mandatory.setter
-    def is_mandatory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_mandatory(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_mandatory", value)
 
     @_builtins.property
     @pulumi.getter(name="isStandardTimeRangeFilter")
-    def is_standard_time_range_filter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_standard_time_range_filter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the filter is a standard time range filter.
         """
         return pulumi.get(self, "is_standard_time_range_filter")
 
     @is_standard_time_range_filter.setter
-    def is_standard_time_range_filter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_standard_time_range_filter(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_standard_time_range_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="isStandardTimeRangeFilterEnabled")
-    def is_standard_time_range_filter_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_standard_time_range_filter_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the standard time range filter is currently enabled.
         """
         return pulumi.get(self, "is_standard_time_range_filter_enabled")
 
     @is_standard_time_range_filter_enabled.setter
-    def is_standard_time_range_filter_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_standard_time_range_filter_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_standard_time_range_filter_enabled", value)
 
 
 class NativeDashboardFilterFilterOperatorAndFieldValueArgsDict(TypedDict):
-    field_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    field_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The values for the modifier. All operators should have a single
     value other than 'IN' and 'BETWEEN'.
     """
-    filter_operator: NotRequired[pulumi.Input[_builtins.str]]
+    filter_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The operator to apply to the field.
     Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
@@ -20228,8 +20228,8 @@ class NativeDashboardFilterFilterOperatorAndFieldValueArgsDict(TypedDict):
 @pulumi.input_type
 class NativeDashboardFilterFilterOperatorAndFieldValueArgs:
     def __init__(__self__, *,
-                 field_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 filter_operator: Optional[pulumi.Input[_builtins.str]] = None):
+                 field_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filter_operator: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] field_values: The values for the modifier. All operators should have a single
                value other than 'IN' and 'BETWEEN'.
@@ -20243,7 +20243,7 @@ class NativeDashboardFilterFilterOperatorAndFieldValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="fieldValues")
-    def field_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def field_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The values for the modifier. All operators should have a single
         value other than 'IN' and 'BETWEEN'.
@@ -20251,12 +20251,12 @@ class NativeDashboardFilterFilterOperatorAndFieldValueArgs:
         return pulumi.get(self, "field_values")
 
     @field_values.setter
-    def field_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def field_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "field_values", value)
 
     @_builtins.property
     @pulumi.getter(name="filterOperator")
-    def filter_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operator to apply to the field.
         Possible values are: `EQUAL`, `NOT_EQUAL`, `IN`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL_TO`, `LESS_THAN`, `LESS_THAN_OR_EQUAL_TO`, `BETWEEN`, `PAST`, `IS_NULL`, `IS_NOT_NULL`, `STARTS_WITH`, `ENDS_WITH`, `DOES_NOT_STARTS_WITH`, `DOES_NOT_ENDS_WITH`, `NOT_IN`, `CONTAINS`, `DOES_NOT_CONTAIN`.
@@ -20264,7 +20264,7 @@ class NativeDashboardFilterFilterOperatorAndFieldValueArgs:
         return pulumi.get(self, "filter_operator")
 
     @filter_operator.setter
-    def filter_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_operator", value)
 
 
@@ -20297,7 +20297,7 @@ class ReferenceListEntryArgs:
 
 
 class ReferenceListScopeInfoArgsDict(TypedDict):
-    reference_list_scope: NotRequired[pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgsDict']]
+    reference_list_scope: NotRequired[pulumi.Input[Optional['ReferenceListScopeInfoReferenceListScopeArgs']]]
     """
     ReferenceListScope specifies the list of scope names of the reference list.
     Structure is documented below.
@@ -20306,7 +20306,7 @@ class ReferenceListScopeInfoArgsDict(TypedDict):
 @pulumi.input_type
 class ReferenceListScopeInfoArgs:
     def __init__(__self__, *,
-                 reference_list_scope: Optional[pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs']] = None):
+                 reference_list_scope: pulumi.Input[Optional['ReferenceListScopeInfoReferenceListScopeArgs']] = None):
         """
         :param pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs'] reference_list_scope: ReferenceListScope specifies the list of scope names of the reference list.
                Structure is documented below.
@@ -20316,7 +20316,7 @@ class ReferenceListScopeInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="referenceListScope")
-    def reference_list_scope(self) -> Optional[pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs']]:
+    def reference_list_scope(self) -> pulumi.Input[Optional['ReferenceListScopeInfoReferenceListScopeArgs']]:
         """
         ReferenceListScope specifies the list of scope names of the reference list.
         Structure is documented below.
@@ -20324,12 +20324,12 @@ class ReferenceListScopeInfoArgs:
         return pulumi.get(self, "reference_list_scope")
 
     @reference_list_scope.setter
-    def reference_list_scope(self, value: Optional[pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs']]):
+    def reference_list_scope(self, value: pulumi.Input[Optional['ReferenceListScopeInfoReferenceListScopeArgs']]):
         pulumi.set(self, "reference_list_scope", value)
 
 
 class ReferenceListScopeInfoReferenceListScopeArgsDict(TypedDict):
-    scope_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    scope_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional. The list of scope names of the reference list. The scope names should be
     full resource names and should be of the format:
@@ -20339,7 +20339,7 @@ class ReferenceListScopeInfoReferenceListScopeArgsDict(TypedDict):
 @pulumi.input_type
 class ReferenceListScopeInfoReferenceListScopeArgs:
     def __init__(__self__, *,
-                 scope_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 scope_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scope_names: Optional. The list of scope names of the reference list. The scope names should be
                full resource names and should be of the format:
@@ -20350,7 +20350,7 @@ class ReferenceListScopeInfoReferenceListScopeArgs:
 
     @_builtins.property
     @pulumi.getter(name="scopeNames")
-    def scope_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scope_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. The list of scope names of the reference list. The scope names should be
         full resource names and should be of the format:
@@ -20359,18 +20359,18 @@ class ReferenceListScopeInfoReferenceListScopeArgs:
         return pulumi.get(self, "scope_names")
 
     @scope_names.setter
-    def scope_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scope_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scope_names", value)
 
 
 class RetrohuntExecutionIntervalArgsDict(TypedDict):
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Exclusive end of the interval.
     If specified, a Timestamp matching this interval will have to be before the
     end.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Inclusive start of the interval.
     If specified, a Timestamp matching this interval will have to be the same
@@ -20380,8 +20380,8 @@ class RetrohuntExecutionIntervalArgsDict(TypedDict):
 @pulumi.input_type
 class RetrohuntExecutionIntervalArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end_time: Optional. Exclusive end of the interval.
                If specified, a Timestamp matching this interval will have to be before the
@@ -20397,7 +20397,7 @@ class RetrohuntExecutionIntervalArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Exclusive end of the interval.
         If specified, a Timestamp matching this interval will have to be before the
@@ -20406,12 +20406,12 @@ class RetrohuntExecutionIntervalArgs:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Inclusive start of the interval.
         If specified, a Timestamp matching this interval will have to be the same
@@ -20420,7 +20420,7 @@ class RetrohuntExecutionIntervalArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
@@ -20472,18 +20472,18 @@ class RetrohuntProcessIntervalArgs:
 
 
 class RuleCompilationDiagnosticArgsDict(TypedDict):
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The diagnostic message.
     """
-    position: NotRequired[pulumi.Input['RuleCompilationDiagnosticPositionArgsDict']]
+    position: NotRequired[pulumi.Input[Optional['RuleCompilationDiagnosticPositionArgs']]]
     """
     CompilationPosition represents the location of a compilation diagnostic in
     rule text.
     Structure is documented below.
     """
-    severity: NotRequired[pulumi.Input[_builtins.str]]
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The severity of a rule's compilation diagnostic.
@@ -20492,7 +20492,7 @@ class RuleCompilationDiagnosticArgsDict(TypedDict):
     WARNING
     ERROR
     """
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Link to documentation that describes a diagnostic in more detail.
@@ -20501,10 +20501,10 @@ class RuleCompilationDiagnosticArgsDict(TypedDict):
 @pulumi.input_type
 class RuleCompilationDiagnosticArgs:
     def __init__(__self__, *,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input['RuleCompilationDiagnosticPositionArgs']] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional['RuleCompilationDiagnosticPositionArgs']] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] message: (Output)
                Output only. The diagnostic message.
@@ -20531,7 +20531,7 @@ class RuleCompilationDiagnosticArgs:
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The diagnostic message.
@@ -20539,12 +20539,12 @@ class RuleCompilationDiagnosticArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input['RuleCompilationDiagnosticPositionArgs']]:
+    def position(self) -> pulumi.Input[Optional['RuleCompilationDiagnosticPositionArgs']]:
         """
         CompilationPosition represents the location of a compilation diagnostic in
         rule text.
@@ -20553,12 +20553,12 @@ class RuleCompilationDiagnosticArgs:
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input['RuleCompilationDiagnosticPositionArgs']]):
+    def position(self, value: pulumi.Input[Optional['RuleCompilationDiagnosticPositionArgs']]):
         pulumi.set(self, "position", value)
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The severity of a rule's compilation diagnostic.
@@ -20570,12 +20570,12 @@ class RuleCompilationDiagnosticArgs:
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "severity", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Link to documentation that describes a diagnostic in more detail.
@@ -20583,27 +20583,27 @@ class RuleCompilationDiagnosticArgs:
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class RuleCompilationDiagnosticPositionArgsDict(TypedDict):
-    end_column: NotRequired[pulumi.Input[_builtins.int]]
+    end_column: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Output only. End column number, beginning at 1.
     """
-    end_line: NotRequired[pulumi.Input[_builtins.int]]
+    end_line: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Output only. End line number, beginning at 1.
     """
-    start_column: NotRequired[pulumi.Input[_builtins.int]]
+    start_column: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Output only. Start column number, beginning at 1.
     """
-    start_line: NotRequired[pulumi.Input[_builtins.int]]
+    start_line: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Output only. Start line number, beginning at 1.
@@ -20612,10 +20612,10 @@ class RuleCompilationDiagnosticPositionArgsDict(TypedDict):
 @pulumi.input_type
 class RuleCompilationDiagnosticPositionArgs:
     def __init__(__self__, *,
-                 end_column: Optional[pulumi.Input[_builtins.int]] = None,
-                 end_line: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_column: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_line: Optional[pulumi.Input[_builtins.int]] = None):
+                 end_column: pulumi.Input[Optional[_builtins.int]] = None,
+                 end_line: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_column: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_line: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] end_column: (Output)
                Output only. End column number, beginning at 1.
@@ -20637,7 +20637,7 @@ class RuleCompilationDiagnosticPositionArgs:
 
     @_builtins.property
     @pulumi.getter(name="endColumn")
-    def end_column(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_column(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Output only. End column number, beginning at 1.
@@ -20645,12 +20645,12 @@ class RuleCompilationDiagnosticPositionArgs:
         return pulumi.get(self, "end_column")
 
     @end_column.setter
-    def end_column(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_column(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_column", value)
 
     @_builtins.property
     @pulumi.getter(name="endLine")
-    def end_line(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_line(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Output only. End line number, beginning at 1.
@@ -20658,12 +20658,12 @@ class RuleCompilationDiagnosticPositionArgs:
         return pulumi.get(self, "end_line")
 
     @end_line.setter
-    def end_line(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_line(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_line", value)
 
     @_builtins.property
     @pulumi.getter(name="startColumn")
-    def start_column(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_column(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Output only. Start column number, beginning at 1.
@@ -20671,12 +20671,12 @@ class RuleCompilationDiagnosticPositionArgs:
         return pulumi.get(self, "start_column")
 
     @start_column.setter
-    def start_column(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_column(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_column", value)
 
     @_builtins.property
     @pulumi.getter(name="startLine")
-    def start_line(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_line(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Output only. Start line number, beginning at 1.
@@ -20684,12 +20684,12 @@ class RuleCompilationDiagnosticPositionArgs:
         return pulumi.get(self, "start_line")
 
     @start_line.setter
-    def start_line(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_line(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_line", value)
 
 
 class RuleSeverityArgsDict(TypedDict):
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the severity level. Extracted from the meta section of
     the rule text.
@@ -20698,7 +20698,7 @@ class RuleSeverityArgsDict(TypedDict):
 @pulumi.input_type
 class RuleSeverityArgs:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] display_name: The display name of the severity level. Extracted from the meta section of
                the rule text.
@@ -20708,7 +20708,7 @@ class RuleSeverityArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the severity level. Extracted from the meta section of
         the rule text.
@@ -20716,17 +20716,17 @@ class RuleSeverityArgs:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
 
 class WatchlistEntityCountArgsDict(TypedDict):
-    asset: NotRequired[pulumi.Input[_builtins.int]]
+    asset: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Output only. Count of asset type entities in the watchlist.
     """
-    user: NotRequired[pulumi.Input[_builtins.int]]
+    user: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Output only. Count of user type entities in the watchlist.
@@ -20735,8 +20735,8 @@ class WatchlistEntityCountArgsDict(TypedDict):
 @pulumi.input_type
 class WatchlistEntityCountArgs:
     def __init__(__self__, *,
-                 asset: Optional[pulumi.Input[_builtins.int]] = None,
-                 user: Optional[pulumi.Input[_builtins.int]] = None):
+                 asset: pulumi.Input[Optional[_builtins.int]] = None,
+                 user: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] asset: (Output)
                Output only. Count of asset type entities in the watchlist.
@@ -20750,7 +20750,7 @@ class WatchlistEntityCountArgs:
 
     @_builtins.property
     @pulumi.getter
-    def asset(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def asset(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Output only. Count of asset type entities in the watchlist.
@@ -20758,12 +20758,12 @@ class WatchlistEntityCountArgs:
         return pulumi.get(self, "asset")
 
     @asset.setter
-    def asset(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def asset(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "asset", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Output only. Count of user type entities in the watchlist.
@@ -20771,12 +20771,12 @@ class WatchlistEntityCountArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user", value)
 
 
 class WatchlistEntityPopulationMechanismArgsDict(TypedDict):
-    manual: NotRequired[pulumi.Input['WatchlistEntityPopulationMechanismManualArgsDict']]
+    manual: NotRequired[pulumi.Input[Optional['WatchlistEntityPopulationMechanismManualArgs']]]
     """
     Entities are added manually.
     """
@@ -20784,7 +20784,7 @@ class WatchlistEntityPopulationMechanismArgsDict(TypedDict):
 @pulumi.input_type
 class WatchlistEntityPopulationMechanismArgs:
     def __init__(__self__, *,
-                 manual: Optional[pulumi.Input['WatchlistEntityPopulationMechanismManualArgs']] = None):
+                 manual: pulumi.Input[Optional['WatchlistEntityPopulationMechanismManualArgs']] = None):
         """
         :param pulumi.Input['WatchlistEntityPopulationMechanismManualArgs'] manual: Entities are added manually.
         """
@@ -20793,14 +20793,14 @@ class WatchlistEntityPopulationMechanismArgs:
 
     @_builtins.property
     @pulumi.getter
-    def manual(self) -> Optional[pulumi.Input['WatchlistEntityPopulationMechanismManualArgs']]:
+    def manual(self) -> pulumi.Input[Optional['WatchlistEntityPopulationMechanismManualArgs']]:
         """
         Entities are added manually.
         """
         return pulumi.get(self, "manual")
 
     @manual.setter
-    def manual(self, value: Optional[pulumi.Input['WatchlistEntityPopulationMechanismManualArgs']]):
+    def manual(self, value: pulumi.Input[Optional['WatchlistEntityPopulationMechanismManualArgs']]):
         pulumi.set(self, "manual", value)
 
 
@@ -20814,7 +20814,7 @@ class WatchlistEntityPopulationMechanismManualArgs:
 
 
 class WatchlistWatchlistUserPreferencesArgsDict(TypedDict):
-    pinned: NotRequired[pulumi.Input[_builtins.bool]]
+    pinned: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Whether the watchlist is pinned on the dashboard.
     """
@@ -20822,7 +20822,7 @@ class WatchlistWatchlistUserPreferencesArgsDict(TypedDict):
 @pulumi.input_type
 class WatchlistWatchlistUserPreferencesArgs:
     def __init__(__self__, *,
-                 pinned: Optional[pulumi.Input[_builtins.bool]] = None):
+                 pinned: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] pinned: Optional. Whether the watchlist is pinned on the dashboard.
         """
@@ -20831,14 +20831,14 @@ class WatchlistWatchlistUserPreferencesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def pinned(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pinned(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Whether the watchlist is pinned on the dashboard.
         """
         return pulumi.get(self, "pinned")
 
     @pinned.setter
-    def pinned(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pinned(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pinned", value)
 
 

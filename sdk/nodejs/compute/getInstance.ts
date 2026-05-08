@@ -234,21 +234,21 @@ export interface GetInstanceOutputArgs {
     /**
      * The name of the instance. One of `name` or `selfLink` must be provided.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
      * nor `project` are provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The self link of the instance. One of `name` or `selfLink` must be provided.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The zone of the instance. If `selfLink` is provided, this
      * value is ignored.  If neither `selfLink` nor `zone` are provided, the
      * provider zone is used.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

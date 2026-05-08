@@ -183,9 +183,9 @@ def get_datastore(location: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_datastore_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                         name: Optional[pulumi.Input[_builtins.str]] = None,
-                         project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_datastore_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                         name: pulumi.Input[Optional[_builtins.str]] = None,
+                         project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatastoreResult]:
     """
     Use this data source to get details about a datastore resource.

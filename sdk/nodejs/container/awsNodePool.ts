@@ -615,83 +615,83 @@ export interface AwsNodePoolState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Autoscaler configuration for this node pool.
      */
-    autoscaling?: pulumi.Input<inputs.container.AwsNodePoolAutoscaling>;
+    autoscaling?: pulumi.Input<inputs.container.AwsNodePoolAutoscaling | undefined>;
     /**
      * The awsCluster for the resource
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * The configuration of the node pool.
      */
-    config?: pulumi.Input<inputs.container.AwsNodePoolConfig>;
+    config?: pulumi.Input<inputs.container.AwsNodePoolConfig | undefined>;
     /**
      * Output only. The time at which this node pool was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The kubelet configuration for the node pool.
      */
-    kubeletConfig?: pulumi.Input<inputs.container.AwsNodePoolKubeletConfig>;
+    kubeletConfig?: pulumi.Input<inputs.container.AwsNodePoolKubeletConfig | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The Management configuration for this node pool.
      */
-    management?: pulumi.Input<inputs.container.AwsNodePoolManagement>;
+    management?: pulumi.Input<inputs.container.AwsNodePoolManagement | undefined>;
     /**
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
-    maxPodsConstraint?: pulumi.Input<inputs.container.AwsNodePoolMaxPodsConstraint>;
+    maxPodsConstraint?: pulumi.Input<inputs.container.AwsNodePoolMaxPodsConstraint | undefined>;
     /**
      * The name of this resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. If set, there are currently changes in flight to the node pool.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The subnet where the node pool node run.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * Output only. A globally unique identifier for the node pool.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Optional. Update settings control the speed and disruption of the node pool update.
      */
-    updateSettings?: pulumi.Input<inputs.container.AwsNodePoolUpdateSettings>;
+    updateSettings?: pulumi.Input<inputs.container.AwsNodePoolUpdateSettings | undefined>;
     /**
      * Output only. The time at which this node pool was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -704,7 +704,7 @@ export interface AwsNodePoolArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Autoscaler configuration for this node pool.
      */
@@ -720,7 +720,7 @@ export interface AwsNodePoolArgs {
     /**
      * The kubelet configuration for the node pool.
      */
-    kubeletConfig?: pulumi.Input<inputs.container.AwsNodePoolKubeletConfig>;
+    kubeletConfig?: pulumi.Input<inputs.container.AwsNodePoolKubeletConfig | undefined>;
     /**
      * The location for the resource
      */
@@ -728,7 +728,7 @@ export interface AwsNodePoolArgs {
     /**
      * The Management configuration for this node pool.
      */
-    management?: pulumi.Input<inputs.container.AwsNodePoolManagement>;
+    management?: pulumi.Input<inputs.container.AwsNodePoolManagement | undefined>;
     /**
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
@@ -736,11 +736,11 @@ export interface AwsNodePoolArgs {
     /**
      * The name of this resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The subnet where the node pool node run.
      */
@@ -748,7 +748,7 @@ export interface AwsNodePoolArgs {
     /**
      * Optional. Update settings control the speed and disruption of the node pool update.
      */
-    updateSettings?: pulumi.Input<inputs.container.AwsNodePoolUpdateSettings>;
+    updateSettings?: pulumi.Input<inputs.container.AwsNodePoolUpdateSettings | undefined>;
     /**
      * The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
      */

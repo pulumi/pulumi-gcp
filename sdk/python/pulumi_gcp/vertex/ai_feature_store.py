@@ -21,14 +21,14 @@ __all__ = ['AiFeatureStoreArgs', 'AiFeatureStore']
 @pulumi.input_type
 class AiFeatureStoreArgs:
     def __init__(__self__, *,
-                 encryption_spec: Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 online_serving_config: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigArgs']] = None,
-                 online_storage_ttl_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 encryption_spec: pulumi.Input[Optional['AiFeatureStoreEncryptionSpecArgs']] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 online_serving_config: pulumi.Input[Optional['AiFeatureStoreOnlineServingConfigArgs']] = None,
+                 online_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiFeatureStore resource.
 
@@ -67,7 +67,7 @@ class AiFeatureStoreArgs:
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['AiFeatureStoreEncryptionSpecArgs']]:
         """
         If set, both of the online and offline data storage will be secured by this key.
         Structure is documented below.
@@ -75,24 +75,24 @@ class AiFeatureStoreArgs:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['AiFeatureStoreEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, any EntityTypes and Features for this Featurestore will also be deleted
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value label pairs to assign to this Featurestore.
 
@@ -102,24 +102,24 @@ class AiFeatureStoreArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="onlineServingConfig")
-    def online_serving_config(self) -> Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigArgs']]:
+    def online_serving_config(self) -> pulumi.Input[Optional['AiFeatureStoreOnlineServingConfigArgs']]:
         """
         Config for online serving resources.
         Structure is documented below.
@@ -127,12 +127,12 @@ class AiFeatureStoreArgs:
         return pulumi.get(self, "online_serving_config")
 
     @online_serving_config.setter
-    def online_serving_config(self, value: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigArgs']]):
+    def online_serving_config(self, value: pulumi.Input[Optional['AiFeatureStoreOnlineServingConfigArgs']]):
         pulumi.set(self, "online_serving_config", value)
 
     @_builtins.property
     @pulumi.getter(name="onlineStorageTtlDays")
-    def online_storage_ttl_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def online_storage_ttl_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional, Beta)
         TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
@@ -140,12 +140,12 @@ class AiFeatureStoreArgs:
         return pulumi.get(self, "online_storage_ttl_days")
 
     @online_storage_ttl_days.setter
-    def online_storage_ttl_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def online_storage_ttl_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "online_storage_ttl_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -153,38 +153,38 @@ class AiFeatureStoreArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the dataset. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _AiFeatureStoreState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 online_serving_config: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigArgs']] = None,
-                 online_storage_ttl_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiFeatureStoreEncryptionSpecArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 online_serving_config: pulumi.Input[Optional['AiFeatureStoreOnlineServingConfigArgs']] = None,
+                 online_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureStore resources.
 
@@ -239,31 +239,31 @@ class _AiFeatureStoreState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['AiFeatureStoreEncryptionSpecArgs']]:
         """
         If set, both of the online and offline data storage will be secured by this key.
         Structure is documented below.
@@ -271,36 +271,36 @@ class _AiFeatureStoreState:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['AiFeatureStoreEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to perform consistent read-modify-write updates.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, any EntityTypes and Features for this Featurestore will also be deleted
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value label pairs to assign to this Featurestore.
 
@@ -310,24 +310,24 @@ class _AiFeatureStoreState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="onlineServingConfig")
-    def online_serving_config(self) -> Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigArgs']]:
+    def online_serving_config(self) -> pulumi.Input[Optional['AiFeatureStoreOnlineServingConfigArgs']]:
         """
         Config for online serving resources.
         Structure is documented below.
@@ -335,12 +335,12 @@ class _AiFeatureStoreState:
         return pulumi.get(self, "online_serving_config")
 
     @online_serving_config.setter
-    def online_serving_config(self, value: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigArgs']]):
+    def online_serving_config(self, value: pulumi.Input[Optional['AiFeatureStoreOnlineServingConfigArgs']]):
         pulumi.set(self, "online_serving_config", value)
 
     @_builtins.property
     @pulumi.getter(name="onlineStorageTtlDays")
-    def online_storage_ttl_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def online_storage_ttl_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional, Beta)
         TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
@@ -348,12 +348,12 @@ class _AiFeatureStoreState:
         return pulumi.get(self, "online_storage_ttl_days")
 
     @online_storage_ttl_days.setter
-    def online_storage_ttl_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def online_storage_ttl_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "online_storage_ttl_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -361,12 +361,12 @@ class _AiFeatureStoreState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -374,31 +374,31 @@ class _AiFeatureStoreState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the dataset. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -408,14 +408,14 @@ class AiFeatureStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 online_serving_config: Optional[pulumi.Input[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']]] = None,
-                 online_storage_ttl_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 online_serving_config: pulumi.Input[Optional[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']]] = None,
+                 online_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A collection of DataItems and Annotations on them.
@@ -646,14 +646,14 @@ class AiFeatureStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 online_serving_config: Optional[pulumi.Input[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']]] = None,
-                 online_storage_ttl_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 online_serving_config: pulumi.Input[Optional[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']]] = None,
+                 online_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -688,19 +688,19 @@ class AiFeatureStore(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: Optional[pulumi.Input[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            online_serving_config: Optional[pulumi.Input[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']]] = None,
-            online_storage_ttl_days: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiFeatureStore':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            online_serving_config: pulumi.Input[Optional[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']]] = None,
+            online_storage_ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiFeatureStore':
         """
         Get an existing AiFeatureStore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

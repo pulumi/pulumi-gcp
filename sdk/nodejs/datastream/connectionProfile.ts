@@ -662,99 +662,99 @@ export interface ConnectionProfileState {
     /**
      * BigQuery warehouse profile.
      */
-    bigqueryProfile?: pulumi.Input<inputs.datastream.ConnectionProfileBigqueryProfile>;
+    bigqueryProfile?: pulumi.Input<inputs.datastream.ConnectionProfileBigqueryProfile | undefined>;
     /**
      * The connection profile identifier.
      */
-    connectionProfileId?: pulumi.Input<string>;
+    connectionProfileId?: pulumi.Input<string | undefined>;
     /**
      * Create the connection profile without validating it.
      */
-    createWithoutValidation?: pulumi.Input<boolean>;
+    createWithoutValidation?: pulumi.Input<boolean | undefined>;
     /**
      * Display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Forward SSH tunnel connectivity.
      * Structure is documented below.
      */
-    forwardSshConnectivity?: pulumi.Input<inputs.datastream.ConnectionProfileForwardSshConnectivity>;
+    forwardSshConnectivity?: pulumi.Input<inputs.datastream.ConnectionProfileForwardSshConnectivity | undefined>;
     /**
      * Cloud Storage bucket profile.
      * Structure is documented below.
      */
-    gcsProfile?: pulumi.Input<inputs.datastream.ConnectionProfileGcsProfile>;
+    gcsProfile?: pulumi.Input<inputs.datastream.ConnectionProfileGcsProfile | undefined>;
     /**
      * Labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the location this connection profile is located in.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Configuration for connecting to a MongoDB database.
      * Structure is documented below.
      */
-    mongodbProfile?: pulumi.Input<inputs.datastream.ConnectionProfileMongodbProfile>;
+    mongodbProfile?: pulumi.Input<inputs.datastream.ConnectionProfileMongodbProfile | undefined>;
     /**
      * MySQL database profile.
      * Structure is documented below.
      */
-    mysqlProfile?: pulumi.Input<inputs.datastream.ConnectionProfileMysqlProfile>;
+    mysqlProfile?: pulumi.Input<inputs.datastream.ConnectionProfileMysqlProfile | undefined>;
     /**
      * The resource's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Oracle database profile.
      * Structure is documented below.
      */
-    oracleProfile?: pulumi.Input<inputs.datastream.ConnectionProfileOracleProfile>;
+    oracleProfile?: pulumi.Input<inputs.datastream.ConnectionProfileOracleProfile | undefined>;
     /**
      * PostgreSQL database profile.
      * Structure is documented below.
      */
-    postgresqlProfile?: pulumi.Input<inputs.datastream.ConnectionProfilePostgresqlProfile>;
+    postgresqlProfile?: pulumi.Input<inputs.datastream.ConnectionProfilePostgresqlProfile | undefined>;
     /**
      * Private connectivity.
      * Structure is documented below.
      */
-    privateConnectivity?: pulumi.Input<inputs.datastream.ConnectionProfilePrivateConnectivity>;
+    privateConnectivity?: pulumi.Input<inputs.datastream.ConnectionProfilePrivateConnectivity | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Optional, Beta)
      * Salesforce profile.
      * Structure is documented below.
      */
-    salesforceProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSalesforceProfile>;
+    salesforceProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSalesforceProfile | undefined>;
     /**
      * (Optional, Beta)
      * Spanner profile.
      * Structure is documented below.
      */
-    spannerProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSpannerProfile>;
+    spannerProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSpannerProfile | undefined>;
     /**
      * SQL Server database profile.
      * Structure is documented below.
      */
-    sqlServerProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSqlServerProfile>;
+    sqlServerProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSqlServerProfile | undefined>;
 }
 
 /**
@@ -764,7 +764,7 @@ export interface ConnectionProfileArgs {
     /**
      * BigQuery warehouse profile.
      */
-    bigqueryProfile?: pulumi.Input<inputs.datastream.ConnectionProfileBigqueryProfile>;
+    bigqueryProfile?: pulumi.Input<inputs.datastream.ConnectionProfileBigqueryProfile | undefined>;
     /**
      * The connection profile identifier.
      */
@@ -772,7 +772,7 @@ export interface ConnectionProfileArgs {
     /**
      * Create the connection profile without validating it.
      */
-    createWithoutValidation?: pulumi.Input<boolean>;
+    createWithoutValidation?: pulumi.Input<boolean | undefined>;
     /**
      * Display name.
      */
@@ -781,18 +781,18 @@ export interface ConnectionProfileArgs {
      * Forward SSH tunnel connectivity.
      * Structure is documented below.
      */
-    forwardSshConnectivity?: pulumi.Input<inputs.datastream.ConnectionProfileForwardSshConnectivity>;
+    forwardSshConnectivity?: pulumi.Input<inputs.datastream.ConnectionProfileForwardSshConnectivity | undefined>;
     /**
      * Cloud Storage bucket profile.
      * Structure is documented below.
      */
-    gcsProfile?: pulumi.Input<inputs.datastream.ConnectionProfileGcsProfile>;
+    gcsProfile?: pulumi.Input<inputs.datastream.ConnectionProfileGcsProfile | undefined>;
     /**
      * Labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the location this connection profile is located in.
      */
@@ -801,47 +801,47 @@ export interface ConnectionProfileArgs {
      * Configuration for connecting to a MongoDB database.
      * Structure is documented below.
      */
-    mongodbProfile?: pulumi.Input<inputs.datastream.ConnectionProfileMongodbProfile>;
+    mongodbProfile?: pulumi.Input<inputs.datastream.ConnectionProfileMongodbProfile | undefined>;
     /**
      * MySQL database profile.
      * Structure is documented below.
      */
-    mysqlProfile?: pulumi.Input<inputs.datastream.ConnectionProfileMysqlProfile>;
+    mysqlProfile?: pulumi.Input<inputs.datastream.ConnectionProfileMysqlProfile | undefined>;
     /**
      * Oracle database profile.
      * Structure is documented below.
      */
-    oracleProfile?: pulumi.Input<inputs.datastream.ConnectionProfileOracleProfile>;
+    oracleProfile?: pulumi.Input<inputs.datastream.ConnectionProfileOracleProfile | undefined>;
     /**
      * PostgreSQL database profile.
      * Structure is documented below.
      */
-    postgresqlProfile?: pulumi.Input<inputs.datastream.ConnectionProfilePostgresqlProfile>;
+    postgresqlProfile?: pulumi.Input<inputs.datastream.ConnectionProfilePostgresqlProfile | undefined>;
     /**
      * Private connectivity.
      * Structure is documented below.
      */
-    privateConnectivity?: pulumi.Input<inputs.datastream.ConnectionProfilePrivateConnectivity>;
+    privateConnectivity?: pulumi.Input<inputs.datastream.ConnectionProfilePrivateConnectivity | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Salesforce profile.
      * Structure is documented below.
      */
-    salesforceProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSalesforceProfile>;
+    salesforceProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSalesforceProfile | undefined>;
     /**
      * (Optional, Beta)
      * Spanner profile.
      * Structure is documented below.
      */
-    spannerProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSpannerProfile>;
+    spannerProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSpannerProfile | undefined>;
     /**
      * SQL Server database profile.
      * Structure is documented below.
      */
-    sqlServerProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSqlServerProfile>;
+    sqlServerProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSqlServerProfile | undefined>;
 }

@@ -77,5 +77,5 @@ export interface GetLocationsOutputArgs {
     /**
      * The ID of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

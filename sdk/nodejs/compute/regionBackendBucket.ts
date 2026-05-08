@@ -263,16 +263,16 @@ export interface RegionBackendBucketState {
      * Cloud Storage bucket name. The bucket must be in the same region as this
      * backend bucket.
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional textual description of the resource; provided by the
      * client when the resource is created.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies the load balancer type this backend bucket will be used with.
      * Possible values:
@@ -281,7 +281,7 @@ export interface RegionBackendBucketState {
      * This field is required for regional backend buckets.
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
-    loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -291,20 +291,20 @@ export interface RegionBackendBucketState {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region where the backend bucket resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -320,7 +320,7 @@ export interface RegionBackendBucketArgs {
      * An optional textual description of the resource; provided by the
      * client when the resource is created.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies the load balancer type this backend bucket will be used with.
      * Possible values:
@@ -329,7 +329,7 @@ export interface RegionBackendBucketArgs {
      * This field is required for regional backend buckets.
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
-    loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -339,12 +339,12 @@ export interface RegionBackendBucketArgs {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region where the backend bucket resides.
      */

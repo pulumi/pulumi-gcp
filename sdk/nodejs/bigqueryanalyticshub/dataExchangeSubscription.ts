@@ -326,94 +326,94 @@ export interface DataExchangeSubscriptionState {
     /**
      * Timestamp when the subscription was created.
      */
-    creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. Resource name of the source Data Exchange. e.g. projects/123/locations/us/dataExchanges/456
      */
-    dataExchange?: pulumi.Input<string>;
+    dataExchange?: pulumi.Input<string | undefined>;
     /**
      * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      */
-    dataExchangeId?: pulumi.Input<string>;
+    dataExchangeId?: pulumi.Input<string | undefined>;
     /**
      * The name of the location of the Data Exchange.
      */
-    dataExchangeLocation?: pulumi.Input<string>;
+    dataExchangeLocation?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Google Cloud project where the Data Exchange is located.
      */
-    dataExchangeProject?: pulumi.Input<string>;
+    dataExchangeProject?: pulumi.Input<string | undefined>;
     /**
      * BigQuery destination dataset to create for the subscriber.
      * Structure is documented below.
      */
-    destinationDataset?: pulumi.Input<inputs.bigqueryanalyticshub.DataExchangeSubscriptionDestinationDataset>;
+    destinationDataset?: pulumi.Input<inputs.bigqueryanalyticshub.DataExchangeSubscriptionDestinationDataset | undefined>;
     /**
      * Timestamp when the subscription was last modified.
      */
-    lastModifyTime?: pulumi.Input<string>;
+    lastModifyTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. Map of listing resource names to associated linked resource,
      * e.g. projects/123/locations/us/dataExchanges/456/listings/789 > projects/123/datasets/my_dataset
      * For Data Exchange subscriptions, this map may contain multiple entries if the Data Exchange has multiple listings.
      * Structure is documented below.
      */
-    linkedDatasetMaps?: pulumi.Input<pulumi.Input<inputs.bigqueryanalyticshub.DataExchangeSubscriptionLinkedDatasetMap>[]>;
+    linkedDatasetMaps?: pulumi.Input<pulumi.Input<inputs.bigqueryanalyticshub.DataExchangeSubscriptionLinkedDatasetMap>[] | undefined>;
     /**
      * Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
      * Structure is documented below.
      */
-    linkedResources?: pulumi.Input<pulumi.Input<inputs.bigqueryanalyticshub.DataExchangeSubscriptionLinkedResource>[]>;
+    linkedResources?: pulumi.Input<pulumi.Input<inputs.bigqueryanalyticshub.DataExchangeSubscriptionLinkedResource>[] | undefined>;
     /**
      * The geographic location where the Subscription (and its linked dataset) should reside.
      * This is the subscriber's desired location for the created resources.
      * See https://cloud.google.com/bigquery/docs/locations for supported locations.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for DataExchange/Listing.
      */
-    logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean>;
+    logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name of the subscription. e.g. "projects/myproject/locations/us/subscriptions/123"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Display name of the project of this subscription.
      */
-    organizationDisplayName?: pulumi.Input<string>;
+    organizationDisplayName?: pulumi.Input<string | undefined>;
     /**
      * Organization of the project this subscription belongs to.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Controls when the subscription is automatically refreshed by the provider.
      * * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
      * * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
      * * `NEVER`: The provider will not automatically refresh the subscription.
      */
-    refreshPolicy?: pulumi.Input<string>;
+    refreshPolicy?: pulumi.Input<string | undefined>;
     /**
      * Listing shared asset type.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * Current state of the subscription.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Email of the subscriber.
      */
-    subscriberContact?: pulumi.Input<string>;
+    subscriberContact?: pulumi.Input<string | undefined>;
     /**
      * Name of the subscription to create.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -436,7 +436,7 @@ export interface DataExchangeSubscriptionArgs {
      * BigQuery destination dataset to create for the subscriber.
      * Structure is documented below.
      */
-    destinationDataset?: pulumi.Input<inputs.bigqueryanalyticshub.DataExchangeSubscriptionDestinationDataset>;
+    destinationDataset?: pulumi.Input<inputs.bigqueryanalyticshub.DataExchangeSubscriptionDestinationDataset | undefined>;
     /**
      * The geographic location where the Subscription (and its linked dataset) should reside.
      * This is the subscriber's desired location for the created resources.
@@ -447,18 +447,18 @@ export interface DataExchangeSubscriptionArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Controls when the subscription is automatically refreshed by the provider.
      * * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
      * * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
      * * `NEVER`: The provider will not automatically refresh the subscription.
      */
-    refreshPolicy?: pulumi.Input<string>;
+    refreshPolicy?: pulumi.Input<string | undefined>;
     /**
      * Email of the subscriber.
      */
-    subscriberContact?: pulumi.Input<string>;
+    subscriberContact?: pulumi.Input<string | undefined>;
     /**
      * Name of the subscription to create.
      */

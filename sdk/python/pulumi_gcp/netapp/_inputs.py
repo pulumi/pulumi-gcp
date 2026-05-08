@@ -66,19 +66,19 @@ class BackupVaultBackupRetentionPolicyArgsDict(TypedDict):
     """
     Minimum retention duration in days for backups in the backup vault.
     """
-    daily_backup_immutable: NotRequired[pulumi.Input[_builtins.bool]]
+    daily_backup_immutable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
     """
-    manual_backup_immutable: NotRequired[pulumi.Input[_builtins.bool]]
+    manual_backup_immutable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
     """
-    monthly_backup_immutable: NotRequired[pulumi.Input[_builtins.bool]]
+    monthly_backup_immutable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
     """
-    weekly_backup_immutable: NotRequired[pulumi.Input[_builtins.bool]]
+    weekly_backup_immutable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
     """
@@ -87,10 +87,10 @@ class BackupVaultBackupRetentionPolicyArgsDict(TypedDict):
 class BackupVaultBackupRetentionPolicyArgs:
     def __init__(__self__, *,
                  backup_minimum_enforced_retention_days: pulumi.Input[_builtins.int],
-                 daily_backup_immutable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 manual_backup_immutable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monthly_backup_immutable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 weekly_backup_immutable: Optional[pulumi.Input[_builtins.bool]] = None):
+                 daily_backup_immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 manual_backup_immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monthly_backup_immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 weekly_backup_immutable: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.int] backup_minimum_enforced_retention_days: Minimum retention duration in days for backups in the backup vault.
         :param pulumi.Input[_builtins.bool] daily_backup_immutable: Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
@@ -122,64 +122,64 @@ class BackupVaultBackupRetentionPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="dailyBackupImmutable")
-    def daily_backup_immutable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def daily_backup_immutable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
         """
         return pulumi.get(self, "daily_backup_immutable")
 
     @daily_backup_immutable.setter
-    def daily_backup_immutable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def daily_backup_immutable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "daily_backup_immutable", value)
 
     @_builtins.property
     @pulumi.getter(name="manualBackupImmutable")
-    def manual_backup_immutable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def manual_backup_immutable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
         """
         return pulumi.get(self, "manual_backup_immutable")
 
     @manual_backup_immutable.setter
-    def manual_backup_immutable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def manual_backup_immutable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "manual_backup_immutable", value)
 
     @_builtins.property
     @pulumi.getter(name="monthlyBackupImmutable")
-    def monthly_backup_immutable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def monthly_backup_immutable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
         """
         return pulumi.get(self, "monthly_backup_immutable")
 
     @monthly_backup_immutable.setter
-    def monthly_backup_immutable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def monthly_backup_immutable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "monthly_backup_immutable", value)
 
     @_builtins.property
     @pulumi.getter(name="weeklyBackupImmutable")
-    def weekly_backup_immutable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def weekly_backup_immutable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
         """
         return pulumi.get(self, "weekly_backup_immutable")
 
     @weekly_backup_immutable.setter
-    def weekly_backup_immutable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def weekly_backup_immutable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "weekly_backup_immutable", value)
 
 
 class VolumeBackupConfigArgsDict(TypedDict):
-    backup_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    backup_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
     """
-    backup_vault: NotRequired[pulumi.Input[_builtins.str]]
+    backup_vault: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
     Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
     """
-    scheduled_backup_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    scheduled_backup_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
     """
@@ -187,9 +187,9 @@ class VolumeBackupConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeBackupConfigArgs:
     def __init__(__self__, *,
-                 backup_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_vault: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_backup_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 backup_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_vault: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_backup_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_policies: Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
         :param pulumi.Input[_builtins.str] backup_vault: ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
@@ -205,19 +205,19 @@ class VolumeBackupConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupPolicies")
-    def backup_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backup_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
         """
         return pulumi.get(self, "backup_policies")
 
     @backup_policies.setter
-    def backup_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backup_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backup_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="backupVault")
-    def backup_vault(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_vault(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
         Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
@@ -225,19 +225,19 @@ class VolumeBackupConfigArgs:
         return pulumi.get(self, "backup_vault")
 
     @backup_vault.setter
-    def backup_vault(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_vault(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_vault", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledBackupEnabled")
-    def scheduled_backup_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def scheduled_backup_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
         """
         return pulumi.get(self, "scheduled_backup_enabled")
 
     @scheduled_backup_enabled.setter
-    def scheduled_backup_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def scheduled_backup_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "scheduled_backup_enabled", value)
 
 
@@ -248,20 +248,20 @@ class VolumeBlockDeviceArgsDict(TypedDict):
     This field can't be changed after the block device is created.
     Possible values are: `LINUX`, `WINDOWS`, `ESXI`.
     """
-    host_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    host_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of host groups that identify hosts that can mount the block volume.
     Format:
     `projects/{project_id}/locations/{location}/hostGroups/{host_group_id}`
     This field can be updated after the block device is created.
     """
-    identifier: NotRequired[pulumi.Input[_builtins.str]]
+    identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Device identifier of the Block volume. This represents lun_serial_number
     for ISCSI volumes
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     User-defined name for the block device, unique within the Volume. In case
     no user input is provided, name will be autogenerated in the backend.
@@ -271,7 +271,7 @@ class VolumeBlockDeviceArgsDict(TypedDict):
     and the following special characters: "-", "_", "}", "{", ".".
     *   Spaces are not allowed.
     """
-    size_gib: NotRequired[pulumi.Input[_builtins.int]]
+    size_gib: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The size of the block device in GiB.
@@ -284,10 +284,10 @@ class VolumeBlockDeviceArgsDict(TypedDict):
 class VolumeBlockDeviceArgs:
     def __init__(__self__, *,
                  os_type: pulumi.Input[_builtins.str],
-                 host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_gib: Optional[pulumi.Input[_builtins.int]] = None):
+                 host_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_gib: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] os_type: The OS type of the volume.
                This field can't be changed after the block device is created.
@@ -338,7 +338,7 @@ class VolumeBlockDeviceArgs:
 
     @_builtins.property
     @pulumi.getter(name="hostGroups")
-    def host_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def host_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of host groups that identify hosts that can mount the block volume.
         Format:
@@ -348,12 +348,12 @@ class VolumeBlockDeviceArgs:
         return pulumi.get(self, "host_groups")
 
     @host_groups.setter
-    def host_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def host_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "host_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Device identifier of the Block volume. This represents lun_serial_number
@@ -362,12 +362,12 @@ class VolumeBlockDeviceArgs:
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined name for the block device, unique within the Volume. In case
         no user input is provided, name will be autogenerated in the backend.
@@ -380,12 +380,12 @@ class VolumeBlockDeviceArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="sizeGib")
-    def size_gib(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size_gib(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The size of the block device in GiB.
@@ -396,56 +396,56 @@ class VolumeBlockDeviceArgs:
         return pulumi.get(self, "size_gib")
 
     @size_gib.setter
-    def size_gib(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size_gib(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size_gib", value)
 
 
 class VolumeCacheParametersArgsDict(TypedDict):
-    cache_config: NotRequired[pulumi.Input['VolumeCacheParametersCacheConfigArgsDict']]
+    cache_config: NotRequired[pulumi.Input[Optional['VolumeCacheParametersCacheConfigArgs']]]
     """
     Optional. Configuration of the cache volume.
     Structure is documented below.
     """
-    cache_state: NotRequired[pulumi.Input[_builtins.str]]
+    cache_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     State of the cache volume indicating the peering status.
     """
-    command: NotRequired[pulumi.Input[_builtins.str]]
+    command: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
     """
-    enable_global_file_lock: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_global_file_lock: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Field indicating whether cache volume as global file lock enabled.
     """
-    passphrase: NotRequired[pulumi.Input[_builtins.str]]
+    passphrase: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Temporary passphrase generated to accept cluster peering command.
     """
-    peer_cluster_name: NotRequired[pulumi.Input[_builtins.str]]
+    peer_cluster_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. Name of the origin volume's ONTAP cluster.
     """
-    peer_ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    peer_ip_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Required. List of IC LIF addresses of the origin volume's ONTAP cluster.
     """
-    peer_svm_name: NotRequired[pulumi.Input[_builtins.str]]
+    peer_svm_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. Name of the origin volume's SVM.
     """
-    peer_volume_name: NotRequired[pulumi.Input[_builtins.str]]
+    peer_volume_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. Name of the origin volume for the cache volume.
     """
-    peering_command_expiry_time: NotRequired[pulumi.Input[_builtins.str]]
+    peering_command_expiry_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Expiration time for the peering command to be executed on user's ONTAP. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
     """
-    state_details: NotRequired[pulumi.Input[_builtins.str]]
+    state_details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Detailed description of the current cache state.
@@ -454,17 +454,17 @@ class VolumeCacheParametersArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeCacheParametersArgs:
     def __init__(__self__, *,
-                 cache_config: Optional[pulumi.Input['VolumeCacheParametersCacheConfigArgs']] = None,
-                 cache_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 command: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_global_file_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-                 passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peer_svm_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_volume_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_command_expiry_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_details: Optional[pulumi.Input[_builtins.str]] = None):
+                 cache_config: pulumi.Input[Optional['VolumeCacheParametersCacheConfigArgs']] = None,
+                 cache_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 command: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_global_file_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+                 passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peer_svm_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_volume_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_command_expiry_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_details: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['VolumeCacheParametersCacheConfigArgs'] cache_config: Optional. Configuration of the cache volume.
                Structure is documented below.
@@ -508,7 +508,7 @@ class VolumeCacheParametersArgs:
 
     @_builtins.property
     @pulumi.getter(name="cacheConfig")
-    def cache_config(self) -> Optional[pulumi.Input['VolumeCacheParametersCacheConfigArgs']]:
+    def cache_config(self) -> pulumi.Input[Optional['VolumeCacheParametersCacheConfigArgs']]:
         """
         Optional. Configuration of the cache volume.
         Structure is documented below.
@@ -516,12 +516,12 @@ class VolumeCacheParametersArgs:
         return pulumi.get(self, "cache_config")
 
     @cache_config.setter
-    def cache_config(self, value: Optional[pulumi.Input['VolumeCacheParametersCacheConfigArgs']]):
+    def cache_config(self, value: pulumi.Input[Optional['VolumeCacheParametersCacheConfigArgs']]):
         pulumi.set(self, "cache_config", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheState")
-    def cache_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         State of the cache volume indicating the peering status.
@@ -529,12 +529,12 @@ class VolumeCacheParametersArgs:
         return pulumi.get(self, "cache_state")
 
     @cache_state.setter
-    def cache_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def command(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
@@ -542,24 +542,24 @@ class VolumeCacheParametersArgs:
         return pulumi.get(self, "command")
 
     @command.setter
-    def command(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command", value)
 
     @_builtins.property
     @pulumi.getter(name="enableGlobalFileLock")
-    def enable_global_file_lock(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_global_file_lock(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Field indicating whether cache volume as global file lock enabled.
         """
         return pulumi.get(self, "enable_global_file_lock")
 
     @enable_global_file_lock.setter
-    def enable_global_file_lock(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_global_file_lock(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_global_file_lock", value)
 
     @_builtins.property
     @pulumi.getter
-    def passphrase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def passphrase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Temporary passphrase generated to accept cluster peering command.
@@ -567,72 +567,72 @@ class VolumeCacheParametersArgs:
         return pulumi.get(self, "passphrase")
 
     @passphrase.setter
-    def passphrase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def passphrase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "passphrase", value)
 
     @_builtins.property
     @pulumi.getter(name="peerClusterName")
-    def peer_cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Name of the origin volume's ONTAP cluster.
         """
         return pulumi.get(self, "peer_cluster_name")
 
     @peer_cluster_name.setter
-    def peer_cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIpAddresses")
-    def peer_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def peer_ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Required. List of IC LIF addresses of the origin volume's ONTAP cluster.
         """
         return pulumi.get(self, "peer_ip_addresses")
 
     @peer_ip_addresses.setter
-    def peer_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def peer_ip_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "peer_ip_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="peerSvmName")
-    def peer_svm_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_svm_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Name of the origin volume's SVM.
         """
         return pulumi.get(self, "peer_svm_name")
 
     @peer_svm_name.setter
-    def peer_svm_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_svm_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_svm_name", value)
 
     @_builtins.property
     @pulumi.getter(name="peerVolumeName")
-    def peer_volume_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_volume_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Name of the origin volume for the cache volume.
         """
         return pulumi.get(self, "peer_volume_name")
 
     @peer_volume_name.setter
-    def peer_volume_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_volume_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_volume_name", value)
 
     @_builtins.property
     @pulumi.getter(name="peeringCommandExpiryTime")
-    def peering_command_expiry_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peering_command_expiry_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Expiration time for the peering command to be executed on user's ONTAP. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         """
         return pulumi.get(self, "peering_command_expiry_time")
 
     @peering_command_expiry_time.setter
-    def peering_command_expiry_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peering_command_expiry_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peering_command_expiry_time", value)
 
     @_builtins.property
     @pulumi.getter(name="stateDetails")
-    def state_details(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state_details(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Detailed description of the current cache state.
@@ -640,12 +640,12 @@ class VolumeCacheParametersArgs:
         return pulumi.get(self, "state_details")
 
     @state_details.setter
-    def state_details(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state_details(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state_details", value)
 
 
 class VolumeCacheParametersCacheConfigArgsDict(TypedDict):
-    cifs_change_notify_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    cifs_change_notify_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Flag indicating whether a CIFS change notification is enabled for the FlexCache volume.
     """
@@ -653,7 +653,7 @@ class VolumeCacheParametersCacheConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeCacheParametersCacheConfigArgs:
     def __init__(__self__, *,
-                 cifs_change_notify_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 cifs_change_notify_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] cifs_change_notify_enabled: Optional. Flag indicating whether a CIFS change notification is enabled for the FlexCache volume.
         """
@@ -662,14 +662,14 @@ class VolumeCacheParametersCacheConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="cifsChangeNotifyEnabled")
-    def cifs_change_notify_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cifs_change_notify_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Flag indicating whether a CIFS change notification is enabled for the FlexCache volume.
         """
         return pulumi.get(self, "cifs_change_notify_enabled")
 
     @cifs_change_notify_enabled.setter
-    def cifs_change_notify_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cifs_change_notify_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cifs_change_notify_enabled", value)
 
 
@@ -705,57 +705,57 @@ class VolumeExportPolicyArgs:
 
 
 class VolumeExportPolicyRuleArgsDict(TypedDict):
-    access_type: NotRequired[pulumi.Input[_builtins.str]]
+    access_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Defines the access type for clients matching the `allowedClients` specification.
     Possible values are: `READ_ONLY`, `READ_WRITE`, `READ_NONE`.
     """
-    allowed_clients: NotRequired[pulumi.Input[_builtins.str]]
+    allowed_clients: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
     """
-    anon_uid: NotRequired[pulumi.Input[_builtins.int]]
+    anon_uid: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ALL_SQUASH`.
     """
-    has_root_access: NotRequired[pulumi.Input[_builtins.str]]
+    has_root_access: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
     Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
     """
-    kerberos5_read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    kerberos5_read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode.
     """
-    kerberos5_read_write: NotRequired[pulumi.Input[_builtins.bool]]
+    kerberos5_read_write: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode. The 'kerberos5ReadOnly' value is ignored if this is enabled.
     """
-    kerberos5i_read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    kerberos5i_read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'integrity' kerberos security mode.
     """
-    kerberos5i_read_write: NotRequired[pulumi.Input[_builtins.bool]]
+    kerberos5i_read_write: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'integrity' kerberos security mode. The 'kerberos5iReadOnly' value is ignored if this is enabled.
     """
-    kerberos5p_read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    kerberos5p_read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'privacy' kerberos security mode.
     """
-    kerberos5p_read_write: NotRequired[pulumi.Input[_builtins.bool]]
+    kerberos5p_read_write: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'privacy' kerberos security mode. The 'kerberos5pReadOnly' value is ignored if this is enabled.
     """
-    nfsv3: NotRequired[pulumi.Input[_builtins.bool]]
+    nfsv3: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable to apply the export rule to NFSV3 clients.
     """
-    nfsv4: NotRequired[pulumi.Input[_builtins.bool]]
+    nfsv4: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable to apply the export rule to NFSV4.1 clients.
     """
-    squash_mode: NotRequired[pulumi.Input[_builtins.str]]
+    squash_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
     Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
@@ -765,19 +765,19 @@ class VolumeExportPolicyRuleArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeExportPolicyRuleArgs:
     def __init__(__self__, *,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_clients: Optional[pulumi.Input[_builtins.str]] = None,
-                 anon_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 has_root_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 kerberos5_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kerberos5_read_write: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kerberos5i_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kerberos5i_read_write: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kerberos5p_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kerberos5p_read_write: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nfsv3: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nfsv4: Optional[pulumi.Input[_builtins.bool]] = None,
-                 squash_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_clients: pulumi.Input[Optional[_builtins.str]] = None,
+                 anon_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 has_root_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 kerberos5_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kerberos5_read_write: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kerberos5i_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kerberos5i_read_write: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kerberos5p_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kerberos5p_read_write: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nfsv3: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nfsv4: pulumi.Input[Optional[_builtins.bool]] = None,
+                 squash_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_type: Defines the access type for clients matching the `allowedClients` specification.
                Possible values are: `READ_ONLY`, `READ_WRITE`, `READ_NONE`.
@@ -826,7 +826,7 @@ class VolumeExportPolicyRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the access type for clients matching the `allowedClients` specification.
         Possible values are: `READ_ONLY`, `READ_WRITE`, `READ_NONE`.
@@ -834,36 +834,36 @@ class VolumeExportPolicyRuleArgs:
         return pulumi.get(self, "access_type")
 
     @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedClients")
-    def allowed_clients(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allowed_clients(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
         """
         return pulumi.get(self, "allowed_clients")
 
     @allowed_clients.setter
-    def allowed_clients(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allowed_clients(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allowed_clients", value)
 
     @_builtins.property
     @pulumi.getter(name="anonUid")
-    def anon_uid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def anon_uid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ALL_SQUASH`.
         """
         return pulumi.get(self, "anon_uid")
 
     @anon_uid.setter
-    def anon_uid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def anon_uid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "anon_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="hasRootAccess")
-    def has_root_access(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def has_root_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
         Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
@@ -871,108 +871,108 @@ class VolumeExportPolicyRuleArgs:
         return pulumi.get(self, "has_root_access")
 
     @has_root_access.setter
-    def has_root_access(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def has_root_access(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "has_root_access", value)
 
     @_builtins.property
     @pulumi.getter(name="kerberos5ReadOnly")
-    def kerberos5_read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def kerberos5_read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode.
         """
         return pulumi.get(self, "kerberos5_read_only")
 
     @kerberos5_read_only.setter
-    def kerberos5_read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def kerberos5_read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "kerberos5_read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="kerberos5ReadWrite")
-    def kerberos5_read_write(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def kerberos5_read_write(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode. The 'kerberos5ReadOnly' value is ignored if this is enabled.
         """
         return pulumi.get(self, "kerberos5_read_write")
 
     @kerberos5_read_write.setter
-    def kerberos5_read_write(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def kerberos5_read_write(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "kerberos5_read_write", value)
 
     @_builtins.property
     @pulumi.getter(name="kerberos5iReadOnly")
-    def kerberos5i_read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def kerberos5i_read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'integrity' kerberos security mode.
         """
         return pulumi.get(self, "kerberos5i_read_only")
 
     @kerberos5i_read_only.setter
-    def kerberos5i_read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def kerberos5i_read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "kerberos5i_read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="kerberos5iReadWrite")
-    def kerberos5i_read_write(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def kerberos5i_read_write(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'integrity' kerberos security mode. The 'kerberos5iReadOnly' value is ignored if this is enabled.
         """
         return pulumi.get(self, "kerberos5i_read_write")
 
     @kerberos5i_read_write.setter
-    def kerberos5i_read_write(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def kerberos5i_read_write(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "kerberos5i_read_write", value)
 
     @_builtins.property
     @pulumi.getter(name="kerberos5pReadOnly")
-    def kerberos5p_read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def kerberos5p_read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'privacy' kerberos security mode.
         """
         return pulumi.get(self, "kerberos5p_read_only")
 
     @kerberos5p_read_only.setter
-    def kerberos5p_read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def kerberos5p_read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "kerberos5p_read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="kerberos5pReadWrite")
-    def kerberos5p_read_write(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def kerberos5p_read_write(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'privacy' kerberos security mode. The 'kerberos5pReadOnly' value is ignored if this is enabled.
         """
         return pulumi.get(self, "kerberos5p_read_write")
 
     @kerberos5p_read_write.setter
-    def kerberos5p_read_write(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def kerberos5p_read_write(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "kerberos5p_read_write", value)
 
     @_builtins.property
     @pulumi.getter
-    def nfsv3(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nfsv3(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable to apply the export rule to NFSV3 clients.
         """
         return pulumi.get(self, "nfsv3")
 
     @nfsv3.setter
-    def nfsv3(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nfsv3(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nfsv3", value)
 
     @_builtins.property
     @pulumi.getter
-    def nfsv4(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nfsv4(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable to apply the export rule to NFSV4.1 clients.
         """
         return pulumi.get(self, "nfsv4")
 
     @nfsv4.setter
-    def nfsv4(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nfsv4(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nfsv4", value)
 
     @_builtins.property
     @pulumi.getter(name="squashMode")
-    def squash_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def squash_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
         Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
@@ -981,21 +981,21 @@ class VolumeExportPolicyRuleArgs:
         return pulumi.get(self, "squash_mode")
 
     @squash_mode.setter
-    def squash_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def squash_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "squash_mode", value)
 
 
 class VolumeHybridReplicationParametersArgsDict(TypedDict):
-    cluster_location: NotRequired[pulumi.Input[_builtins.str]]
+    cluster_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Name of source cluster location associated with the replication. This is a free-form field
     for display purposes only.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Description of the replication.
     """
-    hybrid_replication_type: NotRequired[pulumi.Input[_builtins.str]]
+    hybrid_replication_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
     and `ONPREM_REPLICATION` to create an external replication.
@@ -1003,36 +1003,36 @@ class VolumeHybridReplicationParametersArgsDict(TypedDict):
     replication which got reversed. Default is `MIGRATION`.
     Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Optional. Labels to be added to the replication as the key value pairs.
     An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    large_volume_constituent_count: NotRequired[pulumi.Input[_builtins.int]]
+    large_volume_constituent_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
     """
-    peer_cluster_name: NotRequired[pulumi.Input[_builtins.str]]
+    peer_cluster_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
     """
-    peer_ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    peer_ip_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
     """
-    peer_svm_name: NotRequired[pulumi.Input[_builtins.str]]
+    peer_svm_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
     """
-    peer_volume_name: NotRequired[pulumi.Input[_builtins.str]]
+    peer_volume_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
     """
-    replication: NotRequired[pulumi.Input[_builtins.str]]
+    replication: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. Desired name for the replication of this volume.
     """
-    replication_schedule: NotRequired[pulumi.Input[_builtins.str]]
+    replication_schedule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Replication Schedule for the replication created.
     Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
@@ -1041,17 +1041,17 @@ class VolumeHybridReplicationParametersArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeHybridReplicationParametersArgs:
     def __init__(__self__, *,
-                 cluster_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hybrid_replication_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 large_volume_constituent_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peer_svm_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_volume_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_schedule: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hybrid_replication_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 large_volume_constituent_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peer_svm_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_volume_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_schedule: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster_location: Optional. Name of source cluster location associated with the replication. This is a free-form field
                for display purposes only.
@@ -1097,7 +1097,7 @@ class VolumeHybridReplicationParametersArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterLocation")
-    def cluster_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Name of source cluster location associated with the replication. This is a free-form field
         for display purposes only.
@@ -1105,24 +1105,24 @@ class VolumeHybridReplicationParametersArgs:
         return pulumi.get(self, "cluster_location")
 
     @cluster_location.setter
-    def cluster_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_location", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Description of the replication.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridReplicationType")
-    def hybrid_replication_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hybrid_replication_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
         and `ONPREM_REPLICATION` to create an external replication.
@@ -1133,12 +1133,12 @@ class VolumeHybridReplicationParametersArgs:
         return pulumi.get(self, "hybrid_replication_type")
 
     @hybrid_replication_type.setter
-    def hybrid_replication_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hybrid_replication_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hybrid_replication_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Labels to be added to the replication as the key value pairs.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -1146,84 +1146,84 @@ class VolumeHybridReplicationParametersArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="largeVolumeConstituentCount")
-    def large_volume_constituent_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def large_volume_constituent_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
         """
         return pulumi.get(self, "large_volume_constituent_count")
 
     @large_volume_constituent_count.setter
-    def large_volume_constituent_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def large_volume_constituent_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "large_volume_constituent_count", value)
 
     @_builtins.property
     @pulumi.getter(name="peerClusterName")
-    def peer_cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
         """
         return pulumi.get(self, "peer_cluster_name")
 
     @peer_cluster_name.setter
-    def peer_cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIpAddresses")
-    def peer_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def peer_ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
         """
         return pulumi.get(self, "peer_ip_addresses")
 
     @peer_ip_addresses.setter
-    def peer_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def peer_ip_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "peer_ip_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="peerSvmName")
-    def peer_svm_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_svm_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
         """
         return pulumi.get(self, "peer_svm_name")
 
     @peer_svm_name.setter
-    def peer_svm_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_svm_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_svm_name", value)
 
     @_builtins.property
     @pulumi.getter(name="peerVolumeName")
-    def peer_volume_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_volume_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
         """
         return pulumi.get(self, "peer_volume_name")
 
     @peer_volume_name.setter
-    def peer_volume_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_volume_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_volume_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def replication(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replication(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Desired name for the replication of this volume.
         """
         return pulumi.get(self, "replication")
 
     @replication.setter
-    def replication(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replication(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replication", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationSchedule")
-    def replication_schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replication_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Replication Schedule for the replication created.
         Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
@@ -1231,12 +1231,12 @@ class VolumeHybridReplicationParametersArgs:
         return pulumi.get(self, "replication_schedule")
 
     @replication_schedule.setter
-    def replication_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replication_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replication_schedule", value)
 
 
 class VolumeLargeCapacityConfigArgsDict(TypedDict):
-    constituent_count: NotRequired[pulumi.Input[_builtins.int]]
+    constituent_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of internal constituents (e.g., FlexVols) for this large volume.
     The minimum number of constituents is 2.
@@ -1245,7 +1245,7 @@ class VolumeLargeCapacityConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeLargeCapacityConfigArgs:
     def __init__(__self__, *,
-                 constituent_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 constituent_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] constituent_count: The number of internal constituents (e.g., FlexVols) for this large volume.
                The minimum number of constituents is 2.
@@ -1255,7 +1255,7 @@ class VolumeLargeCapacityConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="constituentCount")
-    def constituent_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def constituent_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of internal constituents (e.g., FlexVols) for this large volume.
         The minimum number of constituents is 2.
@@ -1263,34 +1263,34 @@ class VolumeLargeCapacityConfigArgs:
         return pulumi.get(self, "constituent_count")
 
     @constituent_count.setter
-    def constituent_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def constituent_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "constituent_count", value)
 
 
 class VolumeMountOptionArgsDict(TypedDict):
-    export: NotRequired[pulumi.Input[_builtins.str]]
+    export: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Export path of the volume.
     """
-    export_full: NotRequired[pulumi.Input[_builtins.str]]
+    export_full: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Full export path of the volume.
     Format for NFS volumes: `<export_ip>:/<shareName>`
     Format for SMB volumes: `\\\\\\\\netbios_prefix-four_random_hex_letters.domain_name\\\\shareName`
     """
-    instructions: NotRequired[pulumi.Input[_builtins.str]]
+    instructions: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human-readable mount instructions.
     """
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     IP Address.
     """
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Protocol to mount with.
@@ -1299,11 +1299,11 @@ class VolumeMountOptionArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeMountOptionArgs:
     def __init__(__self__, *,
-                 export: Optional[pulumi.Input[_builtins.str]] = None,
-                 export_full: Optional[pulumi.Input[_builtins.str]] = None,
-                 instructions: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 export: pulumi.Input[Optional[_builtins.str]] = None,
+                 export_full: pulumi.Input[Optional[_builtins.str]] = None,
+                 instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] export: (Output)
                Export path of the volume.
@@ -1331,7 +1331,7 @@ class VolumeMountOptionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def export(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def export(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Export path of the volume.
@@ -1339,12 +1339,12 @@ class VolumeMountOptionArgs:
         return pulumi.get(self, "export")
 
     @export.setter
-    def export(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def export(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "export", value)
 
     @_builtins.property
     @pulumi.getter(name="exportFull")
-    def export_full(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def export_full(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Full export path of the volume.
@@ -1354,12 +1354,12 @@ class VolumeMountOptionArgs:
         return pulumi.get(self, "export_full")
 
     @export_full.setter
-    def export_full(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def export_full(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "export_full", value)
 
     @_builtins.property
     @pulumi.getter
-    def instructions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instructions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human-readable mount instructions.
@@ -1367,12 +1367,12 @@ class VolumeMountOptionArgs:
         return pulumi.get(self, "instructions")
 
     @instructions.setter
-    def instructions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instructions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instructions", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         IP Address.
@@ -1380,12 +1380,12 @@ class VolumeMountOptionArgs:
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Protocol to mount with.
@@ -1393,7 +1393,7 @@ class VolumeMountOptionArgs:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
 
@@ -1402,20 +1402,20 @@ class VolumeReplicationDestinationVolumeParametersArgsDict(TypedDict):
     """
     Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description for the destination volume.
     """
-    share_name: NotRequired[pulumi.Input[_builtins.str]]
+    share_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Share name for destination volume. If not specified, name of source volume's share name will be used.
     """
-    tiering_policy: NotRequired[pulumi.Input['VolumeReplicationDestinationVolumeParametersTieringPolicyArgsDict']]
+    tiering_policy: NotRequired[pulumi.Input[Optional['VolumeReplicationDestinationVolumeParametersTieringPolicyArgs']]]
     """
     Tiering policy for the volume.
     Structure is documented below.
     """
-    volume_id: NotRequired[pulumi.Input[_builtins.str]]
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name for the destination volume to be created. If not specified, the name of the source volume will be used.
     """
@@ -1424,10 +1424,10 @@ class VolumeReplicationDestinationVolumeParametersArgsDict(TypedDict):
 class VolumeReplicationDestinationVolumeParametersArgs:
     def __init__(__self__, *,
                  storage_pool: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tiering_policy: Optional[pulumi.Input['VolumeReplicationDestinationVolumeParametersTieringPolicyArgs']] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tiering_policy: pulumi.Input[Optional['VolumeReplicationDestinationVolumeParametersTieringPolicyArgs']] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] storage_pool: Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
         :param pulumi.Input[_builtins.str] description: Description for the destination volume.
@@ -1460,31 +1460,31 @@ class VolumeReplicationDestinationVolumeParametersArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description for the destination volume.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="shareName")
-    def share_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Share name for destination volume. If not specified, name of source volume's share name will be used.
         """
         return pulumi.get(self, "share_name")
 
     @share_name.setter
-    def share_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share_name", value)
 
     @_builtins.property
     @pulumi.getter(name="tieringPolicy")
-    def tiering_policy(self) -> Optional[pulumi.Input['VolumeReplicationDestinationVolumeParametersTieringPolicyArgs']]:
+    def tiering_policy(self) -> pulumi.Input[Optional['VolumeReplicationDestinationVolumeParametersTieringPolicyArgs']]:
         """
         Tiering policy for the volume.
         Structure is documented below.
@@ -1492,29 +1492,29 @@ class VolumeReplicationDestinationVolumeParametersArgs:
         return pulumi.get(self, "tiering_policy")
 
     @tiering_policy.setter
-    def tiering_policy(self, value: Optional[pulumi.Input['VolumeReplicationDestinationVolumeParametersTieringPolicyArgs']]):
+    def tiering_policy(self, value: pulumi.Input[Optional['VolumeReplicationDestinationVolumeParametersTieringPolicyArgs']]):
         pulumi.set(self, "tiering_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name for the destination volume to be created. If not specified, the name of the source volume will be used.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_id", value)
 
 
 class VolumeReplicationDestinationVolumeParametersTieringPolicyArgsDict(TypedDict):
-    cooling_threshold_days: NotRequired[pulumi.Input[_builtins.int]]
+    cooling_threshold_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
     Default is 31.
     """
-    tier_action: NotRequired[pulumi.Input[_builtins.str]]
+    tier_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
     Default value is `PAUSED`.
@@ -1524,8 +1524,8 @@ class VolumeReplicationDestinationVolumeParametersTieringPolicyArgsDict(TypedDic
 @pulumi.input_type
 class VolumeReplicationDestinationVolumeParametersTieringPolicyArgs:
     def __init__(__self__, *,
-                 cooling_threshold_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 tier_action: Optional[pulumi.Input[_builtins.str]] = None):
+                 cooling_threshold_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 tier_action: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] cooling_threshold_days: Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
                Default is 31.
@@ -1540,7 +1540,7 @@ class VolumeReplicationDestinationVolumeParametersTieringPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="coolingThresholdDays")
-    def cooling_threshold_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cooling_threshold_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
         Default is 31.
@@ -1548,12 +1548,12 @@ class VolumeReplicationDestinationVolumeParametersTieringPolicyArgs:
         return pulumi.get(self, "cooling_threshold_days")
 
     @cooling_threshold_days.setter
-    def cooling_threshold_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cooling_threshold_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cooling_threshold_days", value)
 
     @_builtins.property
     @pulumi.getter(name="tierAction")
-    def tier_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tier_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
         Default value is `PAUSED`.
@@ -1562,43 +1562,43 @@ class VolumeReplicationDestinationVolumeParametersTieringPolicyArgs:
         return pulumi.get(self, "tier_action")
 
     @tier_action.setter
-    def tier_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tier_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tier_action", value)
 
 
 class VolumeReplicationHybridPeeringDetailArgsDict(TypedDict):
-    command: NotRequired[pulumi.Input[_builtins.str]]
+    command: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Optional. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
     """
-    command_expiry_time: NotRequired[pulumi.Input[_builtins.str]]
+    command_expiry_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Optional. Expiration time for the peering command to be executed on user's ONTAP.
     Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
     """
-    passphrase: NotRequired[pulumi.Input[_builtins.str]]
+    passphrase: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Optional. Temporary passphrase generated to accept cluster peering command.
     """
-    peer_cluster_name: NotRequired[pulumi.Input[_builtins.str]]
+    peer_cluster_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Optional. Name of the user's local source cluster to be peered with the destination cluster.
     """
-    peer_svm_name: NotRequired[pulumi.Input[_builtins.str]]
+    peer_svm_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Optional. Name of the user's local source vserver svm to be peered with the destination vserver svm.
     """
-    peer_volume_name: NotRequired[pulumi.Input[_builtins.str]]
+    peer_volume_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Optional. Name of the user's local source volume to be peered with the destination volume.
     """
-    subnet_ip: NotRequired[pulumi.Input[_builtins.str]]
+    subnet_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Optional. IP address of the subnet.
@@ -1607,13 +1607,13 @@ class VolumeReplicationHybridPeeringDetailArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeReplicationHybridPeeringDetailArgs:
     def __init__(__self__, *,
-                 command: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_expiry_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_svm_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_volume_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 command: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_expiry_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_svm_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_volume_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] command: (Output)
                Optional. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
@@ -1648,7 +1648,7 @@ class VolumeReplicationHybridPeeringDetailArgs:
 
     @_builtins.property
     @pulumi.getter
-    def command(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Optional. Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
@@ -1656,12 +1656,12 @@ class VolumeReplicationHybridPeeringDetailArgs:
         return pulumi.get(self, "command")
 
     @command.setter
-    def command(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command", value)
 
     @_builtins.property
     @pulumi.getter(name="commandExpiryTime")
-    def command_expiry_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command_expiry_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Optional. Expiration time for the peering command to be executed on user's ONTAP.
@@ -1670,12 +1670,12 @@ class VolumeReplicationHybridPeeringDetailArgs:
         return pulumi.get(self, "command_expiry_time")
 
     @command_expiry_time.setter
-    def command_expiry_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command_expiry_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command_expiry_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def passphrase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def passphrase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Optional. Temporary passphrase generated to accept cluster peering command.
@@ -1683,12 +1683,12 @@ class VolumeReplicationHybridPeeringDetailArgs:
         return pulumi.get(self, "passphrase")
 
     @passphrase.setter
-    def passphrase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def passphrase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "passphrase", value)
 
     @_builtins.property
     @pulumi.getter(name="peerClusterName")
-    def peer_cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Optional. Name of the user's local source cluster to be peered with the destination cluster.
@@ -1696,12 +1696,12 @@ class VolumeReplicationHybridPeeringDetailArgs:
         return pulumi.get(self, "peer_cluster_name")
 
     @peer_cluster_name.setter
-    def peer_cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="peerSvmName")
-    def peer_svm_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_svm_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Optional. Name of the user's local source vserver svm to be peered with the destination vserver svm.
@@ -1709,12 +1709,12 @@ class VolumeReplicationHybridPeeringDetailArgs:
         return pulumi.get(self, "peer_svm_name")
 
     @peer_svm_name.setter
-    def peer_svm_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_svm_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_svm_name", value)
 
     @_builtins.property
     @pulumi.getter(name="peerVolumeName")
-    def peer_volume_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_volume_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Optional. Name of the user's local source volume to be peered with the destination volume.
@@ -1722,12 +1722,12 @@ class VolumeReplicationHybridPeeringDetailArgs:
         return pulumi.get(self, "peer_volume_name")
 
     @peer_volume_name.setter
-    def peer_volume_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_volume_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_volume_name", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetIp")
-    def subnet_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Optional. IP address of the subnet.
@@ -1735,12 +1735,12 @@ class VolumeReplicationHybridPeeringDetailArgs:
         return pulumi.get(self, "subnet_ip")
 
     @subnet_ip.setter
-    def subnet_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_ip", value)
 
 
 class VolumeReplicationHybridReplicationUserCommandArgsDict(TypedDict):
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     List of commands to be executed by the customer.
@@ -1749,7 +1749,7 @@ class VolumeReplicationHybridReplicationUserCommandArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeReplicationHybridReplicationUserCommandArgs:
     def __init__(__self__, *,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: (Output)
                List of commands to be executed by the customer.
@@ -1759,7 +1759,7 @@ class VolumeReplicationHybridReplicationUserCommandArgs:
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         List of commands to be executed by the customer.
@@ -1767,49 +1767,49 @@ class VolumeReplicationHybridReplicationUserCommandArgs:
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
 
 class VolumeReplicationTransferStatArgsDict(TypedDict):
-    lag_duration: NotRequired[pulumi.Input[_builtins.str]]
+    lag_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The elapsed time since the creation of the snapshot on the source volume that was last replicated
     to the destination volume. Lag time represents the difference in age of the destination volume
     data in relation to the source volume data.
     """
-    last_transfer_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    last_transfer_bytes: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Size of last completed transfer in bytes.
     """
-    last_transfer_duration: NotRequired[pulumi.Input[_builtins.str]]
+    last_transfer_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Time taken during last completed transfer.
     """
-    last_transfer_end_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transfer_end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Time when last transfer completed. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
     """
-    last_transfer_error: NotRequired[pulumi.Input[_builtins.str]]
+    last_transfer_error: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A message describing the cause of the last transfer failure.
     """
-    total_transfer_duration: NotRequired[pulumi.Input[_builtins.str]]
+    total_transfer_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Cumulative time taken across all transfers for the replication relationship.
     """
-    transfer_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    transfer_bytes: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Cumulative bytes transferred so far for the replication relationship.
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
@@ -1818,14 +1818,14 @@ class VolumeReplicationTransferStatArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeReplicationTransferStatArgs:
     def __init__(__self__, *,
-                 lag_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_transfer_bytes: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_transfer_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_transfer_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_transfer_error: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_transfer_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 transfer_bytes: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 lag_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_transfer_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_transfer_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_transfer_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_transfer_error: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_transfer_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 transfer_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] lag_duration: (Output)
                The elapsed time since the creation of the snapshot on the source volume that was last replicated
@@ -1865,7 +1865,7 @@ class VolumeReplicationTransferStatArgs:
 
     @_builtins.property
     @pulumi.getter(name="lagDuration")
-    def lag_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lag_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The elapsed time since the creation of the snapshot on the source volume that was last replicated
@@ -1875,12 +1875,12 @@ class VolumeReplicationTransferStatArgs:
         return pulumi.get(self, "lag_duration")
 
     @lag_duration.setter
-    def lag_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lag_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lag_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="lastTransferBytes")
-    def last_transfer_bytes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transfer_bytes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Size of last completed transfer in bytes.
@@ -1888,12 +1888,12 @@ class VolumeReplicationTransferStatArgs:
         return pulumi.get(self, "last_transfer_bytes")
 
     @last_transfer_bytes.setter
-    def last_transfer_bytes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transfer_bytes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transfer_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="lastTransferDuration")
-    def last_transfer_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transfer_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Time taken during last completed transfer.
@@ -1901,12 +1901,12 @@ class VolumeReplicationTransferStatArgs:
         return pulumi.get(self, "last_transfer_duration")
 
     @last_transfer_duration.setter
-    def last_transfer_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transfer_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transfer_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="lastTransferEndTime")
-    def last_transfer_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transfer_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Time when last transfer completed. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
@@ -1914,12 +1914,12 @@ class VolumeReplicationTransferStatArgs:
         return pulumi.get(self, "last_transfer_end_time")
 
     @last_transfer_end_time.setter
-    def last_transfer_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transfer_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transfer_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lastTransferError")
-    def last_transfer_error(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transfer_error(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A message describing the cause of the last transfer failure.
@@ -1927,12 +1927,12 @@ class VolumeReplicationTransferStatArgs:
         return pulumi.get(self, "last_transfer_error")
 
     @last_transfer_error.setter
-    def last_transfer_error(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transfer_error(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transfer_error", value)
 
     @_builtins.property
     @pulumi.getter(name="totalTransferDuration")
-    def total_transfer_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def total_transfer_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Cumulative time taken across all transfers for the replication relationship.
@@ -1940,12 +1940,12 @@ class VolumeReplicationTransferStatArgs:
         return pulumi.get(self, "total_transfer_duration")
 
     @total_transfer_duration.setter
-    def total_transfer_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def total_transfer_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "total_transfer_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="transferBytes")
-    def transfer_bytes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transfer_bytes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Cumulative bytes transferred so far for the replication relationship.
@@ -1953,12 +1953,12 @@ class VolumeReplicationTransferStatArgs:
         return pulumi.get(self, "transfer_bytes")
 
     @transfer_bytes.setter
-    def transfer_bytes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transfer_bytes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transfer_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
@@ -1966,18 +1966,18 @@ class VolumeReplicationTransferStatArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
 class VolumeRestoreParametersArgsDict(TypedDict):
-    source_backup: NotRequired[pulumi.Input[_builtins.str]]
+    source_backup: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Full name of the backup to use for creating this volume.
     `source_snapshot` and `source_backup` cannot be used simultaneously.
     Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
     """
-    source_snapshot: NotRequired[pulumi.Input[_builtins.str]]
+    source_snapshot: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Full name of the snapshot to use for creating this volume.
     `source_snapshot` and `source_backup` cannot be used simultaneously.
@@ -1987,8 +1987,8 @@ class VolumeRestoreParametersArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeRestoreParametersArgs:
     def __init__(__self__, *,
-                 source_backup: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_snapshot: Optional[pulumi.Input[_builtins.str]] = None):
+                 source_backup: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] source_backup: Full name of the backup to use for creating this volume.
                `source_snapshot` and `source_backup` cannot be used simultaneously.
@@ -2004,7 +2004,7 @@ class VolumeRestoreParametersArgs:
 
     @_builtins.property
     @pulumi.getter(name="sourceBackup")
-    def source_backup(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_backup(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full name of the backup to use for creating this volume.
         `source_snapshot` and `source_backup` cannot be used simultaneously.
@@ -2013,12 +2013,12 @@ class VolumeRestoreParametersArgs:
         return pulumi.get(self, "source_backup")
 
     @source_backup.setter
-    def source_backup(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_backup(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_backup", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSnapshot")
-    def source_snapshot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_snapshot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full name of the snapshot to use for creating this volume.
         `source_snapshot` and `source_backup` cannot be used simultaneously.
@@ -2027,32 +2027,32 @@ class VolumeRestoreParametersArgs:
         return pulumi.get(self, "source_snapshot")
 
     @source_snapshot.setter
-    def source_snapshot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_snapshot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_snapshot", value)
 
 
 class VolumeSnapshotPolicyArgsDict(TypedDict):
-    daily_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyDailyScheduleArgsDict']]
+    daily_schedule: NotRequired[pulumi.Input[Optional['VolumeSnapshotPolicyDailyScheduleArgs']]]
     """
     Daily schedule policy.
     Structure is documented below.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables automated snapshot creation according to defined schedule. Default is false.
     To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
     """
-    hourly_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyHourlyScheduleArgsDict']]
+    hourly_schedule: NotRequired[pulumi.Input[Optional['VolumeSnapshotPolicyHourlyScheduleArgs']]]
     """
     Hourly schedule policy.
     Structure is documented below.
     """
-    monthly_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyMonthlyScheduleArgsDict']]
+    monthly_schedule: NotRequired[pulumi.Input[Optional['VolumeSnapshotPolicyMonthlyScheduleArgs']]]
     """
     Monthly schedule policy.
     Structure is documented below.
     """
-    weekly_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyWeeklyScheduleArgsDict']]
+    weekly_schedule: NotRequired[pulumi.Input[Optional['VolumeSnapshotPolicyWeeklyScheduleArgs']]]
     """
     Weekly schedule policy.
     Structure is documented below.
@@ -2061,11 +2061,11 @@ class VolumeSnapshotPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeSnapshotPolicyArgs:
     def __init__(__self__, *,
-                 daily_schedule: Optional[pulumi.Input['VolumeSnapshotPolicyDailyScheduleArgs']] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hourly_schedule: Optional[pulumi.Input['VolumeSnapshotPolicyHourlyScheduleArgs']] = None,
-                 monthly_schedule: Optional[pulumi.Input['VolumeSnapshotPolicyMonthlyScheduleArgs']] = None,
-                 weekly_schedule: Optional[pulumi.Input['VolumeSnapshotPolicyWeeklyScheduleArgs']] = None):
+                 daily_schedule: pulumi.Input[Optional['VolumeSnapshotPolicyDailyScheduleArgs']] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hourly_schedule: pulumi.Input[Optional['VolumeSnapshotPolicyHourlyScheduleArgs']] = None,
+                 monthly_schedule: pulumi.Input[Optional['VolumeSnapshotPolicyMonthlyScheduleArgs']] = None,
+                 weekly_schedule: pulumi.Input[Optional['VolumeSnapshotPolicyWeeklyScheduleArgs']] = None):
         """
         :param pulumi.Input['VolumeSnapshotPolicyDailyScheduleArgs'] daily_schedule: Daily schedule policy.
                Structure is documented below.
@@ -2091,7 +2091,7 @@ class VolumeSnapshotPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="dailySchedule")
-    def daily_schedule(self) -> Optional[pulumi.Input['VolumeSnapshotPolicyDailyScheduleArgs']]:
+    def daily_schedule(self) -> pulumi.Input[Optional['VolumeSnapshotPolicyDailyScheduleArgs']]:
         """
         Daily schedule policy.
         Structure is documented below.
@@ -2099,12 +2099,12 @@ class VolumeSnapshotPolicyArgs:
         return pulumi.get(self, "daily_schedule")
 
     @daily_schedule.setter
-    def daily_schedule(self, value: Optional[pulumi.Input['VolumeSnapshotPolicyDailyScheduleArgs']]):
+    def daily_schedule(self, value: pulumi.Input[Optional['VolumeSnapshotPolicyDailyScheduleArgs']]):
         pulumi.set(self, "daily_schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables automated snapshot creation according to defined schedule. Default is false.
         To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
@@ -2112,12 +2112,12 @@ class VolumeSnapshotPolicyArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="hourlySchedule")
-    def hourly_schedule(self) -> Optional[pulumi.Input['VolumeSnapshotPolicyHourlyScheduleArgs']]:
+    def hourly_schedule(self) -> pulumi.Input[Optional['VolumeSnapshotPolicyHourlyScheduleArgs']]:
         """
         Hourly schedule policy.
         Structure is documented below.
@@ -2125,12 +2125,12 @@ class VolumeSnapshotPolicyArgs:
         return pulumi.get(self, "hourly_schedule")
 
     @hourly_schedule.setter
-    def hourly_schedule(self, value: Optional[pulumi.Input['VolumeSnapshotPolicyHourlyScheduleArgs']]):
+    def hourly_schedule(self, value: pulumi.Input[Optional['VolumeSnapshotPolicyHourlyScheduleArgs']]):
         pulumi.set(self, "hourly_schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="monthlySchedule")
-    def monthly_schedule(self) -> Optional[pulumi.Input['VolumeSnapshotPolicyMonthlyScheduleArgs']]:
+    def monthly_schedule(self) -> pulumi.Input[Optional['VolumeSnapshotPolicyMonthlyScheduleArgs']]:
         """
         Monthly schedule policy.
         Structure is documented below.
@@ -2138,12 +2138,12 @@ class VolumeSnapshotPolicyArgs:
         return pulumi.get(self, "monthly_schedule")
 
     @monthly_schedule.setter
-    def monthly_schedule(self, value: Optional[pulumi.Input['VolumeSnapshotPolicyMonthlyScheduleArgs']]):
+    def monthly_schedule(self, value: pulumi.Input[Optional['VolumeSnapshotPolicyMonthlyScheduleArgs']]):
         pulumi.set(self, "monthly_schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="weeklySchedule")
-    def weekly_schedule(self) -> Optional[pulumi.Input['VolumeSnapshotPolicyWeeklyScheduleArgs']]:
+    def weekly_schedule(self) -> pulumi.Input[Optional['VolumeSnapshotPolicyWeeklyScheduleArgs']]:
         """
         Weekly schedule policy.
         Structure is documented below.
@@ -2151,7 +2151,7 @@ class VolumeSnapshotPolicyArgs:
         return pulumi.get(self, "weekly_schedule")
 
     @weekly_schedule.setter
-    def weekly_schedule(self, value: Optional[pulumi.Input['VolumeSnapshotPolicyWeeklyScheduleArgs']]):
+    def weekly_schedule(self, value: pulumi.Input[Optional['VolumeSnapshotPolicyWeeklyScheduleArgs']]):
         pulumi.set(self, "weekly_schedule", value)
 
 
@@ -2160,11 +2160,11 @@ class VolumeSnapshotPolicyDailyScheduleArgsDict(TypedDict):
     """
     The maximum number of snapshots to keep for the daily schedule.
     """
-    hour: NotRequired[pulumi.Input[_builtins.int]]
+    hour: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Set the hour to create the snapshot (0-23), defaults to midnight (0).
     """
-    minute: NotRequired[pulumi.Input[_builtins.int]]
+    minute: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
     """
@@ -2173,8 +2173,8 @@ class VolumeSnapshotPolicyDailyScheduleArgsDict(TypedDict):
 class VolumeSnapshotPolicyDailyScheduleArgs:
     def __init__(__self__, *,
                  snapshots_to_keep: pulumi.Input[_builtins.int],
-                 hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 minute: Optional[pulumi.Input[_builtins.int]] = None):
+                 hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 minute: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] snapshots_to_keep: The maximum number of snapshots to keep for the daily schedule.
         :param pulumi.Input[_builtins.int] hour: Set the hour to create the snapshot (0-23), defaults to midnight (0).
@@ -2200,26 +2200,26 @@ class VolumeSnapshotPolicyDailyScheduleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hour(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the hour to create the snapshot (0-23), defaults to midnight (0).
         """
         return pulumi.get(self, "hour")
 
     @hour.setter
-    def hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hour(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hour", value)
 
     @_builtins.property
     @pulumi.getter
-    def minute(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minute(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
         """
         return pulumi.get(self, "minute")
 
     @minute.setter
-    def minute(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minute(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minute", value)
 
 
@@ -2228,7 +2228,7 @@ class VolumeSnapshotPolicyHourlyScheduleArgsDict(TypedDict):
     """
     The maximum number of snapshots to keep for the hourly schedule.
     """
-    minute: NotRequired[pulumi.Input[_builtins.int]]
+    minute: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
     """
@@ -2237,7 +2237,7 @@ class VolumeSnapshotPolicyHourlyScheduleArgsDict(TypedDict):
 class VolumeSnapshotPolicyHourlyScheduleArgs:
     def __init__(__self__, *,
                  snapshots_to_keep: pulumi.Input[_builtins.int],
-                 minute: Optional[pulumi.Input[_builtins.int]] = None):
+                 minute: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] snapshots_to_keep: The maximum number of snapshots to keep for the hourly schedule.
         :param pulumi.Input[_builtins.int] minute: Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
@@ -2260,14 +2260,14 @@ class VolumeSnapshotPolicyHourlyScheduleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def minute(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minute(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
         """
         return pulumi.get(self, "minute")
 
     @minute.setter
-    def minute(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minute(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minute", value)
 
 
@@ -2276,15 +2276,15 @@ class VolumeSnapshotPolicyMonthlyScheduleArgsDict(TypedDict):
     """
     The maximum number of snapshots to keep for the monthly schedule
     """
-    days_of_month: NotRequired[pulumi.Input[_builtins.str]]
+    days_of_month: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Set the day or days of the month to make a snapshot (1-31). Accepts a comma separated number of days. Defaults to '1'.
     """
-    hour: NotRequired[pulumi.Input[_builtins.int]]
+    hour: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Set the hour to create the snapshot (0-23), defaults to midnight (0).
     """
-    minute: NotRequired[pulumi.Input[_builtins.int]]
+    minute: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
     """
@@ -2293,9 +2293,9 @@ class VolumeSnapshotPolicyMonthlyScheduleArgsDict(TypedDict):
 class VolumeSnapshotPolicyMonthlyScheduleArgs:
     def __init__(__self__, *,
                  snapshots_to_keep: pulumi.Input[_builtins.int],
-                 days_of_month: Optional[pulumi.Input[_builtins.str]] = None,
-                 hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 minute: Optional[pulumi.Input[_builtins.int]] = None):
+                 days_of_month: pulumi.Input[Optional[_builtins.str]] = None,
+                 hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 minute: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] snapshots_to_keep: The maximum number of snapshots to keep for the monthly schedule
         :param pulumi.Input[_builtins.str] days_of_month: Set the day or days of the month to make a snapshot (1-31). Accepts a comma separated number of days. Defaults to '1'.
@@ -2324,38 +2324,38 @@ class VolumeSnapshotPolicyMonthlyScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="daysOfMonth")
-    def days_of_month(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def days_of_month(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the day or days of the month to make a snapshot (1-31). Accepts a comma separated number of days. Defaults to '1'.
         """
         return pulumi.get(self, "days_of_month")
 
     @days_of_month.setter
-    def days_of_month(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def days_of_month(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "days_of_month", value)
 
     @_builtins.property
     @pulumi.getter
-    def hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hour(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the hour to create the snapshot (0-23), defaults to midnight (0).
         """
         return pulumi.get(self, "hour")
 
     @hour.setter
-    def hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hour(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hour", value)
 
     @_builtins.property
     @pulumi.getter
-    def minute(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minute(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
         """
         return pulumi.get(self, "minute")
 
     @minute.setter
-    def minute(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minute(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minute", value)
 
 
@@ -2364,15 +2364,15 @@ class VolumeSnapshotPolicyWeeklyScheduleArgsDict(TypedDict):
     """
     The maximum number of snapshots to keep for the weekly schedule.
     """
-    day: NotRequired[pulumi.Input[_builtins.str]]
+    day: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Set the day or days of the week to make a snapshot. Accepts a comma separated days of the week. Defaults to 'Sunday'.
     """
-    hour: NotRequired[pulumi.Input[_builtins.int]]
+    hour: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Set the hour to create the snapshot (0-23), defaults to midnight (0).
     """
-    minute: NotRequired[pulumi.Input[_builtins.int]]
+    minute: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
     """
@@ -2381,9 +2381,9 @@ class VolumeSnapshotPolicyWeeklyScheduleArgsDict(TypedDict):
 class VolumeSnapshotPolicyWeeklyScheduleArgs:
     def __init__(__self__, *,
                  snapshots_to_keep: pulumi.Input[_builtins.int],
-                 day: Optional[pulumi.Input[_builtins.str]] = None,
-                 hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 minute: Optional[pulumi.Input[_builtins.int]] = None):
+                 day: pulumi.Input[Optional[_builtins.str]] = None,
+                 hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 minute: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] snapshots_to_keep: The maximum number of snapshots to keep for the weekly schedule.
         :param pulumi.Input[_builtins.str] day: Set the day or days of the week to make a snapshot. Accepts a comma separated days of the week. Defaults to 'Sunday'.
@@ -2412,53 +2412,53 @@ class VolumeSnapshotPolicyWeeklyScheduleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def day(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def day(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the day or days of the week to make a snapshot. Accepts a comma separated days of the week. Defaults to 'Sunday'.
         """
         return pulumi.get(self, "day")
 
     @day.setter
-    def day(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def day(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "day", value)
 
     @_builtins.property
     @pulumi.getter
-    def hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hour(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the hour to create the snapshot (0-23), defaults to midnight (0).
         """
         return pulumi.get(self, "hour")
 
     @hour.setter
-    def hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hour(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hour", value)
 
     @_builtins.property
     @pulumi.getter
-    def minute(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minute(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
         """
         return pulumi.get(self, "minute")
 
     @minute.setter
-    def minute(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minute(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minute", value)
 
 
 class VolumeTieringPolicyArgsDict(TypedDict):
-    cooling_threshold_days: NotRequired[pulumi.Input[_builtins.int]]
+    cooling_threshold_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
     Default is 31.
     """
-    hot_tier_bypass_mode_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    hot_tier_bypass_mode_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false.
     Only applicable to Flex service level.
     """
-    tier_action: NotRequired[pulumi.Input[_builtins.str]]
+    tier_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
     Default value is `PAUSED`.
@@ -2468,9 +2468,9 @@ class VolumeTieringPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeTieringPolicyArgs:
     def __init__(__self__, *,
-                 cooling_threshold_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 hot_tier_bypass_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tier_action: Optional[pulumi.Input[_builtins.str]] = None):
+                 cooling_threshold_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 hot_tier_bypass_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tier_action: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] cooling_threshold_days: Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
                Default is 31.
@@ -2489,7 +2489,7 @@ class VolumeTieringPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="coolingThresholdDays")
-    def cooling_threshold_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cooling_threshold_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
         Default is 31.
@@ -2497,12 +2497,12 @@ class VolumeTieringPolicyArgs:
         return pulumi.get(self, "cooling_threshold_days")
 
     @cooling_threshold_days.setter
-    def cooling_threshold_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cooling_threshold_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cooling_threshold_days", value)
 
     @_builtins.property
     @pulumi.getter(name="hotTierBypassModeEnabled")
-    def hot_tier_bypass_mode_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hot_tier_bypass_mode_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Flag indicating that the hot tier bypass mode is enabled. Default is false.
         Only applicable to Flex service level.
@@ -2510,12 +2510,12 @@ class VolumeTieringPolicyArgs:
         return pulumi.get(self, "hot_tier_bypass_mode_enabled")
 
     @hot_tier_bypass_mode_enabled.setter
-    def hot_tier_bypass_mode_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hot_tier_bypass_mode_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hot_tier_bypass_mode_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="tierAction")
-    def tier_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tier_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
         Default value is `PAUSED`.
@@ -2524,7 +2524,7 @@ class VolumeTieringPolicyArgs:
         return pulumi.get(self, "tier_action")
 
     @tier_action.setter
-    def tier_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tier_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tier_action", value)
 
 

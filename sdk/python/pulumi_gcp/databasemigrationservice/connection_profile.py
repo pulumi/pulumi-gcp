@@ -22,15 +22,15 @@ __all__ = ['ConnectionProfileArgs', 'ConnectionProfile']
 class ConnectionProfileArgs:
     def __init__(__self__, *,
                  connection_profile_id: pulumi.Input[_builtins.str],
-                 alloydb: Optional[pulumi.Input['ConnectionProfileAlloydbArgs']] = None,
-                 cloudsql: Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 mysql: Optional[pulumi.Input['ConnectionProfileMysqlArgs']] = None,
-                 oracle: Optional[pulumi.Input['ConnectionProfileOracleArgs']] = None,
-                 postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 alloydb: pulumi.Input[Optional['ConnectionProfileAlloydbArgs']] = None,
+                 cloudsql: pulumi.Input[Optional['ConnectionProfileCloudsqlArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 mysql: pulumi.Input[Optional['ConnectionProfileMysqlArgs']] = None,
+                 oracle: pulumi.Input[Optional['ConnectionProfileOracleArgs']] = None,
+                 postgresql: pulumi.Input[Optional['ConnectionProfilePostgresqlArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
 
@@ -88,7 +88,7 @@ class ConnectionProfileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alloydb(self) -> Optional[pulumi.Input['ConnectionProfileAlloydbArgs']]:
+    def alloydb(self) -> pulumi.Input[Optional['ConnectionProfileAlloydbArgs']]:
         """
         Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
         Structure is documented below.
@@ -96,12 +96,12 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "alloydb")
 
     @alloydb.setter
-    def alloydb(self, value: Optional[pulumi.Input['ConnectionProfileAlloydbArgs']]):
+    def alloydb(self, value: pulumi.Input[Optional['ConnectionProfileAlloydbArgs']]):
         pulumi.set(self, "alloydb", value)
 
     @_builtins.property
     @pulumi.getter
-    def cloudsql(self) -> Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']]:
+    def cloudsql(self) -> pulumi.Input[Optional['ConnectionProfileCloudsqlArgs']]:
         """
         Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
         Structure is documented below.
@@ -109,24 +109,24 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "cloudsql")
 
     @cloudsql.setter
-    def cloudsql(self, value: Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']]):
+    def cloudsql(self, value: pulumi.Input[Optional['ConnectionProfileCloudsqlArgs']]):
         pulumi.set(self, "cloudsql", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection profile display name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
 
@@ -136,24 +136,24 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location where the connection profile should reside.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def mysql(self) -> Optional[pulumi.Input['ConnectionProfileMysqlArgs']]:
+    def mysql(self) -> pulumi.Input[Optional['ConnectionProfileMysqlArgs']]:
         """
         Specifies connection parameters required specifically for MySQL databases.
         Structure is documented below.
@@ -161,12 +161,12 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "mysql")
 
     @mysql.setter
-    def mysql(self, value: Optional[pulumi.Input['ConnectionProfileMysqlArgs']]):
+    def mysql(self, value: pulumi.Input[Optional['ConnectionProfileMysqlArgs']]):
         pulumi.set(self, "mysql", value)
 
     @_builtins.property
     @pulumi.getter
-    def oracle(self) -> Optional[pulumi.Input['ConnectionProfileOracleArgs']]:
+    def oracle(self) -> pulumi.Input[Optional['ConnectionProfileOracleArgs']]:
         """
         Specifies connection parameters required specifically for Oracle databases.
         Structure is documented below.
@@ -174,12 +174,12 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "oracle")
 
     @oracle.setter
-    def oracle(self, value: Optional[pulumi.Input['ConnectionProfileOracleArgs']]):
+    def oracle(self, value: pulumi.Input[Optional['ConnectionProfileOracleArgs']]):
         pulumi.set(self, "oracle", value)
 
     @_builtins.property
     @pulumi.getter
-    def postgresql(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']]:
+    def postgresql(self) -> pulumi.Input[Optional['ConnectionProfilePostgresqlArgs']]:
         """
         Specifies connection parameters required specifically for PostgreSQL databases.
         Structure is documented below.
@@ -187,12 +187,12 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "postgresql")
 
     @postgresql.setter
-    def postgresql(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']]):
+    def postgresql(self, value: pulumi.Input[Optional['ConnectionProfilePostgresqlArgs']]):
         pulumi.set(self, "postgresql", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -200,30 +200,30 @@ class ConnectionProfileArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ConnectionProfileState:
     def __init__(__self__, *,
-                 alloydb: Optional[pulumi.Input['ConnectionProfileAlloydbArgs']] = None,
-                 cloudsql: Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']] = None,
-                 connection_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dbprovider: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 mysql: Optional[pulumi.Input['ConnectionProfileMysqlArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oracle: Optional[pulumi.Input['ConnectionProfileOracleArgs']] = None,
-                 postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 alloydb: pulumi.Input[Optional['ConnectionProfileAlloydbArgs']] = None,
+                 cloudsql: pulumi.Input[Optional['ConnectionProfileCloudsqlArgs']] = None,
+                 connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dbprovider: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 mysql: pulumi.Input[Optional['ConnectionProfileMysqlArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oracle: pulumi.Input[Optional['ConnectionProfileOracleArgs']] = None,
+                 postgresql: pulumi.Input[Optional['ConnectionProfilePostgresqlArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
 
@@ -293,7 +293,7 @@ class _ConnectionProfileState:
 
     @_builtins.property
     @pulumi.getter
-    def alloydb(self) -> Optional[pulumi.Input['ConnectionProfileAlloydbArgs']]:
+    def alloydb(self) -> pulumi.Input[Optional['ConnectionProfileAlloydbArgs']]:
         """
         Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
         Structure is documented below.
@@ -301,12 +301,12 @@ class _ConnectionProfileState:
         return pulumi.get(self, "alloydb")
 
     @alloydb.setter
-    def alloydb(self, value: Optional[pulumi.Input['ConnectionProfileAlloydbArgs']]):
+    def alloydb(self, value: pulumi.Input[Optional['ConnectionProfileAlloydbArgs']]):
         pulumi.set(self, "alloydb", value)
 
     @_builtins.property
     @pulumi.getter
-    def cloudsql(self) -> Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']]:
+    def cloudsql(self) -> pulumi.Input[Optional['ConnectionProfileCloudsqlArgs']]:
         """
         Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
         Structure is documented below.
@@ -314,72 +314,72 @@ class _ConnectionProfileState:
         return pulumi.get(self, "cloudsql")
 
     @cloudsql.setter
-    def cloudsql(self, value: Optional[pulumi.Input['ConnectionProfileCloudsqlArgs']]):
+    def cloudsql(self, value: pulumi.Input[Optional['ConnectionProfileCloudsqlArgs']]):
         pulumi.set(self, "cloudsql", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionProfileId")
-    def connection_profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_profile_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the connection profile.
         """
         return pulumi.get(self, "connection_profile_id")
 
     @connection_profile_id.setter
-    def connection_profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_profile_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_profile_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def dbprovider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dbprovider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database provider.
         """
         return pulumi.get(self, "dbprovider")
 
     @dbprovider.setter
-    def dbprovider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dbprovider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dbprovider", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection profile display name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]]]:
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]]]:
         """
         Output only. The error details in case of state FAILED.
         Structure is documented below.
@@ -387,12 +387,12 @@ class _ConnectionProfileState:
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]]]):
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProfileErrorArgs']]]]):
         pulumi.set(self, "errors", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
 
@@ -402,24 +402,24 @@ class _ConnectionProfileState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location where the connection profile should reside.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def mysql(self) -> Optional[pulumi.Input['ConnectionProfileMysqlArgs']]:
+    def mysql(self) -> pulumi.Input[Optional['ConnectionProfileMysqlArgs']]:
         """
         Specifies connection parameters required specifically for MySQL databases.
         Structure is documented below.
@@ -427,24 +427,24 @@ class _ConnectionProfileState:
         return pulumi.get(self, "mysql")
 
     @mysql.setter
-    def mysql(self, value: Optional[pulumi.Input['ConnectionProfileMysqlArgs']]):
+    def mysql(self, value: pulumi.Input[Optional['ConnectionProfileMysqlArgs']]):
         pulumi.set(self, "mysql", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def oracle(self) -> Optional[pulumi.Input['ConnectionProfileOracleArgs']]:
+    def oracle(self) -> pulumi.Input[Optional['ConnectionProfileOracleArgs']]:
         """
         Specifies connection parameters required specifically for Oracle databases.
         Structure is documented below.
@@ -452,12 +452,12 @@ class _ConnectionProfileState:
         return pulumi.get(self, "oracle")
 
     @oracle.setter
-    def oracle(self, value: Optional[pulumi.Input['ConnectionProfileOracleArgs']]):
+    def oracle(self, value: pulumi.Input[Optional['ConnectionProfileOracleArgs']]):
         pulumi.set(self, "oracle", value)
 
     @_builtins.property
     @pulumi.getter
-    def postgresql(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']]:
+    def postgresql(self) -> pulumi.Input[Optional['ConnectionProfilePostgresqlArgs']]:
         """
         Specifies connection parameters required specifically for PostgreSQL databases.
         Structure is documented below.
@@ -465,12 +465,12 @@ class _ConnectionProfileState:
         return pulumi.get(self, "postgresql")
 
     @postgresql.setter
-    def postgresql(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']]):
+    def postgresql(self, value: pulumi.Input[Optional['ConnectionProfilePostgresqlArgs']]):
         pulumi.set(self, "postgresql", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -478,12 +478,12 @@ class _ConnectionProfileState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -491,19 +491,19 @@ class _ConnectionProfileState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current connection profile state.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -513,16 +513,16 @@ class ConnectionProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alloydb: Optional[pulumi.Input[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict']]] = None,
-                 cloudsql: Optional[pulumi.Input[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']]] = None,
-                 connection_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 mysql: Optional[pulumi.Input[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict']]] = None,
-                 oracle: Optional[pulumi.Input[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict']]] = None,
-                 postgresql: Optional[pulumi.Input[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 alloydb: pulumi.Input[Optional[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict']]] = None,
+                 cloudsql: pulumi.Input[Optional[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']]] = None,
+                 connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 mysql: pulumi.Input[Optional[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict']]] = None,
+                 oracle: pulumi.Input[Optional[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict']]] = None,
+                 postgresql: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A connection profile definition.
@@ -1381,16 +1381,16 @@ class ConnectionProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alloydb: Optional[pulumi.Input[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict']]] = None,
-                 cloudsql: Optional[pulumi.Input[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']]] = None,
-                 connection_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 mysql: Optional[pulumi.Input[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict']]] = None,
-                 oracle: Optional[pulumi.Input[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict']]] = None,
-                 postgresql: Optional[pulumi.Input[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 alloydb: pulumi.Input[Optional[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict']]] = None,
+                 cloudsql: pulumi.Input[Optional[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']]] = None,
+                 connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 mysql: pulumi.Input[Optional[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict']]] = None,
+                 oracle: pulumi.Input[Optional[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict']]] = None,
+                 postgresql: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1431,23 +1431,23 @@ class ConnectionProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alloydb: Optional[pulumi.Input[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict']]] = None,
-            cloudsql: Optional[pulumi.Input[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']]] = None,
-            connection_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dbprovider: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProfileErrorArgs', 'ConnectionProfileErrorArgsDict']]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            mysql: Optional[pulumi.Input[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            oracle: Optional[pulumi.Input[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict']]] = None,
-            postgresql: Optional[pulumi.Input[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConnectionProfile':
+            alloydb: pulumi.Input[Optional[Union['ConnectionProfileAlloydbArgs', 'ConnectionProfileAlloydbArgsDict']]] = None,
+            cloudsql: pulumi.Input[Optional[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']]] = None,
+            connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dbprovider: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionProfileErrorArgs', 'ConnectionProfileErrorArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            mysql: pulumi.Input[Optional[Union['ConnectionProfileMysqlArgs', 'ConnectionProfileMysqlArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oracle: pulumi.Input[Optional[Union['ConnectionProfileOracleArgs', 'ConnectionProfileOracleArgsDict']]] = None,
+            postgresql: pulumi.Input[Optional[Union['ConnectionProfilePostgresqlArgs', 'ConnectionProfilePostgresqlArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConnectionProfile':
         """
         Get an existing ConnectionProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

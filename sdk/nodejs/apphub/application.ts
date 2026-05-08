@@ -239,43 +239,43 @@ export interface ApplicationState {
     /**
      * Required. The Application identifier.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Consumer provided attributes.
      * Structure is documented below.
      */
-    attributes?: pulumi.Input<inputs.apphub.ApplicationAttributes>;
+    attributes?: pulumi.Input<inputs.apphub.ApplicationAttributes | undefined>;
     /**
      * Output only. Create time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. User-defined description of an Application.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Optional. User-defined name for the Application.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of an Application. Format:
      * "projects/{host-project-id}/locations/{location}/applications/{application-id}"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Scope of an application.
      * Structure is documented below.
      */
-    scope?: pulumi.Input<inputs.apphub.ApplicationScope>;
+    scope?: pulumi.Input<inputs.apphub.ApplicationScope | undefined>;
     /**
      * Output only. Application state.
      * Possible values:
@@ -284,15 +284,15 @@ export interface ApplicationState {
      * ACTIVE
      * DELETING
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. A universally unique identifier (in UUID4 format) for the `Application`.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. Update time.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -307,15 +307,15 @@ export interface ApplicationArgs {
      * Consumer provided attributes.
      * Structure is documented below.
      */
-    attributes?: pulumi.Input<inputs.apphub.ApplicationAttributes>;
+    attributes?: pulumi.Input<inputs.apphub.ApplicationAttributes | undefined>;
     /**
      * Optional. User-defined description of an Application.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Optional. User-defined name for the Application.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
      */
@@ -324,7 +324,7 @@ export interface ApplicationArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Scope of an application.
      * Structure is documented below.

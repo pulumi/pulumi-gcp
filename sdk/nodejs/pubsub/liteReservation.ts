@@ -136,22 +136,22 @@ export interface LiteReservationState {
     /**
      * Name of the reservation.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the pubsub lite reservation.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The reserved throughput capacity. Every unit of throughput capacity is
      * equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed
      * messages.
      */
-    throughputCapacity?: pulumi.Input<number>;
+    throughputCapacity?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -161,16 +161,16 @@ export interface LiteReservationArgs {
     /**
      * Name of the reservation.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the pubsub lite reservation.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The reserved throughput capacity. Every unit of throughput capacity is
      * equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed

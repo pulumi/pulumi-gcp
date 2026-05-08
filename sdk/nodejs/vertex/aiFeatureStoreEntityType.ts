@@ -256,58 +256,58 @@ export interface AiFeatureStoreEntityTypeState {
     /**
      * The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. Description of the EntityType.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Used to perform consistent read-modify-write updates.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
      */
-    featurestore?: pulumi.Input<string>;
+    featurestore?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs to assign to this EntityType.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The default monitoring configuration for all Features under this EntityType.
      * If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
      * Structure is documented below.
      */
-    monitoringConfig?: pulumi.Input<inputs.vertex.AiFeatureStoreEntityTypeMonitoringConfig>;
+    monitoringConfig?: pulumi.Input<inputs.vertex.AiFeatureStoreEntityTypeMonitoringConfig | undefined>;
     /**
      * The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
      */
-    offlineStorageTtlDays?: pulumi.Input<number>;
+    offlineStorageTtlDays?: pulumi.Input<number | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of the EntityType.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -317,7 +317,7 @@ export interface AiFeatureStoreEntityTypeArgs {
     /**
      * Optional. Description of the EntityType.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
      */
@@ -328,20 +328,20 @@ export interface AiFeatureStoreEntityTypeArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The default monitoring configuration for all Features under this EntityType.
      * If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
      * Structure is documented below.
      */
-    monitoringConfig?: pulumi.Input<inputs.vertex.AiFeatureStoreEntityTypeMonitoringConfig>;
+    monitoringConfig?: pulumi.Input<inputs.vertex.AiFeatureStoreEntityTypeMonitoringConfig | undefined>;
     /**
      * The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
      */
-    offlineStorageTtlDays?: pulumi.Input<number>;
+    offlineStorageTtlDays?: pulumi.Input<number | undefined>;
 }

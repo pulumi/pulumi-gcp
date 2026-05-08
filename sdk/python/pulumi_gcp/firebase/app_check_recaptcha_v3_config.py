@@ -21,8 +21,8 @@ class AppCheckRecaptchaV3ConfigArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[_builtins.str],
                  site_secret: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_ttl: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_ttl: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppCheckRecaptchaV3Config resource.
 
@@ -73,7 +73,7 @@ class AppCheckRecaptchaV3ConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -81,12 +81,12 @@ class AppCheckRecaptchaV3ConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenTtl")
-    def token_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the duration for which App Check tokens exchanged from reCAPTCHA V3 artifacts will be valid.
         If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
@@ -95,19 +95,19 @@ class AppCheckRecaptchaV3ConfigArgs:
         return pulumi.get(self, "token_ttl")
 
     @token_ttl.setter
-    def token_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_ttl", value)
 
 
 @pulumi.input_type
 class _AppCheckRecaptchaV3ConfigState:
     def __init__(__self__, *,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_secret_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token_ttl: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_secret_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token_ttl: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppCheckRecaptchaV3Config resources.
 
@@ -139,7 +139,7 @@ class _AppCheckRecaptchaV3ConfigState:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of an
         [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
@@ -147,24 +147,24 @@ class _AppCheckRecaptchaV3ConfigState:
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative resource name of the reCAPTCHA V3 configuration object
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -172,12 +172,12 @@ class _AppCheckRecaptchaV3ConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="siteSecret")
-    def site_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The site secret used to identify your service for reCAPTCHA v3 verification.
         For security reasons, this field will never be populated in any response.
@@ -186,24 +186,24 @@ class _AppCheckRecaptchaV3ConfigState:
         return pulumi.get(self, "site_secret")
 
     @site_secret.setter
-    def site_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="siteSecretSet")
-    def site_secret_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def site_secret_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the siteSecret was previously set. Since we will never return the siteSecret field, this field is the only way to find out whether it was previously set.
         """
         return pulumi.get(self, "site_secret_set")
 
     @site_secret_set.setter
-    def site_secret_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def site_secret_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "site_secret_set", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenTtl")
-    def token_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the duration for which App Check tokens exchanged from reCAPTCHA V3 artifacts will be valid.
         If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
@@ -212,7 +212,7 @@ class _AppCheckRecaptchaV3ConfigState:
         return pulumi.get(self, "token_ttl")
 
     @token_ttl.setter
-    def token_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_ttl", value)
 
 
@@ -222,10 +222,10 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_ttl: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_ttl: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An app's reCAPTCHA V3 configuration object.
@@ -361,10 +361,10 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_ttl: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_ttl: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -396,12 +396,12 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            site_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            site_secret_set: Optional[pulumi.Input[_builtins.bool]] = None,
-            token_ttl: Optional[pulumi.Input[_builtins.str]] = None) -> 'AppCheckRecaptchaV3Config':
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            site_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            site_secret_set: pulumi.Input[Optional[_builtins.bool]] = None,
+            token_ttl: pulumi.Input[Optional[_builtins.str]] = None) -> 'AppCheckRecaptchaV3Config':
         """
         Get an existing AppCheckRecaptchaV3Config resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

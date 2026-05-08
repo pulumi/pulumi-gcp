@@ -22,9 +22,9 @@ __all__ = ['NetworkEndpointListArgs', 'NetworkEndpointList']
 class NetworkEndpointListArgs:
     def __init__(__self__, *,
                  network_endpoint_group: pulumi.Input[_builtins.str],
-                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkEndpointList resource.
 
@@ -59,7 +59,7 @@ class NetworkEndpointListArgs:
 
     @_builtins.property
     @pulumi.getter(name="networkEndpoints")
-    def network_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]]:
+    def network_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]]:
         """
         The network endpoints to be added to the enclosing network endpoint group
         (NEG). Each endpoint specifies an IP address and port, along with
@@ -69,12 +69,12 @@ class NetworkEndpointListArgs:
         return pulumi.get(self, "network_endpoints")
 
     @network_endpoints.setter
-    def network_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]]):
+    def network_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]]):
         pulumi.set(self, "network_endpoints", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -82,29 +82,29 @@ class NetworkEndpointListArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone where the containing network endpoint group is located.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
 class _NetworkEndpointListState:
     def __init__(__self__, *,
-                 network_endpoint_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkEndpointList resources.
 
@@ -128,19 +128,19 @@ class _NetworkEndpointListState:
 
     @_builtins.property
     @pulumi.getter(name="networkEndpointGroup")
-    def network_endpoint_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_endpoint_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network endpoint group these endpoints are part of.
         """
         return pulumi.get(self, "network_endpoint_group")
 
     @network_endpoint_group.setter
-    def network_endpoint_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_endpoint_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_endpoint_group", value)
 
     @_builtins.property
     @pulumi.getter(name="networkEndpoints")
-    def network_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]]:
+    def network_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]]:
         """
         The network endpoints to be added to the enclosing network endpoint group
         (NEG). Each endpoint specifies an IP address and port, along with
@@ -150,12 +150,12 @@ class _NetworkEndpointListState:
         return pulumi.get(self, "network_endpoints")
 
     @network_endpoints.setter
-    def network_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]]):
+    def network_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]]]):
         pulumi.set(self, "network_endpoints", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -163,19 +163,19 @@ class _NetworkEndpointListState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone where the containing network endpoint group is located.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -185,10 +185,10 @@ class NetworkEndpointList(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_endpoint_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A set of network endpoints belonging to a network endpoint group (NEG). A
@@ -257,12 +257,12 @@ class NetworkEndpointList(pulumi.CustomResource):
             network_endpoints=[
                 {
                     "instance": endpoint_instance1.name,
-                    "port": neg["defaultPort"],
+                    "port": int(neg["defaultPort"]),
                     "ip_address": endpoint_instance1.network_interfaces[0].network_ip,
                 },
                 {
                     "instance": endpoint_instance2.name,
-                    "port": neg["defaultPort"],
+                    "port": int(neg["defaultPort"]),
                     "ip_address": endpoint_instance2.network_interfaces[0].network_ip,
                 },
             ])
@@ -377,12 +377,12 @@ class NetworkEndpointList(pulumi.CustomResource):
             network_endpoints=[
                 {
                     "instance": endpoint_instance1.name,
-                    "port": neg["defaultPort"],
+                    "port": int(neg["defaultPort"]),
                     "ip_address": endpoint_instance1.network_interfaces[0].network_ip,
                 },
                 {
                     "instance": endpoint_instance2.name,
-                    "port": neg["defaultPort"],
+                    "port": int(neg["defaultPort"]),
                     "ip_address": endpoint_instance2.network_interfaces[0].network_ip,
                 },
             ])
@@ -428,10 +428,10 @@ class NetworkEndpointList(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_endpoint_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -457,10 +457,10 @@ class NetworkEndpointList(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            network_endpoint_group: Optional[pulumi.Input[_builtins.str]] = None,
-            network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'NetworkEndpointList':
+            network_endpoint_group: pulumi.Input[Optional[_builtins.str]] = None,
+            network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkEndpointList':
         """
         Get an existing NetworkEndpointList resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

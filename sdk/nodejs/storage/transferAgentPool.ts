@@ -155,11 +155,11 @@ export interface TransferAgentPoolState {
      * Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
      * Structure is documented below.
      */
-    bandwidthLimit?: pulumi.Input<inputs.storage.TransferAgentPoolBandwidthLimit>;
+    bandwidthLimit?: pulumi.Input<inputs.storage.TransferAgentPoolBandwidthLimit | undefined>;
     /**
      * Specifies the client-specified AgentPool description.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the agent pool to create.
      * The agentPoolId must meet the following requirements:
@@ -170,16 +170,16 @@ export interface TransferAgentPoolState {
      * * One or more numerals or lowercase ASCII characters.
      * As expressed by the regular expression: ^(?!goog)a-z?$.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies the state of the AgentPool.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -190,11 +190,11 @@ export interface TransferAgentPoolArgs {
      * Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
      * Structure is documented below.
      */
-    bandwidthLimit?: pulumi.Input<inputs.storage.TransferAgentPoolBandwidthLimit>;
+    bandwidthLimit?: pulumi.Input<inputs.storage.TransferAgentPoolBandwidthLimit | undefined>;
     /**
      * Specifies the client-specified AgentPool description.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the agent pool to create.
      * The agentPoolId must meet the following requirements:
@@ -205,10 +205,10 @@ export interface TransferAgentPoolArgs {
      * * One or more numerals or lowercase ASCII characters.
      * As expressed by the regular expression: ^(?!goog)a-z?$.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

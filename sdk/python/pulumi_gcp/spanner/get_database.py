@@ -194,9 +194,9 @@ def get_database(instance: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         state=pulumi.get(__ret__, 'state'),
         version_retention_period=pulumi.get(__ret__, 'version_retention_period'))
-def get_database_output(instance: Optional[pulumi.Input[_builtins.str]] = None,
-                        name: Optional[pulumi.Input[_builtins.str]] = None,
-                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_database_output(instance: pulumi.Input[Optional[_builtins.str]] = None,
+                        name: pulumi.Input[Optional[_builtins.str]] = None,
+                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseResult]:
     """
     Get a spanner database from Google Cloud by its name and instance name.

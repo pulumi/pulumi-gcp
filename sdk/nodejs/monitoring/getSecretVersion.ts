@@ -131,17 +131,17 @@ export interface GetSecretVersionOutputArgs {
      * If set to `false`, the `secretData` 
      * will not be fetched. Default is `true`.
      */
-    fetchSecretData?: pulumi.Input<boolean>;
+    fetchSecretData?: pulumi.Input<boolean | undefined>;
     /**
      * If set to `true`, the secret data is
      * expected to be base64-encoded string.
      */
-    isSecretDataBase64?: pulumi.Input<boolean>;
+    isSecretDataBase64?: pulumi.Input<boolean | undefined>;
     /**
      * The project to get the secret version for. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The secret to get the secret version for.
      */
@@ -150,5 +150,5 @@ export interface GetSecretVersionOutputArgs {
      * The version of the secret to get. If it
      * is not provided, the latest version is retrieved.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

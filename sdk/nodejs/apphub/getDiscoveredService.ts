@@ -110,7 +110,7 @@ export interface GetDiscoveredServiceOutputArgs {
     /**
      * The host project of the discovered service.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The uri of the service.
      */

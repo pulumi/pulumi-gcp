@@ -438,103 +438,103 @@ export interface GdcSparkApplicationState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An ApplicationEnvironment from which to inherit configuration properties.
      */
-    applicationEnvironment?: pulumi.Input<string>;
+    applicationEnvironment?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
      */
-    dependencyImages?: pulumi.Input<pulumi.Input<string>[]>;
+    dependencyImages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * User-provided human-readable name to be used in user interfaces.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The labels to associate with this application. Labels may be used for filtering and billing tracking.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the spark application.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * URL for a monitoring UI for this application (for eventual Spark PHS/UI support) Out of scope for private GA
      */
-    monitoringEndpoint?: pulumi.Input<string>;
+    monitoringEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The name of the application. Format: projects/{project}/locations/{location}/serviceInstances/{service_instance}/sparkApplications/{application}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Kubernetes namespace in which to create the application. This namespace must already exist on the cluster.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * An HCFS URI pointing to the location of stdout and stdout of the application Mainly useful for Pantheon and gcloud Not in scope for private GA
      */
-    outputUri?: pulumi.Input<string>;
+    outputUri?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * application-specific properties.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Represents the PySparkApplicationConfig.
      * Structure is documented below.
      */
-    pysparkApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationPysparkApplicationConfig>;
+    pysparkApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationPysparkApplicationConfig | undefined>;
     /**
      * Whether the application is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * The id of the service instance to which this spark application belongs.
      */
-    serviceinstance?: pulumi.Input<string>;
+    serviceinstance?: pulumi.Input<string | undefined>;
     /**
      * Represents the SparkApplicationConfig.
      * Structure is documented below.
      */
-    sparkApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkApplicationConfig>;
+    sparkApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkApplicationConfig | undefined>;
     /**
      * The id of the application
      */
-    sparkApplicationId?: pulumi.Input<string>;
+    sparkApplicationId?: pulumi.Input<string | undefined>;
     /**
      * Represents the SparkRApplicationConfig.
      * Structure is documented below.
      */
-    sparkRApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkRApplicationConfig>;
+    sparkRApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkRApplicationConfig | undefined>;
     /**
      * Represents the SparkRApplicationConfig.
      * Structure is documented below.
      */
-    sparkSqlApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkSqlApplicationConfig>;
+    sparkSqlApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkSqlApplicationConfig | undefined>;
     /**
      * The current state.
      * Possible values:
@@ -546,23 +546,23 @@ export interface GdcSparkApplicationState {
      * * `SUCCEEDED`
      * * `FAILED`
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A message explaining the current state.
      */
-    stateMessage?: pulumi.Input<string>;
+    stateMessage?: pulumi.Input<string | undefined>;
     /**
      * System generated unique identifier for this application, formatted as UUID4.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was most recently updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The Dataproc version of this application.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -574,25 +574,25 @@ export interface GdcSparkApplicationArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An ApplicationEnvironment from which to inherit configuration properties.
      */
-    applicationEnvironment?: pulumi.Input<string>;
+    applicationEnvironment?: pulumi.Input<string | undefined>;
     /**
      * List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
      */
-    dependencyImages?: pulumi.Input<pulumi.Input<string>[]>;
+    dependencyImages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * User-provided human-readable name to be used in user interfaces.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The labels to associate with this application. Labels may be used for filtering and billing tracking.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the spark application.
      */
@@ -600,21 +600,21 @@ export interface GdcSparkApplicationArgs {
     /**
      * The Kubernetes namespace in which to create the application. This namespace must already exist on the cluster.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * application-specific properties.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Represents the PySparkApplicationConfig.
      * Structure is documented below.
      */
-    pysparkApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationPysparkApplicationConfig>;
+    pysparkApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationPysparkApplicationConfig | undefined>;
     /**
      * The id of the service instance to which this spark application belongs.
      */
@@ -623,7 +623,7 @@ export interface GdcSparkApplicationArgs {
      * Represents the SparkApplicationConfig.
      * Structure is documented below.
      */
-    sparkApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkApplicationConfig>;
+    sparkApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkApplicationConfig | undefined>;
     /**
      * The id of the application
      */
@@ -632,14 +632,14 @@ export interface GdcSparkApplicationArgs {
      * Represents the SparkRApplicationConfig.
      * Structure is documented below.
      */
-    sparkRApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkRApplicationConfig>;
+    sparkRApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkRApplicationConfig | undefined>;
     /**
      * Represents the SparkRApplicationConfig.
      * Structure is documented below.
      */
-    sparkSqlApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkSqlApplicationConfig>;
+    sparkSqlApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkSqlApplicationConfig | undefined>;
     /**
      * The Dataproc version of this application.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

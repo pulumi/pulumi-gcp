@@ -552,27 +552,27 @@ export interface IndexState {
      * Default value is `ANY_API`.
      * Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
      */
-    apiScope?: pulumi.Input<string>;
+    apiScope?: pulumi.Input<string | undefined>;
     /**
      * The collection being indexed.
      */
-    collection?: pulumi.Input<string>;
+    collection?: pulumi.Input<string | undefined>;
     /**
      * The Firestore database id. Defaults to `"(default)"`.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Deletion behavior for this index.
      * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
      * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
      * The default value is `DELETE`.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The density configuration for this index.
      * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
      */
-    density?: pulumi.Input<string>;
+    density?: pulumi.Input<string | undefined>;
     /**
      * The fields supported by this index. The last non-stored field entry is
      * always for the field path `__name__`. If, on creation, `__name__` was not
@@ -582,35 +582,35 @@ export interface IndexState {
      * `"ASCENDING"` (unless explicitly specified otherwise).
      * Structure is documented below.
      */
-    fields?: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
+    fields?: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[] | undefined>;
     /**
      * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
      */
-    multikey?: pulumi.Input<boolean>;
+    multikey?: pulumi.Input<boolean | undefined>;
     /**
      * A server defined name for this index. Format:
      * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
      * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      */
-    queryScope?: pulumi.Input<string>;
+    queryScope?: pulumi.Input<string | undefined>;
     /**
      * Whether to skip waiting for the index to be created.
      */
-    skipWait?: pulumi.Input<boolean>;
+    skipWait?: pulumi.Input<boolean | undefined>;
     /**
      * Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
      */
-    unique?: pulumi.Input<boolean>;
+    unique?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -622,7 +622,7 @@ export interface IndexArgs {
      * Default value is `ANY_API`.
      * Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
      */
-    apiScope?: pulumi.Input<string>;
+    apiScope?: pulumi.Input<string | undefined>;
     /**
      * The collection being indexed.
      */
@@ -630,19 +630,19 @@ export interface IndexArgs {
     /**
      * The Firestore database id. Defaults to `"(default)"`.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Deletion behavior for this index.
      * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
      * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
      * The default value is `DELETE`.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The density configuration for this index.
      * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
      */
-    density?: pulumi.Input<string>;
+    density?: pulumi.Input<string | undefined>;
     /**
      * The fields supported by this index. The last non-stored field entry is
      * always for the field path `__name__`. If, on creation, `__name__` was not
@@ -656,24 +656,24 @@ export interface IndexArgs {
     /**
      * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
      */
-    multikey?: pulumi.Input<boolean>;
+    multikey?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
      * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      */
-    queryScope?: pulumi.Input<string>;
+    queryScope?: pulumi.Input<string | undefined>;
     /**
      * Whether to skip waiting for the index to be created.
      */
-    skipWait?: pulumi.Input<boolean>;
+    skipWait?: pulumi.Input<boolean | undefined>;
     /**
      * Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
      */
-    unique?: pulumi.Input<boolean>;
+    unique?: pulumi.Input<boolean | undefined>;
 }

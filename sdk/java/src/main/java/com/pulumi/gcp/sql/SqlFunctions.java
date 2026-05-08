@@ -50,8 +50,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetBackupRunArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -91,8 +91,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetBackupRunArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -132,8 +132,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetBackupRunArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -173,8 +173,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetBackupRunArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -214,8 +214,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetBackupRunArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -305,8 +305,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -346,8 +346,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -387,8 +387,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -428,8 +428,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -469,8 +469,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -510,8 +510,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -550,8 +550,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -590,8 +590,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -630,8 +630,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -670,8 +670,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -713,8 +713,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceLatestRecoveryTimeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -757,8 +757,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceLatestRecoveryTimeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -801,8 +801,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceLatestRecoveryTimeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -845,8 +845,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceLatestRecoveryTimeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -889,8 +889,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceLatestRecoveryTimeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -930,8 +930,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -970,8 +970,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1010,8 +1010,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1050,8 +1050,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1090,8 +1090,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1130,8 +1130,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1170,8 +1170,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1209,8 +1209,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1248,8 +1248,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1287,8 +1287,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1326,8 +1326,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1365,8 +1365,8 @@ public final class SqlFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sql.SqlFunctions;
      * import com.pulumi.gcp.sql.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

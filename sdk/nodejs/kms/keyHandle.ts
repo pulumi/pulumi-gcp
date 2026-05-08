@@ -223,26 +223,26 @@ export interface KeyHandleState {
      * product/project/location, for example
      * `projects/1/locations/us-east1/keyRings/foo/cryptoKeys/bar-ffffff`
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * The location for the KeyHandle.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name for the KeyHandle.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Selector of the resource type where we want to protect resources.
      * For example, `storage.googleapis.com/Bucket`.
      */
-    resourceTypeSelector?: pulumi.Input<string>;
+    resourceTypeSelector?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -257,12 +257,12 @@ export interface KeyHandleArgs {
     /**
      * The resource name for the KeyHandle.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Selector of the resource type where we want to protect resources.
      * For example, `storage.googleapis.com/Bucket`.

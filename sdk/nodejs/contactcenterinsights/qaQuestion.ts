@@ -224,75 +224,75 @@ export interface QaQuestionState {
      * Short, descriptive string, used in the UI where it's not practical
      * to display the full question body. E.g., "Greeting".
      */
-    abbreviation?: pulumi.Input<string>;
+    abbreviation?: pulumi.Input<string | undefined>;
     /**
      * A list of valid answers to the question, which the LLM must choose from.
      * Structure is documented below.
      */
-    answerChoices?: pulumi.Input<pulumi.Input<inputs.contactcenterinsights.QaQuestionAnswerChoice>[]>;
+    answerChoices?: pulumi.Input<pulumi.Input<inputs.contactcenterinsights.QaQuestionAnswerChoice>[] | undefined>;
     /**
      * Instructions describing how to determine the answer.
      */
-    answerInstructions?: pulumi.Input<string>;
+    answerInstructions?: pulumi.Input<string | undefined>;
     /**
      * The time at which this question was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * A wrapper representing metrics calculated against a test-set on a LLM that
      * was fine tuned for this question.
      * Structure is documented below.
      */
-    metrics?: pulumi.Input<inputs.contactcenterinsights.QaQuestionMetrics>;
+    metrics?: pulumi.Input<inputs.contactcenterinsights.QaQuestionMetrics | undefined>;
     /**
      * Identifier. The resource name of the question.
      * Format:
      * projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Defines the order of the question within its parent scorecard revision.
      */
-    order?: pulumi.Input<number>;
+    order?: pulumi.Input<number | undefined>;
     /**
      * Configuration for a predefined question. This field will only be set if the
      * Question Type is predefined.
      * Structure is documented below.
      */
-    predefinedQuestionConfig?: pulumi.Input<inputs.contactcenterinsights.QaQuestionPredefinedQuestionConfig>;
+    predefinedQuestionConfig?: pulumi.Input<inputs.contactcenterinsights.QaQuestionPredefinedQuestionConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Options for configuring the data used to generate the QA question.
      * Structure is documented below.
      */
-    qaQuestionDataOptions?: pulumi.Input<inputs.contactcenterinsights.QaQuestionQaQuestionDataOptions>;
+    qaQuestionDataOptions?: pulumi.Input<inputs.contactcenterinsights.QaQuestionQaQuestionDataOptions | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    qaScorecard?: pulumi.Input<string>;
+    qaScorecard?: pulumi.Input<string | undefined>;
     /**
      * Question text. E.g., "Did the agent greet the customer?"
      */
-    questionBody?: pulumi.Input<string>;
+    questionBody?: pulumi.Input<string | undefined>;
     /**
      * The type of question.
      * Possible values:
      * CUSTOMIZABLE
      * PREDEFINED
      */
-    questionType?: pulumi.Input<string>;
+    questionType?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    revision?: pulumi.Input<string>;
+    revision?: pulumi.Input<string | undefined>;
     /**
      * Questions are tagged for categorization and scoring. Tags can either be:
      * - Default Tags: These are predefined categories. They are identified by
@@ -303,17 +303,17 @@ export interface QaQuestionState {
      * Both default and custom tags are used to group questions and to influence
      * the scoring of each question.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Metadata about the tuning operation for the question. Will only be set if a
      * scorecard containing this question has been tuned.
      * Structure is documented below.
      */
-    tuningMetadata?: pulumi.Input<inputs.contactcenterinsights.QaQuestionTuningMetadata>;
+    tuningMetadata?: pulumi.Input<inputs.contactcenterinsights.QaQuestionTuningMetadata | undefined>;
     /**
      * The most recent time at which the question was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -324,16 +324,16 @@ export interface QaQuestionArgs {
      * Short, descriptive string, used in the UI where it's not practical
      * to display the full question body. E.g., "Greeting".
      */
-    abbreviation?: pulumi.Input<string>;
+    abbreviation?: pulumi.Input<string | undefined>;
     /**
      * A list of valid answers to the question, which the LLM must choose from.
      * Structure is documented below.
      */
-    answerChoices?: pulumi.Input<pulumi.Input<inputs.contactcenterinsights.QaQuestionAnswerChoice>[]>;
+    answerChoices?: pulumi.Input<pulumi.Input<inputs.contactcenterinsights.QaQuestionAnswerChoice>[] | undefined>;
     /**
      * Instructions describing how to determine the answer.
      */
-    answerInstructions?: pulumi.Input<string>;
+    answerInstructions?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -343,27 +343,27 @@ export interface QaQuestionArgs {
      * was fine tuned for this question.
      * Structure is documented below.
      */
-    metrics?: pulumi.Input<inputs.contactcenterinsights.QaQuestionMetrics>;
+    metrics?: pulumi.Input<inputs.contactcenterinsights.QaQuestionMetrics | undefined>;
     /**
      * Defines the order of the question within its parent scorecard revision.
      */
-    order?: pulumi.Input<number>;
+    order?: pulumi.Input<number | undefined>;
     /**
      * Configuration for a predefined question. This field will only be set if the
      * Question Type is predefined.
      * Structure is documented below.
      */
-    predefinedQuestionConfig?: pulumi.Input<inputs.contactcenterinsights.QaQuestionPredefinedQuestionConfig>;
+    predefinedQuestionConfig?: pulumi.Input<inputs.contactcenterinsights.QaQuestionPredefinedQuestionConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Options for configuring the data used to generate the QA question.
      * Structure is documented below.
      */
-    qaQuestionDataOptions?: pulumi.Input<inputs.contactcenterinsights.QaQuestionQaQuestionDataOptions>;
+    qaQuestionDataOptions?: pulumi.Input<inputs.contactcenterinsights.QaQuestionQaQuestionDataOptions | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -371,14 +371,14 @@ export interface QaQuestionArgs {
     /**
      * Question text. E.g., "Did the agent greet the customer?"
      */
-    questionBody?: pulumi.Input<string>;
+    questionBody?: pulumi.Input<string | undefined>;
     /**
      * The type of question.
      * Possible values:
      * CUSTOMIZABLE
      * PREDEFINED
      */
-    questionType?: pulumi.Input<string>;
+    questionType?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -393,11 +393,11 @@ export interface QaQuestionArgs {
      * Both default and custom tags are used to group questions and to influence
      * the scoring of each question.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Metadata about the tuning operation for the question. Will only be set if a
      * scorecard containing this question has been tuned.
      * Structure is documented below.
      */
-    tuningMetadata?: pulumi.Input<inputs.contactcenterinsights.QaQuestionTuningMetadata>;
+    tuningMetadata?: pulumi.Input<inputs.contactcenterinsights.QaQuestionTuningMetadata | undefined>;
 }

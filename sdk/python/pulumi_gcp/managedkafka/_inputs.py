@@ -59,11 +59,11 @@ class AclAclEntryArgsDict(TypedDict):
     """
     The principal. Specified as Google Cloud account, with the Kafka StandardAuthorizer prefix User:". For example: "User:test-kafka-client@test-project.iam.gserviceaccount.com". Can be the wildcard "User:*" to refer to all users.
     """
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The host. Must be set to "*" for Managed Service for Apache Kafka.
     """
-    permission_type: NotRequired[pulumi.Input[_builtins.str]]
+    permission_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The permission type. Accepted values are (case insensitive): ALLOW, DENY.
     """
@@ -73,8 +73,8 @@ class AclAclEntryArgs:
     def __init__(__self__, *,
                  operation: pulumi.Input[_builtins.str],
                  principal: pulumi.Input[_builtins.str],
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 permission_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 permission_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] operation: The operation type. Allowed values are (case insensitive): ALL, READ,
                WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS,
@@ -120,31 +120,31 @@ class AclAclEntryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The host. Must be set to "*" for Managed Service for Apache Kafka.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionType")
-    def permission_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permission_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The permission type. Accepted values are (case insensitive): ALLOW, DENY.
         """
         return pulumi.get(self, "permission_type")
 
     @permission_type.setter
-    def permission_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permission_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permission_type", value)
 
 
 class ClusterBrokerCapacityConfigArgsDict(TypedDict):
-    disk_size_gib: NotRequired[pulumi.Input[_builtins.str]]
+    disk_size_gib: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
     """
@@ -152,7 +152,7 @@ class ClusterBrokerCapacityConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterBrokerCapacityConfigArgs:
     def __init__(__self__, *,
-                 disk_size_gib: Optional[pulumi.Input[_builtins.str]] = None):
+                 disk_size_gib: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] disk_size_gib: The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
         """
@@ -161,14 +161,14 @@ class ClusterBrokerCapacityConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGib")
-    def disk_size_gib(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_size_gib(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
         """
         return pulumi.get(self, "disk_size_gib")
 
     @disk_size_gib.setter
-    def disk_size_gib(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_size_gib(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_size_gib", value)
 
 
@@ -225,7 +225,7 @@ class ClusterGcpConfigArgsDict(TypedDict):
     The configuration of access to the Kafka cluster.
     Structure is documented below.
     """
-    kms_key: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cloud KMS Key name to use for encryption. The key must be located in the same region as the cluster and cannot be changed. Must be in the format `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`.
     """
@@ -234,7 +234,7 @@ class ClusterGcpConfigArgsDict(TypedDict):
 class ClusterGcpConfigArgs:
     def __init__(__self__, *,
                  access_config: pulumi.Input['ClusterGcpConfigAccessConfigArgs'],
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['ClusterGcpConfigAccessConfigArgs'] access_config: The configuration of access to the Kafka cluster.
                Structure is documented below.
@@ -259,14 +259,14 @@ class ClusterGcpConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
-    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud KMS Key name to use for encryption. The key must be located in the same region as the cluster and cannot be changed. Must be in the format `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`.
         """
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
-    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
 
 
@@ -330,7 +330,7 @@ class ClusterGcpConfigAccessConfigNetworkConfigArgs:
 
 
 class ClusterRebalanceConfigArgsDict(TypedDict):
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. Possible values: `MODE_UNSPECIFIED`, `NO_REBALANCE`, `AUTO_REBALANCE_ON_SCALE_UP`.
     """
@@ -338,7 +338,7 @@ class ClusterRebalanceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterRebalanceConfigArgs:
     def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mode: The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. Possible values: `MODE_UNSPECIFIED`, `NO_REBALANCE`, `AUTO_REBALANCE_ON_SCALE_UP`.
         """
@@ -347,23 +347,23 @@ class ClusterRebalanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. Possible values: `MODE_UNSPECIFIED`, `NO_REBALANCE`, `AUTO_REBALANCE_ON_SCALE_UP`.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
 
 class ClusterTlsConfigArgsDict(TypedDict):
-    ssl_principal_mapping_rules: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_principal_mapping_rules: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The rules for mapping mTLS certificate Distinguished Names (DNs) to shortened principal names for Kafka ACLs. This field corresponds exactly to the ssl.principal.mapping.rules broker config and matches the format and syntax defined in the Apache Kafka documentation. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means that the default Kafka behavior is used. Example: `RULE:^CN=(.?),OU=ServiceUsers.$/$1@example.com/,DEFAULT`
     """
-    trust_config: NotRequired[pulumi.Input['ClusterTlsConfigTrustConfigArgsDict']]
+    trust_config: NotRequired[pulumi.Input[Optional['ClusterTlsConfigTrustConfigArgs']]]
     """
     The configuration of the broker truststore. If specified, clients can use mTLS for authentication.
     Structure is documented below.
@@ -372,8 +372,8 @@ class ClusterTlsConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterTlsConfigArgs:
     def __init__(__self__, *,
-                 ssl_principal_mapping_rules: Optional[pulumi.Input[_builtins.str]] = None,
-                 trust_config: Optional[pulumi.Input['ClusterTlsConfigTrustConfigArgs']] = None):
+                 ssl_principal_mapping_rules: pulumi.Input[Optional[_builtins.str]] = None,
+                 trust_config: pulumi.Input[Optional['ClusterTlsConfigTrustConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] ssl_principal_mapping_rules: The rules for mapping mTLS certificate Distinguished Names (DNs) to shortened principal names for Kafka ACLs. This field corresponds exactly to the ssl.principal.mapping.rules broker config and matches the format and syntax defined in the Apache Kafka documentation. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means that the default Kafka behavior is used. Example: `RULE:^CN=(.?),OU=ServiceUsers.$/$1@example.com/,DEFAULT`
         :param pulumi.Input['ClusterTlsConfigTrustConfigArgs'] trust_config: The configuration of the broker truststore. If specified, clients can use mTLS for authentication.
@@ -386,19 +386,19 @@ class ClusterTlsConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="sslPrincipalMappingRules")
-    def ssl_principal_mapping_rules(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_principal_mapping_rules(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rules for mapping mTLS certificate Distinguished Names (DNs) to shortened principal names for Kafka ACLs. This field corresponds exactly to the ssl.principal.mapping.rules broker config and matches the format and syntax defined in the Apache Kafka documentation. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means that the default Kafka behavior is used. Example: `RULE:^CN=(.?),OU=ServiceUsers.$/$1@example.com/,DEFAULT`
         """
         return pulumi.get(self, "ssl_principal_mapping_rules")
 
     @ssl_principal_mapping_rules.setter
-    def ssl_principal_mapping_rules(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_principal_mapping_rules(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_principal_mapping_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="trustConfig")
-    def trust_config(self) -> Optional[pulumi.Input['ClusterTlsConfigTrustConfigArgs']]:
+    def trust_config(self) -> pulumi.Input[Optional['ClusterTlsConfigTrustConfigArgs']]:
         """
         The configuration of the broker truststore. If specified, clients can use mTLS for authentication.
         Structure is documented below.
@@ -406,12 +406,12 @@ class ClusterTlsConfigArgs:
         return pulumi.get(self, "trust_config")
 
     @trust_config.setter
-    def trust_config(self, value: Optional[pulumi.Input['ClusterTlsConfigTrustConfigArgs']]):
+    def trust_config(self, value: pulumi.Input[Optional['ClusterTlsConfigTrustConfigArgs']]):
         pulumi.set(self, "trust_config", value)
 
 
 class ClusterTlsConfigTrustConfigArgsDict(TypedDict):
-    cas_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterTlsConfigTrustConfigCasConfigArgsDict']]]]
+    cas_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterTlsConfigTrustConfigCasConfigArgs']]]]]
     """
     Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
     Structure is documented below.
@@ -420,7 +420,7 @@ class ClusterTlsConfigTrustConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterTlsConfigTrustConfigArgs:
     def __init__(__self__, *,
-                 cas_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTlsConfigTrustConfigCasConfigArgs']]]] = None):
+                 cas_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterTlsConfigTrustConfigCasConfigArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterTlsConfigTrustConfigCasConfigArgs']]] cas_configs: Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
                Structure is documented below.
@@ -430,7 +430,7 @@ class ClusterTlsConfigTrustConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="casConfigs")
-    def cas_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTlsConfigTrustConfigCasConfigArgs']]]]:
+    def cas_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterTlsConfigTrustConfigCasConfigArgs']]]]:
         """
         Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
         Structure is documented below.
@@ -438,7 +438,7 @@ class ClusterTlsConfigTrustConfigArgs:
         return pulumi.get(self, "cas_configs")
 
     @cas_configs.setter
-    def cas_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTlsConfigTrustConfigCasConfigArgs']]]]):
+    def cas_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterTlsConfigTrustConfigCasConfigArgs']]]]):
         pulumi.set(self, "cas_configs", value)
 
 
@@ -584,14 +584,14 @@ class ConnectClusterGcpConfigAccessConfigNetworkConfigArgsDict(TypedDict):
     """
     VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id}. It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses).
     """
-    additional_subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    additional_subnets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Optional, Deprecated)
     Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
 
     > **Warning:** `additionalSubnets` is deprecated and will be removed in a future major release. Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.
     """
-    dns_domain_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    dns_domain_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
     """
@@ -600,8 +600,8 @@ class ConnectClusterGcpConfigAccessConfigNetworkConfigArgsDict(TypedDict):
 class ConnectClusterGcpConfigAccessConfigNetworkConfigArgs:
     def __init__(__self__, *,
                  primary_subnet: pulumi.Input[_builtins.str],
-                 additional_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 additional_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] primary_subnet: VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id}. It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_subnets: (Optional, Deprecated)
@@ -634,7 +634,7 @@ class ConnectClusterGcpConfigAccessConfigNetworkConfigArgs:
     @_builtins.property
     @pulumi.getter(name="additionalSubnets")
     @_utilities.deprecated("""`additionalSubnets` is deprecated and will be removed in a future major release. Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.""")
-    def additional_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional, Deprecated)
         Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
@@ -644,29 +644,29 @@ class ConnectClusterGcpConfigAccessConfigNetworkConfigArgs:
         return pulumi.get(self, "additional_subnets")
 
     @additional_subnets.setter
-    def additional_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_subnets", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsDomainNames")
-    def dns_domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_domain_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
         """
         return pulumi.get(self, "dns_domain_names")
 
     @dns_domain_names.setter
-    def dns_domain_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_domain_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_domain_names", value)
 
 
 class ConnectorTaskRestartPolicyArgsDict(TypedDict):
-    maximum_backoff: NotRequired[pulumi.Input[_builtins.str]]
+    maximum_backoff: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
-    minimum_backoff: NotRequired[pulumi.Input[_builtins.str]]
+    minimum_backoff: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -675,8 +675,8 @@ class ConnectorTaskRestartPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectorTaskRestartPolicyArgs:
     def __init__(__self__, *,
-                 maximum_backoff: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_backoff: Optional[pulumi.Input[_builtins.str]] = None):
+                 maximum_backoff: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_backoff: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] maximum_backoff: The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -690,7 +690,7 @@ class ConnectorTaskRestartPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="maximumBackoff")
-    def maximum_backoff(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maximum_backoff(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -698,12 +698,12 @@ class ConnectorTaskRestartPolicyArgs:
         return pulumi.get(self, "maximum_backoff")
 
     @maximum_backoff.setter
-    def maximum_backoff(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maximum_backoff(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maximum_backoff", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumBackoff")
-    def minimum_backoff(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum_backoff(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -711,7 +711,7 @@ class ConnectorTaskRestartPolicyArgs:
         return pulumi.get(self, "minimum_backoff")
 
     @minimum_backoff.setter
-    def minimum_backoff(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum_backoff(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum_backoff", value)
 
 

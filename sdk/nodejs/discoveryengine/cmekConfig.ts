@@ -200,60 +200,60 @@ export interface CmekConfigState {
     /**
      * The unique id of the cmek config.
      */
-    cmekConfigId?: pulumi.Input<string>;
+    cmekConfigId?: pulumi.Input<string | undefined>;
     /**
      * The default CmekConfig for the Customer.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * KMS key resource name which will be used to encrypt resources
      * `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * KMS key version resource name which will be used to encrypt resources
      * `<kms_key>/cryptoKeyVersions/{keyVersion}`.
      */
-    kmsKeyVersion?: pulumi.Input<string>;
+    kmsKeyVersion?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the last key rotation.
      */
-    lastRotationTimestampMicros?: pulumi.Input<number>;
+    lastRotationTimestampMicros?: pulumi.Input<number | undefined>;
     /**
      * The geographic location where the CMEK config should reside. The value can
      * only be one of "us" and "eu".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique full resource name of the cmek config. Values are of the format
      * `projects/{project}/locations/{location}/cmekConfigs/{cmek_config_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
      * characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether the NotebookLM Corpus is ready to be used.
      */
-    notebooklmState?: pulumi.Input<string>;
+    notebooklmState?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Set the following CmekConfig as the default to be used for child resources
      * if one is not specified. The default value is true.
      */
-    setDefault?: pulumi.Input<boolean>;
+    setDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Single-regional CMEKs that are required for some VAIS features.
      * Structure is documented below.
      */
-    singleRegionKeys?: pulumi.Input<pulumi.Input<inputs.discoveryengine.CmekConfigSingleRegionKey>[]>;
+    singleRegionKeys?: pulumi.Input<pulumi.Input<inputs.discoveryengine.CmekConfigSingleRegionKey>[] | undefined>;
     /**
      * The state of the CmekConfig.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -278,15 +278,15 @@ export interface CmekConfigArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Set the following CmekConfig as the default to be used for child resources
      * if one is not specified. The default value is true.
      */
-    setDefault?: pulumi.Input<boolean>;
+    setDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Single-regional CMEKs that are required for some VAIS features.
      * Structure is documented below.
      */
-    singleRegionKeys?: pulumi.Input<pulumi.Input<inputs.discoveryengine.CmekConfigSingleRegionKey>[]>;
+    singleRegionKeys?: pulumi.Input<pulumi.Input<inputs.discoveryengine.CmekConfigSingleRegionKey>[] | undefined>;
 }

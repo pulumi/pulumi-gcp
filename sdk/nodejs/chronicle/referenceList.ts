@@ -237,11 +237,11 @@ export interface ReferenceListState {
     /**
      * Required. A user-provided description of the reference list.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Output only. The unique display name of the reference list.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Required. The entries of the reference list.
      * When listed, they are returned in the order that was specified at creation
@@ -250,26 +250,26 @@ export interface ReferenceListState {
      * This is returned only when the view is REFERENCE_LIST_VIEW_FULL.
      * Structure is documented below.
      */
-    entries?: pulumi.Input<pulumi.Input<inputs.chronicle.ReferenceListEntry>[]>;
+    entries?: pulumi.Input<pulumi.Input<inputs.chronicle.ReferenceListEntry>[] | undefined>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Output only. The resource name of the reference list.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/referenceLists/{reference_list}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Required. The ID to use for the reference list. This is also the display name for
      * the reference list. It must satisfy the following requirements:
@@ -278,33 +278,33 @@ export interface ReferenceListState {
      * - Has length < 256.
      * - Must be unique.
      */
-    referenceListId?: pulumi.Input<string>;
+    referenceListId?: pulumi.Input<string | undefined>;
     /**
      * Output only. The timestamp when the reference list was last updated.
      */
-    revisionCreateTime?: pulumi.Input<string>;
+    revisionCreateTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. The count of self-authored rules using the reference list.
      */
-    ruleAssociationsCount?: pulumi.Input<number>;
+    ruleAssociationsCount?: pulumi.Input<number | undefined>;
     /**
      * Output only. The resource names for the associated self-authored Rules that use this
      * reference list.
      * This is returned only when the view is REFERENCE_LIST_VIEW_FULL.
      */
-    rules?: pulumi.Input<pulumi.Input<string>[]>;
+    rules?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ScopeInfo specifies the scope info of the reference list.
      * Structure is documented below.
      */
-    scopeInfos?: pulumi.Input<pulumi.Input<inputs.chronicle.ReferenceListScopeInfo>[]>;
+    scopeInfos?: pulumi.Input<pulumi.Input<inputs.chronicle.ReferenceListScopeInfo>[] | undefined>;
     /**
      * Possible values:
      * REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
      * REFERENCE_LIST_SYNTAX_TYPE_REGEX
      * REFERENCE_LIST_SYNTAX_TYPE_CIDR
      */
-    syntaxType?: pulumi.Input<string>;
+    syntaxType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -336,7 +336,7 @@ export interface ReferenceListArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Required. The ID to use for the reference list. This is also the display name for
      * the reference list. It must satisfy the following requirements:
@@ -350,7 +350,7 @@ export interface ReferenceListArgs {
      * ScopeInfo specifies the scope info of the reference list.
      * Structure is documented below.
      */
-    scopeInfos?: pulumi.Input<pulumi.Input<inputs.chronicle.ReferenceListScopeInfo>[]>;
+    scopeInfos?: pulumi.Input<pulumi.Input<inputs.chronicle.ReferenceListScopeInfo>[] | undefined>;
     /**
      * Possible values:
      * REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING

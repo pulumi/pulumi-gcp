@@ -101,14 +101,14 @@ export interface GetNetworkEndpointGroupsOutputArgs {
     /**
      * A filter expression that filters Network Endpoint Groups listed in the response.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to list Network Endpoint Groups in. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The zone to list Network Endpoint Groups for. If `zone` is not specified, the provider-level zone must be set and is used
      * instead.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

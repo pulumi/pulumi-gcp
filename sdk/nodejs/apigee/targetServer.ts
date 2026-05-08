@@ -224,38 +224,38 @@ export interface TargetServerState {
     /**
      * A human-readable description of this TargetServer.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      */
-    envId?: pulumi.Input<string>;
+    envId?: pulumi.Input<string | undefined>;
     /**
      * The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The resource id of this reference. Values must match the regular expression [\w\s-.]+.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Immutable. The protocol used by this TargetServer.
      * Possible values are: `HTTP`, `HTTP2`, `GRPC_TARGET`, `GRPC`, `EXTERNAL_CALLOUT`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * Specifies TLS configuration info for this TargetServer. The JSON name is sSLInfo for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
      * Structure is documented below.
      */
-    sSlInfo?: pulumi.Input<inputs.apigee.TargetServerSSlInfo>;
+    sSlInfo?: pulumi.Input<inputs.apigee.TargetServerSSlInfo | undefined>;
 }
 
 /**
@@ -265,7 +265,7 @@ export interface TargetServerArgs {
     /**
      * A human-readable description of this TargetServer.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
@@ -278,11 +278,11 @@ export interface TargetServerArgs {
     /**
      * Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The resource id of this reference. Values must match the regular expression [\w\s-.]+.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
      */
@@ -291,10 +291,10 @@ export interface TargetServerArgs {
      * Immutable. The protocol used by this TargetServer.
      * Possible values are: `HTTP`, `HTTP2`, `GRPC_TARGET`, `GRPC`, `EXTERNAL_CALLOUT`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * Specifies TLS configuration info for this TargetServer. The JSON name is sSLInfo for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
      * Structure is documented below.
      */
-    sSlInfo?: pulumi.Input<inputs.apigee.TargetServerSSlInfo>;
+    sSlInfo?: pulumi.Input<inputs.apigee.TargetServerSSlInfo | undefined>;
 }

@@ -25,15 +25,15 @@ class GuardrailArgs:
                  display_name: pulumi.Input[_builtins.str],
                  guardrail_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 action: Optional[pulumi.Input['GuardrailActionArgs']] = None,
-                 code_callback: Optional[pulumi.Input['GuardrailCodeCallbackArgs']] = None,
-                 content_filter: Optional[pulumi.Input['GuardrailContentFilterArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 llm_policy: Optional[pulumi.Input['GuardrailLlmPolicyArgs']] = None,
-                 llm_prompt_security: Optional[pulumi.Input['GuardrailLlmPromptSecurityArgs']] = None,
-                 model_safety: Optional[pulumi.Input['GuardrailModelSafetyArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional['GuardrailActionArgs']] = None,
+                 code_callback: pulumi.Input[Optional['GuardrailCodeCallbackArgs']] = None,
+                 content_filter: pulumi.Input[Optional['GuardrailContentFilterArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 llm_policy: pulumi.Input[Optional['GuardrailLlmPolicyArgs']] = None,
+                 llm_prompt_security: pulumi.Input[Optional['GuardrailLlmPromptSecurityArgs']] = None,
+                 model_safety: pulumi.Input[Optional['GuardrailModelSafetyArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Guardrail resource.
 
@@ -140,7 +140,7 @@ class GuardrailArgs:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input['GuardrailActionArgs']]:
+    def action(self) -> pulumi.Input[Optional['GuardrailActionArgs']]:
         """
         Action that is taken when a certain precondition is met.
         Structure is documented below.
@@ -148,12 +148,12 @@ class GuardrailArgs:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input['GuardrailActionArgs']]):
+    def action(self, value: pulumi.Input[Optional['GuardrailActionArgs']]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="codeCallback")
-    def code_callback(self) -> Optional[pulumi.Input['GuardrailCodeCallbackArgs']]:
+    def code_callback(self) -> pulumi.Input[Optional['GuardrailCodeCallbackArgs']]:
         """
         Guardrail that blocks the conversation based on the code callbacks
         provided.
@@ -162,12 +162,12 @@ class GuardrailArgs:
         return pulumi.get(self, "code_callback")
 
     @code_callback.setter
-    def code_callback(self, value: Optional[pulumi.Input['GuardrailCodeCallbackArgs']]):
+    def code_callback(self, value: pulumi.Input[Optional['GuardrailCodeCallbackArgs']]):
         pulumi.set(self, "code_callback", value)
 
     @_builtins.property
     @pulumi.getter(name="contentFilter")
-    def content_filter(self) -> Optional[pulumi.Input['GuardrailContentFilterArgs']]:
+    def content_filter(self) -> pulumi.Input[Optional['GuardrailContentFilterArgs']]:
         """
         Guardrail that bans certain content from being used in the conversation.
         Structure is documented below.
@@ -175,36 +175,36 @@ class GuardrailArgs:
         return pulumi.get(self, "content_filter")
 
     @content_filter.setter
-    def content_filter(self, value: Optional[pulumi.Input['GuardrailContentFilterArgs']]):
+    def content_filter(self, value: pulumi.Input[Optional['GuardrailContentFilterArgs']]):
         pulumi.set(self, "content_filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the guardrail.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the guardrail is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="llmPolicy")
-    def llm_policy(self) -> Optional[pulumi.Input['GuardrailLlmPolicyArgs']]:
+    def llm_policy(self) -> pulumi.Input[Optional['GuardrailLlmPolicyArgs']]:
         """
         Guardrail that blocks the conversation if the LLM response is considered
         violating the policy based on the LLM classification.
@@ -213,12 +213,12 @@ class GuardrailArgs:
         return pulumi.get(self, "llm_policy")
 
     @llm_policy.setter
-    def llm_policy(self, value: Optional[pulumi.Input['GuardrailLlmPolicyArgs']]):
+    def llm_policy(self, value: pulumi.Input[Optional['GuardrailLlmPolicyArgs']]):
         pulumi.set(self, "llm_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="llmPromptSecurity")
-    def llm_prompt_security(self) -> Optional[pulumi.Input['GuardrailLlmPromptSecurityArgs']]:
+    def llm_prompt_security(self) -> pulumi.Input[Optional['GuardrailLlmPromptSecurityArgs']]:
         """
         Guardrail that blocks the conversation if the input is considered unsafe
         based on the LLM classification.
@@ -227,12 +227,12 @@ class GuardrailArgs:
         return pulumi.get(self, "llm_prompt_security")
 
     @llm_prompt_security.setter
-    def llm_prompt_security(self, value: Optional[pulumi.Input['GuardrailLlmPromptSecurityArgs']]):
+    def llm_prompt_security(self, value: pulumi.Input[Optional['GuardrailLlmPromptSecurityArgs']]):
         pulumi.set(self, "llm_prompt_security", value)
 
     @_builtins.property
     @pulumi.getter(name="modelSafety")
-    def model_safety(self) -> Optional[pulumi.Input['GuardrailModelSafetyArgs']]:
+    def model_safety(self) -> pulumi.Input[Optional['GuardrailModelSafetyArgs']]:
         """
         Model safety settings overrides. When this is set, it will override the
         default settings and trigger the guardrail if the response is considered
@@ -242,12 +242,12 @@ class GuardrailArgs:
         return pulumi.get(self, "model_safety")
 
     @model_safety.setter
-    def model_safety(self, value: Optional[pulumi.Input['GuardrailModelSafetyArgs']]):
+    def model_safety(self, value: pulumi.Input[Optional['GuardrailModelSafetyArgs']]):
         pulumi.set(self, "model_safety", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -255,30 +255,30 @@ class GuardrailArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _GuardrailState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input['GuardrailActionArgs']] = None,
-                 app: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_callback: Optional[pulumi.Input['GuardrailCodeCallbackArgs']] = None,
-                 content_filter: Optional[pulumi.Input['GuardrailContentFilterArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 guardrail_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 llm_policy: Optional[pulumi.Input['GuardrailLlmPolicyArgs']] = None,
-                 llm_prompt_security: Optional[pulumi.Input['GuardrailLlmPromptSecurityArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_safety: Optional[pulumi.Input['GuardrailModelSafetyArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional['GuardrailActionArgs']] = None,
+                 app: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_callback: pulumi.Input[Optional['GuardrailCodeCallbackArgs']] = None,
+                 content_filter: pulumi.Input[Optional['GuardrailContentFilterArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 guardrail_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 llm_policy: pulumi.Input[Optional['GuardrailLlmPolicyArgs']] = None,
+                 llm_prompt_security: pulumi.Input[Optional['GuardrailLlmPromptSecurityArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_safety: pulumi.Input[Optional['GuardrailModelSafetyArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Guardrail resources.
 
@@ -355,7 +355,7 @@ class _GuardrailState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input['GuardrailActionArgs']]:
+    def action(self) -> pulumi.Input[Optional['GuardrailActionArgs']]:
         """
         Action that is taken when a certain precondition is met.
         Structure is documented below.
@@ -363,24 +363,24 @@ class _GuardrailState:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input['GuardrailActionArgs']]):
+    def action(self, value: pulumi.Input[Optional['GuardrailActionArgs']]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def app(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "app")
 
     @app.setter
-    def app(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app", value)
 
     @_builtins.property
     @pulumi.getter(name="codeCallback")
-    def code_callback(self) -> Optional[pulumi.Input['GuardrailCodeCallbackArgs']]:
+    def code_callback(self) -> pulumi.Input[Optional['GuardrailCodeCallbackArgs']]:
         """
         Guardrail that blocks the conversation based on the code callbacks
         provided.
@@ -389,12 +389,12 @@ class _GuardrailState:
         return pulumi.get(self, "code_callback")
 
     @code_callback.setter
-    def code_callback(self, value: Optional[pulumi.Input['GuardrailCodeCallbackArgs']]):
+    def code_callback(self, value: pulumi.Input[Optional['GuardrailCodeCallbackArgs']]):
         pulumi.set(self, "code_callback", value)
 
     @_builtins.property
     @pulumi.getter(name="contentFilter")
-    def content_filter(self) -> Optional[pulumi.Input['GuardrailContentFilterArgs']]:
+    def content_filter(self) -> pulumi.Input[Optional['GuardrailContentFilterArgs']]:
         """
         Guardrail that bans certain content from being used in the conversation.
         Structure is documented below.
@@ -402,60 +402,60 @@ class _GuardrailState:
         return pulumi.get(self, "content_filter")
 
     @content_filter.setter
-    def content_filter(self, value: Optional[pulumi.Input['GuardrailContentFilterArgs']]):
+    def content_filter(self, value: pulumi.Input[Optional['GuardrailContentFilterArgs']]):
         pulumi.set(self, "content_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the guardrail was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the guardrail.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name of the guardrail.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the guardrail is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Etag used to ensure the object hasn't changed during a read-modify-write
         operation. If the etag is empty, the update will overwrite any concurrent
@@ -464,12 +464,12 @@ class _GuardrailState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="guardrailId")
-    def guardrail_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def guardrail_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the guardrail, which will become the final component of
         the guardrail's resource name. If not provided, a unique ID will be
@@ -478,12 +478,12 @@ class _GuardrailState:
         return pulumi.get(self, "guardrail_id")
 
     @guardrail_id.setter
-    def guardrail_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def guardrail_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "guardrail_id", value)
 
     @_builtins.property
     @pulumi.getter(name="llmPolicy")
-    def llm_policy(self) -> Optional[pulumi.Input['GuardrailLlmPolicyArgs']]:
+    def llm_policy(self) -> pulumi.Input[Optional['GuardrailLlmPolicyArgs']]:
         """
         Guardrail that blocks the conversation if the LLM response is considered
         violating the policy based on the LLM classification.
@@ -492,12 +492,12 @@ class _GuardrailState:
         return pulumi.get(self, "llm_policy")
 
     @llm_policy.setter
-    def llm_policy(self, value: Optional[pulumi.Input['GuardrailLlmPolicyArgs']]):
+    def llm_policy(self, value: pulumi.Input[Optional['GuardrailLlmPolicyArgs']]):
         pulumi.set(self, "llm_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="llmPromptSecurity")
-    def llm_prompt_security(self) -> Optional[pulumi.Input['GuardrailLlmPromptSecurityArgs']]:
+    def llm_prompt_security(self) -> pulumi.Input[Optional['GuardrailLlmPromptSecurityArgs']]:
         """
         Guardrail that blocks the conversation if the input is considered unsafe
         based on the LLM classification.
@@ -506,24 +506,24 @@ class _GuardrailState:
         return pulumi.get(self, "llm_prompt_security")
 
     @llm_prompt_security.setter
-    def llm_prompt_security(self, value: Optional[pulumi.Input['GuardrailLlmPromptSecurityArgs']]):
+    def llm_prompt_security(self, value: pulumi.Input[Optional['GuardrailLlmPromptSecurityArgs']]):
         pulumi.set(self, "llm_prompt_security", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="modelSafety")
-    def model_safety(self) -> Optional[pulumi.Input['GuardrailModelSafetyArgs']]:
+    def model_safety(self) -> pulumi.Input[Optional['GuardrailModelSafetyArgs']]:
         """
         Model safety settings overrides. When this is set, it will override the
         default settings and trigger the guardrail if the response is considered
@@ -533,12 +533,12 @@ class _GuardrailState:
         return pulumi.get(self, "model_safety")
 
     @model_safety.setter
-    def model_safety(self, value: Optional[pulumi.Input['GuardrailModelSafetyArgs']]):
+    def model_safety(self, value: pulumi.Input[Optional['GuardrailModelSafetyArgs']]):
         pulumi.set(self, "model_safety", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The unique identifier of the guardrail.
         Format:
@@ -547,12 +547,12 @@ class _GuardrailState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -560,19 +560,19 @@ class _GuardrailState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the guardrail was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -582,19 +582,19 @@ class Guardrail(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[Union['GuardrailActionArgs', 'GuardrailActionArgsDict']]] = None,
-                 app: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_callback: Optional[pulumi.Input[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict']]] = None,
-                 content_filter: Optional[pulumi.Input[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guardrail_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 llm_policy: Optional[pulumi.Input[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict']]] = None,
-                 llm_prompt_security: Optional[pulumi.Input[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_safety: Optional[pulumi.Input[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[Union['GuardrailActionArgs', 'GuardrailActionArgsDict']]] = None,
+                 app: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_callback: pulumi.Input[Optional[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict']]] = None,
+                 content_filter: pulumi.Input[Optional[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guardrail_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 llm_policy: pulumi.Input[Optional[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict']]] = None,
+                 llm_prompt_security: pulumi.Input[Optional[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_safety: pulumi.Input[Optional[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Description
@@ -733,7 +733,7 @@ class Guardrail(pulumi.CustomResource):
                     "max_conversation_messages": 10,
                     "model_settings": {
                         "model": "gemini-3.0-flash-001",
-                        "temperature": 50,
+                        "temperature": float(50),
                     },
                     "prompt": "example_prompt",
                     "policy_scope": "USER_QUERY",
@@ -843,7 +843,7 @@ class Guardrail(pulumi.CustomResource):
                 "max_conversation_messages": 10,
                 "model_settings": {
                     "model": "gemini-3.0-flash-001",
-                    "temperature": 50,
+                    "temperature": float(50),
                 },
                 "prompt": "example_prompt",
                 "policy_scope": "USER_QUERY",
@@ -1042,7 +1042,7 @@ class Guardrail(pulumi.CustomResource):
                     "max_conversation_messages": 10,
                     "model_settings": {
                         "model": "gemini-3.0-flash-001",
-                        "temperature": 50,
+                        "temperature": float(50),
                     },
                     "prompt": "example_prompt",
                     "policy_scope": "USER_QUERY",
@@ -1152,7 +1152,7 @@ class Guardrail(pulumi.CustomResource):
                 "max_conversation_messages": 10,
                 "model_settings": {
                     "model": "gemini-3.0-flash-001",
-                    "temperature": 50,
+                    "temperature": float(50),
                 },
                 "prompt": "example_prompt",
                 "policy_scope": "USER_QUERY",
@@ -1193,19 +1193,19 @@ class Guardrail(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[Union['GuardrailActionArgs', 'GuardrailActionArgsDict']]] = None,
-                 app: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_callback: Optional[pulumi.Input[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict']]] = None,
-                 content_filter: Optional[pulumi.Input[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guardrail_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 llm_policy: Optional[pulumi.Input[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict']]] = None,
-                 llm_prompt_security: Optional[pulumi.Input[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_safety: Optional[pulumi.Input[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[Union['GuardrailActionArgs', 'GuardrailActionArgsDict']]] = None,
+                 app: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_callback: pulumi.Input[Optional[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict']]] = None,
+                 content_filter: pulumi.Input[Optional[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guardrail_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 llm_policy: pulumi.Input[Optional[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict']]] = None,
+                 llm_prompt_security: pulumi.Input[Optional[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_safety: pulumi.Input[Optional[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1250,23 +1250,23 @@ class Guardrail(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[Union['GuardrailActionArgs', 'GuardrailActionArgsDict']]] = None,
-            app: Optional[pulumi.Input[_builtins.str]] = None,
-            code_callback: Optional[pulumi.Input[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict']]] = None,
-            content_filter: Optional[pulumi.Input[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            guardrail_id: Optional[pulumi.Input[_builtins.str]] = None,
-            llm_policy: Optional[pulumi.Input[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict']]] = None,
-            llm_prompt_security: Optional[pulumi.Input[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            model_safety: Optional[pulumi.Input[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Guardrail':
+            action: pulumi.Input[Optional[Union['GuardrailActionArgs', 'GuardrailActionArgsDict']]] = None,
+            app: pulumi.Input[Optional[_builtins.str]] = None,
+            code_callback: pulumi.Input[Optional[Union['GuardrailCodeCallbackArgs', 'GuardrailCodeCallbackArgsDict']]] = None,
+            content_filter: pulumi.Input[Optional[Union['GuardrailContentFilterArgs', 'GuardrailContentFilterArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            guardrail_id: pulumi.Input[Optional[_builtins.str]] = None,
+            llm_policy: pulumi.Input[Optional[Union['GuardrailLlmPolicyArgs', 'GuardrailLlmPolicyArgsDict']]] = None,
+            llm_prompt_security: pulumi.Input[Optional[Union['GuardrailLlmPromptSecurityArgs', 'GuardrailLlmPromptSecurityArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            model_safety: pulumi.Input[Optional[Union['GuardrailModelSafetyArgs', 'GuardrailModelSafetyArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Guardrail':
         """
         Get an existing Guardrail resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

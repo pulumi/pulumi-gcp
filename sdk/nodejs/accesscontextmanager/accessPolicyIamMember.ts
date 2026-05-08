@@ -259,11 +259,11 @@ export class AccessPolicyIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessPolicyIamMember resources.
  */
 export interface AccessPolicyIamMemberState {
-    condition?: pulumi.Input<inputs.accesscontextmanager.AccessPolicyIamMemberCondition>;
+    condition?: pulumi.Input<inputs.accesscontextmanager.AccessPolicyIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -278,24 +278,24 @@ export interface AccessPolicyIamMemberState {
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
      */
-    member?: pulumi.Input<string>;
+    member?: pulumi.Input<string | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.accesscontextmanager.AccessPolicyIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a AccessPolicyIamMember resource.
  */
 export interface AccessPolicyIamMemberArgs {
-    condition?: pulumi.Input<inputs.accesscontextmanager.AccessPolicyIamMemberCondition>;
+    condition?: pulumi.Input<inputs.accesscontextmanager.AccessPolicyIamMemberCondition | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -314,7 +314,7 @@ export interface AccessPolicyIamMemberArgs {
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.accesscontextmanager.AccessPolicyIamBinding` can be used per role. Note that custom roles must be of the format

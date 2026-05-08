@@ -88,10 +88,11 @@ def get_regions(project: Optional[_builtins.str] = None,
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_gcp as gcp
 
     available = gcp.compute.get_regions()
-    cluster = []
+    cluster: list[Any] = []
     def create_cluster(range_body):
         for range in [{"value": i} for i in range(0, range_body)]:
             cluster.append(gcp.compute.Subnetwork(f"cluster-{range['value']}",
@@ -119,8 +120,8 @@ def get_regions(project: Optional[_builtins.str] = None,
         names=pulumi.get(__ret__, 'names'),
         project=pulumi.get(__ret__, 'project'),
         status=pulumi.get(__ret__, 'status'))
-def get_regions_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_regions_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
     Provides access to available Google Compute regions for a given project.
@@ -128,10 +129,11 @@ def get_regions_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] 
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_gcp as gcp
 
     available = gcp.compute.get_regions()
-    cluster = []
+    cluster: list[Any] = []
     def create_cluster(range_body):
         for range in [{"value": i} for i in range(0, range_body)]:
             cluster.append(gcp.compute.Subnetwork(f"cluster-{range['value']}",

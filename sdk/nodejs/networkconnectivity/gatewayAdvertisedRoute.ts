@@ -252,72 +252,72 @@ export interface GatewayAdvertisedRouteState {
     /**
      * The time the gateway advertised route was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * An optional description of the gateway advertised route.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * This route's advertised IP address range. Must be a valid CIDR-formatted prefix.
      * If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128
      */
-    ipRange?: pulumi.Input<string>;
+    ipRange?: pulumi.Input<string | undefined>;
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the gateway advertised route. Route names must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The priority of this advertised route. You can choose a value from 0 to 65335.
      * If you don't provide a value, Google Cloud assigns a priority of 100 to the ranges.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * the recipient of this advertised route
      * Possible values are: `RECIPIENT_UNSPECIFIED`, `ADVERTISE_TO_HUB`.
      */
-    recipient?: pulumi.Input<string>;
+    recipient?: pulumi.Input<string | undefined>;
     /**
      * The name of the spoke
      */
-    spoke?: pulumi.Input<string>;
+    spoke?: pulumi.Input<string | undefined>;
     /**
      * The current lifecycle state of this gateway advertised route.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The Google-generated UUID for the gateway advertised route.
      * This value is unique across all gateway advertised route resources.
      * If a gateway advertised route is deleted and another with the same name is created, the new route is assigned a different uniqueId.
      */
-    uniqueId?: pulumi.Input<string>;
+    uniqueId?: pulumi.Input<string | undefined>;
     /**
      * The time the gateway advertised route was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -327,18 +327,18 @@ export interface GatewayAdvertisedRouteArgs {
     /**
      * An optional description of the gateway advertised route.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * This route's advertised IP address range. Must be a valid CIDR-formatted prefix.
      * If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128
      */
-    ipRange?: pulumi.Input<string>;
+    ipRange?: pulumi.Input<string | undefined>;
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
@@ -346,22 +346,22 @@ export interface GatewayAdvertisedRouteArgs {
     /**
      * The name of the gateway advertised route. Route names must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The priority of this advertised route. You can choose a value from 0 to 65335.
      * If you don't provide a value, Google Cloud assigns a priority of 100 to the ranges.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * the recipient of this advertised route
      * Possible values are: `RECIPIENT_UNSPECIFIED`, `ADVERTISE_TO_HUB`.
      */
-    recipient?: pulumi.Input<string>;
+    recipient?: pulumi.Input<string | undefined>;
     /**
      * The name of the spoke
      */

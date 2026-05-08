@@ -93,5 +93,5 @@ export interface GetPoliciesOutputArgs {
     /**
      * Filter expression for listing policies, as documented in the Cloud Identity Policy API policies.list method.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
 }

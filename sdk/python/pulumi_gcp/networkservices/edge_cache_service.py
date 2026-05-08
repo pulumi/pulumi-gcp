@@ -22,17 +22,17 @@ __all__ = ['EdgeCacheServiceArgs', 'EdgeCacheService']
 class EdgeCacheServiceArgs:
     def __init__(__self__, *,
                  routing: pulumi.Input['EdgeCacheServiceRoutingArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_http2: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_quic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edge_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 log_config: Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_tls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_http2: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_quic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_ssl_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 log_config: pulumi.Input[Optional['EdgeCacheServiceLogConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_tls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ssl_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EdgeCacheService resource.
 
@@ -101,19 +101,19 @@ class EdgeCacheServiceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableHttp2")
-    def disable_http2(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_http2(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disables HTTP/2.
         HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
@@ -122,36 +122,36 @@ class EdgeCacheServiceArgs:
         return pulumi.get(self, "disable_http2")
 
     @disable_http2.setter
-    def disable_http2(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_http2(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_http2", value)
 
     @_builtins.property
     @pulumi.getter(name="disableQuic")
-    def disable_quic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_quic(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
         """
         return pulumi.get(self, "disable_quic")
 
     @disable_quic.setter
-    def disable_quic(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_quic(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_quic", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeSecurityPolicy")
-    def edge_security_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edge_security_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
         """
         return pulumi.get(self, "edge_security_policy")
 
     @edge_security_policy.setter
-    def edge_security_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edge_security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edge_security_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeSslCertificates")
-    def edge_ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def edge_ssl_certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
         Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
@@ -159,12 +159,12 @@ class EdgeCacheServiceArgs:
         return pulumi.get(self, "edge_ssl_certificates")
 
     @edge_ssl_certificates.setter
-    def edge_ssl_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def edge_ssl_certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "edge_ssl_certificates", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of label tags associated with the EdgeCache resource.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -173,12 +173,12 @@ class EdgeCacheServiceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['EdgeCacheServiceLogConfigArgs']]:
         """
         Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
         Structure is documented below.
@@ -186,12 +186,12 @@ class EdgeCacheServiceArgs:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['EdgeCacheServiceLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -200,12 +200,12 @@ class EdgeCacheServiceArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -213,12 +213,12 @@ class EdgeCacheServiceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="requireTls")
-    def require_tls(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_tls(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Require TLS (HTTPS) for all clients connecting to this service.
         Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
@@ -227,12 +227,12 @@ class EdgeCacheServiceArgs:
         return pulumi.get(self, "require_tls")
 
     @require_tls.setter
-    def require_tls(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_tls(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_tls", value)
 
     @_builtins.property
     @pulumi.getter(name="sslPolicy")
-    def ssl_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the SslPolicy resource that will be associated with the EdgeCacheService.
         If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
@@ -240,29 +240,29 @@ class EdgeCacheServiceArgs:
         return pulumi.get(self, "ssl_policy")
 
     @ssl_policy.setter
-    def ssl_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_policy", value)
 
 
 @pulumi.input_type
 class _EdgeCacheServiceState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_http2: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_quic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edge_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 log_config: Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 require_tls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 routing: Optional[pulumi.Input['EdgeCacheServiceRoutingArgs']] = None,
-                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_http2: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_quic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_ssl_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ipv4_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ipv6_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 log_config: pulumi.Input[Optional['EdgeCacheServiceLogConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 require_tls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 routing: pulumi.Input[Optional['EdgeCacheServiceRoutingArgs']] = None,
+                 ssl_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EdgeCacheService resources.
 
@@ -332,19 +332,19 @@ class _EdgeCacheServiceState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableHttp2")
-    def disable_http2(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_http2(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disables HTTP/2.
         HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
@@ -353,36 +353,36 @@ class _EdgeCacheServiceState:
         return pulumi.get(self, "disable_http2")
 
     @disable_http2.setter
-    def disable_http2(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_http2(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_http2", value)
 
     @_builtins.property
     @pulumi.getter(name="disableQuic")
-    def disable_quic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_quic(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
         """
         return pulumi.get(self, "disable_quic")
 
     @disable_quic.setter
-    def disable_quic(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_quic(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_quic", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeSecurityPolicy")
-    def edge_security_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edge_security_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
         """
         return pulumi.get(self, "edge_security_policy")
 
     @edge_security_policy.setter
-    def edge_security_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edge_security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edge_security_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeSslCertificates")
-    def edge_ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def edge_ssl_certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
         Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
@@ -390,48 +390,48 @@ class _EdgeCacheServiceState:
         return pulumi.get(self, "edge_ssl_certificates")
 
     @edge_ssl_certificates.setter
-    def edge_ssl_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def edge_ssl_certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "edge_ssl_certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4Addresses")
-    def ipv4_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ipv4_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
         """
         return pulumi.get(self, "ipv4_addresses")
 
     @ipv4_addresses.setter
-    def ipv4_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ipv4_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipv4_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Addresses")
-    def ipv6_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ipv6_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
         """
         return pulumi.get(self, "ipv6_addresses")
 
     @ipv6_addresses.setter
-    def ipv6_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ipv6_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipv6_addresses", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of label tags associated with the EdgeCache resource.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -440,12 +440,12 @@ class _EdgeCacheServiceState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['EdgeCacheServiceLogConfigArgs']]:
         """
         Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
         Structure is documented below.
@@ -453,12 +453,12 @@ class _EdgeCacheServiceState:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['EdgeCacheServiceLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -467,12 +467,12 @@ class _EdgeCacheServiceState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -480,12 +480,12 @@ class _EdgeCacheServiceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -493,12 +493,12 @@ class _EdgeCacheServiceState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="requireTls")
-    def require_tls(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_tls(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Require TLS (HTTPS) for all clients connecting to this service.
         Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
@@ -507,12 +507,12 @@ class _EdgeCacheServiceState:
         return pulumi.get(self, "require_tls")
 
     @require_tls.setter
-    def require_tls(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_tls(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_tls", value)
 
     @_builtins.property
     @pulumi.getter
-    def routing(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingArgs']]:
+    def routing(self) -> pulumi.Input[Optional['EdgeCacheServiceRoutingArgs']]:
         """
         Defines how requests are routed, modified, cached and/or which origin content is filled from.
         Structure is documented below.
@@ -520,12 +520,12 @@ class _EdgeCacheServiceState:
         return pulumi.get(self, "routing")
 
     @routing.setter
-    def routing(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingArgs']]):
+    def routing(self, value: pulumi.Input[Optional['EdgeCacheServiceRoutingArgs']]):
         pulumi.set(self, "routing", value)
 
     @_builtins.property
     @pulumi.getter(name="sslPolicy")
-    def ssl_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the SslPolicy resource that will be associated with the EdgeCacheService.
         If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
@@ -533,7 +533,7 @@ class _EdgeCacheServiceState:
         return pulumi.get(self, "ssl_policy")
 
     @ssl_policy.setter
-    def ssl_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_policy", value)
 
 
@@ -543,18 +543,18 @@ class EdgeCacheService(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_http2: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_quic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edge_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 log_config: Optional[pulumi.Input[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_tls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 routing: Optional[pulumi.Input[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict']]] = None,
-                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_http2: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_quic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_ssl_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 log_config: pulumi.Input[Optional[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_tls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 routing: pulumi.Input[Optional[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict']]] = None,
+                 ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         EdgeCacheService defines the IP addresses, protocols, security policies, cache policies and routing configuration.
@@ -1389,18 +1389,18 @@ class EdgeCacheService(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_http2: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_quic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edge_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 log_config: Optional[pulumi.Input[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_tls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 routing: Optional[pulumi.Input[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict']]] = None,
-                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_http2: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_quic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_ssl_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 log_config: pulumi.Input[Optional[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_tls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 routing: pulumi.Input[Optional[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict']]] = None,
+                 ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1440,22 +1440,22 @@ class EdgeCacheService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_http2: Optional[pulumi.Input[_builtins.bool]] = None,
-            disable_quic: Optional[pulumi.Input[_builtins.bool]] = None,
-            edge_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            log_config: Optional[pulumi.Input[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            require_tls: Optional[pulumi.Input[_builtins.bool]] = None,
-            routing: Optional[pulumi.Input[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict']]] = None,
-            ssl_policy: Optional[pulumi.Input[_builtins.str]] = None) -> 'EdgeCacheService':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_http2: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_quic: pulumi.Input[Optional[_builtins.bool]] = None,
+            edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_ssl_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ipv4_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ipv6_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            log_config: pulumi.Input[Optional[Union['EdgeCacheServiceLogConfigArgs', 'EdgeCacheServiceLogConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            require_tls: pulumi.Input[Optional[_builtins.bool]] = None,
+            routing: pulumi.Input[Optional[Union['EdgeCacheServiceRoutingArgs', 'EdgeCacheServiceRoutingArgsDict']]] = None,
+            ssl_policy: pulumi.Input[Optional[_builtins.str]] = None) -> 'EdgeCacheService':
         """
         Get an existing EdgeCacheService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

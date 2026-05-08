@@ -161,8 +161,8 @@ def get_tag_value(parent: Optional[_builtins.str] = None,
         parent=pulumi.get(__ret__, 'parent'),
         short_name=pulumi.get(__ret__, 'short_name'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_tag_value_output(parent: Optional[pulumi.Input[_builtins.str]] = None,
-                         short_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_tag_value_output(parent: pulumi.Input[Optional[_builtins.str]] = None,
+                         short_name: pulumi.Input[Optional[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagValueResult]:
     """
     Get a tag value by `parent` key and `short_name`.

@@ -278,82 +278,82 @@ export interface WorkstationState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Time when this resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Human-readable name for this resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * 'Client-specified environment variables passed to the workstation container's entrypoint.'
      */
-    env?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    env?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Host to which clients can send HTTPS traffic that will be received by the workstation.
      * Authorized traffic will be received to the workstation as HTTP on port 80.
      * To send traffic to a different port, clients may prefix the host with the destination port in the format "{port}-{host}".
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where the workstation parent resources reside.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Full name of this resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Full resource name of the source workstation from which the workstation's persistent
      * directories will be cloned from during creation.
      */
-    sourceWorkstation?: pulumi.Input<string>;
+    sourceWorkstation?: pulumi.Input<string | undefined>;
     /**
      * Current state of the workstation.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A system-assigned unique identified for this resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent workstation cluster.
      */
-    workstationClusterId?: pulumi.Input<string>;
+    workstationClusterId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent workstation cluster config.
      */
-    workstationConfigId?: pulumi.Input<string>;
+    workstationConfigId?: pulumi.Input<string | undefined>;
     /**
      * ID to use for the workstation.
      */
-    workstationId?: pulumi.Input<string>;
+    workstationId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -365,21 +365,21 @@ export interface WorkstationArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Human-readable name for this resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * 'Client-specified environment variables passed to the workstation container's entrypoint.'
      */
-    env?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    env?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where the workstation parent resources reside.
      */
@@ -388,12 +388,12 @@ export interface WorkstationArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Full resource name of the source workstation from which the workstation's persistent
      * directories will be cloned from during creation.
      */
-    sourceWorkstation?: pulumi.Input<string>;
+    sourceWorkstation?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent workstation cluster.
      */

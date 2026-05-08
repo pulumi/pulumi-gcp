@@ -249,25 +249,25 @@ export interface AddressGroupState {
     /**
      * Capacity of the Address Group.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * The timestamp when the resource was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Free-text description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of items.
      */
-    items?: pulumi.Input<pulumi.Input<string>[]>;
+    items?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of label tags associated with the AddressGroup resource.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -275,42 +275,42 @@ export interface AddressGroupState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the gateway security policy.
      * The default value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the AddressGroup resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Optional, Beta)
      * List of supported purposes of the Address Group.
      * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
      */
-    purposes?: pulumi.Input<pulumi.Input<string>[]>;
+    purposes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of the Address Group. Possible values are "IPV4" or "IPV6".
      * Possible values are: `IPV4`, `IPV6`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -324,11 +324,11 @@ export interface AddressGroupArgs {
     /**
      * Free-text description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of items.
      */
-    items?: pulumi.Input<pulumi.Input<string>[]>;
+    items?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of label tags associated with the AddressGroup resource.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -336,7 +336,7 @@ export interface AddressGroupArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the gateway security policy.
      * The default value is `global`.
@@ -345,17 +345,17 @@ export interface AddressGroupArgs {
     /**
      * Name of the AddressGroup resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * List of supported purposes of the Address Group.
      * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
      */
-    purposes?: pulumi.Input<pulumi.Input<string>[]>;
+    purposes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of the Address Group. Possible values are "IPV4" or "IPV6".
      * Possible values are: `IPV4`, `IPV6`.

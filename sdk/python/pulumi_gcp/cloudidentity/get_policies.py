@@ -105,7 +105,7 @@ def get_policies(filter: Optional[_builtins.str] = None,
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         policies=pulumi.get(__ret__, 'policies'))
-def get_policies_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_policies_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPoliciesResult]:
     """
     Use this data source to list Cloud Identity policies.

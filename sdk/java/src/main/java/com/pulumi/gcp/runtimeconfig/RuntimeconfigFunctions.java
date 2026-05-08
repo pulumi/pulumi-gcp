@@ -42,8 +42,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -89,8 +89,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -136,8 +136,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -183,8 +183,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -230,8 +230,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -272,8 +272,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetConfigIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -315,8 +315,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetConfigIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -358,8 +358,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetConfigIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -401,8 +401,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetConfigIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -444,8 +444,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetConfigIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -492,8 +492,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -540,8 +540,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -588,8 +588,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -636,8 +636,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -684,8 +684,8 @@ public final class RuntimeconfigFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
      * import com.pulumi.gcp.runtimeconfig.inputs.GetVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -174,7 +174,7 @@ def get_organization_settings(organization: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         organization=pulumi.get(__ret__, 'organization'),
         storage_location=pulumi.get(__ret__, 'storage_location'))
-def get_organization_settings_output(organization: Optional[pulumi.Input[_builtins.str]] = None,
+def get_organization_settings_output(organization: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationSettingsResult]:
     """
     Describes the settings associated with a organization.

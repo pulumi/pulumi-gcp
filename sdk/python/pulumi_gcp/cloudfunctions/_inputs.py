@@ -58,7 +58,7 @@ class FunctionEventTriggerArgsDict(TypedDict):
     Required. The name or partial URI of the resource from
     which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
     """
-    failure_policy: NotRequired[pulumi.Input['FunctionEventTriggerFailurePolicyArgsDict']]
+    failure_policy: NotRequired[pulumi.Input[Optional['FunctionEventTriggerFailurePolicyArgs']]]
     """
     Specifies policy for failed executions. Structure is documented below.
     """
@@ -68,7 +68,7 @@ class FunctionEventTriggerArgs:
     def __init__(__self__, *,
                  event_type: pulumi.Input[_builtins.str],
                  resource: pulumi.Input[_builtins.str],
-                 failure_policy: Optional[pulumi.Input['FunctionEventTriggerFailurePolicyArgs']] = None):
+                 failure_policy: pulumi.Input[Optional['FunctionEventTriggerFailurePolicyArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] event_type: The type of event to observe. For example: `"google.storage.object.finalize"`.
                See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
@@ -111,14 +111,14 @@ class FunctionEventTriggerArgs:
 
     @_builtins.property
     @pulumi.getter(name="failurePolicy")
-    def failure_policy(self) -> Optional[pulumi.Input['FunctionEventTriggerFailurePolicyArgs']]:
+    def failure_policy(self) -> pulumi.Input[Optional['FunctionEventTriggerFailurePolicyArgs']]:
         """
         Specifies policy for failed executions. Structure is documented below.
         """
         return pulumi.get(self, "failure_policy")
 
     @failure_policy.setter
-    def failure_policy(self, value: Optional[pulumi.Input['FunctionEventTriggerFailurePolicyArgs']]):
+    def failure_policy(self, value: pulumi.Input[Optional['FunctionEventTriggerFailurePolicyArgs']]):
         pulumi.set(self, "failure_policy", value)
 
 
@@ -153,14 +153,14 @@ class FunctionEventTriggerFailurePolicyArgs:
 class FunctionIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class FunctionIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -186,25 +186,25 @@ class FunctionIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class FunctionIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class FunctionIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -230,16 +230,16 @@ class FunctionIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class FunctionOnDeployUpdatePolicyArgsDict(TypedDict):
-    runtime_version: NotRequired[pulumi.Input[_builtins.str]]
+    runtime_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The runtime version which was used during latest function deployment.
     """
@@ -247,7 +247,7 @@ class FunctionOnDeployUpdatePolicyArgsDict(TypedDict):
 @pulumi.input_type
 class FunctionOnDeployUpdatePolicyArgs:
     def __init__(__self__, *,
-                 runtime_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 runtime_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] runtime_version: The runtime version which was used during latest function deployment.
         """
@@ -256,14 +256,14 @@ class FunctionOnDeployUpdatePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="runtimeVersion")
-    def runtime_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The runtime version which was used during latest function deployment.
         """
         return pulumi.get(self, "runtime_version")
 
     @runtime_version.setter
-    def runtime_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_version", value)
 
 
@@ -280,7 +280,7 @@ class FunctionSecretEnvironmentVariableArgsDict(TypedDict):
     """
     Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
     """
@@ -291,7 +291,7 @@ class FunctionSecretEnvironmentVariableArgs:
                  key: pulumi.Input[_builtins.str],
                  secret: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Name of the environment variable.
         :param pulumi.Input[_builtins.str] secret: ID of the secret in secret manager (not the full resource name).
@@ -342,14 +342,14 @@ class FunctionSecretEnvironmentVariableArgs:
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
@@ -362,11 +362,11 @@ class FunctionSecretVolumeArgsDict(TypedDict):
     """
     ID of the secret in secret manager (not the full resource name).
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
     """
-    versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgsDict']]]]
+    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgs']]]]]
     """
     List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
     """
@@ -376,8 +376,8 @@ class FunctionSecretVolumeArgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[_builtins.str],
                  secret: pulumi.Input[_builtins.str],
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgs']]]] = None):
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_path: The path within the container to mount the secret volume. For example, setting the mount_path as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
         :param pulumi.Input[_builtins.str] secret: ID of the secret in secret manager (not the full resource name).
@@ -417,26 +417,26 @@ class FunctionSecretVolumeArgs:
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgs']]]]:
+    def versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgs']]]]:
         """
         List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
         """
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgs']]]]):
+    def versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgs']]]]):
         pulumi.set(self, "versions", value)
 
 
@@ -496,7 +496,7 @@ class FunctionSourceRepositoryArgsDict(TypedDict):
     * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*`. To refer to HEAD, use the `master` moveable alias.
     * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*`
     """
-    deployed_url: NotRequired[pulumi.Input[_builtins.str]]
+    deployed_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URL pointing to the hosted repository where the function was defined at the time of deployment.
     """
@@ -505,7 +505,7 @@ class FunctionSourceRepositoryArgsDict(TypedDict):
 class FunctionSourceRepositoryArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[_builtins.str],
-                 deployed_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 deployed_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] url: The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
                
@@ -536,14 +536,14 @@ class FunctionSourceRepositoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="deployedUrl")
-    def deployed_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployed_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL pointing to the hosted repository where the function was defined at the time of deployment.
         """
         return pulumi.get(self, "deployed_url")
 
     @deployed_url.setter
-    def deployed_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployed_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployed_url", value)
 
 

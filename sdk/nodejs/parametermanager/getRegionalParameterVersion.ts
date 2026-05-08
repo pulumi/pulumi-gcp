@@ -125,7 +125,7 @@ export interface GetRegionalParameterVersionOutputArgs {
     /**
      * The location of regional parameter.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The parameter for obtaining the Regional Parameter Version.
      * This can be either the reference of the regional parameter as in `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}` or only the name of the regional parameter as in `{{parameter_id}}`.
@@ -139,5 +139,5 @@ export interface GetRegionalParameterVersionOutputArgs {
      * The project for retrieving the Regional Parameter Version. If it's not specified, 
      * the provider project will be used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

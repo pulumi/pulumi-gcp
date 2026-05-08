@@ -287,9 +287,9 @@ def get_reservation(name: Optional[_builtins.str] = None,
         specific_reservations=pulumi.get(__ret__, 'specific_reservations'),
         status=pulumi.get(__ret__, 'status'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_reservation_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                           project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           zone: Optional[pulumi.Input[_builtins.str]] = None,
+def get_reservation_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                           project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           zone: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReservationResult]:
     """
     Provides access to available Google Compute Reservation Resources for a given project.

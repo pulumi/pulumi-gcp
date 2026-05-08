@@ -174,7 +174,7 @@ def get_folder_settings(folder: Optional[_builtins.str] = None,
         logging_service_account_id=pulumi.get(__ret__, 'logging_service_account_id'),
         name=pulumi.get(__ret__, 'name'),
         storage_location=pulumi.get(__ret__, 'storage_location'))
-def get_folder_settings_output(folder: Optional[pulumi.Input[_builtins.str]] = None,
+def get_folder_settings_output(folder: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFolderSettingsResult]:
     """
     Describes the settings associated with a folder.

@@ -259,50 +259,50 @@ export interface AppGroupState {
     /**
      * Internal identifier that cannot be edited
      */
-    appGroupId?: pulumi.Input<string>;
+    appGroupId?: pulumi.Input<string | undefined>;
     /**
      * A list of attributes
      * Structure is documented below.
      */
-    attributes?: pulumi.Input<pulumi.Input<inputs.apigee.AppGroupAttribute>[]>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.apigee.AppGroupAttribute>[] | undefined>;
     /**
      * Channel identifier identifies the owner maintaining this grouping.
      */
-    channelId?: pulumi.Input<string>;
+    channelId?: pulumi.Input<string | undefined>;
     /**
      * A reference to the associated storefront/marketplace.
      */
-    channelUri?: pulumi.Input<string>;
+    channelUri?: pulumi.Input<string | undefined>;
     /**
      * Created time as milliseconds since epoch.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * App group name displayed in the UI
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Modified time as milliseconds since epoch.
      */
-    lastModifiedAt?: pulumi.Input<string>;
+    lastModifiedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee app group,
      * in the format `organizations/{{org_name}}`.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * App group name displayed in the UI
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
      * Possible values are: `active`, `inactive`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -313,23 +313,23 @@ export interface AppGroupArgs {
      * A list of attributes
      * Structure is documented below.
      */
-    attributes?: pulumi.Input<pulumi.Input<inputs.apigee.AppGroupAttribute>[]>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.apigee.AppGroupAttribute>[] | undefined>;
     /**
      * Channel identifier identifies the owner maintaining this grouping.
      */
-    channelId?: pulumi.Input<string>;
+    channelId?: pulumi.Input<string | undefined>;
     /**
      * A reference to the associated storefront/marketplace.
      */
-    channelUri?: pulumi.Input<string>;
+    channelUri?: pulumi.Input<string | undefined>;
     /**
      * App group name displayed in the UI
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee app group,
      * in the format `organizations/{{org_name}}`.
@@ -339,5 +339,5 @@ export interface AppGroupArgs {
      * Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
      * Possible values are: `active`, `inactive`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

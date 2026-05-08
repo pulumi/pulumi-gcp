@@ -23,37 +23,37 @@ class InstanceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  machine_type: pulumi.Input[_builtins.str],
-                 accelerator_config: Optional[pulumi.Input['InstanceAcceleratorConfigArgs']] = None,
-                 boot_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_image: Optional[pulumi.Input['InstanceContainerImageArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_gpu_driver_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 install_gpu_driver: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_remove_data_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 post_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_image: Optional[pulumi.Input['InstanceVmImageArgs']] = None):
+                 accelerator_config: pulumi.Input[Optional['InstanceAcceleratorConfigArgs']] = None,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_image: pulumi.Input[Optional['InstanceContainerImageArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_gpu_driver_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 install_gpu_driver: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_remove_data_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_affinity: pulumi.Input[Optional['InstanceReservationAffinityArgs']] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shielded_instance_config: pulumi.Input[Optional['InstanceShieldedInstanceConfigArgs']] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_image: pulumi.Input[Optional['InstanceVmImageArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -224,7 +224,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorConfig")
-    def accelerator_config(self) -> Optional[pulumi.Input['InstanceAcceleratorConfigArgs']]:
+    def accelerator_config(self) -> pulumi.Input[Optional['InstanceAcceleratorConfigArgs']]:
         """
         The hardware accelerator used on this instance. If you use accelerators,
         make sure that your configuration has enough vCPUs and memory to support the
@@ -234,12 +234,12 @@ class InstanceArgs:
         return pulumi.get(self, "accelerator_config")
 
     @accelerator_config.setter
-    def accelerator_config(self, value: Optional[pulumi.Input['InstanceAcceleratorConfigArgs']]):
+    def accelerator_config(self, value: pulumi.Input[Optional['InstanceAcceleratorConfigArgs']]):
         pulumi.set(self, "accelerator_config", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDiskSizeGb")
-    def boot_disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the boot disk in GB attached to this instance,
         up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
@@ -248,12 +248,12 @@ class InstanceArgs:
         return pulumi.get(self, "boot_disk_size_gb")
 
     @boot_disk_size_gb.setter
-    def boot_disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "boot_disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDiskType")
-    def boot_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def boot_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible disk types for notebook instances.
         Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
@@ -261,12 +261,12 @@ class InstanceArgs:
         return pulumi.get(self, "boot_disk_type")
 
     @boot_disk_type.setter
-    def boot_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def boot_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "boot_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="containerImage")
-    def container_image(self) -> Optional[pulumi.Input['InstanceContainerImageArgs']]:
+    def container_image(self) -> pulumi.Input[Optional['InstanceContainerImageArgs']]:
         """
         Use a container image to start the notebook instance.
         Structure is documented below.
@@ -274,24 +274,24 @@ class InstanceArgs:
         return pulumi.get(self, "container_image")
 
     @container_image.setter
-    def container_image(self, value: Optional[pulumi.Input['InstanceContainerImageArgs']]):
+    def container_image(self, value: pulumi.Input[Optional['InstanceContainerImageArgs']]):
         pulumi.set(self, "container_image", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance creation time
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customGpuDriverPath")
-    def custom_gpu_driver_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_gpu_driver_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify a custom Cloud Storage path where the GPU driver is stored.
         If not specified, we'll automatically choose from official GPU drivers.
@@ -299,12 +299,12 @@ class InstanceArgs:
         return pulumi.get(self, "custom_gpu_driver_path")
 
     @custom_gpu_driver_path.setter
-    def custom_gpu_driver_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_gpu_driver_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_gpu_driver_path", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDiskSizeGb")
-    def data_disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the data disk in GB attached to this instance,
         up to a maximum of 64000 GB (64 TB).
@@ -314,12 +314,12 @@ class InstanceArgs:
         return pulumi.get(self, "data_disk_size_gb")
 
     @data_disk_size_gb.setter
-    def data_disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDiskType")
-    def data_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible disk types for notebook instances.
         Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
@@ -327,24 +327,24 @@ class InstanceArgs:
         return pulumi.get(self, "data_disk_type")
 
     @data_disk_type.setter
-    def data_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         """
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
-    def disk_encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_encryption(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Disk encryption method used on the boot and data disks, defaults to GMEK.
         Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
@@ -352,12 +352,12 @@ class InstanceArgs:
         return pulumi.get(self, "disk_encryption")
 
     @disk_encryption.setter
-    def disk_encryption(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_encryption(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="installGpuDriver")
-    def install_gpu_driver(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def install_gpu_driver(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the end user authorizes Google Cloud to install GPU driver
         on this instance. If this field is empty or set to false, the GPU driver
@@ -366,12 +366,12 @@ class InstanceArgs:
         return pulumi.get(self, "install_gpu_driver")
 
     @install_gpu_driver.setter
-    def install_gpu_driver(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def install_gpu_driver(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "install_gpu_driver", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceOwners")
-    def instance_owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_owners(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of owners of this instance after creation.
         Format: alias@example.com.
@@ -382,12 +382,12 @@ class InstanceArgs:
         return pulumi.get(self, "instance_owners")
 
     @instance_owners.setter
-    def instance_owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_owners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_owners", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
-    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
         Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
@@ -395,12 +395,12 @@ class InstanceArgs:
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
-    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this instance. These can be later modified by the setLabels method.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -411,12 +411,12 @@ class InstanceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Custom metadata to apply to this instance.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -424,24 +424,24 @@ class InstanceArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name specified for the Notebook instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC that this instance is in.
         Format: projects/{project_id}/global/networks/{network_id}
@@ -449,12 +449,12 @@ class InstanceArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="nicType")
-    def nic_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nic_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of vNIC driver.
         Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
@@ -462,48 +462,48 @@ class InstanceArgs:
         return pulumi.get(self, "nic_type")
 
     @nic_type.setter
-    def nic_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nic_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nic_type", value)
 
     @_builtins.property
     @pulumi.getter(name="noProxyAccess")
-    def no_proxy_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_proxy_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The notebook instance will not register with the proxy..
         """
         return pulumi.get(self, "no_proxy_access")
 
     @no_proxy_access.setter
-    def no_proxy_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_proxy_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_proxy_access", value)
 
     @_builtins.property
     @pulumi.getter(name="noPublicIp")
-    def no_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         No public IP will be assigned to this instance.
         """
         return pulumi.get(self, "no_public_ip")
 
     @no_public_ip.setter
-    def no_public_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="noRemoveDataDisk")
-    def no_remove_data_disk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_remove_data_disk(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the data disk will not be auto deleted when deleting the instance.
         """
         return pulumi.get(self, "no_remove_data_disk")
 
     @no_remove_data_disk.setter
-    def no_remove_data_disk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_remove_data_disk(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_remove_data_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="postStartupScript")
-    def post_startup_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_startup_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to a Bash script that automatically runs after a
         notebook instance fully boots up. The path must be a URL
@@ -512,12 +512,12 @@ class InstanceArgs:
         return pulumi.get(self, "post_startup_script")
 
     @post_startup_script.setter
-    def post_startup_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_startup_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_startup_script", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -525,12 +525,12 @@ class InstanceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArgs']]:
+    def reservation_affinity(self) -> pulumi.Input[Optional['InstanceReservationAffinityArgs']]:
         """
         Reservation Affinity for consuming Zonal reservation.
         Structure is documented below.
@@ -538,12 +538,12 @@ class InstanceArgs:
         return pulumi.get(self, "reservation_affinity")
 
     @reservation_affinity.setter
-    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceReservationAffinityArgs']]):
+    def reservation_affinity(self, value: pulumi.Input[Optional['InstanceReservationAffinityArgs']]):
         pulumi.set(self, "reservation_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account on this instance, giving access to other
         Google Cloud services. You can use any service account within
@@ -554,12 +554,12 @@ class InstanceArgs:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountScopes")
-    def service_account_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def service_account_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. The URIs of service account scopes to be included in Compute Engine instances.
         If not specified, the following scopes are defined:
@@ -569,12 +569,12 @@ class InstanceArgs:
         return pulumi.get(self, "service_account_scopes")
 
     @service_account_scopes.setter
-    def service_account_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def service_account_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_account_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> pulumi.Input[Optional['InstanceShieldedInstanceConfigArgs']]:
         """
         A set of Shielded Instance options. Check [Images using supported Shielded VM features]
         Not all combinations are valid
@@ -583,12 +583,12 @@ class InstanceArgs:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: pulumi.Input[Optional['InstanceShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the subnet that this instance is in.
         Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
@@ -596,36 +596,36 @@ class InstanceArgs:
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Compute Engine tags to add to instance.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance update time.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="vmImage")
-    def vm_image(self) -> Optional[pulumi.Input['InstanceVmImageArgs']]:
+    def vm_image(self) -> pulumi.Input[Optional['InstanceVmImageArgs']]:
         """
         Use a Compute Engine VM image to start the notebook instance.
         Structure is documented below.
@@ -633,50 +633,50 @@ class InstanceArgs:
         return pulumi.get(self, "vm_image")
 
     @vm_image.setter
-    def vm_image(self, value: Optional[pulumi.Input['InstanceVmImageArgs']]):
+    def vm_image(self, value: pulumi.Input[Optional['InstanceVmImageArgs']]):
         pulumi.set(self, "vm_image", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 accelerator_config: Optional[pulumi.Input['InstanceAcceleratorConfigArgs']] = None,
-                 boot_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_image: Optional[pulumi.Input['InstanceContainerImageArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_gpu_driver_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 install_gpu_driver: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_remove_data_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 post_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_image: Optional[pulumi.Input['InstanceVmImageArgs']] = None):
+                 accelerator_config: pulumi.Input[Optional['InstanceAcceleratorConfigArgs']] = None,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_image: pulumi.Input[Optional['InstanceContainerImageArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_gpu_driver_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 install_gpu_driver: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_remove_data_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reservation_affinity: pulumi.Input[Optional['InstanceReservationAffinityArgs']] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shielded_instance_config: pulumi.Input[Optional['InstanceShieldedInstanceConfigArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_image: pulumi.Input[Optional['InstanceVmImageArgs']] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -841,7 +841,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorConfig")
-    def accelerator_config(self) -> Optional[pulumi.Input['InstanceAcceleratorConfigArgs']]:
+    def accelerator_config(self) -> pulumi.Input[Optional['InstanceAcceleratorConfigArgs']]:
         """
         The hardware accelerator used on this instance. If you use accelerators,
         make sure that your configuration has enough vCPUs and memory to support the
@@ -851,12 +851,12 @@ class _InstanceState:
         return pulumi.get(self, "accelerator_config")
 
     @accelerator_config.setter
-    def accelerator_config(self, value: Optional[pulumi.Input['InstanceAcceleratorConfigArgs']]):
+    def accelerator_config(self, value: pulumi.Input[Optional['InstanceAcceleratorConfigArgs']]):
         pulumi.set(self, "accelerator_config", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDiskSizeGb")
-    def boot_disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the boot disk in GB attached to this instance,
         up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
@@ -865,12 +865,12 @@ class _InstanceState:
         return pulumi.get(self, "boot_disk_size_gb")
 
     @boot_disk_size_gb.setter
-    def boot_disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "boot_disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDiskType")
-    def boot_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def boot_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible disk types for notebook instances.
         Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
@@ -878,12 +878,12 @@ class _InstanceState:
         return pulumi.get(self, "boot_disk_type")
 
     @boot_disk_type.setter
-    def boot_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def boot_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "boot_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="containerImage")
-    def container_image(self) -> Optional[pulumi.Input['InstanceContainerImageArgs']]:
+    def container_image(self) -> pulumi.Input[Optional['InstanceContainerImageArgs']]:
         """
         Use a container image to start the notebook instance.
         Structure is documented below.
@@ -891,24 +891,24 @@ class _InstanceState:
         return pulumi.get(self, "container_image")
 
     @container_image.setter
-    def container_image(self, value: Optional[pulumi.Input['InstanceContainerImageArgs']]):
+    def container_image(self, value: pulumi.Input[Optional['InstanceContainerImageArgs']]):
         pulumi.set(self, "container_image", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance creation time
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customGpuDriverPath")
-    def custom_gpu_driver_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_gpu_driver_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify a custom Cloud Storage path where the GPU driver is stored.
         If not specified, we'll automatically choose from official GPU drivers.
@@ -916,12 +916,12 @@ class _InstanceState:
         return pulumi.get(self, "custom_gpu_driver_path")
 
     @custom_gpu_driver_path.setter
-    def custom_gpu_driver_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_gpu_driver_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_gpu_driver_path", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDiskSizeGb")
-    def data_disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the data disk in GB attached to this instance,
         up to a maximum of 64000 GB (64 TB).
@@ -931,12 +931,12 @@ class _InstanceState:
         return pulumi.get(self, "data_disk_size_gb")
 
     @data_disk_size_gb.setter
-    def data_disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDiskType")
-    def data_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible disk types for notebook instances.
         Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
@@ -944,24 +944,24 @@ class _InstanceState:
         return pulumi.get(self, "data_disk_type")
 
     @data_disk_type.setter
-    def data_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         """
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
-    def disk_encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_encryption(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Disk encryption method used on the boot and data disks, defaults to GMEK.
         Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
@@ -969,24 +969,24 @@ class _InstanceState:
         return pulumi.get(self, "disk_encryption")
 
     @disk_encryption.setter
-    def disk_encryption(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_encryption(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="installGpuDriver")
-    def install_gpu_driver(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def install_gpu_driver(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the end user authorizes Google Cloud to install GPU driver
         on this instance. If this field is empty or set to false, the GPU driver
@@ -995,12 +995,12 @@ class _InstanceState:
         return pulumi.get(self, "install_gpu_driver")
 
     @install_gpu_driver.setter
-    def install_gpu_driver(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def install_gpu_driver(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "install_gpu_driver", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceOwners")
-    def instance_owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_owners(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of owners of this instance after creation.
         Format: alias@example.com.
@@ -1011,12 +1011,12 @@ class _InstanceState:
         return pulumi.get(self, "instance_owners")
 
     @instance_owners.setter
-    def instance_owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_owners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_owners", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
-    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
         Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
@@ -1024,12 +1024,12 @@ class _InstanceState:
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
-    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this instance. These can be later modified by the setLabels method.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -1040,36 +1040,36 @@ class _InstanceState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the zone where the machine resides.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a machine type which defines VM kind.
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Custom metadata to apply to this instance.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -1077,24 +1077,24 @@ class _InstanceState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name specified for the Notebook instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC that this instance is in.
         Format: projects/{project_id}/global/networks/{network_id}
@@ -1102,12 +1102,12 @@ class _InstanceState:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="nicType")
-    def nic_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nic_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of vNIC driver.
         Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
@@ -1115,48 +1115,48 @@ class _InstanceState:
         return pulumi.get(self, "nic_type")
 
     @nic_type.setter
-    def nic_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nic_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nic_type", value)
 
     @_builtins.property
     @pulumi.getter(name="noProxyAccess")
-    def no_proxy_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_proxy_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The notebook instance will not register with the proxy..
         """
         return pulumi.get(self, "no_proxy_access")
 
     @no_proxy_access.setter
-    def no_proxy_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_proxy_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_proxy_access", value)
 
     @_builtins.property
     @pulumi.getter(name="noPublicIp")
-    def no_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         No public IP will be assigned to this instance.
         """
         return pulumi.get(self, "no_public_ip")
 
     @no_public_ip.setter
-    def no_public_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="noRemoveDataDisk")
-    def no_remove_data_disk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_remove_data_disk(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the data disk will not be auto deleted when deleting the instance.
         """
         return pulumi.get(self, "no_remove_data_disk")
 
     @no_remove_data_disk.setter
-    def no_remove_data_disk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_remove_data_disk(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_remove_data_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="postStartupScript")
-    def post_startup_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_startup_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to a Bash script that automatically runs after a
         notebook instance fully boots up. The path must be a URL
@@ -1165,12 +1165,12 @@ class _InstanceState:
         return pulumi.get(self, "post_startup_script")
 
     @post_startup_script.setter
-    def post_startup_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_startup_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_startup_script", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -1178,12 +1178,12 @@ class _InstanceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyUri")
-    def proxy_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The proxy endpoint that is used to access the Jupyter notebook.
         Only returned when the resource is in a `PROVISIONED` state. If
@@ -1193,12 +1193,12 @@ class _InstanceState:
         return pulumi.get(self, "proxy_uri")
 
     @proxy_uri.setter
-    def proxy_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -1206,12 +1206,12 @@ class _InstanceState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceReservationAffinityArgs']]:
+    def reservation_affinity(self) -> pulumi.Input[Optional['InstanceReservationAffinityArgs']]:
         """
         Reservation Affinity for consuming Zonal reservation.
         Structure is documented below.
@@ -1219,12 +1219,12 @@ class _InstanceState:
         return pulumi.get(self, "reservation_affinity")
 
     @reservation_affinity.setter
-    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceReservationAffinityArgs']]):
+    def reservation_affinity(self, value: pulumi.Input[Optional['InstanceReservationAffinityArgs']]):
         pulumi.set(self, "reservation_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account on this instance, giving access to other
         Google Cloud services. You can use any service account within
@@ -1235,12 +1235,12 @@ class _InstanceState:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountScopes")
-    def service_account_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def service_account_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. The URIs of service account scopes to be included in Compute Engine instances.
         If not specified, the following scopes are defined:
@@ -1250,12 +1250,12 @@ class _InstanceState:
         return pulumi.get(self, "service_account_scopes")
 
     @service_account_scopes.setter
-    def service_account_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def service_account_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_account_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> pulumi.Input[Optional['InstanceShieldedInstanceConfigArgs']]:
         """
         A set of Shielded Instance options. Check [Images using supported Shielded VM features]
         Not all combinations are valid
@@ -1264,24 +1264,24 @@ class _InstanceState:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: pulumi.Input[Optional['InstanceShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of this instance.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the subnet that this instance is in.
         Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
@@ -1289,36 +1289,36 @@ class _InstanceState:
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Compute Engine tags to add to instance.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance update time.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="vmImage")
-    def vm_image(self) -> Optional[pulumi.Input['InstanceVmImageArgs']]:
+    def vm_image(self) -> pulumi.Input[Optional['InstanceVmImageArgs']]:
         """
         Use a Compute Engine VM image to start the notebook instance.
         Structure is documented below.
@@ -1326,7 +1326,7 @@ class _InstanceState:
         return pulumi.get(self, "vm_image")
 
     @vm_image.setter
-    def vm_image(self, value: Optional[pulumi.Input['InstanceVmImageArgs']]):
+    def vm_image(self, value: pulumi.Input[Optional['InstanceVmImageArgs']]):
         pulumi.set(self, "vm_image", value)
 
 
@@ -1336,39 +1336,39 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_config: Optional[pulumi.Input[Union['InstanceAcceleratorConfigArgs', 'InstanceAcceleratorConfigArgsDict']]] = None,
-                 boot_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_image: Optional[pulumi.Input[Union['InstanceContainerImageArgs', 'InstanceContainerImageArgsDict']]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_gpu_driver_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 install_gpu_driver: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_remove_data_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 post_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_affinity: Optional[pulumi.Input[Union['InstanceReservationAffinityArgs', 'InstanceReservationAffinityArgsDict']]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[Union['InstanceShieldedInstanceConfigArgs', 'InstanceShieldedInstanceConfigArgsDict']]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_image: Optional[pulumi.Input[Union['InstanceVmImageArgs', 'InstanceVmImageArgsDict']]] = None,
+                 accelerator_config: pulumi.Input[Optional[Union['InstanceAcceleratorConfigArgs', 'InstanceAcceleratorConfigArgsDict']]] = None,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_image: pulumi.Input[Optional[Union['InstanceContainerImageArgs', 'InstanceContainerImageArgsDict']]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_gpu_driver_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 install_gpu_driver: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_remove_data_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_affinity: pulumi.Input[Optional[Union['InstanceReservationAffinityArgs', 'InstanceReservationAffinityArgsDict']]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shielded_instance_config: pulumi.Input[Optional[Union['InstanceShieldedInstanceConfigArgs', 'InstanceShieldedInstanceConfigArgsDict']]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_image: pulumi.Input[Optional[Union['InstanceVmImageArgs', 'InstanceVmImageArgsDict']]] = None,
                  __props__=None):
         """
         > **Warning:** `notebooks.Instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
@@ -1769,39 +1769,39 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_config: Optional[pulumi.Input[Union['InstanceAcceleratorConfigArgs', 'InstanceAcceleratorConfigArgsDict']]] = None,
-                 boot_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_image: Optional[pulumi.Input[Union['InstanceContainerImageArgs', 'InstanceContainerImageArgsDict']]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_gpu_driver_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 install_gpu_driver: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_remove_data_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 post_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_affinity: Optional[pulumi.Input[Union['InstanceReservationAffinityArgs', 'InstanceReservationAffinityArgsDict']]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[Union['InstanceShieldedInstanceConfigArgs', 'InstanceShieldedInstanceConfigArgsDict']]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_image: Optional[pulumi.Input[Union['InstanceVmImageArgs', 'InstanceVmImageArgsDict']]] = None,
+                 accelerator_config: pulumi.Input[Optional[Union['InstanceAcceleratorConfigArgs', 'InstanceAcceleratorConfigArgsDict']]] = None,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_image: pulumi.Input[Optional[Union['InstanceContainerImageArgs', 'InstanceContainerImageArgsDict']]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_gpu_driver_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 install_gpu_driver: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_remove_data_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_affinity: pulumi.Input[Optional[Union['InstanceReservationAffinityArgs', 'InstanceReservationAffinityArgsDict']]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shielded_instance_config: pulumi.Input[Optional[Union['InstanceShieldedInstanceConfigArgs', 'InstanceShieldedInstanceConfigArgsDict']]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_image: pulumi.Input[Optional[Union['InstanceVmImageArgs', 'InstanceVmImageArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1864,43 +1864,43 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerator_config: Optional[pulumi.Input[Union['InstanceAcceleratorConfigArgs', 'InstanceAcceleratorConfigArgsDict']]] = None,
-            boot_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-            boot_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-            container_image: Optional[pulumi.Input[Union['InstanceContainerImageArgs', 'InstanceContainerImageArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_gpu_driver_path: Optional[pulumi.Input[_builtins.str]] = None,
-            data_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-            data_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            install_gpu_driver: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            nic_type: Optional[pulumi.Input[_builtins.str]] = None,
-            no_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            no_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-            no_remove_data_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-            post_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reservation_affinity: Optional[pulumi.Input[Union['InstanceReservationAffinityArgs', 'InstanceReservationAffinityArgsDict']]] = None,
-            service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            shielded_instance_config: Optional[pulumi.Input[Union['InstanceShieldedInstanceConfigArgs', 'InstanceShieldedInstanceConfigArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            subnet: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_image: Optional[pulumi.Input[Union['InstanceVmImageArgs', 'InstanceVmImageArgsDict']]] = None) -> 'Instance':
+            accelerator_config: pulumi.Input[Optional[Union['InstanceAcceleratorConfigArgs', 'InstanceAcceleratorConfigArgsDict']]] = None,
+            boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            boot_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            container_image: pulumi.Input[Optional[Union['InstanceContainerImageArgs', 'InstanceContainerImageArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_gpu_driver_path: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            data_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            install_gpu_driver: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_type: pulumi.Input[Optional[_builtins.str]] = None,
+            no_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            no_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            no_remove_data_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+            post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reservation_affinity: pulumi.Input[Optional[Union['InstanceReservationAffinityArgs', 'InstanceReservationAffinityArgsDict']]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            shielded_instance_config: pulumi.Input[Optional[Union['InstanceShieldedInstanceConfigArgs', 'InstanceShieldedInstanceConfigArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_image: pulumi.Input[Optional[Union['InstanceVmImageArgs', 'InstanceVmImageArgsDict']]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

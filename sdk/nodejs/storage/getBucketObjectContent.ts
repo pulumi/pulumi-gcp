@@ -152,7 +152,7 @@ export interface GetBucketObjectContentOutputArgs {
     /**
      * (Computed) The content of the object.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The name of the object.
      */

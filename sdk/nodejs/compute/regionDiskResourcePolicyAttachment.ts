@@ -168,21 +168,21 @@ export interface RegionDiskResourcePolicyAttachmentState {
     /**
      * The name of the regional disk in which the resource policies are attached to.
      */
-    disk?: pulumi.Input<string>;
+    disk?: pulumi.Input<string | undefined>;
     /**
      * The resource policy to be attached to the disk for scheduling snapshot
      * creation. Do not specify the self link.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the region where the disk resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -197,14 +197,14 @@ export interface RegionDiskResourcePolicyAttachmentArgs {
      * The resource policy to be attached to the disk for scheduling snapshot
      * creation. Do not specify the self link.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the region where the disk resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

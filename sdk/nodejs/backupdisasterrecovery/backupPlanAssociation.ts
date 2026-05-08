@@ -302,50 +302,50 @@ export interface BackupPlanAssociationState {
      * - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
      * - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
      */
-    backupPlan?: pulumi.Input<string>;
+    backupPlan?: pulumi.Input<string | undefined>;
     /**
      * The id of backupplan association
      */
-    backupPlanAssociationId?: pulumi.Input<string>;
+    backupPlanAssociationId?: pulumi.Input<string | undefined>;
     /**
      * The time when the instance was created
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Resource name of data source which will be used as storage location for backups taken
      */
-    dataSource?: pulumi.Input<string>;
+    dataSource?: pulumi.Input<string | undefined>;
     /**
      * The location for the backupplan association
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of backup plan association resource created
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The resource for which BPA needs to be created
      */
-    resource?: pulumi.Input<string>;
+    resource?: pulumi.Input<string | undefined>;
     /**
      * The resource type of workload on which backupplan is applied.
      * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * Message for rules config info
      * Structure is documented below.
      */
-    rulesConfigInfos?: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.BackupPlanAssociationRulesConfigInfo>[]>;
+    rulesConfigInfos?: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.BackupPlanAssociationRulesConfigInfo>[] | undefined>;
     /**
      * The time when the instance was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -372,7 +372,7 @@ export interface BackupPlanAssociationArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The resource for which BPA needs to be created
      */

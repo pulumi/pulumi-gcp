@@ -141,7 +141,7 @@ export interface FirewallPolicyAssociationState {
     /**
      * The target that the firewall policy is attached to.
      */
-    attachmentTarget?: pulumi.Input<string>;
+    attachmentTarget?: pulumi.Input<string | undefined>;
     /**
      * The firewall policy of the resource.
      * This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
@@ -149,15 +149,15 @@ export interface FirewallPolicyAssociationState {
      * **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
      * on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
      */
-    firewallPolicy?: pulumi.Input<string>;
+    firewallPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name for an association.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The short name of the firewall policy of the association.
      */
-    shortName?: pulumi.Input<string>;
+    shortName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,5 +179,5 @@ export interface FirewallPolicyAssociationArgs {
     /**
      * The name for an association.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

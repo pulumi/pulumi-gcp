@@ -352,10 +352,10 @@ def get_authority(certificate_authority_id: Optional[_builtins.str] = None,
         type=pulumi.get(__ret__, 'type'),
         update_time=pulumi.get(__ret__, 'update_time'),
         user_defined_access_urls=pulumi.get(__ret__, 'user_defined_access_urls'))
-def get_authority_output(certificate_authority_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         pool: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_authority_output(certificate_authority_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         pool: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAuthorityResult]:
     """
     Get info about a Google CAS Certificate Authority.

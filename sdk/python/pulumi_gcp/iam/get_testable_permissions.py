@@ -132,9 +132,9 @@ def get_testable_permissions(custom_support_level: Optional[_builtins.str] = Non
         id=pulumi.get(__ret__, 'id'),
         permissions=pulumi.get(__ret__, 'permissions'),
         stages=pulumi.get(__ret__, 'stages'))
-def get_testable_permissions_output(custom_support_level: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    full_resource_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                    stages: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_testable_permissions_output(custom_support_level: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    full_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                    stages: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTestablePermissionsResult]:
     """
     Retrieve a list of testable permissions for a resource. Testable permissions mean the permissions that user can add or remove in a role at a given resource. The resource can be referenced either via the full resource name or via a URI.

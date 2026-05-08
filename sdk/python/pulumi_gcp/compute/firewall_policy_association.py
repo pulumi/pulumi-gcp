@@ -21,7 +21,7 @@ class FirewallPolicyAssociationArgs:
     def __init__(__self__, *,
                  attachment_target: pulumi.Input[_builtins.str],
                  firewall_policy: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallPolicyAssociation resource.
 
@@ -68,24 +68,24 @@ class FirewallPolicyAssociationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for an association.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _FirewallPolicyAssociationState:
     def __init__(__self__, *,
-                 attachment_target: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 short_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 attachment_target: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 short_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallPolicyAssociation resources.
 
@@ -109,19 +109,19 @@ class _FirewallPolicyAssociationState:
 
     @_builtins.property
     @pulumi.getter(name="attachmentTarget")
-    def attachment_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def attachment_target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target that the firewall policy is attached to.
         """
         return pulumi.get(self, "attachment_target")
 
     @attachment_target.setter
-    def attachment_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def attachment_target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attachment_target", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallPolicy")
-    def firewall_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The firewall policy of the resource.
         This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
@@ -132,31 +132,31 @@ class _FirewallPolicyAssociationState:
         return pulumi.get(self, "firewall_policy")
 
     @firewall_policy.setter
-    def firewall_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for an association.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="shortName")
-    def short_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def short_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The short name of the firewall policy of the association.
         """
         return pulumi.get(self, "short_name")
 
     @short_name.setter
-    def short_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def short_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "short_name", value)
 
 
@@ -166,9 +166,9 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attachment_target: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 attachment_target: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Allows associating hierarchical firewall policies with the target where they are applied. This allows creating policies and rules in a different location than they are applied.
@@ -289,9 +289,9 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attachment_target: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 attachment_target: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -319,10 +319,10 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attachment_target: Optional[pulumi.Input[_builtins.str]] = None,
-            firewall_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            short_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'FirewallPolicyAssociation':
+            attachment_target: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            short_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'FirewallPolicyAssociation':
         """
         Get an existing FirewallPolicyAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

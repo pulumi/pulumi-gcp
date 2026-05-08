@@ -23,16 +23,16 @@ class CxSecuritySettingsArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 audio_export_settings: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']] = None,
-                 deidentify_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 insights_export_settings: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']] = None,
-                 inspect_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 redaction_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 redaction_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_window_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 audio_export_settings: pulumi.Input[Optional['CxSecuritySettingsAudioExportSettingsArgs']] = None,
+                 deidentify_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 insights_export_settings: pulumi.Input[Optional['CxSecuritySettingsInsightsExportSettingsArgs']] = None,
+                 inspect_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 purge_data_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 redaction_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 redaction_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_window_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a CxSecuritySettings resource.
 
@@ -119,7 +119,7 @@ class CxSecuritySettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="audioExportSettings")
-    def audio_export_settings(self) -> Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']]:
+    def audio_export_settings(self) -> pulumi.Input[Optional['CxSecuritySettingsAudioExportSettingsArgs']]:
         """
         Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
         If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
@@ -130,12 +130,12 @@ class CxSecuritySettingsArgs:
         return pulumi.get(self, "audio_export_settings")
 
     @audio_export_settings.setter
-    def audio_export_settings(self, value: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']]):
+    def audio_export_settings(self, value: pulumi.Input[Optional['CxSecuritySettingsAudioExportSettingsArgs']]):
         pulumi.set(self, "audio_export_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="deidentifyTemplate")
-    def deidentify_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deidentify_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with [redacted] text.
         Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
@@ -144,12 +144,12 @@ class CxSecuritySettingsArgs:
         return pulumi.get(self, "deidentify_template")
 
     @deidentify_template.setter
-    def deidentify_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deidentify_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deidentify_template", value)
 
     @_builtins.property
     @pulumi.getter(name="insightsExportSettings")
-    def insights_export_settings(self) -> Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']]:
+    def insights_export_settings(self) -> pulumi.Input[Optional['CxSecuritySettingsInsightsExportSettingsArgs']]:
         """
         Controls conversation exporting settings to Insights after conversation is completed.
         If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
@@ -158,12 +158,12 @@ class CxSecuritySettingsArgs:
         return pulumi.get(self, "insights_export_settings")
 
     @insights_export_settings.setter
-    def insights_export_settings(self, value: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']]):
+    def insights_export_settings(self, value: pulumi.Input[Optional['CxSecuritySettingsInsightsExportSettingsArgs']]):
         pulumi.set(self, "insights_export_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="inspectTemplate")
-    def inspect_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inspect_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config.
         Note: inspectTemplate must be located in the same region as the SecuritySettings.
@@ -172,12 +172,12 @@ class CxSecuritySettingsArgs:
         return pulumi.get(self, "inspect_template")
 
     @inspect_template.setter
-    def inspect_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inspect_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inspect_template", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -185,12 +185,12 @@ class CxSecuritySettingsArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="purgeDataTypes")
-    def purge_data_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def purge_data_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of types of data to remove when retention settings triggers purge.
         Each value may be one of: `DIALOGFLOW_HISTORY`.
@@ -198,12 +198,12 @@ class CxSecuritySettingsArgs:
         return pulumi.get(self, "purge_data_types")
 
     @purge_data_types.setter
-    def purge_data_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def purge_data_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "purge_data_types", value)
 
     @_builtins.property
     @pulumi.getter(name="redactionScope")
-    def redaction_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redaction_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
         * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
@@ -212,12 +212,12 @@ class CxSecuritySettingsArgs:
         return pulumi.get(self, "redaction_scope")
 
     @redaction_scope.setter
-    def redaction_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redaction_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redaction_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="redactionStrategy")
-    def redaction_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redaction_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines how we redact data. If not set, defaults to not redacting.
         * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
@@ -226,12 +226,12 @@ class CxSecuritySettingsArgs:
         return pulumi.get(self, "redaction_strategy")
 
     @redaction_strategy.setter
-    def redaction_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redaction_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redaction_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionStrategy")
-    def retention_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retention_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
         * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
@@ -240,12 +240,12 @@ class CxSecuritySettingsArgs:
         return pulumi.get(self, "retention_strategy")
 
     @retention_strategy.setter
-    def retention_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retention_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retention_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionWindowDays")
-    def retention_window_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_window_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
         Only one of `retention_window_days` and `retention_strategy` may be set.
@@ -253,26 +253,26 @@ class CxSecuritySettingsArgs:
         return pulumi.get(self, "retention_window_days")
 
     @retention_window_days.setter
-    def retention_window_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_window_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_window_days", value)
 
 
 @pulumi.input_type
 class _CxSecuritySettingsState:
     def __init__(__self__, *,
-                 audio_export_settings: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']] = None,
-                 deidentify_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 insights_export_settings: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']] = None,
-                 inspect_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 redaction_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 redaction_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_window_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 audio_export_settings: pulumi.Input[Optional['CxSecuritySettingsAudioExportSettingsArgs']] = None,
+                 deidentify_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 insights_export_settings: pulumi.Input[Optional['CxSecuritySettingsInsightsExportSettingsArgs']] = None,
+                 inspect_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 purge_data_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 redaction_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 redaction_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_window_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering CxSecuritySettings resources.
 
@@ -340,7 +340,7 @@ class _CxSecuritySettingsState:
 
     @_builtins.property
     @pulumi.getter(name="audioExportSettings")
-    def audio_export_settings(self) -> Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']]:
+    def audio_export_settings(self) -> pulumi.Input[Optional['CxSecuritySettingsAudioExportSettingsArgs']]:
         """
         Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
         If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
@@ -351,12 +351,12 @@ class _CxSecuritySettingsState:
         return pulumi.get(self, "audio_export_settings")
 
     @audio_export_settings.setter
-    def audio_export_settings(self, value: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']]):
+    def audio_export_settings(self, value: pulumi.Input[Optional['CxSecuritySettingsAudioExportSettingsArgs']]):
         pulumi.set(self, "audio_export_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="deidentifyTemplate")
-    def deidentify_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deidentify_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with [redacted] text.
         Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
@@ -365,24 +365,24 @@ class _CxSecuritySettingsState:
         return pulumi.get(self, "deidentify_template")
 
     @deidentify_template.setter
-    def deidentify_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deidentify_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deidentify_template", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable name of the security settings, unique within the location.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="insightsExportSettings")
-    def insights_export_settings(self) -> Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']]:
+    def insights_export_settings(self) -> pulumi.Input[Optional['CxSecuritySettingsInsightsExportSettingsArgs']]:
         """
         Controls conversation exporting settings to Insights after conversation is completed.
         If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
@@ -391,12 +391,12 @@ class _CxSecuritySettingsState:
         return pulumi.get(self, "insights_export_settings")
 
     @insights_export_settings.setter
-    def insights_export_settings(self, value: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']]):
+    def insights_export_settings(self, value: pulumi.Input[Optional['CxSecuritySettingsInsightsExportSettingsArgs']]):
         pulumi.set(self, "insights_export_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="inspectTemplate")
-    def inspect_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inspect_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config.
         Note: inspectTemplate must be located in the same region as the SecuritySettings.
@@ -405,12 +405,12 @@ class _CxSecuritySettingsState:
         return pulumi.get(self, "inspect_template")
 
     @inspect_template.setter
-    def inspect_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inspect_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inspect_template", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location these settings are located in. Settings can only be applied to an agent in the same location.
         See [Available Regions](https://cloud.google.com/dialogflow/cx/docs/concept/region#avail) for a list of supported locations.
@@ -418,12 +418,12 @@ class _CxSecuritySettingsState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the settings.
         Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
@@ -431,12 +431,12 @@ class _CxSecuritySettingsState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -444,12 +444,12 @@ class _CxSecuritySettingsState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="purgeDataTypes")
-    def purge_data_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def purge_data_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of types of data to remove when retention settings triggers purge.
         Each value may be one of: `DIALOGFLOW_HISTORY`.
@@ -457,12 +457,12 @@ class _CxSecuritySettingsState:
         return pulumi.get(self, "purge_data_types")
 
     @purge_data_types.setter
-    def purge_data_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def purge_data_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "purge_data_types", value)
 
     @_builtins.property
     @pulumi.getter(name="redactionScope")
-    def redaction_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redaction_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
         * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
@@ -471,12 +471,12 @@ class _CxSecuritySettingsState:
         return pulumi.get(self, "redaction_scope")
 
     @redaction_scope.setter
-    def redaction_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redaction_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redaction_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="redactionStrategy")
-    def redaction_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redaction_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines how we redact data. If not set, defaults to not redacting.
         * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
@@ -485,12 +485,12 @@ class _CxSecuritySettingsState:
         return pulumi.get(self, "redaction_strategy")
 
     @redaction_strategy.setter
-    def redaction_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redaction_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redaction_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionStrategy")
-    def retention_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retention_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
         * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
@@ -499,12 +499,12 @@ class _CxSecuritySettingsState:
         return pulumi.get(self, "retention_strategy")
 
     @retention_strategy.setter
-    def retention_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retention_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retention_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionWindowDays")
-    def retention_window_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_window_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
         Only one of `retention_window_days` and `retention_strategy` may be set.
@@ -512,7 +512,7 @@ class _CxSecuritySettingsState:
         return pulumi.get(self, "retention_window_days")
 
     @retention_window_days.setter
-    def retention_window_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_window_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_window_days", value)
 
 
@@ -522,18 +522,18 @@ class CxSecuritySettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audio_export_settings: Optional[pulumi.Input[Union['CxSecuritySettingsAudioExportSettingsArgs', 'CxSecuritySettingsAudioExportSettingsArgsDict']]] = None,
-                 deidentify_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 insights_export_settings: Optional[pulumi.Input[Union['CxSecuritySettingsInsightsExportSettingsArgs', 'CxSecuritySettingsInsightsExportSettingsArgsDict']]] = None,
-                 inspect_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 redaction_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 redaction_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_window_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 audio_export_settings: pulumi.Input[Optional[Union['CxSecuritySettingsAudioExportSettingsArgs', 'CxSecuritySettingsAudioExportSettingsArgsDict']]] = None,
+                 deidentify_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 insights_export_settings: pulumi.Input[Optional[Union['CxSecuritySettingsInsightsExportSettingsArgs', 'CxSecuritySettingsInsightsExportSettingsArgsDict']]] = None,
+                 inspect_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 purge_data_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 redaction_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 redaction_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_window_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Represents the settings related to security issues, such as data redaction and data retention. It may take hours for updates on the settings to propagate to all the related components and take effect.
@@ -781,18 +781,18 @@ class CxSecuritySettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audio_export_settings: Optional[pulumi.Input[Union['CxSecuritySettingsAudioExportSettingsArgs', 'CxSecuritySettingsAudioExportSettingsArgsDict']]] = None,
-                 deidentify_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 insights_export_settings: Optional[pulumi.Input[Union['CxSecuritySettingsInsightsExportSettingsArgs', 'CxSecuritySettingsInsightsExportSettingsArgsDict']]] = None,
-                 inspect_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 redaction_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 redaction_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_window_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 audio_export_settings: pulumi.Input[Optional[Union['CxSecuritySettingsAudioExportSettingsArgs', 'CxSecuritySettingsAudioExportSettingsArgsDict']]] = None,
+                 deidentify_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 insights_export_settings: pulumi.Input[Optional[Union['CxSecuritySettingsInsightsExportSettingsArgs', 'CxSecuritySettingsInsightsExportSettingsArgsDict']]] = None,
+                 inspect_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 purge_data_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 redaction_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 redaction_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_window_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -829,19 +829,19 @@ class CxSecuritySettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            audio_export_settings: Optional[pulumi.Input[Union['CxSecuritySettingsAudioExportSettingsArgs', 'CxSecuritySettingsAudioExportSettingsArgsDict']]] = None,
-            deidentify_template: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            insights_export_settings: Optional[pulumi.Input[Union['CxSecuritySettingsInsightsExportSettingsArgs', 'CxSecuritySettingsInsightsExportSettingsArgsDict']]] = None,
-            inspect_template: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            redaction_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            redaction_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            retention_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            retention_window_days: Optional[pulumi.Input[_builtins.int]] = None) -> 'CxSecuritySettings':
+            audio_export_settings: pulumi.Input[Optional[Union['CxSecuritySettingsAudioExportSettingsArgs', 'CxSecuritySettingsAudioExportSettingsArgsDict']]] = None,
+            deidentify_template: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            insights_export_settings: pulumi.Input[Optional[Union['CxSecuritySettingsInsightsExportSettingsArgs', 'CxSecuritySettingsInsightsExportSettingsArgsDict']]] = None,
+            inspect_template: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            purge_data_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            redaction_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            redaction_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_window_days: pulumi.Input[Optional[_builtins.int]] = None) -> 'CxSecuritySettings':
         """
         Get an existing CxSecuritySettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

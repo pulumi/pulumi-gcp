@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  *             displayName: "Notebook execution",
  *             gcsNotebookSource: {
  *                 uri: pulumi.interpolate`gs://${notebook.bucket}/${notebook.name}`,
- *                 generation: notebook.generation,
+ *                 generation: notebook.generation.apply(x =>String(x)),
  *             },
  *             notebookRuntimeTemplateResourceName: pulumi.interpolate`projects/${myRuntimeTemplate.project}/locations/${myRuntimeTemplate.location}/notebookRuntimeTemplates/${myRuntimeTemplate.name}`,
  *             gcsOutputUri: pulumi.interpolate`gs://${outputBucket.name}`,
@@ -176,7 +176,7 @@ import * as utilities from "../utilities";
  *             displayName: "Notebook execution",
  *             gcsNotebookSource: {
  *                 uri: pulumi.interpolate`gs://${notebook.bucket}/${notebook.name}`,
- *                 generation: notebook.generation,
+ *                 generation: notebook.generation.apply(x =>String(x)),
  *             },
  *             notebookRuntimeTemplateResourceName: pulumi.interpolate`projects/${myRuntimeTemplate.project}/locations/${myRuntimeTemplate.location}/notebookRuntimeTemplates/${myRuntimeTemplate.name}`,
  *             gcsOutputUri: pulumi.interpolate`gs://${outputBucket.name}`,
@@ -443,57 +443,57 @@ export interface ScheduleState {
     /**
      * Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
      */
-    allowQueueing?: pulumi.Input<boolean>;
+    allowQueueing?: pulumi.Input<boolean | undefined>;
     /**
      * Request for google_colab_notebook_execution.
      * Structure is documented below.
      */
-    createNotebookExecutionJobRequest?: pulumi.Input<inputs.colab.ScheduleCreateNotebookExecutionJobRequest>;
+    createNotebookExecutionJobRequest?: pulumi.Input<inputs.colab.ScheduleCreateNotebookExecutionJobRequest | undefined>;
     /**
      * Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
      */
-    cron?: pulumi.Input<string>;
+    cron?: pulumi.Input<string | undefined>;
     /**
      * Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * Required. The display name of the Schedule.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is reached or when scheduledRunCount >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
      */
-    maxConcurrentRunCount?: pulumi.Input<string>;
+    maxConcurrentRunCount?: pulumi.Input<string | undefined>;
     /**
      * Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
      */
-    maxRunCount?: pulumi.Input<string>;
+    maxRunCount?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the Schedule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. The state of the schedule.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -503,7 +503,7 @@ export interface ScheduleArgs {
     /**
      * Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
      */
-    allowQueueing?: pulumi.Input<boolean>;
+    allowQueueing?: pulumi.Input<boolean | undefined>;
     /**
      * Request for google_colab_notebook_execution.
      * Structure is documented below.
@@ -516,7 +516,7 @@ export interface ScheduleArgs {
     /**
      * Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * Required. The display name of the Schedule.
      */
@@ -524,7 +524,7 @@ export interface ScheduleArgs {
     /**
      * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is reached or when scheduledRunCount >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
@@ -536,14 +536,14 @@ export interface ScheduleArgs {
     /**
      * Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
      */
-    maxRunCount?: pulumi.Input<string>;
+    maxRunCount?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }

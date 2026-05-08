@@ -303,16 +303,16 @@ export interface MulticastGroupRangeState {
      * associated to the multicast domain. The current max length of the accept
      * list is 100.
      */
-    consumerAcceptLists?: pulumi.Input<pulumi.Input<string>[]>;
+    consumerAcceptLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * [Output only] The timestamp when the multicast group range was
      * created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * An optional text description of the multicast group range.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Multicast group range's distribution scope. Intra-zone or intra-region
      * cross-zone is supported, with default value being intra-region. Cross
@@ -321,64 +321,64 @@ export interface MulticastGroupRangeState {
      * INTRA_ZONE
      * INTRA_REGION
      */
-    distributionScope?: pulumi.Input<string>;
+    distributionScope?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [Output only] The multicast group IP address range.
      */
-    ipCidrRange?: pulumi.Input<string>;
+    ipCidrRange?: pulumi.Input<string | undefined>;
     /**
      * Labels as key-value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The logging configuration.
      * Structure is documented below.
      */
-    logConfig?: pulumi.Input<inputs.networkservices.MulticastGroupRangeLogConfig>;
+    logConfig?: pulumi.Input<inputs.networkservices.MulticastGroupRangeLogConfig | undefined>;
     /**
      * The resource name of the multicast domain in which to create this
      * multicast group range.
      * Use the following format:
      * `projects/*&#47;locations/global/multicastDomains/*`.
      */
-    multicastDomain?: pulumi.Input<string>;
+    multicastDomain?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the multicast group range.
      * The name is restricted to letters, numbers, and hyphen, with the first
      * character a letter, and the last a letter or a number. The name must not
      * exceed 48 characters.
      */
-    multicastGroupRangeId?: pulumi.Input<string>;
+    multicastGroupRangeId?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the multicast group range.
      * Use the following format:
      * `projects/*&#47;locations/global/multicastGroupRanges/*`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether an empty consumerAcceptList will deny all consumer projects.
      */
-    requireExplicitAccept?: pulumi.Input<boolean>;
+    requireExplicitAccept?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name of the internal range reserved for this
      * multicast group range.
@@ -387,7 +387,7 @@ export interface MulticastGroupRangeState {
      * Use the following format:
      * `projects/*&#47;locations/global/internalRanges/*`.
      */
-    reservedInternalRange?: pulumi.Input<string>;
+    reservedInternalRange?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * The state of the multicast resource.
@@ -400,19 +400,19 @@ export interface MulticastGroupRangeState {
      * UPDATE_FAILED
      * INACTIVE
      */
-    states?: pulumi.Input<pulumi.Input<inputs.networkservices.MulticastGroupRangeState>[]>;
+    states?: pulumi.Input<pulumi.Input<inputs.networkservices.MulticastGroupRangeState>[] | undefined>;
     /**
      * [Output only] The Google-generated UUID for the resource. This value is
      * unique across all multicast group range resources. If a group
      * range is deleted and another with the same name is created, the new
      * group range is assigned a different unique_id.
      */
-    uniqueId?: pulumi.Input<string>;
+    uniqueId?: pulumi.Input<string | undefined>;
     /**
      * [Output only] The timestamp when the multicast group range was most
      * recently updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -428,11 +428,11 @@ export interface MulticastGroupRangeArgs {
      * associated to the multicast domain. The current max length of the accept
      * list is 100.
      */
-    consumerAcceptLists?: pulumi.Input<pulumi.Input<string>[]>;
+    consumerAcceptLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An optional text description of the multicast group range.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Multicast group range's distribution scope. Intra-zone or intra-region
      * cross-zone is supported, with default value being intra-region. Cross
@@ -441,13 +441,13 @@ export interface MulticastGroupRangeArgs {
      * INTRA_ZONE
      * INTRA_REGION
      */
-    distributionScope?: pulumi.Input<string>;
+    distributionScope?: pulumi.Input<string | undefined>;
     /**
      * Labels as key-value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -456,7 +456,7 @@ export interface MulticastGroupRangeArgs {
      * The logging configuration.
      * Structure is documented below.
      */
-    logConfig?: pulumi.Input<inputs.networkservices.MulticastGroupRangeLogConfig>;
+    logConfig?: pulumi.Input<inputs.networkservices.MulticastGroupRangeLogConfig | undefined>;
     /**
      * The resource name of the multicast domain in which to create this
      * multicast group range.
@@ -475,11 +475,11 @@ export interface MulticastGroupRangeArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Whether an empty consumerAcceptList will deny all consumer projects.
      */
-    requireExplicitAccept?: pulumi.Input<boolean>;
+    requireExplicitAccept?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name of the internal range reserved for this
      * multicast group range.

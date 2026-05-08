@@ -207,51 +207,51 @@ export interface WidgetConfigState {
      * Describes widget access settings.
      * Structure is documented below.
      */
-    accessSettings?: pulumi.Input<inputs.discoveryengine.WidgetConfigAccessSettings>;
+    accessSettings?: pulumi.Input<inputs.discoveryengine.WidgetConfigAccessSettings | undefined>;
     /**
      * The collection ID.
      */
-    collectionId?: pulumi.Input<string>;
+    collectionId?: pulumi.Input<string | undefined>;
     /**
      * The engine ID.
      */
-    engineId?: pulumi.Input<string>;
+    engineId?: pulumi.Input<string | undefined>;
     /**
      * Describes the homepage setting of the widget. It includes all homepage related settings
      * and configurations, such as shortcuts.
      * Structure is documented below.
      */
-    homepageSetting?: pulumi.Input<inputs.discoveryengine.WidgetConfigHomepageSetting>;
+    homepageSetting?: pulumi.Input<inputs.discoveryengine.WidgetConfigHomepageSetting | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The full resource name of the widget config. Format:
      * `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/widgetConfigs/{widget_config_id}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Describes search widget UI branding settings, such as the widget title, logo,
      * favicons, and colors.
      * Structure is documented below.
      */
-    uiBranding?: pulumi.Input<inputs.discoveryengine.WidgetConfigUiBranding>;
+    uiBranding?: pulumi.Input<inputs.discoveryengine.WidgetConfigUiBranding | undefined>;
     /**
      * Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
      * Structure is documented below.
      */
-    uiSettings?: pulumi.Input<inputs.discoveryengine.WidgetConfigUiSettings>;
+    uiSettings?: pulumi.Input<inputs.discoveryengine.WidgetConfigUiSettings | undefined>;
     /**
      * The unique ID to use for the WidgetConfig. Currently only accepts "defaultSearchWidgetConfig".
      */
-    widgetConfigId?: pulumi.Input<string>;
+    widgetConfigId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -262,11 +262,11 @@ export interface WidgetConfigArgs {
      * Describes widget access settings.
      * Structure is documented below.
      */
-    accessSettings?: pulumi.Input<inputs.discoveryengine.WidgetConfigAccessSettings>;
+    accessSettings?: pulumi.Input<inputs.discoveryengine.WidgetConfigAccessSettings | undefined>;
     /**
      * The collection ID.
      */
-    collectionId?: pulumi.Input<string>;
+    collectionId?: pulumi.Input<string | undefined>;
     /**
      * The engine ID.
      */
@@ -276,7 +276,7 @@ export interface WidgetConfigArgs {
      * and configurations, such as shortcuts.
      * Structure is documented below.
      */
-    homepageSetting?: pulumi.Input<inputs.discoveryengine.WidgetConfigHomepageSetting>;
+    homepageSetting?: pulumi.Input<inputs.discoveryengine.WidgetConfigHomepageSetting | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
@@ -286,20 +286,20 @@ export interface WidgetConfigArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Describes search widget UI branding settings, such as the widget title, logo,
      * favicons, and colors.
      * Structure is documented below.
      */
-    uiBranding?: pulumi.Input<inputs.discoveryengine.WidgetConfigUiBranding>;
+    uiBranding?: pulumi.Input<inputs.discoveryengine.WidgetConfigUiBranding | undefined>;
     /**
      * Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
      * Structure is documented below.
      */
-    uiSettings?: pulumi.Input<inputs.discoveryengine.WidgetConfigUiSettings>;
+    uiSettings?: pulumi.Input<inputs.discoveryengine.WidgetConfigUiSettings | undefined>;
     /**
      * The unique ID to use for the WidgetConfig. Currently only accepts "defaultSearchWidgetConfig".
      */
-    widgetConfigId?: pulumi.Input<string>;
+    widgetConfigId?: pulumi.Input<string | undefined>;
 }

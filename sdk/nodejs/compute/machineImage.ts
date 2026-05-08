@@ -254,12 +254,12 @@ export interface MachineImageState {
     /**
      * A text description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
      * Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
      */
-    guestFlush?: pulumi.Input<boolean>;
+    guestFlush?: pulumi.Input<boolean | undefined>;
     /**
      * Encrypts the machine image using a customer-supplied encryption key.
      * After you encrypt a machine image with a customer-supplied key, you must
@@ -267,33 +267,33 @@ export interface MachineImageState {
      * instance from the image)
      * Structure is documented below.
      */
-    machineImageEncryptionKey?: pulumi.Input<inputs.compute.MachineImageMachineImageEncryptionKey>;
+    machineImageEncryptionKey?: pulumi.Input<inputs.compute.MachineImageMachineImageEncryptionKey | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload.
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.MachineImageParams>;
+    params?: pulumi.Input<inputs.compute.MachineImageParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
      */
-    sourceInstance?: pulumi.Input<string>;
+    sourceInstance?: pulumi.Input<string | undefined>;
     /**
      * The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
      */
-    storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    storageLocations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -303,12 +303,12 @@ export interface MachineImageArgs {
     /**
      * A text description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
      * Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
      */
-    guestFlush?: pulumi.Input<boolean>;
+    guestFlush?: pulumi.Input<boolean | undefined>;
     /**
      * Encrypts the machine image using a customer-supplied encryption key.
      * After you encrypt a machine image with a customer-supplied key, you must
@@ -316,21 +316,21 @@ export interface MachineImageArgs {
      * instance from the image)
      * Structure is documented below.
      */
-    machineImageEncryptionKey?: pulumi.Input<inputs.compute.MachineImageMachineImageEncryptionKey>;
+    machineImageEncryptionKey?: pulumi.Input<inputs.compute.MachineImageMachineImageEncryptionKey | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload.
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.MachineImageParams>;
+    params?: pulumi.Input<inputs.compute.MachineImageParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
      */

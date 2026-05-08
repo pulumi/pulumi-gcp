@@ -23,16 +23,16 @@ class WorkloadIdentityPoolProviderArgs:
     def __init__(__self__, *,
                  workload_identity_pool_id: pulumi.Input[_builtins.str],
                  workload_identity_pool_provider_id: pulumi.Input[_builtins.str],
-                 attribute_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 aws: Optional[pulumi.Input['WorkloadIdentityPoolProviderAwsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc: Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml: Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']] = None,
-                 x509: Optional[pulumi.Input['WorkloadIdentityPoolProviderX509Args']] = None):
+                 attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 aws: pulumi.Input[Optional['WorkloadIdentityPoolProviderAwsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc: pulumi.Input[Optional['WorkloadIdentityPoolProviderOidcArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml: pulumi.Input[Optional['WorkloadIdentityPoolProviderSamlArgs']] = None,
+                 x509: pulumi.Input[Optional['WorkloadIdentityPoolProviderX509Args']] = None):
         """
         The set of arguments for constructing a WorkloadIdentityPoolProvider resource.
 
@@ -167,7 +167,7 @@ class WorkloadIdentityPoolProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="attributeCondition")
-    def attribute_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def attribute_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [A Common Expression Language](https://github.com/google/cel-spec) expression, in
         plain text, to restrict what otherwise valid authentication credentials issued by the
@@ -178,12 +178,12 @@ class WorkloadIdentityPoolProviderArgs:
         return pulumi.get(self, "attribute_condition")
 
     @attribute_condition.setter
-    def attribute_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def attribute_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attribute_condition", value)
 
     @_builtins.property
     @pulumi.getter(name="attributeMapping")
-    def attribute_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def attribute_mapping(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Maps attributes from authentication credentials issued by an external identity provider
         to Google Cloud attributes, such as `subject` and `segment`.
@@ -240,12 +240,12 @@ class WorkloadIdentityPoolProviderArgs:
         return pulumi.get(self, "attribute_mapping")
 
     @attribute_mapping.setter
-    def attribute_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def attribute_mapping(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "attribute_mapping", value)
 
     @_builtins.property
     @pulumi.getter
-    def aws(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderAwsArgs']]:
+    def aws(self) -> pulumi.Input[Optional['WorkloadIdentityPoolProviderAwsArgs']]:
         """
         An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
         Structure is documented below.
@@ -253,24 +253,24 @@ class WorkloadIdentityPoolProviderArgs:
         return pulumi.get(self, "aws")
 
     @aws.setter
-    def aws(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderAwsArgs']]):
+    def aws(self, value: pulumi.Input[Optional['WorkloadIdentityPoolProviderAwsArgs']]):
         pulumi.set(self, "aws", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the provider. Cannot exceed 256 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
         However, existing tokens still grant access.
@@ -278,24 +278,24 @@ class WorkloadIdentityPoolProviderArgs:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A display name for the provider. Cannot exceed 32 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def oidc(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']]:
+    def oidc(self) -> pulumi.Input[Optional['WorkloadIdentityPoolProviderOidcArgs']]:
         """
         An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
         Structure is documented below.
@@ -303,12 +303,12 @@ class WorkloadIdentityPoolProviderArgs:
         return pulumi.get(self, "oidc")
 
     @oidc.setter
-    def oidc(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']]):
+    def oidc(self, value: pulumi.Input[Optional['WorkloadIdentityPoolProviderOidcArgs']]):
         pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -316,12 +316,12 @@ class WorkloadIdentityPoolProviderArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def saml(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']]:
+    def saml(self) -> pulumi.Input[Optional['WorkloadIdentityPoolProviderSamlArgs']]:
         """
         An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
         Structure is documented below.
@@ -329,12 +329,12 @@ class WorkloadIdentityPoolProviderArgs:
         return pulumi.get(self, "saml")
 
     @saml.setter
-    def saml(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']]):
+    def saml(self, value: pulumi.Input[Optional['WorkloadIdentityPoolProviderSamlArgs']]):
         pulumi.set(self, "saml", value)
 
     @_builtins.property
     @pulumi.getter
-    def x509(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderX509Args']]:
+    def x509(self) -> pulumi.Input[Optional['WorkloadIdentityPoolProviderX509Args']]:
         """
         An X.509-type identity provider represents a CA. It is trusted to assert a
         client identity if the client has a certificate that chains up to this CA.
@@ -343,27 +343,27 @@ class WorkloadIdentityPoolProviderArgs:
         return pulumi.get(self, "x509")
 
     @x509.setter
-    def x509(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderX509Args']]):
+    def x509(self, value: pulumi.Input[Optional['WorkloadIdentityPoolProviderX509Args']]):
         pulumi.set(self, "x509", value)
 
 
 @pulumi.input_type
 class _WorkloadIdentityPoolProviderState:
     def __init__(__self__, *,
-                 attribute_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 aws: Optional[pulumi.Input['WorkloadIdentityPoolProviderAwsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc: Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml: Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_pool_provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 x509: Optional[pulumi.Input['WorkloadIdentityPoolProviderX509Args']] = None):
+                 attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 aws: pulumi.Input[Optional['WorkloadIdentityPoolProviderAwsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc: pulumi.Input[Optional['WorkloadIdentityPoolProviderOidcArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml: pulumi.Input[Optional['WorkloadIdentityPoolProviderSamlArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_pool_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 x509: pulumi.Input[Optional['WorkloadIdentityPoolProviderX509Args']] = None):
         """
         Input properties used for looking up and filtering WorkloadIdentityPoolProvider resources.
 
@@ -485,7 +485,7 @@ class _WorkloadIdentityPoolProviderState:
 
     @_builtins.property
     @pulumi.getter(name="attributeCondition")
-    def attribute_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def attribute_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [A Common Expression Language](https://github.com/google/cel-spec) expression, in
         plain text, to restrict what otherwise valid authentication credentials issued by the
@@ -496,12 +496,12 @@ class _WorkloadIdentityPoolProviderState:
         return pulumi.get(self, "attribute_condition")
 
     @attribute_condition.setter
-    def attribute_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def attribute_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attribute_condition", value)
 
     @_builtins.property
     @pulumi.getter(name="attributeMapping")
-    def attribute_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def attribute_mapping(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Maps attributes from authentication credentials issued by an external identity provider
         to Google Cloud attributes, such as `subject` and `segment`.
@@ -558,12 +558,12 @@ class _WorkloadIdentityPoolProviderState:
         return pulumi.get(self, "attribute_mapping")
 
     @attribute_mapping.setter
-    def attribute_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def attribute_mapping(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "attribute_mapping", value)
 
     @_builtins.property
     @pulumi.getter
-    def aws(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderAwsArgs']]:
+    def aws(self) -> pulumi.Input[Optional['WorkloadIdentityPoolProviderAwsArgs']]:
         """
         An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
         Structure is documented below.
@@ -571,24 +571,24 @@ class _WorkloadIdentityPoolProviderState:
         return pulumi.get(self, "aws")
 
     @aws.setter
-    def aws(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderAwsArgs']]):
+    def aws(self, value: pulumi.Input[Optional['WorkloadIdentityPoolProviderAwsArgs']]):
         pulumi.set(self, "aws", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the provider. Cannot exceed 256 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
         However, existing tokens still grant access.
@@ -596,24 +596,24 @@ class _WorkloadIdentityPoolProviderState:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A display name for the provider. Cannot exceed 32 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the provider as
         `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
@@ -621,12 +621,12 @@ class _WorkloadIdentityPoolProviderState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def oidc(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']]:
+    def oidc(self) -> pulumi.Input[Optional['WorkloadIdentityPoolProviderOidcArgs']]:
         """
         An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
         Structure is documented below.
@@ -634,12 +634,12 @@ class _WorkloadIdentityPoolProviderState:
         return pulumi.get(self, "oidc")
 
     @oidc.setter
-    def oidc(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']]):
+    def oidc(self, value: pulumi.Input[Optional['WorkloadIdentityPoolProviderOidcArgs']]):
         pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -647,12 +647,12 @@ class _WorkloadIdentityPoolProviderState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def saml(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']]:
+    def saml(self) -> pulumi.Input[Optional['WorkloadIdentityPoolProviderSamlArgs']]:
         """
         An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
         Structure is documented below.
@@ -660,12 +660,12 @@ class _WorkloadIdentityPoolProviderState:
         return pulumi.get(self, "saml")
 
     @saml.setter
-    def saml(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']]):
+    def saml(self, value: pulumi.Input[Optional['WorkloadIdentityPoolProviderSamlArgs']]):
         pulumi.set(self, "saml", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the provider.
         * STATE_UNSPECIFIED: State unspecified.
@@ -678,12 +678,12 @@ class _WorkloadIdentityPoolProviderState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadIdentityPoolId")
-    def workload_identity_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workload_identity_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID used for the pool, which is the final component of the pool resource name. This
         value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
@@ -692,12 +692,12 @@ class _WorkloadIdentityPoolProviderState:
         return pulumi.get(self, "workload_identity_pool_id")
 
     @workload_identity_pool_id.setter
-    def workload_identity_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workload_identity_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workload_identity_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadIdentityPoolProviderId")
-    def workload_identity_pool_provider_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workload_identity_pool_provider_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID for the provider, which becomes the final component of the resource name. This
         value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
@@ -706,12 +706,12 @@ class _WorkloadIdentityPoolProviderState:
         return pulumi.get(self, "workload_identity_pool_provider_id")
 
     @workload_identity_pool_provider_id.setter
-    def workload_identity_pool_provider_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workload_identity_pool_provider_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workload_identity_pool_provider_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def x509(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderX509Args']]:
+    def x509(self) -> pulumi.Input[Optional['WorkloadIdentityPoolProviderX509Args']]:
         """
         An X.509-type identity provider represents a CA. It is trusted to assert a
         client identity if the client has a certificate that chains up to this CA.
@@ -720,7 +720,7 @@ class _WorkloadIdentityPoolProviderState:
         return pulumi.get(self, "x509")
 
     @x509.setter
-    def x509(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderX509Args']]):
+    def x509(self, value: pulumi.Input[Optional['WorkloadIdentityPoolProviderX509Args']]):
         pulumi.set(self, "x509", value)
 
 
@@ -730,18 +730,18 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attribute_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 aws: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
-                 workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_pool_provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 x509: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']]] = None,
+                 attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
+                 workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_pool_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 x509: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']]] = None,
                  __props__=None):
         """
         A configuration for an external identity provider.
@@ -1378,18 +1378,18 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attribute_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 aws: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
-                 workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_pool_provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 x509: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']]] = None,
+                 attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
+                 workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_pool_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 x509: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1427,20 +1427,20 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attribute_condition: Optional[pulumi.Input[_builtins.str]] = None,
-            attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            aws: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            oidc: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            saml: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workload_identity_pool_provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-            x509: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']]] = None) -> 'WorkloadIdentityPoolProvider':
+            attribute_condition: pulumi.Input[Optional[_builtins.str]] = None,
+            attribute_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            aws: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderAwsArgs', 'WorkloadIdentityPoolProviderAwsArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oidc: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderOidcArgs', 'WorkloadIdentityPoolProviderOidcArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            saml: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_pool_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            x509: pulumi.Input[Optional[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']]] = None) -> 'WorkloadIdentityPoolProvider':
         """
         Get an existing WorkloadIdentityPoolProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

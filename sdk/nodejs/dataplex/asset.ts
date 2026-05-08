@@ -268,82 +268,82 @@ export interface AssetState {
     /**
      * Output only. The time when the asset was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The zone for the resource
      */
-    dataplexZone?: pulumi.Input<string>;
+    dataplexZone?: pulumi.Input<string | undefined>;
     /**
      * Optional. Description of the asset.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
      */
-    discoverySpec?: pulumi.Input<inputs.dataplex.AssetDiscoverySpec>;
+    discoverySpec?: pulumi.Input<inputs.dataplex.AssetDiscoverySpec | undefined>;
     /**
      * Output only. Status of the discovery feature applied to data referenced by this asset.
      */
-    discoveryStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.AssetDiscoveryStatus>[]>;
+    discoveryStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.AssetDiscoveryStatus>[] | undefined>;
     /**
      * Optional. User friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. User defined labels for the asset.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The lake for the resource
      */
-    lake?: pulumi.Input<string>;
+    lake?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the asset.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Required. Immutable. Specification of the resource that is referenced by this asset.
      */
-    resourceSpec?: pulumi.Input<inputs.dataplex.AssetResourceSpec>;
+    resourceSpec?: pulumi.Input<inputs.dataplex.AssetResourceSpec | undefined>;
     /**
      * Output only. Status of the resource referenced by this asset.
      */
-    resourceStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.AssetResourceStatus>[]>;
+    resourceStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.AssetResourceStatus>[] | undefined>;
     /**
      * Output only. Status of the security policy applied to resource referenced by this asset.
      */
-    securityStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.AssetSecurityStatus>[]>;
+    securityStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.AssetSecurityStatus>[] | undefined>;
     /**
      * Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time when the asset was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -357,7 +357,7 @@ export interface AssetArgs {
     /**
      * Optional. Description of the asset.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
      */
@@ -365,14 +365,14 @@ export interface AssetArgs {
     /**
      * Optional. User friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Optional. User defined labels for the asset.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The lake for the resource
      */
@@ -384,11 +384,11 @@ export interface AssetArgs {
     /**
      * The name of the asset.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Required. Immutable. Specification of the resource that is referenced by this asset.
      */

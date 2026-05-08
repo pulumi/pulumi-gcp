@@ -331,16 +331,16 @@ class ConnectionProfileForwardSshConnectivityArgsDict(TypedDict):
     """
     Username for the SSH tunnel.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SSH password.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port for the SSH tunnel.
     """
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SSH private key.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -351,9 +351,9 @@ class ConnectionProfileForwardSshConnectivityArgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] hostname: Hostname for the SSH tunnel.
         :param pulumi.Input[_builtins.str] username: Username for the SSH tunnel.
@@ -398,7 +398,7 @@ class ConnectionProfileForwardSshConnectivityArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SSH password.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -406,24 +406,24 @@ class ConnectionProfileForwardSshConnectivityArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port for the SSH tunnel.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SSH private key.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -431,7 +431,7 @@ class ConnectionProfileForwardSshConnectivityArgs:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
@@ -440,7 +440,7 @@ class ConnectionProfileGcsProfileArgsDict(TypedDict):
     """
     The Cloud Storage bucket name.
     """
-    root_path: NotRequired[pulumi.Input[_builtins.str]]
+    root_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The root path inside the Cloud Storage bucket.
     """
@@ -449,7 +449,7 @@ class ConnectionProfileGcsProfileArgsDict(TypedDict):
 class ConnectionProfileGcsProfileArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 root_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 root_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: The Cloud Storage bucket name.
         :param pulumi.Input[_builtins.str] root_path: The root path inside the Cloud Storage bucket.
@@ -472,14 +472,14 @@ class ConnectionProfileGcsProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="rootPath")
-    def root_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root path inside the Cloud Storage bucket.
         """
         return pulumi.get(self, "root_path")
 
     @root_path.setter
-    def root_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_path", value)
 
 
@@ -493,32 +493,32 @@ class ConnectionProfileMongodbProfileArgsDict(TypedDict):
     """
     Username for the MongoDB connection.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password for the MongoDB connection. Mutually exclusive with
     secretManagerStoredPassword.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    replica_set: NotRequired[pulumi.Input[_builtins.str]]
+    replica_set: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the replica set.
     """
-    secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
+    secret_manager_stored_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A reference to a Secret Manager resource name storing the MongoDB
     connection password. Mutually exclusive with password.
     """
-    srv_connection_format: NotRequired[pulumi.Input['ConnectionProfileMongodbProfileSrvConnectionFormatArgsDict']]
+    srv_connection_format: NotRequired[pulumi.Input[Optional['ConnectionProfileMongodbProfileSrvConnectionFormatArgs']]]
     """
     Srv connection format. Mutually exclusive with
     standard_connection_Format.
     """
-    ssl_config: NotRequired[pulumi.Input['ConnectionProfileMongodbProfileSslConfigArgsDict']]
+    ssl_config: NotRequired[pulumi.Input[Optional['ConnectionProfileMongodbProfileSslConfigArgs']]]
     """
     SSL configuration for the MongoDB connection.
     Structure is documented below.
     """
-    standard_connection_format: NotRequired[pulumi.Input['ConnectionProfileMongodbProfileStandardConnectionFormatArgsDict']]
+    standard_connection_format: NotRequired[pulumi.Input[Optional['ConnectionProfileMongodbProfileStandardConnectionFormatArgs']]]
     """
     Standard connection format. Mutually exclusive with
     srv_connection_format.
@@ -530,12 +530,12 @@ class ConnectionProfileMongodbProfileArgs:
     def __init__(__self__, *,
                  host_addresses: pulumi.Input[Sequence[pulumi.Input['ConnectionProfileMongodbProfileHostAddressArgs']]],
                  username: pulumi.Input[_builtins.str],
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_set: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_manager_stored_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 srv_connection_format: Optional[pulumi.Input['ConnectionProfileMongodbProfileSrvConnectionFormatArgs']] = None,
-                 ssl_config: Optional[pulumi.Input['ConnectionProfileMongodbProfileSslConfigArgs']] = None,
-                 standard_connection_format: Optional[pulumi.Input['ConnectionProfileMongodbProfileStandardConnectionFormatArgs']] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_manager_stored_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 srv_connection_format: pulumi.Input[Optional['ConnectionProfileMongodbProfileSrvConnectionFormatArgs']] = None,
+                 ssl_config: pulumi.Input[Optional['ConnectionProfileMongodbProfileSslConfigArgs']] = None,
+                 standard_connection_format: pulumi.Input[Optional['ConnectionProfileMongodbProfileStandardConnectionFormatArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionProfileMongodbProfileHostAddressArgs']]] host_addresses: List of host addresses for a MongoDB cluster.
                Structure is documented below.
@@ -596,7 +596,7 @@ class ConnectionProfileMongodbProfileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for the MongoDB connection. Mutually exclusive with
         secretManagerStoredPassword.
@@ -605,24 +605,24 @@ class ConnectionProfileMongodbProfileArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaSet")
-    def replica_set(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replica_set(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the replica set.
         """
         return pulumi.get(self, "replica_set")
 
     @replica_set.setter
-    def replica_set(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replica_set(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replica_set", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerStoredPassword")
-    def secret_manager_stored_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_manager_stored_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a Secret Manager resource name storing the MongoDB
         connection password. Mutually exclusive with password.
@@ -630,12 +630,12 @@ class ConnectionProfileMongodbProfileArgs:
         return pulumi.get(self, "secret_manager_stored_password")
 
     @secret_manager_stored_password.setter
-    def secret_manager_stored_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_manager_stored_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_manager_stored_password", value)
 
     @_builtins.property
     @pulumi.getter(name="srvConnectionFormat")
-    def srv_connection_format(self) -> Optional[pulumi.Input['ConnectionProfileMongodbProfileSrvConnectionFormatArgs']]:
+    def srv_connection_format(self) -> pulumi.Input[Optional['ConnectionProfileMongodbProfileSrvConnectionFormatArgs']]:
         """
         Srv connection format. Mutually exclusive with
         standard_connection_Format.
@@ -643,12 +643,12 @@ class ConnectionProfileMongodbProfileArgs:
         return pulumi.get(self, "srv_connection_format")
 
     @srv_connection_format.setter
-    def srv_connection_format(self, value: Optional[pulumi.Input['ConnectionProfileMongodbProfileSrvConnectionFormatArgs']]):
+    def srv_connection_format(self, value: pulumi.Input[Optional['ConnectionProfileMongodbProfileSrvConnectionFormatArgs']]):
         pulumi.set(self, "srv_connection_format", value)
 
     @_builtins.property
     @pulumi.getter(name="sslConfig")
-    def ssl_config(self) -> Optional[pulumi.Input['ConnectionProfileMongodbProfileSslConfigArgs']]:
+    def ssl_config(self) -> pulumi.Input[Optional['ConnectionProfileMongodbProfileSslConfigArgs']]:
         """
         SSL configuration for the MongoDB connection.
         Structure is documented below.
@@ -656,12 +656,12 @@ class ConnectionProfileMongodbProfileArgs:
         return pulumi.get(self, "ssl_config")
 
     @ssl_config.setter
-    def ssl_config(self, value: Optional[pulumi.Input['ConnectionProfileMongodbProfileSslConfigArgs']]):
+    def ssl_config(self, value: pulumi.Input[Optional['ConnectionProfileMongodbProfileSslConfigArgs']]):
         pulumi.set(self, "ssl_config", value)
 
     @_builtins.property
     @pulumi.getter(name="standardConnectionFormat")
-    def standard_connection_format(self) -> Optional[pulumi.Input['ConnectionProfileMongodbProfileStandardConnectionFormatArgs']]:
+    def standard_connection_format(self) -> pulumi.Input[Optional['ConnectionProfileMongodbProfileStandardConnectionFormatArgs']]:
         """
         Standard connection format. Mutually exclusive with
         srv_connection_format.
@@ -670,7 +670,7 @@ class ConnectionProfileMongodbProfileArgs:
         return pulumi.get(self, "standard_connection_format")
 
     @standard_connection_format.setter
-    def standard_connection_format(self, value: Optional[pulumi.Input['ConnectionProfileMongodbProfileStandardConnectionFormatArgs']]):
+    def standard_connection_format(self, value: pulumi.Input[Optional['ConnectionProfileMongodbProfileStandardConnectionFormatArgs']]):
         pulumi.set(self, "standard_connection_format", value)
 
 
@@ -679,7 +679,7 @@ class ConnectionProfileMongodbProfileHostAddressArgsDict(TypedDict):
     """
     Hostname for the connection.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port for the connection.
     """
@@ -688,7 +688,7 @@ class ConnectionProfileMongodbProfileHostAddressArgsDict(TypedDict):
 class ConnectionProfileMongodbProfileHostAddressArgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[_builtins.str],
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] hostname: Hostname for the connection.
         :param pulumi.Input[_builtins.int] port: Port for the connection.
@@ -711,14 +711,14 @@ class ConnectionProfileMongodbProfileHostAddressArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port for the connection.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
@@ -732,18 +732,18 @@ class ConnectionProfileMongodbProfileSrvConnectionFormatArgs:
 
 
 class ConnectionProfileMongodbProfileSslConfigArgsDict(TypedDict):
-    ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    ca_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PEM-encoded certificate of the CA that signed the source database
     server's certificate.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    ca_certificate_set: NotRequired[pulumi.Input[_builtins.bool]]
+    ca_certificate_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Indicates whether the clientKey field is set.
     """
-    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    client_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PEM-encoded certificate that will be used by the replica to
     authenticate against the source database server. If this field
@@ -751,24 +751,24 @@ class ConnectionProfileMongodbProfileSslConfigArgsDict(TypedDict):
     mandatory.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    client_certificate_set: NotRequired[pulumi.Input[_builtins.bool]]
+    client_certificate_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Indicates whether the clientCertificate field is set.
     """
-    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    client_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PEM-encoded private key associated with the Client Certificate.
     If this field is used then the 'client_certificate' and the
     'ca_certificate' fields are mandatory.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    client_key_set: NotRequired[pulumi.Input[_builtins.bool]]
+    client_key_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Indicates whether the clientKey field is set.
     """
-    secret_manager_stored_client_key: NotRequired[pulumi.Input[_builtins.str]]
+    secret_manager_stored_client_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A reference to a Secret Manager resource name storing the
     PEM-encoded private key. Mutually exclusive with clientKey.
@@ -778,13 +778,13 @@ class ConnectionProfileMongodbProfileSslConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionProfileMongodbProfileSslConfigArgs:
     def __init__(__self__, *,
-                 ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_certificate_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_certificate_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret_manager_stored_client_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_certificate_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_certificate_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret_manager_stored_client_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ca_certificate: PEM-encoded certificate of the CA that signed the source database
                server's certificate.
@@ -825,7 +825,7 @@ class ConnectionProfileMongodbProfileSslConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCertificate")
-    def ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM-encoded certificate of the CA that signed the source database
         server's certificate.
@@ -834,12 +834,12 @@ class ConnectionProfileMongodbProfileSslConfigArgs:
         return pulumi.get(self, "ca_certificate")
 
     @ca_certificate.setter
-    def ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="caCertificateSet")
-    def ca_certificate_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ca_certificate_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Indicates whether the clientKey field is set.
@@ -847,12 +847,12 @@ class ConnectionProfileMongodbProfileSslConfigArgs:
         return pulumi.get(self, "ca_certificate_set")
 
     @ca_certificate_set.setter
-    def ca_certificate_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ca_certificate_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ca_certificate_set", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertificate")
-    def client_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM-encoded certificate that will be used by the replica to
         authenticate against the source database server. If this field
@@ -863,12 +863,12 @@ class ConnectionProfileMongodbProfileSslConfigArgs:
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
-    def client_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertificateSet")
-    def client_certificate_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def client_certificate_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Indicates whether the clientCertificate field is set.
@@ -876,12 +876,12 @@ class ConnectionProfileMongodbProfileSslConfigArgs:
         return pulumi.get(self, "client_certificate_set")
 
     @client_certificate_set.setter
-    def client_certificate_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def client_certificate_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "client_certificate_set", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM-encoded private key associated with the Client Certificate.
         If this field is used then the 'client_certificate' and the
@@ -891,12 +891,12 @@ class ConnectionProfileMongodbProfileSslConfigArgs:
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKeySet")
-    def client_key_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def client_key_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Indicates whether the clientKey field is set.
@@ -904,12 +904,12 @@ class ConnectionProfileMongodbProfileSslConfigArgs:
         return pulumi.get(self, "client_key_set")
 
     @client_key_set.setter
-    def client_key_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def client_key_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "client_key_set", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerStoredClientKey")
-    def secret_manager_stored_client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_manager_stored_client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a Secret Manager resource name storing the
         PEM-encoded private key. Mutually exclusive with clientKey.
@@ -918,12 +918,12 @@ class ConnectionProfileMongodbProfileSslConfigArgs:
         return pulumi.get(self, "secret_manager_stored_client_key")
 
     @secret_manager_stored_client_key.setter
-    def secret_manager_stored_client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_manager_stored_client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_manager_stored_client_key", value)
 
 
 class ConnectionProfileMongodbProfileStandardConnectionFormatArgsDict(TypedDict):
-    direct_connection: NotRequired[pulumi.Input[_builtins.bool]]
+    direct_connection: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether the client connects directly to the
     host[:port] in the connection URI.
@@ -932,7 +932,7 @@ class ConnectionProfileMongodbProfileStandardConnectionFormatArgsDict(TypedDict)
 @pulumi.input_type
 class ConnectionProfileMongodbProfileStandardConnectionFormatArgs:
     def __init__(__self__, *,
-                 direct_connection: Optional[pulumi.Input[_builtins.bool]] = None):
+                 direct_connection: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] direct_connection: Specifies whether the client connects directly to the
                host[:port] in the connection URI.
@@ -942,7 +942,7 @@ class ConnectionProfileMongodbProfileStandardConnectionFormatArgs:
 
     @_builtins.property
     @pulumi.getter(name="directConnection")
-    def direct_connection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def direct_connection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the client connects directly to the
         host[:port] in the connection URI.
@@ -950,7 +950,7 @@ class ConnectionProfileMongodbProfileStandardConnectionFormatArgs:
         return pulumi.get(self, "direct_connection")
 
     @direct_connection.setter
-    def direct_connection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def direct_connection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "direct_connection", value)
 
 
@@ -963,20 +963,20 @@ class ConnectionProfileMysqlProfileArgsDict(TypedDict):
     """
     Username for the MySQL connection.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password for the MySQL connection.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port for the MySQL connection.
     """
-    secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
+    secret_manager_stored_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A reference to a Secret Manager resource name storing the user's password.
     """
-    ssl_config: NotRequired[pulumi.Input['ConnectionProfileMysqlProfileSslConfigArgsDict']]
+    ssl_config: NotRequired[pulumi.Input[Optional['ConnectionProfileMysqlProfileSslConfigArgs']]]
     """
     SSL configuration for the MySQL connection.
     Structure is documented below.
@@ -987,10 +987,10 @@ class ConnectionProfileMysqlProfileArgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_manager_stored_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_config: Optional[pulumi.Input['ConnectionProfileMysqlProfileSslConfigArgs']] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_manager_stored_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_config: pulumi.Input[Optional['ConnectionProfileMysqlProfileSslConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] hostname: Hostname for the MySQL connection.
         :param pulumi.Input[_builtins.str] username: Username for the MySQL connection.
@@ -1038,7 +1038,7 @@ class ConnectionProfileMysqlProfileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for the MySQL connection.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1046,36 +1046,36 @@ class ConnectionProfileMysqlProfileArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port for the MySQL connection.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerStoredPassword")
-    def secret_manager_stored_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_manager_stored_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a Secret Manager resource name storing the user's password.
         """
         return pulumi.get(self, "secret_manager_stored_password")
 
     @secret_manager_stored_password.setter
-    def secret_manager_stored_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_manager_stored_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_manager_stored_password", value)
 
     @_builtins.property
     @pulumi.getter(name="sslConfig")
-    def ssl_config(self) -> Optional[pulumi.Input['ConnectionProfileMysqlProfileSslConfigArgs']]:
+    def ssl_config(self) -> pulumi.Input[Optional['ConnectionProfileMysqlProfileSslConfigArgs']]:
         """
         SSL configuration for the MySQL connection.
         Structure is documented below.
@@ -1083,23 +1083,23 @@ class ConnectionProfileMysqlProfileArgs:
         return pulumi.get(self, "ssl_config")
 
     @ssl_config.setter
-    def ssl_config(self, value: Optional[pulumi.Input['ConnectionProfileMysqlProfileSslConfigArgs']]):
+    def ssl_config(self, value: pulumi.Input[Optional['ConnectionProfileMysqlProfileSslConfigArgs']]):
         pulumi.set(self, "ssl_config", value)
 
 
 class ConnectionProfileMysqlProfileSslConfigArgsDict(TypedDict):
-    ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    ca_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PEM-encoded certificate of the CA that signed the source database
     server's certificate.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    ca_certificate_set: NotRequired[pulumi.Input[_builtins.bool]]
+    ca_certificate_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Indicates whether the clientKey field is set.
     """
-    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    client_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PEM-encoded certificate that will be used by the replica to
     authenticate against the source database server. If this field
@@ -1107,19 +1107,19 @@ class ConnectionProfileMysqlProfileSslConfigArgsDict(TypedDict):
     mandatory.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    client_certificate_set: NotRequired[pulumi.Input[_builtins.bool]]
+    client_certificate_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Indicates whether the clientCertificate field is set.
     """
-    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    client_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PEM-encoded private key associated with the Client Certificate.
     If this field is used then the 'client_certificate' and the
     'ca_certificate' fields are mandatory.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    client_key_set: NotRequired[pulumi.Input[_builtins.bool]]
+    client_key_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Indicates whether the clientKey field is set.
@@ -1128,12 +1128,12 @@ class ConnectionProfileMysqlProfileSslConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionProfileMysqlProfileSslConfigArgs:
     def __init__(__self__, *,
-                 ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_certificate_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_certificate_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key_set: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_certificate_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_certificate_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_set: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] ca_certificate: PEM-encoded certificate of the CA that signed the source database
                server's certificate.
@@ -1169,7 +1169,7 @@ class ConnectionProfileMysqlProfileSslConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCertificate")
-    def ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM-encoded certificate of the CA that signed the source database
         server's certificate.
@@ -1178,12 +1178,12 @@ class ConnectionProfileMysqlProfileSslConfigArgs:
         return pulumi.get(self, "ca_certificate")
 
     @ca_certificate.setter
-    def ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="caCertificateSet")
-    def ca_certificate_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ca_certificate_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Indicates whether the clientKey field is set.
@@ -1191,12 +1191,12 @@ class ConnectionProfileMysqlProfileSslConfigArgs:
         return pulumi.get(self, "ca_certificate_set")
 
     @ca_certificate_set.setter
-    def ca_certificate_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ca_certificate_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ca_certificate_set", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertificate")
-    def client_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM-encoded certificate that will be used by the replica to
         authenticate against the source database server. If this field
@@ -1207,12 +1207,12 @@ class ConnectionProfileMysqlProfileSslConfigArgs:
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
-    def client_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertificateSet")
-    def client_certificate_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def client_certificate_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Indicates whether the clientCertificate field is set.
@@ -1220,12 +1220,12 @@ class ConnectionProfileMysqlProfileSslConfigArgs:
         return pulumi.get(self, "client_certificate_set")
 
     @client_certificate_set.setter
-    def client_certificate_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def client_certificate_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "client_certificate_set", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM-encoded private key associated with the Client Certificate.
         If this field is used then the 'client_certificate' and the
@@ -1235,12 +1235,12 @@ class ConnectionProfileMysqlProfileSslConfigArgs:
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKeySet")
-    def client_key_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def client_key_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Indicates whether the clientKey field is set.
@@ -1248,7 +1248,7 @@ class ConnectionProfileMysqlProfileSslConfigArgs:
         return pulumi.get(self, "client_key_set")
 
     @client_key_set.setter
-    def client_key_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def client_key_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "client_key_set", value)
 
 
@@ -1265,20 +1265,20 @@ class ConnectionProfileOracleProfileArgsDict(TypedDict):
     """
     Username for the Oracle connection.
     """
-    connection_attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    connection_attributes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Connection string attributes
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password for the Oracle connection.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port for the Oracle connection.
     """
-    secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
+    secret_manager_stored_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A reference to a Secret Manager resource name storing the user's password.
     """
@@ -1289,10 +1289,10 @@ class ConnectionProfileOracleProfileArgs:
                  database_service: pulumi.Input[_builtins.str],
                  hostname: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 connection_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_manager_stored_password: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_manager_stored_password: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] database_service: Database for the Oracle connection.
         :param pulumi.Input[_builtins.str] hostname: Hostname for the Oracle connection.
@@ -1353,19 +1353,19 @@ class ConnectionProfileOracleProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionAttributes")
-    def connection_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def connection_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Connection string attributes
         """
         return pulumi.get(self, "connection_attributes")
 
     @connection_attributes.setter
-    def connection_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def connection_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "connection_attributes", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for the Oracle connection.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1373,31 +1373,31 @@ class ConnectionProfileOracleProfileArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port for the Oracle connection.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerStoredPassword")
-    def secret_manager_stored_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_manager_stored_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a Secret Manager resource name storing the user's password.
         """
         return pulumi.get(self, "secret_manager_stored_password")
 
     @secret_manager_stored_password.setter
-    def secret_manager_stored_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_manager_stored_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_manager_stored_password", value)
 
 
@@ -1414,20 +1414,20 @@ class ConnectionProfilePostgresqlProfileArgsDict(TypedDict):
     """
     Username for the PostgreSQL connection.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password for the PostgreSQL connection.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port for the PostgreSQL connection.
     """
-    secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
+    secret_manager_stored_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A reference to a Secret Manager resource name storing the user's password.
     """
-    ssl_config: NotRequired[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigArgsDict']]
+    ssl_config: NotRequired[pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigArgs']]]
     """
     SSL configuration for the PostgreSQL connection.
     Structure is documented below.
@@ -1439,10 +1439,10 @@ class ConnectionProfilePostgresqlProfileArgs:
                  database: pulumi.Input[_builtins.str],
                  hostname: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_manager_stored_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_config: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigArgs']] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_manager_stored_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_config: pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] database: Database for the PostgreSQL connection.
         :param pulumi.Input[_builtins.str] hostname: Hostname for the PostgreSQL connection.
@@ -1504,7 +1504,7 @@ class ConnectionProfilePostgresqlProfileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for the PostgreSQL connection.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1512,36 +1512,36 @@ class ConnectionProfilePostgresqlProfileArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port for the PostgreSQL connection.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerStoredPassword")
-    def secret_manager_stored_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_manager_stored_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a Secret Manager resource name storing the user's password.
         """
         return pulumi.get(self, "secret_manager_stored_password")
 
     @secret_manager_stored_password.setter
-    def secret_manager_stored_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_manager_stored_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_manager_stored_password", value)
 
     @_builtins.property
     @pulumi.getter(name="sslConfig")
-    def ssl_config(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigArgs']]:
+    def ssl_config(self) -> pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigArgs']]:
         """
         SSL configuration for the PostgreSQL connection.
         Structure is documented below.
@@ -1549,18 +1549,18 @@ class ConnectionProfilePostgresqlProfileArgs:
         return pulumi.get(self, "ssl_config")
 
     @ssl_config.setter
-    def ssl_config(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigArgs']]):
+    def ssl_config(self, value: pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigArgs']]):
         pulumi.set(self, "ssl_config", value)
 
 
 class ConnectionProfilePostgresqlProfileSslConfigArgsDict(TypedDict):
-    server_and_client_verification: NotRequired[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgsDict']]
+    server_and_client_verification: NotRequired[pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs']]]
     """
     If this field is set, the communication will be encrypted with TLS encryption
     and both the server identity and the client identity will be authenticated.
     Structure is documented below.
     """
-    server_verification: NotRequired[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgsDict']]
+    server_verification: NotRequired[pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs']]]
     """
     If this field is set, the communication will be encrypted with TLS encryption
     and the server identity will be authenticated.
@@ -1570,8 +1570,8 @@ class ConnectionProfilePostgresqlProfileSslConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionProfilePostgresqlProfileSslConfigArgs:
     def __init__(__self__, *,
-                 server_and_client_verification: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs']] = None,
-                 server_verification: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs']] = None):
+                 server_and_client_verification: pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs']] = None,
+                 server_verification: pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs']] = None):
         """
         :param pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs'] server_and_client_verification: If this field is set, the communication will be encrypted with TLS encryption
                and both the server identity and the client identity will be authenticated.
@@ -1587,7 +1587,7 @@ class ConnectionProfilePostgresqlProfileSslConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="serverAndClientVerification")
-    def server_and_client_verification(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs']]:
+    def server_and_client_verification(self) -> pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs']]:
         """
         If this field is set, the communication will be encrypted with TLS encryption
         and both the server identity and the client identity will be authenticated.
@@ -1596,12 +1596,12 @@ class ConnectionProfilePostgresqlProfileSslConfigArgs:
         return pulumi.get(self, "server_and_client_verification")
 
     @server_and_client_verification.setter
-    def server_and_client_verification(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs']]):
+    def server_and_client_verification(self, value: pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs']]):
         pulumi.set(self, "server_and_client_verification", value)
 
     @_builtins.property
     @pulumi.getter(name="serverVerification")
-    def server_verification(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs']]:
+    def server_verification(self) -> pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs']]:
         """
         If this field is set, the communication will be encrypted with TLS encryption
         and the server identity will be authenticated.
@@ -1610,7 +1610,7 @@ class ConnectionProfilePostgresqlProfileSslConfigArgs:
         return pulumi.get(self, "server_verification")
 
     @server_verification.setter
-    def server_verification(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs']]):
+    def server_verification(self, value: pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs']]):
         pulumi.set(self, "server_verification", value)
 
 
@@ -1774,12 +1774,12 @@ class ConnectionProfileSalesforceProfileArgsDict(TypedDict):
     """
     Domain for the Salesforce Org.
     """
-    oauth2_client_credentials: NotRequired[pulumi.Input['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgsDict']]
+    oauth2_client_credentials: NotRequired[pulumi.Input[Optional['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs']]]
     """
     OAuth credentials to use for Salesforce authentication.
     Structure is documented below.
     """
-    user_credentials: NotRequired[pulumi.Input['ConnectionProfileSalesforceProfileUserCredentialsArgsDict']]
+    user_credentials: NotRequired[pulumi.Input[Optional['ConnectionProfileSalesforceProfileUserCredentialsArgs']]]
     """
     User credentials to use for Salesforce authentication.
     Structure is documented below.
@@ -1789,8 +1789,8 @@ class ConnectionProfileSalesforceProfileArgsDict(TypedDict):
 class ConnectionProfileSalesforceProfileArgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[_builtins.str],
-                 oauth2_client_credentials: Optional[pulumi.Input['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs']] = None,
-                 user_credentials: Optional[pulumi.Input['ConnectionProfileSalesforceProfileUserCredentialsArgs']] = None):
+                 oauth2_client_credentials: pulumi.Input[Optional['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs']] = None,
+                 user_credentials: pulumi.Input[Optional['ConnectionProfileSalesforceProfileUserCredentialsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] domain: Domain for the Salesforce Org.
         :param pulumi.Input['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs'] oauth2_client_credentials: OAuth credentials to use for Salesforce authentication.
@@ -1818,7 +1818,7 @@ class ConnectionProfileSalesforceProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="oauth2ClientCredentials")
-    def oauth2_client_credentials(self) -> Optional[pulumi.Input['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs']]:
+    def oauth2_client_credentials(self) -> pulumi.Input[Optional['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs']]:
         """
         OAuth credentials to use for Salesforce authentication.
         Structure is documented below.
@@ -1826,12 +1826,12 @@ class ConnectionProfileSalesforceProfileArgs:
         return pulumi.get(self, "oauth2_client_credentials")
 
     @oauth2_client_credentials.setter
-    def oauth2_client_credentials(self, value: Optional[pulumi.Input['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs']]):
+    def oauth2_client_credentials(self, value: pulumi.Input[Optional['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs']]):
         pulumi.set(self, "oauth2_client_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="userCredentials")
-    def user_credentials(self) -> Optional[pulumi.Input['ConnectionProfileSalesforceProfileUserCredentialsArgs']]:
+    def user_credentials(self) -> pulumi.Input[Optional['ConnectionProfileSalesforceProfileUserCredentialsArgs']]:
         """
         User credentials to use for Salesforce authentication.
         Structure is documented below.
@@ -1839,20 +1839,20 @@ class ConnectionProfileSalesforceProfileArgs:
         return pulumi.get(self, "user_credentials")
 
     @user_credentials.setter
-    def user_credentials(self, value: Optional[pulumi.Input['ConnectionProfileSalesforceProfileUserCredentialsArgs']]):
+    def user_credentials(self, value: pulumi.Input[Optional['ConnectionProfileSalesforceProfileUserCredentialsArgs']]):
         pulumi.set(self, "user_credentials", value)
 
 
 class ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID to use for authentication.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client secret to use for authentication.
     """
-    secret_manager_stored_client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret_manager_stored_client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A reference to a Secret Manager resource name storing the client secret.
     """
@@ -1860,9 +1860,9 @@ class ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgsDict(TypedDic
 @pulumi.input_type
 class ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_manager_stored_client_secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_manager_stored_client_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Client ID to use for authentication.
         :param pulumi.Input[_builtins.str] client_secret: Client secret to use for authentication.
@@ -1877,61 +1877,61 @@ class ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID to use for authentication.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client secret to use for authentication.
         """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerStoredClientSecret")
-    def secret_manager_stored_client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_manager_stored_client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a Secret Manager resource name storing the client secret.
         """
         return pulumi.get(self, "secret_manager_stored_client_secret")
 
     @secret_manager_stored_client_secret.setter
-    def secret_manager_stored_client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_manager_stored_client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_manager_stored_client_secret", value)
 
 
 class ConnectionProfileSalesforceProfileUserCredentialsArgsDict(TypedDict):
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password of the user.
     """
-    secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
+    secret_manager_stored_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A reference to a Secret Manager resource name storing the user's password.
     """
-    secret_manager_stored_security_token: NotRequired[pulumi.Input[_builtins.str]]
+    secret_manager_stored_security_token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A reference to a Secret Manager resource name storing the user's security token.
 
     <a name="nested_salesforce_profile_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
     """
-    security_token: NotRequired[pulumi.Input[_builtins.str]]
+    security_token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Security token of the user.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username to use for authentication.
     """
@@ -1939,11 +1939,11 @@ class ConnectionProfileSalesforceProfileUserCredentialsArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionProfileSalesforceProfileUserCredentialsArgs:
     def __init__(__self__, *,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_manager_stored_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_manager_stored_security_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_manager_stored_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_manager_stored_security_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] password: Password of the user.
         :param pulumi.Input[_builtins.str] secret_manager_stored_password: A reference to a Secret Manager resource name storing the user's password.
@@ -1966,31 +1966,31 @@ class ConnectionProfileSalesforceProfileUserCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password of the user.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerStoredPassword")
-    def secret_manager_stored_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_manager_stored_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a Secret Manager resource name storing the user's password.
         """
         return pulumi.get(self, "secret_manager_stored_password")
 
     @secret_manager_stored_password.setter
-    def secret_manager_stored_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_manager_stored_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_manager_stored_password", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerStoredSecurityToken")
-    def secret_manager_stored_security_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_manager_stored_security_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a Secret Manager resource name storing the user's security token.
 
@@ -1999,31 +1999,31 @@ class ConnectionProfileSalesforceProfileUserCredentialsArgs:
         return pulumi.get(self, "secret_manager_stored_security_token")
 
     @secret_manager_stored_security_token.setter
-    def secret_manager_stored_security_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_manager_stored_security_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_manager_stored_security_token", value)
 
     @_builtins.property
     @pulumi.getter(name="securityToken")
-    def security_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security token of the user.
         """
         return pulumi.get(self, "security_token")
 
     @security_token.setter
-    def security_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username to use for authentication.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -2033,7 +2033,7 @@ class ConnectionProfileSpannerProfileArgsDict(TypedDict):
     The full project and resource path for Spanner database. Format:
     projects/{project}/instances/{instance}/databases/{database}.
     """
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The regional Spanner endpoint. Format:
     https://spanner.{region}.rep.googleapis.com.
@@ -2043,7 +2043,7 @@ class ConnectionProfileSpannerProfileArgsDict(TypedDict):
 class ConnectionProfileSpannerProfileArgs:
     def __init__(__self__, *,
                  database: pulumi.Input[_builtins.str],
-                 host: Optional[pulumi.Input[_builtins.str]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] database: The full project and resource path for Spanner database. Format:
                projects/{project}/instances/{instance}/databases/{database}.
@@ -2069,7 +2069,7 @@ class ConnectionProfileSpannerProfileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The regional Spanner endpoint. Format:
         https://spanner.{region}.rep.googleapis.com.
@@ -2077,7 +2077,7 @@ class ConnectionProfileSpannerProfileArgs:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
 
@@ -2094,16 +2094,16 @@ class ConnectionProfileSqlServerProfileArgsDict(TypedDict):
     """
     Username for the SQL Server connection.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password for the SQL Server connection.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port for the SQL Server connection.
     """
-    secret_manager_stored_password: NotRequired[pulumi.Input[_builtins.str]]
+    secret_manager_stored_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A reference to a Secret Manager resource name storing the user's password.
     """
@@ -2114,9 +2114,9 @@ class ConnectionProfileSqlServerProfileArgs:
                  database: pulumi.Input[_builtins.str],
                  hostname: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_manager_stored_password: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_manager_stored_password: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] database: Database for the SQL Server connection.
         :param pulumi.Input[_builtins.str] hostname: Hostname for the SQL Server connection.
@@ -2174,7 +2174,7 @@ class ConnectionProfileSqlServerProfileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for the SQL Server connection.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -2182,40 +2182,40 @@ class ConnectionProfileSqlServerProfileArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port for the SQL Server connection.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerStoredPassword")
-    def secret_manager_stored_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_manager_stored_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a Secret Manager resource name storing the user's password.
         """
         return pulumi.get(self, "secret_manager_stored_password")
 
     @secret_manager_stored_password.setter
-    def secret_manager_stored_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_manager_stored_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_manager_stored_password", value)
 
 
 class PrivateConnectionErrorArgsDict(TypedDict):
-    details: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    details: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     A list of messages that carry the error details.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A message containing more information about the error that occurred.
     """
@@ -2223,8 +2223,8 @@ class PrivateConnectionErrorArgsDict(TypedDict):
 @pulumi.input_type
 class PrivateConnectionErrorArgs:
     def __init__(__self__, *,
-                 details: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 details: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] details: A list of messages that carry the error details.
         :param pulumi.Input[_builtins.str] message: A message containing more information about the error that occurred.
@@ -2236,26 +2236,26 @@ class PrivateConnectionErrorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def details(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A list of messages that carry the error details.
         """
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def details(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A message containing more information about the error that occurred.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
@@ -2353,37 +2353,37 @@ class PrivateConnectionVpcPeeringConfigArgs:
 
 
 class StreamBackfillAllArgsDict(TypedDict):
-    mongodb_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsArgsDict']]
+    mongodb_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllMongodbExcludedObjectsArgs']]]
     """
     MongoDB data source objects to avoid backfilling.
     Structure is documented below.
     """
-    mysql_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgsDict']]
+    mysql_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllMysqlExcludedObjectsArgs']]]
     """
     MySQL data source objects to avoid backfilling.
     Structure is documented below.
     """
-    oracle_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgsDict']]
+    oracle_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllOracleExcludedObjectsArgs']]]
     """
     PostgreSQL data source objects to avoid backfilling.
     Structure is documented below.
     """
-    postgresql_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgsDict']]
+    postgresql_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllPostgresqlExcludedObjectsArgs']]]
     """
     PostgreSQL data source objects to avoid backfilling.
     Structure is documented below.
     """
-    salesforce_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsArgsDict']]
+    salesforce_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllSalesforceExcludedObjectsArgs']]]
     """
     Salesforce objects to avoid backfilling.
     Structure is documented below.
     """
-    spanner_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsArgsDict']]
+    spanner_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllSpannerExcludedObjectsArgs']]]
     """
     Spanner objects to avoid backfilling.
     Structure is documented below.
     """
-    sql_server_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsArgsDict']]
+    sql_server_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllSqlServerExcludedObjectsArgs']]]
     """
     SQL Server data source objects to avoid backfilling.
     Structure is documented below.
@@ -2392,13 +2392,13 @@ class StreamBackfillAllArgsDict(TypedDict):
 @pulumi.input_type
 class StreamBackfillAllArgs:
     def __init__(__self__, *,
-                 mongodb_excluded_objects: Optional[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsArgs']] = None,
-                 mysql_excluded_objects: Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs']] = None,
-                 oracle_excluded_objects: Optional[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgs']] = None,
-                 postgresql_excluded_objects: Optional[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgs']] = None,
-                 salesforce_excluded_objects: Optional[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsArgs']] = None,
-                 spanner_excluded_objects: Optional[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsArgs']] = None,
-                 sql_server_excluded_objects: Optional[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsArgs']] = None):
+                 mongodb_excluded_objects: pulumi.Input[Optional['StreamBackfillAllMongodbExcludedObjectsArgs']] = None,
+                 mysql_excluded_objects: pulumi.Input[Optional['StreamBackfillAllMysqlExcludedObjectsArgs']] = None,
+                 oracle_excluded_objects: pulumi.Input[Optional['StreamBackfillAllOracleExcludedObjectsArgs']] = None,
+                 postgresql_excluded_objects: pulumi.Input[Optional['StreamBackfillAllPostgresqlExcludedObjectsArgs']] = None,
+                 salesforce_excluded_objects: pulumi.Input[Optional['StreamBackfillAllSalesforceExcludedObjectsArgs']] = None,
+                 spanner_excluded_objects: pulumi.Input[Optional['StreamBackfillAllSpannerExcludedObjectsArgs']] = None,
+                 sql_server_excluded_objects: pulumi.Input[Optional['StreamBackfillAllSqlServerExcludedObjectsArgs']] = None):
         """
         :param pulumi.Input['StreamBackfillAllMongodbExcludedObjectsArgs'] mongodb_excluded_objects: MongoDB data source objects to avoid backfilling.
                Structure is documented below.
@@ -2432,7 +2432,7 @@ class StreamBackfillAllArgs:
 
     @_builtins.property
     @pulumi.getter(name="mongodbExcludedObjects")
-    def mongodb_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsArgs']]:
+    def mongodb_excluded_objects(self) -> pulumi.Input[Optional['StreamBackfillAllMongodbExcludedObjectsArgs']]:
         """
         MongoDB data source objects to avoid backfilling.
         Structure is documented below.
@@ -2440,12 +2440,12 @@ class StreamBackfillAllArgs:
         return pulumi.get(self, "mongodb_excluded_objects")
 
     @mongodb_excluded_objects.setter
-    def mongodb_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsArgs']]):
+    def mongodb_excluded_objects(self, value: pulumi.Input[Optional['StreamBackfillAllMongodbExcludedObjectsArgs']]):
         pulumi.set(self, "mongodb_excluded_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="mysqlExcludedObjects")
-    def mysql_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs']]:
+    def mysql_excluded_objects(self) -> pulumi.Input[Optional['StreamBackfillAllMysqlExcludedObjectsArgs']]:
         """
         MySQL data source objects to avoid backfilling.
         Structure is documented below.
@@ -2453,12 +2453,12 @@ class StreamBackfillAllArgs:
         return pulumi.get(self, "mysql_excluded_objects")
 
     @mysql_excluded_objects.setter
-    def mysql_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs']]):
+    def mysql_excluded_objects(self, value: pulumi.Input[Optional['StreamBackfillAllMysqlExcludedObjectsArgs']]):
         pulumi.set(self, "mysql_excluded_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="oracleExcludedObjects")
-    def oracle_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgs']]:
+    def oracle_excluded_objects(self) -> pulumi.Input[Optional['StreamBackfillAllOracleExcludedObjectsArgs']]:
         """
         PostgreSQL data source objects to avoid backfilling.
         Structure is documented below.
@@ -2466,12 +2466,12 @@ class StreamBackfillAllArgs:
         return pulumi.get(self, "oracle_excluded_objects")
 
     @oracle_excluded_objects.setter
-    def oracle_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgs']]):
+    def oracle_excluded_objects(self, value: pulumi.Input[Optional['StreamBackfillAllOracleExcludedObjectsArgs']]):
         pulumi.set(self, "oracle_excluded_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="postgresqlExcludedObjects")
-    def postgresql_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgs']]:
+    def postgresql_excluded_objects(self) -> pulumi.Input[Optional['StreamBackfillAllPostgresqlExcludedObjectsArgs']]:
         """
         PostgreSQL data source objects to avoid backfilling.
         Structure is documented below.
@@ -2479,12 +2479,12 @@ class StreamBackfillAllArgs:
         return pulumi.get(self, "postgresql_excluded_objects")
 
     @postgresql_excluded_objects.setter
-    def postgresql_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgs']]):
+    def postgresql_excluded_objects(self, value: pulumi.Input[Optional['StreamBackfillAllPostgresqlExcludedObjectsArgs']]):
         pulumi.set(self, "postgresql_excluded_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="salesforceExcludedObjects")
-    def salesforce_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsArgs']]:
+    def salesforce_excluded_objects(self) -> pulumi.Input[Optional['StreamBackfillAllSalesforceExcludedObjectsArgs']]:
         """
         Salesforce objects to avoid backfilling.
         Structure is documented below.
@@ -2492,12 +2492,12 @@ class StreamBackfillAllArgs:
         return pulumi.get(self, "salesforce_excluded_objects")
 
     @salesforce_excluded_objects.setter
-    def salesforce_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsArgs']]):
+    def salesforce_excluded_objects(self, value: pulumi.Input[Optional['StreamBackfillAllSalesforceExcludedObjectsArgs']]):
         pulumi.set(self, "salesforce_excluded_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="spannerExcludedObjects")
-    def spanner_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsArgs']]:
+    def spanner_excluded_objects(self) -> pulumi.Input[Optional['StreamBackfillAllSpannerExcludedObjectsArgs']]:
         """
         Spanner objects to avoid backfilling.
         Structure is documented below.
@@ -2505,12 +2505,12 @@ class StreamBackfillAllArgs:
         return pulumi.get(self, "spanner_excluded_objects")
 
     @spanner_excluded_objects.setter
-    def spanner_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsArgs']]):
+    def spanner_excluded_objects(self, value: pulumi.Input[Optional['StreamBackfillAllSpannerExcludedObjectsArgs']]):
         pulumi.set(self, "spanner_excluded_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlServerExcludedObjects")
-    def sql_server_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsArgs']]:
+    def sql_server_excluded_objects(self) -> pulumi.Input[Optional['StreamBackfillAllSqlServerExcludedObjectsArgs']]:
         """
         SQL Server data source objects to avoid backfilling.
         Structure is documented below.
@@ -2518,7 +2518,7 @@ class StreamBackfillAllArgs:
         return pulumi.get(self, "sql_server_excluded_objects")
 
     @sql_server_excluded_objects.setter
-    def sql_server_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsArgs']]):
+    def sql_server_excluded_objects(self, value: pulumi.Input[Optional['StreamBackfillAllSqlServerExcludedObjectsArgs']]):
         pulumi.set(self, "sql_server_excluded_objects", value)
 
 
@@ -2558,7 +2558,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseArgsDict(TypedDict):
     """
     Database name.
     """
-    collections: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgsDict']]]]
+    collections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs']]]]]
     """
     Collections in the database.
     Structure is documented below.
@@ -2568,7 +2568,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseArgsDict(TypedDict):
 class StreamBackfillAllMongodbExcludedObjectsDatabaseArgs:
     def __init__(__self__, *,
                  database: pulumi.Input[_builtins.str],
-                 collections: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs']]]] = None):
+                 collections: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] database: Database name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs']]] collections: Collections in the database.
@@ -2592,7 +2592,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter
-    def collections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs']]]]:
+    def collections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs']]]]:
         """
         Collections in the database.
         Structure is documented below.
@@ -2600,7 +2600,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseArgs:
         return pulumi.get(self, "collections")
 
     @collections.setter
-    def collections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs']]]]):
+    def collections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs']]]]):
         pulumi.set(self, "collections", value)
 
 
@@ -2609,7 +2609,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgsDict(TypedDic
     """
     Collection name.
     """
-    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgsDict']]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs']]]]]
     """
     Fields in the collection.
     Structure is documented below.
@@ -2619,7 +2619,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgsDict(TypedDic
 class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs:
     def __init__(__self__, *,
                  collection: pulumi.Input[_builtins.str],
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs']]]] = None):
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] collection: Collection name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs']]] fields: Fields in the collection.
@@ -2643,7 +2643,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs']]]]:
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs']]]]:
         """
         Fields in the collection.
         Structure is documented below.
@@ -2651,12 +2651,12 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs']]]]):
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs']]]]):
         pulumi.set(self, "fields", value)
 
 
 class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgsDict(TypedDict):
-    field: NotRequired[pulumi.Input[_builtins.str]]
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field name.
     """
@@ -2664,7 +2664,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgsDict(Typ
 @pulumi.input_type
 class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs:
     def __init__(__self__, *,
-                 field: Optional[pulumi.Input[_builtins.str]] = None):
+                 field: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] field: Field name.
         """
@@ -2673,14 +2673,14 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs:
 
     @_builtins.property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field name.
         """
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field", value)
 
 
@@ -2720,7 +2720,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgsDict(TypedDict):
     """
     Database name.
     """
-    mysql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgsDict']]]]
+    mysql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]]]
     """
     Tables in the database.
     Structure is documented below.
@@ -2730,7 +2730,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgsDict(TypedDict):
 class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs:
     def __init__(__self__, *,
                  database: pulumi.Input[_builtins.str],
-                 mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
+                 mysql_tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] database: Database name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]] mysql_tables: Tables in the database.
@@ -2754,7 +2754,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="mysqlTables")
-    def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]]:
+    def mysql_tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]]:
         """
         Tables in the database.
         Structure is documented below.
@@ -2762,7 +2762,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs:
         return pulumi.get(self, "mysql_tables")
 
     @mysql_tables.setter
-    def mysql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]]):
+    def mysql_tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]]):
         pulumi.set(self, "mysql_tables", value)
 
 
@@ -2771,7 +2771,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgsDict(Typed
     """
     Table name.
     """
-    mysql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict']]]]
+    mysql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]]
     """
     MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -2781,7 +2781,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgsDict(Typed
 class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
+                 mysql_columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -2805,7 +2805,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs:
 
     @_builtins.property
     @pulumi.getter(name="mysqlColumns")
-    def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
+    def mysql_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
         """
         MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -2813,38 +2813,38 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs:
         return pulumi.get(self, "mysql_columns")
 
     @mysql_columns.setter
-    def mysql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]):
+    def mysql_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]):
         pulumi.set(self, "mysql_columns", value)
 
 
 class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict(TypedDict):
-    collation: NotRequired[pulumi.Input[_builtins.str]]
+    collation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column collation.
     """
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The MySQL data type. Full data types list can be found here:
     https://dev.mysql.com/doc/refman/8.0/en/data-types.html
     """
-    length: NotRequired[pulumi.Input[_builtins.int]]
+    length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column length.
     """
-    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    nullable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether or not the column can accept a null value.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ordinal position of the column in the table.
     """
-    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether or not the column represents a primary key.
     """
@@ -2852,13 +2852,13 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
 @pulumi.input_type
 class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs:
     def __init__(__self__, *,
-                 collation: Optional[pulumi.Input[_builtins.str]] = None,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 length: Optional[pulumi.Input[_builtins.int]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_key: Optional[pulumi.Input[_builtins.bool]] = None):
+                 collation: pulumi.Input[Optional[_builtins.str]] = None,
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 length: pulumi.Input[Optional[_builtins.int]] = None,
+                 nullable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_key: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] collation: Column collation.
         :param pulumi.Input[_builtins.str] column: Column name.
@@ -2887,31 +2887,31 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
 
     @_builtins.property
     @pulumi.getter
-    def collation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column collation.
         """
         return pulumi.get(self, "collation")
 
     @collation.setter
-    def collation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collation", value)
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column name.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The MySQL data type. Full data types list can be found here:
         https://dev.mysql.com/doc/refman/8.0/en/data-types.html
@@ -2919,12 +2919,12 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column length.
@@ -2932,43 +2932,43 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
         return pulumi.get(self, "length")
 
     @length.setter
-    def length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "length", value)
 
     @_builtins.property
     @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nullable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
 
     @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nullable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nullable", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKey")
-    def primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
-    def primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary_key", value)
 
 
@@ -3008,7 +3008,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgsDict(TypedDict):
     """
     Schema name.
     """
-    oracle_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgsDict']]]]
+    oracle_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]]]
     """
     Tables in the database.
     Structure is documented below.
@@ -3018,7 +3018,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgsDict(TypedDict):
 class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]] = None):
+                 oracle_tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] schema: Schema name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]] oracle_tables: Tables in the database.
@@ -3042,7 +3042,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs:
 
     @_builtins.property
     @pulumi.getter(name="oracleTables")
-    def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]]:
+    def oracle_tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]]:
         """
         Tables in the database.
         Structure is documented below.
@@ -3050,7 +3050,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs:
         return pulumi.get(self, "oracle_tables")
 
     @oracle_tables.setter
-    def oracle_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]]):
+    def oracle_tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]]):
         pulumi.set(self, "oracle_tables", value)
 
 
@@ -3059,7 +3059,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgsDict(Type
     """
     Table name.
     """
-    oracle_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgsDict']]]]
+    oracle_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]]]
     """
     Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -3069,7 +3069,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgsDict(Type
 class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
+                 oracle_columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -3093,7 +3093,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs:
 
     @_builtins.property
     @pulumi.getter(name="oracleColumns")
-    def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
+    def oracle_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
         """
         Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -3101,51 +3101,51 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs:
         return pulumi.get(self, "oracle_columns")
 
     @oracle_columns.setter
-    def oracle_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]]):
+    def oracle_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]]):
         pulumi.set(self, "oracle_columns", value)
 
 
 class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgsDict(TypedDict):
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Oracle data type. Full data types list can be found here:
     https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
     """
-    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    encoding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Column encoding.
     """
-    length: NotRequired[pulumi.Input[_builtins.int]]
+    length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column length.
     """
-    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    nullable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether or not the column can accept a null value.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The ordinal position of the column in the table.
     """
-    precision: NotRequired[pulumi.Input[_builtins.int]]
+    precision: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column precision.
     """
-    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether or not the column represents a primary key.
     """
-    scale: NotRequired[pulumi.Input[_builtins.int]]
+    scale: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column scale.
@@ -3154,15 +3154,15 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
 @pulumi.input_type
 class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs:
     def __init__(__self__, *,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 length: Optional[pulumi.Input[_builtins.int]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None,
-                 precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale: Optional[pulumi.Input[_builtins.int]] = None):
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 length: pulumi.Input[Optional[_builtins.int]] = None,
+                 nullable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None,
+                 precision: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] column: Column name.
         :param pulumi.Input[_builtins.str] data_type: The Oracle data type. Full data types list can be found here:
@@ -3203,19 +3203,19 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column name.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Oracle data type. Full data types list can be found here:
         https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
@@ -3223,12 +3223,12 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Column encoding.
@@ -3236,12 +3236,12 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
         return pulumi.get(self, "encoding")
 
     @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoding", value)
 
     @_builtins.property
     @pulumi.getter
-    def length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column length.
@@ -3249,12 +3249,12 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
         return pulumi.get(self, "length")
 
     @length.setter
-    def length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "length", value)
 
     @_builtins.property
     @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nullable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether or not the column can accept a null value.
@@ -3262,12 +3262,12 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
         return pulumi.get(self, "nullable")
 
     @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nullable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nullable", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The ordinal position of the column in the table.
@@ -3275,12 +3275,12 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
     @_builtins.property
     @pulumi.getter
-    def precision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def precision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column precision.
@@ -3288,12 +3288,12 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
         return pulumi.get(self, "precision")
 
     @precision.setter
-    def precision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def precision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "precision", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKey")
-    def primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether or not the column represents a primary key.
@@ -3301,12 +3301,12 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
-    def primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def scale(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column scale.
@@ -3314,7 +3314,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
         return pulumi.get(self, "scale")
 
     @scale.setter
-    def scale(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale", value)
 
 
@@ -3354,7 +3354,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgsDict(TypedDi
     """
     Database name.
     """
-    postgresql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgsDict']]]]
+    postgresql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -3364,7 +3364,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgsDict(TypedDi
 class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
+                 postgresql_tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] schema: Database name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]] postgresql_tables: Tables in the schema.
@@ -3388,7 +3388,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs:
 
     @_builtins.property
     @pulumi.getter(name="postgresqlTables")
-    def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
+    def postgresql_tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
         """
         Tables in the schema.
         Structure is documented below.
@@ -3396,7 +3396,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs:
         return pulumi.get(self, "postgresql_tables")
 
     @postgresql_tables.setter
-    def postgresql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]]):
+    def postgresql_tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]]):
         pulumi.set(self, "postgresql_tables", value)
 
 
@@ -3405,7 +3405,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableA
     """
     Table name.
     """
-    postgresql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict']]]]
+    postgresql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]]
     """
     PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -3415,7 +3415,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableA
 class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
+                 postgresql_columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -3439,7 +3439,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableA
 
     @_builtins.property
     @pulumi.getter(name="postgresqlColumns")
-    def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
+    def postgresql_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
         """
         PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -3447,43 +3447,43 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableA
         return pulumi.get(self, "postgresql_columns")
 
     @postgresql_columns.setter
-    def postgresql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]):
+    def postgresql_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]):
         pulumi.set(self, "postgresql_columns", value)
 
 
 class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict(TypedDict):
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The PostgreSQL data type. Full data types list can be found here:
     https://www.postgresql.org/docs/current/datatype.html
     """
-    length: NotRequired[pulumi.Input[_builtins.int]]
+    length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column length.
     """
-    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    nullable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether or not the column can accept a null value.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ordinal position of the column in the table.
     """
-    precision: NotRequired[pulumi.Input[_builtins.int]]
+    precision: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column precision.
     """
-    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether or not the column represents a primary key.
     """
-    scale: NotRequired[pulumi.Input[_builtins.int]]
+    scale: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column scale.
@@ -3492,14 +3492,14 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
 @pulumi.input_type
 class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs:
     def __init__(__self__, *,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 length: Optional[pulumi.Input[_builtins.int]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None,
-                 precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale: Optional[pulumi.Input[_builtins.int]] = None):
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 length: pulumi.Input[Optional[_builtins.int]] = None,
+                 nullable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None,
+                 precision: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] column: Column name.
         :param pulumi.Input[_builtins.str] data_type: The PostgreSQL data type. Full data types list can be found here:
@@ -3533,19 +3533,19 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column name.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PostgreSQL data type. Full data types list can be found here:
         https://www.postgresql.org/docs/current/datatype.html
@@ -3553,12 +3553,12 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column length.
@@ -3566,36 +3566,36 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
         return pulumi.get(self, "length")
 
     @length.setter
-    def length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "length", value)
 
     @_builtins.property
     @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nullable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
 
     @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nullable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nullable", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
     @_builtins.property
     @pulumi.getter
-    def precision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def precision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column precision.
@@ -3603,24 +3603,24 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
         return pulumi.get(self, "precision")
 
     @precision.setter
-    def precision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def precision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "precision", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKey")
-    def primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
-    def primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def scale(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column scale.
@@ -3628,7 +3628,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
         return pulumi.get(self, "scale")
 
     @scale.setter
-    def scale(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale", value)
 
 
@@ -3664,12 +3664,12 @@ class StreamBackfillAllSalesforceExcludedObjectsArgs:
 
 
 class StreamBackfillAllSalesforceExcludedObjectsObjectArgsDict(TypedDict):
-    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgsDict']]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs']]]]]
     """
     Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
     Structure is documented below.
     """
-    object_name: NotRequired[pulumi.Input[_builtins.str]]
+    object_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of object in Salesforce Org.
     """
@@ -3677,8 +3677,8 @@ class StreamBackfillAllSalesforceExcludedObjectsObjectArgsDict(TypedDict):
 @pulumi.input_type
 class StreamBackfillAllSalesforceExcludedObjectsObjectArgs:
     def __init__(__self__, *,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs']]]] = None,
-                 object_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs']]]] = None,
+                 object_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs']]] fields: Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
                Structure is documented below.
@@ -3691,7 +3691,7 @@ class StreamBackfillAllSalesforceExcludedObjectsObjectArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs']]]]:
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs']]]]:
         """
         Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
         Structure is documented below.
@@ -3699,24 +3699,24 @@ class StreamBackfillAllSalesforceExcludedObjectsObjectArgs:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs']]]]):
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs']]]]):
         pulumi.set(self, "fields", value)
 
     @_builtins.property
     @pulumi.getter(name="objectName")
-    def object_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of object in Salesforce Org.
         """
         return pulumi.get(self, "object_name")
 
     @object_name.setter
-    def object_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_name", value)
 
 
 class StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field name.
     """
@@ -3724,7 +3724,7 @@ class StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgsDict(TypedDict):
 @pulumi.input_type
 class StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Field name.
         """
@@ -3733,14 +3733,14 @@ class StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -3780,7 +3780,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaArgsDict(TypedDict):
     """
     Schema name.
     """
-    tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableArgsDict']]]]
+    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -3790,7 +3790,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaArgsDict(TypedDict):
 class StreamBackfillAllSpannerExcludedObjectsSchemaArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs']]]] = None):
+                 tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] schema: Schema name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs']]] tables: Tables in the schema.
@@ -3814,7 +3814,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs']]]]:
+    def tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs']]]]:
         """
         Tables in the schema.
         Structure is documented below.
@@ -3822,7 +3822,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaArgs:
         return pulumi.get(self, "tables")
 
     @tables.setter
-    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs']]]]):
+    def tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs']]]]):
         pulumi.set(self, "tables", value)
 
 
@@ -3831,7 +3831,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTableArgsDict(TypedDict):
     """
     Table name.
     """
-    columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgsDict']]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs']]]]]
     """
     Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -3841,7 +3841,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTableArgsDict(TypedDict):
 class StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs']]]] = None):
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs']]] columns: Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -3865,7 +3865,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs']]]]:
+    def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs']]]]:
         """
         Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -3873,7 +3873,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs:
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs']]]]):
+    def columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
 
@@ -3882,18 +3882,18 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgsDict(TypedDict
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Spanner data type. Full data types list can be found here:
     https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
     """
-    is_primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    is_primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether the column is a primary key.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The ordinal position of the column in the table.
@@ -3903,9 +3903,9 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgsDict(TypedDict
 class StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs:
     def __init__(__self__, *,
                  column: pulumi.Input[_builtins.str],
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None):
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] column: Column name.
         :param pulumi.Input[_builtins.str] data_type: (Output)
@@ -3938,7 +3938,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Spanner data type. Full data types list can be found here:
@@ -3947,12 +3947,12 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter(name="isPrimaryKey")
-    def is_primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether the column is a primary key.
@@ -3960,12 +3960,12 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "is_primary_key")
 
     @is_primary_key.setter
-    def is_primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_primary_key", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The ordinal position of the column in the table.
@@ -3973,7 +3973,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
 
@@ -4013,7 +4013,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaArgsDict(TypedDict):
     """
     Schema name.
     """
-    tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgsDict']]]]
+    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -4023,7 +4023,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaArgsDict(TypedDict):
 class StreamBackfillAllSqlServerExcludedObjectsSchemaArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs']]]] = None):
+                 tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] schema: Schema name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs']]] tables: Tables in the schema.
@@ -4047,7 +4047,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs']]]]:
+    def tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs']]]]:
         """
         Tables in the schema.
         Structure is documented below.
@@ -4055,7 +4055,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaArgs:
         return pulumi.get(self, "tables")
 
     @tables.setter
-    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs']]]]):
+    def tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs']]]]):
         pulumi.set(self, "tables", value)
 
 
@@ -4064,7 +4064,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgsDict(TypedDict):
     """
     Table name.
     """
-    columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgsDict']]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs']]]]]
     """
     Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -4074,7 +4074,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgsDict(TypedDict):
 class StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs']]]] = None):
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs']]] columns: Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -4098,7 +4098,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs']]]]:
+    def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs']]]]:
         """
         Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -4106,47 +4106,47 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs:
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs']]]]):
+    def columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
 
 class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgsDict(TypedDict):
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Spanner data type. Full data types list can be found here:
     https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
     """
-    length: NotRequired[pulumi.Input[_builtins.int]]
+    length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column length.
     """
-    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    nullable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether or not the column can accept a null value.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The ordinal position of the column in the table.
     """
-    precision: NotRequired[pulumi.Input[_builtins.int]]
+    precision: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column precision.
     """
-    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether or not the column represents a primary key.
     """
-    scale: NotRequired[pulumi.Input[_builtins.int]]
+    scale: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column scale.
@@ -4155,14 +4155,14 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgsDict(TypedDi
 @pulumi.input_type
 class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs:
     def __init__(__self__, *,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 length: Optional[pulumi.Input[_builtins.int]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None,
-                 precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale: Optional[pulumi.Input[_builtins.int]] = None):
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 length: pulumi.Input[Optional[_builtins.int]] = None,
+                 nullable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None,
+                 precision: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] column: Column name.
         :param pulumi.Input[_builtins.str] data_type: (Output)
@@ -4200,19 +4200,19 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs:
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column name.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Spanner data type. Full data types list can be found here:
@@ -4221,12 +4221,12 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column length.
@@ -4234,12 +4234,12 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "length")
 
     @length.setter
-    def length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "length", value)
 
     @_builtins.property
     @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nullable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether or not the column can accept a null value.
@@ -4247,12 +4247,12 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "nullable")
 
     @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nullable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nullable", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The ordinal position of the column in the table.
@@ -4260,12 +4260,12 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
     @_builtins.property
     @pulumi.getter
-    def precision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def precision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column precision.
@@ -4273,12 +4273,12 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "precision")
 
     @precision.setter
-    def precision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def precision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "precision", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKey")
-    def primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether or not the column represents a primary key.
@@ -4286,12 +4286,12 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
-    def primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def scale(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column scale.
@@ -4299,7 +4299,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "scale")
 
     @scale.setter
-    def scale(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale", value)
 
 
@@ -4317,12 +4317,12 @@ class StreamDestinationConfigArgsDict(TypedDict):
     """
     Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
     """
-    bigquery_destination_config: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgsDict']]
+    bigquery_destination_config: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigArgs']]]
     """
     A configuration for how data should be loaded to Google BigQuery.
     Structure is documented below.
     """
-    gcs_destination_config: NotRequired[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArgsDict']]
+    gcs_destination_config: NotRequired[pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigArgs']]]
     """
     A configuration for how data should be loaded to Cloud Storage.
     Structure is documented below.
@@ -4332,8 +4332,8 @@ class StreamDestinationConfigArgsDict(TypedDict):
 class StreamDestinationConfigArgs:
     def __init__(__self__, *,
                  destination_connection_profile: pulumi.Input[_builtins.str],
-                 bigquery_destination_config: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgs']] = None,
-                 gcs_destination_config: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArgs']] = None):
+                 bigquery_destination_config: pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigArgs']] = None,
+                 gcs_destination_config: pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] destination_connection_profile: Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
         :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgs'] bigquery_destination_config: A configuration for how data should be loaded to Google BigQuery.
@@ -4361,7 +4361,7 @@ class StreamDestinationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="bigqueryDestinationConfig")
-    def bigquery_destination_config(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgs']]:
+    def bigquery_destination_config(self) -> pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigArgs']]:
         """
         A configuration for how data should be loaded to Google BigQuery.
         Structure is documented below.
@@ -4369,12 +4369,12 @@ class StreamDestinationConfigArgs:
         return pulumi.get(self, "bigquery_destination_config")
 
     @bigquery_destination_config.setter
-    def bigquery_destination_config(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgs']]):
+    def bigquery_destination_config(self, value: pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigArgs']]):
         pulumi.set(self, "bigquery_destination_config", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsDestinationConfig")
-    def gcs_destination_config(self) -> Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArgs']]:
+    def gcs_destination_config(self) -> pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigArgs']]:
         """
         A configuration for how data should be loaded to Cloud Storage.
         Structure is documented below.
@@ -4382,41 +4382,41 @@ class StreamDestinationConfigArgs:
         return pulumi.get(self, "gcs_destination_config")
 
     @gcs_destination_config.setter
-    def gcs_destination_config(self, value: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArgs']]):
+    def gcs_destination_config(self, value: pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigArgs']]):
         pulumi.set(self, "gcs_destination_config", value)
 
 
 class StreamDestinationConfigBigqueryDestinationConfigArgsDict(TypedDict):
-    append_only: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgsDict']]
+    append_only: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs']]]
     """
     AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
     events) to a source table will be written to the destination Google BigQuery table, retaining the
     historical state of the data.
     """
-    blmt_config: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgsDict']]
+    blmt_config: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs']]]
     """
     BigLake Managed Tables configuration for BigQuery streams.
     Structure is documented below.
     """
-    data_freshness: NotRequired[pulumi.Input[_builtins.str]]
+    data_freshness: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The guaranteed data freshness (in seconds) when querying tables created by the stream.
     Editing this field will only affect new tables created in the future, but existing tables
     will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
     """
-    merge: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigMergeArgsDict']]
+    merge: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigMergeArgs']]]
     """
     Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
     table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
     in the source database. With Merge mode, no historical record of the change events is kept.
     """
-    single_target_dataset: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgsDict']]
+    single_target_dataset: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']]]
     """
     A single target dataset to which all data will be streamed.
     Structure is documented below.
     """
-    source_hierarchy_datasets: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgsDict']]
+    source_hierarchy_datasets: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs']]]
     """
     Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
     Structure is documented below.
@@ -4425,12 +4425,12 @@ class StreamDestinationConfigBigqueryDestinationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class StreamDestinationConfigBigqueryDestinationConfigArgs:
     def __init__(__self__, *,
-                 append_only: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs']] = None,
-                 blmt_config: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs']] = None,
-                 data_freshness: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigMergeArgs']] = None,
-                 single_target_dataset: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']] = None,
-                 source_hierarchy_datasets: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs']] = None):
+                 append_only: pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs']] = None,
+                 blmt_config: pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs']] = None,
+                 data_freshness: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge: pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigMergeArgs']] = None,
+                 single_target_dataset: pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']] = None,
+                 source_hierarchy_datasets: pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs']] = None):
         """
         :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs'] append_only: AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
                events) to a source table will be written to the destination Google BigQuery table, retaining the
@@ -4464,7 +4464,7 @@ class StreamDestinationConfigBigqueryDestinationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="appendOnly")
-    def append_only(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs']]:
+    def append_only(self) -> pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs']]:
         """
         AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
         events) to a source table will be written to the destination Google BigQuery table, retaining the
@@ -4473,12 +4473,12 @@ class StreamDestinationConfigBigqueryDestinationConfigArgs:
         return pulumi.get(self, "append_only")
 
     @append_only.setter
-    def append_only(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs']]):
+    def append_only(self, value: pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs']]):
         pulumi.set(self, "append_only", value)
 
     @_builtins.property
     @pulumi.getter(name="blmtConfig")
-    def blmt_config(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs']]:
+    def blmt_config(self) -> pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs']]:
         """
         BigLake Managed Tables configuration for BigQuery streams.
         Structure is documented below.
@@ -4486,12 +4486,12 @@ class StreamDestinationConfigBigqueryDestinationConfigArgs:
         return pulumi.get(self, "blmt_config")
 
     @blmt_config.setter
-    def blmt_config(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs']]):
+    def blmt_config(self, value: pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs']]):
         pulumi.set(self, "blmt_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dataFreshness")
-    def data_freshness(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_freshness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The guaranteed data freshness (in seconds) when querying tables created by the stream.
         Editing this field will only affect new tables created in the future, but existing tables
@@ -4501,12 +4501,12 @@ class StreamDestinationConfigBigqueryDestinationConfigArgs:
         return pulumi.get(self, "data_freshness")
 
     @data_freshness.setter
-    def data_freshness(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_freshness(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_freshness", value)
 
     @_builtins.property
     @pulumi.getter
-    def merge(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigMergeArgs']]:
+    def merge(self) -> pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigMergeArgs']]:
         """
         Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
         table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
@@ -4515,12 +4515,12 @@ class StreamDestinationConfigBigqueryDestinationConfigArgs:
         return pulumi.get(self, "merge")
 
     @merge.setter
-    def merge(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigMergeArgs']]):
+    def merge(self, value: pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigMergeArgs']]):
         pulumi.set(self, "merge", value)
 
     @_builtins.property
     @pulumi.getter(name="singleTargetDataset")
-    def single_target_dataset(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']]:
+    def single_target_dataset(self) -> pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']]:
         """
         A single target dataset to which all data will be streamed.
         Structure is documented below.
@@ -4528,12 +4528,12 @@ class StreamDestinationConfigBigqueryDestinationConfigArgs:
         return pulumi.get(self, "single_target_dataset")
 
     @single_target_dataset.setter
-    def single_target_dataset(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']]):
+    def single_target_dataset(self, value: pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']]):
         pulumi.set(self, "single_target_dataset", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceHierarchyDatasets")
-    def source_hierarchy_datasets(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs']]:
+    def source_hierarchy_datasets(self) -> pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs']]:
         """
         Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
         Structure is documented below.
@@ -4541,7 +4541,7 @@ class StreamDestinationConfigBigqueryDestinationConfigArgs:
         return pulumi.get(self, "source_hierarchy_datasets")
 
     @source_hierarchy_datasets.setter
-    def source_hierarchy_datasets(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs']]):
+    def source_hierarchy_datasets(self, value: pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs']]):
         pulumi.set(self, "source_hierarchy_datasets", value)
 
 
@@ -4571,7 +4571,7 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgsDict(TypedDi
     """
     The table format.
     """
-    root_path: NotRequired[pulumi.Input[_builtins.str]]
+    root_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The root path inside the Cloud Storage bucket.
     """
@@ -4583,7 +4583,7 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs:
                  connection_name: pulumi.Input[_builtins.str],
                  file_format: pulumi.Input[_builtins.str],
                  table_format: pulumi.Input[_builtins.str],
-                 root_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 root_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: The Cloud Storage bucket name.
         :param pulumi.Input[_builtins.str] connection_name: The bigquery connection. Format: `{project}.{location}.{name}`
@@ -4648,14 +4648,14 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="rootPath")
-    def root_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root path inside the Cloud Storage bucket.
         """
         return pulumi.get(self, "root_path")
 
     @root_path.setter
-    def root_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_path", value)
 
 
@@ -4705,7 +4705,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArg
     Dataset template used for dynamic dataset creation.
     Structure is documented below.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
     """
@@ -4714,7 +4714,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArg
 class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs:
     def __init__(__self__, *,
                  dataset_template: pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs'],
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs'] dataset_template: Dataset template used for dynamic dataset creation.
                Structure is documented below.
@@ -4739,14 +4739,14 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArg
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
@@ -4756,12 +4756,12 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
     The geographic location where the dataset should reside.
     See https://cloud.google.com/bigquery/docs/locations for supported locations.
     """
-    dataset_id_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    dataset_id_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If supplied, every created dataset will have its name prefixed by the provided value.
     The prefix and name will be separated by an underscore. i.e. _.
     """
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
     table. The BigQuery Service Account associated with your project requires access to this
@@ -4773,8 +4773,8 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
 class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 dataset_id_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataset_id_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: The geographic location where the dataset should reside.
                See https://cloud.google.com/bigquery/docs/locations for supported locations.
@@ -4806,7 +4806,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
 
     @_builtins.property
     @pulumi.getter(name="datasetIdPrefix")
-    def dataset_id_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_id_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If supplied, every created dataset will have its name prefixed by the provided value.
         The prefix and name will be separated by an underscore. i.e. _.
@@ -4814,12 +4814,12 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
         return pulumi.get(self, "dataset_id_prefix")
 
     @dataset_id_prefix.setter
-    def dataset_id_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_id_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
         table. The BigQuery Service Account associated with your project requires access to this
@@ -4829,31 +4829,31 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
 
 class StreamDestinationConfigGcsDestinationConfigArgsDict(TypedDict):
-    avro_file_format: NotRequired[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgsDict']]
+    avro_file_format: NotRequired[pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs']]]
     """
     AVRO file format configuration.
     """
-    file_rotation_interval: NotRequired[pulumi.Input[_builtins.str]]
+    file_rotation_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The maximum duration for which new events are added before a file is closed and a new file is created.
     Values within the range of 15-60 seconds are allowed.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
-    file_rotation_mb: NotRequired[pulumi.Input[_builtins.int]]
+    file_rotation_mb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum file size to be saved in the bucket.
     """
-    json_file_format: NotRequired[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgsDict']]
+    json_file_format: NotRequired[pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs']]]
     """
     JSON file format configuration.
     Structure is documented below.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path inside the Cloud Storage bucket to write data to.
     """
@@ -4861,11 +4861,11 @@ class StreamDestinationConfigGcsDestinationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class StreamDestinationConfigGcsDestinationConfigArgs:
     def __init__(__self__, *,
-                 avro_file_format: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs']] = None,
-                 file_rotation_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_rotation_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 json_file_format: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs']] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 avro_file_format: pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs']] = None,
+                 file_rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_rotation_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 json_file_format: pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs']] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs'] avro_file_format: AVRO file format configuration.
         :param pulumi.Input[_builtins.str] file_rotation_interval: The maximum duration for which new events are added before a file is closed and a new file is created.
@@ -4889,19 +4889,19 @@ class StreamDestinationConfigGcsDestinationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="avroFileFormat")
-    def avro_file_format(self) -> Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs']]:
+    def avro_file_format(self) -> pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs']]:
         """
         AVRO file format configuration.
         """
         return pulumi.get(self, "avro_file_format")
 
     @avro_file_format.setter
-    def avro_file_format(self, value: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs']]):
+    def avro_file_format(self, value: pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs']]):
         pulumi.set(self, "avro_file_format", value)
 
     @_builtins.property
     @pulumi.getter(name="fileRotationInterval")
-    def file_rotation_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_rotation_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum duration for which new events are added before a file is closed and a new file is created.
         Values within the range of 15-60 seconds are allowed.
@@ -4910,24 +4910,24 @@ class StreamDestinationConfigGcsDestinationConfigArgs:
         return pulumi.get(self, "file_rotation_interval")
 
     @file_rotation_interval.setter
-    def file_rotation_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_rotation_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_rotation_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="fileRotationMb")
-    def file_rotation_mb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def file_rotation_mb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum file size to be saved in the bucket.
         """
         return pulumi.get(self, "file_rotation_mb")
 
     @file_rotation_mb.setter
-    def file_rotation_mb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def file_rotation_mb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "file_rotation_mb", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonFileFormat")
-    def json_file_format(self) -> Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs']]:
+    def json_file_format(self) -> pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs']]:
         """
         JSON file format configuration.
         Structure is documented below.
@@ -4935,19 +4935,19 @@ class StreamDestinationConfigGcsDestinationConfigArgs:
         return pulumi.get(self, "json_file_format")
 
     @json_file_format.setter
-    def json_file_format(self, value: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs']]):
+    def json_file_format(self, value: pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs']]):
         pulumi.set(self, "json_file_format", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path inside the Cloud Storage bucket to write data to.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
@@ -4961,12 +4961,12 @@ class StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs:
 
 
 class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgsDict(TypedDict):
-    compression: NotRequired[pulumi.Input[_builtins.str]]
+    compression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Compression of the loaded JSON file.
     Possible values are: `NO_COMPRESSION`, `GZIP`.
     """
-    schema_file_format: NotRequired[pulumi.Input[_builtins.str]]
+    schema_file_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The schema file format along JSON data files.
     Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
@@ -4975,8 +4975,8 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgsDict(TypedDic
 @pulumi.input_type
 class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs:
     def __init__(__self__, *,
-                 compression: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_file_format: Optional[pulumi.Input[_builtins.str]] = None):
+                 compression: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_file_format: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] compression: Compression of the loaded JSON file.
                Possible values are: `NO_COMPRESSION`, `GZIP`.
@@ -4990,7 +4990,7 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs:
 
     @_builtins.property
     @pulumi.getter
-    def compression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Compression of the loaded JSON file.
         Possible values are: `NO_COMPRESSION`, `GZIP`.
@@ -4998,12 +4998,12 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs:
         return pulumi.get(self, "compression")
 
     @compression.setter
-    def compression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compression", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaFileFormat")
-    def schema_file_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_file_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schema file format along JSON data files.
         Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
@@ -5011,7 +5011,7 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs:
         return pulumi.get(self, "schema_file_format")
 
     @schema_file_format.setter
-    def schema_file_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_file_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_file_format", value)
 
 
@@ -5069,12 +5069,12 @@ class StreamRuleSetArgs:
 
 
 class StreamRuleSetCustomizationRuleArgsDict(TypedDict):
-    bigquery_clustering: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryClusteringArgsDict']]
+    bigquery_clustering: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryClusteringArgs']]]
     """
     BigQuery clustering rule.
     Structure is documented below.
     """
-    bigquery_partitioning: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningArgsDict']]
+    bigquery_partitioning: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningArgs']]]
     """
     BigQuery partitioning rule.
     Structure is documented below.
@@ -5083,8 +5083,8 @@ class StreamRuleSetCustomizationRuleArgsDict(TypedDict):
 @pulumi.input_type
 class StreamRuleSetCustomizationRuleArgs:
     def __init__(__self__, *,
-                 bigquery_clustering: Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryClusteringArgs']] = None,
-                 bigquery_partitioning: Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningArgs']] = None):
+                 bigquery_clustering: pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryClusteringArgs']] = None,
+                 bigquery_partitioning: pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningArgs']] = None):
         """
         :param pulumi.Input['StreamRuleSetCustomizationRuleBigqueryClusteringArgs'] bigquery_clustering: BigQuery clustering rule.
                Structure is documented below.
@@ -5098,7 +5098,7 @@ class StreamRuleSetCustomizationRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="bigqueryClustering")
-    def bigquery_clustering(self) -> Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryClusteringArgs']]:
+    def bigquery_clustering(self) -> pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryClusteringArgs']]:
         """
         BigQuery clustering rule.
         Structure is documented below.
@@ -5106,12 +5106,12 @@ class StreamRuleSetCustomizationRuleArgs:
         return pulumi.get(self, "bigquery_clustering")
 
     @bigquery_clustering.setter
-    def bigquery_clustering(self, value: Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryClusteringArgs']]):
+    def bigquery_clustering(self, value: pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryClusteringArgs']]):
         pulumi.set(self, "bigquery_clustering", value)
 
     @_builtins.property
     @pulumi.getter(name="bigqueryPartitioning")
-    def bigquery_partitioning(self) -> Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningArgs']]:
+    def bigquery_partitioning(self) -> pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningArgs']]:
         """
         BigQuery partitioning rule.
         Structure is documented below.
@@ -5119,7 +5119,7 @@ class StreamRuleSetCustomizationRuleArgs:
         return pulumi.get(self, "bigquery_partitioning")
 
     @bigquery_partitioning.setter
-    def bigquery_partitioning(self, value: Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningArgs']]):
+    def bigquery_partitioning(self, value: pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningArgs']]):
         pulumi.set(self, "bigquery_partitioning", value)
 
 
@@ -5152,21 +5152,21 @@ class StreamRuleSetCustomizationRuleBigqueryClusteringArgs:
 
 
 class StreamRuleSetCustomizationRuleBigqueryPartitioningArgsDict(TypedDict):
-    ingestion_time_partition: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgsDict']]
+    ingestion_time_partition: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    integer_range_partition: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgsDict']]
+    integer_range_partition: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    require_partition_filter: NotRequired[pulumi.Input[_builtins.bool]]
+    require_partition_filter: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, queries over the table require a partition filter.
     """
-    time_unit_partition: NotRequired[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgsDict']]
+    time_unit_partition: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -5175,10 +5175,10 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningArgsDict(TypedDict):
 @pulumi.input_type
 class StreamRuleSetCustomizationRuleBigqueryPartitioningArgs:
     def __init__(__self__, *,
-                 ingestion_time_partition: Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs']] = None,
-                 integer_range_partition: Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs']] = None,
-                 require_partition_filter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 time_unit_partition: Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs']] = None):
+                 ingestion_time_partition: pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs']] = None,
+                 integer_range_partition: pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs']] = None,
+                 require_partition_filter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 time_unit_partition: pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs']] = None):
         """
         :param pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs'] ingestion_time_partition: A nested object resource.
                Structure is documented below.
@@ -5199,7 +5199,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningArgs:
 
     @_builtins.property
     @pulumi.getter(name="ingestionTimePartition")
-    def ingestion_time_partition(self) -> Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs']]:
+    def ingestion_time_partition(self) -> pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -5207,12 +5207,12 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningArgs:
         return pulumi.get(self, "ingestion_time_partition")
 
     @ingestion_time_partition.setter
-    def ingestion_time_partition(self, value: Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs']]):
+    def ingestion_time_partition(self, value: pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs']]):
         pulumi.set(self, "ingestion_time_partition", value)
 
     @_builtins.property
     @pulumi.getter(name="integerRangePartition")
-    def integer_range_partition(self) -> Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs']]:
+    def integer_range_partition(self) -> pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -5220,24 +5220,24 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningArgs:
         return pulumi.get(self, "integer_range_partition")
 
     @integer_range_partition.setter
-    def integer_range_partition(self, value: Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs']]):
+    def integer_range_partition(self, value: pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs']]):
         pulumi.set(self, "integer_range_partition", value)
 
     @_builtins.property
     @pulumi.getter(name="requirePartitionFilter")
-    def require_partition_filter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_partition_filter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, queries over the table require a partition filter.
         """
         return pulumi.get(self, "require_partition_filter")
 
     @require_partition_filter.setter
-    def require_partition_filter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_partition_filter(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_partition_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="timeUnitPartition")
-    def time_unit_partition(self) -> Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs']]:
+    def time_unit_partition(self) -> pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -5245,12 +5245,12 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningArgs:
         return pulumi.get(self, "time_unit_partition")
 
     @time_unit_partition.setter
-    def time_unit_partition(self, value: Optional[pulumi.Input['StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs']]):
+    def time_unit_partition(self, value: pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs']]):
         pulumi.set(self, "time_unit_partition", value)
 
 
 class StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgsDict(TypedDict):
-    partitioning_time_granularity: NotRequired[pulumi.Input[_builtins.str]]
+    partitioning_time_granularity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Partition granularity.
     Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
@@ -5259,7 +5259,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionAr
 @pulumi.input_type
 class StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs:
     def __init__(__self__, *,
-                 partitioning_time_granularity: Optional[pulumi.Input[_builtins.str]] = None):
+                 partitioning_time_granularity: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] partitioning_time_granularity: Partition granularity.
                Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
@@ -5269,7 +5269,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionAr
 
     @_builtins.property
     @pulumi.getter(name="partitioningTimeGranularity")
-    def partitioning_time_granularity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partitioning_time_granularity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Partition granularity.
         Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
@@ -5277,7 +5277,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionAr
         return pulumi.get(self, "partitioning_time_granularity")
 
     @partitioning_time_granularity.setter
-    def partitioning_time_granularity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partitioning_time_granularity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partitioning_time_granularity", value)
 
 
@@ -5371,7 +5371,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgsDic
     """
     The partitioning column.
     """
-    partitioning_time_granularity: NotRequired[pulumi.Input[_builtins.str]]
+    partitioning_time_granularity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Partition granularity.
     Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
@@ -5381,7 +5381,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgsDic
 class StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs:
     def __init__(__self__, *,
                  column: pulumi.Input[_builtins.str],
-                 partitioning_time_granularity: Optional[pulumi.Input[_builtins.str]] = None):
+                 partitioning_time_granularity: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] column: The partitioning column.
         :param pulumi.Input[_builtins.str] partitioning_time_granularity: Partition granularity.
@@ -5405,7 +5405,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs:
 
     @_builtins.property
     @pulumi.getter(name="partitioningTimeGranularity")
-    def partitioning_time_granularity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partitioning_time_granularity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Partition granularity.
         Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
@@ -5413,12 +5413,12 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs:
         return pulumi.get(self, "partitioning_time_granularity")
 
     @partitioning_time_granularity.setter
-    def partitioning_time_granularity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partitioning_time_granularity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partitioning_time_granularity", value)
 
 
 class StreamRuleSetObjectFilterArgsDict(TypedDict):
-    source_object_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierArgsDict']]
+    source_object_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierArgs']]]
     """
     Specific source object identifier.
     Structure is documented below.
@@ -5427,7 +5427,7 @@ class StreamRuleSetObjectFilterArgsDict(TypedDict):
 @pulumi.input_type
 class StreamRuleSetObjectFilterArgs:
     def __init__(__self__, *,
-                 source_object_identifier: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierArgs']] = None):
+                 source_object_identifier: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierArgs']] = None):
         """
         :param pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierArgs'] source_object_identifier: Specific source object identifier.
                Structure is documented below.
@@ -5437,7 +5437,7 @@ class StreamRuleSetObjectFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="sourceObjectIdentifier")
-    def source_object_identifier(self) -> Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierArgs']]:
+    def source_object_identifier(self) -> pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierArgs']]:
         """
         Specific source object identifier.
         Structure is documented below.
@@ -5445,42 +5445,42 @@ class StreamRuleSetObjectFilterArgs:
         return pulumi.get(self, "source_object_identifier")
 
     @source_object_identifier.setter
-    def source_object_identifier(self, value: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierArgs']]):
+    def source_object_identifier(self, value: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierArgs']]):
         pulumi.set(self, "source_object_identifier", value)
 
 
 class StreamRuleSetObjectFilterSourceObjectIdentifierArgsDict(TypedDict):
-    mongodb_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgsDict']]
+    mongodb_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    mysql_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgsDict']]
+    mysql_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    oracle_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgsDict']]
+    oracle_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    postgresql_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgsDict']]
+    postgresql_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    salesforce_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgsDict']]
+    salesforce_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    spanner_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgsDict']]
+    spanner_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    sql_server_identifier: NotRequired[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgsDict']]
+    sql_server_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -5489,13 +5489,13 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierArgsDict(TypedDict):
 @pulumi.input_type
 class StreamRuleSetObjectFilterSourceObjectIdentifierArgs:
     def __init__(__self__, *,
-                 mongodb_identifier: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs']] = None,
-                 mysql_identifier: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs']] = None,
-                 oracle_identifier: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs']] = None,
-                 postgresql_identifier: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs']] = None,
-                 salesforce_identifier: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs']] = None,
-                 spanner_identifier: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs']] = None,
-                 sql_server_identifier: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs']] = None):
+                 mongodb_identifier: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs']] = None,
+                 mysql_identifier: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs']] = None,
+                 oracle_identifier: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs']] = None,
+                 postgresql_identifier: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs']] = None,
+                 salesforce_identifier: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs']] = None,
+                 spanner_identifier: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs']] = None,
+                 sql_server_identifier: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs']] = None):
         """
         :param pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs'] mongodb_identifier: A nested object resource.
                Structure is documented below.
@@ -5529,7 +5529,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierArgs:
 
     @_builtins.property
     @pulumi.getter(name="mongodbIdentifier")
-    def mongodb_identifier(self) -> Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs']]:
+    def mongodb_identifier(self) -> pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -5537,12 +5537,12 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierArgs:
         return pulumi.get(self, "mongodb_identifier")
 
     @mongodb_identifier.setter
-    def mongodb_identifier(self, value: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs']]):
+    def mongodb_identifier(self, value: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs']]):
         pulumi.set(self, "mongodb_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="mysqlIdentifier")
-    def mysql_identifier(self) -> Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs']]:
+    def mysql_identifier(self) -> pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -5550,12 +5550,12 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierArgs:
         return pulumi.get(self, "mysql_identifier")
 
     @mysql_identifier.setter
-    def mysql_identifier(self, value: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs']]):
+    def mysql_identifier(self, value: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs']]):
         pulumi.set(self, "mysql_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="oracleIdentifier")
-    def oracle_identifier(self) -> Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs']]:
+    def oracle_identifier(self) -> pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -5563,12 +5563,12 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierArgs:
         return pulumi.get(self, "oracle_identifier")
 
     @oracle_identifier.setter
-    def oracle_identifier(self, value: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs']]):
+    def oracle_identifier(self, value: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs']]):
         pulumi.set(self, "oracle_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="postgresqlIdentifier")
-    def postgresql_identifier(self) -> Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs']]:
+    def postgresql_identifier(self) -> pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -5576,12 +5576,12 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierArgs:
         return pulumi.get(self, "postgresql_identifier")
 
     @postgresql_identifier.setter
-    def postgresql_identifier(self, value: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs']]):
+    def postgresql_identifier(self, value: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs']]):
         pulumi.set(self, "postgresql_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="salesforceIdentifier")
-    def salesforce_identifier(self) -> Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs']]:
+    def salesforce_identifier(self) -> pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -5589,12 +5589,12 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierArgs:
         return pulumi.get(self, "salesforce_identifier")
 
     @salesforce_identifier.setter
-    def salesforce_identifier(self, value: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs']]):
+    def salesforce_identifier(self, value: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs']]):
         pulumi.set(self, "salesforce_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="spannerIdentifier")
-    def spanner_identifier(self) -> Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs']]:
+    def spanner_identifier(self) -> pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -5602,12 +5602,12 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierArgs:
         return pulumi.get(self, "spanner_identifier")
 
     @spanner_identifier.setter
-    def spanner_identifier(self, value: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs']]):
+    def spanner_identifier(self, value: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs']]):
         pulumi.set(self, "spanner_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlServerIdentifier")
-    def sql_server_identifier(self) -> Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs']]:
+    def sql_server_identifier(self) -> pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -5615,7 +5615,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierArgs:
         return pulumi.get(self, "sql_server_identifier")
 
     @sql_server_identifier.setter
-    def sql_server_identifier(self, value: Optional[pulumi.Input['StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs']]):
+    def sql_server_identifier(self, value: pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs']]):
         pulumi.set(self, "sql_server_identifier", value)
 
 
@@ -5840,7 +5840,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgsDict(T
     """
     The table name.
     """
-    schema: NotRequired[pulumi.Input[_builtins.str]]
+    schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The schema name.
     """
@@ -5849,7 +5849,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgsDict(T
 class StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 schema: Optional[pulumi.Input[_builtins.str]] = None):
+                 schema: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] table: The table name.
         :param pulumi.Input[_builtins.str] schema: The schema name.
@@ -5872,14 +5872,14 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs:
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schema name.
         """
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
 
@@ -5935,37 +5935,37 @@ class StreamSourceConfigArgsDict(TypedDict):
     """
     Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
     """
-    mongodb_source_config: NotRequired[pulumi.Input['StreamSourceConfigMongodbSourceConfigArgsDict']]
+    mongodb_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigArgs']]]
     """
     MongoDB source configuration.
     Structure is documented below.
     """
-    mysql_source_config: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigArgsDict']]
+    mysql_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigArgs']]]
     """
     MySQL data source configuration.
     Structure is documented below.
     """
-    oracle_source_config: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigArgsDict']]
+    oracle_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigArgs']]]
     """
     MySQL data source configuration.
     Structure is documented below.
     """
-    postgresql_source_config: NotRequired[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgsDict']]
+    postgresql_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigArgs']]]
     """
     PostgreSQL data source configuration.
     Structure is documented below.
     """
-    salesforce_source_config: NotRequired[pulumi.Input['StreamSourceConfigSalesforceSourceConfigArgsDict']]
+    salesforce_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigArgs']]]
     """
     Salesforce data source configuration.
     Structure is documented below.
     """
-    spanner_source_config: NotRequired[pulumi.Input['StreamSourceConfigSpannerSourceConfigArgsDict']]
+    spanner_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigArgs']]]
     """
     Spanner data source configuration.
     Structure is documented below.
     """
-    sql_server_source_config: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigArgsDict']]
+    sql_server_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigArgs']]]
     """
     SQL Server data source configuration.
     Structure is documented below.
@@ -5975,13 +5975,13 @@ class StreamSourceConfigArgsDict(TypedDict):
 class StreamSourceConfigArgs:
     def __init__(__self__, *,
                  source_connection_profile: pulumi.Input[_builtins.str],
-                 mongodb_source_config: Optional[pulumi.Input['StreamSourceConfigMongodbSourceConfigArgs']] = None,
-                 mysql_source_config: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs']] = None,
-                 oracle_source_config: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigArgs']] = None,
-                 postgresql_source_config: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgs']] = None,
-                 salesforce_source_config: Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigArgs']] = None,
-                 spanner_source_config: Optional[pulumi.Input['StreamSourceConfigSpannerSourceConfigArgs']] = None,
-                 sql_server_source_config: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigArgs']] = None):
+                 mongodb_source_config: pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigArgs']] = None,
+                 mysql_source_config: pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigArgs']] = None,
+                 oracle_source_config: pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigArgs']] = None,
+                 postgresql_source_config: pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigArgs']] = None,
+                 salesforce_source_config: pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigArgs']] = None,
+                 spanner_source_config: pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigArgs']] = None,
+                 sql_server_source_config: pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] source_connection_profile: Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
         :param pulumi.Input['StreamSourceConfigMongodbSourceConfigArgs'] mongodb_source_config: MongoDB source configuration.
@@ -6029,7 +6029,7 @@ class StreamSourceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="mongodbSourceConfig")
-    def mongodb_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigMongodbSourceConfigArgs']]:
+    def mongodb_source_config(self) -> pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigArgs']]:
         """
         MongoDB source configuration.
         Structure is documented below.
@@ -6037,12 +6037,12 @@ class StreamSourceConfigArgs:
         return pulumi.get(self, "mongodb_source_config")
 
     @mongodb_source_config.setter
-    def mongodb_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigMongodbSourceConfigArgs']]):
+    def mongodb_source_config(self, value: pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigArgs']]):
         pulumi.set(self, "mongodb_source_config", value)
 
     @_builtins.property
     @pulumi.getter(name="mysqlSourceConfig")
-    def mysql_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs']]:
+    def mysql_source_config(self) -> pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigArgs']]:
         """
         MySQL data source configuration.
         Structure is documented below.
@@ -6050,12 +6050,12 @@ class StreamSourceConfigArgs:
         return pulumi.get(self, "mysql_source_config")
 
     @mysql_source_config.setter
-    def mysql_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs']]):
+    def mysql_source_config(self, value: pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigArgs']]):
         pulumi.set(self, "mysql_source_config", value)
 
     @_builtins.property
     @pulumi.getter(name="oracleSourceConfig")
-    def oracle_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigArgs']]:
+    def oracle_source_config(self) -> pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigArgs']]:
         """
         MySQL data source configuration.
         Structure is documented below.
@@ -6063,12 +6063,12 @@ class StreamSourceConfigArgs:
         return pulumi.get(self, "oracle_source_config")
 
     @oracle_source_config.setter
-    def oracle_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigArgs']]):
+    def oracle_source_config(self, value: pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigArgs']]):
         pulumi.set(self, "oracle_source_config", value)
 
     @_builtins.property
     @pulumi.getter(name="postgresqlSourceConfig")
-    def postgresql_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgs']]:
+    def postgresql_source_config(self) -> pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigArgs']]:
         """
         PostgreSQL data source configuration.
         Structure is documented below.
@@ -6076,12 +6076,12 @@ class StreamSourceConfigArgs:
         return pulumi.get(self, "postgresql_source_config")
 
     @postgresql_source_config.setter
-    def postgresql_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgs']]):
+    def postgresql_source_config(self, value: pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigArgs']]):
         pulumi.set(self, "postgresql_source_config", value)
 
     @_builtins.property
     @pulumi.getter(name="salesforceSourceConfig")
-    def salesforce_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigArgs']]:
+    def salesforce_source_config(self) -> pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigArgs']]:
         """
         Salesforce data source configuration.
         Structure is documented below.
@@ -6089,12 +6089,12 @@ class StreamSourceConfigArgs:
         return pulumi.get(self, "salesforce_source_config")
 
     @salesforce_source_config.setter
-    def salesforce_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigArgs']]):
+    def salesforce_source_config(self, value: pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigArgs']]):
         pulumi.set(self, "salesforce_source_config", value)
 
     @_builtins.property
     @pulumi.getter(name="spannerSourceConfig")
-    def spanner_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigSpannerSourceConfigArgs']]:
+    def spanner_source_config(self) -> pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigArgs']]:
         """
         Spanner data source configuration.
         Structure is documented below.
@@ -6102,12 +6102,12 @@ class StreamSourceConfigArgs:
         return pulumi.get(self, "spanner_source_config")
 
     @spanner_source_config.setter
-    def spanner_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigSpannerSourceConfigArgs']]):
+    def spanner_source_config(self, value: pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigArgs']]):
         pulumi.set(self, "spanner_source_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlServerSourceConfig")
-    def sql_server_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigArgs']]:
+    def sql_server_source_config(self) -> pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigArgs']]:
         """
         SQL Server data source configuration.
         Structure is documented below.
@@ -6115,22 +6115,22 @@ class StreamSourceConfigArgs:
         return pulumi.get(self, "sql_server_source_config")
 
     @sql_server_source_config.setter
-    def sql_server_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigArgs']]):
+    def sql_server_source_config(self, value: pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigArgs']]):
         pulumi.set(self, "sql_server_source_config", value)
 
 
 class StreamSourceConfigMongodbSourceConfigArgsDict(TypedDict):
-    exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsArgsDict']]
+    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs']]]
     """
     MongoDB collections to include in the stream.
     Structure is documented below.
     """
-    include_objects: NotRequired[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsArgsDict']]
+    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs']]]
     """
     MongoDB collections to include in the stream.
     Structure is documented below.
     """
-    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Maximum number of concurrent backfill tasks. The number
     should be non-negative and less than or equal to 50. If not set
@@ -6140,9 +6140,9 @@ class StreamSourceConfigMongodbSourceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigArgs:
     def __init__(__self__, *,
-                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs']] = None,
-                 include_objects: Optional[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs']] = None,
-                 max_concurrent_backfill_tasks: Optional[pulumi.Input[_builtins.int]] = None):
+                 exclude_objects: pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs']] = None,
+                 include_objects: pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs']] = None,
+                 max_concurrent_backfill_tasks: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs'] exclude_objects: MongoDB collections to include in the stream.
                Structure is documented below.
@@ -6161,7 +6161,7 @@ class StreamSourceConfigMongodbSourceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludeObjects")
-    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs']]:
+    def exclude_objects(self) -> pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs']]:
         """
         MongoDB collections to include in the stream.
         Structure is documented below.
@@ -6169,12 +6169,12 @@ class StreamSourceConfigMongodbSourceConfigArgs:
         return pulumi.get(self, "exclude_objects")
 
     @exclude_objects.setter
-    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs']]):
+    def exclude_objects(self, value: pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs']]):
         pulumi.set(self, "exclude_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="includeObjects")
-    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs']]:
+    def include_objects(self) -> pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs']]:
         """
         MongoDB collections to include in the stream.
         Structure is documented below.
@@ -6182,12 +6182,12 @@ class StreamSourceConfigMongodbSourceConfigArgs:
         return pulumi.get(self, "include_objects")
 
     @include_objects.setter
-    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs']]):
+    def include_objects(self, value: pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs']]):
         pulumi.set(self, "include_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrentBackfillTasks")
-    def max_concurrent_backfill_tasks(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrent_backfill_tasks(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Maximum number of concurrent backfill tasks. The number
         should be non-negative and less than or equal to 50. If not set
@@ -6196,12 +6196,12 @@ class StreamSourceConfigMongodbSourceConfigArgs:
         return pulumi.get(self, "max_concurrent_backfill_tasks")
 
     @max_concurrent_backfill_tasks.setter
-    def max_concurrent_backfill_tasks(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrent_backfill_tasks(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrent_backfill_tasks", value)
 
 
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsArgsDict(TypedDict):
-    databases: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgsDict']]]]
+    databases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs']]]]]
     """
     MongoDB databases in the cluster.
     Structure is documented below.
@@ -6210,7 +6210,7 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsArgsDict(TypedDict):
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs:
     def __init__(__self__, *,
-                 databases: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs']]]] = None):
+                 databases: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs']]] databases: MongoDB databases in the cluster.
                Structure is documented below.
@@ -6220,7 +6220,7 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs']]]]:
+    def databases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs']]]]:
         """
         MongoDB databases in the cluster.
         Structure is documented below.
@@ -6228,17 +6228,17 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs:
         return pulumi.get(self, "databases")
 
     @databases.setter
-    def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs']]]]):
+    def databases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs']]]]):
         pulumi.set(self, "databases", value)
 
 
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgsDict(TypedDict):
-    collections: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgsDict']]]]
+    collections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs']]]]]
     """
     Collections in the database.
     Structure is documented below.
     """
-    database: NotRequired[pulumi.Input[_builtins.str]]
+    database: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Database name.
     """
@@ -6246,8 +6246,8 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgsDict(TypedD
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs:
     def __init__(__self__, *,
-                 collections: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs']]]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None):
+                 collections: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs']]]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs']]] collections: Collections in the database.
                Structure is documented below.
@@ -6260,7 +6260,7 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter
-    def collections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs']]]]:
+    def collections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs']]]]:
         """
         Collections in the database.
         Structure is documented below.
@@ -6268,28 +6268,28 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs:
         return pulumi.get(self, "collections")
 
     @collections.setter
-    def collections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs']]]]):
+    def collections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs']]]]):
         pulumi.set(self, "collections", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database name.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
 
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgsDict(TypedDict):
-    collection: NotRequired[pulumi.Input[_builtins.str]]
+    collection: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Collection name.
     """
-    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgsDict']]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs']]]]]
     """
     Fields in the collection.
     Structure is documented below.
@@ -6298,8 +6298,8 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgsD
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs:
     def __init__(__self__, *,
-                 collection: Optional[pulumi.Input[_builtins.str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs']]]] = None):
+                 collection: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] collection: Collection name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs']]] fields: Fields in the collection.
@@ -6312,19 +6312,19 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def collection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Collection name.
         """
         return pulumi.get(self, "collection")
 
     @collection.setter
-    def collection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collection", value)
 
     @_builtins.property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs']]]]:
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs']]]]:
         """
         Fields in the collection.
         Structure is documented below.
@@ -6332,12 +6332,12 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs']]]]):
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs']]]]):
         pulumi.set(self, "fields", value)
 
 
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgsDict(TypedDict):
-    field: NotRequired[pulumi.Input[_builtins.str]]
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field name.
     """
@@ -6345,7 +6345,7 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs:
     def __init__(__self__, *,
-                 field: Optional[pulumi.Input[_builtins.str]] = None):
+                 field: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] field: Field name.
         """
@@ -6354,19 +6354,19 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField
 
     @_builtins.property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field name.
         """
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field", value)
 
 
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsArgsDict(TypedDict):
-    databases: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgsDict']]]]
+    databases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs']]]]]
     """
     MongoDB databases in the cluster.
     Structure is documented below.
@@ -6375,7 +6375,7 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsArgsDict(TypedDict):
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs:
     def __init__(__self__, *,
-                 databases: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs']]]] = None):
+                 databases: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs']]] databases: MongoDB databases in the cluster.
                Structure is documented below.
@@ -6385,7 +6385,7 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs']]]]:
+    def databases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs']]]]:
         """
         MongoDB databases in the cluster.
         Structure is documented below.
@@ -6393,17 +6393,17 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs:
         return pulumi.get(self, "databases")
 
     @databases.setter
-    def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs']]]]):
+    def databases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs']]]]):
         pulumi.set(self, "databases", value)
 
 
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgsDict(TypedDict):
-    collections: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgsDict']]]]
+    collections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs']]]]]
     """
     Collections in the database.
     Structure is documented below.
     """
-    database: NotRequired[pulumi.Input[_builtins.str]]
+    database: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Database name.
     """
@@ -6411,8 +6411,8 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgsDict(TypedD
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs:
     def __init__(__self__, *,
-                 collections: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs']]]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None):
+                 collections: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs']]]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs']]] collections: Collections in the database.
                Structure is documented below.
@@ -6425,7 +6425,7 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter
-    def collections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs']]]]:
+    def collections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs']]]]:
         """
         Collections in the database.
         Structure is documented below.
@@ -6433,28 +6433,28 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs:
         return pulumi.get(self, "collections")
 
     @collections.setter
-    def collections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs']]]]):
+    def collections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs']]]]):
         pulumi.set(self, "collections", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database name.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
 
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgsDict(TypedDict):
-    collection: NotRequired[pulumi.Input[_builtins.str]]
+    collection: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Collection name.
     """
-    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgsDict']]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs']]]]]
     """
     Fields in the collection.
     Structure is documented below.
@@ -6463,8 +6463,8 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgsD
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs:
     def __init__(__self__, *,
-                 collection: Optional[pulumi.Input[_builtins.str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs']]]] = None):
+                 collection: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] collection: Collection name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs']]] fields: Fields in the collection.
@@ -6477,19 +6477,19 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def collection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Collection name.
         """
         return pulumi.get(self, "collection")
 
     @collection.setter
-    def collection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collection", value)
 
     @_builtins.property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs']]]]:
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs']]]]:
         """
         Fields in the collection.
         Structure is documented below.
@@ -6497,12 +6497,12 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs']]]]):
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs']]]]):
         pulumi.set(self, "fields", value)
 
 
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgsDict(TypedDict):
-    field: NotRequired[pulumi.Input[_builtins.str]]
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field name.
     """
@@ -6510,7 +6510,7 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField
 @pulumi.input_type
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs:
     def __init__(__self__, *,
-                 field: Optional[pulumi.Input[_builtins.str]] = None):
+                 field: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] field: Field name.
         """
@@ -6519,42 +6519,42 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField
 
     @_builtins.property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field name.
         """
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field", value)
 
 
 class StreamSourceConfigMysqlSourceConfigArgsDict(TypedDict):
-    binary_log_position: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgsDict']]
+    binary_log_position: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs']]]
     """
     CDC reader reads from binary logs replication cdc method.
     """
-    exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgsDict']]
+    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']]]
     """
     MySQL objects to exclude from the stream.
     Structure is documented below.
     """
-    gtid: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigGtidArgsDict']]
+    gtid: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigGtidArgs']]]
     """
     CDC reader reads from gtid based replication.
     """
-    include_objects: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgsDict']]
+    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']]]
     """
     MySQL objects to retrieve from the source.
     Structure is documented below.
     """
-    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of concurrent backfill tasks. The number should be non negative.
     If not set (or set to 0), the system's default value will be used.
     """
-    max_concurrent_cdc_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    max_concurrent_cdc_tasks: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of concurrent CDC tasks. The number should be non negative.
     If not set (or set to 0), the system's default value will be used.
@@ -6563,12 +6563,12 @@ class StreamSourceConfigMysqlSourceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigArgs:
     def __init__(__self__, *,
-                 binary_log_position: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs']] = None,
-                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']] = None,
-                 gtid: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigGtidArgs']] = None,
-                 include_objects: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']] = None,
-                 max_concurrent_backfill_tasks: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_concurrent_cdc_tasks: Optional[pulumi.Input[_builtins.int]] = None):
+                 binary_log_position: pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs']] = None,
+                 exclude_objects: pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']] = None,
+                 gtid: pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigGtidArgs']] = None,
+                 include_objects: pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']] = None,
+                 max_concurrent_backfill_tasks: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_concurrent_cdc_tasks: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs'] binary_log_position: CDC reader reads from binary logs replication cdc method.
         :param pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs'] exclude_objects: MySQL objects to exclude from the stream.
@@ -6596,19 +6596,19 @@ class StreamSourceConfigMysqlSourceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="binaryLogPosition")
-    def binary_log_position(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs']]:
+    def binary_log_position(self) -> pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs']]:
         """
         CDC reader reads from binary logs replication cdc method.
         """
         return pulumi.get(self, "binary_log_position")
 
     @binary_log_position.setter
-    def binary_log_position(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs']]):
+    def binary_log_position(self, value: pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs']]):
         pulumi.set(self, "binary_log_position", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeObjects")
-    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']]:
+    def exclude_objects(self) -> pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']]:
         """
         MySQL objects to exclude from the stream.
         Structure is documented below.
@@ -6616,24 +6616,24 @@ class StreamSourceConfigMysqlSourceConfigArgs:
         return pulumi.get(self, "exclude_objects")
 
     @exclude_objects.setter
-    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']]):
+    def exclude_objects(self, value: pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']]):
         pulumi.set(self, "exclude_objects", value)
 
     @_builtins.property
     @pulumi.getter
-    def gtid(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigGtidArgs']]:
+    def gtid(self) -> pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigGtidArgs']]:
         """
         CDC reader reads from gtid based replication.
         """
         return pulumi.get(self, "gtid")
 
     @gtid.setter
-    def gtid(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigGtidArgs']]):
+    def gtid(self, value: pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigGtidArgs']]):
         pulumi.set(self, "gtid", value)
 
     @_builtins.property
     @pulumi.getter(name="includeObjects")
-    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']]:
+    def include_objects(self) -> pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']]:
         """
         MySQL objects to retrieve from the source.
         Structure is documented below.
@@ -6641,12 +6641,12 @@ class StreamSourceConfigMysqlSourceConfigArgs:
         return pulumi.get(self, "include_objects")
 
     @include_objects.setter
-    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']]):
+    def include_objects(self, value: pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']]):
         pulumi.set(self, "include_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrentBackfillTasks")
-    def max_concurrent_backfill_tasks(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrent_backfill_tasks(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of concurrent backfill tasks. The number should be non negative.
         If not set (or set to 0), the system's default value will be used.
@@ -6654,12 +6654,12 @@ class StreamSourceConfigMysqlSourceConfigArgs:
         return pulumi.get(self, "max_concurrent_backfill_tasks")
 
     @max_concurrent_backfill_tasks.setter
-    def max_concurrent_backfill_tasks(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrent_backfill_tasks(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrent_backfill_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrentCdcTasks")
-    def max_concurrent_cdc_tasks(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrent_cdc_tasks(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of concurrent CDC tasks. The number should be non negative.
         If not set (or set to 0), the system's default value will be used.
@@ -6667,7 +6667,7 @@ class StreamSourceConfigMysqlSourceConfigArgs:
         return pulumi.get(self, "max_concurrent_cdc_tasks")
 
     @max_concurrent_cdc_tasks.setter
-    def max_concurrent_cdc_tasks(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrent_cdc_tasks(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrent_cdc_tasks", value)
 
 
@@ -6716,7 +6716,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgsDict(Typ
     """
     Database name.
     """
-    mysql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgsDict']]]]
+    mysql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]]]
     """
     Tables in the database.
     Structure is documented below.
@@ -6726,7 +6726,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgsDict(Typ
 class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs:
     def __init__(__self__, *,
                  database: pulumi.Input[_builtins.str],
-                 mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
+                 mysql_tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] database: Database name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]] mysql_tables: Tables in the database.
@@ -6750,7 +6750,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="mysqlTables")
-    def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]]:
+    def mysql_tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]]:
         """
         Tables in the database.
         Structure is documented below.
@@ -6758,7 +6758,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs:
         return pulumi.get(self, "mysql_tables")
 
     @mysql_tables.setter
-    def mysql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]]):
+    def mysql_tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]]):
         pulumi.set(self, "mysql_tables", value)
 
 
@@ -6767,7 +6767,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableAr
     """
     Table name.
     """
-    mysql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict']]]]
+    mysql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]]
     """
     MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -6777,7 +6777,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableAr
 class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
+                 mysql_columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -6801,7 +6801,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableAr
 
     @_builtins.property
     @pulumi.getter(name="mysqlColumns")
-    def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
+    def mysql_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
         """
         MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -6809,38 +6809,38 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableAr
         return pulumi.get(self, "mysql_columns")
 
     @mysql_columns.setter
-    def mysql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]):
+    def mysql_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]):
         pulumi.set(self, "mysql_columns", value)
 
 
 class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict(TypedDict):
-    collation: NotRequired[pulumi.Input[_builtins.str]]
+    collation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column collation.
     """
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The MySQL data type. Full data types list can be found here:
     https://dev.mysql.com/doc/refman/8.0/en/data-types.html
     """
-    length: NotRequired[pulumi.Input[_builtins.int]]
+    length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column length.
     """
-    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    nullable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether or not the column can accept a null value.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ordinal position of the column in the table.
     """
-    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether or not the column represents a primary key.
     """
@@ -6848,13 +6848,13 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs:
     def __init__(__self__, *,
-                 collation: Optional[pulumi.Input[_builtins.str]] = None,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 length: Optional[pulumi.Input[_builtins.int]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_key: Optional[pulumi.Input[_builtins.bool]] = None):
+                 collation: pulumi.Input[Optional[_builtins.str]] = None,
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 length: pulumi.Input[Optional[_builtins.int]] = None,
+                 nullable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_key: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] collation: Column collation.
         :param pulumi.Input[_builtins.str] column: Column name.
@@ -6883,31 +6883,31 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
 
     @_builtins.property
     @pulumi.getter
-    def collation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column collation.
         """
         return pulumi.get(self, "collation")
 
     @collation.setter
-    def collation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collation", value)
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column name.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The MySQL data type. Full data types list can be found here:
         https://dev.mysql.com/doc/refman/8.0/en/data-types.html
@@ -6915,12 +6915,12 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column length.
@@ -6928,43 +6928,43 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
         return pulumi.get(self, "length")
 
     @length.setter
-    def length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "length", value)
 
     @_builtins.property
     @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nullable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
 
     @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nullable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nullable", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKey")
-    def primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
-    def primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary_key", value)
 
 
@@ -7013,7 +7013,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgsDict(Typ
     """
     Database name.
     """
-    mysql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgsDict']]]]
+    mysql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]]]
     """
     Tables in the database.
     Structure is documented below.
@@ -7023,7 +7023,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgsDict(Typ
 class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs:
     def __init__(__self__, *,
                  database: pulumi.Input[_builtins.str],
-                 mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
+                 mysql_tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] database: Database name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]] mysql_tables: Tables in the database.
@@ -7047,7 +7047,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="mysqlTables")
-    def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]]:
+    def mysql_tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]]:
         """
         Tables in the database.
         Structure is documented below.
@@ -7055,7 +7055,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs:
         return pulumi.get(self, "mysql_tables")
 
     @mysql_tables.setter
-    def mysql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]]):
+    def mysql_tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]]):
         pulumi.set(self, "mysql_tables", value)
 
 
@@ -7064,7 +7064,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableAr
     """
     Table name.
     """
-    mysql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict']]]]
+    mysql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]]
     """
     MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -7074,7 +7074,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableAr
 class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
+                 mysql_columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -7098,7 +7098,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableAr
 
     @_builtins.property
     @pulumi.getter(name="mysqlColumns")
-    def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
+    def mysql_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
         """
         MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -7106,38 +7106,38 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableAr
         return pulumi.get(self, "mysql_columns")
 
     @mysql_columns.setter
-    def mysql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]):
+    def mysql_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]):
         pulumi.set(self, "mysql_columns", value)
 
 
 class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict(TypedDict):
-    collation: NotRequired[pulumi.Input[_builtins.str]]
+    collation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column collation.
     """
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The MySQL data type. Full data types list can be found here:
     https://dev.mysql.com/doc/refman/8.0/en/data-types.html
     """
-    length: NotRequired[pulumi.Input[_builtins.int]]
+    length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column length.
     """
-    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    nullable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether or not the column can accept a null value.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ordinal position of the column in the table.
     """
-    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether or not the column represents a primary key.
     """
@@ -7145,13 +7145,13 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs:
     def __init__(__self__, *,
-                 collation: Optional[pulumi.Input[_builtins.str]] = None,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 length: Optional[pulumi.Input[_builtins.int]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_key: Optional[pulumi.Input[_builtins.bool]] = None):
+                 collation: pulumi.Input[Optional[_builtins.str]] = None,
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 length: pulumi.Input[Optional[_builtins.int]] = None,
+                 nullable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_key: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] collation: Column collation.
         :param pulumi.Input[_builtins.str] column: Column name.
@@ -7180,31 +7180,31 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
 
     @_builtins.property
     @pulumi.getter
-    def collation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column collation.
         """
         return pulumi.get(self, "collation")
 
     @collation.setter
-    def collation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collation", value)
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column name.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The MySQL data type. Full data types list can be found here:
         https://dev.mysql.com/doc/refman/8.0/en/data-types.html
@@ -7212,12 +7212,12 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column length.
@@ -7225,72 +7225,72 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
         return pulumi.get(self, "length")
 
     @length.setter
-    def length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "length", value)
 
     @_builtins.property
     @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nullable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
 
     @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nullable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nullable", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKey")
-    def primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
-    def primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary_key", value)
 
 
 class StreamSourceConfigOracleSourceConfigArgsDict(TypedDict):
-    drop_large_objects: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgsDict']]
+    drop_large_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs']]]
     """
     Configuration to drop large object values.
     """
-    exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgsDict']]
+    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs']]]
     """
     Oracle objects to exclude from the stream.
     Structure is documented below.
     """
-    include_objects: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArgsDict']]
+    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs']]]
     """
     Oracle objects to retrieve from the source.
     Structure is documented below.
     """
-    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of concurrent backfill tasks. The number should be non negative.
     If not set (or set to 0), the system's default value will be used.
     """
-    max_concurrent_cdc_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    max_concurrent_cdc_tasks: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of concurrent CDC tasks. The number should be non negative.
     If not set (or set to 0), the system's default value will be used.
     """
-    stream_large_objects: NotRequired[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgsDict']]
+    stream_large_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs']]]
     """
     Configuration to drop large object values.
     """
@@ -7298,12 +7298,12 @@ class StreamSourceConfigOracleSourceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class StreamSourceConfigOracleSourceConfigArgs:
     def __init__(__self__, *,
-                 drop_large_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs']] = None,
-                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs']] = None,
-                 include_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs']] = None,
-                 max_concurrent_backfill_tasks: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_concurrent_cdc_tasks: Optional[pulumi.Input[_builtins.int]] = None,
-                 stream_large_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs']] = None):
+                 drop_large_objects: pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs']] = None,
+                 exclude_objects: pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs']] = None,
+                 include_objects: pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs']] = None,
+                 max_concurrent_backfill_tasks: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_concurrent_cdc_tasks: pulumi.Input[Optional[_builtins.int]] = None,
+                 stream_large_objects: pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs']] = None):
         """
         :param pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs'] drop_large_objects: Configuration to drop large object values.
         :param pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs'] exclude_objects: Oracle objects to exclude from the stream.
@@ -7331,19 +7331,19 @@ class StreamSourceConfigOracleSourceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dropLargeObjects")
-    def drop_large_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs']]:
+    def drop_large_objects(self) -> pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs']]:
         """
         Configuration to drop large object values.
         """
         return pulumi.get(self, "drop_large_objects")
 
     @drop_large_objects.setter
-    def drop_large_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs']]):
+    def drop_large_objects(self, value: pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs']]):
         pulumi.set(self, "drop_large_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeObjects")
-    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs']]:
+    def exclude_objects(self) -> pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs']]:
         """
         Oracle objects to exclude from the stream.
         Structure is documented below.
@@ -7351,12 +7351,12 @@ class StreamSourceConfigOracleSourceConfigArgs:
         return pulumi.get(self, "exclude_objects")
 
     @exclude_objects.setter
-    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs']]):
+    def exclude_objects(self, value: pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs']]):
         pulumi.set(self, "exclude_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="includeObjects")
-    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs']]:
+    def include_objects(self) -> pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs']]:
         """
         Oracle objects to retrieve from the source.
         Structure is documented below.
@@ -7364,12 +7364,12 @@ class StreamSourceConfigOracleSourceConfigArgs:
         return pulumi.get(self, "include_objects")
 
     @include_objects.setter
-    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs']]):
+    def include_objects(self, value: pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs']]):
         pulumi.set(self, "include_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrentBackfillTasks")
-    def max_concurrent_backfill_tasks(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrent_backfill_tasks(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of concurrent backfill tasks. The number should be non negative.
         If not set (or set to 0), the system's default value will be used.
@@ -7377,12 +7377,12 @@ class StreamSourceConfigOracleSourceConfigArgs:
         return pulumi.get(self, "max_concurrent_backfill_tasks")
 
     @max_concurrent_backfill_tasks.setter
-    def max_concurrent_backfill_tasks(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrent_backfill_tasks(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrent_backfill_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrentCdcTasks")
-    def max_concurrent_cdc_tasks(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrent_cdc_tasks(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of concurrent CDC tasks. The number should be non negative.
         If not set (or set to 0), the system's default value will be used.
@@ -7390,19 +7390,19 @@ class StreamSourceConfigOracleSourceConfigArgs:
         return pulumi.get(self, "max_concurrent_cdc_tasks")
 
     @max_concurrent_cdc_tasks.setter
-    def max_concurrent_cdc_tasks(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrent_cdc_tasks(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrent_cdc_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="streamLargeObjects")
-    def stream_large_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs']]:
+    def stream_large_objects(self) -> pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs']]:
         """
         Configuration to drop large object values.
         """
         return pulumi.get(self, "stream_large_objects")
 
     @stream_large_objects.setter
-    def stream_large_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs']]):
+    def stream_large_objects(self, value: pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs']]):
         pulumi.set(self, "stream_large_objects", value)
 
 
@@ -7451,7 +7451,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgsDict(Typ
     """
     Schema name.
     """
-    oracle_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgsDict']]]]
+    oracle_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]]]
     """
     Tables in the database.
     Structure is documented below.
@@ -7461,7 +7461,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgsDict(Typ
 class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]] = None):
+                 oracle_tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] schema: Schema name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]] oracle_tables: Tables in the database.
@@ -7485,7 +7485,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs:
 
     @_builtins.property
     @pulumi.getter(name="oracleTables")
-    def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]]:
+    def oracle_tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]]:
         """
         Tables in the database.
         Structure is documented below.
@@ -7493,7 +7493,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs:
         return pulumi.get(self, "oracle_tables")
 
     @oracle_tables.setter
-    def oracle_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]]):
+    def oracle_tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]]):
         pulumi.set(self, "oracle_tables", value)
 
 
@@ -7502,7 +7502,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableA
     """
     Table name.
     """
-    oracle_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgsDict']]]]
+    oracle_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]]
     """
     Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -7512,7 +7512,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableA
 class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
+                 oracle_columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -7536,7 +7536,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableA
 
     @_builtins.property
     @pulumi.getter(name="oracleColumns")
-    def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
+    def oracle_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
         """
         Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -7544,51 +7544,51 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableA
         return pulumi.get(self, "oracle_columns")
 
     @oracle_columns.setter
-    def oracle_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]):
+    def oracle_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]):
         pulumi.set(self, "oracle_columns", value)
 
 
 class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgsDict(TypedDict):
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Oracle data type. Full data types list can be found here:
     https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
     """
-    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    encoding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Column encoding.
     """
-    length: NotRequired[pulumi.Input[_builtins.int]]
+    length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column length.
     """
-    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    nullable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether or not the column can accept a null value.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The ordinal position of the column in the table.
     """
-    precision: NotRequired[pulumi.Input[_builtins.int]]
+    precision: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column precision.
     """
-    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether or not the column represents a primary key.
     """
-    scale: NotRequired[pulumi.Input[_builtins.int]]
+    scale: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column scale.
@@ -7597,15 +7597,15 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
 @pulumi.input_type
 class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs:
     def __init__(__self__, *,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 length: Optional[pulumi.Input[_builtins.int]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None,
-                 precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale: Optional[pulumi.Input[_builtins.int]] = None):
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 length: pulumi.Input[Optional[_builtins.int]] = None,
+                 nullable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None,
+                 precision: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] column: Column name.
         :param pulumi.Input[_builtins.str] data_type: The Oracle data type. Full data types list can be found here:
@@ -7646,19 +7646,19 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column name.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Oracle data type. Full data types list can be found here:
         https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
@@ -7666,12 +7666,12 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Column encoding.
@@ -7679,12 +7679,12 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "encoding")
 
     @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoding", value)
 
     @_builtins.property
     @pulumi.getter
-    def length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column length.
@@ -7692,12 +7692,12 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "length")
 
     @length.setter
-    def length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "length", value)
 
     @_builtins.property
     @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nullable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether or not the column can accept a null value.
@@ -7705,12 +7705,12 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "nullable")
 
     @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nullable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nullable", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The ordinal position of the column in the table.
@@ -7718,12 +7718,12 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
     @_builtins.property
     @pulumi.getter
-    def precision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def precision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column precision.
@@ -7731,12 +7731,12 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "precision")
 
     @precision.setter
-    def precision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def precision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "precision", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKey")
-    def primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether or not the column represents a primary key.
@@ -7744,12 +7744,12 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
-    def primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def scale(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column scale.
@@ -7757,7 +7757,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "scale")
 
     @scale.setter
-    def scale(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale", value)
 
 
@@ -7797,7 +7797,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgsDict(Typ
     """
     Schema name.
     """
-    oracle_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgsDict']]]]
+    oracle_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]]]
     """
     Tables in the database.
     Structure is documented below.
@@ -7807,7 +7807,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgsDict(Typ
 class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]] = None):
+                 oracle_tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] schema: Schema name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]] oracle_tables: Tables in the database.
@@ -7831,7 +7831,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs:
 
     @_builtins.property
     @pulumi.getter(name="oracleTables")
-    def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]]:
+    def oracle_tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]]:
         """
         Tables in the database.
         Structure is documented below.
@@ -7839,7 +7839,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs:
         return pulumi.get(self, "oracle_tables")
 
     @oracle_tables.setter
-    def oracle_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]]):
+    def oracle_tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]]):
         pulumi.set(self, "oracle_tables", value)
 
 
@@ -7848,7 +7848,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableA
     """
     Table name.
     """
-    oracle_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgsDict']]]]
+    oracle_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]]
     """
     Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -7858,7 +7858,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableA
 class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
+                 oracle_columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -7882,7 +7882,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableA
 
     @_builtins.property
     @pulumi.getter(name="oracleColumns")
-    def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
+    def oracle_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
         """
         Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -7890,51 +7890,51 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableA
         return pulumi.get(self, "oracle_columns")
 
     @oracle_columns.setter
-    def oracle_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]):
+    def oracle_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]):
         pulumi.set(self, "oracle_columns", value)
 
 
 class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgsDict(TypedDict):
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Oracle data type. Full data types list can be found here:
     https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
     """
-    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    encoding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Column encoding.
     """
-    length: NotRequired[pulumi.Input[_builtins.int]]
+    length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column length.
     """
-    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    nullable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether or not the column can accept a null value.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The ordinal position of the column in the table.
     """
-    precision: NotRequired[pulumi.Input[_builtins.int]]
+    precision: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column precision.
     """
-    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether or not the column represents a primary key.
     """
-    scale: NotRequired[pulumi.Input[_builtins.int]]
+    scale: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column scale.
@@ -7943,15 +7943,15 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
 @pulumi.input_type
 class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs:
     def __init__(__self__, *,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 length: Optional[pulumi.Input[_builtins.int]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None,
-                 precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale: Optional[pulumi.Input[_builtins.int]] = None):
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 length: pulumi.Input[Optional[_builtins.int]] = None,
+                 nullable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None,
+                 precision: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] column: Column name.
         :param pulumi.Input[_builtins.str] data_type: The Oracle data type. Full data types list can be found here:
@@ -7992,19 +7992,19 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column name.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Oracle data type. Full data types list can be found here:
         https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
@@ -8012,12 +8012,12 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Column encoding.
@@ -8025,12 +8025,12 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "encoding")
 
     @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoding", value)
 
     @_builtins.property
     @pulumi.getter
-    def length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column length.
@@ -8038,12 +8038,12 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "length")
 
     @length.setter
-    def length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "length", value)
 
     @_builtins.property
     @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nullable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether or not the column can accept a null value.
@@ -8051,12 +8051,12 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "nullable")
 
     @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nullable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nullable", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The ordinal position of the column in the table.
@@ -8064,12 +8064,12 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
     @_builtins.property
     @pulumi.getter
-    def precision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def precision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column precision.
@@ -8077,12 +8077,12 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "precision")
 
     @precision.setter
-    def precision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def precision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "precision", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKey")
-    def primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether or not the column represents a primary key.
@@ -8090,12 +8090,12 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
-    def primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def scale(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column scale.
@@ -8103,7 +8103,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
         return pulumi.get(self, "scale")
 
     @scale.setter
-    def scale(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale", value)
 
 
@@ -8127,17 +8127,17 @@ class StreamSourceConfigPostgresqlSourceConfigArgsDict(TypedDict):
     The name of the logical replication slot that's configured with
     the pgoutput plugin.
     """
-    exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgsDict']]
+    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs']]]
     """
     PostgreSQL objects to exclude from the stream.
     Structure is documented below.
     """
-    include_objects: NotRequired[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgsDict']]
+    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs']]]
     """
     PostgreSQL objects to retrieve from the source.
     Structure is documented below.
     """
-    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of concurrent backfill tasks. The number should be non
     negative. If not set (or set to 0), the system's default value will be used.
@@ -8148,9 +8148,9 @@ class StreamSourceConfigPostgresqlSourceConfigArgs:
     def __init__(__self__, *,
                  publication: pulumi.Input[_builtins.str],
                  replication_slot: pulumi.Input[_builtins.str],
-                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs']] = None,
-                 include_objects: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs']] = None,
-                 max_concurrent_backfill_tasks: Optional[pulumi.Input[_builtins.int]] = None):
+                 exclude_objects: pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs']] = None,
+                 include_objects: pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs']] = None,
+                 max_concurrent_backfill_tasks: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] publication: The name of the publication that includes the set of all tables
                that are defined in the stream's include_objects.
@@ -8200,7 +8200,7 @@ class StreamSourceConfigPostgresqlSourceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludeObjects")
-    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs']]:
+    def exclude_objects(self) -> pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs']]:
         """
         PostgreSQL objects to exclude from the stream.
         Structure is documented below.
@@ -8208,12 +8208,12 @@ class StreamSourceConfigPostgresqlSourceConfigArgs:
         return pulumi.get(self, "exclude_objects")
 
     @exclude_objects.setter
-    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs']]):
+    def exclude_objects(self, value: pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs']]):
         pulumi.set(self, "exclude_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="includeObjects")
-    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs']]:
+    def include_objects(self) -> pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs']]:
         """
         PostgreSQL objects to retrieve from the source.
         Structure is documented below.
@@ -8221,12 +8221,12 @@ class StreamSourceConfigPostgresqlSourceConfigArgs:
         return pulumi.get(self, "include_objects")
 
     @include_objects.setter
-    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs']]):
+    def include_objects(self, value: pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs']]):
         pulumi.set(self, "include_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrentBackfillTasks")
-    def max_concurrent_backfill_tasks(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrent_backfill_tasks(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of concurrent backfill tasks. The number should be non
         negative. If not set (or set to 0), the system's default value will be used.
@@ -8234,7 +8234,7 @@ class StreamSourceConfigPostgresqlSourceConfigArgs:
         return pulumi.get(self, "max_concurrent_backfill_tasks")
 
     @max_concurrent_backfill_tasks.setter
-    def max_concurrent_backfill_tasks(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrent_backfill_tasks(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrent_backfill_tasks", value)
 
 
@@ -8274,7 +8274,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs
     """
     Database name.
     """
-    postgresql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgsDict']]]]
+    postgresql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -8284,7 +8284,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs
 class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
+                 postgresql_tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] schema: Database name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]] postgresql_tables: Tables in the schema.
@@ -8308,7 +8308,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs
 
     @_builtins.property
     @pulumi.getter(name="postgresqlTables")
-    def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
+    def postgresql_tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
         """
         Tables in the schema.
         Structure is documented below.
@@ -8316,7 +8316,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs
         return pulumi.get(self, "postgresql_tables")
 
     @postgresql_tables.setter
-    def postgresql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]):
+    def postgresql_tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]):
         pulumi.set(self, "postgresql_tables", value)
 
 
@@ -8325,7 +8325,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     """
     Table name.
     """
-    postgresql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict']]]]
+    postgresql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]]
     """
     PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -8335,7 +8335,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
 class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
+                 postgresql_columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -8359,7 +8359,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
 
     @_builtins.property
     @pulumi.getter(name="postgresqlColumns")
-    def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
+    def postgresql_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
         """
         PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -8367,43 +8367,43 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
         return pulumi.get(self, "postgresql_columns")
 
     @postgresql_columns.setter
-    def postgresql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]):
+    def postgresql_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]):
         pulumi.set(self, "postgresql_columns", value)
 
 
 class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict(TypedDict):
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The PostgreSQL data type. Full data types list can be found here:
     https://www.postgresql.org/docs/current/datatype.html
     """
-    length: NotRequired[pulumi.Input[_builtins.int]]
+    length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column length.
     """
-    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    nullable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether or not the column can accept a null value.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ordinal position of the column in the table.
     """
-    precision: NotRequired[pulumi.Input[_builtins.int]]
+    precision: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column precision.
     """
-    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether or not the column represents a primary key.
     """
-    scale: NotRequired[pulumi.Input[_builtins.int]]
+    scale: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column scale.
@@ -8412,14 +8412,14 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
 @pulumi.input_type
 class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs:
     def __init__(__self__, *,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 length: Optional[pulumi.Input[_builtins.int]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None,
-                 precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale: Optional[pulumi.Input[_builtins.int]] = None):
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 length: pulumi.Input[Optional[_builtins.int]] = None,
+                 nullable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None,
+                 precision: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] column: Column name.
         :param pulumi.Input[_builtins.str] data_type: The PostgreSQL data type. Full data types list can be found here:
@@ -8453,19 +8453,19 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column name.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PostgreSQL data type. Full data types list can be found here:
         https://www.postgresql.org/docs/current/datatype.html
@@ -8473,12 +8473,12 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column length.
@@ -8486,36 +8486,36 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
         return pulumi.get(self, "length")
 
     @length.setter
-    def length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "length", value)
 
     @_builtins.property
     @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nullable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
 
     @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nullable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nullable", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
     @_builtins.property
     @pulumi.getter
-    def precision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def precision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column precision.
@@ -8523,24 +8523,24 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
         return pulumi.get(self, "precision")
 
     @precision.setter
-    def precision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def precision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "precision", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKey")
-    def primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
-    def primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def scale(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column scale.
@@ -8548,7 +8548,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
         return pulumi.get(self, "scale")
 
     @scale.setter
-    def scale(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale", value)
 
 
@@ -8588,7 +8588,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs
     """
     Database name.
     """
-    postgresql_tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgsDict']]]]
+    postgresql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -8598,7 +8598,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs
 class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
+                 postgresql_tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] schema: Database name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]] postgresql_tables: Tables in the schema.
@@ -8622,7 +8622,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs
 
     @_builtins.property
     @pulumi.getter(name="postgresqlTables")
-    def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
+    def postgresql_tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
         """
         Tables in the schema.
         Structure is documented below.
@@ -8630,7 +8630,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs
         return pulumi.get(self, "postgresql_tables")
 
     @postgresql_tables.setter
-    def postgresql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]):
+    def postgresql_tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]):
         pulumi.set(self, "postgresql_tables", value)
 
 
@@ -8639,7 +8639,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     """
     Table name.
     """
-    postgresql_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict']]]]
+    postgresql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]]
     """
     PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -8649,7 +8649,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
 class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
+                 postgresql_columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -8673,7 +8673,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
 
     @_builtins.property
     @pulumi.getter(name="postgresqlColumns")
-    def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
+    def postgresql_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
         """
         PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -8681,43 +8681,43 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
         return pulumi.get(self, "postgresql_columns")
 
     @postgresql_columns.setter
-    def postgresql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]):
+    def postgresql_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]):
         pulumi.set(self, "postgresql_columns", value)
 
 
 class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict(TypedDict):
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The PostgreSQL data type. Full data types list can be found here:
     https://www.postgresql.org/docs/current/datatype.html
     """
-    length: NotRequired[pulumi.Input[_builtins.int]]
+    length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column length.
     """
-    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    nullable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether or not the column can accept a null value.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ordinal position of the column in the table.
     """
-    precision: NotRequired[pulumi.Input[_builtins.int]]
+    precision: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column precision.
     """
-    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether or not the column represents a primary key.
     """
-    scale: NotRequired[pulumi.Input[_builtins.int]]
+    scale: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column scale.
@@ -8726,14 +8726,14 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
 @pulumi.input_type
 class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs:
     def __init__(__self__, *,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 length: Optional[pulumi.Input[_builtins.int]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None,
-                 precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale: Optional[pulumi.Input[_builtins.int]] = None):
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 length: pulumi.Input[Optional[_builtins.int]] = None,
+                 nullable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None,
+                 precision: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] column: Column name.
         :param pulumi.Input[_builtins.str] data_type: The PostgreSQL data type. Full data types list can be found here:
@@ -8767,19 +8767,19 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column name.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PostgreSQL data type. Full data types list can be found here:
         https://www.postgresql.org/docs/current/datatype.html
@@ -8787,12 +8787,12 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column length.
@@ -8800,36 +8800,36 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
         return pulumi.get(self, "length")
 
     @length.setter
-    def length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "length", value)
 
     @_builtins.property
     @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nullable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
 
     @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nullable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nullable", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
     @_builtins.property
     @pulumi.getter
-    def precision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def precision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column precision.
@@ -8837,24 +8837,24 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
         return pulumi.get(self, "precision")
 
     @precision.setter
-    def precision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def precision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "precision", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKey")
-    def primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
-    def primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def scale(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column scale.
@@ -8862,7 +8862,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
         return pulumi.get(self, "scale")
 
     @scale.setter
-    def scale(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale", value)
 
 
@@ -8871,12 +8871,12 @@ class StreamSourceConfigSalesforceSourceConfigArgsDict(TypedDict):
     """
     Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
     """
-    exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgsDict']]
+    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs']]]
     """
     Salesforce objects to exclude from the stream.
     Structure is documented below.
     """
-    include_objects: NotRequired[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgsDict']]
+    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs']]]
     """
     Salesforce objects to retrieve from the source.
     Structure is documented below.
@@ -8886,8 +8886,8 @@ class StreamSourceConfigSalesforceSourceConfigArgsDict(TypedDict):
 class StreamSourceConfigSalesforceSourceConfigArgs:
     def __init__(__self__, *,
                  polling_interval: pulumi.Input[_builtins.str],
-                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs']] = None,
-                 include_objects: Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs']] = None):
+                 exclude_objects: pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs']] = None,
+                 include_objects: pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] polling_interval: Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
         :param pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs'] exclude_objects: Salesforce objects to exclude from the stream.
@@ -8915,7 +8915,7 @@ class StreamSourceConfigSalesforceSourceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludeObjects")
-    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs']]:
+    def exclude_objects(self) -> pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs']]:
         """
         Salesforce objects to exclude from the stream.
         Structure is documented below.
@@ -8923,12 +8923,12 @@ class StreamSourceConfigSalesforceSourceConfigArgs:
         return pulumi.get(self, "exclude_objects")
 
     @exclude_objects.setter
-    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs']]):
+    def exclude_objects(self, value: pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs']]):
         pulumi.set(self, "exclude_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="includeObjects")
-    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs']]:
+    def include_objects(self) -> pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs']]:
         """
         Salesforce objects to retrieve from the source.
         Structure is documented below.
@@ -8936,7 +8936,7 @@ class StreamSourceConfigSalesforceSourceConfigArgs:
         return pulumi.get(self, "include_objects")
 
     @include_objects.setter
-    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs']]):
+    def include_objects(self, value: pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs']]):
         pulumi.set(self, "include_objects", value)
 
 
@@ -8972,12 +8972,12 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs:
 
 
 class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgsDict(TypedDict):
-    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgsDict']]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs']]]]]
     """
     Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
     Structure is documented below.
     """
-    object_name: NotRequired[pulumi.Input[_builtins.str]]
+    object_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of object in Salesforce Org.
     """
@@ -8985,8 +8985,8 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgsDict(Typed
 @pulumi.input_type
 class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs:
     def __init__(__self__, *,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs']]]] = None,
-                 object_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs']]]] = None,
+                 object_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs']]] fields: Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
                Structure is documented below.
@@ -8999,7 +8999,7 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs']]]]:
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs']]]]:
         """
         Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
         Structure is documented below.
@@ -9007,24 +9007,24 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs']]]]):
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs']]]]):
         pulumi.set(self, "fields", value)
 
     @_builtins.property
     @pulumi.getter(name="objectName")
-    def object_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of object in Salesforce Org.
         """
         return pulumi.get(self, "object_name")
 
     @object_name.setter
-    def object_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_name", value)
 
 
 class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field name.
     """
@@ -9032,7 +9032,7 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgsDict(
 @pulumi.input_type
 class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Field name.
         """
@@ -9041,14 +9041,14 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -9084,12 +9084,12 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs:
 
 
 class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgsDict(TypedDict):
-    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgsDict']]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs']]]]]
     """
     Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
     Structure is documented below.
     """
-    object_name: NotRequired[pulumi.Input[_builtins.str]]
+    object_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of object in Salesforce Org.
     """
@@ -9097,8 +9097,8 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgsDict(Typed
 @pulumi.input_type
 class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs:
     def __init__(__self__, *,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs']]]] = None,
-                 object_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs']]]] = None,
+                 object_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs']]] fields: Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
                Structure is documented below.
@@ -9111,7 +9111,7 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs']]]]:
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs']]]]:
         """
         Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
         Structure is documented below.
@@ -9119,24 +9119,24 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs']]]]):
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs']]]]):
         pulumi.set(self, "fields", value)
 
     @_builtins.property
     @pulumi.getter(name="objectName")
-    def object_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of object in Salesforce Org.
         """
         return pulumi.get(self, "object_name")
 
     @object_name.setter
-    def object_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_name", value)
 
 
 class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field name.
     """
@@ -9144,7 +9144,7 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgsDict(
 @pulumi.input_type
 class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Field name.
         """
@@ -9153,49 +9153,49 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class StreamSourceConfigSpannerSourceConfigArgsDict(TypedDict):
-    backfill_data_boost_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    backfill_data_boost_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to use DataBoost for backfill queries.
     """
-    change_stream_name: NotRequired[pulumi.Input[_builtins.str]]
+    change_stream_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Spanner change stream name to use.
     """
-    exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsArgsDict']]
+    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs']]]
     """
     Spanner objects to retrieve from the source.
     Structure is documented below.
     """
-    fgac_role: NotRequired[pulumi.Input[_builtins.str]]
+    fgac_role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The FGAC role to use for Spanner queries.
     """
-    include_objects: NotRequired[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsArgsDict']]
+    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs']]]
     """
     Spanner objects to retrieve from the source.
     Structure is documented below.
     """
-    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Max concurrent backfill tasks.
     """
-    max_concurrent_cdc_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    max_concurrent_cdc_tasks: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Max concurrent CDC tasks.
     """
-    spanner_rpc_priority: NotRequired[pulumi.Input[_builtins.str]]
+    spanner_rpc_priority: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The RPC priority to use for Spanner queries.
     Possible values are: `LOW`, `MEDIUM`, `HIGH`.
@@ -9204,14 +9204,14 @@ class StreamSourceConfigSpannerSourceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class StreamSourceConfigSpannerSourceConfigArgs:
     def __init__(__self__, *,
-                 backfill_data_boost_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 change_stream_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs']] = None,
-                 fgac_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_objects: Optional[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs']] = None,
-                 max_concurrent_backfill_tasks: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_concurrent_cdc_tasks: Optional[pulumi.Input[_builtins.int]] = None,
-                 spanner_rpc_priority: Optional[pulumi.Input[_builtins.str]] = None):
+                 backfill_data_boost_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 change_stream_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_objects: pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs']] = None,
+                 fgac_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_objects: pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs']] = None,
+                 max_concurrent_backfill_tasks: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_concurrent_cdc_tasks: pulumi.Input[Optional[_builtins.int]] = None,
+                 spanner_rpc_priority: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] backfill_data_boost_enabled: Whether to use DataBoost for backfill queries.
         :param pulumi.Input[_builtins.str] change_stream_name: The Spanner change stream name to use.
@@ -9244,31 +9244,31 @@ class StreamSourceConfigSpannerSourceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="backfillDataBoostEnabled")
-    def backfill_data_boost_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def backfill_data_boost_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use DataBoost for backfill queries.
         """
         return pulumi.get(self, "backfill_data_boost_enabled")
 
     @backfill_data_boost_enabled.setter
-    def backfill_data_boost_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def backfill_data_boost_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "backfill_data_boost_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="changeStreamName")
-    def change_stream_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def change_stream_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Spanner change stream name to use.
         """
         return pulumi.get(self, "change_stream_name")
 
     @change_stream_name.setter
-    def change_stream_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def change_stream_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "change_stream_name", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeObjects")
-    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs']]:
+    def exclude_objects(self) -> pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs']]:
         """
         Spanner objects to retrieve from the source.
         Structure is documented below.
@@ -9276,24 +9276,24 @@ class StreamSourceConfigSpannerSourceConfigArgs:
         return pulumi.get(self, "exclude_objects")
 
     @exclude_objects.setter
-    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs']]):
+    def exclude_objects(self, value: pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs']]):
         pulumi.set(self, "exclude_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="fgacRole")
-    def fgac_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fgac_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The FGAC role to use for Spanner queries.
         """
         return pulumi.get(self, "fgac_role")
 
     @fgac_role.setter
-    def fgac_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fgac_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fgac_role", value)
 
     @_builtins.property
     @pulumi.getter(name="includeObjects")
-    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs']]:
+    def include_objects(self) -> pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs']]:
         """
         Spanner objects to retrieve from the source.
         Structure is documented below.
@@ -9301,36 +9301,36 @@ class StreamSourceConfigSpannerSourceConfigArgs:
         return pulumi.get(self, "include_objects")
 
     @include_objects.setter
-    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs']]):
+    def include_objects(self, value: pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs']]):
         pulumi.set(self, "include_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrentBackfillTasks")
-    def max_concurrent_backfill_tasks(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrent_backfill_tasks(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max concurrent backfill tasks.
         """
         return pulumi.get(self, "max_concurrent_backfill_tasks")
 
     @max_concurrent_backfill_tasks.setter
-    def max_concurrent_backfill_tasks(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrent_backfill_tasks(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrent_backfill_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrentCdcTasks")
-    def max_concurrent_cdc_tasks(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrent_cdc_tasks(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max concurrent CDC tasks.
         """
         return pulumi.get(self, "max_concurrent_cdc_tasks")
 
     @max_concurrent_cdc_tasks.setter
-    def max_concurrent_cdc_tasks(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrent_cdc_tasks(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrent_cdc_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="spannerRpcPriority")
-    def spanner_rpc_priority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spanner_rpc_priority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RPC priority to use for Spanner queries.
         Possible values are: `LOW`, `MEDIUM`, `HIGH`.
@@ -9338,7 +9338,7 @@ class StreamSourceConfigSpannerSourceConfigArgs:
         return pulumi.get(self, "spanner_rpc_priority")
 
     @spanner_rpc_priority.setter
-    def spanner_rpc_priority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spanner_rpc_priority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spanner_rpc_priority", value)
 
 
@@ -9378,7 +9378,7 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgsDict(TypedDic
     """
     Schema name.
     """
-    tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgsDict']]]]
+    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -9388,7 +9388,7 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgsDict(TypedDic
 class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs']]]] = None):
+                 tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] schema: Schema name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs']]] tables: Tables in the schema.
@@ -9412,7 +9412,7 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs']]]]:
+    def tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs']]]]:
         """
         Tables in the schema.
         Structure is documented below.
@@ -9420,7 +9420,7 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgs:
         return pulumi.get(self, "tables")
 
     @tables.setter
-    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs']]]]):
+    def tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs']]]]):
         pulumi.set(self, "tables", value)
 
 
@@ -9429,7 +9429,7 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgsDict(Typ
     """
     Table name.
     """
-    columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgsDict']]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]]]
     """
     Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -9439,7 +9439,7 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgsDict(Typ
 class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]] = None):
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs']]] columns: Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -9463,7 +9463,7 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]]:
+    def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]]:
         """
         Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -9471,27 +9471,27 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs:
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]]):
+    def columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
 
 class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgsDict(TypedDict):
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Spanner data type. Full data types list can be found here:
     https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
     """
-    is_primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    is_primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether the column is a primary key.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The ordinal position of the column in the table.
@@ -9500,10 +9500,10 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgsDi
 @pulumi.input_type
 class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs:
     def __init__(__self__, *,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None):
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] column: Column name.
         :param pulumi.Input[_builtins.str] data_type: (Output)
@@ -9525,19 +9525,19 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs:
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column name.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Spanner data type. Full data types list can be found here:
@@ -9546,12 +9546,12 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter(name="isPrimaryKey")
-    def is_primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether the column is a primary key.
@@ -9559,12 +9559,12 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "is_primary_key")
 
     @is_primary_key.setter
-    def is_primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_primary_key", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The ordinal position of the column in the table.
@@ -9572,7 +9572,7 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
 
@@ -9612,7 +9612,7 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgsDict(TypedDic
     """
     Schema name.
     """
-    tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgsDict']]]]
+    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -9622,7 +9622,7 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgsDict(TypedDic
 class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs']]]] = None):
+                 tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] schema: Schema name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs']]] tables: Tables in the schema.
@@ -9646,7 +9646,7 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs']]]]:
+    def tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs']]]]:
         """
         Tables in the schema.
         Structure is documented below.
@@ -9654,7 +9654,7 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgs:
         return pulumi.get(self, "tables")
 
     @tables.setter
-    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs']]]]):
+    def tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs']]]]):
         pulumi.set(self, "tables", value)
 
 
@@ -9663,7 +9663,7 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgsDict(Typ
     """
     Table name.
     """
-    columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgsDict']]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]]]
     """
     Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -9673,7 +9673,7 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgsDict(Typ
 class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]] = None):
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs']]] columns: Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -9697,7 +9697,7 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]]:
+    def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]]:
         """
         Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -9705,27 +9705,27 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs:
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]]):
+    def columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
 
 class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgsDict(TypedDict):
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Spanner data type. Full data types list can be found here:
     https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
     """
-    is_primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    is_primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether the column is a primary key.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The ordinal position of the column in the table.
@@ -9734,10 +9734,10 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgsDi
 @pulumi.input_type
 class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs:
     def __init__(__self__, *,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None):
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] column: Column name.
         :param pulumi.Input[_builtins.str] data_type: (Output)
@@ -9759,19 +9759,19 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs:
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column name.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Spanner data type. Full data types list can be found here:
@@ -9780,12 +9780,12 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter(name="isPrimaryKey")
-    def is_primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether the column is a primary key.
@@ -9793,12 +9793,12 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "is_primary_key")
 
     @is_primary_key.setter
-    def is_primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_primary_key", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The ordinal position of the column in the table.
@@ -9806,34 +9806,34 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs:
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
 
 class StreamSourceConfigSqlServerSourceConfigArgsDict(TypedDict):
-    change_tables: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigChangeTablesArgsDict']]
+    change_tables: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigChangeTablesArgs']]]
     """
     CDC reader reads from change tables.
     """
-    exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgsDict']]
+    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs']]]
     """
     SQL Server objects to exclude from the stream.
     Structure is documented below.
     """
-    include_objects: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgsDict']]
+    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs']]]
     """
     SQL Server objects to retrieve from the source.
     Structure is documented below.
     """
-    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    max_concurrent_backfill_tasks: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Max concurrent backfill tasks.
     """
-    max_concurrent_cdc_tasks: NotRequired[pulumi.Input[_builtins.int]]
+    max_concurrent_cdc_tasks: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Max concurrent CDC tasks.
     """
-    transaction_logs: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgsDict']]
+    transaction_logs: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs']]]
     """
     CDC reader reads from transaction logs.
     """
@@ -9841,12 +9841,12 @@ class StreamSourceConfigSqlServerSourceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigArgs:
     def __init__(__self__, *,
-                 change_tables: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigChangeTablesArgs']] = None,
-                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs']] = None,
-                 include_objects: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs']] = None,
-                 max_concurrent_backfill_tasks: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_concurrent_cdc_tasks: Optional[pulumi.Input[_builtins.int]] = None,
-                 transaction_logs: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs']] = None):
+                 change_tables: pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigChangeTablesArgs']] = None,
+                 exclude_objects: pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs']] = None,
+                 include_objects: pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs']] = None,
+                 max_concurrent_backfill_tasks: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_concurrent_cdc_tasks: pulumi.Input[Optional[_builtins.int]] = None,
+                 transaction_logs: pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs']] = None):
         """
         :param pulumi.Input['StreamSourceConfigSqlServerSourceConfigChangeTablesArgs'] change_tables: CDC reader reads from change tables.
         :param pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs'] exclude_objects: SQL Server objects to exclude from the stream.
@@ -9872,19 +9872,19 @@ class StreamSourceConfigSqlServerSourceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="changeTables")
-    def change_tables(self) -> Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigChangeTablesArgs']]:
+    def change_tables(self) -> pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigChangeTablesArgs']]:
         """
         CDC reader reads from change tables.
         """
         return pulumi.get(self, "change_tables")
 
     @change_tables.setter
-    def change_tables(self, value: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigChangeTablesArgs']]):
+    def change_tables(self, value: pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigChangeTablesArgs']]):
         pulumi.set(self, "change_tables", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeObjects")
-    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs']]:
+    def exclude_objects(self) -> pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs']]:
         """
         SQL Server objects to exclude from the stream.
         Structure is documented below.
@@ -9892,12 +9892,12 @@ class StreamSourceConfigSqlServerSourceConfigArgs:
         return pulumi.get(self, "exclude_objects")
 
     @exclude_objects.setter
-    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs']]):
+    def exclude_objects(self, value: pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs']]):
         pulumi.set(self, "exclude_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="includeObjects")
-    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs']]:
+    def include_objects(self) -> pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs']]:
         """
         SQL Server objects to retrieve from the source.
         Structure is documented below.
@@ -9905,43 +9905,43 @@ class StreamSourceConfigSqlServerSourceConfigArgs:
         return pulumi.get(self, "include_objects")
 
     @include_objects.setter
-    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs']]):
+    def include_objects(self, value: pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs']]):
         pulumi.set(self, "include_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrentBackfillTasks")
-    def max_concurrent_backfill_tasks(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrent_backfill_tasks(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max concurrent backfill tasks.
         """
         return pulumi.get(self, "max_concurrent_backfill_tasks")
 
     @max_concurrent_backfill_tasks.setter
-    def max_concurrent_backfill_tasks(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrent_backfill_tasks(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrent_backfill_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrentCdcTasks")
-    def max_concurrent_cdc_tasks(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrent_cdc_tasks(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max concurrent CDC tasks.
         """
         return pulumi.get(self, "max_concurrent_cdc_tasks")
 
     @max_concurrent_cdc_tasks.setter
-    def max_concurrent_cdc_tasks(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrent_cdc_tasks(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrent_cdc_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="transactionLogs")
-    def transaction_logs(self) -> Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs']]:
+    def transaction_logs(self) -> pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs']]:
         """
         CDC reader reads from transaction logs.
         """
         return pulumi.get(self, "transaction_logs")
 
     @transaction_logs.setter
-    def transaction_logs(self, value: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs']]):
+    def transaction_logs(self, value: pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs']]):
         pulumi.set(self, "transaction_logs", value)
 
 
@@ -9990,7 +9990,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgsDict(TypedD
     """
     Schema name.
     """
-    tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgsDict']]]]
+    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -10000,7 +10000,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgsDict(TypedD
 class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs']]]] = None):
+                 tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] schema: Schema name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs']]] tables: Tables in the schema.
@@ -10024,7 +10024,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs']]]]:
+    def tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs']]]]:
         """
         Tables in the schema.
         Structure is documented below.
@@ -10032,7 +10032,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs:
         return pulumi.get(self, "tables")
 
     @tables.setter
-    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs']]]]):
+    def tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs']]]]):
         pulumi.set(self, "tables", value)
 
 
@@ -10041,7 +10041,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgsDict(T
     """
     Table name.
     """
-    columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgsDict']]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]]]
     """
     Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -10051,7 +10051,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgsDict(T
 class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]] = None):
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs']]] columns: Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -10075,7 +10075,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]]:
+    def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]]:
         """
         Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -10083,47 +10083,47 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs:
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]]):
+    def columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
 
 class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgsDict(TypedDict):
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Spanner data type. Full data types list can be found here:
     https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
     """
-    length: NotRequired[pulumi.Input[_builtins.int]]
+    length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column length.
     """
-    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    nullable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether or not the column can accept a null value.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The ordinal position of the column in the table.
     """
-    precision: NotRequired[pulumi.Input[_builtins.int]]
+    precision: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column precision.
     """
-    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether or not the column represents a primary key.
     """
-    scale: NotRequired[pulumi.Input[_builtins.int]]
+    scale: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column scale.
@@ -10132,14 +10132,14 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs:
     def __init__(__self__, *,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 length: Optional[pulumi.Input[_builtins.int]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None,
-                 precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale: Optional[pulumi.Input[_builtins.int]] = None):
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 length: pulumi.Input[Optional[_builtins.int]] = None,
+                 nullable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None,
+                 precision: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] column: Column name.
         :param pulumi.Input[_builtins.str] data_type: (Output)
@@ -10177,19 +10177,19 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column name.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Spanner data type. Full data types list can be found here:
@@ -10198,12 +10198,12 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column length.
@@ -10211,12 +10211,12 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs
         return pulumi.get(self, "length")
 
     @length.setter
-    def length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "length", value)
 
     @_builtins.property
     @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nullable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether or not the column can accept a null value.
@@ -10224,12 +10224,12 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs
         return pulumi.get(self, "nullable")
 
     @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nullable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nullable", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The ordinal position of the column in the table.
@@ -10237,12 +10237,12 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
     @_builtins.property
     @pulumi.getter
-    def precision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def precision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column precision.
@@ -10250,12 +10250,12 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs
         return pulumi.get(self, "precision")
 
     @precision.setter
-    def precision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def precision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "precision", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKey")
-    def primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether or not the column represents a primary key.
@@ -10263,12 +10263,12 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
-    def primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def scale(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column scale.
@@ -10276,7 +10276,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs
         return pulumi.get(self, "scale")
 
     @scale.setter
-    def scale(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale", value)
 
 
@@ -10316,7 +10316,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgsDict(TypedD
     """
     Schema name.
     """
-    tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgsDict']]]]
+    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -10326,7 +10326,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgsDict(TypedD
 class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs']]]] = None):
+                 tables: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] schema: Schema name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs']]] tables: Tables in the schema.
@@ -10350,7 +10350,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs']]]]:
+    def tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs']]]]:
         """
         Tables in the schema.
         Structure is documented below.
@@ -10358,7 +10358,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs:
         return pulumi.get(self, "tables")
 
     @tables.setter
-    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs']]]]):
+    def tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs']]]]):
         pulumi.set(self, "tables", value)
 
 
@@ -10367,7 +10367,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgsDict(T
     """
     Table name.
     """
-    columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgsDict']]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]]]
     """
     Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -10377,7 +10377,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgsDict(T
 class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[_builtins.str],
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]] = None):
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table: Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs']]] columns: Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -10401,7 +10401,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]]:
+    def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]]:
         """
         Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -10409,47 +10409,47 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs:
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]]):
+    def columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
 
 class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgsDict(TypedDict):
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column name.
     """
-    data_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Spanner data type. Full data types list can be found here:
     https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
     """
-    length: NotRequired[pulumi.Input[_builtins.int]]
+    length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column length.
     """
-    nullable: NotRequired[pulumi.Input[_builtins.bool]]
+    nullable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether or not the column can accept a null value.
     """
-    ordinal_position: NotRequired[pulumi.Input[_builtins.int]]
+    ordinal_position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The ordinal position of the column in the table.
     """
-    precision: NotRequired[pulumi.Input[_builtins.int]]
+    precision: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column precision.
     """
-    primary_key: NotRequired[pulumi.Input[_builtins.bool]]
+    primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether or not the column represents a primary key.
     """
-    scale: NotRequired[pulumi.Input[_builtins.int]]
+    scale: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Column scale.
@@ -10458,14 +10458,14 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs:
     def __init__(__self__, *,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 length: Optional[pulumi.Input[_builtins.int]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ordinal_position: Optional[pulumi.Input[_builtins.int]] = None,
-                 precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale: Optional[pulumi.Input[_builtins.int]] = None):
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 length: pulumi.Input[Optional[_builtins.int]] = None,
+                 nullable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ordinal_position: pulumi.Input[Optional[_builtins.int]] = None,
+                 precision: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] column: Column name.
         :param pulumi.Input[_builtins.str] data_type: (Output)
@@ -10503,19 +10503,19 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column name.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Spanner data type. Full data types list can be found here:
@@ -10524,12 +10524,12 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column length.
@@ -10537,12 +10537,12 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs
         return pulumi.get(self, "length")
 
     @length.setter
-    def length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "length", value)
 
     @_builtins.property
     @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nullable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether or not the column can accept a null value.
@@ -10550,12 +10550,12 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs
         return pulumi.get(self, "nullable")
 
     @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nullable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nullable", value)
 
     @_builtins.property
     @pulumi.getter(name="ordinalPosition")
-    def ordinal_position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ordinal_position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The ordinal position of the column in the table.
@@ -10563,12 +10563,12 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs
         return pulumi.get(self, "ordinal_position")
 
     @ordinal_position.setter
-    def ordinal_position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ordinal_position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ordinal_position", value)
 
     @_builtins.property
     @pulumi.getter
-    def precision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def precision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column precision.
@@ -10576,12 +10576,12 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs
         return pulumi.get(self, "precision")
 
     @precision.setter
-    def precision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def precision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "precision", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKey")
-    def primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether or not the column represents a primary key.
@@ -10589,12 +10589,12 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
-    def primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def scale(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Column scale.
@@ -10602,7 +10602,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs
         return pulumi.get(self, "scale")
 
     @scale.setter
-    def scale(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale", value)
 
 

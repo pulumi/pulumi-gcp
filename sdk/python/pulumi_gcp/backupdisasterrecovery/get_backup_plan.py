@@ -216,9 +216,9 @@ def get_backup_plan(backup_plan_id: Optional[_builtins.str] = None,
         resource_type=pulumi.get(__ret__, 'resource_type'),
         supported_resource_types=pulumi.get(__ret__, 'supported_resource_types'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_backup_plan_output(backup_plan_id: Optional[pulumi.Input[_builtins.str]] = None,
-                           location: Optional[pulumi.Input[_builtins.str]] = None,
-                           project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_backup_plan_output(backup_plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                           location: pulumi.Input[Optional[_builtins.str]] = None,
+                           project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPlanResult]:
     """
     Use this data source to access information about an existing resource.

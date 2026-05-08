@@ -202,70 +202,70 @@ export interface FirewallEndpointAssociationState {
     /**
      * Time the firewall endpoint was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether the association is disabled. True indicates that traffic will not be intercepted.
      * > **Note:** The API will reject the request if this value is set to true when creating the resource,
      * otherwise on an update the association can be disabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The URL of the firewall endpoint that is being associated.
      */
-    firewallEndpoint?: pulumi.Input<string>;
+    firewallEndpoint?: pulumi.Input<string | undefined>;
     /**
      * A map of key/value label pairs to assign to the resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location (zone) of the firewall endpoint association.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the firewall endpoint association resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of the network that is being associated.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The name of the parent this firewall endpoint association belongs to.
      * Format: projects/{project_id}.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether reconciling is in progress, recommended per https://google.aip.dev/128.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * Server-defined URL of this resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The current state of the endpoint.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The URL of the TlsInspectionPolicy that is being associated.
      */
-    tlsInspectionPolicy?: pulumi.Input<string>;
+    tlsInspectionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Time the firewall endpoint was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -277,7 +277,7 @@ export interface FirewallEndpointAssociationArgs {
      * > **Note:** The API will reject the request if this value is set to true when creating the resource,
      * otherwise on an update the association can be disabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The URL of the firewall endpoint that is being associated.
      */
@@ -288,7 +288,7 @@ export interface FirewallEndpointAssociationArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location (zone) of the firewall endpoint association.
      */
@@ -296,7 +296,7 @@ export interface FirewallEndpointAssociationArgs {
     /**
      * The name of the firewall endpoint association resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of the network that is being associated.
      */
@@ -305,9 +305,9 @@ export interface FirewallEndpointAssociationArgs {
      * The name of the parent this firewall endpoint association belongs to.
      * Format: projects/{project_id}.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The URL of the TlsInspectionPolicy that is being associated.
      */
-    tlsInspectionPolicy?: pulumi.Input<string>;
+    tlsInspectionPolicy?: pulumi.Input<string | undefined>;
 }

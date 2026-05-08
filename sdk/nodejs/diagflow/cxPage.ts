@@ -878,31 +878,31 @@ export interface CxPageState {
      * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
      * Structure is documented below.
      */
-    advancedSettings?: pulumi.Input<inputs.diagflow.CxPageAdvancedSettings>;
+    advancedSettings?: pulumi.Input<inputs.diagflow.CxPageAdvancedSettings | undefined>;
     /**
      * The human-readable name of the page, unique within the agent.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The fulfillment to call when the session is entering the page.
      * Structure is documented below.
      */
-    entryFulfillment?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillment>;
+    entryFulfillment?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillment | undefined>;
     /**
      * Handlers associated with the page to handle events such as webhook errors, no match or no input.
      * Structure is documented below.
      */
-    eventHandlers?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageEventHandler>[]>;
+    eventHandlers?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageEventHandler>[] | undefined>;
     /**
      * The form associated with the page, used for collecting parameters relevant to the page.
      * Structure is documented below.
      */
-    form?: pulumi.Input<inputs.diagflow.CxPageForm>;
+    form?: pulumi.Input<inputs.diagflow.CxPageForm | undefined>;
     /**
      * Knowledge connector configuration.
      * Structure is documented below.
      */
-    knowledgeConnectorSettings?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettings>;
+    knowledgeConnectorSettings?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettings | undefined>;
     /**
      * The language of the following fields in page:
      * Page.entry_fulfillment.messages
@@ -917,24 +917,24 @@ export interface CxPageState {
      * Page.transition_routes.trigger_fulfillment.conditional_cases
      * If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
      */
-    languageCode?: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the page.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The flow to create a page for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Ordered list of TransitionRouteGroups associated with the page. Transition route groups must be unique within a page.
      * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route > page's transition route group > flow's transition routes.
      * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence.
      * Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
      */
-    transitionRouteGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    transitionRouteGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
      * When we are in a certain page, the TransitionRoutes are evalauted in the following order:
@@ -946,7 +946,7 @@ export interface CxPageState {
      * TransitionRoutes defined in the transition route groups with only condition specified.
      * Structure is documented below.
      */
-    transitionRoutes?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageTransitionRoute>[]>;
+    transitionRoutes?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageTransitionRoute>[] | undefined>;
 }
 
 /**
@@ -958,7 +958,7 @@ export interface CxPageArgs {
      * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
      * Structure is documented below.
      */
-    advancedSettings?: pulumi.Input<inputs.diagflow.CxPageAdvancedSettings>;
+    advancedSettings?: pulumi.Input<inputs.diagflow.CxPageAdvancedSettings | undefined>;
     /**
      * The human-readable name of the page, unique within the agent.
      */
@@ -967,22 +967,22 @@ export interface CxPageArgs {
      * The fulfillment to call when the session is entering the page.
      * Structure is documented below.
      */
-    entryFulfillment?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillment>;
+    entryFulfillment?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillment | undefined>;
     /**
      * Handlers associated with the page to handle events such as webhook errors, no match or no input.
      * Structure is documented below.
      */
-    eventHandlers?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageEventHandler>[]>;
+    eventHandlers?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageEventHandler>[] | undefined>;
     /**
      * The form associated with the page, used for collecting parameters relevant to the page.
      * Structure is documented below.
      */
-    form?: pulumi.Input<inputs.diagflow.CxPageForm>;
+    form?: pulumi.Input<inputs.diagflow.CxPageForm | undefined>;
     /**
      * Knowledge connector configuration.
      * Structure is documented below.
      */
-    knowledgeConnectorSettings?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettings>;
+    knowledgeConnectorSettings?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettings | undefined>;
     /**
      * The language of the following fields in page:
      * Page.entry_fulfillment.messages
@@ -997,19 +997,19 @@ export interface CxPageArgs {
      * Page.transition_routes.trigger_fulfillment.conditional_cases
      * If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
      */
-    languageCode?: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string | undefined>;
     /**
      * The flow to create a page for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Ordered list of TransitionRouteGroups associated with the page. Transition route groups must be unique within a page.
      * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route > page's transition route group > flow's transition routes.
      * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence.
      * Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
      */
-    transitionRouteGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    transitionRouteGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
      * When we are in a certain page, the TransitionRoutes are evalauted in the following order:
@@ -1021,5 +1021,5 @@ export interface CxPageArgs {
      * TransitionRoutes defined in the transition route groups with only condition specified.
      * Structure is documented below.
      */
-    transitionRoutes?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageTransitionRoute>[]>;
+    transitionRoutes?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageTransitionRoute>[] | undefined>;
 }

@@ -35,8 +35,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -78,8 +78,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -121,8 +121,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -164,8 +164,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -207,8 +207,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -250,8 +250,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -293,8 +293,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -336,8 +336,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetCaPoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -376,8 +376,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetCaPoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -416,8 +416,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetCaPoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -456,8 +456,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetCaPoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -496,8 +496,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetCaPoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -536,8 +536,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetCertificateTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -576,8 +576,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetCertificateTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -616,8 +616,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetCertificateTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -656,8 +656,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetCertificateTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -696,8 +696,8 @@ public final class CertificateauthorityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
      * import com.pulumi.gcp.certificateauthority.inputs.GetCertificateTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

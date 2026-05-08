@@ -22,27 +22,27 @@ __all__ = ['SubnetworkArgs', 'Subnetwork']
 class SubnetworkArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[_builtins.str],
-                 allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_collection: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['SubnetworkParamsArgs']] = None,
-                 private_ip_google_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_internal_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 resolve_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
-                 send_secondary_ip_range_if_empty: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stack_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_subnet_cidr_routes_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_config: pulumi.Input[Optional['SubnetworkLogConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['SubnetworkParamsArgs']] = None,
+                 private_ip_google_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_internal_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 resolve_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
+                 send_secondary_ip_range_if_empty: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stack_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Subnetwork resource.
 
@@ -187,7 +187,7 @@ class SubnetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
-    def allow_subnet_cidr_routes_overlap(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_subnet_cidr_routes_overlap(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Typically packets destined to IPs within the subnetwork range that do not match
         existing resources are dropped and prevented from leaving the VPC.
@@ -197,12 +197,12 @@ class SubnetworkArgs:
         return pulumi.get(self, "allow_subnet_cidr_routes_overlap")
 
     @allow_subnet_cidr_routes_overlap.setter
-    def allow_subnet_cidr_routes_overlap(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_subnet_cidr_routes_overlap(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_subnet_cidr_routes_overlap", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource. This field can be set only at resource
@@ -211,36 +211,36 @@ class SubnetworkArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="externalIpv6Prefix")
-    def external_ipv6_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_ipv6_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The range of external IPv6 addresses that are owned by this subnetwork.
         """
         return pulumi.get(self, "external_ipv6_prefix")
 
     @external_ipv6_prefix.setter
-    def external_ipv6_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_ipv6_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_ipv6_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="internalIpv6Prefix")
-    def internal_ipv6_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internal_ipv6_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The internal IPv6 address range that is assigned to this subnetwork.
         """
         return pulumi.get(self, "internal_ipv6_prefix")
 
     @internal_ipv6_prefix.setter
-    def internal_ipv6_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internal_ipv6_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internal_ipv6_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="ipCidrRange")
-    def ip_cidr_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_cidr_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The range of internal addresses that are owned by this subnetwork.
         Provide this property when you create the subnetwork. For example,
@@ -251,12 +251,12 @@ class SubnetworkArgs:
         return pulumi.get(self, "ip_cidr_range")
 
     @ip_cidr_range.setter
-    def ip_cidr_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_cidr_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_cidr_range", value)
 
     @_builtins.property
     @pulumi.getter(name="ipCollection")
-    def ip_collection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_collection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
         in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
@@ -271,12 +271,12 @@ class SubnetworkArgs:
         return pulumi.get(self, "ip_collection")
 
     @ip_collection.setter
-    def ip_collection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_collection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_collection", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6AccessType")
-    def ipv6_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
@@ -286,12 +286,12 @@ class SubnetworkArgs:
         return pulumi.get(self, "ipv6_access_type")
 
     @ipv6_access_type.setter
-    def ipv6_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['SubnetworkLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['SubnetworkLogConfigArgs']]:
         """
         This field denotes the VPC flow logging options for this subnetwork. If
         logging is enabled, logs are exported to Cloud Logging. Flow logging
@@ -302,12 +302,12 @@ class SubnetworkArgs:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['SubnetworkLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['SubnetworkLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource, provided by the client when initially
         creating the resource. The name must be 1-63 characters long, and
@@ -320,12 +320,12 @@ class SubnetworkArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['SubnetworkParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['SubnetworkParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -333,12 +333,12 @@ class SubnetworkArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['SubnetworkParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['SubnetworkParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpGoogleAccess")
-    def private_ip_google_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def private_ip_google_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, VMs in this subnetwork without external IP addresses can
         access Google APIs and services by using Private Google Access.
@@ -346,24 +346,24 @@ class SubnetworkArgs:
         return pulumi.get(self, "private_ip_google_access")
 
     @private_ip_google_access.setter
-    def private_ip_google_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def private_ip_google_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "private_ip_google_access", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpv6GoogleAccess")
-    def private_ipv6_google_access(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ipv6_google_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private IPv6 google access type for the VMs in this subnet.
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
     @private_ipv6_google_access.setter
-    def private_ipv6_google_access(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ipv6_google_access(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ipv6_google_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -371,12 +371,12 @@ class SubnetworkArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def purpose(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def purpose(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
         A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
@@ -390,24 +390,24 @@ class SubnetworkArgs:
         return pulumi.get(self, "purpose")
 
     @purpose.setter
-    def purpose(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def purpose(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "purpose", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCP region for this subnetwork.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedInternalRange")
-    def reserved_internal_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserved_internal_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
         E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
@@ -415,12 +415,12 @@ class SubnetworkArgs:
         return pulumi.get(self, "reserved_internal_range")
 
     @reserved_internal_range.setter
-    def reserved_internal_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserved_internal_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserved_internal_range", value)
 
     @_builtins.property
     @pulumi.getter(name="resolveSubnetMask")
-    def resolve_subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resolve_subnet_mask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         'Configures subnet mask resolution for this subnetwork.'
         Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
@@ -428,12 +428,12 @@ class SubnetworkArgs:
         return pulumi.get(self, "resolve_subnet_mask")
 
     @resolve_subnet_mask.setter
-    def resolve_subnet_mask(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resolve_subnet_mask(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resolve_subnet_mask", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of subnetwork.
         Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -445,12 +445,12 @@ class SubnetworkArgs:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryIpRanges")
-    def secondary_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]]:
+    def secondary_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]]:
         """
         An array of configurations for secondary IP ranges for VM instances
         contained in this subnetwork. The primary IP of such VM must belong
@@ -461,12 +461,12 @@ class SubnetworkArgs:
         return pulumi.get(self, "secondary_ip_ranges")
 
     @secondary_ip_ranges.setter
-    def secondary_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]]):
+    def secondary_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]]):
         pulumi.set(self, "secondary_ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="sendSecondaryIpRangeIfEmpty")
-    def send_secondary_ip_range_if_empty(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_secondary_ip_range_if_empty(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls the removal behavior of secondary_ip_range.
         When false, removing secondary_ip_range from config will not produce a diff as
@@ -478,12 +478,12 @@ class SubnetworkArgs:
         return pulumi.get(self, "send_secondary_ip_range_if_empty")
 
     @send_secondary_ip_range_if_empty.setter
-    def send_secondary_ip_range_if_empty(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_secondary_ip_range_if_empty(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_secondary_ip_range_if_empty", value)
 
     @_builtins.property
     @pulumi.getter(name="stackType")
-    def stack_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         If not specified IPV4_ONLY will be used.
@@ -492,43 +492,43 @@ class SubnetworkArgs:
         return pulumi.get(self, "stack_type")
 
     @stack_type.setter
-    def stack_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_type", value)
 
 
 @pulumi.input_type
 class _SubnetworkState:
     def __init__(__self__, *,
-                 allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_collection: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_gce_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['SubnetworkParamsArgs']] = None,
-                 private_ip_google_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_internal_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 resolve_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_secondary_ip_range_if_empty: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stack_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 allow_subnet_cidr_routes_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_gce_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_config: pulumi.Input[Optional['SubnetworkLogConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['SubnetworkParamsArgs']] = None,
+                 private_ip_google_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_internal_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 resolve_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_secondary_ip_range_if_empty: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Subnetwork resources.
 
@@ -696,7 +696,7 @@ class _SubnetworkState:
 
     @_builtins.property
     @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
-    def allow_subnet_cidr_routes_overlap(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_subnet_cidr_routes_overlap(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Typically packets destined to IPs within the subnetwork range that do not match
         existing resources are dropped and prevented from leaving the VPC.
@@ -706,24 +706,24 @@ class _SubnetworkState:
         return pulumi.get(self, "allow_subnet_cidr_routes_overlap")
 
     @allow_subnet_cidr_routes_overlap.setter
-    def allow_subnet_cidr_routes_overlap(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_subnet_cidr_routes_overlap(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_subnet_cidr_routes_overlap", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource. This field can be set only at resource
@@ -732,37 +732,37 @@ class _SubnetworkState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="externalIpv6Prefix")
-    def external_ipv6_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_ipv6_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The range of external IPv6 addresses that are owned by this subnetwork.
         """
         return pulumi.get(self, "external_ipv6_prefix")
 
     @external_ipv6_prefix.setter
-    def external_ipv6_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_ipv6_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_ipv6_prefix", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This field is not useful for users, and has been removed as an output.""")
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fingerprint of this resource. This field is used internally during updates of this resource.
         """
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayAddress")
-    def gateway_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The gateway address for default routes to reach destination addresses
         outside this subnetwork.
@@ -770,24 +770,24 @@ class _SubnetworkState:
         return pulumi.get(self, "gateway_address")
 
     @gateway_address.setter
-    def gateway_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_address", value)
 
     @_builtins.property
     @pulumi.getter(name="internalIpv6Prefix")
-    def internal_ipv6_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internal_ipv6_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The internal IPv6 address range that is assigned to this subnetwork.
         """
         return pulumi.get(self, "internal_ipv6_prefix")
 
     @internal_ipv6_prefix.setter
-    def internal_ipv6_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internal_ipv6_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internal_ipv6_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="ipCidrRange")
-    def ip_cidr_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_cidr_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The range of internal addresses that are owned by this subnetwork.
         Provide this property when you create the subnetwork. For example,
@@ -798,12 +798,12 @@ class _SubnetworkState:
         return pulumi.get(self, "ip_cidr_range")
 
     @ip_cidr_range.setter
-    def ip_cidr_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_cidr_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_cidr_range", value)
 
     @_builtins.property
     @pulumi.getter(name="ipCollection")
-    def ip_collection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_collection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
         in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
@@ -818,12 +818,12 @@ class _SubnetworkState:
         return pulumi.get(self, "ip_collection")
 
     @ip_collection.setter
-    def ip_collection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_collection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_collection", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6AccessType")
-    def ipv6_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
@@ -833,24 +833,24 @@ class _SubnetworkState:
         return pulumi.get(self, "ipv6_access_type")
 
     @ipv6_access_type.setter
-    def ipv6_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6CidrRange")
-    def ipv6_cidr_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_cidr_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The range of internal IPv6 addresses that are owned by this subnetwork.
         """
         return pulumi.get(self, "ipv6_cidr_range")
 
     @ipv6_cidr_range.setter
-    def ipv6_cidr_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_cidr_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_cidr_range", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6GceEndpoint")
-    def ipv6_gce_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_gce_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible endpoints of this subnetwork. It can be one of the following:
         * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
@@ -861,12 +861,12 @@ class _SubnetworkState:
         return pulumi.get(self, "ipv6_gce_endpoint")
 
     @ipv6_gce_endpoint.setter
-    def ipv6_gce_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_gce_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_gce_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['SubnetworkLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['SubnetworkLogConfigArgs']]:
         """
         This field denotes the VPC flow logging options for this subnetwork. If
         logging is enabled, logs are exported to Cloud Logging. Flow logging
@@ -877,12 +877,12 @@ class _SubnetworkState:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['SubnetworkLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['SubnetworkLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource, provided by the client when initially
         creating the resource. The name must be 1-63 characters long, and
@@ -895,12 +895,12 @@ class _SubnetworkState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network this subnet belongs to.
         Only networks that are in the distributed mode can have subnetworks.
@@ -908,12 +908,12 @@ class _SubnetworkState:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['SubnetworkParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['SubnetworkParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -921,12 +921,12 @@ class _SubnetworkState:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['SubnetworkParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['SubnetworkParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpGoogleAccess")
-    def private_ip_google_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def private_ip_google_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, VMs in this subnetwork without external IP addresses can
         access Google APIs and services by using Private Google Access.
@@ -934,24 +934,24 @@ class _SubnetworkState:
         return pulumi.get(self, "private_ip_google_access")
 
     @private_ip_google_access.setter
-    def private_ip_google_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def private_ip_google_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "private_ip_google_access", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpv6GoogleAccess")
-    def private_ipv6_google_access(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ipv6_google_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private IPv6 google access type for the VMs in this subnet.
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
     @private_ipv6_google_access.setter
-    def private_ipv6_google_access(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ipv6_google_access(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ipv6_google_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -959,12 +959,12 @@ class _SubnetworkState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def purpose(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def purpose(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
         A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
@@ -978,24 +978,24 @@ class _SubnetworkState:
         return pulumi.get(self, "purpose")
 
     @purpose.setter
-    def purpose(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def purpose(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "purpose", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCP region for this subnetwork.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedInternalRange")
-    def reserved_internal_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserved_internal_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
         E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
@@ -1003,12 +1003,12 @@ class _SubnetworkState:
         return pulumi.get(self, "reserved_internal_range")
 
     @reserved_internal_range.setter
-    def reserved_internal_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserved_internal_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserved_internal_range", value)
 
     @_builtins.property
     @pulumi.getter(name="resolveSubnetMask")
-    def resolve_subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resolve_subnet_mask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         'Configures subnet mask resolution for this subnetwork.'
         Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
@@ -1016,12 +1016,12 @@ class _SubnetworkState:
         return pulumi.get(self, "resolve_subnet_mask")
 
     @resolve_subnet_mask.setter
-    def resolve_subnet_mask(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resolve_subnet_mask(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resolve_subnet_mask", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of subnetwork.
         Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -1033,12 +1033,12 @@ class _SubnetworkState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryIpRanges")
-    def secondary_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]]:
+    def secondary_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]]:
         """
         An array of configurations for secondary IP ranges for VM instances
         contained in this subnetwork. The primary IP of such VM must belong
@@ -1049,24 +1049,24 @@ class _SubnetworkState:
         return pulumi.get(self, "secondary_ip_ranges")
 
     @secondary_ip_ranges.setter
-    def secondary_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]]):
+    def secondary_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]]):
         pulumi.set(self, "secondary_ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="sendSecondaryIpRangeIfEmpty")
-    def send_secondary_ip_range_if_empty(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_secondary_ip_range_if_empty(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls the removal behavior of secondary_ip_range.
         When false, removing secondary_ip_range from config will not produce a diff as
@@ -1078,12 +1078,12 @@ class _SubnetworkState:
         return pulumi.get(self, "send_secondary_ip_range_if_empty")
 
     @send_secondary_ip_range_if_empty.setter
-    def send_secondary_ip_range_if_empty(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_secondary_ip_range_if_empty(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_secondary_ip_range_if_empty", value)
 
     @_builtins.property
     @pulumi.getter(name="stackType")
-    def stack_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         If not specified IPV4_ONLY will be used.
@@ -1092,12 +1092,12 @@ class _SubnetworkState:
         return pulumi.get(self, "stack_type")
 
     @stack_type.setter
-    def stack_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         'The state of the subnetwork, which can be one of the following values:
         READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
@@ -1107,19 +1107,19 @@ class _SubnetworkState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetworkId")
-    def subnetwork_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def subnetwork_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique identifier number for the resource. This identifier is defined by the server.
         """
         return pulumi.get(self, "subnetwork_id")
 
     @subnetwork_id.setter
-    def subnetwork_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def subnetwork_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "subnetwork_id", value)
 
 
@@ -1129,28 +1129,28 @@ class Subnetwork(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_collection: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_config: Optional[pulumi.Input[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['SubnetworkParamsArgs', 'SubnetworkParamsArgsDict']]] = None,
-                 private_ip_google_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_internal_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 resolve_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
-                 send_secondary_ip_range_if_empty: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stack_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_subnet_cidr_routes_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_config: pulumi.Input[Optional[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['SubnetworkParamsArgs', 'SubnetworkParamsArgsDict']]] = None,
+                 private_ip_google_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_internal_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 resolve_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
+                 send_secondary_ip_range_if_empty: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stack_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A VPC network is a virtual version of the traditional physical networks
@@ -1753,28 +1753,28 @@ class Subnetwork(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_collection: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_config: Optional[pulumi.Input[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['SubnetworkParamsArgs', 'SubnetworkParamsArgsDict']]] = None,
-                 private_ip_google_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_internal_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 resolve_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
-                 send_secondary_ip_range_if_empty: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stack_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_subnet_cidr_routes_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_config: pulumi.Input[Optional[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['SubnetworkParamsArgs', 'SubnetworkParamsArgsDict']]] = None,
+                 private_ip_google_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_internal_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 resolve_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
+                 send_secondary_ip_range_if_empty: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stack_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1826,36 +1826,36 @@ class Subnetwork(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            external_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway_address: Optional[pulumi.Input[_builtins.str]] = None,
-            internal_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_collection: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_gce_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            log_config: Optional[pulumi.Input[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[Union['SubnetworkParamsArgs', 'SubnetworkParamsArgsDict']]] = None,
-            private_ip_google_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            purpose: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            reserved_internal_range: Optional[pulumi.Input[_builtins.str]] = None,
-            resolve_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            send_secondary_ip_range_if_empty: Optional[pulumi.Input[_builtins.bool]] = None,
-            stack_type: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            subnetwork_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'Subnetwork':
+            allow_subnet_cidr_routes_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            external_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_address: pulumi.Input[Optional[_builtins.str]] = None,
+            internal_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_gce_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            log_config: pulumi.Input[Optional[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['SubnetworkParamsArgs', 'SubnetworkParamsArgsDict']]] = None,
+            private_ip_google_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            purpose: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_internal_range: pulumi.Input[Optional[_builtins.str]] = None,
+            resolve_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            send_secondary_ip_range_if_empty: pulumi.Input[Optional[_builtins.bool]] = None,
+            stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnetwork_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'Subnetwork':
         """
         Get an existing Subnetwork resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

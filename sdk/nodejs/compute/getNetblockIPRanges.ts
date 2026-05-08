@@ -179,5 +179,5 @@ export interface GetNetblockIPRangesOutputArgs {
      *
      * * `legacy-health-checkers` - Corresponds to the IP addresses used for legacy style health checkers (used by Network Load Balancing). [More details.](https://cloud.google.com/load-balancing/docs/health-checks)
      */
-    rangeType?: pulumi.Input<string>;
+    rangeType?: pulumi.Input<string | undefined>;
 }

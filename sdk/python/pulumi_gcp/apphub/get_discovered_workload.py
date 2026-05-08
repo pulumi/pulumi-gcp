@@ -153,9 +153,9 @@ def get_discovered_workload(location: Optional[_builtins.str] = None,
         workload_properties=pulumi.get(__ret__, 'workload_properties'),
         workload_references=pulumi.get(__ret__, 'workload_references'),
         workload_uri=pulumi.get(__ret__, 'workload_uri'))
-def get_discovered_workload_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                                   project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   workload_uri: Optional[pulumi.Input[_builtins.str]] = None,
+def get_discovered_workload_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                                   project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   workload_uri: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDiscoveredWorkloadResult]:
     """
     Get information about a discovered workload from its uri.

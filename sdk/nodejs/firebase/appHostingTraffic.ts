@@ -311,61 +311,61 @@ export interface AppHostingTrafficState {
     /**
      * Id of the backend that this Traffic config applies to
      */
-    backend?: pulumi.Input<string>;
+    backend?: pulumi.Input<string | undefined>;
     /**
      * Time at which the backend was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Current state of traffic allocation for the backend.
      * When setting `target`, this field may differ for some time until the desired state is reached.
      * Structure is documented below.
      */
-    currents?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingTrafficCurrent>[]>;
+    currents?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingTrafficCurrent>[] | undefined>;
     /**
      * Time at which the backend was deleted.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * Server-computed checksum based on other values; may be sent
      * on update or delete to ensure operation is done on expected resource.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The location the Backend that this Traffic config applies to
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the backend traffic config
      * Format:
      * `projects/{project}/locations/{locationId}/backends/{backendId}/traffic`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The policy for how builds and rollouts are triggered and rolled out.
      * Structure is documented below.
      */
-    rolloutPolicy?: pulumi.Input<inputs.firebase.AppHostingTrafficRolloutPolicy>;
+    rolloutPolicy?: pulumi.Input<inputs.firebase.AppHostingTrafficRolloutPolicy | undefined>;
     /**
      * Set to manually control the desired traffic for the backend. This will
      * cause current to eventually match this value. The percentages must add
      * up to 100.
      * Structure is documented below.
      */
-    target?: pulumi.Input<inputs.firebase.AppHostingTrafficTarget>;
+    target?: pulumi.Input<inputs.firebase.AppHostingTrafficTarget | undefined>;
     /**
      * System-assigned, unique identifier.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Time at which the backend was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -384,17 +384,17 @@ export interface AppHostingTrafficArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The policy for how builds and rollouts are triggered and rolled out.
      * Structure is documented below.
      */
-    rolloutPolicy?: pulumi.Input<inputs.firebase.AppHostingTrafficRolloutPolicy>;
+    rolloutPolicy?: pulumi.Input<inputs.firebase.AppHostingTrafficRolloutPolicy | undefined>;
     /**
      * Set to manually control the desired traffic for the backend. This will
      * cause current to eventually match this value. The percentages must add
      * up to 100.
      * Structure is documented below.
      */
-    target?: pulumi.Input<inputs.firebase.AppHostingTrafficTarget>;
+    target?: pulumi.Input<inputs.firebase.AppHostingTrafficTarget | undefined>;
 }

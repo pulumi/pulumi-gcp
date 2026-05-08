@@ -199,30 +199,30 @@ export interface AuthorizedViewState {
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
      * If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
      */
-    deletionProtection?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<string | undefined>;
     /**
      * The name of the Bigtable instance in which the authorized view belongs.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
      *
      * -----
      */
-    subsetView?: pulumi.Input<inputs.bigtable.AuthorizedViewSubsetView>;
+    subsetView?: pulumi.Input<inputs.bigtable.AuthorizedViewSubsetView | undefined>;
     /**
      * The name of the Bigtable table in which the authorized view belongs.
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -233,7 +233,7 @@ export interface AuthorizedViewArgs {
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
      * If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
      */
-    deletionProtection?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<string | undefined>;
     /**
      * The name of the Bigtable instance in which the authorized view belongs.
      */
@@ -241,18 +241,18 @@ export interface AuthorizedViewArgs {
     /**
      * The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
      *
      * -----
      */
-    subsetView?: pulumi.Input<inputs.bigtable.AuthorizedViewSubsetView>;
+    subsetView?: pulumi.Input<inputs.bigtable.AuthorizedViewSubsetView | undefined>;
     /**
      * The name of the Bigtable table in which the authorized view belongs.
      */

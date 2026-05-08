@@ -125,8 +125,8 @@ def get_scope_iam_policy(project: Optional[_builtins.str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         scope_id=pulumi.get(__ret__, 'scope_id'))
-def get_scope_iam_policy_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                scope_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_scope_iam_policy_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                scope_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetScopeIamPolicyResult]:
     """
     Retrieves the current IAM policy data for scope

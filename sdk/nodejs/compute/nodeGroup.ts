@@ -307,19 +307,19 @@ export interface NodeGroupState {
      * One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      * Structure is documented below.
      */
-    autoscalingPolicy?: pulumi.Input<inputs.compute.NodeGroupAutoscalingPolicy>;
+    autoscalingPolicy?: pulumi.Input<inputs.compute.NodeGroupAutoscalingPolicy | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional textual description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      */
-    initialSize?: pulumi.Input<number>;
+    initialSize?: pulumi.Input<number | undefined>;
     /**
      * (Optional, Beta)
      * Specifies the frequency of planned maintenance events. Set to one of the following:
@@ -327,46 +327,46 @@ export interface NodeGroupState {
      * - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
      * Possible values are: `AS_NEEDED`, `RECURRENT`.
      */
-    maintenanceInterval?: pulumi.Input<string>;
+    maintenanceInterval?: pulumi.Input<string | undefined>;
     /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      */
-    maintenancePolicy?: pulumi.Input<string>;
+    maintenancePolicy?: pulumi.Input<string | undefined>;
     /**
      * contains properties for the timeframe of maintenance
      * Structure is documented below.
      */
-    maintenanceWindow?: pulumi.Input<inputs.compute.NodeGroupMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.compute.NodeGroupMaintenanceWindow | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of the node template to which this node group belongs.
      */
-    nodeTemplate?: pulumi.Input<string>;
+    nodeTemplate?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Share settings for the node group.
      * Structure is documented below.
      */
-    shareSettings?: pulumi.Input<inputs.compute.NodeGroupShareSettings>;
+    shareSettings?: pulumi.Input<inputs.compute.NodeGroupShareSettings | undefined>;
     /**
      * The total number of nodes in the node group.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * Zone where this node group is located
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -379,15 +379,15 @@ export interface NodeGroupArgs {
      * One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      * Structure is documented below.
      */
-    autoscalingPolicy?: pulumi.Input<inputs.compute.NodeGroupAutoscalingPolicy>;
+    autoscalingPolicy?: pulumi.Input<inputs.compute.NodeGroupAutoscalingPolicy | undefined>;
     /**
      * An optional textual description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      */
-    initialSize?: pulumi.Input<number>;
+    initialSize?: pulumi.Input<number | undefined>;
     /**
      * (Optional, Beta)
      * Specifies the frequency of planned maintenance events. Set to one of the following:
@@ -395,20 +395,20 @@ export interface NodeGroupArgs {
      * - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
      * Possible values are: `AS_NEEDED`, `RECURRENT`.
      */
-    maintenanceInterval?: pulumi.Input<string>;
+    maintenanceInterval?: pulumi.Input<string | undefined>;
     /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      */
-    maintenancePolicy?: pulumi.Input<string>;
+    maintenancePolicy?: pulumi.Input<string | undefined>;
     /**
      * contains properties for the timeframe of maintenance
      * Structure is documented below.
      */
-    maintenanceWindow?: pulumi.Input<inputs.compute.NodeGroupMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.compute.NodeGroupMaintenanceWindow | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of the node template to which this node group belongs.
      */
@@ -417,14 +417,14 @@ export interface NodeGroupArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Share settings for the node group.
      * Structure is documented below.
      */
-    shareSettings?: pulumi.Input<inputs.compute.NodeGroupShareSettings>;
+    shareSettings?: pulumi.Input<inputs.compute.NodeGroupShareSettings | undefined>;
     /**
      * Zone where this node group is located
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

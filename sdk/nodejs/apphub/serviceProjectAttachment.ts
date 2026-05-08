@@ -174,34 +174,34 @@ export interface ServiceProjectAttachmentState {
     /**
      * Output only. Create time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * "Immutable. Service project name in the format: \"projects/abc\"
      * or \"projects/123\". As input, project name with either project id or number
      * are accepted. As output, this field will contain project number."
      */
-    serviceProject?: pulumi.Input<string>;
+    serviceProject?: pulumi.Input<string | undefined>;
     /**
      * Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
      */
-    serviceProjectAttachmentId?: pulumi.Input<string>;
+    serviceProjectAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * ServiceProjectAttachment state.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. A globally unique identifier (in UUID4 format) for the `ServiceProjectAttachment`.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -212,13 +212,13 @@ export interface ServiceProjectAttachmentArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * "Immutable. Service project name in the format: \"projects/abc\"
      * or \"projects/123\". As input, project name with either project id or number
      * are accepted. As output, this field will contain project number."
      */
-    serviceProject?: pulumi.Input<string>;
+    serviceProject?: pulumi.Input<string | undefined>;
     /**
      * Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
      */

@@ -264,81 +264,81 @@ export interface PolicyBasedRouteState {
     /**
      * Time when the policy-based route was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The filter to match L4 traffic.
      * Structure is documented below.
      */
-    filter?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteFilter>;
+    filter?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteFilter | undefined>;
     /**
      * The interconnect attachments that this policy-based route applies to.
      * Structure is documented below.
      */
-    interconnectAttachment?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteInterconnectAttachment>;
+    interconnectAttachment?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteInterconnectAttachment | undefined>;
     /**
      * Type of this resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * User-defined labels.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the policy based route.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
      */
-    nextHopIlbIp?: pulumi.Input<string>;
+    nextHopIlbIp?: pulumi.Input<string | undefined>;
     /**
      * Other routes that will be referenced to determine the next hop of the packet.
      * Possible values are: `DEFAULT_ROUTING`.
      */
-    nextHopOtherRoutes?: pulumi.Input<string>;
+    nextHopOtherRoutes?: pulumi.Input<string | undefined>;
     /**
      * The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Time when the policy-based route was created.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * VM instances to which this policy-based route applies to.
      * Structure is documented below.
      */
-    virtualMachine?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteVirtualMachine>;
+    virtualMachine?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteVirtualMachine | undefined>;
     /**
      * If potential misconfigurations are detected for this route, this field will be populated with warning messages.
      * Structure is documented below.
      */
-    warnings?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteWarning>[]>;
+    warnings?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteWarning>[] | undefined>;
 }
 
 /**
@@ -348,7 +348,7 @@ export interface PolicyBasedRouteArgs {
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The filter to match L4 traffic.
      * Structure is documented below.
@@ -358,18 +358,18 @@ export interface PolicyBasedRouteArgs {
      * The interconnect attachments that this policy-based route applies to.
      * Structure is documented below.
      */
-    interconnectAttachment?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteInterconnectAttachment>;
+    interconnectAttachment?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteInterconnectAttachment | undefined>;
     /**
      * User-defined labels.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the policy based route.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
      */
@@ -377,24 +377,24 @@ export interface PolicyBasedRouteArgs {
     /**
      * The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
      */
-    nextHopIlbIp?: pulumi.Input<string>;
+    nextHopIlbIp?: pulumi.Input<string | undefined>;
     /**
      * Other routes that will be referenced to determine the next hop of the packet.
      * Possible values are: `DEFAULT_ROUTING`.
      */
-    nextHopOtherRoutes?: pulumi.Input<string>;
+    nextHopOtherRoutes?: pulumi.Input<string | undefined>;
     /**
      * The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * VM instances to which this policy-based route applies to.
      * Structure is documented below.
      */
-    virtualMachine?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteVirtualMachine>;
+    virtualMachine?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteVirtualMachine | undefined>;
 }

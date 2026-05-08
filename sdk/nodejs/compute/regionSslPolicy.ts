@@ -183,7 +183,7 @@ export interface RegionSslPolicyState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * A list of features enabled when the selected profile is CUSTOM. The
      * method returns the set of features that can be specified in this
@@ -193,20 +193,20 @@ export interface RegionSslPolicyState {
      * *must* be present when using the `CUSTOM` profile. This argument
      * *must not* be present when using any other profile.
      */
-    customFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    customFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The list of features enabled in the SSL policy.
      */
-    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this
      * object. This field is used in optimistic locking.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer. When set to
@@ -214,7 +214,7 @@ export interface RegionSslPolicyState {
      * Default value is `TLS_1_0`.
      * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
      */
-    minTlsVersion?: pulumi.Input<string>;
+    minTlsVersion?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -224,7 +224,7 @@ export interface RegionSslPolicyState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Profile specifies the set of SSL features that can be used by the
      * load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -238,20 +238,20 @@ export interface RegionSslPolicyState {
      * Default value is `COMPATIBLE`.
      * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
      */
-    profile?: pulumi.Input<string>;
+    profile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region where the regional SSL policy resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -267,11 +267,11 @@ export interface RegionSslPolicyArgs {
      * *must* be present when using the `CUSTOM` profile. This argument
      * *must not* be present when using any other profile.
      */
-    customFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    customFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer. When set to
@@ -279,7 +279,7 @@ export interface RegionSslPolicyArgs {
      * Default value is `TLS_1_0`.
      * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
      */
-    minTlsVersion?: pulumi.Input<string>;
+    minTlsVersion?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -289,7 +289,7 @@ export interface RegionSslPolicyArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Profile specifies the set of SSL features that can be used by the
      * load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -303,14 +303,14 @@ export interface RegionSslPolicyArgs {
      * Default value is `COMPATIBLE`.
      * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
      */
-    profile?: pulumi.Input<string>;
+    profile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region where the regional SSL policy resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

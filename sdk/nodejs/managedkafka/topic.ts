@@ -177,36 +177,36 @@ export interface TopicState {
     /**
      * The cluster name.
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
      */
-    configs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the topic. The `topic` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/topics/TOPIC_ID`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of partitions in a topic. You can increase the partition count for a topic, but you cannot decrease it. Increasing partitions for a topic that uses a key might change how messages are distributed.
      */
-    partitionCount?: pulumi.Input<number>;
+    partitionCount?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
      */
-    replicationFactor?: pulumi.Input<number>;
+    replicationFactor?: pulumi.Input<number | undefined>;
     /**
      * The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
      */
-    topicId?: pulumi.Input<string>;
+    topicId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -220,7 +220,7 @@ export interface TopicArgs {
     /**
      * Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
      */
-    configs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
@@ -228,12 +228,12 @@ export interface TopicArgs {
     /**
      * The number of partitions in a topic. You can increase the partition count for a topic, but you cannot decrease it. Increasing partitions for a topic that uses a key might change how messages are distributed.
      */
-    partitionCount?: pulumi.Input<number>;
+    partitionCount?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
      */

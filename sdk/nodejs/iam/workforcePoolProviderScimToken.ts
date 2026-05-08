@@ -222,42 +222,42 @@ export interface WorkforcePoolProviderScimTokenState {
     /**
      * A user-specified display name for the scim token. Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the scim token.
      * Format: `locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}/tokens/{scim_token_id}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Provider.
      */
-    providerId?: pulumi.Input<string>;
+    providerId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SCIM Tenant.
      */
-    scimTenantId?: pulumi.Input<string>;
+    scimTenantId?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
      */
-    scimTokenId?: pulumi.Input<string>;
+    scimTokenId?: pulumi.Input<string | undefined>;
     /**
      * The token string provided to the IdP for authentication and will be set only during creation.
      */
-    securityToken?: pulumi.Input<string>;
+    securityToken?: pulumi.Input<string | undefined>;
     /**
      * The current state of the scim token.
      * * ACTIVE: The token is active and may be used to provision users and groups.
      * * DELETED: The token is soft-deleted. Soft-deleted tokens are permanently deleted after approximately 30 days.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Workforce Pool.
      */
-    workforcePoolId?: pulumi.Input<string>;
+    workforcePoolId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -267,7 +267,7 @@ export interface WorkforcePoolProviderScimTokenArgs {
     /**
      * A user-specified display name for the scim token. Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource.
      */

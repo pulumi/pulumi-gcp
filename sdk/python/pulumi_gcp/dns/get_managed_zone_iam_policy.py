@@ -125,8 +125,8 @@ def get_managed_zone_iam_policy(managed_zone: Optional[_builtins.str] = None,
         managed_zone=pulumi.get(__ret__, 'managed_zone'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-def get_managed_zone_iam_policy_output(managed_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_managed_zone_iam_policy_output(managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetManagedZoneIamPolicyResult]:
     """
     Retrieves the current IAM policy data for managedzone

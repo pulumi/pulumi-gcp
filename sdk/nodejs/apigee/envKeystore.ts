@@ -106,16 +106,16 @@ export interface EnvKeystoreState {
     /**
      * Aliases in this keystore.
      */
-    aliases?: pulumi.Input<pulumi.Input<string>[]>;
+    aliases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      */
-    envId?: pulumi.Input<string>;
+    envId?: pulumi.Input<string | undefined>;
     /**
      * The name of the newly created keystore.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -130,5 +130,5 @@ export interface EnvKeystoreArgs {
     /**
      * The name of the newly created keystore.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

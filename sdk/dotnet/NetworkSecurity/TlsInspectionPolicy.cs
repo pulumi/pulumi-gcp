@@ -247,7 +247,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///                 {
     ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreTrustAnchorArgs
     ///                     {
-    ///                         PemCertificate = Std.Index.File.Invoke(new()
+    ///                         PemCertificate = Std.File.Invoke(new()
     ///                         {
     ///                             Input = "test-fixtures/ca_cert.pem",
     ///                         }).Apply(invoke =&gt; invoke.Result),
@@ -257,7 +257,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///                 {
     ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreIntermediateCaArgs
     ///                     {
-    ///                         PemCertificate = Std.Index.File.Invoke(new()
+    ///                         PemCertificate = Std.File.Invoke(new()
     ///                         {
     ///                             Input = "test-fixtures/ca_cert.pem",
     ///                         }).Apply(invoke =&gt; invoke.Result),

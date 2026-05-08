@@ -140,33 +140,33 @@ export interface EndpointAttachmentState {
     /**
      * State of the endpoint attachment connection to the service attachment.
      */
-    connectionState?: pulumi.Input<string>;
+    connectionState?: pulumi.Input<string | undefined>;
     /**
      * ID of the endpoint attachment.
      */
-    endpointAttachmentId?: pulumi.Input<string>;
+    endpointAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Location of the endpoint attachment.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the Endpoint Attachment in the following format:
      * organizations/{organization}/endpointAttachments/{endpointAttachment}.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Format: projects/*&#47;regions/*&#47;serviceAttachments/*
      */
-    serviceAttachment?: pulumi.Input<string>;
+    serviceAttachment?: pulumi.Input<string | undefined>;
 }
 
 /**

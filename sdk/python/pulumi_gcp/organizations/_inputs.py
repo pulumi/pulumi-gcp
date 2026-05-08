@@ -58,7 +58,7 @@ class AccessApprovalSettingsEnrolledServiceArgsDict(TypedDict):
     pubsub.googleapis.com
     storage.googleapis.com
     """
-    enrollment_level: NotRequired[pulumi.Input[_builtins.str]]
+    enrollment_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The enrollment level of the service.
     Default value is `BLOCK_ALL`.
@@ -69,7 +69,7 @@ class AccessApprovalSettingsEnrolledServiceArgsDict(TypedDict):
 class AccessApprovalSettingsEnrolledServiceArgs:
     def __init__(__self__, *,
                  cloud_product: pulumi.Input[_builtins.str],
-                 enrollment_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 enrollment_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cloud_product: The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
                all
@@ -114,7 +114,7 @@ class AccessApprovalSettingsEnrolledServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="enrollmentLevel")
-    def enrollment_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enrollment_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The enrollment level of the service.
         Default value is `BLOCK_ALL`.
@@ -123,7 +123,7 @@ class AccessApprovalSettingsEnrolledServiceArgs:
         return pulumi.get(self, "enrollment_level")
 
     @enrollment_level.setter
-    def enrollment_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enrollment_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enrollment_level", value)
 
 
@@ -136,7 +136,7 @@ class IAMBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -150,7 +150,7 @@ class IAMBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -191,7 +191,7 @@ class IAMBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -202,7 +202,7 @@ class IAMBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -215,7 +215,7 @@ class IAMMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -229,7 +229,7 @@ class IAMMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -270,7 +270,7 @@ class IAMMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -281,7 +281,7 @@ class IAMMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -290,7 +290,7 @@ class IamAuditConfigAuditLogConfigArgsDict(TypedDict):
     """
     Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
     """
-    exempted_members: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exempted_members: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Identities that do not cause logging for this type of permission.
     Each entry can have one of the following values:
@@ -304,7 +304,7 @@ class IamAuditConfigAuditLogConfigArgsDict(TypedDict):
 class IamAuditConfigAuditLogConfigArgs:
     def __init__(__self__, *,
                  log_type: pulumi.Input[_builtins.str],
-                 exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 exempted_members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] log_type: Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exempted_members: Identities that do not cause logging for this type of permission.
@@ -332,7 +332,7 @@ class IamAuditConfigAuditLogConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="exemptedMembers")
-    def exempted_members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exempted_members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Identities that do not cause logging for this type of permission.
         Each entry can have one of the following values:
@@ -344,7 +344,7 @@ class IamAuditConfigAuditLogConfigArgs:
         return pulumi.get(self, "exempted_members")
 
     @exempted_members.setter
-    def exempted_members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exempted_members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exempted_members", value)
 
 
@@ -377,22 +377,22 @@ class PolicyBooleanPolicyArgs:
 
 
 class PolicyListPolicyArgsDict(TypedDict):
-    allow: NotRequired[pulumi.Input['PolicyListPolicyAllowArgsDict']]
+    allow: NotRequired[pulumi.Input[Optional['PolicyListPolicyAllowArgs']]]
     """
     or `deny` - (Optional) One or the other must be set.
     """
-    deny: NotRequired[pulumi.Input['PolicyListPolicyDenyArgsDict']]
+    deny: NotRequired[pulumi.Input[Optional['PolicyListPolicyDenyArgs']]]
     """
     One or the other must be set.
     """
-    inherit_from_parent: NotRequired[pulumi.Input[_builtins.bool]]
+    inherit_from_parent: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to true, the values from the effective Policy of the parent resource
     are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 
     The `allow` or `deny` blocks support:
     """
-    suggested_value: NotRequired[pulumi.Input[_builtins.str]]
+    suggested_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
     """
@@ -400,10 +400,10 @@ class PolicyListPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class PolicyListPolicyArgs:
     def __init__(__self__, *,
-                 allow: Optional[pulumi.Input['PolicyListPolicyAllowArgs']] = None,
-                 deny: Optional[pulumi.Input['PolicyListPolicyDenyArgs']] = None,
-                 inherit_from_parent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 suggested_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow: pulumi.Input[Optional['PolicyListPolicyAllowArgs']] = None,
+                 deny: pulumi.Input[Optional['PolicyListPolicyDenyArgs']] = None,
+                 inherit_from_parent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 suggested_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['PolicyListPolicyAllowArgs'] allow: or `deny` - (Optional) One or the other must be set.
         :param pulumi.Input['PolicyListPolicyDenyArgs'] deny: One or the other must be set.
@@ -424,31 +424,31 @@ class PolicyListPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def allow(self) -> Optional[pulumi.Input['PolicyListPolicyAllowArgs']]:
+    def allow(self) -> pulumi.Input[Optional['PolicyListPolicyAllowArgs']]:
         """
         or `deny` - (Optional) One or the other must be set.
         """
         return pulumi.get(self, "allow")
 
     @allow.setter
-    def allow(self, value: Optional[pulumi.Input['PolicyListPolicyAllowArgs']]):
+    def allow(self, value: pulumi.Input[Optional['PolicyListPolicyAllowArgs']]):
         pulumi.set(self, "allow", value)
 
     @_builtins.property
     @pulumi.getter
-    def deny(self) -> Optional[pulumi.Input['PolicyListPolicyDenyArgs']]:
+    def deny(self) -> pulumi.Input[Optional['PolicyListPolicyDenyArgs']]:
         """
         One or the other must be set.
         """
         return pulumi.get(self, "deny")
 
     @deny.setter
-    def deny(self, value: Optional[pulumi.Input['PolicyListPolicyDenyArgs']]):
+    def deny(self, value: pulumi.Input[Optional['PolicyListPolicyDenyArgs']]):
         pulumi.set(self, "deny", value)
 
     @_builtins.property
     @pulumi.getter(name="inheritFromParent")
-    def inherit_from_parent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def inherit_from_parent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the values from the effective Policy of the parent resource
         are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
@@ -458,28 +458,28 @@ class PolicyListPolicyArgs:
         return pulumi.get(self, "inherit_from_parent")
 
     @inherit_from_parent.setter
-    def inherit_from_parent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def inherit_from_parent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "inherit_from_parent", value)
 
     @_builtins.property
     @pulumi.getter(name="suggestedValue")
-    def suggested_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suggested_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
         """
         return pulumi.get(self, "suggested_value")
 
     @suggested_value.setter
-    def suggested_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suggested_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suggested_value", value)
 
 
 class PolicyListPolicyAllowArgsDict(TypedDict):
-    all: NotRequired[pulumi.Input[_builtins.bool]]
+    all: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     The policy allows or denies all values.
     """
-    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The policy can define specific values that are allowed or denied.
     """
@@ -487,8 +487,8 @@ class PolicyListPolicyAllowArgsDict(TypedDict):
 @pulumi.input_type
 class PolicyListPolicyAllowArgs:
     def __init__(__self__, *,
-                 all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] all: The policy allows or denies all values.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: The policy can define specific values that are allowed or denied.
@@ -500,35 +500,35 @@ class PolicyListPolicyAllowArgs:
 
     @_builtins.property
     @pulumi.getter
-    def all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The policy allows or denies all values.
         """
         return pulumi.get(self, "all")
 
     @all.setter
-    def all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The policy can define specific values that are allowed or denied.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "values", value)
 
 
 class PolicyListPolicyDenyArgsDict(TypedDict):
-    all: NotRequired[pulumi.Input[_builtins.bool]]
+    all: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     The policy allows or denies all values.
     """
-    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The policy can define specific values that are allowed or denied.
     """
@@ -536,8 +536,8 @@ class PolicyListPolicyDenyArgsDict(TypedDict):
 @pulumi.input_type
 class PolicyListPolicyDenyArgs:
     def __init__(__self__, *,
-                 all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] all: The policy allows or denies all values.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: The policy can define specific values that are allowed or denied.
@@ -549,26 +549,26 @@ class PolicyListPolicyDenyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The policy allows or denies all values.
         """
         return pulumi.get(self, "all")
 
     @all.setter
-    def all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The policy can define specific values that are allowed or denied.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "values", value)
 
 

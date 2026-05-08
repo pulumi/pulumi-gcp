@@ -155,35 +155,35 @@ export interface HmacKeyState {
     /**
      * The access ID of the HMAC Key.
      */
-    accessId?: pulumi.Input<string>;
+    accessId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * HMAC secret key material.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * The email address of the key's associated service account.
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
     /**
      * The state of the key. Can be set to one of ACTIVE, INACTIVE.
      * Default value is `ACTIVE`.
      * Possible values are: `ACTIVE`, `INACTIVE`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * 'The creation time of the HMAC key in RFC 3339 format. '
      */
-    timeCreated?: pulumi.Input<string>;
+    timeCreated?: pulumi.Input<string | undefined>;
     /**
      * 'The last modification time of the HMAC key metadata in RFC 3339 format.'
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -194,7 +194,7 @@ export interface HmacKeyArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The email address of the key's associated service account.
      */
@@ -204,5 +204,5 @@ export interface HmacKeyArgs {
      * Default value is `ACTIVE`.
      * Possible values are: `ACTIVE`, `INACTIVE`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }

@@ -24,7 +24,7 @@ class DefaultObjectAccessControlArgs:
                  bucket: pulumi.Input[_builtins.str],
                  entity: pulumi.Input[_builtins.str],
                  role: pulumi.Input[_builtins.str],
-                 object: Optional[pulumi.Input[_builtins.str]] = None):
+                 object: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DefaultObjectAccessControl resource.
 
@@ -95,29 +95,29 @@ class DefaultObjectAccessControlArgs:
 
     @_builtins.property
     @pulumi.getter
-    def object(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the object, if applied to an object.
         """
         return pulumi.get(self, "object")
 
     @object.setter
-    def object(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object", value)
 
 
 @pulumi.input_type
 class _DefaultObjectAccessControlState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 generation: Optional[pulumi.Input[_builtins.int]] = None,
-                 object: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_teams: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 generation: pulumi.Input[Optional[_builtins.int]] = None,
+                 object: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_teams: pulumi.Input[Optional[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DefaultObjectAccessControl resources.
 
@@ -162,43 +162,43 @@ class _DefaultObjectAccessControlState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain associated with the entity.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address associated with the entity.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter
-    def entity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entity holding the permission, in one of the following forms:
         * user-{{userId}}
@@ -213,48 +213,48 @@ class _DefaultObjectAccessControlState:
         return pulumi.get(self, "entity")
 
     @entity.setter
-    def entity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity", value)
 
     @_builtins.property
     @pulumi.getter(name="entityId")
-    def entity_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID for the entity
         """
         return pulumi.get(self, "entity_id")
 
     @entity_id.setter
-    def entity_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The content generation of the object, if applied to an object.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "generation", value)
 
     @_builtins.property
     @pulumi.getter
-    def object(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the object, if applied to an object.
         """
         return pulumi.get(self, "object")
 
     @object.setter
-    def object(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object", value)
 
     @_builtins.property
     @pulumi.getter(name="projectTeams")
-    def project_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']]]]:
+    def project_teams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']]]]:
         """
         The project team associated with the entity
         Structure is documented below.
@@ -262,12 +262,12 @@ class _DefaultObjectAccessControlState:
         return pulumi.get(self, "project_teams")
 
     @project_teams.setter
-    def project_teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']]]]):
+    def project_teams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']]]]):
         pulumi.set(self, "project_teams", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access permission for the entity.
         Possible values are: `OWNER`, `READER`.
@@ -275,7 +275,7 @@ class _DefaultObjectAccessControlState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
 
@@ -285,10 +285,10 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity: Optional[pulumi.Input[_builtins.str]] = None,
-                 object: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity: pulumi.Input[Optional[_builtins.str]] = None,
+                 object: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The DefaultObjectAccessControls resources represent the Access Control
@@ -429,10 +429,10 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity: Optional[pulumi.Input[_builtins.str]] = None,
-                 object: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity: pulumi.Input[Optional[_builtins.str]] = None,
+                 object: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -467,15 +467,15 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            entity: Optional[pulumi.Input[_builtins.str]] = None,
-            entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-            generation: Optional[pulumi.Input[_builtins.int]] = None,
-            object: Optional[pulumi.Input[_builtins.str]] = None,
-            project_teams: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DefaultObjectAccessControlProjectTeamArgs', 'DefaultObjectAccessControlProjectTeamArgsDict']]]]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None) -> 'DefaultObjectAccessControl':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            entity: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+            generation: pulumi.Input[Optional[_builtins.int]] = None,
+            object: pulumi.Input[Optional[_builtins.str]] = None,
+            project_teams: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DefaultObjectAccessControlProjectTeamArgs', 'DefaultObjectAccessControlProjectTeamArgsDict']]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> 'DefaultObjectAccessControl':
         """
         Get an existing DefaultObjectAccessControl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

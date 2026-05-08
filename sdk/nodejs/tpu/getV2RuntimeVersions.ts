@@ -113,10 +113,10 @@ export interface GetV2RuntimeVersionsOutputArgs {
      * The project to list versions for. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The zone to list versions for. If it
      * is not provided, the provider zone is used.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

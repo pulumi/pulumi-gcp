@@ -143,29 +143,29 @@ export interface RouterNatAddressState {
      * A list of URLs of the IP resources to be drained. These IPs must be
      * valid static external IPs that have been assigned to the NAT.
      */
-    drainNatIps?: pulumi.Input<pulumi.Input<string>[]>;
+    drainNatIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Self-links of NAT IPs to be used in a Nat service. Only valid if the referenced RouterNat
      * natIpAllocateOption is set to MANUAL_ONLY.
      */
-    natIps?: pulumi.Input<pulumi.Input<string>[]>;
+    natIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the NAT service reside.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud Router in which the referenced NAT service is configured.
      */
-    router?: pulumi.Input<string>;
+    router?: pulumi.Input<string | undefined>;
     /**
      * The name of the Nat service in which this address will be configured.
      */
-    routerNat?: pulumi.Input<string>;
+    routerNat?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -176,7 +176,7 @@ export interface RouterNatAddressArgs {
      * A list of URLs of the IP resources to be drained. These IPs must be
      * valid static external IPs that have been assigned to the NAT.
      */
-    drainNatIps?: pulumi.Input<pulumi.Input<string>[]>;
+    drainNatIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Self-links of NAT IPs to be used in a Nat service. Only valid if the referenced RouterNat
      * natIpAllocateOption is set to MANUAL_ONLY.
@@ -186,11 +186,11 @@ export interface RouterNatAddressArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the NAT service reside.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud Router in which the referenced NAT service is configured.
      */

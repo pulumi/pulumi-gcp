@@ -98,5 +98,5 @@ export interface GetNetworkPeeringOutputArgs {
      * Name of the resource.
      */
     name: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

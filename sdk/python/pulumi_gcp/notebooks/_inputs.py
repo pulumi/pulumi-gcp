@@ -69,7 +69,7 @@ class EnvironmentContainerImageArgsDict(TypedDict):
     The path to the container image repository.
     For example: gcr.io/{project_id}/{imageName}
     """
-    tag: NotRequired[pulumi.Input[_builtins.str]]
+    tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag of the container image. If not specified, this defaults to the latest tag.
     """
@@ -78,7 +78,7 @@ class EnvironmentContainerImageArgsDict(TypedDict):
 class EnvironmentContainerImageArgs:
     def __init__(__self__, *,
                  repository: pulumi.Input[_builtins.str],
-                 tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] repository: The path to the container image repository.
                For example: gcr.io/{project_id}/{imageName}
@@ -103,14 +103,14 @@ class EnvironmentContainerImageArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag of the container image. If not specified, this defaults to the latest tag.
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag", value)
 
 
@@ -120,11 +120,11 @@ class EnvironmentVmImageArgsDict(TypedDict):
     The name of the Google Cloud project that this VM image belongs to.
     Format: projects/{project_id}
     """
-    image_family: NotRequired[pulumi.Input[_builtins.str]]
+    image_family: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this VM image family to find the image; the newest image in this family will be used.
     """
-    image_name: NotRequired[pulumi.Input[_builtins.str]]
+    image_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use VM image name to find the image.
     """
@@ -133,8 +133,8 @@ class EnvironmentVmImageArgsDict(TypedDict):
 class EnvironmentVmImageArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
-                 image_family: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 image_family: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] project: The name of the Google Cloud project that this VM image belongs to.
                Format: projects/{project_id}
@@ -162,26 +162,26 @@ class EnvironmentVmImageArgs:
 
     @_builtins.property
     @pulumi.getter(name="imageFamily")
-    def image_family(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_family(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this VM image family to find the image; the newest image in this family will be used.
         """
         return pulumi.get(self, "image_family")
 
     @image_family.setter
-    def image_family(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_family(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_family", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use VM image name to find the image.
         """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
 
@@ -241,7 +241,7 @@ class InstanceContainerImageArgsDict(TypedDict):
     The path to the container image repository.
     For example: gcr.io/{project_id}/{imageName}
     """
-    tag: NotRequired[pulumi.Input[_builtins.str]]
+    tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag of the container image. If not specified, this defaults to the latest tag.
     """
@@ -250,7 +250,7 @@ class InstanceContainerImageArgsDict(TypedDict):
 class InstanceContainerImageArgs:
     def __init__(__self__, *,
                  repository: pulumi.Input[_builtins.str],
-                 tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] repository: The path to the container image repository.
                For example: gcr.io/{project_id}/{imageName}
@@ -275,28 +275,28 @@ class InstanceContainerImageArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag of the container image. If not specified, this defaults to the latest tag.
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag", value)
 
 
 class InstanceIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class InstanceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -322,25 +322,25 @@ class InstanceIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class InstanceIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class InstanceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -366,11 +366,11 @@ class InstanceIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -380,11 +380,11 @@ class InstanceReservationAffinityArgsDict(TypedDict):
     The type of Compute Reservation.
     Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Corresponds to the label key of reservation resource.
     """
-    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Corresponds to the label values of reservation resource.
     """
@@ -393,8 +393,8 @@ class InstanceReservationAffinityArgsDict(TypedDict):
 class InstanceReservationAffinityArgs:
     def __init__(__self__, *,
                  consume_reservation_type: pulumi.Input[_builtins.str],
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] consume_reservation_type: The type of Compute Reservation.
                Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
@@ -422,45 +422,45 @@ class InstanceReservationAffinityArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Corresponds to the label key of reservation resource.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Corresponds to the label values of reservation resource.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "values", value)
 
 
 class InstanceShieldedInstanceConfigArgsDict(TypedDict):
-    enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_integrity_monitoring: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
     boot integrity of the instance. The attestation is performed against the integrity policy baseline.
     This baseline is initially derived from the implicitly trusted boot image when the instance is created.
     Enabled by default.
     """
-    enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_secure_boot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
     authentic software by verifying the digital signature of all boot components, and halting the boot process
     if signature verification fails.
     Disabled by default.
     """
-    enable_vtpm: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_vtpm: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defines whether the instance has the vTPM enabled.
     Enabled by default.
@@ -469,9 +469,9 @@ class InstanceShieldedInstanceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceShieldedInstanceConfigArgs:
     def __init__(__self__, *,
-                 enable_integrity_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_secure_boot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_vtpm: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_integrity_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_secure_boot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_vtpm: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_integrity_monitoring: Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
                boot integrity of the instance. The attestation is performed against the integrity policy baseline.
@@ -493,7 +493,7 @@ class InstanceShieldedInstanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableIntegrityMonitoring")
-    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_integrity_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
         boot integrity of the instance. The attestation is performed against the integrity policy baseline.
@@ -503,12 +503,12 @@ class InstanceShieldedInstanceConfigArgs:
         return pulumi.get(self, "enable_integrity_monitoring")
 
     @enable_integrity_monitoring.setter
-    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_integrity_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_integrity_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSecureBoot")
-    def enable_secure_boot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_secure_boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
         authentic software by verifying the digital signature of all boot components, and halting the boot process
@@ -518,12 +518,12 @@ class InstanceShieldedInstanceConfigArgs:
         return pulumi.get(self, "enable_secure_boot")
 
     @enable_secure_boot.setter
-    def enable_secure_boot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_secure_boot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_secure_boot", value)
 
     @_builtins.property
     @pulumi.getter(name="enableVtpm")
-    def enable_vtpm(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_vtpm(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the instance has the vTPM enabled.
         Enabled by default.
@@ -531,7 +531,7 @@ class InstanceShieldedInstanceConfigArgs:
         return pulumi.get(self, "enable_vtpm")
 
     @enable_vtpm.setter
-    def enable_vtpm(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_vtpm(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_vtpm", value)
 
 
@@ -541,11 +541,11 @@ class InstanceVmImageArgsDict(TypedDict):
     The name of the Google Cloud project that this VM image belongs to.
     Format: projects/{project_id}
     """
-    image_family: NotRequired[pulumi.Input[_builtins.str]]
+    image_family: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this VM image family to find the image; the newest image in this family will be used.
     """
-    image_name: NotRequired[pulumi.Input[_builtins.str]]
+    image_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use VM image name to find the image.
     """
@@ -554,8 +554,8 @@ class InstanceVmImageArgsDict(TypedDict):
 class InstanceVmImageArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
-                 image_family: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 image_family: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] project: The name of the Google Cloud project that this VM image belongs to.
                Format: projects/{project_id}
@@ -583,42 +583,42 @@ class InstanceVmImageArgs:
 
     @_builtins.property
     @pulumi.getter(name="imageFamily")
-    def image_family(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_family(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this VM image family to find the image; the newest image in this family will be used.
         """
         return pulumi.get(self, "image_family")
 
     @image_family.setter
-    def image_family(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_family(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_family", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use VM image name to find the image.
         """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
 
 class RuntimeAccessConfigArgsDict(TypedDict):
-    access_type: NotRequired[pulumi.Input[_builtins.str]]
+    access_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of access mode this instance. For valid values, see
     `https://cloud.google.com/vertex-ai/docs/workbench/reference/
     rest/v1/projects.locations.runtimes#RuntimeAccessType`.
     """
-    proxy_uri: NotRequired[pulumi.Input[_builtins.str]]
+    proxy_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The proxy endpoint that is used to access the runtime.
     """
-    runtime_owner: NotRequired[pulumi.Input[_builtins.str]]
+    runtime_owner: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The owner of this runtime after creation. Format: `alias@example.com`.
     Currently supports one owner only.
@@ -627,9 +627,9 @@ class RuntimeAccessConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeAccessConfigArgs:
     def __init__(__self__, *,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_owner: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_owner: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_type: The type of access mode this instance. For valid values, see
                `https://cloud.google.com/vertex-ai/docs/workbench/reference/
@@ -648,7 +648,7 @@ class RuntimeAccessConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of access mode this instance. For valid values, see
         `https://cloud.google.com/vertex-ai/docs/workbench/reference/
@@ -657,12 +657,12 @@ class RuntimeAccessConfigArgs:
         return pulumi.get(self, "access_type")
 
     @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyUri")
-    def proxy_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The proxy endpoint that is used to access the runtime.
@@ -670,12 +670,12 @@ class RuntimeAccessConfigArgs:
         return pulumi.get(self, "proxy_uri")
 
     @proxy_uri.setter
-    def proxy_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeOwner")
-    def runtime_owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of this runtime after creation. Format: `alias@example.com`.
         Currently supports one owner only.
@@ -683,21 +683,21 @@ class RuntimeAccessConfigArgs:
         return pulumi.get(self, "runtime_owner")
 
     @runtime_owner.setter
-    def runtime_owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_owner", value)
 
 
 class RuntimeIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RuntimeIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -723,25 +723,25 @@ class RuntimeIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RuntimeIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RuntimeIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -767,16 +767,16 @@ class RuntimeIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RuntimeMetricArgsDict(TypedDict):
-    system_metrics: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    system_metrics: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     Contains runtime daemon metrics, such as OS and kernels and
@@ -786,7 +786,7 @@ class RuntimeMetricArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeMetricArgs:
     def __init__(__self__, *,
-                 system_metrics: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 system_metrics: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] system_metrics: (Output)
                Contains runtime daemon metrics, such as OS and kernels and
@@ -797,7 +797,7 @@ class RuntimeMetricArgs:
 
     @_builtins.property
     @pulumi.getter(name="systemMetrics")
-    def system_metrics(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def system_metrics(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         Contains runtime daemon metrics, such as OS and kernels and
@@ -806,56 +806,56 @@ class RuntimeMetricArgs:
         return pulumi.get(self, "system_metrics")
 
     @system_metrics.setter
-    def system_metrics(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def system_metrics(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "system_metrics", value)
 
 
 class RuntimeSoftwareConfigArgsDict(TypedDict):
-    custom_gpu_driver_path: NotRequired[pulumi.Input[_builtins.str]]
+    custom_gpu_driver_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specify a custom Cloud Storage path where the GPU driver is stored.
     If not specified, we'll automatically choose from official GPU drivers.
     """
-    enable_health_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_health_monitoring: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Verifies core internal services are running. Default: True.
     """
-    idle_shutdown: NotRequired[pulumi.Input[_builtins.bool]]
+    idle_shutdown: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Runtime will automatically shutdown after idle_shutdown_time.
     Default: True
     """
-    idle_shutdown_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    idle_shutdown_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Time in minutes to wait before shuting down runtime.
     Default: 180 minutes
     """
-    install_gpu_driver: NotRequired[pulumi.Input[_builtins.bool]]
+    install_gpu_driver: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Install Nvidia Driver automatically.
     """
-    kernels: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgsDict']]]]
+    kernels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]]]]
     """
     Use a list of container images to use as Kernels in the notebook instance.
     Structure is documented below.
     """
-    notebook_upgrade_schedule: NotRequired[pulumi.Input[_builtins.str]]
+    notebook_upgrade_schedule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cron expression in UTC timezone for schedule instance auto upgrade.
     Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
     """
-    post_startup_script: NotRequired[pulumi.Input[_builtins.str]]
+    post_startup_script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path to a Bash script that automatically runs after a notebook instance
     fully boots up. The path must be a URL or
     Cloud Storage path (gs://path-to-file/file-name).
     """
-    post_startup_script_behavior: NotRequired[pulumi.Input[_builtins.str]]
+    post_startup_script_behavior: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Behavior for the post startup script.
     Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
     """
-    upgradeable: NotRequired[pulumi.Input[_builtins.bool]]
+    upgradeable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Bool indicating whether an newer image is available in an image family.
@@ -864,16 +864,16 @@ class RuntimeSoftwareConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeSoftwareConfigArgs:
     def __init__(__self__, *,
-                 custom_gpu_driver_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_health_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idle_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idle_shutdown_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 install_gpu_driver: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kernels: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]]] = None,
-                 notebook_upgrade_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_startup_script_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgradeable: Optional[pulumi.Input[_builtins.bool]] = None):
+                 custom_gpu_driver_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_health_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idle_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idle_shutdown_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 install_gpu_driver: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kernels: pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]]] = None,
+                 notebook_upgrade_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_startup_script_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgradeable: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored.
                If not specified, we'll automatically choose from official GPU drivers.
@@ -918,7 +918,7 @@ class RuntimeSoftwareConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="customGpuDriverPath")
-    def custom_gpu_driver_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_gpu_driver_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify a custom Cloud Storage path where the GPU driver is stored.
         If not specified, we'll automatically choose from official GPU drivers.
@@ -926,24 +926,24 @@ class RuntimeSoftwareConfigArgs:
         return pulumi.get(self, "custom_gpu_driver_path")
 
     @custom_gpu_driver_path.setter
-    def custom_gpu_driver_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_gpu_driver_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_gpu_driver_path", value)
 
     @_builtins.property
     @pulumi.getter(name="enableHealthMonitoring")
-    def enable_health_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_health_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Verifies core internal services are running. Default: True.
         """
         return pulumi.get(self, "enable_health_monitoring")
 
     @enable_health_monitoring.setter
-    def enable_health_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_health_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_health_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="idleShutdown")
-    def idle_shutdown(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def idle_shutdown(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Runtime will automatically shutdown after idle_shutdown_time.
         Default: True
@@ -951,12 +951,12 @@ class RuntimeSoftwareConfigArgs:
         return pulumi.get(self, "idle_shutdown")
 
     @idle_shutdown.setter
-    def idle_shutdown(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def idle_shutdown(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "idle_shutdown", value)
 
     @_builtins.property
     @pulumi.getter(name="idleShutdownTimeout")
-    def idle_shutdown_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_shutdown_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time in minutes to wait before shuting down runtime.
         Default: 180 minutes
@@ -964,24 +964,24 @@ class RuntimeSoftwareConfigArgs:
         return pulumi.get(self, "idle_shutdown_timeout")
 
     @idle_shutdown_timeout.setter
-    def idle_shutdown_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_shutdown_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_shutdown_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="installGpuDriver")
-    def install_gpu_driver(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def install_gpu_driver(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Install Nvidia Driver automatically.
         """
         return pulumi.get(self, "install_gpu_driver")
 
     @install_gpu_driver.setter
-    def install_gpu_driver(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def install_gpu_driver(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "install_gpu_driver", value)
 
     @_builtins.property
     @pulumi.getter
-    def kernels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]]]:
+    def kernels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]]]:
         """
         Use a list of container images to use as Kernels in the notebook instance.
         Structure is documented below.
@@ -989,12 +989,12 @@ class RuntimeSoftwareConfigArgs:
         return pulumi.get(self, "kernels")
 
     @kernels.setter
-    def kernels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]]]):
+    def kernels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]]]):
         pulumi.set(self, "kernels", value)
 
     @_builtins.property
     @pulumi.getter(name="notebookUpgradeSchedule")
-    def notebook_upgrade_schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notebook_upgrade_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cron expression in UTC timezone for schedule instance auto upgrade.
         Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
@@ -1002,12 +1002,12 @@ class RuntimeSoftwareConfigArgs:
         return pulumi.get(self, "notebook_upgrade_schedule")
 
     @notebook_upgrade_schedule.setter
-    def notebook_upgrade_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notebook_upgrade_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notebook_upgrade_schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="postStartupScript")
-    def post_startup_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_startup_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to a Bash script that automatically runs after a notebook instance
         fully boots up. The path must be a URL or
@@ -1016,12 +1016,12 @@ class RuntimeSoftwareConfigArgs:
         return pulumi.get(self, "post_startup_script")
 
     @post_startup_script.setter
-    def post_startup_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_startup_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_startup_script", value)
 
     @_builtins.property
     @pulumi.getter(name="postStartupScriptBehavior")
-    def post_startup_script_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_startup_script_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Behavior for the post startup script.
         Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
@@ -1029,12 +1029,12 @@ class RuntimeSoftwareConfigArgs:
         return pulumi.get(self, "post_startup_script_behavior")
 
     @post_startup_script_behavior.setter
-    def post_startup_script_behavior(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_startup_script_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_startup_script_behavior", value)
 
     @_builtins.property
     @pulumi.getter
-    def upgradeable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upgradeable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Bool indicating whether an newer image is available in an image family.
@@ -1042,7 +1042,7 @@ class RuntimeSoftwareConfigArgs:
         return pulumi.get(self, "upgradeable")
 
     @upgradeable.setter
-    def upgradeable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upgradeable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upgradeable", value)
 
 
@@ -1052,7 +1052,7 @@ class RuntimeSoftwareConfigKernelArgsDict(TypedDict):
     The path to the container image repository.
     For example: gcr.io/{project_id}/{imageName}
     """
-    tag: NotRequired[pulumi.Input[_builtins.str]]
+    tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag of the container image. If not specified, this defaults to the latest tag.
     """
@@ -1061,7 +1061,7 @@ class RuntimeSoftwareConfigKernelArgsDict(TypedDict):
 class RuntimeSoftwareConfigKernelArgs:
     def __init__(__self__, *,
                  repository: pulumi.Input[_builtins.str],
-                 tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] repository: The path to the container image repository.
                For example: gcr.io/{project_id}/{imageName}
@@ -1086,29 +1086,29 @@ class RuntimeSoftwareConfigKernelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag of the container image. If not specified, this defaults to the latest tag.
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag", value)
 
 
 class RuntimeVirtualMachineArgsDict(TypedDict):
-    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The unique identifier of the Managed Compute Engine instance.
     """
-    instance_name: NotRequired[pulumi.Input[_builtins.str]]
+    instance_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The user-friendly name of the Managed Compute Engine instance.
     """
-    virtual_machine_config: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArgsDict']]
+    virtual_machine_config: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigArgs']]]
     """
     Virtual Machine configuration settings.
     Structure is documented below.
@@ -1117,9 +1117,9 @@ class RuntimeVirtualMachineArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeVirtualMachineArgs:
     def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine_config: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArgs']] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine_config: pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] instance_id: (Output)
                The unique identifier of the Managed Compute Engine instance.
@@ -1137,7 +1137,7 @@ class RuntimeVirtualMachineArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The unique identifier of the Managed Compute Engine instance.
@@ -1145,12 +1145,12 @@ class RuntimeVirtualMachineArgs:
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The user-friendly name of the Managed Compute Engine instance.
@@ -1158,12 +1158,12 @@ class RuntimeVirtualMachineArgs:
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualMachineConfig")
-    def virtual_machine_config(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArgs']]:
+    def virtual_machine_config(self) -> pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigArgs']]:
         """
         Virtual Machine configuration settings.
         Structure is documented below.
@@ -1171,7 +1171,7 @@ class RuntimeVirtualMachineArgs:
         return pulumi.get(self, "virtual_machine_config")
 
     @virtual_machine_config.setter
-    def virtual_machine_config(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArgs']]):
+    def virtual_machine_config(self, value: pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigArgs']]):
         pulumi.set(self, "virtual_machine_config", value)
 
 
@@ -1185,29 +1185,29 @@ class RuntimeVirtualMachineVirtualMachineConfigArgsDict(TypedDict):
     """
     The Compute Engine machine type used for runtimes.
     """
-    accelerator_config: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgsDict']]
+    accelerator_config: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs']]]
     """
     The Compute Engine accelerator configuration for this runtime.
     Structure is documented below.
     """
-    container_images: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgsDict']]]]
+    container_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs']]]]]
     """
     Use a list of container images to start the notebook instance.
     Structure is documented below.
     """
-    encryption_config: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgsDict']]
+    encryption_config: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs']]]
     """
     Encryption settings for virtual machine data disk.
     Structure is documented below.
     """
-    guest_attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    guest_attributes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     The Compute Engine guest attributes. (see [Project and instance
     guest attributes](https://cloud.google.com/compute/docs/
     storing-retrieving-metadata#guest_attributes)).
     """
-    internal_ip_only: NotRequired[pulumi.Input[_builtins.bool]]
+    internal_ip_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, runtime will only have internal IP addresses. By default,
     runtimes are not restricted to internal IP addresses, and will
@@ -1216,7 +1216,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgsDict(TypedDict):
     enabled networks, and all dependencies must be configured to be
     accessible without external IP addresses.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The labels to associate with this runtime. Label **keys** must
     contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
@@ -1224,14 +1224,14 @@ class RuntimeVirtualMachineVirtualMachineConfigArgsDict(TypedDict):
     conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
     more than 32 labels can be associated with a cluster.
     """
-    metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    metadata: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The Compute Engine metadata entries to add to virtual machine.
     (see [Project and instance metadata](https://cloud.google.com
     /compute/docs/storing-retrieving-metadata#project_and_instance
     _metadata)).
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Compute Engine network to be used for machine communications.
     Cannot be specified with subnetwork. If neither `network` nor
@@ -1248,23 +1248,23 @@ class RuntimeVirtualMachineVirtualMachineConfigArgsDict(TypedDict):
     * Shared VPC (network & subnet are required). Requires
     configuring Private Service Access.
     """
-    nic_type: NotRequired[pulumi.Input[_builtins.str]]
+    nic_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of vNIC to be used on this interface. This may be gVNIC
     or VirtioNet.
     Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
     """
-    reserved_ip_range: NotRequired[pulumi.Input[_builtins.str]]
+    reserved_ip_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Reserved IP Range name is used for VPC Peering. The
     subnetwork allocation will use the range *name* if it's assigned.
     """
-    shielded_instance_config: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgsDict']]
+    shielded_instance_config: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs']]]
     """
     Shielded VM Instance configuration settings.
     Structure is documented below.
     """
-    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    subnet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Compute Engine subnetwork to be used for machine
     communications. Cannot be specified with network. A full URL or
@@ -1273,13 +1273,13 @@ class RuntimeVirtualMachineVirtualMachineConfigArgsDict(TypedDict):
     regions/us-east1/subnetworks/sub0`
     * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
     """
-    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The Compute Engine tags to add to runtime (see [Tagging instances]
     (https://cloud.google.com/compute/docs/
     label-or-tag-resources#tags)).
     """
-    zone: NotRequired[pulumi.Input[_builtins.str]]
+    zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The zone where the virtual machine is located.
@@ -1290,20 +1290,20 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
     def __init__(__self__, *,
                  data_disk: pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs'],
                  machine_type: pulumi.Input[_builtins.str],
-                 accelerator_config: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs']] = None,
-                 container_images: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs']]]] = None,
-                 encryption_config: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs']] = None,
-                 guest_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 internal_ip_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs']] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_config: pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs']] = None,
+                 container_images: pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs']]]] = None,
+                 encryption_config: pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs']] = None,
+                 guest_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 internal_ip_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 shielded_instance_config: pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs']] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs'] data_disk: Data disk option configuration settings.
                Structure is documented below.
@@ -1424,7 +1424,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorConfig")
-    def accelerator_config(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs']]:
+    def accelerator_config(self) -> pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs']]:
         """
         The Compute Engine accelerator configuration for this runtime.
         Structure is documented below.
@@ -1432,12 +1432,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "accelerator_config")
 
     @accelerator_config.setter
-    def accelerator_config(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs']]):
+    def accelerator_config(self, value: pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs']]):
         pulumi.set(self, "accelerator_config", value)
 
     @_builtins.property
     @pulumi.getter(name="containerImages")
-    def container_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs']]]]:
+    def container_images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs']]]]:
         """
         Use a list of container images to start the notebook instance.
         Structure is documented below.
@@ -1445,12 +1445,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "container_images")
 
     @container_images.setter
-    def container_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs']]]]):
+    def container_images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs']]]]):
         pulumi.set(self, "container_images", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs']]:
+    def encryption_config(self) -> pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs']]:
         """
         Encryption settings for virtual machine data disk.
         Structure is documented below.
@@ -1458,12 +1458,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs']]):
+    def encryption_config(self, value: pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @_builtins.property
     @pulumi.getter(name="guestAttributes")
-    def guest_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def guest_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         The Compute Engine guest attributes. (see [Project and instance
@@ -1473,12 +1473,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "guest_attributes")
 
     @guest_attributes.setter
-    def guest_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def guest_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "guest_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="internalIpOnly")
-    def internal_ip_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def internal_ip_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, runtime will only have internal IP addresses. By default,
         runtimes are not restricted to internal IP addresses, and will
@@ -1490,12 +1490,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "internal_ip_only")
 
     @internal_ip_only.setter
-    def internal_ip_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def internal_ip_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "internal_ip_only", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels to associate with this runtime. Label **keys** must
         contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
@@ -1506,12 +1506,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The Compute Engine metadata entries to add to virtual machine.
         (see [Project and instance metadata](https://cloud.google.com
@@ -1521,12 +1521,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Compute Engine network to be used for machine communications.
         Cannot be specified with subnetwork. If neither `network` nor
@@ -1546,12 +1546,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="nicType")
-    def nic_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nic_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of vNIC to be used on this interface. This may be gVNIC
         or VirtioNet.
@@ -1560,12 +1560,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "nic_type")
 
     @nic_type.setter
-    def nic_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nic_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nic_type", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedIpRange")
-    def reserved_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserved_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reserved IP Range name is used for VPC Peering. The
         subnetwork allocation will use the range *name* if it's assigned.
@@ -1573,12 +1573,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "reserved_ip_range")
 
     @reserved_ip_range.setter
-    def reserved_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserved_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserved_ip_range", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs']]:
         """
         Shielded VM Instance configuration settings.
         Structure is documented below.
@@ -1586,12 +1586,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Compute Engine subnetwork to be used for machine
         communications. Cannot be specified with network. A full URL or
@@ -1603,12 +1603,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Compute Engine tags to add to runtime (see [Tagging instances]
         (https://cloud.google.com/compute/docs/
@@ -1617,12 +1617,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The zone where the virtual machine is located.
@@ -1630,16 +1630,16 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgsDict(TypedDict):
-    core_count: NotRequired[pulumi.Input[_builtins.int]]
+    core_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Count of cores of this accelerator.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Accelerator model. For valid values, see
     `https://cloud.google.com/vertex-ai/docs/workbench/reference/
@@ -1649,8 +1649,8 @@ class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgsDict(TypedDi
 @pulumi.input_type
 class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs:
     def __init__(__self__, *,
-                 core_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 core_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] core_count: Count of cores of this accelerator.
         :param pulumi.Input[_builtins.str] type: Accelerator model. For valid values, see
@@ -1664,19 +1664,19 @@ class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="coreCount")
-    def core_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def core_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Count of cores of this accelerator.
         """
         return pulumi.get(self, "core_count")
 
     @core_count.setter
-    def core_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def core_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "core_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Accelerator model. For valid values, see
         `https://cloud.google.com/vertex-ai/docs/workbench/reference/
@@ -1685,7 +1685,7 @@ class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -1695,7 +1695,7 @@ class RuntimeVirtualMachineVirtualMachineConfigContainerImageArgsDict(TypedDict)
     The path to the container image repository.
     For example: gcr.io/{project_id}/{imageName}
     """
-    tag: NotRequired[pulumi.Input[_builtins.str]]
+    tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag of the container image. If not specified, this defaults to the latest tag.
     """
@@ -1704,7 +1704,7 @@ class RuntimeVirtualMachineVirtualMachineConfigContainerImageArgsDict(TypedDict)
 class RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs:
     def __init__(__self__, *,
                  repository: pulumi.Input[_builtins.str],
-                 tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] repository: The path to the container image repository.
                For example: gcr.io/{project_id}/{imageName}
@@ -1729,33 +1729,33 @@ class RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag of the container image. If not specified, this defaults to the latest tag.
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag", value)
 
 
 class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgsDict(TypedDict):
-    auto_delete: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_delete: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Optional. Specifies whether the disk will be auto-deleted
     when the instance is deleted (but not when the disk is
     detached from the instance).
     """
-    boot: NotRequired[pulumi.Input[_builtins.bool]]
+    boot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Optional. Indicates that this is a boot disk. The virtual
     machine will use the first partition of the disk for its
     root filesystem.
     """
-    device_name: NotRequired[pulumi.Input[_builtins.str]]
+    device_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Optional. Specifies a unique device name of your choice
@@ -1768,7 +1768,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgsDict(TypedDict):
     x is a number assigned by Google Compute Engine. This field
     is only applicable for persistent disks.
     """
-    guest_os_features: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    guest_os_features: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     Indicates a list of features to enable on the guest operating
@@ -1777,14 +1777,14 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgsDict(TypedDict):
     images/create-delete-deprecate-private-images#guest-os-features`
     options. ``
     """
-    index: NotRequired[pulumi.Input[_builtins.int]]
+    index: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Output only. A zero-based index to this disk, where 0 is
     reserved for the boot disk. If you have many disks attached
     to an instance, each disk would have a unique index number.
     """
-    initialize_params: NotRequired[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgsDict']]
+    initialize_params: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs']]]
     """
     Input only. Specifies the parameters for a new disk that will
     be created alongside the new instance. Use initialization
@@ -1794,7 +1794,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgsDict(TypedDict):
     both.
     Structure is documented below.
     """
-    interface: NotRequired[pulumi.Input[_builtins.str]]
+    interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     "Specifies the disk interface to use for attaching this disk,
     which is either SCSI or NVME. The default is SCSI. Persistent
@@ -1803,29 +1803,29 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgsDict(TypedDict):
     can use either NVME or SCSI. For performance characteristics of SCSI
     over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
     """
-    kind: NotRequired[pulumi.Input[_builtins.str]]
+    kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Type of the resource. Always compute#attachedDisk for attached
     disks.
     """
-    licenses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    licenses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     Output only. Any valid publicly visible licenses.
     """
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mode in which to attach this disk, either READ_WRITE
     or READ_ONLY. If not specified, the default is to attach
     the disk in READ_WRITE mode.
     """
-    source: NotRequired[pulumi.Input[_builtins.str]]
+    source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies a valid partial or full URL to an existing
     Persistent Disk resource.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the type of the disk, either SCRATCH or PERSISTENT.
     If not specified, the default is PERSISTENT.
@@ -1834,18 +1834,18 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
     def __init__(__self__, *,
-                 auto_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 boot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 index: Optional[pulumi.Input[_builtins.int]] = None,
-                 initialize_params: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs']] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 boot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 index: pulumi.Input[Optional[_builtins.int]] = None,
+                 initialize_params: pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs']] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] auto_delete: (Output)
                Optional. Specifies whether the disk will be auto-deleted
@@ -1928,7 +1928,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoDelete")
-    def auto_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Optional. Specifies whether the disk will be auto-deleted
@@ -1938,12 +1938,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
         return pulumi.get(self, "auto_delete")
 
     @auto_delete.setter
-    def auto_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def boot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Optional. Indicates that this is a boot disk. The virtual
@@ -1953,12 +1953,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
         return pulumi.get(self, "boot")
 
     @boot.setter
-    def boot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def boot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "boot", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceName")
-    def device_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Optional. Specifies a unique device name of your choice
@@ -1974,12 +1974,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
         return pulumi.get(self, "device_name")
 
     @device_name.setter
-    def device_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_name", value)
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")
-    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def guest_os_features(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         Indicates a list of features to enable on the guest operating
@@ -1991,12 +1991,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
         return pulumi.get(self, "guest_os_features")
 
     @guest_os_features.setter
-    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def guest_os_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "guest_os_features", value)
 
     @_builtins.property
     @pulumi.getter
-    def index(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def index(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Output only. A zero-based index to this disk, where 0 is
@@ -2006,12 +2006,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
         return pulumi.get(self, "index")
 
     @index.setter
-    def index(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def index(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "index", value)
 
     @_builtins.property
     @pulumi.getter(name="initializeParams")
-    def initialize_params(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs']]:
+    def initialize_params(self) -> pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs']]:
         """
         Input only. Specifies the parameters for a new disk that will
         be created alongside the new instance. Use initialization
@@ -2024,12 +2024,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
         return pulumi.get(self, "initialize_params")
 
     @initialize_params.setter
-    def initialize_params(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs']]):
+    def initialize_params(self, value: pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs']]):
         pulumi.set(self, "initialize_params", value)
 
     @_builtins.property
     @pulumi.getter
-    def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         "Specifies the disk interface to use for attaching this disk,
         which is either SCSI or NVME. The default is SCSI. Persistent
@@ -2041,12 +2041,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
         return pulumi.get(self, "interface")
 
     @interface.setter
-    def interface(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Type of the resource. Always compute#attachedDisk for attached
@@ -2055,12 +2055,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def licenses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         Output only. Any valid publicly visible licenses.
@@ -2068,12 +2068,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
         return pulumi.get(self, "licenses")
 
     @licenses.setter
-    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def licenses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "licenses", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode in which to attach this disk, either READ_WRITE
         or READ_ONLY. If not specified, the default is to attach
@@ -2082,12 +2082,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a valid partial or full URL to an existing
         Persistent Disk resource.
@@ -2095,12 +2095,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the type of the disk, either SCRATCH or PERSISTENT.
         If not specified, the default is PERSISTENT.
@@ -2108,37 +2108,37 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Provide this property when creating the disk.
     """
-    disk_name: NotRequired[pulumi.Input[_builtins.str]]
+    disk_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the disk name. If not specified, the default is
     to use the name of the instance. If the disk with the
     instance name exists already in the given zone/region, a
     new name will be automatically generated.
     """
-    disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies the size of the disk in base-2 GB. If not
     specified, the disk will be the same size as the image
     (usually 10GB). If specified, the size must be equal to
     or larger than 10GB. Default 100 GB.
     """
-    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the boot disk attached to this runtime,
     defaults to standard persistent disk. For valid values,
     see `https://cloud.google.com/vertex-ai/docs/workbench/
     reference/rest/v1/projects.locations.runtimes#disktype`
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels to apply to this disk. These can be later modified
     by the disks.setLabels method. This field is only
@@ -2148,11 +2148,11 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgsDict(
 @pulumi.input_type
 class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] description: Provide this property when creating the disk.
         :param pulumi.Input[_builtins.str] disk_name: Specifies the disk name. If not specified, the default is
@@ -2184,19 +2184,19 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provide this property when creating the disk.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskName")
-    def disk_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the disk name. If not specified, the default is
         to use the name of the instance. If the disk with the
@@ -2206,12 +2206,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs:
         return pulumi.get(self, "disk_name")
 
     @disk_name.setter
-    def disk_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_name", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the size of the disk in base-2 GB. If not
         specified, the disk will be the same size as the image
@@ -2221,12 +2221,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs:
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the boot disk attached to this runtime,
         defaults to standard persistent disk. For valid values,
@@ -2236,12 +2236,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs:
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this disk. These can be later modified
         by the disks.setLabels method. This field is only
@@ -2250,12 +2250,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
 
 class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgsDict(TypedDict):
-    kms_key: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cloud KMS resource identifier of the customer-managed
     encryption key used to protect a resource, such as a disks.
@@ -2267,7 +2267,7 @@ class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgsDict(TypedDic
 @pulumi.input_type
 class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs:
     def __init__(__self__, *,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key: The Cloud KMS resource identifier of the customer-managed
                encryption key used to protect a resource, such as a disks.
@@ -2280,7 +2280,7 @@ class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
-    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud KMS resource identifier of the customer-managed
         encryption key used to protect a resource, such as a disks.
@@ -2291,12 +2291,12 @@ class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs:
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
-    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
 
 
 class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgsDict(TypedDict):
-    enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_integrity_monitoring: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defines whether the instance has integrity monitoring enabled.
     Enables monitoring and attestation of the boot integrity of
@@ -2305,7 +2305,7 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgsDict(Ty
     from the implicitly trusted boot image when the instance is
     created. Enabled by default.
     """
-    enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_secure_boot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defines whether the instance has Secure Boot enabled.Secure
     Boot helps ensure that the system only runs authentic software
@@ -2313,7 +2313,7 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgsDict(Ty
     halting the boot process if signature verification fails.
     Disabled by default.
     """
-    enable_vtpm: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_vtpm: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defines whether the instance has the vTPM enabled. Enabled by
     default.
@@ -2322,9 +2322,9 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgsDict(Ty
 @pulumi.input_type
 class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs:
     def __init__(__self__, *,
-                 enable_integrity_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_secure_boot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_vtpm: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_integrity_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_secure_boot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_vtpm: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_integrity_monitoring: Defines whether the instance has integrity monitoring enabled.
                Enables monitoring and attestation of the boot integrity of
@@ -2349,7 +2349,7 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableIntegrityMonitoring")
-    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_integrity_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the instance has integrity monitoring enabled.
         Enables monitoring and attestation of the boot integrity of
@@ -2361,12 +2361,12 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs:
         return pulumi.get(self, "enable_integrity_monitoring")
 
     @enable_integrity_monitoring.setter
-    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_integrity_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_integrity_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSecureBoot")
-    def enable_secure_boot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_secure_boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the instance has Secure Boot enabled.Secure
         Boot helps ensure that the system only runs authentic software
@@ -2377,12 +2377,12 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs:
         return pulumi.get(self, "enable_secure_boot")
 
     @enable_secure_boot.setter
-    def enable_secure_boot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_secure_boot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_secure_boot", value)
 
     @_builtins.property
     @pulumi.getter(name="enableVtpm")
-    def enable_vtpm(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_vtpm(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the instance has the vTPM enabled. Enabled by
         default.
@@ -2390,7 +2390,7 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs:
         return pulumi.get(self, "enable_vtpm")
 
     @enable_vtpm.setter
-    def enable_vtpm(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_vtpm(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_vtpm", value)
 
 

@@ -226,11 +226,11 @@ def get_regional_secret_version(is_secret_data_base64: Optional[_builtins.bool] 
         secret=pulumi.get(__ret__, 'secret'),
         secret_data=pulumi.get(__ret__, 'secret_data'),
         version=pulumi.get(__ret__, 'version'))
-def get_regional_secret_version_output(is_secret_data_base64: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                       location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       secret: Optional[pulumi.Input[_builtins.str]] = None,
-                                       version: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_regional_secret_version_output(is_secret_data_base64: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                       location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       secret: pulumi.Input[Optional[_builtins.str]] = None,
+                                       version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionalSecretVersionResult]:
     """
     subcategory: "Secret Manager"

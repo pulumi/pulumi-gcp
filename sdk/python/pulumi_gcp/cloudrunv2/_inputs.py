@@ -240,15 +240,15 @@ __all__ = [
 ]
 
 class JobBinaryAuthorizationArgsDict(TypedDict):
-    breakglass_justification: NotRequired[pulumi.Input[_builtins.str]]
+    breakglass_justification: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
     """
-    policy: NotRequired[pulumi.Input[_builtins.str]]
+    policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
     """
-    use_default: NotRequired[pulumi.Input[_builtins.bool]]
+    use_default: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
     """
@@ -256,9 +256,9 @@ class JobBinaryAuthorizationArgsDict(TypedDict):
 @pulumi.input_type
 class JobBinaryAuthorizationArgs:
     def __init__(__self__, *,
-                 breakglass_justification: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_default: Optional[pulumi.Input[_builtins.bool]] = None):
+                 breakglass_justification: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_default: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] breakglass_justification: If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
         :param pulumi.Input[_builtins.str] policy: The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
@@ -273,79 +273,79 @@ class JobBinaryAuthorizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="breakglassJustification")
-    def breakglass_justification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def breakglass_justification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
         """
         return pulumi.get(self, "breakglass_justification")
 
     @breakglass_justification.setter
-    def breakglass_justification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def breakglass_justification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "breakglass_justification", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="useDefault")
-    def use_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         """
         return pulumi.get(self, "use_default")
 
     @use_default.setter
-    def use_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_default", value)
 
 
 class JobConditionArgsDict(TypedDict):
-    execution_reason: NotRequired[pulumi.Input[_builtins.str]]
+    execution_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A reason for the execution condition.
     """
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transitioned from one status to another.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human readable message indicating details about the current status.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A common (service-level) reason for this condition.
     """
-    revision_reason: NotRequired[pulumi.Input[_builtins.str]]
+    revision_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A reason for the revision condition.
     """
-    severity: NotRequired[pulumi.Input[_builtins.str]]
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     How to interpret failures of this condition, one of Error, Warning, Info
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     State of the condition.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
@@ -354,14 +354,14 @@ class JobConditionArgsDict(TypedDict):
 @pulumi.input_type
 class JobConditionArgs:
     def __init__(__self__, *,
-                 execution_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 execution_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] execution_reason: (Output)
                A reason for the execution condition.
@@ -400,7 +400,7 @@ class JobConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="executionReason")
-    def execution_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A reason for the execution condition.
@@ -408,12 +408,12 @@ class JobConditionArgs:
         return pulumi.get(self, "execution_reason")
 
     @execution_reason.setter
-    def execution_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transitioned from one status to another.
@@ -422,12 +422,12 @@ class JobConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human readable message indicating details about the current status.
@@ -435,12 +435,12 @@ class JobConditionArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A common (service-level) reason for this condition.
@@ -448,12 +448,12 @@ class JobConditionArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionReason")
-    def revision_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A reason for the revision condition.
@@ -461,12 +461,12 @@ class JobConditionArgs:
         return pulumi.get(self, "revision_reason")
 
     @revision_reason.setter
-    def revision_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         How to interpret failures of this condition, one of Error, Warning, Info
@@ -474,12 +474,12 @@ class JobConditionArgs:
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "severity", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         State of the condition.
@@ -487,12 +487,12 @@ class JobConditionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
@@ -500,21 +500,21 @@ class JobConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class JobIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class JobIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -540,25 +540,25 @@ class JobIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class JobIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class JobIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -584,28 +584,28 @@ class JobIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class JobLatestCreatedExecutionArgsDict(TypedDict):
-    completion_time: NotRequired[pulumi.Input[_builtins.str]]
+    completion_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Completion timestamp of the execution.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Creation timestamp of the execution.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Job.
     """
@@ -613,9 +613,9 @@ class JobLatestCreatedExecutionArgsDict(TypedDict):
 @pulumi.input_type
 class JobLatestCreatedExecutionArgs:
     def __init__(__self__, *,
-                 completion_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 completion_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] completion_time: (Output)
                Completion timestamp of the execution.
@@ -634,7 +634,7 @@ class JobLatestCreatedExecutionArgs:
 
     @_builtins.property
     @pulumi.getter(name="completionTime")
-    def completion_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def completion_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Completion timestamp of the execution.
@@ -643,12 +643,12 @@ class JobLatestCreatedExecutionArgs:
         return pulumi.get(self, "completion_time")
 
     @completion_time.setter
-    def completion_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def completion_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "completion_time", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Creation timestamp of the execution.
@@ -657,19 +657,19 @@ class JobLatestCreatedExecutionArgs:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Job.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -679,14 +679,14 @@ class JobTemplateArgsDict(TypedDict):
     Describes the task(s) that will be created when executing an execution
     Structure is documented below.
     """
-    annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    annotations: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
     Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
     All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
     This field follows Kubernetes annotations' namespacing, limits, and rules.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
     or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -694,11 +694,11 @@ class JobTemplateArgsDict(TypedDict):
     Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
     All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
     """
-    parallelism: NotRequired[pulumi.Input[_builtins.int]]
+    parallelism: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
     """
-    task_count: NotRequired[pulumi.Input[_builtins.int]]
+    task_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
     """
@@ -707,10 +707,10 @@ class JobTemplateArgsDict(TypedDict):
 class JobTemplateArgs:
     def __init__(__self__, *,
                  template: pulumi.Input['JobTemplateTemplateArgs'],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 parallelism: Optional[pulumi.Input[_builtins.int]] = None,
-                 task_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 parallelism: pulumi.Input[Optional[_builtins.int]] = None,
+                 task_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['JobTemplateTemplateArgs'] template: Describes the task(s) that will be created when executing an execution
                Structure is documented below.
@@ -751,7 +751,7 @@ class JobTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
         Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -761,12 +761,12 @@ class JobTemplateArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
         or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -777,77 +777,77 @@ class JobTemplateArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def parallelism(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def parallelism(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
         """
         return pulumi.get(self, "parallelism")
 
     @parallelism.setter
-    def parallelism(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def parallelism(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "parallelism", value)
 
     @_builtins.property
     @pulumi.getter(name="taskCount")
-    def task_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def task_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
         """
         return pulumi.get(self, "task_count")
 
     @task_count.setter
-    def task_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def task_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "task_count", value)
 
 
 class JobTemplateTemplateArgsDict(TypedDict):
-    containers: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerArgsDict']]]]
+    containers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerArgs']]]]]
     """
     Holds the single container that defines the unit of execution for this task.
     Structure is documented below.
     """
-    encryption_key: NotRequired[pulumi.Input[_builtins.str]]
+    encryption_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
     """
-    execution_environment: NotRequired[pulumi.Input[_builtins.str]]
+    execution_environment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The execution environment being used to host this Task.
     Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
     """
-    gpu_zonal_redundancy_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    gpu_zonal_redundancy_disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if GPU zonal redundancy is disabled on this execution.
     """
-    max_retries: NotRequired[pulumi.Input[_builtins.int]]
+    max_retries: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
     """
-    node_selector: NotRequired[pulumi.Input['JobTemplateTemplateNodeSelectorArgsDict']]
+    node_selector: NotRequired[pulumi.Input[Optional['JobTemplateTemplateNodeSelectorArgs']]]
     """
     Node Selector describes the hardware requirements of the resources.
     Structure is documented below.
     """
-    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
     """
-    timeout: NotRequired[pulumi.Input[_builtins.str]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
     A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
     """
-    volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgsDict']]]]
+    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgs']]]]]
     """
     A list of Volumes to make available to containers.
     Structure is documented below.
     """
-    vpc_access: NotRequired[pulumi.Input['JobTemplateTemplateVpcAccessArgsDict']]
+    vpc_access: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVpcAccessArgs']]]
     """
     VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
     Structure is documented below.
@@ -856,16 +856,16 @@ class JobTemplateTemplateArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateTemplateArgs:
     def __init__(__self__, *,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerArgs']]]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_zonal_redundancy_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_selector: Optional[pulumi.Input['JobTemplateTemplateNodeSelectorArgs']] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgs']]]] = None,
-                 vpc_access: Optional[pulumi.Input['JobTemplateTemplateVpcAccessArgs']] = None):
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerArgs']]]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_zonal_redundancy_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_selector: pulumi.Input[Optional['JobTemplateTemplateNodeSelectorArgs']] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgs']]]] = None,
+                 vpc_access: pulumi.Input[Optional['JobTemplateTemplateVpcAccessArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerArgs']]] containers: Holds the single container that defines the unit of execution for this task.
                Structure is documented below.
@@ -907,7 +907,7 @@ class JobTemplateTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerArgs']]]]:
+    def containers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerArgs']]]]:
         """
         Holds the single container that defines the unit of execution for this task.
         Structure is documented below.
@@ -915,24 +915,24 @@ class JobTemplateTemplateArgs:
         return pulumi.get(self, "containers")
 
     @containers.setter
-    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerArgs']]]]):
+    def containers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerArgs']]]]):
         pulumi.set(self, "containers", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         """
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="executionEnvironment")
-    def execution_environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The execution environment being used to host this Task.
         Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
@@ -940,36 +940,36 @@ class JobTemplateTemplateArgs:
         return pulumi.get(self, "execution_environment")
 
     @execution_environment.setter
-    def execution_environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_environment", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuZonalRedundancyDisabled")
-    def gpu_zonal_redundancy_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gpu_zonal_redundancy_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if GPU zonal redundancy is disabled on this execution.
         """
         return pulumi.get(self, "gpu_zonal_redundancy_disabled")
 
     @gpu_zonal_redundancy_disabled.setter
-    def gpu_zonal_redundancy_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gpu_zonal_redundancy_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gpu_zonal_redundancy_disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRetries")
-    def max_retries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_retries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
         """
         return pulumi.get(self, "max_retries")
 
     @max_retries.setter
-    def max_retries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_retries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_retries", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input['JobTemplateTemplateNodeSelectorArgs']]:
+    def node_selector(self) -> pulumi.Input[Optional['JobTemplateTemplateNodeSelectorArgs']]:
         """
         Node Selector describes the hardware requirements of the resources.
         Structure is documented below.
@@ -977,24 +977,24 @@ class JobTemplateTemplateArgs:
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input['JobTemplateTemplateNodeSelectorArgs']]):
+    def node_selector(self, value: pulumi.Input[Optional['JobTemplateTemplateNodeSelectorArgs']]):
         pulumi.set(self, "node_selector", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -1002,12 +1002,12 @@ class JobTemplateTemplateArgs:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgs']]]]:
+    def volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgs']]]]:
         """
         A list of Volumes to make available to containers.
         Structure is documented below.
@@ -1015,12 +1015,12 @@ class JobTemplateTemplateArgs:
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgs']]]]):
+    def volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgs']]]]):
         pulumi.set(self, "volumes", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcAccess")
-    def vpc_access(self) -> Optional[pulumi.Input['JobTemplateTemplateVpcAccessArgs']]:
+    def vpc_access(self) -> pulumi.Input[Optional['JobTemplateTemplateVpcAccessArgs']]:
         """
         VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         Structure is documented below.
@@ -1028,7 +1028,7 @@ class JobTemplateTemplateArgs:
         return pulumi.get(self, "vpc_access")
 
     @vpc_access.setter
-    def vpc_access(self, value: Optional[pulumi.Input['JobTemplateTemplateVpcAccessArgs']]):
+    def vpc_access(self, value: pulumi.Input[Optional['JobTemplateTemplateVpcAccessArgs']]):
         pulumi.set(self, "vpc_access", value)
 
 
@@ -1037,51 +1037,51 @@ class JobTemplateTemplateContainerArgsDict(TypedDict):
     """
     URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
     """
-    depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    depends_ons: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Names of the containers that must start before this container.
     """
-    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgsDict']]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgs']]]]]
     """
     List of environment variables to set in the container.
     Structure is documented below.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the container specified as a DNS_LABEL.
     """
-    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgsDict']]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgs']]]]]
     """
     List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
     If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
     Structure is documented below.
     """
-    resources: NotRequired[pulumi.Input['JobTemplateTemplateContainerResourcesArgsDict']]
+    resources: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerResourcesArgs']]]
     """
     Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
     Structure is documented below.
     """
-    startup_probe: NotRequired[pulumi.Input['JobTemplateTemplateContainerStartupProbeArgsDict']]
+    startup_probe: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeArgs']]]
     """
     Startup probe of application within the container.
     All other probes are disabled if a startup probe is provided, until it
     succeeds. Container will not be added to service endpoints if the probe fails.
     Structure is documented below.
     """
-    volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgsDict']]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgs']]]]]
     """
     Volume to mount into the container's filesystem.
     Structure is documented below.
     """
-    working_dir: NotRequired[pulumi.Input[_builtins.str]]
+    working_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
     """
@@ -1090,16 +1090,16 @@ class JobTemplateTemplateContainerArgsDict(TypedDict):
 class JobTemplateTemplateContainerArgs:
     def __init__(__self__, *,
                  image: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgs']]]] = None,
-                 resources: Optional[pulumi.Input['JobTemplateTemplateContainerResourcesArgs']] = None,
-                 startup_probe: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeArgs']] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgs']]]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 depends_ons: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgs']]]] = None,
+                 resources: pulumi.Input[Optional['JobTemplateTemplateContainerResourcesArgs']] = None,
+                 startup_probe: pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeArgs']] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgs']]]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
@@ -1157,43 +1157,43 @@ class JobTemplateTemplateContainerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter(name="dependsOns")
-    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def depends_ons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Names of the containers that must start before this container.
         """
         return pulumi.get(self, "depends_ons")
 
     @depends_ons.setter
-    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def depends_ons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "depends_ons", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgs']]]]:
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgs']]]]:
         """
         List of environment variables to set in the container.
         Structure is documented below.
@@ -1201,24 +1201,24 @@ class JobTemplateTemplateContainerArgs:
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgs']]]]):
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the container specified as a DNS_LABEL.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgs']]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgs']]]]:
         """
         List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
         If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
@@ -1227,12 +1227,12 @@ class JobTemplateTemplateContainerArgs:
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgs']]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgs']]]]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input['JobTemplateTemplateContainerResourcesArgs']]:
+    def resources(self) -> pulumi.Input[Optional['JobTemplateTemplateContainerResourcesArgs']]:
         """
         Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         Structure is documented below.
@@ -1240,12 +1240,12 @@ class JobTemplateTemplateContainerArgs:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input['JobTemplateTemplateContainerResourcesArgs']]):
+    def resources(self, value: pulumi.Input[Optional['JobTemplateTemplateContainerResourcesArgs']]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter(name="startupProbe")
-    def startup_probe(self) -> Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeArgs']]:
+    def startup_probe(self) -> pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeArgs']]:
         """
         Startup probe of application within the container.
         All other probes are disabled if a startup probe is provided, until it
@@ -1255,12 +1255,12 @@ class JobTemplateTemplateContainerArgs:
         return pulumi.get(self, "startup_probe")
 
     @startup_probe.setter
-    def startup_probe(self, value: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeArgs']]):
+    def startup_probe(self, value: pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeArgs']]):
         pulumi.set(self, "startup_probe", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMounts")
-    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgs']]]]:
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgs']]]]:
         """
         Volume to mount into the container's filesystem.
         Structure is documented below.
@@ -1268,19 +1268,19 @@ class JobTemplateTemplateContainerArgs:
         return pulumi.get(self, "volume_mounts")
 
     @volume_mounts.setter
-    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgs']]]]):
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgs']]]]):
         pulumi.set(self, "volume_mounts", value)
 
     @_builtins.property
     @pulumi.getter(name="workingDir")
-    def working_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         return pulumi.get(self, "working_dir")
 
     @working_dir.setter
-    def working_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "working_dir", value)
 
 
@@ -1289,11 +1289,11 @@ class JobTemplateTemplateContainerEnvArgsDict(TypedDict):
     """
     Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
     """
-    value_source: NotRequired[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceArgsDict']]
+    value_source: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerEnvValueSourceArgs']]]
     """
     Source for the environment variable's value.
     Structure is documented below.
@@ -1303,8 +1303,8 @@ class JobTemplateTemplateContainerEnvArgsDict(TypedDict):
 class JobTemplateTemplateContainerEnvArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_source: Optional[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceArgs']] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_source: pulumi.Input[Optional['JobTemplateTemplateContainerEnvValueSourceArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
         :param pulumi.Input[_builtins.str] value: Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
@@ -1331,19 +1331,19 @@ class JobTemplateTemplateContainerEnvArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSource")
-    def value_source(self) -> Optional[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceArgs']]:
+    def value_source(self) -> pulumi.Input[Optional['JobTemplateTemplateContainerEnvValueSourceArgs']]:
         """
         Source for the environment variable's value.
         Structure is documented below.
@@ -1351,12 +1351,12 @@ class JobTemplateTemplateContainerEnvArgs:
         return pulumi.get(self, "value_source")
 
     @value_source.setter
-    def value_source(self, value: Optional[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceArgs']]):
+    def value_source(self, value: pulumi.Input[Optional['JobTemplateTemplateContainerEnvValueSourceArgs']]):
         pulumi.set(self, "value_source", value)
 
 
 class JobTemplateTemplateContainerEnvValueSourceArgsDict(TypedDict):
-    secret_key_ref: NotRequired[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgsDict']]
+    secret_key_ref: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs']]]
     """
     Selects a secret and a specific version from Cloud Secret Manager.
     Structure is documented below.
@@ -1365,7 +1365,7 @@ class JobTemplateTemplateContainerEnvValueSourceArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateTemplateContainerEnvValueSourceArgs:
     def __init__(__self__, *,
-                 secret_key_ref: Optional[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs']] = None):
+                 secret_key_ref: pulumi.Input[Optional['JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs']] = None):
         """
         :param pulumi.Input['JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs'] secret_key_ref: Selects a secret and a specific version from Cloud Secret Manager.
                Structure is documented below.
@@ -1375,7 +1375,7 @@ class JobTemplateTemplateContainerEnvValueSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="secretKeyRef")
-    def secret_key_ref(self) -> Optional[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs']]:
+    def secret_key_ref(self) -> pulumi.Input[Optional['JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs']]:
         """
         Selects a secret and a specific version from Cloud Secret Manager.
         Structure is documented below.
@@ -1383,7 +1383,7 @@ class JobTemplateTemplateContainerEnvValueSourceArgs:
         return pulumi.get(self, "secret_key_ref")
 
     @secret_key_ref.setter
-    def secret_key_ref(self, value: Optional[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs']]):
+    def secret_key_ref(self, value: pulumi.Input[Optional['JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs']]):
         pulumi.set(self, "secret_key_ref", value)
 
 
@@ -1435,11 +1435,11 @@ class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs:
 
 
 class JobTemplateTemplateContainerPortArgsDict(TypedDict):
-    container_port: NotRequired[pulumi.Input[_builtins.int]]
+    container_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
     """
@@ -1447,8 +1447,8 @@ class JobTemplateTemplateContainerPortArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateTemplateContainerPortArgs:
     def __init__(__self__, *,
-                 container_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 container_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] container_port: Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
         :param pulumi.Input[_builtins.str] name: If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
@@ -1460,31 +1460,31 @@ class JobTemplateTemplateContainerPortArgs:
 
     @_builtins.property
     @pulumi.getter(name="containerPort")
-    def container_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
         """
         return pulumi.get(self, "container_port")
 
     @container_port.setter
-    def container_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class JobTemplateTemplateContainerResourcesArgsDict(TypedDict):
-    limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    limits: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
     """
@@ -1492,7 +1492,7 @@ class JobTemplateTemplateContainerResourcesArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateTemplateContainerResourcesArgs:
     def __init__(__self__, *,
-                 limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 limits: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] limits: Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
@@ -1501,50 +1501,50 @@ class JobTemplateTemplateContainerResourcesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def limits(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
     @limits.setter
-    def limits(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def limits(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "limits", value)
 
 
 class JobTemplateTemplateContainerStartupProbeArgsDict(TypedDict):
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum consecutive failures for the probe to be considered failed after
     having succeeded. Defaults to 3. Minimum value is 1.
     """
-    grpc: NotRequired[pulumi.Input['JobTemplateTemplateContainerStartupProbeGrpcArgsDict']]
+    grpc: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeGrpcArgs']]]
     """
     GRPC specifies an action involving a GRPC port.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetArgsDict']]
+    http_get: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeHttpGetArgs']]]
     """
     HttpGet specifies the http request to perform.
     Structure is documented below.
     """
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of seconds after the container has started before the probe is
     initiated.
     Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
     """
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     How often (in seconds) to perform the probe.
     Default to 10 seconds. Minimum value is 1. Maximum value is 240.
     """
-    tcp_socket: NotRequired[pulumi.Input['JobTemplateTemplateContainerStartupProbeTcpSocketArgsDict']]
+    tcp_socket: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeTcpSocketArgs']]]
     """
     TcpSocket specifies an action involving a TCP port.
     Structure is documented below.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of seconds after which the probe times out.
     Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
@@ -1554,13 +1554,13 @@ class JobTemplateTemplateContainerStartupProbeArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateTemplateContainerStartupProbeArgs:
     def __init__(__self__, *,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 grpc: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeGrpcArgs']] = None,
-                 http_get: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetArgs']] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_socket: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeTcpSocketArgs']] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 grpc: pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeGrpcArgs']] = None,
+                 http_get: pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_socket: pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeTcpSocketArgs']] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after
                having succeeded. Defaults to 3. Minimum value is 1.
@@ -1596,7 +1596,7 @@ class JobTemplateTemplateContainerStartupProbeArgs:
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum consecutive failures for the probe to be considered failed after
         having succeeded. Defaults to 3. Minimum value is 1.
@@ -1604,12 +1604,12 @@ class JobTemplateTemplateContainerStartupProbeArgs:
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def grpc(self) -> Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeGrpcArgs']]:
+    def grpc(self) -> pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeGrpcArgs']]:
         """
         GRPC specifies an action involving a GRPC port.
         Structure is documented below.
@@ -1617,12 +1617,12 @@ class JobTemplateTemplateContainerStartupProbeArgs:
         return pulumi.get(self, "grpc")
 
     @grpc.setter
-    def grpc(self, value: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeGrpcArgs']]):
+    def grpc(self, value: pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeGrpcArgs']]):
         pulumi.set(self, "grpc", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetArgs']]:
+    def http_get(self) -> pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeHttpGetArgs']]:
         """
         HttpGet specifies the http request to perform.
         Structure is documented below.
@@ -1630,12 +1630,12 @@ class JobTemplateTemplateContainerStartupProbeArgs:
         return pulumi.get(self, "http_get")
 
     @http_get.setter
-    def http_get(self, value: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetArgs']]):
+    def http_get(self, value: pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeHttpGetArgs']]):
         pulumi.set(self, "http_get", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds after the container has started before the probe is
         initiated.
@@ -1644,12 +1644,12 @@ class JobTemplateTemplateContainerStartupProbeArgs:
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often (in seconds) to perform the probe.
         Default to 10 seconds. Minimum value is 1. Maximum value is 240.
@@ -1657,12 +1657,12 @@ class JobTemplateTemplateContainerStartupProbeArgs:
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeTcpSocketArgs']]:
+    def tcp_socket(self) -> pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeTcpSocketArgs']]:
         """
         TcpSocket specifies an action involving a TCP port.
         Structure is documented below.
@@ -1670,12 +1670,12 @@ class JobTemplateTemplateContainerStartupProbeArgs:
         return pulumi.get(self, "tcp_socket")
 
     @tcp_socket.setter
-    def tcp_socket(self, value: Optional[pulumi.Input['JobTemplateTemplateContainerStartupProbeTcpSocketArgs']]):
+    def tcp_socket(self, value: pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeTcpSocketArgs']]):
         pulumi.set(self, "tcp_socket", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds after which the probe times out.
         Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
@@ -1684,17 +1684,17 @@ class JobTemplateTemplateContainerStartupProbeArgs:
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class JobTemplateTemplateContainerStartupProbeGrpcArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number to access on the container. Number must be in the range 1 to 65535.
     If not specified, defaults to the same value as container.ports[0].containerPort.
     """
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the service to place in the gRPC HealthCheckRequest
     (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -1704,8 +1704,8 @@ class JobTemplateTemplateContainerStartupProbeGrpcArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateTemplateContainerStartupProbeGrpcArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Port number to access on the container. Number must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -1720,7 +1720,7 @@ class JobTemplateTemplateContainerStartupProbeGrpcArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number to access on the container. Number must be in the range 1 to 65535.
         If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -1728,12 +1728,12 @@ class JobTemplateTemplateContainerStartupProbeGrpcArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -1742,21 +1742,21 @@ class JobTemplateTemplateContainerStartupProbeGrpcArgs:
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
 class JobTemplateTemplateContainerStartupProbeHttpGetArgsDict(TypedDict):
-    http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict']]]]
+    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]]]
     """
     Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path to access on the HTTP server. If set, it should not be empty string.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number to access on the container. Number must be in the range 1 to 65535.
     If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -1765,9 +1765,9 @@ class JobTemplateTemplateContainerStartupProbeHttpGetArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateTemplateContainerStartupProbeHttpGetArgs:
     def __init__(__self__, *,
-                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 http_headers: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
@@ -1784,7 +1784,7 @@ class JobTemplateTemplateContainerStartupProbeHttpGetArgs:
 
     @_builtins.property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]]:
+    def http_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]]:
         """
         Custom headers to set in the request. HTTP allows repeated headers.
         Structure is documented below.
@@ -1792,24 +1792,24 @@ class JobTemplateTemplateContainerStartupProbeHttpGetArgs:
         return pulumi.get(self, "http_headers")
 
     @http_headers.setter
-    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]]):
+    def http_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]]):
         pulumi.set(self, "http_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to access on the HTTP server. If set, it should not be empty string.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number to access on the container. Number must be in the range 1 to 65535.
         If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -1817,7 +1817,7 @@ class JobTemplateTemplateContainerStartupProbeHttpGetArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
@@ -1826,7 +1826,7 @@ class JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict(TypedDic
     """
     The header field name.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The header field value.
     """
@@ -1835,7 +1835,7 @@ class JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict(TypedDic
 class JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The header field name.
         :param pulumi.Input[_builtins.str] value: The header field value.
@@ -1858,19 +1858,19 @@ class JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The header field value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class JobTemplateTemplateContainerStartupProbeTcpSocketArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number to access on the container. Number must be in the range 1 to 65535.
     If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -1879,7 +1879,7 @@ class JobTemplateTemplateContainerStartupProbeTcpSocketArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateTemplateContainerStartupProbeTcpSocketArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Port number to access on the container. Number must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -1889,7 +1889,7 @@ class JobTemplateTemplateContainerStartupProbeTcpSocketArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number to access on the container. Number must be in the range 1 to 65535.
         If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -1897,7 +1897,7 @@ class JobTemplateTemplateContainerStartupProbeTcpSocketArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
@@ -1910,7 +1910,7 @@ class JobTemplateTemplateContainerVolumeMountArgsDict(TypedDict):
     """
     This must match the Name of a Volume.
     """
-    sub_path: NotRequired[pulumi.Input[_builtins.str]]
+    sub_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path within the volume from which the container's volume should be mounted.
     """
@@ -1920,7 +1920,7 @@ class JobTemplateTemplateContainerVolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 sub_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 sub_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
         :param pulumi.Input[_builtins.str] name: This must match the Name of a Volume.
@@ -1957,14 +1957,14 @@ class JobTemplateTemplateContainerVolumeMountArgs:
 
     @_builtins.property
     @pulumi.getter(name="subPath")
-    def sub_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path within the volume from which the container's volume should be mounted.
         """
         return pulumi.get(self, "sub_path")
 
     @sub_path.setter
-    def sub_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_path", value)
 
 
@@ -2001,27 +2001,27 @@ class JobTemplateTemplateVolumeArgsDict(TypedDict):
     """
     Volume's name.
     """
-    cloud_sql_instance: NotRequired[pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgsDict']]
+    cloud_sql_instance: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeCloudSqlInstanceArgs']]]
     """
     For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
     Structure is documented below.
     """
-    empty_dir: NotRequired[pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgsDict']]
+    empty_dir: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeEmptyDirArgs']]]
     """
     Ephemeral storage used as a shared volume.
     Structure is documented below.
     """
-    gcs: NotRequired[pulumi.Input['JobTemplateTemplateVolumeGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeGcsArgs']]]
     """
     Cloud Storage bucket mounted as a volume using GCSFuse.
     Structure is documented below.
     """
-    nfs: NotRequired[pulumi.Input['JobTemplateTemplateVolumeNfsArgsDict']]
+    nfs: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeNfsArgs']]]
     """
     NFS share mounted as a volume.
     Structure is documented below.
     """
-    secret: NotRequired[pulumi.Input['JobTemplateTemplateVolumeSecretArgsDict']]
+    secret: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeSecretArgs']]]
     """
     Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
     Structure is documented below.
@@ -2031,11 +2031,11 @@ class JobTemplateTemplateVolumeArgsDict(TypedDict):
 class JobTemplateTemplateVolumeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 cloud_sql_instance: Optional[pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgs']] = None,
-                 empty_dir: Optional[pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs']] = None,
-                 gcs: Optional[pulumi.Input['JobTemplateTemplateVolumeGcsArgs']] = None,
-                 nfs: Optional[pulumi.Input['JobTemplateTemplateVolumeNfsArgs']] = None,
-                 secret: Optional[pulumi.Input['JobTemplateTemplateVolumeSecretArgs']] = None):
+                 cloud_sql_instance: pulumi.Input[Optional['JobTemplateTemplateVolumeCloudSqlInstanceArgs']] = None,
+                 empty_dir: pulumi.Input[Optional['JobTemplateTemplateVolumeEmptyDirArgs']] = None,
+                 gcs: pulumi.Input[Optional['JobTemplateTemplateVolumeGcsArgs']] = None,
+                 nfs: pulumi.Input[Optional['JobTemplateTemplateVolumeNfsArgs']] = None,
+                 secret: pulumi.Input[Optional['JobTemplateTemplateVolumeSecretArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: Volume's name.
         :param pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
@@ -2075,7 +2075,7 @@ class JobTemplateTemplateVolumeArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudSqlInstance")
-    def cloud_sql_instance(self) -> Optional[pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgs']]:
+    def cloud_sql_instance(self) -> pulumi.Input[Optional['JobTemplateTemplateVolumeCloudSqlInstanceArgs']]:
         """
         For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
         Structure is documented below.
@@ -2083,12 +2083,12 @@ class JobTemplateTemplateVolumeArgs:
         return pulumi.get(self, "cloud_sql_instance")
 
     @cloud_sql_instance.setter
-    def cloud_sql_instance(self, value: Optional[pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgs']]):
+    def cloud_sql_instance(self, value: pulumi.Input[Optional['JobTemplateTemplateVolumeCloudSqlInstanceArgs']]):
         pulumi.set(self, "cloud_sql_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="emptyDir")
-    def empty_dir(self) -> Optional[pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs']]:
+    def empty_dir(self) -> pulumi.Input[Optional['JobTemplateTemplateVolumeEmptyDirArgs']]:
         """
         Ephemeral storage used as a shared volume.
         Structure is documented below.
@@ -2096,12 +2096,12 @@ class JobTemplateTemplateVolumeArgs:
         return pulumi.get(self, "empty_dir")
 
     @empty_dir.setter
-    def empty_dir(self, value: Optional[pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs']]):
+    def empty_dir(self, value: pulumi.Input[Optional['JobTemplateTemplateVolumeEmptyDirArgs']]):
         pulumi.set(self, "empty_dir", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['JobTemplateTemplateVolumeGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['JobTemplateTemplateVolumeGcsArgs']]:
         """
         Cloud Storage bucket mounted as a volume using GCSFuse.
         Structure is documented below.
@@ -2109,12 +2109,12 @@ class JobTemplateTemplateVolumeArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['JobTemplateTemplateVolumeGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['JobTemplateTemplateVolumeGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter
-    def nfs(self) -> Optional[pulumi.Input['JobTemplateTemplateVolumeNfsArgs']]:
+    def nfs(self) -> pulumi.Input[Optional['JobTemplateTemplateVolumeNfsArgs']]:
         """
         NFS share mounted as a volume.
         Structure is documented below.
@@ -2122,12 +2122,12 @@ class JobTemplateTemplateVolumeArgs:
         return pulumi.get(self, "nfs")
 
     @nfs.setter
-    def nfs(self, value: Optional[pulumi.Input['JobTemplateTemplateVolumeNfsArgs']]):
+    def nfs(self, value: pulumi.Input[Optional['JobTemplateTemplateVolumeNfsArgs']]):
         pulumi.set(self, "nfs", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input['JobTemplateTemplateVolumeSecretArgs']]:
+    def secret(self) -> pulumi.Input[Optional['JobTemplateTemplateVolumeSecretArgs']]:
         """
         Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
         Structure is documented below.
@@ -2135,12 +2135,12 @@ class JobTemplateTemplateVolumeArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input['JobTemplateTemplateVolumeSecretArgs']]):
+    def secret(self, value: pulumi.Input[Optional['JobTemplateTemplateVolumeSecretArgs']]):
         pulumi.set(self, "secret", value)
 
 
 class JobTemplateTemplateVolumeCloudSqlInstanceArgsDict(TypedDict):
-    instances: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
     """
@@ -2148,7 +2148,7 @@ class JobTemplateTemplateVolumeCloudSqlInstanceArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateTemplateVolumeCloudSqlInstanceArgs:
     def __init__(__self__, *,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
@@ -2157,25 +2157,25 @@ class JobTemplateTemplateVolumeCloudSqlInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instances", value)
 
 
 class JobTemplateTemplateVolumeEmptyDirArgsDict(TypedDict):
-    medium: NotRequired[pulumi.Input[_builtins.str]]
+    medium: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The different types of medium supported for EmptyDir.
     Default value is `MEMORY`.
     Possible values are: `MEMORY`, `DISK`.
     """
-    size_limit: NotRequired[pulumi.Input[_builtins.str]]
+    size_limit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
     """
@@ -2183,8 +2183,8 @@ class JobTemplateTemplateVolumeEmptyDirArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateTemplateVolumeEmptyDirArgs:
     def __init__(__self__, *,
-                 medium: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_limit: Optional[pulumi.Input[_builtins.str]] = None):
+                 medium: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_limit: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] medium: The different types of medium supported for EmptyDir.
                Default value is `MEMORY`.
@@ -2198,7 +2198,7 @@ class JobTemplateTemplateVolumeEmptyDirArgs:
 
     @_builtins.property
     @pulumi.getter
-    def medium(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def medium(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The different types of medium supported for EmptyDir.
         Default value is `MEMORY`.
@@ -2207,19 +2207,19 @@ class JobTemplateTemplateVolumeEmptyDirArgs:
         return pulumi.get(self, "medium")
 
     @medium.setter
-    def medium(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def medium(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "medium", value)
 
     @_builtins.property
     @pulumi.getter(name="sizeLimit")
-    def size_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def size_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
         """
         return pulumi.get(self, "size_limit")
 
     @size_limit.setter
-    def size_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def size_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "size_limit", value)
 
 
@@ -2228,12 +2228,12 @@ class JobTemplateTemplateVolumeGcsArgsDict(TypedDict):
     """
     Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
     """
-    mount_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    mount_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of flags to pass to the gcsfuse command for configuring this volume.
     Flags should be passed without leading dashes.
     """
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
     """
@@ -2242,8 +2242,8 @@ class JobTemplateTemplateVolumeGcsArgsDict(TypedDict):
 class JobTemplateTemplateVolumeGcsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 mount_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mount_options: A list of flags to pass to the gcsfuse command for configuring this volume.
@@ -2270,7 +2270,7 @@ class JobTemplateTemplateVolumeGcsArgs:
 
     @_builtins.property
     @pulumi.getter(name="mountOptions")
-    def mount_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mount_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of flags to pass to the gcsfuse command for configuring this volume.
         Flags should be passed without leading dashes.
@@ -2278,19 +2278,19 @@ class JobTemplateTemplateVolumeGcsArgs:
         return pulumi.get(self, "mount_options")
 
     @mount_options.setter
-    def mount_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mount_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mount_options", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
 
@@ -2299,11 +2299,11 @@ class JobTemplateTemplateVolumeNfsArgsDict(TypedDict):
     """
     Hostname or IP address of the NFS server.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path that is exported by the NFS server.
     """
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, mount this volume as read-only in all mounts.
     """
@@ -2312,8 +2312,8 @@ class JobTemplateTemplateVolumeNfsArgsDict(TypedDict):
 class JobTemplateTemplateVolumeNfsArgs:
     def __init__(__self__, *,
                  server: pulumi.Input[_builtins.str],
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] server: Hostname or IP address of the NFS server.
         :param pulumi.Input[_builtins.str] path: Path that is exported by the NFS server.
@@ -2339,26 +2339,26 @@ class JobTemplateTemplateVolumeNfsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path that is exported by the NFS server.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, mount this volume as read-only in all mounts.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
 
@@ -2367,11 +2367,11 @@ class JobTemplateTemplateVolumeSecretArgsDict(TypedDict):
     """
     The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
     """
-    default_mode: NotRequired[pulumi.Input[_builtins.int]]
+    default_mode: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
     """
-    items: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeSecretItemArgsDict']]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVolumeSecretItemArgs']]]]]
     """
     If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
     Structure is documented below.
@@ -2381,8 +2381,8 @@ class JobTemplateTemplateVolumeSecretArgsDict(TypedDict):
 class JobTemplateTemplateVolumeSecretArgs:
     def __init__(__self__, *,
                  secret: pulumi.Input[_builtins.str],
-                 default_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeSecretItemArgs']]]] = None):
+                 default_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 items: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVolumeSecretItemArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
         :param pulumi.Input[_builtins.int] default_mode: Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
@@ -2409,19 +2409,19 @@ class JobTemplateTemplateVolumeSecretArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultMode")
-    def default_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
         """
         return pulumi.get(self, "default_mode")
 
     @default_mode.setter
-    def default_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeSecretItemArgs']]]]:
+    def items(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVolumeSecretItemArgs']]]]:
         """
         If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
         Structure is documented below.
@@ -2429,7 +2429,7 @@ class JobTemplateTemplateVolumeSecretArgs:
         return pulumi.get(self, "items")
 
     @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeSecretItemArgs']]]]):
+    def items(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVolumeSecretItemArgs']]]]):
         pulumi.set(self, "items", value)
 
 
@@ -2442,7 +2442,7 @@ class JobTemplateTemplateVolumeSecretItemArgsDict(TypedDict):
     """
     The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
     """
-    mode: NotRequired[pulumi.Input[_builtins.int]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
     """
@@ -2452,7 +2452,7 @@ class JobTemplateTemplateVolumeSecretItemArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
-                 mode: Optional[pulumi.Input[_builtins.int]] = None):
+                 mode: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] path: The relative path of the secret in the container.
         :param pulumi.Input[_builtins.str] version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
@@ -2489,28 +2489,28 @@ class JobTemplateTemplateVolumeSecretItemArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mode", value)
 
 
 class JobTemplateTemplateVpcAccessArgsDict(TypedDict):
-    connector: NotRequired[pulumi.Input[_builtins.str]]
+    connector: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
     """
-    egress: NotRequired[pulumi.Input[_builtins.str]]
+    egress: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Traffic VPC egress settings.
     Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
     """
-    network_interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgsDict']]]]
+    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgs']]]]]
     """
     Direct VPC egress settings. Currently only single network interface is supported.
     Structure is documented below.
@@ -2519,9 +2519,9 @@ class JobTemplateTemplateVpcAccessArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateTemplateVpcAccessArgs:
     def __init__(__self__, *,
-                 connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgs']]]] = None):
+                 connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         :param pulumi.Input[_builtins.str] egress: Traffic VPC egress settings.
@@ -2538,19 +2538,19 @@ class JobTemplateTemplateVpcAccessArgs:
 
     @_builtins.property
     @pulumi.getter
-    def connector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         """
         return pulumi.get(self, "connector")
 
     @connector.setter
-    def connector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector", value)
 
     @_builtins.property
     @pulumi.getter
-    def egress(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def egress(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Traffic VPC egress settings.
         Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
@@ -2558,12 +2558,12 @@ class JobTemplateTemplateVpcAccessArgs:
         return pulumi.get(self, "egress")
 
     @egress.setter
-    def egress(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def egress(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "egress", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgs']]]]:
         """
         Direct VPC egress settings. Currently only single network interface is supported.
         Structure is documented below.
@@ -2571,24 +2571,24 @@ class JobTemplateTemplateVpcAccessArgs:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
 
 class JobTemplateTemplateVpcAccessNetworkInterfaceArgsDict(TypedDict):
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
     network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
     looked up from the subnetwork.
     """
-    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    subnetwork: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
     network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
     subnetwork with the same name with the network will be used.
     """
-    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Network tags applied to this Cloud Run job.
     """
@@ -2596,9 +2596,9 @@ class JobTemplateTemplateVpcAccessNetworkInterfaceArgsDict(TypedDict):
 @pulumi.input_type
 class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
     def __init__(__self__, *,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] network: The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
                network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
@@ -2617,7 +2617,7 @@ class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
         network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
@@ -2626,12 +2626,12 @@ class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
         network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
@@ -2640,60 +2640,60 @@ class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Network tags applied to this Cloud Run job.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 class JobTerminalConditionArgsDict(TypedDict):
-    execution_reason: NotRequired[pulumi.Input[_builtins.str]]
+    execution_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A reason for the execution condition.
     """
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transitioned from one status to another.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human readable message indicating details about the current status.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A common (service-level) reason for this condition.
     """
-    revision_reason: NotRequired[pulumi.Input[_builtins.str]]
+    revision_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A reason for the revision condition.
     """
-    severity: NotRequired[pulumi.Input[_builtins.str]]
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     How to interpret failures of this condition, one of Error, Warning, Info
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     State of the condition.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
@@ -2702,14 +2702,14 @@ class JobTerminalConditionArgsDict(TypedDict):
 @pulumi.input_type
 class JobTerminalConditionArgs:
     def __init__(__self__, *,
-                 execution_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 execution_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] execution_reason: (Output)
                A reason for the execution condition.
@@ -2748,7 +2748,7 @@ class JobTerminalConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="executionReason")
-    def execution_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A reason for the execution condition.
@@ -2756,12 +2756,12 @@ class JobTerminalConditionArgs:
         return pulumi.get(self, "execution_reason")
 
     @execution_reason.setter
-    def execution_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transitioned from one status to another.
@@ -2770,12 +2770,12 @@ class JobTerminalConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human readable message indicating details about the current status.
@@ -2783,12 +2783,12 @@ class JobTerminalConditionArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A common (service-level) reason for this condition.
@@ -2796,12 +2796,12 @@ class JobTerminalConditionArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionReason")
-    def revision_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A reason for the revision condition.
@@ -2809,12 +2809,12 @@ class JobTerminalConditionArgs:
         return pulumi.get(self, "revision_reason")
 
     @revision_reason.setter
-    def revision_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         How to interpret failures of this condition, one of Error, Warning, Info
@@ -2822,12 +2822,12 @@ class JobTerminalConditionArgs:
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "severity", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         State of the condition.
@@ -2835,12 +2835,12 @@ class JobTerminalConditionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
@@ -2848,20 +2848,20 @@ class JobTerminalConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class ServiceBinaryAuthorizationArgsDict(TypedDict):
-    breakglass_justification: NotRequired[pulumi.Input[_builtins.str]]
+    breakglass_justification: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
     """
-    policy: NotRequired[pulumi.Input[_builtins.str]]
+    policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
     """
-    use_default: NotRequired[pulumi.Input[_builtins.bool]]
+    use_default: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
     """
@@ -2869,9 +2869,9 @@ class ServiceBinaryAuthorizationArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceBinaryAuthorizationArgs:
     def __init__(__self__, *,
-                 breakglass_justification: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_default: Optional[pulumi.Input[_builtins.bool]] = None):
+                 breakglass_justification: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_default: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] breakglass_justification: If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
         :param pulumi.Input[_builtins.str] policy: The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
@@ -2886,76 +2886,76 @@ class ServiceBinaryAuthorizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="breakglassJustification")
-    def breakglass_justification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def breakglass_justification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
         """
         return pulumi.get(self, "breakglass_justification")
 
     @breakglass_justification.setter
-    def breakglass_justification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def breakglass_justification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "breakglass_justification", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="useDefault")
-    def use_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         """
         return pulumi.get(self, "use_default")
 
     @use_default.setter
-    def use_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_default", value)
 
 
 class ServiceBuildConfigArgsDict(TypedDict):
-    base_image: NotRequired[pulumi.Input[_builtins.str]]
+    base_image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The base image used to build the function.
     """
-    enable_automatic_updates: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_automatic_updates: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Sets whether the function will receive automatic base image updates.
     """
-    environment_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    environment_variables: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     User-provided build-time environment variables for the function.
     """
-    function_target: NotRequired[pulumi.Input[_builtins.str]]
+    function_target: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
     """
-    image_uri: NotRequired[pulumi.Input[_builtins.str]]
+    image_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Artifact Registry URI to store the built image.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Cloud Build name of the latest successful deployment of the function.
     """
-    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
     """
-    source_location: NotRequired[pulumi.Input[_builtins.str]]
+    source_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cloud Storage bucket URI where the function source code is located.
     """
-    worker_pool: NotRequired[pulumi.Input[_builtins.str]]
+    worker_pool: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
     """
@@ -2963,15 +2963,15 @@ class ServiceBuildConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceBuildConfigArgs:
     def __init__(__self__, *,
-                 base_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_automatic_updates: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 function_target: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_pool: Optional[pulumi.Input[_builtins.str]] = None):
+                 base_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_automatic_updates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 function_target: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_pool: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] base_image: The base image used to build the function.
         :param pulumi.Input[_builtins.bool] enable_automatic_updates: Sets whether the function will receive automatic base image updates.
@@ -3005,67 +3005,67 @@ class ServiceBuildConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="baseImage")
-    def base_image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base image used to build the function.
         """
         return pulumi.get(self, "base_image")
 
     @base_image.setter
-    def base_image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_image", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutomaticUpdates")
-    def enable_automatic_updates(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_automatic_updates(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Sets whether the function will receive automatic base image updates.
         """
         return pulumi.get(self, "enable_automatic_updates")
 
     @enable_automatic_updates.setter
-    def enable_automatic_updates(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_automatic_updates(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_automatic_updates", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def environment_variables(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-provided build-time environment variables for the function.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def environment_variables(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="functionTarget")
-    def function_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
         """
         return pulumi.get(self, "function_target")
 
     @function_target.setter
-    def function_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_target", value)
 
     @_builtins.property
     @pulumi.getter(name="imageUri")
-    def image_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Artifact Registry URI to store the built image.
         """
         return pulumi.get(self, "image_uri")
 
     @image_uri.setter
-    def image_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Cloud Build name of the latest successful deployment of the function.
@@ -3073,84 +3073,84 @@ class ServiceBuildConfigArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceLocation")
-    def source_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud Storage bucket URI where the function source code is located.
         """
         return pulumi.get(self, "source_location")
 
     @source_location.setter
-    def source_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_location", value)
 
     @_builtins.property
     @pulumi.getter(name="workerPool")
-    def worker_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def worker_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
         """
         return pulumi.get(self, "worker_pool")
 
     @worker_pool.setter
-    def worker_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def worker_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "worker_pool", value)
 
 
 class ServiceConditionArgsDict(TypedDict):
-    execution_reason: NotRequired[pulumi.Input[_builtins.str]]
+    execution_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A reason for the execution condition.
     """
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transitioned from one status to another.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human readable message indicating details about the current status.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A common (service-level) reason for this condition.
     """
-    revision_reason: NotRequired[pulumi.Input[_builtins.str]]
+    revision_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A reason for the revision condition.
     """
-    severity: NotRequired[pulumi.Input[_builtins.str]]
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     How to interpret failures of this condition, one of Error, Warning, Info
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     State of the condition.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The allocation type for this traffic target.
@@ -3159,14 +3159,14 @@ class ServiceConditionArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceConditionArgs:
     def __init__(__self__, *,
-                 execution_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 execution_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] execution_reason: (Output)
                A reason for the execution condition.
@@ -3205,7 +3205,7 @@ class ServiceConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="executionReason")
-    def execution_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A reason for the execution condition.
@@ -3213,12 +3213,12 @@ class ServiceConditionArgs:
         return pulumi.get(self, "execution_reason")
 
     @execution_reason.setter
-    def execution_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transitioned from one status to another.
@@ -3227,12 +3227,12 @@ class ServiceConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human readable message indicating details about the current status.
@@ -3240,12 +3240,12 @@ class ServiceConditionArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A common (service-level) reason for this condition.
@@ -3253,12 +3253,12 @@ class ServiceConditionArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionReason")
-    def revision_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A reason for the revision condition.
@@ -3266,12 +3266,12 @@ class ServiceConditionArgs:
         return pulumi.get(self, "revision_reason")
 
     @revision_reason.setter
-    def revision_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         How to interpret failures of this condition, one of Error, Warning, Info
@@ -3279,12 +3279,12 @@ class ServiceConditionArgs:
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "severity", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         State of the condition.
@@ -3292,12 +3292,12 @@ class ServiceConditionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The allocation type for this traffic target.
@@ -3305,21 +3305,21 @@ class ServiceConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class ServiceIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ServiceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -3345,25 +3345,25 @@ class ServiceIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ServiceIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ServiceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -3389,21 +3389,21 @@ class ServiceIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ServiceMultiRegionSettingsArgsDict(TypedDict):
-    multi_region_id: NotRequired[pulumi.Input[_builtins.str]]
+    multi_region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     System-generated unique id for the multi-region Service.
     """
-    regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    regions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of regions to deploy the multi-region Service.
     """
@@ -3411,8 +3411,8 @@ class ServiceMultiRegionSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceMultiRegionSettingsArgs:
     def __init__(__self__, *,
-                 multi_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 multi_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] multi_region_id: (Output)
                System-generated unique id for the multi-region Service.
@@ -3425,7 +3425,7 @@ class ServiceMultiRegionSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="multiRegionId")
-    def multi_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def multi_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         System-generated unique id for the multi-region Service.
@@ -3433,36 +3433,36 @@ class ServiceMultiRegionSettingsArgs:
         return pulumi.get(self, "multi_region_id")
 
     @multi_region_id.setter
-    def multi_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def multi_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "multi_region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of regions to deploy the multi-region Service.
         """
         return pulumi.get(self, "regions")
 
     @regions.setter
-    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "regions", value)
 
 
 class ServiceScalingArgsDict(TypedDict):
-    manual_instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    manual_instance_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
     """
-    max_instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_instance_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Combined maximum number of instances for all revisions receiving traffic.
     """
-    min_instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    min_instance_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of instances for the service, to be divided among all revisions receiving traffic.
     """
-    scaling_mode: NotRequired[pulumi.Input[_builtins.str]]
+    scaling_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
     Possible values are: `AUTOMATIC`, `MANUAL`.
@@ -3471,10 +3471,10 @@ class ServiceScalingArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceScalingArgs:
     def __init__(__self__, *,
-                 manual_instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 manual_instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] manual_instance_count: Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
         :param pulumi.Input[_builtins.int] max_instance_count: Combined maximum number of instances for all revisions receiving traffic.
@@ -3493,43 +3493,43 @@ class ServiceScalingArgs:
 
     @_builtins.property
     @pulumi.getter(name="manualInstanceCount")
-    def manual_instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def manual_instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
         """
         return pulumi.get(self, "manual_instance_count")
 
     @manual_instance_count.setter
-    def manual_instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def manual_instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "manual_instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="maxInstanceCount")
-    def max_instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Combined maximum number of instances for all revisions receiving traffic.
         """
         return pulumi.get(self, "max_instance_count")
 
     @max_instance_count.setter
-    def max_instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minInstanceCount")
-    def min_instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         """
         return pulumi.get(self, "min_instance_count")
 
     @min_instance_count.setter
-    def min_instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingMode")
-    def scaling_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
         Possible values are: `AUTOMATIC`, `MANUAL`.
@@ -3537,91 +3537,91 @@ class ServiceScalingArgs:
         return pulumi.get(self, "scaling_mode")
 
     @scaling_mode.setter
-    def scaling_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_mode", value)
 
 
 class ServiceTemplateArgsDict(TypedDict):
-    annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    annotations: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
     Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
     All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
     This field follows Kubernetes annotations' namespacing, limits, and rules.
     """
-    containers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerArgsDict']]]]
+    containers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerArgs']]]]]
     """
     Holds the containers that define the unit of execution for this Service.
     Structure is documented below.
     """
-    encryption_key: NotRequired[pulumi.Input[_builtins.str]]
+    encryption_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
     """
-    execution_environment: NotRequired[pulumi.Input[_builtins.str]]
+    execution_environment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The sandbox environment to host this Revision.
     Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
     """
-    gpu_zonal_redundancy_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    gpu_zonal_redundancy_disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if GPU zonal redundancy is disabled on this revision.
     """
-    health_check_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    health_check_disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Disables health checking containers during deployment.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
     For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
     Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
     All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
     """
-    max_instance_request_concurrency: NotRequired[pulumi.Input[_builtins.int]]
+    max_instance_request_concurrency: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Sets the maximum number of requests that each serving instance can receive.
     If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
     """
-    node_selector: NotRequired[pulumi.Input['ServiceTemplateNodeSelectorArgsDict']]
+    node_selector: NotRequired[pulumi.Input[Optional['ServiceTemplateNodeSelectorArgs']]]
     """
     Node Selector describes the hardware requirements of the resources.
     Structure is documented below.
     """
-    revision: NotRequired[pulumi.Input[_builtins.str]]
+    revision: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
     """
-    scaling: NotRequired[pulumi.Input['ServiceTemplateScalingArgsDict']]
+    scaling: NotRequired[pulumi.Input[Optional['ServiceTemplateScalingArgs']]]
     """
     Scaling settings for this Revision.
     Structure is documented below.
     """
-    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
     """
-    service_mesh: NotRequired[pulumi.Input['ServiceTemplateServiceMeshArgsDict']]
+    service_mesh: NotRequired[pulumi.Input[Optional['ServiceTemplateServiceMeshArgs']]]
     """
     (Optional, Beta)
     Enables Cloud Service Mesh for this Revision.
     Structure is documented below.
     """
-    session_affinity: NotRequired[pulumi.Input[_builtins.bool]]
+    session_affinity: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
     """
-    timeout: NotRequired[pulumi.Input[_builtins.str]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Max allowed time for an instance to respond to a request.
     A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
     """
-    volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVolumeArgsDict']]]]
+    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVolumeArgs']]]]]
     """
     A list of Volumes to make available to containers.
     Structure is documented below.
     """
-    vpc_access: NotRequired[pulumi.Input['ServiceTemplateVpcAccessArgsDict']]
+    vpc_access: NotRequired[pulumi.Input[Optional['ServiceTemplateVpcAccessArgs']]]
     """
     VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
     Structure is documented below.
@@ -3630,23 +3630,23 @@ class ServiceTemplateArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerArgs']]]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_zonal_redundancy_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 max_instance_request_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_selector: Optional[pulumi.Input['ServiceTemplateNodeSelectorArgs']] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling: Optional[pulumi.Input['ServiceTemplateScalingArgs']] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_mesh: Optional[pulumi.Input['ServiceTemplateServiceMeshArgs']] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVolumeArgs']]]] = None,
-                 vpc_access: Optional[pulumi.Input['ServiceTemplateVpcAccessArgs']] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerArgs']]]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_zonal_redundancy_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 max_instance_request_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_selector: pulumi.Input[Optional['ServiceTemplateNodeSelectorArgs']] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling: pulumi.Input[Optional['ServiceTemplateScalingArgs']] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_mesh: pulumi.Input[Optional['ServiceTemplateServiceMeshArgs']] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVolumeArgs']]]] = None,
+                 vpc_access: pulumi.Input[Optional['ServiceTemplateVpcAccessArgs']] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -3719,7 +3719,7 @@ class ServiceTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
         Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -3729,12 +3729,12 @@ class ServiceTemplateArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerArgs']]]]:
+    def containers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerArgs']]]]:
         """
         Holds the containers that define the unit of execution for this Service.
         Structure is documented below.
@@ -3742,24 +3742,24 @@ class ServiceTemplateArgs:
         return pulumi.get(self, "containers")
 
     @containers.setter
-    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerArgs']]]]):
+    def containers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerArgs']]]]):
         pulumi.set(self, "containers", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         """
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="executionEnvironment")
-    def execution_environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sandbox environment to host this Revision.
         Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
@@ -3767,36 +3767,36 @@ class ServiceTemplateArgs:
         return pulumi.get(self, "execution_environment")
 
     @execution_environment.setter
-    def execution_environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_environment", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuZonalRedundancyDisabled")
-    def gpu_zonal_redundancy_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gpu_zonal_redundancy_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if GPU zonal redundancy is disabled on this revision.
         """
         return pulumi.get(self, "gpu_zonal_redundancy_disabled")
 
     @gpu_zonal_redundancy_disabled.setter
-    def gpu_zonal_redundancy_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gpu_zonal_redundancy_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gpu_zonal_redundancy_disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckDisabled")
-    def health_check_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def health_check_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disables health checking containers during deployment.
         """
         return pulumi.get(self, "health_check_disabled")
 
     @health_check_disabled.setter
-    def health_check_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def health_check_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "health_check_disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
         For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -3806,12 +3806,12 @@ class ServiceTemplateArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maxInstanceRequestConcurrency")
-    def max_instance_request_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_instance_request_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the maximum number of requests that each serving instance can receive.
         If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
@@ -3819,12 +3819,12 @@ class ServiceTemplateArgs:
         return pulumi.get(self, "max_instance_request_concurrency")
 
     @max_instance_request_concurrency.setter
-    def max_instance_request_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_instance_request_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_instance_request_concurrency", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input['ServiceTemplateNodeSelectorArgs']]:
+    def node_selector(self) -> pulumi.Input[Optional['ServiceTemplateNodeSelectorArgs']]:
         """
         Node Selector describes the hardware requirements of the resources.
         Structure is documented below.
@@ -3832,24 +3832,24 @@ class ServiceTemplateArgs:
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input['ServiceTemplateNodeSelectorArgs']]):
+    def node_selector(self, value: pulumi.Input[Optional['ServiceTemplateNodeSelectorArgs']]):
         pulumi.set(self, "node_selector", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter
-    def scaling(self) -> Optional[pulumi.Input['ServiceTemplateScalingArgs']]:
+    def scaling(self) -> pulumi.Input[Optional['ServiceTemplateScalingArgs']]:
         """
         Scaling settings for this Revision.
         Structure is documented below.
@@ -3857,24 +3857,24 @@ class ServiceTemplateArgs:
         return pulumi.get(self, "scaling")
 
     @scaling.setter
-    def scaling(self, value: Optional[pulumi.Input['ServiceTemplateScalingArgs']]):
+    def scaling(self, value: pulumi.Input[Optional['ServiceTemplateScalingArgs']]):
         pulumi.set(self, "scaling", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceMesh")
-    def service_mesh(self) -> Optional[pulumi.Input['ServiceTemplateServiceMeshArgs']]:
+    def service_mesh(self) -> pulumi.Input[Optional['ServiceTemplateServiceMeshArgs']]:
         """
         (Optional, Beta)
         Enables Cloud Service Mesh for this Revision.
@@ -3883,24 +3883,24 @@ class ServiceTemplateArgs:
         return pulumi.get(self, "service_mesh")
 
     @service_mesh.setter
-    def service_mesh(self, value: Optional[pulumi.Input['ServiceTemplateServiceMeshArgs']]):
+    def service_mesh(self, value: pulumi.Input[Optional['ServiceTemplateServiceMeshArgs']]):
         pulumi.set(self, "service_mesh", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def session_affinity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
         """
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
-    def session_affinity(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def session_affinity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "session_affinity", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Max allowed time for an instance to respond to a request.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -3908,12 +3908,12 @@ class ServiceTemplateArgs:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVolumeArgs']]]]:
+    def volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVolumeArgs']]]]:
         """
         A list of Volumes to make available to containers.
         Structure is documented below.
@@ -3921,12 +3921,12 @@ class ServiceTemplateArgs:
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVolumeArgs']]]]):
+    def volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVolumeArgs']]]]):
         pulumi.set(self, "volumes", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcAccess")
-    def vpc_access(self) -> Optional[pulumi.Input['ServiceTemplateVpcAccessArgs']]:
+    def vpc_access(self) -> pulumi.Input[Optional['ServiceTemplateVpcAccessArgs']]:
         """
         VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         Structure is documented below.
@@ -3934,7 +3934,7 @@ class ServiceTemplateArgs:
         return pulumi.get(self, "vpc_access")
 
     @vpc_access.setter
-    def vpc_access(self, value: Optional[pulumi.Input['ServiceTemplateVpcAccessArgs']]):
+    def vpc_access(self, value: pulumi.Input[Optional['ServiceTemplateVpcAccessArgs']]):
         pulumi.set(self, "vpc_access", value)
 
 
@@ -3943,75 +3943,75 @@ class ServiceTemplateContainerArgsDict(TypedDict):
     """
     URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
     """
-    base_image_uri: NotRequired[pulumi.Input[_builtins.str]]
+    base_image_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
     """
-    build_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerBuildInfoArgsDict']]]]
+    build_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerBuildInfoArgs']]]]]
     """
     (Output)
     The build info of the container image.
     Structure is documented below.
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
     """
-    depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    depends_ons: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
     """
-    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgsDict']]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgs']]]]]
     """
     List of environment variables to set in the container.
     Structure is documented below.
     """
-    liveness_probe: NotRequired[pulumi.Input['ServiceTemplateContainerLivenessProbeArgsDict']]
+    liveness_probe: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeArgs']]]
     """
     Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
     Structure is documented below.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the container specified as a DNS_LABEL.
     """
-    ports: NotRequired[pulumi.Input['ServiceTemplateContainerPortsArgsDict']]
+    ports: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerPortsArgs']]]
     """
     List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
     If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
     Structure is documented below.
     """
-    readiness_probe: NotRequired[pulumi.Input['ServiceTemplateContainerReadinessProbeArgsDict']]
+    readiness_probe: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeArgs']]]
     """
     Periodic probe of container readiness.
     Structure is documented below.
     """
-    resources: NotRequired[pulumi.Input['ServiceTemplateContainerResourcesArgsDict']]
+    resources: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerResourcesArgs']]]
     """
     Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
     Structure is documented below.
     """
-    source_code: NotRequired[pulumi.Input['ServiceTemplateContainerSourceCodeArgsDict']]
+    source_code: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerSourceCodeArgs']]]
     """
     (Optional, Beta)
     Location of the source.
     Structure is documented below.
     """
-    startup_probe: NotRequired[pulumi.Input['ServiceTemplateContainerStartupProbeArgsDict']]
+    startup_probe: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerStartupProbeArgs']]]
     """
     Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
     Structure is documented below.
     """
-    volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgsDict']]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgs']]]]]
     """
     Volume to mount into the container's filesystem.
     Structure is documented below.
     """
-    working_dir: NotRequired[pulumi.Input[_builtins.str]]
+    working_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
     """
@@ -4020,21 +4020,21 @@ class ServiceTemplateContainerArgsDict(TypedDict):
 class ServiceTemplateContainerArgs:
     def __init__(__self__, *,
                  image: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 base_image_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerBuildInfoArgs']]]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgs']]]] = None,
-                 liveness_probe: Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input['ServiceTemplateContainerPortsArgs']] = None,
-                 readiness_probe: Optional[pulumi.Input['ServiceTemplateContainerReadinessProbeArgs']] = None,
-                 resources: Optional[pulumi.Input['ServiceTemplateContainerResourcesArgs']] = None,
-                 source_code: Optional[pulumi.Input['ServiceTemplateContainerSourceCodeArgs']] = None,
-                 startup_probe: Optional[pulumi.Input['ServiceTemplateContainerStartupProbeArgs']] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgs']]]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 base_image_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerBuildInfoArgs']]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 depends_ons: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgs']]]] = None,
+                 liveness_probe: pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional['ServiceTemplateContainerPortsArgs']] = None,
+                 readiness_probe: pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeArgs']] = None,
+                 resources: pulumi.Input[Optional['ServiceTemplateContainerResourcesArgs']] = None,
+                 source_code: pulumi.Input[Optional['ServiceTemplateContainerSourceCodeArgs']] = None,
+                 startup_probe: pulumi.Input[Optional['ServiceTemplateContainerStartupProbeArgs']] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgs']]]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
@@ -4111,31 +4111,31 @@ class ServiceTemplateContainerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter(name="baseImageUri")
-    def base_image_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_image_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
         """
         return pulumi.get(self, "base_image_uri")
 
     @base_image_uri.setter
-    def base_image_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_image_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_image_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="buildInfos")
-    def build_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerBuildInfoArgs']]]]:
+    def build_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerBuildInfoArgs']]]]:
         """
         (Output)
         The build info of the container image.
@@ -4144,36 +4144,36 @@ class ServiceTemplateContainerArgs:
         return pulumi.get(self, "build_infos")
 
     @build_infos.setter
-    def build_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerBuildInfoArgs']]]]):
+    def build_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerBuildInfoArgs']]]]):
         pulumi.set(self, "build_infos", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter(name="dependsOns")
-    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def depends_ons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
         """
         return pulumi.get(self, "depends_ons")
 
     @depends_ons.setter
-    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def depends_ons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "depends_ons", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgs']]]]:
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgs']]]]:
         """
         List of environment variables to set in the container.
         Structure is documented below.
@@ -4181,12 +4181,12 @@ class ServiceTemplateContainerArgs:
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgs']]]]):
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessProbe")
-    def liveness_probe(self) -> Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeArgs']]:
+    def liveness_probe(self) -> pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeArgs']]:
         """
         Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         Structure is documented below.
@@ -4194,24 +4194,24 @@ class ServiceTemplateContainerArgs:
         return pulumi.get(self, "liveness_probe")
 
     @liveness_probe.setter
-    def liveness_probe(self, value: Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeArgs']]):
+    def liveness_probe(self, value: pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeArgs']]):
         pulumi.set(self, "liveness_probe", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the container specified as a DNS_LABEL.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input['ServiceTemplateContainerPortsArgs']]:
+    def ports(self) -> pulumi.Input[Optional['ServiceTemplateContainerPortsArgs']]:
         """
         List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
         If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
@@ -4220,12 +4220,12 @@ class ServiceTemplateContainerArgs:
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input['ServiceTemplateContainerPortsArgs']]):
+    def ports(self, value: pulumi.Input[Optional['ServiceTemplateContainerPortsArgs']]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter(name="readinessProbe")
-    def readiness_probe(self) -> Optional[pulumi.Input['ServiceTemplateContainerReadinessProbeArgs']]:
+    def readiness_probe(self) -> pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeArgs']]:
         """
         Periodic probe of container readiness.
         Structure is documented below.
@@ -4233,12 +4233,12 @@ class ServiceTemplateContainerArgs:
         return pulumi.get(self, "readiness_probe")
 
     @readiness_probe.setter
-    def readiness_probe(self, value: Optional[pulumi.Input['ServiceTemplateContainerReadinessProbeArgs']]):
+    def readiness_probe(self, value: pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeArgs']]):
         pulumi.set(self, "readiness_probe", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input['ServiceTemplateContainerResourcesArgs']]:
+    def resources(self) -> pulumi.Input[Optional['ServiceTemplateContainerResourcesArgs']]:
         """
         Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         Structure is documented below.
@@ -4246,12 +4246,12 @@ class ServiceTemplateContainerArgs:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input['ServiceTemplateContainerResourcesArgs']]):
+    def resources(self, value: pulumi.Input[Optional['ServiceTemplateContainerResourcesArgs']]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceCode")
-    def source_code(self) -> Optional[pulumi.Input['ServiceTemplateContainerSourceCodeArgs']]:
+    def source_code(self) -> pulumi.Input[Optional['ServiceTemplateContainerSourceCodeArgs']]:
         """
         (Optional, Beta)
         Location of the source.
@@ -4260,12 +4260,12 @@ class ServiceTemplateContainerArgs:
         return pulumi.get(self, "source_code")
 
     @source_code.setter
-    def source_code(self, value: Optional[pulumi.Input['ServiceTemplateContainerSourceCodeArgs']]):
+    def source_code(self, value: pulumi.Input[Optional['ServiceTemplateContainerSourceCodeArgs']]):
         pulumi.set(self, "source_code", value)
 
     @_builtins.property
     @pulumi.getter(name="startupProbe")
-    def startup_probe(self) -> Optional[pulumi.Input['ServiceTemplateContainerStartupProbeArgs']]:
+    def startup_probe(self) -> pulumi.Input[Optional['ServiceTemplateContainerStartupProbeArgs']]:
         """
         Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         Structure is documented below.
@@ -4273,12 +4273,12 @@ class ServiceTemplateContainerArgs:
         return pulumi.get(self, "startup_probe")
 
     @startup_probe.setter
-    def startup_probe(self, value: Optional[pulumi.Input['ServiceTemplateContainerStartupProbeArgs']]):
+    def startup_probe(self, value: pulumi.Input[Optional['ServiceTemplateContainerStartupProbeArgs']]):
         pulumi.set(self, "startup_probe", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMounts")
-    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgs']]]]:
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgs']]]]:
         """
         Volume to mount into the container's filesystem.
         Structure is documented below.
@@ -4286,28 +4286,28 @@ class ServiceTemplateContainerArgs:
         return pulumi.get(self, "volume_mounts")
 
     @volume_mounts.setter
-    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgs']]]]):
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgs']]]]):
         pulumi.set(self, "volume_mounts", value)
 
     @_builtins.property
     @pulumi.getter(name="workingDir")
-    def working_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         return pulumi.get(self, "working_dir")
 
     @working_dir.setter
-    def working_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "working_dir", value)
 
 
 class ServiceTemplateContainerBuildInfoArgsDict(TypedDict):
-    function_target: NotRequired[pulumi.Input[_builtins.str]]
+    function_target: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Entry point of the function when the image is a Cloud Run function.
     """
-    source_location: NotRequired[pulumi.Input[_builtins.str]]
+    source_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Source code location of the image.
     """
@@ -4315,8 +4315,8 @@ class ServiceTemplateContainerBuildInfoArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerBuildInfoArgs:
     def __init__(__self__, *,
-                 function_target: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_location: Optional[pulumi.Input[_builtins.str]] = None):
+                 function_target: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] function_target: Entry point of the function when the image is a Cloud Run function.
         :param pulumi.Input[_builtins.str] source_location: Source code location of the image.
@@ -4328,26 +4328,26 @@ class ServiceTemplateContainerBuildInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="functionTarget")
-    def function_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Entry point of the function when the image is a Cloud Run function.
         """
         return pulumi.get(self, "function_target")
 
     @function_target.setter
-    def function_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_target", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceLocation")
-    def source_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source code location of the image.
         """
         return pulumi.get(self, "source_location")
 
     @source_location.setter
-    def source_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_location", value)
 
 
@@ -4356,11 +4356,11 @@ class ServiceTemplateContainerEnvArgsDict(TypedDict):
     """
     Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
     """
-    value_source: NotRequired[pulumi.Input['ServiceTemplateContainerEnvValueSourceArgsDict']]
+    value_source: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerEnvValueSourceArgs']]]
     """
     Source for the environment variable's value.
     Structure is documented below.
@@ -4370,8 +4370,8 @@ class ServiceTemplateContainerEnvArgsDict(TypedDict):
 class ServiceTemplateContainerEnvArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_source: Optional[pulumi.Input['ServiceTemplateContainerEnvValueSourceArgs']] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_source: pulumi.Input[Optional['ServiceTemplateContainerEnvValueSourceArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
         :param pulumi.Input[_builtins.str] value: Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
@@ -4398,19 +4398,19 @@ class ServiceTemplateContainerEnvArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSource")
-    def value_source(self) -> Optional[pulumi.Input['ServiceTemplateContainerEnvValueSourceArgs']]:
+    def value_source(self) -> pulumi.Input[Optional['ServiceTemplateContainerEnvValueSourceArgs']]:
         """
         Source for the environment variable's value.
         Structure is documented below.
@@ -4418,12 +4418,12 @@ class ServiceTemplateContainerEnvArgs:
         return pulumi.get(self, "value_source")
 
     @value_source.setter
-    def value_source(self, value: Optional[pulumi.Input['ServiceTemplateContainerEnvValueSourceArgs']]):
+    def value_source(self, value: pulumi.Input[Optional['ServiceTemplateContainerEnvValueSourceArgs']]):
         pulumi.set(self, "value_source", value)
 
 
 class ServiceTemplateContainerEnvValueSourceArgsDict(TypedDict):
-    secret_key_ref: NotRequired[pulumi.Input['ServiceTemplateContainerEnvValueSourceSecretKeyRefArgsDict']]
+    secret_key_ref: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs']]]
     """
     Selects a secret and a specific version from Cloud Secret Manager.
     Structure is documented below.
@@ -4432,7 +4432,7 @@ class ServiceTemplateContainerEnvValueSourceArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerEnvValueSourceArgs:
     def __init__(__self__, *,
-                 secret_key_ref: Optional[pulumi.Input['ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs']] = None):
+                 secret_key_ref: pulumi.Input[Optional['ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs']] = None):
         """
         :param pulumi.Input['ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs'] secret_key_ref: Selects a secret and a specific version from Cloud Secret Manager.
                Structure is documented below.
@@ -4442,7 +4442,7 @@ class ServiceTemplateContainerEnvValueSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="secretKeyRef")
-    def secret_key_ref(self) -> Optional[pulumi.Input['ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs']]:
+    def secret_key_ref(self) -> pulumi.Input[Optional['ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs']]:
         """
         Selects a secret and a specific version from Cloud Secret Manager.
         Structure is documented below.
@@ -4450,7 +4450,7 @@ class ServiceTemplateContainerEnvValueSourceArgs:
         return pulumi.get(self, "secret_key_ref")
 
     @secret_key_ref.setter
-    def secret_key_ref(self, value: Optional[pulumi.Input['ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs']]):
+    def secret_key_ref(self, value: pulumi.Input[Optional['ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs']]):
         pulumi.set(self, "secret_key_ref", value)
 
 
@@ -4459,7 +4459,7 @@ class ServiceTemplateContainerEnvValueSourceSecretKeyRefArgsDict(TypedDict):
     """
     The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
     """
@@ -4468,7 +4468,7 @@ class ServiceTemplateContainerEnvValueSourceSecretKeyRefArgsDict(TypedDict):
 class ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs:
     def __init__(__self__, *,
                  secret: pulumi.Input[_builtins.str],
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
         :param pulumi.Input[_builtins.str] version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
@@ -4491,46 +4491,46 @@ class ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs:
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class ServiceTemplateContainerLivenessProbeArgsDict(TypedDict):
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     """
-    grpc: NotRequired[pulumi.Input['ServiceTemplateContainerLivenessProbeGrpcArgsDict']]
+    grpc: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeGrpcArgs']]]
     """
     GRPC specifies an action involving a GRPC port.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetArgsDict']]
+    http_get: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeHttpGetArgs']]]
     """
     HTTPGet specifies the http request to perform.
     Structure is documented below.
     """
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
     """
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
     """
-    tcp_socket: NotRequired[pulumi.Input['ServiceTemplateContainerLivenessProbeTcpSocketArgsDict']]
+    tcp_socket: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeTcpSocketArgs']]]
     """
     TCPSocketAction describes an action based on opening a socket
     Structure is documented below.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
     """
@@ -4538,13 +4538,13 @@ class ServiceTemplateContainerLivenessProbeArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerLivenessProbeArgs:
     def __init__(__self__, *,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 grpc: Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeGrpcArgs']] = None,
-                 http_get: Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetArgs']] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_socket: Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeTcpSocketArgs']] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 grpc: pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeGrpcArgs']] = None,
+                 http_get: pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_socket: pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeTcpSocketArgs']] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         :param pulumi.Input['ServiceTemplateContainerLivenessProbeGrpcArgs'] grpc: GRPC specifies an action involving a GRPC port.
@@ -4574,19 +4574,19 @@ class ServiceTemplateContainerLivenessProbeArgs:
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         """
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def grpc(self) -> Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeGrpcArgs']]:
+    def grpc(self) -> pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeGrpcArgs']]:
         """
         GRPC specifies an action involving a GRPC port.
         Structure is documented below.
@@ -4594,12 +4594,12 @@ class ServiceTemplateContainerLivenessProbeArgs:
         return pulumi.get(self, "grpc")
 
     @grpc.setter
-    def grpc(self, value: Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeGrpcArgs']]):
+    def grpc(self, value: pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeGrpcArgs']]):
         pulumi.set(self, "grpc", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetArgs']]:
+    def http_get(self) -> pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeHttpGetArgs']]:
         """
         HTTPGet specifies the http request to perform.
         Structure is documented below.
@@ -4607,36 +4607,36 @@ class ServiceTemplateContainerLivenessProbeArgs:
         return pulumi.get(self, "http_get")
 
     @http_get.setter
-    def http_get(self, value: Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetArgs']]):
+    def http_get(self, value: pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeHttpGetArgs']]):
         pulumi.set(self, "http_get", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
         """
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeTcpSocketArgs']]:
+    def tcp_socket(self) -> pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeTcpSocketArgs']]:
         """
         TCPSocketAction describes an action based on opening a socket
         Structure is documented below.
@@ -4644,29 +4644,29 @@ class ServiceTemplateContainerLivenessProbeArgs:
         return pulumi.get(self, "tcp_socket")
 
     @tcp_socket.setter
-    def tcp_socket(self, value: Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeTcpSocketArgs']]):
+    def tcp_socket(self, value: pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeTcpSocketArgs']]):
         pulumi.set(self, "tcp_socket", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class ServiceTemplateContainerLivenessProbeGrpcArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number to access on the container. Number must be in the range 1 to 65535.
     If not specified, defaults to the same value as container.ports[0].containerPort.
     """
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the service to place in the gRPC HealthCheckRequest
     (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -4678,8 +4678,8 @@ class ServiceTemplateContainerLivenessProbeGrpcArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerLivenessProbeGrpcArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Port number to access on the container. Number must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -4696,7 +4696,7 @@ class ServiceTemplateContainerLivenessProbeGrpcArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number to access on the container. Number must be in the range 1 to 65535.
         If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -4704,12 +4704,12 @@ class ServiceTemplateContainerLivenessProbeGrpcArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -4720,21 +4720,21 @@ class ServiceTemplateContainerLivenessProbeGrpcArgs:
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
 class ServiceTemplateContainerLivenessProbeHttpGetArgsDict(TypedDict):
-    http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgsDict']]]]
+    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs']]]]]
     """
     Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path to access on the HTTP server. If set, it should not be empty string.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number to access on the container. Number must be in the range 1 to 65535.
     If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -4743,9 +4743,9 @@ class ServiceTemplateContainerLivenessProbeHttpGetArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerLivenessProbeHttpGetArgs:
     def __init__(__self__, *,
-                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs']]]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 http_headers: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
@@ -4762,7 +4762,7 @@ class ServiceTemplateContainerLivenessProbeHttpGetArgs:
 
     @_builtins.property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs']]]]:
+    def http_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs']]]]:
         """
         Custom headers to set in the request. HTTP allows repeated headers.
         Structure is documented below.
@@ -4770,24 +4770,24 @@ class ServiceTemplateContainerLivenessProbeHttpGetArgs:
         return pulumi.get(self, "http_headers")
 
     @http_headers.setter
-    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs']]]]):
+    def http_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs']]]]):
         pulumi.set(self, "http_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to access on the HTTP server. If set, it should not be empty string.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number to access on the container. Number must be in the range 1 to 65535.
         If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -4795,7 +4795,7 @@ class ServiceTemplateContainerLivenessProbeHttpGetArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
@@ -4804,7 +4804,7 @@ class ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgsDict(TypedDict):
     """
     The header field name
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The header field value
     """
@@ -4813,7 +4813,7 @@ class ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgsDict(TypedDict):
 class ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The header field name
         :param pulumi.Input[_builtins.str] value: The header field value
@@ -4836,14 +4836,14 @@ class ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The header field value
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -4879,11 +4879,11 @@ class ServiceTemplateContainerLivenessProbeTcpSocketArgs:
 
 
 class ServiceTemplateContainerPortsArgsDict(TypedDict):
-    container_port: NotRequired[pulumi.Input[_builtins.int]]
+    container_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
     """
@@ -4891,8 +4891,8 @@ class ServiceTemplateContainerPortsArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerPortsArgs:
     def __init__(__self__, *,
-                 container_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 container_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] container_port: Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
         :param pulumi.Input[_builtins.str] name: If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
@@ -4904,56 +4904,56 @@ class ServiceTemplateContainerPortsArgs:
 
     @_builtins.property
     @pulumi.getter(name="containerPort")
-    def container_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
         """
         return pulumi.get(self, "container_port")
 
     @container_port.setter
-    def container_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class ServiceTemplateContainerReadinessProbeArgsDict(TypedDict):
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum consecutive failures for the probe to be considered failed after
     having succeeded. Defaults to 3.
     """
-    grpc: NotRequired[pulumi.Input['ServiceTemplateContainerReadinessProbeGrpcArgsDict']]
+    grpc: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeGrpcArgs']]]
     """
     GRPC specifies an action involving a GRPC port.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input['ServiceTemplateContainerReadinessProbeHttpGetArgsDict']]
+    http_get: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeHttpGetArgs']]]
     """
     HttpGet specifies the http request to perform.
     Structure is documented below.
     """
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     How often (in seconds) to perform the probe.
     Default to 10 seconds.
     """
-    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum consecutive successes for the probe to be considered successful after having failed.
     Defaults to 2.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of seconds after which the probe times out.
     Defaults to 1 second. Must be smaller than period_seconds.
@@ -4962,12 +4962,12 @@ class ServiceTemplateContainerReadinessProbeArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerReadinessProbeArgs:
     def __init__(__self__, *,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 grpc: Optional[pulumi.Input['ServiceTemplateContainerReadinessProbeGrpcArgs']] = None,
-                 http_get: Optional[pulumi.Input['ServiceTemplateContainerReadinessProbeHttpGetArgs']] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 grpc: pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeGrpcArgs']] = None,
+                 http_get: pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeHttpGetArgs']] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 success_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after
                having succeeded. Defaults to 3.
@@ -4997,7 +4997,7 @@ class ServiceTemplateContainerReadinessProbeArgs:
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum consecutive failures for the probe to be considered failed after
         having succeeded. Defaults to 3.
@@ -5005,12 +5005,12 @@ class ServiceTemplateContainerReadinessProbeArgs:
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def grpc(self) -> Optional[pulumi.Input['ServiceTemplateContainerReadinessProbeGrpcArgs']]:
+    def grpc(self) -> pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeGrpcArgs']]:
         """
         GRPC specifies an action involving a GRPC port.
         Structure is documented below.
@@ -5018,12 +5018,12 @@ class ServiceTemplateContainerReadinessProbeArgs:
         return pulumi.get(self, "grpc")
 
     @grpc.setter
-    def grpc(self, value: Optional[pulumi.Input['ServiceTemplateContainerReadinessProbeGrpcArgs']]):
+    def grpc(self, value: pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeGrpcArgs']]):
         pulumi.set(self, "grpc", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional[pulumi.Input['ServiceTemplateContainerReadinessProbeHttpGetArgs']]:
+    def http_get(self) -> pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeHttpGetArgs']]:
         """
         HttpGet specifies the http request to perform.
         Structure is documented below.
@@ -5031,12 +5031,12 @@ class ServiceTemplateContainerReadinessProbeArgs:
         return pulumi.get(self, "http_get")
 
     @http_get.setter
-    def http_get(self, value: Optional[pulumi.Input['ServiceTemplateContainerReadinessProbeHttpGetArgs']]):
+    def http_get(self, value: pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeHttpGetArgs']]):
         pulumi.set(self, "http_get", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often (in seconds) to perform the probe.
         Default to 10 seconds.
@@ -5044,12 +5044,12 @@ class ServiceTemplateContainerReadinessProbeArgs:
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def success_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum consecutive successes for the probe to be considered successful after having failed.
         Defaults to 2.
@@ -5057,12 +5057,12 @@ class ServiceTemplateContainerReadinessProbeArgs:
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
-    def success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def success_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "success_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds after which the probe times out.
         Defaults to 1 second. Must be smaller than period_seconds.
@@ -5070,17 +5070,17 @@ class ServiceTemplateContainerReadinessProbeArgs:
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class ServiceTemplateContainerReadinessProbeGrpcArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number to access on the container. Number must be in the range 1 to 65535.
     If not specified, defaults to the same value as container.ports[0].containerPort.
     """
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the service to place in the gRPC HealthCheckRequest
     (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -5092,8 +5092,8 @@ class ServiceTemplateContainerReadinessProbeGrpcArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerReadinessProbeGrpcArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Port number to access on the container. Number must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -5110,7 +5110,7 @@ class ServiceTemplateContainerReadinessProbeGrpcArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number to access on the container. Number must be in the range 1 to 65535.
         If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -5118,12 +5118,12 @@ class ServiceTemplateContainerReadinessProbeGrpcArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -5134,16 +5134,16 @@ class ServiceTemplateContainerReadinessProbeGrpcArgs:
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
 class ServiceTemplateContainerReadinessProbeHttpGetArgsDict(TypedDict):
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path to access on the HTTP server. If set, it should not be empty string.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number to access on the container. Number must be in the range 1 to 65535.
     If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -5152,8 +5152,8 @@ class ServiceTemplateContainerReadinessProbeHttpGetArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerReadinessProbeHttpGetArgs:
     def __init__(__self__, *,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] path: Path to access on the HTTP server. If set, it should not be empty string.
         :param pulumi.Input[_builtins.int] port: Port number to access on the container. Number must be in the range 1 to 65535.
@@ -5166,19 +5166,19 @@ class ServiceTemplateContainerReadinessProbeHttpGetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to access on the HTTP server. If set, it should not be empty string.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number to access on the container. Number must be in the range 1 to 65535.
         If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -5186,21 +5186,21 @@ class ServiceTemplateContainerReadinessProbeHttpGetArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
 class ServiceTemplateContainerResourcesArgsDict(TypedDict):
-    cpu_idle: NotRequired[pulumi.Input[_builtins.bool]]
+    cpu_idle: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
     `resources` is set, this field must be explicitly set to true to preserve the default behavior.
     """
-    limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    limits: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6' and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
     """
-    startup_cpu_boost: NotRequired[pulumi.Input[_builtins.bool]]
+    startup_cpu_boost: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
     """
@@ -5208,9 +5208,9 @@ class ServiceTemplateContainerResourcesArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerResourcesArgs:
     def __init__(__self__, *,
-                 cpu_idle: Optional[pulumi.Input[_builtins.bool]] = None,
-                 limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 startup_cpu_boost: Optional[pulumi.Input[_builtins.bool]] = None):
+                 cpu_idle: pulumi.Input[Optional[_builtins.bool]] = None,
+                 limits: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 startup_cpu_boost: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] cpu_idle: Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
                `resources` is set, this field must be explicitly set to true to preserve the default behavior.
@@ -5226,7 +5226,7 @@ class ServiceTemplateContainerResourcesArgs:
 
     @_builtins.property
     @pulumi.getter(name="cpuIdle")
-    def cpu_idle(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cpu_idle(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
         `resources` is set, this field must be explicitly set to true to preserve the default behavior.
@@ -5234,36 +5234,36 @@ class ServiceTemplateContainerResourcesArgs:
         return pulumi.get(self, "cpu_idle")
 
     @cpu_idle.setter
-    def cpu_idle(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cpu_idle(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cpu_idle", value)
 
     @_builtins.property
     @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def limits(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6' and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
     @limits.setter
-    def limits(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def limits(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "limits", value)
 
     @_builtins.property
     @pulumi.getter(name="startupCpuBoost")
-    def startup_cpu_boost(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def startup_cpu_boost(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
         """
         return pulumi.get(self, "startup_cpu_boost")
 
     @startup_cpu_boost.setter
-    def startup_cpu_boost(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def startup_cpu_boost(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "startup_cpu_boost", value)
 
 
 class ServiceTemplateContainerSourceCodeArgsDict(TypedDict):
-    cloud_storage_source: NotRequired[pulumi.Input['ServiceTemplateContainerSourceCodeCloudStorageSourceArgsDict']]
+    cloud_storage_source: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerSourceCodeCloudStorageSourceArgs']]]
     """
     Cloud Storage source.
     Structure is documented below.
@@ -5272,7 +5272,7 @@ class ServiceTemplateContainerSourceCodeArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerSourceCodeArgs:
     def __init__(__self__, *,
-                 cloud_storage_source: Optional[pulumi.Input['ServiceTemplateContainerSourceCodeCloudStorageSourceArgs']] = None):
+                 cloud_storage_source: pulumi.Input[Optional['ServiceTemplateContainerSourceCodeCloudStorageSourceArgs']] = None):
         """
         :param pulumi.Input['ServiceTemplateContainerSourceCodeCloudStorageSourceArgs'] cloud_storage_source: Cloud Storage source.
                Structure is documented below.
@@ -5282,7 +5282,7 @@ class ServiceTemplateContainerSourceCodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudStorageSource")
-    def cloud_storage_source(self) -> Optional[pulumi.Input['ServiceTemplateContainerSourceCodeCloudStorageSourceArgs']]:
+    def cloud_storage_source(self) -> pulumi.Input[Optional['ServiceTemplateContainerSourceCodeCloudStorageSourceArgs']]:
         """
         Cloud Storage source.
         Structure is documented below.
@@ -5290,7 +5290,7 @@ class ServiceTemplateContainerSourceCodeArgs:
         return pulumi.get(self, "cloud_storage_source")
 
     @cloud_storage_source.setter
-    def cloud_storage_source(self, value: Optional[pulumi.Input['ServiceTemplateContainerSourceCodeCloudStorageSourceArgs']]):
+    def cloud_storage_source(self, value: pulumi.Input[Optional['ServiceTemplateContainerSourceCodeCloudStorageSourceArgs']]):
         pulumi.set(self, "cloud_storage_source", value)
 
 
@@ -5303,7 +5303,7 @@ class ServiceTemplateContainerSourceCodeCloudStorageSourceArgsDict(TypedDict):
     """
     The Cloud Storage object name.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
     """
@@ -5313,7 +5313,7 @@ class ServiceTemplateContainerSourceCodeCloudStorageSourceArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: The Cloud Storage bucket name.
         :param pulumi.Input[_builtins.str] object: The Cloud Storage object name.
@@ -5350,46 +5350,46 @@ class ServiceTemplateContainerSourceCodeCloudStorageSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
 class ServiceTemplateContainerStartupProbeArgsDict(TypedDict):
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     """
-    grpc: NotRequired[pulumi.Input['ServiceTemplateContainerStartupProbeGrpcArgsDict']]
+    grpc: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerStartupProbeGrpcArgs']]]
     """
     GRPC specifies an action involving a GRPC port.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetArgsDict']]
+    http_get: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerStartupProbeHttpGetArgs']]]
     """
     HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
     Structure is documented below.
     """
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
     """
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
     """
-    tcp_socket: NotRequired[pulumi.Input['ServiceTemplateContainerStartupProbeTcpSocketArgsDict']]
+    tcp_socket: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerStartupProbeTcpSocketArgs']]]
     """
     TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
     Structure is documented below.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
     """
@@ -5397,13 +5397,13 @@ class ServiceTemplateContainerStartupProbeArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerStartupProbeArgs:
     def __init__(__self__, *,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 grpc: Optional[pulumi.Input['ServiceTemplateContainerStartupProbeGrpcArgs']] = None,
-                 http_get: Optional[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetArgs']] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_socket: Optional[pulumi.Input['ServiceTemplateContainerStartupProbeTcpSocketArgs']] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 grpc: pulumi.Input[Optional['ServiceTemplateContainerStartupProbeGrpcArgs']] = None,
+                 http_get: pulumi.Input[Optional['ServiceTemplateContainerStartupProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_socket: pulumi.Input[Optional['ServiceTemplateContainerStartupProbeTcpSocketArgs']] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         :param pulumi.Input['ServiceTemplateContainerStartupProbeGrpcArgs'] grpc: GRPC specifies an action involving a GRPC port.
@@ -5433,19 +5433,19 @@ class ServiceTemplateContainerStartupProbeArgs:
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         """
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def grpc(self) -> Optional[pulumi.Input['ServiceTemplateContainerStartupProbeGrpcArgs']]:
+    def grpc(self) -> pulumi.Input[Optional['ServiceTemplateContainerStartupProbeGrpcArgs']]:
         """
         GRPC specifies an action involving a GRPC port.
         Structure is documented below.
@@ -5453,12 +5453,12 @@ class ServiceTemplateContainerStartupProbeArgs:
         return pulumi.get(self, "grpc")
 
     @grpc.setter
-    def grpc(self, value: Optional[pulumi.Input['ServiceTemplateContainerStartupProbeGrpcArgs']]):
+    def grpc(self, value: pulumi.Input[Optional['ServiceTemplateContainerStartupProbeGrpcArgs']]):
         pulumi.set(self, "grpc", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetArgs']]:
+    def http_get(self) -> pulumi.Input[Optional['ServiceTemplateContainerStartupProbeHttpGetArgs']]:
         """
         HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
         Structure is documented below.
@@ -5466,36 +5466,36 @@ class ServiceTemplateContainerStartupProbeArgs:
         return pulumi.get(self, "http_get")
 
     @http_get.setter
-    def http_get(self, value: Optional[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetArgs']]):
+    def http_get(self, value: pulumi.Input[Optional['ServiceTemplateContainerStartupProbeHttpGetArgs']]):
         pulumi.set(self, "http_get", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
         """
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> Optional[pulumi.Input['ServiceTemplateContainerStartupProbeTcpSocketArgs']]:
+    def tcp_socket(self) -> pulumi.Input[Optional['ServiceTemplateContainerStartupProbeTcpSocketArgs']]:
         """
         TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
         Structure is documented below.
@@ -5503,29 +5503,29 @@ class ServiceTemplateContainerStartupProbeArgs:
         return pulumi.get(self, "tcp_socket")
 
     @tcp_socket.setter
-    def tcp_socket(self, value: Optional[pulumi.Input['ServiceTemplateContainerStartupProbeTcpSocketArgs']]):
+    def tcp_socket(self, value: pulumi.Input[Optional['ServiceTemplateContainerStartupProbeTcpSocketArgs']]):
         pulumi.set(self, "tcp_socket", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class ServiceTemplateContainerStartupProbeGrpcArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number to access on the container. Number must be in the range 1 to 65535.
     If not specified, defaults to the same value as container.ports[0].containerPort.
     """
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the service to place in the gRPC HealthCheckRequest
     (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -5537,8 +5537,8 @@ class ServiceTemplateContainerStartupProbeGrpcArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerStartupProbeGrpcArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Port number to access on the container. Number must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -5555,7 +5555,7 @@ class ServiceTemplateContainerStartupProbeGrpcArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number to access on the container. Number must be in the range 1 to 65535.
         If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -5563,12 +5563,12 @@ class ServiceTemplateContainerStartupProbeGrpcArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -5579,21 +5579,21 @@ class ServiceTemplateContainerStartupProbeGrpcArgs:
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
 class ServiceTemplateContainerStartupProbeHttpGetArgsDict(TypedDict):
-    http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict']]]]
+    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]]]
     """
     Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path to access on the HTTP server. If set, it should not be empty string.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number to access on the container. Number must be in the range 1 to 65535.
     If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -5602,9 +5602,9 @@ class ServiceTemplateContainerStartupProbeHttpGetArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerStartupProbeHttpGetArgs:
     def __init__(__self__, *,
-                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 http_headers: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
@@ -5621,7 +5621,7 @@ class ServiceTemplateContainerStartupProbeHttpGetArgs:
 
     @_builtins.property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]]:
+    def http_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]]:
         """
         Custom headers to set in the request. HTTP allows repeated headers.
         Structure is documented below.
@@ -5629,24 +5629,24 @@ class ServiceTemplateContainerStartupProbeHttpGetArgs:
         return pulumi.get(self, "http_headers")
 
     @http_headers.setter
-    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]]):
+    def http_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]]):
         pulumi.set(self, "http_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to access on the HTTP server. If set, it should not be empty string.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number to access on the container. Number must be in the range 1 to 65535.
         If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -5654,7 +5654,7 @@ class ServiceTemplateContainerStartupProbeHttpGetArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
@@ -5663,7 +5663,7 @@ class ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict(TypedDict):
     """
     The header field name
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The header field value
     """
@@ -5672,7 +5672,7 @@ class ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict(TypedDict):
 class ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The header field name
         :param pulumi.Input[_builtins.str] value: The header field value
@@ -5695,19 +5695,19 @@ class ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The header field value
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class ServiceTemplateContainerStartupProbeTcpSocketArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number to access on the container. Must be in the range 1 to 65535.
     If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -5716,7 +5716,7 @@ class ServiceTemplateContainerStartupProbeTcpSocketArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateContainerStartupProbeTcpSocketArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Port number to access on the container. Must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -5726,7 +5726,7 @@ class ServiceTemplateContainerStartupProbeTcpSocketArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number to access on the container. Must be in the range 1 to 65535.
         If not specified, defaults to the same value as container.ports[0].containerPort.
@@ -5734,7 +5734,7 @@ class ServiceTemplateContainerStartupProbeTcpSocketArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
@@ -5747,7 +5747,7 @@ class ServiceTemplateContainerVolumeMountArgsDict(TypedDict):
     """
     This must match the Name of a Volume.
     """
-    sub_path: NotRequired[pulumi.Input[_builtins.str]]
+    sub_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path within the volume from which the container's volume should be mounted.
     """
@@ -5757,7 +5757,7 @@ class ServiceTemplateContainerVolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 sub_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 sub_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
         :param pulumi.Input[_builtins.str] name: This must match the Name of a Volume.
@@ -5794,14 +5794,14 @@ class ServiceTemplateContainerVolumeMountArgs:
 
     @_builtins.property
     @pulumi.getter(name="subPath")
-    def sub_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path within the volume from which the container's volume should be mounted.
         """
         return pulumi.get(self, "sub_path")
 
     @sub_path.setter
-    def sub_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_path", value)
 
 
@@ -5834,11 +5834,11 @@ class ServiceTemplateNodeSelectorArgs:
 
 
 class ServiceTemplateScalingArgsDict(TypedDict):
-    max_instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_instance_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Combined maximum number of instances for all revisions receiving traffic.
     """
-    min_instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    min_instance_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of instances for the service, to be divided among all revisions receiving traffic.
     """
@@ -5846,8 +5846,8 @@ class ServiceTemplateScalingArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateScalingArgs:
     def __init__(__self__, *,
-                 max_instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_instance_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_instance_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_instance_count: Combined maximum number of instances for all revisions receiving traffic.
         :param pulumi.Input[_builtins.int] min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
@@ -5859,31 +5859,31 @@ class ServiceTemplateScalingArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxInstanceCount")
-    def max_instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Combined maximum number of instances for all revisions receiving traffic.
         """
         return pulumi.get(self, "max_instance_count")
 
     @max_instance_count.setter
-    def max_instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minInstanceCount")
-    def min_instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         """
         return pulumi.get(self, "min_instance_count")
 
     @min_instance_count.setter
-    def min_instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_instance_count", value)
 
 
 class ServiceTemplateServiceMeshArgsDict(TypedDict):
-    mesh: NotRequired[pulumi.Input[_builtins.str]]
+    mesh: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
     """
@@ -5891,7 +5891,7 @@ class ServiceTemplateServiceMeshArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateServiceMeshArgs:
     def __init__(__self__, *,
-                 mesh: Optional[pulumi.Input[_builtins.str]] = None):
+                 mesh: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mesh: The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
         """
@@ -5900,14 +5900,14 @@ class ServiceTemplateServiceMeshArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mesh(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mesh(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
         """
         return pulumi.get(self, "mesh")
 
     @mesh.setter
-    def mesh(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mesh(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mesh", value)
 
 
@@ -5916,27 +5916,27 @@ class ServiceTemplateVolumeArgsDict(TypedDict):
     """
     Volume's name.
     """
-    cloud_sql_instance: NotRequired[pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgsDict']]
+    cloud_sql_instance: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeCloudSqlInstanceArgs']]]
     """
     For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
     Structure is documented below.
     """
-    empty_dir: NotRequired[pulumi.Input['ServiceTemplateVolumeEmptyDirArgsDict']]
+    empty_dir: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeEmptyDirArgs']]]
     """
     Ephemeral storage used as a shared volume.
     Structure is documented below.
     """
-    gcs: NotRequired[pulumi.Input['ServiceTemplateVolumeGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeGcsArgs']]]
     """
     Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
     Structure is documented below.
     """
-    nfs: NotRequired[pulumi.Input['ServiceTemplateVolumeNfsArgsDict']]
+    nfs: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeNfsArgs']]]
     """
     Represents an NFS mount.
     Structure is documented below.
     """
-    secret: NotRequired[pulumi.Input['ServiceTemplateVolumeSecretArgsDict']]
+    secret: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeSecretArgs']]]
     """
     Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
     Structure is documented below.
@@ -5946,11 +5946,11 @@ class ServiceTemplateVolumeArgsDict(TypedDict):
 class ServiceTemplateVolumeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 cloud_sql_instance: Optional[pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgs']] = None,
-                 empty_dir: Optional[pulumi.Input['ServiceTemplateVolumeEmptyDirArgs']] = None,
-                 gcs: Optional[pulumi.Input['ServiceTemplateVolumeGcsArgs']] = None,
-                 nfs: Optional[pulumi.Input['ServiceTemplateVolumeNfsArgs']] = None,
-                 secret: Optional[pulumi.Input['ServiceTemplateVolumeSecretArgs']] = None):
+                 cloud_sql_instance: pulumi.Input[Optional['ServiceTemplateVolumeCloudSqlInstanceArgs']] = None,
+                 empty_dir: pulumi.Input[Optional['ServiceTemplateVolumeEmptyDirArgs']] = None,
+                 gcs: pulumi.Input[Optional['ServiceTemplateVolumeGcsArgs']] = None,
+                 nfs: pulumi.Input[Optional['ServiceTemplateVolumeNfsArgs']] = None,
+                 secret: pulumi.Input[Optional['ServiceTemplateVolumeSecretArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: Volume's name.
         :param pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
@@ -5990,7 +5990,7 @@ class ServiceTemplateVolumeArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudSqlInstance")
-    def cloud_sql_instance(self) -> Optional[pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgs']]:
+    def cloud_sql_instance(self) -> pulumi.Input[Optional['ServiceTemplateVolumeCloudSqlInstanceArgs']]:
         """
         For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
         Structure is documented below.
@@ -5998,12 +5998,12 @@ class ServiceTemplateVolumeArgs:
         return pulumi.get(self, "cloud_sql_instance")
 
     @cloud_sql_instance.setter
-    def cloud_sql_instance(self, value: Optional[pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgs']]):
+    def cloud_sql_instance(self, value: pulumi.Input[Optional['ServiceTemplateVolumeCloudSqlInstanceArgs']]):
         pulumi.set(self, "cloud_sql_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="emptyDir")
-    def empty_dir(self) -> Optional[pulumi.Input['ServiceTemplateVolumeEmptyDirArgs']]:
+    def empty_dir(self) -> pulumi.Input[Optional['ServiceTemplateVolumeEmptyDirArgs']]:
         """
         Ephemeral storage used as a shared volume.
         Structure is documented below.
@@ -6011,12 +6011,12 @@ class ServiceTemplateVolumeArgs:
         return pulumi.get(self, "empty_dir")
 
     @empty_dir.setter
-    def empty_dir(self, value: Optional[pulumi.Input['ServiceTemplateVolumeEmptyDirArgs']]):
+    def empty_dir(self, value: pulumi.Input[Optional['ServiceTemplateVolumeEmptyDirArgs']]):
         pulumi.set(self, "empty_dir", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['ServiceTemplateVolumeGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['ServiceTemplateVolumeGcsArgs']]:
         """
         Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
         Structure is documented below.
@@ -6024,12 +6024,12 @@ class ServiceTemplateVolumeArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['ServiceTemplateVolumeGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['ServiceTemplateVolumeGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter
-    def nfs(self) -> Optional[pulumi.Input['ServiceTemplateVolumeNfsArgs']]:
+    def nfs(self) -> pulumi.Input[Optional['ServiceTemplateVolumeNfsArgs']]:
         """
         Represents an NFS mount.
         Structure is documented below.
@@ -6037,12 +6037,12 @@ class ServiceTemplateVolumeArgs:
         return pulumi.get(self, "nfs")
 
     @nfs.setter
-    def nfs(self, value: Optional[pulumi.Input['ServiceTemplateVolumeNfsArgs']]):
+    def nfs(self, value: pulumi.Input[Optional['ServiceTemplateVolumeNfsArgs']]):
         pulumi.set(self, "nfs", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input['ServiceTemplateVolumeSecretArgs']]:
+    def secret(self) -> pulumi.Input[Optional['ServiceTemplateVolumeSecretArgs']]:
         """
         Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
         Structure is documented below.
@@ -6050,12 +6050,12 @@ class ServiceTemplateVolumeArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input['ServiceTemplateVolumeSecretArgs']]):
+    def secret(self, value: pulumi.Input[Optional['ServiceTemplateVolumeSecretArgs']]):
         pulumi.set(self, "secret", value)
 
 
 class ServiceTemplateVolumeCloudSqlInstanceArgsDict(TypedDict):
-    instances: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
     """
@@ -6063,7 +6063,7 @@ class ServiceTemplateVolumeCloudSqlInstanceArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateVolumeCloudSqlInstanceArgs:
     def __init__(__self__, *,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
@@ -6072,25 +6072,25 @@ class ServiceTemplateVolumeCloudSqlInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instances", value)
 
 
 class ServiceTemplateVolumeEmptyDirArgsDict(TypedDict):
-    medium: NotRequired[pulumi.Input[_builtins.str]]
+    medium: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The different types of medium supported for EmptyDir.
     Default value is `MEMORY`.
     Possible values are: `MEMORY`, `DISK`.
     """
-    size_limit: NotRequired[pulumi.Input[_builtins.str]]
+    size_limit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
     """
@@ -6098,8 +6098,8 @@ class ServiceTemplateVolumeEmptyDirArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateVolumeEmptyDirArgs:
     def __init__(__self__, *,
-                 medium: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_limit: Optional[pulumi.Input[_builtins.str]] = None):
+                 medium: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_limit: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] medium: The different types of medium supported for EmptyDir.
                Default value is `MEMORY`.
@@ -6113,7 +6113,7 @@ class ServiceTemplateVolumeEmptyDirArgs:
 
     @_builtins.property
     @pulumi.getter
-    def medium(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def medium(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The different types of medium supported for EmptyDir.
         Default value is `MEMORY`.
@@ -6122,19 +6122,19 @@ class ServiceTemplateVolumeEmptyDirArgs:
         return pulumi.get(self, "medium")
 
     @medium.setter
-    def medium(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def medium(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "medium", value)
 
     @_builtins.property
     @pulumi.getter(name="sizeLimit")
-    def size_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def size_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
         """
         return pulumi.get(self, "size_limit")
 
     @size_limit.setter
-    def size_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def size_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "size_limit", value)
 
 
@@ -6143,12 +6143,12 @@ class ServiceTemplateVolumeGcsArgsDict(TypedDict):
     """
     GCS Bucket name
     """
-    mount_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    mount_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of flags to pass to the gcsfuse command for configuring this volume.
     Flags should be passed without leading dashes.
     """
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, mount the GCS bucket as read-only
     """
@@ -6157,8 +6157,8 @@ class ServiceTemplateVolumeGcsArgsDict(TypedDict):
 class ServiceTemplateVolumeGcsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 mount_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: GCS Bucket name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mount_options: A list of flags to pass to the gcsfuse command for configuring this volume.
@@ -6185,7 +6185,7 @@ class ServiceTemplateVolumeGcsArgs:
 
     @_builtins.property
     @pulumi.getter(name="mountOptions")
-    def mount_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mount_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of flags to pass to the gcsfuse command for configuring this volume.
         Flags should be passed without leading dashes.
@@ -6193,19 +6193,19 @@ class ServiceTemplateVolumeGcsArgs:
         return pulumi.get(self, "mount_options")
 
     @mount_options.setter
-    def mount_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mount_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mount_options", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, mount the GCS bucket as read-only
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
 
@@ -6218,7 +6218,7 @@ class ServiceTemplateVolumeNfsArgsDict(TypedDict):
     """
     Hostname or IP address of the NFS server
     """
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, mount the NFS volume as read only
     """
@@ -6228,7 +6228,7 @@ class ServiceTemplateVolumeNfsArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
                  server: pulumi.Input[_builtins.str],
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] path: Path that is exported by the NFS server.
         :param pulumi.Input[_builtins.str] server: Hostname or IP address of the NFS server
@@ -6265,14 +6265,14 @@ class ServiceTemplateVolumeNfsArgs:
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, mount the NFS volume as read only
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
 
@@ -6281,11 +6281,11 @@ class ServiceTemplateVolumeSecretArgsDict(TypedDict):
     """
     The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
     """
-    default_mode: NotRequired[pulumi.Input[_builtins.int]]
+    default_mode: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
     """
-    items: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVolumeSecretItemArgsDict']]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVolumeSecretItemArgs']]]]]
     """
     If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
     Structure is documented below.
@@ -6295,8 +6295,8 @@ class ServiceTemplateVolumeSecretArgsDict(TypedDict):
 class ServiceTemplateVolumeSecretArgs:
     def __init__(__self__, *,
                  secret: pulumi.Input[_builtins.str],
-                 default_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVolumeSecretItemArgs']]]] = None):
+                 default_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 items: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVolumeSecretItemArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
         :param pulumi.Input[_builtins.int] default_mode: Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
@@ -6323,19 +6323,19 @@ class ServiceTemplateVolumeSecretArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultMode")
-    def default_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
         """
         return pulumi.get(self, "default_mode")
 
     @default_mode.setter
-    def default_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVolumeSecretItemArgs']]]]:
+    def items(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVolumeSecretItemArgs']]]]:
         """
         If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
         Structure is documented below.
@@ -6343,7 +6343,7 @@ class ServiceTemplateVolumeSecretArgs:
         return pulumi.get(self, "items")
 
     @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVolumeSecretItemArgs']]]]):
+    def items(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVolumeSecretItemArgs']]]]):
         pulumi.set(self, "items", value)
 
 
@@ -6352,11 +6352,11 @@ class ServiceTemplateVolumeSecretItemArgsDict(TypedDict):
     """
     The relative path of the secret in the container.
     """
-    mode: NotRequired[pulumi.Input[_builtins.int]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
     """
@@ -6365,8 +6365,8 @@ class ServiceTemplateVolumeSecretItemArgsDict(TypedDict):
 class ServiceTemplateVolumeSecretItemArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
-                 mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] path: The relative path of the secret in the container.
         :param pulumi.Input[_builtins.int] mode: Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
@@ -6392,40 +6392,40 @@ class ServiceTemplateVolumeSecretItemArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class ServiceTemplateVpcAccessArgsDict(TypedDict):
-    connector: NotRequired[pulumi.Input[_builtins.str]]
+    connector: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
     """
-    egress: NotRequired[pulumi.Input[_builtins.str]]
+    egress: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Traffic VPC egress settings.
     Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
     """
-    network_interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgsDict']]]]
+    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgs']]]]]
     """
     Direct VPC egress settings. Currently only single network interface is supported.
     Structure is documented below.
@@ -6434,9 +6434,9 @@ class ServiceTemplateVpcAccessArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateVpcAccessArgs:
     def __init__(__self__, *,
-                 connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgs']]]] = None):
+                 connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         :param pulumi.Input[_builtins.str] egress: Traffic VPC egress settings.
@@ -6453,19 +6453,19 @@ class ServiceTemplateVpcAccessArgs:
 
     @_builtins.property
     @pulumi.getter
-    def connector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         """
         return pulumi.get(self, "connector")
 
     @connector.setter
-    def connector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector", value)
 
     @_builtins.property
     @pulumi.getter
-    def egress(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def egress(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Traffic VPC egress settings.
         Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
@@ -6473,12 +6473,12 @@ class ServiceTemplateVpcAccessArgs:
         return pulumi.get(self, "egress")
 
     @egress.setter
-    def egress(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def egress(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "egress", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgs']]]]:
         """
         Direct VPC egress settings. Currently only single network interface is supported.
         Structure is documented below.
@@ -6486,24 +6486,24 @@ class ServiceTemplateVpcAccessArgs:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
 
 class ServiceTemplateVpcAccessNetworkInterfaceArgsDict(TypedDict):
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
     network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
     looked up from the subnetwork.
     """
-    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    subnetwork: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
     network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
     subnetwork with the same name with the network will be used.
     """
-    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Network tags applied to this Cloud Run service.
     """
@@ -6511,9 +6511,9 @@ class ServiceTemplateVpcAccessNetworkInterfaceArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateVpcAccessNetworkInterfaceArgs:
     def __init__(__self__, *,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] network: The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
                network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
@@ -6532,7 +6532,7 @@ class ServiceTemplateVpcAccessNetworkInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
         network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
@@ -6541,12 +6541,12 @@ class ServiceTemplateVpcAccessNetworkInterfaceArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
         network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
@@ -6555,60 +6555,60 @@ class ServiceTemplateVpcAccessNetworkInterfaceArgs:
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Network tags applied to this Cloud Run service.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 class ServiceTerminalConditionArgsDict(TypedDict):
-    execution_reason: NotRequired[pulumi.Input[_builtins.str]]
+    execution_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A reason for the execution condition.
     """
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transitioned from one status to another.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human readable message indicating details about the current status.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A common (service-level) reason for this condition.
     """
-    revision_reason: NotRequired[pulumi.Input[_builtins.str]]
+    revision_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A reason for the revision condition.
     """
-    severity: NotRequired[pulumi.Input[_builtins.str]]
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     How to interpret failures of this condition, one of Error, Warning, Info
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     State of the condition.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The allocation type for this traffic target.
@@ -6617,14 +6617,14 @@ class ServiceTerminalConditionArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTerminalConditionArgs:
     def __init__(__self__, *,
-                 execution_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 execution_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] execution_reason: (Output)
                A reason for the execution condition.
@@ -6663,7 +6663,7 @@ class ServiceTerminalConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="executionReason")
-    def execution_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A reason for the execution condition.
@@ -6671,12 +6671,12 @@ class ServiceTerminalConditionArgs:
         return pulumi.get(self, "execution_reason")
 
     @execution_reason.setter
-    def execution_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transitioned from one status to another.
@@ -6685,12 +6685,12 @@ class ServiceTerminalConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human readable message indicating details about the current status.
@@ -6698,12 +6698,12 @@ class ServiceTerminalConditionArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A common (service-level) reason for this condition.
@@ -6711,12 +6711,12 @@ class ServiceTerminalConditionArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionReason")
-    def revision_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A reason for the revision condition.
@@ -6724,12 +6724,12 @@ class ServiceTerminalConditionArgs:
         return pulumi.get(self, "revision_reason")
 
     @revision_reason.setter
-    def revision_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         How to interpret failures of this condition, one of Error, Warning, Info
@@ -6737,12 +6737,12 @@ class ServiceTerminalConditionArgs:
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "severity", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         State of the condition.
@@ -6750,12 +6750,12 @@ class ServiceTerminalConditionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The allocation type for this traffic target.
@@ -6763,24 +6763,24 @@ class ServiceTerminalConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class ServiceTrafficArgsDict(TypedDict):
-    percent: NotRequired[pulumi.Input[_builtins.int]]
+    percent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
     """
-    revision: NotRequired[pulumi.Input[_builtins.str]]
+    revision: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Revision to which to send this portion of traffic, if traffic allocation is by revision.
     """
-    tag: NotRequired[pulumi.Input[_builtins.str]]
+    tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates a string to be part of the URI to exclusively reference this target.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The allocation type for this traffic target.
     Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
@@ -6789,10 +6789,10 @@ class ServiceTrafficArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTrafficArgs:
     def __init__(__self__, *,
-                 percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] percent: Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
         :param pulumi.Input[_builtins.str] revision: Revision to which to send this portion of traffic, if traffic allocation is by revision.
@@ -6811,43 +6811,43 @@ class ServiceTrafficArgs:
 
     @_builtins.property
     @pulumi.getter
-    def percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
         """
         return pulumi.get(self, "percent")
 
     @percent.setter
-    def percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "percent", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Revision to which to send this portion of traffic, if traffic allocation is by revision.
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates a string to be part of the URI to exclusively reference this target.
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocation type for this traffic target.
         Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
@@ -6855,32 +6855,32 @@ class ServiceTrafficArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class ServiceTrafficStatusArgsDict(TypedDict):
-    percent: NotRequired[pulumi.Input[_builtins.int]]
+    percent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Specifies percent of the traffic to this Revision.
     """
-    revision: NotRequired[pulumi.Input[_builtins.str]]
+    revision: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Revision to which this traffic is sent.
     """
-    tag: NotRequired[pulumi.Input[_builtins.str]]
+    tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Indicates the string used in the URI to exclusively reference this target.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The allocation type for this traffic target.
     """
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Displays the target URI.
@@ -6889,11 +6889,11 @@ class ServiceTrafficStatusArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTrafficStatusArgs:
     def __init__(__self__, *,
-                 percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] percent: (Output)
                Specifies percent of the traffic to this Revision.
@@ -6919,7 +6919,7 @@ class ServiceTrafficStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Specifies percent of the traffic to this Revision.
@@ -6927,12 +6927,12 @@ class ServiceTrafficStatusArgs:
         return pulumi.get(self, "percent")
 
     @percent.setter
-    def percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "percent", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Revision to which this traffic is sent.
@@ -6940,12 +6940,12 @@ class ServiceTrafficStatusArgs:
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Indicates the string used in the URI to exclusively reference this target.
@@ -6953,12 +6953,12 @@ class ServiceTrafficStatusArgs:
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The allocation type for this traffic target.
@@ -6966,12 +6966,12 @@ class ServiceTrafficStatusArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Displays the target URI.
@@ -6979,20 +6979,20 @@ class ServiceTrafficStatusArgs:
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class WorkerPoolBinaryAuthorizationArgsDict(TypedDict):
-    breakglass_justification: NotRequired[pulumi.Input[_builtins.str]]
+    breakglass_justification: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
     """
-    policy: NotRequired[pulumi.Input[_builtins.str]]
+    policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
     """
-    use_default: NotRequired[pulumi.Input[_builtins.bool]]
+    use_default: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
     """
@@ -7000,9 +7000,9 @@ class WorkerPoolBinaryAuthorizationArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolBinaryAuthorizationArgs:
     def __init__(__self__, *,
-                 breakglass_justification: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_default: Optional[pulumi.Input[_builtins.bool]] = None):
+                 breakglass_justification: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_default: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] breakglass_justification: If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
         :param pulumi.Input[_builtins.str] policy: The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
@@ -7017,79 +7017,79 @@ class WorkerPoolBinaryAuthorizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="breakglassJustification")
-    def breakglass_justification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def breakglass_justification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
         """
         return pulumi.get(self, "breakglass_justification")
 
     @breakglass_justification.setter
-    def breakglass_justification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def breakglass_justification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "breakglass_justification", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="useDefault")
-    def use_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         """
         return pulumi.get(self, "use_default")
 
     @use_default.setter
-    def use_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_default", value)
 
 
 class WorkerPoolConditionArgsDict(TypedDict):
-    execution_reason: NotRequired[pulumi.Input[_builtins.str]]
+    execution_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A reason for the execution condition.
     """
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transitioned from one status to another.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human readable message indicating details about the current status.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A common (workerPool-level) reason for this condition.
     """
-    revision_reason: NotRequired[pulumi.Input[_builtins.str]]
+    revision_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A reason for the revision condition.
     """
-    severity: NotRequired[pulumi.Input[_builtins.str]]
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     How to interpret failures of this condition, one of Error, Warning, Info
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     State of the condition.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The allocation type for this instance split.
@@ -7098,14 +7098,14 @@ class WorkerPoolConditionArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolConditionArgs:
     def __init__(__self__, *,
-                 execution_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 execution_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] execution_reason: (Output)
                A reason for the execution condition.
@@ -7144,7 +7144,7 @@ class WorkerPoolConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="executionReason")
-    def execution_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A reason for the execution condition.
@@ -7152,12 +7152,12 @@ class WorkerPoolConditionArgs:
         return pulumi.get(self, "execution_reason")
 
     @execution_reason.setter
-    def execution_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transitioned from one status to another.
@@ -7166,12 +7166,12 @@ class WorkerPoolConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human readable message indicating details about the current status.
@@ -7179,12 +7179,12 @@ class WorkerPoolConditionArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A common (workerPool-level) reason for this condition.
@@ -7192,12 +7192,12 @@ class WorkerPoolConditionArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionReason")
-    def revision_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A reason for the revision condition.
@@ -7205,12 +7205,12 @@ class WorkerPoolConditionArgs:
         return pulumi.get(self, "revision_reason")
 
     @revision_reason.setter
-    def revision_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         How to interpret failures of this condition, one of Error, Warning, Info
@@ -7218,12 +7218,12 @@ class WorkerPoolConditionArgs:
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "severity", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         State of the condition.
@@ -7231,12 +7231,12 @@ class WorkerPoolConditionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The allocation type for this instance split.
@@ -7244,21 +7244,21 @@ class WorkerPoolConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class WorkerPoolIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class WorkerPoolIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -7284,25 +7284,25 @@ class WorkerPoolIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class WorkerPoolIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class WorkerPoolIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -7328,24 +7328,24 @@ class WorkerPoolIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class WorkerPoolInstanceSplitArgsDict(TypedDict):
-    percent: NotRequired[pulumi.Input[_builtins.int]]
+    percent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies percent of the instance split to this Revision. This defaults to zero if unspecified.
     """
-    revision: NotRequired[pulumi.Input[_builtins.str]]
+    revision: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Revision to which to assign this portion of instances, if split allocation is by revision.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The allocation type for this instance split.
     Possible values are: `INSTANCE_SPLIT_ALLOCATION_TYPE_LATEST`, `INSTANCE_SPLIT_ALLOCATION_TYPE_REVISION`.
@@ -7354,9 +7354,9 @@ class WorkerPoolInstanceSplitArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolInstanceSplitArgs:
     def __init__(__self__, *,
-                 percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] percent: Specifies percent of the instance split to this Revision. This defaults to zero if unspecified.
         :param pulumi.Input[_builtins.str] revision: Revision to which to assign this portion of instances, if split allocation is by revision.
@@ -7372,31 +7372,31 @@ class WorkerPoolInstanceSplitArgs:
 
     @_builtins.property
     @pulumi.getter
-    def percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies percent of the instance split to this Revision. This defaults to zero if unspecified.
         """
         return pulumi.get(self, "percent")
 
     @percent.setter
-    def percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "percent", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Revision to which to assign this portion of instances, if split allocation is by revision.
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocation type for this instance split.
         Possible values are: `INSTANCE_SPLIT_ALLOCATION_TYPE_LATEST`, `INSTANCE_SPLIT_ALLOCATION_TYPE_REVISION`.
@@ -7404,22 +7404,22 @@ class WorkerPoolInstanceSplitArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class WorkerPoolInstanceSplitStatusArgsDict(TypedDict):
-    percent: NotRequired[pulumi.Input[_builtins.int]]
+    percent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Specifies percent of the instance split to this Revision.
     """
-    revision: NotRequired[pulumi.Input[_builtins.str]]
+    revision: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Revision to which this instance split is assigned.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The allocation type for this instance split.
@@ -7428,9 +7428,9 @@ class WorkerPoolInstanceSplitStatusArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolInstanceSplitStatusArgs:
     def __init__(__self__, *,
-                 percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] percent: (Output)
                Specifies percent of the instance split to this Revision.
@@ -7448,7 +7448,7 @@ class WorkerPoolInstanceSplitStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Specifies percent of the instance split to this Revision.
@@ -7456,12 +7456,12 @@ class WorkerPoolInstanceSplitStatusArgs:
         return pulumi.get(self, "percent")
 
     @percent.setter
-    def percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "percent", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Revision to which this instance split is assigned.
@@ -7469,12 +7469,12 @@ class WorkerPoolInstanceSplitStatusArgs:
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The allocation type for this instance split.
@@ -7482,24 +7482,24 @@ class WorkerPoolInstanceSplitStatusArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class WorkerPoolScalingArgsDict(TypedDict):
-    manual_instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    manual_instance_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The total number of instances in manual scaling mode.
     """
-    max_instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_instance_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum count of instances distributed among revisions based on the specified instance split percentages.
     """
-    min_instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    min_instance_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The minimum count of instances distributed among revisions based on the specified instance split percentages.
     """
-    scaling_mode: NotRequired[pulumi.Input[_builtins.str]]
+    scaling_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The scaling mode for the worker pool. It defaults to MANUAL.
     Possible values are: `AUTOMATIC`, `MANUAL`.
@@ -7508,10 +7508,10 @@ class WorkerPoolScalingArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolScalingArgs:
     def __init__(__self__, *,
-                 manual_instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 manual_instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] manual_instance_count: The total number of instances in manual scaling mode.
         :param pulumi.Input[_builtins.int] max_instance_count: The maximum count of instances distributed among revisions based on the specified instance split percentages.
@@ -7530,43 +7530,43 @@ class WorkerPoolScalingArgs:
 
     @_builtins.property
     @pulumi.getter(name="manualInstanceCount")
-    def manual_instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def manual_instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The total number of instances in manual scaling mode.
         """
         return pulumi.get(self, "manual_instance_count")
 
     @manual_instance_count.setter
-    def manual_instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def manual_instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "manual_instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="maxInstanceCount")
-    def max_instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum count of instances distributed among revisions based on the specified instance split percentages.
         """
         return pulumi.get(self, "max_instance_count")
 
     @max_instance_count.setter
-    def max_instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minInstanceCount")
-    def min_instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum count of instances distributed among revisions based on the specified instance split percentages.
         """
         return pulumi.get(self, "min_instance_count")
 
     @min_instance_count.setter
-    def min_instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingMode")
-    def scaling_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scaling mode for the worker pool. It defaults to MANUAL.
         Possible values are: `AUTOMATIC`, `MANUAL`.
@@ -7574,67 +7574,67 @@ class WorkerPoolScalingArgs:
         return pulumi.get(self, "scaling_mode")
 
     @scaling_mode.setter
-    def scaling_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_mode", value)
 
 
 class WorkerPoolTemplateArgsDict(TypedDict):
-    annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    annotations: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
     Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
     All system annotations in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
     This field follows Kubernetes annotations' namespacing, limits, and rules.
     """
-    containers: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerArgsDict']]]]
+    containers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerArgs']]]]]
     """
     Holds the containers that define the unit of execution for this WorkerPool.
     Structure is documented below.
     """
-    encryption_key: NotRequired[pulumi.Input[_builtins.str]]
+    encryption_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
     """
-    encryption_key_revocation_action: NotRequired[pulumi.Input[_builtins.str]]
+    encryption_key_revocation_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The action to take if the encryption key is revoked.
     Possible values are: `PREVENT_NEW`, `SHUTDOWN`.
     """
-    encryption_key_shutdown_duration: NotRequired[pulumi.Input[_builtins.str]]
+    encryption_key_shutdown_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If encryptionKeyRevocationAction is SHUTDOWN, the duration before shutting down all instances. The minimum increment is 1 hour.
     A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
     """
-    gpu_zonal_redundancy_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    gpu_zonal_redundancy_disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if GPU zonal redundancy is disabled on this revision.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
     For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
     Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
     All system labels in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
     """
-    node_selector: NotRequired[pulumi.Input['WorkerPoolTemplateNodeSelectorArgsDict']]
+    node_selector: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateNodeSelectorArgs']]]
     """
     Node Selector describes the hardware requirements of the resources.
     Structure is documented below.
     """
-    revision: NotRequired[pulumi.Input[_builtins.str]]
+    revision: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
     """
-    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
     """
-    volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVolumeArgsDict']]]]
+    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVolumeArgs']]]]]
     """
     A list of Volumes to make available to containers.
     Structure is documented below.
     """
-    vpc_access: NotRequired[pulumi.Input['WorkerPoolTemplateVpcAccessArgsDict']]
+    vpc_access: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVpcAccessArgs']]]
     """
     VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
     Structure is documented below.
@@ -7643,18 +7643,18 @@ class WorkerPoolTemplateArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerArgs']]]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_key_revocation_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_key_shutdown_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_zonal_redundancy_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_selector: Optional[pulumi.Input['WorkerPoolTemplateNodeSelectorArgs']] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVolumeArgs']]]] = None,
-                 vpc_access: Optional[pulumi.Input['WorkerPoolTemplateVpcAccessArgs']] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerArgs']]]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_key_revocation_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_key_shutdown_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_zonal_redundancy_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_selector: pulumi.Input[Optional['WorkerPoolTemplateNodeSelectorArgs']] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVolumeArgs']]]] = None,
+                 vpc_access: pulumi.Input[Optional['WorkerPoolTemplateVpcAccessArgs']] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -7708,7 +7708,7 @@ class WorkerPoolTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
         Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -7718,12 +7718,12 @@ class WorkerPoolTemplateArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerArgs']]]]:
+    def containers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerArgs']]]]:
         """
         Holds the containers that define the unit of execution for this WorkerPool.
         Structure is documented below.
@@ -7731,24 +7731,24 @@ class WorkerPoolTemplateArgs:
         return pulumi.get(self, "containers")
 
     @containers.setter
-    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerArgs']]]]):
+    def containers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerArgs']]]]):
         pulumi.set(self, "containers", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         """
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyRevocationAction")
-    def encryption_key_revocation_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key_revocation_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action to take if the encryption key is revoked.
         Possible values are: `PREVENT_NEW`, `SHUTDOWN`.
@@ -7756,12 +7756,12 @@ class WorkerPoolTemplateArgs:
         return pulumi.get(self, "encryption_key_revocation_action")
 
     @encryption_key_revocation_action.setter
-    def encryption_key_revocation_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key_revocation_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key_revocation_action", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyShutdownDuration")
-    def encryption_key_shutdown_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key_shutdown_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If encryptionKeyRevocationAction is SHUTDOWN, the duration before shutting down all instances. The minimum increment is 1 hour.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -7769,24 +7769,24 @@ class WorkerPoolTemplateArgs:
         return pulumi.get(self, "encryption_key_shutdown_duration")
 
     @encryption_key_shutdown_duration.setter
-    def encryption_key_shutdown_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key_shutdown_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key_shutdown_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuZonalRedundancyDisabled")
-    def gpu_zonal_redundancy_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gpu_zonal_redundancy_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if GPU zonal redundancy is disabled on this revision.
         """
         return pulumi.get(self, "gpu_zonal_redundancy_disabled")
 
     @gpu_zonal_redundancy_disabled.setter
-    def gpu_zonal_redundancy_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gpu_zonal_redundancy_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gpu_zonal_redundancy_disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
         For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -7796,12 +7796,12 @@ class WorkerPoolTemplateArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeSelector")
-    def node_selector(self) -> Optional[pulumi.Input['WorkerPoolTemplateNodeSelectorArgs']]:
+    def node_selector(self) -> pulumi.Input[Optional['WorkerPoolTemplateNodeSelectorArgs']]:
         """
         Node Selector describes the hardware requirements of the resources.
         Structure is documented below.
@@ -7809,36 +7809,36 @@ class WorkerPoolTemplateArgs:
         return pulumi.get(self, "node_selector")
 
     @node_selector.setter
-    def node_selector(self, value: Optional[pulumi.Input['WorkerPoolTemplateNodeSelectorArgs']]):
+    def node_selector(self, value: pulumi.Input[Optional['WorkerPoolTemplateNodeSelectorArgs']]):
         pulumi.set(self, "node_selector", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique name for the revision. If this field is omitted, it will be automatically generated based on the WorkerPool name.
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVolumeArgs']]]]:
+    def volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVolumeArgs']]]]:
         """
         A list of Volumes to make available to containers.
         Structure is documented below.
@@ -7846,12 +7846,12 @@ class WorkerPoolTemplateArgs:
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVolumeArgs']]]]):
+    def volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVolumeArgs']]]]):
         pulumi.set(self, "volumes", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcAccess")
-    def vpc_access(self) -> Optional[pulumi.Input['WorkerPoolTemplateVpcAccessArgs']]:
+    def vpc_access(self) -> pulumi.Input[Optional['WorkerPoolTemplateVpcAccessArgs']]:
         """
         VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         Structure is documented below.
@@ -7859,7 +7859,7 @@ class WorkerPoolTemplateArgs:
         return pulumi.get(self, "vpc_access")
 
     @vpc_access.setter
-    def vpc_access(self, value: Optional[pulumi.Input['WorkerPoolTemplateVpcAccessArgs']]):
+    def vpc_access(self, value: pulumi.Input[Optional['WorkerPoolTemplateVpcAccessArgs']]):
         pulumi.set(self, "vpc_access", value)
 
 
@@ -7868,48 +7868,48 @@ class WorkerPoolTemplateContainerArgsDict(TypedDict):
     """
     URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
     """
-    depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    depends_ons: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Names of the containers that must start before this container.
     """
-    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgsDict']]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgs']]]]]
     """
     List of environment variables to set in the container.
     Structure is documented below.
     """
-    liveness_probe: NotRequired[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeArgsDict']]
+    liveness_probe: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeArgs']]]
     """
     Periodic probe of container liveness. Container will be restarted if the probe fails.
     Structure is documented below.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the container specified as a DNS_LABEL.
     """
-    resources: NotRequired[pulumi.Input['WorkerPoolTemplateContainerResourcesArgsDict']]
+    resources: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerResourcesArgs']]]
     """
     Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
     Structure is documented below.
     """
-    startup_probe: NotRequired[pulumi.Input['WorkerPoolTemplateContainerStartupProbeArgsDict']]
+    startup_probe: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeArgs']]]
     """
     Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
     Structure is documented below.
     """
-    volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerVolumeMountArgsDict']]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerVolumeMountArgs']]]]]
     """
     Volume to mount into the container's filesystem.
     Structure is documented below.
     """
-    working_dir: NotRequired[pulumi.Input[_builtins.str]]
+    working_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
     """
@@ -7918,16 +7918,16 @@ class WorkerPoolTemplateContainerArgsDict(TypedDict):
 class WorkerPoolTemplateContainerArgs:
     def __init__(__self__, *,
                  image: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgs']]]] = None,
-                 liveness_probe: Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input['WorkerPoolTemplateContainerResourcesArgs']] = None,
-                 startup_probe: Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeArgs']] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerVolumeMountArgs']]]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 depends_ons: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgs']]]] = None,
+                 liveness_probe: pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional['WorkerPoolTemplateContainerResourcesArgs']] = None,
+                 startup_probe: pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeArgs']] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerVolumeMountArgs']]]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
@@ -7982,43 +7982,43 @@ class WorkerPoolTemplateContainerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter(name="dependsOns")
-    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def depends_ons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Names of the containers that must start before this container.
         """
         return pulumi.get(self, "depends_ons")
 
     @depends_ons.setter
-    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def depends_ons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "depends_ons", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgs']]]]:
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgs']]]]:
         """
         List of environment variables to set in the container.
         Structure is documented below.
@@ -8026,12 +8026,12 @@ class WorkerPoolTemplateContainerArgs:
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgs']]]]):
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessProbe")
-    def liveness_probe(self) -> Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeArgs']]:
+    def liveness_probe(self) -> pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeArgs']]:
         """
         Periodic probe of container liveness. Container will be restarted if the probe fails.
         Structure is documented below.
@@ -8039,24 +8039,24 @@ class WorkerPoolTemplateContainerArgs:
         return pulumi.get(self, "liveness_probe")
 
     @liveness_probe.setter
-    def liveness_probe(self, value: Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeArgs']]):
+    def liveness_probe(self, value: pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeArgs']]):
         pulumi.set(self, "liveness_probe", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the container specified as a DNS_LABEL.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input['WorkerPoolTemplateContainerResourcesArgs']]:
+    def resources(self) -> pulumi.Input[Optional['WorkerPoolTemplateContainerResourcesArgs']]:
         """
         Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         Structure is documented below.
@@ -8064,12 +8064,12 @@ class WorkerPoolTemplateContainerArgs:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input['WorkerPoolTemplateContainerResourcesArgs']]):
+    def resources(self, value: pulumi.Input[Optional['WorkerPoolTemplateContainerResourcesArgs']]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter(name="startupProbe")
-    def startup_probe(self) -> Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeArgs']]:
+    def startup_probe(self) -> pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeArgs']]:
         """
         Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
         Structure is documented below.
@@ -8077,12 +8077,12 @@ class WorkerPoolTemplateContainerArgs:
         return pulumi.get(self, "startup_probe")
 
     @startup_probe.setter
-    def startup_probe(self, value: Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeArgs']]):
+    def startup_probe(self, value: pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeArgs']]):
         pulumi.set(self, "startup_probe", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMounts")
-    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerVolumeMountArgs']]]]:
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerVolumeMountArgs']]]]:
         """
         Volume to mount into the container's filesystem.
         Structure is documented below.
@@ -8090,19 +8090,19 @@ class WorkerPoolTemplateContainerArgs:
         return pulumi.get(self, "volume_mounts")
 
     @volume_mounts.setter
-    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerVolumeMountArgs']]]]):
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerVolumeMountArgs']]]]):
         pulumi.set(self, "volume_mounts", value)
 
     @_builtins.property
     @pulumi.getter(name="workingDir")
-    def working_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         return pulumi.get(self, "working_dir")
 
     @working_dir.setter
-    def working_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "working_dir", value)
 
 
@@ -8111,11 +8111,11 @@ class WorkerPoolTemplateContainerEnvArgsDict(TypedDict):
     """
     Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
     """
-    value_source: NotRequired[pulumi.Input['WorkerPoolTemplateContainerEnvValueSourceArgsDict']]
+    value_source: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerEnvValueSourceArgs']]]
     """
     Source for the environment variable's value.
     Structure is documented below.
@@ -8125,8 +8125,8 @@ class WorkerPoolTemplateContainerEnvArgsDict(TypedDict):
 class WorkerPoolTemplateContainerEnvArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_source: Optional[pulumi.Input['WorkerPoolTemplateContainerEnvValueSourceArgs']] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_source: pulumi.Input[Optional['WorkerPoolTemplateContainerEnvValueSourceArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
         :param pulumi.Input[_builtins.str] value: Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
@@ -8153,19 +8153,19 @@ class WorkerPoolTemplateContainerEnvArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSource")
-    def value_source(self) -> Optional[pulumi.Input['WorkerPoolTemplateContainerEnvValueSourceArgs']]:
+    def value_source(self) -> pulumi.Input[Optional['WorkerPoolTemplateContainerEnvValueSourceArgs']]:
         """
         Source for the environment variable's value.
         Structure is documented below.
@@ -8173,12 +8173,12 @@ class WorkerPoolTemplateContainerEnvArgs:
         return pulumi.get(self, "value_source")
 
     @value_source.setter
-    def value_source(self, value: Optional[pulumi.Input['WorkerPoolTemplateContainerEnvValueSourceArgs']]):
+    def value_source(self, value: pulumi.Input[Optional['WorkerPoolTemplateContainerEnvValueSourceArgs']]):
         pulumi.set(self, "value_source", value)
 
 
 class WorkerPoolTemplateContainerEnvValueSourceArgsDict(TypedDict):
-    secret_key_ref: NotRequired[pulumi.Input['WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgsDict']]
+    secret_key_ref: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs']]]
     """
     Selects a secret and a specific version from Cloud Secret Manager.
     Structure is documented below.
@@ -8187,7 +8187,7 @@ class WorkerPoolTemplateContainerEnvValueSourceArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateContainerEnvValueSourceArgs:
     def __init__(__self__, *,
-                 secret_key_ref: Optional[pulumi.Input['WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs']] = None):
+                 secret_key_ref: pulumi.Input[Optional['WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs']] = None):
         """
         :param pulumi.Input['WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs'] secret_key_ref: Selects a secret and a specific version from Cloud Secret Manager.
                Structure is documented below.
@@ -8197,7 +8197,7 @@ class WorkerPoolTemplateContainerEnvValueSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="secretKeyRef")
-    def secret_key_ref(self) -> Optional[pulumi.Input['WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs']]:
+    def secret_key_ref(self) -> pulumi.Input[Optional['WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs']]:
         """
         Selects a secret and a specific version from Cloud Secret Manager.
         Structure is documented below.
@@ -8205,7 +8205,7 @@ class WorkerPoolTemplateContainerEnvValueSourceArgs:
         return pulumi.get(self, "secret_key_ref")
 
     @secret_key_ref.setter
-    def secret_key_ref(self, value: Optional[pulumi.Input['WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs']]):
+    def secret_key_ref(self, value: pulumi.Input[Optional['WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs']]):
         pulumi.set(self, "secret_key_ref", value)
 
 
@@ -8214,7 +8214,7 @@ class WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgsDict(TypedDict):
     """
     The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
     """
@@ -8223,7 +8223,7 @@ class WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgsDict(TypedDict):
 class WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs:
     def __init__(__self__, *,
                  secret: pulumi.Input[_builtins.str],
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
         :param pulumi.Input[_builtins.str] version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
@@ -8246,46 +8246,46 @@ class WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs:
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class WorkerPoolTemplateContainerLivenessProbeArgsDict(TypedDict):
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     """
-    grpc: NotRequired[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeGrpcArgsDict']]
+    grpc: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeGrpcArgs']]]
     """
     Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeHttpGetArgsDict']]
+    http_get: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeHttpGetArgs']]]
     """
     Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
     Structure is documented below.
     """
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
     """
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
     """
-    tcp_socket: NotRequired[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeTcpSocketArgsDict']]
+    tcp_socket: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs']]]
     """
     Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
     Structure is documented below.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
     """
@@ -8293,13 +8293,13 @@ class WorkerPoolTemplateContainerLivenessProbeArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateContainerLivenessProbeArgs:
     def __init__(__self__, *,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 grpc: Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeGrpcArgs']] = None,
-                 http_get: Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeHttpGetArgs']] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_socket: Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs']] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 grpc: pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeGrpcArgs']] = None,
+                 http_get: pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_socket: pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs']] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] failure_threshold: Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         :param pulumi.Input['WorkerPoolTemplateContainerLivenessProbeGrpcArgs'] grpc: Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
@@ -8329,19 +8329,19 @@ class WorkerPoolTemplateContainerLivenessProbeArgs:
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         """
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def grpc(self) -> Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeGrpcArgs']]:
+    def grpc(self) -> pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeGrpcArgs']]:
         """
         Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
         Structure is documented below.
@@ -8349,12 +8349,12 @@ class WorkerPoolTemplateContainerLivenessProbeArgs:
         return pulumi.get(self, "grpc")
 
     @grpc.setter
-    def grpc(self, value: Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeGrpcArgs']]):
+    def grpc(self, value: pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeGrpcArgs']]):
         pulumi.set(self, "grpc", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeHttpGetArgs']]:
+    def http_get(self) -> pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeHttpGetArgs']]:
         """
         Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
         Structure is documented below.
@@ -8362,36 +8362,36 @@ class WorkerPoolTemplateContainerLivenessProbeArgs:
         return pulumi.get(self, "http_get")
 
     @http_get.setter
-    def http_get(self, value: Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeHttpGetArgs']]):
+    def http_get(self, value: pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeHttpGetArgs']]):
         pulumi.set(self, "http_get", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
         """
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
         """
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs']]:
+    def tcp_socket(self) -> pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs']]:
         """
         Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
         Structure is documented below.
@@ -8399,28 +8399,28 @@ class WorkerPoolTemplateContainerLivenessProbeArgs:
         return pulumi.get(self, "tcp_socket")
 
     @tcp_socket.setter
-    def tcp_socket(self, value: Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs']]):
+    def tcp_socket(self, value: pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs']]):
         pulumi.set(self, "tcp_socket", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
         """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class WorkerPoolTemplateContainerLivenessProbeGrpcArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
     """
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
     """
@@ -8428,8 +8428,8 @@ class WorkerPoolTemplateContainerLivenessProbeGrpcArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateContainerLivenessProbeGrpcArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         :param pulumi.Input[_builtins.str] service: Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
@@ -8441,40 +8441,40 @@ class WorkerPoolTemplateContainerLivenessProbeGrpcArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
 class WorkerPoolTemplateContainerLivenessProbeHttpGetArgsDict(TypedDict):
-    http_headers: NotRequired[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgsDict']]
+    http_headers: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs']]]
     """
     Optional. Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Path to access on the HTTP server. Defaults to '/'.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
     """
@@ -8482,9 +8482,9 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGetArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateContainerLivenessProbeHttpGetArgs:
     def __init__(__self__, *,
-                 http_headers: Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs']] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 http_headers: pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs']] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs'] http_headers: Optional. Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
@@ -8500,7 +8500,7 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGetArgs:
 
     @_builtins.property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs']]:
+    def http_headers(self) -> pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs']]:
         """
         Optional. Custom headers to set in the request. HTTP allows repeated headers.
         Structure is documented below.
@@ -8508,31 +8508,31 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGetArgs:
         return pulumi.get(self, "http_headers")
 
     @http_headers.setter
-    def http_headers(self, value: Optional[pulumi.Input['WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs']]):
+    def http_headers(self, value: pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs']]):
         pulumi.set(self, "http_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Path to access on the HTTP server. Defaults to '/'.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
@@ -8541,7 +8541,7 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgsDict(TypedDi
     """
     Required. The header field name
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The header field value
     """
@@ -8550,7 +8550,7 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgsDict(TypedDi
 class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs:
     def __init__(__self__, *,
                  port: pulumi.Input[_builtins.int],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Required. The header field name
         :param pulumi.Input[_builtins.str] value: Optional. The header field value
@@ -8573,19 +8573,19 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The header field value
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class WorkerPoolTemplateContainerLivenessProbeTcpSocketArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
     """
@@ -8593,7 +8593,7 @@ class WorkerPoolTemplateContainerLivenessProbeTcpSocketArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         """
@@ -8602,19 +8602,19 @@ class WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
 class WorkerPoolTemplateContainerResourcesArgsDict(TypedDict):
-    limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    limits: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
     """
@@ -8622,7 +8622,7 @@ class WorkerPoolTemplateContainerResourcesArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateContainerResourcesArgs:
     def __init__(__self__, *,
-                 limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 limits: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] limits: Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
@@ -8631,46 +8631,46 @@ class WorkerPoolTemplateContainerResourcesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def limits(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
     @limits.setter
-    def limits(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def limits(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "limits", value)
 
 
 class WorkerPoolTemplateContainerStartupProbeArgsDict(TypedDict):
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     """
-    grpc: NotRequired[pulumi.Input['WorkerPoolTemplateContainerStartupProbeGrpcArgsDict']]
+    grpc: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeGrpcArgs']]]
     """
     Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input['WorkerPoolTemplateContainerStartupProbeHttpGetArgsDict']]
+    http_get: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeHttpGetArgs']]]
     """
     Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
     Structure is documented below.
     """
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
     """
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
     """
-    tcp_socket: NotRequired[pulumi.Input['WorkerPoolTemplateContainerStartupProbeTcpSocketArgsDict']]
+    tcp_socket: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeTcpSocketArgs']]]
     """
     Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
     Structure is documented below.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
     """
@@ -8678,13 +8678,13 @@ class WorkerPoolTemplateContainerStartupProbeArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateContainerStartupProbeArgs:
     def __init__(__self__, *,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 grpc: Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeGrpcArgs']] = None,
-                 http_get: Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeHttpGetArgs']] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_socket: Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeTcpSocketArgs']] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 grpc: pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeGrpcArgs']] = None,
+                 http_get: pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_socket: pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeTcpSocketArgs']] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] failure_threshold: Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         :param pulumi.Input['WorkerPoolTemplateContainerStartupProbeGrpcArgs'] grpc: Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
@@ -8714,19 +8714,19 @@ class WorkerPoolTemplateContainerStartupProbeArgs:
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         """
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def grpc(self) -> Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeGrpcArgs']]:
+    def grpc(self) -> pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeGrpcArgs']]:
         """
         Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
         Structure is documented below.
@@ -8734,12 +8734,12 @@ class WorkerPoolTemplateContainerStartupProbeArgs:
         return pulumi.get(self, "grpc")
 
     @grpc.setter
-    def grpc(self, value: Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeGrpcArgs']]):
+    def grpc(self, value: pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeGrpcArgs']]):
         pulumi.set(self, "grpc", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeHttpGetArgs']]:
+    def http_get(self) -> pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeHttpGetArgs']]:
         """
         Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
         Structure is documented below.
@@ -8747,36 +8747,36 @@ class WorkerPoolTemplateContainerStartupProbeArgs:
         return pulumi.get(self, "http_get")
 
     @http_get.setter
-    def http_get(self, value: Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeHttpGetArgs']]):
+    def http_get(self, value: pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeHttpGetArgs']]):
         pulumi.set(self, "http_get", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
         """
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
         """
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeTcpSocketArgs']]:
+    def tcp_socket(self) -> pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeTcpSocketArgs']]:
         """
         Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
         Structure is documented below.
@@ -8784,28 +8784,28 @@ class WorkerPoolTemplateContainerStartupProbeArgs:
         return pulumi.get(self, "tcp_socket")
 
     @tcp_socket.setter
-    def tcp_socket(self, value: Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeTcpSocketArgs']]):
+    def tcp_socket(self, value: pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeTcpSocketArgs']]):
         pulumi.set(self, "tcp_socket", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
         """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class WorkerPoolTemplateContainerStartupProbeGrpcArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
     """
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
     """
@@ -8813,8 +8813,8 @@ class WorkerPoolTemplateContainerStartupProbeGrpcArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateContainerStartupProbeGrpcArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         :param pulumi.Input[_builtins.str] service: Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
@@ -8826,40 +8826,40 @@ class WorkerPoolTemplateContainerStartupProbeGrpcArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
 class WorkerPoolTemplateContainerStartupProbeHttpGetArgsDict(TypedDict):
-    http_headers: NotRequired[pulumi.Input['WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgsDict']]
+    http_headers: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs']]]
     """
     Optional. Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Path to access on the HTTP server. Defaults to '/'.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
     """
@@ -8867,9 +8867,9 @@ class WorkerPoolTemplateContainerStartupProbeHttpGetArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateContainerStartupProbeHttpGetArgs:
     def __init__(__self__, *,
-                 http_headers: Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs']] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 http_headers: pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs']] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs'] http_headers: Optional. Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
@@ -8885,7 +8885,7 @@ class WorkerPoolTemplateContainerStartupProbeHttpGetArgs:
 
     @_builtins.property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs']]:
+    def http_headers(self) -> pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs']]:
         """
         Optional. Custom headers to set in the request. HTTP allows repeated headers.
         Structure is documented below.
@@ -8893,31 +8893,31 @@ class WorkerPoolTemplateContainerStartupProbeHttpGetArgs:
         return pulumi.get(self, "http_headers")
 
     @http_headers.setter
-    def http_headers(self, value: Optional[pulumi.Input['WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs']]):
+    def http_headers(self, value: pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs']]):
         pulumi.set(self, "http_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Path to access on the HTTP server. Defaults to '/'.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
@@ -8926,7 +8926,7 @@ class WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgsDict(TypedDic
     """
     Required. The header field name
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The header field value
     """
@@ -8935,7 +8935,7 @@ class WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgsDict(TypedDic
 class WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs:
     def __init__(__self__, *,
                  port: pulumi.Input[_builtins.int],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Required. The header field name
         :param pulumi.Input[_builtins.str] value: Optional. The header field value
@@ -8958,19 +8958,19 @@ class WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The header field value
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class WorkerPoolTemplateContainerStartupProbeTcpSocketArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
     """
@@ -8978,7 +8978,7 @@ class WorkerPoolTemplateContainerStartupProbeTcpSocketArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateContainerStartupProbeTcpSocketArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         """
@@ -8987,14 +8987,14 @@ class WorkerPoolTemplateContainerStartupProbeTcpSocketArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
@@ -9007,7 +9007,7 @@ class WorkerPoolTemplateContainerVolumeMountArgsDict(TypedDict):
     """
     This must match the Name of a Volume.
     """
-    sub_path: NotRequired[pulumi.Input[_builtins.str]]
+    sub_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path within the volume from which the container's volume should be mounted.
     """
@@ -9017,7 +9017,7 @@ class WorkerPoolTemplateContainerVolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 sub_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 sub_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
         :param pulumi.Input[_builtins.str] name: This must match the Name of a Volume.
@@ -9054,14 +9054,14 @@ class WorkerPoolTemplateContainerVolumeMountArgs:
 
     @_builtins.property
     @pulumi.getter(name="subPath")
-    def sub_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path within the volume from which the container's volume should be mounted.
         """
         return pulumi.get(self, "sub_path")
 
     @sub_path.setter
-    def sub_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_path", value)
 
 
@@ -9098,27 +9098,27 @@ class WorkerPoolTemplateVolumeArgsDict(TypedDict):
     """
     Volume's name.
     """
-    cloud_sql_instance: NotRequired[pulumi.Input['WorkerPoolTemplateVolumeCloudSqlInstanceArgsDict']]
+    cloud_sql_instance: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeCloudSqlInstanceArgs']]]
     """
     For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
     Structure is documented below.
     """
-    empty_dir: NotRequired[pulumi.Input['WorkerPoolTemplateVolumeEmptyDirArgsDict']]
+    empty_dir: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeEmptyDirArgs']]]
     """
     Ephemeral storage used as a shared volume.
     Structure is documented below.
     """
-    gcs: NotRequired[pulumi.Input['WorkerPoolTemplateVolumeGcsArgsDict']]
+    gcs: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeGcsArgs']]]
     """
     Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
     Structure is documented below.
     """
-    nfs: NotRequired[pulumi.Input['WorkerPoolTemplateVolumeNfsArgsDict']]
+    nfs: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeNfsArgs']]]
     """
     Represents an NFS mount.
     Structure is documented below.
     """
-    secret: NotRequired[pulumi.Input['WorkerPoolTemplateVolumeSecretArgsDict']]
+    secret: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeSecretArgs']]]
     """
     Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
     Structure is documented below.
@@ -9128,11 +9128,11 @@ class WorkerPoolTemplateVolumeArgsDict(TypedDict):
 class WorkerPoolTemplateVolumeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 cloud_sql_instance: Optional[pulumi.Input['WorkerPoolTemplateVolumeCloudSqlInstanceArgs']] = None,
-                 empty_dir: Optional[pulumi.Input['WorkerPoolTemplateVolumeEmptyDirArgs']] = None,
-                 gcs: Optional[pulumi.Input['WorkerPoolTemplateVolumeGcsArgs']] = None,
-                 nfs: Optional[pulumi.Input['WorkerPoolTemplateVolumeNfsArgs']] = None,
-                 secret: Optional[pulumi.Input['WorkerPoolTemplateVolumeSecretArgs']] = None):
+                 cloud_sql_instance: pulumi.Input[Optional['WorkerPoolTemplateVolumeCloudSqlInstanceArgs']] = None,
+                 empty_dir: pulumi.Input[Optional['WorkerPoolTemplateVolumeEmptyDirArgs']] = None,
+                 gcs: pulumi.Input[Optional['WorkerPoolTemplateVolumeGcsArgs']] = None,
+                 nfs: pulumi.Input[Optional['WorkerPoolTemplateVolumeNfsArgs']] = None,
+                 secret: pulumi.Input[Optional['WorkerPoolTemplateVolumeSecretArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: Volume's name.
         :param pulumi.Input['WorkerPoolTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
@@ -9172,7 +9172,7 @@ class WorkerPoolTemplateVolumeArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudSqlInstance")
-    def cloud_sql_instance(self) -> Optional[pulumi.Input['WorkerPoolTemplateVolumeCloudSqlInstanceArgs']]:
+    def cloud_sql_instance(self) -> pulumi.Input[Optional['WorkerPoolTemplateVolumeCloudSqlInstanceArgs']]:
         """
         For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
         Structure is documented below.
@@ -9180,12 +9180,12 @@ class WorkerPoolTemplateVolumeArgs:
         return pulumi.get(self, "cloud_sql_instance")
 
     @cloud_sql_instance.setter
-    def cloud_sql_instance(self, value: Optional[pulumi.Input['WorkerPoolTemplateVolumeCloudSqlInstanceArgs']]):
+    def cloud_sql_instance(self, value: pulumi.Input[Optional['WorkerPoolTemplateVolumeCloudSqlInstanceArgs']]):
         pulumi.set(self, "cloud_sql_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="emptyDir")
-    def empty_dir(self) -> Optional[pulumi.Input['WorkerPoolTemplateVolumeEmptyDirArgs']]:
+    def empty_dir(self) -> pulumi.Input[Optional['WorkerPoolTemplateVolumeEmptyDirArgs']]:
         """
         Ephemeral storage used as a shared volume.
         Structure is documented below.
@@ -9193,12 +9193,12 @@ class WorkerPoolTemplateVolumeArgs:
         return pulumi.get(self, "empty_dir")
 
     @empty_dir.setter
-    def empty_dir(self, value: Optional[pulumi.Input['WorkerPoolTemplateVolumeEmptyDirArgs']]):
+    def empty_dir(self, value: pulumi.Input[Optional['WorkerPoolTemplateVolumeEmptyDirArgs']]):
         pulumi.set(self, "empty_dir", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['WorkerPoolTemplateVolumeGcsArgs']]:
+    def gcs(self) -> pulumi.Input[Optional['WorkerPoolTemplateVolumeGcsArgs']]:
         """
         Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
         Structure is documented below.
@@ -9206,12 +9206,12 @@ class WorkerPoolTemplateVolumeArgs:
         return pulumi.get(self, "gcs")
 
     @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['WorkerPoolTemplateVolumeGcsArgs']]):
+    def gcs(self, value: pulumi.Input[Optional['WorkerPoolTemplateVolumeGcsArgs']]):
         pulumi.set(self, "gcs", value)
 
     @_builtins.property
     @pulumi.getter
-    def nfs(self) -> Optional[pulumi.Input['WorkerPoolTemplateVolumeNfsArgs']]:
+    def nfs(self) -> pulumi.Input[Optional['WorkerPoolTemplateVolumeNfsArgs']]:
         """
         Represents an NFS mount.
         Structure is documented below.
@@ -9219,12 +9219,12 @@ class WorkerPoolTemplateVolumeArgs:
         return pulumi.get(self, "nfs")
 
     @nfs.setter
-    def nfs(self, value: Optional[pulumi.Input['WorkerPoolTemplateVolumeNfsArgs']]):
+    def nfs(self, value: pulumi.Input[Optional['WorkerPoolTemplateVolumeNfsArgs']]):
         pulumi.set(self, "nfs", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input['WorkerPoolTemplateVolumeSecretArgs']]:
+    def secret(self) -> pulumi.Input[Optional['WorkerPoolTemplateVolumeSecretArgs']]:
         """
         Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
         Structure is documented below.
@@ -9232,12 +9232,12 @@ class WorkerPoolTemplateVolumeArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input['WorkerPoolTemplateVolumeSecretArgs']]):
+    def secret(self, value: pulumi.Input[Optional['WorkerPoolTemplateVolumeSecretArgs']]):
         pulumi.set(self, "secret", value)
 
 
 class WorkerPoolTemplateVolumeCloudSqlInstanceArgsDict(TypedDict):
-    instances: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
     """
@@ -9245,7 +9245,7 @@ class WorkerPoolTemplateVolumeCloudSqlInstanceArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateVolumeCloudSqlInstanceArgs:
     def __init__(__self__, *,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
@@ -9254,25 +9254,25 @@ class WorkerPoolTemplateVolumeCloudSqlInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instances", value)
 
 
 class WorkerPoolTemplateVolumeEmptyDirArgsDict(TypedDict):
-    medium: NotRequired[pulumi.Input[_builtins.str]]
+    medium: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The different types of medium supported for EmptyDir.
     Default value is `MEMORY`.
     Possible values are: `MEMORY`, `DISK`.
     """
-    size_limit: NotRequired[pulumi.Input[_builtins.str]]
+    size_limit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
     """
@@ -9280,8 +9280,8 @@ class WorkerPoolTemplateVolumeEmptyDirArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateVolumeEmptyDirArgs:
     def __init__(__self__, *,
-                 medium: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_limit: Optional[pulumi.Input[_builtins.str]] = None):
+                 medium: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_limit: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] medium: The different types of medium supported for EmptyDir.
                Default value is `MEMORY`.
@@ -9295,7 +9295,7 @@ class WorkerPoolTemplateVolumeEmptyDirArgs:
 
     @_builtins.property
     @pulumi.getter
-    def medium(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def medium(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The different types of medium supported for EmptyDir.
         Default value is `MEMORY`.
@@ -9304,19 +9304,19 @@ class WorkerPoolTemplateVolumeEmptyDirArgs:
         return pulumi.get(self, "medium")
 
     @medium.setter
-    def medium(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def medium(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "medium", value)
 
     @_builtins.property
     @pulumi.getter(name="sizeLimit")
-    def size_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def size_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
         """
         return pulumi.get(self, "size_limit")
 
     @size_limit.setter
-    def size_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def size_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "size_limit", value)
 
 
@@ -9325,12 +9325,12 @@ class WorkerPoolTemplateVolumeGcsArgsDict(TypedDict):
     """
     GCS Bucket name
     """
-    mount_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    mount_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of flags to pass to the gcsfuse command for configuring this volume.
     Flags should be passed without leading dashes.
     """
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, mount the GCS bucket as read-only
     """
@@ -9339,8 +9339,8 @@ class WorkerPoolTemplateVolumeGcsArgsDict(TypedDict):
 class WorkerPoolTemplateVolumeGcsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 mount_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: GCS Bucket name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mount_options: A list of flags to pass to the gcsfuse command for configuring this volume.
@@ -9367,7 +9367,7 @@ class WorkerPoolTemplateVolumeGcsArgs:
 
     @_builtins.property
     @pulumi.getter(name="mountOptions")
-    def mount_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mount_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of flags to pass to the gcsfuse command for configuring this volume.
         Flags should be passed without leading dashes.
@@ -9375,19 +9375,19 @@ class WorkerPoolTemplateVolumeGcsArgs:
         return pulumi.get(self, "mount_options")
 
     @mount_options.setter
-    def mount_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mount_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mount_options", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, mount the GCS bucket as read-only
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
 
@@ -9400,7 +9400,7 @@ class WorkerPoolTemplateVolumeNfsArgsDict(TypedDict):
     """
     Hostname or IP address of the NFS server
     """
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, mount the NFS volume as read only
     """
@@ -9410,7 +9410,7 @@ class WorkerPoolTemplateVolumeNfsArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
                  server: pulumi.Input[_builtins.str],
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] path: Path that is exported by the NFS server.
         :param pulumi.Input[_builtins.str] server: Hostname or IP address of the NFS server
@@ -9447,14 +9447,14 @@ class WorkerPoolTemplateVolumeNfsArgs:
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, mount the NFS volume as read only
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
 
@@ -9463,11 +9463,11 @@ class WorkerPoolTemplateVolumeSecretArgsDict(TypedDict):
     """
     The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
     """
-    default_mode: NotRequired[pulumi.Input[_builtins.int]]
+    default_mode: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
     """
-    items: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVolumeSecretItemArgsDict']]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVolumeSecretItemArgs']]]]]
     """
     If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
     Structure is documented below.
@@ -9477,8 +9477,8 @@ class WorkerPoolTemplateVolumeSecretArgsDict(TypedDict):
 class WorkerPoolTemplateVolumeSecretArgs:
     def __init__(__self__, *,
                  secret: pulumi.Input[_builtins.str],
-                 default_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVolumeSecretItemArgs']]]] = None):
+                 default_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 items: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVolumeSecretItemArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
         :param pulumi.Input[_builtins.int] default_mode: Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
@@ -9505,19 +9505,19 @@ class WorkerPoolTemplateVolumeSecretArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultMode")
-    def default_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
         """
         return pulumi.get(self, "default_mode")
 
     @default_mode.setter
-    def default_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVolumeSecretItemArgs']]]]:
+    def items(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVolumeSecretItemArgs']]]]:
         """
         If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
         Structure is documented below.
@@ -9525,7 +9525,7 @@ class WorkerPoolTemplateVolumeSecretArgs:
         return pulumi.get(self, "items")
 
     @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVolumeSecretItemArgs']]]]):
+    def items(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVolumeSecretItemArgs']]]]):
         pulumi.set(self, "items", value)
 
 
@@ -9534,11 +9534,11 @@ class WorkerPoolTemplateVolumeSecretItemArgsDict(TypedDict):
     """
     The relative path of the secret in the container.
     """
-    mode: NotRequired[pulumi.Input[_builtins.int]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
     """
@@ -9547,8 +9547,8 @@ class WorkerPoolTemplateVolumeSecretItemArgsDict(TypedDict):
 class WorkerPoolTemplateVolumeSecretItemArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
-                 mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] path: The relative path of the secret in the container.
         :param pulumi.Input[_builtins.int] mode: Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
@@ -9574,40 +9574,40 @@ class WorkerPoolTemplateVolumeSecretItemArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class WorkerPoolTemplateVpcAccessArgsDict(TypedDict):
-    connector: NotRequired[pulumi.Input[_builtins.str]]
+    connector: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
     """
-    egress: NotRequired[pulumi.Input[_builtins.str]]
+    egress: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Traffic VPC egress settings.
     Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
     """
-    network_interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVpcAccessNetworkInterfaceArgsDict']]]]
+    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVpcAccessNetworkInterfaceArgs']]]]]
     """
     Direct VPC egress settings. Currently only single network interface is supported.
     Structure is documented below.
@@ -9616,9 +9616,9 @@ class WorkerPoolTemplateVpcAccessArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateVpcAccessArgs:
     def __init__(__self__, *,
-                 connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVpcAccessNetworkInterfaceArgs']]]] = None):
+                 connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVpcAccessNetworkInterfaceArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         :param pulumi.Input[_builtins.str] egress: Traffic VPC egress settings.
@@ -9635,19 +9635,19 @@ class WorkerPoolTemplateVpcAccessArgs:
 
     @_builtins.property
     @pulumi.getter
-    def connector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         """
         return pulumi.get(self, "connector")
 
     @connector.setter
-    def connector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector", value)
 
     @_builtins.property
     @pulumi.getter
-    def egress(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def egress(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Traffic VPC egress settings.
         Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
@@ -9655,12 +9655,12 @@ class WorkerPoolTemplateVpcAccessArgs:
         return pulumi.get(self, "egress")
 
     @egress.setter
-    def egress(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def egress(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "egress", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVpcAccessNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVpcAccessNetworkInterfaceArgs']]]]:
         """
         Direct VPC egress settings. Currently only single network interface is supported.
         Structure is documented below.
@@ -9668,24 +9668,24 @@ class WorkerPoolTemplateVpcAccessArgs:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVpcAccessNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVpcAccessNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
 
 class WorkerPoolTemplateVpcAccessNetworkInterfaceArgsDict(TypedDict):
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
     network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
     looked up from the subnetwork.
     """
-    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    subnetwork: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
     network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
     subnetwork with the same name with the network will be used.
     """
-    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Network tags applied to this Cloud Run WorkerPool.
     """
@@ -9693,9 +9693,9 @@ class WorkerPoolTemplateVpcAccessNetworkInterfaceArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTemplateVpcAccessNetworkInterfaceArgs:
     def __init__(__self__, *,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] network: The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
                network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
@@ -9714,7 +9714,7 @@ class WorkerPoolTemplateVpcAccessNetworkInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
         network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
@@ -9723,12 +9723,12 @@ class WorkerPoolTemplateVpcAccessNetworkInterfaceArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
         network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
@@ -9737,60 +9737,60 @@ class WorkerPoolTemplateVpcAccessNetworkInterfaceArgs:
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Network tags applied to this Cloud Run WorkerPool.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 class WorkerPoolTerminalConditionArgsDict(TypedDict):
-    execution_reason: NotRequired[pulumi.Input[_builtins.str]]
+    execution_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A reason for the execution condition.
     """
-    last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_transition_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Last time the condition transitioned from one status to another.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human readable message indicating details about the current status.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A common (workerPool-level) reason for this condition.
     """
-    revision_reason: NotRequired[pulumi.Input[_builtins.str]]
+    revision_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A reason for the revision condition.
     """
-    severity: NotRequired[pulumi.Input[_builtins.str]]
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     How to interpret failures of this condition, one of Error, Warning, Info
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     State of the condition.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The allocation type for this instance split.
@@ -9799,14 +9799,14 @@ class WorkerPoolTerminalConditionArgsDict(TypedDict):
 @pulumi.input_type
 class WorkerPoolTerminalConditionArgs:
     def __init__(__self__, *,
-                 execution_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 execution_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_transition_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] execution_reason: (Output)
                A reason for the execution condition.
@@ -9845,7 +9845,7 @@ class WorkerPoolTerminalConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="executionReason")
-    def execution_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A reason for the execution condition.
@@ -9853,12 +9853,12 @@ class WorkerPoolTerminalConditionArgs:
         return pulumi.get(self, "execution_reason")
 
     @execution_reason.setter
-    def execution_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transition_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Last time the condition transitioned from one status to another.
@@ -9867,12 +9867,12 @@ class WorkerPoolTerminalConditionArgs:
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transition_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transition_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human readable message indicating details about the current status.
@@ -9880,12 +9880,12 @@ class WorkerPoolTerminalConditionArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A common (workerPool-level) reason for this condition.
@@ -9893,12 +9893,12 @@ class WorkerPoolTerminalConditionArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionReason")
-    def revision_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A reason for the revision condition.
@@ -9906,12 +9906,12 @@ class WorkerPoolTerminalConditionArgs:
         return pulumi.get(self, "revision_reason")
 
     @revision_reason.setter
-    def revision_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         How to interpret failures of this condition, one of Error, Warning, Info
@@ -9919,12 +9919,12 @@ class WorkerPoolTerminalConditionArgs:
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "severity", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         State of the condition.
@@ -9932,12 +9932,12 @@ class WorkerPoolTerminalConditionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The allocation type for this instance split.
@@ -9945,7 +9945,7 @@ class WorkerPoolTerminalConditionArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 

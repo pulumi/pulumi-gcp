@@ -73,7 +73,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+//			compute2, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("compute.googleapis.com"),
 //			})
@@ -84,7 +84,7 @@ import (
 //				Project:        project.ProjectId,
 //				CloudArmorTier: pulumi.String("CA_STANDARD"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				compute,
+//				compute2,
 //			}))
 //			if err != nil {
 //				return err

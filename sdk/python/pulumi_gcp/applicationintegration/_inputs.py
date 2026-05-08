@@ -58,7 +58,7 @@ class AuthConfigClientCertificateArgsDict(TypedDict):
     """
     The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
     """
-    passphrase: NotRequired[pulumi.Input[_builtins.str]]
+    passphrase: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     'passphrase' should be left unset if private key is not encrypted.
     Note that 'passphrase' is not the password for web server, but an extra layer of security to protected private key.
@@ -69,7 +69,7 @@ class AuthConfigClientCertificateArgs:
     def __init__(__self__, *,
                  encrypted_private_key: pulumi.Input[_builtins.str],
                  ssl_certificate: pulumi.Input[_builtins.str],
-                 passphrase: Optional[pulumi.Input[_builtins.str]] = None):
+                 passphrase: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] encrypted_private_key: The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
         :param pulumi.Input[_builtins.str] ssl_certificate: The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
@@ -107,7 +107,7 @@ class AuthConfigClientCertificateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def passphrase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def passphrase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         'passphrase' should be left unset if private key is not encrypted.
         Note that 'passphrase' is not the password for web server, but an extra layer of security to protected private key.
@@ -115,7 +115,7 @@ class AuthConfigClientCertificateArgs:
         return pulumi.get(self, "passphrase")
 
     @passphrase.setter
-    def passphrase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def passphrase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "passphrase", value)
 
 
@@ -124,37 +124,37 @@ class AuthConfigDecryptedCredentialArgsDict(TypedDict):
     """
     Credential type associated with auth configs.
     """
-    auth_token: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialAuthTokenArgsDict']]
+    auth_token: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialAuthTokenArgs']]]
     """
     Auth token credential.
     Structure is documented below.
     """
-    jwt: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialJwtArgsDict']]
+    jwt: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialJwtArgs']]]
     """
     JWT credential.
     Structure is documented below.
     """
-    oauth2_authorization_code: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgsDict']]
+    oauth2_authorization_code: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs']]]
     """
     OAuth2 authorization code credential.
     Structure is documented below.
     """
-    oauth2_client_credentials: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsArgsDict']]
+    oauth2_client_credentials: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs']]]
     """
     OAuth2 client credentials.
     Structure is documented below.
     """
-    oidc_token: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOidcTokenArgsDict']]
+    oidc_token: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOidcTokenArgs']]]
     """
     Google OIDC ID Token.
     Structure is documented below.
     """
-    service_account_credentials: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialServiceAccountCredentialsArgsDict']]
+    service_account_credentials: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialServiceAccountCredentialsArgs']]]
     """
     Service account credential.
     Structure is documented below.
     """
-    username_and_password: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialUsernameAndPasswordArgsDict']]
+    username_and_password: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialUsernameAndPasswordArgs']]]
     """
     Username and password credential.
     Structure is documented below.
@@ -164,13 +164,13 @@ class AuthConfigDecryptedCredentialArgsDict(TypedDict):
 class AuthConfigDecryptedCredentialArgs:
     def __init__(__self__, *,
                  credential_type: pulumi.Input[_builtins.str],
-                 auth_token: Optional[pulumi.Input['AuthConfigDecryptedCredentialAuthTokenArgs']] = None,
-                 jwt: Optional[pulumi.Input['AuthConfigDecryptedCredentialJwtArgs']] = None,
-                 oauth2_authorization_code: Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs']] = None,
-                 oauth2_client_credentials: Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs']] = None,
-                 oidc_token: Optional[pulumi.Input['AuthConfigDecryptedCredentialOidcTokenArgs']] = None,
-                 service_account_credentials: Optional[pulumi.Input['AuthConfigDecryptedCredentialServiceAccountCredentialsArgs']] = None,
-                 username_and_password: Optional[pulumi.Input['AuthConfigDecryptedCredentialUsernameAndPasswordArgs']] = None):
+                 auth_token: pulumi.Input[Optional['AuthConfigDecryptedCredentialAuthTokenArgs']] = None,
+                 jwt: pulumi.Input[Optional['AuthConfigDecryptedCredentialJwtArgs']] = None,
+                 oauth2_authorization_code: pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs']] = None,
+                 oauth2_client_credentials: pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs']] = None,
+                 oidc_token: pulumi.Input[Optional['AuthConfigDecryptedCredentialOidcTokenArgs']] = None,
+                 service_account_credentials: pulumi.Input[Optional['AuthConfigDecryptedCredentialServiceAccountCredentialsArgs']] = None,
+                 username_and_password: pulumi.Input[Optional['AuthConfigDecryptedCredentialUsernameAndPasswordArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] credential_type: Credential type associated with auth configs.
         :param pulumi.Input['AuthConfigDecryptedCredentialAuthTokenArgs'] auth_token: Auth token credential.
@@ -218,7 +218,7 @@ class AuthConfigDecryptedCredentialArgs:
 
     @_builtins.property
     @pulumi.getter(name="authToken")
-    def auth_token(self) -> Optional[pulumi.Input['AuthConfigDecryptedCredentialAuthTokenArgs']]:
+    def auth_token(self) -> pulumi.Input[Optional['AuthConfigDecryptedCredentialAuthTokenArgs']]:
         """
         Auth token credential.
         Structure is documented below.
@@ -226,12 +226,12 @@ class AuthConfigDecryptedCredentialArgs:
         return pulumi.get(self, "auth_token")
 
     @auth_token.setter
-    def auth_token(self, value: Optional[pulumi.Input['AuthConfigDecryptedCredentialAuthTokenArgs']]):
+    def auth_token(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialAuthTokenArgs']]):
         pulumi.set(self, "auth_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def jwt(self) -> Optional[pulumi.Input['AuthConfigDecryptedCredentialJwtArgs']]:
+    def jwt(self) -> pulumi.Input[Optional['AuthConfigDecryptedCredentialJwtArgs']]:
         """
         JWT credential.
         Structure is documented below.
@@ -239,12 +239,12 @@ class AuthConfigDecryptedCredentialArgs:
         return pulumi.get(self, "jwt")
 
     @jwt.setter
-    def jwt(self, value: Optional[pulumi.Input['AuthConfigDecryptedCredentialJwtArgs']]):
+    def jwt(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialJwtArgs']]):
         pulumi.set(self, "jwt", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2AuthorizationCode")
-    def oauth2_authorization_code(self) -> Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs']]:
+    def oauth2_authorization_code(self) -> pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs']]:
         """
         OAuth2 authorization code credential.
         Structure is documented below.
@@ -252,12 +252,12 @@ class AuthConfigDecryptedCredentialArgs:
         return pulumi.get(self, "oauth2_authorization_code")
 
     @oauth2_authorization_code.setter
-    def oauth2_authorization_code(self, value: Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs']]):
+    def oauth2_authorization_code(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs']]):
         pulumi.set(self, "oauth2_authorization_code", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2ClientCredentials")
-    def oauth2_client_credentials(self) -> Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs']]:
+    def oauth2_client_credentials(self) -> pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs']]:
         """
         OAuth2 client credentials.
         Structure is documented below.
@@ -265,12 +265,12 @@ class AuthConfigDecryptedCredentialArgs:
         return pulumi.get(self, "oauth2_client_credentials")
 
     @oauth2_client_credentials.setter
-    def oauth2_client_credentials(self, value: Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs']]):
+    def oauth2_client_credentials(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs']]):
         pulumi.set(self, "oauth2_client_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcToken")
-    def oidc_token(self) -> Optional[pulumi.Input['AuthConfigDecryptedCredentialOidcTokenArgs']]:
+    def oidc_token(self) -> pulumi.Input[Optional['AuthConfigDecryptedCredentialOidcTokenArgs']]:
         """
         Google OIDC ID Token.
         Structure is documented below.
@@ -278,12 +278,12 @@ class AuthConfigDecryptedCredentialArgs:
         return pulumi.get(self, "oidc_token")
 
     @oidc_token.setter
-    def oidc_token(self, value: Optional[pulumi.Input['AuthConfigDecryptedCredentialOidcTokenArgs']]):
+    def oidc_token(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialOidcTokenArgs']]):
         pulumi.set(self, "oidc_token", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountCredentials")
-    def service_account_credentials(self) -> Optional[pulumi.Input['AuthConfigDecryptedCredentialServiceAccountCredentialsArgs']]:
+    def service_account_credentials(self) -> pulumi.Input[Optional['AuthConfigDecryptedCredentialServiceAccountCredentialsArgs']]:
         """
         Service account credential.
         Structure is documented below.
@@ -291,12 +291,12 @@ class AuthConfigDecryptedCredentialArgs:
         return pulumi.get(self, "service_account_credentials")
 
     @service_account_credentials.setter
-    def service_account_credentials(self, value: Optional[pulumi.Input['AuthConfigDecryptedCredentialServiceAccountCredentialsArgs']]):
+    def service_account_credentials(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialServiceAccountCredentialsArgs']]):
         pulumi.set(self, "service_account_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="usernameAndPassword")
-    def username_and_password(self) -> Optional[pulumi.Input['AuthConfigDecryptedCredentialUsernameAndPasswordArgs']]:
+    def username_and_password(self) -> pulumi.Input[Optional['AuthConfigDecryptedCredentialUsernameAndPasswordArgs']]:
         """
         Username and password credential.
         Structure is documented below.
@@ -304,16 +304,16 @@ class AuthConfigDecryptedCredentialArgs:
         return pulumi.get(self, "username_and_password")
 
     @username_and_password.setter
-    def username_and_password(self, value: Optional[pulumi.Input['AuthConfigDecryptedCredentialUsernameAndPasswordArgs']]):
+    def username_and_password(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialUsernameAndPasswordArgs']]):
         pulumi.set(self, "username_and_password", value)
 
 
 class AuthConfigDecryptedCredentialAuthTokenArgsDict(TypedDict):
-    token: NotRequired[pulumi.Input[_builtins.str]]
+    token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The token for the auth type.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Authentication type, e.g. "Basic", "Bearer", etc.
     """
@@ -321,8 +321,8 @@ class AuthConfigDecryptedCredentialAuthTokenArgsDict(TypedDict):
 @pulumi.input_type
 class AuthConfigDecryptedCredentialAuthTokenArgs:
     def __init__(__self__, *,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] token: The token for the auth type.
         :param pulumi.Input[_builtins.str] type: Authentication type, e.g. "Basic", "Bearer", etc.
@@ -334,44 +334,44 @@ class AuthConfigDecryptedCredentialAuthTokenArgs:
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The token for the auth type.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication type, e.g. "Basic", "Bearer", etc.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class AuthConfigDecryptedCredentialJwtArgsDict(TypedDict):
-    jwt: NotRequired[pulumi.Input[_builtins.str]]
+    jwt: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The token calculated by the header, payload and signature.
     """
-    jwt_header: NotRequired[pulumi.Input[_builtins.str]]
+    jwt_header: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Identifies which algorithm is used to generate the signature.
     """
-    jwt_payload: NotRequired[pulumi.Input[_builtins.str]]
+    jwt_payload: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Contains a set of claims. The JWT specification defines seven Registered Claim Names which are the standard fields commonly included in tokens. Custom claims are usually also included, depending on the purpose of the token.
     """
-    secret: NotRequired[pulumi.Input[_builtins.str]]
+    secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     User's pre-shared secret to sign the token.
     """
@@ -379,10 +379,10 @@ class AuthConfigDecryptedCredentialJwtArgsDict(TypedDict):
 @pulumi.input_type
 class AuthConfigDecryptedCredentialJwtArgs:
     def __init__(__self__, *,
-                 jwt: Optional[pulumi.Input[_builtins.str]] = None,
-                 jwt_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 jwt_payload: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 jwt: pulumi.Input[Optional[_builtins.str]] = None,
+                 jwt_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 jwt_payload: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] jwt: (Output)
                The token calculated by the header, payload and signature.
@@ -401,7 +401,7 @@ class AuthConfigDecryptedCredentialJwtArgs:
 
     @_builtins.property
     @pulumi.getter
-    def jwt(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jwt(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The token calculated by the header, payload and signature.
@@ -409,64 +409,64 @@ class AuthConfigDecryptedCredentialJwtArgs:
         return pulumi.get(self, "jwt")
 
     @jwt.setter
-    def jwt(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jwt(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jwt", value)
 
     @_builtins.property
     @pulumi.getter(name="jwtHeader")
-    def jwt_header(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jwt_header(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifies which algorithm is used to generate the signature.
         """
         return pulumi.get(self, "jwt_header")
 
     @jwt_header.setter
-    def jwt_header(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jwt_header(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jwt_header", value)
 
     @_builtins.property
     @pulumi.getter(name="jwtPayload")
-    def jwt_payload(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jwt_payload(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Contains a set of claims. The JWT specification defines seven Registered Claim Names which are the standard fields commonly included in tokens. Custom claims are usually also included, depending on the purpose of the token.
         """
         return pulumi.get(self, "jwt_payload")
 
     @jwt_payload.setter
-    def jwt_payload(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jwt_payload(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jwt_payload", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User's pre-shared secret to sign the token.
         """
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
 
 class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgsDict(TypedDict):
-    auth_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    auth_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The auth url endpoint to send the auth code request to.
     """
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The client's id.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The client's secret.
     """
-    scope: NotRequired[pulumi.Input[_builtins.str]]
+    scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A space-delimited list of requested scope permissions.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The token url endpoint to send the token request to.
     """
@@ -474,11 +474,11 @@ class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgsDict(TypedDict):
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs:
     def __init__(__self__, *,
-                 auth_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_endpoint: The auth url endpoint to send the auth code request to.
         :param pulumi.Input[_builtins.str] client_id: The client's id.
@@ -499,87 +499,87 @@ class AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="authEndpoint")
-    def auth_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The auth url endpoint to send the auth code request to.
         """
         return pulumi.get(self, "auth_endpoint")
 
     @auth_endpoint.setter
-    def auth_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client's id.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client's secret.
         """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A space-delimited list of requested scope permissions.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The token url endpoint to send the token request to.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsArgsDict(TypedDict):
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The client's ID.
     """
-    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The client's secret.
     """
-    request_type: NotRequired[pulumi.Input[_builtins.str]]
+    request_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represent how to pass parameters to fetch access token Possible values: ["REQUEST_TYPE_UNSPECIFIED", "REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
     """
-    scope: NotRequired[pulumi.Input[_builtins.str]]
+    scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A space-delimited list of requested scope permissions.
     """
-    token_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
     """
-    token_params: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgsDict']]
+    token_params: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs']]]
     """
     Token parameters for the auth request.
     """
@@ -587,12 +587,12 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsArgsDict(TypedDict):
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_params: Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs']] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_params: pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: The client's ID.
         :param pulumi.Input[_builtins.str] client_secret: The client's secret.
@@ -616,79 +616,79 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client's ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client's secret.
         """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="requestType")
-    def request_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represent how to pass parameters to fetch access token Possible values: ["REQUEST_TYPE_UNSPECIFIED", "REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
         """
         return pulumi.get(self, "request_type")
 
     @request_type.setter
-    def request_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A space-delimited list of requested scope permissions.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
         """
         return pulumi.get(self, "token_endpoint")
 
     @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenParams")
-    def token_params(self) -> Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs']]:
+    def token_params(self) -> pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs']]:
         """
         Token parameters for the auth request.
         """
         return pulumi.get(self, "token_params")
 
     @token_params.setter
-    def token_params(self, value: Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs']]):
+    def token_params(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs']]):
         pulumi.set(self, "token_params", value)
 
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgsDict(TypedDict):
-    entries: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgsDict']]]]
+    entries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs']]]]]
     """
     A list of parameter map entries.
     Structure is documented below.
@@ -697,7 +697,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgsDict(Ty
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs:
     def __init__(__self__, *,
-                 entries: Optional[pulumi.Input[Sequence[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs']]]] = None):
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs']]] entries: A list of parameter map entries.
                Structure is documented below.
@@ -707,7 +707,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs']]]]:
+    def entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs']]]]:
         """
         A list of parameter map entries.
         Structure is documented below.
@@ -715,17 +715,17 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs:
         return pulumi.get(self, "entries")
 
     @entries.setter
-    def entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs']]]]):
+    def entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs']]]]):
         pulumi.set(self, "entries", value)
 
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgsDict']]
+    key: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs']]]
     """
     Key of the map entry.
     Structure is documented below.
     """
-    value: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgsDict']]
+    value: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs']]]
     """
     Value of the map entry.
     Structure is documented below.
@@ -734,8 +734,8 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgsDi
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs']] = None,
-                 value: Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs']] = None):
+                 key: pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs']] = None,
+                 value: pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs']] = None):
         """
         :param pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs'] key: Key of the map entry.
                Structure is documented below.
@@ -749,7 +749,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs']]:
+    def key(self) -> pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs']]:
         """
         Key of the map entry.
         Structure is documented below.
@@ -757,12 +757,12 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs']]):
+    def key(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs']]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs']]:
+    def value(self) -> pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs']]:
         """
         Value of the map entry.
         Structure is documented below.
@@ -770,12 +770,12 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs']]):
+    def value(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs']]):
         pulumi.set(self, "value", value)
 
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgsDict(TypedDict):
-    literal_value: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgsDict']]
+    literal_value: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs']]]
     """
     Passing a literal value
     Structure is documented below.
@@ -784,7 +784,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArg
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs:
     def __init__(__self__, *,
-                 literal_value: Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs']] = None):
+                 literal_value: pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs']] = None):
         """
         :param pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs'] literal_value: Passing a literal value
                Structure is documented below.
@@ -794,7 +794,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArg
 
     @_builtins.property
     @pulumi.getter(name="literalValue")
-    def literal_value(self) -> Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs']]:
+    def literal_value(self) -> pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs']]:
         """
         Passing a literal value
         Structure is documented below.
@@ -802,12 +802,12 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArg
         return pulumi.get(self, "literal_value")
 
     @literal_value.setter
-    def literal_value(self, value: Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs']]):
+    def literal_value(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs']]):
         pulumi.set(self, "literal_value", value)
 
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgsDict(TypedDict):
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String.
     """
@@ -815,7 +815,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLit
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs:
     def __init__(__self__, *,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] string_value: String.
         """
@@ -824,19 +824,19 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLit
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgsDict(TypedDict):
-    literal_value: NotRequired[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgsDict']]
+    literal_value: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs']]]
     """
     Passing a literal value
     Structure is documented below.
@@ -845,7 +845,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueA
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs:
     def __init__(__self__, *,
-                 literal_value: Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs']] = None):
+                 literal_value: pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs']] = None):
         """
         :param pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs'] literal_value: Passing a literal value
                Structure is documented below.
@@ -855,7 +855,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueA
 
     @_builtins.property
     @pulumi.getter(name="literalValue")
-    def literal_value(self) -> Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs']]:
+    def literal_value(self) -> pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs']]:
         """
         Passing a literal value
         Structure is documented below.
@@ -863,12 +863,12 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueA
         return pulumi.get(self, "literal_value")
 
     @literal_value.setter
-    def literal_value(self, value: Optional[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs']]):
+    def literal_value(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs']]):
         pulumi.set(self, "literal_value", value)
 
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgsDict(TypedDict):
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String.
     """
@@ -876,7 +876,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueL
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs:
     def __init__(__self__, *,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] string_value: String.
         """
@@ -885,32 +885,32 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueL
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
 class AuthConfigDecryptedCredentialOidcTokenArgsDict(TypedDict):
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
     """
-    service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The service account email to be used as the identity for the token.
     """
-    token: NotRequired[pulumi.Input[_builtins.str]]
+    token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     ID token obtained for the service account.
     """
-    token_expire_time: NotRequired[pulumi.Input[_builtins.str]]
+    token_expire_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The approximate time until the token retrieved is valid.
@@ -920,10 +920,10 @@ class AuthConfigDecryptedCredentialOidcTokenArgsDict(TypedDict):
 @pulumi.input_type
 class AuthConfigDecryptedCredentialOidcTokenArgs:
     def __init__(__self__, *,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_expire_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_expire_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] audience: Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
         :param pulumi.Input[_builtins.str] service_account_email: The service account email to be used as the identity for the token.
@@ -944,31 +944,31 @@ class AuthConfigDecryptedCredentialOidcTokenArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
         """
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account email to be used as the identity for the token.
         """
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         ID token obtained for the service account.
@@ -976,12 +976,12 @@ class AuthConfigDecryptedCredentialOidcTokenArgs:
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenExpireTime")
-    def token_expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The approximate time until the token retrieved is valid.
@@ -990,16 +990,16 @@ class AuthConfigDecryptedCredentialOidcTokenArgs:
         return pulumi.get(self, "token_expire_time")
 
     @token_expire_time.setter
-    def token_expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_expire_time", value)
 
 
 class AuthConfigDecryptedCredentialServiceAccountCredentialsArgsDict(TypedDict):
-    scope: NotRequired[pulumi.Input[_builtins.str]]
+    scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A space-delimited list of requested scope permissions.
     """
-    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the service account that has the permission to make the request.
     """
@@ -1007,8 +1007,8 @@ class AuthConfigDecryptedCredentialServiceAccountCredentialsArgsDict(TypedDict):
 @pulumi.input_type
 class AuthConfigDecryptedCredentialServiceAccountCredentialsArgs:
     def __init__(__self__, *,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None):
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] scope: A space-delimited list of requested scope permissions.
         :param pulumi.Input[_builtins.str] service_account: Name of the service account that has the permission to make the request.
@@ -1020,37 +1020,37 @@ class AuthConfigDecryptedCredentialServiceAccountCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A space-delimited list of requested scope permissions.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the service account that has the permission to make the request.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
 
 class AuthConfigDecryptedCredentialUsernameAndPasswordArgsDict(TypedDict):
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password to be used.
 
     <a name="nested_decrypted_credential_oauth2_authorization_code"></a>The `oauth2_authorization_code` block supports:
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username to be used.
     """
@@ -1058,8 +1058,8 @@ class AuthConfigDecryptedCredentialUsernameAndPasswordArgsDict(TypedDict):
 @pulumi.input_type
 class AuthConfigDecryptedCredentialUsernameAndPasswordArgs:
     def __init__(__self__, *,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] password: Password to be used.
                
@@ -1073,7 +1073,7 @@ class AuthConfigDecryptedCredentialUsernameAndPasswordArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password to be used.
 
@@ -1082,19 +1082,19 @@ class AuthConfigDecryptedCredentialUsernameAndPasswordArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username to be used.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -1115,14 +1115,14 @@ class ClientCloudKmsConfigArgsDict(TypedDict):
     manage access control on groups of keys. A key ring's name does not need to be
     unique across a Google Cloud project, but must be unique within a given location.
     """
-    key_version: NotRequired[pulumi.Input[_builtins.str]]
+    key_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Each version of a key contains key material used for encryption or signing.
     A key's version is represented by an integer, starting at 1. To decrypt data
     or verify a signature, you must use the same key version that was used to
     encrypt or sign the data.
     """
-    kms_project_id: NotRequired[pulumi.Input[_builtins.str]]
+    kms_project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Google Cloud project id of the project where the kms key stored. If empty,
     the kms key is stored at the same project as customer's project and ecrypted
@@ -1136,8 +1136,8 @@ class ClientCloudKmsConfigArgs:
                  key: pulumi.Input[_builtins.str],
                  kms_location: pulumi.Input[_builtins.str],
                  kms_ring: pulumi.Input[_builtins.str],
-                 key_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 key_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: A Cloud KMS key is a named object containing one or more key versions, along
                with metadata for the key. A key exists on exactly one key ring tied to a
@@ -1205,7 +1205,7 @@ class ClientCloudKmsConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="keyVersion")
-    def key_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Each version of a key contains key material used for encryption or signing.
         A key's version is represented by an integer, starting at 1. To decrypt data
@@ -1215,12 +1215,12 @@ class ClientCloudKmsConfigArgs:
         return pulumi.get(self, "key_version")
 
     @key_version.setter
-    def key_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_version", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsProjectId")
-    def kms_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Google Cloud project id of the project where the kms key stored. If empty,
         the kms key is stored at the same project as customer's project and ecrypted
@@ -1230,7 +1230,7 @@ class ClientCloudKmsConfigArgs:
         return pulumi.get(self, "kms_project_id")
 
     @kms_project_id.setter
-    def kms_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_project_id", value)
 
 

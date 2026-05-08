@@ -77,14 +77,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+//			apigee2, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 //				Project: pulumi.String(pulumi.String(current.Project)),
 //				Service: pulumi.String("apigee.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+//			compute2, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
 //				Project: pulumi.String(pulumi.String(current.Project)),
 //				Service: pulumi.String("compute.googleapis.com"),
 //			})
@@ -102,7 +102,7 @@ import (
 //				Name:    pulumi.String("apigee-network"),
 //				Project: pulumi.String(pulumi.String(current.Project)),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				compute,
+//				compute2,
 //			}))
 //			if err != nil {
 //				return err
@@ -135,7 +135,7 @@ import (
 //				BillingType:       pulumi.String("EVALUATION"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
-//				apigee,
+//				apigee2,
 //			}))
 //			if err != nil {
 //				return err

@@ -321,74 +321,74 @@ export interface ConnectionState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration for connections to Bitbucket Cloud.
      * Structure is documented below.
      */
-    bitbucketCloudConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionBitbucketCloudConfig>;
+    bitbucketCloudConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionBitbucketCloudConfig | undefined>;
     /**
      * Configuration for connections to Bitbucket Data Center.
      * Structure is documented below.
      */
-    bitbucketDataCenterConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionBitbucketDataCenterConfig>;
+    bitbucketDataCenterConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionBitbucketDataCenterConfig | undefined>;
     /**
      * Output only. Server assigned timestamp for when the connection was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Configuration for connections to github.com.
      * Structure is documented below.
      */
-    githubConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGithubConfig>;
+    githubConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGithubConfig | undefined>;
     /**
      * Configuration for connections to an instance of GitHub Enterprise.
      * Structure is documented below.
      */
-    githubEnterpriseConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGithubEnterpriseConfig>;
+    githubEnterpriseConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGithubEnterpriseConfig | undefined>;
     /**
      * Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
      * Structure is documented below.
      */
-    gitlabConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGitlabConfig>;
+    gitlabConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGitlabConfig | undefined>;
     /**
      * Output only. Installation state of the Connection.
      * Structure is documented below.
      */
-    installationStates?: pulumi.Input<pulumi.Input<inputs.cloudbuildv2.ConnectionInstallationState>[]>;
+    installationStates?: pulumi.Input<pulumi.Input<inputs.cloudbuildv2.ConnectionInstallationState>[] | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The resource name of the connection.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. Set to true when the connection is being set up or updated in the background.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * Output only. Server assigned timestamp for when the connection was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -400,36 +400,36 @@ export interface ConnectionArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration for connections to Bitbucket Cloud.
      * Structure is documented below.
      */
-    bitbucketCloudConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionBitbucketCloudConfig>;
+    bitbucketCloudConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionBitbucketCloudConfig | undefined>;
     /**
      * Configuration for connections to Bitbucket Data Center.
      * Structure is documented below.
      */
-    bitbucketDataCenterConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionBitbucketDataCenterConfig>;
+    bitbucketDataCenterConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionBitbucketDataCenterConfig | undefined>;
     /**
      * If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration for connections to github.com.
      * Structure is documented below.
      */
-    githubConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGithubConfig>;
+    githubConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGithubConfig | undefined>;
     /**
      * Configuration for connections to an instance of GitHub Enterprise.
      * Structure is documented below.
      */
-    githubEnterpriseConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGithubEnterpriseConfig>;
+    githubEnterpriseConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGithubEnterpriseConfig | undefined>;
     /**
      * Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
      * Structure is documented below.
      */
-    gitlabConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGitlabConfig>;
+    gitlabConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGitlabConfig | undefined>;
     /**
      * The location for the resource
      */
@@ -437,10 +437,10 @@ export interface ConnectionArgs {
     /**
      * Immutable. The resource name of the connection.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

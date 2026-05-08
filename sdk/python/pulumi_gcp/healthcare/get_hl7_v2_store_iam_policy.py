@@ -112,7 +112,7 @@ def get_hl7_v2_store_iam_policy(hl7_v2_store_id: Optional[_builtins.str] = None,
         hl7_v2_store_id=pulumi.get(__ret__, 'hl7_v2_store_id'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-def get_hl7_v2_store_iam_policy_output(hl7_v2_store_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_hl7_v2_store_iam_policy_output(hl7_v2_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHl7V2StoreIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.

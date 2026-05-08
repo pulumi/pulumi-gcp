@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Ces
     ///     var fakeSecretVersion = new Gcp.SecretManager.SecretVersion("fake_secret_version", new()
     ///     {
     ///         Secret = fakePrivateKeySecret.Id,
-    ///         SecretData = Std.Index.File.Invoke(new()
+    ///         SecretData = Std.File.Invoke(new()
     ///         {
     ///             Input = "test-fixtures/test.key",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -245,7 +245,7 @@ namespace Pulumi.Gcp.Ces
     ///         },
     ///         ClientCertificateSettings = new Gcp.Ces.Inputs.AppClientCertificateSettingsArgs
     ///         {
-    ///             TlsCertificate = Std.Index.File.Invoke(new()
+    ///             TlsCertificate = Std.File.Invoke(new()
     ///             {
     ///                 Input = "test-fixtures/cert.pem",
     ///             }).Apply(invoke =&gt; invoke.Result),

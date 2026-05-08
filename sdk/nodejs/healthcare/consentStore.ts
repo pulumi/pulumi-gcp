@@ -207,20 +207,20 @@ export interface ConsentStoreState {
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      */
-    dataset?: pulumi.Input<string>;
+    dataset?: pulumi.Input<string | undefined>;
     /**
      * Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
      */
-    defaultConsentTtl?: pulumi.Input<string>;
+    defaultConsentTtl?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
      */
-    enableConsentCreateOnUpdate?: pulumi.Input<boolean>;
+    enableConsentCreateOnUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * User-supplied key-value pairs used to organize Consent stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -234,17 +234,17 @@ export interface ConsentStoreState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of this ConsentStore, for example:
      * "consent1"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -260,11 +260,11 @@ export interface ConsentStoreArgs {
      * Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
      */
-    defaultConsentTtl?: pulumi.Input<string>;
+    defaultConsentTtl?: pulumi.Input<string | undefined>;
     /**
      * If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
      */
-    enableConsentCreateOnUpdate?: pulumi.Input<boolean>;
+    enableConsentCreateOnUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * User-supplied key-value pairs used to organize Consent stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -278,10 +278,10 @@ export interface ConsentStoreArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of this ConsentStore, for example:
      * "consent1"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

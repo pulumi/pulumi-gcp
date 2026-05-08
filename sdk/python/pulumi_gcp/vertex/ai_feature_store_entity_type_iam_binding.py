@@ -25,7 +25,7 @@ class AiFeatureStoreEntityTypeIamBindingArgs:
                  featurestore: pulumi.Input[_builtins.str],
                  members: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  role: pulumi.Input[_builtins.str],
-                 condition: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArgs']] = None):
+                 condition: pulumi.Input[Optional['AiFeatureStoreEntityTypeIamBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a AiFeatureStoreEntityTypeIamBinding resource.
 
@@ -117,23 +117,23 @@ class AiFeatureStoreEntityTypeIamBindingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['AiFeatureStoreEntityTypeIamBindingConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['AiFeatureStoreEntityTypeIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
 class _AiFeatureStoreEntityTypeIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArgs']] = None,
-                 entitytype: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 featurestore: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['AiFeatureStoreEntityTypeIamBindingConditionArgs']] = None,
+                 entitytype: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 featurestore: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureStoreEntityTypeIamBinding resources.
 
@@ -171,52 +171,52 @@ class _AiFeatureStoreEntityTypeIamBindingState:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['AiFeatureStoreEntityTypeIamBindingConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeIamBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['AiFeatureStoreEntityTypeIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def entitytype(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entitytype(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "entitytype")
 
     @entitytype.setter
-    def entitytype(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entitytype(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entitytype", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def featurestore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def featurestore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "featurestore")
 
     @featurestore.setter
-    def featurestore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def featurestore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "featurestore", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -234,12 +234,12 @@ class _AiFeatureStoreEntityTypeIamBindingState:
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
         `vertex.AiFeatureStoreEntityTypeIamBinding` can be used per role. Note that custom roles must be of the format
@@ -248,7 +248,7 @@ class _AiFeatureStoreEntityTypeIamBindingState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
 
@@ -258,11 +258,11 @@ class AiFeatureStoreEntityTypeIamBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['AiFeatureStoreEntityTypeIamBindingConditionArgs', 'AiFeatureStoreEntityTypeIamBindingConditionArgsDict']]] = None,
-                 entitytype: Optional[pulumi.Input[_builtins.str]] = None,
-                 featurestore: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['AiFeatureStoreEntityTypeIamBindingConditionArgs', 'AiFeatureStoreEntityTypeIamBindingConditionArgsDict']]] = None,
+                 entitytype: pulumi.Input[Optional[_builtins.str]] = None,
+                 featurestore: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Three different resources help you manage your IAM policy for Vertex AI FeaturestoreEntitytype. Each of these resources serves a different use case:
@@ -617,11 +617,11 @@ class AiFeatureStoreEntityTypeIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['AiFeatureStoreEntityTypeIamBindingConditionArgs', 'AiFeatureStoreEntityTypeIamBindingConditionArgsDict']]] = None,
-                 entitytype: Optional[pulumi.Input[_builtins.str]] = None,
-                 featurestore: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['AiFeatureStoreEntityTypeIamBindingConditionArgs', 'AiFeatureStoreEntityTypeIamBindingConditionArgsDict']]] = None,
+                 entitytype: pulumi.Input[Optional[_builtins.str]] = None,
+                 featurestore: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -655,12 +655,12 @@ class AiFeatureStoreEntityTypeIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[Union['AiFeatureStoreEntityTypeIamBindingConditionArgs', 'AiFeatureStoreEntityTypeIamBindingConditionArgsDict']]] = None,
-            entitytype: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            featurestore: Optional[pulumi.Input[_builtins.str]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiFeatureStoreEntityTypeIamBinding':
+            condition: pulumi.Input[Optional[Union['AiFeatureStoreEntityTypeIamBindingConditionArgs', 'AiFeatureStoreEntityTypeIamBindingConditionArgsDict']]] = None,
+            entitytype: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            featurestore: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiFeatureStoreEntityTypeIamBinding':
         """
         Get an existing AiFeatureStoreEntityTypeIamBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

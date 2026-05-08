@@ -124,24 +124,24 @@ export interface EnvReferencesState {
     /**
      * Optional. A human-readable description of this reference.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      */
-    envId?: pulumi.Input<string>;
+    envId?: pulumi.Input<string | undefined>;
     /**
      * Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
      */
-    refers?: pulumi.Input<string>;
+    refers?: pulumi.Input<string | undefined>;
     /**
      * The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -151,7 +151,7 @@ export interface EnvReferencesArgs {
     /**
      * Optional. A human-readable description of this reference.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
@@ -160,7 +160,7 @@ export interface EnvReferencesArgs {
     /**
      * Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
      */

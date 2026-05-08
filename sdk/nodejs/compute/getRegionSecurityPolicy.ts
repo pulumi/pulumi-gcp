@@ -105,9 +105,9 @@ export interface GetRegionSecurityPolicyOutputArgs {
     /**
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region in which the Region Security Policy resides. If not specified, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

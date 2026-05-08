@@ -25,8 +25,8 @@ class V2FolderNotificationConfigArgs:
                  folder: pulumi.Input[_builtins.str],
                  pubsub_topic: pulumi.Input[_builtins.str],
                  streaming_config: pulumi.Input['V2FolderNotificationConfigStreamingConfigArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2FolderNotificationConfig resource.
 
@@ -100,40 +100,40 @@ class V2FolderNotificationConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the notification config (max of 1024 characters).
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location ID of the parent organization. If not provided, 'global' will be used as the default location.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
 
 @pulumi.input_type
 class _V2FolderNotificationConfigState:
     def __init__(__self__, *,
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 streaming_config: Optional[pulumi.Input['V2FolderNotificationConfigStreamingConfigArgs']] = None):
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 streaming_config: pulumi.Input[Optional['V2FolderNotificationConfigStreamingConfigArgs']] = None):
         """
         Input properties used for looking up and filtering V2FolderNotificationConfig resources.
 
@@ -169,55 +169,55 @@ class _V2FolderNotificationConfigState:
 
     @_builtins.property
     @pulumi.getter(name="configId")
-    def config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This must be unique within the organization.
         """
         return pulumi.get(self, "config_id")
 
     @config_id.setter
-    def config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the notification config (max of 1024 characters).
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Numerical ID of the parent folder.
         """
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location ID of the parent organization. If not provided, 'global' will be used as the default location.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of this notification config, in the format
         `folders/{{folder}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
@@ -225,12 +225,12 @@ class _V2FolderNotificationConfigState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubTopic")
-    def pubsub_topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pubsub_topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Pub/Sub topic to send notifications to. Its format is
         "projects/[project_id]/topics/[topic]".
@@ -238,12 +238,12 @@ class _V2FolderNotificationConfigState:
         return pulumi.get(self, "pubsub_topic")
 
     @pubsub_topic.setter
-    def pubsub_topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pubsub_topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pubsub_topic", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account that needs "pubsub.topics.publish" permission to
         publish to the Pub/Sub topic.
@@ -251,12 +251,12 @@ class _V2FolderNotificationConfigState:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="streamingConfig")
-    def streaming_config(self) -> Optional[pulumi.Input['V2FolderNotificationConfigStreamingConfigArgs']]:
+    def streaming_config(self) -> pulumi.Input[Optional['V2FolderNotificationConfigStreamingConfigArgs']]:
         """
         The config for triggering streaming-based notifications.
         Structure is documented below.
@@ -264,7 +264,7 @@ class _V2FolderNotificationConfigState:
         return pulumi.get(self, "streaming_config")
 
     @streaming_config.setter
-    def streaming_config(self, value: Optional[pulumi.Input['V2FolderNotificationConfigStreamingConfigArgs']]):
+    def streaming_config(self, value: pulumi.Input[Optional['V2FolderNotificationConfigStreamingConfigArgs']]):
         pulumi.set(self, "streaming_config", value)
 
 
@@ -274,12 +274,12 @@ class V2FolderNotificationConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 streaming_config: Optional[pulumi.Input[Union['V2FolderNotificationConfigStreamingConfigArgs', 'V2FolderNotificationConfigStreamingConfigArgsDict']]] = None,
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 streaming_config: pulumi.Input[Optional[Union['V2FolderNotificationConfigStreamingConfigArgs', 'V2FolderNotificationConfigStreamingConfigArgsDict']]] = None,
                  __props__=None):
         """
         This is a continuous export that exports findings to a Pub/Sub topic.
@@ -407,12 +407,12 @@ class V2FolderNotificationConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 streaming_config: Optional[pulumi.Input[Union['V2FolderNotificationConfigStreamingConfigArgs', 'V2FolderNotificationConfigStreamingConfigArgsDict']]] = None,
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 streaming_config: pulumi.Input[Optional[Union['V2FolderNotificationConfigStreamingConfigArgs', 'V2FolderNotificationConfigStreamingConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -448,14 +448,14 @@ class V2FolderNotificationConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            folder: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            streaming_config: Optional[pulumi.Input[Union['V2FolderNotificationConfigStreamingConfigArgs', 'V2FolderNotificationConfigStreamingConfigArgsDict']]] = None) -> 'V2FolderNotificationConfig':
+            config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            streaming_config: pulumi.Input[Optional[Union['V2FolderNotificationConfigStreamingConfigArgs', 'V2FolderNotificationConfigStreamingConfigArgsDict']]] = None) -> 'V2FolderNotificationConfig':
         """
         Get an existing V2FolderNotificationConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -148,12 +148,12 @@ export interface ApplicationUrlDispatchRulesState {
      * Rules to match an HTTP request and dispatch that request to a service.
      * Structure is documented below.
      */
-    dispatchRules?: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRulesDispatchRule>[]>;
+    dispatchRules?: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRulesDispatchRule>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -169,5 +169,5 @@ export interface ApplicationUrlDispatchRulesArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

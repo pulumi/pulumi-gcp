@@ -25,7 +25,7 @@ class ConsentStoreIamBindingArgs:
                  dataset: pulumi.Input[_builtins.str],
                  members: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  role: pulumi.Input[_builtins.str],
-                 condition: Optional[pulumi.Input['ConsentStoreIamBindingConditionArgs']] = None):
+                 condition: pulumi.Input[Optional['ConsentStoreIamBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a ConsentStoreIamBinding resource.
 
@@ -121,23 +121,23 @@ class ConsentStoreIamBindingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ConsentStoreIamBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['ConsentStoreIamBindingConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ConsentStoreIamBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['ConsentStoreIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
 class _ConsentStoreIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['ConsentStoreIamBindingConditionArgs']] = None,
-                 consent_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['ConsentStoreIamBindingConditionArgs']] = None,
+                 consent_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConsentStoreIamBinding resources.
 
@@ -177,28 +177,28 @@ class _ConsentStoreIamBindingState:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ConsentStoreIamBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['ConsentStoreIamBindingConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ConsentStoreIamBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['ConsentStoreIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="consentStoreId")
-    def consent_store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consent_store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "consent_store_id")
 
     @consent_store_id.setter
-    def consent_store_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consent_store_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consent_store_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -207,24 +207,24 @@ class _ConsentStoreIamBindingState:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -242,12 +242,12 @@ class _ConsentStoreIamBindingState:
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
         `healthcare.ConsentStoreIamBinding` can be used per role. Note that custom roles must be of the format
@@ -256,7 +256,7 @@ class _ConsentStoreIamBindingState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
 
@@ -266,11 +266,11 @@ class ConsentStoreIamBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['ConsentStoreIamBindingConditionArgs', 'ConsentStoreIamBindingConditionArgsDict']]] = None,
-                 consent_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['ConsentStoreIamBindingConditionArgs', 'ConsentStoreIamBindingConditionArgsDict']]] = None,
+                 consent_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Three different resources help you manage your IAM policy for Cloud Healthcare ConsentStore. Each of these resources serves a different use case:
@@ -615,11 +615,11 @@ class ConsentStoreIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['ConsentStoreIamBindingConditionArgs', 'ConsentStoreIamBindingConditionArgsDict']]] = None,
-                 consent_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['ConsentStoreIamBindingConditionArgs', 'ConsentStoreIamBindingConditionArgsDict']]] = None,
+                 consent_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -653,12 +653,12 @@ class ConsentStoreIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[Union['ConsentStoreIamBindingConditionArgs', 'ConsentStoreIamBindingConditionArgsDict']]] = None,
-            consent_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dataset: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConsentStoreIamBinding':
+            condition: pulumi.Input[Optional[Union['ConsentStoreIamBindingConditionArgs', 'ConsentStoreIamBindingConditionArgsDict']]] = None,
+            consent_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConsentStoreIamBinding':
         """
         Get an existing ConsentStoreIamBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

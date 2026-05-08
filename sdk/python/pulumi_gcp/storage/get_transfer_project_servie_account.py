@@ -126,7 +126,7 @@ def get_transfer_project_servie_account(project: Optional[_builtins.str] = None,
         member=pulumi.get(__ret__, 'member'),
         project=pulumi.get(__ret__, 'project'),
         subject_id=pulumi.get(__ret__, 'subject_id'))
-def get_transfer_project_servie_account_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_transfer_project_servie_account_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransferProjectServieAccountResult]:
     """
     Use this data source to retrieve Storage Transfer service account for this project

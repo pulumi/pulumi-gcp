@@ -257,11 +257,11 @@ export interface JobState {
     /**
      * If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
      */
-    driverControlsFilesUri?: pulumi.Input<string>;
+    driverControlsFilesUri?: pulumi.Input<string | undefined>;
     /**
      * A URI pointing to the location of the stdout of the job's driver program.
      */
-    driverOutputResourceUri?: pulumi.Input<string>;
+    driverOutputResourceUri?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      *
@@ -269,81 +269,81 @@ export interface JobState {
      *
      * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * By default, you can only delete inactive jobs within
      * Dataproc. Setting this to true, and calling destroy, will ensure that the
      * job is first cancelled before issuing the delete.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The config of Hadoop job
      */
-    hadoopConfig?: pulumi.Input<inputs.dataproc.JobHadoopConfig>;
+    hadoopConfig?: pulumi.Input<inputs.dataproc.JobHadoopConfig | undefined>;
     /**
      * The config of hive job
      */
-    hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig>;
+    hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig | undefined>;
     /**
      * The list of labels (key/value pairs) to add to the job.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The config of pag job.
      */
-    pigConfig?: pulumi.Input<inputs.dataproc.JobPigConfig>;
+    pigConfig?: pulumi.Input<inputs.dataproc.JobPigConfig | undefined>;
     /**
      * The config of job placement.
      */
-    placement?: pulumi.Input<inputs.dataproc.JobPlacement>;
+    placement?: pulumi.Input<inputs.dataproc.JobPlacement | undefined>;
     /**
      * The config of presto job
      */
-    prestoConfig?: pulumi.Input<inputs.dataproc.JobPrestoConfig>;
+    prestoConfig?: pulumi.Input<inputs.dataproc.JobPrestoConfig | undefined>;
     /**
      * The project in which the `cluster` can be found and jobs
      * subsequently run against. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The config of pySpark job.
      */
-    pysparkConfig?: pulumi.Input<inputs.dataproc.JobPysparkConfig>;
+    pysparkConfig?: pulumi.Input<inputs.dataproc.JobPysparkConfig | undefined>;
     /**
      * The reference of the job
      */
-    reference?: pulumi.Input<inputs.dataproc.JobReference>;
+    reference?: pulumi.Input<inputs.dataproc.JobReference | undefined>;
     /**
      * The Cloud Dataproc region. This essentially determines which clusters are available
      * for this job to be submitted to. If not specified, defaults to `global`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Optional. Job scheduling configuration.
      */
-    scheduling?: pulumi.Input<inputs.dataproc.JobScheduling>;
+    scheduling?: pulumi.Input<inputs.dataproc.JobScheduling | undefined>;
     /**
      * The config of the Spark job.
      */
-    sparkConfig?: pulumi.Input<inputs.dataproc.JobSparkConfig>;
+    sparkConfig?: pulumi.Input<inputs.dataproc.JobSparkConfig | undefined>;
     /**
      * The config of SparkSql job
      */
-    sparksqlConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfig>;
+    sparksqlConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfig | undefined>;
     /**
      * The status of the job.
      */
-    statuses?: pulumi.Input<pulumi.Input<inputs.dataproc.JobStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.dataproc.JobStatus>[] | undefined>;
     /**
      * If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
      */
-    waitForCompletion?: pulumi.Input<boolean>;
+    waitForCompletion?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -355,25 +355,25 @@ export interface JobArgs {
      * Dataproc. Setting this to true, and calling destroy, will ensure that the
      * job is first cancelled before issuing the delete.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The config of Hadoop job
      */
-    hadoopConfig?: pulumi.Input<inputs.dataproc.JobHadoopConfig>;
+    hadoopConfig?: pulumi.Input<inputs.dataproc.JobHadoopConfig | undefined>;
     /**
      * The config of hive job
      */
-    hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig>;
+    hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig | undefined>;
     /**
      * The list of labels (key/value pairs) to add to the job.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The config of pag job.
      */
-    pigConfig?: pulumi.Input<inputs.dataproc.JobPigConfig>;
+    pigConfig?: pulumi.Input<inputs.dataproc.JobPigConfig | undefined>;
     /**
      * The config of job placement.
      */
@@ -381,39 +381,39 @@ export interface JobArgs {
     /**
      * The config of presto job
      */
-    prestoConfig?: pulumi.Input<inputs.dataproc.JobPrestoConfig>;
+    prestoConfig?: pulumi.Input<inputs.dataproc.JobPrestoConfig | undefined>;
     /**
      * The project in which the `cluster` can be found and jobs
      * subsequently run against. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The config of pySpark job.
      */
-    pysparkConfig?: pulumi.Input<inputs.dataproc.JobPysparkConfig>;
+    pysparkConfig?: pulumi.Input<inputs.dataproc.JobPysparkConfig | undefined>;
     /**
      * The reference of the job
      */
-    reference?: pulumi.Input<inputs.dataproc.JobReference>;
+    reference?: pulumi.Input<inputs.dataproc.JobReference | undefined>;
     /**
      * The Cloud Dataproc region. This essentially determines which clusters are available
      * for this job to be submitted to. If not specified, defaults to `global`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Optional. Job scheduling configuration.
      */
-    scheduling?: pulumi.Input<inputs.dataproc.JobScheduling>;
+    scheduling?: pulumi.Input<inputs.dataproc.JobScheduling | undefined>;
     /**
      * The config of the Spark job.
      */
-    sparkConfig?: pulumi.Input<inputs.dataproc.JobSparkConfig>;
+    sparkConfig?: pulumi.Input<inputs.dataproc.JobSparkConfig | undefined>;
     /**
      * The config of SparkSql job
      */
-    sparksqlConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfig>;
+    sparksqlConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfig | undefined>;
     /**
      * If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
      */
-    waitForCompletion?: pulumi.Input<boolean>;
+    waitForCompletion?: pulumi.Input<boolean | undefined>;
 }

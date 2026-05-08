@@ -108,5 +108,5 @@ export interface GetRegionalParameterOutputArgs {
     /**
      * The ID of the project in which the resource belongs.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

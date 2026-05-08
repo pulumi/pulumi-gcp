@@ -390,8 +390,8 @@ def get_bucket(name: Optional[_builtins.str] = None,
         url=pulumi.get(__ret__, 'url'),
         versionings=pulumi.get(__ret__, 'versionings'),
         websites=pulumi.get(__ret__, 'websites'))
-def get_bucket_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                      project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_bucket_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                      project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBucketResult]:
     """
     Gets an existing bucket in Google Cloud Storage service (GCS).

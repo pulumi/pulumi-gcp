@@ -366,45 +366,45 @@ export interface OrganizationState {
     /**
      * Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      */
-    analyticsRegion?: pulumi.Input<string>;
+    analyticsRegion?: pulumi.Input<string | undefined>;
     /**
      * Cloud KMS key name used for encrypting API consumer data.
      */
-    apiConsumerDataEncryptionKeyName?: pulumi.Input<string>;
+    apiConsumerDataEncryptionKeyName?: pulumi.Input<string | undefined>;
     /**
      * This field is needed only for customers using non-default data residency regions.
      * Apigee stores some control plane data only in single region.
      * This field determines which single region Apigee should use.
      */
-    apiConsumerDataLocation?: pulumi.Input<string>;
+    apiConsumerDataLocation?: pulumi.Input<string | undefined>;
     /**
      * Output only. Project ID of the Apigee Tenant Project.
      */
-    apigeeProjectId?: pulumi.Input<string>;
+    apigeeProjectId?: pulumi.Input<string | undefined>;
     /**
      * Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
      * See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
      * Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
      */
-    authorizedNetwork?: pulumi.Input<string>;
+    authorizedNetwork?: pulumi.Input<string | undefined>;
     /**
      * Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
      */
-    billingType?: pulumi.Input<string>;
+    billingType?: pulumi.Input<string | undefined>;
     /**
      * Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
      * Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
      */
-    caCertificate?: pulumi.Input<string>;
+    caCertificate?: pulumi.Input<string | undefined>;
     /**
      * Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
      * Only used for the data residency region "US" or "EU".
      */
-    controlPlaneEncryptionKeyName?: pulumi.Input<string>;
+    controlPlaneEncryptionKeyName?: pulumi.Input<string | undefined>;
     /**
      * Description of the Apigee organization.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Flag that specifies whether the VPC Peering through Private Google Access should be
      * disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
@@ -412,24 +412,24 @@ export interface OrganizationState {
      * Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
      * of any Apigee runtime instance and can be updated only when there are no runtime instances.
      */
-    disableVpcPeering?: pulumi.Input<boolean>;
+    disableVpcPeering?: pulumi.Input<boolean | undefined>;
     /**
      * The display name of the Apigee organization.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Output only. Name of the Apigee organization.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project ID associated with the Apigee organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Properties defined in the Apigee organization profile.
      * Structure is documented below.
      */
-    properties?: pulumi.Input<inputs.apigee.OrganizationProperties>;
+    properties?: pulumi.Input<inputs.apigee.OrganizationProperties | undefined>;
     /**
      * Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
      * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
@@ -438,25 +438,25 @@ export interface OrganizationState {
      * Default value is `DELETION_RETENTION_UNSPECIFIED`.
      * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
      */
-    retention?: pulumi.Input<string>;
+    retention?: pulumi.Input<string | undefined>;
     /**
      * Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
      * Update is not allowed after the organization is created.
      * If not specified, a Google-Managed encryption key will be used.
      * Valid only when `RuntimeType` is CLOUD. For example: `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`.
      */
-    runtimeDatabaseEncryptionKeyName?: pulumi.Input<string>;
+    runtimeDatabaseEncryptionKeyName?: pulumi.Input<string | undefined>;
     /**
      * Runtime type of the Apigee organization based on the Apigee subscription purchased.
      * Default value is `CLOUD`.
      * Possible values are: `CLOUD`, `HYBRID`.
      */
-    runtimeType?: pulumi.Input<string>;
+    runtimeType?: pulumi.Input<string | undefined>;
     /**
      * Output only. Subscription type of the Apigee organization.
      * Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
      */
-    subscriptionType?: pulumi.Input<string>;
+    subscriptionType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -466,36 +466,36 @@ export interface OrganizationArgs {
     /**
      * Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      */
-    analyticsRegion?: pulumi.Input<string>;
+    analyticsRegion?: pulumi.Input<string | undefined>;
     /**
      * Cloud KMS key name used for encrypting API consumer data.
      */
-    apiConsumerDataEncryptionKeyName?: pulumi.Input<string>;
+    apiConsumerDataEncryptionKeyName?: pulumi.Input<string | undefined>;
     /**
      * This field is needed only for customers using non-default data residency regions.
      * Apigee stores some control plane data only in single region.
      * This field determines which single region Apigee should use.
      */
-    apiConsumerDataLocation?: pulumi.Input<string>;
+    apiConsumerDataLocation?: pulumi.Input<string | undefined>;
     /**
      * Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
      * See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
      * Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
      */
-    authorizedNetwork?: pulumi.Input<string>;
+    authorizedNetwork?: pulumi.Input<string | undefined>;
     /**
      * Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
      */
-    billingType?: pulumi.Input<string>;
+    billingType?: pulumi.Input<string | undefined>;
     /**
      * Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
      * Only used for the data residency region "US" or "EU".
      */
-    controlPlaneEncryptionKeyName?: pulumi.Input<string>;
+    controlPlaneEncryptionKeyName?: pulumi.Input<string | undefined>;
     /**
      * Description of the Apigee organization.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Flag that specifies whether the VPC Peering through Private Google Access should be
      * disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
@@ -503,11 +503,11 @@ export interface OrganizationArgs {
      * Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
      * of any Apigee runtime instance and can be updated only when there are no runtime instances.
      */
-    disableVpcPeering?: pulumi.Input<boolean>;
+    disableVpcPeering?: pulumi.Input<boolean | undefined>;
     /**
      * The display name of the Apigee organization.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The project ID associated with the Apigee organization.
      */
@@ -516,7 +516,7 @@ export interface OrganizationArgs {
      * Properties defined in the Apigee organization profile.
      * Structure is documented below.
      */
-    properties?: pulumi.Input<inputs.apigee.OrganizationProperties>;
+    properties?: pulumi.Input<inputs.apigee.OrganizationProperties | undefined>;
     /**
      * Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
      * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
@@ -525,18 +525,18 @@ export interface OrganizationArgs {
      * Default value is `DELETION_RETENTION_UNSPECIFIED`.
      * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
      */
-    retention?: pulumi.Input<string>;
+    retention?: pulumi.Input<string | undefined>;
     /**
      * Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
      * Update is not allowed after the organization is created.
      * If not specified, a Google-Managed encryption key will be used.
      * Valid only when `RuntimeType` is CLOUD. For example: `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`.
      */
-    runtimeDatabaseEncryptionKeyName?: pulumi.Input<string>;
+    runtimeDatabaseEncryptionKeyName?: pulumi.Input<string | undefined>;
     /**
      * Runtime type of the Apigee organization based on the Apigee subscription purchased.
      * Default value is `CLOUD`.
      * Possible values are: `CLOUD`, `HYBRID`.
      */
-    runtimeType?: pulumi.Input<string>;
+    runtimeType?: pulumi.Input<string | undefined>;
 }

@@ -125,8 +125,8 @@ def get_secret_iam_policy(project: Optional[_builtins.str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         secret_id=pulumi.get(__ret__, 'secret_id'))
-def get_secret_iam_policy_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 secret_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_secret_iam_policy_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 secret_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretIamPolicyResult]:
     """
     Retrieves the current IAM policy data for secret

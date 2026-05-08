@@ -299,7 +299,7 @@ export interface RegionCommitmentState {
      * If the field is set to true, the commitment will be automatically renewed for either
      * one or three years according to the terms of the existing commitment.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The category of the commitment. Category MACHINE specifies commitments composed of
      * machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE
@@ -307,32 +307,32 @@ export interface RegionCommitmentState {
      * Note that only MACHINE commitments should have a Type specified.
      * Possible values are: `LICENSE`, `MACHINE`.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for the resource.
      */
-    commitmentId?: pulumi.Input<number>;
+    commitmentId?: pulumi.Input<number | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Commitment end time in RFC3339 text format.
      */
-    endTimestamp?: pulumi.Input<string>;
+    endTimestamp?: pulumi.Input<string | undefined>;
     /**
      * Specifies the already existing reservations to attach to the Commitment.
      */
-    existingReservations?: pulumi.Input<string>;
+    existingReservations?: pulumi.Input<string | undefined>;
     /**
      * The license specification required as part of a license commitment.
      * Structure is documented below.
      */
-    licenseResource?: pulumi.Input<inputs.compute.RegionCommitmentLicenseResource>;
+    licenseResource?: pulumi.Input<inputs.compute.RegionCommitmentLicenseResource | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
@@ -340,50 +340,50 @@ export interface RegionCommitmentState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.RegionCommitmentParams>;
+    params?: pulumi.Input<inputs.compute.RegionCommitmentParams | undefined>;
     /**
      * The plan for this commitment, which determines duration and discount rate.
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
      */
-    plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * URL of the region where this commitment may be used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of commitment amounts for particular resources.
      * Note that VCPU and MEMORY resource commitments must occur together.
      * Structure is documented below.
      */
-    resources?: pulumi.Input<pulumi.Input<inputs.compute.RegionCommitmentResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.compute.RegionCommitmentResource>[] | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Commitment start time in RFC3339 text format.
      */
-    startTimestamp?: pulumi.Input<string>;
+    startTimestamp?: pulumi.Input<string | undefined>;
     /**
      * Status of the commitment with regards to eventual expiration
      * (each commitment has an end date defined).
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A human-readable explanation of the status.
      */
-    statusMessage?: pulumi.Input<string>;
+    statusMessage?: pulumi.Input<string | undefined>;
     /**
      * The type of commitment, which affects the discount rate and the eligible resources.
      * The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
@@ -391,7 +391,7 @@ export interface RegionCommitmentState {
      * `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
      * `GRAPHICS_OPTIMIZED_G2`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -404,7 +404,7 @@ export interface RegionCommitmentArgs {
      * If the field is set to true, the commitment will be automatically renewed for either
      * one or three years according to the terms of the existing commitment.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The category of the commitment. Category MACHINE specifies commitments composed of
      * machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE
@@ -412,20 +412,20 @@ export interface RegionCommitmentArgs {
      * Note that only MACHINE commitments should have a Type specified.
      * Possible values are: `LICENSE`, `MACHINE`.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies the already existing reservations to attach to the Commitment.
      */
-    existingReservations?: pulumi.Input<string>;
+    existingReservations?: pulumi.Input<string | undefined>;
     /**
      * The license specification required as part of a license commitment.
      * Structure is documented below.
      */
-    licenseResource?: pulumi.Input<inputs.compute.RegionCommitmentLicenseResource>;
+    licenseResource?: pulumi.Input<inputs.compute.RegionCommitmentLicenseResource | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
@@ -433,12 +433,12 @@ export interface RegionCommitmentArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.RegionCommitmentParams>;
+    params?: pulumi.Input<inputs.compute.RegionCommitmentParams | undefined>;
     /**
      * The plan for this commitment, which determines duration and discount rate.
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
@@ -449,17 +449,17 @@ export interface RegionCommitmentArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * URL of the region where this commitment may be used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of commitment amounts for particular resources.
      * Note that VCPU and MEMORY resource commitments must occur together.
      * Structure is documented below.
      */
-    resources?: pulumi.Input<pulumi.Input<inputs.compute.RegionCommitmentResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.compute.RegionCommitmentResource>[] | undefined>;
     /**
      * The type of commitment, which affects the discount rate and the eligible resources.
      * The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
@@ -467,5 +467,5 @@ export interface RegionCommitmentArgs {
      * `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
      * `GRAPHICS_OPTIMIZED_G2`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

@@ -224,49 +224,49 @@ export interface NoteState {
      * project.
      * Structure is documented below.
      */
-    attestationAuthority?: pulumi.Input<inputs.containeranalysis.NoteAttestationAuthority>;
+    attestationAuthority?: pulumi.Input<inputs.containeranalysis.NoteAttestationAuthority | undefined>;
     /**
      * The time this note was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Time of expiration for this note. Leave empty if note does not expire.
      */
-    expirationTime?: pulumi.Input<string>;
+    expirationTime?: pulumi.Input<string | undefined>;
     /**
      * The type of analysis this note describes
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * A detailed description of the note
      */
-    longDescription?: pulumi.Input<string>;
+    longDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the note.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Names of other notes related to this note.
      */
-    relatedNoteNames?: pulumi.Input<pulumi.Input<string>[]>;
+    relatedNoteNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URLs associated with this note and related metadata.
      * Structure is documented below.
      */
-    relatedUrls?: pulumi.Input<pulumi.Input<inputs.containeranalysis.NoteRelatedUrl>[]>;
+    relatedUrls?: pulumi.Input<pulumi.Input<inputs.containeranalysis.NoteRelatedUrl>[] | undefined>;
     /**
      * A one sentence description of the note.
      */
-    shortDescription?: pulumi.Input<string>;
+    shortDescription?: pulumi.Input<string | undefined>;
     /**
      * The time this note was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -289,31 +289,31 @@ export interface NoteArgs {
     /**
      * Time of expiration for this note. Leave empty if note does not expire.
      */
-    expirationTime?: pulumi.Input<string>;
+    expirationTime?: pulumi.Input<string | undefined>;
     /**
      * A detailed description of the note
      */
-    longDescription?: pulumi.Input<string>;
+    longDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the note.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Names of other notes related to this note.
      */
-    relatedNoteNames?: pulumi.Input<pulumi.Input<string>[]>;
+    relatedNoteNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URLs associated with this note and related metadata.
      * Structure is documented below.
      */
-    relatedUrls?: pulumi.Input<pulumi.Input<inputs.containeranalysis.NoteRelatedUrl>[]>;
+    relatedUrls?: pulumi.Input<pulumi.Input<inputs.containeranalysis.NoteRelatedUrl>[] | undefined>;
     /**
      * A one sentence description of the note.
      */
-    shortDescription?: pulumi.Input<string>;
+    shortDescription?: pulumi.Input<string | undefined>;
 }

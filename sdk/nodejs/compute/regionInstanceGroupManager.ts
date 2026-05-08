@@ -434,12 +434,12 @@ export interface RegionInstanceGroupManagerState {
      * allInstancesConfig on the group, you must update the group's instances to
      * apply the configuration.
      */
-    allInstancesConfig?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAllInstancesConfig>;
+    allInstancesConfig?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAllInstancesConfig | undefined>;
     /**
      * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
      */
-    autoHealingPolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAutoHealingPolicies>;
+    autoHealingPolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAutoHealingPolicies | undefined>;
     /**
      * The base instance name to use for
      * instances in this group. The value must be a valid
@@ -448,45 +448,45 @@ export interface RegionInstanceGroupManagerState {
      * appending a hyphen and a random four-character string to the base instance
      * name.
      */
-    baseInstanceName?: pulumi.Input<string>;
+    baseInstanceName?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional textual description of the instance
      * group manager.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
      */
-    distributionPolicyTargetShape?: pulumi.Input<string>;
+    distributionPolicyTargetShape?: pulumi.Input<string | undefined>;
     /**
      * The distribution policy for this managed instance
      * group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
      */
-    distributionPolicyZones?: pulumi.Input<pulumi.Input<string>[]>;
+    distributionPolicyZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The fingerprint of the instance group manager.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
      */
-    instanceFlexibilityPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceFlexibilityPolicy>;
+    instanceFlexibilityPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceFlexibilityPolicy | undefined>;
     /**
      * The full URL of the instance group created by the manager.
      */
-    instanceGroup?: pulumi.Input<string>;
+    instanceGroup?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
-    instanceGroupManagerId?: pulumi.Input<number>;
+    instanceGroupManagerId?: pulumi.Input<number | undefined>;
     /**
      * The instance lifecycle policy for this managed instance group.
      */
-    instanceLifecyclePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceLifecyclePolicy>;
+    instanceLifecyclePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceLifecyclePolicy | undefined>;
     /**
      * Pagination behavior of the `listManagedInstances` API
      * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -495,112 +495,112 @@ export interface RegionInstanceGroupManagerState {
      * response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
      * respected.
      */
-    listManagedInstancesResults?: pulumi.Input<string>;
+    listManagedInstancesResults?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance group manager. Must be 1-63
      * characters long and comply with
      * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
      * include lowercase letters, numbers, and hyphens.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[]>;
+    namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[] | undefined>;
     /**
      * ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      */
-    params?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerParams>;
+    params?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerParams | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
      *
      * - - -
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Resource policies for this managed instance group. Structure is documented below.
      *
      * - - -
      */
-    resourcePolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerResourcePolicies>;
+    resourcePolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerResourcePolicies | undefined>;
     /**
      * The URL of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      */
-    standbyPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerStandbyPolicy>;
+    standbyPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerStandbyPolicy | undefined>;
     /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
      */
-    statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulDisk>[]>;
+    statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulDisk>[] | undefined>;
     /**
      * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      */
-    statefulExternalIps?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulExternalIp>[]>;
+    statefulExternalIps?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulExternalIp>[] | undefined>;
     /**
      * Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      */
-    statefulInternalIps?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulInternalIp>[]>;
+    statefulInternalIps?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulInternalIp>[] | undefined>;
     /**
      * The status of this managed instance group.
      */
-    statuses?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatus>[] | undefined>;
     /**
      * The full URL of all target pools to which new
      * instances in the group are added. Updating the target pools attribute does
      * not affect existing instances.
      */
-    targetPools?: pulumi.Input<pulumi.Input<string>[]>;
+    targetPools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The target number of running instances for this managed
      * instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
      * when using one. If a value is required, such as to specify a creation-time target size for the MIG,
      * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
      */
-    targetSize?: pulumi.Input<number>;
+    targetSize?: pulumi.Input<number | undefined>;
     /**
      * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
      */
-    targetSizePolicies?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerTargetSizePolicy>[]>;
+    targetSizePolicies?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerTargetSizePolicy>[] | undefined>;
     /**
      * The target number of stopped instances for this managed instance group.
      */
-    targetStoppedSize?: pulumi.Input<number>;
+    targetStoppedSize?: pulumi.Input<number | undefined>;
     /**
      * The target number of suspended instances for this managed instance group.
      */
-    targetSuspendedSize?: pulumi.Input<number>;
+    targetSuspendedSize?: pulumi.Input<number | undefined>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
      */
-    updatePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerUpdatePolicy>;
+    updatePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerUpdatePolicy | undefined>;
     /**
      * Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
      * Structure is documented below.
      */
-    versions?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerVersion>[]>;
+    versions?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerVersion>[] | undefined>;
     /**
      * Whether to wait for all instances to be created/updated before
      * returning. Note that if this is set to true and the operation does not succeed, the provider will
      * continue trying until it times out.
      */
-    waitForInstances?: pulumi.Input<boolean>;
+    waitForInstances?: pulumi.Input<boolean | undefined>;
     /**
      * When used with `waitForInstances` it specifies the status to wait for.
      * When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
      * set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
      * instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
      */
-    waitForInstancesStatus?: pulumi.Input<string>;
+    waitForInstancesStatus?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -612,12 +612,12 @@ export interface RegionInstanceGroupManagerArgs {
      * allInstancesConfig on the group, you must update the group's instances to
      * apply the configuration.
      */
-    allInstancesConfig?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAllInstancesConfig>;
+    allInstancesConfig?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAllInstancesConfig | undefined>;
     /**
      * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
      */
-    autoHealingPolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAutoHealingPolicies>;
+    autoHealingPolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerAutoHealingPolicies | undefined>;
     /**
      * The base instance name to use for
      * instances in this group. The value must be a valid
@@ -631,24 +631,24 @@ export interface RegionInstanceGroupManagerArgs {
      * An optional textual description of the instance
      * group manager.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
      */
-    distributionPolicyTargetShape?: pulumi.Input<string>;
+    distributionPolicyTargetShape?: pulumi.Input<string | undefined>;
     /**
      * The distribution policy for this managed instance
      * group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
      */
-    distributionPolicyZones?: pulumi.Input<pulumi.Input<string>[]>;
+    distributionPolicyZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
      */
-    instanceFlexibilityPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceFlexibilityPolicy>;
+    instanceFlexibilityPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceFlexibilityPolicy | undefined>;
     /**
      * The instance lifecycle policy for this managed instance group.
      */
-    instanceLifecyclePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceLifecyclePolicy>;
+    instanceLifecyclePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceLifecyclePolicy | undefined>;
     /**
      * Pagination behavior of the `listManagedInstances` API
      * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -657,85 +657,85 @@ export interface RegionInstanceGroupManagerArgs {
      * response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
      * respected.
      */
-    listManagedInstancesResults?: pulumi.Input<string>;
+    listManagedInstancesResults?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance group manager. Must be 1-63
      * characters long and comply with
      * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
      * include lowercase letters, numbers, and hyphens.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[]>;
+    namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[] | undefined>;
     /**
      * ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      */
-    params?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerParams>;
+    params?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerParams | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
      *
      * - - -
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Resource policies for this managed instance group. Structure is documented below.
      *
      * - - -
      */
-    resourcePolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerResourcePolicies>;
+    resourcePolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerResourcePolicies | undefined>;
     /**
      * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      */
-    standbyPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerStandbyPolicy>;
+    standbyPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerStandbyPolicy | undefined>;
     /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
      */
-    statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulDisk>[]>;
+    statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulDisk>[] | undefined>;
     /**
      * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      */
-    statefulExternalIps?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulExternalIp>[]>;
+    statefulExternalIps?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulExternalIp>[] | undefined>;
     /**
      * Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      */
-    statefulInternalIps?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulInternalIp>[]>;
+    statefulInternalIps?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulInternalIp>[] | undefined>;
     /**
      * The full URL of all target pools to which new
      * instances in the group are added. Updating the target pools attribute does
      * not affect existing instances.
      */
-    targetPools?: pulumi.Input<pulumi.Input<string>[]>;
+    targetPools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The target number of running instances for this managed
      * instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
      * when using one. If a value is required, such as to specify a creation-time target size for the MIG,
      * `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
      */
-    targetSize?: pulumi.Input<number>;
+    targetSize?: pulumi.Input<number | undefined>;
     /**
      * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
      */
-    targetSizePolicies?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerTargetSizePolicy>[]>;
+    targetSizePolicies?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerTargetSizePolicy>[] | undefined>;
     /**
      * The target number of stopped instances for this managed instance group.
      */
-    targetStoppedSize?: pulumi.Input<number>;
+    targetStoppedSize?: pulumi.Input<number | undefined>;
     /**
      * The target number of suspended instances for this managed instance group.
      */
-    targetSuspendedSize?: pulumi.Input<number>;
+    targetSuspendedSize?: pulumi.Input<number | undefined>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
      */
-    updatePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerUpdatePolicy>;
+    updatePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerUpdatePolicy | undefined>;
     /**
      * Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
@@ -747,12 +747,12 @@ export interface RegionInstanceGroupManagerArgs {
      * returning. Note that if this is set to true and the operation does not succeed, the provider will
      * continue trying until it times out.
      */
-    waitForInstances?: pulumi.Input<boolean>;
+    waitForInstances?: pulumi.Input<boolean | undefined>;
     /**
      * When used with `waitForInstances` it specifies the status to wait for.
      * When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
      * set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
      * instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
      */
-    waitForInstancesStatus?: pulumi.Input<string>;
+    waitForInstancesStatus?: pulumi.Input<string | undefined>;
 }

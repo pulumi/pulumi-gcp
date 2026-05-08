@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Vertex
         ///             {
         ///                 InlineSource = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs
         ///                 {
-        ///                     SourceArchive = Std.Index.Filebase64.Invoke(new()
+        ///                     SourceArchive = Std.Filebase64.Invoke(new()
         ///                     {
         ///                         Input = "./test-fixtures/mds_agent_src.tar.gz",
         ///                     }).Apply(invoke =&gt; invoke.Result),
@@ -88,7 +88,7 @@ namespace Pulumi.Gcp.Vertex
         ///             {
         ///                 InlineSource = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs
         ///                 {
-        ///                     SourceArchive = Std.Index.Filebase64.Invoke(new()
+        ///                     SourceArchive = Std.Filebase64.Invoke(new()
         ///                     {
         ///                         Input = "./test-fixtures/mds_agent_src.tar.gz",
         ///                     }).Apply(invoke =&gt; invoke.Result),
@@ -140,7 +140,7 @@ namespace Pulumi.Gcp.Vertex
         ///             {
         ///                 InlineSource = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs
         ///                 {
-        ///                     SourceArchive = Std.Index.Filebase64.Invoke(new()
+        ///                     SourceArchive = Std.Filebase64.Invoke(new()
         ///                     {
         ///                         Input = "./test-fixtures/mds_agent_src.tar.gz",
         ///                     }).Apply(invoke =&gt; invoke.Result),

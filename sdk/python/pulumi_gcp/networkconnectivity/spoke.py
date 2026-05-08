@@ -23,17 +23,17 @@ class SpokeArgs:
     def __init__(__self__, *,
                  hub: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input['SpokeGatewayArgs']] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
-                 linked_producer_vpc_network: Optional[pulumi.Input['SpokeLinkedProducerVpcNetworkArgs']] = None,
-                 linked_router_appliance_instances: Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']] = None,
-                 linked_vpc_network: Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']] = None,
-                 linked_vpn_tunnels: Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional['SpokeGatewayArgs']] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 linked_interconnect_attachments: pulumi.Input[Optional['SpokeLinkedInterconnectAttachmentsArgs']] = None,
+                 linked_producer_vpc_network: pulumi.Input[Optional['SpokeLinkedProducerVpcNetworkArgs']] = None,
+                 linked_router_appliance_instances: pulumi.Input[Optional['SpokeLinkedRouterApplianceInstancesArgs']] = None,
+                 linked_vpc_network: pulumi.Input[Optional['SpokeLinkedVpcNetworkArgs']] = None,
+                 linked_vpn_tunnels: pulumi.Input[Optional['SpokeLinkedVpnTunnelsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Spoke resource.
 
@@ -112,19 +112,19 @@ class SpokeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the spoke.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input['SpokeGatewayArgs']]:
+    def gateway(self) -> pulumi.Input[Optional['SpokeGatewayArgs']]:
         """
         (Optional, Beta)
         This is a gateway that can apply specialized processing to traffic going through it.
@@ -133,24 +133,24 @@ class SpokeArgs:
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input['SpokeGatewayArgs']]):
+    def gateway(self, value: pulumi.Input[Optional['SpokeGatewayArgs']]):
         pulumi.set(self, "gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the group that this spoke is associated with.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -159,12 +159,12 @@ class SpokeArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedInterconnectAttachments")
-    def linked_interconnect_attachments(self) -> Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']]:
+    def linked_interconnect_attachments(self) -> pulumi.Input[Optional['SpokeLinkedInterconnectAttachmentsArgs']]:
         """
         A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
         Structure is documented below.
@@ -172,12 +172,12 @@ class SpokeArgs:
         return pulumi.get(self, "linked_interconnect_attachments")
 
     @linked_interconnect_attachments.setter
-    def linked_interconnect_attachments(self, value: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']]):
+    def linked_interconnect_attachments(self, value: pulumi.Input[Optional['SpokeLinkedInterconnectAttachmentsArgs']]):
         pulumi.set(self, "linked_interconnect_attachments", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedProducerVpcNetwork")
-    def linked_producer_vpc_network(self) -> Optional[pulumi.Input['SpokeLinkedProducerVpcNetworkArgs']]:
+    def linked_producer_vpc_network(self) -> pulumi.Input[Optional['SpokeLinkedProducerVpcNetworkArgs']]:
         """
         Producer VPC network that is associated with the spoke.
         Structure is documented below.
@@ -185,12 +185,12 @@ class SpokeArgs:
         return pulumi.get(self, "linked_producer_vpc_network")
 
     @linked_producer_vpc_network.setter
-    def linked_producer_vpc_network(self, value: Optional[pulumi.Input['SpokeLinkedProducerVpcNetworkArgs']]):
+    def linked_producer_vpc_network(self, value: pulumi.Input[Optional['SpokeLinkedProducerVpcNetworkArgs']]):
         pulumi.set(self, "linked_producer_vpc_network", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedRouterApplianceInstances")
-    def linked_router_appliance_instances(self) -> Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']]:
+    def linked_router_appliance_instances(self) -> pulumi.Input[Optional['SpokeLinkedRouterApplianceInstancesArgs']]:
         """
         The URIs of linked Router appliance resources
         Structure is documented below.
@@ -198,12 +198,12 @@ class SpokeArgs:
         return pulumi.get(self, "linked_router_appliance_instances")
 
     @linked_router_appliance_instances.setter
-    def linked_router_appliance_instances(self, value: Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']]):
+    def linked_router_appliance_instances(self, value: pulumi.Input[Optional['SpokeLinkedRouterApplianceInstancesArgs']]):
         pulumi.set(self, "linked_router_appliance_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedVpcNetwork")
-    def linked_vpc_network(self) -> Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']]:
+    def linked_vpc_network(self) -> pulumi.Input[Optional['SpokeLinkedVpcNetworkArgs']]:
         """
         VPC network that is associated with the spoke.
         Structure is documented below.
@@ -211,12 +211,12 @@ class SpokeArgs:
         return pulumi.get(self, "linked_vpc_network")
 
     @linked_vpc_network.setter
-    def linked_vpc_network(self, value: Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']]):
+    def linked_vpc_network(self, value: pulumi.Input[Optional['SpokeLinkedVpcNetworkArgs']]):
         pulumi.set(self, "linked_vpc_network", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedVpnTunnels")
-    def linked_vpn_tunnels(self) -> Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']]:
+    def linked_vpn_tunnels(self) -> pulumi.Input[Optional['SpokeLinkedVpnTunnelsArgs']]:
         """
         The URIs of linked VPN tunnel resources
         Structure is documented below.
@@ -224,24 +224,24 @@ class SpokeArgs:
         return pulumi.get(self, "linked_vpn_tunnels")
 
     @linked_vpn_tunnels.setter
-    def linked_vpn_tunnels(self, value: Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']]):
+    def linked_vpn_tunnels(self, value: pulumi.Input[Optional['SpokeLinkedVpnTunnelsArgs']]):
         pulumi.set(self, "linked_vpn_tunnels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The name of the spoke. Spoke names must be unique.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -249,33 +249,33 @@ class SpokeArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _SpokeState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 gateway: Optional[pulumi.Input['SpokeGatewayArgs']] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
-                 linked_producer_vpc_network: Optional[pulumi.Input['SpokeLinkedProducerVpcNetworkArgs']] = None,
-                 linked_router_appliance_instances: Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']] = None,
-                 linked_vpc_network: Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']] = None,
-                 linked_vpn_tunnels: Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reasons: Optional[pulumi.Input[Sequence[pulumi.Input['SpokeReasonArgs']]]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 unique_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 gateway: pulumi.Input[Optional['SpokeGatewayArgs']] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 linked_interconnect_attachments: pulumi.Input[Optional['SpokeLinkedInterconnectAttachmentsArgs']] = None,
+                 linked_producer_vpc_network: pulumi.Input[Optional['SpokeLinkedProducerVpcNetworkArgs']] = None,
+                 linked_router_appliance_instances: pulumi.Input[Optional['SpokeLinkedRouterApplianceInstancesArgs']] = None,
+                 linked_vpc_network: pulumi.Input[Optional['SpokeLinkedVpcNetworkArgs']] = None,
+                 linked_vpn_tunnels: pulumi.Input[Optional['SpokeLinkedVpnTunnelsArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reasons: pulumi.Input[Optional[Sequence[pulumi.Input['SpokeReasonArgs']]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 unique_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Spoke resources.
 
@@ -355,43 +355,43 @@ class _SpokeState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time the spoke was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the spoke.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input['SpokeGatewayArgs']]:
+    def gateway(self) -> pulumi.Input[Optional['SpokeGatewayArgs']]:
         """
         (Optional, Beta)
         This is a gateway that can apply specialized processing to traffic going through it.
@@ -400,36 +400,36 @@ class _SpokeState:
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input['SpokeGatewayArgs']]):
+    def gateway(self, value: pulumi.Input[Optional['SpokeGatewayArgs']]):
         pulumi.set(self, "gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the group that this spoke is associated with.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter
-    def hub(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hub(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The URI of the hub that this spoke is attached to.
         """
         return pulumi.get(self, "hub")
 
     @hub.setter
-    def hub(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hub(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hub", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -438,12 +438,12 @@ class _SpokeState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedInterconnectAttachments")
-    def linked_interconnect_attachments(self) -> Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']]:
+    def linked_interconnect_attachments(self) -> pulumi.Input[Optional['SpokeLinkedInterconnectAttachmentsArgs']]:
         """
         A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
         Structure is documented below.
@@ -451,12 +451,12 @@ class _SpokeState:
         return pulumi.get(self, "linked_interconnect_attachments")
 
     @linked_interconnect_attachments.setter
-    def linked_interconnect_attachments(self, value: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']]):
+    def linked_interconnect_attachments(self, value: pulumi.Input[Optional['SpokeLinkedInterconnectAttachmentsArgs']]):
         pulumi.set(self, "linked_interconnect_attachments", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedProducerVpcNetwork")
-    def linked_producer_vpc_network(self) -> Optional[pulumi.Input['SpokeLinkedProducerVpcNetworkArgs']]:
+    def linked_producer_vpc_network(self) -> pulumi.Input[Optional['SpokeLinkedProducerVpcNetworkArgs']]:
         """
         Producer VPC network that is associated with the spoke.
         Structure is documented below.
@@ -464,12 +464,12 @@ class _SpokeState:
         return pulumi.get(self, "linked_producer_vpc_network")
 
     @linked_producer_vpc_network.setter
-    def linked_producer_vpc_network(self, value: Optional[pulumi.Input['SpokeLinkedProducerVpcNetworkArgs']]):
+    def linked_producer_vpc_network(self, value: pulumi.Input[Optional['SpokeLinkedProducerVpcNetworkArgs']]):
         pulumi.set(self, "linked_producer_vpc_network", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedRouterApplianceInstances")
-    def linked_router_appliance_instances(self) -> Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']]:
+    def linked_router_appliance_instances(self) -> pulumi.Input[Optional['SpokeLinkedRouterApplianceInstancesArgs']]:
         """
         The URIs of linked Router appliance resources
         Structure is documented below.
@@ -477,12 +477,12 @@ class _SpokeState:
         return pulumi.get(self, "linked_router_appliance_instances")
 
     @linked_router_appliance_instances.setter
-    def linked_router_appliance_instances(self, value: Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']]):
+    def linked_router_appliance_instances(self, value: pulumi.Input[Optional['SpokeLinkedRouterApplianceInstancesArgs']]):
         pulumi.set(self, "linked_router_appliance_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedVpcNetwork")
-    def linked_vpc_network(self) -> Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']]:
+    def linked_vpc_network(self) -> pulumi.Input[Optional['SpokeLinkedVpcNetworkArgs']]:
         """
         VPC network that is associated with the spoke.
         Structure is documented below.
@@ -490,12 +490,12 @@ class _SpokeState:
         return pulumi.get(self, "linked_vpc_network")
 
     @linked_vpc_network.setter
-    def linked_vpc_network(self, value: Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']]):
+    def linked_vpc_network(self, value: pulumi.Input[Optional['SpokeLinkedVpcNetworkArgs']]):
         pulumi.set(self, "linked_vpc_network", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedVpnTunnels")
-    def linked_vpn_tunnels(self) -> Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']]:
+    def linked_vpn_tunnels(self) -> pulumi.Input[Optional['SpokeLinkedVpnTunnelsArgs']]:
         """
         The URIs of linked VPN tunnel resources
         Structure is documented below.
@@ -503,36 +503,36 @@ class _SpokeState:
         return pulumi.get(self, "linked_vpn_tunnels")
 
     @linked_vpn_tunnels.setter
-    def linked_vpn_tunnels(self, value: Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']]):
+    def linked_vpn_tunnels(self, value: pulumi.Input[Optional['SpokeLinkedVpnTunnelsArgs']]):
         pulumi.set(self, "linked_vpn_tunnels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The name of the spoke. Spoke names must be unique.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -540,12 +540,12 @@ class _SpokeState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -553,12 +553,12 @@ class _SpokeState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SpokeReasonArgs']]]]:
+    def reasons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SpokeReasonArgs']]]]:
         """
         The reasons for the current state in the lifecycle
         Structure is documented below.
@@ -566,43 +566,43 @@ class _SpokeState:
         return pulumi.get(self, "reasons")
 
     @reasons.setter
-    def reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SpokeReasonArgs']]]]):
+    def reasons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SpokeReasonArgs']]]]):
         pulumi.set(self, "reasons", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The current lifecycle state of this spoke.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="uniqueId")
-    def unique_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unique_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
         """
         return pulumi.get(self, "unique_id")
 
     @unique_id.setter
-    def unique_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unique_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unique_id", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time the spoke was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -612,19 +612,19 @@ class Spoke(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linked_interconnect_attachments: Optional[pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
-                 linked_producer_vpc_network: Optional[pulumi.Input[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']]] = None,
-                 linked_router_appliance_instances: Optional[pulumi.Input[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']]] = None,
-                 linked_vpc_network: Optional[pulumi.Input[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']]] = None,
-                 linked_vpn_tunnels: Optional[pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 linked_interconnect_attachments: pulumi.Input[Optional[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
+                 linked_producer_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']]] = None,
+                 linked_router_appliance_instances: pulumi.Input[Optional[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']]] = None,
+                 linked_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']]] = None,
+                 linked_vpn_tunnels: pulumi.Input[Optional[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The NetworkConnectivity Spoke resource
@@ -1591,19 +1591,19 @@ class Spoke(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linked_interconnect_attachments: Optional[pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
-                 linked_producer_vpc_network: Optional[pulumi.Input[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']]] = None,
-                 linked_router_appliance_instances: Optional[pulumi.Input[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']]] = None,
-                 linked_vpc_network: Optional[pulumi.Input[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']]] = None,
-                 linked_vpn_tunnels: Optional[pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 linked_interconnect_attachments: pulumi.Input[Optional[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
+                 linked_producer_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']]] = None,
+                 linked_router_appliance_instances: pulumi.Input[Optional[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']]] = None,
+                 linked_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']]] = None,
+                 linked_vpn_tunnels: pulumi.Input[Optional[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1649,26 +1649,26 @@ class Spoke(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            gateway: Optional[pulumi.Input[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']]] = None,
-            group: Optional[pulumi.Input[_builtins.str]] = None,
-            hub: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            linked_interconnect_attachments: Optional[pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
-            linked_producer_vpc_network: Optional[pulumi.Input[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']]] = None,
-            linked_router_appliance_instances: Optional[pulumi.Input[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']]] = None,
-            linked_vpc_network: Optional[pulumi.Input[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']]] = None,
-            linked_vpn_tunnels: Optional[pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reasons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpokeReasonArgs', 'SpokeReasonArgsDict']]]]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            unique_id: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Spoke':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            gateway: pulumi.Input[Optional[Union['SpokeGatewayArgs', 'SpokeGatewayArgsDict']]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            hub: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            linked_interconnect_attachments: pulumi.Input[Optional[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
+            linked_producer_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']]] = None,
+            linked_router_appliance_instances: pulumi.Input[Optional[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']]] = None,
+            linked_vpc_network: pulumi.Input[Optional[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']]] = None,
+            linked_vpn_tunnels: pulumi.Input[Optional[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reasons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpokeReasonArgs', 'SpokeReasonArgsDict']]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            unique_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Spoke':
         """
         Get an existing Spoke resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

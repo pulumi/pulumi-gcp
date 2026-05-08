@@ -24,7 +24,7 @@ __all__ = [
 ]
 
 class RulesetMetadataArgsDict(TypedDict):
-    services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
     """
@@ -32,7 +32,7 @@ class RulesetMetadataArgsDict(TypedDict):
 @pulumi.input_type
 class RulesetMetadataArgs:
     def __init__(__self__, *,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
         """
@@ -41,14 +41,14 @@ class RulesetMetadataArgs:
 
     @_builtins.property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
         """
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "services", value)
 
 
@@ -57,7 +57,7 @@ class RulesetSourceArgsDict(TypedDict):
     """
     `File` set constituting the `Source` bundle.
     """
-    language: NotRequired[pulumi.Input[_builtins.str]]
+    language: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
 
@@ -68,7 +68,7 @@ class RulesetSourceArgsDict(TypedDict):
 class RulesetSourceArgs:
     def __init__(__self__, *,
                  files: pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgs']]],
-                 language: Optional[pulumi.Input[_builtins.str]] = None):
+                 language: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgs']]] files: `File` set constituting the `Source` bundle.
         :param pulumi.Input[_builtins.str] language: `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
@@ -93,7 +93,7 @@ class RulesetSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
 
@@ -102,7 +102,7 @@ class RulesetSourceArgs:
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
 
@@ -115,7 +115,7 @@ class RulesetSourceFileArgsDict(TypedDict):
     """
     File name.
     """
-    fingerprint: NotRequired[pulumi.Input[_builtins.str]]
+    fingerprint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fingerprint (e.g. github sha) associated with the `File`.
     """
@@ -125,7 +125,7 @@ class RulesetSourceFileArgs:
     def __init__(__self__, *,
                  content: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None):
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] content: Textual Content.
         :param pulumi.Input[_builtins.str] name: File name.
@@ -162,14 +162,14 @@ class RulesetSourceFileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fingerprint (e.g. github sha) associated with the `File`.
         """
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
 

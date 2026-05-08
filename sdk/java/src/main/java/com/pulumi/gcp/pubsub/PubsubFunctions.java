@@ -41,8 +41,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSchemaIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -82,8 +82,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSchemaIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -123,8 +123,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSchemaIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -164,8 +164,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSchemaIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -205,8 +205,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSchemaIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -248,8 +248,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -290,8 +290,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -332,8 +332,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -374,8 +374,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -416,8 +416,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -456,8 +456,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -496,8 +496,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -536,8 +536,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -576,8 +576,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -616,8 +616,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -658,8 +658,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetTopicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -700,8 +700,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetTopicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -742,8 +742,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetTopicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -784,8 +784,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetTopicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -826,8 +826,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetTopicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -866,8 +866,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetTopicIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -907,8 +907,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetTopicIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -948,8 +948,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetTopicIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -989,8 +989,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetTopicIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1030,8 +1030,8 @@ public final class PubsubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.pubsub.PubsubFunctions;
      * import com.pulumi.gcp.pubsub.inputs.GetTopicIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

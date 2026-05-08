@@ -21,7 +21,7 @@ class SecretCiphertextArgs:
     def __init__(__self__, *,
                  crypto_key: pulumi.Input[_builtins.str],
                  plaintext: pulumi.Input[_builtins.str],
-                 additional_authenticated_data: Optional[pulumi.Input[_builtins.str]] = None):
+                 additional_authenticated_data: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecretCiphertext resource.
 
@@ -65,7 +65,7 @@ class SecretCiphertextArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalAuthenticatedData")
-    def additional_authenticated_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def additional_authenticated_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The additional authenticated data used for integrity checks during encryption and decryption.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -73,17 +73,17 @@ class SecretCiphertextArgs:
         return pulumi.get(self, "additional_authenticated_data")
 
     @additional_authenticated_data.setter
-    def additional_authenticated_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def additional_authenticated_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "additional_authenticated_data", value)
 
 
 @pulumi.input_type
 class _SecretCiphertextState:
     def __init__(__self__, *,
-                 additional_authenticated_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 ciphertext: Optional[pulumi.Input[_builtins.str]] = None,
-                 crypto_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 plaintext: Optional[pulumi.Input[_builtins.str]] = None):
+                 additional_authenticated_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 ciphertext: pulumi.Input[Optional[_builtins.str]] = None,
+                 crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 plaintext: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecretCiphertext resources.
 
@@ -106,7 +106,7 @@ class _SecretCiphertextState:
 
     @_builtins.property
     @pulumi.getter(name="additionalAuthenticatedData")
-    def additional_authenticated_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def additional_authenticated_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The additional authenticated data used for integrity checks during encryption and decryption.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -114,24 +114,24 @@ class _SecretCiphertextState:
         return pulumi.get(self, "additional_authenticated_data")
 
     @additional_authenticated_data.setter
-    def additional_authenticated_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def additional_authenticated_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "additional_authenticated_data", value)
 
     @_builtins.property
     @pulumi.getter
-    def ciphertext(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ciphertext(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Contains the result of encrypting the provided plaintext, encoded in base64.
         """
         return pulumi.get(self, "ciphertext")
 
     @ciphertext.setter
-    def ciphertext(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ciphertext(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ciphertext", value)
 
     @_builtins.property
     @pulumi.getter(name="cryptoKey")
-    def crypto_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crypto_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the CryptoKey that will be used to encrypt the provided plaintext.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
@@ -139,12 +139,12 @@ class _SecretCiphertextState:
         return pulumi.get(self, "crypto_key")
 
     @crypto_key.setter
-    def crypto_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crypto_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crypto_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def plaintext(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plaintext(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The plaintext to be encrypted.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -152,7 +152,7 @@ class _SecretCiphertextState:
         return pulumi.get(self, "plaintext")
 
     @plaintext.setter
-    def plaintext(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plaintext(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plaintext", value)
 
 
@@ -162,9 +162,9 @@ class SecretCiphertext(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_authenticated_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 crypto_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 plaintext: Optional[pulumi.Input[_builtins.str]] = None,
+                 additional_authenticated_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 plaintext: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Encrypts secret data with Google Cloud KMS and provides access to the ciphertext.
@@ -306,9 +306,9 @@ class SecretCiphertext(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_authenticated_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 crypto_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 plaintext: Optional[pulumi.Input[_builtins.str]] = None,
+                 additional_authenticated_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 plaintext: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -338,10 +338,10 @@ class SecretCiphertext(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_authenticated_data: Optional[pulumi.Input[_builtins.str]] = None,
-            ciphertext: Optional[pulumi.Input[_builtins.str]] = None,
-            crypto_key: Optional[pulumi.Input[_builtins.str]] = None,
-            plaintext: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecretCiphertext':
+            additional_authenticated_data: pulumi.Input[Optional[_builtins.str]] = None,
+            ciphertext: pulumi.Input[Optional[_builtins.str]] = None,
+            crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+            plaintext: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecretCiphertext':
         """
         Get an existing SecretCiphertext resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

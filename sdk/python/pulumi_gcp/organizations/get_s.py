@@ -99,7 +99,7 @@ def get_s(filter: Optional[_builtins.str] = None,
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         organizations=pulumi.get(__ret__, 'organizations'))
-def get_s_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_s_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSResult]:
     """
     Gets a list of all organizations.

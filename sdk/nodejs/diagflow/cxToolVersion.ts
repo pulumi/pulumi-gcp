@@ -551,33 +551,33 @@ export interface CxToolVersionState {
      * Offsets other than "Z" are also accepted.
      * Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The display name of the tool version.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the tool version.
      * Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/tools/<ToolID>/versions/<VersionID>.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The tool to create a Version for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Snapshot of the tool to be associated with this version.
      * Structure is documented below.
      */
-    tool?: pulumi.Input<inputs.diagflow.CxToolVersionTool>;
+    tool?: pulumi.Input<inputs.diagflow.CxToolVersionTool | undefined>;
     /**
      * Last time the tool version was created or modified.
      * Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits.
      * Offsets other than "Z" are also accepted.
      * Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**

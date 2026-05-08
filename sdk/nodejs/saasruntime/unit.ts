@@ -342,52 +342,52 @@ export interface UnitState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A set of conditions which indicate the various conditions this resource can
      * have.
      * Structure is documented below.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitCondition>[] | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Set of dependencies for this unit. Maximum 10.
      * Structure is documented below.
      */
-    dependencies?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitDependency>[]>;
+    dependencies?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitDependency>[] | undefined>;
     /**
      * List of Units that depend on this unit. Unit can only be deprovisioned if
      * this list is empty. Maximum 1000.
      * Structure is documented below.
      */
-    dependents?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitDependent>[]>;
+    dependents?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitDependent>[] | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates the current input variables deployed by the unit
      * Structure is documented below.
      */
-    inputVariables?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitInputVariable>[]>;
+    inputVariables?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitInputVariable>[] | undefined>;
     /**
      * The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Captures requested directives for performing future maintenance on the
      * unit. This includes a request for the unit to skip maintenance for a period
@@ -395,7 +395,7 @@ export interface UnitState {
      * postponing maintenance scheduled in future.
      * Structure is documented below.
      */
-    maintenance?: pulumi.Input<inputs.saasruntime.UnitMaintenance>;
+    maintenance?: pulumi.Input<inputs.saasruntime.UnitMaintenance | undefined>;
     /**
      * Indicates whether the Unit life cycle is controlled
      * by the user or by the system.
@@ -404,17 +404,17 @@ export interface UnitState {
      * MANAGEMENT_MODE_USER
      * MANAGEMENT_MODE_SYSTEM
      */
-    managementMode?: pulumi.Input<string>;
+    managementMode?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name (full URI of the resource) following the standard naming
      * scheme:
      * "projects/{project}/locations/{location}/units/{unit}"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of concurrent UnitOperations that are operating on this Unit.
      */
-    ongoingOperations?: pulumi.Input<pulumi.Input<string>[]>;
+    ongoingOperations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of key/value pairs corresponding to output variables from execution of
      * actuation templates. The variables are declared in actuation configs (e.g
@@ -422,29 +422,29 @@ export interface UnitState {
      * actuation engine upon completion of execution.
      * Structure is documented below.
      */
-    outputVariables?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitOutputVariable>[]>;
+    outputVariables?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitOutputVariable>[] | undefined>;
     /**
      * List of pending (wait to be executed) UnitOperations for this unit.
      */
-    pendingOperations?: pulumi.Input<pulumi.Input<string>[]>;
+    pendingOperations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The current Release object for this Unit.
      */
-    release?: pulumi.Input<string>;
+    release?: pulumi.Input<string | undefined>;
     /**
      * List of scheduled UnitOperations for this unit.
      */
-    scheduledOperations?: pulumi.Input<pulumi.Input<string>[]>;
+    scheduledOperations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Current lifecycle state of the resource (e.g. if it's being
      * created or ready to use).
@@ -456,11 +456,11 @@ export interface UnitState {
      * UNIT_STATE_READY
      * UNIT_STATE_ERROR
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * If set, indicates the time when the system will start removing the unit.
      */
-    systemCleanupAt?: pulumi.Input<string>;
+    systemCleanupAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates the system managed state of the unit.
      * Possible values:
@@ -468,13 +468,13 @@ export interface UnitState {
      * SYSTEM_MANAGED_STATE_INACTIVE
      * SYSTEM_MANAGED_STATE_DECOMMISSIONED
      */
-    systemManagedState?: pulumi.Input<string>;
+    systemManagedState?: pulumi.Input<string | undefined>;
     /**
      * Reference to the Saas Tenant resource this unit belongs to. This for
      * example informs the maintenance policies to use for scheduling future
      * updates on a unit. (optional and immutable once created)
      */
-    tenant?: pulumi.Input<string>;
+    tenant?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the resource. UID is unique in the time
      * and space for this resource within the scope of the service. It is
@@ -482,21 +482,21 @@ export interface UnitState {
      * and must not be changed. UID is used to uniquely identify resources
      * with resource name reuses. This should be a UUID4.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The ID value for the new unit.
      */
-    unitId?: pulumi.Input<string>;
+    unitId?: pulumi.Input<string | undefined>;
     /**
      * Reference to the UnitKind this Unit belongs to. Immutable once set.
      */
-    unitKind?: pulumi.Input<string>;
+    unitKind?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was last updated. Any
      * change to the resource made by users must refresh this value.
      * Changes to a resource made by the service should refresh this value.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -511,14 +511,14 @@ export interface UnitArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -530,7 +530,7 @@ export interface UnitArgs {
      * postponing maintenance scheduled in future.
      * Structure is documented below.
      */
-    maintenance?: pulumi.Input<inputs.saasruntime.UnitMaintenance>;
+    maintenance?: pulumi.Input<inputs.saasruntime.UnitMaintenance | undefined>;
     /**
      * Indicates whether the Unit life cycle is controlled
      * by the user or by the system.
@@ -539,18 +539,18 @@ export interface UnitArgs {
      * MANAGEMENT_MODE_USER
      * MANAGEMENT_MODE_SYSTEM
      */
-    managementMode?: pulumi.Input<string>;
+    managementMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Reference to the Saas Tenant resource this unit belongs to. This for
      * example informs the maintenance policies to use for scheduling future
      * updates on a unit. (optional and immutable once created)
      */
-    tenant?: pulumi.Input<string>;
+    tenant?: pulumi.Input<string | undefined>;
     /**
      * The ID value for the new unit.
      */
@@ -558,5 +558,5 @@ export interface UnitArgs {
     /**
      * Reference to the UnitKind this Unit belongs to. Immutable once set.
      */
-    unitKind?: pulumi.Input<string>;
+    unitKind?: pulumi.Input<string | undefined>;
 }

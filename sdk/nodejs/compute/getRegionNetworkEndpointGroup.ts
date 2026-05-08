@@ -135,17 +135,17 @@ export interface GetRegionNetworkEndpointGroupOutputArgs {
     /**
      * The Network Endpoint Group name. Provide either this or a `selfLink`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to list versions in. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the region where the Serverless REGs Reside. Provide either this or a `selfLink`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The Network Endpoint Group self_link.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
 }

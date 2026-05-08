@@ -177,37 +177,37 @@ export interface TenantInboundSamlConfigState {
     /**
      * Human friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * If this config allows users to sign in with the provider.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * SAML IdP configuration when the project acts as the relying party
      * Structure is documented below.
      */
-    idpConfig?: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigIdpConfig>;
+    idpConfig?: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigIdpConfig | undefined>;
     /**
      * The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
      * hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
      * alphanumeric character, and have at least 2 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * SAML SP (Service Provider) configuration when the project acts as the relying party to receive
      * and accept an authentication assertion issued by a SAML identity provider.
      * Structure is documented below.
      */
-    spConfig?: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigSpConfig>;
+    spConfig?: pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigSpConfig | undefined>;
     /**
      * The name of the tenant where this inbound SAML config resource exists
      */
-    tenant?: pulumi.Input<string>;
+    tenant?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -221,7 +221,7 @@ export interface TenantInboundSamlConfigArgs {
     /**
      * If this config allows users to sign in with the provider.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * SAML IdP configuration when the project acts as the relying party
      * Structure is documented below.
@@ -232,12 +232,12 @@ export interface TenantInboundSamlConfigArgs {
      * hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
      * alphanumeric character, and have at least 2 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * SAML SP (Service Provider) configuration when the project acts as the relying party to receive
      * and accept an authentication assertion issued by a SAML identity provider.

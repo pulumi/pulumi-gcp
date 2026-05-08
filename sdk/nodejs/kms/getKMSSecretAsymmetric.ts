@@ -236,7 +236,7 @@ export interface GetKMSSecretAsymmetricOutputArgs {
     /**
      * The crc32 checksum of the `ciphertext` in hexadecimal notation. If not specified, it will be computed.
      */
-    crc32?: pulumi.Input<string>;
+    crc32?: pulumi.Input<string | undefined>;
     /**
      * The id of the CryptoKey version that will be used to
      * decrypt the provided ciphertext. This is represented by the format

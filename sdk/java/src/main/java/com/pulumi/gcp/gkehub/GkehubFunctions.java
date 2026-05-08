@@ -44,8 +44,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetFeatureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -85,8 +85,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetFeatureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -126,8 +126,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetFeatureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -167,8 +167,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetFeatureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -208,8 +208,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetFeatureArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -249,8 +249,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetFeatureIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -291,8 +291,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetFeatureIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -333,8 +333,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetFeatureIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -375,8 +375,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetFeatureIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -417,8 +417,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetFeatureIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -459,8 +459,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -501,8 +501,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -543,8 +543,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -585,8 +585,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -627,8 +627,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -671,8 +671,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -716,8 +716,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -761,8 +761,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -806,8 +806,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -851,8 +851,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -894,8 +894,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -936,8 +936,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -978,8 +978,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1020,8 +1020,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1062,8 +1062,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetMembershipIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1104,8 +1104,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1145,8 +1145,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1186,8 +1186,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1227,8 +1227,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1268,8 +1268,8 @@ public final class GkehubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.gkehub.GkehubFunctions;
      * import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

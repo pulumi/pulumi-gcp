@@ -357,11 +357,11 @@ export interface AiIndexEndpointDeployedIndexState {
      * A description of resources that the DeployedIndex uses, which to large degree are decided by Vertex AI, and optionally allows only a modest additional configuration.
      * Structure is documented below.
      */
-    automaticResources?: pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexAutomaticResources>;
+    automaticResources?: pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexAutomaticResources | undefined>;
     /**
      * The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A description of resources that are dedicated to the DeployedIndex, and that need a higher degree of manual configuration. The field minReplicaCount must be set to a value strictly greater than 0, or else validation will fail. We don't provide SLA when minReplicaCount=1. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
      * Available machine types for SMALL shard: e2-standard-2 and all machine types available for MEDIUM and LARGE shard.
@@ -370,64 +370,64 @@ export interface AiIndexEndpointDeployedIndexState {
      * n1-standard-16 and n1-standard-32 are still available, but we recommend e2-standard-16 and e2-highmem-16 for cost efficiency.
      * Structure is documented below.
      */
-    dedicatedResources?: pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexDedicatedResources>;
+    dedicatedResources?: pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexDedicatedResources | undefined>;
     /**
      * If set, the authentication is enabled for the private endpoint.
      * Structure is documented below.
      */
-    deployedIndexAuthConfig?: pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexDeployedIndexAuthConfig>;
+    deployedIndexAuthConfig?: pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexDeployedIndexAuthConfig | undefined>;
     /**
      * The user specified ID of the DeployedIndex. The ID can be up to 128 characters long and must start with a letter and only contain letters, numbers, and underscores. The ID must be unique within the project it is created in.
      */
-    deployedIndexId?: pulumi.Input<string>;
+    deployedIndexId?: pulumi.Input<string | undefined>;
     /**
      * The deployment group can be no longer than 64 characters (eg: 'test', 'prod'). If not set, we will use the 'default' deployment group.
      * Creating deploymentGroups with reservedIpRanges is a recommended practice when the peered network has multiple peering ranges. This creates your deployments from predictable IP spaces for easier traffic administration. Also, one deploymentGroup (except 'default') can only be used with the same reservedIpRanges which means if the deploymentGroup has been used with reserved_ip_ranges: [a, b, c], using it with [a, b] or [d, e] is disallowed. [See the official documentation here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#DeployedIndex.FIELDS.deployment_group).
      * Note: we only support up to 5 deployment groups (not including 'default').
      */
-    deploymentGroup?: pulumi.Input<string>;
+    deploymentGroup?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * If true, private endpoint's access logs are sent to Cloud Logging.
      */
-    enableAccessLogging?: pulumi.Input<boolean>;
+    enableAccessLogging?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Index this is the deployment of.
      */
-    index?: pulumi.Input<string>;
+    index?: pulumi.Input<string | undefined>;
     /**
      * Identifies the index endpoint. Must be in the format
      * 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
      */
-    indexEndpoint?: pulumi.Input<string>;
+    indexEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The DeployedIndex may depend on various data on its original Index. Additionally when certain changes to the original Index are being done (e.g. when what the Index contains is being changed) the DeployedIndex may be asynchronously updated in the background to reflect these changes. If this timestamp's value is at least the [Index.update_time](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexes#Index.FIELDS.update_time) of the original Index, it means that this DeployedIndex and the original Index are in sync. If this timestamp is older, then to see which updates this DeployedIndex already contains (and which it does not), one must [list](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.operations/list#google.longrunning.Operations.ListOperations) the operations that are running on the original Index. Only the successfully completed Operations with updateTime equal or before this sync time are contained in this DeployedIndex.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    indexSyncTime?: pulumi.Input<string>;
+    indexSyncTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the DeployedIndex resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Provides paths for users to send requests directly to the deployed index services running on Cloud via private services access. This field is populated if [network](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#IndexEndpoint.FIELDS.network) is configured.
      * Structure is documented below.
      */
-    privateEndpoints?: pulumi.Input<pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexPrivateEndpoint>[]>;
+    privateEndpoints?: pulumi.Input<pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexPrivateEndpoint>[] | undefined>;
     /**
      * The region of the index endpoint deployment. eg us-central1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
      * If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
      * The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range'].
      * For more information about subnets and network IP ranges, please see https://cloud.google.com/vpc/docs/subnets#manually_created_subnet_ip_ranges.
      */
-    reservedIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    reservedIpRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -438,7 +438,7 @@ export interface AiIndexEndpointDeployedIndexArgs {
      * A description of resources that the DeployedIndex uses, which to large degree are decided by Vertex AI, and optionally allows only a modest additional configuration.
      * Structure is documented below.
      */
-    automaticResources?: pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexAutomaticResources>;
+    automaticResources?: pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexAutomaticResources | undefined>;
     /**
      * A description of resources that are dedicated to the DeployedIndex, and that need a higher degree of manual configuration. The field minReplicaCount must be set to a value strictly greater than 0, or else validation will fail. We don't provide SLA when minReplicaCount=1. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
      * Available machine types for SMALL shard: e2-standard-2 and all machine types available for MEDIUM and LARGE shard.
@@ -447,12 +447,12 @@ export interface AiIndexEndpointDeployedIndexArgs {
      * n1-standard-16 and n1-standard-32 are still available, but we recommend e2-standard-16 and e2-highmem-16 for cost efficiency.
      * Structure is documented below.
      */
-    dedicatedResources?: pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexDedicatedResources>;
+    dedicatedResources?: pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexDedicatedResources | undefined>;
     /**
      * If set, the authentication is enabled for the private endpoint.
      * Structure is documented below.
      */
-    deployedIndexAuthConfig?: pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexDeployedIndexAuthConfig>;
+    deployedIndexAuthConfig?: pulumi.Input<inputs.vertex.AiIndexEndpointDeployedIndexDeployedIndexAuthConfig | undefined>;
     /**
      * The user specified ID of the DeployedIndex. The ID can be up to 128 characters long and must start with a letter and only contain letters, numbers, and underscores. The ID must be unique within the project it is created in.
      */
@@ -462,15 +462,15 @@ export interface AiIndexEndpointDeployedIndexArgs {
      * Creating deploymentGroups with reservedIpRanges is a recommended practice when the peered network has multiple peering ranges. This creates your deployments from predictable IP spaces for easier traffic administration. Also, one deploymentGroup (except 'default') can only be used with the same reservedIpRanges which means if the deploymentGroup has been used with reserved_ip_ranges: [a, b, c], using it with [a, b] or [d, e] is disallowed. [See the official documentation here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#DeployedIndex.FIELDS.deployment_group).
      * Note: we only support up to 5 deployment groups (not including 'default').
      */
-    deploymentGroup?: pulumi.Input<string>;
+    deploymentGroup?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * If true, private endpoint's access logs are sent to Cloud Logging.
      */
-    enableAccessLogging?: pulumi.Input<boolean>;
+    enableAccessLogging?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Index this is the deployment of.
      */
@@ -483,12 +483,12 @@ export interface AiIndexEndpointDeployedIndexArgs {
     /**
      * The region of the index endpoint deployment. eg us-central1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
      * If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
      * The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range'].
      * For more information about subnets and network IP ranges, please see https://cloud.google.com/vpc/docs/subnets#manually_created_subnet_ip_ranges.
      */
-    reservedIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    reservedIpRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

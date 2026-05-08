@@ -238,66 +238,66 @@ export interface EndpointPolicyState {
     /**
      * This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
      */
-    authorizationPolicy?: pulumi.Input<string>;
+    authorizationPolicy?: pulumi.Input<string | undefined>;
     /**
      * A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
      */
-    clientTlsPolicy?: pulumi.Input<string>;
+    clientTlsPolicy?: pulumi.Input<string | undefined>;
     /**
      * Time the TcpRoute was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Required. A matcher that selects endpoints to which the policies should be applied.
      * Structure is documented below.
      */
-    endpointMatcher?: pulumi.Input<inputs.networkservices.EndpointPolicyEndpointMatcher>;
+    endpointMatcher?: pulumi.Input<inputs.networkservices.EndpointPolicyEndpointMatcher | undefined>;
     /**
      * Set of label tags associated with the TcpRoute resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the EndpointPolicy resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
      */
-    serverTlsPolicy?: pulumi.Input<string>;
+    serverTlsPolicy?: pulumi.Input<string | undefined>;
     /**
      * Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
      * Structure is documented below.
      */
-    trafficPortSelector?: pulumi.Input<inputs.networkservices.EndpointPolicyTrafficPortSelector>;
+    trafficPortSelector?: pulumi.Input<inputs.networkservices.EndpointPolicyTrafficPortSelector | undefined>;
     /**
      * The type of endpoint policy. This is primarily used to validate the configuration.
      * Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Time the TcpRoute was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -307,15 +307,15 @@ export interface EndpointPolicyArgs {
     /**
      * This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
      */
-    authorizationPolicy?: pulumi.Input<string>;
+    authorizationPolicy?: pulumi.Input<string | undefined>;
     /**
      * A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
      */
-    clientTlsPolicy?: pulumi.Input<string>;
+    clientTlsPolicy?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Required. A matcher that selects endpoints to which the policies should be applied.
      * Structure is documented below.
@@ -326,25 +326,25 @@ export interface EndpointPolicyArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the EndpointPolicy resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
      */
-    serverTlsPolicy?: pulumi.Input<string>;
+    serverTlsPolicy?: pulumi.Input<string | undefined>;
     /**
      * Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
      * Structure is documented below.
      */
-    trafficPortSelector?: pulumi.Input<inputs.networkservices.EndpointPolicyTrafficPortSelector>;
+    trafficPortSelector?: pulumi.Input<inputs.networkservices.EndpointPolicyTrafficPortSelector | undefined>;
     /**
      * The type of endpoint policy. This is primarily used to validate the configuration.
      * Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.

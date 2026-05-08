@@ -44,8 +44,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -75,8 +75,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -116,8 +116,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -147,8 +147,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -188,8 +188,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -219,8 +219,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -260,8 +260,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -291,8 +291,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -332,8 +332,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -363,8 +363,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -404,8 +404,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -444,8 +444,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -484,8 +484,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -524,8 +524,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -564,8 +564,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -604,8 +604,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -634,8 +634,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -674,8 +674,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -704,8 +704,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -744,8 +744,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -774,8 +774,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -814,8 +814,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -844,8 +844,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -884,8 +884,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -914,8 +914,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -954,8 +954,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -995,8 +995,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1036,8 +1036,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1077,8 +1077,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1118,8 +1118,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1159,8 +1159,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValueIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1199,8 +1199,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValueIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1239,8 +1239,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValueIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1279,8 +1279,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValueIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1319,8 +1319,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValueIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1359,8 +1359,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1399,8 +1399,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1439,8 +1439,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1479,8 +1479,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1519,8 +1519,8 @@ public final class TagsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tags.TagsFunctions;
      * import com.pulumi.gcp.tags.inputs.GetTagValuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

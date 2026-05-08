@@ -166,22 +166,22 @@ export interface BackendServiceSignedUrlKeyState {
     /**
      * The backend service this signed URL key belongs.
      */
-    backendService?: pulumi.Input<string>;
+    backendService?: pulumi.Input<string | undefined>;
     /**
      * 128-bit key value used for signing the URL. The key value must be a
      * valid RFC 4648 Section 5 base64url encoded string.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    keyValue?: pulumi.Input<string>;
+    keyValue?: pulumi.Input<string | undefined>;
     /**
      * Name of the signed URL key.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -201,10 +201,10 @@ export interface BackendServiceSignedUrlKeyArgs {
     /**
      * Name of the signed URL key.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

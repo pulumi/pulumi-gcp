@@ -169,17 +169,17 @@ export interface ProjectAutokeyConfigState {
     /**
      * The etag of the AutokeyConfig for optimistic concurrency control.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * How Autokey determines which project to use when provisioning CMEK keys.
      * Possible values are: `RESOURCE_PROJECT`, `DISABLED`.
      */
-    keyProjectResolutionMode?: pulumi.Input<string>;
+    keyProjectResolutionMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -190,10 +190,10 @@ export interface ProjectAutokeyConfigArgs {
      * How Autokey determines which project to use when provisioning CMEK keys.
      * Possible values are: `RESOURCE_PROJECT`, `DISABLED`.
      */
-    keyProjectResolutionMode?: pulumi.Input<string>;
+    keyProjectResolutionMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

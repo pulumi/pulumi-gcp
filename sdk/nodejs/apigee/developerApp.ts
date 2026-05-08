@@ -324,75 +324,75 @@ export interface DeveloperAppState {
     /**
      * List of API products associated with the developer app.
      */
-    apiProducts?: pulumi.Input<pulumi.Input<string>[]>;
+    apiProducts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Developer app family.
      */
-    appFamily?: pulumi.Input<string>;
+    appFamily?: pulumi.Input<string | undefined>;
     /**
      * ID of the developer app. This ID is not user specified but is
      * automatically generated on app creation. appId is a UUID.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Developer attributes (name/value pairs). The custom attribute limit is 18.
      * Structure is documented below.
      */
-    attributes?: pulumi.Input<pulumi.Input<inputs.apigee.DeveloperAppAttribute>[]>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.apigee.DeveloperAppAttribute>[] | undefined>;
     /**
      * Callback URL used by OAuth 2.0 authorization servers to communicate
      * authorization codes back to developer apps.
      */
-    callbackUrl?: pulumi.Input<string>;
+    callbackUrl?: pulumi.Input<string | undefined>;
     /**
      * Time at which the developer was created in milliseconds since epoch.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Output only. Set of credentials for the developer app consisting of
      * the consumer key/secret pairs associated with the API products.
      * Structure is documented below.
      */
-    credentials?: pulumi.Input<pulumi.Input<inputs.apigee.DeveloperAppCredential>[]>;
+    credentials?: pulumi.Input<pulumi.Input<inputs.apigee.DeveloperAppCredential>[] | undefined>;
     /**
      * Email address of the developer.
      * This value is used to uniquely identify the developer in Apigee hybrid.
      * Note that the email address has to be in lowercase only.
      */
-    developerEmail?: pulumi.Input<string>;
+    developerEmail?: pulumi.Input<string | undefined>;
     /**
      * ID of the developer.
      */
-    developerId?: pulumi.Input<string>;
+    developerId?: pulumi.Input<string | undefined>;
     /**
      * Expiration time, in milliseconds, for the consumer key that is generated
      * for the developer app. If not set or left to the default value of -1,
      * the API key never expires. The expiration time can't be updated after it is set.
      */
-    keyExpiresIn?: pulumi.Input<string>;
+    keyExpiresIn?: pulumi.Input<string | undefined>;
     /**
      * Time at which the developer was last modified in milliseconds since epoch.
      */
-    lastModifiedAt?: pulumi.Input<string>;
+    lastModifiedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the developer app.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Scopes to apply to the developer app.
      * The specified scopes must already exist for the API product that
      * you associate with the developer app.
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Status of the credential. Valid values include approved or revoked.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -402,16 +402,16 @@ export interface DeveloperAppArgs {
     /**
      * List of API products associated with the developer app.
      */
-    apiProducts?: pulumi.Input<pulumi.Input<string>[]>;
+    apiProducts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Developer app family.
      */
-    appFamily?: pulumi.Input<string>;
+    appFamily?: pulumi.Input<string | undefined>;
     /**
      * Developer attributes (name/value pairs). The custom attribute limit is 18.
      * Structure is documented below.
      */
-    attributes?: pulumi.Input<pulumi.Input<inputs.apigee.DeveloperAppAttribute>[]>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.apigee.DeveloperAppAttribute>[] | undefined>;
     /**
      * Callback URL used by OAuth 2.0 authorization servers to communicate
      * authorization codes back to developer apps.
@@ -428,11 +428,11 @@ export interface DeveloperAppArgs {
      * for the developer app. If not set or left to the default value of -1,
      * the API key never expires. The expiration time can't be updated after it is set.
      */
-    keyExpiresIn?: pulumi.Input<string>;
+    keyExpiresIn?: pulumi.Input<string | undefined>;
     /**
      * Name of the developer app.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
@@ -443,9 +443,9 @@ export interface DeveloperAppArgs {
      * The specified scopes must already exist for the API product that
      * you associate with the developer app.
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Status of the credential. Valid values include approved or revoked.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

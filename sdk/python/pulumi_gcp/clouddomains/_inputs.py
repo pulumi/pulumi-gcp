@@ -172,7 +172,7 @@ class RegistrationContactSettingsAdminContactArgsDict(TypedDict):
     Required. Postal address of the contact.
     Structure is documented below.
     """
-    fax_number: NotRequired[pulumi.Input[_builtins.str]]
+    fax_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fax number of the contact in international format. For example, "+1-800-555-0123".
     """
@@ -183,7 +183,7 @@ class RegistrationContactSettingsAdminContactArgs:
                  email: pulumi.Input[_builtins.str],
                  phone_number: pulumi.Input[_builtins.str],
                  postal_address: pulumi.Input['RegistrationContactSettingsAdminContactPostalAddressArgs'],
-                 fax_number: Optional[pulumi.Input[_builtins.str]] = None):
+                 fax_number: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] email: Required. Email address of the contact.
         :param pulumi.Input[_builtins.str] phone_number: Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
@@ -236,14 +236,14 @@ class RegistrationContactSettingsAdminContactArgs:
 
     @_builtins.property
     @pulumi.getter(name="faxNumber")
-    def fax_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fax_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fax number of the contact in international format. For example, "+1-800-555-0123".
         """
         return pulumi.get(self, "fax_number")
 
     @fax_number.setter
-    def fax_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fax_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fax_number", value)
 
 
@@ -254,7 +254,7 @@ class RegistrationContactSettingsAdminContactPostalAddressArgsDict(TypedDict):
     ensure the value is correct. See https://cldr.unicode.org/ and
     https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
     """
-    address_lines: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    address_lines: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Unstructured address lines describing the lower levels of an address.
     Because values in addressLines do not have type information and may sometimes contain multiple values in a single
@@ -263,28 +263,28 @@ class RegistrationContactSettingsAdminContactPostalAddressArgsDict(TypedDict):
     is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
     the most specific line of an address can be selected based on the language.
     """
-    administrative_area: NotRequired[pulumi.Input[_builtins.str]]
+    administrative_area: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
     a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
     (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland
     this should be left unpopulated.
     """
-    locality: NotRequired[pulumi.Input[_builtins.str]]
+    locality: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
     where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
     """
-    organization: NotRequired[pulumi.Input[_builtins.str]]
+    organization: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the organization at the address.
     """
-    postal_code: NotRequired[pulumi.Input[_builtins.str]]
+    postal_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
     they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
     """
-    recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    recipients: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
     it might contain "care of" information.
@@ -294,12 +294,12 @@ class RegistrationContactSettingsAdminContactPostalAddressArgsDict(TypedDict):
 class RegistrationContactSettingsAdminContactPostalAddressArgs:
     def __init__(__self__, *,
                  region_code: pulumi.Input[_builtins.str],
-                 address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 administrative_area: Optional[pulumi.Input[_builtins.str]] = None,
-                 locality: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 postal_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 address_lines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 administrative_area: pulumi.Input[Optional[_builtins.str]] = None,
+                 locality: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 postal_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 recipients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] region_code: Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
                ensure the value is correct. See https://cldr.unicode.org/ and
@@ -352,7 +352,7 @@ class RegistrationContactSettingsAdminContactPostalAddressArgs:
 
     @_builtins.property
     @pulumi.getter(name="addressLines")
-    def address_lines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def address_lines(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Unstructured address lines describing the lower levels of an address.
         Because values in addressLines do not have type information and may sometimes contain multiple values in a single
@@ -364,12 +364,12 @@ class RegistrationContactSettingsAdminContactPostalAddressArgs:
         return pulumi.get(self, "address_lines")
 
     @address_lines.setter
-    def address_lines(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def address_lines(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "address_lines", value)
 
     @_builtins.property
     @pulumi.getter(name="administrativeArea")
-    def administrative_area(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def administrative_area(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
         a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
@@ -379,12 +379,12 @@ class RegistrationContactSettingsAdminContactPostalAddressArgs:
         return pulumi.get(self, "administrative_area")
 
     @administrative_area.setter
-    def administrative_area(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def administrative_area(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "administrative_area", value)
 
     @_builtins.property
     @pulumi.getter
-    def locality(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def locality(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
         where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
@@ -392,24 +392,24 @@ class RegistrationContactSettingsAdminContactPostalAddressArgs:
         return pulumi.get(self, "locality")
 
     @locality.setter
-    def locality(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def locality(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "locality", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the organization at the address.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="postalCode")
-    def postal_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def postal_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
         they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
@@ -417,12 +417,12 @@ class RegistrationContactSettingsAdminContactPostalAddressArgs:
         return pulumi.get(self, "postal_code")
 
     @postal_code.setter
-    def postal_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def postal_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "postal_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def recipients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def recipients(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
@@ -430,7 +430,7 @@ class RegistrationContactSettingsAdminContactPostalAddressArgs:
         return pulumi.get(self, "recipients")
 
     @recipients.setter
-    def recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def recipients(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "recipients", value)
 
 
@@ -448,7 +448,7 @@ class RegistrationContactSettingsRegistrantContactArgsDict(TypedDict):
     Required. Postal address of the contact.
     Structure is documented below.
     """
-    fax_number: NotRequired[pulumi.Input[_builtins.str]]
+    fax_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fax number of the contact in international format. For example, "+1-800-555-0123".
     """
@@ -459,7 +459,7 @@ class RegistrationContactSettingsRegistrantContactArgs:
                  email: pulumi.Input[_builtins.str],
                  phone_number: pulumi.Input[_builtins.str],
                  postal_address: pulumi.Input['RegistrationContactSettingsRegistrantContactPostalAddressArgs'],
-                 fax_number: Optional[pulumi.Input[_builtins.str]] = None):
+                 fax_number: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] email: Required. Email address of the contact.
         :param pulumi.Input[_builtins.str] phone_number: Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
@@ -512,14 +512,14 @@ class RegistrationContactSettingsRegistrantContactArgs:
 
     @_builtins.property
     @pulumi.getter(name="faxNumber")
-    def fax_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fax_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fax number of the contact in international format. For example, "+1-800-555-0123".
         """
         return pulumi.get(self, "fax_number")
 
     @fax_number.setter
-    def fax_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fax_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fax_number", value)
 
 
@@ -530,7 +530,7 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgsDict(TypedDic
     ensure the value is correct. See https://cldr.unicode.org/ and
     https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
     """
-    address_lines: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    address_lines: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Unstructured address lines describing the lower levels of an address.
     Because values in addressLines do not have type information and may sometimes contain multiple values in a single
@@ -539,28 +539,28 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgsDict(TypedDic
     is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
     the most specific line of an address can be selected based on the language.
     """
-    administrative_area: NotRequired[pulumi.Input[_builtins.str]]
+    administrative_area: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
     a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
     (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland
     this should be left unpopulated.
     """
-    locality: NotRequired[pulumi.Input[_builtins.str]]
+    locality: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
     where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
     """
-    organization: NotRequired[pulumi.Input[_builtins.str]]
+    organization: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the organization at the address.
     """
-    postal_code: NotRequired[pulumi.Input[_builtins.str]]
+    postal_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
     they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
     """
-    recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    recipients: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
     it might contain "care of" information.
@@ -570,12 +570,12 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgsDict(TypedDic
 class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
     def __init__(__self__, *,
                  region_code: pulumi.Input[_builtins.str],
-                 address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 administrative_area: Optional[pulumi.Input[_builtins.str]] = None,
-                 locality: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 postal_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 address_lines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 administrative_area: pulumi.Input[Optional[_builtins.str]] = None,
+                 locality: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 postal_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 recipients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] region_code: Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
                ensure the value is correct. See https://cldr.unicode.org/ and
@@ -628,7 +628,7 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
 
     @_builtins.property
     @pulumi.getter(name="addressLines")
-    def address_lines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def address_lines(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Unstructured address lines describing the lower levels of an address.
         Because values in addressLines do not have type information and may sometimes contain multiple values in a single
@@ -640,12 +640,12 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
         return pulumi.get(self, "address_lines")
 
     @address_lines.setter
-    def address_lines(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def address_lines(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "address_lines", value)
 
     @_builtins.property
     @pulumi.getter(name="administrativeArea")
-    def administrative_area(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def administrative_area(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
         a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
@@ -655,12 +655,12 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
         return pulumi.get(self, "administrative_area")
 
     @administrative_area.setter
-    def administrative_area(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def administrative_area(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "administrative_area", value)
 
     @_builtins.property
     @pulumi.getter
-    def locality(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def locality(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
         where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
@@ -668,24 +668,24 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
         return pulumi.get(self, "locality")
 
     @locality.setter
-    def locality(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def locality(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "locality", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the organization at the address.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="postalCode")
-    def postal_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def postal_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
         they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
@@ -693,12 +693,12 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
         return pulumi.get(self, "postal_code")
 
     @postal_code.setter
-    def postal_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def postal_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "postal_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def recipients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def recipients(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
@@ -706,7 +706,7 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
         return pulumi.get(self, "recipients")
 
     @recipients.setter
-    def recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def recipients(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "recipients", value)
 
 
@@ -724,7 +724,7 @@ class RegistrationContactSettingsTechnicalContactArgsDict(TypedDict):
     Required. Postal address of the contact.
     Structure is documented below.
     """
-    fax_number: NotRequired[pulumi.Input[_builtins.str]]
+    fax_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fax number of the contact in international format. For example, "+1-800-555-0123".
     """
@@ -735,7 +735,7 @@ class RegistrationContactSettingsTechnicalContactArgs:
                  email: pulumi.Input[_builtins.str],
                  phone_number: pulumi.Input[_builtins.str],
                  postal_address: pulumi.Input['RegistrationContactSettingsTechnicalContactPostalAddressArgs'],
-                 fax_number: Optional[pulumi.Input[_builtins.str]] = None):
+                 fax_number: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] email: Required. Email address of the contact.
         :param pulumi.Input[_builtins.str] phone_number: Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
@@ -788,14 +788,14 @@ class RegistrationContactSettingsTechnicalContactArgs:
 
     @_builtins.property
     @pulumi.getter(name="faxNumber")
-    def fax_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fax_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fax number of the contact in international format. For example, "+1-800-555-0123".
         """
         return pulumi.get(self, "fax_number")
 
     @fax_number.setter
-    def fax_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fax_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fax_number", value)
 
 
@@ -806,7 +806,7 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgsDict(TypedDict
     ensure the value is correct. See https://cldr.unicode.org/ and
     https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
     """
-    address_lines: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    address_lines: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Unstructured address lines describing the lower levels of an address.
     Because values in addressLines do not have type information and may sometimes contain multiple values in a single
@@ -815,28 +815,28 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgsDict(TypedDict
     is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
     the most specific line of an address can be selected based on the language.
     """
-    administrative_area: NotRequired[pulumi.Input[_builtins.str]]
+    administrative_area: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
     a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
     (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland
     this should be left unpopulated.
     """
-    locality: NotRequired[pulumi.Input[_builtins.str]]
+    locality: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
     where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
     """
-    organization: NotRequired[pulumi.Input[_builtins.str]]
+    organization: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the organization at the address.
     """
-    postal_code: NotRequired[pulumi.Input[_builtins.str]]
+    postal_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
     they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
     """
-    recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    recipients: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
     it might contain "care of" information.
@@ -846,12 +846,12 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgsDict(TypedDict
 class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
     def __init__(__self__, *,
                  region_code: pulumi.Input[_builtins.str],
-                 address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 administrative_area: Optional[pulumi.Input[_builtins.str]] = None,
-                 locality: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 postal_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 address_lines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 administrative_area: pulumi.Input[Optional[_builtins.str]] = None,
+                 locality: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 postal_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 recipients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] region_code: Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
                ensure the value is correct. See https://cldr.unicode.org/ and
@@ -904,7 +904,7 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
 
     @_builtins.property
     @pulumi.getter(name="addressLines")
-    def address_lines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def address_lines(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Unstructured address lines describing the lower levels of an address.
         Because values in addressLines do not have type information and may sometimes contain multiple values in a single
@@ -916,12 +916,12 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
         return pulumi.get(self, "address_lines")
 
     @address_lines.setter
-    def address_lines(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def address_lines(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "address_lines", value)
 
     @_builtins.property
     @pulumi.getter(name="administrativeArea")
-    def administrative_area(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def administrative_area(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
         a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
@@ -931,12 +931,12 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
         return pulumi.get(self, "administrative_area")
 
     @administrative_area.setter
-    def administrative_area(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def administrative_area(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "administrative_area", value)
 
     @_builtins.property
     @pulumi.getter
-    def locality(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def locality(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
         where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
@@ -944,24 +944,24 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
         return pulumi.get(self, "locality")
 
     @locality.setter
-    def locality(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def locality(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "locality", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the organization at the address.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="postalCode")
-    def postal_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def postal_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
         they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
@@ -969,12 +969,12 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
         return pulumi.get(self, "postal_code")
 
     @postal_code.setter
-    def postal_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def postal_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "postal_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def recipients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def recipients(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
@@ -982,17 +982,17 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
         return pulumi.get(self, "recipients")
 
     @recipients.setter
-    def recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def recipients(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "recipients", value)
 
 
 class RegistrationDnsSettingsArgsDict(TypedDict):
-    custom_dns: NotRequired[pulumi.Input['RegistrationDnsSettingsCustomDnsArgsDict']]
+    custom_dns: NotRequired[pulumi.Input[Optional['RegistrationDnsSettingsCustomDnsArgs']]]
     """
     Configuration for an arbitrary DNS provider.
     Structure is documented below.
     """
-    glue_records: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegistrationDnsSettingsGlueRecordArgsDict']]]]
+    glue_records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RegistrationDnsSettingsGlueRecordArgs']]]]]
     """
     The list of glue records for this Registration. Commonly empty.
     Structure is documented below.
@@ -1001,8 +1001,8 @@ class RegistrationDnsSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class RegistrationDnsSettingsArgs:
     def __init__(__self__, *,
-                 custom_dns: Optional[pulumi.Input['RegistrationDnsSettingsCustomDnsArgs']] = None,
-                 glue_records: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDnsSettingsGlueRecordArgs']]]] = None):
+                 custom_dns: pulumi.Input[Optional['RegistrationDnsSettingsCustomDnsArgs']] = None,
+                 glue_records: pulumi.Input[Optional[Sequence[pulumi.Input['RegistrationDnsSettingsGlueRecordArgs']]]] = None):
         """
         :param pulumi.Input['RegistrationDnsSettingsCustomDnsArgs'] custom_dns: Configuration for an arbitrary DNS provider.
                Structure is documented below.
@@ -1016,7 +1016,7 @@ class RegistrationDnsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="customDns")
-    def custom_dns(self) -> Optional[pulumi.Input['RegistrationDnsSettingsCustomDnsArgs']]:
+    def custom_dns(self) -> pulumi.Input[Optional['RegistrationDnsSettingsCustomDnsArgs']]:
         """
         Configuration for an arbitrary DNS provider.
         Structure is documented below.
@@ -1024,12 +1024,12 @@ class RegistrationDnsSettingsArgs:
         return pulumi.get(self, "custom_dns")
 
     @custom_dns.setter
-    def custom_dns(self, value: Optional[pulumi.Input['RegistrationDnsSettingsCustomDnsArgs']]):
+    def custom_dns(self, value: pulumi.Input[Optional['RegistrationDnsSettingsCustomDnsArgs']]):
         pulumi.set(self, "custom_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="glueRecords")
-    def glue_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDnsSettingsGlueRecordArgs']]]]:
+    def glue_records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegistrationDnsSettingsGlueRecordArgs']]]]:
         """
         The list of glue records for this Registration. Commonly empty.
         Structure is documented below.
@@ -1037,7 +1037,7 @@ class RegistrationDnsSettingsArgs:
         return pulumi.get(self, "glue_records")
 
     @glue_records.setter
-    def glue_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDnsSettingsGlueRecordArgs']]]]):
+    def glue_records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegistrationDnsSettingsGlueRecordArgs']]]]):
         pulumi.set(self, "glue_records", value)
 
 
@@ -1047,7 +1047,7 @@ class RegistrationDnsSettingsCustomDnsArgsDict(TypedDict):
     Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain
     name, with Unicode domain names expressed in Punycode format.
     """
-    ds_records: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegistrationDnsSettingsCustomDnsDsRecordArgsDict']]]]
+    ds_records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RegistrationDnsSettingsCustomDnsDsRecordArgs']]]]]
     """
     The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide
     the values to set here. If this field is empty, DNSSEC is disabled.
@@ -1058,7 +1058,7 @@ class RegistrationDnsSettingsCustomDnsArgsDict(TypedDict):
 class RegistrationDnsSettingsCustomDnsArgs:
     def __init__(__self__, *,
                  name_servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 ds_records: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDnsSettingsCustomDnsDsRecordArgs']]]] = None):
+                 ds_records: pulumi.Input[Optional[Sequence[pulumi.Input['RegistrationDnsSettingsCustomDnsDsRecordArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain
                name, with Unicode domain names expressed in Punycode format.
@@ -1085,7 +1085,7 @@ class RegistrationDnsSettingsCustomDnsArgs:
 
     @_builtins.property
     @pulumi.getter(name="dsRecords")
-    def ds_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDnsSettingsCustomDnsDsRecordArgs']]]]:
+    def ds_records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegistrationDnsSettingsCustomDnsDsRecordArgs']]]]:
         """
         The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide
         the values to set here. If this field is empty, DNSSEC is disabled.
@@ -1094,24 +1094,24 @@ class RegistrationDnsSettingsCustomDnsArgs:
         return pulumi.get(self, "ds_records")
 
     @ds_records.setter
-    def ds_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDnsSettingsCustomDnsDsRecordArgs']]]]):
+    def ds_records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegistrationDnsSettingsCustomDnsDsRecordArgs']]]]):
         pulumi.set(self, "ds_records", value)
 
 
 class RegistrationDnsSettingsCustomDnsDsRecordArgsDict(TypedDict):
-    algorithm: NotRequired[pulumi.Input[_builtins.str]]
+    algorithm: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The algorithm used to generate the referenced DNSKEY.
     """
-    digest: NotRequired[pulumi.Input[_builtins.str]]
+    digest: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The digest generated from the referenced DNSKEY.
     """
-    digest_type: NotRequired[pulumi.Input[_builtins.str]]
+    digest_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The hash function used to generate the digest of the referenced DNSKEY.
     """
-    key_tag: NotRequired[pulumi.Input[_builtins.int]]
+    key_tag: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The key tag of the record. Must be set in range 0 -- 65535.
     """
@@ -1119,10 +1119,10 @@ class RegistrationDnsSettingsCustomDnsDsRecordArgsDict(TypedDict):
 @pulumi.input_type
 class RegistrationDnsSettingsCustomDnsDsRecordArgs:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_tag: Optional[pulumi.Input[_builtins.int]] = None):
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_tag: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] algorithm: The algorithm used to generate the referenced DNSKEY.
         :param pulumi.Input[_builtins.str] digest: The digest generated from the referenced DNSKEY.
@@ -1140,50 +1140,50 @@ class RegistrationDnsSettingsCustomDnsDsRecordArgs:
 
     @_builtins.property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The algorithm used to generate the referenced DNSKEY.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def digest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def digest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The digest generated from the referenced DNSKEY.
         """
         return pulumi.get(self, "digest")
 
     @digest.setter
-    def digest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def digest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "digest", value)
 
     @_builtins.property
     @pulumi.getter(name="digestType")
-    def digest_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def digest_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hash function used to generate the digest of the referenced DNSKEY.
         """
         return pulumi.get(self, "digest_type")
 
     @digest_type.setter
-    def digest_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def digest_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "digest_type", value)
 
     @_builtins.property
     @pulumi.getter(name="keyTag")
-    def key_tag(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def key_tag(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The key tag of the record. Must be set in range 0 -- 65535.
         """
         return pulumi.get(self, "key_tag")
 
     @key_tag.setter
-    def key_tag(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def key_tag(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "key_tag", value)
 
 
@@ -1192,12 +1192,12 @@ class RegistrationDnsSettingsGlueRecordArgsDict(TypedDict):
     """
     Required. Domain name of the host in Punycode format.
     """
-    ipv4_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ipv4_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
     At least one of ipv4_address and ipv6_address must be set.
     """
-    ipv6_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ipv6_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
     At least one of ipv4_address and ipv6_address must be set.
@@ -1207,8 +1207,8 @@ class RegistrationDnsSettingsGlueRecordArgsDict(TypedDict):
 class RegistrationDnsSettingsGlueRecordArgs:
     def __init__(__self__, *,
                  host_name: pulumi.Input[_builtins.str],
-                 ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 ipv4_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ipv6_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] host_name: Required. Domain name of the host in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_addresses: List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
@@ -1236,7 +1236,7 @@ class RegistrationDnsSettingsGlueRecordArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipv4Addresses")
-    def ipv4_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ipv4_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
         At least one of ipv4_address and ipv6_address must be set.
@@ -1244,12 +1244,12 @@ class RegistrationDnsSettingsGlueRecordArgs:
         return pulumi.get(self, "ipv4_addresses")
 
     @ipv4_addresses.setter
-    def ipv4_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ipv4_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipv4_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Addresses")
-    def ipv6_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ipv6_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
         At least one of ipv4_address and ipv6_address must be set.
@@ -1257,12 +1257,12 @@ class RegistrationDnsSettingsGlueRecordArgs:
         return pulumi.get(self, "ipv6_addresses")
 
     @ipv6_addresses.setter
-    def ipv6_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ipv6_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipv6_addresses", value)
 
 
 class RegistrationManagementSettingsArgsDict(TypedDict):
-    preferred_renewal_method: NotRequired[pulumi.Input[_builtins.str]]
+    preferred_renewal_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The desired renewal method for this Registration. The actual renewalMethod is automatically updated to reflect this choice.
     If unset or equal to RENEWAL_METHOD_UNSPECIFIED, the actual renewalMethod is treated as if it were set to AUTOMATIC_RENEWAL.
@@ -1272,7 +1272,7 @@ class RegistrationManagementSettingsArgsDict(TypedDict):
     problems with the billing account or reported domain abuse. In such cases, check the issues field on the Registration. After
     the problem is resolved, the renewalMethod is automatically updated to preferredRenewalMethod in a few hours.
     """
-    renewal_method: NotRequired[pulumi.Input[_builtins.str]]
+    renewal_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The actual renewal method for this Registration. When preferredRenewalMethod is set to AUTOMATIC_RENEWAL,
@@ -1280,7 +1280,7 @@ class RegistrationManagementSettingsArgsDict(TypedDict):
     or reported domain abuse. In such cases, check the issues field on the Registration. After the problem is resolved, the
     renewalMethod is automatically updated to preferredRenewalMethod in a few hours.
     """
-    transfer_lock_state: NotRequired[pulumi.Input[_builtins.str]]
+    transfer_lock_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Controls whether the domain can be transferred to another registrar. Values are UNLOCKED or LOCKED.
     """
@@ -1288,9 +1288,9 @@ class RegistrationManagementSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class RegistrationManagementSettingsArgs:
     def __init__(__self__, *,
-                 preferred_renewal_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 transfer_lock_state: Optional[pulumi.Input[_builtins.str]] = None):
+                 preferred_renewal_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 transfer_lock_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] preferred_renewal_method: The desired renewal method for this Registration. The actual renewalMethod is automatically updated to reflect this choice.
                If unset or equal to RENEWAL_METHOD_UNSPECIFIED, the actual renewalMethod is treated as if it were set to AUTOMATIC_RENEWAL.
@@ -1315,7 +1315,7 @@ class RegistrationManagementSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="preferredRenewalMethod")
-    def preferred_renewal_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_renewal_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired renewal method for this Registration. The actual renewalMethod is automatically updated to reflect this choice.
         If unset or equal to RENEWAL_METHOD_UNSPECIFIED, the actual renewalMethod is treated as if it were set to AUTOMATIC_RENEWAL.
@@ -1328,12 +1328,12 @@ class RegistrationManagementSettingsArgs:
         return pulumi.get(self, "preferred_renewal_method")
 
     @preferred_renewal_method.setter
-    def preferred_renewal_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_renewal_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_renewal_method", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalMethod")
-    def renewal_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The actual renewal method for this Registration. When preferredRenewalMethod is set to AUTOMATIC_RENEWAL,
@@ -1344,28 +1344,28 @@ class RegistrationManagementSettingsArgs:
         return pulumi.get(self, "renewal_method")
 
     @renewal_method.setter
-    def renewal_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_method", value)
 
     @_builtins.property
     @pulumi.getter(name="transferLockState")
-    def transfer_lock_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transfer_lock_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls whether the domain can be transferred to another registrar. Values are UNLOCKED or LOCKED.
         """
         return pulumi.get(self, "transfer_lock_state")
 
     @transfer_lock_state.setter
-    def transfer_lock_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transfer_lock_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transfer_lock_state", value)
 
 
 class RegistrationYearlyPriceArgsDict(TypedDict):
-    currency_code: NotRequired[pulumi.Input[_builtins.str]]
+    currency_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The three-letter currency code defined in ISO 4217.
     """
-    units: NotRequired[pulumi.Input[_builtins.str]]
+    units: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The whole units of the amount. For example if currencyCode is "USD", then 1 unit is one US dollar.
     """
@@ -1373,8 +1373,8 @@ class RegistrationYearlyPriceArgsDict(TypedDict):
 @pulumi.input_type
 class RegistrationYearlyPriceArgs:
     def __init__(__self__, *,
-                 currency_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 units: Optional[pulumi.Input[_builtins.str]] = None):
+                 currency_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 units: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] currency_code: The three-letter currency code defined in ISO 4217.
         :param pulumi.Input[_builtins.str] units: The whole units of the amount. For example if currencyCode is "USD", then 1 unit is one US dollar.
@@ -1386,26 +1386,26 @@ class RegistrationYearlyPriceArgs:
 
     @_builtins.property
     @pulumi.getter(name="currencyCode")
-    def currency_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def currency_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The three-letter currency code defined in ISO 4217.
         """
         return pulumi.get(self, "currency_code")
 
     @currency_code.setter
-    def currency_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def currency_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "currency_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def units(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def units(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The whole units of the amount. For example if currencyCode is "USD", then 1 unit is one US dollar.
         """
         return pulumi.get(self, "units")
 
     @units.setter
-    def units(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def units(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "units", value)
 
 

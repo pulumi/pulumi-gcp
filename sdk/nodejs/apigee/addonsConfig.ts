@@ -194,11 +194,11 @@ export interface AddonsConfigState {
      * Addon configurations of the Apigee organization.
      * Structure is documented below.
      */
-    addonsConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfig>;
+    addonsConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfig | undefined>;
     /**
      * Name of the Apigee organization.
      */
-    org?: pulumi.Input<string>;
+    org?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -209,7 +209,7 @@ export interface AddonsConfigArgs {
      * Addon configurations of the Apigee organization.
      * Structure is documented below.
      */
-    addonsConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfig>;
+    addonsConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfig | undefined>;
     /**
      * Name of the Apigee organization.
      */

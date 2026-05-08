@@ -23,12 +23,12 @@ class GuestPoliciesArgs:
     def __init__(__self__, *,
                  assignment: pulumi.Input['GuestPoliciesAssignmentArgs'],
                  guest_policy_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]] = None,
-                 packages: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_repositories: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]] = None,
+                 packages: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recipes: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]] = None):
         """
         The set of arguments for constructing a GuestPolicies resource.
 
@@ -112,31 +112,31 @@ class GuestPoliciesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the guest policy. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The etag for this guest policy. If this is provided on update, it must match the server's etag.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="packageRepositories")
-    def package_repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]]:
+    def package_repositories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]]:
         """
         A list of package repositories to configure on the VM instance.
         This is done before any other configs are applied so they can use these repos.
@@ -146,12 +146,12 @@ class GuestPoliciesArgs:
         return pulumi.get(self, "package_repositories")
 
     @package_repositories.setter
-    def package_repositories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]]):
+    def package_repositories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]]):
         pulumi.set(self, "package_repositories", value)
 
     @_builtins.property
     @pulumi.getter
-    def packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]]:
+    def packages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]]:
         """
         The software packages to be managed by this policy.
         Structure is documented below.
@@ -159,12 +159,12 @@ class GuestPoliciesArgs:
         return pulumi.get(self, "packages")
 
     @packages.setter
-    def packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]]):
+    def packages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]]):
         pulumi.set(self, "packages", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -172,12 +172,12 @@ class GuestPoliciesArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def recipes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]:
+    def recipes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]:
         """
         A list of Recipes to install on the VM instance.
         Structure is documented below.
@@ -185,24 +185,24 @@ class GuestPoliciesArgs:
         return pulumi.get(self, "recipes")
 
     @recipes.setter
-    def recipes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]):
+    def recipes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]):
         pulumi.set(self, "recipes", value)
 
 
 @pulumi.input_type
 class _GuestPoliciesState:
     def __init__(__self__, *,
-                 assignment: Optional[pulumi.Input['GuestPoliciesAssignmentArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 guest_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]] = None,
-                 packages: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 assignment: pulumi.Input[Optional['GuestPoliciesAssignmentArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 guest_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_repositories: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]] = None,
+                 packages: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recipes: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GuestPolicies resources.
 
@@ -263,7 +263,7 @@ class _GuestPoliciesState:
 
     @_builtins.property
     @pulumi.getter
-    def assignment(self) -> Optional[pulumi.Input['GuestPoliciesAssignmentArgs']]:
+    def assignment(self) -> pulumi.Input[Optional['GuestPoliciesAssignmentArgs']]:
         """
         Specifies the VM instances that are assigned to this policy. This allows you to target sets
         or groups of VM instances by different parameters such as labels, names, OS, or zones.
@@ -277,12 +277,12 @@ class _GuestPoliciesState:
         return pulumi.get(self, "assignment")
 
     @assignment.setter
-    def assignment(self, value: Optional[pulumi.Input['GuestPoliciesAssignmentArgs']]):
+    def assignment(self, value: pulumi.Input[Optional['GuestPoliciesAssignmentArgs']]):
         pulumi.set(self, "assignment", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         Example: "2014-10-02T15:01:23.045123456Z".
@@ -290,36 +290,36 @@ class _GuestPoliciesState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the guest policy. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The etag for this guest policy. If this is provided on update, it must match the server's etag.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="guestPolicyId")
-    def guest_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def guest_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logical name of the guest policy in the project with the following restrictions:
         * Must contain only lowercase letters, numbers, and hyphens.
@@ -331,24 +331,24 @@ class _GuestPoliciesState:
         return pulumi.get(self, "guest_policy_id")
 
     @guest_policy_id.setter
-    def guest_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def guest_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "guest_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="packageRepositories")
-    def package_repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]]:
+    def package_repositories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]]:
         """
         A list of package repositories to configure on the VM instance.
         This is done before any other configs are applied so they can use these repos.
@@ -358,12 +358,12 @@ class _GuestPoliciesState:
         return pulumi.get(self, "package_repositories")
 
     @package_repositories.setter
-    def package_repositories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]]):
+    def package_repositories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]]):
         pulumi.set(self, "package_repositories", value)
 
     @_builtins.property
     @pulumi.getter
-    def packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]]:
+    def packages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]]:
         """
         The software packages to be managed by this policy.
         Structure is documented below.
@@ -371,12 +371,12 @@ class _GuestPoliciesState:
         return pulumi.get(self, "packages")
 
     @packages.setter
-    def packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]]):
+    def packages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesPackageArgs']]]]):
         pulumi.set(self, "packages", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -384,12 +384,12 @@ class _GuestPoliciesState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def recipes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]:
+    def recipes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]:
         """
         A list of Recipes to install on the VM instance.
         Structure is documented below.
@@ -397,12 +397,12 @@ class _GuestPoliciesState:
         return pulumi.get(self, "recipes")
 
     @recipes.setter
-    def recipes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]):
+    def recipes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]]]):
         pulumi.set(self, "recipes", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         Example: "2014-10-02T15:01:23.045123456Z".
@@ -410,7 +410,7 @@ class _GuestPoliciesState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -420,14 +420,14 @@ class GuestPolicies(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignment: Optional[pulumi.Input[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 guest_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageRepositoryArgs', 'GuestPoliciesPackageRepositoryArgsDict']]]]] = None,
-                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageArgs', 'GuestPoliciesPackageArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesRecipeArgs', 'GuestPoliciesRecipeArgsDict']]]]] = None,
+                 assignment: pulumi.Input[Optional[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 guest_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GuestPoliciesPackageRepositoryArgs', 'GuestPoliciesPackageRepositoryArgsDict']]]]] = None,
+                 packages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GuestPoliciesPackageArgs', 'GuestPoliciesPackageArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recipes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GuestPoliciesRecipeArgs', 'GuestPoliciesRecipeArgsDict']]]]] = None,
                  __props__=None):
         """
         An OS Config resource representing a guest configuration policy. These policies represent
@@ -566,7 +566,7 @@ class GuestPolicies(pulumi.CustomResource):
                     "gcs": {
                         "bucket": "my-bucket",
                         "object": "executable.msi",
-                        "generation": 1546030865175603,
+                        "generation": int(1546030865175603),
                     },
                 }],
                 "install_steps": [{
@@ -766,7 +766,7 @@ class GuestPolicies(pulumi.CustomResource):
                     "gcs": {
                         "bucket": "my-bucket",
                         "object": "executable.msi",
-                        "generation": 1546030865175603,
+                        "generation": int(1546030865175603),
                     },
                 }],
                 "install_steps": [{
@@ -809,14 +809,14 @@ class GuestPolicies(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignment: Optional[pulumi.Input[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 guest_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageRepositoryArgs', 'GuestPoliciesPackageRepositoryArgsDict']]]]] = None,
-                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageArgs', 'GuestPoliciesPackageArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesRecipeArgs', 'GuestPoliciesRecipeArgsDict']]]]] = None,
+                 assignment: pulumi.Input[Optional[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 guest_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GuestPoliciesPackageRepositoryArgs', 'GuestPoliciesPackageRepositoryArgsDict']]]]] = None,
+                 packages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GuestPoliciesPackageArgs', 'GuestPoliciesPackageArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recipes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GuestPoliciesRecipeArgs', 'GuestPoliciesRecipeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -851,17 +851,17 @@ class GuestPolicies(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assignment: Optional[pulumi.Input[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            guest_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageRepositoryArgs', 'GuestPoliciesPackageRepositoryArgsDict']]]]] = None,
-            packages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageArgs', 'GuestPoliciesPackageArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            recipes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesRecipeArgs', 'GuestPoliciesRecipeArgsDict']]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'GuestPolicies':
+            assignment: pulumi.Input[Optional[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            guest_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            package_repositories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GuestPoliciesPackageRepositoryArgs', 'GuestPoliciesPackageRepositoryArgsDict']]]]] = None,
+            packages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GuestPoliciesPackageArgs', 'GuestPoliciesPackageArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            recipes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GuestPoliciesRecipeArgs', 'GuestPoliciesRecipeArgsDict']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'GuestPolicies':
         """
         Get an existing GuestPolicies resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

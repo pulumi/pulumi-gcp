@@ -285,55 +285,55 @@ export interface TemplateState {
     /**
      * Create time stamp
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Filters configuration.
      * Structure is documented below.
      */
-    filterConfig?: pulumi.Input<inputs.modelarmor.TemplateFilterConfig>;
+    filterConfig?: pulumi.Input<inputs.modelarmor.TemplateFilterConfig | undefined>;
     /**
      * Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. name of resource
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Id of the requesting object
      * If auto-generating Id server-side, remove this field and
      * templateId from the methodSignature of Create RPC
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * Message describing TemplateMetadata
      * Structure is documented below.
      */
-    templateMetadata?: pulumi.Input<inputs.modelarmor.TemplateTemplateMetadata>;
+    templateMetadata?: pulumi.Input<inputs.modelarmor.TemplateTemplateMetadata | undefined>;
     /**
      * Update time stamp
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -350,7 +350,7 @@ export interface TemplateArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -359,7 +359,7 @@ export interface TemplateArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Id of the requesting object
      * If auto-generating Id server-side, remove this field and
@@ -370,5 +370,5 @@ export interface TemplateArgs {
      * Message describing TemplateMetadata
      * Structure is documented below.
      */
-    templateMetadata?: pulumi.Input<inputs.modelarmor.TemplateTemplateMetadata>;
+    templateMetadata?: pulumi.Input<inputs.modelarmor.TemplateTemplateMetadata | undefined>;
 }

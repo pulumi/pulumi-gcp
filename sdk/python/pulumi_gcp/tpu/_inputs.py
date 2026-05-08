@@ -44,7 +44,7 @@ __all__ = [
 ]
 
 class V2QueuedResourceTpuArgsDict(TypedDict):
-    node_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgsDict']]]]
+    node_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgs']]]]]
     """
     The TPU node(s) being requested.
     Structure is documented below.
@@ -53,7 +53,7 @@ class V2QueuedResourceTpuArgsDict(TypedDict):
 @pulumi.input_type
 class V2QueuedResourceTpuArgs:
     def __init__(__self__, *,
-                 node_specs: Optional[pulumi.Input[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgs']]]] = None):
+                 node_specs: pulumi.Input[Optional[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgs']]] node_specs: The TPU node(s) being requested.
                Structure is documented below.
@@ -63,7 +63,7 @@ class V2QueuedResourceTpuArgs:
 
     @_builtins.property
     @pulumi.getter(name="nodeSpecs")
-    def node_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgs']]]]:
+    def node_specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgs']]]]:
         """
         The TPU node(s) being requested.
         Structure is documented below.
@@ -71,7 +71,7 @@ class V2QueuedResourceTpuArgs:
         return pulumi.get(self, "node_specs")
 
     @node_specs.setter
-    def node_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgs']]]]):
+    def node_specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgs']]]]):
         pulumi.set(self, "node_specs", value)
 
 
@@ -85,7 +85,7 @@ class V2QueuedResourceTpuNodeSpecArgsDict(TypedDict):
     """
     The parent resource name.
     """
-    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    node_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Unqualified node identifier used to identify the node in the project once provisioned.
     """
@@ -95,7 +95,7 @@ class V2QueuedResourceTpuNodeSpecArgs:
     def __init__(__self__, *,
                  node: pulumi.Input['V2QueuedResourceTpuNodeSpecNodeArgs'],
                  parent: pulumi.Input[_builtins.str],
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['V2QueuedResourceTpuNodeSpecNodeArgs'] node: The node.
                Structure is documented below.
@@ -134,14 +134,14 @@ class V2QueuedResourceTpuNodeSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unqualified node identifier used to identify the node in the project once provisioned.
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
 
@@ -150,15 +150,15 @@ class V2QueuedResourceTpuNodeSpecNodeArgsDict(TypedDict):
     """
     Runtime version for the TPU.
     """
-    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    accelerator_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Text description of the TPU.
     """
-    network_config: NotRequired[pulumi.Input['V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgsDict']]
+    network_config: NotRequired[pulumi.Input[Optional['V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs']]]
     """
     Network configurations for the TPU node.
     Structure is documented below.
@@ -168,9 +168,9 @@ class V2QueuedResourceTpuNodeSpecNodeArgsDict(TypedDict):
 class V2QueuedResourceTpuNodeSpecNodeArgs:
     def __init__(__self__, *,
                  runtime_version: pulumi.Input[_builtins.str],
-                 accelerator_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input['V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs']] = None):
+                 accelerator_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional['V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] runtime_version: Runtime version for the TPU.
         :param pulumi.Input[_builtins.str] accelerator_type: TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
@@ -200,31 +200,31 @@ class V2QueuedResourceTpuNodeSpecNodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorType")
-    def accelerator_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
         """
         return pulumi.get(self, "accelerator_type")
 
     @accelerator_type.setter
-    def accelerator_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Text description of the TPU.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs']]:
         """
         Network configurations for the TPU node.
         Structure is documented below.
@@ -232,31 +232,31 @@ class V2QueuedResourceTpuNodeSpecNodeArgs:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
 
 class V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgsDict(TypedDict):
-    can_ip_forward: NotRequired[pulumi.Input[_builtins.bool]]
+    can_ip_forward: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Allows the TPU node to send and receive packets with non-matching destination or source
     IPs. This is required if you plan to use the TPU workers to forward routes.
     """
-    enable_external_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_external_ips: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates that external IP addresses would be associated with the TPU workers. If set to
     false, the specified subnetwork or network should have Private Google Access enabled.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the network for the TPU node. It must be a preexisting Google Compute Engine
     network. If none is provided, "default" will be used.
     """
-    queue_count: NotRequired[pulumi.Input[_builtins.int]]
+    queue_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies networking queue count for TPU VM instance's network interface.
     """
-    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    subnetwork: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
     Engine subnetwork. If none is provided, "default" will be used.
@@ -265,11 +265,11 @@ class V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs:
     def __init__(__self__, *,
-                 can_ip_forward: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_external_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
+                 can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_external_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] can_ip_forward: Allows the TPU node to send and receive packets with non-matching destination or source
                IPs. This is required if you plan to use the TPU workers to forward routes.
@@ -294,7 +294,7 @@ class V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="canIpForward")
-    def can_ip_forward(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_ip_forward(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allows the TPU node to send and receive packets with non-matching destination or source
         IPs. This is required if you plan to use the TPU workers to forward routes.
@@ -302,12 +302,12 @@ class V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs:
         return pulumi.get(self, "can_ip_forward")
 
     @can_ip_forward.setter
-    def can_ip_forward(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_ip_forward(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_ip_forward", value)
 
     @_builtins.property
     @pulumi.getter(name="enableExternalIps")
-    def enable_external_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_external_ips(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates that external IP addresses would be associated with the TPU workers. If set to
         false, the specified subnetwork or network should have Private Google Access enabled.
@@ -315,12 +315,12 @@ class V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs:
         return pulumi.get(self, "enable_external_ips")
 
     @enable_external_ips.setter
-    def enable_external_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_external_ips(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_external_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the network for the TPU node. It must be a preexisting Google Compute Engine
         network. If none is provided, "default" will be used.
@@ -328,24 +328,24 @@ class V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="queueCount")
-    def queue_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def queue_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies networking queue count for TPU VM instance's network interface.
         """
         return pulumi.get(self, "queue_count")
 
     @queue_count.setter
-    def queue_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def queue_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "queue_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
         Engine subnetwork. If none is provided, "default" will be used.
@@ -353,7 +353,7 @@ class V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs:
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
 
@@ -410,7 +410,7 @@ class V2VmDataDiskArgsDict(TypedDict):
     Specifies the full path to an existing disk. For example:
     "projects/my-project/zones/us-central1-c/disks/my-disk".
     """
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mode in which to attach this disk. If not specified, the default is READ_WRITE
     mode. Only applicable to dataDisks.
@@ -422,7 +422,7 @@ class V2VmDataDiskArgsDict(TypedDict):
 class V2VmDataDiskArgs:
     def __init__(__self__, *,
                  source_disk: pulumi.Input[_builtins.str],
-                 mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] source_disk: Specifies the full path to an existing disk. For example:
                "projects/my-project/zones/us-central1-c/disks/my-disk".
@@ -450,7 +450,7 @@ class V2VmDataDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode in which to attach this disk. If not specified, the default is READ_WRITE
         mode. Only applicable to dataDisks.
@@ -460,31 +460,31 @@ class V2VmDataDiskArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
 
 class V2VmNetworkConfigArgsDict(TypedDict):
-    can_ip_forward: NotRequired[pulumi.Input[_builtins.bool]]
+    can_ip_forward: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Allows the TPU node to send and receive packets with non-matching destination or source
     IPs. This is required if you plan to use the TPU workers to forward routes.
     """
-    enable_external_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_external_ips: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates that external IP addresses would be associated with the TPU workers. If set to
     false, the specified subnetwork or network should have Private Google Access enabled.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the network for the TPU node. It must be a preexisting Google Compute Engine
     network. If none is provided, "default" will be used.
     """
-    queue_count: NotRequired[pulumi.Input[_builtins.int]]
+    queue_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies networking queue count for TPU VM instance's network interface.
     """
-    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    subnetwork: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
     Engine subnetwork. If none is provided, "default" will be used.
@@ -493,11 +493,11 @@ class V2VmNetworkConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V2VmNetworkConfigArgs:
     def __init__(__self__, *,
-                 can_ip_forward: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_external_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
+                 can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_external_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] can_ip_forward: Allows the TPU node to send and receive packets with non-matching destination or source
                IPs. This is required if you plan to use the TPU workers to forward routes.
@@ -522,7 +522,7 @@ class V2VmNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="canIpForward")
-    def can_ip_forward(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_ip_forward(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allows the TPU node to send and receive packets with non-matching destination or source
         IPs. This is required if you plan to use the TPU workers to forward routes.
@@ -530,12 +530,12 @@ class V2VmNetworkConfigArgs:
         return pulumi.get(self, "can_ip_forward")
 
     @can_ip_forward.setter
-    def can_ip_forward(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_ip_forward(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_ip_forward", value)
 
     @_builtins.property
     @pulumi.getter(name="enableExternalIps")
-    def enable_external_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_external_ips(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates that external IP addresses would be associated with the TPU workers. If set to
         false, the specified subnetwork or network should have Private Google Access enabled.
@@ -543,12 +543,12 @@ class V2VmNetworkConfigArgs:
         return pulumi.get(self, "enable_external_ips")
 
     @enable_external_ips.setter
-    def enable_external_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_external_ips(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_external_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the network for the TPU node. It must be a preexisting Google Compute Engine
         network. If none is provided, "default" will be used.
@@ -556,24 +556,24 @@ class V2VmNetworkConfigArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="queueCount")
-    def queue_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def queue_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies networking queue count for TPU VM instance's network interface.
         """
         return pulumi.get(self, "queue_count")
 
     @queue_count.setter
-    def queue_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def queue_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "queue_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
         Engine subnetwork. If none is provided, "default" will be used.
@@ -581,23 +581,23 @@ class V2VmNetworkConfigArgs:
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
 
 class V2VmNetworkEndpointArgsDict(TypedDict):
-    access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgsDict']]]]
+    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgs']]]]]
     """
     (Output)
     The access config for the TPU worker.
     Structure is documented below.
     """
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The internal IP address of this network endpoint.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The port of this network endpoint.
@@ -606,9 +606,9 @@ class V2VmNetworkEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class V2VmNetworkEndpointArgs:
     def __init__(__self__, *,
-                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgs']]]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgs']]]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgs']]] access_configs: (Output)
                The access config for the TPU worker.
@@ -627,7 +627,7 @@ class V2VmNetworkEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessConfigs")
-    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgs']]]]:
+    def access_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgs']]]]:
         """
         (Output)
         The access config for the TPU worker.
@@ -636,12 +636,12 @@ class V2VmNetworkEndpointArgs:
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
-    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgs']]]]):
+    def access_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgs']]]]):
         pulumi.set(self, "access_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The internal IP address of this network endpoint.
@@ -649,12 +649,12 @@ class V2VmNetworkEndpointArgs:
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The port of this network endpoint.
@@ -662,12 +662,12 @@ class V2VmNetworkEndpointArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
 class V2VmNetworkEndpointAccessConfigArgsDict(TypedDict):
-    external_ip: NotRequired[pulumi.Input[_builtins.str]]
+    external_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     An external IP address associated with the TPU worker.
@@ -676,7 +676,7 @@ class V2VmNetworkEndpointAccessConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V2VmNetworkEndpointAccessConfigArgs:
     def __init__(__self__, *,
-                 external_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 external_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] external_ip: (Output)
                An external IP address associated with the TPU worker.
@@ -686,7 +686,7 @@ class V2VmNetworkEndpointAccessConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="externalIp")
-    def external_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         An external IP address associated with the TPU worker.
@@ -694,20 +694,20 @@ class V2VmNetworkEndpointAccessConfigArgs:
         return pulumi.get(self, "external_ip")
 
     @external_ip.setter
-    def external_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_ip", value)
 
 
 class V2VmSchedulingConfigArgsDict(TypedDict):
-    preemptible: NotRequired[pulumi.Input[_builtins.bool]]
+    preemptible: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Defines whether the node is preemptible.
     """
-    reserved: NotRequired[pulumi.Input[_builtins.bool]]
+    reserved: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the node is created under a reservation.
     """
-    spot: NotRequired[pulumi.Input[_builtins.bool]]
+    spot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Defines whether the node is Spot VM.
     """
@@ -715,9 +715,9 @@ class V2VmSchedulingConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V2VmSchedulingConfigArgs:
     def __init__(__self__, *,
-                 preemptible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reserved: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spot: Optional[pulumi.Input[_builtins.bool]] = None):
+                 preemptible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reserved: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spot: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] preemptible: Defines whether the node is preemptible.
         :param pulumi.Input[_builtins.bool] reserved: Whether the node is created under a reservation.
@@ -732,47 +732,47 @@ class V2VmSchedulingConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def preemptible(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def preemptible(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the node is preemptible.
         """
         return pulumi.get(self, "preemptible")
 
     @preemptible.setter
-    def preemptible(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def preemptible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "preemptible", value)
 
     @_builtins.property
     @pulumi.getter
-    def reserved(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reserved(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the node is created under a reservation.
         """
         return pulumi.get(self, "reserved")
 
     @reserved.setter
-    def reserved(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reserved(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reserved", value)
 
     @_builtins.property
     @pulumi.getter
-    def spot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def spot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Defines whether the node is Spot VM.
         """
         return pulumi.get(self, "spot")
 
     @spot.setter
-    def spot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def spot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "spot", value)
 
 
 class V2VmServiceAccountArgsDict(TypedDict):
-    email: NotRequired[pulumi.Input[_builtins.str]]
+    email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Email address of the service account. If empty, default Compute service account will be used.
     """
-    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of scopes to be made available for this service account. If empty, access to all
     Cloud APIs will be allowed.
@@ -781,8 +781,8 @@ class V2VmServiceAccountArgsDict(TypedDict):
 @pulumi.input_type
 class V2VmServiceAccountArgs:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] email: Email address of the service account. If empty, default Compute service account will be used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of scopes to be made available for this service account. If empty, access to all
@@ -795,19 +795,19 @@ class V2VmServiceAccountArgs:
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the service account. If empty, default Compute service account will be used.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of scopes to be made available for this service account. If empty, access to all
         Cloud APIs will be allowed.
@@ -815,7 +815,7 @@ class V2VmServiceAccountArgs:
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scopes", value)
 
 
@@ -848,22 +848,22 @@ class V2VmShieldedInstanceConfigArgs:
 
 
 class V2VmSymptomArgsDict(TypedDict):
-    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Timestamp when the Symptom is created.
     """
-    details: NotRequired[pulumi.Input[_builtins.str]]
+    details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Detailed information of the current Symptom.
     """
-    symptom_type: NotRequired[pulumi.Input[_builtins.str]]
+    symptom_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Type of the Symptom.
     """
-    worker_id: NotRequired[pulumi.Input[_builtins.str]]
+    worker_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A string used to uniquely distinguish a worker within a TPU node.
@@ -872,10 +872,10 @@ class V2VmSymptomArgsDict(TypedDict):
 @pulumi.input_type
 class V2VmSymptomArgs:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 details: Optional[pulumi.Input[_builtins.str]] = None,
-                 symptom_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 details: pulumi.Input[Optional[_builtins.str]] = None,
+                 symptom_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] create_time: (Output)
                Timestamp when the Symptom is created.
@@ -897,7 +897,7 @@ class V2VmSymptomArgs:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Timestamp when the Symptom is created.
@@ -905,12 +905,12 @@ class V2VmSymptomArgs:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def details(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Detailed information of the current Symptom.
@@ -918,12 +918,12 @@ class V2VmSymptomArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def details(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter(name="symptomType")
-    def symptom_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def symptom_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Type of the Symptom.
@@ -931,12 +931,12 @@ class V2VmSymptomArgs:
         return pulumi.get(self, "symptom_type")
 
     @symptom_type.setter
-    def symptom_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def symptom_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "symptom_type", value)
 
     @_builtins.property
     @pulumi.getter(name="workerId")
-    def worker_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def worker_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A string used to uniquely distinguish a worker within a TPU node.
@@ -944,7 +944,7 @@ class V2VmSymptomArgs:
         return pulumi.get(self, "worker_id")
 
     @worker_id.setter
-    def worker_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def worker_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "worker_id", value)
 
 

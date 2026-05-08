@@ -62,16 +62,16 @@ __all__ = [
 ]
 
 class FloorsettingAiPlatformFloorSettingArgsDict(TypedDict):
-    enable_cloud_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_cloud_logging: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, log Model Armor filter results to Cloud Logging.
     """
-    inspect_and_block: NotRequired[pulumi.Input[_builtins.bool]]
+    inspect_and_block: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, Model Armor filters will be run in inspect and block mode.
     Requests that trip Model Armor filters will be blocked.
     """
-    inspect_only: NotRequired[pulumi.Input[_builtins.bool]]
+    inspect_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, Model Armor filters will be run in inspect only mode. No action
     will be taken on the request.
@@ -80,9 +80,9 @@ class FloorsettingAiPlatformFloorSettingArgsDict(TypedDict):
 @pulumi.input_type
 class FloorsettingAiPlatformFloorSettingArgs:
     def __init__(__self__, *,
-                 enable_cloud_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inspect_and_block: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inspect_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_cloud_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inspect_and_block: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inspect_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_cloud_logging: If true, log Model Armor filter results to Cloud Logging.
         :param pulumi.Input[_builtins.bool] inspect_and_block: If true, Model Armor filters will be run in inspect and block mode.
@@ -99,19 +99,19 @@ class FloorsettingAiPlatformFloorSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableCloudLogging")
-    def enable_cloud_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_cloud_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, log Model Armor filter results to Cloud Logging.
         """
         return pulumi.get(self, "enable_cloud_logging")
 
     @enable_cloud_logging.setter
-    def enable_cloud_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_cloud_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_cloud_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="inspectAndBlock")
-    def inspect_and_block(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def inspect_and_block(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, Model Armor filters will be run in inspect and block mode.
         Requests that trip Model Armor filters will be blocked.
@@ -119,12 +119,12 @@ class FloorsettingAiPlatformFloorSettingArgs:
         return pulumi.get(self, "inspect_and_block")
 
     @inspect_and_block.setter
-    def inspect_and_block(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def inspect_and_block(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "inspect_and_block", value)
 
     @_builtins.property
     @pulumi.getter(name="inspectOnly")
-    def inspect_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def inspect_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, Model Armor filters will be run in inspect only mode. No action
         will be taken on the request.
@@ -132,27 +132,27 @@ class FloorsettingAiPlatformFloorSettingArgs:
         return pulumi.get(self, "inspect_only")
 
     @inspect_only.setter
-    def inspect_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def inspect_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "inspect_only", value)
 
 
 class FloorsettingFilterConfigArgsDict(TypedDict):
-    malicious_uri_filter_settings: NotRequired[pulumi.Input['FloorsettingFilterConfigMaliciousUriFilterSettingsArgsDict']]
+    malicious_uri_filter_settings: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigMaliciousUriFilterSettingsArgs']]]
     """
     Malicious URI filter settings.
     Structure is documented below.
     """
-    pi_and_jailbreak_filter_settings: NotRequired[pulumi.Input['FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgsDict']]
+    pi_and_jailbreak_filter_settings: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs']]]
     """
     Prompt injection and Jailbreak Filter settings.
     Structure is documented below.
     """
-    rai_settings: NotRequired[pulumi.Input['FloorsettingFilterConfigRaiSettingsArgsDict']]
+    rai_settings: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigRaiSettingsArgs']]]
     """
     Responsible AI Filter settings.
     Structure is documented below.
     """
-    sdp_settings: NotRequired[pulumi.Input['FloorsettingFilterConfigSdpSettingsArgsDict']]
+    sdp_settings: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsArgs']]]
     """
     Sensitive Data Protection settings.
     Structure is documented below.
@@ -161,10 +161,10 @@ class FloorsettingFilterConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FloorsettingFilterConfigArgs:
     def __init__(__self__, *,
-                 malicious_uri_filter_settings: Optional[pulumi.Input['FloorsettingFilterConfigMaliciousUriFilterSettingsArgs']] = None,
-                 pi_and_jailbreak_filter_settings: Optional[pulumi.Input['FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs']] = None,
-                 rai_settings: Optional[pulumi.Input['FloorsettingFilterConfigRaiSettingsArgs']] = None,
-                 sdp_settings: Optional[pulumi.Input['FloorsettingFilterConfigSdpSettingsArgs']] = None):
+                 malicious_uri_filter_settings: pulumi.Input[Optional['FloorsettingFilterConfigMaliciousUriFilterSettingsArgs']] = None,
+                 pi_and_jailbreak_filter_settings: pulumi.Input[Optional['FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs']] = None,
+                 rai_settings: pulumi.Input[Optional['FloorsettingFilterConfigRaiSettingsArgs']] = None,
+                 sdp_settings: pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsArgs']] = None):
         """
         :param pulumi.Input['FloorsettingFilterConfigMaliciousUriFilterSettingsArgs'] malicious_uri_filter_settings: Malicious URI filter settings.
                Structure is documented below.
@@ -186,7 +186,7 @@ class FloorsettingFilterConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="maliciousUriFilterSettings")
-    def malicious_uri_filter_settings(self) -> Optional[pulumi.Input['FloorsettingFilterConfigMaliciousUriFilterSettingsArgs']]:
+    def malicious_uri_filter_settings(self) -> pulumi.Input[Optional['FloorsettingFilterConfigMaliciousUriFilterSettingsArgs']]:
         """
         Malicious URI filter settings.
         Structure is documented below.
@@ -194,12 +194,12 @@ class FloorsettingFilterConfigArgs:
         return pulumi.get(self, "malicious_uri_filter_settings")
 
     @malicious_uri_filter_settings.setter
-    def malicious_uri_filter_settings(self, value: Optional[pulumi.Input['FloorsettingFilterConfigMaliciousUriFilterSettingsArgs']]):
+    def malicious_uri_filter_settings(self, value: pulumi.Input[Optional['FloorsettingFilterConfigMaliciousUriFilterSettingsArgs']]):
         pulumi.set(self, "malicious_uri_filter_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="piAndJailbreakFilterSettings")
-    def pi_and_jailbreak_filter_settings(self) -> Optional[pulumi.Input['FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs']]:
+    def pi_and_jailbreak_filter_settings(self) -> pulumi.Input[Optional['FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs']]:
         """
         Prompt injection and Jailbreak Filter settings.
         Structure is documented below.
@@ -207,12 +207,12 @@ class FloorsettingFilterConfigArgs:
         return pulumi.get(self, "pi_and_jailbreak_filter_settings")
 
     @pi_and_jailbreak_filter_settings.setter
-    def pi_and_jailbreak_filter_settings(self, value: Optional[pulumi.Input['FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs']]):
+    def pi_and_jailbreak_filter_settings(self, value: pulumi.Input[Optional['FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs']]):
         pulumi.set(self, "pi_and_jailbreak_filter_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="raiSettings")
-    def rai_settings(self) -> Optional[pulumi.Input['FloorsettingFilterConfigRaiSettingsArgs']]:
+    def rai_settings(self) -> pulumi.Input[Optional['FloorsettingFilterConfigRaiSettingsArgs']]:
         """
         Responsible AI Filter settings.
         Structure is documented below.
@@ -220,12 +220,12 @@ class FloorsettingFilterConfigArgs:
         return pulumi.get(self, "rai_settings")
 
     @rai_settings.setter
-    def rai_settings(self, value: Optional[pulumi.Input['FloorsettingFilterConfigRaiSettingsArgs']]):
+    def rai_settings(self, value: pulumi.Input[Optional['FloorsettingFilterConfigRaiSettingsArgs']]):
         pulumi.set(self, "rai_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="sdpSettings")
-    def sdp_settings(self) -> Optional[pulumi.Input['FloorsettingFilterConfigSdpSettingsArgs']]:
+    def sdp_settings(self) -> pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsArgs']]:
         """
         Sensitive Data Protection settings.
         Structure is documented below.
@@ -233,12 +233,12 @@ class FloorsettingFilterConfigArgs:
         return pulumi.get(self, "sdp_settings")
 
     @sdp_settings.setter
-    def sdp_settings(self, value: Optional[pulumi.Input['FloorsettingFilterConfigSdpSettingsArgs']]):
+    def sdp_settings(self, value: pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsArgs']]):
         pulumi.set(self, "sdp_settings", value)
 
 
 class FloorsettingFilterConfigMaliciousUriFilterSettingsArgsDict(TypedDict):
-    filter_enforcement: NotRequired[pulumi.Input[_builtins.str]]
+    filter_enforcement: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tells whether the Malicious URI filter is enabled or disabled.
     Possible values:
@@ -249,7 +249,7 @@ class FloorsettingFilterConfigMaliciousUriFilterSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FloorsettingFilterConfigMaliciousUriFilterSettingsArgs:
     def __init__(__self__, *,
-                 filter_enforcement: Optional[pulumi.Input[_builtins.str]] = None):
+                 filter_enforcement: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] filter_enforcement: Tells whether the Malicious URI filter is enabled or disabled.
                Possible values:
@@ -261,7 +261,7 @@ class FloorsettingFilterConfigMaliciousUriFilterSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="filterEnforcement")
-    def filter_enforcement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_enforcement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tells whether the Malicious URI filter is enabled or disabled.
         Possible values:
@@ -271,19 +271,19 @@ class FloorsettingFilterConfigMaliciousUriFilterSettingsArgs:
         return pulumi.get(self, "filter_enforcement")
 
     @filter_enforcement.setter
-    def filter_enforcement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_enforcement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_enforcement", value)
 
 
 class FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgsDict(TypedDict):
-    confidence_level: NotRequired[pulumi.Input[_builtins.str]]
+    confidence_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     LOW_AND_ABOVE
     MEDIUM_AND_ABOVE
     HIGH
     """
-    filter_enforcement: NotRequired[pulumi.Input[_builtins.str]]
+    filter_enforcement: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tells whether Prompt injection and Jailbreak filter is enabled or
     disabled.
@@ -295,8 +295,8 @@ class FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs:
     def __init__(__self__, *,
-                 confidence_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_enforcement: Optional[pulumi.Input[_builtins.str]] = None):
+                 confidence_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_enforcement: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] confidence_level: Possible values:
                LOW_AND_ABOVE
@@ -315,7 +315,7 @@ class FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="confidenceLevel")
-    def confidence_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def confidence_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         LOW_AND_ABOVE
@@ -325,12 +325,12 @@ class FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs:
         return pulumi.get(self, "confidence_level")
 
     @confidence_level.setter
-    def confidence_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def confidence_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "confidence_level", value)
 
     @_builtins.property
     @pulumi.getter(name="filterEnforcement")
-    def filter_enforcement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_enforcement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tells whether Prompt injection and Jailbreak filter is enabled or
         disabled.
@@ -341,7 +341,7 @@ class FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs:
         return pulumi.get(self, "filter_enforcement")
 
     @filter_enforcement.setter
-    def filter_enforcement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_enforcement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_enforcement", value)
 
 
@@ -385,7 +385,7 @@ class FloorsettingFilterConfigRaiSettingsRaiFilterArgsDict(TypedDict):
     HARASSMENT
     DANGEROUS
     """
-    confidence_level: NotRequired[pulumi.Input[_builtins.str]]
+    confidence_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     LOW_AND_ABOVE
@@ -397,7 +397,7 @@ class FloorsettingFilterConfigRaiSettingsRaiFilterArgsDict(TypedDict):
 class FloorsettingFilterConfigRaiSettingsRaiFilterArgs:
     def __init__(__self__, *,
                  filter_type: pulumi.Input[_builtins.str],
-                 confidence_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 confidence_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] filter_type: Possible values:
                SEXUALLY_EXPLICIT
@@ -431,7 +431,7 @@ class FloorsettingFilterConfigRaiSettingsRaiFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="confidenceLevel")
-    def confidence_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def confidence_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         LOW_AND_ABOVE
@@ -441,17 +441,17 @@ class FloorsettingFilterConfigRaiSettingsRaiFilterArgs:
         return pulumi.get(self, "confidence_level")
 
     @confidence_level.setter
-    def confidence_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def confidence_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "confidence_level", value)
 
 
 class FloorsettingFilterConfigSdpSettingsArgsDict(TypedDict):
-    advanced_config: NotRequired[pulumi.Input['FloorsettingFilterConfigSdpSettingsAdvancedConfigArgsDict']]
+    advanced_config: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs']]]
     """
     Sensitive Data Protection Advanced configuration.
     Structure is documented below.
     """
-    basic_config: NotRequired[pulumi.Input['FloorsettingFilterConfigSdpSettingsBasicConfigArgsDict']]
+    basic_config: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsBasicConfigArgs']]]
     """
     Sensitive Data Protection basic configuration.
     Structure is documented below.
@@ -460,8 +460,8 @@ class FloorsettingFilterConfigSdpSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FloorsettingFilterConfigSdpSettingsArgs:
     def __init__(__self__, *,
-                 advanced_config: Optional[pulumi.Input['FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs']] = None,
-                 basic_config: Optional[pulumi.Input['FloorsettingFilterConfigSdpSettingsBasicConfigArgs']] = None):
+                 advanced_config: pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs']] = None,
+                 basic_config: pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsBasicConfigArgs']] = None):
         """
         :param pulumi.Input['FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs'] advanced_config: Sensitive Data Protection Advanced configuration.
                Structure is documented below.
@@ -475,7 +475,7 @@ class FloorsettingFilterConfigSdpSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="advancedConfig")
-    def advanced_config(self) -> Optional[pulumi.Input['FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs']]:
+    def advanced_config(self) -> pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs']]:
         """
         Sensitive Data Protection Advanced configuration.
         Structure is documented below.
@@ -483,12 +483,12 @@ class FloorsettingFilterConfigSdpSettingsArgs:
         return pulumi.get(self, "advanced_config")
 
     @advanced_config.setter
-    def advanced_config(self, value: Optional[pulumi.Input['FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs']]):
+    def advanced_config(self, value: pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs']]):
         pulumi.set(self, "advanced_config", value)
 
     @_builtins.property
     @pulumi.getter(name="basicConfig")
-    def basic_config(self) -> Optional[pulumi.Input['FloorsettingFilterConfigSdpSettingsBasicConfigArgs']]:
+    def basic_config(self) -> pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsBasicConfigArgs']]:
         """
         Sensitive Data Protection basic configuration.
         Structure is documented below.
@@ -496,12 +496,12 @@ class FloorsettingFilterConfigSdpSettingsArgs:
         return pulumi.get(self, "basic_config")
 
     @basic_config.setter
-    def basic_config(self, value: Optional[pulumi.Input['FloorsettingFilterConfigSdpSettingsBasicConfigArgs']]):
+    def basic_config(self, value: pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsBasicConfigArgs']]):
         pulumi.set(self, "basic_config", value)
 
 
 class FloorsettingFilterConfigSdpSettingsAdvancedConfigArgsDict(TypedDict):
-    deidentify_template: NotRequired[pulumi.Input[_builtins.str]]
+    deidentify_template: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional Sensitive Data Protection Deidentify template resource name.
     If provided then DeidentifyContent action is performed during Sanitization
@@ -512,7 +512,7 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfigArgsDict(TypedDict):
     e.g.
     `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
     """
-    inspect_template: NotRequired[pulumi.Input[_builtins.str]]
+    inspect_template: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Sensitive Data Protection inspect template resource name
     If only inspect template is provided (de-identify template not provided),
@@ -526,8 +526,8 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs:
     def __init__(__self__, *,
-                 deidentify_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 inspect_template: Optional[pulumi.Input[_builtins.str]] = None):
+                 deidentify_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 inspect_template: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] deidentify_template: Optional Sensitive Data Protection Deidentify template resource name.
                If provided then DeidentifyContent action is performed during Sanitization
@@ -552,7 +552,7 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="deidentifyTemplate")
-    def deidentify_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deidentify_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional Sensitive Data Protection Deidentify template resource name.
         If provided then DeidentifyContent action is performed during Sanitization
@@ -566,12 +566,12 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs:
         return pulumi.get(self, "deidentify_template")
 
     @deidentify_template.setter
-    def deidentify_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deidentify_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deidentify_template", value)
 
     @_builtins.property
     @pulumi.getter(name="inspectTemplate")
-    def inspect_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inspect_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sensitive Data Protection inspect template resource name
         If only inspect template is provided (de-identify template not provided),
@@ -584,12 +584,12 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs:
         return pulumi.get(self, "inspect_template")
 
     @inspect_template.setter
-    def inspect_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inspect_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inspect_template", value)
 
 
 class FloorsettingFilterConfigSdpSettingsBasicConfigArgsDict(TypedDict):
-    filter_enforcement: NotRequired[pulumi.Input[_builtins.str]]
+    filter_enforcement: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tells whether the Sensitive Data Protection basic config is enabled or
     disabled.
@@ -601,7 +601,7 @@ class FloorsettingFilterConfigSdpSettingsBasicConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FloorsettingFilterConfigSdpSettingsBasicConfigArgs:
     def __init__(__self__, *,
-                 filter_enforcement: Optional[pulumi.Input[_builtins.str]] = None):
+                 filter_enforcement: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] filter_enforcement: Tells whether the Sensitive Data Protection basic config is enabled or
                disabled.
@@ -614,7 +614,7 @@ class FloorsettingFilterConfigSdpSettingsBasicConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="filterEnforcement")
-    def filter_enforcement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_enforcement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tells whether the Sensitive Data Protection basic config is enabled or
         disabled.
@@ -625,12 +625,12 @@ class FloorsettingFilterConfigSdpSettingsBasicConfigArgs:
         return pulumi.get(self, "filter_enforcement")
 
     @filter_enforcement.setter
-    def filter_enforcement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_enforcement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_enforcement", value)
 
 
 class FloorsettingFloorSettingMetadataArgsDict(TypedDict):
-    multi_language_detection: NotRequired[pulumi.Input['FloorsettingFloorSettingMetadataMultiLanguageDetectionArgsDict']]
+    multi_language_detection: NotRequired[pulumi.Input[Optional['FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs']]]
     """
     Metadata for multi language detection.
     Structure is documented below.
@@ -639,7 +639,7 @@ class FloorsettingFloorSettingMetadataArgsDict(TypedDict):
 @pulumi.input_type
 class FloorsettingFloorSettingMetadataArgs:
     def __init__(__self__, *,
-                 multi_language_detection: Optional[pulumi.Input['FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs']] = None):
+                 multi_language_detection: pulumi.Input[Optional['FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs']] = None):
         """
         :param pulumi.Input['FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs'] multi_language_detection: Metadata for multi language detection.
                Structure is documented below.
@@ -649,7 +649,7 @@ class FloorsettingFloorSettingMetadataArgs:
 
     @_builtins.property
     @pulumi.getter(name="multiLanguageDetection")
-    def multi_language_detection(self) -> Optional[pulumi.Input['FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs']]:
+    def multi_language_detection(self) -> pulumi.Input[Optional['FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs']]:
         """
         Metadata for multi language detection.
         Structure is documented below.
@@ -657,7 +657,7 @@ class FloorsettingFloorSettingMetadataArgs:
         return pulumi.get(self, "multi_language_detection")
 
     @multi_language_detection.setter
-    def multi_language_detection(self, value: Optional[pulumi.Input['FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs']]):
+    def multi_language_detection(self, value: pulumi.Input[Optional['FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs']]):
         pulumi.set(self, "multi_language_detection", value)
 
 
@@ -690,16 +690,16 @@ class FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs:
 
 
 class FloorsettingGoogleMcpServerFloorSettingArgsDict(TypedDict):
-    enable_cloud_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_cloud_logging: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, log Model Armor filter results to Cloud Logging.
     """
-    inspect_and_block: NotRequired[pulumi.Input[_builtins.bool]]
+    inspect_and_block: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, Model Armor filters will be run in inspect and block mode.
     Requests that trip Model Armor filters will be blocked.
     """
-    inspect_only: NotRequired[pulumi.Input[_builtins.bool]]
+    inspect_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, Model Armor filters will be run in inspect only mode. No action
     will be taken on the request.
@@ -708,9 +708,9 @@ class FloorsettingGoogleMcpServerFloorSettingArgsDict(TypedDict):
 @pulumi.input_type
 class FloorsettingGoogleMcpServerFloorSettingArgs:
     def __init__(__self__, *,
-                 enable_cloud_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inspect_and_block: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inspect_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_cloud_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inspect_and_block: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inspect_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_cloud_logging: If true, log Model Armor filter results to Cloud Logging.
         :param pulumi.Input[_builtins.bool] inspect_and_block: If true, Model Armor filters will be run in inspect and block mode.
@@ -727,19 +727,19 @@ class FloorsettingGoogleMcpServerFloorSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableCloudLogging")
-    def enable_cloud_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_cloud_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, log Model Armor filter results to Cloud Logging.
         """
         return pulumi.get(self, "enable_cloud_logging")
 
     @enable_cloud_logging.setter
-    def enable_cloud_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_cloud_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_cloud_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="inspectAndBlock")
-    def inspect_and_block(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def inspect_and_block(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, Model Armor filters will be run in inspect and block mode.
         Requests that trip Model Armor filters will be blocked.
@@ -747,12 +747,12 @@ class FloorsettingGoogleMcpServerFloorSettingArgs:
         return pulumi.get(self, "inspect_and_block")
 
     @inspect_and_block.setter
-    def inspect_and_block(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def inspect_and_block(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "inspect_and_block", value)
 
     @_builtins.property
     @pulumi.getter(name="inspectOnly")
-    def inspect_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def inspect_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, Model Armor filters will be run in inspect only mode. No action
         will be taken on the request.
@@ -760,27 +760,27 @@ class FloorsettingGoogleMcpServerFloorSettingArgs:
         return pulumi.get(self, "inspect_only")
 
     @inspect_only.setter
-    def inspect_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def inspect_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "inspect_only", value)
 
 
 class TemplateFilterConfigArgsDict(TypedDict):
-    malicious_uri_filter_settings: NotRequired[pulumi.Input['TemplateFilterConfigMaliciousUriFilterSettingsArgsDict']]
+    malicious_uri_filter_settings: NotRequired[pulumi.Input[Optional['TemplateFilterConfigMaliciousUriFilterSettingsArgs']]]
     """
     Malicious URI filter settings.
     Structure is documented below.
     """
-    pi_and_jailbreak_filter_settings: NotRequired[pulumi.Input['TemplateFilterConfigPiAndJailbreakFilterSettingsArgsDict']]
+    pi_and_jailbreak_filter_settings: NotRequired[pulumi.Input[Optional['TemplateFilterConfigPiAndJailbreakFilterSettingsArgs']]]
     """
     Prompt injection and Jailbreak Filter settings.
     Structure is documented below.
     """
-    rai_settings: NotRequired[pulumi.Input['TemplateFilterConfigRaiSettingsArgsDict']]
+    rai_settings: NotRequired[pulumi.Input[Optional['TemplateFilterConfigRaiSettingsArgs']]]
     """
     Responsible AI Filter settings.
     Structure is documented below.
     """
-    sdp_settings: NotRequired[pulumi.Input['TemplateFilterConfigSdpSettingsArgsDict']]
+    sdp_settings: NotRequired[pulumi.Input[Optional['TemplateFilterConfigSdpSettingsArgs']]]
     """
     Sensitive Data Protection settings.
     Structure is documented below.
@@ -789,10 +789,10 @@ class TemplateFilterConfigArgsDict(TypedDict):
 @pulumi.input_type
 class TemplateFilterConfigArgs:
     def __init__(__self__, *,
-                 malicious_uri_filter_settings: Optional[pulumi.Input['TemplateFilterConfigMaliciousUriFilterSettingsArgs']] = None,
-                 pi_and_jailbreak_filter_settings: Optional[pulumi.Input['TemplateFilterConfigPiAndJailbreakFilterSettingsArgs']] = None,
-                 rai_settings: Optional[pulumi.Input['TemplateFilterConfigRaiSettingsArgs']] = None,
-                 sdp_settings: Optional[pulumi.Input['TemplateFilterConfigSdpSettingsArgs']] = None):
+                 malicious_uri_filter_settings: pulumi.Input[Optional['TemplateFilterConfigMaliciousUriFilterSettingsArgs']] = None,
+                 pi_and_jailbreak_filter_settings: pulumi.Input[Optional['TemplateFilterConfigPiAndJailbreakFilterSettingsArgs']] = None,
+                 rai_settings: pulumi.Input[Optional['TemplateFilterConfigRaiSettingsArgs']] = None,
+                 sdp_settings: pulumi.Input[Optional['TemplateFilterConfigSdpSettingsArgs']] = None):
         """
         :param pulumi.Input['TemplateFilterConfigMaliciousUriFilterSettingsArgs'] malicious_uri_filter_settings: Malicious URI filter settings.
                Structure is documented below.
@@ -814,7 +814,7 @@ class TemplateFilterConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="maliciousUriFilterSettings")
-    def malicious_uri_filter_settings(self) -> Optional[pulumi.Input['TemplateFilterConfigMaliciousUriFilterSettingsArgs']]:
+    def malicious_uri_filter_settings(self) -> pulumi.Input[Optional['TemplateFilterConfigMaliciousUriFilterSettingsArgs']]:
         """
         Malicious URI filter settings.
         Structure is documented below.
@@ -822,12 +822,12 @@ class TemplateFilterConfigArgs:
         return pulumi.get(self, "malicious_uri_filter_settings")
 
     @malicious_uri_filter_settings.setter
-    def malicious_uri_filter_settings(self, value: Optional[pulumi.Input['TemplateFilterConfigMaliciousUriFilterSettingsArgs']]):
+    def malicious_uri_filter_settings(self, value: pulumi.Input[Optional['TemplateFilterConfigMaliciousUriFilterSettingsArgs']]):
         pulumi.set(self, "malicious_uri_filter_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="piAndJailbreakFilterSettings")
-    def pi_and_jailbreak_filter_settings(self) -> Optional[pulumi.Input['TemplateFilterConfigPiAndJailbreakFilterSettingsArgs']]:
+    def pi_and_jailbreak_filter_settings(self) -> pulumi.Input[Optional['TemplateFilterConfigPiAndJailbreakFilterSettingsArgs']]:
         """
         Prompt injection and Jailbreak Filter settings.
         Structure is documented below.
@@ -835,12 +835,12 @@ class TemplateFilterConfigArgs:
         return pulumi.get(self, "pi_and_jailbreak_filter_settings")
 
     @pi_and_jailbreak_filter_settings.setter
-    def pi_and_jailbreak_filter_settings(self, value: Optional[pulumi.Input['TemplateFilterConfigPiAndJailbreakFilterSettingsArgs']]):
+    def pi_and_jailbreak_filter_settings(self, value: pulumi.Input[Optional['TemplateFilterConfigPiAndJailbreakFilterSettingsArgs']]):
         pulumi.set(self, "pi_and_jailbreak_filter_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="raiSettings")
-    def rai_settings(self) -> Optional[pulumi.Input['TemplateFilterConfigRaiSettingsArgs']]:
+    def rai_settings(self) -> pulumi.Input[Optional['TemplateFilterConfigRaiSettingsArgs']]:
         """
         Responsible AI Filter settings.
         Structure is documented below.
@@ -848,12 +848,12 @@ class TemplateFilterConfigArgs:
         return pulumi.get(self, "rai_settings")
 
     @rai_settings.setter
-    def rai_settings(self, value: Optional[pulumi.Input['TemplateFilterConfigRaiSettingsArgs']]):
+    def rai_settings(self, value: pulumi.Input[Optional['TemplateFilterConfigRaiSettingsArgs']]):
         pulumi.set(self, "rai_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="sdpSettings")
-    def sdp_settings(self) -> Optional[pulumi.Input['TemplateFilterConfigSdpSettingsArgs']]:
+    def sdp_settings(self) -> pulumi.Input[Optional['TemplateFilterConfigSdpSettingsArgs']]:
         """
         Sensitive Data Protection settings.
         Structure is documented below.
@@ -861,12 +861,12 @@ class TemplateFilterConfigArgs:
         return pulumi.get(self, "sdp_settings")
 
     @sdp_settings.setter
-    def sdp_settings(self, value: Optional[pulumi.Input['TemplateFilterConfigSdpSettingsArgs']]):
+    def sdp_settings(self, value: pulumi.Input[Optional['TemplateFilterConfigSdpSettingsArgs']]):
         pulumi.set(self, "sdp_settings", value)
 
 
 class TemplateFilterConfigMaliciousUriFilterSettingsArgsDict(TypedDict):
-    filter_enforcement: NotRequired[pulumi.Input[_builtins.str]]
+    filter_enforcement: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tells whether the Malicious URI filter is enabled or disabled.
     Possible values:
@@ -877,7 +877,7 @@ class TemplateFilterConfigMaliciousUriFilterSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class TemplateFilterConfigMaliciousUriFilterSettingsArgs:
     def __init__(__self__, *,
-                 filter_enforcement: Optional[pulumi.Input[_builtins.str]] = None):
+                 filter_enforcement: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] filter_enforcement: Tells whether the Malicious URI filter is enabled or disabled.
                Possible values:
@@ -889,7 +889,7 @@ class TemplateFilterConfigMaliciousUriFilterSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="filterEnforcement")
-    def filter_enforcement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_enforcement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tells whether the Malicious URI filter is enabled or disabled.
         Possible values:
@@ -899,19 +899,19 @@ class TemplateFilterConfigMaliciousUriFilterSettingsArgs:
         return pulumi.get(self, "filter_enforcement")
 
     @filter_enforcement.setter
-    def filter_enforcement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_enforcement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_enforcement", value)
 
 
 class TemplateFilterConfigPiAndJailbreakFilterSettingsArgsDict(TypedDict):
-    confidence_level: NotRequired[pulumi.Input[_builtins.str]]
+    confidence_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     LOW_AND_ABOVE
     MEDIUM_AND_ABOVE
     HIGH
     """
-    filter_enforcement: NotRequired[pulumi.Input[_builtins.str]]
+    filter_enforcement: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tells whether Prompt injection and Jailbreak filter is enabled or
     disabled.
@@ -923,8 +923,8 @@ class TemplateFilterConfigPiAndJailbreakFilterSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class TemplateFilterConfigPiAndJailbreakFilterSettingsArgs:
     def __init__(__self__, *,
-                 confidence_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_enforcement: Optional[pulumi.Input[_builtins.str]] = None):
+                 confidence_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_enforcement: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] confidence_level: Possible values:
                LOW_AND_ABOVE
@@ -943,7 +943,7 @@ class TemplateFilterConfigPiAndJailbreakFilterSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="confidenceLevel")
-    def confidence_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def confidence_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         LOW_AND_ABOVE
@@ -953,12 +953,12 @@ class TemplateFilterConfigPiAndJailbreakFilterSettingsArgs:
         return pulumi.get(self, "confidence_level")
 
     @confidence_level.setter
-    def confidence_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def confidence_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "confidence_level", value)
 
     @_builtins.property
     @pulumi.getter(name="filterEnforcement")
-    def filter_enforcement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_enforcement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tells whether Prompt injection and Jailbreak filter is enabled or
         disabled.
@@ -969,7 +969,7 @@ class TemplateFilterConfigPiAndJailbreakFilterSettingsArgs:
         return pulumi.get(self, "filter_enforcement")
 
     @filter_enforcement.setter
-    def filter_enforcement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_enforcement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_enforcement", value)
 
 
@@ -1013,7 +1013,7 @@ class TemplateFilterConfigRaiSettingsRaiFilterArgsDict(TypedDict):
     HARASSMENT
     DANGEROUS
     """
-    confidence_level: NotRequired[pulumi.Input[_builtins.str]]
+    confidence_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     LOW_AND_ABOVE
@@ -1025,7 +1025,7 @@ class TemplateFilterConfigRaiSettingsRaiFilterArgsDict(TypedDict):
 class TemplateFilterConfigRaiSettingsRaiFilterArgs:
     def __init__(__self__, *,
                  filter_type: pulumi.Input[_builtins.str],
-                 confidence_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 confidence_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] filter_type: Possible values:
                SEXUALLY_EXPLICIT
@@ -1059,7 +1059,7 @@ class TemplateFilterConfigRaiSettingsRaiFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="confidenceLevel")
-    def confidence_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def confidence_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         LOW_AND_ABOVE
@@ -1069,17 +1069,17 @@ class TemplateFilterConfigRaiSettingsRaiFilterArgs:
         return pulumi.get(self, "confidence_level")
 
     @confidence_level.setter
-    def confidence_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def confidence_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "confidence_level", value)
 
 
 class TemplateFilterConfigSdpSettingsArgsDict(TypedDict):
-    advanced_config: NotRequired[pulumi.Input['TemplateFilterConfigSdpSettingsAdvancedConfigArgsDict']]
+    advanced_config: NotRequired[pulumi.Input[Optional['TemplateFilterConfigSdpSettingsAdvancedConfigArgs']]]
     """
     Sensitive Data Protection Advanced configuration.
     Structure is documented below.
     """
-    basic_config: NotRequired[pulumi.Input['TemplateFilterConfigSdpSettingsBasicConfigArgsDict']]
+    basic_config: NotRequired[pulumi.Input[Optional['TemplateFilterConfigSdpSettingsBasicConfigArgs']]]
     """
     Sensitive Data Protection basic configuration.
     Structure is documented below.
@@ -1088,8 +1088,8 @@ class TemplateFilterConfigSdpSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class TemplateFilterConfigSdpSettingsArgs:
     def __init__(__self__, *,
-                 advanced_config: Optional[pulumi.Input['TemplateFilterConfigSdpSettingsAdvancedConfigArgs']] = None,
-                 basic_config: Optional[pulumi.Input['TemplateFilterConfigSdpSettingsBasicConfigArgs']] = None):
+                 advanced_config: pulumi.Input[Optional['TemplateFilterConfigSdpSettingsAdvancedConfigArgs']] = None,
+                 basic_config: pulumi.Input[Optional['TemplateFilterConfigSdpSettingsBasicConfigArgs']] = None):
         """
         :param pulumi.Input['TemplateFilterConfigSdpSettingsAdvancedConfigArgs'] advanced_config: Sensitive Data Protection Advanced configuration.
                Structure is documented below.
@@ -1103,7 +1103,7 @@ class TemplateFilterConfigSdpSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="advancedConfig")
-    def advanced_config(self) -> Optional[pulumi.Input['TemplateFilterConfigSdpSettingsAdvancedConfigArgs']]:
+    def advanced_config(self) -> pulumi.Input[Optional['TemplateFilterConfigSdpSettingsAdvancedConfigArgs']]:
         """
         Sensitive Data Protection Advanced configuration.
         Structure is documented below.
@@ -1111,12 +1111,12 @@ class TemplateFilterConfigSdpSettingsArgs:
         return pulumi.get(self, "advanced_config")
 
     @advanced_config.setter
-    def advanced_config(self, value: Optional[pulumi.Input['TemplateFilterConfigSdpSettingsAdvancedConfigArgs']]):
+    def advanced_config(self, value: pulumi.Input[Optional['TemplateFilterConfigSdpSettingsAdvancedConfigArgs']]):
         pulumi.set(self, "advanced_config", value)
 
     @_builtins.property
     @pulumi.getter(name="basicConfig")
-    def basic_config(self) -> Optional[pulumi.Input['TemplateFilterConfigSdpSettingsBasicConfigArgs']]:
+    def basic_config(self) -> pulumi.Input[Optional['TemplateFilterConfigSdpSettingsBasicConfigArgs']]:
         """
         Sensitive Data Protection basic configuration.
         Structure is documented below.
@@ -1124,12 +1124,12 @@ class TemplateFilterConfigSdpSettingsArgs:
         return pulumi.get(self, "basic_config")
 
     @basic_config.setter
-    def basic_config(self, value: Optional[pulumi.Input['TemplateFilterConfigSdpSettingsBasicConfigArgs']]):
+    def basic_config(self, value: pulumi.Input[Optional['TemplateFilterConfigSdpSettingsBasicConfigArgs']]):
         pulumi.set(self, "basic_config", value)
 
 
 class TemplateFilterConfigSdpSettingsAdvancedConfigArgsDict(TypedDict):
-    deidentify_template: NotRequired[pulumi.Input[_builtins.str]]
+    deidentify_template: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional Sensitive Data Protection Deidentify template resource name.
     If provided then DeidentifyContent action is performed during Sanitization
@@ -1140,7 +1140,7 @@ class TemplateFilterConfigSdpSettingsAdvancedConfigArgsDict(TypedDict):
     e.g.
     `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
     """
-    inspect_template: NotRequired[pulumi.Input[_builtins.str]]
+    inspect_template: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Sensitive Data Protection inspect template resource name
     If only inspect template is provided (de-identify template not provided),
@@ -1154,8 +1154,8 @@ class TemplateFilterConfigSdpSettingsAdvancedConfigArgsDict(TypedDict):
 @pulumi.input_type
 class TemplateFilterConfigSdpSettingsAdvancedConfigArgs:
     def __init__(__self__, *,
-                 deidentify_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 inspect_template: Optional[pulumi.Input[_builtins.str]] = None):
+                 deidentify_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 inspect_template: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] deidentify_template: Optional Sensitive Data Protection Deidentify template resource name.
                If provided then DeidentifyContent action is performed during Sanitization
@@ -1180,7 +1180,7 @@ class TemplateFilterConfigSdpSettingsAdvancedConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="deidentifyTemplate")
-    def deidentify_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deidentify_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional Sensitive Data Protection Deidentify template resource name.
         If provided then DeidentifyContent action is performed during Sanitization
@@ -1194,12 +1194,12 @@ class TemplateFilterConfigSdpSettingsAdvancedConfigArgs:
         return pulumi.get(self, "deidentify_template")
 
     @deidentify_template.setter
-    def deidentify_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deidentify_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deidentify_template", value)
 
     @_builtins.property
     @pulumi.getter(name="inspectTemplate")
-    def inspect_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inspect_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sensitive Data Protection inspect template resource name
         If only inspect template is provided (de-identify template not provided),
@@ -1212,12 +1212,12 @@ class TemplateFilterConfigSdpSettingsAdvancedConfigArgs:
         return pulumi.get(self, "inspect_template")
 
     @inspect_template.setter
-    def inspect_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inspect_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inspect_template", value)
 
 
 class TemplateFilterConfigSdpSettingsBasicConfigArgsDict(TypedDict):
-    filter_enforcement: NotRequired[pulumi.Input[_builtins.str]]
+    filter_enforcement: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tells whether the Sensitive Data Protection basic config is enabled or
     disabled.
@@ -1229,7 +1229,7 @@ class TemplateFilterConfigSdpSettingsBasicConfigArgsDict(TypedDict):
 @pulumi.input_type
 class TemplateFilterConfigSdpSettingsBasicConfigArgs:
     def __init__(__self__, *,
-                 filter_enforcement: Optional[pulumi.Input[_builtins.str]] = None):
+                 filter_enforcement: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] filter_enforcement: Tells whether the Sensitive Data Protection basic config is enabled or
                disabled.
@@ -1242,7 +1242,7 @@ class TemplateFilterConfigSdpSettingsBasicConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="filterEnforcement")
-    def filter_enforcement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_enforcement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tells whether the Sensitive Data Protection basic config is enabled or
         disabled.
@@ -1253,50 +1253,50 @@ class TemplateFilterConfigSdpSettingsBasicConfigArgs:
         return pulumi.get(self, "filter_enforcement")
 
     @filter_enforcement.setter
-    def filter_enforcement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_enforcement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_enforcement", value)
 
 
 class TemplateTemplateMetadataArgsDict(TypedDict):
-    custom_llm_response_safety_error_code: NotRequired[pulumi.Input[_builtins.int]]
+    custom_llm_response_safety_error_code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Indicates the custom error code set by the user to be returned to the end
     user if the LLM response trips Model Armor filters.
     """
-    custom_llm_response_safety_error_message: NotRequired[pulumi.Input[_builtins.str]]
+    custom_llm_response_safety_error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates the custom error message set by the user to be returned to the
     end user if the LLM response trips Model Armor filters.
     """
-    custom_prompt_safety_error_code: NotRequired[pulumi.Input[_builtins.int]]
+    custom_prompt_safety_error_code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Indicates the custom error code set by the user to be returned to the end
     user by the service extension if the prompt trips Model Armor filters.
     """
-    custom_prompt_safety_error_message: NotRequired[pulumi.Input[_builtins.str]]
+    custom_prompt_safety_error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates the custom error message set by the user to be returned to the
     end user if the prompt trips Model Armor filters.
     """
-    enforcement_type: NotRequired[pulumi.Input[_builtins.str]]
+    enforcement_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     INSPECT_ONLY
     INSPECT_AND_BLOCK
     """
-    ignore_partial_invocation_failures: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_partial_invocation_failures: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, partial detector failures should be ignored.
     """
-    log_sanitize_operations: NotRequired[pulumi.Input[_builtins.bool]]
+    log_sanitize_operations: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, log sanitize operations.
     """
-    log_template_operations: NotRequired[pulumi.Input[_builtins.bool]]
+    log_template_operations: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, log template crud operations.
     """
-    multi_language_detection: NotRequired[pulumi.Input['TemplateTemplateMetadataMultiLanguageDetectionArgsDict']]
+    multi_language_detection: NotRequired[pulumi.Input[Optional['TemplateTemplateMetadataMultiLanguageDetectionArgs']]]
     """
     Metadata to enable multi language detection via template.
     Structure is documented below.
@@ -1305,15 +1305,15 @@ class TemplateTemplateMetadataArgsDict(TypedDict):
 @pulumi.input_type
 class TemplateTemplateMetadataArgs:
     def __init__(__self__, *,
-                 custom_llm_response_safety_error_code: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_llm_response_safety_error_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_prompt_safety_error_code: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_prompt_safety_error_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforcement_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_partial_invocation_failures: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_sanitize_operations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_template_operations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 multi_language_detection: Optional[pulumi.Input['TemplateTemplateMetadataMultiLanguageDetectionArgs']] = None):
+                 custom_llm_response_safety_error_code: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_llm_response_safety_error_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_prompt_safety_error_code: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_prompt_safety_error_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforcement_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_partial_invocation_failures: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_sanitize_operations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_template_operations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 multi_language_detection: pulumi.Input[Optional['TemplateTemplateMetadataMultiLanguageDetectionArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] custom_llm_response_safety_error_code: Indicates the custom error code set by the user to be returned to the end
                user if the LLM response trips Model Armor filters.
@@ -1353,7 +1353,7 @@ class TemplateTemplateMetadataArgs:
 
     @_builtins.property
     @pulumi.getter(name="customLlmResponseSafetyErrorCode")
-    def custom_llm_response_safety_error_code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def custom_llm_response_safety_error_code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Indicates the custom error code set by the user to be returned to the end
         user if the LLM response trips Model Armor filters.
@@ -1361,12 +1361,12 @@ class TemplateTemplateMetadataArgs:
         return pulumi.get(self, "custom_llm_response_safety_error_code")
 
     @custom_llm_response_safety_error_code.setter
-    def custom_llm_response_safety_error_code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def custom_llm_response_safety_error_code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "custom_llm_response_safety_error_code", value)
 
     @_builtins.property
     @pulumi.getter(name="customLlmResponseSafetyErrorMessage")
-    def custom_llm_response_safety_error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_llm_response_safety_error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the custom error message set by the user to be returned to the
         end user if the LLM response trips Model Armor filters.
@@ -1374,12 +1374,12 @@ class TemplateTemplateMetadataArgs:
         return pulumi.get(self, "custom_llm_response_safety_error_message")
 
     @custom_llm_response_safety_error_message.setter
-    def custom_llm_response_safety_error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_llm_response_safety_error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_llm_response_safety_error_message", value)
 
     @_builtins.property
     @pulumi.getter(name="customPromptSafetyErrorCode")
-    def custom_prompt_safety_error_code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def custom_prompt_safety_error_code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Indicates the custom error code set by the user to be returned to the end
         user by the service extension if the prompt trips Model Armor filters.
@@ -1387,12 +1387,12 @@ class TemplateTemplateMetadataArgs:
         return pulumi.get(self, "custom_prompt_safety_error_code")
 
     @custom_prompt_safety_error_code.setter
-    def custom_prompt_safety_error_code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def custom_prompt_safety_error_code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "custom_prompt_safety_error_code", value)
 
     @_builtins.property
     @pulumi.getter(name="customPromptSafetyErrorMessage")
-    def custom_prompt_safety_error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_prompt_safety_error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the custom error message set by the user to be returned to the
         end user if the prompt trips Model Armor filters.
@@ -1400,12 +1400,12 @@ class TemplateTemplateMetadataArgs:
         return pulumi.get(self, "custom_prompt_safety_error_message")
 
     @custom_prompt_safety_error_message.setter
-    def custom_prompt_safety_error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_prompt_safety_error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_prompt_safety_error_message", value)
 
     @_builtins.property
     @pulumi.getter(name="enforcementType")
-    def enforcement_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enforcement_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         INSPECT_ONLY
@@ -1414,48 +1414,48 @@ class TemplateTemplateMetadataArgs:
         return pulumi.get(self, "enforcement_type")
 
     @enforcement_type.setter
-    def enforcement_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enforcement_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enforcement_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ignorePartialInvocationFailures")
-    def ignore_partial_invocation_failures(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_partial_invocation_failures(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, partial detector failures should be ignored.
         """
         return pulumi.get(self, "ignore_partial_invocation_failures")
 
     @ignore_partial_invocation_failures.setter
-    def ignore_partial_invocation_failures(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_partial_invocation_failures(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_partial_invocation_failures", value)
 
     @_builtins.property
     @pulumi.getter(name="logSanitizeOperations")
-    def log_sanitize_operations(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_sanitize_operations(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, log sanitize operations.
         """
         return pulumi.get(self, "log_sanitize_operations")
 
     @log_sanitize_operations.setter
-    def log_sanitize_operations(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_sanitize_operations(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_sanitize_operations", value)
 
     @_builtins.property
     @pulumi.getter(name="logTemplateOperations")
-    def log_template_operations(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_template_operations(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, log template crud operations.
         """
         return pulumi.get(self, "log_template_operations")
 
     @log_template_operations.setter
-    def log_template_operations(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_template_operations(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_template_operations", value)
 
     @_builtins.property
     @pulumi.getter(name="multiLanguageDetection")
-    def multi_language_detection(self) -> Optional[pulumi.Input['TemplateTemplateMetadataMultiLanguageDetectionArgs']]:
+    def multi_language_detection(self) -> pulumi.Input[Optional['TemplateTemplateMetadataMultiLanguageDetectionArgs']]:
         """
         Metadata to enable multi language detection via template.
         Structure is documented below.
@@ -1463,7 +1463,7 @@ class TemplateTemplateMetadataArgs:
         return pulumi.get(self, "multi_language_detection")
 
     @multi_language_detection.setter
-    def multi_language_detection(self, value: Optional[pulumi.Input['TemplateTemplateMetadataMultiLanguageDetectionArgs']]):
+    def multi_language_detection(self, value: pulumi.Input[Optional['TemplateTemplateMetadataMultiLanguageDetectionArgs']]):
         pulumi.set(self, "multi_language_detection", value)
 
 

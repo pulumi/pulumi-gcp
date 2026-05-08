@@ -76,19 +76,19 @@ export class InstanceIamPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceIamPolicy resources.
  */
 export interface InstanceIamPolicyState {
-    etag?: pulumi.Input<string>;
-    location?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    policyData?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
+    location?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    policyData?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a InstanceIamPolicy resource.
  */
 export interface InstanceIamPolicyArgs {
-    location?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     policyData: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

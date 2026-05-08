@@ -194,50 +194,50 @@ export interface InstanceGroupState {
      * An optional textual description of the instance
      * group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The list of instances in the group, in `selfLink` format.
      * When adding instances they must all be in the same network and zone as the instance group.
      */
-    instances?: pulumi.Input<pulumi.Input<string>[]>;
+    instances?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the instance group. Must be 1-63
      * characters long and comply with
      * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
      * include lowercase letters, numbers, and hyphens.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The named port configuration. See the section below
      * for details on configuration. Structure is documented below.
      */
-    namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupNamedPort>[]>;
+    namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupNamedPort>[] | undefined>;
     /**
      * The URL of the network the instance group is in. If
      * this is different from the network where the instances are in, the creation
      * fails. Defaults to the network where the instances are in (if neither
      * `network` nor `instances` is specified, this field will be blank).
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The number of instances in the group.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The zone that this instance group should be created in.
      *
      * - - -
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -248,40 +248,40 @@ export interface InstanceGroupArgs {
      * An optional textual description of the instance
      * group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The list of instances in the group, in `selfLink` format.
      * When adding instances they must all be in the same network and zone as the instance group.
      */
-    instances?: pulumi.Input<pulumi.Input<string>[]>;
+    instances?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the instance group. Must be 1-63
      * characters long and comply with
      * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
      * include lowercase letters, numbers, and hyphens.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The named port configuration. See the section below
      * for details on configuration. Structure is documented below.
      */
-    namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupNamedPort>[]>;
+    namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupNamedPort>[] | undefined>;
     /**
      * The URL of the network the instance group is in. If
      * this is different from the network where the instances are in, the creation
      * fails. Defaults to the network where the instances are in (if neither
      * `network` nor `instances` is specified, this field will be blank).
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The zone that this instance group should be created in.
      *
      * - - -
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

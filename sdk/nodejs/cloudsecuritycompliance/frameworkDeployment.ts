@@ -246,24 +246,24 @@ export interface FrameworkDeploymentState {
      * }
      * Structure is documented below.
      */
-    cloudControlDeploymentReferences?: pulumi.Input<pulumi.Input<inputs.cloudsecuritycompliance.FrameworkDeploymentCloudControlDeploymentReference>[]>;
+    cloudControlDeploymentReferences?: pulumi.Input<pulumi.Input<inputs.cloudsecuritycompliance.FrameworkDeploymentCloudControlDeploymentReference>[] | undefined>;
     /**
      * Deployment mode and parameters for each of the Cloud Controls in
      * the framework. Every Cloud Control in the framework must have a
      * CloudControlMetadata.
      * Structure is documented below.
      */
-    cloudControlMetadatas?: pulumi.Input<pulumi.Input<inputs.cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadata>[]>;
+    cloudControlMetadatas?: pulumi.Input<pulumi.Input<inputs.cloudsecuritycompliance.FrameworkDeploymentCloudControlMetadata>[] | undefined>;
     /**
      * The resource on which the Framework is deployed based on the provided
      * TargetResourceConfig in the following format:
      * organizations/{organization}, folders/{folder} or projects/{project}
      */
-    computedTargetResource?: pulumi.Input<string>;
+    computedTargetResource?: pulumi.Input<string | undefined>;
     /**
      * The time at which the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The deployment state of the framework.
      * Possible values:
@@ -275,11 +275,11 @@ export interface FrameworkDeploymentState {
      * DEPLOYMENT_STATE_PARTIALLY_DEPLOYED
      * DEPLOYMENT_STATE_PARTIALLY_DELETED
      */
-    deploymentState?: pulumi.Input<string>;
+    deploymentState?: pulumi.Input<string | undefined>;
     /**
      * User provided description of the Framework deployment
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * To prevent concurrent updates from overwriting each other, always provide
      * the `etag` when you update a FrameworkDeployment. You can also
@@ -287,44 +287,44 @@ export interface FrameworkDeploymentState {
      * ensure that you're deleting the intended version of the
      * FrameworkDeployment.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * FrameworkReference contains the reference of a framework.
      * Structure is documented below.
      */
-    framework?: pulumi.Input<inputs.cloudsecuritycompliance.FrameworkDeploymentFramework>;
+    framework?: pulumi.Input<inputs.cloudsecuritycompliance.FrameworkDeploymentFramework | undefined>;
     /**
      * User provided identifier. It should be unique in scope of a parent.
      * This is optional and if not provided, a random UUID will be generated.
      */
-    frameworkDeploymentId?: pulumi.Input<string>;
+    frameworkDeploymentId?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. FrameworkDeployment name in the following format:
      * organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * TargetResourceConfig contains either the name of the targetResource or
      * contains the config to create a new target_resource.
      * Structure is documented below.
      */
-    targetResourceConfig?: pulumi.Input<inputs.cloudsecuritycompliance.FrameworkDeploymentTargetResourceConfig>;
+    targetResourceConfig?: pulumi.Input<inputs.cloudsecuritycompliance.FrameworkDeploymentTargetResourceConfig | undefined>;
     /**
      * The display name of the target resource.
      */
-    targetResourceDisplayName?: pulumi.Input<string>;
+    targetResourceDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The time at which the resource last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -341,7 +341,7 @@ export interface FrameworkDeploymentArgs {
     /**
      * User provided description of the Framework deployment
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * FrameworkReference contains the reference of a framework.
      * Structure is documented below.

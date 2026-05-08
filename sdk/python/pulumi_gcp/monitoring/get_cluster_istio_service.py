@@ -223,11 +223,11 @@ def get_cluster_istio_service(cluster_name: Optional[_builtins.str] = None,
         service_namespace=pulumi.get(__ret__, 'service_namespace'),
         telemetries=pulumi.get(__ret__, 'telemetries'),
         user_labels=pulumi.get(__ret__, 'user_labels'))
-def get_cluster_istio_service_output(cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                     location: Optional[pulumi.Input[_builtins.str]] = None,
-                                     project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                     service_namespace: Optional[pulumi.Input[_builtins.str]] = None,
+def get_cluster_istio_service_output(cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                     location: pulumi.Input[Optional[_builtins.str]] = None,
+                                     project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                     service_namespace: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterIstioServiceResult]:
     """
     A Monitoring Service is the root resource under which operational aspects of a

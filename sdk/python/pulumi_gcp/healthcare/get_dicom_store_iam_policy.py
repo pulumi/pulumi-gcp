@@ -112,7 +112,7 @@ def get_dicom_store_iam_policy(dicom_store_id: Optional[_builtins.str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-def get_dicom_store_iam_policy_output(dicom_store_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_dicom_store_iam_policy_output(dicom_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDicomStoreIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Google Cloud Healthcare DICOM store.

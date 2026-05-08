@@ -34,34 +34,34 @@ __all__ = [
 ]
 
 class PreferenceSetVirtualMachinePreferencesArgsDict(TypedDict):
-    commitment_plan: NotRequired[pulumi.Input[_builtins.str]]
+    commitment_plan: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
     """
-    compute_engine_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgsDict']]
+    compute_engine_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs']]]
     """
     The user preferences relating to Compute Engine target platform.
     Structure is documented below.
     """
-    region_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesRegionPreferencesArgsDict']]
+    region_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs']]]
     """
     The user preferences relating to target regions.
     Structure is documented below.
     """
-    sizing_optimization_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    sizing_optimization_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
     """
-    sole_tenancy_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgsDict']]
+    sole_tenancy_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs']]]
     """
     Preferences concerning Sole Tenancy nodes and VMs.
     Structure is documented below.
     """
-    target_product: NotRequired[pulumi.Input[_builtins.str]]
+    target_product: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
     """
-    vmware_engine_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgsDict']]
+    vmware_engine_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs']]]
     """
     The user preferences relating to Google Cloud VMware Engine target platform.
     Structure is documented below.
@@ -70,13 +70,13 @@ class PreferenceSetVirtualMachinePreferencesArgsDict(TypedDict):
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesArgs:
     def __init__(__self__, *,
-                 commitment_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_engine_preferences: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs']] = None,
-                 region_preferences: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs']] = None,
-                 sizing_optimization_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sole_tenancy_preferences: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs']] = None,
-                 target_product: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmware_engine_preferences: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs']] = None):
+                 commitment_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_engine_preferences: pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs']] = None,
+                 region_preferences: pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs']] = None,
+                 sizing_optimization_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sole_tenancy_preferences: pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs']] = None,
+                 target_product: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmware_engine_preferences: pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] commitment_plan: Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
         :param pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs'] compute_engine_preferences: The user preferences relating to Compute Engine target platform.
@@ -107,19 +107,19 @@ class PreferenceSetVirtualMachinePreferencesArgs:
 
     @_builtins.property
     @pulumi.getter(name="commitmentPlan")
-    def commitment_plan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commitment_plan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
         """
         return pulumi.get(self, "commitment_plan")
 
     @commitment_plan.setter
-    def commitment_plan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commitment_plan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commitment_plan", value)
 
     @_builtins.property
     @pulumi.getter(name="computeEnginePreferences")
-    def compute_engine_preferences(self) -> Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs']]:
+    def compute_engine_preferences(self) -> pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs']]:
         """
         The user preferences relating to Compute Engine target platform.
         Structure is documented below.
@@ -127,12 +127,12 @@ class PreferenceSetVirtualMachinePreferencesArgs:
         return pulumi.get(self, "compute_engine_preferences")
 
     @compute_engine_preferences.setter
-    def compute_engine_preferences(self, value: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs']]):
+    def compute_engine_preferences(self, value: pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs']]):
         pulumi.set(self, "compute_engine_preferences", value)
 
     @_builtins.property
     @pulumi.getter(name="regionPreferences")
-    def region_preferences(self) -> Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs']]:
+    def region_preferences(self) -> pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs']]:
         """
         The user preferences relating to target regions.
         Structure is documented below.
@@ -140,24 +140,24 @@ class PreferenceSetVirtualMachinePreferencesArgs:
         return pulumi.get(self, "region_preferences")
 
     @region_preferences.setter
-    def region_preferences(self, value: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs']]):
+    def region_preferences(self, value: pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs']]):
         pulumi.set(self, "region_preferences", value)
 
     @_builtins.property
     @pulumi.getter(name="sizingOptimizationStrategy")
-    def sizing_optimization_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sizing_optimization_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
         """
         return pulumi.get(self, "sizing_optimization_strategy")
 
     @sizing_optimization_strategy.setter
-    def sizing_optimization_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sizing_optimization_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sizing_optimization_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="soleTenancyPreferences")
-    def sole_tenancy_preferences(self) -> Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs']]:
+    def sole_tenancy_preferences(self) -> pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs']]:
         """
         Preferences concerning Sole Tenancy nodes and VMs.
         Structure is documented below.
@@ -165,24 +165,24 @@ class PreferenceSetVirtualMachinePreferencesArgs:
         return pulumi.get(self, "sole_tenancy_preferences")
 
     @sole_tenancy_preferences.setter
-    def sole_tenancy_preferences(self, value: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs']]):
+    def sole_tenancy_preferences(self, value: pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs']]):
         pulumi.set(self, "sole_tenancy_preferences", value)
 
     @_builtins.property
     @pulumi.getter(name="targetProduct")
-    def target_product(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_product(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
         """
         return pulumi.get(self, "target_product")
 
     @target_product.setter
-    def target_product(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_product(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_product", value)
 
     @_builtins.property
     @pulumi.getter(name="vmwareEnginePreferences")
-    def vmware_engine_preferences(self) -> Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs']]:
+    def vmware_engine_preferences(self) -> pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs']]:
         """
         The user preferences relating to Google Cloud VMware Engine target platform.
         Structure is documented below.
@@ -190,21 +190,21 @@ class PreferenceSetVirtualMachinePreferencesArgs:
         return pulumi.get(self, "vmware_engine_preferences")
 
     @vmware_engine_preferences.setter
-    def vmware_engine_preferences(self, value: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs']]):
+    def vmware_engine_preferences(self, value: pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs']]):
         pulumi.set(self, "vmware_engine_preferences", value)
 
 
 class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgsDict(TypedDict):
-    license_type: NotRequired[pulumi.Input[_builtins.str]]
+    license_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
     """
-    machine_preferences: NotRequired[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgsDict']]
+    machine_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs']]]
     """
     The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
     Structure is documented below.
     """
-    persistent_disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    persistent_disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
     Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
@@ -213,9 +213,9 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgsDict(Typ
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs:
     def __init__(__self__, *,
-                 license_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_preferences: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs']] = None,
-                 persistent_disk_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_preferences: pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs']] = None,
+                 persistent_disk_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] license_type: License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
         :param pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs'] machine_preferences: The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
@@ -232,19 +232,19 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs:
 
     @_builtins.property
     @pulumi.getter(name="licenseType")
-    def license_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
         """
         return pulumi.get(self, "license_type")
 
     @license_type.setter
-    def license_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license_type", value)
 
     @_builtins.property
     @pulumi.getter(name="machinePreferences")
-    def machine_preferences(self) -> Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs']]:
+    def machine_preferences(self) -> pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs']]:
         """
         The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
         Structure is documented below.
@@ -252,12 +252,12 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs:
         return pulumi.get(self, "machine_preferences")
 
     @machine_preferences.setter
-    def machine_preferences(self, value: Optional[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs']]):
+    def machine_preferences(self, value: pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs']]):
         pulumi.set(self, "machine_preferences", value)
 
     @_builtins.property
     @pulumi.getter(name="persistentDiskType")
-    def persistent_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def persistent_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
         Possible values are: `PERSISTENT_DISK_TYPE_STANDARD`, `PERSISTENT_DISK_TYPE_BALANCED`, `PERSISTENT_DISK_TYPE_SSD`.
@@ -265,12 +265,12 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs:
         return pulumi.get(self, "persistent_disk_type")
 
     @persistent_disk_type.setter
-    def persistent_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def persistent_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "persistent_disk_type", value)
 
 
 class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgsDict(TypedDict):
-    allowed_machine_series: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgsDict']]]]
+    allowed_machine_series: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs']]]]]
     """
     Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
     Structure is documented below.
@@ -279,7 +279,7 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs:
     def __init__(__self__, *,
-                 allowed_machine_series: Optional[pulumi.Input[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs']]]] = None):
+                 allowed_machine_series: pulumi.Input[Optional[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs']]] allowed_machine_series: Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
                Structure is documented below.
@@ -289,7 +289,7 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
 
     @_builtins.property
     @pulumi.getter(name="allowedMachineSeries")
-    def allowed_machine_series(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs']]]]:
+    def allowed_machine_series(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs']]]]:
         """
         Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
         Structure is documented below.
@@ -297,12 +297,12 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
         return pulumi.get(self, "allowed_machine_series")
 
     @allowed_machine_series.setter
-    def allowed_machine_series(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs']]]]):
+    def allowed_machine_series(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs']]]]):
         pulumi.set(self, "allowed_machine_series", value)
 
 
 class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.str]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
     """
@@ -310,7 +310,7 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] code: Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
         """
@@ -319,19 +319,19 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
 
 class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgsDict(TypedDict):
-    preferred_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    preferred_regions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
     """
@@ -339,7 +339,7 @@ class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgsDict(TypedDict)
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs:
     def __init__(__self__, *,
-                 preferred_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 preferred_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_regions: A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
         """
@@ -348,31 +348,31 @@ class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs:
 
     @_builtins.property
     @pulumi.getter(name="preferredRegions")
-    def preferred_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def preferred_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
         """
         return pulumi.get(self, "preferred_regions")
 
     @preferred_regions.setter
-    def preferred_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def preferred_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preferred_regions", value)
 
 
 class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgsDict(TypedDict):
-    commitment_plan: NotRequired[pulumi.Input[_builtins.str]]
+    commitment_plan: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
     """
-    cpu_overcommit_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    cpu_overcommit_ratio: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
     """
-    host_maintenance_policy: NotRequired[pulumi.Input[_builtins.str]]
+    host_maintenance_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
     """
-    node_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgsDict']]]]
+    node_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs']]]]]
     """
     A list of sole tenant node types. An empty list means that all possible node types will be considered.
     Structure is documented below.
@@ -381,10 +381,10 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgsDict(Typed
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs:
     def __init__(__self__, *,
-                 commitment_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_overcommit_ratio: Optional[pulumi.Input[_builtins.float]] = None,
-                 host_maintenance_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_types: Optional[pulumi.Input[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs']]]] = None):
+                 commitment_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_overcommit_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 host_maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_types: pulumi.Input[Optional[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] commitment_plan: Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
         :param pulumi.Input[_builtins.float] cpu_overcommit_ratio: CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
@@ -403,43 +403,43 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs:
 
     @_builtins.property
     @pulumi.getter(name="commitmentPlan")
-    def commitment_plan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commitment_plan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR`, `COMMITMENT_3_YEAR`
         """
         return pulumi.get(self, "commitment_plan")
 
     @commitment_plan.setter
-    def commitment_plan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commitment_plan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commitment_plan", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuOvercommitRatio")
-    def cpu_overcommit_ratio(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu_overcommit_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
         """
         return pulumi.get(self, "cpu_overcommit_ratio")
 
     @cpu_overcommit_ratio.setter
-    def cpu_overcommit_ratio(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu_overcommit_ratio(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu_overcommit_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="hostMaintenancePolicy")
-    def host_maintenance_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_maintenance_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
         """
         return pulumi.get(self, "host_maintenance_policy")
 
     @host_maintenance_policy.setter
-    def host_maintenance_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_maintenance_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeTypes")
-    def node_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs']]]]:
+    def node_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs']]]]:
         """
         A list of sole tenant node types. An empty list means that all possible node types will be considered.
         Structure is documented below.
@@ -447,12 +447,12 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs:
         return pulumi.get(self, "node_types")
 
     @node_types.setter
-    def node_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs']]]]):
+    def node_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs']]]]):
         pulumi.set(self, "node_types", value)
 
 
 class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgsDict(TypedDict):
-    node_name: NotRequired[pulumi.Input[_builtins.str]]
+    node_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
     """
@@ -460,7 +460,7 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgsDi
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs:
     def __init__(__self__, *,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] node_name: Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
         """
@@ -469,31 +469,31 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs:
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
 
 class PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgsDict(TypedDict):
-    commitment_plan: NotRequired[pulumi.Input[_builtins.str]]
+    commitment_plan: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
     """
-    cpu_overcommit_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    cpu_overcommit_ratio: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
     """
-    memory_overcommit_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    memory_overcommit_ratio: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
     """
-    storage_deduplication_compression_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    storage_deduplication_compression_ratio: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
     """
@@ -501,10 +501,10 @@ class PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgsDict(Type
 @pulumi.input_type
 class PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs:
     def __init__(__self__, *,
-                 commitment_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_overcommit_ratio: Optional[pulumi.Input[_builtins.float]] = None,
-                 memory_overcommit_ratio: Optional[pulumi.Input[_builtins.float]] = None,
-                 storage_deduplication_compression_ratio: Optional[pulumi.Input[_builtins.float]] = None):
+                 commitment_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_overcommit_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 memory_overcommit_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 storage_deduplication_compression_ratio: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.str] commitment_plan: Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
         :param pulumi.Input[_builtins.float] cpu_overcommit_ratio: CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
@@ -522,50 +522,50 @@ class PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs:
 
     @_builtins.property
     @pulumi.getter(name="commitmentPlan")
-    def commitment_plan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commitment_plan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `ON_DEMAND`, `COMMITMENT_1_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_3_YEAR_MONTHLY_PAYMENTS`, `COMMITMENT_1_YEAR_UPFRONT_PAYMENT`, `COMMITMENT_3_YEAR_UPFRONT_PAYMENT`,
         """
         return pulumi.get(self, "commitment_plan")
 
     @commitment_plan.setter
-    def commitment_plan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commitment_plan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commitment_plan", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuOvercommitRatio")
-    def cpu_overcommit_ratio(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu_overcommit_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.
         """
         return pulumi.get(self, "cpu_overcommit_ratio")
 
     @cpu_overcommit_ratio.setter
-    def cpu_overcommit_ratio(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu_overcommit_ratio(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu_overcommit_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryOvercommitRatio")
-    def memory_overcommit_ratio(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def memory_overcommit_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
         """
         return pulumi.get(self, "memory_overcommit_ratio")
 
     @memory_overcommit_ratio.setter
-    def memory_overcommit_ratio(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def memory_overcommit_ratio(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "memory_overcommit_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="storageDeduplicationCompressionRatio")
-    def storage_deduplication_compression_ratio(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def storage_deduplication_compression_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
         """
         return pulumi.get(self, "storage_deduplication_compression_ratio")
 
     @storage_deduplication_compression_ratio.setter
-    def storage_deduplication_compression_ratio(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def storage_deduplication_compression_ratio(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "storage_deduplication_compression_ratio", value)
 
 

@@ -27,10 +27,10 @@ class LicenseConfigArgs:
                  start_date: pulumi.Input['LicenseConfigStartDateArgs'],
                  subscription_term: pulumi.Input[_builtins.str],
                  subscription_tier: pulumi.Input[_builtins.str],
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_date: Optional[pulumi.Input['LicenseConfigEndDateArgs']] = None,
-                 free_trial: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_date: pulumi.Input[Optional['LicenseConfigEndDateArgs']] = None,
+                 free_trial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LicenseConfig resource.
 
@@ -144,19 +144,19 @@ class LicenseConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the license config should be auto renewed when it reaches the end date.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="endDate")
-    def end_date(self) -> Optional[pulumi.Input['LicenseConfigEndDateArgs']]:
+    def end_date(self) -> pulumi.Input[Optional['LicenseConfigEndDateArgs']]:
         """
         The planned end date.
         Structure is documented below.
@@ -164,24 +164,24 @@ class LicenseConfigArgs:
         return pulumi.get(self, "end_date")
 
     @end_date.setter
-    def end_date(self, value: Optional[pulumi.Input['LicenseConfigEndDateArgs']]):
+    def end_date(self, value: pulumi.Input[Optional['LicenseConfigEndDateArgs']]):
         pulumi.set(self, "end_date", value)
 
     @_builtins.property
     @pulumi.getter(name="freeTrial")
-    def free_trial(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def free_trial(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the license config is for free trial.
         """
         return pulumi.get(self, "free_trial")
 
     @free_trial.setter
-    def free_trial(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def free_trial(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "free_trial", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -189,24 +189,24 @@ class LicenseConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _LicenseConfigState:
     def __init__(__self__, *,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_date: Optional[pulumi.Input['LicenseConfigEndDateArgs']] = None,
-                 free_trial: Optional[pulumi.Input[_builtins.bool]] = None,
-                 license_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_date: Optional[pulumi.Input['LicenseConfigStartDateArgs']] = None,
-                 subscription_term: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_tier: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_date: pulumi.Input[Optional['LicenseConfigEndDateArgs']] = None,
+                 free_trial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 license_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_date: pulumi.Input[Optional['LicenseConfigStartDateArgs']] = None,
+                 subscription_term: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_tier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LicenseConfig resources.
 
@@ -254,19 +254,19 @@ class _LicenseConfigState:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the license config should be auto renewed when it reaches the end date.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="endDate")
-    def end_date(self) -> Optional[pulumi.Input['LicenseConfigEndDateArgs']]:
+    def end_date(self) -> pulumi.Input[Optional['LicenseConfigEndDateArgs']]:
         """
         The planned end date.
         Structure is documented below.
@@ -274,48 +274,48 @@ class _LicenseConfigState:
         return pulumi.get(self, "end_date")
 
     @end_date.setter
-    def end_date(self, value: Optional[pulumi.Input['LicenseConfigEndDateArgs']]):
+    def end_date(self, value: pulumi.Input[Optional['LicenseConfigEndDateArgs']]):
         pulumi.set(self, "end_date", value)
 
     @_builtins.property
     @pulumi.getter(name="freeTrial")
-    def free_trial(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def free_trial(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the license config is for free trial.
         """
         return pulumi.get(self, "free_trial")
 
     @free_trial.setter
-    def free_trial(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def free_trial(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "free_trial", value)
 
     @_builtins.property
     @pulumi.getter(name="licenseConfigId")
-    def license_config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license_config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique id of the license config.
         """
         return pulumi.get(self, "license_config_id")
 
     @license_config_id.setter
-    def license_config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license_config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license_config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="licenseCount")
-    def license_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def license_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of licenses purchased.
         """
         return pulumi.get(self, "license_count")
 
     @license_count.setter
-    def license_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def license_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "license_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location where the data store should reside. The value can
         only be one of "global", "us" and "eu".
@@ -323,12 +323,12 @@ class _LicenseConfigState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique full resource name of the license config. Values are of the format
         `projects/{project}/locations/{location}/licenseConfigs/{license_config}`.
@@ -336,12 +336,12 @@ class _LicenseConfigState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -349,12 +349,12 @@ class _LicenseConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="startDate")
-    def start_date(self) -> Optional[pulumi.Input['LicenseConfigStartDateArgs']]:
+    def start_date(self) -> pulumi.Input[Optional['LicenseConfigStartDateArgs']]:
         """
         The start date.
         Structure is documented below.
@@ -362,12 +362,12 @@ class _LicenseConfigState:
         return pulumi.get(self, "start_date")
 
     @start_date.setter
-    def start_date(self, value: Optional[pulumi.Input['LicenseConfigStartDateArgs']]):
+    def start_date(self, value: pulumi.Input[Optional['LicenseConfigStartDateArgs']]):
         pulumi.set(self, "start_date", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionTerm")
-    def subscription_term(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_term(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subscription term.
         Possible values are: `SUBSCRIPTION_TERM_UNSPECIFIED`, `SUBSCRIPTION_TERM_ONE_MONTH`, `SUBSCRIPTION_TERM_ONE_YEAR`, `SUBSCRIPTION_TERM_THREE_YEARS`, `SUBSCRIPTION_TERM_THREE_MONTHS`, `SUBSCRIPTION_TERM_FOURTEEN_DAYS`, `SUBSCRIPTION_TERM_CUSTOM`.
@@ -375,12 +375,12 @@ class _LicenseConfigState:
         return pulumi.get(self, "subscription_term")
 
     @subscription_term.setter
-    def subscription_term(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_term(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_term", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionTier")
-    def subscription_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subscription tier information for the license config.
         Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_NOTEBOOK_LM`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`.
@@ -388,7 +388,7 @@ class _LicenseConfigState:
         return pulumi.get(self, "subscription_tier")
 
     @subscription_tier.setter
-    def subscription_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_tier", value)
 
 
@@ -398,16 +398,16 @@ class LicenseConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_date: Optional[pulumi.Input[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict']]] = None,
-                 free_trial: Optional[pulumi.Input[_builtins.bool]] = None,
-                 license_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_date: Optional[pulumi.Input[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict']]] = None,
-                 subscription_term: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_tier: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_date: pulumi.Input[Optional[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict']]] = None,
+                 free_trial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 license_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_date: pulumi.Input[Optional[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict']]] = None,
+                 subscription_term: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_tier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         License Configuration.
@@ -549,16 +549,16 @@ class LicenseConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_date: Optional[pulumi.Input[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict']]] = None,
-                 free_trial: Optional[pulumi.Input[_builtins.bool]] = None,
-                 license_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_date: Optional[pulumi.Input[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict']]] = None,
-                 subscription_term: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_tier: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_date: pulumi.Input[Optional[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict']]] = None,
+                 free_trial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 license_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_date: pulumi.Input[Optional[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict']]] = None,
+                 subscription_term: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_tier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -601,17 +601,17 @@ class LicenseConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            end_date: Optional[pulumi.Input[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict']]] = None,
-            free_trial: Optional[pulumi.Input[_builtins.bool]] = None,
-            license_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            license_count: Optional[pulumi.Input[_builtins.int]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            start_date: Optional[pulumi.Input[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict']]] = None,
-            subscription_term: Optional[pulumi.Input[_builtins.str]] = None,
-            subscription_tier: Optional[pulumi.Input[_builtins.str]] = None) -> 'LicenseConfig':
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_date: pulumi.Input[Optional[Union['LicenseConfigEndDateArgs', 'LicenseConfigEndDateArgsDict']]] = None,
+            free_trial: pulumi.Input[Optional[_builtins.bool]] = None,
+            license_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            license_count: pulumi.Input[Optional[_builtins.int]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            start_date: pulumi.Input[Optional[Union['LicenseConfigStartDateArgs', 'LicenseConfigStartDateArgsDict']]] = None,
+            subscription_term: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_tier: pulumi.Input[Optional[_builtins.str]] = None) -> 'LicenseConfig':
         """
         Get an existing LicenseConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

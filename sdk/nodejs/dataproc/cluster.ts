@@ -253,13 +253,13 @@ export interface ClusterState {
      * Allows you to configure various aspects of the cluster.
      * Structure defined below.
      */
-    clusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfig>;
+    clusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfig | undefined>;
     /**
      * The list of labels (key/value pairs) to be applied to
      * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
      * which is the name of the cluster.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
      * Does not affect auto scaling decomissioning from an autoscaling policy.
@@ -271,39 +271,39 @@ export interface ClusterState {
      * For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
      * - - -
      */
-    gracefulDecommissionTimeout?: pulumi.Input<string>;
+    gracefulDecommissionTimeout?: pulumi.Input<string | undefined>;
     /**
      * The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
      * instances in the cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the cluster, unique within the project and
      * zone.
      *
      * - - -
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the `cluster` will exist. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region in which the cluster and associated nodes will be created in.
      * Defaults to `global`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Allows you to configure a virtual Dataproc on GKE cluster.
      * Structure defined below.
      */
-    virtualClusterConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfig>;
+    virtualClusterConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfig | undefined>;
 }
 
 /**
@@ -314,7 +314,7 @@ export interface ClusterArgs {
      * Allows you to configure various aspects of the cluster.
      * Structure defined below.
      */
-    clusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfig>;
+    clusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfig | undefined>;
     /**
      * Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
      * Does not affect auto scaling decomissioning from an autoscaling policy.
@@ -326,33 +326,33 @@ export interface ClusterArgs {
      * For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
      * - - -
      */
-    gracefulDecommissionTimeout?: pulumi.Input<string>;
+    gracefulDecommissionTimeout?: pulumi.Input<string | undefined>;
     /**
      * The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
      * instances in the cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the cluster, unique within the project and
      * zone.
      *
      * - - -
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the `cluster` will exist. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region in which the cluster and associated nodes will be created in.
      * Defaults to `global`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Allows you to configure a virtual Dataproc on GKE cluster.
      * Structure defined below.
      */
-    virtualClusterConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfig>;
+    virtualClusterConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfig | undefined>;
 }

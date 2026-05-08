@@ -259,79 +259,79 @@ export interface BackupState {
     /**
      * Region in which backup is stored.
      */
-    backupRegion?: pulumi.Input<string>;
+    backupRegion?: pulumi.Input<string | undefined>;
     /**
      * Type of backup, manually created or created by a backup policy. Possible Values : [TYPE_UNSPECIFIED, MANUAL, SCHEDULED]
      */
-    backupType?: pulumi.Input<string>;
+    backupType?: pulumi.Input<string | undefined>;
     /**
      * Backups of a volume build incrementally on top of each other. They form a "backup chain".
      * Total size of all backups in a chain in bytes = baseline backup size + sum(incremental backup size)
      */
-    chainStorageBytes?: pulumi.Input<string>;
+    chainStorageBytes?: pulumi.Input<string | undefined>;
     /**
      * Create time of the backup. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location of the backup.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the backup. Needs to be unique per location.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If specified, backup will be created from the given snapshot. If not specified,
      * there will be a new snapshot taken to initiate the backup creation.
      * Format: `projects/{{projectId}}/locations/{{location}}/volumes/{{volumename}}/snapshots/{{snapshotname}}``
      */
-    sourceSnapshot?: pulumi.Input<string>;
+    sourceSnapshot?: pulumi.Input<string | undefined>;
     /**
      * ID of volumes this backup belongs to. Format: `projects/{{projects_id}}/locations/{{location}}/volumes/{{name}}``
      */
-    sourceVolume?: pulumi.Input<string>;
+    sourceVolume?: pulumi.Input<string | undefined>;
     /**
      * The state of the Backup Vault. Possible Values : [STATE_UNSPECIFIED, CREATING, UPLOADING, READY, DELETING, ERROR, UPDATING]
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Name of the backup vault to store the backup in.
      */
-    vaultName?: pulumi.Input<string>;
+    vaultName?: pulumi.Input<string | undefined>;
     /**
      * Region of the volume from which the backup was created.
      */
-    volumeRegion?: pulumi.Input<string>;
+    volumeRegion?: pulumi.Input<string | undefined>;
     /**
      * Size of the file system when the backup was created. When creating a new volume from the backup, the volume capacity will have to be at least as big.
      */
-    volumeUsageBytes?: pulumi.Input<string>;
+    volumeUsageBytes?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -341,14 +341,14 @@ export interface BackupArgs {
     /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location of the backup.
      */
@@ -356,22 +356,22 @@ export interface BackupArgs {
     /**
      * The resource name of the backup. Needs to be unique per location.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * If specified, backup will be created from the given snapshot. If not specified,
      * there will be a new snapshot taken to initiate the backup creation.
      * Format: `projects/{{projectId}}/locations/{{location}}/volumes/{{volumename}}/snapshots/{{snapshotname}}``
      */
-    sourceSnapshot?: pulumi.Input<string>;
+    sourceSnapshot?: pulumi.Input<string | undefined>;
     /**
      * ID of volumes this backup belongs to. Format: `projects/{{projects_id}}/locations/{{location}}/volumes/{{name}}``
      */
-    sourceVolume?: pulumi.Input<string>;
+    sourceVolume?: pulumi.Input<string | undefined>;
     /**
      * Name of the backup vault to store the backup in.
      */

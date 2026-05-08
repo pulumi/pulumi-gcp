@@ -211,32 +211,32 @@ export interface TableState {
      *
      * -----
      */
-    automatedBackupPolicy?: pulumi.Input<inputs.bigtable.TableAutomatedBackupPolicy>;
+    automatedBackupPolicy?: pulumi.Input<inputs.bigtable.TableAutomatedBackupPolicy | undefined>;
     /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
      */
-    changeStreamRetention?: pulumi.Input<string>;
+    changeStreamRetention?: pulumi.Input<string | undefined>;
     /**
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      */
-    columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[]>;
+    columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[] | undefined>;
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      */
-    deletionProtection?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<string | undefined>;
     /**
      * The name of the Bigtable instance.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
      * 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
@@ -245,13 +245,13 @@ export interface TableState {
      * 					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
      * 					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
      */
-    rowKeySchema?: pulumi.Input<string>;
+    rowKeySchema?: pulumi.Input<string | undefined>;
     /**
      * A list of predefined keys to split the table on.
      * !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
      * to delete/recreate the entire `gcp.bigtable.Table` resource.
      */
-    splitKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    splitKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -263,19 +263,19 @@ export interface TableArgs {
      *
      * -----
      */
-    automatedBackupPolicy?: pulumi.Input<inputs.bigtable.TableAutomatedBackupPolicy>;
+    automatedBackupPolicy?: pulumi.Input<inputs.bigtable.TableAutomatedBackupPolicy | undefined>;
     /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
      */
-    changeStreamRetention?: pulumi.Input<string>;
+    changeStreamRetention?: pulumi.Input<string | undefined>;
     /**
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      */
-    columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[]>;
+    columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[] | undefined>;
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      */
-    deletionProtection?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<string | undefined>;
     /**
      * The name of the Bigtable instance.
      */
@@ -283,12 +283,12 @@ export interface TableArgs {
     /**
      * The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
      * 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
@@ -297,11 +297,11 @@ export interface TableArgs {
      * 					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
      * 					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
      */
-    rowKeySchema?: pulumi.Input<string>;
+    rowKeySchema?: pulumi.Input<string | undefined>;
     /**
      * A list of predefined keys to split the table on.
      * !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
      * to delete/recreate the entire `gcp.bigtable.Table` resource.
      */
-    splitKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    splitKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

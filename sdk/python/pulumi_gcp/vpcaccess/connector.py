@@ -21,17 +21,17 @@ __all__ = ['ConnectorArgs', 'Connector']
 @pulumi.input_type
 class ConnectorArgs:
     def __init__(__self__, *,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet: Optional[pulumi.Input['ConnectorSubnetArgs']] = None):
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet: pulumi.Input[Optional['ConnectorSubnetArgs']] = None):
         """
         The set of arguments for constructing a Connector resource.
 
@@ -80,31 +80,31 @@ class ConnectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipCidrRange")
-    def ip_cidr_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_cidr_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         """
         return pulumi.get(self, "ip_cidr_range")
 
     @ip_cidr_range.setter
-    def ip_cidr_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_cidr_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_cidr_range", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Machine type of VM Instance underlying connector. Default is e2-micro
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="maxInstances")
-    def max_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
         higher than the value specified by min_instances. Required alongside `min_instances` if not using `min_throughput`/`max_throughput`.
@@ -112,12 +112,12 @@ class ConnectorArgs:
         return pulumi.get(self, "max_instances")
 
     @max_instances.setter
-    def max_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="maxThroughput")
-    def max_throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
         when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
@@ -126,12 +126,12 @@ class ConnectorArgs:
         return pulumi.get(self, "max_throughput")
 
     @max_throughput.setter
-    def max_throughput(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_throughput", value)
 
     @_builtins.property
     @pulumi.getter(name="minInstances")
-    def min_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
         lower than the value specified by max_instances. Required alongside `max_instances` if not using `min_throughput`/`max_throughput`.
@@ -139,12 +139,12 @@ class ConnectorArgs:
         return pulumi.get(self, "min_instances")
 
     @min_instances.setter
-    def min_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="minThroughput")
-    def min_throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
         Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput.
@@ -153,36 +153,36 @@ class ConnectorArgs:
         return pulumi.get(self, "min_throughput")
 
     @min_throughput.setter
-    def min_throughput(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_throughput", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource (Max 25 characters).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -190,24 +190,24 @@ class ConnectorArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where the VPC Access connector resides. If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input['ConnectorSubnetArgs']]:
+    def subnet(self) -> pulumi.Input[Optional['ConnectorSubnetArgs']]:
         """
         The subnet in which to house the connector
         Structure is documented below.
@@ -215,27 +215,27 @@ class ConnectorArgs:
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input['ConnectorSubnetArgs']]):
+    def subnet(self, value: pulumi.Input[Optional['ConnectorSubnetArgs']]):
         pulumi.set(self, "subnet", value)
 
 
 @pulumi.input_type
 class _ConnectorState:
     def __init__(__self__, *,
-                 connected_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet: Optional[pulumi.Input['ConnectorSubnetArgs']] = None):
+                 connected_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet: pulumi.Input[Optional['ConnectorSubnetArgs']] = None):
         """
         Input properties used for looking up and filtering Connector resources.
 
@@ -293,43 +293,43 @@ class _ConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="connectedProjects")
-    def connected_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def connected_projects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of projects using the connector.
         """
         return pulumi.get(self, "connected_projects")
 
     @connected_projects.setter
-    def connected_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def connected_projects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "connected_projects", value)
 
     @_builtins.property
     @pulumi.getter(name="ipCidrRange")
-    def ip_cidr_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_cidr_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         """
         return pulumi.get(self, "ip_cidr_range")
 
     @ip_cidr_range.setter
-    def ip_cidr_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_cidr_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_cidr_range", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Machine type of VM Instance underlying connector. Default is e2-micro
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="maxInstances")
-    def max_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
         higher than the value specified by min_instances. Required alongside `min_instances` if not using `min_throughput`/`max_throughput`.
@@ -337,12 +337,12 @@ class _ConnectorState:
         return pulumi.get(self, "max_instances")
 
     @max_instances.setter
-    def max_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="maxThroughput")
-    def max_throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
         when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
@@ -351,12 +351,12 @@ class _ConnectorState:
         return pulumi.get(self, "max_throughput")
 
     @max_throughput.setter
-    def max_throughput(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_throughput", value)
 
     @_builtins.property
     @pulumi.getter(name="minInstances")
-    def min_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
         lower than the value specified by max_instances. Required alongside `max_instances` if not using `min_throughput`/`max_throughput`.
@@ -364,12 +364,12 @@ class _ConnectorState:
         return pulumi.get(self, "min_instances")
 
     @min_instances.setter
-    def min_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="minThroughput")
-    def min_throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
         Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput.
@@ -378,36 +378,36 @@ class _ConnectorState:
         return pulumi.get(self, "min_throughput")
 
     @min_throughput.setter
-    def min_throughput(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_throughput", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource (Max 25 characters).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -415,48 +415,48 @@ class _ConnectorState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where the VPC Access connector resides. If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified name of this VPC connector
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the VPC access connector.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input['ConnectorSubnetArgs']]:
+    def subnet(self) -> pulumi.Input[Optional['ConnectorSubnetArgs']]:
         """
         The subnet in which to house the connector
         Structure is documented below.
@@ -464,7 +464,7 @@ class _ConnectorState:
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input['ConnectorSubnetArgs']]):
+    def subnet(self, value: pulumi.Input[Optional['ConnectorSubnetArgs']]):
         pulumi.set(self, "subnet", value)
 
 
@@ -474,17 +474,17 @@ class Connector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet: Optional[pulumi.Input[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']]] = None,
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet: pulumi.Input[Optional[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']]] = None,
                  __props__=None):
         """
         Serverless VPC Access connector resource.
@@ -657,17 +657,17 @@ class Connector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet: Optional[pulumi.Input[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']]] = None,
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet: pulumi.Input[Optional[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -701,20 +701,20 @@ class Connector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connected_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-            machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-            max_instances: Optional[pulumi.Input[_builtins.int]] = None,
-            max_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-            min_instances: Optional[pulumi.Input[_builtins.int]] = None,
-            min_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            subnet: Optional[pulumi.Input[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']]] = None) -> 'Connector':
+            connected_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            max_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+            min_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            min_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet: pulumi.Input[Optional[Union['ConnectorSubnetArgs', 'ConnectorSubnetArgsDict']]] = None) -> 'Connector':
         """
         Get an existing Connector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

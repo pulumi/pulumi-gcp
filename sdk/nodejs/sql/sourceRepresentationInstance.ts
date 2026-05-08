@@ -205,55 +205,55 @@ export interface SourceRepresentationInstanceState {
     /**
      * The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
      */
-    caCertificate?: pulumi.Input<string>;
+    caCertificate?: pulumi.Input<string | undefined>;
     /**
      * The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
      */
-    clientCertificate?: pulumi.Input<string>;
+    clientCertificate?: pulumi.Input<string | undefined>;
     /**
      * The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18, SQLSERVER_2022_STANDARD, SQLSERVER_2022_ENTERPRISE, SQLSERVER_2022_EXPRESS, SQLSERVER_2022_WEB, SQLSERVER_2025_STANDARD, SQLSERVER_2025_ENTERPRISE, SQLSERVER_2025_EXPRESS, SQLSERVER_2025_WEB. Database Version Policies includes an up-to-date reference of supported versions.
      */
-    databaseVersion?: pulumi.Input<string>;
+    databaseVersion?: pulumi.Input<string | undefined>;
     /**
      * A file in the bucket that contains the data from the external server.
      */
-    dumpFilePath?: pulumi.Input<string>;
+    dumpFilePath?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The name of the source representation instance. Use any valid Cloud SQL instance name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The password for the replication user account.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The externally accessible port for the source database server.
      * Defaults to 3306.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Region in which the created instance should reside.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The replication user account on the external server.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -263,15 +263,15 @@ export interface SourceRepresentationInstanceArgs {
     /**
      * The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
      */
-    caCertificate?: pulumi.Input<string>;
+    caCertificate?: pulumi.Input<string | undefined>;
     /**
      * The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
      */
-    clientCertificate?: pulumi.Input<string>;
+    clientCertificate?: pulumi.Input<string | undefined>;
     /**
      * The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18, SQLSERVER_2022_STANDARD, SQLSERVER_2022_ENTERPRISE, SQLSERVER_2022_EXPRESS, SQLSERVER_2022_WEB, SQLSERVER_2025_STANDARD, SQLSERVER_2025_ENTERPRISE, SQLSERVER_2025_EXPRESS, SQLSERVER_2025_WEB. Database Version Policies includes an up-to-date reference of supported versions.
      */
@@ -279,7 +279,7 @@ export interface SourceRepresentationInstanceArgs {
     /**
      * A file in the bucket that contains the data from the external server.
      */
-    dumpFilePath?: pulumi.Input<string>;
+    dumpFilePath?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
      */
@@ -287,29 +287,29 @@ export interface SourceRepresentationInstanceArgs {
     /**
      * The name of the source representation instance. Use any valid Cloud SQL instance name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The password for the replication user account.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The externally accessible port for the source database server.
      * Defaults to 3306.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Region in which the created instance should reside.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The replication user account on the external server.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

@@ -188,11 +188,11 @@ export interface V2ProjectMuteConfigState {
      * The time at which the mute config was created. This field is set by
      * the server and will be ignored if provided on config creation.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A description of the mute config.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * An expression that defines the filter to apply across create/update
      * events of findings. While creating a filter string, be mindful of
@@ -200,43 +200,43 @@ export interface V2ProjectMuteConfigState {
      * If a filter contains project = X but is created under the
      * project = Y scope, it might not match any findings.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * location Id is provided by project. If not provided, Use global as default.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Email address of the user who last edited the mute config. This
      * field is set by the server and will be ignored if provided on
      * config creation or update.
      */
-    mostRecentEditor?: pulumi.Input<string>;
+    mostRecentEditor?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier provided by the client within the parent scope.
      */
-    muteConfigId?: pulumi.Input<string>;
+    muteConfigId?: pulumi.Input<string | undefined>;
     /**
      * Name of the mute config. Its format is
      * projects/{project}/locations/global/muteConfigs/{configId},
      * folders/{folder}/locations/global/muteConfigs/{configId},
      * or organizations/{organization}/locations/global/muteConfigs/{configId}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of the mute config.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Output only. The most recent time at which the mute config was
      * updated. This field is set by the server and will be ignored if
      * provided on config creation or update.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -246,7 +246,7 @@ export interface V2ProjectMuteConfigArgs {
     /**
      * A description of the mute config.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * An expression that defines the filter to apply across create/update
      * events of findings. While creating a filter string, be mindful of
@@ -258,7 +258,7 @@ export interface V2ProjectMuteConfigArgs {
     /**
      * location Id is provided by project. If not provided, Use global as default.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier provided by the client within the parent scope.
      */
@@ -267,7 +267,7 @@ export interface V2ProjectMuteConfigArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of the mute config.
      */

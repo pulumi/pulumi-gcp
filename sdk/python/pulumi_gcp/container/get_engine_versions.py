@@ -239,9 +239,9 @@ def get_engine_versions(location: Optional[_builtins.str] = None,
         valid_master_versions=pulumi.get(__ret__, 'valid_master_versions'),
         valid_node_versions=pulumi.get(__ret__, 'valid_node_versions'),
         version_prefix=pulumi.get(__ret__, 'version_prefix'))
-def get_engine_versions_output(location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               version_prefix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_engine_versions_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               version_prefix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEngineVersionsResult]:
     """
     Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.

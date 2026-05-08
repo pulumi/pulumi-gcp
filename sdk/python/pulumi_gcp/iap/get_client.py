@@ -118,8 +118,8 @@ def get_client(brand: Optional[_builtins.str] = None,
         display_name=pulumi.get(__ret__, 'display_name'),
         id=pulumi.get(__ret__, 'id'),
         secret=pulumi.get(__ret__, 'secret'))
-def get_client_output(brand: Optional[pulumi.Input[_builtins.str]] = None,
-                      client_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_client_output(brand: pulumi.Input[Optional[_builtins.str]] = None,
+                      client_id: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientResult]:
     """
     Get info about a Google Cloud IAP Client.

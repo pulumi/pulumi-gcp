@@ -27,12 +27,12 @@ class AwsClusterArgs:
                  fleet: pulumi.Input['AwsClusterFleetArgs'],
                  location: pulumi.Input[_builtins.str],
                  networking: pulumi.Input['AwsClusterNetworkingArgs'],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_config: Optional[pulumi.Input['AwsClusterLoggingConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional['AwsClusterBinaryAuthorizationArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_config: pulumi.Input[Optional['AwsClusterLoggingConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AwsCluster resource.
 
@@ -145,7 +145,7 @@ class AwsClusterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 
@@ -155,94 +155,94 @@ class AwsClusterArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> pulumi.Input[Optional['AwsClusterBinaryAuthorizationArgs']]:
         """
         Configuration options for the Binary Authorization feature.
         """
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: pulumi.Input[Optional['AwsClusterBinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['AwsClusterLoggingConfigArgs']]:
+    def logging_config(self) -> pulumi.Input[Optional['AwsClusterLoggingConfigArgs']]:
         """
         Logging configuration.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['AwsClusterLoggingConfigArgs']]):
+    def logging_config(self, value: pulumi.Input[Optional['AwsClusterLoggingConfigArgs']]):
         pulumi.set(self, "logging_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project for the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _AwsClusterState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 authorization: Optional[pulumi.Input['AwsClusterAuthorizationArgs']] = None,
-                 aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 binary_authorization: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']] = None,
-                 control_plane: Optional[pulumi.Input['AwsClusterControlPlaneArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 fleet: Optional[pulumi.Input['AwsClusterFleetArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_config: Optional[pulumi.Input['AwsClusterLoggingConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networking: Optional[pulumi.Input['AwsClusterNetworkingArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 authorization: pulumi.Input[Optional['AwsClusterAuthorizationArgs']] = None,
+                 aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 binary_authorization: pulumi.Input[Optional['AwsClusterBinaryAuthorizationArgs']] = None,
+                 control_plane: pulumi.Input[Optional['AwsClusterControlPlaneArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 fleet: pulumi.Input[Optional['AwsClusterFleetArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_config: pulumi.Input[Optional['AwsClusterLoggingConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networking: pulumi.Input[Optional['AwsClusterNetworkingArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering AwsCluster resources.
 
@@ -316,7 +316,7 @@ class _AwsClusterState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 
@@ -326,247 +326,247 @@ class _AwsClusterState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def authorization(self) -> Optional[pulumi.Input['AwsClusterAuthorizationArgs']]:
+    def authorization(self) -> pulumi.Input[Optional['AwsClusterAuthorizationArgs']]:
         """
         Configuration related to the cluster RBAC settings.
         """
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: Optional[pulumi.Input['AwsClusterAuthorizationArgs']]):
+    def authorization(self, value: pulumi.Input[Optional['AwsClusterAuthorizationArgs']]):
         pulumi.set(self, "authorization", value)
 
     @_builtins.property
     @pulumi.getter(name="awsRegion")
-    def aws_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
         """
         return pulumi.get(self, "aws_region")
 
     @aws_region.setter
-    def aws_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_region", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> pulumi.Input[Optional['AwsClusterBinaryAuthorizationArgs']]:
         """
         Configuration options for the Binary Authorization feature.
         """
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['AwsClusterBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: pulumi.Input[Optional['AwsClusterBinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlane")
-    def control_plane(self) -> Optional[pulumi.Input['AwsClusterControlPlaneArgs']]:
+    def control_plane(self) -> pulumi.Input[Optional['AwsClusterControlPlaneArgs']]:
         """
         Configuration related to the cluster control plane.
         """
         return pulumi.get(self, "control_plane")
 
     @control_plane.setter
-    def control_plane(self, value: Optional[pulumi.Input['AwsClusterControlPlaneArgs']]):
+    def control_plane(self, value: pulumi.Input[Optional['AwsClusterControlPlaneArgs']]):
         pulumi.set(self, "control_plane", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time at which this cluster was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The endpoint of the cluster's API server.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def fleet(self) -> Optional[pulumi.Input['AwsClusterFleetArgs']]:
+    def fleet(self) -> pulumi.Input[Optional['AwsClusterFleetArgs']]:
         """
         Fleet configuration.
         """
         return pulumi.get(self, "fleet")
 
     @fleet.setter
-    def fleet(self, value: Optional[pulumi.Input['AwsClusterFleetArgs']]):
+    def fleet(self, value: pulumi.Input[Optional['AwsClusterFleetArgs']]):
         pulumi.set(self, "fleet", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['AwsClusterLoggingConfigArgs']]:
+    def logging_config(self) -> pulumi.Input[Optional['AwsClusterLoggingConfigArgs']]:
         """
         Logging configuration.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['AwsClusterLoggingConfigArgs']]):
+    def logging_config(self, value: pulumi.Input[Optional['AwsClusterLoggingConfigArgs']]):
         pulumi.set(self, "logging_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def networking(self) -> Optional[pulumi.Input['AwsClusterNetworkingArgs']]:
+    def networking(self) -> pulumi.Input[Optional['AwsClusterNetworkingArgs']]:
         """
         Cluster-wide networking configuration.
         """
         return pulumi.get(self, "networking")
 
     @networking.setter
-    def networking(self, value: Optional[pulumi.Input['AwsClusterNetworkingArgs']]):
+    def networking(self, value: pulumi.Input[Optional['AwsClusterNetworkingArgs']]):
         pulumi.set(self, "networking", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project for the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. If set, there are currently changes in flight to the cluster.
         """
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. A globally unique identifier for the cluster.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time at which this cluster was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadIdentityConfigs")
-    def workload_identity_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]]:
+    def workload_identity_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]]:
         """
         Output only. Workload Identity settings.
         """
         return pulumi.get(self, "workload_identity_configs")
 
     @workload_identity_configs.setter
-    def workload_identity_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]]):
+    def workload_identity_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]]):
         pulumi.set(self, "workload_identity_configs", value)
 
 
@@ -576,18 +576,18 @@ class AwsCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 authorization: Optional[pulumi.Input[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict']]] = None,
-                 aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 binary_authorization: Optional[pulumi.Input[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']]] = None,
-                 control_plane: Optional[pulumi.Input[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fleet: Optional[pulumi.Input[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_config: Optional[pulumi.Input[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networking: Optional[pulumi.Input[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 authorization: pulumi.Input[Optional[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict']]] = None,
+                 aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']]] = None,
+                 control_plane: pulumi.Input[Optional[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fleet: pulumi.Input[Optional[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_config: pulumi.Input[Optional[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networking: pulumi.Input[Optional[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An Anthos cluster running on AWS.
@@ -1124,18 +1124,18 @@ class AwsCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 authorization: Optional[pulumi.Input[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict']]] = None,
-                 aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 binary_authorization: Optional[pulumi.Input[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']]] = None,
-                 control_plane: Optional[pulumi.Input[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fleet: Optional[pulumi.Input[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_config: Optional[pulumi.Input[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networking: Optional[pulumi.Input[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 authorization: pulumi.Input[Optional[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict']]] = None,
+                 aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']]] = None,
+                 control_plane: pulumi.Input[Optional[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fleet: pulumi.Input[Optional[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_config: pulumi.Input[Optional[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networking: pulumi.Input[Optional[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1188,27 +1188,27 @@ class AwsCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            authorization: Optional[pulumi.Input[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict']]] = None,
-            aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-            binary_authorization: Optional[pulumi.Input[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']]] = None,
-            control_plane: Optional[pulumi.Input[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            fleet: Optional[pulumi.Input[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            logging_config: Optional[pulumi.Input[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            networking: Optional[pulumi.Input[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsClusterWorkloadIdentityConfigArgs', 'AwsClusterWorkloadIdentityConfigArgsDict']]]]] = None) -> 'AwsCluster':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            authorization: pulumi.Input[Optional[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict']]] = None,
+            aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']]] = None,
+            control_plane: pulumi.Input[Optional[Union['AwsClusterControlPlaneArgs', 'AwsClusterControlPlaneArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            fleet: pulumi.Input[Optional[Union['AwsClusterFleetArgs', 'AwsClusterFleetArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_config: pulumi.Input[Optional[Union['AwsClusterLoggingConfigArgs', 'AwsClusterLoggingConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networking: pulumi.Input[Optional[Union['AwsClusterNetworkingArgs', 'AwsClusterNetworkingArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AwsClusterWorkloadIdentityConfigArgs', 'AwsClusterWorkloadIdentityConfigArgsDict']]]]] = None) -> 'AwsCluster':
         """
         Get an existing AwsCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

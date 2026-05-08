@@ -601,52 +601,52 @@ export interface InstanceTemplateState {
     /**
      * Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
      */
-    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceTemplateAdvancedMachineFeatures>;
+    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceTemplateAdvancedMachineFeatures | undefined>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs. This defaults to false.
      */
-    canIpForward?: pulumi.Input<boolean>;
+    canIpForward?: pulumi.Input<boolean | undefined>;
     /**
      * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
      */
-    confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateConfidentialInstanceConfig>;
+    confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateConfidentialInstanceConfig | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * A brief description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disks to attach to instances created from this template.
      * This can be specified multiple times for multiple disks. Structure is
      * documented below.
      */
-    disks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateDisk>[]>;
+    disks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateDisk>[] | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
-    enableDisplay?: pulumi.Input<boolean>;
+    enableDisplay?: pulumi.Input<boolean | undefined>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */
-    guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateGuestAccelerator>[]>;
+    guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateGuestAccelerator>[] | undefined>;
     /**
      * A brief description to use for instances
      * created from this template.
      */
-    instanceDescription?: pulumi.Input<string>;
+    instanceDescription?: pulumi.Input<string | undefined>;
     /**
      * Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
      */
-    keyRevocationActionType?: pulumi.Input<string>;
+    keyRevocationActionType?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs to assign to instances
      * created from this template.
@@ -654,7 +654,7 @@ export interface InstanceTemplateState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The machine type to create.
      *
@@ -665,33 +665,33 @@ export interface InstanceTemplateState {
      *
      * - - -
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * Metadata key/value pairs to make available from
      * within instances created from this template.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The unique fingerprint of the metadata.
      */
-    metadataFingerprint?: pulumi.Input<string>;
+    metadataFingerprint?: pulumi.Input<string | undefined>;
     /**
      * An alternative to using the
      * startup-script metadata key, mostly to match the computeInstance resource.
      * This replaces the startup-script metadata key on the created instance and
      * thus the two mechanisms are not allowed to be used simultaneously.
      */
-    metadataStartupScript?: pulumi.Input<string>;
+    metadataStartupScript?: pulumi.Input<string | undefined>;
     /**
      * Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      */
-    minCpuPlatform?: pulumi.Input<string>;
+    minCpuPlatform?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance template. If you leave
      * this blank, the provider will auto-generate a unique name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Creates a unique name beginning with the specified
      * prefix. Conflicts with `name`. Max length is 54 characters.
@@ -703,13 +703,13 @@ export interface InstanceTemplateState {
      * Resulting name for a `namePrefix` 38 - 54 characters:
      * `namePrefix` + YYmmdd + 3 digit incremental counter
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * Networks to attach to instances created from
      * this template. This can be specified multiple times for multiple networks.
      * Structure is documented below.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterface>[] | undefined>;
     /**
      * (Optional, Configures network performance settings for the instance created from the
      * template. Structure is documented below. **Note**: `machineType`
@@ -718,24 +718,24 @@ export interface InstanceTemplateState {
      * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
      * in order for this setting to take effect.
      */
-    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateNetworkPerformanceConfig>;
+    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateNetworkPerformanceConfig | undefined>;
     /**
      * numeric identifier of the resource.
      */
-    numericId?: pulumi.Input<string>;
+    numericId?: pulumi.Input<string | undefined>;
     /**
      * Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
      */
-    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
@@ -744,51 +744,51 @@ export interface InstanceTemplateState {
      * resource is tied to a specific region. Defaults to the region of the
      * Provider if no value is given.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Specifies the reservations that this instance can consume from.
      * Structure is documented below.
      */
-    reservationAffinity?: pulumi.Input<inputs.compute.InstanceTemplateReservationAffinity>;
+    reservationAffinity?: pulumi.Input<inputs.compute.InstanceTemplateReservationAffinity | undefined>;
     /**
      * A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
      */
-    resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
-    resourcePolicies?: pulumi.Input<string>;
+    resourcePolicies?: pulumi.Input<string | undefined>;
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    scheduling?: pulumi.Input<inputs.compute.InstanceTemplateScheduling>;
+    scheduling?: pulumi.Input<inputs.compute.InstanceTemplateScheduling | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
      * Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
      */
-    selfLinkUnique?: pulumi.Input<string>;
+    selfLinkUnique?: pulumi.Input<string | undefined>;
     /**
      * Service account to attach to the instance. Structure is documented below.
      */
-    serviceAccount?: pulumi.Input<inputs.compute.InstanceTemplateServiceAccount>;
+    serviceAccount?: pulumi.Input<inputs.compute.InstanceTemplateServiceAccount | undefined>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
-    shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateShieldedInstanceConfig | undefined>;
     /**
      * Tags to attach to the instance.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique fingerprint of the tags.
      */
-    tagsFingerprint?: pulumi.Input<string>;
+    tagsFingerprint?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -798,20 +798,20 @@ export interface InstanceTemplateArgs {
     /**
      * Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
      */
-    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceTemplateAdvancedMachineFeatures>;
+    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceTemplateAdvancedMachineFeatures | undefined>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs. This defaults to false.
      */
-    canIpForward?: pulumi.Input<boolean>;
+    canIpForward?: pulumi.Input<boolean | undefined>;
     /**
      * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
      */
-    confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateConfidentialInstanceConfig>;
+    confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateConfidentialInstanceConfig | undefined>;
     /**
      * A brief description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disks to attach to instances created from this template.
      * This can be specified multiple times for multiple disks. Structure is
@@ -822,20 +822,20 @@ export interface InstanceTemplateArgs {
      * ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
-    enableDisplay?: pulumi.Input<boolean>;
+    enableDisplay?: pulumi.Input<boolean | undefined>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */
-    guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateGuestAccelerator>[]>;
+    guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateGuestAccelerator>[] | undefined>;
     /**
      * A brief description to use for instances
      * created from this template.
      */
-    instanceDescription?: pulumi.Input<string>;
+    instanceDescription?: pulumi.Input<string | undefined>;
     /**
      * Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
      */
-    keyRevocationActionType?: pulumi.Input<string>;
+    keyRevocationActionType?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs to assign to instances
      * created from this template.
@@ -843,7 +843,7 @@ export interface InstanceTemplateArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The machine type to create.
      *
@@ -859,24 +859,24 @@ export interface InstanceTemplateArgs {
      * Metadata key/value pairs to make available from
      * within instances created from this template.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An alternative to using the
      * startup-script metadata key, mostly to match the computeInstance resource.
      * This replaces the startup-script metadata key on the created instance and
      * thus the two mechanisms are not allowed to be used simultaneously.
      */
-    metadataStartupScript?: pulumi.Input<string>;
+    metadataStartupScript?: pulumi.Input<string | undefined>;
     /**
      * Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      */
-    minCpuPlatform?: pulumi.Input<string>;
+    minCpuPlatform?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance template. If you leave
      * this blank, the provider will auto-generate a unique name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Creates a unique name beginning with the specified
      * prefix. Conflicts with `name`. Max length is 54 characters.
@@ -888,13 +888,13 @@ export interface InstanceTemplateArgs {
      * Resulting name for a `namePrefix` 38 - 54 characters:
      * `namePrefix` + YYmmdd + 3 digit incremental counter
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * Networks to attach to instances created from
      * this template. This can be specified multiple times for multiple networks.
      * Structure is documented below.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterface>[] | undefined>;
     /**
      * (Optional, Configures network performance settings for the instance created from the
      * template. Structure is documented below. **Note**: `machineType`
@@ -903,16 +903,16 @@ export interface InstanceTemplateArgs {
      * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
      * in order for this setting to take effect.
      */
-    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateNetworkPerformanceConfig>;
+    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateNetworkPerformanceConfig | undefined>;
     /**
      * Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
      */
-    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
@@ -921,36 +921,36 @@ export interface InstanceTemplateArgs {
      * resource is tied to a specific region. Defaults to the region of the
      * Provider if no value is given.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Specifies the reservations that this instance can consume from.
      * Structure is documented below.
      */
-    reservationAffinity?: pulumi.Input<inputs.compute.InstanceTemplateReservationAffinity>;
+    reservationAffinity?: pulumi.Input<inputs.compute.InstanceTemplateReservationAffinity | undefined>;
     /**
      * A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
      */
-    resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
-    resourcePolicies?: pulumi.Input<string>;
+    resourcePolicies?: pulumi.Input<string | undefined>;
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    scheduling?: pulumi.Input<inputs.compute.InstanceTemplateScheduling>;
+    scheduling?: pulumi.Input<inputs.compute.InstanceTemplateScheduling | undefined>;
     /**
      * Service account to attach to the instance. Structure is documented below.
      */
-    serviceAccount?: pulumi.Input<inputs.compute.InstanceTemplateServiceAccount>;
+    serviceAccount?: pulumi.Input<inputs.compute.InstanceTemplateServiceAccount | undefined>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
-    shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateShieldedInstanceConfig | undefined>;
     /**
      * Tags to attach to the instance.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -124,8 +124,8 @@ def get_access_policy(parent: Optional[_builtins.str] = None,
         parent=pulumi.get(__ret__, 'parent'),
         scopes=pulumi.get(__ret__, 'scopes'),
         title=pulumi.get(__ret__, 'title'))
-def get_access_policy_output(parent: Optional[pulumi.Input[_builtins.str]] = None,
-                             scopes: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_access_policy_output(parent: pulumi.Input[Optional[_builtins.str]] = None,
+                             scopes: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessPolicyResult]:
     """
     Get information about an Access Context Manager AccessPolicy.

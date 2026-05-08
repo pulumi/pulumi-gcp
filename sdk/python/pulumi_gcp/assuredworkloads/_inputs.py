@@ -34,11 +34,11 @@ __all__ = [
 ]
 
 class WorkloadComplianceStatusArgsDict(TypedDict):
-    acknowledged_violation_counts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    acknowledged_violation_counts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     Number of current orgPolicy violations which are acknowledged.
     """
-    active_violation_counts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    active_violation_counts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     Number of current orgPolicy violations which are not acknowledged.
     """
@@ -46,8 +46,8 @@ class WorkloadComplianceStatusArgsDict(TypedDict):
 @pulumi.input_type
 class WorkloadComplianceStatusArgs:
     def __init__(__self__, *,
-                 acknowledged_violation_counts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 active_violation_counts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
+                 acknowledged_violation_counts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 active_violation_counts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] acknowledged_violation_counts: Number of current orgPolicy violations which are acknowledged.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] active_violation_counts: Number of current orgPolicy violations which are not acknowledged.
@@ -59,39 +59,39 @@ class WorkloadComplianceStatusArgs:
 
     @_builtins.property
     @pulumi.getter(name="acknowledgedViolationCounts")
-    def acknowledged_violation_counts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def acknowledged_violation_counts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Number of current orgPolicy violations which are acknowledged.
         """
         return pulumi.get(self, "acknowledged_violation_counts")
 
     @acknowledged_violation_counts.setter
-    def acknowledged_violation_counts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def acknowledged_violation_counts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "acknowledged_violation_counts", value)
 
     @_builtins.property
     @pulumi.getter(name="activeViolationCounts")
-    def active_violation_counts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def active_violation_counts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Number of current orgPolicy violations which are not acknowledged.
         """
         return pulumi.get(self, "active_violation_counts")
 
     @active_violation_counts.setter
-    def active_violation_counts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def active_violation_counts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "active_violation_counts", value)
 
 
 class WorkloadEkmProvisioningResponseArgsDict(TypedDict):
-    ekm_provisioning_error_domain: NotRequired[pulumi.Input[_builtins.str]]
+    ekm_provisioning_error_domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
     """
-    ekm_provisioning_error_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    ekm_provisioning_error_mapping: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
     """
-    ekm_provisioning_state: NotRequired[pulumi.Input[_builtins.str]]
+    ekm_provisioning_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates Ekm enrollment Provisioning of a given workload. Possible values: EKM_PROVISIONING_STATE_UNSPECIFIED, EKM_PROVISIONING_STATE_PENDING, EKM_PROVISIONING_STATE_FAILED, EKM_PROVISIONING_STATE_COMPLETED
     """
@@ -99,9 +99,9 @@ class WorkloadEkmProvisioningResponseArgsDict(TypedDict):
 @pulumi.input_type
 class WorkloadEkmProvisioningResponseArgs:
     def __init__(__self__, *,
-                 ekm_provisioning_error_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 ekm_provisioning_error_mapping: Optional[pulumi.Input[_builtins.str]] = None,
-                 ekm_provisioning_state: Optional[pulumi.Input[_builtins.str]] = None):
+                 ekm_provisioning_error_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 ekm_provisioning_error_mapping: pulumi.Input[Optional[_builtins.str]] = None,
+                 ekm_provisioning_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ekm_provisioning_error_domain: Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
         :param pulumi.Input[_builtins.str] ekm_provisioning_error_mapping: Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
@@ -116,38 +116,38 @@ class WorkloadEkmProvisioningResponseArgs:
 
     @_builtins.property
     @pulumi.getter(name="ekmProvisioningErrorDomain")
-    def ekm_provisioning_error_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ekm_provisioning_error_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
         """
         return pulumi.get(self, "ekm_provisioning_error_domain")
 
     @ekm_provisioning_error_domain.setter
-    def ekm_provisioning_error_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ekm_provisioning_error_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ekm_provisioning_error_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="ekmProvisioningErrorMapping")
-    def ekm_provisioning_error_mapping(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ekm_provisioning_error_mapping(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
         """
         return pulumi.get(self, "ekm_provisioning_error_mapping")
 
     @ekm_provisioning_error_mapping.setter
-    def ekm_provisioning_error_mapping(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ekm_provisioning_error_mapping(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ekm_provisioning_error_mapping", value)
 
     @_builtins.property
     @pulumi.getter(name="ekmProvisioningState")
-    def ekm_provisioning_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ekm_provisioning_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates Ekm enrollment Provisioning of a given workload. Possible values: EKM_PROVISIONING_STATE_UNSPECIFIED, EKM_PROVISIONING_STATE_PENDING, EKM_PROVISIONING_STATE_FAILED, EKM_PROVISIONING_STATE_COMPLETED
         """
         return pulumi.get(self, "ekm_provisioning_state")
 
     @ekm_provisioning_state.setter
-    def ekm_provisioning_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ekm_provisioning_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ekm_provisioning_state", value)
 
 
@@ -199,15 +199,15 @@ class WorkloadKmsSettingsArgs:
 
 
 class WorkloadPartnerPermissionsArgsDict(TypedDict):
-    assured_workloads_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
+    assured_workloads_monitoring: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Allow partner to view violation alerts.
     """
-    data_logs_viewer: NotRequired[pulumi.Input[_builtins.bool]]
+    data_logs_viewer: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Allow the partner to view inspectability logs and monitoring violations.
     """
-    service_access_approver: NotRequired[pulumi.Input[_builtins.bool]]
+    service_access_approver: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Allow partner to view access approval logs.
     """
@@ -215,9 +215,9 @@ class WorkloadPartnerPermissionsArgsDict(TypedDict):
 @pulumi.input_type
 class WorkloadPartnerPermissionsArgs:
     def __init__(__self__, *,
-                 assured_workloads_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_logs_viewer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_access_approver: Optional[pulumi.Input[_builtins.bool]] = None):
+                 assured_workloads_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_logs_viewer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_access_approver: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] assured_workloads_monitoring: Optional. Allow partner to view violation alerts.
         :param pulumi.Input[_builtins.bool] data_logs_viewer: Allow the partner to view inspectability logs and monitoring violations.
@@ -232,47 +232,47 @@ class WorkloadPartnerPermissionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="assuredWorkloadsMonitoring")
-    def assured_workloads_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def assured_workloads_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Allow partner to view violation alerts.
         """
         return pulumi.get(self, "assured_workloads_monitoring")
 
     @assured_workloads_monitoring.setter
-    def assured_workloads_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def assured_workloads_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "assured_workloads_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLogsViewer")
-    def data_logs_viewer(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def data_logs_viewer(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the partner to view inspectability logs and monitoring violations.
         """
         return pulumi.get(self, "data_logs_viewer")
 
     @data_logs_viewer.setter
-    def data_logs_viewer(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def data_logs_viewer(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "data_logs_viewer", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccessApprover")
-    def service_access_approver(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def service_access_approver(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Allow partner to view access approval logs.
         """
         return pulumi.get(self, "service_access_approver")
 
     @service_access_approver.setter
-    def service_access_approver(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def service_access_approver(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "service_access_approver", value)
 
 
 class WorkloadResourceArgsDict(TypedDict):
-    resource_id: NotRequired[pulumi.Input[_builtins.int]]
+    resource_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Resource identifier. For a project this represents project_number.
     """
-    resource_type: NotRequired[pulumi.Input[_builtins.str]]
+    resource_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates the type of resource. Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
     """
@@ -280,8 +280,8 @@ class WorkloadResourceArgsDict(TypedDict):
 @pulumi.input_type
 class WorkloadResourceArgs:
     def __init__(__self__, *,
-                 resource_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] resource_id: Resource identifier. For a project this represents project_number.
         :param pulumi.Input[_builtins.str] resource_type: Indicates the type of resource. Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
@@ -293,39 +293,39 @@ class WorkloadResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Resource identifier. For a project this represents project_number.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the type of resource. Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
 
 class WorkloadResourceSettingArgsDict(TypedDict):
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
     """
-    resource_id: NotRequired[pulumi.Input[_builtins.str]]
+    resource_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
     """
-    resource_type: NotRequired[pulumi.Input[_builtins.str]]
+    resource_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
     """
@@ -333,9 +333,9 @@ class WorkloadResourceSettingArgsDict(TypedDict):
 @pulumi.input_type
 class WorkloadResourceSettingArgs:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] display_name: User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
         :param pulumi.Input[_builtins.str] resource_id: Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
@@ -350,47 +350,47 @@ class WorkloadResourceSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
 
 class WorkloadSaaEnrollmentResponseArgsDict(TypedDict):
-    setup_errors: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    setup_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Indicates SAA enrollment setup error if any.
     """
-    setup_status: NotRequired[pulumi.Input[_builtins.str]]
+    setup_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
     """
@@ -398,8 +398,8 @@ class WorkloadSaaEnrollmentResponseArgsDict(TypedDict):
 @pulumi.input_type
 class WorkloadSaaEnrollmentResponseArgs:
     def __init__(__self__, *,
-                 setup_errors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 setup_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 setup_errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 setup_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] setup_errors: Indicates SAA enrollment setup error if any.
         :param pulumi.Input[_builtins.str] setup_status: Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
@@ -411,31 +411,31 @@ class WorkloadSaaEnrollmentResponseArgs:
 
     @_builtins.property
     @pulumi.getter(name="setupErrors")
-    def setup_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def setup_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Indicates SAA enrollment setup error if any.
         """
         return pulumi.get(self, "setup_errors")
 
     @setup_errors.setter
-    def setup_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def setup_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "setup_errors", value)
 
     @_builtins.property
     @pulumi.getter(name="setupStatus")
-    def setup_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def setup_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
         """
         return pulumi.get(self, "setup_status")
 
     @setup_status.setter
-    def setup_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def setup_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "setup_status", value)
 
 
 class WorkloadWorkloadOptionsArgsDict(TypedDict):
-    kaj_enrollment_type: NotRequired[pulumi.Input[_builtins.str]]
+    kaj_enrollment_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
     """
@@ -443,7 +443,7 @@ class WorkloadWorkloadOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class WorkloadWorkloadOptionsArgs:
     def __init__(__self__, *,
-                 kaj_enrollment_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 kaj_enrollment_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kaj_enrollment_type: Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
         """
@@ -452,14 +452,14 @@ class WorkloadWorkloadOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="kajEnrollmentType")
-    def kaj_enrollment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kaj_enrollment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
         """
         return pulumi.get(self, "kaj_enrollment_type")
 
     @kaj_enrollment_type.setter
-    def kaj_enrollment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kaj_enrollment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kaj_enrollment_type", value)
 
 

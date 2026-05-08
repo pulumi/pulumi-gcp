@@ -23,19 +23,19 @@ class RuntimeTemplateArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 data_persistent_disk_spec: Optional[pulumi.Input['RuntimeTemplateDataPersistentDiskSpecArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input['RuntimeTemplateEncryptionSpecArgs']] = None,
-                 euc_config: Optional[pulumi.Input['RuntimeTemplateEucConfigArgs']] = None,
-                 idle_shutdown_config: Optional[pulumi.Input['RuntimeTemplateIdleShutdownConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 machine_spec: Optional[pulumi.Input['RuntimeTemplateMachineSpecArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_spec: Optional[pulumi.Input['RuntimeTemplateNetworkSpecArgs']] = None,
-                 network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 shielded_vm_config: Optional[pulumi.Input['RuntimeTemplateShieldedVmConfigArgs']] = None,
-                 software_config: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']] = None):
+                 data_persistent_disk_spec: pulumi.Input[Optional['RuntimeTemplateDataPersistentDiskSpecArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional['RuntimeTemplateEncryptionSpecArgs']] = None,
+                 euc_config: pulumi.Input[Optional['RuntimeTemplateEucConfigArgs']] = None,
+                 idle_shutdown_config: pulumi.Input[Optional['RuntimeTemplateIdleShutdownConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 machine_spec: pulumi.Input[Optional['RuntimeTemplateMachineSpecArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_spec: pulumi.Input[Optional['RuntimeTemplateNetworkSpecArgs']] = None,
+                 network_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 shielded_vm_config: pulumi.Input[Optional['RuntimeTemplateShieldedVmConfigArgs']] = None,
+                 software_config: pulumi.Input[Optional['RuntimeTemplateSoftwareConfigArgs']] = None):
         """
         The set of arguments for constructing a RuntimeTemplate resource.
 
@@ -121,7 +121,7 @@ class RuntimeTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataPersistentDiskSpec")
-    def data_persistent_disk_spec(self) -> Optional[pulumi.Input['RuntimeTemplateDataPersistentDiskSpecArgs']]:
+    def data_persistent_disk_spec(self) -> pulumi.Input[Optional['RuntimeTemplateDataPersistentDiskSpecArgs']]:
         """
         The configuration for the data disk of the runtime.
         Structure is documented below.
@@ -129,24 +129,24 @@ class RuntimeTemplateArgs:
         return pulumi.get(self, "data_persistent_disk_spec")
 
     @data_persistent_disk_spec.setter
-    def data_persistent_disk_spec(self, value: Optional[pulumi.Input['RuntimeTemplateDataPersistentDiskSpecArgs']]):
+    def data_persistent_disk_spec(self, value: pulumi.Input[Optional['RuntimeTemplateDataPersistentDiskSpecArgs']]):
         pulumi.set(self, "data_persistent_disk_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Runtime Template.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['RuntimeTemplateEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['RuntimeTemplateEncryptionSpecArgs']]:
         """
         Customer-managed encryption key spec for the notebook runtime.
         Structure is documented below.
@@ -154,12 +154,12 @@ class RuntimeTemplateArgs:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['RuntimeTemplateEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['RuntimeTemplateEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="eucConfig")
-    def euc_config(self) -> Optional[pulumi.Input['RuntimeTemplateEucConfigArgs']]:
+    def euc_config(self) -> pulumi.Input[Optional['RuntimeTemplateEucConfigArgs']]:
         """
         EUC configuration of the NotebookRuntimeTemplate.
         Structure is documented below.
@@ -167,12 +167,12 @@ class RuntimeTemplateArgs:
         return pulumi.get(self, "euc_config")
 
     @euc_config.setter
-    def euc_config(self, value: Optional[pulumi.Input['RuntimeTemplateEucConfigArgs']]):
+    def euc_config(self, value: pulumi.Input[Optional['RuntimeTemplateEucConfigArgs']]):
         pulumi.set(self, "euc_config", value)
 
     @_builtins.property
     @pulumi.getter(name="idleShutdownConfig")
-    def idle_shutdown_config(self) -> Optional[pulumi.Input['RuntimeTemplateIdleShutdownConfigArgs']]:
+    def idle_shutdown_config(self) -> pulumi.Input[Optional['RuntimeTemplateIdleShutdownConfigArgs']]:
         """
         Notebook Idle Shutdown configuration for the runtime.
         Structure is documented below.
@@ -180,12 +180,12 @@ class RuntimeTemplateArgs:
         return pulumi.get(self, "idle_shutdown_config")
 
     @idle_shutdown_config.setter
-    def idle_shutdown_config(self, value: Optional[pulumi.Input['RuntimeTemplateIdleShutdownConfigArgs']]):
+    def idle_shutdown_config(self, value: pulumi.Input[Optional['RuntimeTemplateIdleShutdownConfigArgs']]):
         pulumi.set(self, "idle_shutdown_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to identify and group the runtime template.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -194,12 +194,12 @@ class RuntimeTemplateArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="machineSpec")
-    def machine_spec(self) -> Optional[pulumi.Input['RuntimeTemplateMachineSpecArgs']]:
+    def machine_spec(self) -> pulumi.Input[Optional['RuntimeTemplateMachineSpecArgs']]:
         """
         'The machine configuration of the runtime.'
         Structure is documented below.
@@ -207,24 +207,24 @@ class RuntimeTemplateArgs:
         return pulumi.get(self, "machine_spec")
 
     @machine_spec.setter
-    def machine_spec(self, value: Optional[pulumi.Input['RuntimeTemplateMachineSpecArgs']]):
+    def machine_spec(self, value: pulumi.Input[Optional['RuntimeTemplateMachineSpecArgs']]):
         pulumi.set(self, "machine_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Runtime Template
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkSpec")
-    def network_spec(self) -> Optional[pulumi.Input['RuntimeTemplateNetworkSpecArgs']]:
+    def network_spec(self) -> pulumi.Input[Optional['RuntimeTemplateNetworkSpecArgs']]:
         """
         The network configuration for the runtime.
         Structure is documented below.
@@ -232,24 +232,24 @@ class RuntimeTemplateArgs:
         return pulumi.get(self, "network_spec")
 
     @network_spec.setter
-    def network_spec(self, value: Optional[pulumi.Input['RuntimeTemplateNetworkSpecArgs']]):
+    def network_spec(self, value: pulumi.Input[Optional['RuntimeTemplateNetworkSpecArgs']]):
         pulumi.set(self, "network_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="networkTags")
-    def network_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def network_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Applies the given Compute Engine tags to the runtime.
         """
         return pulumi.get(self, "network_tags")
 
     @network_tags.setter
-    def network_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def network_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "network_tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -257,12 +257,12 @@ class RuntimeTemplateArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedVmConfig")
-    def shielded_vm_config(self) -> Optional[pulumi.Input['RuntimeTemplateShieldedVmConfigArgs']]:
+    def shielded_vm_config(self) -> pulumi.Input[Optional['RuntimeTemplateShieldedVmConfigArgs']]:
         """
         Runtime Shielded VM spec.
         Structure is documented below.
@@ -270,12 +270,12 @@ class RuntimeTemplateArgs:
         return pulumi.get(self, "shielded_vm_config")
 
     @shielded_vm_config.setter
-    def shielded_vm_config(self, value: Optional[pulumi.Input['RuntimeTemplateShieldedVmConfigArgs']]):
+    def shielded_vm_config(self, value: pulumi.Input[Optional['RuntimeTemplateShieldedVmConfigArgs']]):
         pulumi.set(self, "shielded_vm_config", value)
 
     @_builtins.property
     @pulumi.getter(name="softwareConfig")
-    def software_config(self) -> Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']]:
+    def software_config(self) -> pulumi.Input[Optional['RuntimeTemplateSoftwareConfigArgs']]:
         """
         The notebook software configuration of the notebook runtime.
         Structure is documented below.
@@ -283,30 +283,30 @@ class RuntimeTemplateArgs:
         return pulumi.get(self, "software_config")
 
     @software_config.setter
-    def software_config(self, value: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']]):
+    def software_config(self, value: pulumi.Input[Optional['RuntimeTemplateSoftwareConfigArgs']]):
         pulumi.set(self, "software_config", value)
 
 
 @pulumi.input_type
 class _RuntimeTemplateState:
     def __init__(__self__, *,
-                 data_persistent_disk_spec: Optional[pulumi.Input['RuntimeTemplateDataPersistentDiskSpecArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 encryption_spec: Optional[pulumi.Input['RuntimeTemplateEncryptionSpecArgs']] = None,
-                 euc_config: Optional[pulumi.Input['RuntimeTemplateEucConfigArgs']] = None,
-                 idle_shutdown_config: Optional[pulumi.Input['RuntimeTemplateIdleShutdownConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_spec: Optional[pulumi.Input['RuntimeTemplateMachineSpecArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_spec: Optional[pulumi.Input['RuntimeTemplateNetworkSpecArgs']] = None,
-                 network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 shielded_vm_config: Optional[pulumi.Input['RuntimeTemplateShieldedVmConfigArgs']] = None,
-                 software_config: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']] = None):
+                 data_persistent_disk_spec: pulumi.Input[Optional['RuntimeTemplateDataPersistentDiskSpecArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption_spec: pulumi.Input[Optional['RuntimeTemplateEncryptionSpecArgs']] = None,
+                 euc_config: pulumi.Input[Optional['RuntimeTemplateEucConfigArgs']] = None,
+                 idle_shutdown_config: pulumi.Input[Optional['RuntimeTemplateIdleShutdownConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_spec: pulumi.Input[Optional['RuntimeTemplateMachineSpecArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_spec: pulumi.Input[Optional['RuntimeTemplateNetworkSpecArgs']] = None,
+                 network_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 shielded_vm_config: pulumi.Input[Optional['RuntimeTemplateShieldedVmConfigArgs']] = None,
+                 software_config: pulumi.Input[Optional['RuntimeTemplateSoftwareConfigArgs']] = None):
         """
         Input properties used for looking up and filtering RuntimeTemplate resources.
 
@@ -377,7 +377,7 @@ class _RuntimeTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="dataPersistentDiskSpec")
-    def data_persistent_disk_spec(self) -> Optional[pulumi.Input['RuntimeTemplateDataPersistentDiskSpecArgs']]:
+    def data_persistent_disk_spec(self) -> pulumi.Input[Optional['RuntimeTemplateDataPersistentDiskSpecArgs']]:
         """
         The configuration for the data disk of the runtime.
         Structure is documented below.
@@ -385,48 +385,48 @@ class _RuntimeTemplateState:
         return pulumi.get(self, "data_persistent_disk_spec")
 
     @data_persistent_disk_spec.setter
-    def data_persistent_disk_spec(self, value: Optional[pulumi.Input['RuntimeTemplateDataPersistentDiskSpecArgs']]):
+    def data_persistent_disk_spec(self, value: pulumi.Input[Optional['RuntimeTemplateDataPersistentDiskSpecArgs']]):
         pulumi.set(self, "data_persistent_disk_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Runtime Template.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The display name of the Runtime Template.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['RuntimeTemplateEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['RuntimeTemplateEncryptionSpecArgs']]:
         """
         Customer-managed encryption key spec for the notebook runtime.
         Structure is documented below.
@@ -434,12 +434,12 @@ class _RuntimeTemplateState:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['RuntimeTemplateEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['RuntimeTemplateEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="eucConfig")
-    def euc_config(self) -> Optional[pulumi.Input['RuntimeTemplateEucConfigArgs']]:
+    def euc_config(self) -> pulumi.Input[Optional['RuntimeTemplateEucConfigArgs']]:
         """
         EUC configuration of the NotebookRuntimeTemplate.
         Structure is documented below.
@@ -447,12 +447,12 @@ class _RuntimeTemplateState:
         return pulumi.get(self, "euc_config")
 
     @euc_config.setter
-    def euc_config(self, value: Optional[pulumi.Input['RuntimeTemplateEucConfigArgs']]):
+    def euc_config(self, value: pulumi.Input[Optional['RuntimeTemplateEucConfigArgs']]):
         pulumi.set(self, "euc_config", value)
 
     @_builtins.property
     @pulumi.getter(name="idleShutdownConfig")
-    def idle_shutdown_config(self) -> Optional[pulumi.Input['RuntimeTemplateIdleShutdownConfigArgs']]:
+    def idle_shutdown_config(self) -> pulumi.Input[Optional['RuntimeTemplateIdleShutdownConfigArgs']]:
         """
         Notebook Idle Shutdown configuration for the runtime.
         Structure is documented below.
@@ -460,12 +460,12 @@ class _RuntimeTemplateState:
         return pulumi.get(self, "idle_shutdown_config")
 
     @idle_shutdown_config.setter
-    def idle_shutdown_config(self, value: Optional[pulumi.Input['RuntimeTemplateIdleShutdownConfigArgs']]):
+    def idle_shutdown_config(self, value: pulumi.Input[Optional['RuntimeTemplateIdleShutdownConfigArgs']]):
         pulumi.set(self, "idle_shutdown_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to identify and group the runtime template.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -474,24 +474,24 @@ class _RuntimeTemplateState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource: https://cloud.google.com/colab/docs/locations
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="machineSpec")
-    def machine_spec(self) -> Optional[pulumi.Input['RuntimeTemplateMachineSpecArgs']]:
+    def machine_spec(self) -> pulumi.Input[Optional['RuntimeTemplateMachineSpecArgs']]:
         """
         'The machine configuration of the runtime.'
         Structure is documented below.
@@ -499,24 +499,24 @@ class _RuntimeTemplateState:
         return pulumi.get(self, "machine_spec")
 
     @machine_spec.setter
-    def machine_spec(self, value: Optional[pulumi.Input['RuntimeTemplateMachineSpecArgs']]):
+    def machine_spec(self, value: pulumi.Input[Optional['RuntimeTemplateMachineSpecArgs']]):
         pulumi.set(self, "machine_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Runtime Template
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkSpec")
-    def network_spec(self) -> Optional[pulumi.Input['RuntimeTemplateNetworkSpecArgs']]:
+    def network_spec(self) -> pulumi.Input[Optional['RuntimeTemplateNetworkSpecArgs']]:
         """
         The network configuration for the runtime.
         Structure is documented below.
@@ -524,24 +524,24 @@ class _RuntimeTemplateState:
         return pulumi.get(self, "network_spec")
 
     @network_spec.setter
-    def network_spec(self, value: Optional[pulumi.Input['RuntimeTemplateNetworkSpecArgs']]):
+    def network_spec(self, value: pulumi.Input[Optional['RuntimeTemplateNetworkSpecArgs']]):
         pulumi.set(self, "network_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="networkTags")
-    def network_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def network_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Applies the given Compute Engine tags to the runtime.
         """
         return pulumi.get(self, "network_tags")
 
     @network_tags.setter
-    def network_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def network_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "network_tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -549,12 +549,12 @@ class _RuntimeTemplateState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -562,12 +562,12 @@ class _RuntimeTemplateState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedVmConfig")
-    def shielded_vm_config(self) -> Optional[pulumi.Input['RuntimeTemplateShieldedVmConfigArgs']]:
+    def shielded_vm_config(self) -> pulumi.Input[Optional['RuntimeTemplateShieldedVmConfigArgs']]:
         """
         Runtime Shielded VM spec.
         Structure is documented below.
@@ -575,12 +575,12 @@ class _RuntimeTemplateState:
         return pulumi.get(self, "shielded_vm_config")
 
     @shielded_vm_config.setter
-    def shielded_vm_config(self, value: Optional[pulumi.Input['RuntimeTemplateShieldedVmConfigArgs']]):
+    def shielded_vm_config(self, value: pulumi.Input[Optional['RuntimeTemplateShieldedVmConfigArgs']]):
         pulumi.set(self, "shielded_vm_config", value)
 
     @_builtins.property
     @pulumi.getter(name="softwareConfig")
-    def software_config(self) -> Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']]:
+    def software_config(self) -> pulumi.Input[Optional['RuntimeTemplateSoftwareConfigArgs']]:
         """
         The notebook software configuration of the notebook runtime.
         Structure is documented below.
@@ -588,7 +588,7 @@ class _RuntimeTemplateState:
         return pulumi.get(self, "software_config")
 
     @software_config.setter
-    def software_config(self, value: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigArgs']]):
+    def software_config(self, value: pulumi.Input[Optional['RuntimeTemplateSoftwareConfigArgs']]):
         pulumi.set(self, "software_config", value)
 
 
@@ -598,21 +598,21 @@ class RuntimeTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_persistent_disk_spec: Optional[pulumi.Input[Union['RuntimeTemplateDataPersistentDiskSpecArgs', 'RuntimeTemplateDataPersistentDiskSpecArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['RuntimeTemplateEncryptionSpecArgs', 'RuntimeTemplateEncryptionSpecArgsDict']]] = None,
-                 euc_config: Optional[pulumi.Input[Union['RuntimeTemplateEucConfigArgs', 'RuntimeTemplateEucConfigArgsDict']]] = None,
-                 idle_shutdown_config: Optional[pulumi.Input[Union['RuntimeTemplateIdleShutdownConfigArgs', 'RuntimeTemplateIdleShutdownConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_spec: Optional[pulumi.Input[Union['RuntimeTemplateMachineSpecArgs', 'RuntimeTemplateMachineSpecArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_spec: Optional[pulumi.Input[Union['RuntimeTemplateNetworkSpecArgs', 'RuntimeTemplateNetworkSpecArgsDict']]] = None,
-                 network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 shielded_vm_config: Optional[pulumi.Input[Union['RuntimeTemplateShieldedVmConfigArgs', 'RuntimeTemplateShieldedVmConfigArgsDict']]] = None,
-                 software_config: Optional[pulumi.Input[Union['RuntimeTemplateSoftwareConfigArgs', 'RuntimeTemplateSoftwareConfigArgsDict']]] = None,
+                 data_persistent_disk_spec: pulumi.Input[Optional[Union['RuntimeTemplateDataPersistentDiskSpecArgs', 'RuntimeTemplateDataPersistentDiskSpecArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['RuntimeTemplateEncryptionSpecArgs', 'RuntimeTemplateEncryptionSpecArgsDict']]] = None,
+                 euc_config: pulumi.Input[Optional[Union['RuntimeTemplateEucConfigArgs', 'RuntimeTemplateEucConfigArgsDict']]] = None,
+                 idle_shutdown_config: pulumi.Input[Optional[Union['RuntimeTemplateIdleShutdownConfigArgs', 'RuntimeTemplateIdleShutdownConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_spec: pulumi.Input[Optional[Union['RuntimeTemplateMachineSpecArgs', 'RuntimeTemplateMachineSpecArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_spec: pulumi.Input[Optional[Union['RuntimeTemplateNetworkSpecArgs', 'RuntimeTemplateNetworkSpecArgsDict']]] = None,
+                 network_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 shielded_vm_config: pulumi.Input[Optional[Union['RuntimeTemplateShieldedVmConfigArgs', 'RuntimeTemplateShieldedVmConfigArgsDict']]] = None,
+                 software_config: pulumi.Input[Optional[Union['RuntimeTemplateSoftwareConfigArgs', 'RuntimeTemplateSoftwareConfigArgsDict']]] = None,
                  __props__=None):
         """
         'A runtime template is a VM configuration that specifies a machine type and other characteristics of the VM,
@@ -928,21 +928,21 @@ class RuntimeTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_persistent_disk_spec: Optional[pulumi.Input[Union['RuntimeTemplateDataPersistentDiskSpecArgs', 'RuntimeTemplateDataPersistentDiskSpecArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['RuntimeTemplateEncryptionSpecArgs', 'RuntimeTemplateEncryptionSpecArgsDict']]] = None,
-                 euc_config: Optional[pulumi.Input[Union['RuntimeTemplateEucConfigArgs', 'RuntimeTemplateEucConfigArgsDict']]] = None,
-                 idle_shutdown_config: Optional[pulumi.Input[Union['RuntimeTemplateIdleShutdownConfigArgs', 'RuntimeTemplateIdleShutdownConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_spec: Optional[pulumi.Input[Union['RuntimeTemplateMachineSpecArgs', 'RuntimeTemplateMachineSpecArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_spec: Optional[pulumi.Input[Union['RuntimeTemplateNetworkSpecArgs', 'RuntimeTemplateNetworkSpecArgsDict']]] = None,
-                 network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 shielded_vm_config: Optional[pulumi.Input[Union['RuntimeTemplateShieldedVmConfigArgs', 'RuntimeTemplateShieldedVmConfigArgsDict']]] = None,
-                 software_config: Optional[pulumi.Input[Union['RuntimeTemplateSoftwareConfigArgs', 'RuntimeTemplateSoftwareConfigArgsDict']]] = None,
+                 data_persistent_disk_spec: pulumi.Input[Optional[Union['RuntimeTemplateDataPersistentDiskSpecArgs', 'RuntimeTemplateDataPersistentDiskSpecArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['RuntimeTemplateEncryptionSpecArgs', 'RuntimeTemplateEncryptionSpecArgsDict']]] = None,
+                 euc_config: pulumi.Input[Optional[Union['RuntimeTemplateEucConfigArgs', 'RuntimeTemplateEucConfigArgsDict']]] = None,
+                 idle_shutdown_config: pulumi.Input[Optional[Union['RuntimeTemplateIdleShutdownConfigArgs', 'RuntimeTemplateIdleShutdownConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_spec: pulumi.Input[Optional[Union['RuntimeTemplateMachineSpecArgs', 'RuntimeTemplateMachineSpecArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_spec: pulumi.Input[Optional[Union['RuntimeTemplateNetworkSpecArgs', 'RuntimeTemplateNetworkSpecArgsDict']]] = None,
+                 network_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 shielded_vm_config: pulumi.Input[Optional[Union['RuntimeTemplateShieldedVmConfigArgs', 'RuntimeTemplateShieldedVmConfigArgsDict']]] = None,
+                 software_config: pulumi.Input[Optional[Union['RuntimeTemplateSoftwareConfigArgs', 'RuntimeTemplateSoftwareConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -985,23 +985,23 @@ class RuntimeTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_persistent_disk_spec: Optional[pulumi.Input[Union['RuntimeTemplateDataPersistentDiskSpecArgs', 'RuntimeTemplateDataPersistentDiskSpecArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: Optional[pulumi.Input[Union['RuntimeTemplateEncryptionSpecArgs', 'RuntimeTemplateEncryptionSpecArgsDict']]] = None,
-            euc_config: Optional[pulumi.Input[Union['RuntimeTemplateEucConfigArgs', 'RuntimeTemplateEucConfigArgsDict']]] = None,
-            idle_shutdown_config: Optional[pulumi.Input[Union['RuntimeTemplateIdleShutdownConfigArgs', 'RuntimeTemplateIdleShutdownConfigArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            machine_spec: Optional[pulumi.Input[Union['RuntimeTemplateMachineSpecArgs', 'RuntimeTemplateMachineSpecArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_spec: Optional[pulumi.Input[Union['RuntimeTemplateNetworkSpecArgs', 'RuntimeTemplateNetworkSpecArgsDict']]] = None,
-            network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            shielded_vm_config: Optional[pulumi.Input[Union['RuntimeTemplateShieldedVmConfigArgs', 'RuntimeTemplateShieldedVmConfigArgsDict']]] = None,
-            software_config: Optional[pulumi.Input[Union['RuntimeTemplateSoftwareConfigArgs', 'RuntimeTemplateSoftwareConfigArgsDict']]] = None) -> 'RuntimeTemplate':
+            data_persistent_disk_spec: pulumi.Input[Optional[Union['RuntimeTemplateDataPersistentDiskSpecArgs', 'RuntimeTemplateDataPersistentDiskSpecArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['RuntimeTemplateEncryptionSpecArgs', 'RuntimeTemplateEncryptionSpecArgsDict']]] = None,
+            euc_config: pulumi.Input[Optional[Union['RuntimeTemplateEucConfigArgs', 'RuntimeTemplateEucConfigArgsDict']]] = None,
+            idle_shutdown_config: pulumi.Input[Optional[Union['RuntimeTemplateIdleShutdownConfigArgs', 'RuntimeTemplateIdleShutdownConfigArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_spec: pulumi.Input[Optional[Union['RuntimeTemplateMachineSpecArgs', 'RuntimeTemplateMachineSpecArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_spec: pulumi.Input[Optional[Union['RuntimeTemplateNetworkSpecArgs', 'RuntimeTemplateNetworkSpecArgsDict']]] = None,
+            network_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            shielded_vm_config: pulumi.Input[Optional[Union['RuntimeTemplateShieldedVmConfigArgs', 'RuntimeTemplateShieldedVmConfigArgsDict']]] = None,
+            software_config: pulumi.Input[Optional[Union['RuntimeTemplateSoftwareConfigArgs', 'RuntimeTemplateSoftwareConfigArgsDict']]] = None) -> 'RuntimeTemplate':
         """
         Get an existing RuntimeTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

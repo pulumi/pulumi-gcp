@@ -169,12 +169,12 @@ export interface AccessLevelsState {
      * The desired Access Levels that should replace all existing Access Levels in the Access Policy.
      * Structure is documented below.
      */
-    accessLevels?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelsAccessLevel>[]>;
+    accessLevels?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelsAccessLevel>[] | undefined>;
     /**
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,7 +185,7 @@ export interface AccessLevelsArgs {
      * The desired Access Levels that should replace all existing Access Levels in the Access Policy.
      * Structure is documented below.
      */
-    accessLevels?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelsAccessLevel>[]>;
+    accessLevels?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelsAccessLevel>[] | undefined>;
     /**
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}

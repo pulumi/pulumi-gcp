@@ -223,12 +223,12 @@ export interface SettingsState {
      * Top level wrapper for all access related setting in IAP.
      * Structure is documented below.
      */
-    accessSettings?: pulumi.Input<inputs.iap.SettingsAccessSettings>;
+    accessSettings?: pulumi.Input<inputs.iap.SettingsAccessSettings | undefined>;
     /**
      * Top level wrapper for all application related settings in IAP.
      * Structure is documented below.
      */
-    applicationSettings?: pulumi.Input<inputs.iap.SettingsApplicationSettings>;
+    applicationSettings?: pulumi.Input<inputs.iap.SettingsApplicationSettings | undefined>;
     /**
      * The resource name of the IAP protected resource. Name can have below resources:
      * * organizations/{organization_id}
@@ -243,7 +243,7 @@ export interface SettingsState {
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -254,12 +254,12 @@ export interface SettingsArgs {
      * Top level wrapper for all access related setting in IAP.
      * Structure is documented below.
      */
-    accessSettings?: pulumi.Input<inputs.iap.SettingsAccessSettings>;
+    accessSettings?: pulumi.Input<inputs.iap.SettingsAccessSettings | undefined>;
     /**
      * Top level wrapper for all application related settings in IAP.
      * Structure is documented below.
      */
-    applicationSettings?: pulumi.Input<inputs.iap.SettingsApplicationSettings>;
+    applicationSettings?: pulumi.Input<inputs.iap.SettingsApplicationSettings | undefined>;
     /**
      * The resource name of the IAP protected resource. Name can have below resources:
      * * organizations/{organization_id}
@@ -274,5 +274,5 @@ export interface SettingsArgs {
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

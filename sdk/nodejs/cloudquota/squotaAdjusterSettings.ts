@@ -153,7 +153,7 @@ export interface SQuotaAdjusterSettingsState {
      *
      * @deprecated `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead.
      */
-    effectiveContainer?: pulumi.Input<string>;
+    effectiveContainer?: pulumi.Input<string | undefined>;
     /**
      * (Deprecated)
      * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
@@ -161,26 +161,26 @@ export interface SQuotaAdjusterSettingsState {
      *
      * @deprecated `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.
      */
-    effectiveEnablement?: pulumi.Input<string>;
+    effectiveEnablement?: pulumi.Input<string | undefined>;
     /**
      * Required. The configured value of the enablement at the given resource.
      * Possible values are: `ENABLED`, `DISABLED`.
      */
-    enablement?: pulumi.Input<string>;
+    enablement?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the setting is inherited or explicitly specified.
      */
-    inherited?: pulumi.Input<boolean>;
+    inherited?: pulumi.Input<boolean | undefined>;
     /**
      * The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
      * The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
      * The value will be empty when `enablement` is specified on this resource container.
      */
-    inheritedFrom?: pulumi.Input<string>;
+    inheritedFrom?: pulumi.Input<string | undefined>;
     /**
      * The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -195,5 +195,5 @@ export interface SQuotaAdjusterSettingsArgs {
     /**
      * The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
 }

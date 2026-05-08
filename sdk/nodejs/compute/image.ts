@@ -390,24 +390,24 @@ export interface ImageState {
      * Size of the image tar.gz archive stored in Google Cloud Storage (in
      * bytes).
      */
-    archiveSizeBytes?: pulumi.Input<number>;
+    archiveSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Size of the image when restored onto a persistent disk (in GB).
      */
-    diskSizeGb?: pulumi.Input<number>;
+    diskSizeGb?: pulumi.Input<number | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the image family to which this image belongs. You can
      * create disks by specifying an image family instead of a specific
@@ -415,13 +415,13 @@ export interface ImageState {
      * not deprecated. The name of the image family must comply with
      * RFC1035.
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable images.
      * Structure is documented below.
      */
-    guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.ImageGuestOsFeature>[]>;
+    guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.ImageGuestOsFeature>[] | undefined>;
     /**
      * Encrypts the image using a customer-supplied encryption key.
      * After you encrypt an image with a customer-supplied key, you must
@@ -429,22 +429,22 @@ export interface ImageState {
      * disk from the image)
      * Structure is documented below.
      */
-    imageEncryptionKey?: pulumi.Input<inputs.compute.ImageImageEncryptionKey>;
+    imageEncryptionKey?: pulumi.Input<inputs.compute.ImageImageEncryptionKey | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used
      * internally during updates.
      */
-    labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this Image.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Any applicable license URI.
      */
-    licenses?: pulumi.Input<pulumi.Input<string>[]>;
+    licenses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -454,48 +454,48 @@ export interface ImageState {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload.
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.ImageParams>;
+    params?: pulumi.Input<inputs.compute.ImageParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The parameters of the raw disk image.
      * Structure is documented below.
      */
-    rawDisk?: pulumi.Input<inputs.compute.ImageRawDisk>;
+    rawDisk?: pulumi.Input<inputs.compute.ImageRawDisk | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Set the secure boot keys of shielded instance.
      * Structure is documented below.
      */
-    shieldedInstanceInitialState?: pulumi.Input<inputs.compute.ImageShieldedInstanceInitialState>;
+    shieldedInstanceInitialState?: pulumi.Input<inputs.compute.ImageShieldedInstanceInitialState | undefined>;
     /**
      * The source disk to create this image based on.
      * You must provide either this property or the
      * rawDisk.source property but not both to create an image.
      */
-    sourceDisk?: pulumi.Input<string>;
+    sourceDisk?: pulumi.Input<string | undefined>;
     /**
      * The customer-supplied encryption key of the source disk. Required if
      * the source disk is protected by a customer-supplied encryption key.
      * Structure is documented below.
      */
-    sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceDiskEncryptionKey>;
+    sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceDiskEncryptionKey | undefined>;
     /**
      * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
      * URL of one of the following:
@@ -504,13 +504,13 @@ export interface ImageState {
      * * The rawDisk.source URL
      * * The sourceDisk URL
      */
-    sourceImage?: pulumi.Input<string>;
+    sourceImage?: pulumi.Input<string | undefined>;
     /**
      * The customer-supplied encryption key of the source image. Required if
      * the source image is protected by a customer-supplied encryption key.
      * Structure is documented below.
      */
-    sourceImageEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceImageEncryptionKey>;
+    sourceImageEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceImageEncryptionKey | undefined>;
     /**
      * URL of the source snapshot used to create this image.
      * In order to create an image, you must provide the full or partial URL of one of the following:
@@ -520,19 +520,19 @@ export interface ImageState {
      * * The rawDisk.source URL
      * * The sourceDisk URL
      */
-    sourceSnapshot?: pulumi.Input<string>;
+    sourceSnapshot?: pulumi.Input<string | undefined>;
     /**
      * The customer-supplied encryption key of the source snapshot. Required if
      * the source snapshot is protected by a customer-supplied encryption key.
      * Structure is documented below.
      */
-    sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceSnapshotEncryptionKey>;
+    sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceSnapshotEncryptionKey | undefined>;
     /**
      * Cloud Storage bucket storage location of the image
      * (regional or multi-regional).
      * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
      */
-    storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    storageLocations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -543,11 +543,11 @@ export interface ImageArgs {
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Size of the image when restored onto a persistent disk (in GB).
      */
-    diskSizeGb?: pulumi.Input<number>;
+    diskSizeGb?: pulumi.Input<number | undefined>;
     /**
      * The name of the image family to which this image belongs. You can
      * create disks by specifying an image family instead of a specific
@@ -555,13 +555,13 @@ export interface ImageArgs {
      * not deprecated. The name of the image family must comply with
      * RFC1035.
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable images.
      * Structure is documented below.
      */
-    guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.ImageGuestOsFeature>[]>;
+    guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.ImageGuestOsFeature>[] | undefined>;
     /**
      * Encrypts the image using a customer-supplied encryption key.
      * After you encrypt an image with a customer-supplied key, you must
@@ -569,17 +569,17 @@ export interface ImageArgs {
      * disk from the image)
      * Structure is documented below.
      */
-    imageEncryptionKey?: pulumi.Input<inputs.compute.ImageImageEncryptionKey>;
+    imageEncryptionKey?: pulumi.Input<inputs.compute.ImageImageEncryptionKey | undefined>;
     /**
      * Labels to apply to this Image.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Any applicable license URI.
      */
-    licenses?: pulumi.Input<pulumi.Input<string>[]>;
+    licenses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -589,39 +589,39 @@ export interface ImageArgs {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload.
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.ImageParams>;
+    params?: pulumi.Input<inputs.compute.ImageParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The parameters of the raw disk image.
      * Structure is documented below.
      */
-    rawDisk?: pulumi.Input<inputs.compute.ImageRawDisk>;
+    rawDisk?: pulumi.Input<inputs.compute.ImageRawDisk | undefined>;
     /**
      * Set the secure boot keys of shielded instance.
      * Structure is documented below.
      */
-    shieldedInstanceInitialState?: pulumi.Input<inputs.compute.ImageShieldedInstanceInitialState>;
+    shieldedInstanceInitialState?: pulumi.Input<inputs.compute.ImageShieldedInstanceInitialState | undefined>;
     /**
      * The source disk to create this image based on.
      * You must provide either this property or the
      * rawDisk.source property but not both to create an image.
      */
-    sourceDisk?: pulumi.Input<string>;
+    sourceDisk?: pulumi.Input<string | undefined>;
     /**
      * The customer-supplied encryption key of the source disk. Required if
      * the source disk is protected by a customer-supplied encryption key.
      * Structure is documented below.
      */
-    sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceDiskEncryptionKey>;
+    sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceDiskEncryptionKey | undefined>;
     /**
      * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
      * URL of one of the following:
@@ -630,13 +630,13 @@ export interface ImageArgs {
      * * The rawDisk.source URL
      * * The sourceDisk URL
      */
-    sourceImage?: pulumi.Input<string>;
+    sourceImage?: pulumi.Input<string | undefined>;
     /**
      * The customer-supplied encryption key of the source image. Required if
      * the source image is protected by a customer-supplied encryption key.
      * Structure is documented below.
      */
-    sourceImageEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceImageEncryptionKey>;
+    sourceImageEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceImageEncryptionKey | undefined>;
     /**
      * URL of the source snapshot used to create this image.
      * In order to create an image, you must provide the full or partial URL of one of the following:
@@ -646,17 +646,17 @@ export interface ImageArgs {
      * * The rawDisk.source URL
      * * The sourceDisk URL
      */
-    sourceSnapshot?: pulumi.Input<string>;
+    sourceSnapshot?: pulumi.Input<string | undefined>;
     /**
      * The customer-supplied encryption key of the source snapshot. Required if
      * the source snapshot is protected by a customer-supplied encryption key.
      * Structure is documented below.
      */
-    sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceSnapshotEncryptionKey>;
+    sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceSnapshotEncryptionKey | undefined>;
     /**
      * Cloud Storage bucket storage location of the image
      * (regional or multi-regional).
      * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
      */
-    storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    storageLocations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

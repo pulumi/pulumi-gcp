@@ -128,9 +128,9 @@ def get_data_quality_rules(data_scan_id: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         project=pulumi.get(__ret__, 'project'),
         rules=pulumi.get(__ret__, 'rules'))
-def get_data_quality_rules_output(data_scan_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                  location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_data_quality_rules_output(data_scan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                  location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataQualityRulesResult]:
     """
     Retrieves the generated data quality rules for the creating a new data quality scan.

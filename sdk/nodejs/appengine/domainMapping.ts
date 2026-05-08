@@ -150,34 +150,34 @@ export interface DomainMappingState {
     /**
      * Relative name of the domain serving the application. Example: example.com.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether the domain creation should override any existing mappings for this domain.
      * By default, overrides are rejected.
      * Default value is `STRICT`.
      * Possible values are: `STRICT`, `OVERRIDE`.
      */
-    overrideStrategy?: pulumi.Input<string>;
+    overrideStrategy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The resource records required to configure this domain mapping. These records must be added to the domain's DNS
      * configuration in order to serve the application via this domain mapping.
      * Structure is documented below.
      */
-    resourceRecords?: pulumi.Input<pulumi.Input<inputs.appengine.DomainMappingResourceRecord>[]>;
+    resourceRecords?: pulumi.Input<pulumi.Input<inputs.appengine.DomainMappingResourceRecord>[] | undefined>;
     /**
      * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
      * Structure is documented below.
      */
-    sslSettings?: pulumi.Input<inputs.appengine.DomainMappingSslSettings>;
+    sslSettings?: pulumi.Input<inputs.appengine.DomainMappingSslSettings | undefined>;
 }
 
 /**
@@ -194,15 +194,15 @@ export interface DomainMappingArgs {
      * Default value is `STRICT`.
      * Possible values are: `STRICT`, `OVERRIDE`.
      */
-    overrideStrategy?: pulumi.Input<string>;
+    overrideStrategy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
      * Structure is documented below.
      */
-    sslSettings?: pulumi.Input<inputs.appengine.DomainMappingSslSettings>;
+    sslSettings?: pulumi.Input<inputs.appengine.DomainMappingSslSettings | undefined>;
 }

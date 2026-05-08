@@ -197,9 +197,9 @@ def get_application(application_id: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_application_output(application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                           location: Optional[pulumi.Input[_builtins.str]] = None,
-                           project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_application_output(application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                           location: pulumi.Input[Optional[_builtins.str]] = None,
+                           project: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationResult]:
     """
     Application is a functional grouping of Services and Workloads that helps achieve a desired end-to-end business functionality. Services and Workloads are owned by the Application.

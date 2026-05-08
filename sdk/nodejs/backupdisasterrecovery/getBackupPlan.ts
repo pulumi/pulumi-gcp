@@ -63,5 +63,5 @@ export function getBackupPlanOutput(args: GetBackupPlanOutputArgs, opts?: pulumi
 export interface GetBackupPlanOutputArgs {
     backupPlanId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

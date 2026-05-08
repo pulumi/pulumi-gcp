@@ -1867,7 +1867,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			error, err := compute.NewBackendBucket(ctx, "error", &compute.BackendBucketArgs{
+//			_error, err := compute.NewBackendBucket(ctx, "error", &compute.BackendBucketArgs{
 //				Name:       pulumi.String("error-backend-bucket"),
 //				BucketName: errorBucket.Name,
 //				EnableCdn:  pulumi.Bool(true),
@@ -1889,7 +1889,7 @@ import (
 //							OverrideResponseCode: pulumi.Int(502),
 //						},
 //					},
-//					ErrorService: error.ID(),
+//					ErrorService: _error.ID(),
 //				},
 //				HostRules: compute.URLMapHostRuleArray{
 //					&compute.URLMapHostRuleArgs{
@@ -1921,7 +1921,7 @@ import (
 //									OverrideResponseCode: pulumi.Int(502),
 //								},
 //							},
-//							ErrorService: error.ID(),
+//							ErrorService: _error.ID(),
 //						},
 //						PathRules: compute.URLMapPathMatcherPathRuleArray{
 //							&compute.URLMapPathMatcherPathRuleArgs{
@@ -1939,7 +1939,7 @@ import (
 //											OverrideResponseCode: pulumi.Int(401),
 //										},
 //									},
-//									ErrorService: error.ID(),
+//									ErrorService: _error.ID(),
 //								},
 //							},
 //						},

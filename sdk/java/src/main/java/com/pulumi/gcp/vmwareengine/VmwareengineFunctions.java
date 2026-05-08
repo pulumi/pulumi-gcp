@@ -65,8 +65,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetAnnouncementsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -105,8 +105,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetAnnouncementsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -145,8 +145,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetAnnouncementsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -185,8 +185,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetAnnouncementsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -225,8 +225,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetAnnouncementsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -268,8 +268,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -312,8 +312,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -356,8 +356,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -400,8 +400,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -444,8 +444,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -488,8 +488,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetDatastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -532,8 +532,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetDatastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -576,8 +576,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetDatastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -620,8 +620,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetDatastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -664,8 +664,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetDatastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -708,8 +708,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAccessRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -752,8 +752,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAccessRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -796,8 +796,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAccessRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -840,8 +840,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAccessRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -884,8 +884,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAccessRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -928,8 +928,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -972,8 +972,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1016,8 +1016,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1060,8 +1060,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1104,8 +1104,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1148,8 +1148,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1192,8 +1192,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1236,8 +1236,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1280,8 +1280,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1324,8 +1324,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1368,8 +1368,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1411,8 +1411,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1454,8 +1454,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1497,8 +1497,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1540,8 +1540,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1583,8 +1583,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1627,8 +1627,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1671,8 +1671,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1715,8 +1715,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1759,8 +1759,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1803,8 +1803,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNsxCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1846,8 +1846,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNsxCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1889,8 +1889,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNsxCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1932,8 +1932,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNsxCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1975,8 +1975,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetNsxCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2018,8 +2018,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetPrivateCloudArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2062,8 +2062,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetPrivateCloudArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2106,8 +2106,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetPrivateCloudArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2150,8 +2150,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetPrivateCloudArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2194,8 +2194,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetPrivateCloudArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2238,8 +2238,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2282,8 +2282,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2326,8 +2326,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2370,8 +2370,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2414,8 +2414,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2455,8 +2455,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetUpgradesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2495,8 +2495,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetUpgradesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2535,8 +2535,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetUpgradesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2575,8 +2575,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetUpgradesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2615,8 +2615,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetUpgradesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2658,8 +2658,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2701,8 +2701,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2744,8 +2744,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2787,8 +2787,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2830,8 +2830,8 @@ public final class VmwareengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
      * import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

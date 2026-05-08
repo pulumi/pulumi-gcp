@@ -206,15 +206,15 @@ export interface PublicAdvertisedPrefixState {
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 address to be used for reverse DNS verification.
      */
-    dnsVerificationIp?: pulumi.Input<string>;
+    dnsVerificationIp?: pulumi.Input<string | undefined>;
     /**
      * The address range, in CIDR format, represented by this public advertised prefix.
      */
-    ipCidrRange?: pulumi.Input<string>;
+    ipCidrRange?: pulumi.Input<string | undefined>;
     /**
      * The internet access type for IPv6 Public Advertised Prefixes. It can be
      * set to one of following:
@@ -225,7 +225,7 @@ export interface PublicAdvertisedPrefixState {
      * access type as INTERNAL.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      */
-    ipv6AccessType?: pulumi.Input<string>;
+    ipv6AccessType?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -234,7 +234,7 @@ export interface PublicAdvertisedPrefixState {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies how child public delegated prefix will be scoped. pdpScope
      * must be one of: GLOBAL, REGIONAL
@@ -244,20 +244,20 @@ export interface PublicAdvertisedPrefixState {
      * will take ~4 weeks.
      * Possible values are: `GLOBAL`, `REGIONAL`.
      */
-    pdpScope?: pulumi.Input<string>;
+    pdpScope?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Output Only. The shared secret to be used for reverse DNS verification.
      */
-    sharedSecret?: pulumi.Input<string>;
+    sharedSecret?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -267,11 +267,11 @@ export interface PublicAdvertisedPrefixArgs {
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 address to be used for reverse DNS verification.
      */
-    dnsVerificationIp?: pulumi.Input<string>;
+    dnsVerificationIp?: pulumi.Input<string | undefined>;
     /**
      * The address range, in CIDR format, represented by this public advertised prefix.
      */
@@ -286,7 +286,7 @@ export interface PublicAdvertisedPrefixArgs {
      * access type as INTERNAL.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      */
-    ipv6AccessType?: pulumi.Input<string>;
+    ipv6AccessType?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -295,7 +295,7 @@ export interface PublicAdvertisedPrefixArgs {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies how child public delegated prefix will be scoped. pdpScope
      * must be one of: GLOBAL, REGIONAL
@@ -305,10 +305,10 @@ export interface PublicAdvertisedPrefixArgs {
      * will take ~4 weeks.
      * Possible values are: `GLOBAL`, `REGIONAL`.
      */
-    pdpScope?: pulumi.Input<string>;
+    pdpScope?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

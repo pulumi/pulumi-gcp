@@ -32,8 +32,8 @@ public final class FolderFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.folder.FolderFunctions;
      * import com.pulumi.gcp.folder.inputs.GetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -72,8 +72,8 @@ public final class FolderFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.folder.FolderFunctions;
      * import com.pulumi.gcp.folder.inputs.GetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -112,8 +112,8 @@ public final class FolderFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.folder.FolderFunctions;
      * import com.pulumi.gcp.folder.inputs.GetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -152,8 +152,8 @@ public final class FolderFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.folder.FolderFunctions;
      * import com.pulumi.gcp.folder.inputs.GetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -192,8 +192,8 @@ public final class FolderFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.folder.FolderFunctions;
      * import com.pulumi.gcp.folder.inputs.GetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -234,8 +234,8 @@ public final class FolderFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.folder.FolderFunctions;
      * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -278,8 +278,8 @@ public final class FolderFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.folder.FolderFunctions;
      * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -322,8 +322,8 @@ public final class FolderFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.folder.FolderFunctions;
      * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -366,8 +366,8 @@ public final class FolderFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.folder.FolderFunctions;
      * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -410,8 +410,8 @@ public final class FolderFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.folder.FolderFunctions;
      * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

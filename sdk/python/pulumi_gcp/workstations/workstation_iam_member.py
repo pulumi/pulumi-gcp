@@ -26,9 +26,9 @@ class WorkstationIamMemberArgs:
                  workstation_cluster_id: pulumi.Input[_builtins.str],
                  workstation_config_id: pulumi.Input[_builtins.str],
                  workstation_id: pulumi.Input[_builtins.str],
-                 condition: Optional[pulumi.Input['WorkstationIamMemberConditionArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['WorkstationIamMemberConditionArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkstationIamMember resource.
 
@@ -148,16 +148,16 @@ class WorkstationIamMemberArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['WorkstationIamMemberConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['WorkstationIamMemberConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['WorkstationIamMemberConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['WorkstationIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location where the workstation parent resources reside.
         Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -167,12 +167,12 @@ class WorkstationIamMemberArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -180,22 +180,22 @@ class WorkstationIamMemberArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _WorkstationIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['WorkstationIamMemberConditionArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 workstation_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workstation_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workstation_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['WorkstationIamMemberConditionArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstation_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstation_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstation_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkstationIamMember resources.
 
@@ -248,28 +248,28 @@ class _WorkstationIamMemberState:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['WorkstationIamMemberConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['WorkstationIamMemberConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['WorkstationIamMemberConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['WorkstationIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location where the workstation parent resources reside.
         Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -279,12 +279,12 @@ class _WorkstationIamMemberState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def member(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -302,12 +302,12 @@ class _WorkstationIamMemberState:
         return pulumi.get(self, "member")
 
     @member.setter
-    def member(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -315,12 +315,12 @@ class _WorkstationIamMemberState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
         `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
@@ -329,12 +329,12 @@ class _WorkstationIamMemberState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="workstationClusterId")
-    def workstation_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workstation_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the parent workstation cluster.
         Used to find the parent resource to bind the IAM policy to
@@ -342,12 +342,12 @@ class _WorkstationIamMemberState:
         return pulumi.get(self, "workstation_cluster_id")
 
     @workstation_cluster_id.setter
-    def workstation_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workstation_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workstation_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workstationConfigId")
-    def workstation_config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workstation_config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the parent workstation cluster config.
         Used to find the parent resource to bind the IAM policy to
@@ -355,19 +355,19 @@ class _WorkstationIamMemberState:
         return pulumi.get(self, "workstation_config_id")
 
     @workstation_config_id.setter
-    def workstation_config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workstation_config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workstation_config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workstationId")
-    def workstation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workstation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "workstation_id")
 
     @workstation_id.setter
-    def workstation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workstation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workstation_id", value)
 
 
@@ -377,14 +377,14 @@ class WorkstationIamMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['WorkstationIamMemberConditionArgs', 'WorkstationIamMemberConditionArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 workstation_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workstation_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workstation_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['WorkstationIamMemberConditionArgs', 'WorkstationIamMemberConditionArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstation_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstation_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Three different resources help you manage your IAM policy for Cloud Workstations Workstation. Each of these resources serves a different use case:
@@ -774,14 +774,14 @@ class WorkstationIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['WorkstationIamMemberConditionArgs', 'WorkstationIamMemberConditionArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 workstation_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workstation_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workstation_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['WorkstationIamMemberConditionArgs', 'WorkstationIamMemberConditionArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstation_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstation_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -820,15 +820,15 @@ class WorkstationIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[Union['WorkstationIamMemberConditionArgs', 'WorkstationIamMemberConditionArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            member: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            workstation_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workstation_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workstation_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkstationIamMember':
+            condition: pulumi.Input[Optional[Union['WorkstationIamMemberConditionArgs', 'WorkstationIamMemberConditionArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            workstation_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workstation_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workstation_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkstationIamMember':
         """
         Get an existing WorkstationIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

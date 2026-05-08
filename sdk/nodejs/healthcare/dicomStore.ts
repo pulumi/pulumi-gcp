@@ -223,11 +223,11 @@ export interface DicomStoreState {
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      */
-    dataset?: pulumi.Input<string>;
+    dataset?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * User-supplied key-value pairs used to organize DICOM stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -241,33 +241,33 @@ export interface DicomStoreState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource name for the DicomStore.
      * ** Changing this property may recreate the Dicom store (removing all data) **
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    notificationConfig?: pulumi.Input<inputs.healthcare.DicomStoreNotificationConfig>;
+    notificationConfig?: pulumi.Input<inputs.healthcare.DicomStoreNotificationConfig | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The fully qualified name of this dataset
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
      * streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
      * Structure is documented below.
      */
-    streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.DicomStoreStreamConfig>[]>;
+    streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.DicomStoreStreamConfig>[] | undefined>;
 }
 
 /**
@@ -292,22 +292,22 @@ export interface DicomStoreArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource name for the DicomStore.
      * ** Changing this property may recreate the Dicom store (removing all data) **
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    notificationConfig?: pulumi.Input<inputs.healthcare.DicomStoreNotificationConfig>;
+    notificationConfig?: pulumi.Input<inputs.healthcare.DicomStoreNotificationConfig | undefined>;
     /**
      * (Optional, Beta)
      * To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
      * streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
      * Structure is documented below.
      */
-    streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.DicomStoreStreamConfig>[]>;
+    streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.DicomStoreStreamConfig>[] | undefined>;
 }

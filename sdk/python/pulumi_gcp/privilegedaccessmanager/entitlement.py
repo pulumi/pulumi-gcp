@@ -28,8 +28,8 @@ class EntitlementArgs:
                  parent: pulumi.Input[_builtins.str],
                  privileged_access: pulumi.Input['EntitlementPrivilegedAccessArgs'],
                  requester_justification_config: pulumi.Input['EntitlementRequesterJustificationConfigArgs'],
-                 additional_notification_targets: Optional[pulumi.Input['EntitlementAdditionalNotificationTargetsArgs']] = None,
-                 approval_workflow: Optional[pulumi.Input['EntitlementApprovalWorkflowArgs']] = None):
+                 additional_notification_targets: pulumi.Input[Optional['EntitlementAdditionalNotificationTargetsArgs']] = None,
+                 approval_workflow: pulumi.Input[Optional['EntitlementApprovalWorkflowArgs']] = None):
         """
         The set of arguments for constructing a Entitlement resource.
 
@@ -158,7 +158,7 @@ class EntitlementArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalNotificationTargets")
-    def additional_notification_targets(self) -> Optional[pulumi.Input['EntitlementAdditionalNotificationTargetsArgs']]:
+    def additional_notification_targets(self) -> pulumi.Input[Optional['EntitlementAdditionalNotificationTargetsArgs']]:
         """
         AdditionalNotificationTargets includes email addresses to be notified.
         Structure is documented below.
@@ -166,12 +166,12 @@ class EntitlementArgs:
         return pulumi.get(self, "additional_notification_targets")
 
     @additional_notification_targets.setter
-    def additional_notification_targets(self, value: Optional[pulumi.Input['EntitlementAdditionalNotificationTargetsArgs']]):
+    def additional_notification_targets(self, value: pulumi.Input[Optional['EntitlementAdditionalNotificationTargetsArgs']]):
         pulumi.set(self, "additional_notification_targets", value)
 
     @_builtins.property
     @pulumi.getter(name="approvalWorkflow")
-    def approval_workflow(self) -> Optional[pulumi.Input['EntitlementApprovalWorkflowArgs']]:
+    def approval_workflow(self) -> pulumi.Input[Optional['EntitlementApprovalWorkflowArgs']]:
         """
         The approvals needed before access will be granted to a requester.
         No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
@@ -180,27 +180,27 @@ class EntitlementArgs:
         return pulumi.get(self, "approval_workflow")
 
     @approval_workflow.setter
-    def approval_workflow(self, value: Optional[pulumi.Input['EntitlementApprovalWorkflowArgs']]):
+    def approval_workflow(self, value: pulumi.Input[Optional['EntitlementApprovalWorkflowArgs']]):
         pulumi.set(self, "approval_workflow", value)
 
 
 @pulumi.input_type
 class _EntitlementState:
     def __init__(__self__, *,
-                 additional_notification_targets: Optional[pulumi.Input['EntitlementAdditionalNotificationTargetsArgs']] = None,
-                 approval_workflow: Optional[pulumi.Input['EntitlementApprovalWorkflowArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 eligible_users: Optional[pulumi.Input[Sequence[pulumi.Input['EntitlementEligibleUserArgs']]]] = None,
-                 entitlement_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_request_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 privileged_access: Optional[pulumi.Input['EntitlementPrivilegedAccessArgs']] = None,
-                 requester_justification_config: Optional[pulumi.Input['EntitlementRequesterJustificationConfigArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 additional_notification_targets: pulumi.Input[Optional['EntitlementAdditionalNotificationTargetsArgs']] = None,
+                 approval_workflow: pulumi.Input[Optional['EntitlementApprovalWorkflowArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 eligible_users: pulumi.Input[Optional[Sequence[pulumi.Input['EntitlementEligibleUserArgs']]]] = None,
+                 entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_request_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 privileged_access: pulumi.Input[Optional['EntitlementPrivilegedAccessArgs']] = None,
+                 requester_justification_config: pulumi.Input[Optional['EntitlementRequesterJustificationConfigArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Entitlement resources.
 
@@ -263,7 +263,7 @@ class _EntitlementState:
 
     @_builtins.property
     @pulumi.getter(name="additionalNotificationTargets")
-    def additional_notification_targets(self) -> Optional[pulumi.Input['EntitlementAdditionalNotificationTargetsArgs']]:
+    def additional_notification_targets(self) -> pulumi.Input[Optional['EntitlementAdditionalNotificationTargetsArgs']]:
         """
         AdditionalNotificationTargets includes email addresses to be notified.
         Structure is documented below.
@@ -271,12 +271,12 @@ class _EntitlementState:
         return pulumi.get(self, "additional_notification_targets")
 
     @additional_notification_targets.setter
-    def additional_notification_targets(self, value: Optional[pulumi.Input['EntitlementAdditionalNotificationTargetsArgs']]):
+    def additional_notification_targets(self, value: pulumi.Input[Optional['EntitlementAdditionalNotificationTargetsArgs']]):
         pulumi.set(self, "additional_notification_targets", value)
 
     @_builtins.property
     @pulumi.getter(name="approvalWorkflow")
-    def approval_workflow(self) -> Optional[pulumi.Input['EntitlementApprovalWorkflowArgs']]:
+    def approval_workflow(self) -> pulumi.Input[Optional['EntitlementApprovalWorkflowArgs']]:
         """
         The approvals needed before access will be granted to a requester.
         No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
@@ -285,12 +285,12 @@ class _EntitlementState:
         return pulumi.get(self, "approval_workflow")
 
     @approval_workflow.setter
-    def approval_workflow(self, value: Optional[pulumi.Input['EntitlementApprovalWorkflowArgs']]):
+    def approval_workflow(self, value: pulumi.Input[Optional['EntitlementApprovalWorkflowArgs']]):
         pulumi.set(self, "approval_workflow", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
@@ -298,12 +298,12 @@ class _EntitlementState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="eligibleUsers")
-    def eligible_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntitlementEligibleUserArgs']]]]:
+    def eligible_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EntitlementEligibleUserArgs']]]]:
         """
         Who can create Grants using Entitlement. This list should contain at most one entry
         Structure is documented below.
@@ -311,12 +311,12 @@ class _EntitlementState:
         return pulumi.get(self, "eligible_users")
 
     @eligible_users.setter
-    def eligible_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntitlementEligibleUserArgs']]]]):
+    def eligible_users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntitlementEligibleUserArgs']]]]):
         pulumi.set(self, "eligible_users", value)
 
     @_builtins.property
     @pulumi.getter(name="entitlementId")
-    def entitlement_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entitlement_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for this Entitlement. This will become the last part of the resource name.
         This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
@@ -325,36 +325,36 @@ class _EntitlementState:
         return pulumi.get(self, "entitlement_id")
 
     @entitlement_id.setter
-    def entitlement_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entitlement_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entitlement_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For Resource freshness validation (https://google.aip.dev/154)
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the Entitlement resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRequestDuration")
-    def max_request_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_request_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum amount of time for which access would be granted for a request.
         A requester can choose to ask for access for less than this duration but never more.
@@ -363,12 +363,12 @@ class _EntitlementState:
         return pulumi.get(self, "max_request_duration")
 
     @max_request_duration.setter
-    def max_request_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_request_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_request_duration", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
         Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
@@ -376,24 +376,24 @@ class _EntitlementState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="privilegedAccess")
-    def privileged_access(self) -> Optional[pulumi.Input['EntitlementPrivilegedAccessArgs']]:
+    def privileged_access(self) -> pulumi.Input[Optional['EntitlementPrivilegedAccessArgs']]:
         """
         Privileged access that this service can be used to gate.
         Structure is documented below.
@@ -401,12 +401,12 @@ class _EntitlementState:
         return pulumi.get(self, "privileged_access")
 
     @privileged_access.setter
-    def privileged_access(self, value: Optional[pulumi.Input['EntitlementPrivilegedAccessArgs']]):
+    def privileged_access(self, value: pulumi.Input[Optional['EntitlementPrivilegedAccessArgs']]):
         pulumi.set(self, "privileged_access", value)
 
     @_builtins.property
     @pulumi.getter(name="requesterJustificationConfig")
-    def requester_justification_config(self) -> Optional[pulumi.Input['EntitlementRequesterJustificationConfigArgs']]:
+    def requester_justification_config(self) -> pulumi.Input[Optional['EntitlementRequesterJustificationConfigArgs']]:
         """
         Defines the ways in which a requester should provide the justification while requesting for access.
         Structure is documented below.
@@ -414,24 +414,24 @@ class _EntitlementState:
         return pulumi.get(self, "requester_justification_config")
 
     @requester_justification_config.setter
-    def requester_justification_config(self, value: Optional[pulumi.Input['EntitlementRequesterJustificationConfigArgs']]):
+    def requester_justification_config(self, value: pulumi.Input[Optional['EntitlementRequesterJustificationConfigArgs']]):
         pulumi.set(self, "requester_justification_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The current state of the Entitlement.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -439,7 +439,7 @@ class _EntitlementState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -449,15 +449,15 @@ class Entitlement(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_notification_targets: Optional[pulumi.Input[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']]] = None,
-                 approval_workflow: Optional[pulumi.Input[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']]] = None,
-                 eligible_users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]]] = None,
-                 entitlement_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_request_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 privileged_access: Optional[pulumi.Input[Union['EntitlementPrivilegedAccessArgs', 'EntitlementPrivilegedAccessArgsDict']]] = None,
-                 requester_justification_config: Optional[pulumi.Input[Union['EntitlementRequesterJustificationConfigArgs', 'EntitlementRequesterJustificationConfigArgsDict']]] = None,
+                 additional_notification_targets: pulumi.Input[Optional[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']]] = None,
+                 approval_workflow: pulumi.Input[Optional[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']]] = None,
+                 eligible_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]]] = None,
+                 entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_request_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 privileged_access: pulumi.Input[Optional[Union['EntitlementPrivilegedAccessArgs', 'EntitlementPrivilegedAccessArgsDict']]] = None,
+                 requester_justification_config: pulumi.Input[Optional[Union['EntitlementRequesterJustificationConfigArgs', 'EntitlementRequesterJustificationConfigArgsDict']]] = None,
                  __props__=None):
         """
         An Entitlement defines the eligibility of a set of users to obtain a predefined access for some time possibly after going through an approval workflow.
@@ -642,15 +642,15 @@ class Entitlement(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_notification_targets: Optional[pulumi.Input[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']]] = None,
-                 approval_workflow: Optional[pulumi.Input[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']]] = None,
-                 eligible_users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]]] = None,
-                 entitlement_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_request_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 privileged_access: Optional[pulumi.Input[Union['EntitlementPrivilegedAccessArgs', 'EntitlementPrivilegedAccessArgsDict']]] = None,
-                 requester_justification_config: Optional[pulumi.Input[Union['EntitlementRequesterJustificationConfigArgs', 'EntitlementRequesterJustificationConfigArgsDict']]] = None,
+                 additional_notification_targets: pulumi.Input[Optional[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']]] = None,
+                 approval_workflow: pulumi.Input[Optional[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']]] = None,
+                 eligible_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]]] = None,
+                 entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_request_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 privileged_access: pulumi.Input[Optional[Union['EntitlementPrivilegedAccessArgs', 'EntitlementPrivilegedAccessArgsDict']]] = None,
+                 requester_justification_config: pulumi.Input[Optional[Union['EntitlementRequesterJustificationConfigArgs', 'EntitlementRequesterJustificationConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -698,20 +698,20 @@ class Entitlement(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_notification_targets: Optional[pulumi.Input[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']]] = None,
-            approval_workflow: Optional[pulumi.Input[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            eligible_users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]]] = None,
-            entitlement_id: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            max_request_duration: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            privileged_access: Optional[pulumi.Input[Union['EntitlementPrivilegedAccessArgs', 'EntitlementPrivilegedAccessArgsDict']]] = None,
-            requester_justification_config: Optional[pulumi.Input[Union['EntitlementRequesterJustificationConfigArgs', 'EntitlementRequesterJustificationConfigArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Entitlement':
+            additional_notification_targets: pulumi.Input[Optional[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']]] = None,
+            approval_workflow: pulumi.Input[Optional[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            eligible_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]]] = None,
+            entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            max_request_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            privileged_access: pulumi.Input[Optional[Union['EntitlementPrivilegedAccessArgs', 'EntitlementPrivilegedAccessArgsDict']]] = None,
+            requester_justification_config: pulumi.Input[Optional[Union['EntitlementRequesterJustificationConfigArgs', 'EntitlementRequesterJustificationConfigArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Entitlement':
         """
         Get an existing Entitlement resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

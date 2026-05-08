@@ -22,23 +22,23 @@ __all__ = ['FutureReservationArgs', 'FutureReservation']
 class FutureReservationArgs:
     def __init__(__self__, *,
                  time_window: pulumi.Input['FutureReservationTimeWindowArgs'],
-                 aggregate_reservation: Optional[pulumi.Input['FutureReservationAggregateReservationArgs']] = None,
-                 auto_created_reservations_delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_created_reservations_duration: Optional[pulumi.Input['FutureReservationAutoCreatedReservationsDurationArgs']] = None,
-                 auto_delete_auto_created_reservations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commitment_info: Optional[pulumi.Input['FutureReservationCommitmentInfoArgs']] = None,
-                 deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 planning_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_settings: Optional[pulumi.Input['FutureReservationShareSettingsArgs']] = None,
-                 specific_reservation_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 specific_sku_properties: Optional[pulumi.Input['FutureReservationSpecificSkuPropertiesArgs']] = None):
+                 aggregate_reservation: pulumi.Input[Optional['FutureReservationAggregateReservationArgs']] = None,
+                 auto_created_reservations_delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_created_reservations_duration: pulumi.Input[Optional['FutureReservationAutoCreatedReservationsDurationArgs']] = None,
+                 auto_delete_auto_created_reservations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commitment_info: pulumi.Input[Optional['FutureReservationCommitmentInfoArgs']] = None,
+                 deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 planning_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_settings: pulumi.Input[Optional['FutureReservationShareSettingsArgs']] = None,
+                 specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 specific_sku_properties: pulumi.Input[Optional['FutureReservationSpecificSkuPropertiesArgs']] = None):
         """
         The set of arguments for constructing a FutureReservation resource.
 
@@ -129,7 +129,7 @@ class FutureReservationArgs:
 
     @_builtins.property
     @pulumi.getter(name="aggregateReservation")
-    def aggregate_reservation(self) -> Optional[pulumi.Input['FutureReservationAggregateReservationArgs']]:
+    def aggregate_reservation(self) -> pulumi.Input[Optional['FutureReservationAggregateReservationArgs']]:
         """
         Aggregate reservation details for the future reservation.
         Structure is documented below.
@@ -137,24 +137,24 @@ class FutureReservationArgs:
         return pulumi.get(self, "aggregate_reservation")
 
     @aggregate_reservation.setter
-    def aggregate_reservation(self, value: Optional[pulumi.Input['FutureReservationAggregateReservationArgs']]):
+    def aggregate_reservation(self, value: pulumi.Input[Optional['FutureReservationAggregateReservationArgs']]):
         pulumi.set(self, "aggregate_reservation", value)
 
     @_builtins.property
     @pulumi.getter(name="autoCreatedReservationsDeleteTime")
-    def auto_created_reservations_delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_created_reservations_delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
         """
         return pulumi.get(self, "auto_created_reservations_delete_time")
 
     @auto_created_reservations_delete_time.setter
-    def auto_created_reservations_delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_created_reservations_delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_created_reservations_delete_time", value)
 
     @_builtins.property
     @pulumi.getter(name="autoCreatedReservationsDuration")
-    def auto_created_reservations_duration(self) -> Optional[pulumi.Input['FutureReservationAutoCreatedReservationsDurationArgs']]:
+    def auto_created_reservations_duration(self) -> pulumi.Input[Optional['FutureReservationAutoCreatedReservationsDurationArgs']]:
         """
         Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
         Structure is documented below.
@@ -162,24 +162,24 @@ class FutureReservationArgs:
         return pulumi.get(self, "auto_created_reservations_duration")
 
     @auto_created_reservations_duration.setter
-    def auto_created_reservations_duration(self, value: Optional[pulumi.Input['FutureReservationAutoCreatedReservationsDurationArgs']]):
+    def auto_created_reservations_duration(self, value: pulumi.Input[Optional['FutureReservationAutoCreatedReservationsDurationArgs']]):
         pulumi.set(self, "auto_created_reservations_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDeleteAutoCreatedReservations")
-    def auto_delete_auto_created_reservations(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_delete_auto_created_reservations(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
         """
         return pulumi.get(self, "auto_delete_auto_created_reservations")
 
     @auto_delete_auto_created_reservations.setter
-    def auto_delete_auto_created_reservations(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_delete_auto_created_reservations(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_delete_auto_created_reservations", value)
 
     @_builtins.property
     @pulumi.getter(name="commitmentInfo")
-    def commitment_info(self) -> Optional[pulumi.Input['FutureReservationCommitmentInfoArgs']]:
+    def commitment_info(self) -> pulumi.Input[Optional['FutureReservationCommitmentInfoArgs']]:
         """
         If not present, then FR will not deliver a new commitment or update an existing commitment.
         Structure is documented below.
@@ -187,12 +187,12 @@ class FutureReservationArgs:
         return pulumi.get(self, "commitment_info")
 
     @commitment_info.setter
-    def commitment_info(self, value: Optional[pulumi.Input['FutureReservationCommitmentInfoArgs']]):
+    def commitment_info(self, value: pulumi.Input[Optional['FutureReservationCommitmentInfoArgs']]):
         pulumi.set(self, "commitment_info", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentType")
-    def deployment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the deployment requested as part of future reservation.
         Possible values are: `DENSE`, `FLEXIBLE`.
@@ -200,24 +200,24 @@ class FutureReservationArgs:
         return pulumi.get(self, "deployment_type")
 
     @deployment_type.setter
-    def deployment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -230,24 +230,24 @@ class FutureReservationArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         """
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
-    def name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="planningStatus")
-    def planning_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def planning_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Planning state before being submitted for evaluation
         Possible values are: `DRAFT`, `SUBMITTED`.
@@ -255,12 +255,12 @@ class FutureReservationArgs:
         return pulumi.get(self, "planning_status")
 
     @planning_status.setter
-    def planning_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def planning_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "planning_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -268,12 +268,12 @@ class FutureReservationArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationMode")
-    def reservation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reservation mode which determines reservation-termination behavior and expected pricing.
         Possible values are: `CALENDAR`, `DEFAULT`.
@@ -281,24 +281,24 @@ class FutureReservationArgs:
         return pulumi.get(self, "reservation_mode")
 
     @reservation_mode.setter
-    def reservation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationName")
-    def reservation_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
         """
         return pulumi.get(self, "reservation_name")
 
     @reservation_name.setter
-    def reservation_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation_name", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulingType")
-    def scheduling_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduling_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maintenance information for this reservation
         Possible values are: `GROUPED`, `INDEPENDENT`.
@@ -306,12 +306,12 @@ class FutureReservationArgs:
         return pulumi.get(self, "scheduling_type")
 
     @scheduling_type.setter
-    def scheduling_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduling_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduling_type", value)
 
     @_builtins.property
     @pulumi.getter(name="shareSettings")
-    def share_settings(self) -> Optional[pulumi.Input['FutureReservationShareSettingsArgs']]:
+    def share_settings(self) -> pulumi.Input[Optional['FutureReservationShareSettingsArgs']]:
         """
         Settings for sharing the future reservation
         Structure is documented below.
@@ -319,24 +319,24 @@ class FutureReservationArgs:
         return pulumi.get(self, "share_settings")
 
     @share_settings.setter
-    def share_settings(self, value: Optional[pulumi.Input['FutureReservationShareSettingsArgs']]):
+    def share_settings(self, value: pulumi.Input[Optional['FutureReservationShareSettingsArgs']]):
         pulumi.set(self, "share_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="specificReservationRequired")
-    def specific_reservation_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def specific_reservation_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
         """
         return pulumi.get(self, "specific_reservation_required")
 
     @specific_reservation_required.setter
-    def specific_reservation_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def specific_reservation_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "specific_reservation_required", value)
 
     @_builtins.property
     @pulumi.getter(name="specificSkuProperties")
-    def specific_sku_properties(self) -> Optional[pulumi.Input['FutureReservationSpecificSkuPropertiesArgs']]:
+    def specific_sku_properties(self) -> pulumi.Input[Optional['FutureReservationSpecificSkuPropertiesArgs']]:
         """
         Future Reservation configuration to indicate instance properties and total count.
         Structure is documented below.
@@ -344,36 +344,36 @@ class FutureReservationArgs:
         return pulumi.get(self, "specific_sku_properties")
 
     @specific_sku_properties.setter
-    def specific_sku_properties(self, value: Optional[pulumi.Input['FutureReservationSpecificSkuPropertiesArgs']]):
+    def specific_sku_properties(self, value: pulumi.Input[Optional['FutureReservationSpecificSkuPropertiesArgs']]):
         pulumi.set(self, "specific_sku_properties", value)
 
 
 @pulumi.input_type
 class _FutureReservationState:
     def __init__(__self__, *,
-                 aggregate_reservation: Optional[pulumi.Input['FutureReservationAggregateReservationArgs']] = None,
-                 auto_created_reservations_delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_created_reservations_duration: Optional[pulumi.Input['FutureReservationAutoCreatedReservationsDurationArgs']] = None,
-                 auto_delete_auto_created_reservations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commitment_info: Optional[pulumi.Input['FutureReservationCommitmentInfoArgs']] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 planning_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_settings: Optional[pulumi.Input['FutureReservationShareSettingsArgs']] = None,
-                 specific_reservation_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 specific_sku_properties: Optional[pulumi.Input['FutureReservationSpecificSkuPropertiesArgs']] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusArgs']]]] = None,
-                 time_window: Optional[pulumi.Input['FutureReservationTimeWindowArgs']] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 aggregate_reservation: pulumi.Input[Optional['FutureReservationAggregateReservationArgs']] = None,
+                 auto_created_reservations_delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_created_reservations_duration: pulumi.Input[Optional['FutureReservationAutoCreatedReservationsDurationArgs']] = None,
+                 auto_delete_auto_created_reservations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commitment_info: pulumi.Input[Optional['FutureReservationCommitmentInfoArgs']] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 planning_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link_with_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_settings: pulumi.Input[Optional['FutureReservationShareSettingsArgs']] = None,
+                 specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 specific_sku_properties: pulumi.Input[Optional['FutureReservationSpecificSkuPropertiesArgs']] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['FutureReservationStatusArgs']]]] = None,
+                 time_window: pulumi.Input[Optional['FutureReservationTimeWindowArgs']] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FutureReservation resources.
 
@@ -468,7 +468,7 @@ class _FutureReservationState:
 
     @_builtins.property
     @pulumi.getter(name="aggregateReservation")
-    def aggregate_reservation(self) -> Optional[pulumi.Input['FutureReservationAggregateReservationArgs']]:
+    def aggregate_reservation(self) -> pulumi.Input[Optional['FutureReservationAggregateReservationArgs']]:
         """
         Aggregate reservation details for the future reservation.
         Structure is documented below.
@@ -476,24 +476,24 @@ class _FutureReservationState:
         return pulumi.get(self, "aggregate_reservation")
 
     @aggregate_reservation.setter
-    def aggregate_reservation(self, value: Optional[pulumi.Input['FutureReservationAggregateReservationArgs']]):
+    def aggregate_reservation(self, value: pulumi.Input[Optional['FutureReservationAggregateReservationArgs']]):
         pulumi.set(self, "aggregate_reservation", value)
 
     @_builtins.property
     @pulumi.getter(name="autoCreatedReservationsDeleteTime")
-    def auto_created_reservations_delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_created_reservations_delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
         """
         return pulumi.get(self, "auto_created_reservations_delete_time")
 
     @auto_created_reservations_delete_time.setter
-    def auto_created_reservations_delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_created_reservations_delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_created_reservations_delete_time", value)
 
     @_builtins.property
     @pulumi.getter(name="autoCreatedReservationsDuration")
-    def auto_created_reservations_duration(self) -> Optional[pulumi.Input['FutureReservationAutoCreatedReservationsDurationArgs']]:
+    def auto_created_reservations_duration(self) -> pulumi.Input[Optional['FutureReservationAutoCreatedReservationsDurationArgs']]:
         """
         Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
         Structure is documented below.
@@ -501,24 +501,24 @@ class _FutureReservationState:
         return pulumi.get(self, "auto_created_reservations_duration")
 
     @auto_created_reservations_duration.setter
-    def auto_created_reservations_duration(self, value: Optional[pulumi.Input['FutureReservationAutoCreatedReservationsDurationArgs']]):
+    def auto_created_reservations_duration(self, value: pulumi.Input[Optional['FutureReservationAutoCreatedReservationsDurationArgs']]):
         pulumi.set(self, "auto_created_reservations_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDeleteAutoCreatedReservations")
-    def auto_delete_auto_created_reservations(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_delete_auto_created_reservations(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
         """
         return pulumi.get(self, "auto_delete_auto_created_reservations")
 
     @auto_delete_auto_created_reservations.setter
-    def auto_delete_auto_created_reservations(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_delete_auto_created_reservations(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_delete_auto_created_reservations", value)
 
     @_builtins.property
     @pulumi.getter(name="commitmentInfo")
-    def commitment_info(self) -> Optional[pulumi.Input['FutureReservationCommitmentInfoArgs']]:
+    def commitment_info(self) -> pulumi.Input[Optional['FutureReservationCommitmentInfoArgs']]:
         """
         If not present, then FR will not deliver a new commitment or update an existing commitment.
         Structure is documented below.
@@ -526,24 +526,24 @@ class _FutureReservationState:
         return pulumi.get(self, "commitment_info")
 
     @commitment_info.setter
-    def commitment_info(self, value: Optional[pulumi.Input['FutureReservationCommitmentInfoArgs']]):
+    def commitment_info(self, value: pulumi.Input[Optional['FutureReservationCommitmentInfoArgs']]):
         pulumi.set(self, "commitment_info", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation timestamp for this future reservation in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentType")
-    def deployment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the deployment requested as part of future reservation.
         Possible values are: `DENSE`, `FLEXIBLE`.
@@ -551,24 +551,24 @@ class _FutureReservationState:
         return pulumi.get(self, "deployment_type")
 
     @deployment_type.setter
-    def deployment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -581,24 +581,24 @@ class _FutureReservationState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         """
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
-    def name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="planningStatus")
-    def planning_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def planning_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Planning state before being submitted for evaluation
         Possible values are: `DRAFT`, `SUBMITTED`.
@@ -606,12 +606,12 @@ class _FutureReservationState:
         return pulumi.get(self, "planning_status")
 
     @planning_status.setter
-    def planning_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def planning_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "planning_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -619,12 +619,12 @@ class _FutureReservationState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationMode")
-    def reservation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reservation mode which determines reservation-termination behavior and expected pricing.
         Possible values are: `CALENDAR`, `DEFAULT`.
@@ -632,24 +632,24 @@ class _FutureReservationState:
         return pulumi.get(self, "reservation_mode")
 
     @reservation_mode.setter
-    def reservation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationName")
-    def reservation_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
         """
         return pulumi.get(self, "reservation_name")
 
     @reservation_name.setter
-    def reservation_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation_name", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulingType")
-    def scheduling_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduling_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maintenance information for this reservation
         Possible values are: `GROUPED`, `INDEPENDENT`.
@@ -657,36 +657,36 @@ class _FutureReservationState:
         return pulumi.get(self, "scheduling_type")
 
     @scheduling_type.setter
-    def scheduling_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduling_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduling_type", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLinkWithId")
-    def self_link_with_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link_with_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 
     @self_link_with_id.setter
-    def self_link_with_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link_with_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link_with_id", value)
 
     @_builtins.property
     @pulumi.getter(name="shareSettings")
-    def share_settings(self) -> Optional[pulumi.Input['FutureReservationShareSettingsArgs']]:
+    def share_settings(self) -> pulumi.Input[Optional['FutureReservationShareSettingsArgs']]:
         """
         Settings for sharing the future reservation
         Structure is documented below.
@@ -694,24 +694,24 @@ class _FutureReservationState:
         return pulumi.get(self, "share_settings")
 
     @share_settings.setter
-    def share_settings(self, value: Optional[pulumi.Input['FutureReservationShareSettingsArgs']]):
+    def share_settings(self, value: pulumi.Input[Optional['FutureReservationShareSettingsArgs']]):
         pulumi.set(self, "share_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="specificReservationRequired")
-    def specific_reservation_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def specific_reservation_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
         """
         return pulumi.get(self, "specific_reservation_required")
 
     @specific_reservation_required.setter
-    def specific_reservation_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def specific_reservation_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "specific_reservation_required", value)
 
     @_builtins.property
     @pulumi.getter(name="specificSkuProperties")
-    def specific_sku_properties(self) -> Optional[pulumi.Input['FutureReservationSpecificSkuPropertiesArgs']]:
+    def specific_sku_properties(self) -> pulumi.Input[Optional['FutureReservationSpecificSkuPropertiesArgs']]:
         """
         Future Reservation configuration to indicate instance properties and total count.
         Structure is documented below.
@@ -719,12 +719,12 @@ class _FutureReservationState:
         return pulumi.get(self, "specific_sku_properties")
 
     @specific_sku_properties.setter
-    def specific_sku_properties(self, value: Optional[pulumi.Input['FutureReservationSpecificSkuPropertiesArgs']]):
+    def specific_sku_properties(self, value: pulumi.Input[Optional['FutureReservationSpecificSkuPropertiesArgs']]):
         pulumi.set(self, "specific_sku_properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FutureReservationStatusArgs']]]]:
         """
         [Output only] Status of the Future Reservation
         Structure is documented below.
@@ -732,12 +732,12 @@ class _FutureReservationState:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FutureReservationStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FutureReservationStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="timeWindow")
-    def time_window(self) -> Optional[pulumi.Input['FutureReservationTimeWindowArgs']]:
+    def time_window(self) -> pulumi.Input[Optional['FutureReservationTimeWindowArgs']]:
         """
         Time window for this Future Reservation.
         Structure is documented below.
@@ -745,19 +745,19 @@ class _FutureReservationState:
         return pulumi.get(self, "time_window")
 
     @time_window.setter
-    def time_window(self, value: Optional[pulumi.Input['FutureReservationTimeWindowArgs']]):
+    def time_window(self, value: pulumi.Input[Optional['FutureReservationTimeWindowArgs']]):
         pulumi.set(self, "time_window", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the Zone where this future reservation resides.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -767,24 +767,24 @@ class FutureReservation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregate_reservation: Optional[pulumi.Input[Union['FutureReservationAggregateReservationArgs', 'FutureReservationAggregateReservationArgsDict']]] = None,
-                 auto_created_reservations_delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_created_reservations_duration: Optional[pulumi.Input[Union['FutureReservationAutoCreatedReservationsDurationArgs', 'FutureReservationAutoCreatedReservationsDurationArgsDict']]] = None,
-                 auto_delete_auto_created_reservations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commitment_info: Optional[pulumi.Input[Union['FutureReservationCommitmentInfoArgs', 'FutureReservationCommitmentInfoArgsDict']]] = None,
-                 deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 planning_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_settings: Optional[pulumi.Input[Union['FutureReservationShareSettingsArgs', 'FutureReservationShareSettingsArgsDict']]] = None,
-                 specific_reservation_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 specific_sku_properties: Optional[pulumi.Input[Union['FutureReservationSpecificSkuPropertiesArgs', 'FutureReservationSpecificSkuPropertiesArgsDict']]] = None,
-                 time_window: Optional[pulumi.Input[Union['FutureReservationTimeWindowArgs', 'FutureReservationTimeWindowArgsDict']]] = None,
+                 aggregate_reservation: pulumi.Input[Optional[Union['FutureReservationAggregateReservationArgs', 'FutureReservationAggregateReservationArgsDict']]] = None,
+                 auto_created_reservations_delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_created_reservations_duration: pulumi.Input[Optional[Union['FutureReservationAutoCreatedReservationsDurationArgs', 'FutureReservationAutoCreatedReservationsDurationArgsDict']]] = None,
+                 auto_delete_auto_created_reservations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commitment_info: pulumi.Input[Optional[Union['FutureReservationCommitmentInfoArgs', 'FutureReservationCommitmentInfoArgsDict']]] = None,
+                 deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 planning_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_settings: pulumi.Input[Optional[Union['FutureReservationShareSettingsArgs', 'FutureReservationShareSettingsArgsDict']]] = None,
+                 specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 specific_sku_properties: pulumi.Input[Optional[Union['FutureReservationSpecificSkuPropertiesArgs', 'FutureReservationSpecificSkuPropertiesArgsDict']]] = None,
+                 time_window: pulumi.Input[Optional[Union['FutureReservationTimeWindowArgs', 'FutureReservationTimeWindowArgsDict']]] = None,
                  __props__=None):
         """
         Represents a future reservation resource in Compute Engine. Future reservations allow users
@@ -1045,24 +1045,24 @@ class FutureReservation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregate_reservation: Optional[pulumi.Input[Union['FutureReservationAggregateReservationArgs', 'FutureReservationAggregateReservationArgsDict']]] = None,
-                 auto_created_reservations_delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_created_reservations_duration: Optional[pulumi.Input[Union['FutureReservationAutoCreatedReservationsDurationArgs', 'FutureReservationAutoCreatedReservationsDurationArgsDict']]] = None,
-                 auto_delete_auto_created_reservations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commitment_info: Optional[pulumi.Input[Union['FutureReservationCommitmentInfoArgs', 'FutureReservationCommitmentInfoArgsDict']]] = None,
-                 deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 planning_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_settings: Optional[pulumi.Input[Union['FutureReservationShareSettingsArgs', 'FutureReservationShareSettingsArgsDict']]] = None,
-                 specific_reservation_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 specific_sku_properties: Optional[pulumi.Input[Union['FutureReservationSpecificSkuPropertiesArgs', 'FutureReservationSpecificSkuPropertiesArgsDict']]] = None,
-                 time_window: Optional[pulumi.Input[Union['FutureReservationTimeWindowArgs', 'FutureReservationTimeWindowArgsDict']]] = None,
+                 aggregate_reservation: pulumi.Input[Optional[Union['FutureReservationAggregateReservationArgs', 'FutureReservationAggregateReservationArgsDict']]] = None,
+                 auto_created_reservations_delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_created_reservations_duration: pulumi.Input[Optional[Union['FutureReservationAutoCreatedReservationsDurationArgs', 'FutureReservationAutoCreatedReservationsDurationArgsDict']]] = None,
+                 auto_delete_auto_created_reservations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commitment_info: pulumi.Input[Optional[Union['FutureReservationCommitmentInfoArgs', 'FutureReservationCommitmentInfoArgsDict']]] = None,
+                 deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 planning_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_settings: pulumi.Input[Optional[Union['FutureReservationShareSettingsArgs', 'FutureReservationShareSettingsArgsDict']]] = None,
+                 specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 specific_sku_properties: pulumi.Input[Optional[Union['FutureReservationSpecificSkuPropertiesArgs', 'FutureReservationSpecificSkuPropertiesArgsDict']]] = None,
+                 time_window: pulumi.Input[Optional[Union['FutureReservationTimeWindowArgs', 'FutureReservationTimeWindowArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1107,29 +1107,29 @@ class FutureReservation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aggregate_reservation: Optional[pulumi.Input[Union['FutureReservationAggregateReservationArgs', 'FutureReservationAggregateReservationArgsDict']]] = None,
-            auto_created_reservations_delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_created_reservations_duration: Optional[pulumi.Input[Union['FutureReservationAutoCreatedReservationsDurationArgs', 'FutureReservationAutoCreatedReservationsDurationArgsDict']]] = None,
-            auto_delete_auto_created_reservations: Optional[pulumi.Input[_builtins.bool]] = None,
-            commitment_info: Optional[pulumi.Input[Union['FutureReservationCommitmentInfoArgs', 'FutureReservationCommitmentInfoArgsDict']]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            planning_status: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            reservation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            reservation_name: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduling_type: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link_with_id: Optional[pulumi.Input[_builtins.str]] = None,
-            share_settings: Optional[pulumi.Input[Union['FutureReservationShareSettingsArgs', 'FutureReservationShareSettingsArgsDict']]] = None,
-            specific_reservation_required: Optional[pulumi.Input[_builtins.bool]] = None,
-            specific_sku_properties: Optional[pulumi.Input[Union['FutureReservationSpecificSkuPropertiesArgs', 'FutureReservationSpecificSkuPropertiesArgsDict']]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FutureReservationStatusArgs', 'FutureReservationStatusArgsDict']]]]] = None,
-            time_window: Optional[pulumi.Input[Union['FutureReservationTimeWindowArgs', 'FutureReservationTimeWindowArgsDict']]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'FutureReservation':
+            aggregate_reservation: pulumi.Input[Optional[Union['FutureReservationAggregateReservationArgs', 'FutureReservationAggregateReservationArgsDict']]] = None,
+            auto_created_reservations_delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_created_reservations_duration: pulumi.Input[Optional[Union['FutureReservationAutoCreatedReservationsDurationArgs', 'FutureReservationAutoCreatedReservationsDurationArgsDict']]] = None,
+            auto_delete_auto_created_reservations: pulumi.Input[Optional[_builtins.bool]] = None,
+            commitment_info: pulumi.Input[Optional[Union['FutureReservationCommitmentInfoArgs', 'FutureReservationCommitmentInfoArgsDict']]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            planning_status: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduling_type: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link_with_id: pulumi.Input[Optional[_builtins.str]] = None,
+            share_settings: pulumi.Input[Optional[Union['FutureReservationShareSettingsArgs', 'FutureReservationShareSettingsArgsDict']]] = None,
+            specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            specific_sku_properties: pulumi.Input[Optional[Union['FutureReservationSpecificSkuPropertiesArgs', 'FutureReservationSpecificSkuPropertiesArgsDict']]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FutureReservationStatusArgs', 'FutureReservationStatusArgsDict']]]]] = None,
+            time_window: pulumi.Input[Optional[Union['FutureReservationTimeWindowArgs', 'FutureReservationTimeWindowArgsDict']]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'FutureReservation':
         """
         Get an existing FutureReservation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

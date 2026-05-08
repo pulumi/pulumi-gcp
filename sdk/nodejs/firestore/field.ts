@@ -270,15 +270,15 @@ export interface FieldState {
     /**
      * The id of the collection group to configure.
      */
-    collection?: pulumi.Input<string>;
+    collection?: pulumi.Input<string | undefined>;
     /**
      * The Firestore database id. Defaults to `"(default)"`.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * The id of the field to configure.
      */
-    field?: pulumi.Input<string>;
+    field?: pulumi.Input<string | undefined>;
     /**
      * The single field index configuration for this field.
      * Creating an index configuration for this field will override any inherited configuration with the
@@ -286,22 +286,22 @@ export interface FieldState {
      * the field.
      * Structure is documented below.
      */
-    indexConfig?: pulumi.Input<inputs.firestore.FieldIndexConfig>;
+    indexConfig?: pulumi.Input<inputs.firestore.FieldIndexConfig | undefined>;
     /**
      * The name of this field. Format:
      * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      */
-    ttlConfig?: pulumi.Input<inputs.firestore.FieldTtlConfig>;
+    ttlConfig?: pulumi.Input<inputs.firestore.FieldTtlConfig | undefined>;
 }
 
 /**
@@ -315,7 +315,7 @@ export interface FieldArgs {
     /**
      * The Firestore database id. Defaults to `"(default)"`.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * The id of the field to configure.
      */
@@ -327,15 +327,15 @@ export interface FieldArgs {
      * the field.
      * Structure is documented below.
      */
-    indexConfig?: pulumi.Input<inputs.firestore.FieldIndexConfig>;
+    indexConfig?: pulumi.Input<inputs.firestore.FieldIndexConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      */
-    ttlConfig?: pulumi.Input<inputs.firestore.FieldTtlConfig>;
+    ttlConfig?: pulumi.Input<inputs.firestore.FieldTtlConfig | undefined>;
 }

@@ -408,162 +408,162 @@ export interface FunctionState {
     /**
      * Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
      */
-    automaticUpdatePolicy?: pulumi.Input<inputs.cloudfunctions.FunctionAutomaticUpdatePolicy>;
+    automaticUpdatePolicy?: pulumi.Input<inputs.cloudfunctions.FunctionAutomaticUpdatePolicy | undefined>;
     /**
      * Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
      */
-    availableMemoryMb?: pulumi.Input<number>;
+    availableMemoryMb?: pulumi.Input<number | undefined>;
     /**
      * A set of key/value environment variable pairs available during build time.
      */
-    buildEnvironmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    buildEnvironmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
      */
-    buildServiceAccount?: pulumi.Input<string>;
+    buildServiceAccount?: pulumi.Input<string | undefined>;
     /**
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
      */
-    buildWorkerPool?: pulumi.Input<string>;
+    buildWorkerPool?: pulumi.Input<string | undefined>;
     /**
      * Description of the function.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
      */
-    dockerRegistry?: pulumi.Input<string>;
+    dockerRegistry?: pulumi.Input<string | undefined>;
     /**
      * User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `dockerRegistry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
      */
-    dockerRepository?: pulumi.Input<string>;
+    dockerRepository?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the function that will be executed when the Google Cloud Function is triggered.
      */
-    entryPoint?: pulumi.Input<string>;
+    entryPoint?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value environment variable pairs to assign to the function.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      */
-    eventTrigger?: pulumi.Input<inputs.cloudfunctions.FunctionEventTrigger>;
+    eventTrigger?: pulumi.Input<inputs.cloudfunctions.FunctionEventTrigger | undefined>;
     /**
      * The security level for the function. The following options are available:
      *
      * * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
      * * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
      */
-    httpsTriggerSecurityLevel?: pulumi.Input<string>;
+    httpsTriggerSecurityLevel?: pulumi.Input<string | undefined>;
     /**
      * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
-    httpsTriggerUrl?: pulumi.Input<string>;
+    httpsTriggerUrl?: pulumi.Input<string | undefined>;
     /**
      * String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
      */
-    ingressSettings?: pulumi.Input<string>;
+    ingressSettings?: pulumi.Input<string | undefined>;
     /**
      * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
      * If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The limit on the maximum number of function instances that may coexist at a given time.
      */
-    maxInstances?: pulumi.Input<number>;
+    maxInstances?: pulumi.Input<number | undefined>;
     /**
      * The limit on the minimum number of function instances that may coexist at a given time.
      */
-    minInstances?: pulumi.Input<number>;
+    minInstances?: pulumi.Input<number | undefined>;
     /**
      * A user-defined name of the function. Function names must be unique globally.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
      */
-    onDeployUpdatePolicy?: pulumi.Input<inputs.cloudfunctions.FunctionOnDeployUpdatePolicy>;
+    onDeployUpdatePolicy?: pulumi.Input<inputs.cloudfunctions.FunctionOnDeployUpdatePolicy | undefined>;
     /**
      * Project of the function. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Region of function. If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The runtime in which the function is going to run.
      * Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      *
      * - - -
      */
-    runtime?: pulumi.Input<string>;
+    runtime?: pulumi.Input<string | undefined>;
     /**
      * Secret environment variables configuration. Structure is documented below.
      */
-    secretEnvironmentVariables?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretEnvironmentVariable>[]>;
+    secretEnvironmentVariables?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretEnvironmentVariable>[] | undefined>;
     /**
      * Secret volumes configuration. Structure is documented below.
      */
-    secretVolumes?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretVolume>[]>;
+    secretVolumes?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretVolume>[] | undefined>;
     /**
      * If provided, the self-provided service account to run the function with.
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
     /**
      * The GCS bucket containing the zip archive which contains the function.
      */
-    sourceArchiveBucket?: pulumi.Input<string>;
+    sourceArchiveBucket?: pulumi.Input<string | undefined>;
     /**
      * The source archive object (file) in archive bucket.
      */
-    sourceArchiveObject?: pulumi.Input<string>;
+    sourceArchiveObject?: pulumi.Input<string | undefined>;
     /**
      * Represents parameters related to source repository where a function is hosted.
      * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
      */
-    sourceRepository?: pulumi.Input<inputs.cloudfunctions.FunctionSourceRepository>;
+    sourceRepository?: pulumi.Input<inputs.cloudfunctions.FunctionSourceRepository | undefined>;
     /**
      * Describes the current stage of a deployment.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
      */
-    triggerHttp?: pulumi.Input<boolean>;
+    triggerHttp?: pulumi.Input<boolean | undefined>;
     /**
      * The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
     /**
      * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      */
-    vpcConnector?: pulumi.Input<string>;
+    vpcConnector?: pulumi.Input<string | undefined>;
     /**
      * The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
      */
-    vpcConnectorEgressSettings?: pulumi.Input<string>;
+    vpcConnectorEgressSettings?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -573,98 +573,98 @@ export interface FunctionArgs {
     /**
      * Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
      */
-    automaticUpdatePolicy?: pulumi.Input<inputs.cloudfunctions.FunctionAutomaticUpdatePolicy>;
+    automaticUpdatePolicy?: pulumi.Input<inputs.cloudfunctions.FunctionAutomaticUpdatePolicy | undefined>;
     /**
      * Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
      */
-    availableMemoryMb?: pulumi.Input<number>;
+    availableMemoryMb?: pulumi.Input<number | undefined>;
     /**
      * A set of key/value environment variable pairs available during build time.
      */
-    buildEnvironmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    buildEnvironmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
      */
-    buildServiceAccount?: pulumi.Input<string>;
+    buildServiceAccount?: pulumi.Input<string | undefined>;
     /**
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
      */
-    buildWorkerPool?: pulumi.Input<string>;
+    buildWorkerPool?: pulumi.Input<string | undefined>;
     /**
      * Description of the function.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
      */
-    dockerRegistry?: pulumi.Input<string>;
+    dockerRegistry?: pulumi.Input<string | undefined>;
     /**
      * User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `dockerRegistry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
      */
-    dockerRepository?: pulumi.Input<string>;
+    dockerRepository?: pulumi.Input<string | undefined>;
     /**
      * Name of the function that will be executed when the Google Cloud Function is triggered.
      */
-    entryPoint?: pulumi.Input<string>;
+    entryPoint?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value environment variable pairs to assign to the function.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      */
-    eventTrigger?: pulumi.Input<inputs.cloudfunctions.FunctionEventTrigger>;
+    eventTrigger?: pulumi.Input<inputs.cloudfunctions.FunctionEventTrigger | undefined>;
     /**
      * The security level for the function. The following options are available:
      *
      * * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
      * * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
      */
-    httpsTriggerSecurityLevel?: pulumi.Input<string>;
+    httpsTriggerSecurityLevel?: pulumi.Input<string | undefined>;
     /**
      * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
-    httpsTriggerUrl?: pulumi.Input<string>;
+    httpsTriggerUrl?: pulumi.Input<string | undefined>;
     /**
      * String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
      */
-    ingressSettings?: pulumi.Input<string>;
+    ingressSettings?: pulumi.Input<string | undefined>;
     /**
      * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
      * If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The limit on the maximum number of function instances that may coexist at a given time.
      */
-    maxInstances?: pulumi.Input<number>;
+    maxInstances?: pulumi.Input<number | undefined>;
     /**
      * The limit on the minimum number of function instances that may coexist at a given time.
      */
-    minInstances?: pulumi.Input<number>;
+    minInstances?: pulumi.Input<number | undefined>;
     /**
      * A user-defined name of the function. Function names must be unique globally.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
      */
-    onDeployUpdatePolicy?: pulumi.Input<inputs.cloudfunctions.FunctionOnDeployUpdatePolicy>;
+    onDeployUpdatePolicy?: pulumi.Input<inputs.cloudfunctions.FunctionOnDeployUpdatePolicy | undefined>;
     /**
      * Project of the function. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region of function. If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The runtime in which the function is going to run.
      * Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
@@ -675,42 +675,42 @@ export interface FunctionArgs {
     /**
      * Secret environment variables configuration. Structure is documented below.
      */
-    secretEnvironmentVariables?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretEnvironmentVariable>[]>;
+    secretEnvironmentVariables?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretEnvironmentVariable>[] | undefined>;
     /**
      * Secret volumes configuration. Structure is documented below.
      */
-    secretVolumes?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretVolume>[]>;
+    secretVolumes?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretVolume>[] | undefined>;
     /**
      * If provided, the self-provided service account to run the function with.
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
     /**
      * The GCS bucket containing the zip archive which contains the function.
      */
-    sourceArchiveBucket?: pulumi.Input<string>;
+    sourceArchiveBucket?: pulumi.Input<string | undefined>;
     /**
      * The source archive object (file) in archive bucket.
      */
-    sourceArchiveObject?: pulumi.Input<string>;
+    sourceArchiveObject?: pulumi.Input<string | undefined>;
     /**
      * Represents parameters related to source repository where a function is hosted.
      * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
      */
-    sourceRepository?: pulumi.Input<inputs.cloudfunctions.FunctionSourceRepository>;
+    sourceRepository?: pulumi.Input<inputs.cloudfunctions.FunctionSourceRepository | undefined>;
     /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
      */
-    triggerHttp?: pulumi.Input<boolean>;
+    triggerHttp?: pulumi.Input<boolean | undefined>;
     /**
      * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      */
-    vpcConnector?: pulumi.Input<string>;
+    vpcConnector?: pulumi.Input<string | undefined>;
     /**
      * The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
      */
-    vpcConnectorEgressSettings?: pulumi.Input<string>;
+    vpcConnectorEgressSettings?: pulumi.Input<string | undefined>;
 }

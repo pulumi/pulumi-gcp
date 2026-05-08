@@ -512,50 +512,50 @@ export interface PipelineState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The creation time.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
      * to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
      * "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Resource name of a KMS crypto key (managed by the user) used to
      * encrypt/decrypt the event data. If not set, an internal Google-owned key
      * will be used to encrypt messages. It must match the pattern
      * "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
      */
-    cryptoKeyName?: pulumi.Input<string>;
+    cryptoKeyName?: pulumi.Input<string | undefined>;
     /**
      * List of destinations to which messages will be forwarded. Currently,
      * exactly one destination is supported per Pipeline.
      * Structure is documented below.
      */
-    destinations?: pulumi.Input<pulumi.Input<inputs.eventarc.PipelineDestination>[]>;
+    destinations?: pulumi.Input<pulumi.Input<inputs.eventarc.PipelineDestination>[] | undefined>;
     /**
      * Display name of resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * This checksum is computed by the server based on the value of
      * other fields, and might be sent only on create requests to ensure that the
      * client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Represents the format of message data.
      * Structure is documented below.
      */
-    inputPayloadFormat?: pulumi.Input<inputs.eventarc.PipelineInputPayloadFormat>;
+    inputPayloadFormat?: pulumi.Input<inputs.eventarc.PipelineInputPayloadFormat | undefined>;
     /**
      * User labels attached to the Pipeline that can be used to group
      * resources. An object containing a list of "key": value pairs. Example: {
@@ -563,44 +563,44 @@ export interface PipelineState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The configuration for Platform Telemetry logging for Eventarc Advanced
      * resources.
      * Structure is documented below.
      */
-    loggingConfig?: pulumi.Input<inputs.eventarc.PipelineLoggingConfig>;
+    loggingConfig?: pulumi.Input<inputs.eventarc.PipelineLoggingConfig | undefined>;
     /**
      * List of mediation operations to be performed on the message. Currently,
      * only one Transformation operation is allowed in each Pipeline.
      * Structure is documented below.
      */
-    mediations?: pulumi.Input<pulumi.Input<inputs.eventarc.PipelineMediation>[]>;
+    mediations?: pulumi.Input<pulumi.Input<inputs.eventarc.PipelineMediation>[] | undefined>;
     /**
      * The resource name of the Pipeline. Must be unique within the
      * location of the project and must be in
      * `projects/{project}/locations/{location}/pipelines/{pipeline}` format.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The user-provided ID to be assigned to the Pipeline. It should match the
      * format `^a-z?$`.
      */
-    pipelineId?: pulumi.Input<string>;
+    pipelineId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The retry policy configuration for the Pipeline. The pipeline
      * exponentially backs off in case the destination is non responsive or
@@ -612,20 +612,20 @@ export interface PipelineState {
      * to the same value this will make the duration between retries constant.
      * Structure is documented below.
      */
-    retryPolicy?: pulumi.Input<inputs.eventarc.PipelineRetryPolicy>;
+    retryPolicy?: pulumi.Input<inputs.eventarc.PipelineRetryPolicy | undefined>;
     /**
      * Server-assigned unique identifier for the Pipeline. The value
      * is a UUID4 string and guaranteed to remain unchanged until the resource is
      * deleted.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The last-modified time.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
      * to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
      * "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -637,14 +637,14 @@ export interface PipelineArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource name of a KMS crypto key (managed by the user) used to
      * encrypt/decrypt the event data. If not set, an internal Google-owned key
      * will be used to encrypt messages. It must match the pattern
      * "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
      */
-    cryptoKeyName?: pulumi.Input<string>;
+    cryptoKeyName?: pulumi.Input<string | undefined>;
     /**
      * List of destinations to which messages will be forwarded. Currently,
      * exactly one destination is supported per Pipeline.
@@ -654,12 +654,12 @@ export interface PipelineArgs {
     /**
      * Display name of resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Represents the format of message data.
      * Structure is documented below.
      */
-    inputPayloadFormat?: pulumi.Input<inputs.eventarc.PipelineInputPayloadFormat>;
+    inputPayloadFormat?: pulumi.Input<inputs.eventarc.PipelineInputPayloadFormat | undefined>;
     /**
      * User labels attached to the Pipeline that can be used to group
      * resources. An object containing a list of "key": value pairs. Example: {
@@ -667,7 +667,7 @@ export interface PipelineArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -677,13 +677,13 @@ export interface PipelineArgs {
      * resources.
      * Structure is documented below.
      */
-    loggingConfig?: pulumi.Input<inputs.eventarc.PipelineLoggingConfig>;
+    loggingConfig?: pulumi.Input<inputs.eventarc.PipelineLoggingConfig | undefined>;
     /**
      * List of mediation operations to be performed on the message. Currently,
      * only one Transformation operation is allowed in each Pipeline.
      * Structure is documented below.
      */
-    mediations?: pulumi.Input<pulumi.Input<inputs.eventarc.PipelineMediation>[]>;
+    mediations?: pulumi.Input<pulumi.Input<inputs.eventarc.PipelineMediation>[] | undefined>;
     /**
      * The user-provided ID to be assigned to the Pipeline. It should match the
      * format `^a-z?$`.
@@ -693,7 +693,7 @@ export interface PipelineArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The retry policy configuration for the Pipeline. The pipeline
      * exponentially backs off in case the destination is non responsive or
@@ -705,5 +705,5 @@ export interface PipelineArgs {
      * to the same value this will make the duration between retries constant.
      * Structure is documented below.
      */
-    retryPolicy?: pulumi.Input<inputs.eventarc.PipelineRetryPolicy>;
+    retryPolicy?: pulumi.Input<inputs.eventarc.PipelineRetryPolicy | undefined>;
 }

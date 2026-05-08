@@ -133,7 +133,7 @@ namespace Pulumi.Gcp.Kms
         /// ",
         ///     });
         /// 
-        ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+        ///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
         ///     {
         ///         ByteLength = 4,
         ///     });
@@ -286,7 +286,7 @@ namespace Pulumi.Gcp.Kms
         /// ",
         ///     });
         /// 
-        ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+        ///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
         ///     {
         ///         ByteLength = 4,
         ///     });
@@ -439,7 +439,7 @@ namespace Pulumi.Gcp.Kms
         /// ",
         ///     });
         /// 
-        ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+        ///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
         ///     {
         ///         ByteLength = 4,
         ///     });

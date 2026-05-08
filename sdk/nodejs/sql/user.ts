@@ -322,7 +322,7 @@ export interface UserState {
      * **Note**: This property is write-only and will not be read from the API.
      * **Caution**: Existing database roles will be overwriten with new values from this field.
      */
-    databaseRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    databaseRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The deletion policy for the user.
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
@@ -332,35 +332,35 @@ export interface UserState {
      *
      * - - -
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The host the user can connect from. This is only supported
      * for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
      * Can be an IP address. Changing this forces a new resource to be created.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * IAM email address for MySQL IAM database users.
      */
-    iamEmail?: pulumi.Input<string>;
+    iamEmail?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud SQL instance. Changing this
      * forces a new resource to be created.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The name of the user. Changing this forces a new resource
      * to be created.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The password for the user. Can be updated. For Postgres
      * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
      * or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
      * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
      */
-    password?: pulumi.Input<string>;
-    passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy>;
+    password?: pulumi.Input<string | undefined>;
+    passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The password for the user. Can be updated. For Postgres
@@ -370,17 +370,17 @@ export interface UserState {
      *
      * * > **Note:** One of `value` or `valueWo` can only be set.
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
      */
-    passwordWoVersion?: pulumi.Input<number>;
+    passwordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
-    sqlServerUserDetails?: pulumi.Input<pulumi.Input<inputs.sql.UserSqlServerUserDetail>[]>;
+    project?: pulumi.Input<string | undefined>;
+    sqlServerUserDetails?: pulumi.Input<pulumi.Input<inputs.sql.UserSqlServerUserDetail>[] | undefined>;
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database's built-in user type. Flags
@@ -389,7 +389,7 @@ export interface UserState {
      * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype)
      * and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -406,7 +406,7 @@ export interface UserArgs {
      * **Note**: This property is write-only and will not be read from the API.
      * **Caution**: Existing database roles will be overwriten with new values from this field.
      */
-    databaseRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    databaseRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The deletion policy for the user.
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
@@ -416,13 +416,13 @@ export interface UserArgs {
      *
      * - - -
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The host the user can connect from. This is only supported
      * for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
      * Can be an IP address. Changing this forces a new resource to be created.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud SQL instance. Changing this
      * forces a new resource to be created.
@@ -432,15 +432,15 @@ export interface UserArgs {
      * The name of the user. Changing this forces a new resource
      * to be created.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The password for the user. Can be updated. For Postgres
      * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
      * or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
      * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
      */
-    password?: pulumi.Input<string>;
-    passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy>;
+    password?: pulumi.Input<string | undefined>;
+    passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The password for the user. Can be updated. For Postgres
@@ -450,16 +450,16 @@ export interface UserArgs {
      *
      * * > **Note:** One of `value` or `valueWo` can only be set.
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
      */
-    passwordWoVersion?: pulumi.Input<number>;
+    passwordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database's built-in user type. Flags
@@ -468,5 +468,5 @@ export interface UserArgs {
      * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype)
      * and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

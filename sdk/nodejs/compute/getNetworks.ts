@@ -86,5 +86,5 @@ export interface GetNetworksOutputArgs {
     /**
      * The name of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

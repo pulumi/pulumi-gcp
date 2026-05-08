@@ -429,48 +429,48 @@ export interface AppHostingBuildState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the Backend that this Build applies to
      */
-    backend?: pulumi.Input<string>;
+    backend?: pulumi.Input<string | undefined>;
     /**
      * The user-specified ID of the build being created.
      */
-    buildId?: pulumi.Input<string>;
+    buildId?: pulumi.Input<string | undefined>;
     /**
      * The location of the [Cloud Build
      * logs](https://cloud.google.com/build/docs/view-build-results) for the build
      * process.
      */
-    buildLogsUri?: pulumi.Input<string>;
+    buildLogsUri?: pulumi.Input<string | undefined>;
     /**
      * Time at which the build was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Human-readable name. 63 character limit.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The environment name of the backend when this build was created.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The source of the error for the build, if in a `FAILED` state.
      * Possible values:
      * CLOUD_BUILD
      * CLOUD_RUN
      */
-    errorSource?: pulumi.Input<string>;
+    errorSource?: pulumi.Input<string | undefined>;
     /**
      * The `Status` type defines a logical error model that is suitable for
      * different programming environments, including REST APIs and RPC APIs. It is
@@ -480,12 +480,12 @@ export interface AppHostingBuildState {
      * [API Design Guide](https://cloud.google.com/apis/design/errors).
      * Structure is documented below.
      */
-    errors?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingBuildError>[]>;
+    errors?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingBuildError>[] | undefined>;
     /**
      * Server-computed checksum based on other values; may be sent
      * on update or delete to ensure operation is done on expected resource.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The Artifact Registry
      * [container
@@ -494,39 +494,39 @@ export interface AppHostingBuildState {
      * [`revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions)
      * for this build.
      */
-    image?: pulumi.Input<string>;
+    image?: pulumi.Input<string | undefined>;
     /**
      * Unstructured key value map that can be used to organize and categorize
      * objects.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the Backend that this Build applies to
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the build.
      * Format:
      * `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The source for the build.
      * Structure is documented below.
      */
-    source?: pulumi.Input<inputs.firebase.AppHostingBuildSource>;
+    source?: pulumi.Input<inputs.firebase.AppHostingBuildSource | undefined>;
     /**
      * The state of the build.
      * Possible values:
@@ -536,15 +536,15 @@ export interface AppHostingBuildState {
      * READY
      * FAILED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * System-assigned, unique identifier.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Time at which the build was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -558,7 +558,7 @@ export interface AppHostingBuildArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the Backend that this Build applies to
      */
@@ -570,14 +570,14 @@ export interface AppHostingBuildArgs {
     /**
      * Human-readable name. 63 character limit.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Unstructured key value map that can be used to organize and categorize
      * objects.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the Backend that this Build applies to
      */
@@ -586,7 +586,7 @@ export interface AppHostingBuildArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The source for the build.
      * Structure is documented below.

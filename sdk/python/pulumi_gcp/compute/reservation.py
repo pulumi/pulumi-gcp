@@ -23,15 +23,15 @@ class ReservationArgs:
     def __init__(__self__, *,
                  specific_reservation: pulumi.Input['ReservationSpecificReservationArgs'],
                  zone: pulumi.Input[_builtins.str],
-                 delete_after_duration: Optional[pulumi.Input['ReservationDeleteAfterDurationArgs']] = None,
-                 delete_at_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_emergent_maintenance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_sharing_policy: Optional[pulumi.Input['ReservationReservationSharingPolicyArgs']] = None,
-                 share_settings: Optional[pulumi.Input['ReservationShareSettingsArgs']] = None,
-                 specific_reservation_required: Optional[pulumi.Input[_builtins.bool]] = None):
+                 delete_after_duration: pulumi.Input[Optional['ReservationDeleteAfterDurationArgs']] = None,
+                 delete_at_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_sharing_policy: pulumi.Input[Optional['ReservationReservationSharingPolicyArgs']] = None,
+                 share_settings: pulumi.Input[Optional['ReservationShareSettingsArgs']] = None,
+                 specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Reservation resource.
 
@@ -110,7 +110,7 @@ class ReservationArgs:
 
     @_builtins.property
     @pulumi.getter(name="deleteAfterDuration")
-    def delete_after_duration(self) -> Optional[pulumi.Input['ReservationDeleteAfterDurationArgs']]:
+    def delete_after_duration(self) -> pulumi.Input[Optional['ReservationDeleteAfterDurationArgs']]:
         """
         Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
         Structure is documented below.
@@ -118,12 +118,12 @@ class ReservationArgs:
         return pulumi.get(self, "delete_after_duration")
 
     @delete_after_duration.setter
-    def delete_after_duration(self, value: Optional[pulumi.Input['ReservationDeleteAfterDurationArgs']]):
+    def delete_after_duration(self, value: pulumi.Input[Optional['ReservationDeleteAfterDurationArgs']]):
         pulumi.set(self, "delete_after_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteAtTime")
-    def delete_at_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_at_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
         Cannot be used with delete_after_duration.
@@ -131,24 +131,24 @@ class ReservationArgs:
         return pulumi.get(self, "delete_at_time")
 
     @delete_at_time.setter
-    def delete_at_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_at_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_at_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableEmergentMaintenance")
-    def enable_emergent_maintenance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_emergent_maintenance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         Indicates if this group of VMs have emergent maintenance enabled.
@@ -156,12 +156,12 @@ class ReservationArgs:
         return pulumi.get(self, "enable_emergent_maintenance")
 
     @enable_emergent_maintenance.setter
-    def enable_emergent_maintenance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_emergent_maintenance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_emergent_maintenance", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -174,12 +174,12 @@ class ReservationArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -187,12 +187,12 @@ class ReservationArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationSharingPolicy")
-    def reservation_sharing_policy(self) -> Optional[pulumi.Input['ReservationReservationSharingPolicyArgs']]:
+    def reservation_sharing_policy(self) -> pulumi.Input[Optional['ReservationReservationSharingPolicyArgs']]:
         """
         Sharing policy for reservations with Google Cloud managed services.
         Structure is documented below.
@@ -200,12 +200,12 @@ class ReservationArgs:
         return pulumi.get(self, "reservation_sharing_policy")
 
     @reservation_sharing_policy.setter
-    def reservation_sharing_policy(self, value: Optional[pulumi.Input['ReservationReservationSharingPolicyArgs']]):
+    def reservation_sharing_policy(self, value: pulumi.Input[Optional['ReservationReservationSharingPolicyArgs']]):
         pulumi.set(self, "reservation_sharing_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="shareSettings")
-    def share_settings(self) -> Optional[pulumi.Input['ReservationShareSettingsArgs']]:
+    def share_settings(self) -> pulumi.Input[Optional['ReservationShareSettingsArgs']]:
         """
         The share setting for reservations.
         Structure is documented below.
@@ -213,12 +213,12 @@ class ReservationArgs:
         return pulumi.get(self, "share_settings")
 
     @share_settings.setter
-    def share_settings(self, value: Optional[pulumi.Input['ReservationShareSettingsArgs']]):
+    def share_settings(self, value: pulumi.Input[Optional['ReservationShareSettingsArgs']]):
         pulumi.set(self, "share_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="specificReservationRequired")
-    def specific_reservation_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def specific_reservation_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true, only VMs that target this reservation by name can
         consume this reservation. Otherwise, it can be consumed by VMs with
@@ -227,34 +227,34 @@ class ReservationArgs:
         return pulumi.get(self, "specific_reservation_required")
 
     @specific_reservation_required.setter
-    def specific_reservation_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def specific_reservation_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "specific_reservation_required", value)
 
 
 @pulumi.input_type
 class _ReservationState:
     def __init__(__self__, *,
-                 block_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 commitment: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_after_duration: Optional[pulumi.Input['ReservationDeleteAfterDurationArgs']] = None,
-                 delete_at_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_emergent_maintenance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_commitments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_block_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 reservation_sharing_policy: Optional[pulumi.Input['ReservationReservationSharingPolicyArgs']] = None,
-                 resource_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusArgs']]]] = None,
-                 satisfies_pzs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_settings: Optional[pulumi.Input['ReservationShareSettingsArgs']] = None,
-                 specific_reservation: Optional[pulumi.Input['ReservationSpecificReservationArgs']] = None,
-                 specific_reservation_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 block_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commitment: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_after_duration: pulumi.Input[Optional['ReservationDeleteAfterDurationArgs']] = None,
+                 delete_at_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_commitments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_block_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 reservation_sharing_policy: pulumi.Input[Optional['ReservationReservationSharingPolicyArgs']] = None,
+                 resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['ReservationResourceStatusArgs']]]] = None,
+                 satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_settings: pulumi.Input[Optional['ReservationShareSettingsArgs']] = None,
+                 specific_reservation: pulumi.Input[Optional['ReservationSpecificReservationArgs']] = None,
+                 specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Reservation resources.
 
@@ -343,19 +343,19 @@ class _ReservationState:
 
     @_builtins.property
     @pulumi.getter(name="blockNames")
-    def block_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def block_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of all reservation block names in the parent reservation.
         """
         return pulumi.get(self, "block_names")
 
     @block_names.setter
-    def block_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def block_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "block_names", value)
 
     @_builtins.property
     @pulumi.getter
-    def commitment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commitment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full or partial URL to a parent commitment. This field displays for
         reservations that are tied to a commitment.
@@ -363,24 +363,24 @@ class _ReservationState:
         return pulumi.get(self, "commitment")
 
     @commitment.setter
-    def commitment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commitment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commitment", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteAfterDuration")
-    def delete_after_duration(self) -> Optional[pulumi.Input['ReservationDeleteAfterDurationArgs']]:
+    def delete_after_duration(self) -> pulumi.Input[Optional['ReservationDeleteAfterDurationArgs']]:
         """
         Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
         Structure is documented below.
@@ -388,12 +388,12 @@ class _ReservationState:
         return pulumi.get(self, "delete_after_duration")
 
     @delete_after_duration.setter
-    def delete_after_duration(self, value: Optional[pulumi.Input['ReservationDeleteAfterDurationArgs']]):
+    def delete_after_duration(self, value: pulumi.Input[Optional['ReservationDeleteAfterDurationArgs']]):
         pulumi.set(self, "delete_after_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteAtTime")
-    def delete_at_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_at_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
         Cannot be used with delete_after_duration.
@@ -401,24 +401,24 @@ class _ReservationState:
         return pulumi.get(self, "delete_at_time")
 
     @delete_at_time.setter
-    def delete_at_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_at_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_at_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableEmergentMaintenance")
-    def enable_emergent_maintenance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_emergent_maintenance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         Indicates if this group of VMs have emergent maintenance enabled.
@@ -426,36 +426,36 @@ class _ReservationState:
         return pulumi.get(self, "enable_emergent_maintenance")
 
     @enable_emergent_maintenance.setter
-    def enable_emergent_maintenance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_emergent_maintenance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_emergent_maintenance", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the resource. Always compute#reservations for reservations.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedCommitments")
-    def linked_commitments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def linked_commitments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
         """
         return pulumi.get(self, "linked_commitments")
 
     @linked_commitments.setter
-    def linked_commitments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def linked_commitments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "linked_commitments", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -468,12 +468,12 @@ class _ReservationState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -481,12 +481,12 @@ class _ReservationState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationBlockCount")
-    def reservation_block_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reservation_block_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The number of reservation blocks associated with this reservation.
@@ -494,12 +494,12 @@ class _ReservationState:
         return pulumi.get(self, "reservation_block_count")
 
     @reservation_block_count.setter
-    def reservation_block_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reservation_block_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reservation_block_count", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationSharingPolicy")
-    def reservation_sharing_policy(self) -> Optional[pulumi.Input['ReservationReservationSharingPolicyArgs']]:
+    def reservation_sharing_policy(self) -> pulumi.Input[Optional['ReservationReservationSharingPolicyArgs']]:
         """
         Sharing policy for reservations with Google Cloud managed services.
         Structure is documented below.
@@ -507,12 +507,12 @@ class _ReservationState:
         return pulumi.get(self, "reservation_sharing_policy")
 
     @reservation_sharing_policy.setter
-    def reservation_sharing_policy(self, value: Optional[pulumi.Input['ReservationReservationSharingPolicyArgs']]):
+    def reservation_sharing_policy(self, value: pulumi.Input[Optional['ReservationReservationSharingPolicyArgs']]):
         pulumi.set(self, "reservation_sharing_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceStatuses")
-    def resource_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusArgs']]]]:
+    def resource_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReservationResourceStatusArgs']]]]:
         """
         Status information for Reservation resource.
         Structure is documented below.
@@ -520,36 +520,36 @@ class _ReservationState:
         return pulumi.get(self, "resource_statuses")
 
     @resource_statuses.setter
-    def resource_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationResourceStatusArgs']]]]):
+    def resource_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReservationResourceStatusArgs']]]]):
         pulumi.set(self, "resource_statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="satisfiesPzs")
-    def satisfies_pzs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def satisfies_pzs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
 
     @satisfies_pzs.setter
-    def satisfies_pzs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def satisfies_pzs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "satisfies_pzs", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="shareSettings")
-    def share_settings(self) -> Optional[pulumi.Input['ReservationShareSettingsArgs']]:
+    def share_settings(self) -> pulumi.Input[Optional['ReservationShareSettingsArgs']]:
         """
         The share setting for reservations.
         Structure is documented below.
@@ -557,12 +557,12 @@ class _ReservationState:
         return pulumi.get(self, "share_settings")
 
     @share_settings.setter
-    def share_settings(self, value: Optional[pulumi.Input['ReservationShareSettingsArgs']]):
+    def share_settings(self, value: pulumi.Input[Optional['ReservationShareSettingsArgs']]):
         pulumi.set(self, "share_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="specificReservation")
-    def specific_reservation(self) -> Optional[pulumi.Input['ReservationSpecificReservationArgs']]:
+    def specific_reservation(self) -> pulumi.Input[Optional['ReservationSpecificReservationArgs']]:
         """
         Reservation for instances with specific machine shapes.
         Structure is documented below.
@@ -570,12 +570,12 @@ class _ReservationState:
         return pulumi.get(self, "specific_reservation")
 
     @specific_reservation.setter
-    def specific_reservation(self, value: Optional[pulumi.Input['ReservationSpecificReservationArgs']]):
+    def specific_reservation(self, value: pulumi.Input[Optional['ReservationSpecificReservationArgs']]):
         pulumi.set(self, "specific_reservation", value)
 
     @_builtins.property
     @pulumi.getter(name="specificReservationRequired")
-    def specific_reservation_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def specific_reservation_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true, only VMs that target this reservation by name can
         consume this reservation. Otherwise, it can be consumed by VMs with
@@ -584,31 +584,31 @@ class _ReservationState:
         return pulumi.get(self, "specific_reservation_required")
 
     @specific_reservation_required.setter
-    def specific_reservation_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def specific_reservation_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "specific_reservation_required", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the reservation.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone where the reservation is made.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -618,17 +618,17 @@ class Reservation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_after_duration: Optional[pulumi.Input[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
-                 delete_at_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_emergent_maintenance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_sharing_policy: Optional[pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
-                 share_settings: Optional[pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
-                 specific_reservation: Optional[pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
-                 specific_reservation_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_after_duration: pulumi.Input[Optional[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
+                 delete_at_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_sharing_policy: pulumi.Input[Optional[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
+                 share_settings: pulumi.Input[Optional[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
+                 specific_reservation: pulumi.Input[Optional[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
+                 specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a reservation resource. A reservation ensures that capacity is
@@ -1030,17 +1030,17 @@ class Reservation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_after_duration: Optional[pulumi.Input[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
-                 delete_at_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_emergent_maintenance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_sharing_policy: Optional[pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
-                 share_settings: Optional[pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
-                 specific_reservation: Optional[pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
-                 specific_reservation_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_after_duration: pulumi.Input[Optional[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
+                 delete_at_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_sharing_policy: pulumi.Input[Optional[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
+                 share_settings: pulumi.Input[Optional[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
+                 specific_reservation: pulumi.Input[Optional[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
+                 specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1085,27 +1085,27 @@ class Reservation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            block_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            commitment: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_after_duration: Optional[pulumi.Input[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
-            delete_at_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_emergent_maintenance: Optional[pulumi.Input[_builtins.bool]] = None,
-            kind: Optional[pulumi.Input[_builtins.str]] = None,
-            linked_commitments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            reservation_block_count: Optional[pulumi.Input[_builtins.int]] = None,
-            reservation_sharing_policy: Optional[pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
-            resource_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReservationResourceStatusArgs', 'ReservationResourceStatusArgsDict']]]]] = None,
-            satisfies_pzs: Optional[pulumi.Input[_builtins.bool]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            share_settings: Optional[pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
-            specific_reservation: Optional[pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
-            specific_reservation_required: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'Reservation':
+            block_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            commitment: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_after_duration: pulumi.Input[Optional[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
+            delete_at_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_commitments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_block_count: pulumi.Input[Optional[_builtins.int]] = None,
+            reservation_sharing_policy: pulumi.Input[Optional[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
+            resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservationResourceStatusArgs', 'ReservationResourceStatusArgsDict']]]]] = None,
+            satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            share_settings: pulumi.Input[Optional[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
+            specific_reservation: pulumi.Input[Optional[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
+            specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'Reservation':
         """
         Get an existing Reservation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

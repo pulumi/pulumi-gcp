@@ -23,9 +23,9 @@ class WorkloadIdentityPoolNamespaceArgs:
     def __init__(__self__, *,
                  workload_identity_pool_id: pulumi.Input[_builtins.str],
                  workload_identity_pool_namespace_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkloadIdentityPoolNamespace resource.
 
@@ -89,19 +89,19 @@ class WorkloadIdentityPoolNamespaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the namespace. Cannot exceed 256 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the namespace is disabled. If disabled, credentials may no longer be issued for
         identities within this namespace, however existing credentials will still be accepted until
@@ -110,12 +110,12 @@ class WorkloadIdentityPoolNamespaceArgs:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -123,21 +123,21 @@ class WorkloadIdentityPoolNamespaceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _WorkloadIdentityPoolNamespaceState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_services: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolNamespaceOwnerServiceArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_pool_namespace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_services: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolNamespaceOwnerServiceArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_pool_namespace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkloadIdentityPoolNamespace resources.
 
@@ -188,19 +188,19 @@ class _WorkloadIdentityPoolNamespaceState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the namespace. Cannot exceed 256 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the namespace is disabled. If disabled, credentials may no longer be issued for
         identities within this namespace, however existing credentials will still be accepted until
@@ -209,12 +209,12 @@ class _WorkloadIdentityPoolNamespaceState:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the namespace as
         `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/namespaces/{workload_identity_pool_namespace_id}`.
@@ -222,12 +222,12 @@ class _WorkloadIdentityPoolNamespaceState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerServices")
-    def owner_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolNamespaceOwnerServiceArgs']]]]:
+    def owner_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolNamespaceOwnerServiceArgs']]]]:
         """
         Defines the owner that is allowed to mutate this resource. If present, this resource can only
         be mutated by the owner.
@@ -236,12 +236,12 @@ class _WorkloadIdentityPoolNamespaceState:
         return pulumi.get(self, "owner_services")
 
     @owner_services.setter
-    def owner_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolNamespaceOwnerServiceArgs']]]]):
+    def owner_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolNamespaceOwnerServiceArgs']]]]):
         pulumi.set(self, "owner_services", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -249,12 +249,12 @@ class _WorkloadIdentityPoolNamespaceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of the namespace.
         * `ACTIVE`: The namespace is active.
@@ -266,12 +266,12 @@ class _WorkloadIdentityPoolNamespaceState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadIdentityPoolId")
-    def workload_identity_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workload_identity_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the pool, which becomes the final component of the resource name. This
         value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
@@ -280,12 +280,12 @@ class _WorkloadIdentityPoolNamespaceState:
         return pulumi.get(self, "workload_identity_pool_id")
 
     @workload_identity_pool_id.setter
-    def workload_identity_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workload_identity_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workload_identity_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadIdentityPoolNamespaceId")
-    def workload_identity_pool_namespace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workload_identity_pool_namespace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the namespace. This value must:
         * contain at most 63 characters
@@ -298,7 +298,7 @@ class _WorkloadIdentityPoolNamespaceState:
         return pulumi.get(self, "workload_identity_pool_namespace_id")
 
     @workload_identity_pool_namespace_id.setter
-    def workload_identity_pool_namespace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workload_identity_pool_namespace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workload_identity_pool_namespace_id", value)
 
 
@@ -308,11 +308,11 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_pool_namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_pool_namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a namespace for a workload identity pool. Namespaces are used to segment identities
@@ -472,11 +472,11 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_pool_namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_pool_namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -508,14 +508,14 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            owner_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadIdentityPoolNamespaceOwnerServiceArgs', 'WorkloadIdentityPoolNamespaceOwnerServiceArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workload_identity_pool_namespace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkloadIdentityPoolNamespace':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadIdentityPoolNamespaceOwnerServiceArgs', 'WorkloadIdentityPoolNamespaceOwnerServiceArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_pool_namespace_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkloadIdentityPoolNamespace':
         """
         Get an existing WorkloadIdentityPoolNamespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

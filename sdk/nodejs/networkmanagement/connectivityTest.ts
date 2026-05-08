@@ -323,12 +323,12 @@ export interface ConnectivityTestState {
     /**
      * Whether the analysis should skip firewall checking. Default value is false.
      */
-    bypassFirewallChecks?: pulumi.Input<boolean>;
+    bypassFirewallChecks?: pulumi.Input<boolean | undefined>;
     /**
      * The user-supplied description of the Connectivity Test.
      * Maximum of 512 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Required. Destination specification of the Connectivity Test.
      * You can use a combination of destination IP address, URI of a supported
@@ -338,47 +338,47 @@ export interface ConnectivityTestState {
      * destination that you don't intend to test.
      * Structure is documented below.
      */
-    destination?: pulumi.Input<inputs.networkmanagement.ConnectivityTestDestination>;
+    destination?: pulumi.Input<inputs.networkmanagement.ConnectivityTestDestination | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Unique name for the connectivity test.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * IP Protocol of the test. When not provided, "TCP" is assumed.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Other projects that may be relevant for reachability analysis.
      * This is applicable to scenarios where a test can cross project
      * boundaries.
      */
-    relatedProjects?: pulumi.Input<pulumi.Input<string>[]>;
+    relatedProjects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether run analysis for the return path from destination to source.
      * Default value is false.
      */
-    roundTrip?: pulumi.Input<boolean>;
+    roundTrip?: pulumi.Input<boolean | undefined>;
     /**
      * Required. Source specification of the Connectivity Test.
      * You can use a combination of source IP address, URI of a supported
@@ -388,7 +388,7 @@ export interface ConnectivityTestState {
      * that you don't intend to test.
      * Structure is documented below.
      */
-    source?: pulumi.Input<inputs.networkmanagement.ConnectivityTestSource>;
+    source?: pulumi.Input<inputs.networkmanagement.ConnectivityTestSource | undefined>;
 }
 
 /**
@@ -398,12 +398,12 @@ export interface ConnectivityTestArgs {
     /**
      * Whether the analysis should skip firewall checking. Default value is false.
      */
-    bypassFirewallChecks?: pulumi.Input<boolean>;
+    bypassFirewallChecks?: pulumi.Input<boolean | undefined>;
     /**
      * The user-supplied description of the Connectivity Test.
      * Maximum of 512 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Required. Destination specification of the Connectivity Test.
      * You can use a combination of destination IP address, URI of a supported
@@ -420,31 +420,31 @@ export interface ConnectivityTestArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Unique name for the connectivity test.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * IP Protocol of the test. When not provided, "TCP" is assumed.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * Other projects that may be relevant for reachability analysis.
      * This is applicable to scenarios where a test can cross project
      * boundaries.
      */
-    relatedProjects?: pulumi.Input<pulumi.Input<string>[]>;
+    relatedProjects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether run analysis for the return path from destination to source.
      * Default value is false.
      */
-    roundTrip?: pulumi.Input<boolean>;
+    roundTrip?: pulumi.Input<boolean | undefined>;
     /**
      * Required. Source specification of the Connectivity Test.
      * You can use a combination of source IP address, URI of a supported

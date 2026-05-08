@@ -255,8 +255,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -313,8 +313,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -371,8 +371,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -429,8 +429,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -487,8 +487,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -546,8 +546,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -605,8 +605,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -664,8 +664,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -723,8 +723,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -782,8 +782,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -841,8 +841,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -900,8 +900,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -953,8 +953,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -993,8 +993,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1033,8 +1033,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1073,8 +1073,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1113,8 +1113,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1155,8 +1155,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1198,8 +1198,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1241,8 +1241,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1284,8 +1284,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1327,8 +1327,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1372,8 +1372,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetBackendServiceArgs;
      * import com.pulumi.gcp.compute.BackendService;
      * import com.pulumi.gcp.compute.BackendServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1421,8 +1421,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetBackendServiceArgs;
      * import com.pulumi.gcp.compute.BackendService;
      * import com.pulumi.gcp.compute.BackendServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1470,8 +1470,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetBackendServiceArgs;
      * import com.pulumi.gcp.compute.BackendService;
      * import com.pulumi.gcp.compute.BackendServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1519,8 +1519,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetBackendServiceArgs;
      * import com.pulumi.gcp.compute.BackendService;
      * import com.pulumi.gcp.compute.BackendServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1568,8 +1568,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetBackendServiceArgs;
      * import com.pulumi.gcp.compute.BackendService;
      * import com.pulumi.gcp.compute.BackendServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1615,8 +1615,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1658,8 +1658,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1701,8 +1701,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1744,8 +1744,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1787,8 +1787,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetBackendServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1828,8 +1828,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1871,8 +1871,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1914,8 +1914,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1957,8 +1957,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2000,8 +2000,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2043,8 +2043,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2083,8 +2083,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2123,8 +2123,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2163,8 +2163,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2203,8 +2203,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2243,8 +2243,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2283,8 +2283,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2328,8 +2328,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2381,8 +2381,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2434,8 +2434,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2487,8 +2487,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2540,8 +2540,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2588,8 +2588,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2630,8 +2630,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2672,8 +2672,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2714,8 +2714,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2756,8 +2756,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2798,8 +2798,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2838,8 +2838,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2878,8 +2878,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2918,8 +2918,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2958,8 +2958,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2998,8 +2998,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3039,8 +3039,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3080,8 +3080,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3121,8 +3121,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3162,8 +3162,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3203,8 +3203,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3244,8 +3244,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3290,8 +3290,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3348,8 +3348,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3406,8 +3406,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3464,8 +3464,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3522,8 +3522,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.dns.ManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3575,8 +3575,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3615,8 +3615,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3655,8 +3655,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3695,8 +3695,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3735,8 +3735,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3775,8 +3775,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3815,8 +3815,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3855,8 +3855,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3895,8 +3895,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3935,8 +3935,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3975,8 +3975,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4015,8 +4015,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4055,8 +4055,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4095,8 +4095,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4135,8 +4135,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4180,8 +4180,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4234,8 +4234,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4288,8 +4288,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4342,8 +4342,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4396,8 +4396,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4450,8 +4450,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4504,8 +4504,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4553,8 +4553,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetImageIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4594,8 +4594,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetImageIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4635,8 +4635,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetImageIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4676,8 +4676,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetImageIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4717,8 +4717,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetImageIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4764,8 +4764,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4824,8 +4824,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4884,8 +4884,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4944,8 +4944,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5004,8 +5004,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5064,8 +5064,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5124,8 +5124,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5181,8 +5181,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5225,8 +5225,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5269,8 +5269,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5313,8 +5313,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5357,8 +5357,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5401,8 +5401,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5445,8 +5445,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5486,8 +5486,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5527,8 +5527,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5568,8 +5568,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5609,8 +5609,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5650,8 +5650,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5691,8 +5691,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5732,8 +5732,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5775,8 +5775,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5822,8 +5822,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5869,8 +5869,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5916,8 +5916,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5963,8 +5963,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6010,8 +6010,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6057,8 +6057,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6111,8 +6111,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6146,8 +6146,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6197,8 +6197,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6232,8 +6232,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6283,8 +6283,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6318,8 +6318,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6369,8 +6369,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6404,8 +6404,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6455,8 +6455,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6490,8 +6490,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6532,8 +6532,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6574,8 +6574,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6616,8 +6616,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6658,8 +6658,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6700,8 +6700,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6743,8 +6743,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6786,8 +6786,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6832,15 +6832,11 @@ public final class ComputeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var serial = Output.tuple(windows.name(), windows.zone()).applyValue(values -> }{{@code
-     *             var name = values.t1;
-     *             var zone = values.t2;
-     *             return ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-     *                 .instance(name)
-     *                 .zone(zone)
-     *                 .port(4)
-     *                 .build());
-     *         }}{@code );
+     *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+     *             .instance(windows.name())
+     *             .zone(windows.zone())
+     *             .port(4)
+     *             .build());
      * 
      *         ctx.export("serialOut", serial.applyValue(_serial -> _serial.contents()));
      *     }}{@code
@@ -6867,8 +6863,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6910,8 +6906,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6956,15 +6952,11 @@ public final class ComputeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var serial = Output.tuple(windows.name(), windows.zone()).applyValue(values -> }{{@code
-     *             var name = values.t1;
-     *             var zone = values.t2;
-     *             return ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-     *                 .instance(name)
-     *                 .zone(zone)
-     *                 .port(4)
-     *                 .build());
-     *         }}{@code );
+     *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+     *             .instance(windows.name())
+     *             .zone(windows.zone())
+     *             .port(4)
+     *             .build());
      * 
      *         ctx.export("serialOut", serial.applyValue(_serial -> _serial.contents()));
      *     }}{@code
@@ -6991,8 +6983,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7034,8 +7026,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7080,15 +7072,11 @@ public final class ComputeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var serial = Output.tuple(windows.name(), windows.zone()).applyValue(values -> }{{@code
-     *             var name = values.t1;
-     *             var zone = values.t2;
-     *             return ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-     *                 .instance(name)
-     *                 .zone(zone)
-     *                 .port(4)
-     *                 .build());
-     *         }}{@code );
+     *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+     *             .instance(windows.name())
+     *             .zone(windows.zone())
+     *             .port(4)
+     *             .build());
      * 
      *         ctx.export("serialOut", serial.applyValue(_serial -> _serial.contents()));
      *     }}{@code
@@ -7115,8 +7103,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7158,8 +7146,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7204,15 +7192,11 @@ public final class ComputeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var serial = Output.tuple(windows.name(), windows.zone()).applyValue(values -> }{{@code
-     *             var name = values.t1;
-     *             var zone = values.t2;
-     *             return ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-     *                 .instance(name)
-     *                 .zone(zone)
-     *                 .port(4)
-     *                 .build());
-     *         }}{@code );
+     *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+     *             .instance(windows.name())
+     *             .zone(windows.zone())
+     *             .port(4)
+     *             .build());
      * 
      *         ctx.export("serialOut", serial.applyValue(_serial -> _serial.contents()));
      *     }}{@code
@@ -7239,8 +7223,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7282,8 +7266,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7328,15 +7312,11 @@ public final class ComputeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var serial = Output.tuple(windows.name(), windows.zone()).applyValue(values -> }{{@code
-     *             var name = values.t1;
-     *             var zone = values.t2;
-     *             return ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-     *                 .instance(name)
-     *                 .zone(zone)
-     *                 .port(4)
-     *                 .build());
-     *         }}{@code );
+     *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+     *             .instance(windows.name())
+     *             .zone(windows.zone())
+     *             .port(4)
+     *             .build());
      * 
      *         ctx.export("serialOut", serial.applyValue(_serial -> _serial.contents()));
      *     }}{@code
@@ -7446,8 +7426,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7487,8 +7467,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7528,8 +7508,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7569,8 +7549,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7610,8 +7590,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7651,8 +7631,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7693,8 +7673,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7735,8 +7715,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7777,8 +7757,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7819,8 +7799,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7864,8 +7844,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationArgs;
      * import com.pulumi.gcp.compute.Interconnect;
      * import com.pulumi.gcp.compute.InterconnectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7913,8 +7893,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationArgs;
      * import com.pulumi.gcp.compute.Interconnect;
      * import com.pulumi.gcp.compute.InterconnectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7962,8 +7942,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationArgs;
      * import com.pulumi.gcp.compute.Interconnect;
      * import com.pulumi.gcp.compute.InterconnectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8011,8 +7991,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationArgs;
      * import com.pulumi.gcp.compute.Interconnect;
      * import com.pulumi.gcp.compute.InterconnectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8060,8 +8040,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationArgs;
      * import com.pulumi.gcp.compute.Interconnect;
      * import com.pulumi.gcp.compute.InterconnectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8107,8 +8087,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8148,8 +8128,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8189,8 +8169,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8230,8 +8210,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8271,8 +8251,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8312,8 +8292,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8353,8 +8333,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8397,8 +8377,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8450,8 +8430,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8503,8 +8483,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8556,8 +8536,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8609,8 +8589,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8662,8 +8642,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8715,8 +8695,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8766,8 +8746,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8809,8 +8789,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8852,8 +8832,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8895,8 +8875,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8938,8 +8918,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8993,8 +8973,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceTemplateArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9065,8 +9045,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceTemplateArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9137,8 +9117,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceTemplateArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9209,8 +9189,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceTemplateArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9281,8 +9261,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceTemplateArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9353,8 +9333,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceTemplateArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9425,8 +9405,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceTemplateArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9485,8 +9465,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9525,8 +9505,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9581,8 +9561,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9621,8 +9601,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9677,8 +9657,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9717,8 +9697,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9773,8 +9753,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9813,8 +9793,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9869,8 +9849,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9909,8 +9889,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9965,8 +9945,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10005,8 +9985,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10061,8 +10041,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10101,8 +10081,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Firewall;
      * import com.pulumi.gcp.compute.FirewallArgs;
      * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10155,8 +10135,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10195,8 +10175,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10235,8 +10215,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10275,8 +10255,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10315,8 +10295,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10357,8 +10337,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10401,8 +10381,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10445,8 +10425,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10489,8 +10469,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10533,8 +10513,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10577,8 +10557,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10624,8 +10604,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10671,8 +10651,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10718,8 +10698,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10765,8 +10745,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10812,8 +10792,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10859,8 +10839,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10905,8 +10885,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10947,8 +10927,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10989,8 +10969,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11031,8 +11011,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11073,8 +11053,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11115,8 +11095,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11157,8 +11137,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11205,8 +11185,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.NetworkPeeringArgs;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11275,8 +11255,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.NetworkPeeringArgs;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11345,8 +11325,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.NetworkPeeringArgs;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11415,8 +11395,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.NetworkPeeringArgs;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11485,8 +11465,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.NetworkPeeringArgs;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11548,8 +11528,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11588,8 +11568,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11628,8 +11608,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11668,8 +11648,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11708,8 +11688,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11748,8 +11728,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11788,8 +11768,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11831,8 +11811,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
      * import com.pulumi.gcp.compute.NodeTemplate;
      * import com.pulumi.gcp.compute.NodeTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11880,8 +11860,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
      * import com.pulumi.gcp.compute.NodeTemplate;
      * import com.pulumi.gcp.compute.NodeTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11929,8 +11909,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
      * import com.pulumi.gcp.compute.NodeTemplate;
      * import com.pulumi.gcp.compute.NodeTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11978,8 +11958,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
      * import com.pulumi.gcp.compute.NodeTemplate;
      * import com.pulumi.gcp.compute.NodeTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12027,8 +12007,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
      * import com.pulumi.gcp.compute.NodeTemplate;
      * import com.pulumi.gcp.compute.NodeTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12076,8 +12056,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
      * import com.pulumi.gcp.compute.NodeTemplate;
      * import com.pulumi.gcp.compute.NodeTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12125,8 +12105,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
      * import com.pulumi.gcp.compute.NodeTemplate;
      * import com.pulumi.gcp.compute.NodeTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12173,8 +12153,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12217,8 +12197,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12261,8 +12241,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12305,8 +12285,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12349,8 +12329,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendBucketIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12393,8 +12373,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12436,8 +12416,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12479,8 +12459,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12522,8 +12502,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12565,8 +12545,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12608,8 +12588,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12652,8 +12632,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12696,8 +12676,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12740,8 +12720,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12784,8 +12764,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12881,8 +12861,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12923,8 +12903,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12965,8 +12945,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13007,8 +12987,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13049,8 +13029,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13090,8 +13070,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13131,8 +13111,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13172,8 +13152,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13213,8 +13193,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13254,8 +13234,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13295,8 +13275,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13336,8 +13316,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13380,8 +13360,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13423,8 +13403,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13466,8 +13446,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13509,8 +13489,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13552,8 +13532,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13595,8 +13575,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13638,8 +13618,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13682,8 +13662,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13732,8 +13712,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13782,8 +13762,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13832,8 +13812,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13882,8 +13862,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13932,8 +13912,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13982,8 +13962,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14031,8 +14011,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14078,8 +14058,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14125,8 +14105,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14172,8 +14152,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14219,8 +14199,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14266,8 +14246,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14313,8 +14293,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14373,8 +14353,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14414,8 +14394,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14455,8 +14435,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14496,8 +14476,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14537,8 +14517,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14578,8 +14558,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14621,8 +14601,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14664,8 +14644,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14707,8 +14687,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14750,8 +14730,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14795,8 +14775,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Subnetwork;
      * import com.pulumi.gcp.compute.SubnetworkArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14846,8 +14826,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Subnetwork;
      * import com.pulumi.gcp.compute.SubnetworkArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14897,8 +14877,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Subnetwork;
      * import com.pulumi.gcp.compute.SubnetworkArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14948,8 +14928,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Subnetwork;
      * import com.pulumi.gcp.compute.SubnetworkArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14999,8 +14979,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Subnetwork;
      * import com.pulumi.gcp.compute.SubnetworkArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15050,8 +15030,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Subnetwork;
      * import com.pulumi.gcp.compute.SubnetworkArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15101,8 +15081,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.Subnetwork;
      * import com.pulumi.gcp.compute.SubnetworkArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15149,8 +15129,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15189,8 +15169,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15229,8 +15209,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15269,8 +15249,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15309,8 +15289,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15353,8 +15333,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationBlockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15400,8 +15380,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationBlockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15447,8 +15427,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationBlockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15494,8 +15474,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationBlockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15541,8 +15521,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationBlockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15588,8 +15568,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationSubBlockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15636,8 +15616,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationSubBlockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15684,8 +15664,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationSubBlockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15732,8 +15712,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationSubBlockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15780,8 +15760,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetReservationSubBlockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15826,8 +15806,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15868,8 +15848,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15910,8 +15890,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15952,8 +15932,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15994,8 +15974,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16035,8 +16015,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16076,8 +16056,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16117,8 +16097,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16158,8 +16138,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16199,8 +16179,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16244,8 +16224,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterNatArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16289,8 +16269,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterNatArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16334,8 +16314,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterNatArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16379,8 +16359,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterNatArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16424,8 +16404,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterNatArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16470,8 +16450,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16515,8 +16495,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16560,8 +16540,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16605,8 +16585,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16650,8 +16630,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16691,8 +16671,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16733,8 +16713,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16775,8 +16755,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16817,8 +16797,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16859,8 +16839,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16901,8 +16881,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16943,8 +16923,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16985,8 +16965,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17026,8 +17006,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17067,8 +17047,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17108,8 +17088,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17149,8 +17129,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17193,8 +17173,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17242,8 +17222,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17291,8 +17271,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17340,8 +17320,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17389,8 +17369,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17438,8 +17418,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17487,8 +17467,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17536,8 +17516,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17587,8 +17567,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17638,8 +17618,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17689,8 +17669,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17740,8 +17720,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17791,8 +17771,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17842,8 +17822,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17889,8 +17869,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17930,8 +17910,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17971,8 +17951,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18012,8 +17992,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18053,8 +18033,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18095,8 +18075,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetStoragePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18143,8 +18123,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetStoragePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18191,8 +18171,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetStoragePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18239,8 +18219,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetStoragePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18287,8 +18267,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetStoragePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18334,8 +18314,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18376,8 +18356,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18418,8 +18398,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18460,8 +18440,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18502,8 +18482,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18559,8 +18539,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18600,8 +18580,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18641,8 +18621,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18682,8 +18662,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18723,8 +18703,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18764,8 +18744,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18805,8 +18785,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18846,8 +18826,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18888,8 +18868,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18930,8 +18910,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18972,8 +18952,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19014,8 +18994,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19058,8 +19038,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19102,8 +19082,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19146,8 +19126,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19190,8 +19170,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19234,8 +19214,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19278,8 +19258,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19322,8 +19302,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetSubnetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19364,8 +19344,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19404,8 +19384,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19444,8 +19424,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19484,8 +19464,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19524,8 +19504,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19566,8 +19546,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceGroupManager;
      * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19618,8 +19598,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceGroupManager;
      * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19670,8 +19650,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceGroupManager;
      * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19722,8 +19702,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceGroupManager;
      * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19774,8 +19754,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceGroupManager;
      * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19826,8 +19806,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceGroupManager;
      * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19878,8 +19858,8 @@ public final class ComputeFunctions {
      * import com.pulumi.gcp.compute.InstanceGroupManager;
      * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19933,8 +19913,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19982,8 +19962,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20031,8 +20011,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20080,8 +20060,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20129,8 +20109,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
      * import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

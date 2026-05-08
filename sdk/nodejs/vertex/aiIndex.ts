@@ -311,83 +311,83 @@ export interface AiIndexState {
     /**
      * The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
      * Structure is documented below.
      */
-    deployedIndexes?: pulumi.Input<pulumi.Input<inputs.vertex.AiIndexDeployedIndex>[]>;
+    deployedIndexes?: pulumi.Input<pulumi.Input<inputs.vertex.AiIndexDeployedIndex>[] | undefined>;
     /**
      * The description of the Index.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.vertex.AiIndexEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiIndexEncryptionSpec | undefined>;
     /**
      * Used to perform consistent read-modify-write updates.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Stats of the index resource.
      * Structure is documented below.
      */
-    indexStats?: pulumi.Input<pulumi.Input<inputs.vertex.AiIndexIndexStat>[]>;
+    indexStats?: pulumi.Input<pulumi.Input<inputs.vertex.AiIndexIndexStat>[] | undefined>;
     /**
      * The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
      * * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
      * * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
      */
-    indexUpdateMethod?: pulumi.Input<string>;
+    indexUpdateMethod?: pulumi.Input<string | undefined>;
     /**
      * The labels with user-defined metadata to organize your Indexes.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Additional information about the Index.
      * Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
      * Attempts to create an Index without this field will result in an API error.
      * Structure is documented below.
      */
-    metadata?: pulumi.Input<inputs.vertex.AiIndexMetadata>;
+    metadata?: pulumi.Input<inputs.vertex.AiIndexMetadata | undefined>;
     /**
      * Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
      */
-    metadataSchemaUri?: pulumi.Input<string>;
+    metadataSchemaUri?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the Index.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of the index. eg us-central1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -397,7 +397,7 @@ export interface AiIndexArgs {
     /**
      * The description of the Index.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      */
@@ -406,19 +406,19 @@ export interface AiIndexArgs {
      * Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.vertex.AiIndexEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiIndexEncryptionSpec | undefined>;
     /**
      * The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
      * * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
      * * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
      */
-    indexUpdateMethod?: pulumi.Input<string>;
+    indexUpdateMethod?: pulumi.Input<string | undefined>;
     /**
      * The labels with user-defined metadata to organize your Indexes.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Additional information about the Index.
      * Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
@@ -430,9 +430,9 @@ export interface AiIndexArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the index. eg us-central1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

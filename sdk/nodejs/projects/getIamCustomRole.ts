@@ -94,7 +94,7 @@ export interface GetIamCustomRoleOutputArgs {
     /**
      * The project were the custom role has been created in. Defaults to the provider project configuration.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The role id that has been used for this role.
      */

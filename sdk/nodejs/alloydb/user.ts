@@ -255,20 +255,20 @@ export interface UserState {
      * Identifies the alloydb cluster. Must be in the format
      * 'projects/{project}/locations/{location}/clusters/{cluster_id}'
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * List of database roles this database user has.
      */
-    databaseRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    databaseRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Password for this database user.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * (Optional, Write-Only)
@@ -277,20 +277,20 @@ export interface UserState {
      *
      * > **Note:** One of `password` or `passwordWo` can only be set.
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      */
-    passwordWoVersion?: pulumi.Input<string>;
+    passwordWoVersion?: pulumi.Input<string | undefined>;
     /**
      * The database role name of the user.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * The type of this user.
      * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
      */
-    userType?: pulumi.Input<string>;
+    userType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -305,12 +305,12 @@ export interface UserArgs {
     /**
      * List of database roles this database user has.
      */
-    databaseRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    databaseRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Password for this database user.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * (Optional, Write-Only)
@@ -319,11 +319,11 @@ export interface UserArgs {
      *
      * > **Note:** One of `password` or `passwordWo` can only be set.
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      */
-    passwordWoVersion?: pulumi.Input<string>;
+    passwordWoVersion?: pulumi.Input<string | undefined>;
     /**
      * The database role name of the user.
      */

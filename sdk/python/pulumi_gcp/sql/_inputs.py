@@ -90,31 +90,31 @@ class DatabaseInstanceCloneArgsDict(TypedDict):
     """
     Name of the source instance which will be cloned.
     """
-    allocated_ip_range: NotRequired[pulumi.Input[_builtins.str]]
+    allocated_ip_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
     """
-    database_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    database_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
     """
-    point_in_time: NotRequired[pulumi.Input[_builtins.str]]
+    point_in_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The timestamp of the point in time that should be restored.
 
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    preferred_zone: NotRequired[pulumi.Input[_builtins.str]]
+    preferred_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
     """
-    source_instance_deletion_time: NotRequired[pulumi.Input[_builtins.str]]
+    source_instance_deletion_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The timestamp of when the source instance was deleted for a clone from a deleted instance.
 
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    source_project: NotRequired[pulumi.Input[_builtins.str]]
+    source_project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of source project where source instances exits, required for cross project clone scenario.
     """
@@ -123,12 +123,12 @@ class DatabaseInstanceCloneArgsDict(TypedDict):
 class DatabaseInstanceCloneArgs:
     def __init__(__self__, *,
                  source_instance_name: pulumi.Input[_builtins.str],
-                 allocated_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 point_in_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_instance_deletion_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_project: Optional[pulumi.Input[_builtins.str]] = None):
+                 allocated_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 point_in_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_instance_deletion_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] source_instance_name: Name of the source instance which will be cloned.
         :param pulumi.Input[_builtins.str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -170,31 +170,31 @@ class DatabaseInstanceCloneArgs:
 
     @_builtins.property
     @pulumi.getter(name="allocatedIpRange")
-    def allocated_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allocated_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         """
         return pulumi.get(self, "allocated_ip_range")
 
     @allocated_ip_range.setter
-    def allocated_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allocated_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allocated_ip_range", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseNames")
-    def database_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def database_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
         """
         return pulumi.get(self, "database_names")
 
     @database_names.setter
-    def database_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def database_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "database_names", value)
 
     @_builtins.property
     @pulumi.getter(name="pointInTime")
-    def point_in_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def point_in_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of the point in time that should be restored.
 
@@ -203,24 +203,24 @@ class DatabaseInstanceCloneArgs:
         return pulumi.get(self, "point_in_time")
 
     @point_in_time.setter
-    def point_in_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def point_in_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "point_in_time", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredZone")
-    def preferred_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
         """
         return pulumi.get(self, "preferred_zone")
 
     @preferred_zone.setter
-    def preferred_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceInstanceDeletionTime")
-    def source_instance_deletion_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_instance_deletion_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the source instance was deleted for a clone from a deleted instance.
 
@@ -229,32 +229,32 @@ class DatabaseInstanceCloneArgs:
         return pulumi.get(self, "source_instance_deletion_time")
 
     @source_instance_deletion_time.setter
-    def source_instance_deletion_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_instance_deletion_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_instance_deletion_time", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceProject")
-    def source_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of source project where source instances exits, required for cross project clone scenario.
         """
         return pulumi.get(self, "source_project")
 
     @source_project.setter
-    def source_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_project", value)
 
 
 class DatabaseInstanceDnsNameArgsDict(TypedDict):
-    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    connection_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
     """
-    dns_scope: NotRequired[pulumi.Input[_builtins.str]]
+    dns_scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The scope that the DNS name applies to.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the instance. If the name is left
     blank, the provider will randomly generate one when the instance is first
@@ -265,9 +265,9 @@ class DatabaseInstanceDnsNameArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceDnsNameArgs:
     def __init__(__self__, *,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] connection_type: The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
         :param pulumi.Input[_builtins.str] dns_scope: The scope that the DNS name applies to.
@@ -285,31 +285,31 @@ class DatabaseInstanceDnsNameArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
         """
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsScope")
-    def dns_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scope that the DNS name applies to.
         """
         return pulumi.get(self, "dns_scope")
 
     @dns_scope.setter
-    def dns_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance. If the name is left
         blank, the provider will randomly generate one when the instance is first
@@ -319,21 +319,21 @@ class DatabaseInstanceDnsNameArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class DatabaseInstanceIpAddressArgsDict(TypedDict):
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IPv4 address assigned.
     """
-    time_to_retire: NotRequired[pulumi.Input[_builtins.str]]
+    time_to_retire: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time this IP address will be retired, in RFC
     3339 format.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of this IP address.
     """
@@ -341,9 +341,9 @@ class DatabaseInstanceIpAddressArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceIpAddressArgs:
     def __init__(__self__, *,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_to_retire: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_to_retire: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ip_address: The IPv4 address assigned.
         :param pulumi.Input[_builtins.str] time_to_retire: The time this IP address will be retired, in RFC
@@ -359,19 +359,19 @@ class DatabaseInstanceIpAddressArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv4 address assigned.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="timeToRetire")
-    def time_to_retire(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_to_retire(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time this IP address will be retired, in RFC
         3339 format.
@@ -379,19 +379,19 @@ class DatabaseInstanceIpAddressArgs:
         return pulumi.get(self, "time_to_retire")
 
     @time_to_retire.setter
-    def time_to_retire(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_to_retire(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_to_retire", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of this IP address.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -400,25 +400,25 @@ class DatabaseInstancePointInTimeRestoreContextArgsDict(TypedDict):
     """
     The Google Cloud Backup and Disaster Recovery Datasource URI.
     """
-    allocated_ip_range: NotRequired[pulumi.Input[_builtins.str]]
+    allocated_ip_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
     """
-    point_in_time: NotRequired[pulumi.Input[_builtins.str]]
+    point_in_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The timestamp of the point in time that should be restored.
 
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    preferred_zone: NotRequired[pulumi.Input[_builtins.str]]
+    preferred_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
     """
-    region: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The region of the target instance where the datasource will be restored. For example: "us-central1".
     """
-    target_instance: NotRequired[pulumi.Input[_builtins.str]]
+    target_instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the target instance.
     """
@@ -427,11 +427,11 @@ class DatabaseInstancePointInTimeRestoreContextArgsDict(TypedDict):
 class DatabaseInstancePointInTimeRestoreContextArgs:
     def __init__(__self__, *,
                  datasource: pulumi.Input[_builtins.str],
-                 allocated_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 point_in_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_instance: Optional[pulumi.Input[_builtins.str]] = None):
+                 allocated_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 point_in_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_instance: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] datasource: The Google Cloud Backup and Disaster Recovery Datasource URI.
         :param pulumi.Input[_builtins.str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -468,19 +468,19 @@ class DatabaseInstancePointInTimeRestoreContextArgs:
 
     @_builtins.property
     @pulumi.getter(name="allocatedIpRange")
-    def allocated_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allocated_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         """
         return pulumi.get(self, "allocated_ip_range")
 
     @allocated_ip_range.setter
-    def allocated_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allocated_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allocated_ip_range", value)
 
     @_builtins.property
     @pulumi.getter(name="pointInTime")
-    def point_in_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def point_in_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of the point in time that should be restored.
 
@@ -489,80 +489,80 @@ class DatabaseInstancePointInTimeRestoreContextArgs:
         return pulumi.get(self, "point_in_time")
 
     @point_in_time.setter
-    def point_in_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def point_in_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "point_in_time", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredZone")
-    def preferred_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
         """
         return pulumi.get(self, "preferred_zone")
 
     @preferred_zone.setter
-    def preferred_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the target instance where the datasource will be restored. For example: "us-central1".
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="targetInstance")
-    def target_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the target instance.
         """
         return pulumi.get(self, "target_instance")
 
     @target_instance.setter
-    def target_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_instance", value)
 
 
 class DatabaseInstanceReplicaConfigurationArgsDict(TypedDict):
-    ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    ca_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PEM representation of the trusted CA's x509
     certificate.
     """
-    cascadable_replica: NotRequired[pulumi.Input[_builtins.bool]]
+    cascadable_replica: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
 
     > **NOTE:** Only supported for SQL Server database.
     """
-    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    client_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PEM representation of the replica's x509
     certificate.
     """
-    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    client_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PEM representation of the replica's private key. The
     corresponding public key in encoded in the `client_certificate`.
     """
-    connect_retry_interval: NotRequired[pulumi.Input[_builtins.int]]
+    connect_retry_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of seconds
     between connect retries. MySQL's default is 60 seconds.
     """
-    dump_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    dump_file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path to a SQL file in GCS from which replica
     instances are created. Format is `gs://bucket/filename`. Note, if the master
     instance is a source representation instance this field must be present.
     """
-    failover_target: NotRequired[pulumi.Input[_builtins.bool]]
+    failover_target: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies if the replica is the failover target.
     If the field is set to true the replica will be designated as a failover replica.
@@ -570,24 +570,24 @@ class DatabaseInstanceReplicaConfigurationArgsDict(TypedDict):
     the new master instance.
     > **NOTE:** Not supported for Postgres database.
     """
-    master_heartbeat_period: NotRequired[pulumi.Input[_builtins.int]]
+    master_heartbeat_period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Time in ms between replication
     heartbeats.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password for the replication connection.
     """
-    ssl_cipher: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_cipher: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Permissible ciphers for use in SSL encryption.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username for replication connection.
     """
-    verify_server_certificate: NotRequired[pulumi.Input[_builtins.bool]]
+    verify_server_certificate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if the master's common name
     value is checked during the SSL handshake.
@@ -596,18 +596,18 @@ class DatabaseInstanceReplicaConfigurationArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceReplicaConfigurationArgs:
     def __init__(__self__, *,
-                 ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 cascadable_replica: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 connect_retry_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 dump_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 failover_target: Optional[pulumi.Input[_builtins.bool]] = None,
-                 master_heartbeat_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_cipher: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_server_certificate: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 cascadable_replica: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 connect_retry_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 dump_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 failover_target: pulumi.Input[Optional[_builtins.bool]] = None,
+                 master_heartbeat_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_cipher: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_server_certificate: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] ca_certificate: PEM representation of the trusted CA's x509
                certificate.
@@ -663,7 +663,7 @@ class DatabaseInstanceReplicaConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCertificate")
-    def ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM representation of the trusted CA's x509
         certificate.
@@ -671,12 +671,12 @@ class DatabaseInstanceReplicaConfigurationArgs:
         return pulumi.get(self, "ca_certificate")
 
     @ca_certificate.setter
-    def ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="cascadableReplica")
-    def cascadable_replica(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cascadable_replica(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
 
@@ -685,12 +685,12 @@ class DatabaseInstanceReplicaConfigurationArgs:
         return pulumi.get(self, "cascadable_replica")
 
     @cascadable_replica.setter
-    def cascadable_replica(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cascadable_replica(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cascadable_replica", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertificate")
-    def client_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM representation of the replica's x509
         certificate.
@@ -698,12 +698,12 @@ class DatabaseInstanceReplicaConfigurationArgs:
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
-    def client_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM representation of the replica's private key. The
         corresponding public key in encoded in the `client_certificate`.
@@ -711,12 +711,12 @@ class DatabaseInstanceReplicaConfigurationArgs:
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="connectRetryInterval")
-    def connect_retry_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connect_retry_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of seconds
         between connect retries. MySQL's default is 60 seconds.
@@ -724,12 +724,12 @@ class DatabaseInstanceReplicaConfigurationArgs:
         return pulumi.get(self, "connect_retry_interval")
 
     @connect_retry_interval.setter
-    def connect_retry_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connect_retry_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connect_retry_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="dumpFilePath")
-    def dump_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dump_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to a SQL file in GCS from which replica
         instances are created. Format is `gs://bucket/filename`. Note, if the master
@@ -738,12 +738,12 @@ class DatabaseInstanceReplicaConfigurationArgs:
         return pulumi.get(self, "dump_file_path")
 
     @dump_file_path.setter
-    def dump_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dump_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dump_file_path", value)
 
     @_builtins.property
     @pulumi.getter(name="failoverTarget")
-    def failover_target(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def failover_target(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies if the replica is the failover target.
         If the field is set to true the replica will be designated as a failover replica.
@@ -754,12 +754,12 @@ class DatabaseInstanceReplicaConfigurationArgs:
         return pulumi.get(self, "failover_target")
 
     @failover_target.setter
-    def failover_target(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def failover_target(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "failover_target", value)
 
     @_builtins.property
     @pulumi.getter(name="masterHeartbeatPeriod")
-    def master_heartbeat_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def master_heartbeat_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time in ms between replication
         heartbeats.
@@ -767,48 +767,48 @@ class DatabaseInstanceReplicaConfigurationArgs:
         return pulumi.get(self, "master_heartbeat_period")
 
     @master_heartbeat_period.setter
-    def master_heartbeat_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def master_heartbeat_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "master_heartbeat_period", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for the replication connection.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCipher")
-    def ssl_cipher(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_cipher(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Permissible ciphers for use in SSL encryption.
         """
         return pulumi.get(self, "ssl_cipher")
 
     @ssl_cipher.setter
-    def ssl_cipher(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_cipher(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_cipher", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username for replication connection.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="verifyServerCertificate")
-    def verify_server_certificate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def verify_server_certificate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the master's common name
         value is checked during the SSL handshake.
@@ -816,20 +816,20 @@ class DatabaseInstanceReplicaConfigurationArgs:
         return pulumi.get(self, "verify_server_certificate")
 
     @verify_server_certificate.setter
-    def verify_server_certificate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def verify_server_certificate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "verify_server_certificate", value)
 
 
 class DatabaseInstanceReplicationClusterArgsDict(TypedDict):
-    dr_replica: NotRequired[pulumi.Input[_builtins.bool]]
+    dr_replica: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Read-only field that indicates whether the replica is a DR replica.
     """
-    failover_dr_replica_name: NotRequired[pulumi.Input[_builtins.str]]
+    failover_dr_replica_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
     """
-    psa_write_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    psa_write_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
     """
@@ -837,9 +837,9 @@ class DatabaseInstanceReplicationClusterArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceReplicationClusterArgs:
     def __init__(__self__, *,
-                 dr_replica: Optional[pulumi.Input[_builtins.bool]] = None,
-                 failover_dr_replica_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 psa_write_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 dr_replica: pulumi.Input[Optional[_builtins.bool]] = None,
+                 failover_dr_replica_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 psa_write_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] dr_replica: Read-only field that indicates whether the replica is a DR replica.
         :param pulumi.Input[_builtins.str] failover_dr_replica_name: If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
@@ -854,38 +854,38 @@ class DatabaseInstanceReplicationClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="drReplica")
-    def dr_replica(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dr_replica(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Read-only field that indicates whether the replica is a DR replica.
         """
         return pulumi.get(self, "dr_replica")
 
     @dr_replica.setter
-    def dr_replica(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dr_replica(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dr_replica", value)
 
     @_builtins.property
     @pulumi.getter(name="failoverDrReplicaName")
-    def failover_dr_replica_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failover_dr_replica_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
         """
         return pulumi.get(self, "failover_dr_replica_name")
 
     @failover_dr_replica_name.setter
-    def failover_dr_replica_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failover_dr_replica_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failover_dr_replica_name", value)
 
     @_builtins.property
     @pulumi.getter(name="psaWriteEndpoint")
-    def psa_write_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def psa_write_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
         """
         return pulumi.get(self, "psa_write_endpoint")
 
     @psa_write_endpoint.setter
-    def psa_write_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def psa_write_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "psa_write_endpoint", value)
 
 
@@ -894,12 +894,12 @@ class DatabaseInstanceRestoreBackupContextArgsDict(TypedDict):
     """
     The ID of the backup run to restore from.
     """
-    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the instance that the backup was taken from. If left empty,
     this instance's ID will be used.
     """
-    project: NotRequired[pulumi.Input[_builtins.str]]
+    project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The full project ID of the source instance.`
     """
@@ -908,8 +908,8 @@ class DatabaseInstanceRestoreBackupContextArgsDict(TypedDict):
 class DatabaseInstanceRestoreBackupContextArgs:
     def __init__(__self__, *,
                  backup_run_id: pulumi.Input[_builtins.int],
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] backup_run_id: The ID of the backup run to restore from.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance that the backup was taken from. If left empty,
@@ -936,7 +936,7 @@ class DatabaseInstanceRestoreBackupContextArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance that the backup was taken from. If left empty,
         this instance's ID will be used.
@@ -944,40 +944,40 @@ class DatabaseInstanceRestoreBackupContextArgs:
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full project ID of the source instance.`
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 class DatabaseInstanceServerCaCertArgsDict(TypedDict):
-    cert: NotRequired[pulumi.Input[_builtins.str]]
+    cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CA Certificate used to connect to the SQL Instance via SSL.
     """
-    common_name: NotRequired[pulumi.Input[_builtins.str]]
+    common_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CN valid for the CA Cert.
     """
-    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Creation time of the CA Cert.
     """
-    expiration_time: NotRequired[pulumi.Input[_builtins.str]]
+    expiration_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Expiration time of the CA Cert.
     """
-    sha1_fingerprint: NotRequired[pulumi.Input[_builtins.str]]
+    sha1_fingerprint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA Fingerprint of the CA Cert.
     """
@@ -985,11 +985,11 @@ class DatabaseInstanceServerCaCertArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceServerCaCertArgs:
     def __init__(__self__, *,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 common_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 sha1_fingerprint: Optional[pulumi.Input[_builtins.str]] = None):
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 sha1_fingerprint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cert: The CA Certificate used to connect to the SQL Instance via SSL.
         :param pulumi.Input[_builtins.str] common_name: The CN valid for the CA Cert.
@@ -1010,62 +1010,62 @@ class DatabaseInstanceServerCaCertArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CA Certificate used to connect to the SQL Instance via SSL.
         """
         return pulumi.get(self, "cert")
 
     @cert.setter
-    def cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert", value)
 
     @_builtins.property
     @pulumi.getter(name="commonName")
-    def common_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def common_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CN valid for the CA Cert.
         """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
-    def common_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def common_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "common_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time of the CA Cert.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expiration time of the CA Cert.
         """
         return pulumi.get(self, "expiration_time")
 
     @expiration_time.setter
-    def expiration_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_time", value)
 
     @_builtins.property
     @pulumi.getter(name="sha1Fingerprint")
-    def sha1_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha1_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA Fingerprint of the CA Cert.
         """
         return pulumi.get(self, "sha1_fingerprint")
 
     @sha1_fingerprint.setter
-    def sha1_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha1_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha1_fingerprint", value)
 
 
@@ -1076,14 +1076,14 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     for more details and supported versions. Postgres supports only shared-core machine types,
     and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
     """
-    activation_policy: NotRequired[pulumi.Input[_builtins.str]]
+    activation_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This specifies when the instance should be
     active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
     """
-    active_directory_config: NotRequired[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgsDict']]
-    advanced_machine_features: NotRequired[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArgsDict']]
-    auto_upgrade_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    active_directory_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsActiveDirectoryConfigArgs']]]
+    advanced_machine_features: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']]]
+    auto_upgrade_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables
     [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
@@ -1092,7 +1092,7 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     `MYSQL_8_0_35` or higher. Can be used with MySQL only. Can't be unset or
     changed if set to `true`.
     """
-    availability_type: NotRequired[pulumi.Input[_builtins.str]]
+    availability_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The availability type of the Cloud SQL
     instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
@@ -1103,62 +1103,62 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     For read pool instances, this field is read-only. The availability type is changed by specifying
     the number of nodes (`node_count`).
     """
-    backup_configuration: NotRequired[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgsDict']]
-    collation: NotRequired[pulumi.Input[_builtins.str]]
+    backup_configuration: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsBackupConfigurationArgs']]]
+    collation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of server instance collation.
     """
-    connection_pool_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigArgsDict']]]]
+    connection_pool_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigArgs']]]]]
     """
     The managed connection pool setting for a Cloud SQL instance.
     """
-    connector_enforcement: NotRequired[pulumi.Input[_builtins.str]]
+    connector_enforcement: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
     """
-    data_api_access: NotRequired[pulumi.Input[_builtins.str]]
+    data_api_access: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Configures ExecuteSql API's access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
     """
-    data_cache_config: NotRequired[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgsDict']]
+    data_cache_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsDataCacheConfigArgs']]]
     """
     Data cache configurations.
     """
-    data_disk_provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
+    data_disk_provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
     """
-    data_disk_provisioned_throughput: NotRequired[pulumi.Input[_builtins.int]]
+    data_disk_provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
     """
-    database_flags: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgsDict']]]]
-    deletion_protection_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    database_flags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]]]
+    deletion_protection_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables deletion protection of an instance at the GCP level. Enabling this protection will guard against accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform) by enabling the [GCP Cloud SQL instance deletion protection](https://cloud.google.com/sql/docs/postgres/deletion-protection). Terraform provider support was introduced in version 4.48.0. Defaults to `false`.
     """
-    deny_maintenance_period: NotRequired[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgsDict']]
-    disk_autoresize: NotRequired[pulumi.Input[_builtins.bool]]
+    deny_maintenance_period: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']]]
+    disk_autoresize: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
     """
-    disk_autoresize_limit: NotRequired[pulumi.Input[_builtins.int]]
+    disk_autoresize_limit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
     """
-    disk_size: NotRequired[pulumi.Input[_builtins.int]]
+    disk_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
     """
-    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
     """
-    edition: NotRequired[pulumi.Input[_builtins.str]]
+    edition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
     """
-    effective_availability_type: NotRequired[pulumi.Input[_builtins.str]]
+    effective_availability_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Computed) The availability type of
     the Cloud SQL instance, high availability (REGIONAL) or single zone
@@ -1166,55 +1166,55 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     read pools, `settings.0.effective_availability_type` may differ from
     `settings.0.availability_type`).
     """
-    enable_dataplex_integration: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_dataplex_integration: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
     """
-    enable_google_ml_integration: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_google_ml_integration: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
     """
-    entraid_config: NotRequired[pulumi.Input['DatabaseInstanceSettingsEntraidConfigArgsDict']]
+    entraid_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsEntraidConfigArgs']]]
     """
     The Microsoft Entra ID configuration for the SQL Server instance.
     """
-    final_backup_config: NotRequired[pulumi.Input['DatabaseInstanceSettingsFinalBackupConfigArgsDict']]
+    final_backup_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsFinalBackupConfigArgs']]]
     """
     Config used to determine the final backup settings for the instance
     """
-    insights_config: NotRequired[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgsDict']]
+    insights_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsInsightsConfigArgs']]]
     """
     Configuration of Query Insights.
     """
-    ip_configuration: NotRequired[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArgsDict']]
-    location_preference: NotRequired[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArgsDict']]
-    maintenance_window: NotRequired[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgsDict']]
+    ip_configuration: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsIpConfigurationArgs']]]
+    location_preference: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsLocationPreferenceArgs']]]
+    maintenance_window: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsMaintenanceWindowArgs']]]
     """
     Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
     """
-    password_validation_policy: NotRequired[pulumi.Input['DatabaseInstanceSettingsPasswordValidationPolicyArgsDict']]
-    pricing_plan: NotRequired[pulumi.Input[_builtins.str]]
+    password_validation_policy: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsPasswordValidationPolicyArgs']]]
+    pricing_plan: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Pricing plan for this instance, can only be `PER_USE`.
     """
-    read_pool_auto_scale_config: NotRequired[pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigArgsDict']]
+    read_pool_auto_scale_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs']]]
     """
     Configuration of Read Pool Auto Scale.
     """
-    retain_backups_on_delete: NotRequired[pulumi.Input[_builtins.bool]]
+    retain_backups_on_delete: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
     """
-    sql_server_audit_config: NotRequired[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgsDict']]
-    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    sql_server_audit_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsSqlServerAuditConfigArgs']]]
+    time_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
     """
-    user_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    user_labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     A set of key/value user label pairs to assign to the instance.
     """
-    version: NotRequired[pulumi.Input[_builtins.int]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Used to make sure changes to the `settings` block are
     atomic.
@@ -1224,44 +1224,44 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
 class DatabaseInstanceSettingsArgs:
     def __init__(__self__, *,
                  tier: pulumi.Input[_builtins.str],
-                 activation_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 active_directory_config: Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgs']] = None,
-                 advanced_machine_features: Optional[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']] = None,
-                 auto_upgrade_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 availability_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']] = None,
-                 collation: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_pool_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigArgs']]]] = None,
-                 connector_enforcement: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_api_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_cache_config: Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs']] = None,
-                 data_disk_provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_disk_provisioned_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deny_maintenance_period: Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']] = None,
-                 disk_autoresize: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_autoresize_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_availability_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_dataplex_integration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_google_ml_integration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 entraid_config: Optional[pulumi.Input['DatabaseInstanceSettingsEntraidConfigArgs']] = None,
-                 final_backup_config: Optional[pulumi.Input['DatabaseInstanceSettingsFinalBackupConfigArgs']] = None,
-                 insights_config: Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']] = None,
-                 ip_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArgs']] = None,
-                 location_preference: Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArgs']] = None,
-                 maintenance_window: Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs']] = None,
-                 password_validation_policy: Optional[pulumi.Input['DatabaseInstanceSettingsPasswordValidationPolicyArgs']] = None,
-                 pricing_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_pool_auto_scale_config: Optional[pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs']] = None,
-                 retain_backups_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sql_server_audit_config: Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgs']] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 activation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 active_directory_config: pulumi.Input[Optional['DatabaseInstanceSettingsActiveDirectoryConfigArgs']] = None,
+                 advanced_machine_features: pulumi.Input[Optional['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']] = None,
+                 auto_upgrade_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 availability_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_configuration: pulumi.Input[Optional['DatabaseInstanceSettingsBackupConfigurationArgs']] = None,
+                 collation: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_pool_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigArgs']]]] = None,
+                 connector_enforcement: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_api_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_cache_config: pulumi.Input[Optional['DatabaseInstanceSettingsDataCacheConfigArgs']] = None,
+                 data_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_disk_provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_flags: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deny_maintenance_period: pulumi.Input[Optional['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']] = None,
+                 disk_autoresize: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_autoresize_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_availability_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_dataplex_integration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_google_ml_integration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entraid_config: pulumi.Input[Optional['DatabaseInstanceSettingsEntraidConfigArgs']] = None,
+                 final_backup_config: pulumi.Input[Optional['DatabaseInstanceSettingsFinalBackupConfigArgs']] = None,
+                 insights_config: pulumi.Input[Optional['DatabaseInstanceSettingsInsightsConfigArgs']] = None,
+                 ip_configuration: pulumi.Input[Optional['DatabaseInstanceSettingsIpConfigurationArgs']] = None,
+                 location_preference: pulumi.Input[Optional['DatabaseInstanceSettingsLocationPreferenceArgs']] = None,
+                 maintenance_window: pulumi.Input[Optional['DatabaseInstanceSettingsMaintenanceWindowArgs']] = None,
+                 password_validation_policy: pulumi.Input[Optional['DatabaseInstanceSettingsPasswordValidationPolicyArgs']] = None,
+                 pricing_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_pool_auto_scale_config: pulumi.Input[Optional['DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs']] = None,
+                 retain_backups_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sql_server_audit_config: pulumi.Input[Optional['DatabaseInstanceSettingsSqlServerAuditConfigArgs']] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] tier: The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
                for more details and supported versions. Postgres supports only shared-core machine types,
@@ -1408,7 +1408,7 @@ class DatabaseInstanceSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="activationPolicy")
-    def activation_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def activation_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This specifies when the instance should be
         active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
@@ -1416,30 +1416,30 @@ class DatabaseInstanceSettingsArgs:
         return pulumi.get(self, "activation_policy")
 
     @activation_policy.setter
-    def activation_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def activation_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "activation_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="activeDirectoryConfig")
-    def active_directory_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgs']]:
+    def active_directory_config(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsActiveDirectoryConfigArgs']]:
         return pulumi.get(self, "active_directory_config")
 
     @active_directory_config.setter
-    def active_directory_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgs']]):
+    def active_directory_config(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsActiveDirectoryConfigArgs']]):
         pulumi.set(self, "active_directory_config", value)
 
     @_builtins.property
     @pulumi.getter(name="advancedMachineFeatures")
-    def advanced_machine_features(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']]:
+    def advanced_machine_features(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']]:
         return pulumi.get(self, "advanced_machine_features")
 
     @advanced_machine_features.setter
-    def advanced_machine_features(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']]):
+    def advanced_machine_features(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']]):
         pulumi.set(self, "advanced_machine_features", value)
 
     @_builtins.property
     @pulumi.getter(name="autoUpgradeEnabled")
-    def auto_upgrade_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_upgrade_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables
         [Automatic Version Upgrade](https://cloud.google.com/sql/docs/mysql/upgrade-minor-db-version#auto-upgrade)
@@ -1451,12 +1451,12 @@ class DatabaseInstanceSettingsArgs:
         return pulumi.get(self, "auto_upgrade_enabled")
 
     @auto_upgrade_enabled.setter
-    def auto_upgrade_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_upgrade_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_upgrade_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityType")
-    def availability_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def availability_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The availability type of the Cloud SQL
         instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
@@ -1470,195 +1470,195 @@ class DatabaseInstanceSettingsArgs:
         return pulumi.get(self, "availability_type")
 
     @availability_type.setter
-    def availability_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def availability_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_type", value)
 
     @_builtins.property
     @pulumi.getter(name="backupConfiguration")
-    def backup_configuration(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']]:
+    def backup_configuration(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsBackupConfigurationArgs']]:
         return pulumi.get(self, "backup_configuration")
 
     @backup_configuration.setter
-    def backup_configuration(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']]):
+    def backup_configuration(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsBackupConfigurationArgs']]):
         pulumi.set(self, "backup_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def collation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of server instance collation.
         """
         return pulumi.get(self, "collation")
 
     @collation.setter
-    def collation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collation", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionPoolConfigs")
-    def connection_pool_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigArgs']]]]:
+    def connection_pool_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigArgs']]]]:
         """
         The managed connection pool setting for a Cloud SQL instance.
         """
         return pulumi.get(self, "connection_pool_configs")
 
     @connection_pool_configs.setter
-    def connection_pool_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigArgs']]]]):
+    def connection_pool_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigArgs']]]]):
         pulumi.set(self, "connection_pool_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorEnforcement")
-    def connector_enforcement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_enforcement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
         """
         return pulumi.get(self, "connector_enforcement")
 
     @connector_enforcement.setter
-    def connector_enforcement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_enforcement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_enforcement", value)
 
     @_builtins.property
     @pulumi.getter(name="dataApiAccess")
-    def data_api_access(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_api_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configures ExecuteSql API's access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
         """
         return pulumi.get(self, "data_api_access")
 
     @data_api_access.setter
-    def data_api_access(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_api_access(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_api_access", value)
 
     @_builtins.property
     @pulumi.getter(name="dataCacheConfig")
-    def data_cache_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs']]:
+    def data_cache_config(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsDataCacheConfigArgs']]:
         """
         Data cache configurations.
         """
         return pulumi.get(self, "data_cache_config")
 
     @data_cache_config.setter
-    def data_cache_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs']]):
+    def data_cache_config(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsDataCacheConfigArgs']]):
         pulumi.set(self, "data_cache_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDiskProvisionedIops")
-    def data_disk_provisioned_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_disk_provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
         """
         return pulumi.get(self, "data_disk_provisioned_iops")
 
     @data_disk_provisioned_iops.setter
-    def data_disk_provisioned_iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_disk_provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_disk_provisioned_iops", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDiskProvisionedThroughput")
-    def data_disk_provisioned_throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_disk_provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
         """
         return pulumi.get(self, "data_disk_provisioned_throughput")
 
     @data_disk_provisioned_throughput.setter
-    def data_disk_provisioned_throughput(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_disk_provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_disk_provisioned_throughput", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseFlags")
-    def database_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]]:
+    def database_flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]]:
         return pulumi.get(self, "database_flags")
 
     @database_flags.setter
-    def database_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]]):
+    def database_flags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]]):
         pulumi.set(self, "database_flags", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
-    def deletion_protection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables deletion protection of an instance at the GCP level. Enabling this protection will guard against accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform) by enabling the [GCP Cloud SQL instance deletion protection](https://cloud.google.com/sql/docs/postgres/deletion-protection). Terraform provider support was introduced in version 4.48.0. Defaults to `false`.
         """
         return pulumi.get(self, "deletion_protection_enabled")
 
     @deletion_protection_enabled.setter
-    def deletion_protection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="denyMaintenancePeriod")
-    def deny_maintenance_period(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']]:
+    def deny_maintenance_period(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']]:
         return pulumi.get(self, "deny_maintenance_period")
 
     @deny_maintenance_period.setter
-    def deny_maintenance_period(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']]):
+    def deny_maintenance_period(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']]):
         pulumi.set(self, "deny_maintenance_period", value)
 
     @_builtins.property
     @pulumi.getter(name="diskAutoresize")
-    def disk_autoresize(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disk_autoresize(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
         """
         return pulumi.get(self, "disk_autoresize")
 
     @disk_autoresize.setter
-    def disk_autoresize(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disk_autoresize(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disk_autoresize", value)
 
     @_builtins.property
     @pulumi.getter(name="diskAutoresizeLimit")
-    def disk_autoresize_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_autoresize_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         """
         return pulumi.get(self, "disk_autoresize_limit")
 
     @disk_autoresize_limit.setter
-    def disk_autoresize_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_autoresize_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_autoresize_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         """
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
-    def disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
         """
         return pulumi.get(self, "edition")
 
     @edition.setter
-    def edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAvailabilityType")
-    def effective_availability_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_availability_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The availability type of
         the Cloud SQL instance, high availability (REGIONAL) or single zone
@@ -1669,180 +1669,180 @@ class DatabaseInstanceSettingsArgs:
         return pulumi.get(self, "effective_availability_type")
 
     @effective_availability_type.setter
-    def effective_availability_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_availability_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_availability_type", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDataplexIntegration")
-    def enable_dataplex_integration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_dataplex_integration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
         """
         return pulumi.get(self, "enable_dataplex_integration")
 
     @enable_dataplex_integration.setter
-    def enable_dataplex_integration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_dataplex_integration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_dataplex_integration", value)
 
     @_builtins.property
     @pulumi.getter(name="enableGoogleMlIntegration")
-    def enable_google_ml_integration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_google_ml_integration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
         """
         return pulumi.get(self, "enable_google_ml_integration")
 
     @enable_google_ml_integration.setter
-    def enable_google_ml_integration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_google_ml_integration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_google_ml_integration", value)
 
     @_builtins.property
     @pulumi.getter(name="entraidConfig")
-    def entraid_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsEntraidConfigArgs']]:
+    def entraid_config(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsEntraidConfigArgs']]:
         """
         The Microsoft Entra ID configuration for the SQL Server instance.
         """
         return pulumi.get(self, "entraid_config")
 
     @entraid_config.setter
-    def entraid_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsEntraidConfigArgs']]):
+    def entraid_config(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsEntraidConfigArgs']]):
         pulumi.set(self, "entraid_config", value)
 
     @_builtins.property
     @pulumi.getter(name="finalBackupConfig")
-    def final_backup_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsFinalBackupConfigArgs']]:
+    def final_backup_config(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsFinalBackupConfigArgs']]:
         """
         Config used to determine the final backup settings for the instance
         """
         return pulumi.get(self, "final_backup_config")
 
     @final_backup_config.setter
-    def final_backup_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsFinalBackupConfigArgs']]):
+    def final_backup_config(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsFinalBackupConfigArgs']]):
         pulumi.set(self, "final_backup_config", value)
 
     @_builtins.property
     @pulumi.getter(name="insightsConfig")
-    def insights_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']]:
+    def insights_config(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsInsightsConfigArgs']]:
         """
         Configuration of Query Insights.
         """
         return pulumi.get(self, "insights_config")
 
     @insights_config.setter
-    def insights_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']]):
+    def insights_config(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsInsightsConfigArgs']]):
         pulumi.set(self, "insights_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ipConfiguration")
-    def ip_configuration(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArgs']]:
+    def ip_configuration(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsIpConfigurationArgs']]:
         return pulumi.get(self, "ip_configuration")
 
     @ip_configuration.setter
-    def ip_configuration(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArgs']]):
+    def ip_configuration(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsIpConfigurationArgs']]):
         pulumi.set(self, "ip_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="locationPreference")
-    def location_preference(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArgs']]:
+    def location_preference(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsLocationPreferenceArgs']]:
         return pulumi.get(self, "location_preference")
 
     @location_preference.setter
-    def location_preference(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArgs']]):
+    def location_preference(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsLocationPreferenceArgs']]):
         pulumi.set(self, "location_preference", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs']]:
+    def maintenance_window(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsMaintenanceWindowArgs']]:
         """
         Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
         """
         return pulumi.get(self, "maintenance_window")
 
     @maintenance_window.setter
-    def maintenance_window(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs']]):
+    def maintenance_window(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsMaintenanceWindowArgs']]):
         pulumi.set(self, "maintenance_window", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordValidationPolicy")
-    def password_validation_policy(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsPasswordValidationPolicyArgs']]:
+    def password_validation_policy(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsPasswordValidationPolicyArgs']]:
         return pulumi.get(self, "password_validation_policy")
 
     @password_validation_policy.setter
-    def password_validation_policy(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsPasswordValidationPolicyArgs']]):
+    def password_validation_policy(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsPasswordValidationPolicyArgs']]):
         pulumi.set(self, "password_validation_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingPlan")
-    def pricing_plan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_plan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pricing plan for this instance, can only be `PER_USE`.
         """
         return pulumi.get(self, "pricing_plan")
 
     @pricing_plan.setter
-    def pricing_plan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_plan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_plan", value)
 
     @_builtins.property
     @pulumi.getter(name="readPoolAutoScaleConfig")
-    def read_pool_auto_scale_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs']]:
+    def read_pool_auto_scale_config(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs']]:
         """
         Configuration of Read Pool Auto Scale.
         """
         return pulumi.get(self, "read_pool_auto_scale_config")
 
     @read_pool_auto_scale_config.setter
-    def read_pool_auto_scale_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs']]):
+    def read_pool_auto_scale_config(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs']]):
         pulumi.set(self, "read_pool_auto_scale_config", value)
 
     @_builtins.property
     @pulumi.getter(name="retainBackupsOnDelete")
-    def retain_backups_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def retain_backups_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
         """
         return pulumi.get(self, "retain_backups_on_delete")
 
     @retain_backups_on_delete.setter
-    def retain_backups_on_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def retain_backups_on_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "retain_backups_on_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlServerAuditConfig")
-    def sql_server_audit_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgs']]:
+    def sql_server_audit_config(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsSqlServerAuditConfigArgs']]:
         return pulumi.get(self, "sql_server_audit_config")
 
     @sql_server_audit_config.setter
-    def sql_server_audit_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgs']]):
+    def sql_server_audit_config(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsSqlServerAuditConfigArgs']]):
         pulumi.set(self, "sql_server_audit_config", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
         """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="userLabels")
-    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def user_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value user label pairs to assign to the instance.
         """
         return pulumi.get(self, "user_labels")
 
     @user_labels.setter
-    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def user_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Used to make sure changes to the `settings` block are
         atomic.
@@ -1850,7 +1850,7 @@ class DatabaseInstanceSettingsArgs:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
@@ -1886,7 +1886,7 @@ class DatabaseInstanceSettingsActiveDirectoryConfigArgs:
 
 
 class DatabaseInstanceSettingsAdvancedMachineFeaturesArgsDict(TypedDict):
-    threads_per_core: NotRequired[pulumi.Input[_builtins.int]]
+    threads_per_core: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of threads per core. The value of this flag can be 1 or 2. To disable SMT, set this flag to 1. Only available in Cloud SQL for SQL Server instances. See [smt](https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance) for more details.
     """
@@ -1894,7 +1894,7 @@ class DatabaseInstanceSettingsAdvancedMachineFeaturesArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceSettingsAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
-                 threads_per_core: Optional[pulumi.Input[_builtins.int]] = None):
+                 threads_per_core: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] threads_per_core: The number of threads per core. The value of this flag can be 1 or 2. To disable SMT, set this flag to 1. Only available in Cloud SQL for SQL Server instances. See [smt](https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance) for more details.
         """
@@ -1903,49 +1903,49 @@ class DatabaseInstanceSettingsAdvancedMachineFeaturesArgs:
 
     @_builtins.property
     @pulumi.getter(name="threadsPerCore")
-    def threads_per_core(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def threads_per_core(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of threads per core. The value of this flag can be 1 or 2. To disable SMT, set this flag to 1. Only available in Cloud SQL for SQL Server instances. See [smt](https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance) for more details.
         """
         return pulumi.get(self, "threads_per_core")
 
     @threads_per_core.setter
-    def threads_per_core(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def threads_per_core(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "threads_per_core", value)
 
 
 class DatabaseInstanceSettingsBackupConfigurationArgsDict(TypedDict):
-    backup_retention_settings: NotRequired[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgsDict']]
+    backup_retention_settings: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']]]
     """
     Backup retention settings. The configuration is detailed below.
     """
-    backup_tier: NotRequired[pulumi.Input[_builtins.str]]
+    backup_tier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The backup tier that manages the backups for the instance.
     """
-    binary_log_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    binary_log_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if binary logging is enabled.
     Can only be used with MySQL.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if backup configuration is enabled.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The region where the backup will be stored
     """
-    point_in_time_recovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    point_in_time_recovery_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances. Enabled by default for PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     `HH:MM` format time indicating when backup
     configuration starts.
     """
-    transaction_log_retention_days: NotRequired[pulumi.Input[_builtins.int]]
+    transaction_log_retention_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
     """
@@ -1953,14 +1953,14 @@ class DatabaseInstanceSettingsBackupConfigurationArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceSettingsBackupConfigurationArgs:
     def __init__(__self__, *,
-                 backup_retention_settings: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']] = None,
-                 backup_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 binary_log_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 point_in_time_recovery_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 transaction_log_retention_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 backup_retention_settings: pulumi.Input[Optional['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']] = None,
+                 backup_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 binary_log_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 point_in_time_recovery_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 transaction_log_retention_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs'] backup_retention_settings: Backup retention settings. The configuration is detailed below.
         :param pulumi.Input[_builtins.str] backup_tier: The backup tier that manages the backups for the instance.
@@ -1992,31 +1992,31 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionSettings")
-    def backup_retention_settings(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']]:
+    def backup_retention_settings(self) -> pulumi.Input[Optional['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']]:
         """
         Backup retention settings. The configuration is detailed below.
         """
         return pulumi.get(self, "backup_retention_settings")
 
     @backup_retention_settings.setter
-    def backup_retention_settings(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']]):
+    def backup_retention_settings(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']]):
         pulumi.set(self, "backup_retention_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="backupTier")
-    def backup_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup tier that manages the backups for the instance.
         """
         return pulumi.get(self, "backup_tier")
 
     @backup_tier.setter
-    def backup_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryLogEnabled")
-    def binary_log_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def binary_log_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if binary logging is enabled.
         Can only be used with MySQL.
@@ -2024,48 +2024,48 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
         return pulumi.get(self, "binary_log_enabled")
 
     @binary_log_enabled.setter
-    def binary_log_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def binary_log_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "binary_log_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if backup configuration is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the backup will be stored
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="pointInTimeRecoveryEnabled")
-    def point_in_time_recovery_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def point_in_time_recovery_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances. Enabled by default for PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances.
         """
         return pulumi.get(self, "point_in_time_recovery_enabled")
 
     @point_in_time_recovery_enabled.setter
-    def point_in_time_recovery_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def point_in_time_recovery_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "point_in_time_recovery_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `HH:MM` format time indicating when backup
         configuration starts.
@@ -2073,19 +2073,19 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="transactionLogRetentionDays")
-    def transaction_log_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def transaction_log_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus and SQL Server Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
         """
         return pulumi.get(self, "transaction_log_retention_days")
 
     @transaction_log_retention_days.setter
-    def transaction_log_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def transaction_log_retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "transaction_log_retention_days", value)
 
 
@@ -2095,7 +2095,7 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgsDict
     Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
     is 'COUNT', we will retain this many backups.
     """
-    retention_unit: NotRequired[pulumi.Input[_builtins.str]]
+    retention_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The unit that 'retained_backups' represents. Defaults to `COUNT`.
     """
@@ -2104,7 +2104,7 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgsDict
 class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs:
     def __init__(__self__, *,
                  retained_backups: pulumi.Input[_builtins.int],
-                 retention_unit: Optional[pulumi.Input[_builtins.str]] = None):
+                 retention_unit: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] retained_backups: Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
                is 'COUNT', we will retain this many backups.
@@ -2129,23 +2129,23 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="retentionUnit")
-    def retention_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retention_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit that 'retained_backups' represents. Defaults to `COUNT`.
         """
         return pulumi.get(self, "retention_unit")
 
     @retention_unit.setter
-    def retention_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retention_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retention_unit", value)
 
 
 class DatabaseInstanceSettingsConnectionPoolConfigArgsDict(TypedDict):
-    connection_pooling_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    connection_pooling_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if the manager connection pooling configuration is enabled.
     """
-    flags: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigFlagArgsDict']]]]
+    flags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigFlagArgs']]]]]
     """
     List of connection pool configuration flags
     """
@@ -2153,8 +2153,8 @@ class DatabaseInstanceSettingsConnectionPoolConfigArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceSettingsConnectionPoolConfigArgs:
     def __init__(__self__, *,
-                 connection_pooling_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigFlagArgs']]]] = None):
+                 connection_pooling_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 flags: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigFlagArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] connection_pooling_enabled: True if the manager connection pooling configuration is enabled.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigFlagArgs']]] flags: List of connection pool configuration flags
@@ -2166,26 +2166,26 @@ class DatabaseInstanceSettingsConnectionPoolConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionPoolingEnabled")
-    def connection_pooling_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def connection_pooling_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the manager connection pooling configuration is enabled.
         """
         return pulumi.get(self, "connection_pooling_enabled")
 
     @connection_pooling_enabled.setter
-    def connection_pooling_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def connection_pooling_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "connection_pooling_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigFlagArgs']]]]:
+    def flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigFlagArgs']]]]:
         """
         List of connection pool configuration flags
         """
         return pulumi.get(self, "flags")
 
     @flags.setter
-    def flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigFlagArgs']]]]):
+    def flags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigFlagArgs']]]]):
         pulumi.set(self, "flags", value)
 
 
@@ -2237,7 +2237,7 @@ class DatabaseInstanceSettingsConnectionPoolConfigFlagArgs:
 
 
 class DatabaseInstanceSettingsDataCacheConfigArgsDict(TypedDict):
-    data_cache_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    data_cache_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
     """
@@ -2245,7 +2245,7 @@ class DatabaseInstanceSettingsDataCacheConfigArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceSettingsDataCacheConfigArgs:
     def __init__(__self__, *,
-                 data_cache_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 data_cache_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] data_cache_enabled: Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
         """
@@ -2254,14 +2254,14 @@ class DatabaseInstanceSettingsDataCacheConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataCacheEnabled")
-    def data_cache_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def data_cache_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
         """
         return pulumi.get(self, "data_cache_enabled")
 
     @data_cache_enabled.setter
-    def data_cache_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def data_cache_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "data_cache_enabled", value)
 
 
@@ -2379,11 +2379,11 @@ class DatabaseInstanceSettingsDenyMaintenancePeriodArgs:
 
 
 class DatabaseInstanceSettingsEntraidConfigArgsDict(TypedDict):
-    application_id: NotRequired[pulumi.Input[_builtins.str]]
+    application_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The application ID for the Entra ID configuration. This must be paired with a tenant_id to be valid.
     """
-    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tenant ID for the Entra ID configuration. This must be paired with an application_id to be valid.
     """
@@ -2391,8 +2391,8 @@ class DatabaseInstanceSettingsEntraidConfigArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceSettingsEntraidConfigArgs:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] application_id: The application ID for the Entra ID configuration. This must be paired with a tenant_id to be valid.
         :param pulumi.Input[_builtins.str] tenant_id: The tenant ID for the Entra ID configuration. This must be paired with an application_id to be valid.
@@ -2404,35 +2404,35 @@ class DatabaseInstanceSettingsEntraidConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The application ID for the Entra ID configuration. This must be paired with a tenant_id to be valid.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tenant ID for the Entra ID configuration. This must be paired with an application_id to be valid.
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 class DatabaseInstanceSettingsFinalBackupConfigArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if enabled final backup.
     """
-    retention_days: NotRequired[pulumi.Input[_builtins.int]]
+    retention_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of days we retain the final backup after instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years.
     """
@@ -2440,8 +2440,8 @@ class DatabaseInstanceSettingsFinalBackupConfigArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceSettingsFinalBackupConfigArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: True if enabled final backup.
         :param pulumi.Input[_builtins.int] retention_days: The number of days we retain the final backup after instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years.
@@ -2453,51 +2453,51 @@ class DatabaseInstanceSettingsFinalBackupConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if enabled final backup.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days we retain the final backup after instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years.
         """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
-    def retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_days", value)
 
 
 class DatabaseInstanceSettingsInsightsConfigArgsDict(TypedDict):
-    enhanced_query_insights_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enhanced_query_insights_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if Enhanced Query Insights feature is enabled.
     """
-    query_insights_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    query_insights_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if Query Insights feature is enabled.
     """
-    query_plans_per_minute: NotRequired[pulumi.Input[_builtins.int]]
+    query_plans_per_minute: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
     """
-    query_string_length: NotRequired[pulumi.Input[_builtins.int]]
+    query_string_length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
     """
-    record_application_tags: NotRequired[pulumi.Input[_builtins.bool]]
+    record_application_tags: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if Query Insights will record application tags from query when enabled.
     """
-    record_client_address: NotRequired[pulumi.Input[_builtins.bool]]
+    record_client_address: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if Query Insights will record client address when enabled.
     """
@@ -2505,12 +2505,12 @@ class DatabaseInstanceSettingsInsightsConfigArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceSettingsInsightsConfigArgs:
     def __init__(__self__, *,
-                 enhanced_query_insights_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 query_insights_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 query_plans_per_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 query_string_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 record_application_tags: Optional[pulumi.Input[_builtins.bool]] = None,
-                 record_client_address: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enhanced_query_insights_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 query_insights_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 query_plans_per_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 query_string_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 record_application_tags: pulumi.Input[Optional[_builtins.bool]] = None,
+                 record_client_address: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enhanced_query_insights_enabled: True if Enhanced Query Insights feature is enabled.
         :param pulumi.Input[_builtins.bool] query_insights_enabled: True if Query Insights feature is enabled.
@@ -2534,98 +2534,98 @@ class DatabaseInstanceSettingsInsightsConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enhancedQueryInsightsEnabled")
-    def enhanced_query_insights_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enhanced_query_insights_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if Enhanced Query Insights feature is enabled.
         """
         return pulumi.get(self, "enhanced_query_insights_enabled")
 
     @enhanced_query_insights_enabled.setter
-    def enhanced_query_insights_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enhanced_query_insights_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enhanced_query_insights_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="queryInsightsEnabled")
-    def query_insights_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def query_insights_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if Query Insights feature is enabled.
         """
         return pulumi.get(self, "query_insights_enabled")
 
     @query_insights_enabled.setter
-    def query_insights_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def query_insights_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "query_insights_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="queryPlansPerMinute")
-    def query_plans_per_minute(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def query_plans_per_minute(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
         """
         return pulumi.get(self, "query_plans_per_minute")
 
     @query_plans_per_minute.setter
-    def query_plans_per_minute(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def query_plans_per_minute(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "query_plans_per_minute", value)
 
     @_builtins.property
     @pulumi.getter(name="queryStringLength")
-    def query_string_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def query_string_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
         """
         return pulumi.get(self, "query_string_length")
 
     @query_string_length.setter
-    def query_string_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def query_string_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "query_string_length", value)
 
     @_builtins.property
     @pulumi.getter(name="recordApplicationTags")
-    def record_application_tags(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def record_application_tags(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if Query Insights will record application tags from query when enabled.
         """
         return pulumi.get(self, "record_application_tags")
 
     @record_application_tags.setter
-    def record_application_tags(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def record_application_tags(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "record_application_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="recordClientAddress")
-    def record_client_address(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def record_client_address(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if Query Insights will record client address when enabled.
         """
         return pulumi.get(self, "record_client_address")
 
     @record_client_address.setter
-    def record_client_address(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def record_client_address(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "record_client_address", value)
 
 
 class DatabaseInstanceSettingsIpConfigurationArgsDict(TypedDict):
-    allocated_ip_range: NotRequired[pulumi.Input[_builtins.str]]
+    allocated_ip_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
     """
-    authorized_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgsDict']]]]
-    custom_subject_alternative_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    authorized_networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]]]
+    custom_subject_alternative_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
     """
-    enable_private_path_for_google_cloud_services: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_private_path_for_google_cloud_services: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
     """
-    ipv4_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    ipv4_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether this Cloud SQL instance should be assigned
     a public IPV4 address. At least `ipv4_enabled` must be enabled or a
     `private_network` must be configured.
     """
-    private_network: NotRequired[pulumi.Input[_builtins.str]]
+    private_network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VPC network from which the Cloud SQL
     instance is accessible for private IP. For example, projects/myProject/global/networks/default.
@@ -2633,23 +2633,23 @@ class DatabaseInstanceSettingsIpConfigurationArgsDict(TypedDict):
     At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
     This setting can be updated, but it cannot be removed after it is set.
     """
-    psc_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgsDict']]]]
+    psc_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]]]
     """
     PSC settings for a Cloud SQL instance.
     """
-    server_ca_mode: NotRequired[pulumi.Input[_builtins.str]]
+    server_ca_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA`, `GOOGLE_MANAGED_CAS_CA`, and `CUSTOMER_MANAGED_CAS_CA`.
     """
-    server_ca_pool: NotRequired[pulumi.Input[_builtins.str]]
+    server_ca_pool: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
     """
-    server_certificate_rotation_mode: NotRequired[pulumi.Input[_builtins.str]]
+    server_certificate_rotation_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `server_ca_mode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
     """
-    ssl_mode: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
     """
@@ -2657,17 +2657,17 @@ class DatabaseInstanceSettingsIpConfigurationArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceSettingsIpConfigurationArgs:
     def __init__(__self__, *,
-                 allocated_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]] = None,
-                 custom_subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enable_private_path_for_google_cloud_services: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv4_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 private_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]] = None,
-                 server_ca_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_certificate_rotation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 allocated_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_networks: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]] = None,
+                 custom_subject_alternative_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enable_private_path_for_google_cloud_services: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv4_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 private_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]] = None,
+                 server_ca_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_certificate_rotation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_subject_alternative_names: The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
@@ -2711,52 +2711,52 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="allocatedIpRange")
-    def allocated_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allocated_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         """
         return pulumi.get(self, "allocated_ip_range")
 
     @allocated_ip_range.setter
-    def allocated_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allocated_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allocated_ip_range", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedNetworks")
-    def authorized_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]]:
+    def authorized_networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]]:
         return pulumi.get(self, "authorized_networks")
 
     @authorized_networks.setter
-    def authorized_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]]):
+    def authorized_networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]]):
         pulumi.set(self, "authorized_networks", value)
 
     @_builtins.property
     @pulumi.getter(name="customSubjectAlternativeNames")
-    def custom_subject_alternative_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_subject_alternative_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
         """
         return pulumi.get(self, "custom_subject_alternative_names")
 
     @custom_subject_alternative_names.setter
-    def custom_subject_alternative_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_subject_alternative_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_subject_alternative_names", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePrivatePathForGoogleCloudServices")
-    def enable_private_path_for_google_cloud_services(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_private_path_for_google_cloud_services(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
         """
         return pulumi.get(self, "enable_private_path_for_google_cloud_services")
 
     @enable_private_path_for_google_cloud_services.setter
-    def enable_private_path_for_google_cloud_services(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_private_path_for_google_cloud_services(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_private_path_for_google_cloud_services", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4Enabled")
-    def ipv4_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ipv4_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this Cloud SQL instance should be assigned
         a public IPV4 address. At least `ipv4_enabled` must be enabled or a
@@ -2765,12 +2765,12 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
         return pulumi.get(self, "ipv4_enabled")
 
     @ipv4_enabled.setter
-    def ipv4_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ipv4_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipv4_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="privateNetwork")
-    def private_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC network from which the Cloud SQL
         instance is accessible for private IP. For example, projects/myProject/global/networks/default.
@@ -2781,67 +2781,67 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
         return pulumi.get(self, "private_network")
 
     @private_network.setter
-    def private_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_network", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConfigs")
-    def psc_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]]:
+    def psc_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]]:
         """
         PSC settings for a Cloud SQL instance.
         """
         return pulumi.get(self, "psc_configs")
 
     @psc_configs.setter
-    def psc_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]]):
+    def psc_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]]):
         pulumi.set(self, "psc_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCaMode")
-    def server_ca_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_ca_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA`, `GOOGLE_MANAGED_CAS_CA`, and `CUSTOMER_MANAGED_CAS_CA`.
         """
         return pulumi.get(self, "server_ca_mode")
 
     @server_ca_mode.setter
-    def server_ca_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_ca_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_ca_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCaPool")
-    def server_ca_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_ca_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
         """
         return pulumi.get(self, "server_ca_pool")
 
     @server_ca_pool.setter
-    def server_ca_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_ca_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_ca_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCertificateRotationMode")
-    def server_certificate_rotation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_certificate_rotation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `server_ca_mode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
         """
         return pulumi.get(self, "server_certificate_rotation_mode")
 
     @server_certificate_rotation_mode.setter
-    def server_certificate_rotation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_certificate_rotation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_certificate_rotation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="sslMode")
-    def ssl_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
         """
         return pulumi.get(self, "ssl_mode")
 
     @ssl_mode.setter
-    def ssl_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_mode", value)
 
 
@@ -2852,12 +2852,12 @@ class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgsDict(TypedDict
     access this instance. Must be set even if other two attributes are not for
     the whitelist to become active.
     """
-    expiration_time: NotRequired[pulumi.Input[_builtins.str]]
+    expiration_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The [RFC 3339](https://tools.ietf.org/html/rfc3339)
     formatted date time string indicating when this whitelist expires.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A name for this whitelist entry.
     """
@@ -2866,8 +2866,8 @@ class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgsDict(TypedDict
 class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs:
     def __init__(__self__, *,
                  value: pulumi.Input[_builtins.str],
-                 expiration_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] value: A CIDR notation IPv4 or IPv6 address that is allowed to
                access this instance. Must be set even if other two attributes are not for
@@ -2898,7 +2898,7 @@ class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [RFC 3339](https://tools.ietf.org/html/rfc3339)
         formatted date time string indicating when this whitelist expires.
@@ -2906,36 +2906,36 @@ class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs:
         return pulumi.get(self, "expiration_time")
 
     @expiration_time.setter
-    def expiration_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for this whitelist entry.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class DatabaseInstanceSettingsIpConfigurationPscConfigArgsDict(TypedDict):
-    allowed_consumer_projects: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_consumer_projects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
     """
-    network_attachment_uri: NotRequired[pulumi.Input[_builtins.str]]
+    network_attachment_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
     """
-    psc_auto_connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgsDict']]]]
+    psc_auto_connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]]]]
     """
     A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
     """
-    psc_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    psc_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether PSC connectivity is enabled for this instance.
     """
@@ -2943,10 +2943,10 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
     def __init__(__self__, *,
-                 allowed_consumer_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 network_attachment_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]]] = None,
-                 psc_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allowed_consumer_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 network_attachment_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]]] = None,
+                 psc_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
         :param pulumi.Input[_builtins.str] network_attachment_uri: Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
@@ -2964,50 +2964,50 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedConsumerProjects")
-    def allowed_consumer_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_consumer_projects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
         """
         return pulumi.get(self, "allowed_consumer_projects")
 
     @allowed_consumer_projects.setter
-    def allowed_consumer_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_consumer_projects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_consumer_projects", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAttachmentUri")
-    def network_attachment_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_attachment_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
         """
         return pulumi.get(self, "network_attachment_uri")
 
     @network_attachment_uri.setter
-    def network_attachment_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_attachment_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_attachment_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="pscAutoConnections")
-    def psc_auto_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]]]:
+    def psc_auto_connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]]]:
         """
         A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
         """
         return pulumi.get(self, "psc_auto_connections")
 
     @psc_auto_connections.setter
-    def psc_auto_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]]]):
+    def psc_auto_connections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]]]):
         pulumi.set(self, "psc_auto_connections", value)
 
     @_builtins.property
     @pulumi.getter(name="pscEnabled")
-    def psc_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def psc_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether PSC connectivity is enabled for this instance.
         """
         return pulumi.get(self, "psc_enabled")
 
     @psc_enabled.setter
-    def psc_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def psc_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "psc_enabled", value)
 
 
@@ -3016,19 +3016,19 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgsDict(
     """
     "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
     """
-    consumer_network_status: NotRequired[pulumi.Input[_builtins.str]]
+    consumer_network_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output) The connection policy status of the consumer network.
     """
-    consumer_service_project_id: NotRequired[pulumi.Input[_builtins.str]]
+    consumer_service_project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The project ID of consumer service project of this consumer endpoint.
     """
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output) The IP address of the consumer endpoint.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output) The connection status of the consumer endpoint.
     """
@@ -3037,10 +3037,10 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgsDict(
 class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs:
     def __init__(__self__, *,
                  consumer_network: pulumi.Input[_builtins.str],
-                 consumer_network_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_service_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 consumer_network_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_service_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] consumer_network: "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
         :param pulumi.Input[_builtins.str] consumer_network_status: (Output) The connection policy status of the consumer network.
@@ -3072,64 +3072,64 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="consumerNetworkStatus")
-    def consumer_network_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consumer_network_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output) The connection policy status of the consumer network.
         """
         return pulumi.get(self, "consumer_network_status")
 
     @consumer_network_status.setter
-    def consumer_network_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consumer_network_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consumer_network_status", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerServiceProjectId")
-    def consumer_service_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consumer_service_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID of consumer service project of this consumer endpoint.
         """
         return pulumi.get(self, "consumer_service_project_id")
 
     @consumer_service_project_id.setter
-    def consumer_service_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consumer_service_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consumer_service_project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output) The IP address of the consumer endpoint.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output) The connection status of the consumer endpoint.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 class DatabaseInstanceSettingsLocationPreferenceArgsDict(TypedDict):
-    follow_gae_application: NotRequired[pulumi.Input[_builtins.str]]
+    follow_gae_application: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A GAE application whose zone to remain
     in. Must be in the same region as this instance.
     """
-    secondary_zone: NotRequired[pulumi.Input[_builtins.str]]
+    secondary_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The preferred Compute Engine zone for the secondary/failover.
     """
-    zone: NotRequired[pulumi.Input[_builtins.str]]
+    zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The preferred compute engine
     [zone](https://cloud.google.com/compute/docs/zones?hl=en).
@@ -3138,9 +3138,9 @@ class DatabaseInstanceSettingsLocationPreferenceArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceSettingsLocationPreferenceArgs:
     def __init__(__self__, *,
-                 follow_gae_application: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 follow_gae_application: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] follow_gae_application: A GAE application whose zone to remain
                in. Must be in the same region as this instance.
@@ -3157,7 +3157,7 @@ class DatabaseInstanceSettingsLocationPreferenceArgs:
 
     @_builtins.property
     @pulumi.getter(name="followGaeApplication")
-    def follow_gae_application(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def follow_gae_application(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A GAE application whose zone to remain
         in. Must be in the same region as this instance.
@@ -3165,24 +3165,24 @@ class DatabaseInstanceSettingsLocationPreferenceArgs:
         return pulumi.get(self, "follow_gae_application")
 
     @follow_gae_application.setter
-    def follow_gae_application(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def follow_gae_application(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "follow_gae_application", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryZone")
-    def secondary_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The preferred Compute Engine zone for the secondary/failover.
         """
         return pulumi.get(self, "secondary_zone")
 
     @secondary_zone.setter
-    def secondary_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The preferred compute engine
         [zone](https://cloud.google.com/compute/docs/zones?hl=en).
@@ -3190,20 +3190,20 @@ class DatabaseInstanceSettingsLocationPreferenceArgs:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 class DatabaseInstanceSettingsMaintenanceWindowArgsDict(TypedDict):
-    day: NotRequired[pulumi.Input[_builtins.int]]
+    day: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Day of week (`1-7`), starting on Monday
     """
-    hour: NotRequired[pulumi.Input[_builtins.int]]
+    hour: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hour of day (`0-23`), ignored if `day` not set
     """
-    update_track: NotRequired[pulumi.Input[_builtins.str]]
+    update_track: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
     """
@@ -3211,9 +3211,9 @@ class DatabaseInstanceSettingsMaintenanceWindowArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceSettingsMaintenanceWindowArgs:
     def __init__(__self__, *,
-                 day: Optional[pulumi.Input[_builtins.int]] = None,
-                 hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 update_track: Optional[pulumi.Input[_builtins.str]] = None):
+                 day: pulumi.Input[Optional[_builtins.int]] = None,
+                 hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 update_track: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] day: Day of week (`1-7`), starting on Monday
         :param pulumi.Input[_builtins.int] hour: Hour of day (`0-23`), ignored if `day` not set
@@ -3228,38 +3228,38 @@ class DatabaseInstanceSettingsMaintenanceWindowArgs:
 
     @_builtins.property
     @pulumi.getter
-    def day(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def day(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Day of week (`1-7`), starting on Monday
         """
         return pulumi.get(self, "day")
 
     @day.setter
-    def day(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def day(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "day", value)
 
     @_builtins.property
     @pulumi.getter
-    def hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hour(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Hour of day (`0-23`), ignored if `day` not set
         """
         return pulumi.get(self, "hour")
 
     @hour.setter
-    def hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hour(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hour", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTrack")
-    def update_track(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_track(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
         """
         return pulumi.get(self, "update_track")
 
     @update_track.setter
-    def update_track(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_track(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_track", value)
 
 
@@ -3268,23 +3268,23 @@ class DatabaseInstanceSettingsPasswordValidationPolicyArgsDict(TypedDict):
     """
     Enables or disable the password validation policy.
     """
-    complexity: NotRequired[pulumi.Input[_builtins.str]]
+    complexity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
     """
-    disallow_username_substring: NotRequired[pulumi.Input[_builtins.bool]]
+    disallow_username_substring: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Prevents the use of the username in the password.
     """
-    min_length: NotRequired[pulumi.Input[_builtins.int]]
+    min_length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies the minimum number of characters that the password must have.
     """
-    password_change_interval: NotRequired[pulumi.Input[_builtins.str]]
+    password_change_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the minimum duration after which you can change the password.
     """
-    reuse_interval: NotRequired[pulumi.Input[_builtins.int]]
+    reuse_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies the number of previous passwords that you can't reuse.
     """
@@ -3293,11 +3293,11 @@ class DatabaseInstanceSettingsPasswordValidationPolicyArgsDict(TypedDict):
 class DatabaseInstanceSettingsPasswordValidationPolicyArgs:
     def __init__(__self__, *,
                  enable_password_policy: pulumi.Input[_builtins.bool],
-                 complexity: Optional[pulumi.Input[_builtins.str]] = None,
-                 disallow_username_substring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 min_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 password_change_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 reuse_interval: Optional[pulumi.Input[_builtins.int]] = None):
+                 complexity: pulumi.Input[Optional[_builtins.str]] = None,
+                 disallow_username_substring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 min_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 password_change_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 reuse_interval: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_password_policy: Enables or disable the password validation policy.
         :param pulumi.Input[_builtins.str] complexity: Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
@@ -3332,91 +3332,91 @@ class DatabaseInstanceSettingsPasswordValidationPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def complexity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def complexity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
         """
         return pulumi.get(self, "complexity")
 
     @complexity.setter
-    def complexity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def complexity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "complexity", value)
 
     @_builtins.property
     @pulumi.getter(name="disallowUsernameSubstring")
-    def disallow_username_substring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disallow_username_substring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevents the use of the username in the password.
         """
         return pulumi.get(self, "disallow_username_substring")
 
     @disallow_username_substring.setter
-    def disallow_username_substring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disallow_username_substring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disallow_username_substring", value)
 
     @_builtins.property
     @pulumi.getter(name="minLength")
-    def min_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the minimum number of characters that the password must have.
         """
         return pulumi.get(self, "min_length")
 
     @min_length.setter
-    def min_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_length", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordChangeInterval")
-    def password_change_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_change_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the minimum duration after which you can change the password.
         """
         return pulumi.get(self, "password_change_interval")
 
     @password_change_interval.setter
-    def password_change_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_change_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_change_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="reuseInterval")
-    def reuse_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reuse_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the number of previous passwords that you can't reuse.
         """
         return pulumi.get(self, "reuse_interval")
 
     @reuse_interval.setter
-    def reuse_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reuse_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reuse_interval", value)
 
 
 class DatabaseInstanceSettingsReadPoolAutoScaleConfigArgsDict(TypedDict):
-    disable_scale_in: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_scale_in: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if auto scale in is disabled.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if Read Pool Auto Scale is enabled.
     """
-    max_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_node_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of nodes in the read pool. If set to lower than current node count, node count will be updated.
     """
-    min_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    min_node_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of nodes in the read pool. If set to higher than current node count, node count will be updated.
     """
-    scale_in_cooldown_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    scale_in_cooldown_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The cooldown period for scale in operations.
     """
-    scale_out_cooldown_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    scale_out_cooldown_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The cooldown period for scale out operations.
     """
-    target_metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgsDict']]]]
+    target_metrics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs']]]]]
     """
     Target metrics for Read Pool Auto Scale. Must specify `target_metrics.metric` and `target_metrics.target_value` in subblock.
     """
@@ -3424,13 +3424,13 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfigArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs:
     def __init__(__self__, *,
-                 disable_scale_in: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_in_cooldown_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_out_cooldown_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs']]]] = None):
+                 disable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_in_cooldown_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_out_cooldown_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_metrics: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] disable_scale_in: True if auto scale in is disabled.
         :param pulumi.Input[_builtins.bool] enabled: True if Read Pool Auto Scale is enabled.
@@ -3457,95 +3457,95 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="disableScaleIn")
-    def disable_scale_in(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_scale_in(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if auto scale in is disabled.
         """
         return pulumi.get(self, "disable_scale_in")
 
     @disable_scale_in.setter
-    def disable_scale_in(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_scale_in(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_scale_in", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if Read Pool Auto Scale is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maxNodeCount")
-    def max_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of nodes in the read pool. If set to lower than current node count, node count will be updated.
         """
         return pulumi.get(self, "max_node_count")
 
     @max_node_count.setter
-    def max_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minNodeCount")
-    def min_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of nodes in the read pool. If set to higher than current node count, node count will be updated.
         """
         return pulumi.get(self, "min_node_count")
 
     @min_node_count.setter
-    def min_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleInCooldownSeconds")
-    def scale_in_cooldown_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_in_cooldown_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The cooldown period for scale in operations.
         """
         return pulumi.get(self, "scale_in_cooldown_seconds")
 
     @scale_in_cooldown_seconds.setter
-    def scale_in_cooldown_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_in_cooldown_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_in_cooldown_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleOutCooldownSeconds")
-    def scale_out_cooldown_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_out_cooldown_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The cooldown period for scale out operations.
         """
         return pulumi.get(self, "scale_out_cooldown_seconds")
 
     @scale_out_cooldown_seconds.setter
-    def scale_out_cooldown_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_out_cooldown_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_out_cooldown_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="targetMetrics")
-    def target_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs']]]]:
+    def target_metrics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs']]]]:
         """
         Target metrics for Read Pool Auto Scale. Must specify `target_metrics.metric` and `target_metrics.target_value` in subblock.
         """
         return pulumi.get(self, "target_metrics")
 
     @target_metrics.setter
-    def target_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs']]]]):
+    def target_metrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs']]]]):
         pulumi.set(self, "target_metrics", value)
 
 
 class DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgsDict(TypedDict):
-    metric: NotRequired[pulumi.Input[_builtins.str]]
+    metric: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Metric name for Read Pool Auto Scale.
     """
-    target_value: NotRequired[pulumi.Input[_builtins.float]]
+    target_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Target value for Read Pool Auto Scale.
     """
@@ -3553,8 +3553,8 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgsDict(TypedD
 @pulumi.input_type
 class DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs:
     def __init__(__self__, *,
-                 metric: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_value: Optional[pulumi.Input[_builtins.float]] = None):
+                 metric: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_value: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.str] metric: Metric name for Read Pool Auto Scale.
         :param pulumi.Input[_builtins.float] target_value: Target value for Read Pool Auto Scale.
@@ -3566,39 +3566,39 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs:
 
     @_builtins.property
     @pulumi.getter
-    def metric(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Metric name for Read Pool Auto Scale.
         """
         return pulumi.get(self, "metric")
 
     @metric.setter
-    def metric(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric", value)
 
     @_builtins.property
     @pulumi.getter(name="targetValue")
-    def target_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def target_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Target value for Read Pool Auto Scale.
         """
         return pulumi.get(self, "target_value")
 
     @target_value.setter
-    def target_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def target_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "target_value", value)
 
 
 class DatabaseInstanceSettingsSqlServerAuditConfigArgsDict(TypedDict):
-    bucket: NotRequired[pulumi.Input[_builtins.str]]
+    bucket: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the destination bucket (e.g., gs://mybucket).
     """
-    retention_interval: NotRequired[pulumi.Input[_builtins.str]]
+    retention_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
-    upload_interval: NotRequired[pulumi.Input[_builtins.str]]
+    upload_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
@@ -3606,9 +3606,9 @@ class DatabaseInstanceSettingsSqlServerAuditConfigArgsDict(TypedDict):
 @pulumi.input_type
 class DatabaseInstanceSettingsSqlServerAuditConfigArgs:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 upload_interval: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 upload_interval: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: The name of the destination bucket (e.g., gs://mybucket).
         :param pulumi.Input[_builtins.str] retention_interval: How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -3623,68 +3623,68 @@ class DatabaseInstanceSettingsSqlServerAuditConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the destination bucket (e.g., gs://mybucket).
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionInterval")
-    def retention_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retention_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "retention_interval")
 
     @retention_interval.setter
-    def retention_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retention_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retention_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadInterval")
-    def upload_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upload_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "upload_interval")
 
     @upload_interval.setter
-    def upload_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upload_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upload_interval", value)
 
 
 class UserPasswordPolicyArgsDict(TypedDict):
-    allowed_failed_attempts: NotRequired[pulumi.Input[_builtins.int]]
+    allowed_failed_attempts: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of failed attempts allowed before the user get locked.
     """
-    enable_failed_attempts_check: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_failed_attempts_check: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, the check that will lock user after too many failed login attempts will be enabled.
     """
-    enable_password_verification: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_password_verification: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
     """
-    password_expiration_duration: NotRequired[pulumi.Input[_builtins.str]]
+    password_expiration_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password expiration duration with one week grace period.
     """
-    statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArgsDict']]]]
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]]]
 
 @pulumi.input_type
 class UserPasswordPolicyArgs:
     def __init__(__self__, *,
-                 allowed_failed_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_failed_attempts_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_password_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_expiration_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]] = None):
+                 allowed_failed_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_failed_attempts_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_password_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_expiration_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.int] allowed_failed_attempts: Number of failed attempts allowed before the user get locked.
         :param pulumi.Input[_builtins.bool] enable_failed_attempts_check: If true, the check that will lock user after too many failed login attempts will be enabled.
@@ -3704,68 +3704,68 @@ class UserPasswordPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedFailedAttempts")
-    def allowed_failed_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def allowed_failed_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of failed attempts allowed before the user get locked.
         """
         return pulumi.get(self, "allowed_failed_attempts")
 
     @allowed_failed_attempts.setter
-    def allowed_failed_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def allowed_failed_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "allowed_failed_attempts", value)
 
     @_builtins.property
     @pulumi.getter(name="enableFailedAttemptsCheck")
-    def enable_failed_attempts_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_failed_attempts_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the check that will lock user after too many failed login attempts will be enabled.
         """
         return pulumi.get(self, "enable_failed_attempts_check")
 
     @enable_failed_attempts_check.setter
-    def enable_failed_attempts_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_failed_attempts_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_failed_attempts_check", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePasswordVerification")
-    def enable_password_verification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_password_verification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
         """
         return pulumi.get(self, "enable_password_verification")
 
     @enable_password_verification.setter
-    def enable_password_verification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_password_verification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_password_verification", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordExpirationDuration")
-    def password_expiration_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_expiration_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password expiration duration with one week grace period.
         """
         return pulumi.get(self, "password_expiration_duration")
 
     @password_expiration_duration.setter
-    def password_expiration_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_expiration_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_expiration_duration", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]]:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
 
 class UserPasswordPolicyStatusArgsDict(TypedDict):
-    locked: NotRequired[pulumi.Input[_builtins.bool]]
+    locked: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, user does not have login privileges.
     """
-    password_expiration_time: NotRequired[pulumi.Input[_builtins.str]]
+    password_expiration_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Password expiration duration with one week grace period.
     """
@@ -3773,8 +3773,8 @@ class UserPasswordPolicyStatusArgsDict(TypedDict):
 @pulumi.input_type
 class UserPasswordPolicyStatusArgs:
     def __init__(__self__, *,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_expiration_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_expiration_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] locked: If true, user does not have login privileges.
         :param pulumi.Input[_builtins.str] password_expiration_time: Password expiration duration with one week grace period.
@@ -3786,35 +3786,35 @@ class UserPasswordPolicyStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, user does not have login privileges.
         """
         return pulumi.get(self, "locked")
 
     @locked.setter
-    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "locked", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordExpirationTime")
-    def password_expiration_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_expiration_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password expiration duration with one week grace period.
         """
         return pulumi.get(self, "password_expiration_time")
 
     @password_expiration_time.setter
-    def password_expiration_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_expiration_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_expiration_time", value)
 
 
 class UserSqlServerUserDetailArgsDict(TypedDict):
-    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If the user has been disabled.
     """
-    server_roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    server_roles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The server roles for this user in the database.
     """
@@ -3822,8 +3822,8 @@ class UserSqlServerUserDetailArgsDict(TypedDict):
 @pulumi.input_type
 class UserSqlServerUserDetailArgs:
     def __init__(__self__, *,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] disabled: If the user has been disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] server_roles: The server roles for this user in the database.
@@ -3835,26 +3835,26 @@ class UserSqlServerUserDetailArgs:
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If the user has been disabled.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="serverRoles")
-    def server_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def server_roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The server roles for this user in the database.
         """
         return pulumi.get(self, "server_roles")
 
     @server_roles.setter
-    def server_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def server_roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "server_roles", value)
 
 

@@ -472,9 +472,9 @@ def get_cluster(name: Optional[_builtins.str] = None,
         transit_encryption_mode=pulumi.get(__ret__, 'transit_encryption_mode'),
         uid=pulumi.get(__ret__, 'uid'),
         zone_distribution_configs=pulumi.get(__ret__, 'zone_distribution_configs'))
-def get_cluster_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_cluster_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterResult]:
     """
     Use this data source to get information about a Redis Cluster. For more details, see the [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters).

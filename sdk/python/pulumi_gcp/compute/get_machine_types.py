@@ -110,12 +110,13 @@ def get_machine_types(filter: Optional[_builtins.str] = None,
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_gcp as gcp
     import pulumi_std as std
 
     example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 8",
         zone=zone)
-    example_instance_template = []
+    example_instance_template: list[Any] = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=[__item.name for __item in example.machine_types]).result)]:
         example_instance_template.append(gcp.compute.InstanceTemplate(f"example-{range['key']}",
             machine_type=range["value"],
@@ -138,14 +139,14 @@ def get_machine_types(filter: Optional[_builtins.str] = None,
     example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 4",
         zone=zone)
     example_instance_template = gcp.compute.InstanceTemplate("example",
-        machine_type=std.coalescelist(input=[
+        machine_type=output(std.coalescelist(input=[
             [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
                 prefix="c3-").result],
             [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
                 prefix="c2-").result],
             [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
                 prefix="n2-").result],
-        ]).result[0],
+        ]).result[0]).apply(lambda x: str(x)),
         disks=[{
             "source_image": "debian-cloud/debian-11",
             "auto_delete": True,
@@ -171,9 +172,9 @@ def get_machine_types(filter: Optional[_builtins.str] = None,
         machine_types=pulumi.get(__ret__, 'machine_types'),
         project=pulumi.get(__ret__, 'project'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_machine_types_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_machine_types_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMachineTypesResult]:
     """
     Provides access to available Google Compute machine types in a zone for a given project.
@@ -192,12 +193,13 @@ def get_machine_types_output(filter: Optional[pulumi.Input[Optional[_builtins.st
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_gcp as gcp
     import pulumi_std as std
 
     example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 8",
         zone=zone)
-    example_instance_template = []
+    example_instance_template: list[Any] = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=[__item.name for __item in example.machine_types]).result)]:
         example_instance_template.append(gcp.compute.InstanceTemplate(f"example-{range['key']}",
             machine_type=range["value"],
@@ -220,14 +222,14 @@ def get_machine_types_output(filter: Optional[pulumi.Input[Optional[_builtins.st
     example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 4",
         zone=zone)
     example_instance_template = gcp.compute.InstanceTemplate("example",
-        machine_type=std.coalescelist(input=[
+        machine_type=output(std.coalescelist(input=[
             [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
                 prefix="c3-").result],
             [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
                 prefix="c2-").result],
             [mt.name for mt in example.machine_types if std.startswith(input=mt.name,
                 prefix="n2-").result],
-        ]).result[0],
+        ]).result[0]).apply(lambda x: str(x)),
         disks=[{
             "source_image": "debian-cloud/debian-11",
             "auto_delete": True,

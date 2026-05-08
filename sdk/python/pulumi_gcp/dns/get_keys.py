@@ -140,8 +140,8 @@ def get_keys(managed_zone: Optional[_builtins.str] = None,
         managed_zone=pulumi.get(__ret__, 'managed_zone'),
         project=pulumi.get(__ret__, 'project'),
         zone_signing_keys=pulumi.get(__ret__, 'zone_signing_keys'))
-def get_keys_output(managed_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                    project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_keys_output(managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                    project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeysResult]:
     """
     Get the DNSKEY and DS records of DNSSEC-signed managed zones.

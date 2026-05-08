@@ -87,23 +87,23 @@ export class TargetIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TargetIamMember resources.
  */
 export interface TargetIamMemberState {
-    condition?: pulumi.Input<inputs.clouddeploy.TargetIamMemberCondition>;
-    etag?: pulumi.Input<string>;
-    location?: pulumi.Input<string>;
-    member?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.clouddeploy.TargetIamMemberCondition | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    location?: pulumi.Input<string | undefined>;
+    member?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a TargetIamMember resource.
  */
 export interface TargetIamMemberArgs {
-    condition?: pulumi.Input<inputs.clouddeploy.TargetIamMemberCondition>;
-    location?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.clouddeploy.TargetIamMemberCondition | undefined>;
+    location?: pulumi.Input<string | undefined>;
     member: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
     role: pulumi.Input<string>;
 }

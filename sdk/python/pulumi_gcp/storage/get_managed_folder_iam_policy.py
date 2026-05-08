@@ -103,8 +103,8 @@ def get_managed_folder_iam_policy(bucket: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         managed_folder=pulumi.get(__ret__, 'managed_folder'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-def get_managed_folder_iam_policy_output(bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                                         managed_folder: Optional[pulumi.Input[_builtins.str]] = None,
+def get_managed_folder_iam_policy_output(bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                                         managed_folder: pulumi.Input[Optional[_builtins.str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetManagedFolderIamPolicyResult]:
     """
     Use this data source to access information about an existing resource.

@@ -75,15 +75,15 @@ namespace Pulumi.Gcp.ApplicationIntegration
     ///         CloudKmsConfig = new Gcp.ApplicationIntegration.Inputs.ClientCloudKmsConfigArgs
     ///         {
     ///             KmsLocation = "us-east1",
-    ///             KmsRing = Std.Index.Basename.Invoke(new()
+    ///             KmsRing = Std.Basename.Invoke(new()
     ///             {
     ///                 Input = keyring.Apply(getKMSKeyRingResult =&gt; getKMSKeyRingResult.Id),
     ///             }).Apply(invoke =&gt; invoke.Result),
-    ///             Key = Std.Index.Basename.Invoke(new()
+    ///             Key = Std.Basename.Invoke(new()
     ///             {
     ///                 Input = cryptokey.Apply(getKMSCryptoKeyResult =&gt; getKMSCryptoKeyResult.Id),
     ///             }).Apply(invoke =&gt; invoke.Result),
-    ///             KeyVersion = Std.Index.Basename.Invoke(new()
+    ///             KeyVersion = Std.Basename.Invoke(new()
     ///             {
     ///                 Input = testKey.Apply(getKMSCryptoKeyVersionResult =&gt; getKMSCryptoKeyVersionResult.Id),
     ///             }).Apply(invoke =&gt; invoke.Result),

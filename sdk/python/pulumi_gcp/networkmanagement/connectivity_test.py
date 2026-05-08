@@ -23,14 +23,14 @@ class ConnectivityTestArgs:
     def __init__(__self__, *,
                  destination: pulumi.Input['ConnectivityTestDestinationArgs'],
                  source: pulumi.Input['ConnectivityTestSourceArgs'],
-                 bypass_firewall_checks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 round_trip: Optional[pulumi.Input[_builtins.bool]] = None):
+                 bypass_firewall_checks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 related_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 round_trip: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ConnectivityTest resource.
 
@@ -122,19 +122,19 @@ class ConnectivityTestArgs:
 
     @_builtins.property
     @pulumi.getter(name="bypassFirewallChecks")
-    def bypass_firewall_checks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bypass_firewall_checks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the analysis should skip firewall checking. Default value is false.
         """
         return pulumi.get(self, "bypass_firewall_checks")
 
     @bypass_firewall_checks.setter
-    def bypass_firewall_checks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bypass_firewall_checks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bypass_firewall_checks", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-supplied description of the Connectivity Test.
         Maximum of 512 characters.
@@ -142,12 +142,12 @@ class ConnectivityTestArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels to represent user-provided metadata.
 
@@ -157,24 +157,24 @@ class ConnectivityTestArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique name for the connectivity test.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -182,24 +182,24 @@ class ConnectivityTestArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP Protocol of the test. When not provided, "TCP" is assumed.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="relatedProjects")
-    def related_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def related_projects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Other projects that may be relevant for reachability analysis.
         This is applicable to scenarios where a test can cross project
@@ -208,12 +208,12 @@ class ConnectivityTestArgs:
         return pulumi.get(self, "related_projects")
 
     @related_projects.setter
-    def related_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def related_projects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "related_projects", value)
 
     @_builtins.property
     @pulumi.getter(name="roundTrip")
-    def round_trip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def round_trip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether run analysis for the return path from destination to source.
         Default value is false.
@@ -221,25 +221,25 @@ class ConnectivityTestArgs:
         return pulumi.get(self, "round_trip")
 
     @round_trip.setter
-    def round_trip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def round_trip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "round_trip", value)
 
 
 @pulumi.input_type
 class _ConnectivityTestState:
     def __init__(__self__, *,
-                 bypass_firewall_checks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input['ConnectivityTestDestinationArgs']] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 round_trip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source: Optional[pulumi.Input['ConnectivityTestSourceArgs']] = None):
+                 bypass_firewall_checks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional['ConnectivityTestDestinationArgs']] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 related_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 round_trip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source: pulumi.Input[Optional['ConnectivityTestSourceArgs']] = None):
         """
         Input properties used for looking up and filtering ConnectivityTest resources.
 
@@ -304,19 +304,19 @@ class _ConnectivityTestState:
 
     @_builtins.property
     @pulumi.getter(name="bypassFirewallChecks")
-    def bypass_firewall_checks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bypass_firewall_checks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the analysis should skip firewall checking. Default value is false.
         """
         return pulumi.get(self, "bypass_firewall_checks")
 
     @bypass_firewall_checks.setter
-    def bypass_firewall_checks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bypass_firewall_checks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bypass_firewall_checks", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-supplied description of the Connectivity Test.
         Maximum of 512 characters.
@@ -324,12 +324,12 @@ class _ConnectivityTestState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input['ConnectivityTestDestinationArgs']]:
+    def destination(self) -> pulumi.Input[Optional['ConnectivityTestDestinationArgs']]:
         """
         Required. Destination specification of the Connectivity Test.
         You can use a combination of destination IP address, URI of a supported
@@ -342,24 +342,24 @@ class _ConnectivityTestState:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input['ConnectivityTestDestinationArgs']]):
+    def destination(self, value: pulumi.Input[Optional['ConnectivityTestDestinationArgs']]):
         pulumi.set(self, "destination", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels to represent user-provided metadata.
 
@@ -369,24 +369,24 @@ class _ConnectivityTestState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique name for the connectivity test.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -394,24 +394,24 @@ class _ConnectivityTestState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP Protocol of the test. When not provided, "TCP" is assumed.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -419,12 +419,12 @@ class _ConnectivityTestState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="relatedProjects")
-    def related_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def related_projects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Other projects that may be relevant for reachability analysis.
         This is applicable to scenarios where a test can cross project
@@ -433,12 +433,12 @@ class _ConnectivityTestState:
         return pulumi.get(self, "related_projects")
 
     @related_projects.setter
-    def related_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def related_projects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "related_projects", value)
 
     @_builtins.property
     @pulumi.getter(name="roundTrip")
-    def round_trip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def round_trip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether run analysis for the return path from destination to source.
         Default value is false.
@@ -446,12 +446,12 @@ class _ConnectivityTestState:
         return pulumi.get(self, "round_trip")
 
     @round_trip.setter
-    def round_trip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def round_trip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "round_trip", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['ConnectivityTestSourceArgs']]:
+    def source(self) -> pulumi.Input[Optional['ConnectivityTestSourceArgs']]:
         """
         Required. Source specification of the Connectivity Test.
         You can use a combination of source IP address, URI of a supported
@@ -464,7 +464,7 @@ class _ConnectivityTestState:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input['ConnectivityTestSourceArgs']]):
+    def source(self, value: pulumi.Input[Optional['ConnectivityTestSourceArgs']]):
         pulumi.set(self, "source", value)
 
 
@@ -474,16 +474,16 @@ class ConnectivityTest(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bypass_firewall_checks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 round_trip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source: Optional[pulumi.Input[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']]] = None,
+                 bypass_firewall_checks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 related_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 round_trip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source: pulumi.Input[Optional[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']]] = None,
                  __props__=None):
         """
         A connectivity test are a static analysis of your resource configurations
@@ -839,16 +839,16 @@ class ConnectivityTest(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bypass_firewall_checks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 round_trip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source: Optional[pulumi.Input[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']]] = None,
+                 bypass_firewall_checks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 related_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 round_trip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source: pulumi.Input[Optional[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -886,18 +886,18 @@ class ConnectivityTest(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bypass_firewall_checks: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            destination: Optional[pulumi.Input[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            round_trip: Optional[pulumi.Input[_builtins.bool]] = None,
-            source: Optional[pulumi.Input[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']]] = None) -> 'ConnectivityTest':
+            bypass_firewall_checks: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            related_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            round_trip: pulumi.Input[Optional[_builtins.bool]] = None,
+            source: pulumi.Input[Optional[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']]] = None) -> 'ConnectivityTest':
         """
         Get an existing ConnectivityTest resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

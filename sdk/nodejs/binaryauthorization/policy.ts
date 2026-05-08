@@ -214,7 +214,7 @@ export interface PolicyState {
      * requests will always be permitted regardless of your admission rules.
      * Structure is documented below.
      */
-    admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyAdmissionWhitelistPattern>[]>;
+    admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyAdmissionWhitelistPattern>[] | undefined>;
     /**
      * Per-cluster admission rules. An admission rule specifies either that
      * all container images used in a pod creation request must be attested
@@ -227,29 +227,29 @@ export interface PolicyState {
      * (e.g. `us-central1`).
      * Structure is documented below.
      */
-    clusterAdmissionRules?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyClusterAdmissionRule>[]>;
+    clusterAdmissionRules?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyClusterAdmissionRule>[] | undefined>;
     /**
      * Default admission rule for a cluster without a per-cluster admission
      * rule.
      * Structure is documented below.
      */
-    defaultAdmissionRule?: pulumi.Input<inputs.binaryauthorization.PolicyDefaultAdmissionRule>;
+    defaultAdmissionRule?: pulumi.Input<inputs.binaryauthorization.PolicyDefaultAdmissionRule | undefined>;
     /**
      * A descriptive comment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
      * Possible values are: `ENABLE`, `DISABLE`.
      */
-    globalPolicyEvaluationMode?: pulumi.Input<string>;
+    globalPolicyEvaluationMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -262,7 +262,7 @@ export interface PolicyArgs {
      * requests will always be permitted regardless of your admission rules.
      * Structure is documented below.
      */
-    admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyAdmissionWhitelistPattern>[]>;
+    admissionWhitelistPatterns?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyAdmissionWhitelistPattern>[] | undefined>;
     /**
      * Per-cluster admission rules. An admission rule specifies either that
      * all container images used in a pod creation request must be attested
@@ -275,7 +275,7 @@ export interface PolicyArgs {
      * (e.g. `us-central1`).
      * Structure is documented below.
      */
-    clusterAdmissionRules?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyClusterAdmissionRule>[]>;
+    clusterAdmissionRules?: pulumi.Input<pulumi.Input<inputs.binaryauthorization.PolicyClusterAdmissionRule>[] | undefined>;
     /**
      * Default admission rule for a cluster without a per-cluster admission
      * rule.
@@ -285,17 +285,17 @@ export interface PolicyArgs {
     /**
      * A descriptive comment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
      * Possible values are: `ENABLE`, `DISABLE`.
      */
-    globalPolicyEvaluationMode?: pulumi.Input<string>;
+    globalPolicyEvaluationMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

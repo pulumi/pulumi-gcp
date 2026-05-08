@@ -214,65 +214,65 @@ export interface BackupPolicyState {
     /**
      * The total number of volumes assigned by this backup policy.
      */
-    assignedVolumeCount?: pulumi.Input<number>;
+    assignedVolumeCount?: pulumi.Input<number | undefined>;
     /**
      * Create time of the backup policy. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Number of daily backups to keep. Note that the minimum daily backup limit is 2.
      */
-    dailyBackupLimit?: pulumi.Input<number>;
+    dailyBackupLimit?: pulumi.Input<number | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If enabled, make backups automatically according to the schedules.
      * This will be applied to all volumes that have this policy attached and enforced on volume level.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the region for the policy to apply to.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
      */
-    monthlyBackupLimit?: pulumi.Input<number>;
+    monthlyBackupLimit?: pulumi.Input<number | undefined>;
     /**
      * The name of the backup policy. Needs to be unique per location.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The state of the backup policy.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Number of weekly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
      */
-    weeklyBackupLimit?: pulumi.Input<number>;
+    weeklyBackupLimit?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -286,19 +286,19 @@ export interface BackupPolicyArgs {
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If enabled, make backups automatically according to the schedules.
      * This will be applied to all volumes that have this policy attached and enforced on volume level.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the region for the policy to apply to.
      */
@@ -310,12 +310,12 @@ export interface BackupPolicyArgs {
     /**
      * The name of the backup policy. Needs to be unique per location.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Number of weekly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
      */

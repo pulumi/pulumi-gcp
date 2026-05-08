@@ -23,10 +23,10 @@ class BlockchainNodesArgs:
     def __init__(__self__, *,
                  blockchain_node_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 blockchain_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ethereum_details: Optional[pulumi.Input['BlockchainNodesEthereumDetailsArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 blockchain_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ethereum_details: pulumi.Input[Optional['BlockchainNodesEthereumDetailsArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BlockchainNodes resource.
 
@@ -80,7 +80,7 @@ class BlockchainNodesArgs:
 
     @_builtins.property
     @pulumi.getter(name="blockchainType")
-    def blockchain_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def blockchain_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided key-value pairs
         Possible values are: `ETHEREUM`.
@@ -88,12 +88,12 @@ class BlockchainNodesArgs:
         return pulumi.get(self, "blockchain_type")
 
     @blockchain_type.setter
-    def blockchain_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def blockchain_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "blockchain_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ethereumDetails")
-    def ethereum_details(self) -> Optional[pulumi.Input['BlockchainNodesEthereumDetailsArgs']]:
+    def ethereum_details(self) -> pulumi.Input[Optional['BlockchainNodesEthereumDetailsArgs']]:
         """
         User-provided key-value pairs
         Structure is documented below.
@@ -101,12 +101,12 @@ class BlockchainNodesArgs:
         return pulumi.get(self, "ethereum_details")
 
     @ethereum_details.setter
-    def ethereum_details(self, value: Optional[pulumi.Input['BlockchainNodesEthereumDetailsArgs']]):
+    def ethereum_details(self, value: pulumi.Input[Optional['BlockchainNodesEthereumDetailsArgs']]):
         pulumi.set(self, "ethereum_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-provided key-value pairs
 
@@ -116,12 +116,12 @@ class BlockchainNodesArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -129,25 +129,25 @@ class BlockchainNodesArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _BlockchainNodesState:
     def __init__(__self__, *,
-                 blockchain_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 blockchain_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_infos: Optional[pulumi.Input[Sequence[pulumi.Input['BlockchainNodesConnectionInfoArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ethereum_details: Optional[pulumi.Input['BlockchainNodesEthereumDetailsArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 blockchain_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 blockchain_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_infos: pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesConnectionInfoArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ethereum_details: pulumi.Input[Optional['BlockchainNodesEthereumDetailsArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BlockchainNodes resources.
 
@@ -199,19 +199,19 @@ class _BlockchainNodesState:
 
     @_builtins.property
     @pulumi.getter(name="blockchainNodeId")
-    def blockchain_node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def blockchain_node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the requesting object.
         """
         return pulumi.get(self, "blockchain_node_id")
 
     @blockchain_node_id.setter
-    def blockchain_node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def blockchain_node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "blockchain_node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="blockchainType")
-    def blockchain_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def blockchain_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided key-value pairs
         Possible values are: `ETHEREUM`.
@@ -219,12 +219,12 @@ class _BlockchainNodesState:
         return pulumi.get(self, "blockchain_type")
 
     @blockchain_type.setter
-    def blockchain_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def blockchain_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "blockchain_type", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionInfos")
-    def connection_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BlockchainNodesConnectionInfoArgs']]]]:
+    def connection_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesConnectionInfoArgs']]]]:
         """
         The connection information through which to interact with a blockchain node.
         Structure is documented below.
@@ -232,36 +232,36 @@ class _BlockchainNodesState:
         return pulumi.get(self, "connection_infos")
 
     @connection_infos.setter
-    def connection_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BlockchainNodesConnectionInfoArgs']]]]):
+    def connection_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesConnectionInfoArgs']]]]):
         pulumi.set(self, "connection_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp at which the blockchain node was first created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="ethereumDetails")
-    def ethereum_details(self) -> Optional[pulumi.Input['BlockchainNodesEthereumDetailsArgs']]:
+    def ethereum_details(self) -> pulumi.Input[Optional['BlockchainNodesEthereumDetailsArgs']]:
         """
         User-provided key-value pairs
         Structure is documented below.
@@ -269,12 +269,12 @@ class _BlockchainNodesState:
         return pulumi.get(self, "ethereum_details")
 
     @ethereum_details.setter
-    def ethereum_details(self, value: Optional[pulumi.Input['BlockchainNodesEthereumDetailsArgs']]):
+    def ethereum_details(self, value: pulumi.Input[Optional['BlockchainNodesEthereumDetailsArgs']]):
         pulumi.set(self, "ethereum_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-provided key-value pairs
 
@@ -284,36 +284,36 @@ class _BlockchainNodesState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location of Blockchain Node being created.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified name of the blockchain node. e.g. projects/my-project/locations/us-central1/blockchainNodes/my-node.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -321,12 +321,12 @@ class _BlockchainNodesState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -334,19 +334,19 @@ class _BlockchainNodesState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp at which the blockchain node was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -356,12 +356,12 @@ class BlockchainNodes(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 blockchain_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 blockchain_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ethereum_details: Optional[pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 blockchain_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 blockchain_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ethereum_details: pulumi.Input[Optional[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A representation of a blockchain node.
@@ -625,12 +625,12 @@ class BlockchainNodes(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 blockchain_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 blockchain_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ethereum_details: Optional[pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 blockchain_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 blockchain_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ethereum_details: pulumi.Input[Optional[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -668,18 +668,18 @@ class BlockchainNodes(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            blockchain_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-            blockchain_type: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BlockchainNodesConnectionInfoArgs', 'BlockchainNodesConnectionInfoArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ethereum_details: Optional[pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'BlockchainNodes':
+            blockchain_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            blockchain_type: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BlockchainNodesConnectionInfoArgs', 'BlockchainNodesConnectionInfoArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ethereum_details: pulumi.Input[Optional[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'BlockchainNodes':
         """
         Get an existing BlockchainNodes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -448,221 +448,221 @@ export interface VolumeState {
     /**
      * Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
      */
-    activeDirectory?: pulumi.Input<string>;
+    activeDirectory?: pulumi.Input<string | undefined>;
     /**
      * Backup configuration for the volume.
      * Structure is documented below.
      */
-    backupConfig?: pulumi.Input<inputs.netapp.VolumeBackupConfig>;
+    backupConfig?: pulumi.Input<inputs.netapp.VolumeBackupConfig | undefined>;
     /**
      * Block device represents the device(s) which are stored in the block volume.
      * Currently, only one block device is permitted per Volume.
      * Structure is documented below.
      */
-    blockDevices?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeBlockDevice>[]>;
+    blockDevices?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeBlockDevice>[] | undefined>;
     /**
      * Cache parameters for the volume.
      * Structure is documented below.
      */
-    cacheParameters?: pulumi.Input<inputs.netapp.VolumeCacheParameters>;
+    cacheParameters?: pulumi.Input<inputs.netapp.VolumeCacheParameters | undefined>;
     /**
      * Capacity of the volume (in GiB).
      */
-    capacityGib?: pulumi.Input<string>;
+    capacityGib?: pulumi.Input<string | undefined>;
     /**
      * Output only. Size of the volume cold tier data in GiB.
      */
-    coldTierSizeGib?: pulumi.Input<string>;
+    coldTierSizeGib?: pulumi.Input<string | undefined>;
     /**
      * Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Policy to determine if the volume should be deleted forcefully.
      * Volumes may have nested snapshot resources. Deleting such a volume will fail.
      * Setting this parameter to FORCE will delete volumes including nested snapshots.
      * Possible values: DEFAULT, FORCE.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Reports the data-at-rest encryption type of the volume. Inherited from storage pool.
      */
-    encryptionType?: pulumi.Input<string>;
+    encryptionType?: pulumi.Input<string | undefined>;
     /**
      * Export policy of the volume for NFSV3 and/or NFSV4.1 access.
      * Structure is documented below.
      */
-    exportPolicy?: pulumi.Input<inputs.netapp.VolumeExportPolicy>;
+    exportPolicy?: pulumi.Input<inputs.netapp.VolumeExportPolicy | undefined>;
     /**
      * Indicates whether the volume is part of a volume replication relationship.
      */
-    hasReplication?: pulumi.Input<boolean>;
+    hasReplication?: pulumi.Input<boolean | undefined>;
     /**
      * Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
      */
-    hotTierSizeUsedGib?: pulumi.Input<string>;
+    hotTierSizeUsedGib?: pulumi.Input<string | undefined>;
     /**
      * [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
      * [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
      * are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
      * Structure is documented below.
      */
-    hybridReplicationParameters?: pulumi.Input<inputs.netapp.VolumeHybridReplicationParameters>;
+    hybridReplicationParameters?: pulumi.Input<inputs.netapp.VolumeHybridReplicationParameters | undefined>;
     /**
      * Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
      */
-    kerberosEnabled?: pulumi.Input<boolean>;
+    kerberosEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Reports the CMEK policy resurce name being used for volume encryption. Inherited from storage pool.
      */
-    kmsConfig?: pulumi.Input<string>;
+    kmsConfig?: pulumi.Input<string | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
      */
-    largeCapacity?: pulumi.Input<boolean>;
+    largeCapacity?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration for a Large Capacity Volume. A Large Capacity Volume
      * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
      * internal constituents, and must be created in a large capacity pool.
      * Structure is documented below.
      */
-    largeCapacityConfig?: pulumi.Input<inputs.netapp.VolumeLargeCapacityConfig>;
+    largeCapacityConfig?: pulumi.Input<inputs.netapp.VolumeLargeCapacityConfig | undefined>;
     /**
      * Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
      */
-    ldapEnabled?: pulumi.Input<boolean>;
+    ldapEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Reports mount instructions for this volume.
      * Structure is documented below.
      */
-    mountOptions?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeMountOption>[]>;
+    mountOptions?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeMountOption>[] | undefined>;
     /**
      * Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
      * Only the volume with largeCapacity will be allowed to have multiple endpoints.
      */
-    multipleEndpoints?: pulumi.Input<boolean>;
+    multipleEndpoints?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the volume. Needs to be unique per location.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * VPC network name with format: `projects/{{project}}/global/networks/{{network}}`. Inherited from storage pool.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
      * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
      */
-    protocols?: pulumi.Input<pulumi.Input<string>[]>;
+    protocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the Private Service Access allocated range. Inherited from storage pool.
      */
-    psaRange?: pulumi.Input<string>;
+    psaRange?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies the replica zone for regional volume.
      */
-    replicaZone?: pulumi.Input<string>;
+    replicaZone?: pulumi.Input<string | undefined>;
     /**
      * Used to create this volume from a snapshot (= cloning) or an backup.
      * Structure is documented below.
      */
-    restoreParameters?: pulumi.Input<inputs.netapp.VolumeRestoreParameters>;
+    restoreParameters?: pulumi.Input<inputs.netapp.VolumeRestoreParameters | undefined>;
     /**
      * List of actions that are restricted on this volume.
      * Each value may be one of: `DELETE`.
      */
-    restrictedActions?: pulumi.Input<pulumi.Input<string>[]>;
+    restrictedActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Security Style of the Volume. Use UNIX to use UNIX or NFSV4 ACLs for file permissions.
      * Use NTFS to use NTFS ACLs for file permissions. Can only be set for volumes which use SMB together with NFS as protocol.
      * Possible values are: `NTFS`, `UNIX`.
      */
-    securityStyle?: pulumi.Input<string>;
+    securityStyle?: pulumi.Input<string | undefined>;
     /**
      * Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
      */
-    serviceLevel?: pulumi.Input<string>;
+    serviceLevel?: pulumi.Input<string | undefined>;
     /**
      * Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
      */
-    shareName?: pulumi.Input<string>;
+    shareName?: pulumi.Input<string | undefined>;
     /**
      * Settings for volumes with SMB access.
      * Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
      */
-    smbSettings?: pulumi.Input<pulumi.Input<string>[]>;
+    smbSettings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
      */
-    snapshotDirectory?: pulumi.Input<boolean>;
+    snapshotDirectory?: pulumi.Input<boolean | undefined>;
     /**
      * Snapshot policy defines the schedule for automatic snapshot creation.
      * To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
      * Structure is documented below.
      */
-    snapshotPolicy?: pulumi.Input<inputs.netapp.VolumeSnapshotPolicy>;
+    snapshotPolicy?: pulumi.Input<inputs.netapp.VolumeSnapshotPolicy | undefined>;
     /**
      * State of the volume.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * State details of the volume.
      */
-    stateDetails?: pulumi.Input<string>;
+    stateDetails?: pulumi.Input<string | undefined>;
     /**
      * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
      */
-    storagePool?: pulumi.Input<string>;
+    storagePool?: pulumi.Input<string | undefined>;
     /**
      * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
      */
-    throughputMibps?: pulumi.Input<number>;
+    throughputMibps?: pulumi.Input<number | undefined>;
     /**
      * Tiering policy for the volume.
      * Structure is documented below.
      */
-    tieringPolicy?: pulumi.Input<inputs.netapp.VolumeTieringPolicy>;
+    tieringPolicy?: pulumi.Input<inputs.netapp.VolumeTieringPolicy | undefined>;
     /**
      * Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
      */
-    unixPermissions?: pulumi.Input<string>;
+    unixPermissions?: pulumi.Input<string | undefined>;
     /**
      * Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
      */
-    usedGib?: pulumi.Input<string>;
+    usedGib?: pulumi.Input<string | undefined>;
     /**
      * Specifies the active zone for regional volume.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -673,18 +673,18 @@ export interface VolumeArgs {
      * Backup configuration for the volume.
      * Structure is documented below.
      */
-    backupConfig?: pulumi.Input<inputs.netapp.VolumeBackupConfig>;
+    backupConfig?: pulumi.Input<inputs.netapp.VolumeBackupConfig | undefined>;
     /**
      * Block device represents the device(s) which are stored in the block volume.
      * Currently, only one block device is permitted per Volume.
      * Structure is documented below.
      */
-    blockDevices?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeBlockDevice>[]>;
+    blockDevices?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeBlockDevice>[] | undefined>;
     /**
      * Cache parameters for the volume.
      * Structure is documented below.
      */
-    cacheParameters?: pulumi.Input<inputs.netapp.VolumeCacheParameters>;
+    cacheParameters?: pulumi.Input<inputs.netapp.VolumeCacheParameters | undefined>;
     /**
      * Capacity of the volume (in GiB).
      */
@@ -695,45 +695,45 @@ export interface VolumeArgs {
      * Setting this parameter to FORCE will delete volumes including nested snapshots.
      * Possible values: DEFAULT, FORCE.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Export policy of the volume for NFSV3 and/or NFSV4.1 access.
      * Structure is documented below.
      */
-    exportPolicy?: pulumi.Input<inputs.netapp.VolumeExportPolicy>;
+    exportPolicy?: pulumi.Input<inputs.netapp.VolumeExportPolicy | undefined>;
     /**
      * [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
      * [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
      * are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
      * Structure is documented below.
      */
-    hybridReplicationParameters?: pulumi.Input<inputs.netapp.VolumeHybridReplicationParameters>;
+    hybridReplicationParameters?: pulumi.Input<inputs.netapp.VolumeHybridReplicationParameters | undefined>;
     /**
      * Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
      */
-    kerberosEnabled?: pulumi.Input<boolean>;
+    kerberosEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
      */
-    largeCapacity?: pulumi.Input<boolean>;
+    largeCapacity?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration for a Large Capacity Volume. A Large Capacity Volume
      * supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
      * internal constituents, and must be created in a large capacity pool.
      * Structure is documented below.
      */
-    largeCapacityConfig?: pulumi.Input<inputs.netapp.VolumeLargeCapacityConfig>;
+    largeCapacityConfig?: pulumi.Input<inputs.netapp.VolumeLargeCapacityConfig | undefined>;
     /**
      * Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
      */
@@ -742,16 +742,16 @@ export interface VolumeArgs {
      * Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
      * Only the volume with largeCapacity will be allowed to have multiple endpoints.
      */
-    multipleEndpoints?: pulumi.Input<boolean>;
+    multipleEndpoints?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the volume. Needs to be unique per location.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
      * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
@@ -761,37 +761,37 @@ export interface VolumeArgs {
      * Used to create this volume from a snapshot (= cloning) or an backup.
      * Structure is documented below.
      */
-    restoreParameters?: pulumi.Input<inputs.netapp.VolumeRestoreParameters>;
+    restoreParameters?: pulumi.Input<inputs.netapp.VolumeRestoreParameters | undefined>;
     /**
      * List of actions that are restricted on this volume.
      * Each value may be one of: `DELETE`.
      */
-    restrictedActions?: pulumi.Input<pulumi.Input<string>[]>;
+    restrictedActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Security Style of the Volume. Use UNIX to use UNIX or NFSV4 ACLs for file permissions.
      * Use NTFS to use NTFS ACLs for file permissions. Can only be set for volumes which use SMB together with NFS as protocol.
      * Possible values are: `NTFS`, `UNIX`.
      */
-    securityStyle?: pulumi.Input<string>;
+    securityStyle?: pulumi.Input<string | undefined>;
     /**
      * Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
      */
-    shareName?: pulumi.Input<string>;
+    shareName?: pulumi.Input<string | undefined>;
     /**
      * Settings for volumes with SMB access.
      * Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
      */
-    smbSettings?: pulumi.Input<pulumi.Input<string>[]>;
+    smbSettings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
      */
-    snapshotDirectory?: pulumi.Input<boolean>;
+    snapshotDirectory?: pulumi.Input<boolean | undefined>;
     /**
      * Snapshot policy defines the schedule for automatic snapshot creation.
      * To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
      * Structure is documented below.
      */
-    snapshotPolicy?: pulumi.Input<inputs.netapp.VolumeSnapshotPolicy>;
+    snapshotPolicy?: pulumi.Input<inputs.netapp.VolumeSnapshotPolicy | undefined>;
     /**
      * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
      */
@@ -799,14 +799,14 @@ export interface VolumeArgs {
     /**
      * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
      */
-    throughputMibps?: pulumi.Input<number>;
+    throughputMibps?: pulumi.Input<number | undefined>;
     /**
      * Tiering policy for the volume.
      * Structure is documented below.
      */
-    tieringPolicy?: pulumi.Input<inputs.netapp.VolumeTieringPolicy>;
+    tieringPolicy?: pulumi.Input<inputs.netapp.VolumeTieringPolicy | undefined>;
     /**
      * Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
      */
-    unixPermissions?: pulumi.Input<string>;
+    unixPermissions?: pulumi.Input<string | undefined>;
 }

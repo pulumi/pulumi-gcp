@@ -25,7 +25,7 @@ class DocumentAiWarehouseDocumentSchemaArgs:
                  location: pulumi.Input[_builtins.str],
                  project_number: pulumi.Input[_builtins.str],
                  property_definitions: pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]],
-                 document_is_folder: Optional[pulumi.Input[_builtins.bool]] = None):
+                 document_is_folder: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DocumentAiWarehouseDocumentSchema resource.
 
@@ -94,26 +94,26 @@ class DocumentAiWarehouseDocumentSchemaArgs:
 
     @_builtins.property
     @pulumi.getter(name="documentIsFolder")
-    def document_is_folder(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def document_is_folder(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Tells whether the document is a folder or a typical document.
         """
         return pulumi.get(self, "document_is_folder")
 
     @document_is_folder.setter
-    def document_is_folder(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def document_is_folder(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "document_is_folder", value)
 
 
 @pulumi.input_type
 class _DocumentAiWarehouseDocumentSchemaState:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_is_folder: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_is_folder: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 property_definitions: pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] = None):
         """
         Input properties used for looking up and filtering DocumentAiWarehouseDocumentSchema resources.
 
@@ -140,67 +140,67 @@ class _DocumentAiWarehouseDocumentSchemaState:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the schema given by the user.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="documentIsFolder")
-    def document_is_folder(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def document_is_folder(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Tells whether the document is a folder or a typical document.
         """
         return pulumi.get(self, "document_is_folder")
 
     @document_is_folder.setter
-    def document_is_folder(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def document_is_folder(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "document_is_folder", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the document schema.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectNumber")
-    def project_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the project.
         """
         return pulumi.get(self, "project_number")
 
     @project_number.setter
-    def project_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_number", value)
 
     @_builtins.property
     @pulumi.getter(name="propertyDefinitions")
-    def property_definitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]]:
+    def property_definitions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]]:
         """
         Defines the metadata for a schema property.
         Structure is documented below.
@@ -208,7 +208,7 @@ class _DocumentAiWarehouseDocumentSchemaState:
         return pulumi.get(self, "property_definitions")
 
     @property_definitions.setter
-    def property_definitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]]):
+    def property_definitions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]]):
         pulumi.set(self, "property_definitions", value)
 
 
@@ -218,11 +218,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_is_folder: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_is_folder: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 property_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]]] = None,
                  __props__=None):
         """
         A document schema is used to define document structure.
@@ -364,11 +364,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_is_folder: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_is_folder: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 property_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -402,12 +402,12 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            document_is_folder: Optional[pulumi.Input[_builtins.bool]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_number: Optional[pulumi.Input[_builtins.str]] = None,
-            property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]]] = None) -> 'DocumentAiWarehouseDocumentSchema':
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            document_is_folder: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_number: pulumi.Input[Optional[_builtins.str]] = None,
+            property_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs', 'DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict']]]]] = None) -> 'DocumentAiWarehouseDocumentSchema':
         """
         Get an existing DocumentAiWarehouseDocumentSchema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

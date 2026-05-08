@@ -387,48 +387,48 @@ export interface RestoreWorkloadState {
     /**
      * Required. The ID of the backup to restore from.
      */
-    backupId?: pulumi.Input<string>;
+    backupId?: pulumi.Input<string | undefined>;
     /**
      * Required. The ID of the backup vault.
      */
-    backupVaultId?: pulumi.Input<string>;
+    backupVaultId?: pulumi.Input<string | undefined>;
     /**
      * Optional. A field mask used to clear server-side default values during restore.
      */
-    clearOverridesFieldMask?: pulumi.Input<string>;
+    clearOverridesFieldMask?: pulumi.Input<string | undefined>;
     /**
      * Optional. Compute Engine instance properties to be overridden during restore.
      * Structure is documented below.
      */
-    computeInstanceRestoreProperties?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadComputeInstanceRestoreProperties>;
+    computeInstanceRestoreProperties?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadComputeInstanceRestoreProperties | undefined>;
     /**
      * Optional. The destination environment for GCE VM restoration.
      * Structure is documented below.
      */
-    computeInstanceTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadComputeInstanceTargetEnvironment>;
+    computeInstanceTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadComputeInstanceTargetEnvironment | undefined>;
     /**
      * Required. The ID of the data source.
      */
-    dataSourceId?: pulumi.Input<string>;
+    dataSourceId?: pulumi.Input<string | undefined>;
     /**
      * Optional. If true (default), running terraform destroy will delete the live resource in GCP.
      * If false, only the restore record is removed from the state, leaving the resource active.
      */
-    deleteRestoredInstance?: pulumi.Input<boolean>;
+    deleteRestoredInstance?: pulumi.Input<boolean | undefined>;
     /**
      * Optional. Disk properties to be overridden during restore.
      * Structure is documented below.
      */
-    diskRestoreProperties?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadDiskRestoreProperties>;
+    diskRestoreProperties?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadDiskRestoreProperties | undefined>;
     /**
      * Optional. The destination environment for zonal disk restoration.
      * Structure is documented below.
      */
-    diskTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadDiskTargetEnvironment>;
+    diskTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadDiskTargetEnvironment | undefined>;
     /**
      * Required. The location for the backup vault.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Deprecated)
      * The resource name of the backup instance.
@@ -437,23 +437,23 @@ export interface RestoreWorkloadState {
      *
      * @deprecated `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Optional. The destination environment for regional disk restoration.
      * Structure is documented below.
      */
-    regionDiskTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadRegionDiskTargetEnvironment>;
+    regionDiskTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadRegionDiskTargetEnvironment | undefined>;
     /**
      * Optional. An optional request ID to identify requests. Specify a unique request ID
      * so that if you must retry your request, the server will know to ignore
      * the request if it has already been completed.
      */
-    requestId?: pulumi.Input<string>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * Output only. Details of the target resource created/modified as part of restore.
      * Structure is documented below.
      */
-    targetResources?: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadTargetResource>[]>;
+    targetResources?: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadTargetResource>[] | undefined>;
 }
 
 /**
@@ -471,17 +471,17 @@ export interface RestoreWorkloadArgs {
     /**
      * Optional. A field mask used to clear server-side default values during restore.
      */
-    clearOverridesFieldMask?: pulumi.Input<string>;
+    clearOverridesFieldMask?: pulumi.Input<string | undefined>;
     /**
      * Optional. Compute Engine instance properties to be overridden during restore.
      * Structure is documented below.
      */
-    computeInstanceRestoreProperties?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadComputeInstanceRestoreProperties>;
+    computeInstanceRestoreProperties?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadComputeInstanceRestoreProperties | undefined>;
     /**
      * Optional. The destination environment for GCE VM restoration.
      * Structure is documented below.
      */
-    computeInstanceTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadComputeInstanceTargetEnvironment>;
+    computeInstanceTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadComputeInstanceTargetEnvironment | undefined>;
     /**
      * Required. The ID of the data source.
      */
@@ -490,17 +490,17 @@ export interface RestoreWorkloadArgs {
      * Optional. If true (default), running terraform destroy will delete the live resource in GCP.
      * If false, only the restore record is removed from the state, leaving the resource active.
      */
-    deleteRestoredInstance?: pulumi.Input<boolean>;
+    deleteRestoredInstance?: pulumi.Input<boolean | undefined>;
     /**
      * Optional. Disk properties to be overridden during restore.
      * Structure is documented below.
      */
-    diskRestoreProperties?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadDiskRestoreProperties>;
+    diskRestoreProperties?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadDiskRestoreProperties | undefined>;
     /**
      * Optional. The destination environment for zonal disk restoration.
      * Structure is documented below.
      */
-    diskTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadDiskTargetEnvironment>;
+    diskTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadDiskTargetEnvironment | undefined>;
     /**
      * Required. The location for the backup vault.
      */
@@ -513,16 +513,16 @@ export interface RestoreWorkloadArgs {
      *
      * @deprecated `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Optional. The destination environment for regional disk restoration.
      * Structure is documented below.
      */
-    regionDiskTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadRegionDiskTargetEnvironment>;
+    regionDiskTargetEnvironment?: pulumi.Input<inputs.backupdisasterrecovery.RestoreWorkloadRegionDiskTargetEnvironment | undefined>;
     /**
      * Optional. An optional request ID to identify requests. Specify a unique request ID
      * so that if you must retry your request, the server will know to ignore
      * the request if it has already been completed.
      */
-    requestId?: pulumi.Input<string>;
+    requestId?: pulumi.Input<string | undefined>;
 }

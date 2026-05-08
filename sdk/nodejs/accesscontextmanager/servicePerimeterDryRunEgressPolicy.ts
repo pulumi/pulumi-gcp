@@ -130,30 +130,30 @@ export interface ServicePerimeterDryRunEgressPolicyState {
     /**
      * The name of the Access Policy this resource belongs to.
      */
-    accessPolicyId?: pulumi.Input<string>;
+    accessPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Defines conditions on the source of a request causing this `EgressPolicy` to apply.
      * Structure is documented below.
      */
-    egressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterDryRunEgressPolicyEgressFrom>;
+    egressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterDryRunEgressPolicyEgressFrom | undefined>;
     /**
      * Defines the conditions on the `ApiOperation` and destination resources that
      * cause this `EgressPolicy` to apply.
      * Structure is documented below.
      */
-    egressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterDryRunEgressPolicyEgressTo>;
+    egressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterDryRunEgressPolicyEgressTo | undefined>;
     /**
      * The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The name of the Service Perimeter to add this resource to.
      */
-    perimeter?: pulumi.Input<string>;
+    perimeter?: pulumi.Input<string | undefined>;
     /**
      * Human readable title. Must be unique within the perimeter. Does not affect behavior.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -164,13 +164,13 @@ export interface ServicePerimeterDryRunEgressPolicyArgs {
      * Defines conditions on the source of a request causing this `EgressPolicy` to apply.
      * Structure is documented below.
      */
-    egressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterDryRunEgressPolicyEgressFrom>;
+    egressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterDryRunEgressPolicyEgressFrom | undefined>;
     /**
      * Defines the conditions on the `ApiOperation` and destination resources that
      * cause this `EgressPolicy` to apply.
      * Structure is documented below.
      */
-    egressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterDryRunEgressPolicyEgressTo>;
+    egressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterDryRunEgressPolicyEgressTo | undefined>;
     /**
      * The name of the Service Perimeter to add this resource to.
      */
@@ -178,5 +178,5 @@ export interface ServicePerimeterDryRunEgressPolicyArgs {
     /**
      * Human readable title. Must be unique within the perimeter. Does not affect behavior.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }

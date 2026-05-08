@@ -101,8 +101,8 @@ export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getInstance.
  */
 export interface GetInstanceOutputArgs {
-    config?: pulumi.Input<string>;
-    displayName?: pulumi.Input<string>;
+    config?: pulumi.Input<string | undefined>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the spanner instance.
      *
@@ -113,5 +113,5 @@ export interface GetInstanceOutputArgs {
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

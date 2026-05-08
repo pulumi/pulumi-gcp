@@ -417,8 +417,8 @@ def get_database_instance(name: Optional[_builtins.str] = None,
         server_ca_certs=pulumi.get(__ret__, 'server_ca_certs'),
         service_account_email_address=pulumi.get(__ret__, 'service_account_email_address'),
         settings=pulumi.get(__ret__, 'settings'))
-def get_database_instance_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                 project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_database_instance_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                 project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstanceResult]:
     """
     Use this data source to get information about a Cloud SQL instance.

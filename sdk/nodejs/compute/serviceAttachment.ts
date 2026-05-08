@@ -689,45 +689,45 @@ export interface ServiceAttachmentState {
      * attachment.
      * Structure is documented below.
      */
-    connectedEndpoints?: pulumi.Input<pulumi.Input<inputs.compute.ServiceAttachmentConnectedEndpoint>[]>;
+    connectedEndpoints?: pulumi.Input<pulumi.Input<inputs.compute.ServiceAttachmentConnectedEndpoint>[] | undefined>;
     /**
      * The connection preference to use for this service attachment. Valid
      * values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
      */
-    connectionPreference?: pulumi.Input<string>;
+    connectionPreference?: pulumi.Input<string | undefined>;
     /**
      * An array of projects that are allowed to connect to this service
      * attachment.
      * Structure is documented below.
      */
-    consumerAcceptLists?: pulumi.Input<pulumi.Input<inputs.compute.ServiceAttachmentConsumerAcceptList>[]>;
+    consumerAcceptLists?: pulumi.Input<pulumi.Input<inputs.compute.ServiceAttachmentConsumerAcceptList>[] | undefined>;
     /**
      * An array of projects that are not allowed to connect to this service
      * attachment.
      */
-    consumerRejectLists?: pulumi.Input<pulumi.Input<string>[]>;
+    consumerRejectLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If specified, the domain name will be used during the integration between
      * the PSC connected endpoints and the Cloud DNS. For example, this is a
      * valid domain name: "p.mycompany.com.". Current max number of domain names
      * supported is 1.
      */
-    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
+    domainNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
      */
-    enableProxyProtocol?: pulumi.Input<boolean>;
+    enableProxyProtocol?: pulumi.Input<boolean | undefined>;
     /**
      * Fingerprint of this resource. This field is used internally during
      * updates of this resource.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -736,16 +736,16 @@ export interface ServiceAttachmentState {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * An array of subnets that is provided for NAT in this service attachment.
      */
-    natSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+    natSubnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
      * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
@@ -753,49 +753,49 @@ export interface ServiceAttachmentState {
      * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
      * If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
      */
-    propagatedConnectionLimit?: pulumi.Input<number>;
+    propagatedConnectionLimit?: pulumi.Input<number | undefined>;
     /**
      * An 128-bit global unique ID of the PSC service attachment.
      * Structure is documented below.
      */
-    pscServiceAttachmentIds?: pulumi.Input<pulumi.Input<inputs.compute.ServiceAttachmentPscServiceAttachmentId>[]>;
+    pscServiceAttachmentIds?: pulumi.Input<pulumi.Input<inputs.compute.ServiceAttachmentPscServiceAttachmentId>[] | undefined>;
     /**
      * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
      * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
      * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
      */
-    reconcileConnections?: pulumi.Input<boolean>;
+    reconcileConnections?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the region where the resource resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Controls the behavior of propagated_connection_limit.
      * When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
      * When true, the provider will set propagatedConnectionLimit to zero.
      * Defaults to false.
      */
-    sendPropagatedConnectionLimitIfZero?: pulumi.Input<boolean>;
+    sendPropagatedConnectionLimitIfZero?: pulumi.Input<boolean | undefined>;
     /**
      * NOTE: This field is temporarily non-functional due to an underlying API issue.
      * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
      * [If true, show NAT IPs of all connected endpoints.]
      */
-    showNatIps?: pulumi.Input<boolean>;
+    showNatIps?: pulumi.Input<boolean | undefined>;
     /**
      * The URL of a service serving the endpoint identified by this service attachment.
      */
-    targetService?: pulumi.Input<string>;
+    targetService?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Tunneling configuration for this service attachment.
      * Structure is documented below.
      */
-    tunnelingConfig?: pulumi.Input<inputs.compute.ServiceAttachmentTunnelingConfig>;
+    tunnelingConfig?: pulumi.Input<inputs.compute.ServiceAttachmentTunnelingConfig | undefined>;
 }
 
 /**
@@ -812,23 +812,23 @@ export interface ServiceAttachmentArgs {
      * attachment.
      * Structure is documented below.
      */
-    consumerAcceptLists?: pulumi.Input<pulumi.Input<inputs.compute.ServiceAttachmentConsumerAcceptList>[]>;
+    consumerAcceptLists?: pulumi.Input<pulumi.Input<inputs.compute.ServiceAttachmentConsumerAcceptList>[] | undefined>;
     /**
      * An array of projects that are not allowed to connect to this service
      * attachment.
      */
-    consumerRejectLists?: pulumi.Input<pulumi.Input<string>[]>;
+    consumerRejectLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If specified, the domain name will be used during the integration between
      * the PSC connected endpoints and the Cloud DNS. For example, this is a
      * valid domain name: "p.mycompany.com.". Current max number of domain names
      * supported is 1.
      */
-    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
+    domainNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to
@@ -843,7 +843,7 @@ export interface ServiceAttachmentArgs {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * An array of subnets that is provided for NAT in this service attachment.
      */
@@ -852,7 +852,7 @@ export interface ServiceAttachmentArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
      * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
@@ -860,30 +860,30 @@ export interface ServiceAttachmentArgs {
      * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
      * If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
      */
-    propagatedConnectionLimit?: pulumi.Input<number>;
+    propagatedConnectionLimit?: pulumi.Input<number | undefined>;
     /**
      * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
      * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
      * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
      */
-    reconcileConnections?: pulumi.Input<boolean>;
+    reconcileConnections?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the region where the resource resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Controls the behavior of propagated_connection_limit.
      * When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
      * When true, the provider will set propagatedConnectionLimit to zero.
      * Defaults to false.
      */
-    sendPropagatedConnectionLimitIfZero?: pulumi.Input<boolean>;
+    sendPropagatedConnectionLimitIfZero?: pulumi.Input<boolean | undefined>;
     /**
      * NOTE: This field is temporarily non-functional due to an underlying API issue.
      * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
      * [If true, show NAT IPs of all connected endpoints.]
      */
-    showNatIps?: pulumi.Input<boolean>;
+    showNatIps?: pulumi.Input<boolean | undefined>;
     /**
      * The URL of a service serving the endpoint identified by this service attachment.
      */
@@ -893,5 +893,5 @@ export interface ServiceAttachmentArgs {
      * Tunneling configuration for this service attachment.
      * Structure is documented below.
      */
-    tunnelingConfig?: pulumi.Input<inputs.compute.ServiceAttachmentTunnelingConfig>;
+    tunnelingConfig?: pulumi.Input<inputs.compute.ServiceAttachmentTunnelingConfig | undefined>;
 }

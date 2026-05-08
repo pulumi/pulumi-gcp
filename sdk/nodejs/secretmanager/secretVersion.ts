@@ -320,7 +320,7 @@ export interface SecretVersionState {
     /**
      * The time at which the Secret was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The deletion policy for the secret version. Setting `ABANDON` allows the resource
      * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
@@ -329,38 +329,38 @@ export interface SecretVersionState {
      * * DISABLE
      * * ABANDON
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The time at which the Secret was destroyed. Only present if state is DESTROYED.
      */
-    destroyTime?: pulumi.Input<string>;
+    destroyTime?: pulumi.Input<string | undefined>;
     /**
      * The current state of the SecretVersion.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
      */
-    isSecretDataBase64?: pulumi.Input<boolean>;
+    isSecretDataBase64?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name of the SecretVersion. Format:
      * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it is not provided,
      * the provider project is used
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Secret Manager secret resource
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    secretData?: pulumi.Input<string>;
+    secretData?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * (Optional, Write-Only)
@@ -369,15 +369,15 @@ export interface SecretVersionState {
      *
      * > **Note:** One of `secretData` or `secretDataWo` can only be set.
      */
-    secretDataWo?: pulumi.Input<string>;
+    secretDataWo?: pulumi.Input<string | undefined>;
     /**
      * Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      */
-    secretDataWoVersion?: pulumi.Input<number>;
+    secretDataWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The version of the Secret.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -392,20 +392,20 @@ export interface SecretVersionArgs {
      * * DISABLE
      * * ABANDON
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The current state of the SecretVersion.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
      */
-    isSecretDataBase64?: pulumi.Input<boolean>;
+    isSecretDataBase64?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it is not provided,
      * the provider project is used
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Secret Manager secret resource
      */
@@ -414,7 +414,7 @@ export interface SecretVersionArgs {
      * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    secretData?: pulumi.Input<string>;
+    secretData?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * (Optional, Write-Only)
@@ -423,9 +423,9 @@ export interface SecretVersionArgs {
      *
      * > **Note:** One of `secretData` or `secretDataWo` can only be set.
      */
-    secretDataWo?: pulumi.Input<string>;
+    secretDataWo?: pulumi.Input<string | undefined>;
     /**
      * Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      */
-    secretDataWoVersion?: pulumi.Input<number>;
+    secretDataWoVersion?: pulumi.Input<number | undefined>;
 }

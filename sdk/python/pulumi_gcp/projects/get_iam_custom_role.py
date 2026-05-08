@@ -159,8 +159,8 @@ def get_iam_custom_role(project: Optional[_builtins.str] = None,
         role_id=pulumi.get(__ret__, 'role_id'),
         stage=pulumi.get(__ret__, 'stage'),
         title=pulumi.get(__ret__, 'title'))
-def get_iam_custom_role_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               role_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_iam_custom_role_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               role_id: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIamCustomRoleResult]:
     """
     Get information about a Google Cloud Project IAM Custom Role. Note that you must have the `roles/iam.roleViewer` role (or equivalent permissions) at the project level to use this datasource.

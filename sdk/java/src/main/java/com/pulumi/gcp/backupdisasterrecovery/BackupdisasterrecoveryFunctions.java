@@ -56,8 +56,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -99,8 +99,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -142,8 +142,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -185,8 +185,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -228,8 +228,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -286,8 +286,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -327,8 +327,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -368,8 +368,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -409,8 +409,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -450,8 +450,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -491,8 +491,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -531,8 +531,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -571,8 +571,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -611,8 +611,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -651,8 +651,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -691,8 +691,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupVaultArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -732,8 +732,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupVaultArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -773,8 +773,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupVaultArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -814,8 +814,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupVaultArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -855,8 +855,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupVaultArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -896,8 +896,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -939,8 +939,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -982,8 +982,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1025,8 +1025,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1068,8 +1068,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1181,8 +1181,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1223,8 +1223,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1265,8 +1265,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1307,8 +1307,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1349,8 +1349,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1394,8 +1394,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1437,8 +1437,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1480,8 +1480,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1523,8 +1523,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1566,8 +1566,8 @@ public final class BackupdisasterrecoveryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
      * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

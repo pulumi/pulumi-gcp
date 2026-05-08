@@ -24,21 +24,21 @@ class InstanceArgs:
                  file_shares: pulumi.Input['InstanceFileSharesArgs'],
                  networks: pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]],
                  tier: pulumi.Input[_builtins.str],
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_replica_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_services: Optional[pulumi.Input['InstanceDirectoryServicesArgs']] = None,
-                 initial_replication: Optional[pulumi.Input['InstanceInitialReplicationArgs']] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_config: Optional[pulumi.Input['InstancePerformanceConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_replica_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_services: pulumi.Input[Optional['InstanceDirectoryServicesArgs']] = None,
+                 initial_replication: pulumi.Input[Optional['InstanceInitialReplicationArgs']] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_config: pulumi.Input[Optional['InstancePerformanceConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -172,55 +172,55 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
-    def deletion_protection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the instance is protected against deletion.
         """
         return pulumi.get(self, "deletion_protection_enabled")
 
     @deletion_protection_enabled.setter
-    def deletion_protection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionReason")
-    def deletion_protection_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_protection_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason for enabling deletion protection.
         """
         return pulumi.get(self, "deletion_protection_reason")
 
     @deletion_protection_reason.setter
-    def deletion_protection_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_protection_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_protection_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the instance.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredReplicaState")
-    def desired_replica_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_replica_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired_replica_state field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
         """
         return pulumi.get(self, "desired_replica_state")
 
     @desired_replica_state.setter
-    def desired_replica_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_replica_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_replica_state", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryServices")
-    def directory_services(self) -> Optional[pulumi.Input['InstanceDirectoryServicesArgs']]:
+    def directory_services(self) -> pulumi.Input[Optional['InstanceDirectoryServicesArgs']]:
         """
         Directory Services configuration.
         Should only be set if protocol is "NFS_V4_1".
@@ -229,12 +229,12 @@ class InstanceArgs:
         return pulumi.get(self, "directory_services")
 
     @directory_services.setter
-    def directory_services(self, value: Optional[pulumi.Input['InstanceDirectoryServicesArgs']]):
+    def directory_services(self, value: pulumi.Input[Optional['InstanceDirectoryServicesArgs']]):
         pulumi.set(self, "directory_services", value)
 
     @_builtins.property
     @pulumi.getter(name="initialReplication")
-    def initial_replication(self) -> Optional[pulumi.Input['InstanceInitialReplicationArgs']]:
+    def initial_replication(self) -> pulumi.Input[Optional['InstanceInitialReplicationArgs']]:
         """
         Replication configuration, once set, this cannot be updated.
         Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
@@ -243,24 +243,24 @@ class InstanceArgs:
         return pulumi.get(self, "initial_replication")
 
     @initial_replication.setter
-    def initial_replication(self, value: Optional[pulumi.Input['InstanceInitialReplicationArgs']]):
+    def initial_replication(self, value: pulumi.Input[Optional['InstanceInitialReplicationArgs']]):
         pulumi.set(self, "initial_replication", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KMS key name used for data encryption.
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels to represent user-provided metadata.
 
@@ -270,36 +270,36 @@ class InstanceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceConfig")
-    def performance_config(self) -> Optional[pulumi.Input['InstancePerformanceConfigArgs']]:
+    def performance_config(self) -> pulumi.Input[Optional['InstancePerformanceConfigArgs']]:
         """
         Performance configuration for the instance. If not provided,
         the default performance settings will be used.
@@ -308,12 +308,12 @@ class InstanceArgs:
         return pulumi.get(self, "performance_config")
 
     @performance_config.setter
-    def performance_config(self, value: Optional[pulumi.Input['InstancePerformanceConfigArgs']]):
+    def performance_config(self, value: pulumi.Input[Optional['InstancePerformanceConfigArgs']]):
         pulumi.set(self, "performance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -321,12 +321,12 @@ class InstanceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Either NFSv3, for using NFS version 3 as file sharing protocol,
         or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
@@ -338,12 +338,12 @@ class InstanceArgs:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of resource manager tags. Resource manager tag keys
         and values have the same definition as resource manager
@@ -358,13 +358,13 @@ class InstanceArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         The name of the Filestore zone of the instance.
@@ -374,36 +374,36 @@ class InstanceArgs:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_replica_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_services: Optional[pulumi.Input['InstanceDirectoryServicesArgs']] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_replications: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationArgs']]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_shares: Optional[pulumi.Input['InstanceFileSharesArgs']] = None,
-                 initial_replication: Optional[pulumi.Input['InstanceInitialReplicationArgs']] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
-                 performance_config: Optional[pulumi.Input['InstancePerformanceConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_replica_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_services: pulumi.Input[Optional['InstanceDirectoryServicesArgs']] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_replications: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEffectiveReplicationArgs']]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_shares: pulumi.Input[Optional['InstanceFileSharesArgs']] = None,
+                 initial_replication: pulumi.Input[Optional['InstanceInitialReplicationArgs']] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
+                 performance_config: pulumi.Input[Optional['InstancePerformanceConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -517,67 +517,67 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
-    def deletion_protection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the instance is protected against deletion.
         """
         return pulumi.get(self, "deletion_protection_enabled")
 
     @deletion_protection_enabled.setter
-    def deletion_protection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionReason")
-    def deletion_protection_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_protection_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason for enabling deletion protection.
         """
         return pulumi.get(self, "deletion_protection_reason")
 
     @deletion_protection_reason.setter
-    def deletion_protection_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_protection_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_protection_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the instance.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredReplicaState")
-    def desired_replica_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_replica_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired_replica_state field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
         """
         return pulumi.get(self, "desired_replica_state")
 
     @desired_replica_state.setter
-    def desired_replica_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_replica_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_replica_state", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryServices")
-    def directory_services(self) -> Optional[pulumi.Input['InstanceDirectoryServicesArgs']]:
+    def directory_services(self) -> pulumi.Input[Optional['InstanceDirectoryServicesArgs']]:
         """
         Directory Services configuration.
         Should only be set if protocol is "NFS_V4_1".
@@ -586,24 +586,24 @@ class _InstanceState:
         return pulumi.get(self, "directory_services")
 
     @directory_services.setter
-    def directory_services(self, value: Optional[pulumi.Input['InstanceDirectoryServicesArgs']]):
+    def directory_services(self, value: pulumi.Input[Optional['InstanceDirectoryServicesArgs']]):
         pulumi.set(self, "directory_services", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveReplications")
-    def effective_replications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationArgs']]]]:
+    def effective_replications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEffectiveReplicationArgs']]]]:
         """
         Output only fields for replication configuration.
         Structure is documented below.
@@ -611,12 +611,12 @@ class _InstanceState:
         return pulumi.get(self, "effective_replications")
 
     @effective_replications.setter
-    def effective_replications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationArgs']]]]):
+    def effective_replications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEffectiveReplicationArgs']]]]):
         pulumi.set(self, "effective_replications", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server-specified ETag for the instance resource to prevent
         simultaneous updates from overwriting each other.
@@ -624,12 +624,12 @@ class _InstanceState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="fileShares")
-    def file_shares(self) -> Optional[pulumi.Input['InstanceFileSharesArgs']]:
+    def file_shares(self) -> pulumi.Input[Optional['InstanceFileSharesArgs']]:
         """
         File system shares on the instance. For this version, only a
         single file share is supported.
@@ -638,12 +638,12 @@ class _InstanceState:
         return pulumi.get(self, "file_shares")
 
     @file_shares.setter
-    def file_shares(self, value: Optional[pulumi.Input['InstanceFileSharesArgs']]):
+    def file_shares(self, value: pulumi.Input[Optional['InstanceFileSharesArgs']]):
         pulumi.set(self, "file_shares", value)
 
     @_builtins.property
     @pulumi.getter(name="initialReplication")
-    def initial_replication(self) -> Optional[pulumi.Input['InstanceInitialReplicationArgs']]:
+    def initial_replication(self) -> pulumi.Input[Optional['InstanceInitialReplicationArgs']]:
         """
         Replication configuration, once set, this cannot be updated.
         Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
@@ -652,24 +652,24 @@ class _InstanceState:
         return pulumi.get(self, "initial_replication")
 
     @initial_replication.setter
-    def initial_replication(self, value: Optional[pulumi.Input['InstanceInitialReplicationArgs']]):
+    def initial_replication(self, value: pulumi.Input[Optional['InstanceInitialReplicationArgs']]):
         pulumi.set(self, "initial_replication", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KMS key name used for data encryption.
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels to represent user-provided metadata.
 
@@ -679,36 +679,36 @@ class _InstanceState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]]:
         """
         VPC networks to which the instance is connected. For this version,
         only a single network is supported.
@@ -717,12 +717,12 @@ class _InstanceState:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceConfig")
-    def performance_config(self) -> Optional[pulumi.Input['InstancePerformanceConfigArgs']]:
+    def performance_config(self) -> pulumi.Input[Optional['InstancePerformanceConfigArgs']]:
         """
         Performance configuration for the instance. If not provided,
         the default performance settings will be used.
@@ -731,12 +731,12 @@ class _InstanceState:
         return pulumi.get(self, "performance_config")
 
     @performance_config.setter
-    def performance_config(self, value: Optional[pulumi.Input['InstancePerformanceConfigArgs']]):
+    def performance_config(self, value: pulumi.Input[Optional['InstancePerformanceConfigArgs']]):
         pulumi.set(self, "performance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -744,12 +744,12 @@ class _InstanceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Either NFSv3, for using NFS version 3 as file sharing protocol,
         or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
@@ -761,12 +761,12 @@ class _InstanceState:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -774,12 +774,12 @@ class _InstanceState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of resource manager tags. Resource manager tag keys
         and values have the same definition as resource manager
@@ -794,12 +794,12 @@ class _InstanceState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service tier of the instance.
         Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
@@ -807,13 +807,13 @@ class _InstanceState:
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tier", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         The name of the Filestore zone of the instance.
@@ -823,7 +823,7 @@ class _InstanceState:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -833,24 +833,24 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_replica_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_services: Optional[pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']]] = None,
-                 file_shares: Optional[pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
-                 initial_replication: Optional[pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
-                 performance_config: Optional[pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_replica_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_services: pulumi.Input[Optional[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']]] = None,
+                 file_shares: pulumi.Input[Optional[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
+                 initial_replication: pulumi.Input[Optional[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+                 performance_config: pulumi.Input[Optional[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Google Cloud Filestore instance.
@@ -1185,24 +1185,24 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_replica_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_services: Optional[pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']]] = None,
-                 file_shares: Optional[pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
-                 initial_replication: Optional[pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
-                 performance_config: Optional[pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_replica_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_services: pulumi.Input[Optional[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']]] = None,
+                 file_shares: pulumi.Input[Optional[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
+                 initial_replication: pulumi.Input[Optional[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+                 performance_config: pulumi.Input[Optional[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1253,29 +1253,29 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_replica_state: Optional[pulumi.Input[_builtins.str]] = None,
-            directory_services: Optional[pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_replications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEffectiveReplicationArgs', 'InstanceEffectiveReplicationArgsDict']]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            file_shares: Optional[pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
-            initial_replication: Optional[pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']]] = None,
-            kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
-            performance_config: Optional[pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            tier: Optional[pulumi.Input[_builtins.str]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_replica_state: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_services: pulumi.Input[Optional[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_replications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEffectiveReplicationArgs', 'InstanceEffectiveReplicationArgsDict']]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            file_shares: pulumi.Input[Optional[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
+            initial_replication: pulumi.Input[Optional[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+            performance_config: pulumi.Input[Optional[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tier: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

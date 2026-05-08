@@ -135,9 +135,9 @@ def get_bucket_object_contents(bucket: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         match_glob=pulumi.get(__ret__, 'match_glob'),
         prefix=pulumi.get(__ret__, 'prefix'))
-def get_bucket_object_contents_output(bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                                      match_glob: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      prefix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_bucket_object_contents_output(bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                                      match_glob: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      prefix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBucketObjectContentsResult]:
     """
     Gets existing object contents inside an existing bucket in Google Cloud Storage service (GCS).

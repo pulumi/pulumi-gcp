@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Observability
     ///     });
     /// 
     ///     // Add a delay to allow the service account to propagate
-    ///     var waitForSaPropagation = new Time.Index.Sleep("wait_for_sa_propagation", new()
+    ///     var waitForSaPropagation = new Time.Sleep("wait_for_sa_propagation", new()
     ///     {
     ///         CreateDuration = "90s",
     ///     }, new CustomResourceOptions

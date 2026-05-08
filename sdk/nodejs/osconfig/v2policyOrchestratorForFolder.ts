@@ -327,58 +327,58 @@ export interface V2PolicyOrchestratorForFolderState {
      * - `UPSERT` - Orchestrator will create or update target resources.
      * - `DELETE` - Orchestrator will delete target resources, if they exist
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the policy orchestrator resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Freeform text describing the purpose of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * This checksum is computed by the server based on the value of other
      * fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The parent resource name in the form of `folders/{folder_id}/locations/global`.
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Identifier. In form of
      * * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
      * * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
      * * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Represents a resource that is being orchestrated by the policy orchestrator.
      * Structure is documented below.
      */
-    orchestratedResource?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForFolderOrchestratedResource>;
+    orchestratedResource?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForFolderOrchestratedResource | undefined>;
     /**
      * Defines a set of selectors which drive which resources are in scope of policy
      * orchestration.
      * Structure is documented below.
      */
-    orchestrationScope?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForFolderOrchestrationScope>;
+    orchestrationScope?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForFolderOrchestrationScope | undefined>;
     /**
      * Describes the state of the orchestration process.
      * Structure is documented below.
      */
-    orchestrationStates?: pulumi.Input<pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForFolderOrchestrationState>[]>;
+    orchestrationStates?: pulumi.Input<pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForFolderOrchestrationState>[] | undefined>;
     /**
      * The logical identifier of the policy orchestrator, with the following
      * restrictions:
@@ -388,17 +388,17 @@ export interface V2PolicyOrchestratorForFolderState {
      * * Must end with a number or a letter.
      * * Must be unique within the parent.
      */
-    policyOrchestratorId?: pulumi.Input<string>;
+    policyOrchestratorId?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Set to true, if the there are ongoing changes being applied by the
      * orchestrator.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * State of the orchestrator. Can be updated to change orchestrator behaviour.
      * Allowed values:
@@ -408,11 +408,11 @@ export interface V2PolicyOrchestratorForFolderState {
      * instead of an enum, to avoid the need of propagating new states to all the
      * client code.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the policy orchestrator resource was last modified.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -430,7 +430,7 @@ export interface V2PolicyOrchestratorForFolderArgs {
     /**
      * Freeform text describing the purpose of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The parent resource name in the form of `folders/{folder_id}/locations/global`.
      */
@@ -440,7 +440,7 @@ export interface V2PolicyOrchestratorForFolderArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Represents a resource that is being orchestrated by the policy orchestrator.
      * Structure is documented below.
@@ -451,7 +451,7 @@ export interface V2PolicyOrchestratorForFolderArgs {
      * orchestration.
      * Structure is documented below.
      */
-    orchestrationScope?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForFolderOrchestrationScope>;
+    orchestrationScope?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForFolderOrchestrationScope | undefined>;
     /**
      * The logical identifier of the policy orchestrator, with the following
      * restrictions:
@@ -471,5 +471,5 @@ export interface V2PolicyOrchestratorForFolderArgs {
      * instead of an enum, to avoid the need of propagating new states to all the
      * client code.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }

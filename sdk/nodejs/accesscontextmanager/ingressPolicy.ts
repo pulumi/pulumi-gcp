@@ -104,15 +104,15 @@ export interface IngressPolicyState {
     /**
      * The name of the Access Policy this resource belongs to.
      */
-    accessPolicyId?: pulumi.Input<string>;
+    accessPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Service Perimeter to add this resource to.
      */
-    ingressPolicyName?: pulumi.Input<string>;
+    ingressPolicyName?: pulumi.Input<string | undefined>;
     /**
      * A GCP resource that is inside of the service perimeter.
      */
-    resource?: pulumi.Input<string>;
+    resource?: pulumi.Input<string | undefined>;
 }
 
 /**

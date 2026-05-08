@@ -232,8 +232,8 @@ def get_interconnect_location(name: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'),
         status=pulumi.get(__ret__, 'status'))
-def get_interconnect_location_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                     project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_interconnect_location_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                     project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInterconnectLocationResult]:
     """
     Get the details of a single interconnect location. For more information see

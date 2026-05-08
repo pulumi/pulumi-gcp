@@ -249,7 +249,7 @@ import * as utilities from "../utilities";
  *     executionTimeout: "86400s",
  *     gcsNotebookSource: {
  *         uri: pulumi.interpolate`gs://${notebook.bucket}/${notebook.name}`,
- *         generation: notebook.generation,
+ *         generation: notebook.generation.apply(x =>String(x)),
  *     },
  *     serviceAccount: "my@service-account.com",
  *     gcsOutputUri: pulumi.interpolate`gs://${outputBucket.name}`,
@@ -501,59 +501,59 @@ export interface NotebookExecutionState {
      * Compute configuration to use for an execution job
      * Structure is documented below.
      */
-    customEnvironmentSpec?: pulumi.Input<inputs.colab.NotebookExecutionCustomEnvironmentSpec>;
+    customEnvironmentSpec?: pulumi.Input<inputs.colab.NotebookExecutionCustomEnvironmentSpec | undefined>;
     /**
      * The Dataform Repository containing the input notebook.
      * Structure is documented below.
      */
-    dataformRepositorySource?: pulumi.Input<inputs.colab.NotebookExecutionDataformRepositorySource>;
+    dataformRepositorySource?: pulumi.Input<inputs.colab.NotebookExecutionDataformRepositorySource | undefined>;
     /**
      * The content of the input notebook in ipynb format.
      * Structure is documented below.
      */
-    directNotebookSource?: pulumi.Input<inputs.colab.NotebookExecutionDirectNotebookSource>;
+    directNotebookSource?: pulumi.Input<inputs.colab.NotebookExecutionDirectNotebookSource | undefined>;
     /**
      * Required. The display name of the Notebook Execution.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Max running time of the execution job in seconds (default 86400s / 24 hrs).
      */
-    executionTimeout?: pulumi.Input<string>;
+    executionTimeout?: pulumi.Input<string | undefined>;
     /**
      * The user email to run the execution as.
      */
-    executionUser?: pulumi.Input<string>;
+    executionUser?: pulumi.Input<string | undefined>;
     /**
      * The Cloud Storage uri for the input notebook.
      * Structure is documented below.
      */
-    gcsNotebookSource?: pulumi.Input<inputs.colab.NotebookExecutionGcsNotebookSource>;
+    gcsNotebookSource?: pulumi.Input<inputs.colab.NotebookExecutionGcsNotebookSource | undefined>;
     /**
      * The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
      */
-    gcsOutputUri?: pulumi.Input<string>;
+    gcsOutputUri?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * User specified ID for the Notebook Execution Job
      */
-    notebookExecutionJobId?: pulumi.Input<string>;
+    notebookExecutionJobId?: pulumi.Input<string | undefined>;
     /**
      * The NotebookRuntimeTemplate to source compute configuration from.
      */
-    notebookRuntimeTemplateResourceName?: pulumi.Input<string>;
+    notebookRuntimeTemplateResourceName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The service account to run the execution as.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -564,17 +564,17 @@ export interface NotebookExecutionArgs {
      * Compute configuration to use for an execution job
      * Structure is documented below.
      */
-    customEnvironmentSpec?: pulumi.Input<inputs.colab.NotebookExecutionCustomEnvironmentSpec>;
+    customEnvironmentSpec?: pulumi.Input<inputs.colab.NotebookExecutionCustomEnvironmentSpec | undefined>;
     /**
      * The Dataform Repository containing the input notebook.
      * Structure is documented below.
      */
-    dataformRepositorySource?: pulumi.Input<inputs.colab.NotebookExecutionDataformRepositorySource>;
+    dataformRepositorySource?: pulumi.Input<inputs.colab.NotebookExecutionDataformRepositorySource | undefined>;
     /**
      * The content of the input notebook in ipynb format.
      * Structure is documented below.
      */
-    directNotebookSource?: pulumi.Input<inputs.colab.NotebookExecutionDirectNotebookSource>;
+    directNotebookSource?: pulumi.Input<inputs.colab.NotebookExecutionDirectNotebookSource | undefined>;
     /**
      * Required. The display name of the Notebook Execution.
      */
@@ -582,16 +582,16 @@ export interface NotebookExecutionArgs {
     /**
      * Max running time of the execution job in seconds (default 86400s / 24 hrs).
      */
-    executionTimeout?: pulumi.Input<string>;
+    executionTimeout?: pulumi.Input<string | undefined>;
     /**
      * The user email to run the execution as.
      */
-    executionUser?: pulumi.Input<string>;
+    executionUser?: pulumi.Input<string | undefined>;
     /**
      * The Cloud Storage uri for the input notebook.
      * Structure is documented below.
      */
-    gcsNotebookSource?: pulumi.Input<inputs.colab.NotebookExecutionGcsNotebookSource>;
+    gcsNotebookSource?: pulumi.Input<inputs.colab.NotebookExecutionGcsNotebookSource | undefined>;
     /**
      * The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
      */
@@ -603,18 +603,18 @@ export interface NotebookExecutionArgs {
     /**
      * User specified ID for the Notebook Execution Job
      */
-    notebookExecutionJobId?: pulumi.Input<string>;
+    notebookExecutionJobId?: pulumi.Input<string | undefined>;
     /**
      * The NotebookRuntimeTemplate to source compute configuration from.
      */
-    notebookRuntimeTemplateResourceName?: pulumi.Input<string>;
+    notebookRuntimeTemplateResourceName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The service account to run the execution as.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
 }

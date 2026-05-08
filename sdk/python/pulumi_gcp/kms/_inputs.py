@@ -66,7 +66,7 @@ class CryptoKeyIAMBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -80,7 +80,7 @@ class CryptoKeyIAMBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -121,7 +121,7 @@ class CryptoKeyIAMBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -132,7 +132,7 @@ class CryptoKeyIAMBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -145,7 +145,7 @@ class CryptoKeyIAMMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -159,7 +159,7 @@ class CryptoKeyIAMMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -200,7 +200,7 @@ class CryptoKeyIAMMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -211,12 +211,12 @@ class CryptoKeyIAMMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class CryptoKeyKeyAccessJustificationsPolicyArgsDict(TypedDict):
-    allowed_access_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_access_reasons: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of allowed reasons for access to this CryptoKey. Zero allowed
     access reasons means all encrypt, decrypt, and sign operations for
@@ -226,7 +226,7 @@ class CryptoKeyKeyAccessJustificationsPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class CryptoKeyKeyAccessJustificationsPolicyArgs:
     def __init__(__self__, *,
-                 allowed_access_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allowed_access_reasons: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_access_reasons: The list of allowed reasons for access to this CryptoKey. Zero allowed
                access reasons means all encrypt, decrypt, and sign operations for
@@ -237,7 +237,7 @@ class CryptoKeyKeyAccessJustificationsPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedAccessReasons")
-    def allowed_access_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_access_reasons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of allowed reasons for access to this CryptoKey. Zero allowed
         access reasons means all encrypt, decrypt, and sign operations for
@@ -246,16 +246,16 @@ class CryptoKeyKeyAccessJustificationsPolicyArgs:
         return pulumi.get(self, "allowed_access_reasons")
 
     @allowed_access_reasons.setter
-    def allowed_access_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_access_reasons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_access_reasons", value)
 
 
 class CryptoKeyPrimaryArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name for the CryptoKey.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current state of the CryptoKeyVersion.
@@ -264,8 +264,8 @@ class CryptoKeyPrimaryArgsDict(TypedDict):
 @pulumi.input_type
 class CryptoKeyPrimaryArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The resource name for the CryptoKey.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -278,19 +278,19 @@ class CryptoKeyPrimaryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for the CryptoKey.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current state of the CryptoKeyVersion.
@@ -298,27 +298,27 @@ class CryptoKeyPrimaryArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class CryptoKeyVersionAttestationArgsDict(TypedDict):
-    cert_chains: NotRequired[pulumi.Input['CryptoKeyVersionAttestationCertChainsArgsDict']]
+    cert_chains: NotRequired[pulumi.Input[Optional['CryptoKeyVersionAttestationCertChainsArgs']]]
     """
     The certificate chains needed to validate the attestation
     Structure is documented below.
     """
-    content: NotRequired[pulumi.Input[_builtins.str]]
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The attestation data provided by the HSM when the key operation was performed.
     """
-    external_protection_level_options: NotRequired[pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgsDict']]
+    external_protection_level_options: NotRequired[pulumi.Input[Optional['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs']]]
     """
     ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
     Structure is documented below.
     """
-    format: NotRequired[pulumi.Input[_builtins.str]]
+    format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The format of the attestation data.
@@ -327,10 +327,10 @@ class CryptoKeyVersionAttestationArgsDict(TypedDict):
 @pulumi.input_type
 class CryptoKeyVersionAttestationArgs:
     def __init__(__self__, *,
-                 cert_chains: Optional[pulumi.Input['CryptoKeyVersionAttestationCertChainsArgs']] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_protection_level_options: Optional[pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs']] = None,
-                 format: Optional[pulumi.Input[_builtins.str]] = None):
+                 cert_chains: pulumi.Input[Optional['CryptoKeyVersionAttestationCertChainsArgs']] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_protection_level_options: pulumi.Input[Optional['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs']] = None,
+                 format: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['CryptoKeyVersionAttestationCertChainsArgs'] cert_chains: The certificate chains needed to validate the attestation
                Structure is documented below.
@@ -355,7 +355,7 @@ class CryptoKeyVersionAttestationArgs:
 
     @_builtins.property
     @pulumi.getter(name="certChains")
-    def cert_chains(self) -> Optional[pulumi.Input['CryptoKeyVersionAttestationCertChainsArgs']]:
+    def cert_chains(self) -> pulumi.Input[Optional['CryptoKeyVersionAttestationCertChainsArgs']]:
         """
         The certificate chains needed to validate the attestation
         Structure is documented below.
@@ -363,12 +363,12 @@ class CryptoKeyVersionAttestationArgs:
         return pulumi.get(self, "cert_chains")
 
     @cert_chains.setter
-    def cert_chains(self, value: Optional[pulumi.Input['CryptoKeyVersionAttestationCertChainsArgs']]):
+    def cert_chains(self, value: pulumi.Input[Optional['CryptoKeyVersionAttestationCertChainsArgs']]):
         pulumi.set(self, "cert_chains", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The attestation data provided by the HSM when the key operation was performed.
@@ -376,13 +376,13 @@ class CryptoKeyVersionAttestationArgs:
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter(name="externalProtectionLevelOptions")
     @_utilities.deprecated("""`externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.""")
-    def external_protection_level_options(self) -> Optional[pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs']]:
+    def external_protection_level_options(self) -> pulumi.Input[Optional['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs']]:
         """
         ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         Structure is documented below.
@@ -390,12 +390,12 @@ class CryptoKeyVersionAttestationArgs:
         return pulumi.get(self, "external_protection_level_options")
 
     @external_protection_level_options.setter
-    def external_protection_level_options(self, value: Optional[pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs']]):
+    def external_protection_level_options(self, value: pulumi.Input[Optional['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs']]):
         pulumi.set(self, "external_protection_level_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The format of the attestation data.
@@ -403,20 +403,20 @@ class CryptoKeyVersionAttestationArgs:
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "format", value)
 
 
 class CryptoKeyVersionAttestationCertChainsArgsDict(TypedDict):
-    cavium_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    cavium_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Cavium certificate chain corresponding to the attestation.
     """
-    google_card_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    google_card_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Google card certificate chain corresponding to the attestation.
     """
-    google_partition_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    google_partition_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Google partition certificate chain corresponding to the attestation.
     """
@@ -424,9 +424,9 @@ class CryptoKeyVersionAttestationCertChainsArgsDict(TypedDict):
 @pulumi.input_type
 class CryptoKeyVersionAttestationCertChainsArgs:
     def __init__(__self__, *,
-                 cavium_certs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 google_card_certs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 google_partition_certs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cavium_certs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 google_card_certs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 google_partition_certs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cavium_certs: Cavium certificate chain corresponding to the attestation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] google_card_certs: Google card certificate chain corresponding to the attestation.
@@ -441,47 +441,47 @@ class CryptoKeyVersionAttestationCertChainsArgs:
 
     @_builtins.property
     @pulumi.getter(name="caviumCerts")
-    def cavium_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cavium_certs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Cavium certificate chain corresponding to the attestation.
         """
         return pulumi.get(self, "cavium_certs")
 
     @cavium_certs.setter
-    def cavium_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cavium_certs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cavium_certs", value)
 
     @_builtins.property
     @pulumi.getter(name="googleCardCerts")
-    def google_card_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def google_card_certs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Google card certificate chain corresponding to the attestation.
         """
         return pulumi.get(self, "google_card_certs")
 
     @google_card_certs.setter
-    def google_card_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def google_card_certs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "google_card_certs", value)
 
     @_builtins.property
     @pulumi.getter(name="googlePartitionCerts")
-    def google_partition_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def google_partition_certs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Google partition certificate chain corresponding to the attestation.
         """
         return pulumi.get(self, "google_partition_certs")
 
     @google_partition_certs.setter
-    def google_partition_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def google_partition_certs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "google_partition_certs", value)
 
 
 class CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgsDict(TypedDict):
-    ekm_connection_key_path: NotRequired[pulumi.Input[_builtins.str]]
+    ekm_connection_key_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
     """
-    external_key_uri: NotRequired[pulumi.Input[_builtins.str]]
+    external_key_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URI for an external resource that this CryptoKeyVersion represents.
     """
@@ -489,8 +489,8 @@ class CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgsDict(TypedDic
 @pulumi.input_type
 class CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs:
     def __init__(__self__, *,
-                 ekm_connection_key_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_key_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 ekm_connection_key_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_key_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ekm_connection_key_path: The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
         :param pulumi.Input[_builtins.str] external_key_uri: The URI for an external resource that this CryptoKeyVersion represents.
@@ -502,35 +502,35 @@ class CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="ekmConnectionKeyPath")
-    def ekm_connection_key_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ekm_connection_key_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
         """
         return pulumi.get(self, "ekm_connection_key_path")
 
     @ekm_connection_key_path.setter
-    def ekm_connection_key_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ekm_connection_key_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ekm_connection_key_path", value)
 
     @_builtins.property
     @pulumi.getter(name="externalKeyUri")
-    def external_key_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_key_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI for an external resource that this CryptoKeyVersion represents.
         """
         return pulumi.get(self, "external_key_uri")
 
     @external_key_uri.setter
-    def external_key_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_key_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_key_uri", value)
 
 
 class CryptoKeyVersionExternalProtectionLevelOptionsArgsDict(TypedDict):
-    ekm_connection_key_path: NotRequired[pulumi.Input[_builtins.str]]
+    ekm_connection_key_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
     """
-    external_key_uri: NotRequired[pulumi.Input[_builtins.str]]
+    external_key_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URI for an external resource that this CryptoKeyVersion represents.
     """
@@ -538,8 +538,8 @@ class CryptoKeyVersionExternalProtectionLevelOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class CryptoKeyVersionExternalProtectionLevelOptionsArgs:
     def __init__(__self__, *,
-                 ekm_connection_key_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_key_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 ekm_connection_key_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_key_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ekm_connection_key_path: The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
         :param pulumi.Input[_builtins.str] external_key_uri: The URI for an external resource that this CryptoKeyVersion represents.
@@ -551,26 +551,26 @@ class CryptoKeyVersionExternalProtectionLevelOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="ekmConnectionKeyPath")
-    def ekm_connection_key_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ekm_connection_key_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
         """
         return pulumi.get(self, "ekm_connection_key_path")
 
     @ekm_connection_key_path.setter
-    def ekm_connection_key_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ekm_connection_key_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ekm_connection_key_path", value)
 
     @_builtins.property
     @pulumi.getter(name="externalKeyUri")
-    def external_key_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_key_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI for an external resource that this CryptoKeyVersion represents.
         """
         return pulumi.get(self, "external_key_uri")
 
     @external_key_uri.setter
-    def external_key_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_key_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_key_uri", value)
 
 
@@ -580,7 +580,7 @@ class CryptoKeyVersionTemplateArgsDict(TypedDict):
     The algorithm to use when creating a version based on this template.
     See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
     """
-    protection_level: NotRequired[pulumi.Input[_builtins.str]]
+    protection_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
     """
@@ -589,7 +589,7 @@ class CryptoKeyVersionTemplateArgsDict(TypedDict):
 class CryptoKeyVersionTemplateArgs:
     def __init__(__self__, *,
                  algorithm: pulumi.Input[_builtins.str],
-                 protection_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 protection_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] algorithm: The algorithm to use when creating a version based on this template.
                See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
@@ -614,14 +614,14 @@ class CryptoKeyVersionTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="protectionLevel")
-    def protection_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protection_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
         """
         return pulumi.get(self, "protection_level")
 
     @protection_level.setter
-    def protection_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protection_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protection_level", value)
 
 
@@ -634,7 +634,7 @@ class EkmConnectionIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -648,7 +648,7 @@ class EkmConnectionIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -689,7 +689,7 @@ class EkmConnectionIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -700,7 +700,7 @@ class EkmConnectionIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -713,7 +713,7 @@ class EkmConnectionIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -727,7 +727,7 @@ class EkmConnectionIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -768,7 +768,7 @@ class EkmConnectionIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -779,7 +779,7 @@ class EkmConnectionIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -797,7 +797,7 @@ class EkmConnectionServiceResolverArgsDict(TypedDict):
     """
     Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*/locations/*/namespaces/*/services/*
     """
-    endpoint_filter: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint_filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
     """
@@ -808,7 +808,7 @@ class EkmConnectionServiceResolverArgs:
                  hostname: pulumi.Input[_builtins.str],
                  server_certificates: pulumi.Input[Sequence[pulumi.Input['EkmConnectionServiceResolverServerCertificateArgs']]],
                  service_directory_service: pulumi.Input[_builtins.str],
-                 endpoint_filter: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint_filter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] hostname: Required. The hostname of the EKM replica used at TLS and HTTP layers.
         :param pulumi.Input[Sequence[pulumi.Input['EkmConnectionServiceResolverServerCertificateArgs']]] server_certificates: Required. A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
@@ -861,14 +861,14 @@ class EkmConnectionServiceResolverArgs:
 
     @_builtins.property
     @pulumi.getter(name="endpointFilter")
-    def endpoint_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
         """
         return pulumi.get(self, "endpoint_filter")
 
     @endpoint_filter.setter
-    def endpoint_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_filter", value)
 
 
@@ -877,44 +877,44 @@ class EkmConnectionServiceResolverServerCertificateArgsDict(TypedDict):
     """
     Required. The raw certificate bytes in DER format. A base64-encoded string.
     """
-    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    issuer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
     """
-    not_after_time: NotRequired[pulumi.Input[_builtins.str]]
+    not_after_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The certificate is not valid after this time. Only present if parsed is true.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    not_before_time: NotRequired[pulumi.Input[_builtins.str]]
+    not_before_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The certificate is not valid before this time. Only present if parsed is true.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    parsed: NotRequired[pulumi.Input[_builtins.bool]]
+    parsed: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Output only. True if the certificate was parsed successfully.
     """
-    serial_number: NotRequired[pulumi.Input[_builtins.str]]
+    serial_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The certificate serial number as a hex string. Only present if parsed is true.
     """
-    sha256_fingerprint: NotRequired[pulumi.Input[_builtins.str]]
+    sha256_fingerprint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
     """
-    subject: NotRequired[pulumi.Input[_builtins.str]]
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true.
     """
-    subject_alternative_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    subject_alternative_dns_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     Output only. The subject Alternative DNS names. Only present if parsed is true.
@@ -924,14 +924,14 @@ class EkmConnectionServiceResolverServerCertificateArgsDict(TypedDict):
 class EkmConnectionServiceResolverServerCertificateArgs:
     def __init__(__self__, *,
                  raw_der: pulumi.Input[_builtins.str],
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_after_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_before_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 parsed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 serial_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 sha256_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject_alternative_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_after_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_before_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 parsed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 serial_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 sha256_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject_alternative_dns_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] raw_der: Required. The raw certificate bytes in DER format. A base64-encoded string.
         :param pulumi.Input[_builtins.str] issuer: (Output)
@@ -985,7 +985,7 @@ class EkmConnectionServiceResolverServerCertificateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
@@ -993,12 +993,12 @@ class EkmConnectionServiceResolverServerCertificateArgs:
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter(name="notAfterTime")
-    def not_after_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def not_after_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The certificate is not valid after this time. Only present if parsed is true.
@@ -1007,12 +1007,12 @@ class EkmConnectionServiceResolverServerCertificateArgs:
         return pulumi.get(self, "not_after_time")
 
     @not_after_time.setter
-    def not_after_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def not_after_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "not_after_time", value)
 
     @_builtins.property
     @pulumi.getter(name="notBeforeTime")
-    def not_before_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def not_before_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The certificate is not valid before this time. Only present if parsed is true.
@@ -1021,12 +1021,12 @@ class EkmConnectionServiceResolverServerCertificateArgs:
         return pulumi.get(self, "not_before_time")
 
     @not_before_time.setter
-    def not_before_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def not_before_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "not_before_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def parsed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def parsed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Output only. True if the certificate was parsed successfully.
@@ -1034,12 +1034,12 @@ class EkmConnectionServiceResolverServerCertificateArgs:
         return pulumi.get(self, "parsed")
 
     @parsed.setter
-    def parsed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def parsed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "parsed", value)
 
     @_builtins.property
     @pulumi.getter(name="serialNumber")
-    def serial_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serial_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The certificate serial number as a hex string. Only present if parsed is true.
@@ -1047,12 +1047,12 @@ class EkmConnectionServiceResolverServerCertificateArgs:
         return pulumi.get(self, "serial_number")
 
     @serial_number.setter
-    def serial_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serial_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serial_number", value)
 
     @_builtins.property
     @pulumi.getter(name="sha256Fingerprint")
-    def sha256_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha256_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
@@ -1060,12 +1060,12 @@ class EkmConnectionServiceResolverServerCertificateArgs:
         return pulumi.get(self, "sha256_fingerprint")
 
     @sha256_fingerprint.setter
-    def sha256_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha256_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha256_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true.
@@ -1073,12 +1073,12 @@ class EkmConnectionServiceResolverServerCertificateArgs:
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
     @_builtins.property
     @pulumi.getter(name="subjectAlternativeDnsNames")
-    def subject_alternative_dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subject_alternative_dns_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         Output only. The subject Alternative DNS names. Only present if parsed is true.
@@ -1086,12 +1086,12 @@ class EkmConnectionServiceResolverServerCertificateArgs:
         return pulumi.get(self, "subject_alternative_dns_names")
 
     @subject_alternative_dns_names.setter
-    def subject_alternative_dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subject_alternative_dns_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subject_alternative_dns_names", value)
 
 
 class FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict(TypedDict):
-    allowed_access_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_access_reasons: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A KeyAccessJustificationsPolicy specifies zero or more allowed
     AccessReason values for encrypt, decrypt, and sign operations on a
@@ -1102,7 +1102,7 @@ class FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict(TypedDict
 @pulumi.input_type
 class FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs:
     def __init__(__self__, *,
-                 allowed_access_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allowed_access_reasons: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_access_reasons: A KeyAccessJustificationsPolicy specifies zero or more allowed
                AccessReason values for encrypt, decrypt, and sign operations on a
@@ -1114,7 +1114,7 @@ class FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedAccessReasons")
-    def allowed_access_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_access_reasons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A KeyAccessJustificationsPolicy specifies zero or more allowed
         AccessReason values for encrypt, decrypt, and sign operations on a
@@ -1124,7 +1124,7 @@ class FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs:
         return pulumi.get(self, "allowed_access_reasons")
 
     @allowed_access_reasons.setter
-    def allowed_access_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_access_reasons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_access_reasons", value)
 
 
@@ -1137,7 +1137,7 @@ class KeyRingIAMBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -1151,7 +1151,7 @@ class KeyRingIAMBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -1192,7 +1192,7 @@ class KeyRingIAMBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -1203,7 +1203,7 @@ class KeyRingIAMBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -1216,7 +1216,7 @@ class KeyRingIAMMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -1230,7 +1230,7 @@ class KeyRingIAMMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -1271,7 +1271,7 @@ class KeyRingIAMMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -1282,18 +1282,18 @@ class KeyRingIAMMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class KeyRingImportJobAttestationArgsDict(TypedDict):
-    content: NotRequired[pulumi.Input[_builtins.str]]
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The attestation data provided by the HSM when the key operation was performed.
     A base64-encoded string.
     """
-    format: NotRequired[pulumi.Input[_builtins.str]]
+    format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The format of the attestation data.
@@ -1302,8 +1302,8 @@ class KeyRingImportJobAttestationArgsDict(TypedDict):
 @pulumi.input_type
 class KeyRingImportJobAttestationArgs:
     def __init__(__self__, *,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 format: Optional[pulumi.Input[_builtins.str]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 format: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] content: (Output)
                The attestation data provided by the HSM when the key operation was performed.
@@ -1318,7 +1318,7 @@ class KeyRingImportJobAttestationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The attestation data provided by the HSM when the key operation was performed.
@@ -1327,12 +1327,12 @@ class KeyRingImportJobAttestationArgs:
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The format of the attestation data.
@@ -1340,12 +1340,12 @@ class KeyRingImportJobAttestationArgs:
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "format", value)
 
 
 class KeyRingImportJobPublicKeyArgsDict(TypedDict):
-    pem: NotRequired[pulumi.Input[_builtins.str]]
+    pem: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The public key, encoded in PEM format. For more information, see the RFC 7468 sections
@@ -1355,7 +1355,7 @@ class KeyRingImportJobPublicKeyArgsDict(TypedDict):
 @pulumi.input_type
 class KeyRingImportJobPublicKeyArgs:
     def __init__(__self__, *,
-                 pem: Optional[pulumi.Input[_builtins.str]] = None):
+                 pem: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] pem: (Output)
                The public key, encoded in PEM format. For more information, see the RFC 7468 sections
@@ -1366,7 +1366,7 @@ class KeyRingImportJobPublicKeyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def pem(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pem(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The public key, encoded in PEM format. For more information, see the RFC 7468 sections
@@ -1375,12 +1375,12 @@ class KeyRingImportJobPublicKeyArgs:
         return pulumi.get(self, "pem")
 
     @pem.setter
-    def pem(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pem(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pem", value)
 
 
 class OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict(TypedDict):
-    allowed_access_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_access_reasons: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A KeyAccessJustificationsPolicy specifies zero or more allowed
     AccessReason values for encrypt, decrypt, and sign operations on a
@@ -1391,7 +1391,7 @@ class OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict(Typ
 @pulumi.input_type
 class OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs:
     def __init__(__self__, *,
-                 allowed_access_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allowed_access_reasons: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_access_reasons: A KeyAccessJustificationsPolicy specifies zero or more allowed
                AccessReason values for encrypt, decrypt, and sign operations on a
@@ -1403,7 +1403,7 @@ class OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedAccessReasons")
-    def allowed_access_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_access_reasons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A KeyAccessJustificationsPolicy specifies zero or more allowed
         AccessReason values for encrypt, decrypt, and sign operations on a
@@ -1413,12 +1413,12 @@ class OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs:
         return pulumi.get(self, "allowed_access_reasons")
 
     @allowed_access_reasons.setter
-    def allowed_access_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_access_reasons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_access_reasons", value)
 
 
 class ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict(TypedDict):
-    allowed_access_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_access_reasons: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A KeyAccessJustificationsPolicy specifies zero or more allowed
     AccessReason values for encrypt, decrypt, and sign operations on a
@@ -1429,7 +1429,7 @@ class ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict(TypedDic
 @pulumi.input_type
 class ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs:
     def __init__(__self__, *,
-                 allowed_access_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allowed_access_reasons: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_access_reasons: A KeyAccessJustificationsPolicy specifies zero or more allowed
                AccessReason values for encrypt, decrypt, and sign operations on a
@@ -1441,7 +1441,7 @@ class ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedAccessReasons")
-    def allowed_access_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_access_reasons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A KeyAccessJustificationsPolicy specifies zero or more allowed
         AccessReason values for encrypt, decrypt, and sign operations on a
@@ -1451,7 +1451,7 @@ class ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs:
         return pulumi.get(self, "allowed_access_reasons")
 
     @allowed_access_reasons.setter
-    def allowed_access_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_access_reasons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_access_reasons", value)
 
 

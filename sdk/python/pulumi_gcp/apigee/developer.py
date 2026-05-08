@@ -26,7 +26,7 @@ class DeveloperArgs:
                  last_name: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  user_name: pulumi.Input[_builtins.str],
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input['DeveloperAttributeArgs']]]] = None):
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAttributeArgs']]]] = None):
         """
         The set of arguments for constructing a Developer resource.
 
@@ -110,7 +110,7 @@ class DeveloperArgs:
 
     @_builtins.property
     @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeveloperAttributeArgs']]]]:
+    def attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAttributeArgs']]]]:
         """
         Developer attributes (name/value pairs). The custom attribute limit is 18.
         Structure is documented below.
@@ -118,23 +118,23 @@ class DeveloperArgs:
         return pulumi.get(self, "attributes")
 
     @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeveloperAttributeArgs']]]]):
+    def attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAttributeArgs']]]]):
         pulumi.set(self, "attributes", value)
 
 
 @pulumi.input_type
 class _DeveloperState:
     def __init__(__self__, *,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input['DeveloperAttributeArgs']]]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 first_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organizatio_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAttributeArgs']]]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 first_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organizatio_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Developer resources.
 
@@ -174,7 +174,7 @@ class _DeveloperState:
 
     @_builtins.property
     @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeveloperAttributeArgs']]]]:
+    def attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAttributeArgs']]]]:
         """
         Developer attributes (name/value pairs). The custom attribute limit is 18.
         Structure is documented below.
@@ -182,72 +182,72 @@ class _DeveloperState:
         return pulumi.get(self, "attributes")
 
     @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeveloperAttributeArgs']]]]):
+    def attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAttributeArgs']]]]):
         pulumi.set(self, "attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time at which the developer was created in milliseconds since epoch.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="firstName")
-    def first_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def first_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         First name of the developer.
         """
         return pulumi.get(self, "first_name")
 
     @first_name.setter
-    def first_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def first_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "first_name", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedAt")
-    def last_modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time at which the developer was last modified in milliseconds since epoch.
         """
         return pulumi.get(self, "last_modified_at")
 
     @last_modified_at.setter
-    def last_modified_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified_at", value)
 
     @_builtins.property
     @pulumi.getter(name="lastName")
-    def last_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last name of the developer.
         """
         return pulumi.get(self, "last_name")
 
     @last_name.setter
-    def last_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Apigee Organization associated with the Apigee instance,
         in the format `organizations/{{org_name}}`.
@@ -255,43 +255,43 @@ class _DeveloperState:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="organizatioName")
-    def organizatio_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organizatio_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Apigee organization in which the developer resides.
         """
         return pulumi.get(self, "organizatio_name")
 
     @organizatio_name.setter
-    def organizatio_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organizatio_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organizatio_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of the developer. Valid values are active and inactive.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User name of the developer. Not used by Apigee hybrid.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
@@ -301,12 +301,12 @@ class Developer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeveloperAttributeArgs', 'DeveloperAttributeArgsDict']]]]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 first_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAttributeArgs', 'DeveloperAttributeArgsDict']]]]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 first_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A `Developer` is an API consumer that can have apps registered in Apigee.
@@ -558,12 +558,12 @@ class Developer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeveloperAttributeArgs', 'DeveloperAttributeArgsDict']]]]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 first_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAttributeArgs', 'DeveloperAttributeArgsDict']]]]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 first_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -603,16 +603,16 @@ class Developer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeveloperAttributeArgs', 'DeveloperAttributeArgsDict']]]]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            first_name: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-            last_name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            organizatio_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            user_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Developer':
+            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAttributeArgs', 'DeveloperAttributeArgsDict']]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            first_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            last_name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organizatio_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Developer':
         """
         Get an existing Developer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -20,12 +20,12 @@ __all__ = ['RegionHealthAggregationPolicyArgs', 'RegionHealthAggregationPolicy']
 class RegionHealthAggregationPolicyArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_percent_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_percent_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionHealthAggregationPolicy resource.
 
@@ -99,7 +99,7 @@ class RegionHealthAggregationPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you
         create the resource.
@@ -107,12 +107,12 @@ class RegionHealthAggregationPolicyArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="healthyPercentThreshold")
-    def healthy_percent_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def healthy_percent_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Can only be set if the `policyType` field is
         `BACKEND_SERVICE_POLICY`. Specifies the threshold (as a
@@ -129,12 +129,12 @@ class RegionHealthAggregationPolicyArgs:
         return pulumi.get(self, "healthy_percent_threshold")
 
     @healthy_percent_threshold.setter
-    def healthy_percent_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def healthy_percent_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "healthy_percent_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="minHealthyThreshold")
-    def min_healthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_healthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Can only be set if the `policyType` field is
         `BACKEND_SERVICE_POLICY`. Specifies the minimum number of
@@ -151,12 +151,12 @@ class RegionHealthAggregationPolicyArgs:
         return pulumi.get(self, "min_healthy_threshold")
 
     @min_healthy_threshold.setter
-    def min_healthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_healthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_healthy_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created.
         The name must be 1-63 characters long, and comply with RFC1035.
@@ -169,12 +169,12 @@ class RegionHealthAggregationPolicyArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyType")
-    def policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the type of the healthAggregationPolicy. The only allowed value
         for global resources is `DNS_PUBLIC_IP_POLICY`. The only allowed
@@ -187,12 +187,12 @@ class RegionHealthAggregationPolicyArgs:
         return pulumi.get(self, "policy_type")
 
     @policy_type.setter
-    def policy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -200,23 +200,23 @@ class RegionHealthAggregationPolicyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _RegionHealthAggregationPolicyState:
     def __init__(__self__, *,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_percent_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_percent_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link_with_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionHealthAggregationPolicy resources.
 
@@ -294,19 +294,19 @@ class _RegionHealthAggregationPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you
         create the resource.
@@ -314,12 +314,12 @@ class _RegionHealthAggregationPolicyState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fingerprint of this resource. A hash of the contents stored in this object.
         This field is used in optimistic locking. This field will be ignored when
@@ -332,12 +332,12 @@ class _RegionHealthAggregationPolicyState:
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="healthyPercentThreshold")
-    def healthy_percent_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def healthy_percent_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Can only be set if the `policyType` field is
         `BACKEND_SERVICE_POLICY`. Specifies the threshold (as a
@@ -354,12 +354,12 @@ class _RegionHealthAggregationPolicyState:
         return pulumi.get(self, "healthy_percent_threshold")
 
     @healthy_percent_threshold.setter
-    def healthy_percent_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def healthy_percent_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "healthy_percent_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="minHealthyThreshold")
-    def min_healthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_healthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Can only be set if the `policyType` field is
         `BACKEND_SERVICE_POLICY`. Specifies the minimum number of
@@ -376,12 +376,12 @@ class _RegionHealthAggregationPolicyState:
         return pulumi.get(self, "min_healthy_threshold")
 
     @min_healthy_threshold.setter
-    def min_healthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_healthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_healthy_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created.
         The name must be 1-63 characters long, and comply with RFC1035.
@@ -394,12 +394,12 @@ class _RegionHealthAggregationPolicyState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyType")
-    def policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the type of the healthAggregationPolicy. The only allowed value
         for global resources is `DNS_PUBLIC_IP_POLICY`. The only allowed
@@ -412,12 +412,12 @@ class _RegionHealthAggregationPolicyState:
         return pulumi.get(self, "policy_type")
 
     @policy_type.setter
-    def policy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -425,31 +425,31 @@ class _RegionHealthAggregationPolicyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the region where the health aggregation policy resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLinkWithId")
-    def self_link_with_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link_with_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server-defined URL with id for the resource.
         """
         return pulumi.get(self, "self_link_with_id")
 
     @self_link_with_id.setter
-    def self_link_with_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link_with_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link_with_id", value)
 
 
@@ -459,13 +459,13 @@ class RegionHealthAggregationPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_percent_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_percent_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The Health Aggregation Policy specifies how to aggregate the service's constituent source health status to determine an aggregated health status result for the service.  For example, you can specify a criteria such as “Consider the Health Source as `Healthy` if there are at least 5 healthy backend endpoints”. Or, you can specify a criteria like “Consider the Health Source as `Healthy` if minimum 60% of endpoints in the Backend are healthy”. The Health Aggregation Policy is applied to each Health Source (e.g. Backend Service) individually.
@@ -618,13 +618,13 @@ class RegionHealthAggregationPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_percent_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_percent_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -656,16 +656,16 @@ class RegionHealthAggregationPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            healthy_percent_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            min_healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link_with_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RegionHealthAggregationPolicy':
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            healthy_percent_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            min_healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link_with_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegionHealthAggregationPolicy':
         """
         Get an existing RegionHealthAggregationPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

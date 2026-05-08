@@ -417,10 +417,10 @@ def get_instance(cluster_id: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_instance_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceResult]:
     """
     Use this data source to get information about the available instance. For more details refer the [API docs](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.instances).

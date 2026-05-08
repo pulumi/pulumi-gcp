@@ -297,21 +297,21 @@ export class InstanceIamPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceIamPolicy resources.
  */
 export interface InstanceIamPolicyState {
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
      */
-    name?: pulumi.Input<string>;
-    policyData?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    policyData?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the Data Fusion instance.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -321,15 +321,15 @@ export interface InstanceIamPolicyArgs {
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     policyData: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the Data Fusion instance.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

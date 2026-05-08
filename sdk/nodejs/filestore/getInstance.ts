@@ -122,7 +122,7 @@ export interface GetInstanceOutputArgs {
      * can be a region for ENTERPRISE tier instances. If it is not provided,
      * the provider region or zone is used.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of a Filestore instance.
      *
@@ -133,5 +133,5 @@ export interface GetInstanceOutputArgs {
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

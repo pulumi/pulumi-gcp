@@ -194,71 +194,71 @@ export interface ApiConfigState {
     /**
      * The API to attach the config to.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
      */
-    apiConfigId?: pulumi.Input<string>;
+    apiConfigId?: pulumi.Input<string | undefined>;
     /**
      * Creates a unique name beginning with the
      * specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
      */
-    apiConfigIdPrefix?: pulumi.Input<string>;
+    apiConfigIdPrefix?: pulumi.Input<string | undefined>;
     /**
      * A user-visible name for the API.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Immutable. Gateway specific configuration.
      * If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
      * Structure is documented below.
      */
-    gatewayConfig?: pulumi.Input<inputs.apigateway.ApiConfigGatewayConfig>;
+    gatewayConfig?: pulumi.Input<inputs.apigateway.ApiConfigGatewayConfig | undefined>;
     /**
      * gRPC service definition files. If specified, openapiDocuments must not be included.
      * Structure is documented below.
      */
-    grpcServices?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigGrpcService>[]>;
+    grpcServices?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigGrpcService>[] | undefined>;
     /**
      * Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
      * If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
      * Structure is documented below.
      */
-    managedServiceConfigs?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigManagedServiceConfig>[]>;
+    managedServiceConfigs?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigManagedServiceConfig>[] | undefined>;
     /**
      * The resource name of the API Config.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
      * Structure is documented below.
      */
-    openapiDocuments?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigOpenapiDocument>[]>;
+    openapiDocuments?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigOpenapiDocument>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
      */
-    serviceConfigId?: pulumi.Input<string>;
+    serviceConfigId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -272,48 +272,48 @@ export interface ApiConfigArgs {
     /**
      * Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
      */
-    apiConfigId?: pulumi.Input<string>;
+    apiConfigId?: pulumi.Input<string | undefined>;
     /**
      * Creates a unique name beginning with the
      * specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
      */
-    apiConfigIdPrefix?: pulumi.Input<string>;
+    apiConfigIdPrefix?: pulumi.Input<string | undefined>;
     /**
      * A user-visible name for the API.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Immutable. Gateway specific configuration.
      * If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
      * Structure is documented below.
      */
-    gatewayConfig?: pulumi.Input<inputs.apigateway.ApiConfigGatewayConfig>;
+    gatewayConfig?: pulumi.Input<inputs.apigateway.ApiConfigGatewayConfig | undefined>;
     /**
      * gRPC service definition files. If specified, openapiDocuments must not be included.
      * Structure is documented below.
      */
-    grpcServices?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigGrpcService>[]>;
+    grpcServices?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigGrpcService>[] | undefined>;
     /**
      * Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
      * If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
      * Structure is documented below.
      */
-    managedServiceConfigs?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigManagedServiceConfig>[]>;
+    managedServiceConfigs?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigManagedServiceConfig>[] | undefined>;
     /**
      * OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
      * Structure is documented below.
      */
-    openapiDocuments?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigOpenapiDocument>[]>;
+    openapiDocuments?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigOpenapiDocument>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

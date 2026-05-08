@@ -544,22 +544,22 @@ export interface TargetHttpsProxyState {
      * sslCertificates and certificateManagerCertificates fields can not be defined together.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
      */
-    certificateManagerCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+    certificateManagerCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A reference to the CertificateMap resource uri that identifies a certificate map
      * associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
      * For INTERNAL_MANAGED, use certificateManagerCertificates instead.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
      */
-    certificateMap?: pulumi.Input<string>;
+    certificateMap?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
      * This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
@@ -567,7 +567,7 @@ export interface TargetHttpsProxyState {
      * To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
      * A base64-encoded string.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * Specifies how long to keep a connection open, after completing a response,
      * while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -579,7 +579,7 @@ export interface TargetHttpsProxyState {
      * maximum allowed value is 600 seconds. For Global external HTTP(S) load
      * balancer (classic), this option is not available publicly.
      */
-    httpKeepAliveTimeoutSec?: pulumi.Input<number>;
+    httpKeepAliveTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -589,21 +589,21 @@ export interface TargetHttpsProxyState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * This field only applies when the forwarding rule that references
      * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
-    proxyBind?: pulumi.Input<boolean>;
+    proxyBind?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier for the resource.
      */
-    proxyId?: pulumi.Input<number>;
+    proxyId?: pulumi.Input<number | undefined>;
     /**
      * Specifies the QUIC override policy for this resource. This determines
      * whether the load balancer will attempt to negotiate QUIC with clients
@@ -612,11 +612,11 @@ export interface TargetHttpsProxyState {
      * Default value is `NONE`.
      * Possible values are: `NONE`, `ENABLE`, `DISABLE`.
      */
-    quicOverride?: pulumi.Input<string>;
+    quicOverride?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * A URL referring to a networksecurity.ServerTlsPolicy
      * resource that describes how the proxy should authenticate inbound
@@ -632,19 +632,19 @@ export interface TargetHttpsProxyState {
      * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
      * within the ServerTlsPolicy resource to avoid this.
      */
-    serverTlsPolicy?: pulumi.Input<string>;
+    serverTlsPolicy?: pulumi.Input<string | undefined>;
     /**
      * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
      * Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
      * sslCertificates and certificateManagerCertificates can not be defined together.
      */
-    sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+    sslCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A reference to the SslPolicy resource that will be associated with
      * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
      * resource will not have any SSL policy configured.
      */
-    sslPolicy?: pulumi.Input<string>;
+    sslPolicy?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
      * Early Data allows a TLS resumption handshake to include the initial application payload
@@ -652,12 +652,12 @@ export interface TargetHttpsProxyState {
      * This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
      * Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
      */
-    tlsEarlyData?: pulumi.Input<string>;
+    tlsEarlyData?: pulumi.Input<string | undefined>;
     /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
      */
-    urlMap?: pulumi.Input<string>;
+    urlMap?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -671,18 +671,18 @@ export interface TargetHttpsProxyArgs {
      * sslCertificates and certificateManagerCertificates fields can not be defined together.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
      */
-    certificateManagerCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+    certificateManagerCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A reference to the CertificateMap resource uri that identifies a certificate map
      * associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
      * For INTERNAL_MANAGED, use certificateManagerCertificates instead.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
      */
-    certificateMap?: pulumi.Input<string>;
+    certificateMap?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies how long to keep a connection open, after completing a response,
      * while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -694,7 +694,7 @@ export interface TargetHttpsProxyArgs {
      * maximum allowed value is 600 seconds. For Global external HTTP(S) load
      * balancer (classic), this option is not available publicly.
      */
-    httpKeepAliveTimeoutSec?: pulumi.Input<number>;
+    httpKeepAliveTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -704,17 +704,17 @@ export interface TargetHttpsProxyArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * This field only applies when the forwarding rule that references
      * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
-    proxyBind?: pulumi.Input<boolean>;
+    proxyBind?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the QUIC override policy for this resource. This determines
      * whether the load balancer will attempt to negotiate QUIC with clients
@@ -723,7 +723,7 @@ export interface TargetHttpsProxyArgs {
      * Default value is `NONE`.
      * Possible values are: `NONE`, `ENABLE`, `DISABLE`.
      */
-    quicOverride?: pulumi.Input<string>;
+    quicOverride?: pulumi.Input<string | undefined>;
     /**
      * A URL referring to a networksecurity.ServerTlsPolicy
      * resource that describes how the proxy should authenticate inbound
@@ -739,19 +739,19 @@ export interface TargetHttpsProxyArgs {
      * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
      * within the ServerTlsPolicy resource to avoid this.
      */
-    serverTlsPolicy?: pulumi.Input<string>;
+    serverTlsPolicy?: pulumi.Input<string | undefined>;
     /**
      * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
      * Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
      * sslCertificates and certificateManagerCertificates can not be defined together.
      */
-    sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+    sslCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A reference to the SslPolicy resource that will be associated with
      * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
      * resource will not have any SSL policy configured.
      */
-    sslPolicy?: pulumi.Input<string>;
+    sslPolicy?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
      * Early Data allows a TLS resumption handshake to include the initial application payload
@@ -759,7 +759,7 @@ export interface TargetHttpsProxyArgs {
      * This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
      * Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
      */
-    tlsEarlyData?: pulumi.Input<string>;
+    tlsEarlyData?: pulumi.Input<string | undefined>;
     /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.

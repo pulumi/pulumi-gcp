@@ -29,8 +29,8 @@ public final class MemcacheFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.memcache.MemcacheFunctions;
      * import com.pulumi.gcp.memcache.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -68,8 +68,8 @@ public final class MemcacheFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.memcache.MemcacheFunctions;
      * import com.pulumi.gcp.memcache.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -107,8 +107,8 @@ public final class MemcacheFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.memcache.MemcacheFunctions;
      * import com.pulumi.gcp.memcache.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -146,8 +146,8 @@ public final class MemcacheFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.memcache.MemcacheFunctions;
      * import com.pulumi.gcp.memcache.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -185,8 +185,8 @@ public final class MemcacheFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.memcache.MemcacheFunctions;
      * import com.pulumi.gcp.memcache.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

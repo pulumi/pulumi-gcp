@@ -103,10 +103,10 @@ export interface GetNodeTypesOutputArgs {
      * Should match the project the nodes of this type will be deployed to.
      * Defaults to the project that the provider is authenticated with.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The zone to list node types for. Should be in zone of intended node groups and region of referencing node template. If `zone` is not specified, the provider-level zone must be set and is used
      * instead.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

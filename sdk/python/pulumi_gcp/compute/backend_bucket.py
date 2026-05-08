@@ -22,16 +22,16 @@ __all__ = ['BackendBucketArgs', 'BackendBucket']
 class BackendBucketArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[_builtins.str],
-                 cdn_policy: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']] = None,
-                 compression_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_cdn: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['BackendBucketParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 cdn_policy: pulumi.Input[Optional['BackendBucketCdnPolicyArgs']] = None,
+                 compression_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['BackendBucketParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackendBucket resource.
 
@@ -98,7 +98,7 @@ class BackendBucketArgs:
 
     @_builtins.property
     @pulumi.getter(name="cdnPolicy")
-    def cdn_policy(self) -> Optional[pulumi.Input['BackendBucketCdnPolicyArgs']]:
+    def cdn_policy(self) -> pulumi.Input[Optional['BackendBucketCdnPolicyArgs']]:
         """
         Cloud CDN configuration for this Backend Bucket.
         Structure is documented below.
@@ -106,12 +106,12 @@ class BackendBucketArgs:
         return pulumi.get(self, "cdn_policy")
 
     @cdn_policy.setter
-    def cdn_policy(self, value: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']]):
+    def cdn_policy(self, value: pulumi.Input[Optional['BackendBucketCdnPolicyArgs']]):
         pulumi.set(self, "cdn_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="compressionMode")
-    def compression_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compression_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
         Possible values are: `AUTOMATIC`, `DISABLED`.
@@ -119,24 +119,24 @@ class BackendBucketArgs:
         return pulumi.get(self, "compression_mode")
 
     @compression_mode.setter
-    def compression_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compression_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compression_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="customResponseHeaders")
-    def custom_response_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_response_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Headers that the HTTP/S load balancer should add to proxied responses.
         """
         return pulumi.get(self, "custom_response_headers")
 
     @custom_response_headers.setter
-    def custom_response_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_response_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_response_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional textual description of the resource; provided by the
         client when the resource is created.
@@ -144,24 +144,24 @@ class BackendBucketArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeSecurityPolicy")
-    def edge_security_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edge_security_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security policy associated with this backend bucket.
         """
         return pulumi.get(self, "edge_security_policy")
 
     @edge_security_policy.setter
-    def edge_security_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edge_security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edge_security_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableCdn")
-    def enable_cdn(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_cdn(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, enable Cloud CDN for this BackendBucket.
         Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
@@ -169,12 +169,12 @@ class BackendBucketArgs:
         return pulumi.get(self, "enable_cdn")
 
     @enable_cdn.setter
-    def enable_cdn(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_cdn(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_cdn", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancing_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
         If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
@@ -184,12 +184,12 @@ class BackendBucketArgs:
         return pulumi.get(self, "load_balancing_scheme")
 
     @load_balancing_scheme.setter
-    def load_balancing_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancing_scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancing_scheme", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -202,12 +202,12 @@ class BackendBucketArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['BackendBucketParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['BackendBucketParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -215,12 +215,12 @@ class BackendBucketArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['BackendBucketParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['BackendBucketParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -228,26 +228,26 @@ class BackendBucketArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _BackendBucketState:
     def __init__(__self__, *,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cdn_policy: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']] = None,
-                 compression_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_cdn: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['BackendBucketParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cdn_policy: pulumi.Input[Optional['BackendBucketCdnPolicyArgs']] = None,
+                 compression_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['BackendBucketParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackendBucket resources.
 
@@ -309,19 +309,19 @@ class _BackendBucketState:
 
     @_builtins.property
     @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud Storage bucket name.
         """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="cdnPolicy")
-    def cdn_policy(self) -> Optional[pulumi.Input['BackendBucketCdnPolicyArgs']]:
+    def cdn_policy(self) -> pulumi.Input[Optional['BackendBucketCdnPolicyArgs']]:
         """
         Cloud CDN configuration for this Backend Bucket.
         Structure is documented below.
@@ -329,12 +329,12 @@ class _BackendBucketState:
         return pulumi.get(self, "cdn_policy")
 
     @cdn_policy.setter
-    def cdn_policy(self, value: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']]):
+    def cdn_policy(self, value: pulumi.Input[Optional['BackendBucketCdnPolicyArgs']]):
         pulumi.set(self, "cdn_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="compressionMode")
-    def compression_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compression_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
         Possible values are: `AUTOMATIC`, `DISABLED`.
@@ -342,36 +342,36 @@ class _BackendBucketState:
         return pulumi.get(self, "compression_mode")
 
     @compression_mode.setter
-    def compression_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compression_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compression_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="customResponseHeaders")
-    def custom_response_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_response_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Headers that the HTTP/S load balancer should add to proxied responses.
         """
         return pulumi.get(self, "custom_response_headers")
 
     @custom_response_headers.setter
-    def custom_response_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_response_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_response_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional textual description of the resource; provided by the
         client when the resource is created.
@@ -379,24 +379,24 @@ class _BackendBucketState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeSecurityPolicy")
-    def edge_security_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edge_security_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security policy associated with this backend bucket.
         """
         return pulumi.get(self, "edge_security_policy")
 
     @edge_security_policy.setter
-    def edge_security_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edge_security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edge_security_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableCdn")
-    def enable_cdn(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_cdn(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, enable Cloud CDN for this BackendBucket.
         Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
@@ -404,12 +404,12 @@ class _BackendBucketState:
         return pulumi.get(self, "enable_cdn")
 
     @enable_cdn.setter
-    def enable_cdn(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_cdn(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_cdn", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancing_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
         If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
@@ -419,12 +419,12 @@ class _BackendBucketState:
         return pulumi.get(self, "load_balancing_scheme")
 
     @load_balancing_scheme.setter
-    def load_balancing_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancing_scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancing_scheme", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -437,12 +437,12 @@ class _BackendBucketState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['BackendBucketParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['BackendBucketParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -450,12 +450,12 @@ class _BackendBucketState:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['BackendBucketParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['BackendBucketParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -463,19 +463,19 @@ class _BackendBucketState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
 
@@ -485,17 +485,17 @@ class BackendBucket(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cdn_policy: Optional[pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
-                 compression_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_cdn: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cdn_policy: pulumi.Input[Optional[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
+                 compression_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Backend buckets allow you to use Google Cloud Storage buckets with HTTP(S)
@@ -767,17 +767,17 @@ class BackendBucket(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cdn_policy: Optional[pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
-                 compression_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_cdn: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cdn_policy: pulumi.Input[Optional[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
+                 compression_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -812,19 +812,19 @@ class BackendBucket(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cdn_policy: Optional[pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
-            compression_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            edge_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_cdn: Optional[pulumi.Input[_builtins.bool]] = None,
-            load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None) -> 'BackendBucket':
+            bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cdn_policy: pulumi.Input[Optional[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
+            compression_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_cdn: pulumi.Input[Optional[_builtins.bool]] = None,
+            load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> 'BackendBucket':
         """
         Get an existing BackendBucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

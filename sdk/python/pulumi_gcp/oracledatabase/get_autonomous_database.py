@@ -297,9 +297,9 @@ def get_autonomous_database(autonomous_database_id: Optional[_builtins.str] = No
         properties=pulumi.get(__ret__, 'properties'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         source_configs=pulumi.get(__ret__, 'source_configs'))
-def get_autonomous_database_output(autonomous_database_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   location: Optional[pulumi.Input[_builtins.str]] = None,
-                                   project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_autonomous_database_output(autonomous_database_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                   location: pulumi.Input[Optional[_builtins.str]] = None,
+                                   project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAutonomousDatabaseResult]:
     """
     Get information about an AutonomousDatabase.

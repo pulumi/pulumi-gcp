@@ -123,7 +123,7 @@ import (
 // if err != nil {
 // return err
 // }
-// servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+// servicenetworking2, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
 // Service: pulumi.String("servicenetworking.googleapis.com"),
 // })
 // if err != nil {
@@ -132,7 +132,7 @@ import (
 // vpcNetwork, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
 // Name: pulumi.String("vpc-network"),
 // }, pulumi.DependsOn([]pulumi.Resource{
-// servicenetworking,
+// servicenetworking2,
 // }))
 // if err != nil {
 // return err
@@ -154,7 +154,7 @@ import (
 // privateIpAlloc.Name,
 // },
 // }, pulumi.DependsOn([]pulumi.Resource{
-// servicenetworking,
+// servicenetworking2,
 // }))
 // if err != nil {
 // return err

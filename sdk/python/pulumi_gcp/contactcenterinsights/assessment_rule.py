@@ -22,12 +22,12 @@ __all__ = ['AssessmentRuleArgs', 'AssessmentRule']
 class AssessmentRuleArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 assessment_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sample_rule: Optional[pulumi.Input['AssessmentRuleSampleRuleArgs']] = None,
-                 schedule_info: Optional[pulumi.Input['AssessmentRuleScheduleInfoArgs']] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 assessment_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sample_rule: pulumi.Input[Optional['AssessmentRuleSampleRuleArgs']] = None,
+                 schedule_info: pulumi.Input[Optional['AssessmentRuleScheduleInfoArgs']] = None):
         """
         The set of arguments for constructing a AssessmentRule resource.
 
@@ -75,7 +75,7 @@ class AssessmentRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, apply this rule to conversations. Otherwise, this rule is
         inactive.
@@ -83,12 +83,12 @@ class AssessmentRuleArgs:
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="assessmentRuleId")
-    def assessment_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assessment_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique ID for the new AssessmentRule. This ID will become the final
         component of the AssessmentRule's resource name. If no ID is specified,
@@ -99,24 +99,24 @@ class AssessmentRuleArgs:
         return pulumi.get(self, "assessment_rule_id")
 
     @assessment_rule_id.setter
-    def assessment_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assessment_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assessment_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display Name of the assessment rule.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -124,12 +124,12 @@ class AssessmentRuleArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="sampleRule")
-    def sample_rule(self) -> Optional[pulumi.Input['AssessmentRuleSampleRuleArgs']]:
+    def sample_rule(self) -> pulumi.Input[Optional['AssessmentRuleSampleRuleArgs']]:
         """
         Message for sampling conversations.
         Structure is documented below.
@@ -137,12 +137,12 @@ class AssessmentRuleArgs:
         return pulumi.get(self, "sample_rule")
 
     @sample_rule.setter
-    def sample_rule(self, value: Optional[pulumi.Input['AssessmentRuleSampleRuleArgs']]):
+    def sample_rule(self, value: pulumi.Input[Optional['AssessmentRuleSampleRuleArgs']]):
         pulumi.set(self, "sample_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleInfo")
-    def schedule_info(self) -> Optional[pulumi.Input['AssessmentRuleScheduleInfoArgs']]:
+    def schedule_info(self) -> pulumi.Input[Optional['AssessmentRuleScheduleInfoArgs']]:
         """
         Message for schedule info.
         Structure is documented below.
@@ -150,23 +150,23 @@ class AssessmentRuleArgs:
         return pulumi.get(self, "schedule_info")
 
     @schedule_info.setter
-    def schedule_info(self, value: Optional[pulumi.Input['AssessmentRuleScheduleInfoArgs']]):
+    def schedule_info(self, value: pulumi.Input[Optional['AssessmentRuleScheduleInfoArgs']]):
         pulumi.set(self, "schedule_info", value)
 
 
 @pulumi.input_type
 class _AssessmentRuleState:
     def __init__(__self__, *,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 assessment_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sample_rule: Optional[pulumi.Input['AssessmentRuleSampleRuleArgs']] = None,
-                 schedule_info: Optional[pulumi.Input['AssessmentRuleScheduleInfoArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 assessment_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sample_rule: pulumi.Input[Optional['AssessmentRuleSampleRuleArgs']] = None,
+                 schedule_info: pulumi.Input[Optional['AssessmentRuleScheduleInfoArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AssessmentRule resources.
 
@@ -214,7 +214,7 @@ class _AssessmentRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, apply this rule to conversations. Otherwise, this rule is
         inactive.
@@ -222,12 +222,12 @@ class _AssessmentRuleState:
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="assessmentRuleId")
-    def assessment_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assessment_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique ID for the new AssessmentRule. This ID will become the final
         component of the AssessmentRule's resource name. If no ID is specified,
@@ -238,48 +238,48 @@ class _AssessmentRuleState:
         return pulumi.get(self, "assessment_rule_id")
 
     @assessment_rule_id.setter
-    def assessment_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assessment_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assessment_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which this assessment rule was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display Name of the assessment rule.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location of the resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name of the assessment rule.
         Format:
@@ -288,12 +288,12 @@ class _AssessmentRuleState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -301,12 +301,12 @@ class _AssessmentRuleState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="sampleRule")
-    def sample_rule(self) -> Optional[pulumi.Input['AssessmentRuleSampleRuleArgs']]:
+    def sample_rule(self) -> pulumi.Input[Optional['AssessmentRuleSampleRuleArgs']]:
         """
         Message for sampling conversations.
         Structure is documented below.
@@ -314,12 +314,12 @@ class _AssessmentRuleState:
         return pulumi.get(self, "sample_rule")
 
     @sample_rule.setter
-    def sample_rule(self, value: Optional[pulumi.Input['AssessmentRuleSampleRuleArgs']]):
+    def sample_rule(self, value: pulumi.Input[Optional['AssessmentRuleSampleRuleArgs']]):
         pulumi.set(self, "sample_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleInfo")
-    def schedule_info(self) -> Optional[pulumi.Input['AssessmentRuleScheduleInfoArgs']]:
+    def schedule_info(self) -> pulumi.Input[Optional['AssessmentRuleScheduleInfoArgs']]:
         """
         Message for schedule info.
         Structure is documented below.
@@ -327,19 +327,19 @@ class _AssessmentRuleState:
         return pulumi.get(self, "schedule_info")
 
     @schedule_info.setter
-    def schedule_info(self, value: Optional[pulumi.Input['AssessmentRuleScheduleInfoArgs']]):
+    def schedule_info(self, value: pulumi.Input[Optional['AssessmentRuleScheduleInfoArgs']]):
         pulumi.set(self, "schedule_info", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The most recent time at which this assessment rule was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -349,13 +349,13 @@ class AssessmentRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 assessment_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sample_rule: Optional[pulumi.Input[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict']]] = None,
-                 schedule_info: Optional[pulumi.Input[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict']]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 assessment_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sample_rule: pulumi.Input[Optional[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict']]] = None,
+                 schedule_info: pulumi.Input[Optional[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict']]] = None,
                  __props__=None):
         """
         The CCAI Insights project wide assessment rule. This assessment rule will be
@@ -458,13 +458,13 @@ class AssessmentRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 assessment_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sample_rule: Optional[pulumi.Input[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict']]] = None,
-                 schedule_info: Optional[pulumi.Input[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict']]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 assessment_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sample_rule: pulumi.Input[Optional[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict']]] = None,
+                 schedule_info: pulumi.Input[Optional[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -496,16 +496,16 @@ class AssessmentRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active: Optional[pulumi.Input[_builtins.bool]] = None,
-            assessment_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            sample_rule: Optional[pulumi.Input[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict']]] = None,
-            schedule_info: Optional[pulumi.Input[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AssessmentRule':
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            assessment_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            sample_rule: pulumi.Input[Optional[Union['AssessmentRuleSampleRuleArgs', 'AssessmentRuleSampleRuleArgsDict']]] = None,
+            schedule_info: pulumi.Input[Optional[Union['AssessmentRuleScheduleInfoArgs', 'AssessmentRuleScheduleInfoArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AssessmentRule':
         """
         Get an existing AssessmentRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -131,12 +131,12 @@ class ClusterAuthorizationAdminUsersArgs:
 
 
 class ClusterControlPlaneArgsDict(TypedDict):
-    local: NotRequired[pulumi.Input['ClusterControlPlaneLocalArgsDict']]
+    local: NotRequired[pulumi.Input[Optional['ClusterControlPlaneLocalArgs']]]
     """
     Local control plane configuration.
     Structure is documented below.
     """
-    remote: NotRequired[pulumi.Input['ClusterControlPlaneRemoteArgsDict']]
+    remote: NotRequired[pulumi.Input[Optional['ClusterControlPlaneRemoteArgs']]]
     """
     Remote control plane configuration.
     Structure is documented below.
@@ -145,8 +145,8 @@ class ClusterControlPlaneArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterControlPlaneArgs:
     def __init__(__self__, *,
-                 local: Optional[pulumi.Input['ClusterControlPlaneLocalArgs']] = None,
-                 remote: Optional[pulumi.Input['ClusterControlPlaneRemoteArgs']] = None):
+                 local: pulumi.Input[Optional['ClusterControlPlaneLocalArgs']] = None,
+                 remote: pulumi.Input[Optional['ClusterControlPlaneRemoteArgs']] = None):
         """
         :param pulumi.Input['ClusterControlPlaneLocalArgs'] local: Local control plane configuration.
                Structure is documented below.
@@ -160,7 +160,7 @@ class ClusterControlPlaneArgs:
 
     @_builtins.property
     @pulumi.getter
-    def local(self) -> Optional[pulumi.Input['ClusterControlPlaneLocalArgs']]:
+    def local(self) -> pulumi.Input[Optional['ClusterControlPlaneLocalArgs']]:
         """
         Local control plane configuration.
         Structure is documented below.
@@ -168,12 +168,12 @@ class ClusterControlPlaneArgs:
         return pulumi.get(self, "local")
 
     @local.setter
-    def local(self, value: Optional[pulumi.Input['ClusterControlPlaneLocalArgs']]):
+    def local(self, value: pulumi.Input[Optional['ClusterControlPlaneLocalArgs']]):
         pulumi.set(self, "local", value)
 
     @_builtins.property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['ClusterControlPlaneRemoteArgs']]:
+    def remote(self) -> pulumi.Input[Optional['ClusterControlPlaneRemoteArgs']]:
         """
         Remote control plane configuration.
         Structure is documented below.
@@ -181,25 +181,25 @@ class ClusterControlPlaneArgs:
         return pulumi.get(self, "remote")
 
     @remote.setter
-    def remote(self, value: Optional[pulumi.Input['ClusterControlPlaneRemoteArgs']]):
+    def remote(self, value: pulumi.Input[Optional['ClusterControlPlaneRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
 
 class ClusterControlPlaneEncryptionArgsDict(TypedDict):
-    kms_key: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cloud KMS CryptoKey e.g.
     projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
     to use for protecting control plane disks. If not specified, a
     Google-managed key will be used instead.
     """
-    kms_key_active_version: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_active_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Cloud KMS CryptoKeyVersion currently in use for protecting control
     plane disks. Only applicable if kms_key is set.
     """
-    kms_key_state: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Availability of the Cloud KMS CryptoKey. If not `KEY_AVAILABLE`, then
@@ -207,7 +207,7 @@ class ClusterControlPlaneEncryptionArgsDict(TypedDict):
     caused by a lack of permissions to use the key, or if the key is disabled
     or deleted.
     """
-    kms_statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgsDict']]]]
+    kms_statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgs']]]]]
     """
     (Output)
     Error status returned by Cloud KMS when using this key. This field may be
@@ -222,10 +222,10 @@ class ClusterControlPlaneEncryptionArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterControlPlaneEncryptionArgs:
     def __init__(__self__, *,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_active_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgs']]]] = None):
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_active_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key: The Cloud KMS CryptoKey e.g.
                projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
@@ -259,7 +259,7 @@ class ClusterControlPlaneEncryptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
-    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud KMS CryptoKey e.g.
         projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
@@ -269,12 +269,12 @@ class ClusterControlPlaneEncryptionArgs:
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
-    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyActiveVersion")
-    def kms_key_active_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_active_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Cloud KMS CryptoKeyVersion currently in use for protecting control
@@ -283,12 +283,12 @@ class ClusterControlPlaneEncryptionArgs:
         return pulumi.get(self, "kms_key_active_version")
 
     @kms_key_active_version.setter
-    def kms_key_active_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_active_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_active_version", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyState")
-    def kms_key_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Availability of the Cloud KMS CryptoKey. If not `KEY_AVAILABLE`, then
@@ -299,12 +299,12 @@ class ClusterControlPlaneEncryptionArgs:
         return pulumi.get(self, "kms_key_state")
 
     @kms_key_state.setter
-    def kms_key_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_state", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsStatuses")
-    def kms_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgs']]]]:
+    def kms_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgs']]]]:
         """
         (Output)
         Error status returned by Cloud KMS when using this key. This field may be
@@ -318,16 +318,16 @@ class ClusterControlPlaneEncryptionArgs:
         return pulumi.get(self, "kms_statuses")
 
     @kms_statuses.setter
-    def kms_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgs']]]]):
+    def kms_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgs']]]]):
         pulumi.set(self, "kms_statuses", value)
 
 
 class ClusterControlPlaneEncryptionKmsStatusArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The status code, which should be an enum value of google.rpc.Code.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
     """
@@ -335,8 +335,8 @@ class ClusterControlPlaneEncryptionKmsStatusArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterControlPlaneEncryptionKmsStatusArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: The status code, which should be an enum value of google.rpc.Code.
         :param pulumi.Input[_builtins.str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -348,47 +348,47 @@ class ClusterControlPlaneEncryptionKmsStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status code, which should be an enum value of google.rpc.Code.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class ClusterControlPlaneLocalArgsDict(TypedDict):
-    machine_filter: NotRequired[pulumi.Input[_builtins.str]]
+    machine_filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Only machines matching this filter will be allowed to host control
     plane nodes. The filtering language accepts strings like "name=<name>",
     and is documented here: [AIP-160](https://google.aip.dev/160).
     """
-    node_count: NotRequired[pulumi.Input[_builtins.int]]
+    node_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of nodes to serve as replicas of the Control Plane.
     Only 1 and 3 are supported.
     """
-    node_location: NotRequired[pulumi.Input[_builtins.str]]
+    node_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Google Distributed Cloud Edge zones where this node pool
     will be created. For example: `us-central1-edge-customer-a`.
     """
-    shared_deployment_policy: NotRequired[pulumi.Input[_builtins.str]]
+    shared_deployment_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Policy configuration about how user applications are deployed.
     Possible values are: `SHARED_DEPLOYMENT_POLICY_UNSPECIFIED`, `ALLOWED`, `DISALLOWED`.
@@ -397,10 +397,10 @@ class ClusterControlPlaneLocalArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterControlPlaneLocalArgs:
     def __init__(__self__, *,
-                 machine_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_deployment_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 machine_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_deployment_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] machine_filter: Only machines matching this filter will be allowed to host control
                plane nodes. The filtering language accepts strings like "name=<name>",
@@ -423,7 +423,7 @@ class ClusterControlPlaneLocalArgs:
 
     @_builtins.property
     @pulumi.getter(name="machineFilter")
-    def machine_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only machines matching this filter will be allowed to host control
         plane nodes. The filtering language accepts strings like "name=<name>",
@@ -432,12 +432,12 @@ class ClusterControlPlaneLocalArgs:
         return pulumi.get(self, "machine_filter")
 
     @machine_filter.setter
-    def machine_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes to serve as replicas of the Control Plane.
         Only 1 and 3 are supported.
@@ -445,12 +445,12 @@ class ClusterControlPlaneLocalArgs:
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeLocation")
-    def node_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Google Distributed Cloud Edge zones where this node pool
         will be created. For example: `us-central1-edge-customer-a`.
@@ -458,12 +458,12 @@ class ClusterControlPlaneLocalArgs:
         return pulumi.get(self, "node_location")
 
     @node_location.setter
-    def node_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_location", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedDeploymentPolicy")
-    def shared_deployment_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_deployment_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy configuration about how user applications are deployed.
         Possible values are: `SHARED_DEPLOYMENT_POLICY_UNSPECIFIED`, `ALLOWED`, `DISALLOWED`.
@@ -471,12 +471,12 @@ class ClusterControlPlaneLocalArgs:
         return pulumi.get(self, "shared_deployment_policy")
 
     @shared_deployment_policy.setter
-    def shared_deployment_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_deployment_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_deployment_policy", value)
 
 
 class ClusterControlPlaneRemoteArgsDict(TypedDict):
-    node_location: NotRequired[pulumi.Input[_builtins.str]]
+    node_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Google Distributed Cloud Edge zones where this node pool
     will be created. For example: `us-central1-edge-customer-a`.
@@ -485,7 +485,7 @@ class ClusterControlPlaneRemoteArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterControlPlaneRemoteArgs:
     def __init__(__self__, *,
-                 node_location: Optional[pulumi.Input[_builtins.str]] = None):
+                 node_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] node_location: Name of the Google Distributed Cloud Edge zones where this node pool
                will be created. For example: `us-central1-edge-customer-a`.
@@ -495,7 +495,7 @@ class ClusterControlPlaneRemoteArgs:
 
     @_builtins.property
     @pulumi.getter(name="nodeLocation")
-    def node_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Google Distributed Cloud Edge zones where this node pool
         will be created. For example: `us-central1-edge-customer-a`.
@@ -503,7 +503,7 @@ class ClusterControlPlaneRemoteArgs:
         return pulumi.get(self, "node_location")
 
     @node_location.setter
-    def node_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_location", value)
 
 
@@ -514,7 +514,7 @@ class ClusterFleetArgsDict(TypedDict):
     Project names are formatted as
     `projects/<project-number>`.
     """
-    membership: NotRequired[pulumi.Input[_builtins.str]]
+    membership: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The name of the managed Hub Membership resource associated to this cluster.
@@ -526,7 +526,7 @@ class ClusterFleetArgsDict(TypedDict):
 class ClusterFleetArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
-                 membership: Optional[pulumi.Input[_builtins.str]] = None):
+                 membership: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] project: The name of the Fleet host project where this cluster will be registered.
                Project names are formatted as
@@ -556,7 +556,7 @@ class ClusterFleetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def membership(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def membership(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the managed Hub Membership resource associated to this cluster.
@@ -566,24 +566,24 @@ class ClusterFleetArgs:
         return pulumi.get(self, "membership")
 
     @membership.setter
-    def membership(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def membership(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "membership", value)
 
 
 class ClusterMaintenanceEventArgsDict(TypedDict):
-    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time when the maintenance event request was created.
     """
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time when the maintenance event ended, either successfully or not. If
     the maintenance event is split into multiple maintenance windows,
     end_time is only updated when the whole flow ends.
     """
-    operation: NotRequired[pulumi.Input[_builtins.str]]
+    operation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The operation for running the maintenance event. Specified in the format
@@ -591,36 +591,36 @@ class ClusterMaintenanceEventArgsDict(TypedDict):
     into multiple operations (e.g. due to maintenance windows), the latest
     one is recorded.
     """
-    schedule: NotRequired[pulumi.Input[_builtins.str]]
+    schedule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The schedule of the maintenance event.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time when the maintenance event started.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Indicates the maintenance event state.
     """
-    target_version: NotRequired[pulumi.Input[_builtins.str]]
+    target_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The target cluster version. For example: "1.5.0".
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Indicates the maintenance event type.
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time when the maintenance event message was updated.
     """
-    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    uuid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     UUID of the maintenance event.
@@ -629,16 +629,16 @@ class ClusterMaintenanceEventArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterMaintenanceEventArgs:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] create_time: (Output)
                The time when the maintenance event request was created.
@@ -688,7 +688,7 @@ class ClusterMaintenanceEventArgs:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time when the maintenance event request was created.
@@ -696,12 +696,12 @@ class ClusterMaintenanceEventArgs:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time when the maintenance event ended, either successfully or not. If
@@ -711,12 +711,12 @@ class ClusterMaintenanceEventArgs:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def operation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The operation for running the maintenance event. Specified in the format
@@ -727,12 +727,12 @@ class ClusterMaintenanceEventArgs:
         return pulumi.get(self, "operation")
 
     @operation.setter
-    def operation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The schedule of the maintenance event.
@@ -740,12 +740,12 @@ class ClusterMaintenanceEventArgs:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time when the maintenance event started.
@@ -753,12 +753,12 @@ class ClusterMaintenanceEventArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Indicates the maintenance event state.
@@ -766,24 +766,24 @@ class ClusterMaintenanceEventArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="targetVersion")
-    def target_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target cluster version. For example: "1.5.0".
         """
         return pulumi.get(self, "target_version")
 
     @target_version.setter
-    def target_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Indicates the maintenance event type.
@@ -791,12 +791,12 @@ class ClusterMaintenanceEventArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time when the maintenance event message was updated.
@@ -804,12 +804,12 @@ class ClusterMaintenanceEventArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         UUID of the maintenance event.
@@ -817,7 +817,7 @@ class ClusterMaintenanceEventArgs:
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
 
@@ -827,7 +827,7 @@ class ClusterMaintenancePolicyArgsDict(TypedDict):
     Specifies the maintenance window in which maintenance may be performed.
     Structure is documented below.
     """
-    maintenance_exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgsDict']]]]
+    maintenance_exclusions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]]]
     """
     Exclusions to automatic maintenance. Non-emergency maintenance should not occur
     in these windows. Each exclusion has a unique name and may be active or expired.
@@ -839,7 +839,7 @@ class ClusterMaintenancePolicyArgsDict(TypedDict):
 class ClusterMaintenancePolicyArgs:
     def __init__(__self__, *,
                  window: pulumi.Input['ClusterMaintenancePolicyWindowArgs'],
-                 maintenance_exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]] = None):
+                 maintenance_exclusions: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]] = None):
         """
         :param pulumi.Input['ClusterMaintenancePolicyWindowArgs'] window: Specifies the maintenance window in which maintenance may be performed.
                Structure is documented below.
@@ -867,7 +867,7 @@ class ClusterMaintenancePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="maintenanceExclusions")
-    def maintenance_exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]]:
+    def maintenance_exclusions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]]:
         """
         Exclusions to automatic maintenance. Non-emergency maintenance should not occur
         in these windows. Each exclusion has a unique name and may be active or expired.
@@ -877,16 +877,16 @@ class ClusterMaintenancePolicyArgs:
         return pulumi.get(self, "maintenance_exclusions")
 
     @maintenance_exclusions.setter
-    def maintenance_exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]]):
+    def maintenance_exclusions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]]):
         pulumi.set(self, "maintenance_exclusions", value)
 
 
 class ClusterMaintenancePolicyMaintenanceExclusionArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A unique (per cluster) id for the window.
     """
-    window: NotRequired[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionWindowArgsDict']]
+    window: NotRequired[pulumi.Input[Optional['ClusterMaintenancePolicyMaintenanceExclusionWindowArgs']]]
     """
     Represents an arbitrary window of time.
     Structure is documented below.
@@ -895,8 +895,8 @@ class ClusterMaintenancePolicyMaintenanceExclusionArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterMaintenancePolicyMaintenanceExclusionArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 window: Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionWindowArgs']] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 window: pulumi.Input[Optional['ClusterMaintenancePolicyMaintenanceExclusionWindowArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] id: A unique (per cluster) id for the window.
         :param pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionWindowArgs'] window: Represents an arbitrary window of time.
@@ -909,19 +909,19 @@ class ClusterMaintenancePolicyMaintenanceExclusionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique (per cluster) id for the window.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def window(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionWindowArgs']]:
+    def window(self) -> pulumi.Input[Optional['ClusterMaintenancePolicyMaintenanceExclusionWindowArgs']]:
         """
         Represents an arbitrary window of time.
         Structure is documented below.
@@ -929,17 +929,17 @@ class ClusterMaintenancePolicyMaintenanceExclusionArgs:
         return pulumi.get(self, "window")
 
     @window.setter
-    def window(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionWindowArgs']]):
+    def window(self, value: pulumi.Input[Optional['ClusterMaintenancePolicyMaintenanceExclusionWindowArgs']]):
         pulumi.set(self, "window", value)
 
 
 class ClusterMaintenancePolicyMaintenanceExclusionWindowArgsDict(TypedDict):
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time that the window ends. The end time must take place after the
     start time.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time that the window first starts.
     """
@@ -947,8 +947,8 @@ class ClusterMaintenancePolicyMaintenanceExclusionWindowArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterMaintenancePolicyMaintenanceExclusionWindowArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end_time: The time that the window ends. The end time must take place after the
                start time.
@@ -961,7 +961,7 @@ class ClusterMaintenancePolicyMaintenanceExclusionWindowArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time that the window ends. The end time must take place after the
         start time.
@@ -969,19 +969,19 @@ class ClusterMaintenancePolicyMaintenanceExclusionWindowArgs:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time that the window first starts.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
@@ -1017,13 +1017,13 @@ class ClusterMaintenancePolicyWindowArgs:
 
 
 class ClusterMaintenancePolicyWindowRecurringWindowArgsDict(TypedDict):
-    recurrence: NotRequired[pulumi.Input[_builtins.str]]
+    recurrence: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
     this window recurs. They go on for the span of time between the start and
     end time.
     """
-    window: NotRequired[pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArgsDict']]
+    window: NotRequired[pulumi.Input[Optional['ClusterMaintenancePolicyWindowRecurringWindowWindowArgs']]]
     """
     Represents an arbitrary window of time.
     Structure is documented below.
@@ -1032,8 +1032,8 @@ class ClusterMaintenancePolicyWindowRecurringWindowArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterMaintenancePolicyWindowRecurringWindowArgs:
     def __init__(__self__, *,
-                 recurrence: Optional[pulumi.Input[_builtins.str]] = None,
-                 window: Optional[pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArgs']] = None):
+                 recurrence: pulumi.Input[Optional[_builtins.str]] = None,
+                 window: pulumi.Input[Optional['ClusterMaintenancePolicyWindowRecurringWindowWindowArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] recurrence: An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
                this window recurs. They go on for the span of time between the start and
@@ -1048,7 +1048,7 @@ class ClusterMaintenancePolicyWindowRecurringWindowArgs:
 
     @_builtins.property
     @pulumi.getter
-    def recurrence(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
         this window recurs. They go on for the span of time between the start and
@@ -1057,12 +1057,12 @@ class ClusterMaintenancePolicyWindowRecurringWindowArgs:
         return pulumi.get(self, "recurrence")
 
     @recurrence.setter
-    def recurrence(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence", value)
 
     @_builtins.property
     @pulumi.getter
-    def window(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArgs']]:
+    def window(self) -> pulumi.Input[Optional['ClusterMaintenancePolicyWindowRecurringWindowWindowArgs']]:
         """
         Represents an arbitrary window of time.
         Structure is documented below.
@@ -1070,17 +1070,17 @@ class ClusterMaintenancePolicyWindowRecurringWindowArgs:
         return pulumi.get(self, "window")
 
     @window.setter
-    def window(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArgs']]):
+    def window(self, value: pulumi.Input[Optional['ClusterMaintenancePolicyWindowRecurringWindowWindowArgs']]):
         pulumi.set(self, "window", value)
 
 
 class ClusterMaintenancePolicyWindowRecurringWindowWindowArgsDict(TypedDict):
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time that the window ends. The end time must take place after the
     start time.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time that the window first starts.
     """
@@ -1088,8 +1088,8 @@ class ClusterMaintenancePolicyWindowRecurringWindowWindowArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterMaintenancePolicyWindowRecurringWindowWindowArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end_time: The time that the window ends. The end time must take place after the
                start time.
@@ -1102,7 +1102,7 @@ class ClusterMaintenancePolicyWindowRecurringWindowWindowArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time that the window ends. The end time must take place after the
         start time.
@@ -1110,19 +1110,19 @@ class ClusterMaintenancePolicyWindowRecurringWindowWindowArgs:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time that the window first starts.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
@@ -1139,19 +1139,19 @@ class ClusterNetworkingArgsDict(TypedDict):
     blocks. Only a single block is supported. This field cannot be changed
     after creation.
     """
-    cluster_ipv6_cidr_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    cluster_ipv6_cidr_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     If specified, dual stack mode is enabled and all pods in the cluster are
     assigned an IPv6 address from these blocks alongside from an IPv4
     address. Only a single block is supported. This field cannot be changed
     after creation.
     """
-    network_type: NotRequired[pulumi.Input[_builtins.str]]
+    network_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     IP addressing type of this cluster i.e. SINGLESTACK_V4 vs DUALSTACK_V4_V6.
     """
-    services_ipv6_cidr_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    services_ipv6_cidr_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     If specified, dual stack mode is enabled and all services in the cluster are
     assigned an IPv6 address from these blocks alongside from an IPv4
@@ -1164,9 +1164,9 @@ class ClusterNetworkingArgs:
     def __init__(__self__, *,
                  cluster_ipv4_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  services_ipv4_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 cluster_ipv6_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 services_ipv6_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cluster_ipv6_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 services_ipv6_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cluster_ipv4_cidr_blocks: All pods in the cluster are assigned an RFC1918 IPv4 address from these
                blocks. Only a single block is supported. This field cannot be changed
@@ -1224,7 +1224,7 @@ class ClusterNetworkingArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterIpv6CidrBlocks")
-    def cluster_ipv6_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cluster_ipv6_cidr_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If specified, dual stack mode is enabled and all pods in the cluster are
         assigned an IPv6 address from these blocks alongside from an IPv4
@@ -1234,12 +1234,12 @@ class ClusterNetworkingArgs:
         return pulumi.get(self, "cluster_ipv6_cidr_blocks")
 
     @cluster_ipv6_cidr_blocks.setter
-    def cluster_ipv6_cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cluster_ipv6_cidr_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cluster_ipv6_cidr_blocks", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         IP addressing type of this cluster i.e. SINGLESTACK_V4 vs DUALSTACK_V4_V6.
@@ -1247,12 +1247,12 @@ class ClusterNetworkingArgs:
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="servicesIpv6CidrBlocks")
-    def services_ipv6_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def services_ipv6_cidr_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If specified, dual stack mode is enabled and all services in the cluster are
         assigned an IPv6 address from these blocks alongside from an IPv4
@@ -1262,12 +1262,12 @@ class ClusterNetworkingArgs:
         return pulumi.get(self, "services_ipv6_cidr_blocks")
 
     @services_ipv6_cidr_blocks.setter
-    def services_ipv6_cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def services_ipv6_cidr_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "services_ipv6_cidr_blocks", value)
 
 
 class ClusterSystemAddonsConfigArgsDict(TypedDict):
-    ingress: NotRequired[pulumi.Input['ClusterSystemAddonsConfigIngressArgsDict']]
+    ingress: NotRequired[pulumi.Input[Optional['ClusterSystemAddonsConfigIngressArgs']]]
     """
     Config for the Ingress add-on which allows customers to create an Ingress
     object to manage external access to the servers in a cluster. The add-on
@@ -1278,7 +1278,7 @@ class ClusterSystemAddonsConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterSystemAddonsConfigArgs:
     def __init__(__self__, *,
-                 ingress: Optional[pulumi.Input['ClusterSystemAddonsConfigIngressArgs']] = None):
+                 ingress: pulumi.Input[Optional['ClusterSystemAddonsConfigIngressArgs']] = None):
         """
         :param pulumi.Input['ClusterSystemAddonsConfigIngressArgs'] ingress: Config for the Ingress add-on which allows customers to create an Ingress
                object to manage external access to the servers in a cluster. The add-on
@@ -1290,7 +1290,7 @@ class ClusterSystemAddonsConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ingress(self) -> Optional[pulumi.Input['ClusterSystemAddonsConfigIngressArgs']]:
+    def ingress(self) -> pulumi.Input[Optional['ClusterSystemAddonsConfigIngressArgs']]:
         """
         Config for the Ingress add-on which allows customers to create an Ingress
         object to manage external access to the servers in a cluster. The add-on
@@ -1300,16 +1300,16 @@ class ClusterSystemAddonsConfigArgs:
         return pulumi.get(self, "ingress")
 
     @ingress.setter
-    def ingress(self, value: Optional[pulumi.Input['ClusterSystemAddonsConfigIngressArgs']]):
+    def ingress(self, value: pulumi.Input[Optional['ClusterSystemAddonsConfigIngressArgs']]):
         pulumi.set(self, "ingress", value)
 
 
 class ClusterSystemAddonsConfigIngressArgsDict(TypedDict):
-    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether Ingress is disabled.
     """
-    ipv4_vip: NotRequired[pulumi.Input[_builtins.str]]
+    ipv4_vip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Ingress VIP.
     """
@@ -1317,8 +1317,8 @@ class ClusterSystemAddonsConfigIngressArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterSystemAddonsConfigIngressArgs:
     def __init__(__self__, *,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv4_vip: Optional[pulumi.Input[_builtins.str]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv4_vip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] disabled: Whether Ingress is disabled.
         :param pulumi.Input[_builtins.str] ipv4_vip: Ingress VIP.
@@ -1330,41 +1330,41 @@ class ClusterSystemAddonsConfigIngressArgs:
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Ingress is disabled.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4Vip")
-    def ipv4_vip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv4_vip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ingress VIP.
         """
         return pulumi.get(self, "ipv4_vip")
 
     @ipv4_vip.setter
-    def ipv4_vip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv4_vip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv4_vip", value)
 
 
 class NodePoolLocalDiskEncryptionArgsDict(TypedDict):
-    kms_key: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cloud KMS CryptoKey e.g. projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} to use for protecting node local disks.
     If not specified, a Google-managed key will be used instead.
     """
-    kms_key_active_version: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_active_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Cloud KMS CryptoKeyVersion currently in use for protecting node local disks. Only applicable if kmsKey is set.
     """
-    kms_key_state: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Availability of the Cloud KMS CryptoKey. If not KEY_AVAILABLE, then nodes may go offline as they cannot access their local data.
@@ -1374,9 +1374,9 @@ class NodePoolLocalDiskEncryptionArgsDict(TypedDict):
 @pulumi.input_type
 class NodePoolLocalDiskEncryptionArgs:
     def __init__(__self__, *,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_active_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_state: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_active_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key: The Cloud KMS CryptoKey e.g. projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} to use for protecting node local disks.
                If not specified, a Google-managed key will be used instead.
@@ -1395,7 +1395,7 @@ class NodePoolLocalDiskEncryptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
-    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud KMS CryptoKey e.g. projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} to use for protecting node local disks.
         If not specified, a Google-managed key will be used instead.
@@ -1403,12 +1403,12 @@ class NodePoolLocalDiskEncryptionArgs:
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
-    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyActiveVersion")
-    def kms_key_active_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_active_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Cloud KMS CryptoKeyVersion currently in use for protecting node local disks. Only applicable if kmsKey is set.
@@ -1416,12 +1416,12 @@ class NodePoolLocalDiskEncryptionArgs:
         return pulumi.get(self, "kms_key_active_version")
 
     @kms_key_active_version.setter
-    def kms_key_active_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_active_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_active_version", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyState")
-    def kms_key_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Availability of the Cloud KMS CryptoKey. If not KEY_AVAILABLE, then nodes may go offline as they cannot access their local data.
@@ -1430,12 +1430,12 @@ class NodePoolLocalDiskEncryptionArgs:
         return pulumi.get(self, "kms_key_state")
 
     @kms_key_state.setter
-    def kms_key_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_state", value)
 
 
 class NodePoolNodeConfigArgsDict(TypedDict):
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     "The Kubernetes node labels"
     """
@@ -1443,7 +1443,7 @@ class NodePoolNodeConfigArgsDict(TypedDict):
 @pulumi.input_type
 class NodePoolNodeConfigArgs:
     def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: "The Kubernetes node labels"
         """
@@ -1452,36 +1452,36 @@ class NodePoolNodeConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         "The Kubernetes node labels"
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
 
 class VpnConnectionDetailArgsDict(TypedDict):
-    cloud_routers: NotRequired[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgsDict']]]]
+    cloud_routers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgs']]]]]
     """
     (Output)
     The Cloud Router info.
     Structure is documented below.
     """
-    cloud_vpns: NotRequired[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgsDict']]]]
+    cloud_vpns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgs']]]]]
     """
     (Output)
     Each connection has multiple Cloud VPN gateways.
     Structure is documented below.
     """
-    error: NotRequired[pulumi.Input[_builtins.str]]
+    error: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The error message. This is only populated when state=ERROR.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current connection state.
@@ -1490,10 +1490,10 @@ class VpnConnectionDetailArgsDict(TypedDict):
 @pulumi.input_type
 class VpnConnectionDetailArgs:
     def __init__(__self__, *,
-                 cloud_routers: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgs']]]] = None,
-                 cloud_vpns: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgs']]]] = None,
-                 error: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_routers: pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgs']]]] = None,
+                 cloud_vpns: pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgs']]]] = None,
+                 error: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgs']]] cloud_routers: (Output)
                The Cloud Router info.
@@ -1517,7 +1517,7 @@ class VpnConnectionDetailArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudRouters")
-    def cloud_routers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgs']]]]:
+    def cloud_routers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgs']]]]:
         """
         (Output)
         The Cloud Router info.
@@ -1526,12 +1526,12 @@ class VpnConnectionDetailArgs:
         return pulumi.get(self, "cloud_routers")
 
     @cloud_routers.setter
-    def cloud_routers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgs']]]]):
+    def cloud_routers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgs']]]]):
         pulumi.set(self, "cloud_routers", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudVpns")
-    def cloud_vpns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgs']]]]:
+    def cloud_vpns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgs']]]]:
         """
         (Output)
         Each connection has multiple Cloud VPN gateways.
@@ -1540,12 +1540,12 @@ class VpnConnectionDetailArgs:
         return pulumi.get(self, "cloud_vpns")
 
     @cloud_vpns.setter
-    def cloud_vpns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgs']]]]):
+    def cloud_vpns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgs']]]]):
         pulumi.set(self, "cloud_vpns", value)
 
     @_builtins.property
     @pulumi.getter
-    def error(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The error message. This is only populated when state=ERROR.
@@ -1553,12 +1553,12 @@ class VpnConnectionDetailArgs:
         return pulumi.get(self, "error")
 
     @error.setter
-    def error(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current connection state.
@@ -1566,12 +1566,12 @@ class VpnConnectionDetailArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class VpnConnectionDetailCloudRouterArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name of VPN connection
     """
@@ -1579,7 +1579,7 @@ class VpnConnectionDetailCloudRouterArgsDict(TypedDict):
 @pulumi.input_type
 class VpnConnectionDetailCloudRouterArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The resource name of VPN connection
         """
@@ -1588,19 +1588,19 @@ class VpnConnectionDetailCloudRouterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of VPN connection
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class VpnConnectionDetailCloudVpnArgsDict(TypedDict):
-    gateway: NotRequired[pulumi.Input[_builtins.str]]
+    gateway: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The created Cloud VPN gateway name.
@@ -1609,7 +1609,7 @@ class VpnConnectionDetailCloudVpnArgsDict(TypedDict):
 @pulumi.input_type
 class VpnConnectionDetailCloudVpnArgs:
     def __init__(__self__, *,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None):
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] gateway: (Output)
                The created Cloud VPN gateway name.
@@ -1619,7 +1619,7 @@ class VpnConnectionDetailCloudVpnArgs:
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The created Cloud VPN gateway name.
@@ -1627,12 +1627,12 @@ class VpnConnectionDetailCloudVpnArgs:
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
 
 class VpnConnectionVpcProjectArgsDict(TypedDict):
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The project of the VPC to connect to. If not specified, it is the same as the cluster project.
     """
@@ -1640,7 +1640,7 @@ class VpnConnectionVpcProjectArgsDict(TypedDict):
 @pulumi.input_type
 class VpnConnectionVpcProjectArgs:
     def __init__(__self__, *,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] project_id: The project of the VPC to connect to. If not specified, it is the same as the cluster project.
         """
@@ -1649,14 +1649,14 @@ class VpnConnectionVpcProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project of the VPC to connect to. If not specified, it is the same as the cluster project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 

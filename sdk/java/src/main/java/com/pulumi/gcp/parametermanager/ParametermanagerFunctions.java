@@ -50,8 +50,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -90,8 +90,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -130,8 +130,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -170,8 +170,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -210,8 +210,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -250,8 +250,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -291,8 +291,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -332,8 +332,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -373,8 +373,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -414,8 +414,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -455,8 +455,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionRenderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -496,8 +496,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionRenderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -537,8 +537,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionRenderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -578,8 +578,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionRenderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -619,8 +619,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParameterVersionRenderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -660,8 +660,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParametersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -699,8 +699,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParametersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -738,8 +738,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParametersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -777,8 +777,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParametersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -816,8 +816,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParametersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -855,8 +855,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParametersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -894,8 +894,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetParametersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -933,8 +933,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -974,8 +974,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1015,8 +1015,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1056,8 +1056,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1097,8 +1097,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1138,8 +1138,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1180,8 +1180,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1222,8 +1222,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1264,8 +1264,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1306,8 +1306,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1350,8 +1350,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionRenderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1394,8 +1394,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionRenderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1438,8 +1438,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionRenderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1482,8 +1482,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionRenderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1526,8 +1526,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParameterVersionRenderArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1568,8 +1568,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParametersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1608,8 +1608,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParametersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1648,8 +1648,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParametersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1688,8 +1688,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParametersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1728,8 +1728,8 @@ public final class ParametermanagerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.parametermanager.ParametermanagerFunctions;
      * import com.pulumi.gcp.parametermanager.inputs.GetRegionalParametersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

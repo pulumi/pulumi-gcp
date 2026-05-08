@@ -58,9 +58,9 @@ class EgressPolicyArgs:
 @pulumi.input_type
 class _EgressPolicyState:
     def __init__(__self__, *,
-                 access_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EgressPolicy resources.
 
@@ -77,38 +77,38 @@ class _EgressPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="accessPolicyId")
-    def access_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Access Policy this resource belongs to.
         """
         return pulumi.get(self, "access_policy_id")
 
     @access_policy_id.setter
-    def access_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="egressPolicyName")
-    def egress_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def egress_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Service Perimeter to add this resource to.
         """
         return pulumi.get(self, "egress_policy_name")
 
     @egress_policy_name.setter
-    def egress_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def egress_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "egress_policy_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A GCP resource that is inside of the service perimeter.
         """
         return pulumi.get(self, "resource")
 
     @resource.setter
-    def resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
 
 
@@ -118,8 +118,8 @@ class EgressPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 egress_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
+                 egress_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource has been deprecated, please refer to ServicePerimeterEgressPolicy.
@@ -187,8 +187,8 @@ class EgressPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 egress_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
+                 egress_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -215,9 +215,9 @@ class EgressPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            egress_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource: Optional[pulumi.Input[_builtins.str]] = None) -> 'EgressPolicy':
+            access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            egress_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource: pulumi.Input[Optional[_builtins.str]] = None) -> 'EgressPolicy':
         """
         Get an existing EgressPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

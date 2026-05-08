@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         ServiceName = "dialogflow.googleapis.com",
     ///     });
     /// 
-    ///     var waitEnableServiceApi = new Time.Index.Sleep("wait_enable_service_api", new()
+    ///     var waitEnableServiceApi = new Time.Sleep("wait_enable_service_api", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions
@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///     });
     /// 
-    ///     var waitCreateSa = new Time.Index.Sleep("wait_create_sa", new()
+    ///     var waitCreateSa = new Time.Sleep("wait_create_sa", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions
@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Diagflow
     ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("crypto_key", new()
     ///     {
     ///         CryptoKeyId = key.Id,
-    ///         Member = Std.Index.Replace.Invoke(new()
+    ///         Member = Std.Replace.Invoke(new()
     ///         {
     ///             Text = gcpSa.Member,
     ///             Search = "@gcp-sa-dialogflow.iam",

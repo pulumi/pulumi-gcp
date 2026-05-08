@@ -254,77 +254,77 @@ export interface NetworkPeeringState {
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-provided description for this network peering.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * True if custom routes are exported to the peered network; false otherwise.
      */
-    exportCustomRoutes?: pulumi.Input<boolean>;
+    exportCustomRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * True if all subnet routes with a public IP address range are exported; false otherwise.
      */
-    exportCustomRoutesWithPublicIp?: pulumi.Input<boolean>;
+    exportCustomRoutesWithPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * True if custom routes are imported from the peered network; false otherwise.
      */
-    importCustomRoutes?: pulumi.Input<boolean>;
+    importCustomRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * True if custom routes are imported from the peered network; false otherwise.
      */
-    importCustomRoutesWithPublicIp?: pulumi.Input<boolean>;
+    importCustomRoutesWithPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Network Peering.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The relative resource name of the network to peer with a standard VMware Engine network.
      * The provided network can be a consumer VPC network or another standard VMware Engine network.
      */
-    peerNetwork?: pulumi.Input<string>;
+    peerNetwork?: pulumi.Input<string | undefined>;
     /**
      * The type of the network to peer with the VMware Engine network.
      * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
      */
-    peerNetworkType?: pulumi.Input<string>;
+    peerNetworkType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * State of the network peering.
      * This field has a value of 'ACTIVE' when there's a matching configuration in the peer network.
      * New values may be added to this enum when appropriate.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Details about the current state of the network peering.
      */
-    stateDetails?: pulumi.Input<string>;
+    stateDetails?: pulumi.Input<string | undefined>;
     /**
      * System-generated unique identifier for the resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Last updated time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The relative resource name of the VMware Engine network. Specify the name in the following form:
      * projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId} where {project}
      * can either be a project number or a project ID.
      */
-    vmwareEngineNetwork?: pulumi.Input<string>;
+    vmwareEngineNetwork?: pulumi.Input<string | undefined>;
     /**
      * The canonical name of the VMware Engine network in the form:
      * projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
      */
-    vmwareEngineNetworkCanonical?: pulumi.Input<string>;
+    vmwareEngineNetworkCanonical?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -334,27 +334,27 @@ export interface NetworkPeeringArgs {
     /**
      * User-provided description for this network peering.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * True if custom routes are exported to the peered network; false otherwise.
      */
-    exportCustomRoutes?: pulumi.Input<boolean>;
+    exportCustomRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * True if all subnet routes with a public IP address range are exported; false otherwise.
      */
-    exportCustomRoutesWithPublicIp?: pulumi.Input<boolean>;
+    exportCustomRoutesWithPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * True if custom routes are imported from the peered network; false otherwise.
      */
-    importCustomRoutes?: pulumi.Input<boolean>;
+    importCustomRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * True if custom routes are imported from the peered network; false otherwise.
      */
-    importCustomRoutesWithPublicIp?: pulumi.Input<boolean>;
+    importCustomRoutesWithPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Network Peering.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The relative resource name of the network to peer with a standard VMware Engine network.
      * The provided network can be a consumer VPC network or another standard VMware Engine network.
@@ -369,7 +369,7 @@ export interface NetworkPeeringArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The relative resource name of the VMware Engine network. Specify the name in the following form:
      * projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId} where {project}

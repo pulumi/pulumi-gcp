@@ -385,93 +385,93 @@ export interface TaskState {
     /**
      * The time when the task was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-provided description of the task.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration for the cluster
      * Structure is documented below.
      */
-    executionSpec?: pulumi.Input<inputs.dataplex.TaskExecutionSpec>;
+    executionSpec?: pulumi.Input<inputs.dataplex.TaskExecutionSpec | undefined>;
     /**
      * Configuration for the cluster
      * Structure is documented below.
      */
-    executionStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.TaskExecutionStatus>[]>;
+    executionStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.TaskExecutionStatus>[] | undefined>;
     /**
      * User-defined labels for the task.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The lake in which the task will be created in.
      */
-    lake?: pulumi.Input<string>;
+    lake?: pulumi.Input<string | undefined>;
     /**
      * The location in which the task will be created in.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
      */
-    notebook?: pulumi.Input<inputs.dataplex.TaskNotebook>;
+    notebook?: pulumi.Input<inputs.dataplex.TaskNotebook | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
      */
-    spark?: pulumi.Input<inputs.dataplex.TaskSpark>;
+    spark?: pulumi.Input<inputs.dataplex.TaskSpark | undefined>;
     /**
      * (Output)
      * Execution state for the job.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The task Id of the task.
      */
-    taskId?: pulumi.Input<string>;
+    taskId?: pulumi.Input<string | undefined>;
     /**
      * Configuration for the cluster
      * Structure is documented below.
      */
-    triggerSpec?: pulumi.Input<inputs.dataplex.TaskTriggerSpec>;
+    triggerSpec?: pulumi.Input<inputs.dataplex.TaskTriggerSpec | undefined>;
     /**
      * (Output)
      * System generated globally unique ID for the job.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * Last update time of the status.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -481,11 +481,11 @@ export interface TaskArgs {
     /**
      * User-provided description of the task.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Configuration for the cluster
      * Structure is documented below.
@@ -497,34 +497,34 @@ export interface TaskArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The lake in which the task will be created in.
      */
-    lake?: pulumi.Input<string>;
+    lake?: pulumi.Input<string | undefined>;
     /**
      * The location in which the task will be created in.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
      */
-    notebook?: pulumi.Input<inputs.dataplex.TaskNotebook>;
+    notebook?: pulumi.Input<inputs.dataplex.TaskNotebook | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
      */
-    spark?: pulumi.Input<inputs.dataplex.TaskSpark>;
+    spark?: pulumi.Input<inputs.dataplex.TaskSpark | undefined>;
     /**
      * The task Id of the task.
      */
-    taskId?: pulumi.Input<string>;
+    taskId?: pulumi.Input<string | undefined>;
     /**
      * Configuration for the cluster
      * Structure is documented below.

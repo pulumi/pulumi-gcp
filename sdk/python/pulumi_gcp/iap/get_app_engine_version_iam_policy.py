@@ -153,10 +153,10 @@ def get_app_engine_version_iam_policy(app_id: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         service=pulumi.get(__ret__, 'service'),
         version_id=pulumi.get(__ret__, 'version_id'))
-def get_app_engine_version_iam_policy_output(app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                             project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                             service: Optional[pulumi.Input[_builtins.str]] = None,
-                                             version_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_app_engine_version_iam_policy_output(app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                             project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             service: pulumi.Input[Optional[_builtins.str]] = None,
+                                             version_id: pulumi.Input[Optional[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppEngineVersionIamPolicyResult]:
     """
     Retrieves the current IAM policy data for appengineversion

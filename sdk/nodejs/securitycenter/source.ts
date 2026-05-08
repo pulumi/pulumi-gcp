@@ -138,7 +138,7 @@ export interface SourceState {
     /**
      * The description of the source (max of 1024 characters).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The source’s display name. A source’s display name must be unique
      * amongst its siblings, for example, two sources with the same parent
@@ -146,17 +146,17 @@ export interface SourceState {
      * with a letter or digit, may contain letters, digits, spaces, hyphens,
      * and underscores, and can be no longer than 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The resource name of this source, in the format
      * `organizations/{{organization}}/sources/{{source}}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization whose Cloud Security Command Center the Source
      * lives in.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -166,7 +166,7 @@ export interface SourceArgs {
     /**
      * The description of the source (max of 1024 characters).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The source’s display name. A source’s display name must be unique
      * amongst its siblings, for example, two sources with the same parent

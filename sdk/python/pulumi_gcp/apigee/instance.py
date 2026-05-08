@@ -23,14 +23,14 @@ class InstanceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
-                 access_logging_config: Optional[pulumi.Input['InstanceAccessLoggingConfigArgs']] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_cidr_range: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_logging_config: pulumi.Input[Optional['InstanceAccessLoggingConfigArgs']] = None,
+                 consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_cidr_range: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -105,7 +105,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessLoggingConfig")
-    def access_logging_config(self) -> Optional[pulumi.Input['InstanceAccessLoggingConfigArgs']]:
+    def access_logging_config(self) -> pulumi.Input[Optional['InstanceAccessLoggingConfigArgs']]:
         """
         Access logging configuration enables the access logging feature at the instance.
         Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
@@ -114,12 +114,12 @@ class InstanceArgs:
         return pulumi.get(self, "access_logging_config")
 
     @access_logging_config.setter
-    def access_logging_config(self, value: Optional[pulumi.Input['InstanceAccessLoggingConfigArgs']]):
+    def access_logging_config(self, value: pulumi.Input[Optional['InstanceAccessLoggingConfigArgs']]):
         pulumi.set(self, "access_logging_config", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerAcceptLists")
-    def consumer_accept_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def consumer_accept_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Customer accept list represents the list of projects (id/number) on customer
         side that can privately connect to the service attachment. It is an optional field
@@ -129,24 +129,24 @@ class InstanceArgs:
         return pulumi.get(self, "consumer_accept_lists")
 
     @consumer_accept_lists.setter
-    def consumer_accept_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def consumer_accept_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "consumer_accept_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the instance.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryptionKeyName")
-    def disk_encryption_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_encryption_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only.
         Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
@@ -154,24 +154,24 @@ class InstanceArgs:
         return pulumi.get(self, "disk_encryption_key_name")
 
     @disk_encryption_key_name.setter
-    def disk_encryption_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_encryption_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_encryption_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name of the instance.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipRange")
-    def ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP range represents the customer-provided CIDR block of length 22 that will be used for
         the Apigee instance creation. This optional range, if provided, should be freely
@@ -184,24 +184,24 @@ class InstanceArgs:
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
-    def ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID of the instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="peeringCidrRange")
-    def peering_cidr_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peering_cidr_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The size of the CIDR block range that will be reserved by the instance. For valid values,
         see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
@@ -209,26 +209,26 @@ class InstanceArgs:
         return pulumi.get(self, "peering_cidr_range")
 
     @peering_cidr_range.setter
-    def peering_cidr_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peering_cidr_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peering_cidr_range", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 access_logging_config: Optional[pulumi.Input['InstanceAccessLoggingConfigArgs']] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_logging_config: pulumi.Input[Optional['InstanceAccessLoggingConfigArgs']] = None,
+                 consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -291,7 +291,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="accessLoggingConfig")
-    def access_logging_config(self) -> Optional[pulumi.Input['InstanceAccessLoggingConfigArgs']]:
+    def access_logging_config(self) -> pulumi.Input[Optional['InstanceAccessLoggingConfigArgs']]:
         """
         Access logging configuration enables the access logging feature at the instance.
         Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
@@ -300,12 +300,12 @@ class _InstanceState:
         return pulumi.get(self, "access_logging_config")
 
     @access_logging_config.setter
-    def access_logging_config(self, value: Optional[pulumi.Input['InstanceAccessLoggingConfigArgs']]):
+    def access_logging_config(self, value: pulumi.Input[Optional['InstanceAccessLoggingConfigArgs']]):
         pulumi.set(self, "access_logging_config", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerAcceptLists")
-    def consumer_accept_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def consumer_accept_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Customer accept list represents the list of projects (id/number) on customer
         side that can privately connect to the service attachment. It is an optional field
@@ -315,24 +315,24 @@ class _InstanceState:
         return pulumi.get(self, "consumer_accept_lists")
 
     @consumer_accept_lists.setter
-    def consumer_accept_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def consumer_accept_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "consumer_accept_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the instance.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryptionKeyName")
-    def disk_encryption_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_encryption_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only.
         Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
@@ -340,36 +340,36 @@ class _InstanceState:
         return pulumi.get(self, "disk_encryption_key_name")
 
     @disk_encryption_key_name.setter
-    def disk_encryption_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_encryption_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_encryption_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name of the instance.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Hostname or IP address of the exposed Apigee endpoint used by clients to connect to the service.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="ipRange")
-    def ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP range represents the customer-provided CIDR block of length 22 that will be used for
         the Apigee instance creation. This optional range, if provided, should be freely
@@ -382,36 +382,36 @@ class _InstanceState:
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
-    def ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Compute Engine location where the instance resides.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID of the instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Apigee Organization associated with the Apigee instance,
         in the format `organizations/{{org_name}}`.
@@ -419,12 +419,12 @@ class _InstanceState:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="peeringCidrRange")
-    def peering_cidr_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peering_cidr_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The size of the CIDR block range that will be reserved by the instance. For valid values,
         see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
@@ -432,24 +432,24 @@ class _InstanceState:
         return pulumi.get(self, "peering_cidr_range")
 
     @peering_cidr_range.setter
-    def peering_cidr_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peering_cidr_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peering_cidr_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Port number of the exposed Apigee endpoint.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachment")
-    def service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Resource name of the service attachment created for the instance in
         the format: projects/*/regions/*/serviceAttachments/* Apigee customers can privately
@@ -458,7 +458,7 @@ class _InstanceState:
         return pulumi.get(self, "service_attachment")
 
     @service_attachment.setter
-    def service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_attachment", value)
 
 
@@ -468,16 +468,16 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_logging_config: Optional[pulumi.Input[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']]] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_logging_config: pulumi.Input[Optional[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']]] = None,
+                 consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An `Instance` is the runtime dataplane in Apigee.
@@ -853,16 +853,16 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_logging_config: Optional[pulumi.Input[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']]] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_logging_config: pulumi.Input[Optional[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']]] = None,
+                 consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -899,19 +899,19 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_logging_config: Optional[pulumi.Input[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']]] = None,
-            consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            peering_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.str]] = None,
-            service_attachment: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            access_logging_config: pulumi.Input[Optional[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']]] = None,
+            consumer_accept_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            service_attachment: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

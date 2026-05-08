@@ -21,9 +21,9 @@ __all__ = ['ControlProjectIntelligenceConfigArgs', 'ControlProjectIntelligenceCo
 @pulumi.input_type
 class ControlProjectIntelligenceConfigArgs:
     def __init__(__self__, *,
-                 edition_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 edition_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ControlProjectIntelligenceConfig resource.
 
@@ -41,19 +41,19 @@ class ControlProjectIntelligenceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="editionConfig")
-    def edition_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
         """
         return pulumi.get(self, "edition_config")
 
     @edition_config.setter
-    def edition_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterArgs']]:
+    def filter(self) -> pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterArgs']]:
         """
         Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
         Structure is documented below.
@@ -61,31 +61,31 @@ class ControlProjectIntelligenceConfigArgs:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterArgs']]):
+    def filter(self, value: pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterArgs']]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the GCP project. For GCP project, this field can be project name or project number.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _ControlProjectIntelligenceConfigState:
     def __init__(__self__, *,
-                 edition_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_intelligence_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs']]]] = None,
-                 filter: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 trial_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ControlProjectIntelligenceConfigTrialConfigArgs']]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 edition_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_intelligence_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs']]]] = None,
+                 filter: pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 trial_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ControlProjectIntelligenceConfigTrialConfigArgs']]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ControlProjectIntelligenceConfig resources.
 
@@ -114,19 +114,19 @@ class _ControlProjectIntelligenceConfigState:
 
     @_builtins.property
     @pulumi.getter(name="editionConfig")
-    def edition_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
         """
         return pulumi.get(self, "edition_config")
 
     @edition_config.setter
-    def edition_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition_config", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveIntelligenceConfigs")
-    def effective_intelligence_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs']]]]:
+    def effective_intelligence_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs']]]]:
         """
         The Intelligence config that is effective for the resource.
         Structure is documented below.
@@ -134,12 +134,12 @@ class _ControlProjectIntelligenceConfigState:
         return pulumi.get(self, "effective_intelligence_configs")
 
     @effective_intelligence_configs.setter
-    def effective_intelligence_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs']]]]):
+    def effective_intelligence_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs']]]]):
         pulumi.set(self, "effective_intelligence_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterArgs']]:
+    def filter(self) -> pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterArgs']]:
         """
         Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
         Structure is documented below.
@@ -147,24 +147,24 @@ class _ControlProjectIntelligenceConfigState:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['ControlProjectIntelligenceConfigFilterArgs']]):
+    def filter(self, value: pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterArgs']]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the GCP project. For GCP project, this field can be project name or project number.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="trialConfigs")
-    def trial_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ControlProjectIntelligenceConfigTrialConfigArgs']]]]:
+    def trial_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ControlProjectIntelligenceConfigTrialConfigArgs']]]]:
         """
         The trial configuration of the Storage Intelligence resource.
         Structure is documented below.
@@ -172,19 +172,19 @@ class _ControlProjectIntelligenceConfigState:
         return pulumi.get(self, "trial_configs")
 
     @trial_configs.setter
-    def trial_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ControlProjectIntelligenceConfigTrialConfigArgs']]]]):
+    def trial_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ControlProjectIntelligenceConfigTrialConfigArgs']]]]):
         pulumi.set(self, "trial_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the Storage Intelligence Config resource is last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -194,9 +194,9 @@ class ControlProjectIntelligenceConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 edition_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 edition_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The Project Storage Intelligence Config resource represents GCS Storage Intelligence operating on individual GCP project. Storage Intelligence Config is a singleton resource and individual instance exists on each GCP project.
@@ -314,9 +314,9 @@ class ControlProjectIntelligenceConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 edition_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 edition_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -342,12 +342,12 @@ class ControlProjectIntelligenceConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            edition_config: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_intelligence_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs', 'ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict']]]]] = None,
-            filter: Optional[pulumi.Input[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            trial_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigTrialConfigArgs', 'ControlProjectIntelligenceConfigTrialConfigArgsDict']]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'ControlProjectIntelligenceConfig':
+            edition_config: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_intelligence_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs', 'ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict']]]]] = None,
+            filter: pulumi.Input[Optional[Union['ControlProjectIntelligenceConfigFilterArgs', 'ControlProjectIntelligenceConfigFilterArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            trial_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlProjectIntelligenceConfigTrialConfigArgs', 'ControlProjectIntelligenceConfigTrialConfigArgsDict']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'ControlProjectIntelligenceConfig':
         """
         Get an existing ControlProjectIntelligenceConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

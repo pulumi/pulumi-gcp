@@ -41,8 +41,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetConsentStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -82,8 +82,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetConsentStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -123,8 +123,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetConsentStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -164,8 +164,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetConsentStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -205,8 +205,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetConsentStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -246,8 +246,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetDatasetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -286,8 +286,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetDatasetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -326,8 +326,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetDatasetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -366,8 +366,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetDatasetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -406,8 +406,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetDatasetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -446,8 +446,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetDicomStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -486,8 +486,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetDicomStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -526,8 +526,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetDicomStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -566,8 +566,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetDicomStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -606,8 +606,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetDicomStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -646,8 +646,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetFhirStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -686,8 +686,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetFhirStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -726,8 +726,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetFhirStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -766,8 +766,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetFhirStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -806,8 +806,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetFhirStoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -846,8 +846,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetHl7V2StoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -886,8 +886,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetHl7V2StoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -926,8 +926,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetHl7V2StoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -966,8 +966,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetHl7V2StoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1006,8 +1006,8 @@ public final class HealthcareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.healthcare.HealthcareFunctions;
      * import com.pulumi.gcp.healthcare.inputs.GetHl7V2StoreIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

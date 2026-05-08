@@ -226,57 +226,57 @@ export interface AssistantState {
     /**
      * The unique id of the assistant.
      */
-    assistantId?: pulumi.Input<string>;
+    assistantId?: pulumi.Input<string | undefined>;
     /**
      * The unique id of the collection.
      */
-    collectionId?: pulumi.Input<string>;
+    collectionId?: pulumi.Input<string | undefined>;
     /**
      * Customer policy for the assistant.
      * Structure is documented below.
      */
-    customerPolicy?: pulumi.Input<inputs.discoveryengine.AssistantCustomerPolicy>;
+    customerPolicy?: pulumi.Input<inputs.discoveryengine.AssistantCustomerPolicy | undefined>;
     /**
      * Description for additional information. Expected to be shown on the
      * configuration UI, not to the users of the assistant.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The assistant display name.
      * It must be a UTF-8 encoded string with a length limit of 128 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The unique id of the engine.
      */
-    engineId?: pulumi.Input<string>;
+    engineId?: pulumi.Input<string | undefined>;
     /**
      * Configuration for the generation of the assistant response.
      * Structure is documented below.
      */
-    generationConfig?: pulumi.Input<inputs.discoveryengine.AssistantGenerationConfig>;
+    generationConfig?: pulumi.Input<inputs.discoveryengine.AssistantGenerationConfig | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Resource name of the assistant.
      * Format:
      * `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
      * It must be a UTF-8 encoded string with a length limit of 1024 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of web grounding to use.
      * The supported values: 'WEB_GROUNDING_TYPE_DISABLED', 'WEB_GROUNDING_TYPE_GOOGLE_SEARCH', 'WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH'.
      */
-    webGroundingType?: pulumi.Input<string>;
+    webGroundingType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -295,12 +295,12 @@ export interface AssistantArgs {
      * Customer policy for the assistant.
      * Structure is documented below.
      */
-    customerPolicy?: pulumi.Input<inputs.discoveryengine.AssistantCustomerPolicy>;
+    customerPolicy?: pulumi.Input<inputs.discoveryengine.AssistantCustomerPolicy | undefined>;
     /**
      * Description for additional information. Expected to be shown on the
      * configuration UI, not to the users of the assistant.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The assistant display name.
      * It must be a UTF-8 encoded string with a length limit of 128 characters.
@@ -314,7 +314,7 @@ export interface AssistantArgs {
      * Configuration for the generation of the assistant response.
      * Structure is documented below.
      */
-    generationConfig?: pulumi.Input<inputs.discoveryengine.AssistantGenerationConfig>;
+    generationConfig?: pulumi.Input<inputs.discoveryengine.AssistantGenerationConfig | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
@@ -324,10 +324,10 @@ export interface AssistantArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of web grounding to use.
      * The supported values: 'WEB_GROUNDING_TYPE_DISABLED', 'WEB_GROUNDING_TYPE_GOOGLE_SEARCH', 'WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH'.
      */
-    webGroundingType?: pulumi.Input<string>;
+    webGroundingType?: pulumi.Input<string | undefined>;
 }

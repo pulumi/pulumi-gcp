@@ -506,18 +506,18 @@ export interface DatasetState {
      * An array of objects that define dataset access for one or more entities.
      * Structure is documented below.
      */
-    accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[]>;
+    accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[] | undefined>;
     /**
      * The time when this dataset was created, in milliseconds since the
      * epoch.
      */
-    creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
      */
-    datasetId?: pulumi.Input<string>;
+    datasetId?: pulumi.Input<string | undefined>;
     /**
      * Defines the default collation specification of future tables created
      * in the dataset. If a table is created in this dataset without table-level
@@ -529,14 +529,14 @@ export interface DatasetState {
      * - 'und:ci': undetermined locale, case insensitive.
      * - '': empty string. Default to case-sensitive behavior.
      */
-    defaultCollation?: pulumi.Input<string>;
+    defaultCollation?: pulumi.Input<string | undefined>;
     /**
      * The default encryption key for all tables in the dataset. Once this property is set,
      * all newly-created partitioned tables in the dataset will have encryption key set to
      * this value, unless table creation request (or query) overrides the key.
      * Structure is documented below.
      */
-    defaultEncryptionConfiguration?: pulumi.Input<inputs.bigquery.DatasetDefaultEncryptionConfiguration>;
+    defaultEncryptionConfiguration?: pulumi.Input<inputs.bigquery.DatasetDefaultEncryptionConfiguration | undefined>;
     /**
      * The default partition expiration for all partitioned tables in
      * the dataset, in milliseconds.
@@ -552,7 +552,7 @@ export interface DatasetState {
      * creating or updating a partitioned table, that value takes precedence
      * over the default partition expiration time indicated by this property.
      */
-    defaultPartitionExpirationMs?: pulumi.Input<number>;
+    defaultPartitionExpirationMs?: pulumi.Input<number | undefined>;
     /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
@@ -566,46 +566,46 @@ export interface DatasetState {
      * creating a table, that value takes precedence over the default
      * expiration time indicated by this property.
      */
-    defaultTableExpirationMs?: pulumi.Input<number>;
+    defaultTableExpirationMs?: pulumi.Input<number | undefined>;
     /**
      * If set to `true`, delete all the tables in the
      * dataset when destroying the resource; otherwise,
      * destroying the resource will fail if tables are present.
      */
-    deleteContentsOnDestroy?: pulumi.Input<boolean>;
+    deleteContentsOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * A user-friendly description of the dataset
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A hash of the resource.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Options defining open source compatible datasets living in the BigQuery catalog. Contains
      * metadata of open source database, schema or namespace represented by the current dataset.
      * Structure is documented below.
      */
-    externalCatalogDatasetOptions?: pulumi.Input<inputs.bigquery.DatasetExternalCatalogDatasetOptions>;
+    externalCatalogDatasetOptions?: pulumi.Input<inputs.bigquery.DatasetExternalCatalogDatasetOptions | undefined>;
     /**
      * Information about the external metadata storage where the dataset is defined.
      * Structure is documented below.
      */
-    externalDatasetReference?: pulumi.Input<inputs.bigquery.DatasetExternalDatasetReference>;
+    externalDatasetReference?: pulumi.Input<inputs.bigquery.DatasetExternalDatasetReference | undefined>;
     /**
      * A descriptive name for the dataset
      */
-    friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string | undefined>;
     /**
      * TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
      * By default, this is FALSE, which means the dataset and its table names are
      * case-sensitive. This field does not affect routine references.
      */
-    isCaseInsensitive?: pulumi.Input<boolean>;
+    isCaseInsensitive?: pulumi.Input<boolean | undefined>;
     /**
      * The labels associated with this dataset. You can use these to
      * organize and group your datasets.
@@ -613,12 +613,12 @@ export interface DatasetState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The date when this dataset or any of its tables was last modified, in
      * milliseconds since the epoch.
      */
-    lastModifiedTime?: pulumi.Input<number>;
+    lastModifiedTime?: pulumi.Input<number | undefined>;
     /**
      * The geographic location where the dataset should reside.
      * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
@@ -629,21 +629,21 @@ export interface DatasetState {
      * The default value is multi-regional location `US`.
      * Changing this forces a new resource to be created.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
      */
-    maxTimeTravelHours?: pulumi.Input<string>;
+    maxTimeTravelHours?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
      * in the namespaced format, for example "123456789012/environment" where 123456789012 is the
@@ -651,18 +651,18 @@ export interface DatasetState {
      * to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
      * for more details.
      */
-    resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Specifies the storage billing model for the dataset.
      * Set this flag value to LOGICAL to use logical bytes for storage billing,
      * or to PHYSICAL to use physical bytes instead.
      * LOGICAL is the default if this flag isn't specified.
      */
-    storageBillingModel?: pulumi.Input<string>;
+    storageBillingModel?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -673,7 +673,7 @@ export interface DatasetArgs {
      * An array of objects that define dataset access for one or more entities.
      * Structure is documented below.
      */
-    accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[]>;
+    accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[] | undefined>;
     /**
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
@@ -691,14 +691,14 @@ export interface DatasetArgs {
      * - 'und:ci': undetermined locale, case insensitive.
      * - '': empty string. Default to case-sensitive behavior.
      */
-    defaultCollation?: pulumi.Input<string>;
+    defaultCollation?: pulumi.Input<string | undefined>;
     /**
      * The default encryption key for all tables in the dataset. Once this property is set,
      * all newly-created partitioned tables in the dataset will have encryption key set to
      * this value, unless table creation request (or query) overrides the key.
      * Structure is documented below.
      */
-    defaultEncryptionConfiguration?: pulumi.Input<inputs.bigquery.DatasetDefaultEncryptionConfiguration>;
+    defaultEncryptionConfiguration?: pulumi.Input<inputs.bigquery.DatasetDefaultEncryptionConfiguration | undefined>;
     /**
      * The default partition expiration for all partitioned tables in
      * the dataset, in milliseconds.
@@ -714,7 +714,7 @@ export interface DatasetArgs {
      * creating or updating a partitioned table, that value takes precedence
      * over the default partition expiration time indicated by this property.
      */
-    defaultPartitionExpirationMs?: pulumi.Input<number>;
+    defaultPartitionExpirationMs?: pulumi.Input<number | undefined>;
     /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
@@ -728,38 +728,38 @@ export interface DatasetArgs {
      * creating a table, that value takes precedence over the default
      * expiration time indicated by this property.
      */
-    defaultTableExpirationMs?: pulumi.Input<number>;
+    defaultTableExpirationMs?: pulumi.Input<number | undefined>;
     /**
      * If set to `true`, delete all the tables in the
      * dataset when destroying the resource; otherwise,
      * destroying the resource will fail if tables are present.
      */
-    deleteContentsOnDestroy?: pulumi.Input<boolean>;
+    deleteContentsOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * A user-friendly description of the dataset
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Options defining open source compatible datasets living in the BigQuery catalog. Contains
      * metadata of open source database, schema or namespace represented by the current dataset.
      * Structure is documented below.
      */
-    externalCatalogDatasetOptions?: pulumi.Input<inputs.bigquery.DatasetExternalCatalogDatasetOptions>;
+    externalCatalogDatasetOptions?: pulumi.Input<inputs.bigquery.DatasetExternalCatalogDatasetOptions | undefined>;
     /**
      * Information about the external metadata storage where the dataset is defined.
      * Structure is documented below.
      */
-    externalDatasetReference?: pulumi.Input<inputs.bigquery.DatasetExternalDatasetReference>;
+    externalDatasetReference?: pulumi.Input<inputs.bigquery.DatasetExternalDatasetReference | undefined>;
     /**
      * A descriptive name for the dataset
      */
-    friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string | undefined>;
     /**
      * TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
      * By default, this is FALSE, which means the dataset and its table names are
      * case-sensitive. This field does not affect routine references.
      */
-    isCaseInsensitive?: pulumi.Input<boolean>;
+    isCaseInsensitive?: pulumi.Input<boolean | undefined>;
     /**
      * The labels associated with this dataset. You can use these to
      * organize and group your datasets.
@@ -767,7 +767,7 @@ export interface DatasetArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The geographic location where the dataset should reside.
      * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
@@ -778,16 +778,16 @@ export interface DatasetArgs {
      * The default value is multi-regional location `US`.
      * Changing this forces a new resource to be created.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
      */
-    maxTimeTravelHours?: pulumi.Input<string>;
+    maxTimeTravelHours?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
      * in the namespaced format, for example "123456789012/environment" where 123456789012 is the
@@ -795,12 +795,12 @@ export interface DatasetArgs {
      * to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
      * for more details.
      */
-    resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies the storage billing model for the dataset.
      * Set this flag value to LOGICAL to use logical bytes for storage billing,
      * or to PHYSICAL to use physical bytes instead.
      * LOGICAL is the default if this flag isn't specified.
      */
-    storageBillingModel?: pulumi.Input<string>;
+    storageBillingModel?: pulumi.Input<string | undefined>;
 }

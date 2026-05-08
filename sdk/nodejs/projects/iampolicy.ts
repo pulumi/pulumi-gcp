@@ -380,7 +380,7 @@ export interface IAMPolicyState {
     /**
      * (Computed) The etag of the project's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the project. The policy will be
@@ -391,12 +391,12 @@ export interface IAMPolicyState {
      * Deleting this removes all policies from the project, locking out users without
      * organization-level access.
      */
-    policyData?: pulumi.Input<string>;
+    policyData?: pulumi.Input<string | undefined>;
     /**
      * The project id of the target project. This is not
      * inferred from the provider.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**

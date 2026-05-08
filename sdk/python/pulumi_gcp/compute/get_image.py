@@ -356,11 +356,11 @@ def get_image(family: Optional[_builtins.str] = None,
         source_disk_id=pulumi.get(__ret__, 'source_disk_id'),
         source_image_id=pulumi.get(__ret__, 'source_image_id'),
         status=pulumi.get(__ret__, 'status'))
-def get_image_output(family: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     most_recent: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                     name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_image_output(family: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     most_recent: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                     name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageResult]:
     """
     Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see

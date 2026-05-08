@@ -110,9 +110,9 @@ export interface GetOrganizationOutputArgs {
      *
      * > **NOTE:** One of `organization` or `domain` must be specified.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The Organization's numeric ID, including an optional `organizations/` prefix.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
 }

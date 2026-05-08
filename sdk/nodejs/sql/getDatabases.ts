@@ -89,5 +89,5 @@ export interface GetDatabasesOutputArgs {
      *
      * > **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

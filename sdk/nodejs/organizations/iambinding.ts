@@ -354,11 +354,11 @@ export interface IAMBindingState {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.organizations.IAMBindingCondition>;
+    condition?: pulumi.Input<inputs.organizations.IAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the organization's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -367,17 +367,17 @@ export interface IAMBindingState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The organization id of the target organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `organizations/{{org_id}}/roles/{{role_id}}`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -388,7 +388,7 @@ export interface IAMBindingArgs {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.organizations.IAMBindingCondition>;
+    condition?: pulumi.Input<inputs.organizations.IAMBindingCondition | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:

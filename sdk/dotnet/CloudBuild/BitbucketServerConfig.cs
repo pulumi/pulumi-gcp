@@ -159,7 +159,7 @@ namespace Pulumi.Gcp.CloudBuild
     ///             var id = values.Item1;
     ///             var project = values.Item2;
     ///             var project1 = values.Item3;
-    ///             return Std.Index.Replace.Invoke(new()
+    ///             return Std.Replace.Invoke(new()
     ///             {
     ///                 Text = id,
     ///                 Search = project.Apply(getProjectResult =&gt; getProjectResult.Name),

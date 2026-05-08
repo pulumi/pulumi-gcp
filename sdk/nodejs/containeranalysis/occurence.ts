@@ -233,46 +233,46 @@ export interface OccurenceState {
      * which authority this attestation was intended to sign.
      * Structure is documented below.
      */
-    attestation?: pulumi.Input<inputs.containeranalysis.OccurenceAttestation>;
+    attestation?: pulumi.Input<inputs.containeranalysis.OccurenceAttestation | undefined>;
     /**
      * The time when the repository was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The note kind which explicitly denotes which of the occurrence
      * details are specified. This field can be used as a filter in list
      * requests.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The name of the occurrence.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The analysis note associated with this occurrence, in the form of
      * projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
      * filter in list requests.
      */
-    noteName?: pulumi.Input<string>;
+    noteName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A description of actions that can be taken to remedy the note.
      */
-    remediation?: pulumi.Input<string>;
+    remediation?: pulumi.Input<string | undefined>;
     /**
      * Required. Immutable. A URI that represents the resource for which
      * the occurrence applies. For example,
      * https://gcr.io/project/image@sha256:123abc for a Docker image.
      */
-    resourceUri?: pulumi.Input<string>;
+    resourceUri?: pulumi.Input<string | undefined>;
     /**
      * The time when the repository was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -301,11 +301,11 @@ export interface OccurenceArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A description of actions that can be taken to remedy the note.
      */
-    remediation?: pulumi.Input<string>;
+    remediation?: pulumi.Input<string | undefined>;
     /**
      * Required. Immutable. A URI that represents the resource for which
      * the occurrence applies. For example,

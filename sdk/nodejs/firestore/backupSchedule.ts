@@ -186,32 +186,32 @@ export interface BackupScheduleState {
     /**
      * For a schedule that runs daily.
      */
-    dailyRecurrence?: pulumi.Input<inputs.firestore.BackupScheduleDailyRecurrence>;
+    dailyRecurrence?: pulumi.Input<inputs.firestore.BackupScheduleDailyRecurrence | undefined>;
     /**
      * The Firestore database id. Defaults to `"(default)"`.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * The unique backup schedule identifier across all locations and databases for the given project. Format:
      * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      * You can set this to a value up to 14 weeks.
      */
-    retention?: pulumi.Input<string>;
+    retention?: pulumi.Input<string | undefined>;
     /**
      * For a schedule that runs weekly on a specific day.
      * Structure is documented below.
      */
-    weeklyRecurrence?: pulumi.Input<inputs.firestore.BackupScheduleWeeklyRecurrence>;
+    weeklyRecurrence?: pulumi.Input<inputs.firestore.BackupScheduleWeeklyRecurrence | undefined>;
 }
 
 /**
@@ -221,16 +221,16 @@ export interface BackupScheduleArgs {
     /**
      * For a schedule that runs daily.
      */
-    dailyRecurrence?: pulumi.Input<inputs.firestore.BackupScheduleDailyRecurrence>;
+    dailyRecurrence?: pulumi.Input<inputs.firestore.BackupScheduleDailyRecurrence | undefined>;
     /**
      * The Firestore database id. Defaults to `"(default)"`.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -241,5 +241,5 @@ export interface BackupScheduleArgs {
      * For a schedule that runs weekly on a specific day.
      * Structure is documented below.
      */
-    weeklyRecurrence?: pulumi.Input<inputs.firestore.BackupScheduleWeeklyRecurrence>;
+    weeklyRecurrence?: pulumi.Input<inputs.firestore.BackupScheduleWeeklyRecurrence | undefined>;
 }

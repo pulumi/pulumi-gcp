@@ -120,7 +120,7 @@ def get_organization_service_account(organization_id: Optional[_builtins.str] = 
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         organization_id=pulumi.get(__ret__, 'organization_id'))
-def get_organization_service_account_output(organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_organization_service_account_output(organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationServiceAccountResult]:
     """
     Get the email address of an organization's Access Approval service account.

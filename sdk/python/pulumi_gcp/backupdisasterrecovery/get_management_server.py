@@ -144,7 +144,7 @@ def get_management_server(location: Optional[_builtins.str] = None,
         oauth2_client_id=pulumi.get(__ret__, 'oauth2_client_id'),
         project=pulumi.get(__ret__, 'project'),
         type=pulumi.get(__ret__, 'type'))
-def get_management_server_output(location: Optional[pulumi.Input[_builtins.str]] = None,
+def get_management_server_output(location: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetManagementServerResult]:
     """
     Get information about a Google Backup DR Management server.

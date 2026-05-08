@@ -24,11 +24,11 @@ class FloorsettingArgs:
                  filter_config: pulumi.Input['FloorsettingFilterConfigArgs'],
                  location: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
-                 ai_platform_floor_setting: Optional[pulumi.Input['FloorsettingAiPlatformFloorSettingArgs']] = None,
-                 enable_floor_setting_enforcement: Optional[pulumi.Input[_builtins.bool]] = None,
-                 floor_setting_metadata: Optional[pulumi.Input['FloorsettingFloorSettingMetadataArgs']] = None,
-                 google_mcp_server_floor_setting: Optional[pulumi.Input['FloorsettingGoogleMcpServerFloorSettingArgs']] = None,
-                 integrated_services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 ai_platform_floor_setting: pulumi.Input[Optional['FloorsettingAiPlatformFloorSettingArgs']] = None,
+                 enable_floor_setting_enforcement: pulumi.Input[Optional[_builtins.bool]] = None,
+                 floor_setting_metadata: pulumi.Input[Optional['FloorsettingFloorSettingMetadataArgs']] = None,
+                 google_mcp_server_floor_setting: pulumi.Input[Optional['FloorsettingGoogleMcpServerFloorSettingArgs']] = None,
+                 integrated_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Floorsetting resource.
 
@@ -104,7 +104,7 @@ class FloorsettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="aiPlatformFloorSetting")
-    def ai_platform_floor_setting(self) -> Optional[pulumi.Input['FloorsettingAiPlatformFloorSettingArgs']]:
+    def ai_platform_floor_setting(self) -> pulumi.Input[Optional['FloorsettingAiPlatformFloorSettingArgs']]:
         """
         AI Platform floor setting.
         Structure is documented below.
@@ -112,24 +112,24 @@ class FloorsettingArgs:
         return pulumi.get(self, "ai_platform_floor_setting")
 
     @ai_platform_floor_setting.setter
-    def ai_platform_floor_setting(self, value: Optional[pulumi.Input['FloorsettingAiPlatformFloorSettingArgs']]):
+    def ai_platform_floor_setting(self, value: pulumi.Input[Optional['FloorsettingAiPlatformFloorSettingArgs']]):
         pulumi.set(self, "ai_platform_floor_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="enableFloorSettingEnforcement")
-    def enable_floor_setting_enforcement(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_floor_setting_enforcement(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Floor Settings enforcement status.
         """
         return pulumi.get(self, "enable_floor_setting_enforcement")
 
     @enable_floor_setting_enforcement.setter
-    def enable_floor_setting_enforcement(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_floor_setting_enforcement(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_floor_setting_enforcement", value)
 
     @_builtins.property
     @pulumi.getter(name="floorSettingMetadata")
-    def floor_setting_metadata(self) -> Optional[pulumi.Input['FloorsettingFloorSettingMetadataArgs']]:
+    def floor_setting_metadata(self) -> pulumi.Input[Optional['FloorsettingFloorSettingMetadataArgs']]:
         """
         Metadata to enable multi language detection via floor setting.
         Structure is documented below.
@@ -137,12 +137,12 @@ class FloorsettingArgs:
         return pulumi.get(self, "floor_setting_metadata")
 
     @floor_setting_metadata.setter
-    def floor_setting_metadata(self, value: Optional[pulumi.Input['FloorsettingFloorSettingMetadataArgs']]):
+    def floor_setting_metadata(self, value: pulumi.Input[Optional['FloorsettingFloorSettingMetadataArgs']]):
         pulumi.set(self, "floor_setting_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="googleMcpServerFloorSetting")
-    def google_mcp_server_floor_setting(self) -> Optional[pulumi.Input['FloorsettingGoogleMcpServerFloorSettingArgs']]:
+    def google_mcp_server_floor_setting(self) -> pulumi.Input[Optional['FloorsettingGoogleMcpServerFloorSettingArgs']]:
         """
         Google MCP Server floor setting.
         Structure is documented below.
@@ -150,36 +150,36 @@ class FloorsettingArgs:
         return pulumi.get(self, "google_mcp_server_floor_setting")
 
     @google_mcp_server_floor_setting.setter
-    def google_mcp_server_floor_setting(self, value: Optional[pulumi.Input['FloorsettingGoogleMcpServerFloorSettingArgs']]):
+    def google_mcp_server_floor_setting(self, value: pulumi.Input[Optional['FloorsettingGoogleMcpServerFloorSettingArgs']]):
         pulumi.set(self, "google_mcp_server_floor_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="integratedServices")
-    def integrated_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def integrated_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of integrated services for which the floor setting is applicable.
         """
         return pulumi.get(self, "integrated_services")
 
     @integrated_services.setter
-    def integrated_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def integrated_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "integrated_services", value)
 
 
 @pulumi.input_type
 class _FloorsettingState:
     def __init__(__self__, *,
-                 ai_platform_floor_setting: Optional[pulumi.Input['FloorsettingAiPlatformFloorSettingArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_floor_setting_enforcement: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filter_config: Optional[pulumi.Input['FloorsettingFilterConfigArgs']] = None,
-                 floor_setting_metadata: Optional[pulumi.Input['FloorsettingFloorSettingMetadataArgs']] = None,
-                 google_mcp_server_floor_setting: Optional[pulumi.Input['FloorsettingGoogleMcpServerFloorSettingArgs']] = None,
-                 integrated_services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 ai_platform_floor_setting: pulumi.Input[Optional['FloorsettingAiPlatformFloorSettingArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_floor_setting_enforcement: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter_config: pulumi.Input[Optional['FloorsettingFilterConfigArgs']] = None,
+                 floor_setting_metadata: pulumi.Input[Optional['FloorsettingFloorSettingMetadataArgs']] = None,
+                 google_mcp_server_floor_setting: pulumi.Input[Optional['FloorsettingGoogleMcpServerFloorSettingArgs']] = None,
+                 integrated_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Floorsetting resources.
 
@@ -227,7 +227,7 @@ class _FloorsettingState:
 
     @_builtins.property
     @pulumi.getter(name="aiPlatformFloorSetting")
-    def ai_platform_floor_setting(self) -> Optional[pulumi.Input['FloorsettingAiPlatformFloorSettingArgs']]:
+    def ai_platform_floor_setting(self) -> pulumi.Input[Optional['FloorsettingAiPlatformFloorSettingArgs']]:
         """
         AI Platform floor setting.
         Structure is documented below.
@@ -235,36 +235,36 @@ class _FloorsettingState:
         return pulumi.get(self, "ai_platform_floor_setting")
 
     @ai_platform_floor_setting.setter
-    def ai_platform_floor_setting(self, value: Optional[pulumi.Input['FloorsettingAiPlatformFloorSettingArgs']]):
+    def ai_platform_floor_setting(self, value: pulumi.Input[Optional['FloorsettingAiPlatformFloorSettingArgs']]):
         pulumi.set(self, "ai_platform_floor_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Output only] Create timestamp
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="enableFloorSettingEnforcement")
-    def enable_floor_setting_enforcement(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_floor_setting_enforcement(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Floor Settings enforcement status.
         """
         return pulumi.get(self, "enable_floor_setting_enforcement")
 
     @enable_floor_setting_enforcement.setter
-    def enable_floor_setting_enforcement(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_floor_setting_enforcement(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_floor_setting_enforcement", value)
 
     @_builtins.property
     @pulumi.getter(name="filterConfig")
-    def filter_config(self) -> Optional[pulumi.Input['FloorsettingFilterConfigArgs']]:
+    def filter_config(self) -> pulumi.Input[Optional['FloorsettingFilterConfigArgs']]:
         """
         Filters configuration.
         Structure is documented below.
@@ -272,12 +272,12 @@ class _FloorsettingState:
         return pulumi.get(self, "filter_config")
 
     @filter_config.setter
-    def filter_config(self, value: Optional[pulumi.Input['FloorsettingFilterConfigArgs']]):
+    def filter_config(self, value: pulumi.Input[Optional['FloorsettingFilterConfigArgs']]):
         pulumi.set(self, "filter_config", value)
 
     @_builtins.property
     @pulumi.getter(name="floorSettingMetadata")
-    def floor_setting_metadata(self) -> Optional[pulumi.Input['FloorsettingFloorSettingMetadataArgs']]:
+    def floor_setting_metadata(self) -> pulumi.Input[Optional['FloorsettingFloorSettingMetadataArgs']]:
         """
         Metadata to enable multi language detection via floor setting.
         Structure is documented below.
@@ -285,12 +285,12 @@ class _FloorsettingState:
         return pulumi.get(self, "floor_setting_metadata")
 
     @floor_setting_metadata.setter
-    def floor_setting_metadata(self, value: Optional[pulumi.Input['FloorsettingFloorSettingMetadataArgs']]):
+    def floor_setting_metadata(self, value: pulumi.Input[Optional['FloorsettingFloorSettingMetadataArgs']]):
         pulumi.set(self, "floor_setting_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="googleMcpServerFloorSetting")
-    def google_mcp_server_floor_setting(self) -> Optional[pulumi.Input['FloorsettingGoogleMcpServerFloorSettingArgs']]:
+    def google_mcp_server_floor_setting(self) -> pulumi.Input[Optional['FloorsettingGoogleMcpServerFloorSettingArgs']]:
         """
         Google MCP Server floor setting.
         Structure is documented below.
@@ -298,48 +298,48 @@ class _FloorsettingState:
         return pulumi.get(self, "google_mcp_server_floor_setting")
 
     @google_mcp_server_floor_setting.setter
-    def google_mcp_server_floor_setting(self, value: Optional[pulumi.Input['FloorsettingGoogleMcpServerFloorSettingArgs']]):
+    def google_mcp_server_floor_setting(self, value: pulumi.Input[Optional['FloorsettingGoogleMcpServerFloorSettingArgs']]):
         pulumi.set(self, "google_mcp_server_floor_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="integratedServices")
-    def integrated_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def integrated_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of integrated services for which the floor setting is applicable.
         """
         return pulumi.get(self, "integrated_services")
 
     @integrated_services.setter
-    def integrated_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def integrated_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "integrated_services", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Will be any one of these:
         * `projects/{project}`
@@ -349,19 +349,19 @@ class _FloorsettingState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Output only] Update timestamp
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -371,14 +371,14 @@ class Floorsetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ai_platform_floor_setting: Optional[pulumi.Input[Union['FloorsettingAiPlatformFloorSettingArgs', 'FloorsettingAiPlatformFloorSettingArgsDict']]] = None,
-                 enable_floor_setting_enforcement: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filter_config: Optional[pulumi.Input[Union['FloorsettingFilterConfigArgs', 'FloorsettingFilterConfigArgsDict']]] = None,
-                 floor_setting_metadata: Optional[pulumi.Input[Union['FloorsettingFloorSettingMetadataArgs', 'FloorsettingFloorSettingMetadataArgsDict']]] = None,
-                 google_mcp_server_floor_setting: Optional[pulumi.Input[Union['FloorsettingGoogleMcpServerFloorSettingArgs', 'FloorsettingGoogleMcpServerFloorSettingArgsDict']]] = None,
-                 integrated_services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_platform_floor_setting: pulumi.Input[Optional[Union['FloorsettingAiPlatformFloorSettingArgs', 'FloorsettingAiPlatformFloorSettingArgsDict']]] = None,
+                 enable_floor_setting_enforcement: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter_config: pulumi.Input[Optional[Union['FloorsettingFilterConfigArgs', 'FloorsettingFilterConfigArgsDict']]] = None,
+                 floor_setting_metadata: pulumi.Input[Optional[Union['FloorsettingFloorSettingMetadataArgs', 'FloorsettingFloorSettingMetadataArgsDict']]] = None,
+                 google_mcp_server_floor_setting: pulumi.Input[Optional[Union['FloorsettingGoogleMcpServerFloorSettingArgs', 'FloorsettingGoogleMcpServerFloorSettingArgsDict']]] = None,
+                 integrated_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Model Armor floor settings define rules that dictate minimum requirements for all Model Armor templates created at a specific point in the Google Cloud resource hierarchy (that is, at an organization, folder, or project level). If there are
@@ -591,14 +591,14 @@ class Floorsetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ai_platform_floor_setting: Optional[pulumi.Input[Union['FloorsettingAiPlatformFloorSettingArgs', 'FloorsettingAiPlatformFloorSettingArgsDict']]] = None,
-                 enable_floor_setting_enforcement: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filter_config: Optional[pulumi.Input[Union['FloorsettingFilterConfigArgs', 'FloorsettingFilterConfigArgsDict']]] = None,
-                 floor_setting_metadata: Optional[pulumi.Input[Union['FloorsettingFloorSettingMetadataArgs', 'FloorsettingFloorSettingMetadataArgsDict']]] = None,
-                 google_mcp_server_floor_setting: Optional[pulumi.Input[Union['FloorsettingGoogleMcpServerFloorSettingArgs', 'FloorsettingGoogleMcpServerFloorSettingArgsDict']]] = None,
-                 integrated_services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_platform_floor_setting: pulumi.Input[Optional[Union['FloorsettingAiPlatformFloorSettingArgs', 'FloorsettingAiPlatformFloorSettingArgsDict']]] = None,
+                 enable_floor_setting_enforcement: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter_config: pulumi.Input[Optional[Union['FloorsettingFilterConfigArgs', 'FloorsettingFilterConfigArgsDict']]] = None,
+                 floor_setting_metadata: pulumi.Input[Optional[Union['FloorsettingFloorSettingMetadataArgs', 'FloorsettingFloorSettingMetadataArgsDict']]] = None,
+                 google_mcp_server_floor_setting: pulumi.Input[Optional[Union['FloorsettingGoogleMcpServerFloorSettingArgs', 'FloorsettingGoogleMcpServerFloorSettingArgsDict']]] = None,
+                 integrated_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -635,17 +635,17 @@ class Floorsetting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ai_platform_floor_setting: Optional[pulumi.Input[Union['FloorsettingAiPlatformFloorSettingArgs', 'FloorsettingAiPlatformFloorSettingArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_floor_setting_enforcement: Optional[pulumi.Input[_builtins.bool]] = None,
-            filter_config: Optional[pulumi.Input[Union['FloorsettingFilterConfigArgs', 'FloorsettingFilterConfigArgsDict']]] = None,
-            floor_setting_metadata: Optional[pulumi.Input[Union['FloorsettingFloorSettingMetadataArgs', 'FloorsettingFloorSettingMetadataArgsDict']]] = None,
-            google_mcp_server_floor_setting: Optional[pulumi.Input[Union['FloorsettingGoogleMcpServerFloorSettingArgs', 'FloorsettingGoogleMcpServerFloorSettingArgsDict']]] = None,
-            integrated_services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Floorsetting':
+            ai_platform_floor_setting: pulumi.Input[Optional[Union['FloorsettingAiPlatformFloorSettingArgs', 'FloorsettingAiPlatformFloorSettingArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_floor_setting_enforcement: pulumi.Input[Optional[_builtins.bool]] = None,
+            filter_config: pulumi.Input[Optional[Union['FloorsettingFilterConfigArgs', 'FloorsettingFilterConfigArgsDict']]] = None,
+            floor_setting_metadata: pulumi.Input[Optional[Union['FloorsettingFloorSettingMetadataArgs', 'FloorsettingFloorSettingMetadataArgsDict']]] = None,
+            google_mcp_server_floor_setting: pulumi.Input[Optional[Union['FloorsettingGoogleMcpServerFloorSettingArgs', 'FloorsettingGoogleMcpServerFloorSettingArgsDict']]] = None,
+            integrated_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Floorsetting':
         """
         Get an existing Floorsetting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

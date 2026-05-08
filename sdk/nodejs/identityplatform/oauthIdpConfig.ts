@@ -166,39 +166,39 @@ export interface OauthIdpConfigState {
     /**
      * The client id of an OAuth client.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The client secret of the OAuth client, to enable OIDC code flow.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Human friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * If this config allows users to sign in with the provider.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * For OIDC Idps, the issuer identifier.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * The name of the OauthIdpConfig. Must start with `oidc.`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The response type to request for in the OAuth authorization flow.
      * You can set either idToken or code to true, but not both.
      * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
      * Structure is documented below.
      */
-    responseType?: pulumi.Input<inputs.identityplatform.OauthIdpConfigResponseType>;
+    responseType?: pulumi.Input<inputs.identityplatform.OauthIdpConfigResponseType | undefined>;
 }
 
 /**
@@ -212,15 +212,15 @@ export interface OauthIdpConfigArgs {
     /**
      * The client secret of the OAuth client, to enable OIDC code flow.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Human friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * If this config allows users to sign in with the provider.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * For OIDC Idps, the issuer identifier.
      */
@@ -228,17 +228,17 @@ export interface OauthIdpConfigArgs {
     /**
      * The name of the OauthIdpConfig. Must start with `oidc.`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The response type to request for in the OAuth authorization flow.
      * You can set either idToken or code to true, but not both.
      * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
      * Structure is documented below.
      */
-    responseType?: pulumi.Input<inputs.identityplatform.OauthIdpConfigResponseType>;
+    responseType?: pulumi.Input<inputs.identityplatform.OauthIdpConfigResponseType | undefined>;
 }

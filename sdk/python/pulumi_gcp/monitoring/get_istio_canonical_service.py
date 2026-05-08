@@ -208,10 +208,10 @@ def get_istio_canonical_service(canonical_service: Optional[_builtins.str] = Non
         service_id=pulumi.get(__ret__, 'service_id'),
         telemetries=pulumi.get(__ret__, 'telemetries'),
         user_labels=pulumi.get(__ret__, 'user_labels'))
-def get_istio_canonical_service_output(canonical_service: Optional[pulumi.Input[_builtins.str]] = None,
-                                       canonical_service_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                                       mesh_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_istio_canonical_service_output(canonical_service: pulumi.Input[Optional[_builtins.str]] = None,
+                                       canonical_service_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                                       mesh_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIstioCanonicalServiceResult]:
     """
     A Monitoring Service is the root resource under which operational aspects of a

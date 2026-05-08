@@ -40,7 +40,7 @@ __all__ = [
 ]
 
 class HookPushOptionArgsDict(TypedDict):
-    branch_filter: NotRequired[pulumi.Input[_builtins.str]]
+    branch_filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Trigger hook for matching branches only.
     Specified as glob pattern. If empty or *, events for all branches are
@@ -51,7 +51,7 @@ class HookPushOptionArgsDict(TypedDict):
 @pulumi.input_type
 class HookPushOptionArgs:
     def __init__(__self__, *,
-                 branch_filter: Optional[pulumi.Input[_builtins.str]] = None):
+                 branch_filter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] branch_filter: Trigger hook for matching branches only.
                Specified as glob pattern. If empty or *, events for all branches are
@@ -63,7 +63,7 @@ class HookPushOptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="branchFilter")
-    def branch_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Trigger hook for matching branches only.
         Specified as glob pattern. If empty or *, events for all branches are
@@ -73,27 +73,27 @@ class HookPushOptionArgs:
         return pulumi.get(self, "branch_filter")
 
     @branch_filter.setter
-    def branch_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch_filter", value)
 
 
 class InstanceHostConfigArgsDict(TypedDict):
-    api: NotRequired[pulumi.Input[_builtins.str]]
+    api: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     API hostname.
     """
-    git_http: NotRequired[pulumi.Input[_builtins.str]]
+    git_http: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Git HTTP hostname.
     """
-    git_ssh: NotRequired[pulumi.Input[_builtins.str]]
+    git_ssh: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Git SSH hostname.
     """
-    html: NotRequired[pulumi.Input[_builtins.str]]
+    html: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     HTML hostname.
@@ -102,10 +102,10 @@ class InstanceHostConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceHostConfigArgs:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_http: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_ssh: Optional[pulumi.Input[_builtins.str]] = None,
-                 html: Optional[pulumi.Input[_builtins.str]] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_http: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_ssh: pulumi.Input[Optional[_builtins.str]] = None,
+                 html: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] api: (Output)
                API hostname.
@@ -127,7 +127,7 @@ class InstanceHostConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         API hostname.
@@ -135,12 +135,12 @@ class InstanceHostConfigArgs:
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="gitHttp")
-    def git_http(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_http(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Git HTTP hostname.
@@ -148,12 +148,12 @@ class InstanceHostConfigArgs:
         return pulumi.get(self, "git_http")
 
     @git_http.setter
-    def git_http(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_http(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_http", value)
 
     @_builtins.property
     @pulumi.getter(name="gitSsh")
-    def git_ssh(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_ssh(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Git SSH hostname.
@@ -161,12 +161,12 @@ class InstanceHostConfigArgs:
         return pulumi.get(self, "git_ssh")
 
     @git_ssh.setter
-    def git_ssh(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_ssh(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_ssh", value)
 
     @_builtins.property
     @pulumi.getter
-    def html(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def html(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         HTML hostname.
@@ -174,21 +174,21 @@ class InstanceHostConfigArgs:
         return pulumi.get(self, "html")
 
     @html.setter
-    def html(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def html(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "html", value)
 
 
 class InstanceIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class InstanceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -214,25 +214,25 @@ class InstanceIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class InstanceIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class InstanceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -258,11 +258,11 @@ class InstanceIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -271,21 +271,21 @@ class InstancePrivateConfigArgsDict(TypedDict):
     """
     'Indicate if it's private instance.'
     """
-    ca_pool: NotRequired[pulumi.Input[_builtins.str]]
+    ca_pool: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
     """
-    custom_host_config: NotRequired[pulumi.Input['InstancePrivateConfigCustomHostConfigArgsDict']]
+    custom_host_config: NotRequired[pulumi.Input[Optional['InstancePrivateConfigCustomHostConfigArgs']]]
     """
     Custom host configuration for the instance.
     Structure is documented below.
     """
-    http_service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    http_service_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
     """
-    ssh_service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    ssh_service_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
@@ -295,10 +295,10 @@ class InstancePrivateConfigArgsDict(TypedDict):
 class InstancePrivateConfigArgs:
     def __init__(__self__, *,
                  is_private: pulumi.Input[_builtins.bool],
-                 ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_host_config: Optional[pulumi.Input['InstancePrivateConfigCustomHostConfigArgs']] = None,
-                 http_service_attachment: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 ca_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_host_config: pulumi.Input[Optional['InstancePrivateConfigCustomHostConfigArgs']] = None,
+                 http_service_attachment: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_service_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] is_private: 'Indicate if it's private instance.'
         :param pulumi.Input[_builtins.str] ca_pool: CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
@@ -333,19 +333,19 @@ class InstancePrivateConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="caPool")
-    def ca_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
         """
         return pulumi.get(self, "ca_pool")
 
     @ca_pool.setter
-    def ca_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="customHostConfig")
-    def custom_host_config(self) -> Optional[pulumi.Input['InstancePrivateConfigCustomHostConfigArgs']]:
+    def custom_host_config(self) -> pulumi.Input[Optional['InstancePrivateConfigCustomHostConfigArgs']]:
         """
         Custom host configuration for the instance.
         Structure is documented below.
@@ -353,12 +353,12 @@ class InstancePrivateConfigArgs:
         return pulumi.get(self, "custom_host_config")
 
     @custom_host_config.setter
-    def custom_host_config(self, value: Optional[pulumi.Input['InstancePrivateConfigCustomHostConfigArgs']]):
+    def custom_host_config(self, value: pulumi.Input[Optional['InstancePrivateConfigCustomHostConfigArgs']]):
         pulumi.set(self, "custom_host_config", value)
 
     @_builtins.property
     @pulumi.getter(name="httpServiceAttachment")
-    def http_service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
@@ -366,12 +366,12 @@ class InstancePrivateConfigArgs:
         return pulumi.get(self, "http_service_attachment")
 
     @http_service_attachment.setter
-    def http_service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_service_attachment", value)
 
     @_builtins.property
     @pulumi.getter(name="sshServiceAttachment")
-    def ssh_service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssh_service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
@@ -379,7 +379,7 @@ class InstancePrivateConfigArgs:
         return pulumi.get(self, "ssh_service_attachment")
 
     @ssh_service_attachment.setter
-    def ssh_service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssh_service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssh_service_attachment", value)
 
 
@@ -499,14 +499,14 @@ class InstanceWorkforceIdentityFederationConfigArgs:
 class RepositoryIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RepositoryIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -532,25 +532,25 @@ class RepositoryIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RepositoryIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RepositoryIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -576,30 +576,30 @@ class RepositoryIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RepositoryInitialConfigArgsDict(TypedDict):
-    default_branch: NotRequired[pulumi.Input[_builtins.str]]
+    default_branch: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Default branch name of the repository.
     """
-    gitignores: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    gitignores: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of gitignore template names user can choose from.
     Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
     """
-    license: NotRequired[pulumi.Input[_builtins.str]]
+    license: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     License template name user can choose from.
     Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
     """
-    readme: NotRequired[pulumi.Input[_builtins.str]]
+    readme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     README template name.
     Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
@@ -608,10 +608,10 @@ class RepositoryInitialConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryInitialConfigArgs:
     def __init__(__self__, *,
-                 default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 gitignores: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 license: Optional[pulumi.Input[_builtins.str]] = None,
-                 readme: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 gitignores: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
+                 readme: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] default_branch: Default branch name of the repository.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] gitignores: List of gitignore template names user can choose from.
@@ -632,19 +632,19 @@ class RepositoryInitialConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultBranch")
-    def default_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default branch name of the repository.
         """
         return pulumi.get(self, "default_branch")
 
     @default_branch.setter
-    def default_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_branch", value)
 
     @_builtins.property
     @pulumi.getter
-    def gitignores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def gitignores(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of gitignore template names user can choose from.
         Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
@@ -652,12 +652,12 @@ class RepositoryInitialConfigArgs:
         return pulumi.get(self, "gitignores")
 
     @gitignores.setter
-    def gitignores(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def gitignores(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "gitignores", value)
 
     @_builtins.property
     @pulumi.getter
-    def license(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         License template name user can choose from.
         Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
@@ -665,12 +665,12 @@ class RepositoryInitialConfigArgs:
         return pulumi.get(self, "license")
 
     @license.setter
-    def license(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license", value)
 
     @_builtins.property
     @pulumi.getter
-    def readme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def readme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         README template name.
         Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
@@ -678,22 +678,22 @@ class RepositoryInitialConfigArgs:
         return pulumi.get(self, "readme")
 
     @readme.setter
-    def readme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def readme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "readme", value)
 
 
 class RepositoryUriArgsDict(TypedDict):
-    api: NotRequired[pulumi.Input[_builtins.str]]
+    api: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     API is the URI for API access.
     """
-    git_https: NotRequired[pulumi.Input[_builtins.str]]
+    git_https: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     git_https is the git HTTPS URI for git operations.
     """
-    html: NotRequired[pulumi.Input[_builtins.str]]
+    html: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     HTML is the URI for the user to view the repository in a browser.
@@ -702,9 +702,9 @@ class RepositoryUriArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryUriArgs:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_https: Optional[pulumi.Input[_builtins.str]] = None,
-                 html: Optional[pulumi.Input[_builtins.str]] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_https: pulumi.Input[Optional[_builtins.str]] = None,
+                 html: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] api: (Output)
                API is the URI for API access.
@@ -722,7 +722,7 @@ class RepositoryUriArgs:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         API is the URI for API access.
@@ -730,12 +730,12 @@ class RepositoryUriArgs:
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="gitHttps")
-    def git_https(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_https(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         git_https is the git HTTPS URI for git operations.
@@ -743,12 +743,12 @@ class RepositoryUriArgs:
         return pulumi.get(self, "git_https")
 
     @git_https.setter
-    def git_https(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_https(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_https", value)
 
     @_builtins.property
     @pulumi.getter
-    def html(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def html(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         HTML is the URI for the user to view the repository in a browser.
@@ -756,7 +756,7 @@ class RepositoryUriArgs:
         return pulumi.get(self, "html")
 
     @html.setter
-    def html(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def html(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "html", value)
 
 

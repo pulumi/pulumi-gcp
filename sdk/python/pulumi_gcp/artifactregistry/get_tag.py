@@ -154,11 +154,11 @@ def get_tag(location: Optional[_builtins.str] = None,
         repository_id=pulumi.get(__ret__, 'repository_id'),
         tag_name=pulumi.get(__ret__, 'tag_name'),
         version=pulumi.get(__ret__, 'version'))
-def get_tag_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                   package_name: Optional[pulumi.Input[_builtins.str]] = None,
-                   project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                   repository_id: Optional[pulumi.Input[_builtins.str]] = None,
-                   tag_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_tag_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                   package_name: pulumi.Input[Optional[_builtins.str]] = None,
+                   project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                   repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+                   tag_name: pulumi.Input[Optional[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagResult]:
     """
     This data source fetches information of a tag from a provided Artifact Registry repository.

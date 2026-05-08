@@ -146,17 +146,17 @@ export interface GetRegionalSecretVersionOutputArgs {
      * If set to 'true', the secret data is
      * expected to be base64-encoded string.
      */
-    isSecretDataBase64?: pulumi.Input<boolean>;
+    isSecretDataBase64?: pulumi.Input<boolean | undefined>;
     /**
      * Location of Secret Manager regional secret resource.
      * It must be provided when the `secret` field provided consists of only the name of the regional secret.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The project to get the secret version for. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The regional secret to get the secret version for.
      * This can be either the reference of the regional secret as in `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}` or only the name of the regional secret as in `{{secret_id}}`. If only the name of the regional secret is provided, the location must also be provided.
@@ -166,5 +166,5 @@ export interface GetRegionalSecretVersionOutputArgs {
      * The version of the regional secret to get. If it
      * is not provided, the latest version is retrieved.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

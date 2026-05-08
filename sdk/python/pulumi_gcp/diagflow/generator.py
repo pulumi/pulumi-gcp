@@ -23,12 +23,12 @@ class GeneratorArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  summarization_context: pulumi.Input['GeneratorSummarizationContextArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 generator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 inference_parameter: Optional[pulumi.Input['GeneratorInferenceParameterArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 published_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_event: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 generator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 inference_parameter: pulumi.Input[Optional['GeneratorInferenceParameterArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 published_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_event: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Generator resource.
 
@@ -87,31 +87,31 @@ class GeneratorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Human readable description of the generator.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="generatorId")
-    def generator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
         """
         return pulumi.get(self, "generator_id")
 
     @generator_id.setter
-    def generator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generator_id", value)
 
     @_builtins.property
     @pulumi.getter(name="inferenceParameter")
-    def inference_parameter(self) -> Optional[pulumi.Input['GeneratorInferenceParameterArgs']]:
+    def inference_parameter(self) -> pulumi.Input[Optional['GeneratorInferenceParameterArgs']]:
         """
         Optional. Inference parameters for this generator.
         Structure is documented below.
@@ -119,12 +119,12 @@ class GeneratorArgs:
         return pulumi.get(self, "inference_parameter")
 
     @inference_parameter.setter
-    def inference_parameter(self, value: Optional[pulumi.Input['GeneratorInferenceParameterArgs']]):
+    def inference_parameter(self, value: pulumi.Input[Optional['GeneratorInferenceParameterArgs']]):
         pulumi.set(self, "inference_parameter", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -132,24 +132,24 @@ class GeneratorArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="publishedModel")
-    def published_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def published_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The published Large Language Model name. * To use the latest model version, specify the model name without version number. Example: text-bison * To use a stable model version, specify the version number as well. Example: text-bison@002.
         """
         return pulumi.get(self, "published_model")
 
     @published_model.setter
-    def published_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def published_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "published_model", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerEvent")
-    def trigger_event(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger_event(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
         Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
@@ -157,22 +157,22 @@ class GeneratorArgs:
         return pulumi.get(self, "trigger_event")
 
     @trigger_event.setter
-    def trigger_event(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger_event(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger_event", value)
 
 
 @pulumi.input_type
 class _GeneratorState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 generator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 inference_parameter: Optional[pulumi.Input['GeneratorInferenceParameterArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 published_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 summarization_context: Optional[pulumi.Input['GeneratorSummarizationContextArgs']] = None,
-                 trigger_event: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 generator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 inference_parameter: pulumi.Input[Optional['GeneratorInferenceParameterArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 published_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 summarization_context: pulumi.Input[Optional['GeneratorSummarizationContextArgs']] = None,
+                 trigger_event: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Generator resources.
 
@@ -211,31 +211,31 @@ class _GeneratorState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Human readable description of the generator.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="generatorId")
-    def generator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
         """
         return pulumi.get(self, "generator_id")
 
     @generator_id.setter
-    def generator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generator_id", value)
 
     @_builtins.property
     @pulumi.getter(name="inferenceParameter")
-    def inference_parameter(self) -> Optional[pulumi.Input['GeneratorInferenceParameterArgs']]:
+    def inference_parameter(self) -> pulumi.Input[Optional['GeneratorInferenceParameterArgs']]:
         """
         Optional. Inference parameters for this generator.
         Structure is documented below.
@@ -243,36 +243,36 @@ class _GeneratorState:
         return pulumi.get(self, "inference_parameter")
 
     @inference_parameter.setter
-    def inference_parameter(self, value: Optional[pulumi.Input['GeneratorInferenceParameterArgs']]):
+    def inference_parameter(self, value: pulumi.Input[Optional['GeneratorInferenceParameterArgs']]):
         pulumi.set(self, "inference_parameter", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         desc
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the generator.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -280,24 +280,24 @@ class _GeneratorState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="publishedModel")
-    def published_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def published_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The published Large Language Model name. * To use the latest model version, specify the model name without version number. Example: text-bison * To use a stable model version, specify the version number as well. Example: text-bison@002.
         """
         return pulumi.get(self, "published_model")
 
     @published_model.setter
-    def published_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def published_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "published_model", value)
 
     @_builtins.property
     @pulumi.getter(name="summarizationContext")
-    def summarization_context(self) -> Optional[pulumi.Input['GeneratorSummarizationContextArgs']]:
+    def summarization_context(self) -> pulumi.Input[Optional['GeneratorSummarizationContextArgs']]:
         """
         Input of prebuilt Summarization feature.
         Structure is documented below.
@@ -305,12 +305,12 @@ class _GeneratorState:
         return pulumi.get(self, "summarization_context")
 
     @summarization_context.setter
-    def summarization_context(self, value: Optional[pulumi.Input['GeneratorSummarizationContextArgs']]):
+    def summarization_context(self, value: pulumi.Input[Optional['GeneratorSummarizationContextArgs']]):
         pulumi.set(self, "summarization_context", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerEvent")
-    def trigger_event(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger_event(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
         Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
@@ -318,7 +318,7 @@ class _GeneratorState:
         return pulumi.get(self, "trigger_event")
 
     @trigger_event.setter
-    def trigger_event(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger_event(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger_event", value)
 
 
@@ -328,14 +328,14 @@ class Generator(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 generator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 inference_parameter: Optional[pulumi.Input[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 published_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 summarization_context: Optional[pulumi.Input[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict']]] = None,
-                 trigger_event: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 generator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 published_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 summarization_context: pulumi.Input[Optional[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict']]] = None,
+                 trigger_event: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         LLM generator.
@@ -359,7 +359,7 @@ class Generator(pulumi.CustomResource):
             description="A v4.0 summarization generator.",
             inference_parameter={
                 "max_output_tokens": 1024,
-                "temperature": 0,
+                "temperature": float(0),
                 "top_k": 40,
                 "top_p": 0.95,
             },
@@ -430,7 +430,7 @@ class Generator(pulumi.CustomResource):
             description="A v4.0 summarization generator.",
             inference_parameter={
                 "max_output_tokens": 1024,
-                "temperature": 0,
+                "temperature": float(0),
                 "top_k": 40,
                 "top_p": 0.95,
             },
@@ -473,14 +473,14 @@ class Generator(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 generator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 inference_parameter: Optional[pulumi.Input[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 published_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 summarization_context: Optional[pulumi.Input[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict']]] = None,
-                 trigger_event: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 generator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 published_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 summarization_context: pulumi.Input[Optional[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict']]] = None,
+                 trigger_event: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -513,15 +513,15 @@ class Generator(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            generator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            inference_parameter: Optional[pulumi.Input[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            published_model: Optional[pulumi.Input[_builtins.str]] = None,
-            summarization_context: Optional[pulumi.Input[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict']]] = None,
-            trigger_event: Optional[pulumi.Input[_builtins.str]] = None) -> 'Generator':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            generator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            published_model: pulumi.Input[Optional[_builtins.str]] = None,
+            summarization_context: pulumi.Input[Optional[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict']]] = None,
+            trigger_event: pulumi.Input[Optional[_builtins.str]] = None) -> 'Generator':
         """
         Get an existing Generator resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -53,8 +53,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetConnectionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -95,8 +95,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetConnectionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -137,8 +137,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetConnectionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -179,8 +179,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetConnectionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -221,8 +221,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetConnectionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -263,8 +263,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatapolicyv2DataPolicyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -305,8 +305,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatapolicyv2DataPolicyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -347,8 +347,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatapolicyv2DataPolicyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -389,8 +389,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatapolicyv2DataPolicyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -431,8 +431,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatapolicyv2DataPolicyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -475,8 +475,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -518,8 +518,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -561,8 +561,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -604,8 +604,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -647,8 +647,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -688,8 +688,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -728,8 +728,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -768,8 +768,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -808,8 +808,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -848,8 +848,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -890,8 +890,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -932,8 +932,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -974,8 +974,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1016,8 +1016,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1058,8 +1058,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1100,8 +1100,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1142,8 +1142,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDatasetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1192,8 +1192,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1247,8 +1247,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1302,8 +1302,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1357,8 +1357,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1412,8 +1412,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1467,8 +1467,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1522,8 +1522,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1569,8 +1569,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1613,8 +1613,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1657,8 +1657,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1701,8 +1701,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1745,8 +1745,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1787,8 +1787,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1829,8 +1829,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1871,8 +1871,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1913,8 +1913,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1955,8 +1955,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1999,8 +1999,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2042,8 +2042,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2085,8 +2085,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2128,8 +2128,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2171,8 +2171,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

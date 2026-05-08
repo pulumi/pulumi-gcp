@@ -132,27 +132,27 @@ export interface ProjectExclusionState {
     /**
      * A human-readable description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether this exclusion rule should be disabled or not. This defaults to
      * false.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The filter to apply when excluding logs. Only log entries that match the filter are excluded.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
      * write a filter.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The name of the logging exclusion.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project to create the exclusion in. If omitted, the project associated with the provider is
      * used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,12 +162,12 @@ export interface ProjectExclusionArgs {
     /**
      * A human-readable description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether this exclusion rule should be disabled or not. This defaults to
      * false.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The filter to apply when excluding logs. Only log entries that match the filter are excluded.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
@@ -177,10 +177,10 @@ export interface ProjectExclusionArgs {
     /**
      * The name of the logging exclusion.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project to create the exclusion in. If omitted, the project associated with the provider is
      * used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

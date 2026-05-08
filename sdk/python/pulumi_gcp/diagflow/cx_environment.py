@@ -23,8 +23,8 @@ class CxEnvironmentArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  version_configs: pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CxEnvironment resource.
 
@@ -69,19 +69,19 @@ class CxEnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Agent to create an Environment for.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -89,19 +89,19 @@ class CxEnvironmentArgs:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
 
 @pulumi.input_type
 class _CxEnvironmentState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_configs: pulumi.Input[Optional[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering CxEnvironment resources.
 
@@ -129,43 +129,43 @@ class _CxEnvironmentState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the environment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Agent to create an Environment for.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -173,24 +173,24 @@ class _CxEnvironmentState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="versionConfigs")
-    def version_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]]:
+    def version_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]]:
         """
         A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
         Structure is documented below.
@@ -198,7 +198,7 @@ class _CxEnvironmentState:
         return pulumi.get(self, "version_configs")
 
     @version_configs.setter
-    def version_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]]):
+    def version_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]]):
         pulumi.set(self, "version_configs", value)
 
 
@@ -208,10 +208,10 @@ class CxEnvironment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict']]]]] = None,
                  __props__=None):
         """
         Represents an environment for an agent. You can create multiple versions of your agent and publish them to separate environments.
@@ -371,10 +371,10 @@ class CxEnvironment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -404,12 +404,12 @@ class CxEnvironment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict']]]]] = None) -> 'CxEnvironment':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict']]]]] = None) -> 'CxEnvironment':
         """
         Get an existing CxEnvironment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -237,7 +237,7 @@ export interface GlobalAddressState {
      * resource. This can be supplied as an input to reserve a specific
      * address or omitted to allow GCP to choose a valid one for you.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The type of the address to reserve.
      * * EXTERNAL indicates public/external single IP address.
@@ -245,36 +245,36 @@ export interface GlobalAddressState {
      * Default value is `EXTERNAL`.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      */
-    addressType?: pulumi.Input<string>;
+    addressType?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
      * Possible values are: `IPV4`, `IPV6`.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
      */
-    labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this address.  A list of key->value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -284,41 +284,41 @@ export interface GlobalAddressState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of the network in which to reserve the IP range. The IP range
      * must be in RFC1918 space. The network cannot be deleted if there are
      * any reserved IP ranges referring to it.
      * This should only be set when using an Internal address.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The prefix length of the IP range. If not present, it means the
      * address field is a single IP address.
      * This field is not applicable to addresses with addressType=INTERNAL
      * when purpose=PRIVATE_SERVICE_CONNECT
      */
-    prefixLength?: pulumi.Input<number>;
+    prefixLength?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
      * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -330,7 +330,7 @@ export interface GlobalAddressArgs {
      * resource. This can be supplied as an input to reserve a specific
      * address or omitted to allow GCP to choose a valid one for you.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The type of the address to reserve.
      * * EXTERNAL indicates public/external single IP address.
@@ -338,23 +338,23 @@ export interface GlobalAddressArgs {
      * Default value is `EXTERNAL`.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      */
-    addressType?: pulumi.Input<string>;
+    addressType?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
      * Possible values are: `IPV4`, `IPV6`.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this address.  A list of key->value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -364,30 +364,30 @@ export interface GlobalAddressArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of the network in which to reserve the IP range. The IP range
      * must be in RFC1918 space. The network cannot be deleted if there are
      * any reserved IP ranges referring to it.
      * This should only be set when using an Internal address.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The prefix length of the IP range. If not present, it means the
      * address field is a single IP address.
      * This field is not applicable to addresses with addressType=INTERNAL
      * when purpose=PRIVATE_SERVICE_CONNECT
      */
-    prefixLength?: pulumi.Input<number>;
+    prefixLength?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
      * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string | undefined>;
 }

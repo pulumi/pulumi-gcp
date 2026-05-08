@@ -226,15 +226,15 @@ export interface RegionAutoscalerState {
      * on cpuUtilization to 0.6 or 60%.
      * Structure is documented below.
      */
-    autoscalingPolicy?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicy>;
+    autoscalingPolicy?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicy | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
@@ -242,24 +242,24 @@ export interface RegionAutoscalerState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * URL of the region where the instance group resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * URL of the managed instance group that this autoscaler will scale.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -278,7 +278,7 @@ export interface RegionAutoscalerArgs {
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
@@ -286,16 +286,16 @@ export interface RegionAutoscalerArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * URL of the region where the instance group resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * URL of the managed instance group that this autoscaler will scale.
      */

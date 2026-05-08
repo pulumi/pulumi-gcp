@@ -315,10 +315,10 @@ def get_reservation_block(name: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         sub_block_names=pulumi.get(__ret__, 'sub_block_names'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_reservation_block_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                 project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 reservation: Optional[pulumi.Input[_builtins.str]] = None,
-                                 zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_reservation_block_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                 project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 reservation: pulumi.Input[Optional[_builtins.str]] = None,
+                                 zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReservationBlockResult]:
     """
     Get information about a Google Compute Engine Reservation Block. Reservation blocks are automatically created by Google Cloud within reservations and represent a physical grouping of resources.

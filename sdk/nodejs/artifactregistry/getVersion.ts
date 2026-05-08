@@ -124,7 +124,7 @@ export interface GetVersionOutputArgs {
     /**
      * The project ID in which the resource belongs. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The last part of the repository name to fetch from.
      */
@@ -136,5 +136,5 @@ export interface GetVersionOutputArgs {
     /**
      * The view, which determines what version information is returned in a response. Possible values are `"BASIC"` and `"FULL"`. Defaults to `"BASIC"`.
      */
-    view?: pulumi.Input<string>;
+    view?: pulumi.Input<string | undefined>;
 }

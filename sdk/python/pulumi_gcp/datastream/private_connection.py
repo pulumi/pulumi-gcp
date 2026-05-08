@@ -24,12 +24,12 @@ class PrivateConnectionArgs:
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  private_connection_id: pulumi.Input[_builtins.str],
-                 create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_interface_config: Optional[pulumi.Input['PrivateConnectionPscInterfaceConfigArgs']] = None,
-                 vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']] = None):
+                 create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_interface_config: pulumi.Input[Optional['PrivateConnectionPscInterfaceConfigArgs']] = None,
+                 vpc_peering_config: pulumi.Input[Optional['PrivateConnectionVpcPeeringConfigArgs']] = None):
         """
         The set of arguments for constructing a PrivateConnection resource.
 
@@ -107,19 +107,19 @@ class PrivateConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="createWithoutValidation")
-    def create_without_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_without_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, will skip validations.
         """
         return pulumi.get(self, "create_without_validation")
 
     @create_without_validation.setter
-    def create_without_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_without_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_without_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion policy for the private connection. Setting `FORCE` will also delete any child
         routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
@@ -129,12 +129,12 @@ class PrivateConnectionArgs:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -143,12 +143,12 @@ class PrivateConnectionArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -156,12 +156,12 @@ class PrivateConnectionArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pscInterfaceConfig")
-    def psc_interface_config(self) -> Optional[pulumi.Input['PrivateConnectionPscInterfaceConfigArgs']]:
+    def psc_interface_config(self) -> pulumi.Input[Optional['PrivateConnectionPscInterfaceConfigArgs']]:
         """
         The PSC Interface configuration is used to create PSC Interface
         between Datastream and the consumer's PSC.
@@ -170,12 +170,12 @@ class PrivateConnectionArgs:
         return pulumi.get(self, "psc_interface_config")
 
     @psc_interface_config.setter
-    def psc_interface_config(self, value: Optional[pulumi.Input['PrivateConnectionPscInterfaceConfigArgs']]):
+    def psc_interface_config(self, value: pulumi.Input[Optional['PrivateConnectionPscInterfaceConfigArgs']]):
         pulumi.set(self, "psc_interface_config", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcPeeringConfig")
-    def vpc_peering_config(self) -> Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']]:
+    def vpc_peering_config(self) -> pulumi.Input[Optional['PrivateConnectionVpcPeeringConfigArgs']]:
         """
         The VPC Peering configuration is used to create VPC peering
         between Datastream and the consumer's VPC.
@@ -184,27 +184,27 @@ class PrivateConnectionArgs:
         return pulumi.get(self, "vpc_peering_config")
 
     @vpc_peering_config.setter
-    def vpc_peering_config(self, value: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']]):
+    def vpc_peering_config(self, value: pulumi.Input[Optional['PrivateConnectionVpcPeeringConfigArgs']]):
         pulumi.set(self, "vpc_peering_config", value)
 
 
 @pulumi.input_type
 class _PrivateConnectionState:
     def __init__(__self__, *,
-                 create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_interface_config: Optional[pulumi.Input['PrivateConnectionPscInterfaceConfigArgs']] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_peering_config: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']] = None):
+                 create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_interface_config: pulumi.Input[Optional['PrivateConnectionPscInterfaceConfigArgs']] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_peering_config: pulumi.Input[Optional['PrivateConnectionVpcPeeringConfigArgs']] = None):
         """
         Input properties used for looking up and filtering PrivateConnection resources.
 
@@ -266,19 +266,19 @@ class _PrivateConnectionState:
 
     @_builtins.property
     @pulumi.getter(name="createWithoutValidation")
-    def create_without_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_without_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, will skip validations.
         """
         return pulumi.get(self, "create_without_validation")
 
     @create_without_validation.setter
-    def create_without_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_without_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_without_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion policy for the private connection. Setting `FORCE` will also delete any child
         routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
@@ -288,36 +288,36 @@ class _PrivateConnectionState:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]]]:
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]]]:
         """
         The PrivateConnection error in case of failure.
         Structure is documented below.
@@ -325,12 +325,12 @@ class _PrivateConnectionState:
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]]]):
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]]]):
         pulumi.set(self, "errors", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -339,48 +339,48 @@ class _PrivateConnectionState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the location this private connection is located in.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource's name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateConnectionId")
-    def private_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private connectivity identifier.
         """
         return pulumi.get(self, "private_connection_id")
 
     @private_connection_id.setter
-    def private_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -388,12 +388,12 @@ class _PrivateConnectionState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pscInterfaceConfig")
-    def psc_interface_config(self) -> Optional[pulumi.Input['PrivateConnectionPscInterfaceConfigArgs']]:
+    def psc_interface_config(self) -> pulumi.Input[Optional['PrivateConnectionPscInterfaceConfigArgs']]:
         """
         The PSC Interface configuration is used to create PSC Interface
         between Datastream and the consumer's PSC.
@@ -402,12 +402,12 @@ class _PrivateConnectionState:
         return pulumi.get(self, "psc_interface_config")
 
     @psc_interface_config.setter
-    def psc_interface_config(self, value: Optional[pulumi.Input['PrivateConnectionPscInterfaceConfigArgs']]):
+    def psc_interface_config(self, value: pulumi.Input[Optional['PrivateConnectionPscInterfaceConfigArgs']]):
         pulumi.set(self, "psc_interface_config", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -415,24 +415,24 @@ class _PrivateConnectionState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the PrivateConnection.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcPeeringConfig")
-    def vpc_peering_config(self) -> Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']]:
+    def vpc_peering_config(self) -> pulumi.Input[Optional['PrivateConnectionVpcPeeringConfigArgs']]:
         """
         The VPC Peering configuration is used to create VPC peering
         between Datastream and the consumer's VPC.
@@ -441,7 +441,7 @@ class _PrivateConnectionState:
         return pulumi.get(self, "vpc_peering_config")
 
     @vpc_peering_config.setter
-    def vpc_peering_config(self, value: Optional[pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']]):
+    def vpc_peering_config(self, value: pulumi.Input[Optional['PrivateConnectionVpcPeeringConfigArgs']]):
         pulumi.set(self, "vpc_peering_config", value)
 
 
@@ -451,15 +451,15 @@ class PrivateConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_interface_config: Optional[pulumi.Input[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']]] = None,
-                 vpc_peering_config: Optional[pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None,
+                 create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']]] = None,
+                 vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None,
                  __props__=None):
         """
         The PrivateConnection resource is used to establish private connectivity between Datastream and a customer's network.
@@ -702,15 +702,15 @@ class PrivateConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_interface_config: Optional[pulumi.Input[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']]] = None,
-                 vpc_peering_config: Optional[pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None,
+                 create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']]] = None,
+                 vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -752,20 +752,20 @@ class PrivateConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateConnectionErrorArgs', 'PrivateConnectionErrorArgsDict']]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            private_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            psc_interface_config: Optional[pulumi.Input[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_peering_config: Optional[pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None) -> 'PrivateConnection':
+            create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateConnectionErrorArgs', 'PrivateConnectionErrorArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None) -> 'PrivateConnection':
         """
         Get an existing PrivateConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

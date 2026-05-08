@@ -266,27 +266,27 @@ export interface SecurityGatewayState {
     /**
      * Output only. Timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Service account used for operations that involve resources in consumer projects.
      */
-    delegatingServiceAccount?: pulumi.Input<string>;
+    delegatingServiceAccount?: pulumi.Input<string | undefined>;
     /**
      * Optional. An arbitrary user-provided name for the SecurityGateway.
      * Cannot exceed 64 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Output only. IP addresses that will be used for establishing
      * connection to the endpoints.
      */
-    externalIps?: pulumi.Input<pulumi.Input<string>[]>;
+    externalIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Optional. Map of Hubs that represents regional data path deployment with GCP region
      * as a key.
      * Structure is documented below.
      */
-    hubs?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayHub>[]>;
+    hubs?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayHub>[] | undefined>;
     /**
      * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
@@ -295,37 +295,37 @@ export interface SecurityGatewayState {
      *
      * @deprecated `location` is deprecated and will be removed in a future major release.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Settings related to Cloud Logging.
      */
-    logging?: pulumi.Input<inputs.beyondcorp.SecurityGatewayLogging>;
+    logging?: pulumi.Input<inputs.beyondcorp.SecurityGatewayLogging | undefined>;
     /**
      * Identifier. Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Shared proxy configuration for all apps.
      * Structure is documented below.
      */
-    proxyProtocolConfig?: pulumi.Input<inputs.beyondcorp.SecurityGatewayProxyProtocolConfig>;
+    proxyProtocolConfig?: pulumi.Input<inputs.beyondcorp.SecurityGatewayProxyProtocolConfig | undefined>;
     /**
      * Optional. User-settable SecurityGateway resource ID.
      * * Must start with a letter.
      * * Must contain between 4-63 characters from `/a-z-/`.
      * * Must end with a number or letter.
      */
-    securityGatewayId?: pulumi.Input<string>;
+    securityGatewayId?: pulumi.Input<string | undefined>;
     /**
      * Settings related to the Service Discovery.
      * Structure is documented below.
      */
-    serviceDiscovery?: pulumi.Input<inputs.beyondcorp.SecurityGatewayServiceDiscovery>;
+    serviceDiscovery?: pulumi.Input<inputs.beyondcorp.SecurityGatewayServiceDiscovery | undefined>;
     /**
      * Output only. The operational state of the SecurityGateway.
      * Possible values:
@@ -337,11 +337,11 @@ export interface SecurityGatewayState {
      * DOWN
      * ERROR
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. Timestamp when the resource was last modified.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -352,13 +352,13 @@ export interface SecurityGatewayArgs {
      * Optional. An arbitrary user-provided name for the SecurityGateway.
      * Cannot exceed 64 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Optional. Map of Hubs that represents regional data path deployment with GCP region
      * as a key.
      * Structure is documented below.
      */
-    hubs?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayHub>[]>;
+    hubs?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayHub>[] | undefined>;
     /**
      * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
@@ -367,21 +367,21 @@ export interface SecurityGatewayArgs {
      *
      * @deprecated `location` is deprecated and will be removed in a future major release.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Settings related to Cloud Logging.
      */
-    logging?: pulumi.Input<inputs.beyondcorp.SecurityGatewayLogging>;
+    logging?: pulumi.Input<inputs.beyondcorp.SecurityGatewayLogging | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Shared proxy configuration for all apps.
      * Structure is documented below.
      */
-    proxyProtocolConfig?: pulumi.Input<inputs.beyondcorp.SecurityGatewayProxyProtocolConfig>;
+    proxyProtocolConfig?: pulumi.Input<inputs.beyondcorp.SecurityGatewayProxyProtocolConfig | undefined>;
     /**
      * Optional. User-settable SecurityGateway resource ID.
      * * Must start with a letter.
@@ -393,5 +393,5 @@ export interface SecurityGatewayArgs {
      * Settings related to the Service Discovery.
      * Structure is documented below.
      */
-    serviceDiscovery?: pulumi.Input<inputs.beyondcorp.SecurityGatewayServiceDiscovery>;
+    serviceDiscovery?: pulumi.Input<inputs.beyondcorp.SecurityGatewayServiceDiscovery | undefined>;
 }

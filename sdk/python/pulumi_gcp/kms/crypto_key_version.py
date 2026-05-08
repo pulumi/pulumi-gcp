@@ -22,8 +22,8 @@ __all__ = ['CryptoKeyVersionArgs', 'CryptoKeyVersion']
 class CryptoKeyVersionArgs:
     def __init__(__self__, *,
                  crypto_key: pulumi.Input[_builtins.str],
-                 external_protection_level_options: Optional[pulumi.Input['CryptoKeyVersionExternalProtectionLevelOptionsArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 external_protection_level_options: pulumi.Input[Optional['CryptoKeyVersionExternalProtectionLevelOptionsArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CryptoKeyVersion resource.
 
@@ -56,7 +56,7 @@ class CryptoKeyVersionArgs:
 
     @_builtins.property
     @pulumi.getter(name="externalProtectionLevelOptions")
-    def external_protection_level_options(self) -> Optional[pulumi.Input['CryptoKeyVersionExternalProtectionLevelOptionsArgs']]:
+    def external_protection_level_options(self) -> pulumi.Input[Optional['CryptoKeyVersionExternalProtectionLevelOptionsArgs']]:
         """
         ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         Structure is documented below.
@@ -64,12 +64,12 @@ class CryptoKeyVersionArgs:
         return pulumi.get(self, "external_protection_level_options")
 
     @external_protection_level_options.setter
-    def external_protection_level_options(self, value: Optional[pulumi.Input['CryptoKeyVersionExternalProtectionLevelOptionsArgs']]):
+    def external_protection_level_options(self, value: pulumi.Input[Optional['CryptoKeyVersionExternalProtectionLevelOptionsArgs']]):
         pulumi.set(self, "external_protection_level_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
         otherwise the value of this field is always retrieved automatically.
@@ -78,21 +78,21 @@ class CryptoKeyVersionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 @pulumi.input_type
 class _CryptoKeyVersionState:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 attestations: Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]]] = None,
-                 crypto_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_protection_level_options: Optional[pulumi.Input['CryptoKeyVersionExternalProtectionLevelOptionsArgs']] = None,
-                 generate_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protection_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 attestations: pulumi.Input[Optional[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]]] = None,
+                 crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_protection_level_options: pulumi.Input[Optional['CryptoKeyVersionExternalProtectionLevelOptionsArgs']] = None,
+                 generate_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protection_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CryptoKeyVersion resources.
 
@@ -130,19 +130,19 @@ class _CryptoKeyVersionState:
 
     @_builtins.property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def attestations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]]]:
+    def attestations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]]]:
         """
         Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
         Only provided for key versions with protectionLevel HSM.
@@ -151,12 +151,12 @@ class _CryptoKeyVersionState:
         return pulumi.get(self, "attestations")
 
     @attestations.setter
-    def attestations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]]]):
+    def attestations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]]]):
         pulumi.set(self, "attestations", value)
 
     @_builtins.property
     @pulumi.getter(name="cryptoKey")
-    def crypto_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crypto_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cryptoKey associated with the CryptoKeyVersions.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
@@ -164,12 +164,12 @@ class _CryptoKeyVersionState:
         return pulumi.get(self, "crypto_key")
 
     @crypto_key.setter
-    def crypto_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crypto_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crypto_key", value)
 
     @_builtins.property
     @pulumi.getter(name="externalProtectionLevelOptions")
-    def external_protection_level_options(self) -> Optional[pulumi.Input['CryptoKeyVersionExternalProtectionLevelOptionsArgs']]:
+    def external_protection_level_options(self) -> pulumi.Input[Optional['CryptoKeyVersionExternalProtectionLevelOptionsArgs']]:
         """
         ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         Structure is documented below.
@@ -177,48 +177,48 @@ class _CryptoKeyVersionState:
         return pulumi.get(self, "external_protection_level_options")
 
     @external_protection_level_options.setter
-    def external_protection_level_options(self, value: Optional[pulumi.Input['CryptoKeyVersionExternalProtectionLevelOptionsArgs']]):
+    def external_protection_level_options(self, value: pulumi.Input[Optional['CryptoKeyVersionExternalProtectionLevelOptionsArgs']]):
         pulumi.set(self, "external_protection_level_options", value)
 
     @_builtins.property
     @pulumi.getter(name="generateTime")
-    def generate_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generate_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time this CryptoKeyVersion key material was generated
         """
         return pulumi.get(self, "generate_time")
 
     @generate_time.setter
-    def generate_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generate_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generate_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for this CryptoKeyVersion.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="protectionLevel")
-    def protection_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protection_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
         """
         return pulumi.get(self, "protection_level")
 
     @protection_level.setter
-    def protection_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protection_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protection_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
         otherwise the value of this field is always retrieved automatically.
@@ -227,7 +227,7 @@ class _CryptoKeyVersionState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -237,9 +237,9 @@ class CryptoKeyVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 crypto_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_protection_level_options: Optional[pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
+                 crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_protection_level_options: pulumi.Input[Optional[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A `CryptoKeyVersion` represents an individual cryptographic key, and the associated key material.
@@ -356,9 +356,9 @@ class CryptoKeyVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 crypto_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_protection_level_options: Optional[pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
+                 crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_protection_level_options: pulumi.Input[Optional[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -388,14 +388,14 @@ class CryptoKeyVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            attestations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CryptoKeyVersionAttestationArgs', 'CryptoKeyVersionAttestationArgsDict']]]]] = None,
-            crypto_key: Optional[pulumi.Input[_builtins.str]] = None,
-            external_protection_level_options: Optional[pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
-            generate_time: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            protection_level: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'CryptoKeyVersion':
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            attestations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CryptoKeyVersionAttestationArgs', 'CryptoKeyVersionAttestationArgsDict']]]]] = None,
+            crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+            external_protection_level_options: pulumi.Input[Optional[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
+            generate_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            protection_level: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'CryptoKeyVersion':
         """
         Get an existing CryptoKeyVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

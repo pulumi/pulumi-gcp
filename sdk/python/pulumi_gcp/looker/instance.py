@@ -22,28 +22,28 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  oauth_config: pulumi.Input['InstanceOauthConfigArgs'],
-                 admin_settings: Optional[pulumi.Input['InstanceAdminSettingsArgs']] = None,
-                 consumer_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 controlled_egress_config: Optional[pulumi.Input['InstanceControlledEgressConfigArgs']] = None,
-                 controlled_egress_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_domain: Optional[pulumi.Input['InstanceCustomDomainArgs']] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 deny_maintenance_period: Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']] = None,
-                 encryption_config: Optional[pulumi.Input['InstanceEncryptionConfigArgs']] = None,
-                 fips_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gemini_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintenance_window: Optional[pulumi.Input['InstanceMaintenanceWindowArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 periodic_export_config: Optional[pulumi.Input['InstancePeriodicExportConfigArgs']] = None,
-                 platform_edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_config: Optional[pulumi.Input['InstancePscConfigArgs']] = None,
-                 psc_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_metadata: Optional[pulumi.Input['InstanceUserMetadataArgs']] = None):
+                 admin_settings: pulumi.Input[Optional['InstanceAdminSettingsArgs']] = None,
+                 consumer_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 controlled_egress_config: pulumi.Input[Optional['InstanceControlledEgressConfigArgs']] = None,
+                 controlled_egress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_domain: pulumi.Input[Optional['InstanceCustomDomainArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deny_maintenance_period: pulumi.Input[Optional['InstanceDenyMaintenancePeriodArgs']] = None,
+                 encryption_config: pulumi.Input[Optional['InstanceEncryptionConfigArgs']] = None,
+                 fips_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gemini_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintenance_window: pulumi.Input[Optional['InstanceMaintenanceWindowArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 periodic_export_config: pulumi.Input[Optional['InstancePeriodicExportConfigArgs']] = None,
+                 platform_edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_config: pulumi.Input[Optional['InstancePscConfigArgs']] = None,
+                 psc_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_metadata: pulumi.Input[Optional['InstanceUserMetadataArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -173,7 +173,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminSettings")
-    def admin_settings(self) -> Optional[pulumi.Input['InstanceAdminSettingsArgs']]:
+    def admin_settings(self) -> pulumi.Input[Optional['InstanceAdminSettingsArgs']]:
         """
         Looker instance Admin settings.
         Structure is documented below.
@@ -181,12 +181,12 @@ class InstanceArgs:
         return pulumi.get(self, "admin_settings")
 
     @admin_settings.setter
-    def admin_settings(self, value: Optional[pulumi.Input['InstanceAdminSettingsArgs']]):
+    def admin_settings(self, value: pulumi.Input[Optional['InstanceAdminSettingsArgs']]):
         pulumi.set(self, "admin_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerNetwork")
-    def consumer_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consumer_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
         Note that the consumer network may be in a different GCP project than the consumer
@@ -195,12 +195,12 @@ class InstanceArgs:
         return pulumi.get(self, "consumer_network")
 
     @consumer_network.setter
-    def consumer_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consumer_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consumer_network", value)
 
     @_builtins.property
     @pulumi.getter(name="controlledEgressConfig")
-    def controlled_egress_config(self) -> Optional[pulumi.Input['InstanceControlledEgressConfigArgs']]:
+    def controlled_egress_config(self) -> pulumi.Input[Optional['InstanceControlledEgressConfigArgs']]:
         """
         Controlled egress configuration.
         Structure is documented below.
@@ -208,24 +208,24 @@ class InstanceArgs:
         return pulumi.get(self, "controlled_egress_config")
 
     @controlled_egress_config.setter
-    def controlled_egress_config(self, value: Optional[pulumi.Input['InstanceControlledEgressConfigArgs']]):
+    def controlled_egress_config(self, value: pulumi.Input[Optional['InstanceControlledEgressConfigArgs']]):
         pulumi.set(self, "controlled_egress_config", value)
 
     @_builtins.property
     @pulumi.getter(name="controlledEgressEnabled")
-    def controlled_egress_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def controlled_egress_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether controlled egress is enabled on the Looker instance.
         """
         return pulumi.get(self, "controlled_egress_enabled")
 
     @controlled_egress_enabled.setter
-    def controlled_egress_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def controlled_egress_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "controlled_egress_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomain")
-    def custom_domain(self) -> Optional[pulumi.Input['InstanceCustomDomainArgs']]:
+    def custom_domain(self) -> pulumi.Input[Optional['InstanceCustomDomainArgs']]:
         """
         Custom domain settings for a Looker instance.
         Structure is documented below.
@@ -233,12 +233,12 @@ class InstanceArgs:
         return pulumi.get(self, "custom_domain")
 
     @custom_domain.setter
-    def custom_domain(self, value: Optional[pulumi.Input['InstanceCustomDomainArgs']]):
+    def custom_domain(self, value: pulumi.Input[Optional['InstanceCustomDomainArgs']]):
         pulumi.set(self, "custom_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy to determine if the cluster should be deleted forcefully.
         If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
@@ -248,12 +248,12 @@ class InstanceArgs:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="denyMaintenancePeriod")
-    def deny_maintenance_period(self) -> Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']]:
+    def deny_maintenance_period(self) -> pulumi.Input[Optional['InstanceDenyMaintenancePeriodArgs']]:
         """
         Maintenance denial period for this instance.
         You must allow at least 14 days of maintenance availability
@@ -263,12 +263,12 @@ class InstanceArgs:
         return pulumi.get(self, "deny_maintenance_period")
 
     @deny_maintenance_period.setter
-    def deny_maintenance_period(self, value: Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']]):
+    def deny_maintenance_period(self, value: pulumi.Input[Optional['InstanceDenyMaintenancePeriodArgs']]):
         pulumi.set(self, "deny_maintenance_period", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['InstanceEncryptionConfigArgs']]:
+    def encryption_config(self) -> pulumi.Input[Optional['InstanceEncryptionConfigArgs']]:
         """
         Looker instance encryption settings.
         Structure is documented below.
@@ -276,36 +276,36 @@ class InstanceArgs:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['InstanceEncryptionConfigArgs']]):
+    def encryption_config(self, value: pulumi.Input[Optional['InstanceEncryptionConfigArgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @_builtins.property
     @pulumi.getter(name="fipsEnabled")
-    def fips_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fips_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
         """
         return pulumi.get(self, "fips_enabled")
 
     @fips_enabled.setter
-    def fips_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fips_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fips_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="geminiEnabled")
-    def gemini_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gemini_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Gemini enablement for Looker (Google Cloud Core).
         """
         return pulumi.get(self, "gemini_enabled")
 
     @gemini_enabled.setter
-    def gemini_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gemini_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gemini_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional[pulumi.Input['InstanceMaintenanceWindowArgs']]:
+    def maintenance_window(self) -> pulumi.Input[Optional['InstanceMaintenanceWindowArgs']]:
         """
         Maintenance window for an instance.
         Maintenance of your instance takes place once a month, and will require
@@ -316,24 +316,24 @@ class InstanceArgs:
         return pulumi.get(self, "maintenance_window")
 
     @maintenance_window.setter
-    def maintenance_window(self, value: Optional[pulumi.Input['InstanceMaintenanceWindowArgs']]):
+    def maintenance_window(self, value: pulumi.Input[Optional['InstanceMaintenanceWindowArgs']]):
         pulumi.set(self, "maintenance_window", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance or a fully qualified identifier for the instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="periodicExportConfig")
-    def periodic_export_config(self) -> Optional[pulumi.Input['InstancePeriodicExportConfigArgs']]:
+    def periodic_export_config(self) -> pulumi.Input[Optional['InstancePeriodicExportConfigArgs']]:
         """
         Configuration for periodic export.
         Structure is documented below.
@@ -341,12 +341,12 @@ class InstanceArgs:
         return pulumi.get(self, "periodic_export_config")
 
     @periodic_export_config.setter
-    def periodic_export_config(self, value: Optional[pulumi.Input['InstancePeriodicExportConfigArgs']]):
+    def periodic_export_config(self, value: pulumi.Input[Optional['InstancePeriodicExportConfigArgs']]):
         pulumi.set(self, "periodic_export_config", value)
 
     @_builtins.property
     @pulumi.getter(name="platformEdition")
-    def platform_edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform_edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
         - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
@@ -366,24 +366,24 @@ class InstanceArgs:
         return pulumi.get(self, "platform_edition")
 
     @platform_edition.setter
-    def platform_edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform_edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform_edition", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpEnabled")
-    def private_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def private_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether private IP is enabled on the Looker instance.
         """
         return pulumi.get(self, "private_ip_enabled")
 
     @private_ip_enabled.setter
-    def private_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def private_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "private_ip_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -391,12 +391,12 @@ class InstanceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConfig")
-    def psc_config(self) -> Optional[pulumi.Input['InstancePscConfigArgs']]:
+    def psc_config(self) -> pulumi.Input[Optional['InstancePscConfigArgs']]:
         """
         Information for Private Service Connect (PSC) setup for a Looker instance.
         Structure is documented below.
@@ -404,48 +404,48 @@ class InstanceArgs:
         return pulumi.get(self, "psc_config")
 
     @psc_config.setter
-    def psc_config(self, value: Optional[pulumi.Input['InstancePscConfigArgs']]):
+    def psc_config(self, value: pulumi.Input[Optional['InstancePscConfigArgs']]):
         pulumi.set(self, "psc_config", value)
 
     @_builtins.property
     @pulumi.getter(name="pscEnabled")
-    def psc_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def psc_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Public Service Connect (PSC) is enabled on the Looker instance
         """
         return pulumi.get(self, "psc_enabled")
 
     @psc_enabled.setter
-    def psc_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def psc_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "psc_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpEnabled")
-    def public_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether public IP is enabled on the Looker instance.
         """
         return pulumi.get(self, "public_ip_enabled")
 
     @public_ip_enabled.setter
-    def public_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_ip_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Looker region of the instance.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedRange")
-    def reserved_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserved_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of a reserved IP address range within the consumer network, to be used for
         private service access connection. User may or may not specify this in a request.
@@ -453,12 +453,12 @@ class InstanceArgs:
         return pulumi.get(self, "reserved_range")
 
     @reserved_range.setter
-    def reserved_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserved_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserved_range", value)
 
     @_builtins.property
     @pulumi.getter(name="userMetadata")
-    def user_metadata(self) -> Optional[pulumi.Input['InstanceUserMetadataArgs']]:
+    def user_metadata(self) -> pulumi.Input[Optional['InstanceUserMetadataArgs']]:
         """
         Metadata about users for a Looker instance.
         These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
@@ -472,43 +472,43 @@ class InstanceArgs:
         return pulumi.get(self, "user_metadata")
 
     @user_metadata.setter
-    def user_metadata(self, value: Optional[pulumi.Input['InstanceUserMetadataArgs']]):
+    def user_metadata(self, value: pulumi.Input[Optional['InstanceUserMetadataArgs']]):
         pulumi.set(self, "user_metadata", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 admin_settings: Optional[pulumi.Input['InstanceAdminSettingsArgs']] = None,
-                 consumer_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 controlled_egress_config: Optional[pulumi.Input['InstanceControlledEgressConfigArgs']] = None,
-                 controlled_egress_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain: Optional[pulumi.Input['InstanceCustomDomainArgs']] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 deny_maintenance_period: Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']] = None,
-                 egress_public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_config: Optional[pulumi.Input['InstanceEncryptionConfigArgs']] = None,
-                 fips_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gemini_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ingress_private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 looker_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 looker_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window: Optional[pulumi.Input['InstanceMaintenanceWindowArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_config: Optional[pulumi.Input['InstanceOauthConfigArgs']] = None,
-                 periodic_export_config: Optional[pulumi.Input['InstancePeriodicExportConfigArgs']] = None,
-                 platform_edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_config: Optional[pulumi.Input['InstancePscConfigArgs']] = None,
-                 psc_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_metadata: Optional[pulumi.Input['InstanceUserMetadataArgs']] = None):
+                 admin_settings: pulumi.Input[Optional['InstanceAdminSettingsArgs']] = None,
+                 consumer_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 controlled_egress_config: pulumi.Input[Optional['InstanceControlledEgressConfigArgs']] = None,
+                 controlled_egress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain: pulumi.Input[Optional['InstanceCustomDomainArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deny_maintenance_period: pulumi.Input[Optional['InstanceDenyMaintenancePeriodArgs']] = None,
+                 egress_public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_config: pulumi.Input[Optional['InstanceEncryptionConfigArgs']] = None,
+                 fips_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gemini_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ingress_private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 looker_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 looker_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window: pulumi.Input[Optional['InstanceMaintenanceWindowArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_config: pulumi.Input[Optional['InstanceOauthConfigArgs']] = None,
+                 periodic_export_config: pulumi.Input[Optional['InstancePeriodicExportConfigArgs']] = None,
+                 platform_edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_config: pulumi.Input[Optional['InstancePscConfigArgs']] = None,
+                 psc_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_metadata: pulumi.Input[Optional['InstanceUserMetadataArgs']] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -649,7 +649,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="adminSettings")
-    def admin_settings(self) -> Optional[pulumi.Input['InstanceAdminSettingsArgs']]:
+    def admin_settings(self) -> pulumi.Input[Optional['InstanceAdminSettingsArgs']]:
         """
         Looker instance Admin settings.
         Structure is documented below.
@@ -657,12 +657,12 @@ class _InstanceState:
         return pulumi.get(self, "admin_settings")
 
     @admin_settings.setter
-    def admin_settings(self, value: Optional[pulumi.Input['InstanceAdminSettingsArgs']]):
+    def admin_settings(self, value: pulumi.Input[Optional['InstanceAdminSettingsArgs']]):
         pulumi.set(self, "admin_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerNetwork")
-    def consumer_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consumer_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
         Note that the consumer network may be in a different GCP project than the consumer
@@ -671,12 +671,12 @@ class _InstanceState:
         return pulumi.get(self, "consumer_network")
 
     @consumer_network.setter
-    def consumer_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consumer_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consumer_network", value)
 
     @_builtins.property
     @pulumi.getter(name="controlledEgressConfig")
-    def controlled_egress_config(self) -> Optional[pulumi.Input['InstanceControlledEgressConfigArgs']]:
+    def controlled_egress_config(self) -> pulumi.Input[Optional['InstanceControlledEgressConfigArgs']]:
         """
         Controlled egress configuration.
         Structure is documented below.
@@ -684,24 +684,24 @@ class _InstanceState:
         return pulumi.get(self, "controlled_egress_config")
 
     @controlled_egress_config.setter
-    def controlled_egress_config(self, value: Optional[pulumi.Input['InstanceControlledEgressConfigArgs']]):
+    def controlled_egress_config(self, value: pulumi.Input[Optional['InstanceControlledEgressConfigArgs']]):
         pulumi.set(self, "controlled_egress_config", value)
 
     @_builtins.property
     @pulumi.getter(name="controlledEgressEnabled")
-    def controlled_egress_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def controlled_egress_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether controlled egress is enabled on the Looker instance.
         """
         return pulumi.get(self, "controlled_egress_enabled")
 
     @controlled_egress_enabled.setter
-    def controlled_egress_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def controlled_egress_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "controlled_egress_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the instance was created in RFC3339 UTC "Zulu" format,
         accurate to nanoseconds.
@@ -709,12 +709,12 @@ class _InstanceState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomain")
-    def custom_domain(self) -> Optional[pulumi.Input['InstanceCustomDomainArgs']]:
+    def custom_domain(self) -> pulumi.Input[Optional['InstanceCustomDomainArgs']]:
         """
         Custom domain settings for a Looker instance.
         Structure is documented below.
@@ -722,12 +722,12 @@ class _InstanceState:
         return pulumi.get(self, "custom_domain")
 
     @custom_domain.setter
-    def custom_domain(self, value: Optional[pulumi.Input['InstanceCustomDomainArgs']]):
+    def custom_domain(self, value: pulumi.Input[Optional['InstanceCustomDomainArgs']]):
         pulumi.set(self, "custom_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy to determine if the cluster should be deleted forcefully.
         If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
@@ -737,12 +737,12 @@ class _InstanceState:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="denyMaintenancePeriod")
-    def deny_maintenance_period(self) -> Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']]:
+    def deny_maintenance_period(self) -> pulumi.Input[Optional['InstanceDenyMaintenancePeriodArgs']]:
         """
         Maintenance denial period for this instance.
         You must allow at least 14 days of maintenance availability
@@ -752,24 +752,24 @@ class _InstanceState:
         return pulumi.get(self, "deny_maintenance_period")
 
     @deny_maintenance_period.setter
-    def deny_maintenance_period(self, value: Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']]):
+    def deny_maintenance_period(self, value: pulumi.Input[Optional['InstanceDenyMaintenancePeriodArgs']]):
         pulumi.set(self, "deny_maintenance_period", value)
 
     @_builtins.property
     @pulumi.getter(name="egressPublicIp")
-    def egress_public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def egress_public_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Public Egress IP (IPv4).
         """
         return pulumi.get(self, "egress_public_ip")
 
     @egress_public_ip.setter
-    def egress_public_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def egress_public_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "egress_public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['InstanceEncryptionConfigArgs']]:
+    def encryption_config(self) -> pulumi.Input[Optional['InstanceEncryptionConfigArgs']]:
         """
         Looker instance encryption settings.
         Structure is documented below.
@@ -777,84 +777,84 @@ class _InstanceState:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['InstanceEncryptionConfigArgs']]):
+    def encryption_config(self, value: pulumi.Input[Optional['InstanceEncryptionConfigArgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @_builtins.property
     @pulumi.getter(name="fipsEnabled")
-    def fips_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fips_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
         """
         return pulumi.get(self, "fips_enabled")
 
     @fips_enabled.setter
-    def fips_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fips_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fips_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="geminiEnabled")
-    def gemini_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gemini_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Gemini enablement for Looker (Google Cloud Core).
         """
         return pulumi.get(self, "gemini_enabled")
 
     @gemini_enabled.setter
-    def gemini_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gemini_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gemini_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressPrivateIp")
-    def ingress_private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress_private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private Ingress IP (IPv4).
         """
         return pulumi.get(self, "ingress_private_ip")
 
     @ingress_private_ip.setter
-    def ingress_private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress_private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress_private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressPublicIp")
-    def ingress_public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress_public_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Public Ingress IP (IPv4).
         """
         return pulumi.get(self, "ingress_public_ip")
 
     @ingress_public_ip.setter
-    def ingress_public_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress_public_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress_public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="lookerUri")
-    def looker_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def looker_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Looker instance URI which can be used to access the Looker Instance UI.
         """
         return pulumi.get(self, "looker_uri")
 
     @looker_uri.setter
-    def looker_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def looker_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "looker_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="lookerVersion")
-    def looker_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def looker_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Looker version that the instance is using.
         """
         return pulumi.get(self, "looker_version")
 
     @looker_version.setter
-    def looker_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def looker_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "looker_version", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional[pulumi.Input['InstanceMaintenanceWindowArgs']]:
+    def maintenance_window(self) -> pulumi.Input[Optional['InstanceMaintenanceWindowArgs']]:
         """
         Maintenance window for an instance.
         Maintenance of your instance takes place once a month, and will require
@@ -865,24 +865,24 @@ class _InstanceState:
         return pulumi.get(self, "maintenance_window")
 
     @maintenance_window.setter
-    def maintenance_window(self, value: Optional[pulumi.Input['InstanceMaintenanceWindowArgs']]):
+    def maintenance_window(self, value: pulumi.Input[Optional['InstanceMaintenanceWindowArgs']]):
         pulumi.set(self, "maintenance_window", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance or a fully qualified identifier for the instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthConfig")
-    def oauth_config(self) -> Optional[pulumi.Input['InstanceOauthConfigArgs']]:
+    def oauth_config(self) -> pulumi.Input[Optional['InstanceOauthConfigArgs']]:
         """
         Looker Instance OAuth login settings.
         Structure is documented below.
@@ -890,12 +890,12 @@ class _InstanceState:
         return pulumi.get(self, "oauth_config")
 
     @oauth_config.setter
-    def oauth_config(self, value: Optional[pulumi.Input['InstanceOauthConfigArgs']]):
+    def oauth_config(self, value: pulumi.Input[Optional['InstanceOauthConfigArgs']]):
         pulumi.set(self, "oauth_config", value)
 
     @_builtins.property
     @pulumi.getter(name="periodicExportConfig")
-    def periodic_export_config(self) -> Optional[pulumi.Input['InstancePeriodicExportConfigArgs']]:
+    def periodic_export_config(self) -> pulumi.Input[Optional['InstancePeriodicExportConfigArgs']]:
         """
         Configuration for periodic export.
         Structure is documented below.
@@ -903,12 +903,12 @@ class _InstanceState:
         return pulumi.get(self, "periodic_export_config")
 
     @periodic_export_config.setter
-    def periodic_export_config(self, value: Optional[pulumi.Input['InstancePeriodicExportConfigArgs']]):
+    def periodic_export_config(self, value: pulumi.Input[Optional['InstancePeriodicExportConfigArgs']]):
         pulumi.set(self, "periodic_export_config", value)
 
     @_builtins.property
     @pulumi.getter(name="platformEdition")
-    def platform_edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform_edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
         - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
@@ -928,24 +928,24 @@ class _InstanceState:
         return pulumi.get(self, "platform_edition")
 
     @platform_edition.setter
-    def platform_edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform_edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform_edition", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpEnabled")
-    def private_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def private_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether private IP is enabled on the Looker instance.
         """
         return pulumi.get(self, "private_ip_enabled")
 
     @private_ip_enabled.setter
-    def private_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def private_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "private_ip_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -953,12 +953,12 @@ class _InstanceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConfig")
-    def psc_config(self) -> Optional[pulumi.Input['InstancePscConfigArgs']]:
+    def psc_config(self) -> pulumi.Input[Optional['InstancePscConfigArgs']]:
         """
         Information for Private Service Connect (PSC) setup for a Looker instance.
         Structure is documented below.
@@ -966,48 +966,48 @@ class _InstanceState:
         return pulumi.get(self, "psc_config")
 
     @psc_config.setter
-    def psc_config(self, value: Optional[pulumi.Input['InstancePscConfigArgs']]):
+    def psc_config(self, value: pulumi.Input[Optional['InstancePscConfigArgs']]):
         pulumi.set(self, "psc_config", value)
 
     @_builtins.property
     @pulumi.getter(name="pscEnabled")
-    def psc_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def psc_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Public Service Connect (PSC) is enabled on the Looker instance
         """
         return pulumi.get(self, "psc_enabled")
 
     @psc_enabled.setter
-    def psc_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def psc_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "psc_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpEnabled")
-    def public_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether public IP is enabled on the Looker instance.
         """
         return pulumi.get(self, "public_ip_enabled")
 
     @public_ip_enabled.setter
-    def public_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_ip_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Looker region of the instance.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedRange")
-    def reserved_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserved_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of a reserved IP address range within the consumer network, to be used for
         private service access connection. User may or may not specify this in a request.
@@ -1015,12 +1015,12 @@ class _InstanceState:
         return pulumi.get(self, "reserved_range")
 
     @reserved_range.setter
-    def reserved_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserved_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserved_range", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the instance was updated in RFC3339 UTC "Zulu" format,
         accurate to nanoseconds.
@@ -1028,12 +1028,12 @@ class _InstanceState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="userMetadata")
-    def user_metadata(self) -> Optional[pulumi.Input['InstanceUserMetadataArgs']]:
+    def user_metadata(self) -> pulumi.Input[Optional['InstanceUserMetadataArgs']]:
         """
         Metadata about users for a Looker instance.
         These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
@@ -1047,7 +1047,7 @@ class _InstanceState:
         return pulumi.get(self, "user_metadata")
 
     @user_metadata.setter
-    def user_metadata(self, value: Optional[pulumi.Input['InstanceUserMetadataArgs']]):
+    def user_metadata(self, value: pulumi.Input[Optional['InstanceUserMetadataArgs']]):
         pulumi.set(self, "user_metadata", value)
 
 
@@ -1057,29 +1057,29 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_settings: Optional[pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
-                 consumer_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 controlled_egress_config: Optional[pulumi.Input[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']]] = None,
-                 controlled_egress_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_domain: Optional[pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 deny_maintenance_period: Optional[pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
-                 encryption_config: Optional[pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
-                 fips_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gemini_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintenance_window: Optional[pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_config: Optional[pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
-                 periodic_export_config: Optional[pulumi.Input[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']]] = None,
-                 platform_edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_config: Optional[pulumi.Input[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']]] = None,
-                 psc_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_metadata: Optional[pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']]] = None,
+                 admin_settings: pulumi.Input[Optional[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
+                 consumer_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 controlled_egress_config: pulumi.Input[Optional[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']]] = None,
+                 controlled_egress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_domain: pulumi.Input[Optional[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deny_maintenance_period: pulumi.Input[Optional[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
+                 fips_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gemini_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintenance_window: pulumi.Input[Optional[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_config: pulumi.Input[Optional[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
+                 periodic_export_config: pulumi.Input[Optional[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']]] = None,
+                 platform_edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_config: pulumi.Input[Optional[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']]] = None,
+                 psc_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_metadata: pulumi.Input[Optional[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']]] = None,
                  __props__=None):
         """
         A Google Cloud Looker instance.
@@ -1643,29 +1643,29 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_settings: Optional[pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
-                 consumer_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 controlled_egress_config: Optional[pulumi.Input[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']]] = None,
-                 controlled_egress_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_domain: Optional[pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 deny_maintenance_period: Optional[pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
-                 encryption_config: Optional[pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
-                 fips_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gemini_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintenance_window: Optional[pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_config: Optional[pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
-                 periodic_export_config: Optional[pulumi.Input[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']]] = None,
-                 platform_edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_config: Optional[pulumi.Input[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']]] = None,
-                 psc_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_metadata: Optional[pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']]] = None,
+                 admin_settings: pulumi.Input[Optional[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
+                 consumer_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 controlled_egress_config: pulumi.Input[Optional[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']]] = None,
+                 controlled_egress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_domain: pulumi.Input[Optional[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deny_maintenance_period: pulumi.Input[Optional[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
+                 fips_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gemini_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintenance_window: pulumi.Input[Optional[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_config: pulumi.Input[Optional[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
+                 periodic_export_config: pulumi.Input[Optional[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']]] = None,
+                 platform_edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_config: pulumi.Input[Optional[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']]] = None,
+                 psc_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_metadata: pulumi.Input[Optional[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1717,36 +1717,36 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_settings: Optional[pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
-            consumer_network: Optional[pulumi.Input[_builtins.str]] = None,
-            controlled_egress_config: Optional[pulumi.Input[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']]] = None,
-            controlled_egress_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_domain: Optional[pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            deny_maintenance_period: Optional[pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
-            egress_public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            encryption_config: Optional[pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
-            fips_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            gemini_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ingress_private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            ingress_public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            looker_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            looker_version: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance_window: Optional[pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth_config: Optional[pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
-            periodic_export_config: Optional[pulumi.Input[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']]] = None,
-            platform_edition: Optional[pulumi.Input[_builtins.str]] = None,
-            private_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            psc_config: Optional[pulumi.Input[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']]] = None,
-            psc_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            public_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            reserved_range: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            user_metadata: Optional[pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']]] = None) -> 'Instance':
+            admin_settings: pulumi.Input[Optional[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
+            consumer_network: pulumi.Input[Optional[_builtins.str]] = None,
+            controlled_egress_config: pulumi.Input[Optional[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']]] = None,
+            controlled_egress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_domain: pulumi.Input[Optional[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deny_maintenance_period: pulumi.Input[Optional[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
+            egress_public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_config: pulumi.Input[Optional[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
+            fips_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            gemini_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ingress_private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            ingress_public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            looker_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            looker_version: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_window: pulumi.Input[Optional[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_config: pulumi.Input[Optional[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
+            periodic_export_config: pulumi.Input[Optional[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']]] = None,
+            platform_edition: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_config: pulumi.Input[Optional[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']]] = None,
+            psc_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_range: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            user_metadata: pulumi.Input[Optional[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

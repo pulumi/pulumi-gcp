@@ -149,27 +149,27 @@ export interface OrganizationSecurityPolicyAssociationState {
     /**
      * The resource that the security policy is attached to.
      */
-    attachmentId?: pulumi.Input<string>;
+    attachmentId?: pulumi.Input<string | undefined>;
     /**
      * The display name of the security policy of the association.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * A list of folders to exclude from the security policy.
      */
-    excludedFolders?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedFolders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of projects to exclude from the security policy.
      */
-    excludedProjects?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedProjects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name for an association.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The security policy ID of the association.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -183,15 +183,15 @@ export interface OrganizationSecurityPolicyAssociationArgs {
     /**
      * A list of folders to exclude from the security policy.
      */
-    excludedFolders?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedFolders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of projects to exclude from the security policy.
      */
-    excludedProjects?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedProjects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name for an association.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The security policy ID of the association.
      */

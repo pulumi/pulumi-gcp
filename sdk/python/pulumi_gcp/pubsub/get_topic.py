@@ -202,8 +202,8 @@ def get_topic(name: Optional[_builtins.str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         schema_settings=pulumi.get(__ret__, 'schema_settings'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_topic_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                     project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_topic_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                     project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTopicResult]:
     """
     Get information about a Google Cloud Pub/Sub Topic. For more information see

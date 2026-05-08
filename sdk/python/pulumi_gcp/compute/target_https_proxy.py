@@ -20,18 +20,18 @@ __all__ = ['TargetHttpsProxyArgs', 'TargetHttpsProxy']
 class TargetHttpsProxyArgs:
     def __init__(__self__, *,
                  url_map: pulumi.Input[_builtins.str],
-                 certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 certificate_map: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_keep_alive_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_bind: Optional[pulumi.Input[_builtins.bool]] = None,
-                 quic_override: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_early_data: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificate_manager_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 certificate_map: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_keep_alive_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_bind: pulumi.Input[Optional[_builtins.bool]] = None,
+                 quic_override: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_early_data: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TargetHttpsProxy resource.
 
@@ -139,7 +139,7 @@ class TargetHttpsProxyArgs:
 
     @_builtins.property
     @pulumi.getter(name="certificateManagerCertificates")
-    def certificate_manager_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def certificate_manager_certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
         Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
@@ -150,12 +150,12 @@ class TargetHttpsProxyArgs:
         return pulumi.get(self, "certificate_manager_certificates")
 
     @certificate_manager_certificates.setter
-    def certificate_manager_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def certificate_manager_certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "certificate_manager_certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateMap")
-    def certificate_map(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_map(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the CertificateMap resource uri that identifies a certificate map
         associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
@@ -165,24 +165,24 @@ class TargetHttpsProxyArgs:
         return pulumi.get(self, "certificate_map")
 
     @certificate_map.setter
-    def certificate_map(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_map(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_map", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="httpKeepAliveTimeoutSec")
-    def http_keep_alive_timeout_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_keep_alive_timeout_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies how long to keep a connection open, after completing a response,
         while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -197,12 +197,12 @@ class TargetHttpsProxyArgs:
         return pulumi.get(self, "http_keep_alive_timeout_sec")
 
     @http_keep_alive_timeout_sec.setter
-    def http_keep_alive_timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_keep_alive_timeout_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_keep_alive_timeout_sec", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -215,12 +215,12 @@ class TargetHttpsProxyArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -228,12 +228,12 @@ class TargetHttpsProxyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyBind")
-    def proxy_bind(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxy_bind(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This field only applies when the forwarding rule that references
         this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -241,12 +241,12 @@ class TargetHttpsProxyArgs:
         return pulumi.get(self, "proxy_bind")
 
     @proxy_bind.setter
-    def proxy_bind(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxy_bind(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxy_bind", value)
 
     @_builtins.property
     @pulumi.getter(name="quicOverride")
-    def quic_override(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quic_override(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the QUIC override policy for this resource. This determines
         whether the load balancer will attempt to negotiate QUIC with clients
@@ -258,12 +258,12 @@ class TargetHttpsProxyArgs:
         return pulumi.get(self, "quic_override")
 
     @quic_override.setter
-    def quic_override(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quic_override(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quic_override", value)
 
     @_builtins.property
     @pulumi.getter(name="serverTlsPolicy")
-    def server_tls_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_tls_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A URL referring to a networksecurity.ServerTlsPolicy
         resource that describes how the proxy should authenticate inbound
@@ -282,12 +282,12 @@ class TargetHttpsProxyArgs:
         return pulumi.get(self, "server_tls_policy")
 
     @server_tls_policy.setter
-    def server_tls_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_tls_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_tls_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCertificates")
-    def ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ssl_certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
         Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -296,12 +296,12 @@ class TargetHttpsProxyArgs:
         return pulumi.get(self, "ssl_certificates")
 
     @ssl_certificates.setter
-    def ssl_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ssl_certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ssl_certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="sslPolicy")
-    def ssl_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the SslPolicy resource that will be associated with
         the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -310,12 +310,12 @@ class TargetHttpsProxyArgs:
         return pulumi.get(self, "ssl_policy")
 
     @ssl_policy.setter
-    def ssl_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsEarlyData")
-    def tls_early_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_early_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
         Early Data allows a TLS resumption handshake to include the initial application payload
@@ -326,30 +326,30 @@ class TargetHttpsProxyArgs:
         return pulumi.get(self, "tls_early_data")
 
     @tls_early_data.setter
-    def tls_early_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_early_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_early_data", value)
 
 
 @pulumi.input_type
 class _TargetHttpsProxyState:
     def __init__(__self__, *,
-                 certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 certificate_map: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_keep_alive_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_bind: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proxy_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 quic_override: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_early_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_map: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificate_manager_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 certificate_map: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_keep_alive_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_bind: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proxy_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 quic_override: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_early_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_map: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TargetHttpsProxy resources.
 
@@ -461,7 +461,7 @@ class _TargetHttpsProxyState:
 
     @_builtins.property
     @pulumi.getter(name="certificateManagerCertificates")
-    def certificate_manager_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def certificate_manager_certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
         Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
@@ -472,12 +472,12 @@ class _TargetHttpsProxyState:
         return pulumi.get(self, "certificate_manager_certificates")
 
     @certificate_manager_certificates.setter
-    def certificate_manager_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def certificate_manager_certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "certificate_manager_certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateMap")
-    def certificate_map(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_map(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the CertificateMap resource uri that identifies a certificate map
         associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
@@ -487,36 +487,36 @@ class _TargetHttpsProxyState:
         return pulumi.get(self, "certificate_map")
 
     @certificate_map.setter
-    def certificate_map(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_map(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_map", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
         This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
@@ -527,12 +527,12 @@ class _TargetHttpsProxyState:
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="httpKeepAliveTimeoutSec")
-    def http_keep_alive_timeout_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_keep_alive_timeout_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies how long to keep a connection open, after completing a response,
         while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -547,12 +547,12 @@ class _TargetHttpsProxyState:
         return pulumi.get(self, "http_keep_alive_timeout_sec")
 
     @http_keep_alive_timeout_sec.setter
-    def http_keep_alive_timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_keep_alive_timeout_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_keep_alive_timeout_sec", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -565,12 +565,12 @@ class _TargetHttpsProxyState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -578,12 +578,12 @@ class _TargetHttpsProxyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyBind")
-    def proxy_bind(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxy_bind(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This field only applies when the forwarding rule that references
         this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -591,24 +591,24 @@ class _TargetHttpsProxyState:
         return pulumi.get(self, "proxy_bind")
 
     @proxy_bind.setter
-    def proxy_bind(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxy_bind(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxy_bind", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyId")
-    def proxy_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def proxy_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique identifier for the resource.
         """
         return pulumi.get(self, "proxy_id")
 
     @proxy_id.setter
-    def proxy_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def proxy_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "proxy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="quicOverride")
-    def quic_override(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quic_override(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the QUIC override policy for this resource. This determines
         whether the load balancer will attempt to negotiate QUIC with clients
@@ -620,24 +620,24 @@ class _TargetHttpsProxyState:
         return pulumi.get(self, "quic_override")
 
     @quic_override.setter
-    def quic_override(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quic_override(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quic_override", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="serverTlsPolicy")
-    def server_tls_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_tls_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A URL referring to a networksecurity.ServerTlsPolicy
         resource that describes how the proxy should authenticate inbound
@@ -656,12 +656,12 @@ class _TargetHttpsProxyState:
         return pulumi.get(self, "server_tls_policy")
 
     @server_tls_policy.setter
-    def server_tls_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_tls_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_tls_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCertificates")
-    def ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ssl_certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
         Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -670,12 +670,12 @@ class _TargetHttpsProxyState:
         return pulumi.get(self, "ssl_certificates")
 
     @ssl_certificates.setter
-    def ssl_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ssl_certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ssl_certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="sslPolicy")
-    def ssl_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the SslPolicy resource that will be associated with
         the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -684,12 +684,12 @@ class _TargetHttpsProxyState:
         return pulumi.get(self, "ssl_policy")
 
     @ssl_policy.setter
-    def ssl_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsEarlyData")
-    def tls_early_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_early_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
         Early Data allows a TLS resumption handshake to include the initial application payload
@@ -700,12 +700,12 @@ class _TargetHttpsProxyState:
         return pulumi.get(self, "tls_early_data")
 
     @tls_early_data.setter
-    def tls_early_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_early_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_early_data", value)
 
     @_builtins.property
     @pulumi.getter(name="urlMap")
-    def url_map(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_map(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the UrlMap resource that defines the mapping from URL
         to the BackendService.
@@ -713,7 +713,7 @@ class _TargetHttpsProxyState:
         return pulumi.get(self, "url_map")
 
     @url_map.setter
-    def url_map(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_map(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_map", value)
 
 
@@ -723,19 +723,19 @@ class TargetHttpsProxy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 certificate_map: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_keep_alive_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_bind: Optional[pulumi.Input[_builtins.bool]] = None,
-                 quic_override: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_early_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_map: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificate_manager_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 certificate_map: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_keep_alive_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_bind: pulumi.Input[Optional[_builtins.bool]] = None,
+                 quic_override: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_early_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_map: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a TargetHttpsProxy resource, which is used by one or more
@@ -1367,19 +1367,19 @@ class TargetHttpsProxy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 certificate_map: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_keep_alive_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_bind: Optional[pulumi.Input[_builtins.bool]] = None,
-                 quic_override: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_early_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_map: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificate_manager_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 certificate_map: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_keep_alive_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_bind: pulumi.Input[Optional[_builtins.bool]] = None,
+                 quic_override: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_early_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_map: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1418,23 +1418,23 @@ class TargetHttpsProxy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            certificate_map: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            http_keep_alive_timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_bind: Optional[pulumi.Input[_builtins.bool]] = None,
-            proxy_id: Optional[pulumi.Input[_builtins.int]] = None,
-            quic_override: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            server_tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ssl_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            tls_early_data: Optional[pulumi.Input[_builtins.str]] = None,
-            url_map: Optional[pulumi.Input[_builtins.str]] = None) -> 'TargetHttpsProxy':
+            certificate_manager_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            certificate_map: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            http_keep_alive_timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_bind: pulumi.Input[Optional[_builtins.bool]] = None,
+            proxy_id: pulumi.Input[Optional[_builtins.int]] = None,
+            quic_override: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            server_tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ssl_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_early_data: pulumi.Input[Optional[_builtins.str]] = None,
+            url_map: pulumi.Input[Optional[_builtins.str]] = None) -> 'TargetHttpsProxy':
         """
         Get an existing TargetHttpsProxy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

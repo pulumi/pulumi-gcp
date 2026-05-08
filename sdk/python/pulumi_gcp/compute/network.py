@@ -21,22 +21,22 @@ __all__ = ['NetworkArgs', 'Network']
 @pulumi.input_type
 class NetworkArgs:
     def __init__(__self__, *,
-                 auto_create_subnetworks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp_best_path_selection_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 bgp_inter_region_cost: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_default_routes_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ula_internal_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 internal_ipv6_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_firewall_policy_enforcement_order: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['NetworkParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_create_subnetworks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp_best_path_selection_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 bgp_inter_region_cost: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_default_routes_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ula_internal_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 internal_ipv6_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_firewall_policy_enforcement_order: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['NetworkParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Network resource.
 
@@ -130,7 +130,7 @@ class NetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoCreateSubnetworks")
-    def auto_create_subnetworks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_create_subnetworks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to `true`, the network is created in "auto subnet mode" and
         it will create a subnet for each region automatically across the
@@ -141,12 +141,12 @@ class NetworkArgs:
         return pulumi.get(self, "auto_create_subnetworks")
 
     @auto_create_subnetworks.setter
-    def auto_create_subnetworks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_create_subnetworks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_create_subnetworks", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpAlwaysCompareMed")
-    def bgp_always_compare_med(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bgp_always_compare_med(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables/disables the comparison of MED across routes with different Neighbor ASNs.
         This value can only be set if the --bgp-best-path-selection-mode is STANDARD
@@ -154,12 +154,12 @@ class NetworkArgs:
         return pulumi.get(self, "bgp_always_compare_med")
 
     @bgp_always_compare_med.setter
-    def bgp_always_compare_med(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bgp_always_compare_med(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bgp_always_compare_med", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpBestPathSelectionMode")
-    def bgp_best_path_selection_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bgp_best_path_selection_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
         Possible values are: `LEGACY`, `STANDARD`.
@@ -167,12 +167,12 @@ class NetworkArgs:
         return pulumi.get(self, "bgp_best_path_selection_mode")
 
     @bgp_best_path_selection_mode.setter
-    def bgp_best_path_selection_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bgp_best_path_selection_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bgp_best_path_selection_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpInterRegionCost")
-    def bgp_inter_region_cost(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bgp_inter_region_cost(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
         Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
@@ -180,12 +180,12 @@ class NetworkArgs:
         return pulumi.get(self, "bgp_inter_region_cost")
 
     @bgp_inter_region_cost.setter
-    def bgp_inter_region_cost(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bgp_inter_region_cost(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bgp_inter_region_cost", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteBgpAlwaysCompareMed")
-    def delete_bgp_always_compare_med(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_bgp_always_compare_med(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the `bgp_always_compare_med` field will be cleared.
         If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
@@ -193,12 +193,12 @@ class NetworkArgs:
         return pulumi.get(self, "delete_bgp_always_compare_med")
 
     @delete_bgp_always_compare_med.setter
-    def delete_bgp_always_compare_med(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_bgp_always_compare_med(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_bgp_always_compare_med", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteDefaultRoutesOnCreate")
-    def delete_default_routes_on_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_default_routes_on_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, default routes (`0.0.0.0/0`) will be deleted
         immediately after network creation. Defaults to `false`.
@@ -206,12 +206,12 @@ class NetworkArgs:
         return pulumi.get(self, "delete_default_routes_on_create")
 
     @delete_default_routes_on_create.setter
-    def delete_default_routes_on_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_default_routes_on_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_default_routes_on_create", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. The resource must be
         recreated to modify this field.
@@ -219,12 +219,12 @@ class NetworkArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableUlaInternalIpv6")
-    def enable_ula_internal_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ula_internal_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable ULA internal ipv6 on this network. Enabling this feature will assign
         a /48 from google defined ULA prefix fd20::/20.
@@ -232,12 +232,12 @@ class NetworkArgs:
         return pulumi.get(self, "enable_ula_internal_ipv6")
 
     @enable_ula_internal_ipv6.setter
-    def enable_ula_internal_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ula_internal_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ula_internal_ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="internalIpv6Range")
-    def internal_ipv6_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internal_ipv6_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When enabling ula internal ipv6, caller optionally can specify the /48 range
         they want from the google defined ULA prefix fd20::/20. The input must be a
@@ -248,12 +248,12 @@ class NetworkArgs:
         return pulumi.get(self, "internal_ipv6_range")
 
     @internal_ipv6_range.setter
-    def internal_ipv6_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internal_ipv6_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internal_ipv6_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum Transmission Unit in bytes. The default value is 1460 bytes.
         The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
@@ -264,12 +264,12 @@ class NetworkArgs:
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -282,12 +282,12 @@ class NetworkArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkFirewallPolicyEnforcementOrder")
-    def network_firewall_policy_enforcement_order(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_firewall_policy_enforcement_order(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the order that Firewall Rules and Firewall Policies are evaluated.
         Default value is `AFTER_CLASSIC_FIREWALL`.
@@ -296,12 +296,12 @@ class NetworkArgs:
         return pulumi.get(self, "network_firewall_policy_enforcement_order")
 
     @network_firewall_policy_enforcement_order.setter
-    def network_firewall_policy_enforcement_order(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_firewall_policy_enforcement_order(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_firewall_policy_enforcement_order", value)
 
     @_builtins.property
     @pulumi.getter(name="networkProfile")
-    def network_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A full or partial URL of the network profile to apply to this network.
         This field can be set only at resource creation time. For example, the
@@ -312,12 +312,12 @@ class NetworkArgs:
         return pulumi.get(self, "network_profile")
 
     @network_profile.setter
-    def network_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_profile", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['NetworkParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['NetworkParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -325,12 +325,12 @@ class NetworkArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['NetworkParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['NetworkParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -338,12 +338,12 @@ class NetworkArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="routingMode")
-    def routing_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def routing_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network-wide routing mode to use. If set to `REGIONAL`, this
         network's cloud routers will only advertise routes with subnetworks
@@ -355,33 +355,33 @@ class NetworkArgs:
         return pulumi.get(self, "routing_mode")
 
     @routing_mode.setter
-    def routing_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def routing_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "routing_mode", value)
 
 
 @pulumi.input_type
 class _NetworkState:
     def __init__(__self__, *,
-                 auto_create_subnetworks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp_best_path_selection_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 bgp_inter_region_cost: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_default_routes_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ula_internal_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_ipv4: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_ipv6_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_firewall_policy_enforcement_order: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 numeric_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['NetworkParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_create_subnetworks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp_best_path_selection_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 bgp_inter_region_cost: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_default_routes_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ula_internal_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_ipv4: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_ipv6_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_firewall_policy_enforcement_order: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 numeric_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['NetworkParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Network resources.
 
@@ -492,7 +492,7 @@ class _NetworkState:
 
     @_builtins.property
     @pulumi.getter(name="autoCreateSubnetworks")
-    def auto_create_subnetworks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_create_subnetworks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to `true`, the network is created in "auto subnet mode" and
         it will create a subnet for each region automatically across the
@@ -503,12 +503,12 @@ class _NetworkState:
         return pulumi.get(self, "auto_create_subnetworks")
 
     @auto_create_subnetworks.setter
-    def auto_create_subnetworks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_create_subnetworks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_create_subnetworks", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpAlwaysCompareMed")
-    def bgp_always_compare_med(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bgp_always_compare_med(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables/disables the comparison of MED across routes with different Neighbor ASNs.
         This value can only be set if the --bgp-best-path-selection-mode is STANDARD
@@ -516,12 +516,12 @@ class _NetworkState:
         return pulumi.get(self, "bgp_always_compare_med")
 
     @bgp_always_compare_med.setter
-    def bgp_always_compare_med(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bgp_always_compare_med(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bgp_always_compare_med", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpBestPathSelectionMode")
-    def bgp_best_path_selection_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bgp_best_path_selection_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
         Possible values are: `LEGACY`, `STANDARD`.
@@ -529,12 +529,12 @@ class _NetworkState:
         return pulumi.get(self, "bgp_best_path_selection_mode")
 
     @bgp_best_path_selection_mode.setter
-    def bgp_best_path_selection_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bgp_best_path_selection_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bgp_best_path_selection_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpInterRegionCost")
-    def bgp_inter_region_cost(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bgp_inter_region_cost(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
         Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
@@ -542,12 +542,12 @@ class _NetworkState:
         return pulumi.get(self, "bgp_inter_region_cost")
 
     @bgp_inter_region_cost.setter
-    def bgp_inter_region_cost(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bgp_inter_region_cost(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bgp_inter_region_cost", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteBgpAlwaysCompareMed")
-    def delete_bgp_always_compare_med(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_bgp_always_compare_med(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the `bgp_always_compare_med` field will be cleared.
         If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
@@ -555,12 +555,12 @@ class _NetworkState:
         return pulumi.get(self, "delete_bgp_always_compare_med")
 
     @delete_bgp_always_compare_med.setter
-    def delete_bgp_always_compare_med(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_bgp_always_compare_med(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_bgp_always_compare_med", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteDefaultRoutesOnCreate")
-    def delete_default_routes_on_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_default_routes_on_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, default routes (`0.0.0.0/0`) will be deleted
         immediately after network creation. Defaults to `false`.
@@ -568,12 +568,12 @@ class _NetworkState:
         return pulumi.get(self, "delete_default_routes_on_create")
 
     @delete_default_routes_on_create.setter
-    def delete_default_routes_on_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_default_routes_on_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_default_routes_on_create", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. The resource must be
         recreated to modify this field.
@@ -581,12 +581,12 @@ class _NetworkState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableUlaInternalIpv6")
-    def enable_ula_internal_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ula_internal_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable ULA internal ipv6 on this network. Enabling this feature will assign
         a /48 from google defined ULA prefix fd20::/20.
@@ -594,12 +594,12 @@ class _NetworkState:
         return pulumi.get(self, "enable_ula_internal_ipv6")
 
     @enable_ula_internal_ipv6.setter
-    def enable_ula_internal_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ula_internal_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ula_internal_ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayIpv4")
-    def gateway_ipv4(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_ipv4(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The gateway address for default routing out of the network. This value
         is selected by GCP.
@@ -607,12 +607,12 @@ class _NetworkState:
         return pulumi.get(self, "gateway_ipv4")
 
     @gateway_ipv4.setter
-    def gateway_ipv4(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_ipv4(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_ipv4", value)
 
     @_builtins.property
     @pulumi.getter(name="internalIpv6Range")
-    def internal_ipv6_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internal_ipv6_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When enabling ula internal ipv6, caller optionally can specify the /48 range
         they want from the google defined ULA prefix fd20::/20. The input must be a
@@ -623,12 +623,12 @@ class _NetworkState:
         return pulumi.get(self, "internal_ipv6_range")
 
     @internal_ipv6_range.setter
-    def internal_ipv6_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internal_ipv6_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internal_ipv6_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum Transmission Unit in bytes. The default value is 1460 bytes.
         The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
@@ -639,12 +639,12 @@ class _NetworkState:
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -657,12 +657,12 @@ class _NetworkState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkFirewallPolicyEnforcementOrder")
-    def network_firewall_policy_enforcement_order(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_firewall_policy_enforcement_order(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the order that Firewall Rules and Firewall Policies are evaluated.
         Default value is `AFTER_CLASSIC_FIREWALL`.
@@ -671,24 +671,24 @@ class _NetworkState:
         return pulumi.get(self, "network_firewall_policy_enforcement_order")
 
     @network_firewall_policy_enforcement_order.setter
-    def network_firewall_policy_enforcement_order(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_firewall_policy_enforcement_order(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_firewall_policy_enforcement_order", value)
 
     @_builtins.property
     @pulumi.getter(name="networkId")
-    def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the resource. This identifier is defined by the server.
         """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
-    def network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkProfile")
-    def network_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A full or partial URL of the network profile to apply to this network.
         This field can be set only at resource creation time. For example, the
@@ -699,13 +699,13 @@ class _NetworkState:
         return pulumi.get(self, "network_profile")
 
     @network_profile.setter
-    def network_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="numericId")
     @_utilities.deprecated("""`numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.""")
-    def numeric_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def numeric_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Deprecated)
         The unique identifier for the resource. This identifier is defined by the server.
@@ -713,12 +713,12 @@ class _NetworkState:
         return pulumi.get(self, "numeric_id")
 
     @numeric_id.setter
-    def numeric_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def numeric_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "numeric_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['NetworkParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['NetworkParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -726,12 +726,12 @@ class _NetworkState:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['NetworkParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['NetworkParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -739,12 +739,12 @@ class _NetworkState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="routingMode")
-    def routing_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def routing_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network-wide routing mode to use. If set to `REGIONAL`, this
         network's cloud routers will only advertise routes with subnetworks
@@ -756,19 +756,19 @@ class _NetworkState:
         return pulumi.get(self, "routing_mode")
 
     @routing_mode.setter
-    def routing_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def routing_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "routing_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
 
@@ -778,22 +778,22 @@ class Network(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_create_subnetworks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp_best_path_selection_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 bgp_inter_region_cost: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_default_routes_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ula_internal_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 internal_ipv6_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_firewall_policy_enforcement_order: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_create_subnetworks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp_best_path_selection_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 bgp_inter_region_cost: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_default_routes_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ula_internal_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 internal_ipv6_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_firewall_policy_enforcement_order: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a VPC network or legacy network resource on GCP.
@@ -1099,22 +1099,22 @@ class Network(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_create_subnetworks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp_best_path_selection_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 bgp_inter_region_cost: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_default_routes_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ula_internal_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 internal_ipv6_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_firewall_policy_enforcement_order: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_create_subnetworks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp_best_path_selection_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 bgp_inter_region_cost: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_default_routes_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ula_internal_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 internal_ipv6_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_firewall_policy_enforcement_order: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1154,26 +1154,26 @@ class Network(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_create_subnetworks: Optional[pulumi.Input[_builtins.bool]] = None,
-            bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
-            bgp_best_path_selection_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            bgp_inter_region_cost: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
-            delete_default_routes_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_ula_internal_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-            gateway_ipv4: Optional[pulumi.Input[_builtins.str]] = None,
-            internal_ipv6_range: Optional[pulumi.Input[_builtins.str]] = None,
-            mtu: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_firewall_policy_enforcement_order: Optional[pulumi.Input[_builtins.str]] = None,
-            network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            network_profile: Optional[pulumi.Input[_builtins.str]] = None,
-            numeric_id: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            routing_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None) -> 'Network':
+            auto_create_subnetworks: pulumi.Input[Optional[_builtins.bool]] = None,
+            bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
+            bgp_best_path_selection_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            bgp_inter_region_cost: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
+            delete_default_routes_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_ula_internal_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway_ipv4: pulumi.Input[Optional[_builtins.str]] = None,
+            internal_ipv6_range: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_firewall_policy_enforcement_order: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            numeric_id: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['NetworkParamsArgs', 'NetworkParamsArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

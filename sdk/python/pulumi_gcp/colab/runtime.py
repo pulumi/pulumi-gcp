@@ -24,12 +24,12 @@ class RuntimeArgs:
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  runtime_user: pulumi.Input[_builtins.str],
-                 auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebook_runtime_template_ref: Optional[pulumi.Input['RuntimeNotebookRuntimeTemplateRefArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebook_runtime_template_ref: pulumi.Input[Optional['RuntimeNotebookRuntimeTemplateRefArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Runtime resource.
 
@@ -99,55 +99,55 @@ class RuntimeArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoUpgrade")
-    def auto_upgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_upgrade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Triggers an upgrade anytime the runtime is started if it is upgradable.
         """
         return pulumi.get(self, "auto_upgrade")
 
     @auto_upgrade.setter
-    def auto_upgrade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_upgrade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_upgrade", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Runtime.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
         """
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Runtime
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notebookRuntimeTemplateRef")
-    def notebook_runtime_template_ref(self) -> Optional[pulumi.Input['RuntimeNotebookRuntimeTemplateRefArgs']]:
+    def notebook_runtime_template_ref(self) -> pulumi.Input[Optional['RuntimeNotebookRuntimeTemplateRefArgs']]:
         """
         'Runtime specific information used for NotebookRuntime creation.'
         Structure is documented below.
@@ -155,12 +155,12 @@ class RuntimeArgs:
         return pulumi.get(self, "notebook_runtime_template_ref")
 
     @notebook_runtime_template_ref.setter
-    def notebook_runtime_template_ref(self, value: Optional[pulumi.Input['RuntimeNotebookRuntimeTemplateRefArgs']]):
+    def notebook_runtime_template_ref(self, value: pulumi.Input[Optional['RuntimeNotebookRuntimeTemplateRefArgs']]):
         pulumi.set(self, "notebook_runtime_template_ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -168,26 +168,26 @@ class RuntimeArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _RuntimeState:
     def __init__(__self__, *,
-                 auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_upgradable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebook_runtime_template_ref: Optional[pulumi.Input['RuntimeNotebookRuntimeTemplateRefArgs']] = None,
-                 notebook_runtime_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_upgradable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebook_runtime_template_ref: pulumi.Input[Optional['RuntimeNotebookRuntimeTemplateRefArgs']] = None,
+                 notebook_runtime_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Runtime resources.
 
@@ -236,103 +236,103 @@ class _RuntimeState:
 
     @_builtins.property
     @pulumi.getter(name="autoUpgrade")
-    def auto_upgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_upgrade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Triggers an upgrade anytime the runtime is started if it is upgradable.
         """
         return pulumi.get(self, "auto_upgrade")
 
     @auto_upgrade.setter
-    def auto_upgrade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_upgrade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_upgrade", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Runtime.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
         """
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The display name of the Runtime.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Timestamp when this NotebookRuntime will be expired.
         """
         return pulumi.get(self, "expiration_time")
 
     @expiration_time.setter
-    def expiration_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_time", value)
 
     @_builtins.property
     @pulumi.getter(name="isUpgradable")
-    def is_upgradable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_upgradable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. Checks if the NotebookRuntime is upgradable.
         """
         return pulumi.get(self, "is_upgradable")
 
     @is_upgradable.setter
-    def is_upgradable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_upgradable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_upgradable", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource: https://cloud.google.com/colab/docs/locations
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Runtime
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notebookRuntimeTemplateRef")
-    def notebook_runtime_template_ref(self) -> Optional[pulumi.Input['RuntimeNotebookRuntimeTemplateRefArgs']]:
+    def notebook_runtime_template_ref(self) -> pulumi.Input[Optional['RuntimeNotebookRuntimeTemplateRefArgs']]:
         """
         'Runtime specific information used for NotebookRuntime creation.'
         Structure is documented below.
@@ -340,24 +340,24 @@ class _RuntimeState:
         return pulumi.get(self, "notebook_runtime_template_ref")
 
     @notebook_runtime_template_ref.setter
-    def notebook_runtime_template_ref(self, value: Optional[pulumi.Input['RuntimeNotebookRuntimeTemplateRefArgs']]):
+    def notebook_runtime_template_ref(self, value: pulumi.Input[Optional['RuntimeNotebookRuntimeTemplateRefArgs']]):
         pulumi.set(self, "notebook_runtime_template_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="notebookRuntimeType")
-    def notebook_runtime_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notebook_runtime_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The type of the notebook runtime.
         """
         return pulumi.get(self, "notebook_runtime_type")
 
     @notebook_runtime_type.setter
-    def notebook_runtime_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notebook_runtime_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notebook_runtime_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -365,31 +365,31 @@ class _RuntimeState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeUser")
-    def runtime_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user email of the NotebookRuntime.
         """
         return pulumi.get(self, "runtime_user")
 
     @runtime_user.setter
-    def runtime_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_user", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The state of the runtime.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -399,15 +399,15 @@ class Runtime(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebook_runtime_template_ref: Optional[pulumi.Input[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_user: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebook_runtime_template_ref: pulumi.Input[Optional[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         'A runtime is a Google-provisioned virtual machine (VM) that can run the code in your notebook (IPYNB file).'
@@ -718,15 +718,15 @@ class Runtime(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebook_runtime_template_ref: Optional[pulumi.Input[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_user: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebook_runtime_template_ref: pulumi.Input[Optional[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -765,19 +765,19 @@ class Runtime(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            expiration_time: Optional[pulumi.Input[_builtins.str]] = None,
-            is_upgradable: Optional[pulumi.Input[_builtins.bool]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notebook_runtime_template_ref: Optional[pulumi.Input[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']]] = None,
-            notebook_runtime_type: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            runtime_user: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'Runtime':
+            auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+            is_upgradable: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notebook_runtime_template_ref: pulumi.Input[Optional[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']]] = None,
+            notebook_runtime_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_user: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'Runtime':
         """
         Get an existing Runtime resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

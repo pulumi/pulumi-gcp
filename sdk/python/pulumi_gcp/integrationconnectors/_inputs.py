@@ -119,36 +119,36 @@ class ConnectionAuthConfigArgsDict(TypedDict):
     authType of the Connection
     Possible values are: `USER_PASSWORD`.
     """
-    additional_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthConfigAdditionalVariableArgsDict']]]]
+    additional_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionAuthConfigAdditionalVariableArgs']]]]]
     """
     List containing additional auth configs.
     Structure is documented below.
     """
-    auth_key: NotRequired[pulumi.Input[_builtins.str]]
+    auth_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of authentication configured.
     """
-    oauth2_auth_code_flow: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2AuthCodeFlowArgsDict']]
+    oauth2_auth_code_flow: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2AuthCodeFlowArgs']]]
     """
     Parameters to support Oauth 2.0 Auth Code Grant Authentication.
     Structure is documented below.
     """
-    oauth2_client_credentials: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2ClientCredentialsArgsDict']]
+    oauth2_client_credentials: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2ClientCredentialsArgs']]]
     """
     OAuth3 Client Credentials for Authentication.
     Structure is documented below.
     """
-    oauth2_jwt_bearer: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerArgsDict']]
+    oauth2_jwt_bearer: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerArgs']]]
     """
     OAuth2 JWT Bearer for Authentication.
     Structure is documented below.
     """
-    ssh_public_key: NotRequired[pulumi.Input['ConnectionAuthConfigSshPublicKeyArgsDict']]
+    ssh_public_key: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeyArgs']]]
     """
     SSH Public Key for Authentication.
     Structure is documented below.
     """
-    user_password: NotRequired[pulumi.Input['ConnectionAuthConfigUserPasswordArgsDict']]
+    user_password: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigUserPasswordArgs']]]
     """
     User password for Authentication.
     Structure is documented below.
@@ -158,13 +158,13 @@ class ConnectionAuthConfigArgsDict(TypedDict):
 class ConnectionAuthConfigArgs:
     def __init__(__self__, *,
                  auth_type: pulumi.Input[_builtins.str],
-                 additional_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthConfigAdditionalVariableArgs']]]] = None,
-                 auth_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_auth_code_flow: Optional[pulumi.Input['ConnectionAuthConfigOauth2AuthCodeFlowArgs']] = None,
-                 oauth2_client_credentials: Optional[pulumi.Input['ConnectionAuthConfigOauth2ClientCredentialsArgs']] = None,
-                 oauth2_jwt_bearer: Optional[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerArgs']] = None,
-                 ssh_public_key: Optional[pulumi.Input['ConnectionAuthConfigSshPublicKeyArgs']] = None,
-                 user_password: Optional[pulumi.Input['ConnectionAuthConfigUserPasswordArgs']] = None):
+                 additional_variables: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionAuthConfigAdditionalVariableArgs']]]] = None,
+                 auth_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_auth_code_flow: pulumi.Input[Optional['ConnectionAuthConfigOauth2AuthCodeFlowArgs']] = None,
+                 oauth2_client_credentials: pulumi.Input[Optional['ConnectionAuthConfigOauth2ClientCredentialsArgs']] = None,
+                 oauth2_jwt_bearer: pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerArgs']] = None,
+                 ssh_public_key: pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeyArgs']] = None,
+                 user_password: pulumi.Input[Optional['ConnectionAuthConfigUserPasswordArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] auth_type: authType of the Connection
                Possible values are: `USER_PASSWORD`.
@@ -213,7 +213,7 @@ class ConnectionAuthConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalVariables")
-    def additional_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthConfigAdditionalVariableArgs']]]]:
+    def additional_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionAuthConfigAdditionalVariableArgs']]]]:
         """
         List containing additional auth configs.
         Structure is documented below.
@@ -221,24 +221,24 @@ class ConnectionAuthConfigArgs:
         return pulumi.get(self, "additional_variables")
 
     @additional_variables.setter
-    def additional_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthConfigAdditionalVariableArgs']]]]):
+    def additional_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionAuthConfigAdditionalVariableArgs']]]]):
         pulumi.set(self, "additional_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="authKey")
-    def auth_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of authentication configured.
         """
         return pulumi.get(self, "auth_key")
 
     @auth_key.setter
-    def auth_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_key", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2AuthCodeFlow")
-    def oauth2_auth_code_flow(self) -> Optional[pulumi.Input['ConnectionAuthConfigOauth2AuthCodeFlowArgs']]:
+    def oauth2_auth_code_flow(self) -> pulumi.Input[Optional['ConnectionAuthConfigOauth2AuthCodeFlowArgs']]:
         """
         Parameters to support Oauth 2.0 Auth Code Grant Authentication.
         Structure is documented below.
@@ -246,12 +246,12 @@ class ConnectionAuthConfigArgs:
         return pulumi.get(self, "oauth2_auth_code_flow")
 
     @oauth2_auth_code_flow.setter
-    def oauth2_auth_code_flow(self, value: Optional[pulumi.Input['ConnectionAuthConfigOauth2AuthCodeFlowArgs']]):
+    def oauth2_auth_code_flow(self, value: pulumi.Input[Optional['ConnectionAuthConfigOauth2AuthCodeFlowArgs']]):
         pulumi.set(self, "oauth2_auth_code_flow", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2ClientCredentials")
-    def oauth2_client_credentials(self) -> Optional[pulumi.Input['ConnectionAuthConfigOauth2ClientCredentialsArgs']]:
+    def oauth2_client_credentials(self) -> pulumi.Input[Optional['ConnectionAuthConfigOauth2ClientCredentialsArgs']]:
         """
         OAuth3 Client Credentials for Authentication.
         Structure is documented below.
@@ -259,12 +259,12 @@ class ConnectionAuthConfigArgs:
         return pulumi.get(self, "oauth2_client_credentials")
 
     @oauth2_client_credentials.setter
-    def oauth2_client_credentials(self, value: Optional[pulumi.Input['ConnectionAuthConfigOauth2ClientCredentialsArgs']]):
+    def oauth2_client_credentials(self, value: pulumi.Input[Optional['ConnectionAuthConfigOauth2ClientCredentialsArgs']]):
         pulumi.set(self, "oauth2_client_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2JwtBearer")
-    def oauth2_jwt_bearer(self) -> Optional[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerArgs']]:
+    def oauth2_jwt_bearer(self) -> pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerArgs']]:
         """
         OAuth2 JWT Bearer for Authentication.
         Structure is documented below.
@@ -272,12 +272,12 @@ class ConnectionAuthConfigArgs:
         return pulumi.get(self, "oauth2_jwt_bearer")
 
     @oauth2_jwt_bearer.setter
-    def oauth2_jwt_bearer(self, value: Optional[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerArgs']]):
+    def oauth2_jwt_bearer(self, value: pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerArgs']]):
         pulumi.set(self, "oauth2_jwt_bearer", value)
 
     @_builtins.property
     @pulumi.getter(name="sshPublicKey")
-    def ssh_public_key(self) -> Optional[pulumi.Input['ConnectionAuthConfigSshPublicKeyArgs']]:
+    def ssh_public_key(self) -> pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeyArgs']]:
         """
         SSH Public Key for Authentication.
         Structure is documented below.
@@ -285,12 +285,12 @@ class ConnectionAuthConfigArgs:
         return pulumi.get(self, "ssh_public_key")
 
     @ssh_public_key.setter
-    def ssh_public_key(self, value: Optional[pulumi.Input['ConnectionAuthConfigSshPublicKeyArgs']]):
+    def ssh_public_key(self, value: pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeyArgs']]):
         pulumi.set(self, "ssh_public_key", value)
 
     @_builtins.property
     @pulumi.getter(name="userPassword")
-    def user_password(self) -> Optional[pulumi.Input['ConnectionAuthConfigUserPasswordArgs']]:
+    def user_password(self) -> pulumi.Input[Optional['ConnectionAuthConfigUserPasswordArgs']]:
         """
         User password for Authentication.
         Structure is documented below.
@@ -298,7 +298,7 @@ class ConnectionAuthConfigArgs:
         return pulumi.get(self, "user_password")
 
     @user_password.setter
-    def user_password(self, value: Optional[pulumi.Input['ConnectionAuthConfigUserPasswordArgs']]):
+    def user_password(self, value: pulumi.Input[Optional['ConnectionAuthConfigUserPasswordArgs']]):
         pulumi.set(self, "user_password", value)
 
 
@@ -307,25 +307,25 @@ class ConnectionAuthConfigAdditionalVariableArgsDict(TypedDict):
     """
     Key for the configVariable
     """
-    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    boolean_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean Value of configVariable.
     """
-    encryption_key_value: NotRequired[pulumi.Input['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgsDict']]
+    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs']]]
     """
     Encryption key value of configVariable.
     Structure is documented below.
     """
-    integer_value: NotRequired[pulumi.Input[_builtins.int]]
+    integer_value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Integer Value of configVariable.
     """
-    secret_value: NotRequired[pulumi.Input['ConnectionAuthConfigAdditionalVariableSecretValueArgsDict']]
+    secret_value: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigAdditionalVariableSecretValueArgs']]]
     """
     Secret value of configVariable
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String Value of configVariabley.
     """
@@ -334,11 +334,11 @@ class ConnectionAuthConfigAdditionalVariableArgsDict(TypedDict):
 class ConnectionAuthConfigAdditionalVariableArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 boolean_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key_value: Optional[pulumi.Input['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs']] = None,
-                 integer_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_value: Optional[pulumi.Input['ConnectionAuthConfigAdditionalVariableSecretValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 boolean_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key_value: pulumi.Input[Optional['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs']] = None,
+                 integer_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_value: pulumi.Input[Optional['ConnectionAuthConfigAdditionalVariableSecretValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key for the configVariable
         :param pulumi.Input[_builtins.bool] boolean_value: Boolean Value of configVariable.
@@ -375,19 +375,19 @@ class ConnectionAuthConfigAdditionalVariableArgs:
 
     @_builtins.property
     @pulumi.getter(name="booleanValue")
-    def boolean_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def boolean_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean Value of configVariable.
         """
         return pulumi.get(self, "boolean_value")
 
     @boolean_value.setter
-    def boolean_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def boolean_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "boolean_value", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyValue")
-    def encryption_key_value(self) -> Optional[pulumi.Input['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs']]:
+    def encryption_key_value(self) -> pulumi.Input[Optional['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs']]:
         """
         Encryption key value of configVariable.
         Structure is documented below.
@@ -395,24 +395,24 @@ class ConnectionAuthConfigAdditionalVariableArgs:
         return pulumi.get(self, "encryption_key_value")
 
     @encryption_key_value.setter
-    def encryption_key_value(self, value: Optional[pulumi.Input['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs']]):
+    def encryption_key_value(self, value: pulumi.Input[Optional['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs']]):
         pulumi.set(self, "encryption_key_value", value)
 
     @_builtins.property
     @pulumi.getter(name="integerValue")
-    def integer_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def integer_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer Value of configVariable.
         """
         return pulumi.get(self, "integer_value")
 
     @integer_value.setter
-    def integer_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def integer_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "integer_value", value)
 
     @_builtins.property
     @pulumi.getter(name="secretValue")
-    def secret_value(self) -> Optional[pulumi.Input['ConnectionAuthConfigAdditionalVariableSecretValueArgs']]:
+    def secret_value(self) -> pulumi.Input[Optional['ConnectionAuthConfigAdditionalVariableSecretValueArgs']]:
         """
         Secret value of configVariable
         Structure is documented below.
@@ -420,19 +420,19 @@ class ConnectionAuthConfigAdditionalVariableArgs:
         return pulumi.get(self, "secret_value")
 
     @secret_value.setter
-    def secret_value(self, value: Optional[pulumi.Input['ConnectionAuthConfigAdditionalVariableSecretValueArgs']]):
+    def secret_value(self, value: pulumi.Input[Optional['ConnectionAuthConfigAdditionalVariableSecretValueArgs']]):
         pulumi.set(self, "secret_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String Value of configVariabley.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
@@ -442,7 +442,7 @@ class ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict
     Type of Encryption Key
     Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
     """
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The [KMS key name] with which the content of the Operation is encrypted. The
     expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -453,7 +453,7 @@ class ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict
 class ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: Type of Encryption Key
                Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
@@ -480,7 +480,7 @@ class ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [KMS key name] with which the content of the Operation is encrypted. The
         expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -489,7 +489,7 @@ class ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
 
@@ -522,23 +522,23 @@ class ConnectionAuthConfigAdditionalVariableSecretValueArgs:
 
 
 class ConnectionAuthConfigOauth2AuthCodeFlowArgsDict(TypedDict):
-    auth_uri: NotRequired[pulumi.Input[_builtins.str]]
+    auth_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Auth URL for Authorization Code Flow.
     """
-    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Client ID for user-provided OAuth app.
     """
-    client_secret: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgsDict']]
+    client_secret: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs']]]
     """
     Client secret for user-provided OAuth app.
     """
-    enable_pkce: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_pkce: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable PKCE when the user performs the auth code flow.
     """
-    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Scopes the connection will request when the user performs the auth code flow.
     """
@@ -546,11 +546,11 @@ class ConnectionAuthConfigOauth2AuthCodeFlowArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionAuthConfigOauth2AuthCodeFlowArgs:
     def __init__(__self__, *,
-                 auth_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input['ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs']] = None,
-                 enable_pkce: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 auth_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional['ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs']] = None,
+                 enable_pkce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_uri: Auth URL for Authorization Code Flow.
         :param pulumi.Input[_builtins.str] client_id: Client ID for user-provided OAuth app.
@@ -571,62 +571,62 @@ class ConnectionAuthConfigOauth2AuthCodeFlowArgs:
 
     @_builtins.property
     @pulumi.getter(name="authUri")
-    def auth_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Auth URL for Authorization Code Flow.
         """
         return pulumi.get(self, "auth_uri")
 
     @auth_uri.setter
-    def auth_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client ID for user-provided OAuth app.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input['ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs']]:
+    def client_secret(self) -> pulumi.Input[Optional['ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs']]:
         """
         Client secret for user-provided OAuth app.
         """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input['ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs']]):
+    def client_secret(self, value: pulumi.Input[Optional['ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs']]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePkce")
-    def enable_pkce(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_pkce(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable PKCE when the user performs the auth code flow.
         """
         return pulumi.get(self, "enable_pkce")
 
     @enable_pkce.setter
-    def enable_pkce(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_pkce(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_pkce", value)
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Scopes the connection will request when the user performs the auth code flow.
         """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scopes", value)
 
 
@@ -666,7 +666,7 @@ class ConnectionAuthConfigOauth2ClientCredentialsArgsDict(TypedDict):
     """
     Secret version of Password for Authentication.
     """
-    client_secret: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgsDict']]
+    client_secret: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs']]]
     """
     Secret version reference containing the client secret.
     """
@@ -675,7 +675,7 @@ class ConnectionAuthConfigOauth2ClientCredentialsArgsDict(TypedDict):
 class ConnectionAuthConfigOauth2ClientCredentialsArgs:
     def __init__(__self__, *,
                  client_id: pulumi.Input[_builtins.str],
-                 client_secret: Optional[pulumi.Input['ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs']] = None):
+                 client_secret: pulumi.Input[Optional['ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: Secret version of Password for Authentication.
         :param pulumi.Input['ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs'] client_secret: Secret version reference containing the client secret.
@@ -698,14 +698,14 @@ class ConnectionAuthConfigOauth2ClientCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input['ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs']]:
+    def client_secret(self) -> pulumi.Input[Optional['ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs']]:
         """
         Secret version reference containing the client secret.
         """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input['ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs']]):
+    def client_secret(self, value: pulumi.Input[Optional['ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs']]):
         pulumi.set(self, "client_secret", value)
 
 
@@ -741,13 +741,13 @@ class ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs:
 
 
 class ConnectionAuthConfigOauth2JwtBearerArgsDict(TypedDict):
-    client_key: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerClientKeyArgsDict']]
+    client_key: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerClientKeyArgs']]]
     """
     Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
     This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
     Specified in the form as: projects/*/secrets/*/versions/*.
     """
-    jwt_claims: NotRequired[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgsDict']]
+    jwt_claims: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs']]]
     """
     JwtClaims providers fields to generate the token.
     """
@@ -755,8 +755,8 @@ class ConnectionAuthConfigOauth2JwtBearerArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionAuthConfigOauth2JwtBearerArgs:
     def __init__(__self__, *,
-                 client_key: Optional[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerClientKeyArgs']] = None,
-                 jwt_claims: Optional[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs']] = None):
+                 client_key: pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerClientKeyArgs']] = None,
+                 jwt_claims: pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs']] = None):
         """
         :param pulumi.Input['ConnectionAuthConfigOauth2JwtBearerClientKeyArgs'] client_key: Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
                This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
@@ -770,7 +770,7 @@ class ConnectionAuthConfigOauth2JwtBearerArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerClientKeyArgs']]:
+    def client_key(self) -> pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerClientKeyArgs']]:
         """
         Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
         This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
@@ -779,19 +779,19 @@ class ConnectionAuthConfigOauth2JwtBearerArgs:
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerClientKeyArgs']]):
+    def client_key(self, value: pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerClientKeyArgs']]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="jwtClaims")
-    def jwt_claims(self) -> Optional[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs']]:
+    def jwt_claims(self) -> pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs']]:
         """
         JwtClaims providers fields to generate the token.
         """
         return pulumi.get(self, "jwt_claims")
 
     @jwt_claims.setter
-    def jwt_claims(self, value: Optional[pulumi.Input['ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs']]):
+    def jwt_claims(self, value: pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs']]):
         pulumi.set(self, "jwt_claims", value)
 
 
@@ -827,17 +827,17 @@ class ConnectionAuthConfigOauth2JwtBearerClientKeyArgs:
 
 
 class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgsDict(TypedDict):
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value for the "aud" claim.
 
     <a name="nested_auth_config_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
     """
-    issuer: NotRequired[pulumi.Input[_builtins.str]]
+    issuer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value for the "iss" claim.
     """
-    subject: NotRequired[pulumi.Input[_builtins.str]]
+    subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Value for the "sub" claim.
     """
@@ -845,9 +845,9 @@ class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs:
     def __init__(__self__, *,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] audience: Value for the "aud" claim.
                
@@ -864,7 +864,7 @@ class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value for the "aud" claim.
 
@@ -873,31 +873,31 @@ class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs:
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value for the "iss" claim.
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value for the "sub" claim.
         """
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
 
@@ -906,16 +906,16 @@ class ConnectionAuthConfigSshPublicKeyArgsDict(TypedDict):
     """
     The user account used to authenticate.
     """
-    cert_type: NotRequired[pulumi.Input[_builtins.str]]
+    cert_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Format of SSH Client cert.
     """
-    ssh_client_cert: NotRequired[pulumi.Input['ConnectionAuthConfigSshPublicKeySshClientCertArgsDict']]
+    ssh_client_cert: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeySshClientCertArgs']]]
     """
     SSH Client Cert. It should contain both public and private key.
     Structure is documented below.
     """
-    ssh_client_cert_pass: NotRequired[pulumi.Input['ConnectionAuthConfigSshPublicKeySshClientCertPassArgsDict']]
+    ssh_client_cert_pass: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeySshClientCertPassArgs']]]
     """
     Password (passphrase) for ssh client certificate if it has one.
     Structure is documented below.
@@ -925,9 +925,9 @@ class ConnectionAuthConfigSshPublicKeyArgsDict(TypedDict):
 class ConnectionAuthConfigSshPublicKeyArgs:
     def __init__(__self__, *,
                  username: pulumi.Input[_builtins.str],
-                 cert_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_client_cert: Optional[pulumi.Input['ConnectionAuthConfigSshPublicKeySshClientCertArgs']] = None,
-                 ssh_client_cert_pass: Optional[pulumi.Input['ConnectionAuthConfigSshPublicKeySshClientCertPassArgs']] = None):
+                 cert_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_client_cert: pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeySshClientCertArgs']] = None,
+                 ssh_client_cert_pass: pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeySshClientCertPassArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] username: The user account used to authenticate.
         :param pulumi.Input[_builtins.str] cert_type: Format of SSH Client cert.
@@ -958,19 +958,19 @@ class ConnectionAuthConfigSshPublicKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="certType")
-    def cert_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Format of SSH Client cert.
         """
         return pulumi.get(self, "cert_type")
 
     @cert_type.setter
-    def cert_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sshClientCert")
-    def ssh_client_cert(self) -> Optional[pulumi.Input['ConnectionAuthConfigSshPublicKeySshClientCertArgs']]:
+    def ssh_client_cert(self) -> pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeySshClientCertArgs']]:
         """
         SSH Client Cert. It should contain both public and private key.
         Structure is documented below.
@@ -978,12 +978,12 @@ class ConnectionAuthConfigSshPublicKeyArgs:
         return pulumi.get(self, "ssh_client_cert")
 
     @ssh_client_cert.setter
-    def ssh_client_cert(self, value: Optional[pulumi.Input['ConnectionAuthConfigSshPublicKeySshClientCertArgs']]):
+    def ssh_client_cert(self, value: pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeySshClientCertArgs']]):
         pulumi.set(self, "ssh_client_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="sshClientCertPass")
-    def ssh_client_cert_pass(self) -> Optional[pulumi.Input['ConnectionAuthConfigSshPublicKeySshClientCertPassArgs']]:
+    def ssh_client_cert_pass(self) -> pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeySshClientCertPassArgs']]:
         """
         Password (passphrase) for ssh client certificate if it has one.
         Structure is documented below.
@@ -991,7 +991,7 @@ class ConnectionAuthConfigSshPublicKeyArgs:
         return pulumi.get(self, "ssh_client_cert_pass")
 
     @ssh_client_cert_pass.setter
-    def ssh_client_cert_pass(self, value: Optional[pulumi.Input['ConnectionAuthConfigSshPublicKeySshClientCertPassArgs']]):
+    def ssh_client_cert_pass(self, value: pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeySshClientCertPassArgs']]):
         pulumi.set(self, "ssh_client_cert_pass", value)
 
 
@@ -1068,7 +1068,7 @@ class ConnectionAuthConfigUserPasswordArgsDict(TypedDict):
     """
     Username for Authentication.
     """
-    password: NotRequired[pulumi.Input['ConnectionAuthConfigUserPasswordPasswordArgsDict']]
+    password: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigUserPasswordPasswordArgs']]]
     """
     Password for Authentication.
     Structure is documented below.
@@ -1078,7 +1078,7 @@ class ConnectionAuthConfigUserPasswordArgsDict(TypedDict):
 class ConnectionAuthConfigUserPasswordArgs:
     def __init__(__self__, *,
                  username: pulumi.Input[_builtins.str],
-                 password: Optional[pulumi.Input['ConnectionAuthConfigUserPasswordPasswordArgs']] = None):
+                 password: pulumi.Input[Optional['ConnectionAuthConfigUserPasswordPasswordArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] username: Username for Authentication.
         :param pulumi.Input['ConnectionAuthConfigUserPasswordPasswordArgs'] password: Password for Authentication.
@@ -1102,7 +1102,7 @@ class ConnectionAuthConfigUserPasswordArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input['ConnectionAuthConfigUserPasswordPasswordArgs']]:
+    def password(self) -> pulumi.Input[Optional['ConnectionAuthConfigUserPasswordPasswordArgs']]:
         """
         Password for Authentication.
         Structure is documented below.
@@ -1110,7 +1110,7 @@ class ConnectionAuthConfigUserPasswordArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input['ConnectionAuthConfigUserPasswordPasswordArgs']]):
+    def password(self, value: pulumi.Input[Optional['ConnectionAuthConfigUserPasswordPasswordArgs']]):
         pulumi.set(self, "password", value)
 
 
@@ -1150,25 +1150,25 @@ class ConnectionConfigVariableArgsDict(TypedDict):
     """
     Key for the configVariable
     """
-    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    boolean_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean Value of configVariable
     """
-    encryption_key_value: NotRequired[pulumi.Input['ConnectionConfigVariableEncryptionKeyValueArgsDict']]
+    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionConfigVariableEncryptionKeyValueArgs']]]
     """
     Encryption key value of configVariable.
     Structure is documented below.
     """
-    integer_value: NotRequired[pulumi.Input[_builtins.int]]
+    integer_value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Integer Value of configVariable
     """
-    secret_value: NotRequired[pulumi.Input['ConnectionConfigVariableSecretValueArgsDict']]
+    secret_value: NotRequired[pulumi.Input[Optional['ConnectionConfigVariableSecretValueArgs']]]
     """
     Secret value of configVariable.
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String Value of configVariabley
     """
@@ -1177,11 +1177,11 @@ class ConnectionConfigVariableArgsDict(TypedDict):
 class ConnectionConfigVariableArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 boolean_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key_value: Optional[pulumi.Input['ConnectionConfigVariableEncryptionKeyValueArgs']] = None,
-                 integer_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_value: Optional[pulumi.Input['ConnectionConfigVariableSecretValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 boolean_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key_value: pulumi.Input[Optional['ConnectionConfigVariableEncryptionKeyValueArgs']] = None,
+                 integer_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_value: pulumi.Input[Optional['ConnectionConfigVariableSecretValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key for the configVariable
         :param pulumi.Input[_builtins.bool] boolean_value: Boolean Value of configVariable
@@ -1218,19 +1218,19 @@ class ConnectionConfigVariableArgs:
 
     @_builtins.property
     @pulumi.getter(name="booleanValue")
-    def boolean_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def boolean_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean Value of configVariable
         """
         return pulumi.get(self, "boolean_value")
 
     @boolean_value.setter
-    def boolean_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def boolean_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "boolean_value", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyValue")
-    def encryption_key_value(self) -> Optional[pulumi.Input['ConnectionConfigVariableEncryptionKeyValueArgs']]:
+    def encryption_key_value(self) -> pulumi.Input[Optional['ConnectionConfigVariableEncryptionKeyValueArgs']]:
         """
         Encryption key value of configVariable.
         Structure is documented below.
@@ -1238,24 +1238,24 @@ class ConnectionConfigVariableArgs:
         return pulumi.get(self, "encryption_key_value")
 
     @encryption_key_value.setter
-    def encryption_key_value(self, value: Optional[pulumi.Input['ConnectionConfigVariableEncryptionKeyValueArgs']]):
+    def encryption_key_value(self, value: pulumi.Input[Optional['ConnectionConfigVariableEncryptionKeyValueArgs']]):
         pulumi.set(self, "encryption_key_value", value)
 
     @_builtins.property
     @pulumi.getter(name="integerValue")
-    def integer_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def integer_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer Value of configVariable
         """
         return pulumi.get(self, "integer_value")
 
     @integer_value.setter
-    def integer_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def integer_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "integer_value", value)
 
     @_builtins.property
     @pulumi.getter(name="secretValue")
-    def secret_value(self) -> Optional[pulumi.Input['ConnectionConfigVariableSecretValueArgs']]:
+    def secret_value(self) -> pulumi.Input[Optional['ConnectionConfigVariableSecretValueArgs']]:
         """
         Secret value of configVariable.
         Structure is documented below.
@@ -1263,19 +1263,19 @@ class ConnectionConfigVariableArgs:
         return pulumi.get(self, "secret_value")
 
     @secret_value.setter
-    def secret_value(self, value: Optional[pulumi.Input['ConnectionConfigVariableSecretValueArgs']]):
+    def secret_value(self, value: pulumi.Input[Optional['ConnectionConfigVariableSecretValueArgs']]):
         pulumi.set(self, "secret_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String Value of configVariabley
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
@@ -1285,7 +1285,7 @@ class ConnectionConfigVariableEncryptionKeyValueArgsDict(TypedDict):
     Type of Encryption Key
     Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
     """
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The [KMS key name] with which the content of the Operation is encrypted. The
     expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -1296,7 +1296,7 @@ class ConnectionConfigVariableEncryptionKeyValueArgsDict(TypedDict):
 class ConnectionConfigVariableEncryptionKeyValueArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: Type of Encryption Key
                Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
@@ -1323,7 +1323,7 @@ class ConnectionConfigVariableEncryptionKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [KMS key name] with which the content of the Operation is encrypted. The
         expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -1332,7 +1332,7 @@ class ConnectionConfigVariableEncryptionKeyValueArgs:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
 
@@ -1365,7 +1365,7 @@ class ConnectionConfigVariableSecretValueArgs:
 
 
 class ConnectionConnectorVersionInfraConfigArgsDict(TypedDict):
-    ratelimit_threshold: NotRequired[pulumi.Input[_builtins.str]]
+    ratelimit_threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Max QPS supported by the connector version before throttling of requests.
@@ -1374,7 +1374,7 @@ class ConnectionConnectorVersionInfraConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionConnectorVersionInfraConfigArgs:
     def __init__(__self__, *,
-                 ratelimit_threshold: Optional[pulumi.Input[_builtins.str]] = None):
+                 ratelimit_threshold: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ratelimit_threshold: (Output)
                Max QPS supported by the connector version before throttling of requests.
@@ -1384,7 +1384,7 @@ class ConnectionConnectorVersionInfraConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="ratelimitThreshold")
-    def ratelimit_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ratelimit_threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Max QPS supported by the connector version before throttling of requests.
@@ -1392,7 +1392,7 @@ class ConnectionConnectorVersionInfraConfigArgs:
         return pulumi.get(self, "ratelimit_threshold")
 
     @ratelimit_threshold.setter
-    def ratelimit_threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ratelimit_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ratelimit_threshold", value)
 
 
@@ -1401,7 +1401,7 @@ class ConnectionDestinationConfigArgsDict(TypedDict):
     """
     The key is the destination identifier that is supported by the Connector.
     """
-    destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigDestinationArgsDict']]]]
+    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDestinationConfigDestinationArgs']]]]]
     """
     The destinations for the key.
     Structure is documented below.
@@ -1411,7 +1411,7 @@ class ConnectionDestinationConfigArgsDict(TypedDict):
 class ConnectionDestinationConfigArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigDestinationArgs']]]] = None):
+                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDestinationConfigDestinationArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The key is the destination identifier that is supported by the Connector.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigDestinationArgs']]] destinations: The destinations for the key.
@@ -1435,7 +1435,7 @@ class ConnectionDestinationConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigDestinationArgs']]]]:
+    def destinations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDestinationConfigDestinationArgs']]]]:
         """
         The destinations for the key.
         Structure is documented below.
@@ -1443,20 +1443,20 @@ class ConnectionDestinationConfigArgs:
         return pulumi.get(self, "destinations")
 
     @destinations.setter
-    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigDestinationArgs']]]]):
+    def destinations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDestinationConfigDestinationArgs']]]]):
         pulumi.set(self, "destinations", value)
 
 
 class ConnectionDestinationConfigDestinationArgsDict(TypedDict):
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     port number
     """
-    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    service_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Service Attachment
     """
@@ -1464,9 +1464,9 @@ class ConnectionDestinationConfigDestinationArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionDestinationConfigDestinationArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host: Host
         :param pulumi.Input[_builtins.int] port: port number
@@ -1481,38 +1481,38 @@ class ConnectionDestinationConfigDestinationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         port number
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachment")
-    def service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service Attachment
         """
         return pulumi.get(self, "service_attachment")
 
     @service_attachment.setter
-    def service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_attachment", value)
 
 
@@ -1522,17 +1522,17 @@ class ConnectionEventingConfigArgsDict(TypedDict):
     registrationDestinationConfig
     Structure is documented below.
     """
-    additional_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigAdditionalVariableArgsDict']]]]
+    additional_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigAdditionalVariableArgs']]]]]
     """
     List containing additional auth configs.
     Structure is documented below.
     """
-    auth_config: NotRequired[pulumi.Input['ConnectionEventingConfigAuthConfigArgsDict']]
+    auth_config: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAuthConfigArgs']]]
     """
     authConfig for Eventing Configuration.
     Structure is documented below.
     """
-    enrichment_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enrichment_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enrichment Enabled.
     """
@@ -1541,9 +1541,9 @@ class ConnectionEventingConfigArgsDict(TypedDict):
 class ConnectionEventingConfigArgs:
     def __init__(__self__, *,
                  registration_destination_config: pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigArgs'],
-                 additional_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigAdditionalVariableArgs']]]] = None,
-                 auth_config: Optional[pulumi.Input['ConnectionEventingConfigAuthConfigArgs']] = None,
-                 enrichment_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 additional_variables: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigAdditionalVariableArgs']]]] = None,
+                 auth_config: pulumi.Input[Optional['ConnectionEventingConfigAuthConfigArgs']] = None,
+                 enrichment_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigArgs'] registration_destination_config: registrationDestinationConfig
                Structure is documented below.
@@ -1576,7 +1576,7 @@ class ConnectionEventingConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalVariables")
-    def additional_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigAdditionalVariableArgs']]]]:
+    def additional_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigAdditionalVariableArgs']]]]:
         """
         List containing additional auth configs.
         Structure is documented below.
@@ -1584,12 +1584,12 @@ class ConnectionEventingConfigArgs:
         return pulumi.get(self, "additional_variables")
 
     @additional_variables.setter
-    def additional_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigAdditionalVariableArgs']]]]):
+    def additional_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigAdditionalVariableArgs']]]]):
         pulumi.set(self, "additional_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="authConfig")
-    def auth_config(self) -> Optional[pulumi.Input['ConnectionEventingConfigAuthConfigArgs']]:
+    def auth_config(self) -> pulumi.Input[Optional['ConnectionEventingConfigAuthConfigArgs']]:
         """
         authConfig for Eventing Configuration.
         Structure is documented below.
@@ -1597,19 +1597,19 @@ class ConnectionEventingConfigArgs:
         return pulumi.get(self, "auth_config")
 
     @auth_config.setter
-    def auth_config(self, value: Optional[pulumi.Input['ConnectionEventingConfigAuthConfigArgs']]):
+    def auth_config(self, value: pulumi.Input[Optional['ConnectionEventingConfigAuthConfigArgs']]):
         pulumi.set(self, "auth_config", value)
 
     @_builtins.property
     @pulumi.getter(name="enrichmentEnabled")
-    def enrichment_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enrichment_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enrichment Enabled.
         """
         return pulumi.get(self, "enrichment_enabled")
 
     @enrichment_enabled.setter
-    def enrichment_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enrichment_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enrichment_enabled", value)
 
 
@@ -1618,25 +1618,25 @@ class ConnectionEventingConfigAdditionalVariableArgsDict(TypedDict):
     """
     Key for the configVariable
     """
-    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    boolean_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean Value of configVariable.
     """
-    encryption_key_value: NotRequired[pulumi.Input['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgsDict']]
+    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs']]]
     """
     Encryption key value of configVariable.
     Structure is documented below.
     """
-    integer_value: NotRequired[pulumi.Input[_builtins.int]]
+    integer_value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Integer Value of configVariable.
     """
-    secret_value: NotRequired[pulumi.Input['ConnectionEventingConfigAdditionalVariableSecretValueArgsDict']]
+    secret_value: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAdditionalVariableSecretValueArgs']]]
     """
     Secret value of configVariable
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String Value of configVariabley.
     """
@@ -1645,11 +1645,11 @@ class ConnectionEventingConfigAdditionalVariableArgsDict(TypedDict):
 class ConnectionEventingConfigAdditionalVariableArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 boolean_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key_value: Optional[pulumi.Input['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs']] = None,
-                 integer_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_value: Optional[pulumi.Input['ConnectionEventingConfigAdditionalVariableSecretValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 boolean_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key_value: pulumi.Input[Optional['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs']] = None,
+                 integer_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_value: pulumi.Input[Optional['ConnectionEventingConfigAdditionalVariableSecretValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key for the configVariable
         :param pulumi.Input[_builtins.bool] boolean_value: Boolean Value of configVariable.
@@ -1686,19 +1686,19 @@ class ConnectionEventingConfigAdditionalVariableArgs:
 
     @_builtins.property
     @pulumi.getter(name="booleanValue")
-    def boolean_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def boolean_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean Value of configVariable.
         """
         return pulumi.get(self, "boolean_value")
 
     @boolean_value.setter
-    def boolean_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def boolean_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "boolean_value", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyValue")
-    def encryption_key_value(self) -> Optional[pulumi.Input['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs']]:
+    def encryption_key_value(self) -> pulumi.Input[Optional['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs']]:
         """
         Encryption key value of configVariable.
         Structure is documented below.
@@ -1706,24 +1706,24 @@ class ConnectionEventingConfigAdditionalVariableArgs:
         return pulumi.get(self, "encryption_key_value")
 
     @encryption_key_value.setter
-    def encryption_key_value(self, value: Optional[pulumi.Input['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs']]):
+    def encryption_key_value(self, value: pulumi.Input[Optional['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs']]):
         pulumi.set(self, "encryption_key_value", value)
 
     @_builtins.property
     @pulumi.getter(name="integerValue")
-    def integer_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def integer_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer Value of configVariable.
         """
         return pulumi.get(self, "integer_value")
 
     @integer_value.setter
-    def integer_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def integer_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "integer_value", value)
 
     @_builtins.property
     @pulumi.getter(name="secretValue")
-    def secret_value(self) -> Optional[pulumi.Input['ConnectionEventingConfigAdditionalVariableSecretValueArgs']]:
+    def secret_value(self) -> pulumi.Input[Optional['ConnectionEventingConfigAdditionalVariableSecretValueArgs']]:
         """
         Secret value of configVariable
         Structure is documented below.
@@ -1731,30 +1731,30 @@ class ConnectionEventingConfigAdditionalVariableArgs:
         return pulumi.get(self, "secret_value")
 
     @secret_value.setter
-    def secret_value(self, value: Optional[pulumi.Input['ConnectionEventingConfigAdditionalVariableSecretValueArgs']]):
+    def secret_value(self, value: pulumi.Input[Optional['ConnectionEventingConfigAdditionalVariableSecretValueArgs']]):
         pulumi.set(self, "secret_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String Value of configVariabley.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
 class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict):
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The [KMS key name] with which the content of the Operation is encrypted. The
     expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
     Will be empty string if google managed.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of Encryption Key
     Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
@@ -1763,8 +1763,8 @@ class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgsDict(Typed
 @pulumi.input_type
 class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs:
     def __init__(__self__, *,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The
                expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -1779,7 +1779,7 @@ class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [KMS key name] with which the content of the Operation is encrypted. The
         expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -1788,12 +1788,12 @@ class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of Encryption Key
         Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
@@ -1801,7 +1801,7 @@ class ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -1844,12 +1844,12 @@ class ConnectionEventingConfigAuthConfigArgsDict(TypedDict):
     User password for Authentication.
     Structure is documented below.
     """
-    additional_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableArgsDict']]]]
+    additional_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableArgs']]]]]
     """
     List containing additional auth configs.
     Structure is documented below.
     """
-    auth_key: NotRequired[pulumi.Input[_builtins.str]]
+    auth_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of authentication configured.
     """
@@ -1859,8 +1859,8 @@ class ConnectionEventingConfigAuthConfigArgs:
     def __init__(__self__, *,
                  auth_type: pulumi.Input[_builtins.str],
                  user_password: pulumi.Input['ConnectionEventingConfigAuthConfigUserPasswordArgs'],
-                 additional_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableArgs']]]] = None,
-                 auth_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 additional_variables: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableArgs']]]] = None,
+                 auth_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_type: authType of the Connection
                Possible values are: `USER_PASSWORD`.
@@ -1905,7 +1905,7 @@ class ConnectionEventingConfigAuthConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalVariables")
-    def additional_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableArgs']]]]:
+    def additional_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableArgs']]]]:
         """
         List containing additional auth configs.
         Structure is documented below.
@@ -1913,19 +1913,19 @@ class ConnectionEventingConfigAuthConfigArgs:
         return pulumi.get(self, "additional_variables")
 
     @additional_variables.setter
-    def additional_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableArgs']]]]):
+    def additional_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableArgs']]]]):
         pulumi.set(self, "additional_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="authKey")
-    def auth_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of authentication configured.
         """
         return pulumi.get(self, "auth_key")
 
     @auth_key.setter
-    def auth_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_key", value)
 
 
@@ -1934,25 +1934,25 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableArgsDict(TypedDict):
     """
     Key for the configVariable
     """
-    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    boolean_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean Value of configVariable.
     """
-    encryption_key_value: NotRequired[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgsDict']]
+    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs']]]
     """
     Encryption key value of configVariable.
     Structure is documented below.
     """
-    integer_value: NotRequired[pulumi.Input[_builtins.int]]
+    integer_value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Integer Value of configVariable.
     """
-    secret_value: NotRequired[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgsDict']]
+    secret_value: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs']]]
     """
     Secret value of configVariable
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String Value of configVariabley.
     """
@@ -1961,11 +1961,11 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableArgsDict(TypedDict):
 class ConnectionEventingConfigAuthConfigAdditionalVariableArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 boolean_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key_value: Optional[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs']] = None,
-                 integer_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_value: Optional[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 boolean_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key_value: pulumi.Input[Optional['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs']] = None,
+                 integer_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_value: pulumi.Input[Optional['ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key for the configVariable
         :param pulumi.Input[_builtins.bool] boolean_value: Boolean Value of configVariable.
@@ -2002,19 +2002,19 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableArgs:
 
     @_builtins.property
     @pulumi.getter(name="booleanValue")
-    def boolean_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def boolean_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean Value of configVariable.
         """
         return pulumi.get(self, "boolean_value")
 
     @boolean_value.setter
-    def boolean_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def boolean_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "boolean_value", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyValue")
-    def encryption_key_value(self) -> Optional[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs']]:
+    def encryption_key_value(self) -> pulumi.Input[Optional['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs']]:
         """
         Encryption key value of configVariable.
         Structure is documented below.
@@ -2022,24 +2022,24 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableArgs:
         return pulumi.get(self, "encryption_key_value")
 
     @encryption_key_value.setter
-    def encryption_key_value(self, value: Optional[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs']]):
+    def encryption_key_value(self, value: pulumi.Input[Optional['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs']]):
         pulumi.set(self, "encryption_key_value", value)
 
     @_builtins.property
     @pulumi.getter(name="integerValue")
-    def integer_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def integer_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer Value of configVariable.
         """
         return pulumi.get(self, "integer_value")
 
     @integer_value.setter
-    def integer_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def integer_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "integer_value", value)
 
     @_builtins.property
     @pulumi.getter(name="secretValue")
-    def secret_value(self) -> Optional[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs']]:
+    def secret_value(self) -> pulumi.Input[Optional['ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs']]:
         """
         Secret value of configVariable
         Structure is documented below.
@@ -2047,30 +2047,30 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableArgs:
         return pulumi.get(self, "secret_value")
 
     @secret_value.setter
-    def secret_value(self, value: Optional[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs']]):
+    def secret_value(self, value: pulumi.Input[Optional['ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs']]):
         pulumi.set(self, "secret_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String Value of configVariabley.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
 class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict):
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The [KMS key name] with which the content of the Operation is encrypted. The
     expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
     Will be empty string if google managed.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of Encryption Key
     Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
@@ -2079,8 +2079,8 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs
 @pulumi.input_type
 class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs:
     def __init__(__self__, *,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The
                expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -2095,7 +2095,7 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [KMS key name] with which the content of the Operation is encrypted. The
         expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -2104,12 +2104,12 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of Encryption Key
         Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
@@ -2117,7 +2117,7 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -2150,12 +2150,12 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs:
 
 
 class ConnectionEventingConfigAuthConfigUserPasswordArgsDict(TypedDict):
-    password: NotRequired[pulumi.Input['ConnectionEventingConfigAuthConfigUserPasswordPasswordArgsDict']]
+    password: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs']]]
     """
     Password for Authentication.
     Structure is documented below.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username for Authentication.
     """
@@ -2163,8 +2163,8 @@ class ConnectionEventingConfigAuthConfigUserPasswordArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionEventingConfigAuthConfigUserPasswordArgs:
     def __init__(__self__, *,
-                 password: Optional[pulumi.Input['ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs']] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional['ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs']] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs'] password: Password for Authentication.
                Structure is documented below.
@@ -2177,7 +2177,7 @@ class ConnectionEventingConfigAuthConfigUserPasswordArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input['ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs']]:
+    def password(self) -> pulumi.Input[Optional['ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs']]:
         """
         Password for Authentication.
         Structure is documented below.
@@ -2185,19 +2185,19 @@ class ConnectionEventingConfigAuthConfigUserPasswordArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input['ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs']]):
+    def password(self, value: pulumi.Input[Optional['ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs']]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username for Authentication.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -2233,12 +2233,12 @@ class ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs:
 
 
 class ConnectionEventingConfigRegistrationDestinationConfigArgsDict(TypedDict):
-    destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigDestinationArgsDict']]]]
+    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs']]]]]
     """
     destinations for the connection
     Structure is documented below.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key for the connection
     """
@@ -2246,8 +2246,8 @@ class ConnectionEventingConfigRegistrationDestinationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionEventingConfigRegistrationDestinationConfigArgs:
     def __init__(__self__, *,
-                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs']]]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None):
+                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs']]]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs']]] destinations: destinations for the connection
                Structure is documented below.
@@ -2260,7 +2260,7 @@ class ConnectionEventingConfigRegistrationDestinationConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs']]]]:
+    def destinations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs']]]]:
         """
         destinations for the connection
         Structure is documented below.
@@ -2268,32 +2268,32 @@ class ConnectionEventingConfigRegistrationDestinationConfigArgs:
         return pulumi.get(self, "destinations")
 
     @destinations.setter
-    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs']]]]):
+    def destinations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs']]]]):
         pulumi.set(self, "destinations", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key for the connection
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
 
 class ConnectionEventingConfigRegistrationDestinationConfigDestinationArgsDict(TypedDict):
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     port number
     """
-    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    service_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Service Attachment
     """
@@ -2301,9 +2301,9 @@ class ConnectionEventingConfigRegistrationDestinationConfigDestinationArgsDict(T
 @pulumi.input_type
 class ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host: Host
         :param pulumi.Input[_builtins.int] port: port number
@@ -2318,47 +2318,47 @@ class ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         port number
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachment")
-    def service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service Attachment
         """
         return pulumi.get(self, "service_attachment")
 
     @service_attachment.setter
-    def service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_attachment", value)
 
 
 class ConnectionEventingRuntimeDataArgsDict(TypedDict):
-    events_listener_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    events_listener_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Events listener endpoint. The value will populated after provisioning the events listener.
     """
-    statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataStatusArgsDict']]]]
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingRuntimeDataStatusArgs']]]]]
     """
     (Output)
     Current status of eventing.
@@ -2368,8 +2368,8 @@ class ConnectionEventingRuntimeDataArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionEventingRuntimeDataArgs:
     def __init__(__self__, *,
-                 events_listener_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataStatusArgs']]]] = None):
+                 events_listener_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingRuntimeDataStatusArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] events_listener_endpoint: Events listener endpoint. The value will populated after provisioning the events listener.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataStatusArgs']]] statuses: (Output)
@@ -2383,19 +2383,19 @@ class ConnectionEventingRuntimeDataArgs:
 
     @_builtins.property
     @pulumi.getter(name="eventsListenerEndpoint")
-    def events_listener_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def events_listener_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Events listener endpoint. The value will populated after provisioning the events listener.
         """
         return pulumi.get(self, "events_listener_endpoint")
 
     @events_listener_endpoint.setter
-    def events_listener_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def events_listener_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "events_listener_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingRuntimeDataStatusArgs']]]]:
         """
         (Output)
         Current status of eventing.
@@ -2404,16 +2404,16 @@ class ConnectionEventingRuntimeDataArgs:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionEventingRuntimeDataStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingRuntimeDataStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
 
 class ConnectionEventingRuntimeDataStatusArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An arbitrary description for the Connection.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     State of the Eventing
@@ -2422,8 +2422,8 @@ class ConnectionEventingRuntimeDataStatusArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionEventingRuntimeDataStatusArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: An arbitrary description for the Connection.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -2436,19 +2436,19 @@ class ConnectionEventingRuntimeDataStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An arbitrary description for the Connection.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         State of the Eventing
@@ -2456,7 +2456,7 @@ class ConnectionEventingRuntimeDataStatusArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -2465,7 +2465,7 @@ class ConnectionLockConfigArgsDict(TypedDict):
     """
     Indicates whether or not the connection is locked.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Describes why a connection is locked.
     """
@@ -2474,7 +2474,7 @@ class ConnectionLockConfigArgsDict(TypedDict):
 class ConnectionLockConfigArgs:
     def __init__(__self__, *,
                  locked: pulumi.Input[_builtins.bool],
-                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+                 reason: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] locked: Indicates whether or not the connection is locked.
         :param pulumi.Input[_builtins.str] reason: Describes why a connection is locked.
@@ -2497,14 +2497,14 @@ class ConnectionLockConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes why a connection is locked.
         """
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
 
@@ -2513,7 +2513,7 @@ class ConnectionLogConfigArgsDict(TypedDict):
     """
     Enabled represents whether logging is enabled or not for a connection.
     """
-    level: NotRequired[pulumi.Input[_builtins.str]]
+    level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Log configuration level.
     Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
@@ -2523,7 +2523,7 @@ class ConnectionLogConfigArgsDict(TypedDict):
 class ConnectionLogConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool],
-                 level: Optional[pulumi.Input[_builtins.str]] = None):
+                 level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Enabled represents whether logging is enabled or not for a connection.
         :param pulumi.Input[_builtins.str] level: Log configuration level.
@@ -2547,7 +2547,7 @@ class ConnectionLogConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log configuration level.
         Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
@@ -2555,16 +2555,16 @@ class ConnectionLogConfigArgs:
         return pulumi.get(self, "level")
 
     @level.setter
-    def level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "level", value)
 
 
 class ConnectionNodeConfigArgsDict(TypedDict):
-    max_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_node_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of nodes in the runtime nodes.
     """
-    min_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    min_node_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of nodes in the runtime nodes.
     """
@@ -2572,8 +2572,8 @@ class ConnectionNodeConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionNodeConfigArgs:
     def __init__(__self__, *,
-                 max_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_node_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_node_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_node_count: Minimum number of nodes in the runtime nodes.
         :param pulumi.Input[_builtins.int] min_node_count: Minimum number of nodes in the runtime nodes.
@@ -2585,26 +2585,26 @@ class ConnectionNodeConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxNodeCount")
-    def max_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of nodes in the runtime nodes.
         """
         return pulumi.get(self, "max_node_count")
 
     @max_node_count.setter
-    def max_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minNodeCount")
-    def min_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of nodes in the runtime nodes.
         """
         return pulumi.get(self, "min_node_count")
 
     @min_node_count.setter
-    def min_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_node_count", value)
 
 
@@ -2614,47 +2614,47 @@ class ConnectionSslConfigArgsDict(TypedDict):
     Enum for controlling the SSL Type (TLS/MTLS)
     Possible values are: `TLS`, `MTLS`.
     """
-    additional_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionSslConfigAdditionalVariableArgsDict']]]]
+    additional_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionSslConfigAdditionalVariableArgs']]]]]
     """
     Additional SSL related field values.
     Structure is documented below.
     """
-    client_cert_type: NotRequired[pulumi.Input[_builtins.str]]
+    client_cert_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of Client Cert (PEM/JKS/.. etc.)
     Possible values are: `PEM`.
     """
-    client_certificate: NotRequired[pulumi.Input['ConnectionSslConfigClientCertificateArgsDict']]
+    client_certificate: NotRequired[pulumi.Input[Optional['ConnectionSslConfigClientCertificateArgs']]]
     """
     Client Certificate
     Structure is documented below.
     """
-    client_private_key: NotRequired[pulumi.Input['ConnectionSslConfigClientPrivateKeyArgsDict']]
+    client_private_key: NotRequired[pulumi.Input[Optional['ConnectionSslConfigClientPrivateKeyArgs']]]
     """
     Client Private Key
     Structure is documented below.
     """
-    client_private_key_pass: NotRequired[pulumi.Input['ConnectionSslConfigClientPrivateKeyPassArgsDict']]
+    client_private_key_pass: NotRequired[pulumi.Input[Optional['ConnectionSslConfigClientPrivateKeyPassArgs']]]
     """
     Secret containing the passphrase protecting the Client Private Key
     Structure is documented below.
     """
-    private_server_certificate: NotRequired[pulumi.Input['ConnectionSslConfigPrivateServerCertificateArgsDict']]
+    private_server_certificate: NotRequired[pulumi.Input[Optional['ConnectionSslConfigPrivateServerCertificateArgs']]]
     """
     Private Server Certificate. Needs to be specified if trust model is PRIVATE.
     Structure is documented below.
     """
-    server_cert_type: NotRequired[pulumi.Input[_builtins.str]]
+    server_cert_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of Server Cert (PEM/JKS/.. etc.)
     Possible values are: `PEM`.
     """
-    trust_model: NotRequired[pulumi.Input[_builtins.str]]
+    trust_model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Enum for Trust Model
     Possible values are: `PUBLIC`, `PRIVATE`, `INSECURE`.
     """
-    use_ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    use_ssl: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Bool for enabling SSL
     """
@@ -2663,15 +2663,15 @@ class ConnectionSslConfigArgsDict(TypedDict):
 class ConnectionSslConfigArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 additional_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionSslConfigAdditionalVariableArgs']]]] = None,
-                 client_cert_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_certificate: Optional[pulumi.Input['ConnectionSslConfigClientCertificateArgs']] = None,
-                 client_private_key: Optional[pulumi.Input['ConnectionSslConfigClientPrivateKeyArgs']] = None,
-                 client_private_key_pass: Optional[pulumi.Input['ConnectionSslConfigClientPrivateKeyPassArgs']] = None,
-                 private_server_certificate: Optional[pulumi.Input['ConnectionSslConfigPrivateServerCertificateArgs']] = None,
-                 server_cert_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 trust_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_ssl: Optional[pulumi.Input[_builtins.bool]] = None):
+                 additional_variables: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionSslConfigAdditionalVariableArgs']]]] = None,
+                 client_cert_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_certificate: pulumi.Input[Optional['ConnectionSslConfigClientCertificateArgs']] = None,
+                 client_private_key: pulumi.Input[Optional['ConnectionSslConfigClientPrivateKeyArgs']] = None,
+                 client_private_key_pass: pulumi.Input[Optional['ConnectionSslConfigClientPrivateKeyPassArgs']] = None,
+                 private_server_certificate: pulumi.Input[Optional['ConnectionSslConfigPrivateServerCertificateArgs']] = None,
+                 server_cert_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 trust_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_ssl: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] type: Enum for controlling the SSL Type (TLS/MTLS)
                Possible values are: `TLS`, `MTLS`.
@@ -2728,7 +2728,7 @@ class ConnectionSslConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalVariables")
-    def additional_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionSslConfigAdditionalVariableArgs']]]]:
+    def additional_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionSslConfigAdditionalVariableArgs']]]]:
         """
         Additional SSL related field values.
         Structure is documented below.
@@ -2736,12 +2736,12 @@ class ConnectionSslConfigArgs:
         return pulumi.get(self, "additional_variables")
 
     @additional_variables.setter
-    def additional_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionSslConfigAdditionalVariableArgs']]]]):
+    def additional_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionSslConfigAdditionalVariableArgs']]]]):
         pulumi.set(self, "additional_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertType")
-    def client_cert_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of Client Cert (PEM/JKS/.. etc.)
         Possible values are: `PEM`.
@@ -2749,12 +2749,12 @@ class ConnectionSslConfigArgs:
         return pulumi.get(self, "client_cert_type")
 
     @client_cert_type.setter
-    def client_cert_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert_type", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertificate")
-    def client_certificate(self) -> Optional[pulumi.Input['ConnectionSslConfigClientCertificateArgs']]:
+    def client_certificate(self) -> pulumi.Input[Optional['ConnectionSslConfigClientCertificateArgs']]:
         """
         Client Certificate
         Structure is documented below.
@@ -2762,12 +2762,12 @@ class ConnectionSslConfigArgs:
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
-    def client_certificate(self, value: Optional[pulumi.Input['ConnectionSslConfigClientCertificateArgs']]):
+    def client_certificate(self, value: pulumi.Input[Optional['ConnectionSslConfigClientCertificateArgs']]):
         pulumi.set(self, "client_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="clientPrivateKey")
-    def client_private_key(self) -> Optional[pulumi.Input['ConnectionSslConfigClientPrivateKeyArgs']]:
+    def client_private_key(self) -> pulumi.Input[Optional['ConnectionSslConfigClientPrivateKeyArgs']]:
         """
         Client Private Key
         Structure is documented below.
@@ -2775,12 +2775,12 @@ class ConnectionSslConfigArgs:
         return pulumi.get(self, "client_private_key")
 
     @client_private_key.setter
-    def client_private_key(self, value: Optional[pulumi.Input['ConnectionSslConfigClientPrivateKeyArgs']]):
+    def client_private_key(self, value: pulumi.Input[Optional['ConnectionSslConfigClientPrivateKeyArgs']]):
         pulumi.set(self, "client_private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="clientPrivateKeyPass")
-    def client_private_key_pass(self) -> Optional[pulumi.Input['ConnectionSslConfigClientPrivateKeyPassArgs']]:
+    def client_private_key_pass(self) -> pulumi.Input[Optional['ConnectionSslConfigClientPrivateKeyPassArgs']]:
         """
         Secret containing the passphrase protecting the Client Private Key
         Structure is documented below.
@@ -2788,12 +2788,12 @@ class ConnectionSslConfigArgs:
         return pulumi.get(self, "client_private_key_pass")
 
     @client_private_key_pass.setter
-    def client_private_key_pass(self, value: Optional[pulumi.Input['ConnectionSslConfigClientPrivateKeyPassArgs']]):
+    def client_private_key_pass(self, value: pulumi.Input[Optional['ConnectionSslConfigClientPrivateKeyPassArgs']]):
         pulumi.set(self, "client_private_key_pass", value)
 
     @_builtins.property
     @pulumi.getter(name="privateServerCertificate")
-    def private_server_certificate(self) -> Optional[pulumi.Input['ConnectionSslConfigPrivateServerCertificateArgs']]:
+    def private_server_certificate(self) -> pulumi.Input[Optional['ConnectionSslConfigPrivateServerCertificateArgs']]:
         """
         Private Server Certificate. Needs to be specified if trust model is PRIVATE.
         Structure is documented below.
@@ -2801,12 +2801,12 @@ class ConnectionSslConfigArgs:
         return pulumi.get(self, "private_server_certificate")
 
     @private_server_certificate.setter
-    def private_server_certificate(self, value: Optional[pulumi.Input['ConnectionSslConfigPrivateServerCertificateArgs']]):
+    def private_server_certificate(self, value: pulumi.Input[Optional['ConnectionSslConfigPrivateServerCertificateArgs']]):
         pulumi.set(self, "private_server_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCertType")
-    def server_cert_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_cert_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of Server Cert (PEM/JKS/.. etc.)
         Possible values are: `PEM`.
@@ -2814,12 +2814,12 @@ class ConnectionSslConfigArgs:
         return pulumi.get(self, "server_cert_type")
 
     @server_cert_type.setter
-    def server_cert_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_cert_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_cert_type", value)
 
     @_builtins.property
     @pulumi.getter(name="trustModel")
-    def trust_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trust_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enum for Trust Model
         Possible values are: `PUBLIC`, `PRIVATE`, `INSECURE`.
@@ -2827,19 +2827,19 @@ class ConnectionSslConfigArgs:
         return pulumi.get(self, "trust_model")
 
     @trust_model.setter
-    def trust_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trust_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trust_model", value)
 
     @_builtins.property
     @pulumi.getter(name="useSsl")
-    def use_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Bool for enabling SSL
         """
         return pulumi.get(self, "use_ssl")
 
     @use_ssl.setter
-    def use_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_ssl", value)
 
 
@@ -2848,25 +2848,25 @@ class ConnectionSslConfigAdditionalVariableArgsDict(TypedDict):
     """
     Key for the configVariable
     """
-    boolean_value: NotRequired[pulumi.Input[_builtins.bool]]
+    boolean_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean Value of configVariable.
     """
-    encryption_key_value: NotRequired[pulumi.Input['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgsDict']]
+    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs']]]
     """
     Encryption key value of configVariable.
     Structure is documented below.
     """
-    integer_value: NotRequired[pulumi.Input[_builtins.int]]
+    integer_value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Integer Value of configVariable.
     """
-    secret_value: NotRequired[pulumi.Input['ConnectionSslConfigAdditionalVariableSecretValueArgsDict']]
+    secret_value: NotRequired[pulumi.Input[Optional['ConnectionSslConfigAdditionalVariableSecretValueArgs']]]
     """
     Secret value of configVariable
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String Value of configVariabley.
     """
@@ -2875,11 +2875,11 @@ class ConnectionSslConfigAdditionalVariableArgsDict(TypedDict):
 class ConnectionSslConfigAdditionalVariableArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 boolean_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key_value: Optional[pulumi.Input['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs']] = None,
-                 integer_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_value: Optional[pulumi.Input['ConnectionSslConfigAdditionalVariableSecretValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 boolean_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key_value: pulumi.Input[Optional['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs']] = None,
+                 integer_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_value: pulumi.Input[Optional['ConnectionSslConfigAdditionalVariableSecretValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key for the configVariable
         :param pulumi.Input[_builtins.bool] boolean_value: Boolean Value of configVariable.
@@ -2916,19 +2916,19 @@ class ConnectionSslConfigAdditionalVariableArgs:
 
     @_builtins.property
     @pulumi.getter(name="booleanValue")
-    def boolean_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def boolean_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean Value of configVariable.
         """
         return pulumi.get(self, "boolean_value")
 
     @boolean_value.setter
-    def boolean_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def boolean_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "boolean_value", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyValue")
-    def encryption_key_value(self) -> Optional[pulumi.Input['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs']]:
+    def encryption_key_value(self) -> pulumi.Input[Optional['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs']]:
         """
         Encryption key value of configVariable.
         Structure is documented below.
@@ -2936,24 +2936,24 @@ class ConnectionSslConfigAdditionalVariableArgs:
         return pulumi.get(self, "encryption_key_value")
 
     @encryption_key_value.setter
-    def encryption_key_value(self, value: Optional[pulumi.Input['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs']]):
+    def encryption_key_value(self, value: pulumi.Input[Optional['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs']]):
         pulumi.set(self, "encryption_key_value", value)
 
     @_builtins.property
     @pulumi.getter(name="integerValue")
-    def integer_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def integer_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer Value of configVariable.
         """
         return pulumi.get(self, "integer_value")
 
     @integer_value.setter
-    def integer_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def integer_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "integer_value", value)
 
     @_builtins.property
     @pulumi.getter(name="secretValue")
-    def secret_value(self) -> Optional[pulumi.Input['ConnectionSslConfigAdditionalVariableSecretValueArgs']]:
+    def secret_value(self) -> pulumi.Input[Optional['ConnectionSslConfigAdditionalVariableSecretValueArgs']]:
         """
         Secret value of configVariable
         Structure is documented below.
@@ -2961,30 +2961,30 @@ class ConnectionSslConfigAdditionalVariableArgs:
         return pulumi.get(self, "secret_value")
 
     @secret_value.setter
-    def secret_value(self, value: Optional[pulumi.Input['ConnectionSslConfigAdditionalVariableSecretValueArgs']]):
+    def secret_value(self, value: pulumi.Input[Optional['ConnectionSslConfigAdditionalVariableSecretValueArgs']]):
         pulumi.set(self, "secret_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String Value of configVariabley.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
 class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict):
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The [KMS key name] with which the content of the Operation is encrypted. The
     expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
     Will be empty string if google managed.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of Encryption Key
     Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
@@ -2993,8 +2993,8 @@ class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgsDict(TypedDict)
 @pulumi.input_type
 class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs:
     def __init__(__self__, *,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: The [KMS key name] with which the content of the Operation is encrypted. The
                expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -3009,7 +3009,7 @@ class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [KMS key name] with which the content of the Operation is encrypted. The
         expected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -3018,12 +3018,12 @@ class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of Encryption Key
         Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
@@ -3031,7 +3031,7 @@ class ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -3176,16 +3176,16 @@ class ConnectionSslConfigPrivateServerCertificateArgs:
 
 
 class ConnectionStatusArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An arbitrary description for the Connection.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     State of the Eventing
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Current status of eventing.
@@ -3195,9 +3195,9 @@ class ConnectionStatusArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionStatusArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: An arbitrary description for the Connection.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -3215,19 +3215,19 @@ class ConnectionStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An arbitrary description for the Connection.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         State of the Eventing
@@ -3235,12 +3235,12 @@ class ConnectionStatusArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Current status of eventing.
@@ -3249,7 +3249,7 @@ class ConnectionStatusArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 

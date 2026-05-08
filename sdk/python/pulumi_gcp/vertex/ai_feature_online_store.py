@@ -21,16 +21,16 @@ __all__ = ['AiFeatureOnlineStoreArgs', 'AiFeatureOnlineStore']
 @pulumi.input_type
 class AiFeatureOnlineStoreArgs:
     def __init__(__self__, *,
-                 bigtable: Optional[pulumi.Input['AiFeatureOnlineStoreBigtableArgs']] = None,
-                 dedicated_serving_endpoint: Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs']] = None,
-                 embedding_management: Optional[pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs']] = None,
-                 encryption_spec: Optional[pulumi.Input['AiFeatureOnlineStoreEncryptionSpecArgs']] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 optimized: Optional[pulumi.Input['AiFeatureOnlineStoreOptimizedArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 bigtable: pulumi.Input[Optional['AiFeatureOnlineStoreBigtableArgs']] = None,
+                 dedicated_serving_endpoint: pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointArgs']] = None,
+                 embedding_management: pulumi.Input[Optional['AiFeatureOnlineStoreEmbeddingManagementArgs']] = None,
+                 encryption_spec: pulumi.Input[Optional['AiFeatureOnlineStoreEncryptionSpecArgs']] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 optimized: pulumi.Input[Optional['AiFeatureOnlineStoreOptimizedArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiFeatureOnlineStore resource.
 
@@ -81,7 +81,7 @@ class AiFeatureOnlineStoreArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bigtable(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreBigtableArgs']]:
+    def bigtable(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreBigtableArgs']]:
         """
         Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
         Structure is documented below.
@@ -89,12 +89,12 @@ class AiFeatureOnlineStoreArgs:
         return pulumi.get(self, "bigtable")
 
     @bigtable.setter
-    def bigtable(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreBigtableArgs']]):
+    def bigtable(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreBigtableArgs']]):
         pulumi.set(self, "bigtable", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedServingEndpoint")
-    def dedicated_serving_endpoint(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]:
+    def dedicated_serving_endpoint(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]:
         """
         The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
         Structure is documented below.
@@ -102,13 +102,13 @@ class AiFeatureOnlineStoreArgs:
         return pulumi.get(self, "dedicated_serving_endpoint")
 
     @dedicated_serving_endpoint.setter
-    def dedicated_serving_endpoint(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]):
+    def dedicated_serving_endpoint(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]):
         pulumi.set(self, "dedicated_serving_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="embeddingManagement")
     @_utilities.deprecated("""`embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
-    def embedding_management(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs']]:
+    def embedding_management(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreEmbeddingManagementArgs']]:
         """
         (Optional, Beta, Deprecated)
         The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
@@ -119,12 +119,12 @@ class AiFeatureOnlineStoreArgs:
         return pulumi.get(self, "embedding_management")
 
     @embedding_management.setter
-    def embedding_management(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs']]):
+    def embedding_management(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreEmbeddingManagementArgs']]):
         pulumi.set(self, "embedding_management", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreEncryptionSpecArgs']]:
         """
         If set, both of the online and offline data storage will be secured by this key.
         Structure is documented below.
@@ -132,24 +132,24 @@ class AiFeatureOnlineStoreArgs:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels with user-defined metadata to organize your feature online stores.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -158,36 +158,36 @@ class AiFeatureOnlineStoreArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def optimized(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreOptimizedArgs']]:
+    def optimized(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreOptimizedArgs']]:
         """
         Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
         """
         return pulumi.get(self, "optimized")
 
     @optimized.setter
-    def optimized(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreOptimizedArgs']]):
+    def optimized(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreOptimizedArgs']]):
         pulumi.set(self, "optimized", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -195,41 +195,41 @@ class AiFeatureOnlineStoreArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of feature online store. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _AiFeatureOnlineStoreState:
     def __init__(__self__, *,
-                 bigtable: Optional[pulumi.Input['AiFeatureOnlineStoreBigtableArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_serving_endpoint: Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs']] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 embedding_management: Optional[pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs']] = None,
-                 encryption_spec: Optional[pulumi.Input['AiFeatureOnlineStoreEncryptionSpecArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 optimized: Optional[pulumi.Input['AiFeatureOnlineStoreOptimizedArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 bigtable: pulumi.Input[Optional['AiFeatureOnlineStoreBigtableArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_serving_endpoint: pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointArgs']] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 embedding_management: pulumi.Input[Optional['AiFeatureOnlineStoreEmbeddingManagementArgs']] = None,
+                 encryption_spec: pulumi.Input[Optional['AiFeatureOnlineStoreEncryptionSpecArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 optimized: pulumi.Input[Optional['AiFeatureOnlineStoreOptimizedArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureOnlineStore resources.
 
@@ -299,7 +299,7 @@ class _AiFeatureOnlineStoreState:
 
     @_builtins.property
     @pulumi.getter
-    def bigtable(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreBigtableArgs']]:
+    def bigtable(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreBigtableArgs']]:
         """
         Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
         Structure is documented below.
@@ -307,24 +307,24 @@ class _AiFeatureOnlineStoreState:
         return pulumi.get(self, "bigtable")
 
     @bigtable.setter
-    def bigtable(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreBigtableArgs']]):
+    def bigtable(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreBigtableArgs']]):
         pulumi.set(self, "bigtable", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedServingEndpoint")
-    def dedicated_serving_endpoint(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]:
+    def dedicated_serving_endpoint(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]:
         """
         The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
         Structure is documented below.
@@ -332,25 +332,25 @@ class _AiFeatureOnlineStoreState:
         return pulumi.get(self, "dedicated_serving_endpoint")
 
     @dedicated_serving_endpoint.setter
-    def dedicated_serving_endpoint(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]):
+    def dedicated_serving_endpoint(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]):
         pulumi.set(self, "dedicated_serving_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="embeddingManagement")
     @_utilities.deprecated("""`embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
-    def embedding_management(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs']]:
+    def embedding_management(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreEmbeddingManagementArgs']]:
         """
         (Optional, Beta, Deprecated)
         The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
@@ -361,12 +361,12 @@ class _AiFeatureOnlineStoreState:
         return pulumi.get(self, "embedding_management")
 
     @embedding_management.setter
-    def embedding_management(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs']]):
+    def embedding_management(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreEmbeddingManagementArgs']]):
         pulumi.set(self, "embedding_management", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreEncryptionSpecArgs']]:
         """
         If set, both of the online and offline data storage will be secured by this key.
         Structure is documented below.
@@ -374,36 +374,36 @@ class _AiFeatureOnlineStoreState:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to perform consistent read-modify-write updates.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels with user-defined metadata to organize your feature online stores.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -412,36 +412,36 @@ class _AiFeatureOnlineStoreState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def optimized(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreOptimizedArgs']]:
+    def optimized(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreOptimizedArgs']]:
         """
         Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
         """
         return pulumi.get(self, "optimized")
 
     @optimized.setter
-    def optimized(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreOptimizedArgs']]):
+    def optimized(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreOptimizedArgs']]):
         pulumi.set(self, "optimized", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -449,12 +449,12 @@ class _AiFeatureOnlineStoreState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -462,43 +462,43 @@ class _AiFeatureOnlineStoreState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of feature online store. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the Feature Online Store. See the possible states in [this link](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores#state).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the feature online store was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -508,16 +508,16 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigtable: Optional[pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
-                 dedicated_serving_endpoint: Optional[pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
-                 embedding_management: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 optimized: Optional[pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 bigtable: pulumi.Input[Optional[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
+                 dedicated_serving_endpoint: pulumi.Input[Optional[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
+                 embedding_management: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 optimized: pulumi.Input[Optional[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Vertex AI Feature Online Store provides a centralized repository for serving ML features and embedding indexes at low latency. The Feature Online Store is a top-level container.
@@ -757,16 +757,16 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigtable: Optional[pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
-                 dedicated_serving_endpoint: Optional[pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
-                 embedding_management: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 optimized: Optional[pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 bigtable: pulumi.Input[Optional[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
+                 dedicated_serving_endpoint: pulumi.Input[Optional[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
+                 embedding_management: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 optimized: pulumi.Input[Optional[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -804,22 +804,22 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigtable: Optional[pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dedicated_serving_endpoint: Optional[pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            embedding_management: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
-            encryption_spec: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            optimized: Optional[pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiFeatureOnlineStore':
+            bigtable: pulumi.Input[Optional[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_serving_endpoint: pulumi.Input[Optional[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            embedding_management: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            optimized: pulumi.Input[Optional[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiFeatureOnlineStore':
         """
         Get an existing AiFeatureOnlineStore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

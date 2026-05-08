@@ -25,8 +25,8 @@ class DataPolicyArgs:
                  data_policy_type: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  policy_tag: pulumi.Input[_builtins.str],
-                 data_masking_policy: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_masking_policy: pulumi.Input[Optional['DataPolicyDataMaskingPolicyArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataPolicy resource.
 
@@ -100,7 +100,7 @@ class DataPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataMaskingPolicy")
-    def data_masking_policy(self) -> Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']]:
+    def data_masking_policy(self) -> pulumi.Input[Optional['DataPolicyDataMaskingPolicyArgs']]:
         """
         The data masking policy that specifies the data masking rule to use.
         Structure is documented below.
@@ -108,12 +108,12 @@ class DataPolicyArgs:
         return pulumi.get(self, "data_masking_policy")
 
     @data_masking_policy.setter
-    def data_masking_policy(self, value: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']]):
+    def data_masking_policy(self, value: pulumi.Input[Optional['DataPolicyDataMaskingPolicyArgs']]):
         pulumi.set(self, "data_masking_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -121,20 +121,20 @@ class DataPolicyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _DataPolicyState:
     def __init__(__self__, *,
-                 data_masking_policy: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']] = None,
-                 data_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_masking_policy: pulumi.Input[Optional['DataPolicyDataMaskingPolicyArgs']] = None,
+                 data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataPolicy resources.
 
@@ -166,7 +166,7 @@ class _DataPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="dataMaskingPolicy")
-    def data_masking_policy(self) -> Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']]:
+    def data_masking_policy(self) -> pulumi.Input[Optional['DataPolicyDataMaskingPolicyArgs']]:
         """
         The data masking policy that specifies the data masking rule to use.
         Structure is documented below.
@@ -174,24 +174,24 @@ class _DataPolicyState:
         return pulumi.get(self, "data_masking_policy")
 
     @data_masking_policy.setter
-    def data_masking_policy(self, value: Optional[pulumi.Input['DataPolicyDataMaskingPolicyArgs']]):
+    def data_masking_policy(self, value: pulumi.Input[Optional['DataPolicyDataMaskingPolicyArgs']]):
         pulumi.set(self, "data_masking_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="dataPolicyId")
-    def data_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         """
         return pulumi.get(self, "data_policy_id")
 
     @data_policy_id.setter
-    def data_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dataPolicyType")
-    def data_policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_policy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The enrollment level of the service.
         Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
@@ -199,48 +199,48 @@ class _DataPolicyState:
         return pulumi.get(self, "data_policy_type")
 
     @data_policy_type.setter
-    def data_policy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_policy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_policy_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the location of the data policy.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyTag")
-    def policy_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
         """
         return pulumi.get(self, "policy_tag")
 
     @policy_tag.setter
-    def policy_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -248,7 +248,7 @@ class _DataPolicyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -258,12 +258,12 @@ class DataPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_masking_policy: Optional[pulumi.Input[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
-                 data_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_masking_policy: pulumi.Input[Optional[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
+                 data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A BigQuery Data Policy
@@ -476,12 +476,12 @@ class DataPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_masking_policy: Optional[pulumi.Input[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
-                 data_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_masking_policy: pulumi.Input[Optional[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
+                 data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -516,13 +516,13 @@ class DataPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_masking_policy: Optional[pulumi.Input[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
-            data_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            data_policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'DataPolicy':
+            data_masking_policy: pulumi.Input[Optional[Union['DataPolicyDataMaskingPolicyArgs', 'DataPolicyDataMaskingPolicyArgsDict']]] = None,
+            data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'DataPolicy':
         """
         Get an existing DataPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

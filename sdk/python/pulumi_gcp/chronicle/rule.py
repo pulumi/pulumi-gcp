@@ -23,12 +23,12 @@ class RuleArgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 text: Optional[pulumi.Input[_builtins.str]] = None):
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 text: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Rule resource.
 
@@ -100,7 +100,7 @@ class RuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy to determine if the rule should be deleted forcefully.
         If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
@@ -113,12 +113,12 @@ class RuleArgs:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The etag for this rule.
         If this is provided on update, the request will succeed if and only if it
@@ -129,12 +129,12 @@ class RuleArgs:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -142,24 +142,24 @@ class RuleArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule Id is the ID of the Rule.
         """
         return pulumi.get(self, "rule_id")
 
     @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of the DataAccessScope bound to this rule.
         Populated in BASIC view and FULL view.
@@ -172,12 +172,12 @@ class RuleArgs:
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The YARA-L content of the rule.
         Populated in FULL view.
@@ -185,36 +185,36 @@ class RuleArgs:
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "text", value)
 
 
 @pulumi.input_type
 class _RuleState:
     def __init__(__self__, *,
-                 allowed_run_frequencies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 author: Optional[pulumi.Input[_builtins.str]] = None,
-                 compilation_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input['RuleCompilationDiagnosticArgs']]]] = None,
-                 compilation_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_tables: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 near_real_time_live_rule_eligible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reference_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 revision_create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 severities: Optional[pulumi.Input[Sequence[pulumi.Input['RuleSeverityArgs']]]] = None,
-                 text: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_run_frequencies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 author: pulumi.Input[Optional[_builtins.str]] = None,
+                 compilation_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input['RuleCompilationDiagnosticArgs']]]] = None,
+                 compilation_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_tables: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 near_real_time_live_rule_eligible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reference_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 revision_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 severities: pulumi.Input[Optional[Sequence[pulumi.Input['RuleSeverityArgs']]]] = None,
+                 text: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
 
@@ -339,7 +339,7 @@ class _RuleState:
 
     @_builtins.property
     @pulumi.getter(name="allowedRunFrequencies")
-    def allowed_run_frequencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_run_frequencies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Output only. The run frequencies that are allowed for the rule.
         Populated in BASIC view and FULL view.
@@ -347,12 +347,12 @@ class _RuleState:
         return pulumi.get(self, "allowed_run_frequencies")
 
     @allowed_run_frequencies.setter
-    def allowed_run_frequencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_run_frequencies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_run_frequencies", value)
 
     @_builtins.property
     @pulumi.getter
-    def author(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The author of the rule. Extracted from the meta section of text.
         Populated in BASIC view and FULL view.
@@ -360,12 +360,12 @@ class _RuleState:
         return pulumi.get(self, "author")
 
     @author.setter
-    def author(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author", value)
 
     @_builtins.property
     @pulumi.getter(name="compilationDiagnostics")
-    def compilation_diagnostics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleCompilationDiagnosticArgs']]]]:
+    def compilation_diagnostics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleCompilationDiagnosticArgs']]]]:
         """
         Output only. A list of a rule's corresponding compilation diagnostic messages
         such as compilation errors and compilation warnings.
@@ -375,12 +375,12 @@ class _RuleState:
         return pulumi.get(self, "compilation_diagnostics")
 
     @compilation_diagnostics.setter
-    def compilation_diagnostics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleCompilationDiagnosticArgs']]]]):
+    def compilation_diagnostics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleCompilationDiagnosticArgs']]]]):
         pulumi.set(self, "compilation_diagnostics", value)
 
     @_builtins.property
     @pulumi.getter(name="compilationState")
-    def compilation_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compilation_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The current compilation state of the rule.
         Populated in FULL view.
@@ -392,12 +392,12 @@ class _RuleState:
         return pulumi.get(self, "compilation_state")
 
     @compilation_state.setter
-    def compilation_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compilation_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compilation_state", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The timestamp of when the rule was created.
         Populated in FULL view.
@@ -405,24 +405,24 @@ class _RuleState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataTables")
-    def data_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def data_tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Output only. Resource names of the data tables used in this rule.
         """
         return pulumi.get(self, "data_tables")
 
     @data_tables.setter
-    def data_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def data_tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_tables", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy to determine if the rule should be deleted forcefully.
         If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
@@ -435,12 +435,12 @@ class _RuleState:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the severity level. Extracted from the meta section of
         the rule text.
@@ -448,12 +448,12 @@ class _RuleState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The etag for this rule.
         If this is provided on update, the request will succeed if and only if it
@@ -464,36 +464,36 @@ class _RuleState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the Chronicle instance, which is the same as the customer ID.
         """
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Output only. Additional metadata specified in the meta section of text.
         Populated in FULL view.
@@ -501,12 +501,12 @@ class _RuleState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full resource name for the rule. This unique identifier is generated using values provided for the URL parameters.
         Format:
@@ -515,12 +515,12 @@ class _RuleState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nearRealTimeLiveRuleEligible")
-    def near_real_time_live_rule_eligible(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def near_real_time_live_rule_eligible(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. Indicate the rule can run in near real time live rule.
         If this is true, the rule uses the near real time live rule when the run
@@ -529,12 +529,12 @@ class _RuleState:
         return pulumi.get(self, "near_real_time_live_rule_eligible")
 
     @near_real_time_live_rule_eligible.setter
-    def near_real_time_live_rule_eligible(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def near_real_time_live_rule_eligible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "near_real_time_live_rule_eligible", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -542,12 +542,12 @@ class _RuleState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="referenceLists")
-    def reference_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def reference_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Output only. Resource names of the reference lists used in this rule.
         Populated in FULL view.
@@ -555,12 +555,12 @@ class _RuleState:
         return pulumi.get(self, "reference_lists")
 
     @reference_lists.setter
-    def reference_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def reference_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "reference_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionCreateTime")
-    def revision_create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The timestamp of when the rule revision was created.
         Populated in FULL, REVISION_METADATA_ONLY views.
@@ -568,12 +568,12 @@ class _RuleState:
         return pulumi.get(self, "revision_create_time")
 
     @revision_create_time.setter
-    def revision_create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionId")
-    def revision_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The revision ID of the rule.
         A new revision is created whenever the rule text is changed in any way.
@@ -583,24 +583,24 @@ class _RuleState:
         return pulumi.get(self, "revision_id")
 
     @revision_id.setter
-    def revision_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule Id is the ID of the Rule.
         """
         return pulumi.get(self, "rule_id")
 
     @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of the DataAccessScope bound to this rule.
         Populated in BASIC view and FULL view.
@@ -613,12 +613,12 @@ class _RuleState:
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def severities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleSeverityArgs']]]]:
+    def severities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleSeverityArgs']]]]:
         """
         (Output)
         Output only. The severity of a rule's compilation diagnostic.
@@ -630,12 +630,12 @@ class _RuleState:
         return pulumi.get(self, "severities")
 
     @severities.setter
-    def severities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleSeverityArgs']]]]):
+    def severities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleSeverityArgs']]]]):
         pulumi.set(self, "severities", value)
 
     @_builtins.property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The YARA-L content of the rule.
         Populated in FULL view.
@@ -643,12 +643,12 @@ class _RuleState:
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "text", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         RULE_TYPE_UNSPECIFIED
@@ -658,7 +658,7 @@ class _RuleState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -668,14 +668,14 @@ class Rule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 text: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 text: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The Rule resource represents a user-created rule.
@@ -873,14 +873,14 @@ class Rule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 text: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 text: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -927,29 +927,29 @@ class Rule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allowed_run_frequencies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            author: Optional[pulumi.Input[_builtins.str]] = None,
-            compilation_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleCompilationDiagnosticArgs', 'RuleCompilationDiagnosticArgsDict']]]]] = None,
-            compilation_state: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_tables: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            instance: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            near_real_time_live_rule_eligible: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            reference_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            revision_create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scope: Optional[pulumi.Input[_builtins.str]] = None,
-            severities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleSeverityArgs', 'RuleSeverityArgsDict']]]]] = None,
-            text: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Rule':
+            allowed_run_frequencies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            author: pulumi.Input[Optional[_builtins.str]] = None,
+            compilation_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleCompilationDiagnosticArgs', 'RuleCompilationDiagnosticArgsDict']]]]] = None,
+            compilation_state: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_tables: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            near_real_time_live_rule_eligible: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reference_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            revision_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            severities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleSeverityArgs', 'RuleSeverityArgsDict']]]]] = None,
+            text: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Rule':
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

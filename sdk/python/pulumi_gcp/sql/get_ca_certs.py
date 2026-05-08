@@ -117,8 +117,8 @@ def get_ca_certs(instance: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         instance=pulumi.get(__ret__, 'instance'),
         project=pulumi.get(__ret__, 'project'))
-def get_ca_certs_output(instance: Optional[pulumi.Input[_builtins.str]] = None,
-                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ca_certs_output(instance: pulumi.Input[Optional[_builtins.str]] = None,
+                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCaCertsResult]:
     """
     Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the

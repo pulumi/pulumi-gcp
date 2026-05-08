@@ -315,9 +315,9 @@ def get_insights_dataset_config(dataset_config_id: Optional[_builtins.str] = Non
         source_projects=pulumi.get(__ret__, 'source_projects'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_insights_dataset_config_output(dataset_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                       location: Optional[pulumi.Input[_builtins.str]] = None,
-                                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_insights_dataset_config_output(dataset_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                       location: pulumi.Input[Optional[_builtins.str]] = None,
+                                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInsightsDatasetConfigResult]:
     """
     Use this data source to get information about a Storage Insights Dataset Config resource.

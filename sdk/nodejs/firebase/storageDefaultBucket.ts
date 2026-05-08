@@ -136,22 +136,22 @@ export interface StorageDefaultBucketState {
      * The resource name of the underlying Google Cloud Storage bucket.
      * Structure is documented below.
      */
-    buckets?: pulumi.Input<pulumi.Input<inputs.firebase.StorageDefaultBucketBucket>[]>;
+    buckets?: pulumi.Input<pulumi.Input<inputs.firebase.StorageDefaultBucketBucket>[] | undefined>;
     /**
      * The ID of the location where the default Google Cloud Storage bucket will be created.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * The resource name of the bucket in the format
      * projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -166,5 +166,5 @@ export interface StorageDefaultBucketArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

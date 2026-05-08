@@ -21,17 +21,17 @@ __all__ = ['NodeTemplateArgs', 'NodeTemplate']
 @pulumi.input_type
 class NodeTemplateArgs:
     def __init__(__self__, *,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]] = None,
-                 cpu_overcommit_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type_flexibility: Optional[pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_binding: Optional[pulumi.Input['NodeTemplateServerBindingArgs']] = None):
+                 accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]] = None,
+                 cpu_overcommit_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_affinity_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type_flexibility: pulumi.Input[Optional['NodeTemplateNodeTypeFlexibilityArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_binding: pulumi.Input[Optional['NodeTemplateServerBindingArgs']] = None):
         """
         The set of arguments for constructing a NodeTemplate resource.
 
@@ -88,7 +88,7 @@ class NodeTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]]:
+    def accelerators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]]:
         """
         List of the type and count of accelerator cards attached to the
         node template
@@ -97,12 +97,12 @@ class NodeTemplateArgs:
         return pulumi.get(self, "accelerators")
 
     @accelerators.setter
-    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]]):
+    def accelerators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]]):
         pulumi.set(self, "accelerators", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuOvercommitType")
-    def cpu_overcommit_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu_overcommit_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CPU overcommit.
         Default value is `NONE`.
@@ -111,24 +111,24 @@ class NodeTemplateArgs:
         return pulumi.get(self, "cpu_overcommit_type")
 
     @cpu_overcommit_type.setter
-    def cpu_overcommit_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu_overcommit_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_overcommit_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional textual description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]]:
+    def disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]]:
         """
         List of the type, size and count of disks attached to the
         node template
@@ -137,24 +137,24 @@ class NodeTemplateArgs:
         return pulumi.get(self, "disks")
 
     @disks.setter
-    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]]):
+    def disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]]):
         pulumi.set(self, "disks", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeAffinityLabels")
-    def node_affinity_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def node_affinity_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to use for node affinity, which will be used in
         instance scheduling.
@@ -162,12 +162,12 @@ class NodeTemplateArgs:
         return pulumi.get(self, "node_affinity_labels")
 
     @node_affinity_labels.setter
-    def node_affinity_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def node_affinity_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_affinity_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node type to use for nodes group that are created from this template.
         Only one of nodeTypeFlexibility and nodeType can be specified.
@@ -175,12 +175,12 @@ class NodeTemplateArgs:
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeTypeFlexibility")
-    def node_type_flexibility(self) -> Optional[pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs']]:
+    def node_type_flexibility(self) -> pulumi.Input[Optional['NodeTemplateNodeTypeFlexibilityArgs']]:
         """
         Flexible properties for the desired node type. Node groups that
         use this node template will create nodes of a type that matches
@@ -191,12 +191,12 @@ class NodeTemplateArgs:
         return pulumi.get(self, "node_type_flexibility")
 
     @node_type_flexibility.setter
-    def node_type_flexibility(self, value: Optional[pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs']]):
+    def node_type_flexibility(self, value: pulumi.Input[Optional['NodeTemplateNodeTypeFlexibilityArgs']]):
         pulumi.set(self, "node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -204,12 +204,12 @@ class NodeTemplateArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where nodes using the node template will be created.
         If it is not provided, the provider region is used.
@@ -217,12 +217,12 @@ class NodeTemplateArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="serverBinding")
-    def server_binding(self) -> Optional[pulumi.Input['NodeTemplateServerBindingArgs']]:
+    def server_binding(self) -> pulumi.Input[Optional['NodeTemplateServerBindingArgs']]:
         """
         The server binding policy for nodes using this template. Determines
         where the nodes should restart following a maintenance event.
@@ -231,26 +231,26 @@ class NodeTemplateArgs:
         return pulumi.get(self, "server_binding")
 
     @server_binding.setter
-    def server_binding(self, value: Optional[pulumi.Input['NodeTemplateServerBindingArgs']]):
+    def server_binding(self, value: pulumi.Input[Optional['NodeTemplateServerBindingArgs']]):
         pulumi.set(self, "server_binding", value)
 
 
 @pulumi.input_type
 class _NodeTemplateState:
     def __init__(__self__, *,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]] = None,
-                 cpu_overcommit_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type_flexibility: Optional[pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_binding: Optional[pulumi.Input['NodeTemplateServerBindingArgs']] = None):
+                 accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]] = None,
+                 cpu_overcommit_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_affinity_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type_flexibility: pulumi.Input[Optional['NodeTemplateNodeTypeFlexibilityArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_binding: pulumi.Input[Optional['NodeTemplateServerBindingArgs']] = None):
         """
         Input properties used for looking up and filtering NodeTemplate resources.
 
@@ -313,7 +313,7 @@ class _NodeTemplateState:
 
     @_builtins.property
     @pulumi.getter
-    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]]:
+    def accelerators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]]:
         """
         List of the type and count of accelerator cards attached to the
         node template
@@ -322,12 +322,12 @@ class _NodeTemplateState:
         return pulumi.get(self, "accelerators")
 
     @accelerators.setter
-    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]]):
+    def accelerators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]]):
         pulumi.set(self, "accelerators", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuOvercommitType")
-    def cpu_overcommit_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu_overcommit_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CPU overcommit.
         Default value is `NONE`.
@@ -336,36 +336,36 @@ class _NodeTemplateState:
         return pulumi.get(self, "cpu_overcommit_type")
 
     @cpu_overcommit_type.setter
-    def cpu_overcommit_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu_overcommit_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_overcommit_type", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional textual description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]]:
+    def disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]]:
         """
         List of the type, size and count of disks attached to the
         node template
@@ -374,24 +374,24 @@ class _NodeTemplateState:
         return pulumi.get(self, "disks")
 
     @disks.setter
-    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]]):
+    def disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]]):
         pulumi.set(self, "disks", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeAffinityLabels")
-    def node_affinity_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def node_affinity_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to use for node affinity, which will be used in
         instance scheduling.
@@ -399,12 +399,12 @@ class _NodeTemplateState:
         return pulumi.get(self, "node_affinity_labels")
 
     @node_affinity_labels.setter
-    def node_affinity_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def node_affinity_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_affinity_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node type to use for nodes group that are created from this template.
         Only one of nodeTypeFlexibility and nodeType can be specified.
@@ -412,12 +412,12 @@ class _NodeTemplateState:
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeTypeFlexibility")
-    def node_type_flexibility(self) -> Optional[pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs']]:
+    def node_type_flexibility(self) -> pulumi.Input[Optional['NodeTemplateNodeTypeFlexibilityArgs']]:
         """
         Flexible properties for the desired node type. Node groups that
         use this node template will create nodes of a type that matches
@@ -428,12 +428,12 @@ class _NodeTemplateState:
         return pulumi.get(self, "node_type_flexibility")
 
     @node_type_flexibility.setter
-    def node_type_flexibility(self, value: Optional[pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs']]):
+    def node_type_flexibility(self, value: pulumi.Input[Optional['NodeTemplateNodeTypeFlexibilityArgs']]):
         pulumi.set(self, "node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -441,12 +441,12 @@ class _NodeTemplateState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where nodes using the node template will be created.
         If it is not provided, the provider region is used.
@@ -454,24 +454,24 @@ class _NodeTemplateState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="serverBinding")
-    def server_binding(self) -> Optional[pulumi.Input['NodeTemplateServerBindingArgs']]:
+    def server_binding(self) -> pulumi.Input[Optional['NodeTemplateServerBindingArgs']]:
         """
         The server binding policy for nodes using this template. Determines
         where the nodes should restart following a maintenance event.
@@ -480,7 +480,7 @@ class _NodeTemplateState:
         return pulumi.get(self, "server_binding")
 
     @server_binding.setter
-    def server_binding(self, value: Optional[pulumi.Input['NodeTemplateServerBindingArgs']]):
+    def server_binding(self, value: pulumi.Input[Optional['NodeTemplateServerBindingArgs']]):
         pulumi.set(self, "server_binding", value)
 
 
@@ -490,17 +490,17 @@ class NodeTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict']]]]] = None,
-                 cpu_overcommit_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateDiskArgs', 'NodeTemplateDiskArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type_flexibility: Optional[pulumi.Input[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_binding: Optional[pulumi.Input[Union['NodeTemplateServerBindingArgs', 'NodeTemplateServerBindingArgsDict']]] = None,
+                 accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict']]]]] = None,
+                 cpu_overcommit_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeTemplateDiskArgs', 'NodeTemplateDiskArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_affinity_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type_flexibility: pulumi.Input[Optional[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_binding: pulumi.Input[Optional[Union['NodeTemplateServerBindingArgs', 'NodeTemplateServerBindingArgsDict']]] = None,
                  __props__=None):
         """
         Represents a NodeTemplate resource. Node templates specify properties
@@ -743,17 +743,17 @@ class NodeTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict']]]]] = None,
-                 cpu_overcommit_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateDiskArgs', 'NodeTemplateDiskArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type_flexibility: Optional[pulumi.Input[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_binding: Optional[pulumi.Input[Union['NodeTemplateServerBindingArgs', 'NodeTemplateServerBindingArgsDict']]] = None,
+                 accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict']]]]] = None,
+                 cpu_overcommit_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeTemplateDiskArgs', 'NodeTemplateDiskArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_affinity_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type_flexibility: pulumi.Input[Optional[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_binding: pulumi.Input[Optional[Union['NodeTemplateServerBindingArgs', 'NodeTemplateServerBindingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -786,19 +786,19 @@ class NodeTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict']]]]] = None,
-            cpu_overcommit_type: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateDiskArgs', 'NodeTemplateDiskArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            node_type: Optional[pulumi.Input[_builtins.str]] = None,
-            node_type_flexibility: Optional[pulumi.Input[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            server_binding: Optional[pulumi.Input[Union['NodeTemplateServerBindingArgs', 'NodeTemplateServerBindingArgsDict']]] = None) -> 'NodeTemplate':
+            accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict']]]]] = None,
+            cpu_overcommit_type: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeTemplateDiskArgs', 'NodeTemplateDiskArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_affinity_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            node_type: pulumi.Input[Optional[_builtins.str]] = None,
+            node_type_flexibility: pulumi.Input[Optional[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            server_binding: pulumi.Input[Optional[Union['NodeTemplateServerBindingArgs', 'NodeTemplateServerBindingArgsDict']]] = None) -> 'NodeTemplate':
         """
         Get an existing NodeTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

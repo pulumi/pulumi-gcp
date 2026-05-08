@@ -525,65 +525,65 @@ export interface FeatureState {
     /**
      * Output only. When the Feature resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. When the Feature resource was deleted.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. Fleet Default Membership Configuration.
      * Structure is documented below.
      */
-    fleetDefaultMemberConfig?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfig>;
+    fleetDefaultMemberConfig?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfig | undefined>;
     /**
      * GCP labels for this Feature.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The full, unique name of this Feature resource
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * State of the Feature resource itself.
      * Structure is documented below.
      */
-    resourceStates?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureResourceState>[]>;
+    resourceStates?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureResourceState>[] | undefined>;
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
      * Structure is documented below.
      */
-    spec?: pulumi.Input<inputs.gkehub.FeatureSpec>;
+    spec?: pulumi.Input<inputs.gkehub.FeatureSpec | undefined>;
     /**
      * (Output)
      * Output only. The "running state" of the Feature in this Hub.
      * Structure is documented below.
      */
-    states?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureState>[]>;
+    states?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureState>[] | undefined>;
     /**
      * (Output)
      * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -594,13 +594,13 @@ export interface FeatureArgs {
      * Optional. Fleet Default Membership Configuration.
      * Structure is documented below.
      */
-    fleetDefaultMemberConfig?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfig>;
+    fleetDefaultMemberConfig?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfig | undefined>;
     /**
      * GCP labels for this Feature.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
@@ -608,15 +608,15 @@ export interface FeatureArgs {
     /**
      * The full, unique name of this Feature resource
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
      * Structure is documented below.
      */
-    spec?: pulumi.Input<inputs.gkehub.FeatureSpec>;
+    spec?: pulumi.Input<inputs.gkehub.FeatureSpec | undefined>;
 }

@@ -79,11 +79,11 @@ export class AiEndpointIamPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AiEndpointIamPolicy resources.
  */
 export interface AiEndpointIamPolicyState {
-    endpoint?: pulumi.Input<string>;
-    etag?: pulumi.Input<string>;
-    location?: pulumi.Input<string>;
-    policyData?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    location?: pulumi.Input<string | undefined>;
+    policyData?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -91,7 +91,7 @@ export interface AiEndpointIamPolicyState {
  */
 export interface AiEndpointIamPolicyArgs {
     endpoint: pulumi.Input<string>;
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     policyData: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

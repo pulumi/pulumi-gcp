@@ -843,43 +843,43 @@ export interface RepositoryState {
      * unique within a repository and be under 128 characters in length.
      * Structure is documented below.
      */
-    cleanupPolicies?: pulumi.Input<pulumi.Input<inputs.artifactregistry.RepositoryCleanupPolicy>[]>;
+    cleanupPolicies?: pulumi.Input<pulumi.Input<inputs.artifactregistry.RepositoryCleanupPolicy>[] | undefined>;
     /**
      * If true, the cleanup pipeline is prevented from deleting versions in this
      * repository.
      */
-    cleanupPolicyDryRun?: pulumi.Input<boolean>;
+    cleanupPolicyDryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The time when the repository was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The user-provided description of the repository.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Docker repository config contains repository level configuration for the repositories of docker type.
      * Structure is documented below.
      */
-    dockerConfig?: pulumi.Input<inputs.artifactregistry.RepositoryDockerConfig>;
+    dockerConfig?: pulumi.Input<inputs.artifactregistry.RepositoryDockerConfig | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The format of packages that are stored in the repository. Supported formats
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
      */
-    format?: pulumi.Input<string>;
+    format?: pulumi.Input<string | undefined>;
     /**
      * The Cloud KMS resource name of the customer managed encryption key that’s
      * used to encrypt the contents of the Repository. Has the form:
      * `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
      * This value may not be changed after the Repository has been created.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * Labels with user-defined metadata.
      * This field may contain up to 64 entries. Label keys and values may be no
@@ -890,7 +890,7 @@ export interface RepositoryState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the repository's location. In addition to specific regions,
      * special values for multi-region locations are `asia`, `europe`, and `us`.
@@ -899,63 +899,63 @@ export interface RepositoryState {
      * gcp.artifactregistry.getLocations
      * data source for possible values.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * MavenRepositoryConfig is maven related repository details.
      * Provides additional configuration details for repositories of the maven
      * format type.
      * Structure is documented below.
      */
-    mavenConfig?: pulumi.Input<inputs.artifactregistry.RepositoryMavenConfig>;
+    mavenConfig?: pulumi.Input<inputs.artifactregistry.RepositoryMavenConfig | undefined>;
     /**
      * The mode configures the repository to serve artifacts from different sources.
      * Default value is `STANDARD_REPOSITORY`.
      * Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The name of the repository, for example:
      * "repo1"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
      */
-    registryUri?: pulumi.Input<string>;
+    registryUri?: pulumi.Input<string | undefined>;
     /**
      * Configuration specific for a Remote Repository.
      * Structure is documented below.
      */
-    remoteRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfig>;
+    remoteRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfig | undefined>;
     /**
      * The last part of the repository name, for example:
      * "repo1"
      */
-    repositoryId?: pulumi.Input<string>;
+    repositoryId?: pulumi.Input<string | undefined>;
     /**
      * The time when the repository was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Configuration specific for a Virtual Repository.
      * Structure is documented below.
      */
-    virtualRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVirtualRepositoryConfig>;
+    virtualRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVirtualRepositoryConfig | undefined>;
     /**
      * Configuration for vulnerability scanning of artifacts stored in this repository.
      * Structure is documented below.
      */
-    vulnerabilityScanningConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVulnerabilityScanningConfig>;
+    vulnerabilityScanningConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVulnerabilityScanningConfig | undefined>;
 }
 
 /**
@@ -969,21 +969,21 @@ export interface RepositoryArgs {
      * unique within a repository and be under 128 characters in length.
      * Structure is documented below.
      */
-    cleanupPolicies?: pulumi.Input<pulumi.Input<inputs.artifactregistry.RepositoryCleanupPolicy>[]>;
+    cleanupPolicies?: pulumi.Input<pulumi.Input<inputs.artifactregistry.RepositoryCleanupPolicy>[] | undefined>;
     /**
      * If true, the cleanup pipeline is prevented from deleting versions in this
      * repository.
      */
-    cleanupPolicyDryRun?: pulumi.Input<boolean>;
+    cleanupPolicyDryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The user-provided description of the repository.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Docker repository config contains repository level configuration for the repositories of docker type.
      * Structure is documented below.
      */
-    dockerConfig?: pulumi.Input<inputs.artifactregistry.RepositoryDockerConfig>;
+    dockerConfig?: pulumi.Input<inputs.artifactregistry.RepositoryDockerConfig | undefined>;
     /**
      * The format of packages that are stored in the repository. Supported formats
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
@@ -997,7 +997,7 @@ export interface RepositoryArgs {
      * `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
      * This value may not be changed after the Repository has been created.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * Labels with user-defined metadata.
      * This field may contain up to 64 entries. Label keys and values may be no
@@ -1008,7 +1008,7 @@ export interface RepositoryArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the repository's location. In addition to specific regions,
      * special values for multi-region locations are `asia`, `europe`, and `us`.
@@ -1017,30 +1017,30 @@ export interface RepositoryArgs {
      * gcp.artifactregistry.getLocations
      * data source for possible values.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * MavenRepositoryConfig is maven related repository details.
      * Provides additional configuration details for repositories of the maven
      * format type.
      * Structure is documented below.
      */
-    mavenConfig?: pulumi.Input<inputs.artifactregistry.RepositoryMavenConfig>;
+    mavenConfig?: pulumi.Input<inputs.artifactregistry.RepositoryMavenConfig | undefined>;
     /**
      * The mode configures the repository to serve artifacts from different sources.
      * Default value is `STANDARD_REPOSITORY`.
      * Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configuration specific for a Remote Repository.
      * Structure is documented below.
      */
-    remoteRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfig>;
+    remoteRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfig | undefined>;
     /**
      * The last part of the repository name, for example:
      * "repo1"
@@ -1050,10 +1050,10 @@ export interface RepositoryArgs {
      * Configuration specific for a Virtual Repository.
      * Structure is documented below.
      */
-    virtualRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVirtualRepositoryConfig>;
+    virtualRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVirtualRepositoryConfig | undefined>;
     /**
      * Configuration for vulnerability scanning of artifacts stored in this repository.
      * Structure is documented below.
      */
-    vulnerabilityScanningConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVulnerabilityScanningConfig>;
+    vulnerabilityScanningConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVulnerabilityScanningConfig | undefined>;
 }

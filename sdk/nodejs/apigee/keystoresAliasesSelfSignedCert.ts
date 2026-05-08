@@ -271,50 +271,50 @@ export interface KeystoresAliasesSelfSignedCertState {
      * This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
      * this parameter or the JSON body.
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
      */
-    certValidityInDays?: pulumi.Input<number>;
+    certValidityInDays?: pulumi.Input<number | undefined>;
     /**
      * Chain of certificates under this alias.
      * Structure is documented below.
      */
-    certsInfos?: pulumi.Input<pulumi.Input<inputs.apigee.KeystoresAliasesSelfSignedCertCertsInfo>[]>;
+    certsInfos?: pulumi.Input<pulumi.Input<inputs.apigee.KeystoresAliasesSelfSignedCertCertsInfo>[] | undefined>;
     /**
      * The Apigee environment name
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * Key size. Default and maximum value is 2048 bits.
      */
-    keySize?: pulumi.Input<string>;
+    keySize?: pulumi.Input<string | undefined>;
     /**
      * The Apigee keystore name associated in an Apigee environment
      */
-    keystore?: pulumi.Input<string>;
+    keystore?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization name associated with the Apigee environment
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Signature algorithm to generate private key. Valid values are SHA512withRSA, SHA384withRSA, and SHA256withRSA
      */
-    sigAlg?: pulumi.Input<string>;
+    sigAlg?: pulumi.Input<string | undefined>;
     /**
      * Subject details.
      * Structure is documented below.
      */
-    subject?: pulumi.Input<inputs.apigee.KeystoresAliasesSelfSignedCertSubject>;
+    subject?: pulumi.Input<inputs.apigee.KeystoresAliasesSelfSignedCertSubject | undefined>;
     /**
      * List of alternative host names. Maximum length is 255 characters for each value.
      * Structure is documented below.
      */
-    subjectAlternativeDnsNames?: pulumi.Input<inputs.apigee.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames>;
+    subjectAlternativeDnsNames?: pulumi.Input<inputs.apigee.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames | undefined>;
     /**
      * Optional.Type of Alias
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -330,7 +330,7 @@ export interface KeystoresAliasesSelfSignedCertArgs {
     /**
      * Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
      */
-    certValidityInDays?: pulumi.Input<number>;
+    certValidityInDays?: pulumi.Input<number | undefined>;
     /**
      * The Apigee environment name
      */
@@ -338,7 +338,7 @@ export interface KeystoresAliasesSelfSignedCertArgs {
     /**
      * Key size. Default and maximum value is 2048 bits.
      */
-    keySize?: pulumi.Input<string>;
+    keySize?: pulumi.Input<string | undefined>;
     /**
      * The Apigee keystore name associated in an Apigee environment
      */
@@ -360,5 +360,5 @@ export interface KeystoresAliasesSelfSignedCertArgs {
      * List of alternative host names. Maximum length is 255 characters for each value.
      * Structure is documented below.
      */
-    subjectAlternativeDnsNames?: pulumi.Input<inputs.apigee.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames>;
+    subjectAlternativeDnsNames?: pulumi.Input<inputs.apigee.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames | undefined>;
 }

@@ -152,30 +152,30 @@ export interface ServiceState {
      * If `true`, the usage of the service to be disabled will be checked and an error
      * will be returned if the service to be disabled has usage in last 30 days.
      */
-    checkIfServiceHasUsageOnDestroy?: pulumi.Input<boolean>;
+    checkIfServiceHasUsageOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
      * destroyed. If `false` or unset, an error will be generated if any enabled
      * services depend on this service when destroying it.
      */
-    disableDependentServices?: pulumi.Input<boolean>;
+    disableDependentServices?: pulumi.Input<boolean | undefined>;
     /**
      * If `true`, disable the service when the
      * Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
      * the Terraform resource is destroyed. It should generally only
      * be `true` in configurations that manage the `gcp.organizations.Project` resource itself.
      */
-    disableOnDestroy?: pulumi.Input<boolean>;
+    disableOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The project ID. If not provided, the provider project
      * is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The service to enable.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -187,26 +187,26 @@ export interface ServiceArgs {
      * If `true`, the usage of the service to be disabled will be checked and an error
      * will be returned if the service to be disabled has usage in last 30 days.
      */
-    checkIfServiceHasUsageOnDestroy?: pulumi.Input<boolean>;
+    checkIfServiceHasUsageOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
      * destroyed. If `false` or unset, an error will be generated if any enabled
      * services depend on this service when destroying it.
      */
-    disableDependentServices?: pulumi.Input<boolean>;
+    disableDependentServices?: pulumi.Input<boolean | undefined>;
     /**
      * If `true`, disable the service when the
      * Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
      * the Terraform resource is destroyed. It should generally only
      * be `true` in configurations that manage the `gcp.organizations.Project` resource itself.
      */
-    disableOnDestroy?: pulumi.Input<boolean>;
+    disableOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The project ID. If not provided, the provider project
      * is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The service to enable.
      */

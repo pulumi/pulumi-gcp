@@ -76,7 +76,7 @@ __all__ = [
 ]
 
 class GoogleApiSourceLoggingConfigArgsDict(TypedDict):
-    log_severity: NotRequired[pulumi.Input[_builtins.str]]
+    log_severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The minimum severity of logs that will be sent to Stackdriver/Platform
     Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
@@ -86,7 +86,7 @@ class GoogleApiSourceLoggingConfigArgsDict(TypedDict):
 @pulumi.input_type
 class GoogleApiSourceLoggingConfigArgs:
     def __init__(__self__, *,
-                 log_severity: Optional[pulumi.Input[_builtins.str]] = None):
+                 log_severity: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] log_severity: The minimum severity of logs that will be sent to Stackdriver/Platform
                Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
@@ -97,7 +97,7 @@ class GoogleApiSourceLoggingConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="logSeverity")
-    def log_severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum severity of logs that will be sent to Stackdriver/Platform
         Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
@@ -106,12 +106,12 @@ class GoogleApiSourceLoggingConfigArgs:
         return pulumi.get(self, "log_severity")
 
     @log_severity.setter
-    def log_severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_severity", value)
 
 
 class MessageBusLoggingConfigArgsDict(TypedDict):
-    log_severity: NotRequired[pulumi.Input[_builtins.str]]
+    log_severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
     Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
@@ -121,7 +121,7 @@ class MessageBusLoggingConfigArgsDict(TypedDict):
 @pulumi.input_type
 class MessageBusLoggingConfigArgs:
     def __init__(__self__, *,
-                 log_severity: Optional[pulumi.Input[_builtins.str]] = None):
+                 log_severity: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] log_severity: Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
                Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
@@ -132,7 +132,7 @@ class MessageBusLoggingConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="logSeverity")
-    def log_severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
         Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
@@ -141,46 +141,46 @@ class MessageBusLoggingConfigArgs:
         return pulumi.get(self, "log_severity")
 
     @log_severity.setter
-    def log_severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_severity", value)
 
 
 class PipelineDestinationArgsDict(TypedDict):
-    authentication_config: NotRequired[pulumi.Input['PipelineDestinationAuthenticationConfigArgsDict']]
+    authentication_config: NotRequired[pulumi.Input[Optional['PipelineDestinationAuthenticationConfigArgs']]]
     """
     Represents a config used to authenticate message requests.
     Structure is documented below.
     """
-    http_endpoint: NotRequired[pulumi.Input['PipelineDestinationHttpEndpointArgsDict']]
+    http_endpoint: NotRequired[pulumi.Input[Optional['PipelineDestinationHttpEndpointArgs']]]
     """
     Represents a HTTP endpoint destination.
     Structure is documented below.
     """
-    message_bus: NotRequired[pulumi.Input[_builtins.str]]
+    message_bus: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name of the Message Bus to which events should be
     published. The Message Bus resource should exist in the same project as
     the Pipeline. Format:
     `projects/{project}/locations/{location}/messageBuses/{message_bus}`
     """
-    network_config: NotRequired[pulumi.Input['PipelineDestinationNetworkConfigArgsDict']]
+    network_config: NotRequired[pulumi.Input[Optional['PipelineDestinationNetworkConfigArgs']]]
     """
     Represents a network config to be used for destination resolution and
     connectivity.
     Structure is documented below.
     """
-    output_payload_format: NotRequired[pulumi.Input['PipelineDestinationOutputPayloadFormatArgsDict']]
+    output_payload_format: NotRequired[pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatArgs']]]
     """
     Represents the format of message data.
     Structure is documented below.
     """
-    topic: NotRequired[pulumi.Input[_builtins.str]]
+    topic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name of the Pub/Sub topic to which events should be
     published. Format:
     `projects/{project}/locations/{location}/topics/{topic}`
     """
-    workflow: NotRequired[pulumi.Input[_builtins.str]]
+    workflow: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name of the Workflow whose Executions are triggered by
     the events. The Workflow resource should be deployed in the same
@@ -191,13 +191,13 @@ class PipelineDestinationArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineDestinationArgs:
     def __init__(__self__, *,
-                 authentication_config: Optional[pulumi.Input['PipelineDestinationAuthenticationConfigArgs']] = None,
-                 http_endpoint: Optional[pulumi.Input['PipelineDestinationHttpEndpointArgs']] = None,
-                 message_bus: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input['PipelineDestinationNetworkConfigArgs']] = None,
-                 output_payload_format: Optional[pulumi.Input['PipelineDestinationOutputPayloadFormatArgs']] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 workflow: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication_config: pulumi.Input[Optional['PipelineDestinationAuthenticationConfigArgs']] = None,
+                 http_endpoint: pulumi.Input[Optional['PipelineDestinationHttpEndpointArgs']] = None,
+                 message_bus: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional['PipelineDestinationNetworkConfigArgs']] = None,
+                 output_payload_format: pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatArgs']] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 workflow: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['PipelineDestinationAuthenticationConfigArgs'] authentication_config: Represents a config used to authenticate message requests.
                Structure is documented below.
@@ -237,7 +237,7 @@ class PipelineDestinationArgs:
 
     @_builtins.property
     @pulumi.getter(name="authenticationConfig")
-    def authentication_config(self) -> Optional[pulumi.Input['PipelineDestinationAuthenticationConfigArgs']]:
+    def authentication_config(self) -> pulumi.Input[Optional['PipelineDestinationAuthenticationConfigArgs']]:
         """
         Represents a config used to authenticate message requests.
         Structure is documented below.
@@ -245,12 +245,12 @@ class PipelineDestinationArgs:
         return pulumi.get(self, "authentication_config")
 
     @authentication_config.setter
-    def authentication_config(self, value: Optional[pulumi.Input['PipelineDestinationAuthenticationConfigArgs']]):
+    def authentication_config(self, value: pulumi.Input[Optional['PipelineDestinationAuthenticationConfigArgs']]):
         pulumi.set(self, "authentication_config", value)
 
     @_builtins.property
     @pulumi.getter(name="httpEndpoint")
-    def http_endpoint(self) -> Optional[pulumi.Input['PipelineDestinationHttpEndpointArgs']]:
+    def http_endpoint(self) -> pulumi.Input[Optional['PipelineDestinationHttpEndpointArgs']]:
         """
         Represents a HTTP endpoint destination.
         Structure is documented below.
@@ -258,12 +258,12 @@ class PipelineDestinationArgs:
         return pulumi.get(self, "http_endpoint")
 
     @http_endpoint.setter
-    def http_endpoint(self, value: Optional[pulumi.Input['PipelineDestinationHttpEndpointArgs']]):
+    def http_endpoint(self, value: pulumi.Input[Optional['PipelineDestinationHttpEndpointArgs']]):
         pulumi.set(self, "http_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="messageBus")
-    def message_bus(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message_bus(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Message Bus to which events should be
         published. The Message Bus resource should exist in the same project as
@@ -273,12 +273,12 @@ class PipelineDestinationArgs:
         return pulumi.get(self, "message_bus")
 
     @message_bus.setter
-    def message_bus(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message_bus(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message_bus", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['PipelineDestinationNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['PipelineDestinationNetworkConfigArgs']]:
         """
         Represents a network config to be used for destination resolution and
         connectivity.
@@ -287,12 +287,12 @@ class PipelineDestinationArgs:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['PipelineDestinationNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['PipelineDestinationNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
     @_builtins.property
     @pulumi.getter(name="outputPayloadFormat")
-    def output_payload_format(self) -> Optional[pulumi.Input['PipelineDestinationOutputPayloadFormatArgs']]:
+    def output_payload_format(self) -> pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatArgs']]:
         """
         Represents the format of message data.
         Structure is documented below.
@@ -300,12 +300,12 @@ class PipelineDestinationArgs:
         return pulumi.get(self, "output_payload_format")
 
     @output_payload_format.setter
-    def output_payload_format(self, value: Optional[pulumi.Input['PipelineDestinationOutputPayloadFormatArgs']]):
+    def output_payload_format(self, value: pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatArgs']]):
         pulumi.set(self, "output_payload_format", value)
 
     @_builtins.property
     @pulumi.getter
-    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Pub/Sub topic to which events should be
         published. Format:
@@ -314,12 +314,12 @@ class PipelineDestinationArgs:
         return pulumi.get(self, "topic")
 
     @topic.setter
-    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic", value)
 
     @_builtins.property
     @pulumi.getter
-    def workflow(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workflow(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Workflow whose Executions are triggered by
         the events. The Workflow resource should be deployed in the same
@@ -329,12 +329,12 @@ class PipelineDestinationArgs:
         return pulumi.get(self, "workflow")
 
     @workflow.setter
-    def workflow(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workflow(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workflow", value)
 
 
 class PipelineDestinationAuthenticationConfigArgsDict(TypedDict):
-    google_oidc: NotRequired[pulumi.Input['PipelineDestinationAuthenticationConfigGoogleOidcArgsDict']]
+    google_oidc: NotRequired[pulumi.Input[Optional['PipelineDestinationAuthenticationConfigGoogleOidcArgs']]]
     """
     Represents a config used to authenticate with a Google OIDC token using
     a GCP service account. Use this authentication method to invoke your
@@ -342,7 +342,7 @@ class PipelineDestinationAuthenticationConfigArgsDict(TypedDict):
     support Google OIDC.
     Structure is documented below.
     """
-    oauth_token: NotRequired[pulumi.Input['PipelineDestinationAuthenticationConfigOauthTokenArgsDict']]
+    oauth_token: NotRequired[pulumi.Input[Optional['PipelineDestinationAuthenticationConfigOauthTokenArgs']]]
     """
     Contains information needed for generating an
     [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
@@ -354,8 +354,8 @@ class PipelineDestinationAuthenticationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineDestinationAuthenticationConfigArgs:
     def __init__(__self__, *,
-                 google_oidc: Optional[pulumi.Input['PipelineDestinationAuthenticationConfigGoogleOidcArgs']] = None,
-                 oauth_token: Optional[pulumi.Input['PipelineDestinationAuthenticationConfigOauthTokenArgs']] = None):
+                 google_oidc: pulumi.Input[Optional['PipelineDestinationAuthenticationConfigGoogleOidcArgs']] = None,
+                 oauth_token: pulumi.Input[Optional['PipelineDestinationAuthenticationConfigOauthTokenArgs']] = None):
         """
         :param pulumi.Input['PipelineDestinationAuthenticationConfigGoogleOidcArgs'] google_oidc: Represents a config used to authenticate with a Google OIDC token using
                a GCP service account. Use this authentication method to invoke your
@@ -375,7 +375,7 @@ class PipelineDestinationAuthenticationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="googleOidc")
-    def google_oidc(self) -> Optional[pulumi.Input['PipelineDestinationAuthenticationConfigGoogleOidcArgs']]:
+    def google_oidc(self) -> pulumi.Input[Optional['PipelineDestinationAuthenticationConfigGoogleOidcArgs']]:
         """
         Represents a config used to authenticate with a Google OIDC token using
         a GCP service account. Use this authentication method to invoke your
@@ -386,12 +386,12 @@ class PipelineDestinationAuthenticationConfigArgs:
         return pulumi.get(self, "google_oidc")
 
     @google_oidc.setter
-    def google_oidc(self, value: Optional[pulumi.Input['PipelineDestinationAuthenticationConfigGoogleOidcArgs']]):
+    def google_oidc(self, value: pulumi.Input[Optional['PipelineDestinationAuthenticationConfigGoogleOidcArgs']]):
         pulumi.set(self, "google_oidc", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthToken")
-    def oauth_token(self) -> Optional[pulumi.Input['PipelineDestinationAuthenticationConfigOauthTokenArgs']]:
+    def oauth_token(self) -> pulumi.Input[Optional['PipelineDestinationAuthenticationConfigOauthTokenArgs']]:
         """
         Contains information needed for generating an
         [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
@@ -402,7 +402,7 @@ class PipelineDestinationAuthenticationConfigArgs:
         return pulumi.get(self, "oauth_token")
 
     @oauth_token.setter
-    def oauth_token(self, value: Optional[pulumi.Input['PipelineDestinationAuthenticationConfigOauthTokenArgs']]):
+    def oauth_token(self, value: pulumi.Input[Optional['PipelineDestinationAuthenticationConfigOauthTokenArgs']]):
         pulumi.set(self, "oauth_token", value)
 
 
@@ -417,7 +417,7 @@ class PipelineDestinationAuthenticationConfigGoogleOidcArgsDict(TypedDict):
     roles/roles/iam.serviceAccountTokenCreator role to allow the
     Pipeline to create OpenID tokens for authenticated requests.
     """
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience to be used to generate the OIDC Token. The audience claim
     identifies the recipient that the JWT is intended for. If
@@ -428,7 +428,7 @@ class PipelineDestinationAuthenticationConfigGoogleOidcArgsDict(TypedDict):
 class PipelineDestinationAuthenticationConfigGoogleOidcArgs:
     def __init__(__self__, *,
                  service_account: pulumi.Input[_builtins.str],
-                 audience: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] service_account: Service account email used to generate the OIDC Token.
                The principal who calls this API must have
@@ -465,7 +465,7 @@ class PipelineDestinationAuthenticationConfigGoogleOidcArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience to be used to generate the OIDC Token. The audience claim
         identifies the recipient that the JWT is intended for. If
@@ -474,7 +474,7 @@ class PipelineDestinationAuthenticationConfigGoogleOidcArgs:
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
 
@@ -490,7 +490,7 @@ class PipelineDestinationAuthenticationConfigOauthTokenArgsDict(TypedDict):
     roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline
     to create OAuth2 tokens for authenticated requests.
     """
-    scope: NotRequired[pulumi.Input[_builtins.str]]
+    scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     OAuth scope to be used for generating OAuth access token. If not
     specified, "https://www.googleapis.com/auth/cloud-platform" will be
@@ -501,7 +501,7 @@ class PipelineDestinationAuthenticationConfigOauthTokenArgsDict(TypedDict):
 class PipelineDestinationAuthenticationConfigOauthTokenArgs:
     def __init__(__self__, *,
                  service_account: pulumi.Input[_builtins.str],
-                 scope: Optional[pulumi.Input[_builtins.str]] = None):
+                 scope: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] service_account: Service account email used to generate the [OAuth
                token](https://developers.google.com/identity/protocols/OAuth2).
@@ -540,7 +540,7 @@ class PipelineDestinationAuthenticationConfigOauthTokenArgs:
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OAuth scope to be used for generating OAuth access token. If not
         specified, "https://www.googleapis.com/auth/cloud-platform" will be
@@ -549,7 +549,7 @@ class PipelineDestinationAuthenticationConfigOauthTokenArgs:
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
 
@@ -561,7 +561,7 @@ class PipelineDestinationHttpEndpointArgsDict(TypedDict):
     Examples: `https://svc.us-central1.p.local:8080/route`.
     Only the HTTPS protocol is supported.
     """
-    message_binding_template: NotRequired[pulumi.Input[_builtins.str]]
+    message_binding_template: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CEL expression used to modify how the destination-bound HTTP
     request is constructed.
@@ -727,7 +727,7 @@ class PipelineDestinationHttpEndpointArgsDict(TypedDict):
 class PipelineDestinationHttpEndpointArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 message_binding_template: Optional[pulumi.Input[_builtins.str]] = None):
+                 message_binding_template: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: The URI of the HTTP enpdoint.
                The value must be a RFC2396 URI string.
@@ -913,7 +913,7 @@ class PipelineDestinationHttpEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="messageBindingTemplate")
-    def message_binding_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message_binding_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CEL expression used to modify how the destination-bound HTTP
         request is constructed.
@@ -1077,12 +1077,12 @@ class PipelineDestinationHttpEndpointArgs:
         return pulumi.get(self, "message_binding_template")
 
     @message_binding_template.setter
-    def message_binding_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message_binding_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message_binding_template", value)
 
 
 class PipelineDestinationNetworkConfigArgsDict(TypedDict):
-    network_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    network_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the NetworkAttachment that allows access to the consumer VPC.
     Format:
@@ -1094,7 +1094,7 @@ class PipelineDestinationNetworkConfigArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineDestinationNetworkConfigArgs:
     def __init__(__self__, *,
-                 network_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 network_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] network_attachment: Name of the NetworkAttachment that allows access to the consumer VPC.
                Format:
@@ -1107,7 +1107,7 @@ class PipelineDestinationNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="networkAttachment")
-    def network_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the NetworkAttachment that allows access to the consumer VPC.
         Format:
@@ -1118,21 +1118,21 @@ class PipelineDestinationNetworkConfigArgs:
         return pulumi.get(self, "network_attachment")
 
     @network_attachment.setter
-    def network_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_attachment", value)
 
 
 class PipelineDestinationOutputPayloadFormatArgsDict(TypedDict):
-    avro: NotRequired[pulumi.Input['PipelineDestinationOutputPayloadFormatAvroArgsDict']]
+    avro: NotRequired[pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatAvroArgs']]]
     """
     The format of an AVRO message payload.
     Structure is documented below.
     """
-    json: NotRequired[pulumi.Input['PipelineDestinationOutputPayloadFormatJsonArgsDict']]
+    json: NotRequired[pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatJsonArgs']]]
     """
     The format of a JSON message payload.
     """
-    protobuf: NotRequired[pulumi.Input['PipelineDestinationOutputPayloadFormatProtobufArgsDict']]
+    protobuf: NotRequired[pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatProtobufArgs']]]
     """
     The format of a Protobuf message payload.
     Structure is documented below.
@@ -1141,9 +1141,9 @@ class PipelineDestinationOutputPayloadFormatArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineDestinationOutputPayloadFormatArgs:
     def __init__(__self__, *,
-                 avro: Optional[pulumi.Input['PipelineDestinationOutputPayloadFormatAvroArgs']] = None,
-                 json: Optional[pulumi.Input['PipelineDestinationOutputPayloadFormatJsonArgs']] = None,
-                 protobuf: Optional[pulumi.Input['PipelineDestinationOutputPayloadFormatProtobufArgs']] = None):
+                 avro: pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatAvroArgs']] = None,
+                 json: pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatJsonArgs']] = None,
+                 protobuf: pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatProtobufArgs']] = None):
         """
         :param pulumi.Input['PipelineDestinationOutputPayloadFormatAvroArgs'] avro: The format of an AVRO message payload.
                Structure is documented below.
@@ -1160,7 +1160,7 @@ class PipelineDestinationOutputPayloadFormatArgs:
 
     @_builtins.property
     @pulumi.getter
-    def avro(self) -> Optional[pulumi.Input['PipelineDestinationOutputPayloadFormatAvroArgs']]:
+    def avro(self) -> pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatAvroArgs']]:
         """
         The format of an AVRO message payload.
         Structure is documented below.
@@ -1168,24 +1168,24 @@ class PipelineDestinationOutputPayloadFormatArgs:
         return pulumi.get(self, "avro")
 
     @avro.setter
-    def avro(self, value: Optional[pulumi.Input['PipelineDestinationOutputPayloadFormatAvroArgs']]):
+    def avro(self, value: pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatAvroArgs']]):
         pulumi.set(self, "avro", value)
 
     @_builtins.property
     @pulumi.getter
-    def json(self) -> Optional[pulumi.Input['PipelineDestinationOutputPayloadFormatJsonArgs']]:
+    def json(self) -> pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatJsonArgs']]:
         """
         The format of a JSON message payload.
         """
         return pulumi.get(self, "json")
 
     @json.setter
-    def json(self, value: Optional[pulumi.Input['PipelineDestinationOutputPayloadFormatJsonArgs']]):
+    def json(self, value: pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatJsonArgs']]):
         pulumi.set(self, "json", value)
 
     @_builtins.property
     @pulumi.getter
-    def protobuf(self) -> Optional[pulumi.Input['PipelineDestinationOutputPayloadFormatProtobufArgs']]:
+    def protobuf(self) -> pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatProtobufArgs']]:
         """
         The format of a Protobuf message payload.
         Structure is documented below.
@@ -1193,12 +1193,12 @@ class PipelineDestinationOutputPayloadFormatArgs:
         return pulumi.get(self, "protobuf")
 
     @protobuf.setter
-    def protobuf(self, value: Optional[pulumi.Input['PipelineDestinationOutputPayloadFormatProtobufArgs']]):
+    def protobuf(self, value: pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatProtobufArgs']]):
         pulumi.set(self, "protobuf", value)
 
 
 class PipelineDestinationOutputPayloadFormatAvroArgsDict(TypedDict):
-    schema_definition: NotRequired[pulumi.Input[_builtins.str]]
+    schema_definition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The entire schema definition is stored in this field.
     """
@@ -1206,7 +1206,7 @@ class PipelineDestinationOutputPayloadFormatAvroArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineDestinationOutputPayloadFormatAvroArgs:
     def __init__(__self__, *,
-                 schema_definition: Optional[pulumi.Input[_builtins.str]] = None):
+                 schema_definition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] schema_definition: The entire schema definition is stored in this field.
         """
@@ -1215,14 +1215,14 @@ class PipelineDestinationOutputPayloadFormatAvroArgs:
 
     @_builtins.property
     @pulumi.getter(name="schemaDefinition")
-    def schema_definition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_definition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entire schema definition is stored in this field.
         """
         return pulumi.get(self, "schema_definition")
 
     @schema_definition.setter
-    def schema_definition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_definition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_definition", value)
 
 
@@ -1236,7 +1236,7 @@ class PipelineDestinationOutputPayloadFormatJsonArgs:
 
 
 class PipelineDestinationOutputPayloadFormatProtobufArgsDict(TypedDict):
-    schema_definition: NotRequired[pulumi.Input[_builtins.str]]
+    schema_definition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The entire schema definition is stored in this field.
     """
@@ -1244,7 +1244,7 @@ class PipelineDestinationOutputPayloadFormatProtobufArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineDestinationOutputPayloadFormatProtobufArgs:
     def __init__(__self__, *,
-                 schema_definition: Optional[pulumi.Input[_builtins.str]] = None):
+                 schema_definition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] schema_definition: The entire schema definition is stored in this field.
         """
@@ -1253,28 +1253,28 @@ class PipelineDestinationOutputPayloadFormatProtobufArgs:
 
     @_builtins.property
     @pulumi.getter(name="schemaDefinition")
-    def schema_definition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_definition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entire schema definition is stored in this field.
         """
         return pulumi.get(self, "schema_definition")
 
     @schema_definition.setter
-    def schema_definition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_definition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_definition", value)
 
 
 class PipelineInputPayloadFormatArgsDict(TypedDict):
-    avro: NotRequired[pulumi.Input['PipelineInputPayloadFormatAvroArgsDict']]
+    avro: NotRequired[pulumi.Input[Optional['PipelineInputPayloadFormatAvroArgs']]]
     """
     The format of an AVRO message payload.
     Structure is documented below.
     """
-    json: NotRequired[pulumi.Input['PipelineInputPayloadFormatJsonArgsDict']]
+    json: NotRequired[pulumi.Input[Optional['PipelineInputPayloadFormatJsonArgs']]]
     """
     The format of a JSON message payload.
     """
-    protobuf: NotRequired[pulumi.Input['PipelineInputPayloadFormatProtobufArgsDict']]
+    protobuf: NotRequired[pulumi.Input[Optional['PipelineInputPayloadFormatProtobufArgs']]]
     """
     The format of a Protobuf message payload.
     Structure is documented below.
@@ -1283,9 +1283,9 @@ class PipelineInputPayloadFormatArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineInputPayloadFormatArgs:
     def __init__(__self__, *,
-                 avro: Optional[pulumi.Input['PipelineInputPayloadFormatAvroArgs']] = None,
-                 json: Optional[pulumi.Input['PipelineInputPayloadFormatJsonArgs']] = None,
-                 protobuf: Optional[pulumi.Input['PipelineInputPayloadFormatProtobufArgs']] = None):
+                 avro: pulumi.Input[Optional['PipelineInputPayloadFormatAvroArgs']] = None,
+                 json: pulumi.Input[Optional['PipelineInputPayloadFormatJsonArgs']] = None,
+                 protobuf: pulumi.Input[Optional['PipelineInputPayloadFormatProtobufArgs']] = None):
         """
         :param pulumi.Input['PipelineInputPayloadFormatAvroArgs'] avro: The format of an AVRO message payload.
                Structure is documented below.
@@ -1302,7 +1302,7 @@ class PipelineInputPayloadFormatArgs:
 
     @_builtins.property
     @pulumi.getter
-    def avro(self) -> Optional[pulumi.Input['PipelineInputPayloadFormatAvroArgs']]:
+    def avro(self) -> pulumi.Input[Optional['PipelineInputPayloadFormatAvroArgs']]:
         """
         The format of an AVRO message payload.
         Structure is documented below.
@@ -1310,24 +1310,24 @@ class PipelineInputPayloadFormatArgs:
         return pulumi.get(self, "avro")
 
     @avro.setter
-    def avro(self, value: Optional[pulumi.Input['PipelineInputPayloadFormatAvroArgs']]):
+    def avro(self, value: pulumi.Input[Optional['PipelineInputPayloadFormatAvroArgs']]):
         pulumi.set(self, "avro", value)
 
     @_builtins.property
     @pulumi.getter
-    def json(self) -> Optional[pulumi.Input['PipelineInputPayloadFormatJsonArgs']]:
+    def json(self) -> pulumi.Input[Optional['PipelineInputPayloadFormatJsonArgs']]:
         """
         The format of a JSON message payload.
         """
         return pulumi.get(self, "json")
 
     @json.setter
-    def json(self, value: Optional[pulumi.Input['PipelineInputPayloadFormatJsonArgs']]):
+    def json(self, value: pulumi.Input[Optional['PipelineInputPayloadFormatJsonArgs']]):
         pulumi.set(self, "json", value)
 
     @_builtins.property
     @pulumi.getter
-    def protobuf(self) -> Optional[pulumi.Input['PipelineInputPayloadFormatProtobufArgs']]:
+    def protobuf(self) -> pulumi.Input[Optional['PipelineInputPayloadFormatProtobufArgs']]:
         """
         The format of a Protobuf message payload.
         Structure is documented below.
@@ -1335,12 +1335,12 @@ class PipelineInputPayloadFormatArgs:
         return pulumi.get(self, "protobuf")
 
     @protobuf.setter
-    def protobuf(self, value: Optional[pulumi.Input['PipelineInputPayloadFormatProtobufArgs']]):
+    def protobuf(self, value: pulumi.Input[Optional['PipelineInputPayloadFormatProtobufArgs']]):
         pulumi.set(self, "protobuf", value)
 
 
 class PipelineInputPayloadFormatAvroArgsDict(TypedDict):
-    schema_definition: NotRequired[pulumi.Input[_builtins.str]]
+    schema_definition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The entire schema definition is stored in this field.
     """
@@ -1348,7 +1348,7 @@ class PipelineInputPayloadFormatAvroArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineInputPayloadFormatAvroArgs:
     def __init__(__self__, *,
-                 schema_definition: Optional[pulumi.Input[_builtins.str]] = None):
+                 schema_definition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] schema_definition: The entire schema definition is stored in this field.
         """
@@ -1357,14 +1357,14 @@ class PipelineInputPayloadFormatAvroArgs:
 
     @_builtins.property
     @pulumi.getter(name="schemaDefinition")
-    def schema_definition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_definition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entire schema definition is stored in this field.
         """
         return pulumi.get(self, "schema_definition")
 
     @schema_definition.setter
-    def schema_definition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_definition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_definition", value)
 
 
@@ -1378,7 +1378,7 @@ class PipelineInputPayloadFormatJsonArgs:
 
 
 class PipelineInputPayloadFormatProtobufArgsDict(TypedDict):
-    schema_definition: NotRequired[pulumi.Input[_builtins.str]]
+    schema_definition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The entire schema definition is stored in this field.
     """
@@ -1386,7 +1386,7 @@ class PipelineInputPayloadFormatProtobufArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineInputPayloadFormatProtobufArgs:
     def __init__(__self__, *,
-                 schema_definition: Optional[pulumi.Input[_builtins.str]] = None):
+                 schema_definition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] schema_definition: The entire schema definition is stored in this field.
         """
@@ -1395,19 +1395,19 @@ class PipelineInputPayloadFormatProtobufArgs:
 
     @_builtins.property
     @pulumi.getter(name="schemaDefinition")
-    def schema_definition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_definition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entire schema definition is stored in this field.
         """
         return pulumi.get(self, "schema_definition")
 
     @schema_definition.setter
-    def schema_definition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_definition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_definition", value)
 
 
 class PipelineLoggingConfigArgsDict(TypedDict):
-    log_severity: NotRequired[pulumi.Input[_builtins.str]]
+    log_severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The minimum severity of logs that will be sent to Stackdriver/Platform
     Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
@@ -1417,7 +1417,7 @@ class PipelineLoggingConfigArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineLoggingConfigArgs:
     def __init__(__self__, *,
-                 log_severity: Optional[pulumi.Input[_builtins.str]] = None):
+                 log_severity: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] log_severity: The minimum severity of logs that will be sent to Stackdriver/Platform
                Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
@@ -1428,7 +1428,7 @@ class PipelineLoggingConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="logSeverity")
-    def log_severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum severity of logs that will be sent to Stackdriver/Platform
         Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
@@ -1437,12 +1437,12 @@ class PipelineLoggingConfigArgs:
         return pulumi.get(self, "log_severity")
 
     @log_severity.setter
-    def log_severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_severity", value)
 
 
 class PipelineMediationArgsDict(TypedDict):
-    transformation: NotRequired[pulumi.Input['PipelineMediationTransformationArgsDict']]
+    transformation: NotRequired[pulumi.Input[Optional['PipelineMediationTransformationArgs']]]
     """
     Transformation defines the way to transform an incoming message.
     Structure is documented below.
@@ -1451,7 +1451,7 @@ class PipelineMediationArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineMediationArgs:
     def __init__(__self__, *,
-                 transformation: Optional[pulumi.Input['PipelineMediationTransformationArgs']] = None):
+                 transformation: pulumi.Input[Optional['PipelineMediationTransformationArgs']] = None):
         """
         :param pulumi.Input['PipelineMediationTransformationArgs'] transformation: Transformation defines the way to transform an incoming message.
                Structure is documented below.
@@ -1461,7 +1461,7 @@ class PipelineMediationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def transformation(self) -> Optional[pulumi.Input['PipelineMediationTransformationArgs']]:
+    def transformation(self) -> pulumi.Input[Optional['PipelineMediationTransformationArgs']]:
         """
         Transformation defines the way to transform an incoming message.
         Structure is documented below.
@@ -1469,12 +1469,12 @@ class PipelineMediationArgs:
         return pulumi.get(self, "transformation")
 
     @transformation.setter
-    def transformation(self, value: Optional[pulumi.Input['PipelineMediationTransformationArgs']]):
+    def transformation(self, value: pulumi.Input[Optional['PipelineMediationTransformationArgs']]):
         pulumi.set(self, "transformation", value)
 
 
 class PipelineMediationTransformationArgsDict(TypedDict):
-    transformation_template: NotRequired[pulumi.Input[_builtins.str]]
+    transformation_template: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CEL expression template to apply to transform messages.
     The following CEL extension functions are provided for
@@ -1557,7 +1557,7 @@ class PipelineMediationTransformationArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineMediationTransformationArgs:
     def __init__(__self__, *,
-                 transformation_template: Optional[pulumi.Input[_builtins.str]] = None):
+                 transformation_template: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] transformation_template: The CEL expression template to apply to transform messages.
                The following CEL extension functions are provided for
@@ -1641,7 +1641,7 @@ class PipelineMediationTransformationArgs:
 
     @_builtins.property
     @pulumi.getter(name="transformationTemplate")
-    def transformation_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transformation_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CEL expression template to apply to transform messages.
         The following CEL extension functions are provided for
@@ -1723,24 +1723,24 @@ class PipelineMediationTransformationArgs:
         return pulumi.get(self, "transformation_template")
 
     @transformation_template.setter
-    def transformation_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transformation_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transformation_template", value)
 
 
 class PipelineRetryPolicyArgsDict(TypedDict):
-    max_attempts: NotRequired[pulumi.Input[_builtins.int]]
+    max_attempts: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of delivery attempts for any message. The value must
     be between 1 and 100.
     The default value for this field is 5.
     """
-    max_retry_delay: NotRequired[pulumi.Input[_builtins.str]]
+    max_retry_delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The maximum amount of seconds to wait between retry attempts. The value
     must be between 1 and 600.
     The default value for this field is 60.
     """
-    min_retry_delay: NotRequired[pulumi.Input[_builtins.str]]
+    min_retry_delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The minimum amount of seconds to wait between retry attempts. The value
     must be between 1 and 600.
@@ -1750,9 +1750,9 @@ class PipelineRetryPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class PipelineRetryPolicyArgs:
     def __init__(__self__, *,
-                 max_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_retry_delay: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_retry_delay: Optional[pulumi.Input[_builtins.str]] = None):
+                 max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_retry_delay: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_retry_delay: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] max_attempts: The maximum number of delivery attempts for any message. The value must
                be between 1 and 100.
@@ -1773,7 +1773,7 @@ class PipelineRetryPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxAttempts")
-    def max_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of delivery attempts for any message. The value must
         be between 1 and 100.
@@ -1782,12 +1782,12 @@ class PipelineRetryPolicyArgs:
         return pulumi.get(self, "max_attempts")
 
     @max_attempts.setter
-    def max_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_attempts", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRetryDelay")
-    def max_retry_delay(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_retry_delay(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum amount of seconds to wait between retry attempts. The value
         must be between 1 and 600.
@@ -1796,12 +1796,12 @@ class PipelineRetryPolicyArgs:
         return pulumi.get(self, "max_retry_delay")
 
     @max_retry_delay.setter
-    def max_retry_delay(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_retry_delay(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_retry_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="minRetryDelay")
-    def min_retry_delay(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_retry_delay(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum amount of seconds to wait between retry attempts. The value
         must be between 1 and 600.
@@ -1810,37 +1810,37 @@ class PipelineRetryPolicyArgs:
         return pulumi.get(self, "min_retry_delay")
 
     @min_retry_delay.setter
-    def min_retry_delay(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_retry_delay(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_retry_delay", value)
 
 
 class TriggerDestinationArgsDict(TypedDict):
-    cloud_function: NotRequired[pulumi.Input[_builtins.str]]
+    cloud_function: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
     """
-    cloud_run_service: NotRequired[pulumi.Input['TriggerDestinationCloudRunServiceArgsDict']]
+    cloud_run_service: NotRequired[pulumi.Input[Optional['TriggerDestinationCloudRunServiceArgs']]]
     """
     Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
     Structure is documented below.
     """
-    gke: NotRequired[pulumi.Input['TriggerDestinationGkeArgsDict']]
+    gke: NotRequired[pulumi.Input[Optional['TriggerDestinationGkeArgs']]]
     """
     A GKE service capable of receiving events. The service should be running in the same project as the trigger.
     Structure is documented below.
     """
-    http_endpoint: NotRequired[pulumi.Input['TriggerDestinationHttpEndpointArgsDict']]
+    http_endpoint: NotRequired[pulumi.Input[Optional['TriggerDestinationHttpEndpointArgs']]]
     """
     An HTTP endpoint destination described by an URI.
     Structure is documented below.
     """
-    network_config: NotRequired[pulumi.Input['TriggerDestinationNetworkConfigArgsDict']]
+    network_config: NotRequired[pulumi.Input[Optional['TriggerDestinationNetworkConfigArgs']]]
     """
     Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
     Structure is documented below.
     """
-    workflow: NotRequired[pulumi.Input[_builtins.str]]
+    workflow: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
     """
@@ -1848,12 +1848,12 @@ class TriggerDestinationArgsDict(TypedDict):
 @pulumi.input_type
 class TriggerDestinationArgs:
     def __init__(__self__, *,
-                 cloud_function: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_run_service: Optional[pulumi.Input['TriggerDestinationCloudRunServiceArgs']] = None,
-                 gke: Optional[pulumi.Input['TriggerDestinationGkeArgs']] = None,
-                 http_endpoint: Optional[pulumi.Input['TriggerDestinationHttpEndpointArgs']] = None,
-                 network_config: Optional[pulumi.Input['TriggerDestinationNetworkConfigArgs']] = None,
-                 workflow: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_function: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_run_service: pulumi.Input[Optional['TriggerDestinationCloudRunServiceArgs']] = None,
+                 gke: pulumi.Input[Optional['TriggerDestinationGkeArgs']] = None,
+                 http_endpoint: pulumi.Input[Optional['TriggerDestinationHttpEndpointArgs']] = None,
+                 network_config: pulumi.Input[Optional['TriggerDestinationNetworkConfigArgs']] = None,
+                 workflow: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cloud_function: (Output)
                The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
@@ -1882,7 +1882,7 @@ class TriggerDestinationArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudFunction")
-    def cloud_function(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_function(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
@@ -1890,12 +1890,12 @@ class TriggerDestinationArgs:
         return pulumi.get(self, "cloud_function")
 
     @cloud_function.setter
-    def cloud_function(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_function(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_function", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudRunService")
-    def cloud_run_service(self) -> Optional[pulumi.Input['TriggerDestinationCloudRunServiceArgs']]:
+    def cloud_run_service(self) -> pulumi.Input[Optional['TriggerDestinationCloudRunServiceArgs']]:
         """
         Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
         Structure is documented below.
@@ -1903,12 +1903,12 @@ class TriggerDestinationArgs:
         return pulumi.get(self, "cloud_run_service")
 
     @cloud_run_service.setter
-    def cloud_run_service(self, value: Optional[pulumi.Input['TriggerDestinationCloudRunServiceArgs']]):
+    def cloud_run_service(self, value: pulumi.Input[Optional['TriggerDestinationCloudRunServiceArgs']]):
         pulumi.set(self, "cloud_run_service", value)
 
     @_builtins.property
     @pulumi.getter
-    def gke(self) -> Optional[pulumi.Input['TriggerDestinationGkeArgs']]:
+    def gke(self) -> pulumi.Input[Optional['TriggerDestinationGkeArgs']]:
         """
         A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         Structure is documented below.
@@ -1916,12 +1916,12 @@ class TriggerDestinationArgs:
         return pulumi.get(self, "gke")
 
     @gke.setter
-    def gke(self, value: Optional[pulumi.Input['TriggerDestinationGkeArgs']]):
+    def gke(self, value: pulumi.Input[Optional['TriggerDestinationGkeArgs']]):
         pulumi.set(self, "gke", value)
 
     @_builtins.property
     @pulumi.getter(name="httpEndpoint")
-    def http_endpoint(self) -> Optional[pulumi.Input['TriggerDestinationHttpEndpointArgs']]:
+    def http_endpoint(self) -> pulumi.Input[Optional['TriggerDestinationHttpEndpointArgs']]:
         """
         An HTTP endpoint destination described by an URI.
         Structure is documented below.
@@ -1929,12 +1929,12 @@ class TriggerDestinationArgs:
         return pulumi.get(self, "http_endpoint")
 
     @http_endpoint.setter
-    def http_endpoint(self, value: Optional[pulumi.Input['TriggerDestinationHttpEndpointArgs']]):
+    def http_endpoint(self, value: pulumi.Input[Optional['TriggerDestinationHttpEndpointArgs']]):
         pulumi.set(self, "http_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['TriggerDestinationNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['TriggerDestinationNetworkConfigArgs']]:
         """
         Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
         Structure is documented below.
@@ -1942,19 +1942,19 @@ class TriggerDestinationArgs:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['TriggerDestinationNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['TriggerDestinationNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def workflow(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workflow(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
         """
         return pulumi.get(self, "workflow")
 
     @workflow.setter
-    def workflow(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workflow(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workflow", value)
 
 
@@ -1963,11 +1963,11 @@ class TriggerDestinationCloudRunServiceArgsDict(TypedDict):
     """
     Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
     """
-    region: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. The region the Cloud Run service is deployed in.
     """
@@ -1976,8 +1976,8 @@ class TriggerDestinationCloudRunServiceArgsDict(TypedDict):
 class TriggerDestinationCloudRunServiceArgs:
     def __init__(__self__, *,
                  service: pulumi.Input[_builtins.str],
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] service: Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
         :param pulumi.Input[_builtins.str] path: Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
@@ -2003,26 +2003,26 @@ class TriggerDestinationCloudRunServiceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The region the Cloud Run service is deployed in.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -2043,7 +2043,7 @@ class TriggerDestinationGkeArgsDict(TypedDict):
     """
     Required. Name of the GKE service.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
     """
@@ -2055,7 +2055,7 @@ class TriggerDestinationGkeArgs:
                  location: pulumi.Input[_builtins.str],
                  namespace: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster: Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
         :param pulumi.Input[_builtins.str] location: Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
@@ -2120,14 +2120,14 @@ class TriggerDestinationGkeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
@@ -2196,7 +2196,7 @@ class TriggerMatchingCriteriaArgsDict(TypedDict):
     """
     Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
     """
-    operator: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
     """
@@ -2206,7 +2206,7 @@ class TriggerMatchingCriteriaArgs:
     def __init__(__self__, *,
                  attribute: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 operator: Optional[pulumi.Input[_builtins.str]] = None):
+                 operator: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] attribute: Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
         :param pulumi.Input[_builtins.str] value: Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
@@ -2243,19 +2243,19 @@ class TriggerMatchingCriteriaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
         """
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
 
 class TriggerRetryPolicyArgsDict(TypedDict):
-    max_attempts: NotRequired[pulumi.Input[_builtins.int]]
+    max_attempts: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of delivery attempts for any message. The only valid
     value is 1.
@@ -2264,7 +2264,7 @@ class TriggerRetryPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class TriggerRetryPolicyArgs:
     def __init__(__self__, *,
-                 max_attempts: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_attempts: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_attempts: The maximum number of delivery attempts for any message. The only valid
                value is 1.
@@ -2274,7 +2274,7 @@ class TriggerRetryPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxAttempts")
-    def max_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of delivery attempts for any message. The only valid
         value is 1.
@@ -2282,12 +2282,12 @@ class TriggerRetryPolicyArgs:
         return pulumi.get(self, "max_attempts")
 
     @max_attempts.setter
-    def max_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_attempts", value)
 
 
 class TriggerTransportArgsDict(TypedDict):
-    pubsub: NotRequired[pulumi.Input['TriggerTransportPubsubArgsDict']]
+    pubsub: NotRequired[pulumi.Input[Optional['TriggerTransportPubsubArgs']]]
     """
     The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
     Structure is documented below.
@@ -2296,7 +2296,7 @@ class TriggerTransportArgsDict(TypedDict):
 @pulumi.input_type
 class TriggerTransportArgs:
     def __init__(__self__, *,
-                 pubsub: Optional[pulumi.Input['TriggerTransportPubsubArgs']] = None):
+                 pubsub: pulumi.Input[Optional['TriggerTransportPubsubArgs']] = None):
         """
         :param pulumi.Input['TriggerTransportPubsubArgs'] pubsub: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
                Structure is documented below.
@@ -2306,7 +2306,7 @@ class TriggerTransportArgs:
 
     @_builtins.property
     @pulumi.getter
-    def pubsub(self) -> Optional[pulumi.Input['TriggerTransportPubsubArgs']]:
+    def pubsub(self) -> pulumi.Input[Optional['TriggerTransportPubsubArgs']]:
         """
         The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         Structure is documented below.
@@ -2314,17 +2314,17 @@ class TriggerTransportArgs:
         return pulumi.get(self, "pubsub")
 
     @pubsub.setter
-    def pubsub(self, value: Optional[pulumi.Input['TriggerTransportPubsubArgs']]):
+    def pubsub(self, value: pulumi.Input[Optional['TriggerTransportPubsubArgs']]):
         pulumi.set(self, "pubsub", value)
 
 
 class TriggerTransportPubsubArgsDict(TypedDict):
-    subscription: NotRequired[pulumi.Input[_builtins.str]]
+    subscription: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
     """
-    topic: NotRequired[pulumi.Input[_builtins.str]]
+    topic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
     """
@@ -2332,8 +2332,8 @@ class TriggerTransportPubsubArgsDict(TypedDict):
 @pulumi.input_type
 class TriggerTransportPubsubArgs:
     def __init__(__self__, *,
-                 subscription: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None):
+                 subscription: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] subscription: (Output)
                Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
@@ -2346,7 +2346,7 @@ class TriggerTransportPubsubArgs:
 
     @_builtins.property
     @pulumi.getter
-    def subscription(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
@@ -2354,19 +2354,19 @@ class TriggerTransportPubsubArgs:
         return pulumi.get(self, "subscription")
 
     @subscription.setter
-    def subscription(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription", value)
 
     @_builtins.property
     @pulumi.getter
-    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
         """
         return pulumi.get(self, "topic")
 
     @topic.setter
-    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic", value)
 
 

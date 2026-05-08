@@ -25,8 +25,8 @@ class UllMirroringCollectorRuleArgs:
                  match: pulumi.Input['UllMirroringCollectorRuleMatchArgs'],
                  ull_mirroring_collector: pulumi.Input[_builtins.str],
                  ull_mirroring_collector_rule_id: pulumi.Input[_builtins.str],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a UllMirroringCollectorRule resource.
 
@@ -101,7 +101,7 @@ class UllMirroringCollectorRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels as key value pairs
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -110,12 +110,12 @@ class UllMirroringCollectorRuleArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -123,25 +123,25 @@ class UllMirroringCollectorRuleArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _UllMirroringCollectorRuleState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 match: Optional[pulumi.Input['UllMirroringCollectorRuleMatchArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ull_mirroring_collector: Optional[pulumi.Input[_builtins.str]] = None,
-                 ull_mirroring_collector_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 match: pulumi.Input[Optional['UllMirroringCollectorRuleMatchArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ull_mirroring_collector: pulumi.Input[Optional[_builtins.str]] = None,
+                 ull_mirroring_collector_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UllMirroringCollectorRule resources.
 
@@ -191,31 +191,31 @@ class _UllMirroringCollectorRuleState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Output only] Create time stamp
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels as key value pairs
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -224,24 +224,24 @@ class _UllMirroringCollectorRuleState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input['UllMirroringCollectorRuleMatchArgs']]:
+    def match(self) -> pulumi.Input[Optional['UllMirroringCollectorRuleMatchArgs']]:
         """
         Match defines what traffic to mirror.
         Structure is documented below.
@@ -249,24 +249,24 @@ class _UllMirroringCollectorRuleState:
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input['UllMirroringCollectorRuleMatchArgs']]):
+    def match(self, value: pulumi.Input[Optional['UllMirroringCollectorRuleMatchArgs']]):
         pulumi.set(self, "match", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The name of the UllMirroringCollectorRule.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -274,12 +274,12 @@ class _UllMirroringCollectorRuleState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -287,12 +287,12 @@ class _UllMirroringCollectorRuleState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether reconciling is in progress, recommended per
         https://google.aip.dev/128.
@@ -300,43 +300,43 @@ class _UllMirroringCollectorRuleState:
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter(name="ullMirroringCollector")
-    def ull_mirroring_collector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ull_mirroring_collector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "ull_mirroring_collector")
 
     @ull_mirroring_collector.setter
-    def ull_mirroring_collector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ull_mirroring_collector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ull_mirroring_collector", value)
 
     @_builtins.property
     @pulumi.getter(name="ullMirroringCollectorRuleId")
-    def ull_mirroring_collector_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ull_mirroring_collector_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID for the new UllMirroringCollectorRule.
         """
         return pulumi.get(self, "ull_mirroring_collector_rule_id")
 
     @ull_mirroring_collector_rule_id.setter
-    def ull_mirroring_collector_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ull_mirroring_collector_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ull_mirroring_collector_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Output only] Update time stamp
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -346,12 +346,12 @@ class UllMirroringCollectorRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 match: Optional[pulumi.Input[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 ull_mirroring_collector: Optional[pulumi.Input[_builtins.str]] = None,
-                 ull_mirroring_collector_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 match: pulumi.Input[Optional[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 ull_mirroring_collector: pulumi.Input[Optional[_builtins.str]] = None,
+                 ull_mirroring_collector_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         UllMirroringCollectorRule is a resource that defines what traffic should be mirrored.
@@ -555,12 +555,12 @@ class UllMirroringCollectorRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 match: Optional[pulumi.Input[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 ull_mirroring_collector: Optional[pulumi.Input[_builtins.str]] = None,
-                 ull_mirroring_collector_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 match: pulumi.Input[Optional[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 ull_mirroring_collector: pulumi.Input[Optional[_builtins.str]] = None,
+                 ull_mirroring_collector_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -602,18 +602,18 @@ class UllMirroringCollectorRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            match: Optional[pulumi.Input[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            ull_mirroring_collector: Optional[pulumi.Input[_builtins.str]] = None,
-            ull_mirroring_collector_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'UllMirroringCollectorRule':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            match: pulumi.Input[Optional[Union['UllMirroringCollectorRuleMatchArgs', 'UllMirroringCollectorRuleMatchArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            ull_mirroring_collector: pulumi.Input[Optional[_builtins.str]] = None,
+            ull_mirroring_collector_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'UllMirroringCollectorRule':
         """
         Get an existing UllMirroringCollectorRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

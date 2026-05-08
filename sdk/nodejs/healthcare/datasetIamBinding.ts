@@ -197,18 +197,18 @@ export class DatasetIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatasetIamBinding resources.
  */
 export interface DatasetIamBindingState {
-    condition?: pulumi.Input<inputs.healthcare.DatasetIamBindingCondition>;
+    condition?: pulumi.Input<inputs.healthcare.DatasetIamBindingCondition | undefined>;
     /**
      * The dataset ID, in the form
      * `{project_id}/{location_name}/{dataset_name}` or
      * `{location_name}/{dataset_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
      */
-    datasetId?: pulumi.Input<string>;
+    datasetId?: pulumi.Input<string | undefined>;
     /**
      * (Computed) The etag of the dataset's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -219,20 +219,20 @@ export interface DatasetIamBindingState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DatasetIamBinding resource.
  */
 export interface DatasetIamBindingArgs {
-    condition?: pulumi.Input<inputs.healthcare.DatasetIamBindingCondition>;
+    condition?: pulumi.Input<inputs.healthcare.DatasetIamBindingCondition | undefined>;
     /**
      * The dataset ID, in the form
      * `{project_id}/{location_name}/{dataset_name}` or

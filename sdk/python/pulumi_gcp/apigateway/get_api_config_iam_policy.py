@@ -141,9 +141,9 @@ def get_api_config_iam_policy(api: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-def get_api_config_iam_policy_output(api: Optional[pulumi.Input[_builtins.str]] = None,
-                                     api_config: Optional[pulumi.Input[_builtins.str]] = None,
-                                     project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_api_config_iam_policy_output(api: pulumi.Input[Optional[_builtins.str]] = None,
+                                     api_config: pulumi.Input[Optional[_builtins.str]] = None,
+                                     project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiConfigIamPolicyResult]:
     """
     Retrieves the current IAM policy data for apiconfig

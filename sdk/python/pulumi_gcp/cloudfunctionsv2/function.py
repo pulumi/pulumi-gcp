@@ -22,14 +22,14 @@ __all__ = ['FunctionArgs', 'Function']
 class FunctionArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 build_config: Optional[pulumi.Input['FunctionBuildConfigArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_config: Optional[pulumi.Input['FunctionServiceConfigArgs']] = None):
+                 build_config: pulumi.Input[Optional['FunctionBuildConfigArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_trigger: pulumi.Input[Optional['FunctionEventTriggerArgs']] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_config: pulumi.Input[Optional['FunctionServiceConfigArgs']] = None):
         """
         The set of arguments for constructing a Function resource.
 
@@ -86,7 +86,7 @@ class FunctionArgs:
 
     @_builtins.property
     @pulumi.getter(name="buildConfig")
-    def build_config(self) -> Optional[pulumi.Input['FunctionBuildConfigArgs']]:
+    def build_config(self) -> pulumi.Input[Optional['FunctionBuildConfigArgs']]:
         """
         Describes the Build step of the function that builds a container
         from the given source.
@@ -95,24 +95,24 @@ class FunctionArgs:
         return pulumi.get(self, "build_config")
 
     @build_config.setter
-    def build_config(self, value: Optional[pulumi.Input['FunctionBuildConfigArgs']]):
+    def build_config(self, value: pulumi.Input[Optional['FunctionBuildConfigArgs']]):
         pulumi.set(self, "build_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided description of a function.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="eventTrigger")
-    def event_trigger(self) -> Optional[pulumi.Input['FunctionEventTriggerArgs']]:
+    def event_trigger(self) -> pulumi.Input[Optional['FunctionEventTriggerArgs']]:
         """
         An Eventarc trigger managed by Google Cloud Functions that fires events in
         response to a condition in another service.
@@ -121,12 +121,12 @@ class FunctionArgs:
         return pulumi.get(self, "event_trigger")
 
     @event_trigger.setter
-    def event_trigger(self, value: Optional[pulumi.Input['FunctionEventTriggerArgs']]):
+    def event_trigger(self, value: pulumi.Input[Optional['FunctionEventTriggerArgs']]):
         pulumi.set(self, "event_trigger", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
         It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
@@ -134,12 +134,12 @@ class FunctionArgs:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value label pairs associated with this Cloud Function.
 
@@ -149,12 +149,12 @@ class FunctionArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-defined name of the function. Function names must
         be unique globally and match pattern `projects/*/locations/*/functions/*`.
@@ -162,12 +162,12 @@ class FunctionArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -175,12 +175,12 @@ class FunctionArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceConfig")
-    def service_config(self) -> Optional[pulumi.Input['FunctionServiceConfigArgs']]:
+    def service_config(self) -> pulumi.Input[Optional['FunctionServiceConfigArgs']]:
         """
         Describes the Service being deployed.
         Structure is documented below.
@@ -188,28 +188,28 @@ class FunctionArgs:
         return pulumi.get(self, "service_config")
 
     @service_config.setter
-    def service_config(self, value: Optional[pulumi.Input['FunctionServiceConfigArgs']]):
+    def service_config(self, value: pulumi.Input[Optional['FunctionServiceConfigArgs']]):
         pulumi.set(self, "service_config", value)
 
 
 @pulumi.input_type
 class _FunctionState:
     def __init__(__self__, *,
-                 build_config: Optional[pulumi.Input['FunctionBuildConfigArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_trigger: Optional[pulumi.Input['FunctionEventTriggerArgs']] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 service_config: Optional[pulumi.Input['FunctionServiceConfigArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 build_config: pulumi.Input[Optional['FunctionBuildConfigArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_trigger: pulumi.Input[Optional['FunctionEventTriggerArgs']] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 service_config: pulumi.Input[Optional['FunctionServiceConfigArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Function resources.
 
@@ -274,7 +274,7 @@ class _FunctionState:
 
     @_builtins.property
     @pulumi.getter(name="buildConfig")
-    def build_config(self) -> Optional[pulumi.Input['FunctionBuildConfigArgs']]:
+    def build_config(self) -> pulumi.Input[Optional['FunctionBuildConfigArgs']]:
         """
         Describes the Build step of the function that builds a container
         from the given source.
@@ -283,48 +283,48 @@ class _FunctionState:
         return pulumi.get(self, "build_config")
 
     @build_config.setter
-    def build_config(self, value: Optional[pulumi.Input['FunctionBuildConfigArgs']]):
+    def build_config(self, value: pulumi.Input[Optional['FunctionBuildConfigArgs']]):
         pulumi.set(self, "build_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided description of a function.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment the function is hosted on.
         """
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment", value)
 
     @_builtins.property
     @pulumi.getter(name="eventTrigger")
-    def event_trigger(self) -> Optional[pulumi.Input['FunctionEventTriggerArgs']]:
+    def event_trigger(self) -> pulumi.Input[Optional['FunctionEventTriggerArgs']]:
         """
         An Eventarc trigger managed by Google Cloud Functions that fires events in
         response to a condition in another service.
@@ -333,12 +333,12 @@ class _FunctionState:
         return pulumi.get(self, "event_trigger")
 
     @event_trigger.setter
-    def event_trigger(self, value: Optional[pulumi.Input['FunctionEventTriggerArgs']]):
+    def event_trigger(self, value: pulumi.Input[Optional['FunctionEventTriggerArgs']]):
         pulumi.set(self, "event_trigger", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
         It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
@@ -346,12 +346,12 @@ class _FunctionState:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value label pairs associated with this Cloud Function.
 
@@ -361,24 +361,24 @@ class _FunctionState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of this cloud function.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-defined name of the function. Function names must
         be unique globally and match pattern `projects/*/locations/*/functions/*`.
@@ -386,12 +386,12 @@ class _FunctionState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -399,12 +399,12 @@ class _FunctionState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -412,12 +412,12 @@ class _FunctionState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceConfig")
-    def service_config(self) -> Optional[pulumi.Input['FunctionServiceConfigArgs']]:
+    def service_config(self) -> pulumi.Input[Optional['FunctionServiceConfigArgs']]:
         """
         Describes the Service being deployed.
         Structure is documented below.
@@ -425,43 +425,43 @@ class _FunctionState:
         return pulumi.get(self, "service_config")
 
     @service_config.setter
-    def service_config(self, value: Optional[pulumi.Input['FunctionServiceConfigArgs']]):
+    def service_config(self, value: pulumi.Input[Optional['FunctionServiceConfigArgs']]):
         pulumi.set(self, "service_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes the current state of the function.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last update timestamp of a Cloud Function.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The deployed url for the function.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -471,15 +471,15 @@ class Function(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 build_config: Optional[pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_trigger: Optional[pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_config: Optional[pulumi.Input[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']]] = None,
+                 build_config: pulumi.Input[Optional[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_config: pulumi.Input[Optional[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']]] = None,
                  __props__=None):
         """
         A Cloud Function that contains user computation executed in response to an event.
@@ -2147,15 +2147,15 @@ class Function(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 build_config: Optional[pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_trigger: Optional[pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_config: Optional[pulumi.Input[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']]] = None,
+                 build_config: pulumi.Input[Optional[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_config: pulumi.Input[Optional[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2194,21 +2194,21 @@ class Function(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            build_config: Optional[pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            environment: Optional[pulumi.Input[_builtins.str]] = None,
-            event_trigger: Optional[pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
-            kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            service_config: Optional[pulumi.Input[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'Function':
+            build_config: pulumi.Input[Optional[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            service_config: pulumi.Input[Optional[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'Function':
         """
         Get an existing Function resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

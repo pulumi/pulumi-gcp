@@ -20,7 +20,7 @@ __all__ = ['SQuotaAdjusterSettingsArgs', 'SQuotaAdjusterSettings']
 class SQuotaAdjusterSettingsArgs:
     def __init__(__self__, *,
                  enablement: pulumi.Input[_builtins.str],
-                 parent: Optional[pulumi.Input[_builtins.str]] = None):
+                 parent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SQuotaAdjusterSettings resource.
 
@@ -47,26 +47,26 @@ class SQuotaAdjusterSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
 
 @pulumi.input_type
 class _SQuotaAdjusterSettingsState:
     def __init__(__self__, *,
-                 effective_container: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_enablement: Optional[pulumi.Input[_builtins.str]] = None,
-                 enablement: Optional[pulumi.Input[_builtins.str]] = None,
-                 inherited: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inherited_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None):
+                 effective_container: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_enablement: pulumi.Input[Optional[_builtins.str]] = None,
+                 enablement: pulumi.Input[Optional[_builtins.str]] = None,
+                 inherited: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inherited_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SQuotaAdjusterSettings resources.
 
@@ -106,7 +106,7 @@ class _SQuotaAdjusterSettingsState:
     @_builtins.property
     @pulumi.getter(name="effectiveContainer")
     @_utilities.deprecated("""`effectiveContainer` is deprecated and will be removed in a future major release. Use `inherited_from` instead.""")
-    def effective_container(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_container(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Deprecated)
         The resource container that determines if the quota adjuster is set for this project.
@@ -115,13 +115,13 @@ class _SQuotaAdjusterSettingsState:
         return pulumi.get(self, "effective_container")
 
     @effective_container.setter
-    def effective_container(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_container(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_container", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveEnablement")
     @_utilities.deprecated("""`effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.""")
-    def effective_enablement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_enablement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Deprecated)
         Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
@@ -130,12 +130,12 @@ class _SQuotaAdjusterSettingsState:
         return pulumi.get(self, "effective_enablement")
 
     @effective_enablement.setter
-    def effective_enablement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_enablement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_enablement", value)
 
     @_builtins.property
     @pulumi.getter
-    def enablement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enablement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The configured value of the enablement at the given resource.
         Possible values are: `ENABLED`, `DISABLED`.
@@ -143,24 +143,24 @@ class _SQuotaAdjusterSettingsState:
         return pulumi.get(self, "enablement")
 
     @enablement.setter
-    def enablement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enablement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enablement", value)
 
     @_builtins.property
     @pulumi.getter
-    def inherited(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def inherited(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the setting is inherited or explicitly specified.
         """
         return pulumi.get(self, "inherited")
 
     @inherited.setter
-    def inherited(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def inherited(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "inherited", value)
 
     @_builtins.property
     @pulumi.getter(name="inheritedFrom")
-    def inherited_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inherited_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
         The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
@@ -169,19 +169,19 @@ class _SQuotaAdjusterSettingsState:
         return pulumi.get(self, "inherited_from")
 
     @inherited_from.setter
-    def inherited_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inherited_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inherited_from", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
 
@@ -191,8 +191,8 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enablement: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 enablement: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         QuotaAdjusterSettings resource represents your quota adjuster settings for a particular project. When enabled, the quota adjuster monitors your usage for the specified resources and issues quota adjustment requests when resource usage approaches its quota value.
@@ -297,8 +297,8 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enablement: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 enablement: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -326,12 +326,12 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            effective_container: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_enablement: Optional[pulumi.Input[_builtins.str]] = None,
-            enablement: Optional[pulumi.Input[_builtins.str]] = None,
-            inherited: Optional[pulumi.Input[_builtins.bool]] = None,
-            inherited_from: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None) -> 'SQuotaAdjusterSettings':
+            effective_container: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_enablement: pulumi.Input[Optional[_builtins.str]] = None,
+            enablement: pulumi.Input[Optional[_builtins.str]] = None,
+            inherited: pulumi.Input[Optional[_builtins.bool]] = None,
+            inherited_from: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None) -> 'SQuotaAdjusterSettings':
         """
         Get an existing SQuotaAdjusterSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

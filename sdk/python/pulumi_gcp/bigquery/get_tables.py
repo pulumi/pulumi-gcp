@@ -114,8 +114,8 @@ def get_tables(dataset_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         tables=pulumi.get(__ret__, 'tables'))
-def get_tables_output(dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                      project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_tables_output(dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                      project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTablesResult]:
     """
     Get a list of tables in a BigQuery dataset. For more information see

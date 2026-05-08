@@ -197,22 +197,22 @@ export interface BackupChannelState {
     /**
      * User specified descriptive string for this BackupChannel.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The project where Backups are allowed to be stored.
      * The format is `projects/{project}`.
      * {project} can be project number or project id.
      */
-    destinationProject?: pulumi.Input<string>;
+    destinationProject?: pulumi.Input<string | undefined>;
     /**
      * The projectId where Backups are allowed to be stored.
      * Example Project ID: "my-project-id".
      */
-    destinationProjectId?: pulumi.Input<string>;
+    destinationProjectId?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * etag is used for optimistic concurrency control as a way to help prevent simultaneous
      * updates of a backup channel from overwriting each other. It is strongly suggested that
@@ -221,7 +221,7 @@ export interface BackupChannelState {
      * and systems are expected to put that etag in the request to backupChannels.patch or
      * backupChannels.delete to ensure that their change will be applied to the same version of the resource.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Description: A set of custom labels supplied by the user.
      * A list of key->value pairs.
@@ -230,29 +230,29 @@ export interface BackupChannelState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of the Backup Channel.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The full name of the BackupChannel Resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Server generated, unique identifier of UUID format.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -262,7 +262,7 @@ export interface BackupChannelArgs {
     /**
      * User specified descriptive string for this BackupChannel.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The project where Backups are allowed to be stored.
      * The format is `projects/{project}`.
@@ -277,7 +277,7 @@ export interface BackupChannelArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of the Backup Channel.
      */
@@ -285,10 +285,10 @@ export interface BackupChannelArgs {
     /**
      * The full name of the BackupChannel Resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

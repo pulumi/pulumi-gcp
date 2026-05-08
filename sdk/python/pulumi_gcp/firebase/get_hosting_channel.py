@@ -163,8 +163,8 @@ def get_hosting_channel(channel_id: Optional[_builtins.str] = None,
         retained_release_count=pulumi.get(__ret__, 'retained_release_count'),
         site_id=pulumi.get(__ret__, 'site_id'),
         ttl=pulumi.get(__ret__, 'ttl'))
-def get_hosting_channel_output(channel_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               site_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_hosting_channel_output(channel_id: pulumi.Input[Optional[_builtins.str]] = None,
+                               site_id: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostingChannelResult]:
     """
     A Google Cloud Firebase Hosting Channel instance

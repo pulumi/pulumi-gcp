@@ -430,15 +430,15 @@ export interface TunnelDestGroupIamMemberState {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.iap.TunnelDestGroupIamMemberCondition>;
+    condition?: pulumi.Input<inputs.iap.TunnelDestGroupIamMemberCondition | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    destGroup?: pulumi.Input<string>;
+    destGroup?: pulumi.Input<string | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -453,25 +453,25 @@ export interface TunnelDestGroupIamMemberState {
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
      */
-    member?: pulumi.Input<string>;
+    member?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the tunnel group. Must be the same as the network resources in the group.
      * Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
      * region is specified, it is taken from the provider configuration.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.iap.TunnelDestGroupIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -482,7 +482,7 @@ export interface TunnelDestGroupIamMemberArgs {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.iap.TunnelDestGroupIamMemberCondition>;
+    condition?: pulumi.Input<inputs.iap.TunnelDestGroupIamMemberCondition | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
@@ -506,14 +506,14 @@ export interface TunnelDestGroupIamMemberArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the tunnel group. Must be the same as the network resources in the group.
      * Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
      * region is specified, it is taken from the provider configuration.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.iap.TunnelDestGroupIamBinding` can be used per role. Note that custom roles must be of the format

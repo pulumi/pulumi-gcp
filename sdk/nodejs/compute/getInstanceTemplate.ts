@@ -243,22 +243,22 @@ export interface GetInstanceTemplateOutputArgs {
      * If multiple instance templates match, either adjust the filter or specify `mostRecent`.
      * One of `name`, `filter` or `selfLinkUnique` must be provided.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `selfLinkUnique` must be provided.
      */
-    mostRecent?: pulumi.Input<boolean>;
+    mostRecent?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If `project` is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The selfLinkUnique URI of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
      */
-    selfLinkUnique?: pulumi.Input<string>;
+    selfLinkUnique?: pulumi.Input<string | undefined>;
 }

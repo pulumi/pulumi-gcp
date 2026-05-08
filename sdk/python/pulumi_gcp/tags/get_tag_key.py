@@ -181,8 +181,8 @@ def get_tag_key(parent: Optional[_builtins.str] = None,
         parent=pulumi.get(__ret__, 'parent'),
         short_name=pulumi.get(__ret__, 'short_name'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_tag_key_output(parent: Optional[pulumi.Input[_builtins.str]] = None,
-                       short_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_tag_key_output(parent: pulumi.Input[Optional[_builtins.str]] = None,
+                       short_name: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagKeyResult]:
     """
     Get a tag key by org or project `parent` and `short_name`.

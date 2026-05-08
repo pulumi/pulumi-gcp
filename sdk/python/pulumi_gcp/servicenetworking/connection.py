@@ -22,8 +22,8 @@ class ConnectionArgs:
                  network: pulumi.Input[_builtins.str],
                  reserved_peering_ranges: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  service: pulumi.Input[_builtins.str],
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_on_creation_fail: Optional[pulumi.Input[_builtins.bool]] = None):
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_on_creation_fail: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
 
@@ -87,38 +87,38 @@ class ConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
         """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="updateOnCreationFail")
-    def update_on_creation_fail(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def update_on_creation_fail(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
         """
         return pulumi.get(self, "update_on_creation_fail")
 
     @update_on_creation_fail.setter
-    def update_on_creation_fail(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def update_on_creation_fail(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "update_on_creation_fail", value)
 
 
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_on_creation_fail: Optional[pulumi.Input[_builtins.bool]] = None):
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_peering_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_on_creation_fail: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
 
@@ -148,43 +148,43 @@ class _ConnectionState:
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
         """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of VPC network connected with service producers using VPC peering.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def peering(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peering(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The name of the VPC Network Peering connection that was created by the service producer.
         """
         return pulumi.get(self, "peering")
 
     @peering.setter
-    def peering(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peering(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peering", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedPeeringRanges")
-    def reserved_peering_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def reserved_peering_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Named IP address range(s) of PEERING type reserved for
         this service provider. Note that invoking this method with a different range when connection
@@ -193,12 +193,12 @@ class _ConnectionState:
         return pulumi.get(self, "reserved_peering_ranges")
 
     @reserved_peering_ranges.setter
-    def reserved_peering_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def reserved_peering_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "reserved_peering_ranges", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provider peering service that is managing peering connectivity for a
         service provider organization. For Google services that support this functionality it is
@@ -207,19 +207,19 @@ class _ConnectionState:
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter(name="updateOnCreationFail")
-    def update_on_creation_fail(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def update_on_creation_fail(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
         """
         return pulumi.get(self, "update_on_creation_fail")
 
     @update_on_creation_fail.setter
-    def update_on_creation_fail(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def update_on_creation_fail(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "update_on_creation_fail", value)
 
 
@@ -229,11 +229,11 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_on_creation_fail: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_peering_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_on_creation_fail: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages a private VPC connection with a GCP service provider. For more information see
@@ -366,11 +366,11 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_on_creation_fail: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_peering_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_on_creation_fail: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -402,12 +402,12 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            peering: Optional[pulumi.Input[_builtins.str]] = None,
-            reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            service: Optional[pulumi.Input[_builtins.str]] = None,
-            update_on_creation_fail: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Connection':
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            peering: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_peering_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            update_on_creation_fail: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

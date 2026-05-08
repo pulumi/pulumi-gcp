@@ -267,9 +267,9 @@ def get_private_cloud(location: Optional[_builtins.str] = None,
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'),
         vcenters=pulumi.get(__ret__, 'vcenters'))
-def get_private_cloud_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                             name: Optional[pulumi.Input[_builtins.str]] = None,
-                             project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_private_cloud_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                             name: pulumi.Input[Optional[_builtins.str]] = None,
+                             project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateCloudResult]:
     """
     Use this data source to get details about a private cloud resource.

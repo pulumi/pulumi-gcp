@@ -326,109 +326,109 @@ export interface JobState {
     /**
      * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
-    additionalExperiments?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalExperiments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
      */
-    enableStreamingEngine?: pulumi.Input<boolean>;
+    enableStreamingEngine?: pulumi.Input<boolean | undefined>;
     /**
      * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */
-    ipConfiguration?: pulumi.Input<string>;
+    ipConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of this job.
      */
-    jobId?: pulumi.Input<string>;
+    jobId?: pulumi.Input<string | undefined>;
     /**
      * The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The machine type to use for the job.
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
      */
-    maxWorkers?: pulumi.Input<number>;
+    maxWorkers?: pulumi.Input<number | undefined>;
     /**
      * A unique name for the resource, required by Dataflow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network to which VMs will be assigned. If it is not provided, "default" will be used.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
      */
-    onDelete?: pulumi.Input<string>;
+    onDelete?: pulumi.Input<string | undefined>;
     /**
      * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
      * case-sensitive based on the language on which the pipeline is coded, mostly Java.
      * **Note**: do not configure Dataflow options here in parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region in which the created job should run.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
      */
-    skipWaitOnJobTermination?: pulumi.Input<boolean>;
+    skipWaitOnJobTermination?: pulumi.Input<boolean | undefined>;
     /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
      */
-    subnetwork?: pulumi.Input<string>;
+    subnetwork?: pulumi.Input<string | undefined>;
     /**
      * A writeable location on GCS for the Dataflow job to dump its temporary data.
      *
      * - - -
      */
-    tempGcsLocation?: pulumi.Input<string>;
+    tempGcsLocation?: pulumi.Input<string | undefined>;
     /**
      * The GCS path to the Dataflow job template.
      */
-    templateGcsPath?: pulumi.Input<string>;
+    templateGcsPath?: pulumi.Input<string | undefined>;
     /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
      */
-    transformNameMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    transformNameMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The zone in which the created job should run. If it is not provided, the provider zone is used.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -438,71 +438,71 @@ export interface JobArgs {
     /**
      * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
-    additionalExperiments?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalExperiments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
      */
-    enableStreamingEngine?: pulumi.Input<boolean>;
+    enableStreamingEngine?: pulumi.Input<boolean | undefined>;
     /**
      * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */
-    ipConfiguration?: pulumi.Input<string>;
+    ipConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The machine type to use for the job.
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
      */
-    maxWorkers?: pulumi.Input<number>;
+    maxWorkers?: pulumi.Input<number | undefined>;
     /**
      * A unique name for the resource, required by Dataflow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network to which VMs will be assigned. If it is not provided, "default" will be used.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
      */
-    onDelete?: pulumi.Input<string>;
+    onDelete?: pulumi.Input<string | undefined>;
     /**
      * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
      * case-sensitive based on the language on which the pipeline is coded, mostly Java.
      * **Note**: do not configure Dataflow options here in parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region in which the created job should run.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
      */
-    skipWaitOnJobTermination?: pulumi.Input<boolean>;
+    skipWaitOnJobTermination?: pulumi.Input<boolean | undefined>;
     /**
      * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
      */
-    subnetwork?: pulumi.Input<string>;
+    subnetwork?: pulumi.Input<string | undefined>;
     /**
      * A writeable location on GCS for the Dataflow job to dump its temporary data.
      *
@@ -516,9 +516,9 @@ export interface JobArgs {
     /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
      */
-    transformNameMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    transformNameMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The zone in which the created job should run. If it is not provided, the provider zone is used.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

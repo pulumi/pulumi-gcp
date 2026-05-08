@@ -202,44 +202,44 @@ export interface AppleAppState {
      * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      */
-    apiKeyId?: pulumi.Input<string>;
+    apiKeyId?: pulumi.Input<string | undefined>;
     /**
      * The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
      */
-    appStoreId?: pulumi.Input<string>;
+    appStoreId?: pulumi.Input<string | undefined>;
     /**
      * The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
      */
-    bundleId?: pulumi.Input<string>;
+    bundleId?: pulumi.Input<string | undefined>;
     /**
      * (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
      * rather than deleted upon `terraform destroy`. This is useful because the Apple may be
      * serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The user-assigned display name of the App.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified resource name of the App, for example:
      * projects/projectId/iosApps/appId
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Apple Developer Team ID associated with the App in the App Store.
      */
-    teamId?: pulumi.Input<string>;
+    teamId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -251,11 +251,11 @@ export interface AppleAppArgs {
      * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      */
-    apiKeyId?: pulumi.Input<string>;
+    apiKeyId?: pulumi.Input<string | undefined>;
     /**
      * The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
      */
-    appStoreId?: pulumi.Input<string>;
+    appStoreId?: pulumi.Input<string | undefined>;
     /**
      * The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
      */
@@ -265,7 +265,7 @@ export interface AppleAppArgs {
      * rather than deleted upon `terraform destroy`. This is useful because the Apple may be
      * serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The user-assigned display name of the App.
      */
@@ -274,9 +274,9 @@ export interface AppleAppArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Apple Developer Team ID associated with the App in the App Store.
      */
-    teamId?: pulumi.Input<string>;
+    teamId?: pulumi.Input<string | undefined>;
 }

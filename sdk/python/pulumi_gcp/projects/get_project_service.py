@@ -141,8 +141,8 @@ def get_project_service(project: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         service=pulumi.get(__ret__, 'service'))
-def get_project_service_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               service: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_service_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               service: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectServiceResult]:
     """
     Verify the API service for the Google Cloud Platform project to see if it is enabled or not.

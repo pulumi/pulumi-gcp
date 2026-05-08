@@ -141,7 +141,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+//			apigee2, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("apigee.googleapis.com"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -155,7 +155,7 @@ import (
 //				ProjectId:         project.ProjectId,
 //				DisableVpcPeering: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigee,
+//				apigee2,
 //			}))
 //			if err != nil {
 //				return err

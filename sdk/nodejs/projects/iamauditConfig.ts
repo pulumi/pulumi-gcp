@@ -384,20 +384,20 @@ export interface IAMAuditConfigState {
     /**
      * The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
      */
-    auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.projects.IAMAuditConfigAuditLogConfig>[]>;
+    auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.projects.IAMAuditConfigAuditLogConfig>[] | undefined>;
     /**
      * (Computed) The etag of the project's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The project id of the target project. This is not
      * inferred from the provider.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
 }
 
 /**

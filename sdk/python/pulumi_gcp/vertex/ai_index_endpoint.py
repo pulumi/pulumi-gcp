@@ -22,14 +22,14 @@ __all__ = ['AiIndexEndpointArgs', 'AiIndexEndpoint']
 class AiIndexEndpointArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiIndexEndpointEncryptionSpecArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_service_connect_config: Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiIndexEndpointEncryptionSpecArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_service_connect_config: pulumi.Input[Optional['AiIndexEndpointPrivateServiceConnectConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiIndexEndpoint resource.
 
@@ -83,19 +83,19 @@ class AiIndexEndpointArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Index.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiIndexEndpointEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['AiIndexEndpointEncryptionSpecArgs']]:
         """
         Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
         Structure is documented below.
@@ -103,12 +103,12 @@ class AiIndexEndpointArgs:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiIndexEndpointEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['AiIndexEndpointEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels with user-defined metadata to organize your Indexes.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -117,12 +117,12 @@ class AiIndexEndpointArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the index endpoint should be peered.
         Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
@@ -132,12 +132,12 @@ class AiIndexEndpointArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="privateServiceConnectConfig")
-    def private_service_connect_config(self) -> Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs']]:
+    def private_service_connect_config(self) -> pulumi.Input[Optional['AiIndexEndpointPrivateServiceConnectConfigArgs']]:
         """
         Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
         Structure is documented below.
@@ -145,12 +145,12 @@ class AiIndexEndpointArgs:
         return pulumi.get(self, "private_service_connect_config")
 
     @private_service_connect_config.setter
-    def private_service_connect_config(self, value: Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs']]):
+    def private_service_connect_config(self, value: pulumi.Input[Optional['AiIndexEndpointPrivateServiceConnectConfigArgs']]):
         pulumi.set(self, "private_service_connect_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -158,53 +158,53 @@ class AiIndexEndpointArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="publicEndpointEnabled")
-    def public_endpoint_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_endpoint_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the deployed index will be accessible through public endpoint.
         """
         return pulumi.get(self, "public_endpoint_enabled")
 
     @public_endpoint_enabled.setter
-    def public_endpoint_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_endpoint_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_endpoint_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the index endpoint. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _AiIndexEndpointState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiIndexEndpointEncryptionSpecArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_service_connect_config: Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_endpoint_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiIndexEndpointEncryptionSpecArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_service_connect_config: pulumi.Input[Optional['AiIndexEndpointPrivateServiceConnectConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_endpoint_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiIndexEndpoint resources.
 
@@ -269,55 +269,55 @@ class _AiIndexEndpointState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Index.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiIndexEndpointEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['AiIndexEndpointEncryptionSpecArgs']]:
         """
         Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
         Structure is documented below.
@@ -325,24 +325,24 @@ class _AiIndexEndpointState:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiIndexEndpointEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['AiIndexEndpointEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to perform consistent read-modify-write updates.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels with user-defined metadata to organize your Indexes.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -351,24 +351,24 @@ class _AiIndexEndpointState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Index.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the index endpoint should be peered.
         Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
@@ -378,12 +378,12 @@ class _AiIndexEndpointState:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="privateServiceConnectConfig")
-    def private_service_connect_config(self) -> Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs']]:
+    def private_service_connect_config(self) -> pulumi.Input[Optional['AiIndexEndpointPrivateServiceConnectConfigArgs']]:
         """
         Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
         Structure is documented below.
@@ -391,12 +391,12 @@ class _AiIndexEndpointState:
         return pulumi.get(self, "private_service_connect_config")
 
     @private_service_connect_config.setter
-    def private_service_connect_config(self, value: Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs']]):
+    def private_service_connect_config(self, value: pulumi.Input[Optional['AiIndexEndpointPrivateServiceConnectConfigArgs']]):
         pulumi.set(self, "private_service_connect_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -404,36 +404,36 @@ class _AiIndexEndpointState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="publicEndpointDomainName")
-    def public_endpoint_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_endpoint_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
         """
         return pulumi.get(self, "public_endpoint_domain_name")
 
     @public_endpoint_domain_name.setter
-    def public_endpoint_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_endpoint_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_endpoint_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="publicEndpointEnabled")
-    def public_endpoint_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_endpoint_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the deployed index will be accessible through public endpoint.
         """
         return pulumi.get(self, "public_endpoint_enabled")
 
     @public_endpoint_enabled.setter
-    def public_endpoint_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_endpoint_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_endpoint_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -441,31 +441,31 @@ class _AiIndexEndpointState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the index endpoint. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -475,15 +475,15 @@ class AiIndexEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_service_connect_config: Optional[pulumi.Input[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_service_connect_config: pulumi.Input[Optional[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An endpoint indexes are deployed into. An index endpoint can have multiple deployed indexes.
@@ -708,15 +708,15 @@ class AiIndexEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_service_connect_config: Optional[pulumi.Input[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_service_connect_config: pulumi.Input[Optional[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -756,22 +756,22 @@ class AiIndexEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: Optional[pulumi.Input[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            private_service_connect_config: Optional[pulumi.Input[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            public_endpoint_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            public_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiIndexEndpoint':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            private_service_connect_config: pulumi.Input[Optional[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            public_endpoint_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            public_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiIndexEndpoint':
         """
         Get an existing AiIndexEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

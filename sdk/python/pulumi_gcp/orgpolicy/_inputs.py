@@ -34,25 +34,25 @@ __all__ = [
 ]
 
 class PolicyDryRunSpecArgsDict(TypedDict):
-    etag: NotRequired[pulumi.Input[_builtins.str]]
+    etag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
     """
-    inherit_from_parent: NotRequired[pulumi.Input[_builtins.bool]]
+    inherit_from_parent: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
     """
-    reset: NotRequired[pulumi.Input[_builtins.bool]]
+    reset: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
     """
-    rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyDryRunSpecRuleArgsDict']]]]
+    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PolicyDryRunSpecRuleArgs']]]]]
     """
     In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
     Structure is documented below.
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
@@ -61,11 +61,11 @@ class PolicyDryRunSpecArgsDict(TypedDict):
 @pulumi.input_type
 class PolicyDryRunSpecArgs:
     def __init__(__self__, *,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 inherit_from_parent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reset: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyDryRunSpecRuleArgs']]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 inherit_from_parent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reset: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyDryRunSpecRuleArgs']]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] etag: (Output)
                An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
@@ -89,7 +89,7 @@ class PolicyDryRunSpecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
@@ -97,36 +97,36 @@ class PolicyDryRunSpecArgs:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="inheritFromParent")
-    def inherit_from_parent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def inherit_from_parent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
         """
         return pulumi.get(self, "inherit_from_parent")
 
     @inherit_from_parent.setter
-    def inherit_from_parent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def inherit_from_parent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "inherit_from_parent", value)
 
     @_builtins.property
     @pulumi.getter
-    def reset(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reset(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
         """
         return pulumi.get(self, "reset")
 
     @reset.setter
-    def reset(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reset(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reset", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyDryRunSpecRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicyDryRunSpecRuleArgs']]]]:
         """
         In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
         Structure is documented below.
@@ -134,12 +134,12 @@ class PolicyDryRunSpecArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyDryRunSpecRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyDryRunSpecRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
@@ -147,33 +147,33 @@ class PolicyDryRunSpecArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
 class PolicyDryRunSpecRuleArgsDict(TypedDict):
-    allow_all: NotRequired[pulumi.Input[_builtins.str]]
+    allow_all: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
     """
-    condition: NotRequired[pulumi.Input['PolicyDryRunSpecRuleConditionArgsDict']]
+    condition: NotRequired[pulumi.Input[Optional['PolicyDryRunSpecRuleConditionArgs']]]
     """
     A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
     Structure is documented below.
     """
-    deny_all: NotRequired[pulumi.Input[_builtins.str]]
+    deny_all: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
     """
-    enforce: NotRequired[pulumi.Input[_builtins.str]]
+    enforce: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
     """
-    parameters: NotRequired[pulumi.Input[_builtins.str]]
+    parameters: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \\"allowedLocations\\" : [\\"us-east1\\", \\"us-west1\\"], \\"allowAll\\" : true }
     """
-    values: NotRequired[pulumi.Input['PolicyDryRunSpecRuleValuesArgsDict']]
+    values: NotRequired[pulumi.Input[Optional['PolicyDryRunSpecRuleValuesArgs']]]
     """
     List of values to be used for this policy rule. This field can be set only in policies for list constraints.
     Structure is documented below.
@@ -182,12 +182,12 @@ class PolicyDryRunSpecRuleArgsDict(TypedDict):
 @pulumi.input_type
 class PolicyDryRunSpecRuleArgs:
     def __init__(__self__, *,
-                 allow_all: Optional[pulumi.Input[_builtins.str]] = None,
-                 condition: Optional[pulumi.Input['PolicyDryRunSpecRuleConditionArgs']] = None,
-                 deny_all: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input['PolicyDryRunSpecRuleValuesArgs']] = None):
+                 allow_all: pulumi.Input[Optional[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional['PolicyDryRunSpecRuleConditionArgs']] = None,
+                 deny_all: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional['PolicyDryRunSpecRuleValuesArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] allow_all: Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
         :param pulumi.Input['PolicyDryRunSpecRuleConditionArgs'] condition: A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
@@ -213,19 +213,19 @@ class PolicyDryRunSpecRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowAll")
-    def allow_all(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allow_all(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
         """
         return pulumi.get(self, "allow_all")
 
     @allow_all.setter
-    def allow_all(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allow_all(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allow_all", value)
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['PolicyDryRunSpecRuleConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['PolicyDryRunSpecRuleConditionArgs']]:
         """
         A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
         Structure is documented below.
@@ -233,48 +233,48 @@ class PolicyDryRunSpecRuleArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['PolicyDryRunSpecRuleConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['PolicyDryRunSpecRuleConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="denyAll")
-    def deny_all(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deny_all(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
         """
         return pulumi.get(self, "deny_all")
 
     @deny_all.setter
-    def deny_all(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deny_all(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deny_all", value)
 
     @_builtins.property
     @pulumi.getter
-    def enforce(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enforce(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
         """
         return pulumi.get(self, "enforce")
 
     @enforce.setter
-    def enforce(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enforce(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enforce", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \\"allowedLocations\\" : [\\"us-east1\\", \\"us-west1\\"], \\"allowAll\\" : true }
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input['PolicyDryRunSpecRuleValuesArgs']]:
+    def values(self) -> pulumi.Input[Optional['PolicyDryRunSpecRuleValuesArgs']]:
         """
         List of values to be used for this policy rule. This field can be set only in policies for list constraints.
         Structure is documented below.
@@ -282,24 +282,24 @@ class PolicyDryRunSpecRuleArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input['PolicyDryRunSpecRuleValuesArgs']]):
+    def values(self, value: pulumi.Input[Optional['PolicyDryRunSpecRuleValuesArgs']]):
         pulumi.set(self, "values", value)
 
 
 class PolicyDryRunSpecRuleConditionArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
     """
-    expression: NotRequired[pulumi.Input[_builtins.str]]
+    expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
     """
@@ -307,10 +307,10 @@ class PolicyDryRunSpecRuleConditionArgsDict(TypedDict):
 @pulumi.input_type
 class PolicyDryRunSpecRuleConditionArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
@@ -328,59 +328,59 @@ class PolicyDryRunSpecRuleConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Textual representation of an expression in Common Expression Language syntax.
         """
         return pulumi.get(self, "expression")
 
     @expression.setter
-    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expression", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
 class PolicyDryRunSpecRuleValuesArgsDict(TypedDict):
-    allowed_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of values allowed at this resource.
     """
-    denied_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    denied_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of values denied at this resource.
     """
@@ -388,8 +388,8 @@ class PolicyDryRunSpecRuleValuesArgsDict(TypedDict):
 @pulumi.input_type
 class PolicyDryRunSpecRuleValuesArgs:
     def __init__(__self__, *,
-                 allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 denied_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allowed_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 denied_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_values: List of values allowed at this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] denied_values: List of values denied at this resource.
@@ -401,49 +401,49 @@ class PolicyDryRunSpecRuleValuesArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedValues")
-    def allowed_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of values allowed at this resource.
         """
         return pulumi.get(self, "allowed_values")
 
     @allowed_values.setter
-    def allowed_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_values", value)
 
     @_builtins.property
     @pulumi.getter(name="deniedValues")
-    def denied_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def denied_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of values denied at this resource.
         """
         return pulumi.get(self, "denied_values")
 
     @denied_values.setter
-    def denied_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def denied_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "denied_values", value)
 
 
 class PolicySpecArgsDict(TypedDict):
-    etag: NotRequired[pulumi.Input[_builtins.str]]
+    etag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
     """
-    inherit_from_parent: NotRequired[pulumi.Input[_builtins.bool]]
+    inherit_from_parent: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
     """
-    reset: NotRequired[pulumi.Input[_builtins.bool]]
+    reset: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
     """
-    rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicySpecRuleArgsDict']]]]
+    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PolicySpecRuleArgs']]]]]
     """
     In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
     Structure is documented below.
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
@@ -452,11 +452,11 @@ class PolicySpecArgsDict(TypedDict):
 @pulumi.input_type
 class PolicySpecArgs:
     def __init__(__self__, *,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 inherit_from_parent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reset: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicySpecRuleArgs']]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 inherit_from_parent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reset: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['PolicySpecRuleArgs']]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] etag: (Output)
                An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
@@ -480,7 +480,7 @@ class PolicySpecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
@@ -488,36 +488,36 @@ class PolicySpecArgs:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="inheritFromParent")
-    def inherit_from_parent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def inherit_from_parent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
         """
         return pulumi.get(self, "inherit_from_parent")
 
     @inherit_from_parent.setter
-    def inherit_from_parent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def inherit_from_parent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "inherit_from_parent", value)
 
     @_builtins.property
     @pulumi.getter
-    def reset(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reset(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
         """
         return pulumi.get(self, "reset")
 
     @reset.setter
-    def reset(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reset(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reset", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicySpecRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicySpecRuleArgs']]]]:
         """
         In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
         Structure is documented below.
@@ -525,12 +525,12 @@ class PolicySpecArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicySpecRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PolicySpecRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
@@ -538,33 +538,33 @@ class PolicySpecArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
 class PolicySpecRuleArgsDict(TypedDict):
-    allow_all: NotRequired[pulumi.Input[_builtins.str]]
+    allow_all: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
     """
-    condition: NotRequired[pulumi.Input['PolicySpecRuleConditionArgsDict']]
+    condition: NotRequired[pulumi.Input[Optional['PolicySpecRuleConditionArgs']]]
     """
     A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
     Structure is documented below.
     """
-    deny_all: NotRequired[pulumi.Input[_builtins.str]]
+    deny_all: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
     """
-    enforce: NotRequired[pulumi.Input[_builtins.str]]
+    enforce: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
     """
-    parameters: NotRequired[pulumi.Input[_builtins.str]]
+    parameters: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \\"allowedLocations\\" : [\\"us-east1\\", \\"us-west1\\"], \\"allowAll\\" : true }
     """
-    values: NotRequired[pulumi.Input['PolicySpecRuleValuesArgsDict']]
+    values: NotRequired[pulumi.Input[Optional['PolicySpecRuleValuesArgs']]]
     """
     List of values to be used for this policy rule. This field can be set only in policies for list constraints.
     Structure is documented below.
@@ -573,12 +573,12 @@ class PolicySpecRuleArgsDict(TypedDict):
 @pulumi.input_type
 class PolicySpecRuleArgs:
     def __init__(__self__, *,
-                 allow_all: Optional[pulumi.Input[_builtins.str]] = None,
-                 condition: Optional[pulumi.Input['PolicySpecRuleConditionArgs']] = None,
-                 deny_all: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input['PolicySpecRuleValuesArgs']] = None):
+                 allow_all: pulumi.Input[Optional[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional['PolicySpecRuleConditionArgs']] = None,
+                 deny_all: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional['PolicySpecRuleValuesArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] allow_all: Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
         :param pulumi.Input['PolicySpecRuleConditionArgs'] condition: A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
@@ -604,19 +604,19 @@ class PolicySpecRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowAll")
-    def allow_all(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allow_all(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
         """
         return pulumi.get(self, "allow_all")
 
     @allow_all.setter
-    def allow_all(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allow_all(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allow_all", value)
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['PolicySpecRuleConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['PolicySpecRuleConditionArgs']]:
         """
         A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
         Structure is documented below.
@@ -624,48 +624,48 @@ class PolicySpecRuleArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['PolicySpecRuleConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['PolicySpecRuleConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="denyAll")
-    def deny_all(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deny_all(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
         """
         return pulumi.get(self, "deny_all")
 
     @deny_all.setter
-    def deny_all(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deny_all(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deny_all", value)
 
     @_builtins.property
     @pulumi.getter
-    def enforce(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enforce(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
         """
         return pulumi.get(self, "enforce")
 
     @enforce.setter
-    def enforce(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enforce(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enforce", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \\"allowedLocations\\" : [\\"us-east1\\", \\"us-west1\\"], \\"allowAll\\" : true }
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input['PolicySpecRuleValuesArgs']]:
+    def values(self) -> pulumi.Input[Optional['PolicySpecRuleValuesArgs']]:
         """
         List of values to be used for this policy rule. This field can be set only in policies for list constraints.
         Structure is documented below.
@@ -673,24 +673,24 @@ class PolicySpecRuleArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input['PolicySpecRuleValuesArgs']]):
+    def values(self, value: pulumi.Input[Optional['PolicySpecRuleValuesArgs']]):
         pulumi.set(self, "values", value)
 
 
 class PolicySpecRuleConditionArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
     """
-    expression: NotRequired[pulumi.Input[_builtins.str]]
+    expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
     """
@@ -698,10 +698,10 @@ class PolicySpecRuleConditionArgsDict(TypedDict):
 @pulumi.input_type
 class PolicySpecRuleConditionArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
@@ -719,59 +719,59 @@ class PolicySpecRuleConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Textual representation of an expression in Common Expression Language syntax.
         """
         return pulumi.get(self, "expression")
 
     @expression.setter
-    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expression", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
 class PolicySpecRuleValuesArgsDict(TypedDict):
-    allowed_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of values allowed at this resource.
     """
-    denied_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    denied_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of values denied at this resource.
     """
@@ -779,8 +779,8 @@ class PolicySpecRuleValuesArgsDict(TypedDict):
 @pulumi.input_type
 class PolicySpecRuleValuesArgs:
     def __init__(__self__, *,
-                 allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 denied_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allowed_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 denied_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_values: List of values allowed at this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] denied_values: List of values denied at this resource.
@@ -792,26 +792,26 @@ class PolicySpecRuleValuesArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedValues")
-    def allowed_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of values allowed at this resource.
         """
         return pulumi.get(self, "allowed_values")
 
     @allowed_values.setter
-    def allowed_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_values", value)
 
     @_builtins.property
     @pulumi.getter(name="deniedValues")
-    def denied_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def denied_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of values denied at this resource.
         """
         return pulumi.get(self, "denied_values")
 
     @denied_values.setter
-    def denied_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def denied_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "denied_values", value)
 
 

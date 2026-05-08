@@ -22,11 +22,11 @@ __all__ = ['MembershipArgs', 'Membership']
 class MembershipArgs:
     def __init__(__self__, *,
                  membership_id: pulumi.Input[_builtins.str],
-                 authority: Optional[pulumi.Input['MembershipAuthorityArgs']] = None,
-                 endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 authority: pulumi.Input[Optional['MembershipAuthorityArgs']] = None,
+                 endpoint: pulumi.Input[Optional['MembershipEndpointArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Membership resource.
 
@@ -72,7 +72,7 @@ class MembershipArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authority(self) -> Optional[pulumi.Input['MembershipAuthorityArgs']]:
+    def authority(self) -> pulumi.Input[Optional['MembershipAuthorityArgs']]:
         """
         Authority encodes how Google will recognize identities from this Membership.
         See the workload identity documentation for more details:
@@ -82,12 +82,12 @@ class MembershipArgs:
         return pulumi.get(self, "authority")
 
     @authority.setter
-    def authority(self, value: Optional[pulumi.Input['MembershipAuthorityArgs']]):
+    def authority(self, value: pulumi.Input[Optional['MembershipAuthorityArgs']]):
         pulumi.set(self, "authority", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input['MembershipEndpointArgs']]:
+    def endpoint(self) -> pulumi.Input[Optional['MembershipEndpointArgs']]:
         """
         If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
         Structure is documented below.
@@ -95,12 +95,12 @@ class MembershipArgs:
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input['MembershipEndpointArgs']]):
+    def endpoint(self, value: pulumi.Input[Optional['MembershipEndpointArgs']]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this membership.
 
@@ -110,12 +110,12 @@ class MembershipArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location of the membership.
         The default value is `global`.
@@ -123,12 +123,12 @@ class MembershipArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -136,22 +136,22 @@ class MembershipArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _MembershipState:
     def __init__(__self__, *,
-                 authority: Optional[pulumi.Input['MembershipAuthorityArgs']] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 membership_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 authority: pulumi.Input[Optional['MembershipAuthorityArgs']] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 endpoint: pulumi.Input[Optional['MembershipEndpointArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 membership_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Membership resources.
 
@@ -196,7 +196,7 @@ class _MembershipState:
 
     @_builtins.property
     @pulumi.getter
-    def authority(self) -> Optional[pulumi.Input['MembershipAuthorityArgs']]:
+    def authority(self) -> pulumi.Input[Optional['MembershipAuthorityArgs']]:
         """
         Authority encodes how Google will recognize identities from this Membership.
         See the workload identity documentation for more details:
@@ -206,24 +206,24 @@ class _MembershipState:
         return pulumi.get(self, "authority")
 
     @authority.setter
-    def authority(self, value: Optional[pulumi.Input['MembershipAuthorityArgs']]):
+    def authority(self, value: pulumi.Input[Optional['MembershipAuthorityArgs']]):
         pulumi.set(self, "authority", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input['MembershipEndpointArgs']]:
+    def endpoint(self) -> pulumi.Input[Optional['MembershipEndpointArgs']]:
         """
         If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
         Structure is documented below.
@@ -231,12 +231,12 @@ class _MembershipState:
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input['MembershipEndpointArgs']]):
+    def endpoint(self, value: pulumi.Input[Optional['MembershipEndpointArgs']]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this membership.
 
@@ -246,12 +246,12 @@ class _MembershipState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location of the membership.
         The default value is `global`.
@@ -259,36 +259,36 @@ class _MembershipState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="membershipId")
-    def membership_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def membership_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client-provided identifier of the membership.
         """
         return pulumi.get(self, "membership_id")
 
     @membership_id.setter
-    def membership_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def membership_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "membership_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the membership.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -296,12 +296,12 @@ class _MembershipState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -309,7 +309,7 @@ class _MembershipState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
 
@@ -319,12 +319,12 @@ class Membership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authority: Optional[pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
-                 endpoint: Optional[pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 membership_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 authority: pulumi.Input[Optional[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
+                 endpoint: pulumi.Input[Optional[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 membership_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Membership contains information about a member cluster.
@@ -569,12 +569,12 @@ class Membership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authority: Optional[pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
-                 endpoint: Optional[pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 membership_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 authority: pulumi.Input[Optional[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
+                 endpoint: pulumi.Input[Optional[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 membership_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -607,15 +607,15 @@ class Membership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authority: Optional[pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            endpoint: Optional[pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            membership_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Membership':
+            authority: pulumi.Input[Optional[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            endpoint: pulumi.Input[Optional[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            membership_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Membership':
         """
         Get an existing Membership resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

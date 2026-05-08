@@ -22,26 +22,26 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]] = None,
-                 crypto_key_config: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']] = None,
-                 dataproc_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_rbac: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_stackdriver_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_stackdriver_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 event_publish_config: Optional[pulumi.Input['InstanceEventPublishConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input['InstanceNetworkConfigArgs']] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 patch_revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]] = None,
+                 crypto_key_config: pulumi.Input[Optional['InstanceCryptoKeyConfigArgs']] = None,
+                 dataproc_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_rbac: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_stackdriver_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_stackdriver_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 event_publish_config: pulumi.Input[Optional['InstanceEventPublishConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional['InstanceNetworkConfigArgs']] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 patch_revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -159,7 +159,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]]:
+    def accelerators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]]:
         """
         List of accelerators enabled for this CDF instance.
         If accelerators are enabled it is possible a permadiff will be created with the Options field.
@@ -169,12 +169,12 @@ class InstanceArgs:
         return pulumi.get(self, "accelerators")
 
     @accelerators.setter
-    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]]):
+    def accelerators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]]):
         pulumi.set(self, "accelerators", value)
 
     @_builtins.property
     @pulumi.getter(name="cryptoKeyConfig")
-    def crypto_key_config(self) -> Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']]:
+    def crypto_key_config(self) -> pulumi.Input[Optional['InstanceCryptoKeyConfigArgs']]:
         """
         The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
         Structure is documented below.
@@ -182,84 +182,84 @@ class InstanceArgs:
         return pulumi.get(self, "crypto_key_config")
 
     @crypto_key_config.setter
-    def crypto_key_config(self, value: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']]):
+    def crypto_key_config(self, value: pulumi.Input[Optional['InstanceCryptoKeyConfigArgs']]):
         pulumi.set(self, "crypto_key_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dataprocServiceAccount")
-    def dataproc_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataproc_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         """
         return pulumi.get(self, "dataproc_service_account")
 
     @dataproc_service_account.setter
-    def dataproc_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataproc_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataproc_service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the instance.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name for an instance.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="enableRbac")
-    def enable_rbac(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_rbac(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Option to enable granular role-based access control.
         """
         return pulumi.get(self, "enable_rbac")
 
     @enable_rbac.setter
-    def enable_rbac(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_rbac(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_rbac", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStackdriverLogging")
-    def enable_stackdriver_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_stackdriver_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Option to enable Stackdriver Logging.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
 
     @enable_stackdriver_logging.setter
-    def enable_stackdriver_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_stackdriver_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_stackdriver_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStackdriverMonitoring")
-    def enable_stackdriver_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_stackdriver_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Option to enable Stackdriver Monitoring.
         """
         return pulumi.get(self, "enable_stackdriver_monitoring")
 
     @enable_stackdriver_monitoring.setter
-    def enable_stackdriver_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_stackdriver_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_stackdriver_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="eventPublishConfig")
-    def event_publish_config(self) -> Optional[pulumi.Input['InstanceEventPublishConfigArgs']]:
+    def event_publish_config(self) -> pulumi.Input[Optional['InstanceEventPublishConfigArgs']]:
         """
         Option to enable and pass metadata for event publishing.
         Structure is documented below.
@@ -267,12 +267,12 @@ class InstanceArgs:
         return pulumi.get(self, "event_publish_config")
 
     @event_publish_config.setter
-    def event_publish_config(self, value: Optional[pulumi.Input['InstanceEventPublishConfigArgs']]):
+    def event_publish_config(self, value: pulumi.Input[Optional['InstanceEventPublishConfigArgs']]):
         pulumi.set(self, "event_publish_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The resource labels for instance to use to annotate any related underlying resources,
         such as Compute Engine VMs.
@@ -283,24 +283,24 @@ class InstanceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance or a fully qualified identifier for the instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['InstanceNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['InstanceNetworkConfigArgs']]:
         """
         Network configuration options. These are required when a private Data Fusion instance is to be created.
         Structure is documented below.
@@ -308,36 +308,36 @@ class InstanceArgs:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['InstanceNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['InstanceNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options used to configure the behavior of Data Fusion instance.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="patchRevision")
-    def patch_revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def patch_revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Current patch revision of the Data Fusion.
         """
         return pulumi.get(self, "patch_revision")
 
     @patch_revision.setter
-    def patch_revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def patch_revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "patch_revision", value)
 
     @_builtins.property
     @pulumi.getter(name="privateInstance")
-    def private_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def private_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the Data Fusion instance should be private. If set to
         true, all Data Fusion nodes will have private IP addresses and will not be
@@ -346,12 +346,12 @@ class InstanceArgs:
         return pulumi.get(self, "private_instance")
 
     @private_instance.setter
-    def private_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def private_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "private_instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -359,24 +359,24 @@ class InstanceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the Data Fusion instance.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of resource manager tags.
         Resource manager tag keys and values have the same definition as resource manager tags.
@@ -386,70 +386,70 @@ class InstanceArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Current version of the Data Fusion.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]] = None,
-                 api_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 crypto_key_config: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']] = None,
-                 dataproc_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enable_rbac: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_stackdriver_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_stackdriver_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 event_publish_config: Optional[pulumi.Input['InstanceEventPublishConfigArgs']] = None,
-                 gcs_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input['InstanceNetworkConfigArgs']] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 p4_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 patch_revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tenant_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]] = None,
+                 api_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 crypto_key_config: pulumi.Input[Optional['InstanceCryptoKeyConfigArgs']] = None,
+                 dataproc_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_rbac: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_stackdriver_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_stackdriver_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 event_publish_config: pulumi.Input[Optional['InstanceEventPublishConfigArgs']] = None,
+                 gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional['InstanceNetworkConfigArgs']] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 p4_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 patch_revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tenant_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -593,7 +593,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter
-    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]]:
+    def accelerators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]]:
         """
         List of accelerators enabled for this CDF instance.
         If accelerators are enabled it is possible a permadiff will be created with the Options field.
@@ -603,36 +603,36 @@ class _InstanceState:
         return pulumi.get(self, "accelerators")
 
     @accelerators.setter
-    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]]):
+    def accelerators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]]):
         pulumi.set(self, "accelerators", value)
 
     @_builtins.property
     @pulumi.getter(name="apiEndpoint")
-    def api_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Endpoint on which the REST APIs is accessible.
         """
         return pulumi.get(self, "api_endpoint")
 
     @api_endpoint.setter
-    def api_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="cryptoKeyConfig")
-    def crypto_key_config(self) -> Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']]:
+    def crypto_key_config(self) -> pulumi.Input[Optional['InstanceCryptoKeyConfigArgs']]:
         """
         The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
         Structure is documented below.
@@ -640,96 +640,96 @@ class _InstanceState:
         return pulumi.get(self, "crypto_key_config")
 
     @crypto_key_config.setter
-    def crypto_key_config(self, value: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']]):
+    def crypto_key_config(self, value: pulumi.Input[Optional['InstanceCryptoKeyConfigArgs']]):
         pulumi.set(self, "crypto_key_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dataprocServiceAccount")
-    def dataproc_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataproc_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         """
         return pulumi.get(self, "dataproc_service_account")
 
     @dataproc_service_account.setter
-    def dataproc_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataproc_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataproc_service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the instance.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name for an instance.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="enableRbac")
-    def enable_rbac(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_rbac(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Option to enable granular role-based access control.
         """
         return pulumi.get(self, "enable_rbac")
 
     @enable_rbac.setter
-    def enable_rbac(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_rbac(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_rbac", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStackdriverLogging")
-    def enable_stackdriver_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_stackdriver_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Option to enable Stackdriver Logging.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
 
     @enable_stackdriver_logging.setter
-    def enable_stackdriver_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_stackdriver_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_stackdriver_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStackdriverMonitoring")
-    def enable_stackdriver_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_stackdriver_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Option to enable Stackdriver Monitoring.
         """
         return pulumi.get(self, "enable_stackdriver_monitoring")
 
     @enable_stackdriver_monitoring.setter
-    def enable_stackdriver_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_stackdriver_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_stackdriver_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="eventPublishConfig")
-    def event_publish_config(self) -> Optional[pulumi.Input['InstanceEventPublishConfigArgs']]:
+    def event_publish_config(self) -> pulumi.Input[Optional['InstanceEventPublishConfigArgs']]:
         """
         Option to enable and pass metadata for event publishing.
         Structure is documented below.
@@ -737,24 +737,24 @@ class _InstanceState:
         return pulumi.get(self, "event_publish_config")
 
     @event_publish_config.setter
-    def event_publish_config(self, value: Optional[pulumi.Input['InstanceEventPublishConfigArgs']]):
+    def event_publish_config(self, value: pulumi.Input[Optional['InstanceEventPublishConfigArgs']]):
         pulumi.set(self, "event_publish_config", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsBucket")
-    def gcs_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcs_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud Storage bucket generated by Data Fusion in the customer project.
         """
         return pulumi.get(self, "gcs_bucket")
 
     @gcs_bucket.setter
-    def gcs_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcs_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcs_bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The resource labels for instance to use to annotate any related underlying resources,
         such as Compute Engine VMs.
@@ -765,24 +765,24 @@ class _InstanceState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance or a fully qualified identifier for the instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['InstanceNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['InstanceNetworkConfigArgs']]:
         """
         Network configuration options. These are required when a private Data Fusion instance is to be created.
         Structure is documented below.
@@ -790,48 +790,48 @@ class _InstanceState:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['InstanceNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['InstanceNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options used to configure the behavior of Data Fusion instance.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="p4ServiceAccount")
-    def p4_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def p4_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         P4 service account for the customer project.
         """
         return pulumi.get(self, "p4_service_account")
 
     @p4_service_account.setter
-    def p4_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def p4_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "p4_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="patchRevision")
-    def patch_revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def patch_revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Current patch revision of the Data Fusion.
         """
         return pulumi.get(self, "patch_revision")
 
     @patch_revision.setter
-    def patch_revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def patch_revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "patch_revision", value)
 
     @_builtins.property
     @pulumi.getter(name="privateInstance")
-    def private_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def private_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the Data Fusion instance should be private. If set to
         true, all Data Fusion nodes will have private IP addresses and will not be
@@ -840,12 +840,12 @@ class _InstanceState:
         return pulumi.get(self, "private_instance")
 
     @private_instance.setter
-    def private_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def private_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "private_instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -853,12 +853,12 @@ class _InstanceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -866,25 +866,25 @@ class _InstanceState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the Data Fusion instance.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
     @_utilities.deprecated("""`service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Beta, Deprecated)
         Service account which will be used to access resources in the customer project.
@@ -892,24 +892,24 @@ class _InstanceState:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceEndpoint")
-    def service_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Endpoint on which the Data Fusion UI and REST APIs are accessible.
         """
         return pulumi.get(self, "service_endpoint")
 
     @service_endpoint.setter
-    def service_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of this Data Fusion instance.
         - CREATING: Instance is being created
@@ -922,24 +922,24 @@ class _InstanceState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateMessage")
-    def state_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional information about the current state of this Data Fusion instance if available.
         """
         return pulumi.get(self, "state_message")
 
     @state_message.setter
-    def state_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state_message", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of resource manager tags.
         Resource manager tag keys and values have the same definition as resource manager tags.
@@ -949,24 +949,24 @@ class _InstanceState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantProjectId")
-    def tenant_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the tenant project.
         """
         return pulumi.get(self, "tenant_project_id")
 
     @tenant_project_id.setter
-    def tenant_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents the type of Data Fusion instance. Each type is configured with
         the default settings for processing and memory.
@@ -983,43 +983,43 @@ class _InstanceState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Current version of the Data Fusion.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -1029,27 +1029,27 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceAcceleratorArgs', 'InstanceAcceleratorArgsDict']]]]] = None,
-                 crypto_key_config: Optional[pulumi.Input[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']]] = None,
-                 dataproc_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_rbac: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_stackdriver_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_stackdriver_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 event_publish_config: Optional[pulumi.Input[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 patch_revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceAcceleratorArgs', 'InstanceAcceleratorArgsDict']]]]] = None,
+                 crypto_key_config: pulumi.Input[Optional[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']]] = None,
+                 dataproc_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_rbac: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_stackdriver_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_stackdriver_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 event_publish_config: pulumi.Input[Optional[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 patch_revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a Data Fusion instance.
@@ -1518,27 +1518,27 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceAcceleratorArgs', 'InstanceAcceleratorArgsDict']]]]] = None,
-                 crypto_key_config: Optional[pulumi.Input[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']]] = None,
-                 dataproc_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_rbac: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_stackdriver_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_stackdriver_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 event_publish_config: Optional[pulumi.Input[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 patch_revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceAcceleratorArgs', 'InstanceAcceleratorArgsDict']]]]] = None,
+                 crypto_key_config: pulumi.Input[Optional[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']]] = None,
+                 dataproc_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_rbac: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_stackdriver_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_stackdriver_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 event_publish_config: pulumi.Input[Optional[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 patch_revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1595,39 +1595,39 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceAcceleratorArgs', 'InstanceAcceleratorArgsDict']]]]] = None,
-            api_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            crypto_key_config: Optional[pulumi.Input[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']]] = None,
-            dataproc_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            enable_rbac: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_stackdriver_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_stackdriver_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-            event_publish_config: Optional[pulumi.Input[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict']]] = None,
-            gcs_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_config: Optional[pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
-            options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            p4_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            patch_revision: Optional[pulumi.Input[_builtins.str]] = None,
-            private_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            service_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            state_message: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            tenant_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceAcceleratorArgs', 'InstanceAcceleratorArgsDict']]]]] = None,
+            api_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            crypto_key_config: pulumi.Input[Optional[Union['InstanceCryptoKeyConfigArgs', 'InstanceCryptoKeyConfigArgsDict']]] = None,
+            dataproc_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_rbac: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_stackdriver_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_stackdriver_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+            event_publish_config: pulumi.Input[Optional[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict']]] = None,
+            gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
+            options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            p4_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            patch_revision: pulumi.Input[Optional[_builtins.str]] = None,
+            private_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            service_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_message: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tenant_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

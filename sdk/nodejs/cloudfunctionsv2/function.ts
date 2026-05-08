@@ -1067,73 +1067,73 @@ export interface FunctionState {
      * from the given source.
      * Structure is documented below.
      */
-    buildConfig?: pulumi.Input<inputs.cloudfunctionsv2.FunctionBuildConfig>;
+    buildConfig?: pulumi.Input<inputs.cloudfunctionsv2.FunctionBuildConfig | undefined>;
     /**
      * User-provided description of a function.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The environment the function is hosted on.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * An Eventarc trigger managed by Google Cloud Functions that fires events in
      * response to a condition in another service.
      * Structure is documented below.
      */
-    eventTrigger?: pulumi.Input<inputs.cloudfunctionsv2.FunctionEventTrigger>;
+    eventTrigger?: pulumi.Input<inputs.cloudfunctionsv2.FunctionEventTrigger | undefined>;
     /**
      * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
      * It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs associated with this Cloud Function.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of this cloud function.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Describes the Service being deployed.
      * Structure is documented below.
      */
-    serviceConfig?: pulumi.Input<inputs.cloudfunctionsv2.FunctionServiceConfig>;
+    serviceConfig?: pulumi.Input<inputs.cloudfunctionsv2.FunctionServiceConfig | undefined>;
     /**
      * Describes the current state of the function.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The last update timestamp of a Cloud Function.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. The deployed url for the function.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1145,29 +1145,29 @@ export interface FunctionArgs {
      * from the given source.
      * Structure is documented below.
      */
-    buildConfig?: pulumi.Input<inputs.cloudfunctionsv2.FunctionBuildConfig>;
+    buildConfig?: pulumi.Input<inputs.cloudfunctionsv2.FunctionBuildConfig | undefined>;
     /**
      * User-provided description of a function.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * An Eventarc trigger managed by Google Cloud Functions that fires events in
      * response to a condition in another service.
      * Structure is documented below.
      */
-    eventTrigger?: pulumi.Input<inputs.cloudfunctionsv2.FunctionEventTrigger>;
+    eventTrigger?: pulumi.Input<inputs.cloudfunctionsv2.FunctionEventTrigger | undefined>;
     /**
      * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
      * It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs associated with this Cloud Function.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of this cloud function.
      */
@@ -1176,15 +1176,15 @@ export interface FunctionArgs {
      * A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Describes the Service being deployed.
      * Structure is documented below.
      */
-    serviceConfig?: pulumi.Input<inputs.cloudfunctionsv2.FunctionServiceConfig>;
+    serviceConfig?: pulumi.Input<inputs.cloudfunctionsv2.FunctionServiceConfig | undefined>;
 }

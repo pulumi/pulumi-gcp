@@ -114,8 +114,8 @@ def get_service_consumers_iam_policy(consumer_project: Optional[_builtins.str] =
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         service_name=pulumi.get(__ret__, 'service_name'))
-def get_service_consumers_iam_policy_output(consumer_project: Optional[pulumi.Input[_builtins.str]] = None,
-                                            service_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_service_consumers_iam_policy_output(consumer_project: pulumi.Input[Optional[_builtins.str]] = None,
+                                            service_name: pulumi.Input[Optional[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceConsumersIamPolicyResult]:
     """
     Retrieves the current IAM policy data for serviceconsumers

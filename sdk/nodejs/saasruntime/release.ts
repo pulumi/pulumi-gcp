@@ -290,7 +290,7 @@ export interface ReleaseState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Blueprints are OCI Images that contain all of the artifacts needed to
      * provision a unit. Metadata such as, type of the engine used to actuate the
@@ -299,78 +299,78 @@ export interface ReleaseState {
      * path to Artifact Registry (eg. us-east1-docker.pkg.dev).
      * Structure is documented below.
      */
-    blueprint?: pulumi.Input<inputs.saasruntime.ReleaseBlueprint>;
+    blueprint?: pulumi.Input<inputs.saasruntime.ReleaseBlueprint | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An opaque value that uniquely identifies a version or
      * generation of a resource. It can be used to confirm that the client
      * and server agree on the ordering of a resource being written.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Mapping of input variables to default values. Maximum 100
      * Structure is documented below.
      */
-    inputVariableDefaults?: pulumi.Input<pulumi.Input<inputs.saasruntime.ReleaseInputVariableDefault>[]>;
+    inputVariableDefaults?: pulumi.Input<pulumi.Input<inputs.saasruntime.ReleaseInputVariableDefault>[] | undefined>;
     /**
      * List of input variables declared on the blueprint and can be present with
      * their values on the unit spec
      * Structure is documented below.
      */
-    inputVariables?: pulumi.Input<pulumi.Input<inputs.saasruntime.ReleaseInputVariable>[]>;
+    inputVariables?: pulumi.Input<pulumi.Input<inputs.saasruntime.ReleaseInputVariable>[] | undefined>;
     /**
      * The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name (full URI of the resource) following the standard naming
      * scheme:
      * "projects/{project}/locations/{location}/releases/{release}"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of output variables declared on the blueprint and can be present with
      * their values on the unit status
      * Structure is documented below.
      */
-    outputVariables?: pulumi.Input<pulumi.Input<inputs.saasruntime.ReleaseOutputVariable>[]>;
+    outputVariables?: pulumi.Input<pulumi.Input<inputs.saasruntime.ReleaseOutputVariable>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID value for the new release.
      */
-    releaseId?: pulumi.Input<string>;
+    releaseId?: pulumi.Input<string | undefined>;
     /**
      * Set of requirements to be fulfilled on the Unit when using this Release.
      * Structure is documented below.
      */
-    releaseRequirements?: pulumi.Input<inputs.saasruntime.ReleaseReleaseRequirements>;
+    releaseRequirements?: pulumi.Input<inputs.saasruntime.ReleaseReleaseRequirements | undefined>;
     /**
      * The unique identifier of the resource. UID is unique in the time
      * and space for this resource within the scope of the service. It is
@@ -378,18 +378,18 @@ export interface ReleaseState {
      * and must not be changed. UID is used to uniquely identify resources
      * with resource name reuses. This should be a UUID4.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Reference to the UnitKind this Release corresponds to (required and
      * immutable once created).
      */
-    unitKind?: pulumi.Input<string>;
+    unitKind?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was last updated. Any
      * change to the resource made by users must refresh this value.
      * Changes to a resource made by the service should refresh this value.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -404,7 +404,7 @@ export interface ReleaseArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Blueprints are OCI Images that contain all of the artifacts needed to
      * provision a unit. Metadata such as, type of the engine used to actuate the
@@ -413,19 +413,19 @@ export interface ReleaseArgs {
      * path to Artifact Registry (eg. us-east1-docker.pkg.dev).
      * Structure is documented below.
      */
-    blueprint?: pulumi.Input<inputs.saasruntime.ReleaseBlueprint>;
+    blueprint?: pulumi.Input<inputs.saasruntime.ReleaseBlueprint | undefined>;
     /**
      * Mapping of input variables to default values. Maximum 100
      * Structure is documented below.
      */
-    inputVariableDefaults?: pulumi.Input<pulumi.Input<inputs.saasruntime.ReleaseInputVariableDefault>[]>;
+    inputVariableDefaults?: pulumi.Input<pulumi.Input<inputs.saasruntime.ReleaseInputVariableDefault>[] | undefined>;
     /**
      * The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -434,7 +434,7 @@ export interface ReleaseArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID value for the new release.
      */
@@ -443,7 +443,7 @@ export interface ReleaseArgs {
      * Set of requirements to be fulfilled on the Unit when using this Release.
      * Structure is documented below.
      */
-    releaseRequirements?: pulumi.Input<inputs.saasruntime.ReleaseReleaseRequirements>;
+    releaseRequirements?: pulumi.Input<inputs.saasruntime.ReleaseReleaseRequirements | undefined>;
     /**
      * Reference to the UnitKind this Release corresponds to (required and
      * immutable once created).

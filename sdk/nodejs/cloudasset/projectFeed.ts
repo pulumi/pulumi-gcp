@@ -211,7 +211,7 @@ export interface ProjectFeedState {
      * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
      * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
      */
-    assetNames?: pulumi.Input<pulumi.Input<string>[]>;
+    assetNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of types of the assets to receive updates. You must specify either or both of assetNames
      * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
@@ -219,14 +219,14 @@ export interface ProjectFeedState {
      * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
      * supported asset types.
      */
-    assetTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    assetTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The project whose identity will be used when sending messages to the
      * destination pubsub topic. It also specifies the project for API
      * enablement check, quota, and billing. If not specified, the resource's
      * project will be used.
      */
-    billingProject?: pulumi.Input<string>;
+    billingProject?: pulumi.Input<string | undefined>;
     /**
      * A condition which determines whether an asset update should be published. If specified, an asset
      * will be returned only when the expression evaluates to true. When set, expression field
@@ -235,30 +235,30 @@ export interface ProjectFeedState {
      * condition are optional.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.cloudasset.ProjectFeedCondition>;
+    condition?: pulumi.Input<inputs.cloudasset.ProjectFeedCondition | undefined>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
      * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
      */
-    feedId?: pulumi.Input<string>;
+    feedId?: pulumi.Input<string | undefined>;
     /**
      * Output configuration for asset feed destination.
      * Structure is documented below.
      */
-    feedOutputConfig?: pulumi.Input<inputs.cloudasset.ProjectFeedFeedOutputConfig>;
+    feedOutputConfig?: pulumi.Input<inputs.cloudasset.ProjectFeedFeedOutputConfig | undefined>;
     /**
      * The format will be projects/{projectNumber}/feeds/{client-assigned_feed_identifier}.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -271,7 +271,7 @@ export interface ProjectFeedArgs {
      * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
      * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
      */
-    assetNames?: pulumi.Input<pulumi.Input<string>[]>;
+    assetNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of types of the assets to receive updates. You must specify either or both of assetNames
      * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
@@ -279,14 +279,14 @@ export interface ProjectFeedArgs {
      * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
      * supported asset types.
      */
-    assetTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    assetTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The project whose identity will be used when sending messages to the
      * destination pubsub topic. It also specifies the project for API
      * enablement check, quota, and billing. If not specified, the resource's
      * project will be used.
      */
-    billingProject?: pulumi.Input<string>;
+    billingProject?: pulumi.Input<string | undefined>;
     /**
      * A condition which determines whether an asset update should be published. If specified, an asset
      * will be returned only when the expression evaluates to true. When set, expression field
@@ -295,12 +295,12 @@ export interface ProjectFeedArgs {
      * condition are optional.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.cloudasset.ProjectFeedCondition>;
+    condition?: pulumi.Input<inputs.cloudasset.ProjectFeedCondition | undefined>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
      * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
      */
@@ -314,5 +314,5 @@ export interface ProjectFeedArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

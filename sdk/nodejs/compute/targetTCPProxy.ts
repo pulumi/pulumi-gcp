@@ -268,15 +268,15 @@ export interface TargetTCPProxyState {
      * A reference to the BackendService resource. This field is optional when
      * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
      */
-    backendService?: pulumi.Input<string>;
+    backendService?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Specifies the load balancer type. A target TCP proxy created for one type
@@ -284,7 +284,7 @@ export interface TargetTCPProxyState {
      * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
      */
-    loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -294,32 +294,32 @@ export interface TargetTCPProxyState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * This field only applies when the forwarding rule that references
      * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
-    proxyBind?: pulumi.Input<boolean>;
+    proxyBind?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the type of proxy header to append before sending data to
      * the backend.
      * Default value is `NONE`.
      * Possible values are: `NONE`, `PROXY_V1`.
      */
-    proxyHeader?: pulumi.Input<string>;
+    proxyHeader?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the resource.
      */
-    proxyId?: pulumi.Input<number>;
+    proxyId?: pulumi.Input<number | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -330,11 +330,11 @@ export interface TargetTCPProxyArgs {
      * A reference to the BackendService resource. This field is optional when
      * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
      */
-    backendService?: pulumi.Input<string>;
+    backendService?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Specifies the load balancer type. A target TCP proxy created for one type
@@ -342,7 +342,7 @@ export interface TargetTCPProxyArgs {
      * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
      */
-    loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -352,22 +352,22 @@ export interface TargetTCPProxyArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * This field only applies when the forwarding rule that references
      * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
-    proxyBind?: pulumi.Input<boolean>;
+    proxyBind?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the type of proxy header to append before sending data to
      * the backend.
      * Default value is `NONE`.
      * Possible values are: `NONE`, `PROXY_V1`.
      */
-    proxyHeader?: pulumi.Input<string>;
+    proxyHeader?: pulumi.Input<string | undefined>;
 }

@@ -89,7 +89,7 @@ export interface GetAnnouncementsOutputArgs {
     /**
      * The resource name of the specific Announcement to retrieve. If provided, the `announcements` list will contain only this announcement.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the region for which announcements will be listed. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: projects/my-project/locations/us-west1-a
      */

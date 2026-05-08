@@ -101,13 +101,13 @@ export interface GetIamCustomRolesOutputArgs {
     /**
      * The project were the custom role has been created in. Defaults to the provider project configuration.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Include Roles that have been deleted. Defaults to `false`.
      */
-    showDeleted?: pulumi.Input<boolean>;
+    showDeleted?: pulumi.Input<boolean | undefined>;
     /**
      * When `"FULL"` is specified, the `permissions` field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the `permissions`.
      */
-    view?: pulumi.Input<string>;
+    view?: pulumi.Input<string | undefined>;
 }

@@ -179,9 +179,9 @@ def get_data_source_reference(data_source_reference_id: Optional[_builtins.str] 
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         resource_type=pulumi.get(__ret__, 'resource_type'))
-def get_data_source_reference_output(data_source_reference_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                     location: Optional[pulumi.Input[_builtins.str]] = None,
-                                     project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_data_source_reference_output(data_source_reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                     location: pulumi.Input[Optional[_builtins.str]] = None,
+                                     project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataSourceReferenceResult]:
     """
     Get information about a specific Backup and DR data source reference.

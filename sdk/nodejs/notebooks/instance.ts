@@ -500,63 +500,63 @@ export interface InstanceState {
      * machineType you have selected.
      * Structure is documented below.
      */
-    acceleratorConfig?: pulumi.Input<inputs.notebooks.InstanceAcceleratorConfig>;
+    acceleratorConfig?: pulumi.Input<inputs.notebooks.InstanceAcceleratorConfig | undefined>;
     /**
      * The size of the boot disk in GB attached to this instance,
      * up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
      * If not specified, this defaults to 100.
      */
-    bootDiskSizeGb?: pulumi.Input<number>;
+    bootDiskSizeGb?: pulumi.Input<number | undefined>;
     /**
      * Possible disk types for notebook instances.
      * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
-    bootDiskType?: pulumi.Input<string>;
+    bootDiskType?: pulumi.Input<string | undefined>;
     /**
      * Use a container image to start the notebook instance.
      * Structure is documented below.
      */
-    containerImage?: pulumi.Input<inputs.notebooks.InstanceContainerImage>;
+    containerImage?: pulumi.Input<inputs.notebooks.InstanceContainerImage | undefined>;
     /**
      * Instance creation time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specify a custom Cloud Storage path where the GPU driver is stored.
      * If not specified, we'll automatically choose from official GPU drivers.
      */
-    customGpuDriverPath?: pulumi.Input<string>;
+    customGpuDriverPath?: pulumi.Input<string | undefined>;
     /**
      * The size of the data disk in GB attached to this instance,
      * up to a maximum of 64000 GB (64 TB).
      * You can choose the size of the data disk based on how big your notebooks and data are.
      * If not specified, this defaults to 100.
      */
-    dataDiskSizeGb?: pulumi.Input<number>;
+    dataDiskSizeGb?: pulumi.Input<number | undefined>;
     /**
      * Possible disk types for notebook instances.
      * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
-    dataDiskType?: pulumi.Input<string>;
+    dataDiskType?: pulumi.Input<string | undefined>;
     /**
      * Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
      * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
      */
-    diskEncryption?: pulumi.Input<string>;
+    diskEncryption?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether the end user authorizes Google Cloud to install GPU driver
      * on this instance. If this field is empty or set to false, the GPU driver
      * won't be installed. Only applicable to instances with GPUs.
      */
-    installGpuDriver?: pulumi.Input<boolean>;
+    installGpuDriver?: pulumi.Input<boolean | undefined>;
     /**
      * The list of owners of this instance after creation.
      * Format: alias@example.com.
@@ -564,12 +564,12 @@ export interface InstanceState {
      * If not specified, all of the service account users of
      * your VM instance's service account can use the instance.
      */
-    instanceOwners?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceOwners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
      * Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this instance. These can be later modified by the setLabels method.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -577,74 +577,74 @@ export interface InstanceState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A reference to the zone where the machine resides.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * A reference to a machine type which defines VM kind.
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * Custom metadata to apply to this instance.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name specified for the Notebook instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the VPC that this instance is in.
      * Format: projects/{project_id}/global/networks/{network_id}
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The type of vNIC driver.
      * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
      */
-    nicType?: pulumi.Input<string>;
+    nicType?: pulumi.Input<string | undefined>;
     /**
      * The notebook instance will not register with the proxy..
      */
-    noProxyAccess?: pulumi.Input<boolean>;
+    noProxyAccess?: pulumi.Input<boolean | undefined>;
     /**
      * No public IP will be assigned to this instance.
      */
-    noPublicIp?: pulumi.Input<boolean>;
+    noPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * If true, the data disk will not be auto deleted when deleting the instance.
      */
-    noRemoveDataDisk?: pulumi.Input<boolean>;
+    noRemoveDataDisk?: pulumi.Input<boolean | undefined>;
     /**
      * Path to a Bash script that automatically runs after a
      * notebook instance fully boots up. The path must be a URL
      * or Cloud Storage path (gs://path-to-file/file-name).
      */
-    postStartupScript?: pulumi.Input<string>;
+    postStartupScript?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The proxy endpoint that is used to access the Jupyter notebook.
      * Only returned when the resource is in a `PROVISIONED` state. If
      * needed you can utilize `pulumi up -refresh-only` to await
      * the population of this value.
      */
-    proxyUri?: pulumi.Input<string>;
+    proxyUri?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Reservation Affinity for consuming Zonal reservation.
      * Structure is documented below.
      */
-    reservationAffinity?: pulumi.Input<inputs.notebooks.InstanceReservationAffinity>;
+    reservationAffinity?: pulumi.Input<inputs.notebooks.InstanceReservationAffinity | undefined>;
     /**
      * The service account on this instance, giving access to other
      * Google Cloud services. You can use any service account within
@@ -652,42 +652,42 @@ export interface InstanceState {
      * permission to use the instance. If not specified,
      * the Compute Engine default service account is used.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Optional. The URIs of service account scopes to be included in Compute Engine instances.
      * If not specified, the following scopes are defined:
      * - https://www.googleapis.com/auth/cloud-platform
      * - https://www.googleapis.com/auth/userinfo.email
      */
-    serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of Shielded Instance options. Check [Images using supported Shielded VM features]
      * Not all combinations are valid
      * Structure is documented below.
      */
-    shieldedInstanceConfig?: pulumi.Input<inputs.notebooks.InstanceShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.notebooks.InstanceShieldedInstanceConfig | undefined>;
     /**
      * The state of this instance.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The name of the subnet that this instance is in.
      * Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
      */
-    subnet?: pulumi.Input<string>;
+    subnet?: pulumi.Input<string | undefined>;
     /**
      * The Compute Engine tags to add to instance.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Instance update time.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Use a Compute Engine VM image to start the notebook instance.
      * Structure is documented below.
      */
-    vmImage?: pulumi.Input<inputs.notebooks.InstanceVmImage>;
+    vmImage?: pulumi.Input<inputs.notebooks.InstanceVmImage | undefined>;
 }
 
 /**
@@ -700,59 +700,59 @@ export interface InstanceArgs {
      * machineType you have selected.
      * Structure is documented below.
      */
-    acceleratorConfig?: pulumi.Input<inputs.notebooks.InstanceAcceleratorConfig>;
+    acceleratorConfig?: pulumi.Input<inputs.notebooks.InstanceAcceleratorConfig | undefined>;
     /**
      * The size of the boot disk in GB attached to this instance,
      * up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
      * If not specified, this defaults to 100.
      */
-    bootDiskSizeGb?: pulumi.Input<number>;
+    bootDiskSizeGb?: pulumi.Input<number | undefined>;
     /**
      * Possible disk types for notebook instances.
      * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
-    bootDiskType?: pulumi.Input<string>;
+    bootDiskType?: pulumi.Input<string | undefined>;
     /**
      * Use a container image to start the notebook instance.
      * Structure is documented below.
      */
-    containerImage?: pulumi.Input<inputs.notebooks.InstanceContainerImage>;
+    containerImage?: pulumi.Input<inputs.notebooks.InstanceContainerImage | undefined>;
     /**
      * Instance creation time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specify a custom Cloud Storage path where the GPU driver is stored.
      * If not specified, we'll automatically choose from official GPU drivers.
      */
-    customGpuDriverPath?: pulumi.Input<string>;
+    customGpuDriverPath?: pulumi.Input<string | undefined>;
     /**
      * The size of the data disk in GB attached to this instance,
      * up to a maximum of 64000 GB (64 TB).
      * You can choose the size of the data disk based on how big your notebooks and data are.
      * If not specified, this defaults to 100.
      */
-    dataDiskSizeGb?: pulumi.Input<number>;
+    dataDiskSizeGb?: pulumi.Input<number | undefined>;
     /**
      * Possible disk types for notebook instances.
      * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
-    dataDiskType?: pulumi.Input<string>;
+    dataDiskType?: pulumi.Input<string | undefined>;
     /**
      * Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
      * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
      */
-    diskEncryption?: pulumi.Input<string>;
+    diskEncryption?: pulumi.Input<string | undefined>;
     /**
      * Whether the end user authorizes Google Cloud to install GPU driver
      * on this instance. If this field is empty or set to false, the GPU driver
      * won't be installed. Only applicable to instances with GPUs.
      */
-    installGpuDriver?: pulumi.Input<boolean>;
+    installGpuDriver?: pulumi.Input<boolean | undefined>;
     /**
      * The list of owners of this instance after creation.
      * Format: alias@example.com.
@@ -760,12 +760,12 @@ export interface InstanceArgs {
      * If not specified, all of the service account users of
      * your VM instance's service account can use the instance.
      */
-    instanceOwners?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceOwners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
      * Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this instance. These can be later modified by the setLabels method.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -773,7 +773,7 @@ export interface InstanceArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A reference to the zone where the machine resides.
      */
@@ -786,49 +786,49 @@ export interface InstanceArgs {
      * Custom metadata to apply to this instance.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name specified for the Notebook instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the VPC that this instance is in.
      * Format: projects/{project_id}/global/networks/{network_id}
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The type of vNIC driver.
      * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
      */
-    nicType?: pulumi.Input<string>;
+    nicType?: pulumi.Input<string | undefined>;
     /**
      * The notebook instance will not register with the proxy..
      */
-    noProxyAccess?: pulumi.Input<boolean>;
+    noProxyAccess?: pulumi.Input<boolean | undefined>;
     /**
      * No public IP will be assigned to this instance.
      */
-    noPublicIp?: pulumi.Input<boolean>;
+    noPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * If true, the data disk will not be auto deleted when deleting the instance.
      */
-    noRemoveDataDisk?: pulumi.Input<boolean>;
+    noRemoveDataDisk?: pulumi.Input<boolean | undefined>;
     /**
      * Path to a Bash script that automatically runs after a
      * notebook instance fully boots up. The path must be a URL
      * or Cloud Storage path (gs://path-to-file/file-name).
      */
-    postStartupScript?: pulumi.Input<string>;
+    postStartupScript?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Reservation Affinity for consuming Zonal reservation.
      * Structure is documented below.
      */
-    reservationAffinity?: pulumi.Input<inputs.notebooks.InstanceReservationAffinity>;
+    reservationAffinity?: pulumi.Input<inputs.notebooks.InstanceReservationAffinity | undefined>;
     /**
      * The service account on this instance, giving access to other
      * Google Cloud services. You can use any service account within
@@ -836,36 +836,36 @@ export interface InstanceArgs {
      * permission to use the instance. If not specified,
      * the Compute Engine default service account is used.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Optional. The URIs of service account scopes to be included in Compute Engine instances.
      * If not specified, the following scopes are defined:
      * - https://www.googleapis.com/auth/cloud-platform
      * - https://www.googleapis.com/auth/userinfo.email
      */
-    serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of Shielded Instance options. Check [Images using supported Shielded VM features]
      * Not all combinations are valid
      * Structure is documented below.
      */
-    shieldedInstanceConfig?: pulumi.Input<inputs.notebooks.InstanceShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.notebooks.InstanceShieldedInstanceConfig | undefined>;
     /**
      * The name of the subnet that this instance is in.
      * Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
      */
-    subnet?: pulumi.Input<string>;
+    subnet?: pulumi.Input<string | undefined>;
     /**
      * The Compute Engine tags to add to instance.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Instance update time.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Use a Compute Engine VM image to start the notebook instance.
      * Structure is documented below.
      */
-    vmImage?: pulumi.Input<inputs.notebooks.InstanceVmImage>;
+    vmImage?: pulumi.Input<inputs.notebooks.InstanceVmImage | undefined>;
 }

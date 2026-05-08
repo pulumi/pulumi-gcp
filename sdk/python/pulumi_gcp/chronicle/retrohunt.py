@@ -25,8 +25,8 @@ class RetrohuntArgs:
                  location: pulumi.Input[_builtins.str],
                  process_interval: pulumi.Input['RetrohuntProcessIntervalArgs'],
                  rule: pulumi.Input[_builtins.str],
-                 retrohunt_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 retrohunt_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Retrohunt resource.
 
@@ -107,19 +107,19 @@ class RetrohuntArgs:
 
     @_builtins.property
     @pulumi.getter(name="RetrohuntId")
-    def retrohunt_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retrohunt_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The retrohunt ID of the Retrohunt. A retrohunt is an execution of a Rule over a time range in the past.
         """
         return pulumi.get(self, "retrohunt_id")
 
     @retrohunt_id.setter
-    def retrohunt_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retrohunt_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retrohunt_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -127,23 +127,23 @@ class RetrohuntArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _RetrohuntState:
     def __init__(__self__, *,
-                 retrohunt_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_intervals: Optional[pulumi.Input[Sequence[pulumi.Input['RetrohuntExecutionIntervalArgs']]]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 process_interval: Optional[pulumi.Input['RetrohuntProcessIntervalArgs']] = None,
-                 progress_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 retrohunt_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_intervals: pulumi.Input[Optional[Sequence[pulumi.Input['RetrohuntExecutionIntervalArgs']]]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 process_interval: pulumi.Input[Optional['RetrohuntProcessIntervalArgs']] = None,
+                 progress_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Retrohunt resources.
 
@@ -201,19 +201,19 @@ class _RetrohuntState:
 
     @_builtins.property
     @pulumi.getter(name="RetrohuntId")
-    def retrohunt_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retrohunt_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The retrohunt ID of the Retrohunt. A retrohunt is an execution of a Rule over a time range in the past.
         """
         return pulumi.get(self, "retrohunt_id")
 
     @retrohunt_id.setter
-    def retrohunt_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retrohunt_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retrohunt_id", value)
 
     @_builtins.property
     @pulumi.getter(name="executionIntervals")
-    def execution_intervals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RetrohuntExecutionIntervalArgs']]]]:
+    def execution_intervals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RetrohuntExecutionIntervalArgs']]]]:
         """
         Represents a time interval, encoded as a Timestamp start (inclusive) and a
         Timestamp end (exclusive).
@@ -225,36 +225,36 @@ class _RetrohuntState:
         return pulumi.get(self, "execution_intervals")
 
     @execution_intervals.setter
-    def execution_intervals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RetrohuntExecutionIntervalArgs']]]]):
+    def execution_intervals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RetrohuntExecutionIntervalArgs']]]]):
         pulumi.set(self, "execution_intervals", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the Chronicle instance, which is the same as the customer ID.
         """
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the retrohunt.
         Retrohunt is the child of a rule revision. {rule} in the format below is
@@ -265,12 +265,12 @@ class _RetrohuntState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="processInterval")
-    def process_interval(self) -> Optional[pulumi.Input['RetrohuntProcessIntervalArgs']]:
+    def process_interval(self) -> pulumi.Input[Optional['RetrohuntProcessIntervalArgs']]:
         """
         Represents a time interval, encoded as a Timestamp start (inclusive) and a
         Timestamp end (exclusive).
@@ -282,24 +282,24 @@ class _RetrohuntState:
         return pulumi.get(self, "process_interval")
 
     @process_interval.setter
-    def process_interval(self, value: Optional[pulumi.Input['RetrohuntProcessIntervalArgs']]):
+    def process_interval(self, value: pulumi.Input[Optional['RetrohuntProcessIntervalArgs']]):
         pulumi.set(self, "process_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="progressPercentage")
-    def progress_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def progress_percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Output only. Percent progress of the retrohunt towards completion, from 0.00 to 100.00.
         """
         return pulumi.get(self, "progress_percentage")
 
     @progress_percentage.setter
-    def progress_percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def progress_percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "progress_percentage", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -307,24 +307,24 @@ class _RetrohuntState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Rule ID of the rule.
         """
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The state of the retrohunt.
         Possible values:
@@ -336,7 +336,7 @@ class _RetrohuntState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -346,12 +346,12 @@ class Retrohunt(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 retrohunt_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 process_interval: Optional[pulumi.Input[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
+                 retrohunt_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 process_interval: pulumi.Input[Optional[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Retrohunt is an execution of a Rule over a time range in the past.
@@ -381,7 +381,7 @@ class Retrohunt(pulumi.CustomResource):
             instance="00000000-0000-0000-0000-000000000000",
             rule=len(std.split(separator="/",
                 text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
-                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+                text=google_chronicle_rule["my-rule"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
             process_interval={
                 "start_time": "2025-01-01T00:00:00Z",
                 "end_time": "2025-01-01T12:00:00Z",
@@ -454,7 +454,7 @@ class Retrohunt(pulumi.CustomResource):
             instance="00000000-0000-0000-0000-000000000000",
             rule=len(std.split(separator="/",
                 text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
-                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+                text=google_chronicle_rule["my-rule"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
             process_interval={
                 "start_time": "2025-01-01T00:00:00Z",
                 "end_time": "2025-01-01T12:00:00Z",
@@ -493,12 +493,12 @@ class Retrohunt(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 retrohunt_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 process_interval: Optional[pulumi.Input[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
+                 retrohunt_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 process_interval: pulumi.Input[Optional[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -536,16 +536,16 @@ class Retrohunt(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            retrohunt_id: Optional[pulumi.Input[_builtins.str]] = None,
-            execution_intervals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RetrohuntExecutionIntervalArgs', 'RetrohuntExecutionIntervalArgsDict']]]]] = None,
-            instance: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            process_interval: Optional[pulumi.Input[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict']]] = None,
-            progress_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            rule: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'Retrohunt':
+            retrohunt_id: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_intervals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RetrohuntExecutionIntervalArgs', 'RetrohuntExecutionIntervalArgsDict']]]]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            process_interval: pulumi.Input[Optional[Union['RetrohuntProcessIntervalArgs', 'RetrohuntProcessIntervalArgsDict']]] = None,
+            progress_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'Retrohunt':
         """
         Get an existing Retrohunt resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

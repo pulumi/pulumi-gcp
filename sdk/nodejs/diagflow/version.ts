@@ -154,24 +154,24 @@ export interface VersionState {
     /**
      * The developer-provided description of this version.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of this agent version.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Flow to create an Version for.
      * Format: projects/<Project ID>/agent.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The status of this version.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The sequential number of this version.
      */
-    versionNumber?: pulumi.Input<number>;
+    versionNumber?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -181,10 +181,10 @@ export interface VersionArgs {
     /**
      * The developer-provided description of this version.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Flow to create an Version for.
      * Format: projects/<Project ID>/agent.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
 }

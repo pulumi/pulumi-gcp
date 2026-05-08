@@ -113,8 +113,8 @@ def get_upgrades(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         parent=pulumi.get(__ret__, 'parent'),
         upgrades=pulumi.get(__ret__, 'upgrades'))
-def get_upgrades_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        parent: Optional[pulumi.Input[_builtins.str]] = None,
+def get_upgrades_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        parent: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUpgradesResult]:
     """
     Use this data source to list upgrades for a Private Cloud.

@@ -22,22 +22,22 @@ __all__ = ['V2VmArgs', 'V2Vm']
 class V2VmArgs:
     def __init__(__self__, *,
                  runtime_version: pulumi.Input[_builtins.str],
-                 accelerator_config: Optional[pulumi.Input['V2VmAcceleratorConfigArgs']] = None,
-                 accelerator_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmDataDiskArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input['V2VmNetworkConfigArgs']] = None,
-                 network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling_config: Optional[pulumi.Input['V2VmSchedulingConfigArgs']] = None,
-                 service_account: Optional[pulumi.Input['V2VmServiceAccountArgs']] = None,
-                 shielded_instance_config: Optional[pulumi.Input['V2VmShieldedInstanceConfigArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_config: pulumi.Input[Optional['V2VmAcceleratorConfigArgs']] = None,
+                 accelerator_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['V2VmDataDiskArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional['V2VmNetworkConfigArgs']] = None,
+                 network_configs: pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_config: pulumi.Input[Optional['V2VmSchedulingConfigArgs']] = None,
+                 service_account: pulumi.Input[Optional['V2VmServiceAccountArgs']] = None,
+                 shielded_instance_config: pulumi.Input[Optional['V2VmShieldedInstanceConfigArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2Vm resource.
 
@@ -126,7 +126,7 @@ class V2VmArgs:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorConfig")
-    def accelerator_config(self) -> Optional[pulumi.Input['V2VmAcceleratorConfigArgs']]:
+    def accelerator_config(self) -> pulumi.Input[Optional['V2VmAcceleratorConfigArgs']]:
         """
         The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
         as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
@@ -135,12 +135,12 @@ class V2VmArgs:
         return pulumi.get(self, "accelerator_config")
 
     @accelerator_config.setter
-    def accelerator_config(self, value: Optional[pulumi.Input['V2VmAcceleratorConfigArgs']]):
+    def accelerator_config(self, value: pulumi.Input[Optional['V2VmAcceleratorConfigArgs']]):
         pulumi.set(self, "accelerator_config", value)
 
     @_builtins.property
     @pulumi.getter(name="acceleratorType")
-    def accelerator_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
         `accelerator_config`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
@@ -148,12 +148,12 @@ class V2VmArgs:
         return pulumi.get(self, "accelerator_type")
 
     @accelerator_type.setter
-    def accelerator_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_type", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
         be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
@@ -165,12 +165,12 @@ class V2VmArgs:
         return pulumi.get(self, "cidr_block")
 
     @cidr_block.setter
-    def cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2VmDataDiskArgs']]]]:
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2VmDataDiskArgs']]]]:
         """
         The additional data disks for the Node.
         Structure is documented below.
@@ -178,24 +178,24 @@ class V2VmArgs:
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
-    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmDataDiskArgs']]]]):
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2VmDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Text description of the TPU.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels to represent user-provided metadata.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -204,36 +204,36 @@ class V2VmArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The immutable name of the TPU.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['V2VmNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['V2VmNetworkConfigArgs']]:
         """
         Network configurations for the TPU node.
         Structure is documented below.
@@ -241,12 +241,12 @@ class V2VmArgs:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['V2VmNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['V2VmNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfigs")
-    def network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]]:
+    def network_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]]:
         """
         Repeated network configurations for the TPU node. This field is used to specify multiple
         network configs for the TPU node.
@@ -255,12 +255,12 @@ class V2VmArgs:
         return pulumi.get(self, "network_configs")
 
     @network_configs.setter
-    def network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]]):
+    def network_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]]):
         pulumi.set(self, "network_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -268,12 +268,12 @@ class V2VmArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulingConfig")
-    def scheduling_config(self) -> Optional[pulumi.Input['V2VmSchedulingConfigArgs']]:
+    def scheduling_config(self) -> pulumi.Input[Optional['V2VmSchedulingConfigArgs']]:
         """
         The scheduling options for this node.
         Structure is documented below.
@@ -281,12 +281,12 @@ class V2VmArgs:
         return pulumi.get(self, "scheduling_config")
 
     @scheduling_config.setter
-    def scheduling_config(self, value: Optional[pulumi.Input['V2VmSchedulingConfigArgs']]):
+    def scheduling_config(self, value: pulumi.Input[Optional['V2VmSchedulingConfigArgs']]):
         pulumi.set(self, "scheduling_config", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input['V2VmServiceAccountArgs']]:
+    def service_account(self) -> pulumi.Input[Optional['V2VmServiceAccountArgs']]:
         """
         The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
         specified, the default compute service account will be used.
@@ -295,12 +295,12 @@ class V2VmArgs:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input['V2VmServiceAccountArgs']]):
+    def service_account(self, value: pulumi.Input[Optional['V2VmServiceAccountArgs']]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['V2VmShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> pulumi.Input[Optional['V2VmShieldedInstanceConfigArgs']]:
         """
         Shielded Instance options.
         Structure is documented below.
@@ -308,64 +308,64 @@ class V2VmArgs:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['V2VmShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: pulumi.Input[Optional['V2VmShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCP location for the TPU. If it is not provided, the provider zone is used.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
 class _V2VmState:
     def __init__(__self__, *,
-                 accelerator_config: Optional[pulumi.Input['V2VmAcceleratorConfigArgs']] = None,
-                 accelerator_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmDataDiskArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 health: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 multislice_node: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input['V2VmNetworkConfigArgs']] = None,
-                 network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]] = None,
-                 network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 queued_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling_config: Optional[pulumi.Input['V2VmSchedulingConfigArgs']] = None,
-                 service_account: Optional[pulumi.Input['V2VmServiceAccountArgs']] = None,
-                 shielded_instance_config: Optional[pulumi.Input['V2VmShieldedInstanceConfigArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 symptoms: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmSymptomArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_config: pulumi.Input[Optional['V2VmAcceleratorConfigArgs']] = None,
+                 accelerator_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['V2VmDataDiskArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 health: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 multislice_node: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional['V2VmNetworkConfigArgs']] = None,
+                 network_configs: pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]] = None,
+                 network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkEndpointArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 queued_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_config: pulumi.Input[Optional['V2VmSchedulingConfigArgs']] = None,
+                 service_account: pulumi.Input[Optional['V2VmServiceAccountArgs']] = None,
+                 shielded_instance_config: pulumi.Input[Optional['V2VmShieldedInstanceConfigArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 symptoms: pulumi.Input[Optional[Sequence[pulumi.Input['V2VmSymptomArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V2Vm resources.
 
@@ -477,7 +477,7 @@ class _V2VmState:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorConfig")
-    def accelerator_config(self) -> Optional[pulumi.Input['V2VmAcceleratorConfigArgs']]:
+    def accelerator_config(self) -> pulumi.Input[Optional['V2VmAcceleratorConfigArgs']]:
         """
         The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
         as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
@@ -486,12 +486,12 @@ class _V2VmState:
         return pulumi.get(self, "accelerator_config")
 
     @accelerator_config.setter
-    def accelerator_config(self, value: Optional[pulumi.Input['V2VmAcceleratorConfigArgs']]):
+    def accelerator_config(self, value: pulumi.Input[Optional['V2VmAcceleratorConfigArgs']]):
         pulumi.set(self, "accelerator_config", value)
 
     @_builtins.property
     @pulumi.getter(name="acceleratorType")
-    def accelerator_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
         `accelerator_config`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
@@ -499,24 +499,24 @@ class _V2VmState:
         return pulumi.get(self, "accelerator_type")
 
     @accelerator_type.setter
-    def accelerator_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_type", value)
 
     @_builtins.property
     @pulumi.getter(name="apiVersion")
-    def api_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The API version that created this Node.
         """
         return pulumi.get(self, "api_version")
 
     @api_version.setter
-    def api_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_version", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
         be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
@@ -528,12 +528,12 @@ class _V2VmState:
         return pulumi.get(self, "cidr_block")
 
     @cidr_block.setter
-    def cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2VmDataDiskArgs']]]]:
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2VmDataDiskArgs']]]]:
         """
         The additional data disks for the Node.
         Structure is documented below.
@@ -541,60 +541,60 @@ class _V2VmState:
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
-    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmDataDiskArgs']]]]):
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2VmDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Text description of the TPU.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def health(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The health status of the TPU node.
         """
         return pulumi.get(self, "health")
 
     @health.setter
-    def health(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health", value)
 
     @_builtins.property
     @pulumi.getter(name="healthDescription")
-    def health_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If this field is populated, it contains a description of why the TPU Node is unhealthy.
         """
         return pulumi.get(self, "health_description")
 
     @health_description.setter
-    def health_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels to represent user-provided metadata.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -603,48 +603,48 @@ class _V2VmState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="multisliceNode")
-    def multislice_node(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multislice_node(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the Node belongs to a Multislice group.
         """
         return pulumi.get(self, "multislice_node")
 
     @multislice_node.setter
-    def multislice_node(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multislice_node(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multislice_node", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The immutable name of the TPU.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['V2VmNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['V2VmNetworkConfigArgs']]:
         """
         Network configurations for the TPU node.
         Structure is documented below.
@@ -652,12 +652,12 @@ class _V2VmState:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['V2VmNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['V2VmNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfigs")
-    def network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]]:
+    def network_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]]:
         """
         Repeated network configurations for the TPU node. This field is used to specify multiple
         network configs for the TPU node.
@@ -666,12 +666,12 @@ class _V2VmState:
         return pulumi.get(self, "network_configs")
 
     @network_configs.setter
-    def network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]]):
+    def network_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]]):
         pulumi.set(self, "network_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="networkEndpoints")
-    def network_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointArgs']]]]:
+    def network_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkEndpointArgs']]]]:
         """
         The network endpoints where TPU workers can be accessed and sent work. It is recommended that
         runtime clients of the node reach out to the 0th entry in this map first.
@@ -680,12 +680,12 @@ class _V2VmState:
         return pulumi.get(self, "network_endpoints")
 
     @network_endpoints.setter
-    def network_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointArgs']]]]):
+    def network_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkEndpointArgs']]]]):
         pulumi.set(self, "network_endpoints", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -693,12 +693,12 @@ class _V2VmState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -706,36 +706,36 @@ class _V2VmState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="queuedResource")
-    def queued_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queued_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The qualified name of the QueuedResource that requested this Node.
         """
         return pulumi.get(self, "queued_resource")
 
     @queued_resource.setter
-    def queued_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queued_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queued_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeVersion")
-    def runtime_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Runtime version for the TPU.
         """
         return pulumi.get(self, "runtime_version")
 
     @runtime_version.setter
-    def runtime_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_version", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulingConfig")
-    def scheduling_config(self) -> Optional[pulumi.Input['V2VmSchedulingConfigArgs']]:
+    def scheduling_config(self) -> pulumi.Input[Optional['V2VmSchedulingConfigArgs']]:
         """
         The scheduling options for this node.
         Structure is documented below.
@@ -743,12 +743,12 @@ class _V2VmState:
         return pulumi.get(self, "scheduling_config")
 
     @scheduling_config.setter
-    def scheduling_config(self, value: Optional[pulumi.Input['V2VmSchedulingConfigArgs']]):
+    def scheduling_config(self, value: pulumi.Input[Optional['V2VmSchedulingConfigArgs']]):
         pulumi.set(self, "scheduling_config", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input['V2VmServiceAccountArgs']]:
+    def service_account(self) -> pulumi.Input[Optional['V2VmServiceAccountArgs']]:
         """
         The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
         specified, the default compute service account will be used.
@@ -757,12 +757,12 @@ class _V2VmState:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input['V2VmServiceAccountArgs']]):
+    def service_account(self, value: pulumi.Input[Optional['V2VmServiceAccountArgs']]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['V2VmShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> pulumi.Input[Optional['V2VmShieldedInstanceConfigArgs']]:
         """
         Shielded Instance options.
         Structure is documented below.
@@ -770,24 +770,24 @@ class _V2VmState:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['V2VmShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: pulumi.Input[Optional['V2VmShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state for the TPU Node.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def symptoms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2VmSymptomArgs']]]]:
+    def symptoms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2VmSymptomArgs']]]]:
         """
         The Symptoms that have occurred to the TPU Node.
         Structure is documented below.
@@ -795,31 +795,31 @@ class _V2VmState:
         return pulumi.get(self, "symptoms")
 
     @symptoms.setter
-    def symptoms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmSymptomArgs']]]]):
+    def symptoms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2VmSymptomArgs']]]]):
         pulumi.set(self, "symptoms", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCP location for the TPU. If it is not provided, the provider zone is used.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -829,23 +829,23 @@ class V2Vm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_config: Optional[pulumi.Input[Union['V2VmAcceleratorConfigArgs', 'V2VmAcceleratorConfigArgsDict']]] = None,
-                 accelerator_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmDataDiskArgs', 'V2VmDataDiskArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]] = None,
-                 network_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling_config: Optional[pulumi.Input[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']]] = None,
-                 service_account: Optional[pulumi.Input[Union['V2VmServiceAccountArgs', 'V2VmServiceAccountArgsDict']]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[Union['V2VmShieldedInstanceConfigArgs', 'V2VmShieldedInstanceConfigArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerator_config: pulumi.Input[Optional[Union['V2VmAcceleratorConfigArgs', 'V2VmAcceleratorConfigArgsDict']]] = None,
+                 accelerator_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2VmDataDiskArgs', 'V2VmDataDiskArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]] = None,
+                 network_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_config: pulumi.Input[Optional[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']]] = None,
+                 service_account: pulumi.Input[Optional[Union['V2VmServiceAccountArgs', 'V2VmServiceAccountArgsDict']]] = None,
+                 shielded_instance_config: pulumi.Input[Optional[Union['V2VmShieldedInstanceConfigArgs', 'V2VmShieldedInstanceConfigArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Cloud TPU VM instance.
@@ -1139,23 +1139,23 @@ class V2Vm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_config: Optional[pulumi.Input[Union['V2VmAcceleratorConfigArgs', 'V2VmAcceleratorConfigArgsDict']]] = None,
-                 accelerator_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmDataDiskArgs', 'V2VmDataDiskArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]] = None,
-                 network_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling_config: Optional[pulumi.Input[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']]] = None,
-                 service_account: Optional[pulumi.Input[Union['V2VmServiceAccountArgs', 'V2VmServiceAccountArgsDict']]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[Union['V2VmShieldedInstanceConfigArgs', 'V2VmShieldedInstanceConfigArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerator_config: pulumi.Input[Optional[Union['V2VmAcceleratorConfigArgs', 'V2VmAcceleratorConfigArgsDict']]] = None,
+                 accelerator_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2VmDataDiskArgs', 'V2VmDataDiskArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]] = None,
+                 network_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling_config: pulumi.Input[Optional[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']]] = None,
+                 service_account: pulumi.Input[Optional[Union['V2VmServiceAccountArgs', 'V2VmServiceAccountArgsDict']]] = None,
+                 shielded_instance_config: pulumi.Input[Optional[Union['V2VmShieldedInstanceConfigArgs', 'V2VmShieldedInstanceConfigArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1206,33 +1206,33 @@ class V2Vm(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerator_config: Optional[pulumi.Input[Union['V2VmAcceleratorConfigArgs', 'V2VmAcceleratorConfigArgsDict']]] = None,
-            accelerator_type: Optional[pulumi.Input[_builtins.str]] = None,
-            api_version: Optional[pulumi.Input[_builtins.str]] = None,
-            cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmDataDiskArgs', 'V2VmDataDiskArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            health: Optional[pulumi.Input[_builtins.str]] = None,
-            health_description: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            multislice_node: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_config: Optional[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]] = None,
-            network_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]]]] = None,
-            network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmNetworkEndpointArgs', 'V2VmNetworkEndpointArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            queued_resource: Optional[pulumi.Input[_builtins.str]] = None,
-            runtime_version: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduling_config: Optional[pulumi.Input[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']]] = None,
-            service_account: Optional[pulumi.Input[Union['V2VmServiceAccountArgs', 'V2VmServiceAccountArgsDict']]] = None,
-            shielded_instance_config: Optional[pulumi.Input[Union['V2VmShieldedInstanceConfigArgs', 'V2VmShieldedInstanceConfigArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            symptoms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmSymptomArgs', 'V2VmSymptomArgsDict']]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'V2Vm':
+            accelerator_config: pulumi.Input[Optional[Union['V2VmAcceleratorConfigArgs', 'V2VmAcceleratorConfigArgsDict']]] = None,
+            accelerator_type: pulumi.Input[Optional[_builtins.str]] = None,
+            api_version: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2VmDataDiskArgs', 'V2VmDataDiskArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            health: pulumi.Input[Optional[_builtins.str]] = None,
+            health_description: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            multislice_node: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]] = None,
+            network_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]]]] = None,
+            network_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2VmNetworkEndpointArgs', 'V2VmNetworkEndpointArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            queued_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_version: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduling_config: pulumi.Input[Optional[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']]] = None,
+            service_account: pulumi.Input[Optional[Union['V2VmServiceAccountArgs', 'V2VmServiceAccountArgsDict']]] = None,
+            shielded_instance_config: pulumi.Input[Optional[Union['V2VmShieldedInstanceConfigArgs', 'V2VmShieldedInstanceConfigArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            symptoms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V2VmSymptomArgs', 'V2VmSymptomArgsDict']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'V2Vm':
         """
         Get an existing V2Vm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

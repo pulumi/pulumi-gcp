@@ -263,11 +263,11 @@ export interface LbEdgeExtensionState {
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A set of ordered extension chains that contain the match conditions and extensions to execute.
      * Match conditions for each extension chain are evaluated in sequence for a given request.
@@ -275,41 +275,41 @@ export interface LbEdgeExtensionState {
      * Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
      * Structure is documented below.
      */
-    extensionChains?: pulumi.Input<pulumi.Input<inputs.networkservices.LbEdgeExtensionExtensionChain>[]>;
+    extensionChains?: pulumi.Input<pulumi.Input<inputs.networkservices.LbEdgeExtensionExtensionChain>[] | undefined>;
     /**
      * A list of references to the forwarding rules to which this service extension is attached.
      * At least one forwarding rule is required. Only one LbEdgeExtension resource can be associated with a forwarding rule.
      */
-    forwardingRules?: pulumi.Input<pulumi.Input<string>[]>;
+    forwardingRules?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of labels associated with the LbEdgeExtension resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All forwarding rules referenced by this extension must share the same load balancing scheme.
      * Possible values are: `EXTERNAL_MANAGED`.
      */
-    loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
      * The location of the edge extension
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the LbEdgeExtension resource in the following format: projects/{project}/locations/{location}/lbEdgeExtensions/{lbEdgeExtensions}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -319,7 +319,7 @@ export interface LbEdgeExtensionArgs {
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A set of ordered extension chains that contain the match conditions and extensions to execute.
      * Match conditions for each extension chain are evaluated in sequence for a given request.
@@ -338,7 +338,7 @@ export interface LbEdgeExtensionArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All forwarding rules referenced by this extension must share the same load balancing scheme.
      * Possible values are: `EXTERNAL_MANAGED`.
@@ -351,10 +351,10 @@ export interface LbEdgeExtensionArgs {
     /**
      * Name of the LbEdgeExtension resource in the following format: projects/{project}/locations/{location}/lbEdgeExtensions/{lbEdgeExtensions}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
